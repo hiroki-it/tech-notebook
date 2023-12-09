@@ -1004,24 +1004,35 @@ num  target                     prot opt source               destination
 2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
 ```
 
-`(3)`. `KUBE-SEP`のターゲットに応じて、異なる`DNAT`ターゲットを持つ。
+`(3)` `KUBE-SEP`のターゲットに応じて、異なる`DNAT`ターゲットを持つ。
 
      `DNAT`ターゲットは、Podである。
 
-     kube-proxyはDNAT処理を実行し、パケットのService宛のIPアドレスをPodのIPアドレスに変換する。
+     kube-proxyはDNAT処理を実行し、パケットの宛先IPアドレス (ServiceのIPアドレス) をPodのIPアドレスに変換する。
+
+     ここでは、パケットの宛先IPアドレスを`172.16.10.9`と`172.16.10.42`に変換する。
 
 ```bash
-#
 Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
 
-num  target     prot opt  source               destination
-1    KUBE-MARK-MASQ  all  --  172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
-2    DNAT       udp  --   0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
+num  target          prot  opt  source           destination
+1    KUBE-MARK-MASQ  all   --   172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
+2    DNAT            udp   --   0.0.0.0/0        0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
 
 Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
-num  target     prot opt  source               destination
-1    KUBE-MARK-MASQ  all  --  172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
-2    DNAT       udp  --   0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
+num  target          prot  opt  source           destination
+1    KUBE-MARK-MASQ  all   --   172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
+2    DNAT            udp   --    0.0.0.0/0       0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
+```
+
+`(4)` 宛先のPodのIPアドレスを確認すると、DNAT処理の変換後のIPアドレスと一致している。
+
+```bash
+$ kubectl get po -n kube-system -o wide -l k8s-app=kube-dns
+
+NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE                                NOMINATED NODE   READINESS GATES
+coredns-69c47794-6xnlq   1/1     Running   0          18h    172.16.10.9    aks-nodepool1-19344272-vmss000000   <none>           <none>
+coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-nodepool1-19344272-vmss000001   <none>           <none>
 ```
 
 > - https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented
