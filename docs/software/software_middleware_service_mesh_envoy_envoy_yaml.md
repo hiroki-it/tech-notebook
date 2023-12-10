@@ -231,7 +231,7 @@ static_resources:
 
 **＊実装例＊**
 
-HTTPフィルターの一種である`network.http_connection_manager`を指定する。
+ネットワークフィルターである`network.http_connection_manager`を指定する。
 
 ```yaml
 static_resources:

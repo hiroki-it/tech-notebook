@@ -593,10 +593,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 #### ▼ ネットワークフィルター
 
+主要なネットワークフィルターとして、`network.http_connection_manager`や`network.tcp_proxy`がある。
+
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listeners/listener_filters#network-l3-l4-filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
 #### ▼ HTTPフィルター
+
+主要なHTTPフィルターとして、`http.router`や`http.grpc_web`がある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http

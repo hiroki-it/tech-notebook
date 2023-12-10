@@ -690,7 +690,7 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)
@@ -714,7 +714,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)
@@ -739,7 +739,7 @@ spec:
             type_url: type.googleapis.com/stats.PluginConfig
             value:
               disable_host_header_fallback: true
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # istio-ingressgateway内のistio-proxyコンテナ

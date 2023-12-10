@@ -658,7 +658,7 @@ spec:
 
 **＊実装例＊**
 
-HTTPフィルターの一種である`network.http_connection_manager`の設定値を変更する。
+ネットワークフィルターである`network.http_connection_manager`の設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
