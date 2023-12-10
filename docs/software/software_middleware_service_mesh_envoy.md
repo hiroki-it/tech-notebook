@@ -604,6 +604,8 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_routing
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
 
 #### ▼ UDPリスナーフィルター
 

@@ -226,6 +226,7 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
+> - https://software.danielwatrous.com/istio-ingress-vs-kubernetes-ingress/
 > - https://stackoverflow.com/questions/68711365/why-isnt-the-circuit-breaking-of-istio-working
 > - https://bcho.tistory.com/1367
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
@@ -649,24 +650,27 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 
 ServiceEntryには、Istio EgressGatewayも必要である。
 
-Istio EgressGatewayへの通信にはVirtualServiceも必要になる。
+<br>
 
-> - https://www.istioworkshop.io/09-traffic-management/08-egress-gateway/
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
-> - https://learncloudnative.com/blog/2023-02-10-servicentry-feature
-> - https://istiobyexample.dev/external-services/
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+### VirtualService
+
+Istio EgressGatewayが必要になるため、VirtualServiceも必要になる。
+
+VirtualServiceは、EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
+
+> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
+> - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
 <br>
 
 ### DestinationRule
 
-必須ではないが、ServiceEntryにDestinationRuleを組み合わせられる。
+Istio EgressGatewayが必要になるため、DestinationRuleも必要になる。
 
-サービス外のコンポーネントと相互TLSする場合に、DestinationRuleにSSL証明書を設定する。
+DestinationRuleは、EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
 
-> - https://istio.io/latest/docs/concepts/traffic-management/#service-entry-example
-> - https://istio.io/latest/docs/reference/config/networking/service-entry/
+> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
+> - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
 <br>
 
