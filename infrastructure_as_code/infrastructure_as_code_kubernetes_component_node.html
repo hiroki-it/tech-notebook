@@ -7159,8 +7159,8 @@ kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</s
 </ul>
 </blockquote>
 <h4 id="podl4">▼ Podの<code>L4</code>ロードバランサー<a class="headerlink" href="#podl4" title="Permanent link">&para;</a></h4>
-<p>ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決める。</p>
-<p>プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。</p>
+<p>負荷分散アルゴリズムによって、Serviceがルーティング先のPodを決める。</p>
+<p>プロキシモードごとに、使用する負荷分散アルゴリズムが異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></li>
@@ -7205,7 +7205,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルのロードバランシングアルゴリズム</td>
+<td><code>L4</code>プロトコルの負荷分散アルゴリズム</td>
 <td>ランダム方式のみ。</td>
 </tr>
 </tbody>
@@ -7232,7 +7232,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルのロードバランシングアルゴリズム</td>
+<td><code>L4</code>プロトコルの負荷分散アルゴリズム</td>
 <td>ラウンドロビン方式のみ。</td>
 </tr>
 </tbody>
@@ -7259,7 +7259,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルのロードバランシングアルゴリズム</td>
+<td><code>L4</code>プロトコルの負荷分散アルゴリズム</td>
 <td>ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。</td>
 </tr>
 </tbody>
@@ -7505,7 +7505,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-11</span>
   </span>
 
     
