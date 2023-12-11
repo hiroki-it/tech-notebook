@@ -330,9 +330,9 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 #### ▼ Podの`L4`ロードバランサー
 
-ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決める。
+負荷分散アルゴリズムによって、Serviceがルーティング先のPodを決める。
 
-プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。
+プロキシモードごとに、使用する負荷分散アルゴリズムが異なる。
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 
@@ -370,10 +370,10 @@ num  target                     prot   opt   source      destination
 
 デフォルトのプロキシモードである。
 
-| 項目                                           | 仕組み                                                                                                                            |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー       | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| `L4`プロトコルのロードバランシングアルゴリズム | ランダム方式のみ。                                                                                                                |
+| 項目                                     | 仕組み                                                                                                                            |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| `L4`プロトコルの負荷分散アルゴリズム     | ランダム方式のみ。                                                                                                                |
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
@@ -383,10 +383,10 @@ num  target                     prot   opt   source      destination
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
-| 項目                                           | 仕組み                                                                                                                            |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー       | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| `L4`プロトコルのロードバランシングアルゴリズム | ラウンドロビン方式のみ。                                                                                                          |
+| 項目                                     | 仕組み                                                                                                                            |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
+| `L4`プロトコルの負荷分散アルゴリズム     | ラウンドロビン方式のみ。                                                                                                          |
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
@@ -397,10 +397,10 @@ num  target                     prot   opt   source      destination
 
 kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxyMode=true`、`--proxy-mode`オプションに`ipvs`を設定する。
 
-| 項目                                           | 仕組み                                                                                                                        |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー       | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| `L4`プロトコルのロードバランシングアルゴリズム | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
+| 項目                                     | 仕組み                                                                                                                        |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
+| `L4`プロトコルの負荷分散アルゴリズム     | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
 
 > - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs

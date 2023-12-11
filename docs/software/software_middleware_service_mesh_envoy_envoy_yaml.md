@@ -1028,7 +1028,7 @@ static_resources:
     # XDS-APIをクラスターとする。
     - name: xds_cluster
       connect_timeout: 0.25s
-      # ロードバランシングアルゴリズム
+      # 負荷分散アルゴリズム
       lb_policy: ROUND_ROBIN
       http2_protocol_options: {}
       load_assignment:
@@ -1046,7 +1046,7 @@ static_resources:
     - name: services_cluster
       type: EDS
       connect_timeout: 0.25s
-      # ロードバランシングアルゴリズム
+      # 負荷分散アルゴリズム
       lb_policy: ROUND_ROBIN
       eds_cluster_config:
         eds_config:
