@@ -1666,9 +1666,7 @@ spec:
 
 #### ▼ `<Gateway名>`
 
-Gateway名を設定する。
-
-Istio IngressGateway / EgressGateway配下のVirtualServiceでのみ使用し、紐付けないVirtualService (Pod間通信に使用するVirtualService) では使用しない。
+VirtualServiceを、Istio IngressGateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は`<Gateway名>`とする。
 
 VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
 
@@ -1687,7 +1685,7 @@ spec:
 
 #### ▼ mesh
 
-アプリコンテナ間の通信を有効化するか否かを設定する。
+VirtualServiceを、Pod間通信で使用する場合は`mesh`とする。
 
 **＊実装例＊**
 

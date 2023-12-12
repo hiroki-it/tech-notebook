@@ -17,7 +17,7 @@ description: Istio Ingressコントローラー＠Ingressコントローラー�
 
 `L4`/`L7`ロードバランサーとしての`istio-proxy`を使用して、通信をロードバランシングする。
 
-GatewayとVirtualServiceからIstio IngressGateway / EgressGatewayを作成した場合と同様にして、Istio IngressGateway / EgressGatewayを作成する。
+GatewayとVirtualServiceからIstio IngressGateway/EgressGatewayを作成した場合と同様にして、Istio IngressGateway/EgressGatewayを作成する。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 
