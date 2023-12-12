@@ -631,9 +631,7 @@ aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープ
 
 <br>
 
-## 03-03. Cluster内外の通信
-
-### サブネット
+## 03-03. サブネット内外へのリクエスト
 
 EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBから通信を受信すると良い。
 
@@ -643,9 +641,11 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
-### プライベートサブネット外から内のデータプレーンへのリクエスト
+<br>
 
-#### ▼ Pod外から内へのリクエスト
+## 03-04. データプレーン内外へのリクエスト
+
+### Pod外から内へのリクエスト
 
 Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
@@ -655,34 +655,44 @@ Podをプライベートサブネットに配置した場合に、プライベ�
 
 <br>
 
-### コントロールプレーン外から内へのリクエスト
+## 03-05. コントロールプレーン内外へのリクエスト
 
-#### ▼ リクエスト制限
+### コントロールプレーンとワーカーNodeのネットワーク
 
-コントロールプレーンでは、`kubectl`コマンドのエンドポイントとしてNLBが配置されている。
+コントロールプレーンはVPC外にあり、ワーカーNodeはVPC内にある。
+
+`kubectl`コマンドやワーカーNodeからのリクエストのエンドポイントとしてNLBが配置されている。
 
 このNLBを介して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。
 
 VPC外からNLBへの`443`番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。
 
+![eks_control-plane_worker_network.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png)
+
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
 
-#### ▼ パブリックのみ
+<br>
+
+### クラスターエンドポイントのリクエスト制限
+
+#### ▼ パブリックのみの場合
 
 基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。
 
-プライベートサブネット内EC2ワーカーNodeは、NAT Gatewayを介して、パブリック制限されたkube-apiserverにリクエストを送信することになる。
+プライベートサブネット内にワーカーNodeがある場合、NAT Gatewayを介して、kube-apiserverにリクエストを送信することになる。
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 
 #### ▼ パブリックとプライベートの場合
 
-![cluster-endpoint_private.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cluster-endpoint_private.png)
-
 パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。
 
-EC2ワーカーNodeは、以下のいずれかの経路でkube-apiserverにリクエストを送信する
+プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。
 
 - NAT Gatewayを介して、NAT Gatewayを介して、パブリック制限を通過する
 - ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する
+
+![eks_control-plane_worker_network_public_private_endpoint.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
 
 VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
@@ -694,9 +704,13 @@ VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Syst
 | Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-#### ▼ プライベートのみ
+> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
+
+#### ▼ プライベートのみの場合
 
 プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。
+
+プライベートサブネット内にワーカーNodeがある場合、VPCエンドポイントを介して、kube-apiserverにリクエストを送信することになる。
 
 この状態で、`kubectl`コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。
 
