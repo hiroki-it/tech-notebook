@@ -793,8 +793,6 @@ Nodeグループは、EC2ワーカーNodeが配置されるプライベートサ
 
 AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
-ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。
-
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
@@ -831,10 +829,23 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 
 AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。
 
-ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。
-
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
+
+<br>
+
+### Node数の変更
+
+Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。
+
+設定後、AutoScalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。
+
+希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。
+
+もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。
+
+> - https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81
+> - https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs
 
 <br>
 
