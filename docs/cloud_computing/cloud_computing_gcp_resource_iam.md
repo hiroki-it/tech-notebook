@@ -167,7 +167,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 ### Workload Identityとは
 
-GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにアクセスする場合に、外部リソースをサービスアカウントに紐づけて、APIにアクセスできるようにする仕組みのこと。
+GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにアクセスする場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストできるようにする仕組みのこと。
 
 <br>
 
@@ -180,7 +180,7 @@ GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGo
 5. 検証が成功し、一時的なトークンを発行する。
 6. GoogleCloudリソース外のリソースにトークンを送信する。
 7. GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
-8. GoogleCloudリソースのAPIにアクセスできるようになる。
+8. GoogleCloudリソースのAPIにリクエストできるようになる。
 
 ![google-cloud_workload-identity.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
 

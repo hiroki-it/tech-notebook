@@ -532,7 +532,7 @@ data:
 
 ## 04. argocd-rbac-cm
 
-ArgoCDを構成するKubernetesリソースにアクセスするための認可スコープを紐付ける。
+ArgoCDを構成するKubernetesリソースにリクエストするための認可スコープを紐付ける。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/

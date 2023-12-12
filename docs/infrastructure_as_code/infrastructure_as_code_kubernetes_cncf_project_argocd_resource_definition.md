@@ -188,7 +188,7 @@ $ kubectl get secret argocd-initial-admin-secret \
      `minikube tunnel`コマンドでは、ポート番号を指定できないことに注意する。
 
 ```bash
-# Serviceの情報を使用してPodを指定し、ダッシュボードにアクセスできるようにする。
+# Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストできるようにする。
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # ホストポートを介してPodのポートにアクセスする。

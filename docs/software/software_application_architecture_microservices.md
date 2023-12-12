@@ -473,7 +473,7 @@ Kubernetes内で管理できるメリットがある。
 
 ただし、複数のクライアントをWebアプリとして開発することもできる。
 
-そのため、同じWebからのアクセスであっても、異なるAPI Gatewayを作成する場合がある。
+そのため、同じWebからのリクエストであっても、異なるAPI Gatewayを作成する場合がある。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
