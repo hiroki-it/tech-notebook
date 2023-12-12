@@ -151,7 +151,7 @@ spec:
 
 #### ▼ external-dns
 
-ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にリクエストできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
+ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にリクエストを送信できるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。
 
 ```yaml
 apiVersion: v1

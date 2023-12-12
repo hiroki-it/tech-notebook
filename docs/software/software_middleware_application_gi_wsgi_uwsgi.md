@@ -29,7 +29,7 @@ description: uWSGI＠アプリケーション系ミドルウェアの知見を�
 
 リバースプロキシのミドルウェアとして使用できる。
 
-この場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを介して、後段のwebサーバーにリクエストできるようになる。
+この場合、uWSGIをパブリックネットワークに公開しさえすれば、パブリックネットワークからuWSGIを介して、後段のwebサーバーにリクエストを送信できるようになる。
 
 ![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uwsgi.png)
 

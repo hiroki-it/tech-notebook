@@ -17,7 +17,7 @@ description: goldilocks＠ベストプラクティス違反の知見を記録し
 
 IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適な設定値 (`.spec.containers[*].resources.limits`キー) を算出できる
 
-実際のClusterにアクセスしないと解析できない。
+実際のClusterにリクエストしないと解析できない。
 
 <br>
 
@@ -32,7 +32,7 @@ $ kubectl create namespace goldilocks
 
 $ helm install <Helmリリース名> <チャートリポジトリ名>/goldilocks --namespace goldilocks
 
-# ダッシュボードにアクセスする
+# ダッシュボードにリクエストを送信する
 $ kubectl -n goldilocks port-forward svc/goldilocks-dashboard 8080:80
 ```
 

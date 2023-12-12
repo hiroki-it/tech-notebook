@@ -418,7 +418,7 @@ $ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート�
 # Serviceの情報を使用して、Podを指定する場合
 $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポート番号>
 
-# ホストポートを介してPodのポートにアクセスする。
+# ホストポートを介してPodのポートにリクエストを送信する。
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
@@ -807,7 +807,7 @@ Switched to context "foo-cluster".
 
 LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐付ける。
 
-紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにリクエストできるようになる。
+紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにリクエストを送信できるようになる。
 
 Node外からPodに通信できるようになる。`minikube ssh`コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 

@@ -443,7 +443,7 @@ jobs:
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"
-    # AWS ECSにリクエストできるCodeDeployサービスロール
+    # AWS ECSにリクエストを送信できるCodeDeployサービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
 
 workflows:

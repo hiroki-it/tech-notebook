@@ -309,7 +309,7 @@ AWS管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付�
 
 このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
 
-ECSタスク内のコンテナがリソースにリクエストするために必要なタスクロールとは区別すること。
+ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。
 
 ```yaml
 {
@@ -335,7 +335,7 @@ ECSタスク内のコンテナがリソースにリクエストするために�
 
 **＊実装例＊**
 
-datadogエージェントがECSクラスターやコンテナにリクエストできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。
+datadogエージェントがECSクラスターやコンテナにリクエストを送信できるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。
 
 ```yaml
 {
@@ -679,7 +679,7 @@ CodeDeployを使用してデプロイする。
 | Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
 
 NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。
 
@@ -717,7 +717,7 @@ Systems Managerを使用してコンテナに接続する場合、コンテナ�
 
 : ECSタスク実行ロールにIAMポリシーを付与する。
 
-     これにより、ECSタスクがセッションマネージャーにリクエストできるようになる。
+     これにより、ECSタスクがセッションマネージャーにリクエストを送信できるようになる。
 
 ```yaml
 {

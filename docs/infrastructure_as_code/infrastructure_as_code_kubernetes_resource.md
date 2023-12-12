@@ -31,7 +31,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 ### スコープ
 
-所属するNamespace内のみにリクエストできるNamespacedスコープなKubernetesリソースと、Cluster全体にリクエストできるClusterスコープなKubernetesリソースがある。
+所属するNamespace内のみにリクエストを送信できるNamespacedスコープなKubernetesリソースと、Cluster全体にリクエストを送信できるClusterスコープなKubernetesリソースがある。
 
 ![namespaced-scope_vs_cluster-scoped.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
 
@@ -701,7 +701,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からの通信を�
 
 `Host`ヘッダー値に基づいて、Serviceにルーティングする。
 
-本番環境では、ドメインを指定した各種ダッシュボードにリクエストできる必要がある。
+本番環境では、ドメインを指定した各種ダッシュボードにリクエストを送信できる必要がある。
 
 ![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 

@@ -38,7 +38,7 @@ $ kubectl create namespace polaris
 
 $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --namespace polaris
 
-# ダッシュボードにアクセスする
+# ダッシュボードにリクエストを送信する
 $ kubectl port-forward --namespace polaris svc/polaris-dashboard 8080:80
 ```
 

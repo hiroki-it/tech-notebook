@@ -61,7 +61,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 | クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。                                          | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって`eks-cluster-sg-<EKS Cluster名>`というセキュリティグループも自動設定される。<br>- https://yuutookun.hatenablog.com/entry/fargate_for_eks |
 | クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。          |                                                                                                                                                                                                                                                                                                                     |
 | CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                      |                                                                                                                                                                                                                                                                                                                     |
-| クラスターエンドポイントアクセス | kube-apiserverのアクセス制限を設定する。                                               |                                                                                                                                                                                                                                                                                                                     |
+| クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                             |                                                                                                                                                                                                                                                                                                                     |
 | ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                                                                            |
 | コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                       |
 
@@ -86,7 +86,7 @@ module "eks" {
   # kube-apiserverにパブリックリクエストできるか否か
   cluster_endpoint_public_access = false
 
-  # EKS Clusterのkube-apiserverにリクエストできるCIDR
+  # EKS Clusterのkube-apiserverにリクエストを送信できるCIDR
   cluster_endpoint_public_access_cidrs = ["*.*.*.*/32", "*.*.*.*/32", "*.*.*.*/32"]
 
   # CloudWatchログに送信するログの種類
@@ -657,7 +657,7 @@ Podをプライベートサブネットに配置した場合に、プライベ�
 
 ### コントロールプレーン外から内への通信
 
-#### ▼ アクセス制限
+#### ▼ リクエスト制限
 
 コントロールプレーンでは、`kubectl`コマンドのエンドポイントとしてNLBが配置されている。
 
@@ -677,7 +677,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 
 また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。
 
-プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
+プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
 
 | VPCエンドポイントの接続先 | プライベートDNS名                                                                  | 説明                                                               |
 | ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -691,7 +691,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 
 プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。
 
-この状態で、`kubectl`コマンドでkube-apiserverにリクエストできるようにする方法としては、以下のパターンがある。
+この状態で、`kubectl`コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。
 
 | 接続元パターン   | 接続方法パターン            |
 | ---------------- | --------------------------- |
@@ -727,13 +727,13 @@ Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで
 
 #### ▼ IAMポリシー
 
-EC2ワーカーNodeが、自身の所属するClusterにリクエストできるように、EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
+EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、EC2ワーカーNodeに`AmazonEKSWorkerNodePolicy`を付与する必要がある。
 
 EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに`AmazonEC2ContainerRegistryReadOnly`を付与する必要がある。
 
 これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。
 
-`aws-node`のPodがAWSのネットワーク系のAPIにリクエストできるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
+`aws-node`のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
@@ -1426,7 +1426,7 @@ data:
 
      一方で、Pod内のコンテナには認可スコープが付与されない。
 
-     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにアクセスする認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。
+     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。
 
 > - https://nishipy.com/archives/1122
 > - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
@@ -1484,7 +1484,7 @@ Fargateを設定する。
 
 | コンポーネント名           | 説明                                                                                                       | 補足                                                                                                                                                                                                                                                                            |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod実行ロール              | kubeletがAWSリソースにリクエストできるように、Podにロールを設定する。                                      | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>- https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| Pod実行ロール              | kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。                                | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>- https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット                 | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                  | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                    |
 | ポッドセレクタ (Namespace) | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                   |
 | ポッドセレクタ (Label)     | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                 |

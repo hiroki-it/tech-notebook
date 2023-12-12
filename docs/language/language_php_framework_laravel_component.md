@@ -1548,7 +1548,7 @@ class FileSystemPublicController extends Controller
 
 `filesystems.php`ファイルから、指定された設定が選択される。
 
-AWSアカウントの認証情報を環境変数として設定するか、またはS3アクセスポリシーをEC2やECSタスクに付与することにより、S3にリクエストできるようになる。
+AWSアカウントの認証情報を環境変数として設定するか、またはS3アクセスポリシーをEC2やECSタスクに付与することにより、S3にリクエストを送信できるようになる。
 
 事前に、`filesystems.php`ファイルに設定が必要である。
 

@@ -183,15 +183,15 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 : `443`番ポートにルーティングできる`L7`ロードバランサーを作成する。
 
-     この時、IngressとIngressコントローラーを作成するか、`kubectl port-forward`コマンドなど実行することにより、ダッシュボードにアクセスする。
+     この時、IngressとIngressコントローラーを作成するか、`kubectl port-forward`コマンドなど実行することにより、ダッシュボードにリクエストを送信する。
 
      `minikube tunnel`コマンドでは、ポート番号を指定できないことに注意する。
 
 ```bash
-# Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストできるようにする。
+# Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストを送信できるようにする。
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
-# ホストポートを介してPodのポートにアクセスする。
+# ホストポートを介してPodのポートにリクエストを送信する。
 $ curl http://127.0.0.1:8080
 ```
 

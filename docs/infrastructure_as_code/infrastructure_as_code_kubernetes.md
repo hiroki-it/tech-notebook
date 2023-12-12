@@ -131,9 +131,9 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 #### ▼ ハードマルチテナンシー
 
-信頼できる開発者のみがClusterにアクセスする場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
+信頼できる開発者のみがClusterにリクエストを送信する場合に、ヒューマンエラーを防ぐ目的でマルチテナント化する。
 
-例えば、Cluster内にアクセスする開発者が、プロダクトの開発チーム (フロントエンドチーム、バックエンドチーム、インフラチーム) の場合である。
+例えば、Cluster内にリクエストを送信する開発者が、プロダクトの開発チーム (フロントエンドチーム、バックエンドチーム、インフラチーム) の場合である。
 
 > - https://www.amazon.co.jp/dp/B072TS9ZQZ
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
@@ -141,7 +141,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 #### ▼ ソフトマルチテナンシー
 
-信頼できない開発者もClusterにアクセスする場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
+信頼できない開発者もClusterにリクエストを送信する場合 (例：複数の協力会社がいる、Kubernetesをサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
 
 > - https://www.amazon.co.jp/dp/B072TS9ZQZ
 > - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation

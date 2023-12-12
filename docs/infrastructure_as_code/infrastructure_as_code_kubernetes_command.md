@@ -21,7 +21,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 `~/.kube/config`配下にあり、Clusterの認証情報が定義されている。
 
-`kubectl`コマンドは、`kubeconfig`ファイル上のClusterの認証情報を基に、kube-apiserverにアクセスする。
+`kubectl`コマンドは、`kubeconfig`ファイル上のClusterの認証情報を基に、kube-apiserverにリクエストを送信する。
 
 #### ▼ configシンボリックリンク、--kubeconfig
 
@@ -1450,7 +1450,7 @@ $ kubectl get pv \
 
 #### ▼ port-forwardとは
 
-ポートフォワーディングを実行し、ホストのポートからPodにリクエストできるようにする。
+ポートフォワーディングを実行し、ホストのポートからPodにリクエストを送信できるようにする。
 
 Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。
 
@@ -1465,7 +1465,7 @@ $ kubectl port-forward pod/<Pod名> <ホストポート番号>:<Podのポート�
 # Serviceの情報を使用して、Podを指定する場合
 $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceのポート番号>
 
-# ホストポートを介してPodのポートにアクセスする。
+# ホストポートを介してPodのポートにリクエストを送信する。
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
