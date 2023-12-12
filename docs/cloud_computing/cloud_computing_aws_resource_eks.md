@@ -671,21 +671,28 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 
 基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。
 
+プライベートサブネット内EC2ワーカーNodeは、NAT Gatewayを介して、パブリック制限されたkube-apiserverにリクエストを送信することになる。
+
 #### ▼ パブリックとプライベートの場合
+
+![cluster-endpoint_private.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cluster-endpoint_private.png)
 
 パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。
 
-また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。
+EC2ワーカーNodeは、以下のいずれかの経路でkube-apiserverにリクエストを送信する
 
-プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。
+- NAT Gatewayを介して、NAT Gatewayを介して、パブリック制限を通過する
+- ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する
 
-| VPCエンドポイントの接続先 | プライベートDNS名                                                                  | 説明                                                               |
-| ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| CloudWatchログ            | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
-| ECR                       | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
-| S3                        | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
-| Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+
+| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
+| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
+| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
+| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
 #### ▼ プライベートのみ
 

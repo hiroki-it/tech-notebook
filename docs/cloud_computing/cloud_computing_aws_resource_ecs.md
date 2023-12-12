@@ -671,15 +671,15 @@ CodeDeployを使用してデプロイする。
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | プライベートDNS名                                                                  | 説明                                                               |
-| ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| CloudWatchログ            | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                  |
-| ECR                       | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
-| S3                        | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
-| Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                  |
+| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
+| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
+| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
 NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 

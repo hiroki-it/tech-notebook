@@ -622,11 +622,11 @@ Systems Managerを使用してEC2に接続する場合、EC2自体にsystems-man
 
 #### ▼ VPCエンドポイントの作成
 
-| VPCエンドポイントの接続先 | プライベートDNS名                          | 説明                                                               |
-| ------------------------- | ------------------------------------------ | ------------------------------------------------------------------ |
-| EC2                       | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからEC2にコマンドを送信するため。                    |
-| Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
+| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                          | 説明                                                               |
+| ------------------------- | --------- | ------------------------------------------ | ------------------------------------------------------------------ |
+| EC2                       | Interface | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからEC2にコマンドを送信するため。                    |
+| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
