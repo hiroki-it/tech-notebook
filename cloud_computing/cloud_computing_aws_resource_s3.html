@@ -4052,7 +4052,7 @@
           <li class="md-nav__item">
   <a href="#lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaからのアクセスを許可
+      ▼ Lambdaからのリクエストを許可
     </span>
   </a>
   
@@ -4061,7 +4061,7 @@
           <li class="md-nav__item">
   <a href="#ip" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 特定のIPアドレスからのアクセスを許可
+      ▼ 特定のIPアドレスからのリクエストを許可
     </span>
   </a>
   
@@ -7167,7 +7167,7 @@
           <li class="md-nav__item">
   <a href="#lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaからのアクセスを許可
+      ▼ Lambdaからのリクエストを許可
     </span>
   </a>
   
@@ -7176,7 +7176,7 @@
           <li class="md-nav__item">
   <a href="#ip" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 特定のIPアドレスからのアクセスを許可
+      ▼ 特定のIPアドレスからのリクエストを許可
     </span>
   </a>
   
@@ -7368,7 +7368,7 @@
 <tr>
 <td>ブロックパブリックアクセス</td>
 <td>パブリックネットワークがS3にアクセスする時の許否を設定する。</td>
-<td>・ブロックパブリックアクセスを無効にすると、項目ごとの方法 (ACL、バケットポリシー、アクセスポイントポリシー) によるアクセスが許可される。もし他のAWSリソースからのアクセスを許可する場合は、ブロックパブリックアクセスを無効化した上でバケットポリシーに許可対象を定義するか、あるいはブロックパブリックアクセスでは拒否できないIAMポリシーをAWSリソースに設定する。<br>・ブロックパブリックアクセスを全て有効にすると、パブリックネットワークからの全アクセスを遮断できる。<br>・特定のオブジェクトで、アクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。</td>
+<td>・ブロックパブリックアクセスを無効にすると、項目ごとの方法 (ACL、バケットポリシー、アクセスポイントポリシー) によるアクセスが許可される。もし他のAWSリソースからのリクエストを許可する場合は、ブロックパブリックアクセスを無効化した上でバケットポリシーに許可対象を定義するか、あるいはブロックパブリックアクセスでは拒否できないIAMポリシーをAWSリソースに設定する。<br>・ブロックパブリックアクセスを全て有効にすると、パブリックネットワークからの全アクセスを遮断できる。<br>・特定のオブジェクトで、アクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。</td>
 </tr>
 <tr>
 <td>バケットポリシー</td>
@@ -7494,7 +7494,7 @@
 <p>よって、危険ではあるが、パブリックアクセスを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ポリシーは不要</span>
 </code></pre></div>
-<h4 id="lambda">▼ Lambdaからのアクセスを許可<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h4>
+<h4 id="lambda">▼ Lambdaからのリクエストを許可<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h4>
 <p>バケットポリシーは不要である。</p>
 <p>代わりとして、AWS管理ポリシーの『<code>AWSLambdaExecute</code>』が紐付けられたロールをLambdaに紐付ける必要がある。</p>
 <p>このポリシーには、S3への認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
@@ -7515,8 +7515,8 @@
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<h4 id="ip">▼ 特定のIPアドレスからのアクセスを許可<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合、そのIPアドレスをポリシーに設定する必要がある。</p>
+<h4 id="ip">▼ 特定のIPアドレスからのリクエストを許可<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
+<p>パブリックネットワーク上の特定のIPアドレスからのリクエストを許可したい場合、そのIPアドレスをポリシーに設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;S3PolicyId1&quot;</span><span class="p p-Indicator">,</span>
@@ -7576,7 +7576,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     

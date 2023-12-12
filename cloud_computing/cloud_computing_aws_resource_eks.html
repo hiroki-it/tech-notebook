@@ -9270,7 +9270,7 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ コントロールプレーンの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>EKSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。</p>
+<p>EKSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。</p>
 <p><img alt="eks_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png" /></p>
 <blockquote>
 <ul>
@@ -9366,10 +9366,10 @@
 <span class="c1">  # kube-apiserverをプライベートアクセスにするか否か</span>
 <span class="w">  </span><span class="na">cluster_endpoint_private_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
-<span class="c1">  # kube-apiserverにパブリックアクセスできるか否か</span>
+<span class="c1">  # kube-apiserverにパブリックリクエストできるか否か</span>
 <span class="w">  </span><span class="na">cluster_endpoint_public_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">  # EKS Clusterのkube-apiserverにアクセスできるCIDR</span>
+<span class="c1">  # EKS Clusterのkube-apiserverにリクエストできるCIDR</span>
 <span class="w">  </span><span class="na">cluster_endpoint_public_access_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;</span><span class="p">]</span>
 
 <span class="c1">  # CloudWatchログに送信するログの種類</span>
@@ -9570,7 +9570,7 @@
 </blockquote>
 <h4 id="_10">▼ パブリックアクセス/プライベートアクセス<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>kube-apiserverのインターネットへの公開範囲を設定できる。</p>
-<p>プライベートアクセスの場合、VPC内部からのみアクセスできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。</p>
+<p>プライベートアクセスの場合、VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/">https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/</a></li>
@@ -9967,7 +9967,7 @@
 <h4 id="_18">▼ アクセス制限<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンでは、<code>kubectl</code>コマンドのエンドポイントとしてNLBが配置されている。</p>
 <p>このNLBを介して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
-<p>VPC外からNLBへの<code>443</code>番ポートに対するネットワークからのアクセスはデフォルトでは許可されているが、拒否するように設定できる。</p>
+<p>VPC外からNLBへの<code>443</code>番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html</a></li>
@@ -10017,7 +10017,7 @@
 </table>
 <h4 id="_21">▼ プライベートのみ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
-<p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにアクセスできるようにする方法としては、以下のパターンがある。</p>
+<p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにリクエストできるようにする方法としては、以下のパターンがある。</p>
 <table>
 <thead>
 <tr>
@@ -10063,10 +10063,10 @@
 <p><br></p>
 <h3 id="_22">セットアップ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="iam">▼ IAMポリシー<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h4>
-<p>EC2ワーカーNodeが、自身の所属するClusterにアクセスできるように、EC2ワーカーNodeに<code>AmazonEKSWorkerNodePolicy</code>を付与する必要がある。</p>
+<p>EC2ワーカーNodeが、自身の所属するClusterにリクエストできるように、EC2ワーカーNodeに<code>AmazonEKSWorkerNodePolicy</code>を付与する必要がある。</p>
 <p>EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに<code>AmazonEC2ContainerRegistryReadOnly</code>を付与する必要がある。</p>
 <p>これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。</p>
-<p><code>aws-node</code>のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに<code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
+<p><code>aws-node</code>のPodがAWSのネットワーク系のAPIにリクエストできるように、IRSA用のServiceAccountに<code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html">https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html</a></li>
@@ -10814,7 +10814,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <tbody>
 <tr>
 <td>Pod実行ロール</td>
-<td>kubeletがAWSリソースにアクセスできるように、Podにロールを設定する。</td>
+<td>kubeletがAWSリソースにリクエストできるように、Podにロールを設定する。</td>
 <td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code>を設定する必要がある。<br>- <a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
 </tr>
 <tr>

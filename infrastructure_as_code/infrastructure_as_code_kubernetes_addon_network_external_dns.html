@@ -6131,7 +6131,7 @@
 <p><br></p>
 <h2 id="01-externaldns">01. ExternalDNSアドオンの仕組み<a class="headerlink" href="#01-externaldns" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>ExternalDNSコントローラーは、ネットワークからのアクセスにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。</p>
+<p>ExternalDNSコントローラーは、ネットワークからのリクエストにDNSレコードを必要とするKubernetesリソース (例：Ingress、Service、など) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。</p>
 <p>Ingressコントローラー (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからの通信をArgoCDのダッシュボード (argocd-server) にルーティング可能にする。</p>
 <p><img alt="external-dns_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png" /></p>
 <blockquote>
@@ -6249,7 +6249,7 @@
 <p><br></p>
 <h3 id="serviceaccountclusterrole">ServiceAccount、ClusterRole<a class="headerlink" href="#serviceaccountclusterrole" title="Permanent link">&para;</a></h3>
 <h4 id="external-dns_1">▼ external-dns<a class="headerlink" href="#external-dns_1" title="Permanent link">&para;</a></h4>
-<p>ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にアクセスできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。</p>
+<p>ExternalDNSコントローラーがDNSプロバイダー (例：AWS Route53) にリクエストできるように、ExternalDNSコントローラーにはClusterRoleに基づく認可スコープを持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6385,7 +6385,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     

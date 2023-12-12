@@ -6197,7 +6197,7 @@
 <h3 id="_3">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Nginxを配置し、リクエストをwebサーバーにルーティングする。</p>
-<p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のwebサーバーにアクセスできるようになる。</p>
+<p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のwebサーバーにリクエストできるようになる。</p>
 <h4 id="httphttps">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps" title="Permanent link">&para;</a></h4>
 <p>Nginxは、インバウンド通信をappサーバーにルーティングする。</p>
 <p>また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。</p>

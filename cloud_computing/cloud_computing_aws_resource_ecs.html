@@ -3820,11 +3820,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      プライベートサブネット内からのアウトバウンド通信
+      プライベートサブネット内から外の通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="プライベートサブネット内からのアウトバウンド通信">
+    <nav class="md-nav" aria-label="プライベートサブネット内から外の通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7769,11 +7769,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      プライベートサブネット内からのアウトバウンド通信
+      プライベートサブネット内から外の通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="プライベートサブネット内からのアウトバウンド通信">
+    <nav class="md-nav" aria-label="プライベートサブネット内から外の通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8221,7 +8221,7 @@
 <p>コンテナオーケストレーションを実行する環境を提供する。</p>
 <p>データプレーンのVPC外に存在している。</p>
 <h4 id="_4">▼ コントロールプレーンの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ECSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。</p>
+<p>ECSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。</p>
 <p><img alt="ecs_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png" /></p>
 <blockquote>
 <ul>
@@ -8396,9 +8396,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">プライベートサブネット内からのアウトバウンド通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_7">プライベートサブネット内から外の通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ プライベートサブネット内へのデータプレーンの配置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。</p>
+<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、NAT GatewayやVPCエンドポイントが必要になる。</p>
 <p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。</p>
 <h4 id="_9">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、NAT Gatewayを配置する必要がある。</p>
@@ -8413,7 +8413,7 @@
 </ul>
 </blockquote>
 <p>代わりとして、VPCエンドポイントを配置する。</p>
-<p>より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。</p>
+<p>より低額でデータプレーンがVPC外のAWSリソースのリクエストできるようになる。</p>
 <p><img alt="ecs_control-plane_vpc-endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane_vpc-endpoint.png" /></p>
 <blockquote>
 <ul>
@@ -8433,7 +8433,7 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ コンテナインスタンスロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>コンテナのホストが他のAWSリソースにアクセスするために必要なロールである。</p>
+<p>コンテナのホストが他のAWSリソースにリクエストを送信するために必要なロールである。</p>
 <p>Fargateの場合、不要である。</p>
 <p><img alt="ecs_container-instance-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png" /></p>
 <blockquote>
@@ -8443,7 +8443,7 @@
 </ul>
 </blockquote>
 <h4 id="_13">▼ タスクロール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。</p>
+<p>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。</p>
 <p>アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
 <p><img alt="ecs_task-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png" /></p>
 <blockquote>
@@ -8476,10 +8476,10 @@
 </code></pre></div>
 <h4 id="_14">▼ タスク実行ロール<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
-<p>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。</p>
+<p>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにリクエストを送信するために必要なロールのこと。</p>
 <p>AWS管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
 <p>このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
-<p>ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。</p>
+<p>ECSタスク内のコンテナがリソースにリクエストするために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -8501,7 +8501,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
+<p>datadogエージェントがECSクラスターやコンテナにリクエストできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -8774,12 +8774,12 @@
 </tr>
 <tr>
 <td>タスクロール</td>
-<td>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールを設定する。</td>
+<td>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td>タスク実行ロール</td>
-<td>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールを設定する。</td>
+<td>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにリクエストを送信するために必要なロールを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -9139,7 +9139,7 @@
 <dt><code>(3)</code></dt>
 <dd>
 <p>ECSタスク実行ロールにIAMポリシーを付与する。</p>
-<p>これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。</p>
+<p>これにより、ECSタスクがセッションマネージャーにリクエストできるようになる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>

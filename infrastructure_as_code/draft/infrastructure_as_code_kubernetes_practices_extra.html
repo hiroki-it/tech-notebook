@@ -5892,10 +5892,10 @@
 <h2 id="kube-apiserver">kube-apiserverへのインバウンド通信を制限する<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h2>
 <hr />
 <p>kube-apiserverに対して、誰でもアクセスできてしまうことは危険である。</p>
-<p>そのため、必要最低限の開発者のみがアクセスできるように、インバウンド通信を制限する。</p>
+<p>そのため、必要最低限の開発者のみがリクエストできるように、インバウンド通信を制限する。</p>
 <ul>
 <li>ファイアウォール</li>
-<li>kube-apiserverにアクセスできるIPアドレスを制限する。</li>
+<li>kube-apiserverにリクエストできるIPアドレスを制限する。</li>
 <li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイ、など) からしか、kube-apiserverにアクセスできないようにする。</li>
 <li>認証</li>
 <li>必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。</li>
@@ -6764,7 +6764,7 @@ readOnlyRootFilesystem |</p>
 <p><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></p>
 </blockquote>
 <h3 id="readonlyrootfilesystem">■ readOnlyRootFilesystemを有効化する<a class="headerlink" href="#readonlyrootfilesystem" title="Permanent link">&para;</a></h3>
-<p>コンテナは自身のファイルシステムにアクセスできる。</p>
+<p>コンテナは自身のファイルシステムにリクエストできる。</p>
 <p>この時に、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーが無効になっていると、コンテナのルートファイルシステムにRead/Writeの両方を実行できる。</p>
 <p>つまり、悪意のある人がこれを使用すると、任意のディレクトリ配下でファイルを作成変更できてしまう。</p>
 <p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーを有効化し、Readのみを実行できるようにしておく。</p>
@@ -6778,7 +6778,7 @@ readOnlyRootFilesystem |</p>
 <hr />
 <h3 id="useraccount-clusterrole">■ UserAccount にはClusterRoleを紐付けない<a class="headerlink" href="#useraccount-clusterrole" title="Permanent link">&para;</a></h3>
 <p>最小権限にするため、UserAccountにはClusterRoleを紐付けない。</p>
-<p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにアクセスできるようにする。</p>
+<p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにリクエストできるようにする。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/security/rbac-good-practices/">https://kubernetes.io/docs/concepts/security/rbac-good-practices/</a></p>
 </blockquote>
@@ -7309,7 +7309,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     

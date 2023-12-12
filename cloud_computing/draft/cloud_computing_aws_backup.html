@@ -5977,7 +5977,7 @@
 </ul>
 </blockquote>
 <h2 id="aws-sts">AWS STS について<a class="headerlink" href="#aws-sts" title="Permanent link">&para;</a></h2>
-<p>IAMユーザーに対して、一時的にロールをAssume (委譲) し、AWSリソースにアクセス可能にするサービスのこと。</p>
+<p>IAMユーザーに対して、一時的にロールをAssume (委譲) し、AWSリソースにリクエスト可能にするサービスのこと。</p>
 <p>対象のIAMユーザーには、何も認可スコープを与えないようにしておくと、委譲によってのみ、認可スコープが与えられるようになるため安全。</p>
 <blockquote>
 <ul>
@@ -5986,15 +5986,15 @@
 </blockquote>
 <h2 id="_2">セキュリティに関する留意<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>リモートワークに当たり、社内リソースへのアクセスは、GitHubのアカウントのトークンで判定されている。そのため、送信元IPアドレスは固定されていない。リソースにアクセスしたい場合は、GitHubにログインしておく必要がある。</li>
+<li>リモートワークに当たり、社内リソースへのアクセスは、GitHubのアカウントのトークンで判定されている。そのため、送信元IPアドレスは固定されていない。リソースにリクエストしたい場合は、GitHubにログインしておく必要がある。</li>
 <li>本番環境と開発環境が同じAWSアカウント内に存在している。</li>
-<li>例外的に、開発環境のDBはパブリックアクセスとなっており、GitHubを経由せずに、アクセスできる。</li>
+<li>例外的に、開発環境のDBはパブリックアクセスとなっており、GitHubを経由せずに、リクエストできる。</li>
 </ul>
 <h1 id="1">候補<code>(1)</code><a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
 <h2 id="iam-aws-cli">IAMポリシー、 aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#iam-aws-cli" title="Permanent link">&para;</a></h2>
 <h3 id="action-list">Action List<a class="headerlink" href="#action-list" title="Permanent link">&para;</a></h3>
 <p>IAMポリシーを使用して、アクセスを制限する。</p>
-<p>aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにアクセス可能にする。
+<p>aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。
 シェルスクリプトで自動化する。</p>
 <h4 id="_3">アクセス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>本番/開発環境のAWS Backupからクローン/削除できる最小認可スコープを持った IAMユーザーを作成する。</p>
@@ -6014,7 +6014,7 @@
 <h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
 <ul>
 <li>認証情報が固定のため、IAMユーザーの認証情報が漏洩すると、危険が多い。</li>
-<li>非関係者にIAMユーザーの認証情報やシェルスクリプトが漏れた場合、AWSリソースにアクセスされる可能性がある。</li>
+<li>非関係者にIAMユーザーの認証情報やシェルスクリプトが漏れた場合、AWSリソースにリクエストされる可能性がある。</li>
 <li>今後、同様の要望があった場合、新しいaws-cli用IAMユーザーを作成するのか、あるいは<code>1</code>個のIAMユーザーに集約するのか判断する必要がある。前者の場合、CTOの承諾が必要になってしまう。</li>
 </ul>
 <h4 id="cons_1">Consの解決方法<a class="headerlink" href="#cons_1" title="Permanent link">&para;</a></h4>
@@ -6029,7 +6029,7 @@
 <h2 id="aws-stsaws-cli">AWS STS、aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#aws-stsaws-cli" title="Permanent link">&para;</a></h2>
 <h3 id="action-list_1">Action List<a class="headerlink" href="#action-list_1" title="Permanent link">&para;</a></h3>
 <p>AWS STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。
-aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにアクセス可能にする。
+aws-cliを活用して、aws-cli用IAMユーザーが特定のAWSリソースにリクエスト可能にする。
 シェルスクリプトで自動化する。</p>
 <h4 id="_6">アクセス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>AWS STS の設定をAWSコンソール上で済ませておく。</p>
@@ -6046,7 +6046,7 @@ aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにア
 </ul>
 <h3 id="cons_2">Cons<a class="headerlink" href="#cons_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li>非関係者にシェルスクリプトが漏れた場合、AWSリソースにアクセスされる可能性がある。</li>
+<li>非関係者にシェルスクリプトが漏れた場合、AWSリソースにリクエストされる可能性がある。</li>
 <li>仕組みが難しく、AWSに関わりの少ないエンジニアが理解しにくい。</li>
 </ul>
 <h4 id="cons_3">Consの解決方法<a class="headerlink" href="#cons_3" title="Permanent link">&para;</a></h4>
@@ -6114,7 +6114,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     
