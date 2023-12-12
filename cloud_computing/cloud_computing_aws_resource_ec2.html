@@ -9487,6 +9487,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <thead>
 <tr>
 <th>VPCエンドポイントの接続先</th>
+<th>タイプ</th>
 <th>プライベートDNS名</th>
 <th>説明</th>
 </tr>
@@ -9494,16 +9495,19 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <tbody>
 <tr>
 <td>EC2</td>
+<td>Interface</td>
 <td><code>ec2messages.ap-northeast-1.amazonaws.com</code></td>
 <td>ローカルマシンからEC2にコマンドを送信するため。</td>
 </tr>
 <tr>
 <td>Systems Manager</td>
+<td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
 <td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>Secrets Manager</td>
+<td>Interface</td>
 <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
 <td>Secrets Managerを使用するため。</td>
 </tr>

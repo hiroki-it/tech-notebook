@@ -9975,14 +9975,21 @@
 </blockquote>
 <h4 id="_19">▼ パブリックのみ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。</p>
+<p>プライベートサブネット内EC2ワーカーNodeは、NAT Gatewayを介して、パブリック制限されたkube-apiserverにリクエストを送信することになる。</p>
 <h4 id="_20">▼ パブリックとプライベートの場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p><img alt="cluster-endpoint_private.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cluster-endpoint_private.png" /></p>
 <p>パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。</p>
-<p>また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。</p>
-<p>プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。</p>
+<p>EC2ワーカーNodeは、以下のいずれかの経路でkube-apiserverにリクエストを送信する</p>
+<ul>
+<li>NAT Gatewayを介して、NAT Gatewayを介して、パブリック制限を通過する</li>
+<li>ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する</li>
+</ul>
+<p>VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
 <th>VPCエンドポイントの接続先</th>
+<th>タイプ</th>
 <th>プライベートDNS名</th>
 <th>説明</th>
 </tr>
@@ -9990,26 +9997,31 @@
 <tbody>
 <tr>
 <td>CloudWatchログ</td>
+<td>Interface</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>ECR</td>
+<td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
 <td>イメージのGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>S3</td>
+<td>Gateway</td>
 <td>なし</td>
 <td>イメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
 <td>Systems Manager</td>
+<td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
 <td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>Secrets Manager</td>
+<td>Interface</td>
 <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
 <td>Secrets Managerを使用するため。</td>
 </tr>

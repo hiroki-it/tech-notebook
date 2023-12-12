@@ -9077,6 +9077,7 @@
 <thead>
 <tr>
 <th>VPCエンドポイントの接続先</th>
+<th>タイプ</th>
 <th>プライベートDNS名</th>
 <th>説明</th>
 </tr>
@@ -9084,32 +9085,37 @@
 <tbody>
 <tr>
 <td>CloudWatchログ</td>
+<td>Interface</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>ECSコンテナのログをPOSTリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>ECR</td>
+<td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
 <td>イメージのGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>S3</td>
+<td>Gateway</td>
 <td>なし</td>
 <td>イメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
 <td>Systems Manager</td>
+<td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
 <td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>Secrets Manager</td>
+<td>Interface</td>
 <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
 <td>Secrets Managerを使用するため。</td>
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。</p>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
 <p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。</p>
 <p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
 <p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
