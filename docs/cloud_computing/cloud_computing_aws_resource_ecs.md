@@ -524,13 +524,13 @@ ECSタスクごとに異なるプライベートIPが割り当てられる。
 
 Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。
 
-アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信 (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
+リクエストの先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
 
-そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。
+そこで、Fargateのリクエストが、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。
 
 これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
 
-![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
+![NatGatewayを介したFargateから外部サービスへのリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを介したFargateから外部サービスへのリクエスト.png)
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -679,9 +679,9 @@ CodeDeployを使用してデプロイする。
 | Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。
 
-NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。
+NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 
 そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。
 

@@ -154,7 +154,7 @@ subjects:
 
 ArgoCDのapplication-controllerがデプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにエージェントを作成する必要がある。
 
-argocd-managerは、エージェントとして、デプロイ先Clusterでapplication-controllerからの通信を仲介する。
+argocd-managerは、エージェントとして、デプロイ先Clusterでapplication-controllerからのリクエストを仲介する。
 
 argocd-managerの実体は、ServiceAccountである。
 

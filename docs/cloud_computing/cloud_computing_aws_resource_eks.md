@@ -643,11 +643,11 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
-### プライベートサブネット外から内のデータプレーンへの通信
+### プライベートサブネット外から内のデータプレーンへのリクエスト
 
-#### ▼ Pod外から内への通信
+#### ▼ Pod外から内へのリクエスト
 
-Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへの通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
+Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
@@ -655,7 +655,7 @@ Podをプライベートサブネットに配置した場合に、プライベ�
 
 <br>
 
-### コントロールプレーン外から内への通信
+### コントロールプレーン外から内へのリクエスト
 
 #### ▼ リクエスト制限
 
@@ -677,7 +677,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 
 また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。
 
-プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
+プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してリクエストを実行するようにすると良い。
 
 | VPCエンドポイントの接続先 | プライベートDNS名                                                                  | 説明                                                               |
 | ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -838,22 +838,22 @@ AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自�
 
 <br>
 
-### パブリックサブネット内のデータプレーンからのアウトバウンド通信
+### パブリックサブネット内のデータプレーンからのリクエスト
 
 Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するために特に必要なものは無い。
 
-この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
 > - https://note.com/tyrwzl/n/n715a8ef3c28a
 > - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
 
 <br>
 
-### プライベートサブネット内のデータプレーンからのアウトバウンド通信
+### プライベートサブネット内のデータプレーンからのリクエスト
 
 #### ▼ 宛先情報の管理方法
 
-アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントする。
+リクエストの宛先情報は、Secretで管理し、Podにマウントする。
 
 ```yaml
 apiVersion: v1
@@ -871,11 +871,11 @@ data:
   SQS_REGION: ap-northeast-1
 ```
 
-#### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
+#### ▼ VPC外の他のAWSリソースへのリクエスト
 
 Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
-この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
+この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
 
@@ -887,7 +887,7 @@ Pod provisioning timed out (will retry) for pod
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
 
-#### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
+#### ▼ VPC外のコントロールプレーンへのリクエスト
 
 EKS Clusterを作成すると、ENIも作成する。
 
@@ -898,7 +898,7 @@ EKS Clusterを作成すると、ENIも作成する。
 > - https://dev.classmethod.jp/articles/eks_basic/
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
-#### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
+#### ▼ VPC内の他のAWSリソースへのリクエスト
 
 VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
 

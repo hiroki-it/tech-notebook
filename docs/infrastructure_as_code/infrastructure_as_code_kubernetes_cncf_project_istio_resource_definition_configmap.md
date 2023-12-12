@@ -151,11 +151,11 @@ data:
 
 #### ▼ outboundTrafficPolicyとは
 
-メッシュ外への通信の宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
+メッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
 #### ▼ ALLOW_ANY
 
-メッシュ外への通信の宛先を、デフォルトで`PassthroughCluster`として扱う。
+メッシュ外へのリクエストの宛先を、デフォルトで`PassthroughCluster`として扱う。
 
 ```yaml
 apiVersion: v1
@@ -174,7 +174,7 @@ data:
 
 #### ▼ ALLOW_ANY
 
-メッシュ外への通信の宛先を、デフォルトで`BlackHoleCluster`として扱う。
+メッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster`として扱う。
 
 `PassthroughCluster`として扱いたい宛先は、ServiceEntryに設定する。
 
@@ -264,7 +264,7 @@ data:
       proxyMetadata:
         ISTIO_META_DNS_CAPTURE: true
         BOOTSTRAP_XDS_AGENT: true
-        # ServiceからPod内のistio-proxyへの通信がなくなったら、istio-proxyコンテナを終了させる
+        # ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる
         EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
 ```
 

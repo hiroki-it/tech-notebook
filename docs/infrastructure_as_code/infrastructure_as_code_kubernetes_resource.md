@@ -674,7 +674,7 @@ Ingressは、`L7`プロトコルの通信の受信ルールを定義する。
 
 Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。
 
-NodePort ServiceやLoadBalancer Serviceと同様に、外部からの通信を受信する方法の1つである。
+NodePort ServiceやLoadBalancer Serviceと同様に、外部からのリクエストを受信する方法の1つである。
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
 

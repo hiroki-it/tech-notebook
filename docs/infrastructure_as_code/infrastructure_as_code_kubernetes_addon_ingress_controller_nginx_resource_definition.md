@@ -27,7 +27,7 @@ Ingressで`nginx`のIngressClassを指定する必要がある。
 
 Podへのルーティング時にセッションを維持するかどうかを設定する。
 
-同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。
+同じセッション内であれば、特定のクライアントからのリクエストをService配下の同じPodにルーティングし続けられる。
 
 ```yaml
 piVersion: networking.k8s.io/v1

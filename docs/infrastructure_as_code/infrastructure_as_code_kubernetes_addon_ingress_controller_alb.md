@@ -23,7 +23,7 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐付ける。
 
-これらにより、Cluster外からの通信をPodにルーティングできるようにする。
+これらにより、Cluster外からのリクエストをPodにルーティングできるようにする。
 
 ![aws_load_balancer_controller_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 

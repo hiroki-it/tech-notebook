@@ -25,7 +25,7 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 ### データプレーン (エージェント)
 
-デプロイ先で、コントロールプレーンからの通信を仲介する。
+デプロイ先で、コントロールプレーンからのリクエストを仲介する。
 
 > - https://pipecd.dev/docs-v0.45.x/installation/install-piped/
 

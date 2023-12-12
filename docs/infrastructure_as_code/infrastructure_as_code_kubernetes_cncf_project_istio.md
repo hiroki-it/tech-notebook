@@ -70,7 +70,7 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 
 ハードウェアリソースの消費量の少ない`L4`プロトコルと、消費量の多い`L7`プロトコルのプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、`L4`プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。
 
-メッシュ内への通信の経路は以下の通りである。
+メッシュ内へのリクエストの経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -86,7 +86,7 @@ waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 アプリコンテナのPod
 ```
 
-メッシュ外への通信の経路は以下の通りである。
+メッシュ外へのリクエストの経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -217,17 +217,17 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 <br>
 
-### メッシュ外への通信
+### メッシュ外へのリクエスト
 
 #### ▼ `PassthroughCluster`
 
 IPアドレスを指定した送信できる宛先のこと。
 
-Istio `v1.3`以降で、デフォルトで全てのメッシュ外への通信のポリシーが`ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
+Istio `v1.3`以降で、デフォルトで全てのメッシュ外へのリクエストのポリシーが`ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
 
 メッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。
 
-そのため、メッシュ外への通信は`PassthroughCluster`に属する。
+そのため、メッシュ外へのリクエストは`PassthroughCluster`に属する。
 
 注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信が`BlackHoleCluster`になってしまう
 
@@ -239,7 +239,7 @@ Istio `v1.3`以降で、デフォルトで全てのメッシュ外への通信�
 
 IPアドレスを指定して送信できない宛先のこと。
 
-基本的に、メッシュ外への通信は失敗し、`502`ステータスになる。
+基本的に、メッシュ外へのリクエストは失敗し、`502`ステータスになる。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 
@@ -519,8 +519,8 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | `istio_request_duration_milliseconds`     | カウント | `istio-proxy`コンテナが受信したリクエストに関して、処理の所要時間を表す。                                                                                                                  |
 | `istio_request_messages_total`            | カウント | `istio-proxy`コンテナが受信した総gRPCリクエスト数を表す。                                                                                                                                  |
 | `istio_response_messages_total`           | カウント | `istio-proxy`コンテナが受信した総gRPCレスポンス数を表す。                                                                                                                                  |
-| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへの通信に関する再試行数を表す。                                                                                                                             |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへの通信に関する再試行成功数を表す。                                                                                                                         |
+| `envoy_cluster_upstream_rq_retry`         | カウント | `istio-proxy`コンテナの他のPodへのリクエストに関する再試行数を表す。                                                                                                                       |
+| `envoy_cluster_upstream_rq_retry_success` | カウント | `istio-proxy`コンテナが他のPodへのリクエストに関する再試行成功数を表す。                                                                                                                   |
 
 > - https://istio.io/latest/docs/reference/config/metrics/#metrics
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
