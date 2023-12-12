@@ -36,7 +36,7 @@ logfile = /var/log/pgbouncer/pgbouncer.log
 
 ### listen_addr
 
-クライアントからの通信を受信するアドレスを設定する。
+クライアントからのリクエストを受信するアドレスを設定する。
 
 ```ini
 [pgbouncer]
@@ -47,7 +47,7 @@ listen_addr = *
 
 ### listen_port
 
-クライアントからの通信を受信するポート番号を設定する。
+クライアントからのリクエストを受信するポート番号を設定する。
 
 ```ini
 [pgbouncer]

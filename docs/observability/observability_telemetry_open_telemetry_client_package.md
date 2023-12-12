@@ -1410,7 +1410,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	// gRPCサーバーとして、goサーバーで通信を受信する。
+	// gRPCサーバーとして、goサーバーでリクエストを受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}

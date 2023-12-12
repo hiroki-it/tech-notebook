@@ -76,7 +76,7 @@ Controllerは、マニフェストで宣言されたKubernetesリソースと同
 
 コントロールプレーンNodeの可用性を高める方法には、デザインパターンがある。
 
-補足として、仮想IPアドレスを管理するkeepalivedと、通信を受信して負荷分散するHAProxyを組み合わせ、`L7`ロードバランサーとして使用する多い。
+補足として、仮想IPアドレスを管理するkeepalivedと、リクエストを受信して負荷分散するHAProxyを組み合わせ、`L7`ロードバランサーとして使用する多い。
 
 > - https://biscuit.ninja/posts/creating-a-kubernetes-cluster-using-keepalived-and-haproxy-with-ansible/
 > - https://blog.adachin.me/archives/3048

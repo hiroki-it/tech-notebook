@@ -635,7 +635,7 @@ aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープ
 
 ### サブネット
 
-EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBからインバウンド通信を受信すると良い。
+EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBから通信を受信すると良い。
 
 この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。
 
@@ -643,11 +643,11 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
-### プライベートサブネット内のデータプレーンへのインバウンド通信
+### プライベートサブネット外から内のデータプレーンへの通信
 
-#### ▼ Podへのインバウンド通信
+#### ▼ Pod外から内への通信
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークからのインバウンド通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
+Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへの通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
@@ -655,7 +655,7 @@ Podをプライベートサブネットに配置した場合に、パブリッ�
 
 <br>
 
-### コントロールプレーンへのインバウンド通信
+### コントロールプレーン外から内への通信
 
 #### ▼ アクセス制限
 
@@ -676,6 +676,16 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのア
 パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。
 
 また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。
+
+プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
+
+| VPCエンドポイントの接続先 | プライベートDNS名                                                                  | 説明                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| CloudWatchログ            | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
+| ECR                       | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
+| S3                        | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
+| Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
 #### ▼ プライベートのみ
 
@@ -830,7 +840,7 @@ AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自�
 
 ### パブリックサブネット内のデータプレーンからのアウトバウンド通信
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するために特に必要なものは無い。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するために特に必要なものは無い。
 
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
@@ -863,7 +873,7 @@ data:
 
 #### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
 
 この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
 

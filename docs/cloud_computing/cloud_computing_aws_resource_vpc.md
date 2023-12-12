@@ -155,10 +155,6 @@ Gateway型とInterface型がある。
 
 VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。
 
-**＊例＊**
-
-Fargateをプライベートサブネットに置いた場合、FargateからVPC外にあるAWSリソースに対するアウトバウンド通信のために必要である (例：CloudWatchログ、ECR、S3、Systems Manager) 。
-
 ![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png)
 
 <br>
@@ -175,7 +171,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 プライベートリンクともいう。
 
-プライベートIPアドレスを持つENIとして動作し、AWSリソースから通信を受信する。
+プライベートIPアドレスを持つENIとして動作し、AWSリソースからリクエストを受信する。
 
 もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、VPCの`enableDnsHostnames`オプションと`enableDnsSupport`オプションを有効化する必要がある。
 
@@ -189,7 +185,7 @@ S3、DynamoDB以外の全てのリソース
 
 ルートテーブルにおける定義に従う。
 
-VPCエンドポイントとして動作し、AWSリソースから通信を受信する。
+VPCエンドポイントとして動作し、AWSリソースからリクエストを受信する。
 
 **＊リソース例＊**
 

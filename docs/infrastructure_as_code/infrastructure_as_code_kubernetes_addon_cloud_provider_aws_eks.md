@@ -156,7 +156,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働する。
 
-EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。
+EKSのコントロールプレーン上のkube-apiserverが、Node外からPod内への通信をルーティングできるようにする。
 
 aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
 

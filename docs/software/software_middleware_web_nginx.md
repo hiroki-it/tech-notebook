@@ -157,7 +157,7 @@ http {
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png)
 
-PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。
+PHP-FPMはFastCGIプロトコルでリクエストを受信するため、これに変換する必要がある。
 
 静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。
 
@@ -270,7 +270,7 @@ Nginxは、HTTPプロコトルのインバウンド通信を複数のwebサー�
 
 また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。
 
-ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。
+ただし、HTTPSプロトコルのリクエストを受信するために、NginxにSSL証明書を設定する必要がある。
 
 **＊実装例＊**
 

@@ -706,7 +706,7 @@ $ istioctl proxy-config routes foo-pod \
 - name: '50001'
   # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
   virtualHosts:
-    # Node外からfoo-podにインバウンド通信を送信する時に選ばれる。
+    # Node外からfoo-podにリクエストを送信する時に選ばれる。
     - name: foo-service.foo-namespace.svc.cluster.local:50001
       # Hostヘッダー値を指定する。合致した場合に、この仮想ホストが選ばれる。
       # 網羅的に検知できるように、色々なパターンを指定する。
