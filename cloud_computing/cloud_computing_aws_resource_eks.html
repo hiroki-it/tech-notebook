@@ -4262,6 +4262,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#node_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node数の変更
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
       EC2へのタグ付けの例
@@ -4272,7 +4281,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_8" class="md-nav__link">
+  <a href="#node_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループ
     </span>
@@ -4281,7 +4290,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_9" class="md-nav__link">
+  <a href="#node_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループ
     </span>
@@ -4539,7 +4548,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_10" class="md-nav__link">
+  <a href="#node_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループの場合
     </span>
@@ -4548,7 +4557,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_11" class="md-nav__link">
+  <a href="#node_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループの場合
     </span>
@@ -4572,7 +4581,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_12" class="md-nav__link">
+  <a href="#node_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループの場合
     </span>
@@ -4581,7 +4590,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_13" class="md-nav__link">
+  <a href="#node_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループの場合
     </span>
@@ -8691,6 +8700,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#node_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node数の変更
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
       EC2へのタグ付けの例
@@ -8701,7 +8719,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_8" class="md-nav__link">
+  <a href="#node_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループ
     </span>
@@ -8710,7 +8728,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_9" class="md-nav__link">
+  <a href="#node_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループ
     </span>
@@ -8968,7 +8986,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_10" class="md-nav__link">
+  <a href="#node_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループの場合
     </span>
@@ -8977,7 +8995,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_11" class="md-nav__link">
+  <a href="#node_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループの場合
     </span>
@@ -9001,7 +9019,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node_12" class="md-nav__link">
+  <a href="#node_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドNodeグループの場合
     </span>
@@ -9010,7 +9028,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node_13" class="md-nav__link">
+  <a href="#node_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドNodeグループの場合
     </span>
@@ -10144,7 +10162,6 @@
 <p>を自動化する。</p>
 <p>Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AutoScalingグループに各AZを自動的に設定する。</p>
 <p>AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。</p>
-<p>ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
@@ -10180,7 +10197,6 @@
 </ul>
 <p>をユーザーが管理する。</p>
 <p>AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。</p>
-<p>ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed">https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed</a></li>
@@ -10188,8 +10204,20 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="node_8">Node数の変更<a class="headerlink" href="#node_8" title="Permanent link">&para;</a></h3>
+<p>Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。</p>
+<p>設定後、AutoScalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。</p>
+<p>希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。</p>
+<p>もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81">https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs">https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="ec2">EC2へのタグ付けの例<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
-<h4 id="node_8">▼ マネージドNodeグループ<a class="headerlink" href="#node_8" title="Permanent link">&para;</a></h4>
+<h4 id="node_9">▼ マネージドNodeグループ<a class="headerlink" href="#node_9" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -10211,7 +10239,7 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html</a></li>
 </ul>
 </blockquote>
-<h4 id="node_9">▼ セルフマネージドNodeグループ<a class="headerlink" href="#node_9" title="Permanent link">&para;</a></h4>
+<h4 id="node_10">▼ セルフマネージドNodeグループ<a class="headerlink" href="#node_10" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -10596,10 +10624,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p><br></p>
 <h2 id="04-04">04-04. セットアップ<a class="headerlink" href="#04-04" title="Permanent link">&para;</a></h2>
 <h3 id="_29">コンソール画面の場合<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<h4 id="node_10">▼ マネージドNodeグループの場合<a class="headerlink" href="#node_10" title="Permanent link">&para;</a></h4>
+<h4 id="node_11">▼ マネージドNodeグループの場合<a class="headerlink" href="#node_11" title="Permanent link">&para;</a></h4>
 <p>起動テンプレートを使用し、EC2ワーカーNodeを作成する。</p>
 <p>起動テンプレートのタグ付け機能を使用してEC2にタグ付けでき、これは任意である。</p>
-<h4 id="node_11">▼ セルフマネージドNodeグループの場合<a class="headerlink" href="#node_11" title="Permanent link">&para;</a></h4>
+<h4 id="node_12">▼ セルフマネージドNodeグループの場合<a class="headerlink" href="#node_12" title="Permanent link">&para;</a></h4>
 <p>任意のAutoScalingにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。</p>
 <p>AutoScalingのタグ付け機能を使用して、<code>kubernetes.io/cluster/&lt;EKS Cluster名&gt;</code>タグ (値は<code>owned</code>) をつけ、Nodeグループに明示的に参加させる必要がある。</p>
 <p>なお、起動テンプレートも合わせて使用でき、これは任意である。</p>
@@ -10611,7 +10639,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </blockquote>
 <p><br></p>
 <h3 id="terraform_1">Terraformの場合<a class="headerlink" href="#terraform_1" title="Permanent link">&para;</a></h3>
-<h4 id="node_12">▼ マネージドNodeグループの場合<a class="headerlink" href="#node_12" title="Permanent link">&para;</a></h4>
+<h4 id="node_13">▼ マネージドNodeグループの場合<a class="headerlink" href="#node_13" title="Permanent link">&para;</a></h4>
 <p>起動テンプレートを使用し、EC2ワーカーNodeを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Nodeグループ</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_node_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -10669,7 +10697,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <li><a href="https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf">https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf</a></li>
 </ul>
 </blockquote>
-<h4 id="node_13">▼ セルフマネージドNodeグループの場合<a class="headerlink" href="#node_13" title="Permanent link">&para;</a></h4>
+<h4 id="node_14">▼ セルフマネージドNodeグループの場合<a class="headerlink" href="#node_14" title="Permanent link">&para;</a></h4>
 <p>任意のAutoScalingにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
