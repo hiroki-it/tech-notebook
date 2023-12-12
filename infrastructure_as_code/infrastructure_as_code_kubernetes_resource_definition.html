@@ -15425,7 +15425,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="specruleshost">▼ .spec.rules[*].host<a class="headerlink" href="#specruleshost" title="Permanent link">&para;</a></h4>
 <p>ホストベースルーティングの判定に使用するパス名を設定する。</p>
-<p>本番環境では、ドメインを指定した各種ダッシュボードにリクエストできる必要がある。</p>
+<p>本番環境では、ドメインを指定した各種ダッシュボードにリクエストを送信できる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -17273,7 +17273,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="spechostnetwork">.spec.hostNetwork<a class="headerlink" href="#spechostnetwork" title="Permanent link">&para;</a></h3>
 <h4 id="hostnetwork">▼ hostNetworkとは<a class="headerlink" href="#hostnetwork" title="Permanent link">&para;</a></h4>
-<p>Podが、自身の稼働するNodeのネットワークにリクエストできるかどうかを設定する。</p>
+<p>Podが、自身の稼働するNodeのネットワークにリクエストを送信できるかどうかを設定する。</p>
 <p>ユーザーが使用するうユースケースは少なく、例えばNode exporterのPodで使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>

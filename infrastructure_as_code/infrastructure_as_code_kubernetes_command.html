@@ -7771,7 +7771,7 @@
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="kubeconfig">▼ <code>kubeconfig</code>ファイル<a class="headerlink" href="#kubeconfig" title="Permanent link">&para;</a></h4>
 <p><code>~/.kube/config</code>配下にあり、Clusterの認証情報が定義されている。</p>
-<p><code>kubectl</code>コマンドは、<code>kubeconfig</code>ファイル上のClusterの認証情報を基に、kube-apiserverにアクセスする。</p>
+<p><code>kubectl</code>コマンドは、<code>kubeconfig</code>ファイル上のClusterの認証情報を基に、kube-apiserverにリクエストを送信する。</p>
 <h4 id="config-kubeconfig">▼ configシンボリックリンク、--kubeconfig<a class="headerlink" href="#config-kubeconfig" title="Permanent link">&para;</a></h4>
 <p>ユーザーが、<code>config</code>ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成する。</p>
 <p>または、コマンドの実行時に<code>config</code>ファイルを明示的に指定する。</p>
@@ -8788,7 +8788,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 <p><br></p>
 <h3 id="port-forward">port-forward<a class="headerlink" href="#port-forward" title="Permanent link">&para;</a></h3>
 <h4 id="port-forward_1">▼ port-forwardとは<a class="headerlink" href="#port-forward_1" title="Permanent link">&para;</a></h4>
-<p>ポートフォワーディングを実行し、ホストのポートからPodにリクエストできるようにする。</p>
+<p>ポートフォワーディングを実行し、ホストのポートからPodにリクエストを送信できるようにする。</p>
 <p>Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。</p>
 <p>この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。</p>
 <p>開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。</p>
@@ -8798,7 +8798,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
 <span class="c1"># Serviceの情報を使用して、Podを指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Serviceのポート番号&gt;
 
-<span class="c1"># ホストポートを介してPodのポートにアクセスする。</span>
+<span class="c1"># ホストポートを介してPodのポートにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;ホストポート番号&gt;
 </code></pre></div>
 <blockquote>

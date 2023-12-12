@@ -5895,8 +5895,8 @@
 <p>そのため、必要最低限の開発者のみがリクエストできるように、インバウンド通信を制限する。</p>
 <ul>
 <li>ファイアウォール</li>
-<li>kube-apiserverにリクエストできるIPアドレスを制限する。</li>
-<li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイ、など) からしか、kube-apiserverにアクセスできないようにする。</li>
+<li>kube-apiserverにリクエストを送信できるIPアドレスを制限する。</li>
+<li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイ、など) からしか、kube-apiserverにリクエストできないようにする。</li>
 <li>認証</li>
 <li>必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。</li>
 </ul>
@@ -6450,7 +6450,7 @@
 <h3 id="hostipc">■ hostIPCを無効化する<a class="headerlink" href="#hostipc" title="Permanent link">&para;</a></h3>
 <p>Podの<code>.spec.hostIPC</code>キー有効化すると、Pod内のコンテナのホスト (Node) 間で同じIPC名前空間を使用するようになる。</p>
 <p>コンテナのプロセスは、同じIPC名前空間に属する任意のプロセスと通信できるようになる。</p>
-<p>ただ、悪意のある人がコンテナに接続した場合に、Nodeの他のプロセスにアクセスできてしまう。</p>
+<p>ただ、悪意のある人がコンテナに接続した場合に、Nodeの他のプロセスにリクエストできてしまう。</p>
 <p>そのため、無効化しておく。</p>
 <blockquote>
 <p><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></p>
@@ -6754,7 +6754,7 @@ readOnlyRootFilesystem |</p>
 <p>コンテナのプロセスは、コンテナ起動コマンド (親プロセス)、親プロセスが実行するプロセス (子プロセス) 、からなる。</p>
 <p><code>.containers[*].securityContext.allowPrivilegeEscalation</code>キーを有効化してしまうと、子プロセスは権限フラグ (<code>setuid</code>、<code>setgid</code>) を使用できるようになる。</p>
 <p>権限フラグを使用すると、コンテナの実行ユーザーは、rootユーザーに近い権限を一時的に持てるようになる。</p>
-<p>つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にアクセスできてしまう。</p>
+<p>つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。</p>
 <blockquote>
 <p><a href="https://en.wikipedia.org/wiki/Setuid">https://en.wikipedia.org/wiki/Setuid</a></p>
 <p><a href="https://docs.docker.com/engine/security/userns-remap/">https://docs.docker.com/engine/security/userns-remap/</a></p>
@@ -6764,7 +6764,7 @@ readOnlyRootFilesystem |</p>
 <p><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></p>
 </blockquote>
 <h3 id="readonlyrootfilesystem">■ readOnlyRootFilesystemを有効化する<a class="headerlink" href="#readonlyrootfilesystem" title="Permanent link">&para;</a></h3>
-<p>コンテナは自身のファイルシステムにリクエストできる。</p>
+<p>コンテナは自身のファイルシステムにリクエストを送信できる。</p>
 <p>この時に、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーが無効になっていると、コンテナのルートファイルシステムにRead/Writeの両方を実行できる。</p>
 <p>つまり、悪意のある人がこれを使用すると、任意のディレクトリ配下でファイルを作成変更できてしまう。</p>
 <p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーを有効化し、Readのみを実行できるようにしておく。</p>
@@ -6778,7 +6778,7 @@ readOnlyRootFilesystem |</p>
 <hr />
 <h3 id="useraccount-clusterrole">■ UserAccount にはClusterRoleを紐付けない<a class="headerlink" href="#useraccount-clusterrole" title="Permanent link">&para;</a></h3>
 <p>最小権限にするため、UserAccountにはClusterRoleを紐付けない。</p>
-<p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにリクエストできるようにする。</p>
+<p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにリクエストを送信できるようにする。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/security/rbac-good-practices/">https://kubernetes.io/docs/concepts/security/rbac-good-practices/</a></p>
 </blockquote>

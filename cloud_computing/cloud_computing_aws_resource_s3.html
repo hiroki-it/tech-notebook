@@ -3973,7 +3973,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アクセス制限
+      リクエスト制限
     </span>
   </a>
   
@@ -7088,7 +7088,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アクセス制限
+      リクエスト制限
     </span>
   </a>
   
@@ -7354,8 +7354,8 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_4">アクセス制限<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>特にアクセス制限には、以下の項目がある。</p>
+<h3 id="_4">リクエスト制限<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>特にリクエスト制限には、以下の項目がある。</p>
 <table>
 <thead>
 <tr>
@@ -7367,17 +7367,17 @@
 <tbody>
 <tr>
 <td>ブロックパブリックアクセス</td>
-<td>パブリックネットワークがS3にアクセスする時の許否を設定する。</td>
+<td>パブリックネットワークがS3にリクエストを送信する時の許否を設定する。</td>
 <td>・ブロックパブリックアクセスを無効にすると、項目ごとの方法 (ACL、バケットポリシー、アクセスポイントポリシー) によるアクセスが許可される。もし他のAWSリソースからのリクエストを許可する場合は、ブロックパブリックアクセスを無効化した上でバケットポリシーに許可対象を定義するか、あるいはブロックパブリックアクセスでは拒否できないIAMポリシーをAWSリソースに設定する。<br>・ブロックパブリックアクセスを全て有効にすると、パブリックネットワークからの全アクセスを遮断できる。<br>・特定のオブジェクトで、アクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。</td>
 </tr>
 <tr>
 <td>バケットポリシー</td>
-<td>IAMユーザー (クロスアカウントも可) またはAWSリソースがS3へにアクセスするためのポリシーで管理する。</td>
-<td>・IAMポリシーとアクセスコントロールリストの両方が設定されている場合には、IAMポリシーが勝つ。<br>- <a href="https://dev.classmethod.jp/articles/s3-acl-wakewakame/">https://dev.classmethod.jp/articles/s3-acl-wakewakame/</a> <br>・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー (クロスアカウントも可) やAWSリソースがS3にアクセスするために必要である。ただし代わりとして、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>- <a href="https://awesome-linus.com/2020/02/04/s3-bucket-public-access/">https://awesome-linus.com/2020/02/04/s3-bucket-public-access/</a> <br>・ポリシーを紐付けできないCloudFrontやALBなどでは、自身へのアクセスログを作成するために必須である。</td>
+<td>IAMユーザー (クロスアカウントも可) またはAWSリソースがS3へにリクエストを送信するためのポリシーで管理する。</td>
+<td>・IAMポリシーとアクセスコントロールリストの両方が設定されている場合には、IAMポリシーが勝つ。<br>- <a href="https://dev.classmethod.jp/articles/s3-acl-wakewakame/">https://dev.classmethod.jp/articles/s3-acl-wakewakame/</a> <br>・ブロックパブリックアクセスを無効にしたうえで、IAMユーザー (クロスアカウントも可) やAWSリソースがS3にリクエストを送信するために必要である。ただし代わりとして、IAMポリシーをAWSリソースに紐付けることによりも、アクセスを許可できる。<br>- <a href="https://awesome-linus.com/2020/02/04/s3-bucket-public-access/">https://awesome-linus.com/2020/02/04/s3-bucket-public-access/</a> <br>・ポリシーを紐付けできないCloudFrontやALBなどでは、自身へのアクセスログを作成するために必須である。</td>
 </tr>
 <tr>
 <td>アクセスコントロールリスト</td>
-<td>IAMユーザー (クロスアカウントも可) がS3にアクセスする時の許否を設定する。</td>
+<td>IAMユーザー (クロスアカウントも可) がS3にリクエストを送信する時の許否を設定する。</td>
 <td>・バケットポリシーと機能が重複する。<br>・IAMポリシーとアクセスコントロールリストの両方が設定されている場合には、IAMポリシーが勝つ。<br>- <a href="https://dev.classmethod.jp/articles/s3-acl-wakewakame/">https://dev.classmethod.jp/articles/s3-acl-wakewakame/</a> <br>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても、特定のオブジェクトでアクセスコントロールリストを制限した場合、そのオブジェクトだけはパブリックアクセスにならない。</td>
 </tr>
 <tr>

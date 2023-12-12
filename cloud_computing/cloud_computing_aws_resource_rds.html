@@ -8584,7 +8584,7 @@
 <tr>
 <td>VPCとサブネットグループ</td>
 <td>DBクラスターを配置するVPCとサブネットを設定する。</td>
-<td>DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにアクセスできないようにする。<br><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></td>
+<td>DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにリクエストできないようにする。<br><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></td>
 </tr>
 <tr>
 <td>パラメーターグループ</td>
@@ -8624,7 +8624,7 @@
 <tr>
 <td>削除保護</td>
 <td>DBクラスターの削除を防ぐ。</td>
-<td>DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストできる。<br>- <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
+<td>DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br>- <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
 </tr>
 </tbody>
 </table>

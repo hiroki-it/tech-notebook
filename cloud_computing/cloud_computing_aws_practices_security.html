@@ -6709,13 +6709,13 @@
 <tbody>
 <tr>
 <td>Allow</td>
-<td>指定したユーザーエージェントでない場合、全てのパスにアクセスすることを許可する。</td>
+<td>指定したユーザーエージェントでない場合、全てのパスにリクエストを送信することを許可する。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="ci">▼ CIツールのアクセスを許可<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) が社内サービスにリクエストできるようにする。</p>
+<p>社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) が社内サービスにリクエストを送信できるようにする。</p>
 <p>ルール：<code>allow-request-including-access-token</code></p>
 <table>
 <thead>
@@ -6753,13 +6753,13 @@
 <tbody>
 <tr>
 <td>Block</td>
-<td>正しいトークンを持たないアクセスの場合、全てのパスにアクセスすることを拒否する。</td>
+<td>正しいトークンを持たないアクセスの場合、全てのパスにリクエストを送信することを拒否する。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="_5">▼ 特定のパスを社内アクセスに限定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>アプリケーションでは、特定のURLパスにリクエストできる送信元IPアドレスを社内だけに制限する。</p>
+<p>アプリケーションでは、特定のURLパスにリクエストを送信できる送信元IPアドレスを社内だけに制限する。</p>
 <p><code>2</code>個のルールを作成する必要がある。</p>
 <p>ルール：<code>allow-access--to-url-path</code></p>
 <table>
@@ -6784,7 +6784,7 @@
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td>社内の送信元IPアドレスの場合、指定したパスにアクセスすることを許可する。</td>
+<td>社内の送信元IPアドレスの場合、指定したパスにリクエストを送信することを許可する。</td>
 </tr>
 <tr>
 <td><code>1</code></td>
@@ -6833,13 +6833,13 @@
 <tbody>
 <tr>
 <td>Allow</td>
-<td>指定したURLパス以外のアクセスの場合、そのパスにアクセスすることを許可する。</td>
+<td>指定したURLパス以外のアクセスの場合、そのパスにリクエストを送信することを許可する。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="_6">▼ 社内アクセスに限定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>アプリケーション全体にリクエストできる送信元IPアドレスを、特定のIPアドレスだけに制限する。</p>
+<p>アプリケーション全体にリクエストを送信できる送信元IPアドレスを、特定のIPアドレスだけに制限する。</p>
 <p>ルール：<code>allow-global-ip-addresses</code></p>
 <table>
 <thead>
@@ -6861,7 +6861,7 @@
 <td>社内IPセット</td>
 <td>Source IP address</td>
 <td>-</td>
-<td>社内の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。</td>
+<td>社内の送信元IPアドレスの場合、全てのパスにリクエストを送信することを許可する。</td>
 </tr>
 <tr>
 <td><code>1</code></td>
@@ -6870,7 +6870,7 @@
 <td>協力会社IPセット</td>
 <td>Source IP address</td>
 <td>Allow</td>
-<td>0番目あるいは、協力会社の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。</td>
+<td>0番目あるいは、協力会社の送信元IPアドレスの場合、全てのパスにリクエストを送信することを許可する。</td>
 </tr>
 </tbody>
 </table>
@@ -6884,7 +6884,7 @@
 <tbody>
 <tr>
 <td>Block</td>
-<td>指定した送信元IPアドレス以外の場合、全てのパスにアクセスすることを拒否する。</td>
+<td>指定した送信元IPアドレス以外の場合、全てのパスにリクエストを送信することを拒否する。</td>
 </tr>
 </tbody>
 </table>

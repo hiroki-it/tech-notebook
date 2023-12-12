@@ -6516,7 +6516,7 @@
 <p><br></p>
 <h2 id="05-workload-identity">05. Workload Identity<a class="headerlink" href="#05-workload-identity" title="Permanent link">&para;</a></h2>
 <h3 id="workload-identity">Workload Identityとは<a class="headerlink" href="#workload-identity" title="Permanent link">&para;</a></h3>
-<p>GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにアクセスする場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストできるようにする仕組みのこと。</p>
+<p>GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。</p>
 <p><br></p>
 <h3 id="workload-identity_1">Workload Identityの仕組み<a class="headerlink" href="#workload-identity_1" title="Permanent link">&para;</a></h3>
 <ol>
@@ -6527,7 +6527,7 @@
 <li>検証が成功し、一時的なトークンを発行する。</li>
 <li>GoogleCloudリソース外のリソースにトークンを送信する。</li>
 <li>GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。</li>
-<li>GoogleCloudリソースのAPIにリクエストできるようになる。</li>
+<li>GoogleCloudリソースのAPIにリクエストを送信できるようになる。</li>
 </ol>
 <p><img alt="google-cloud_workload-identity.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png" /></p>
 <blockquote>

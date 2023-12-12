@@ -8246,7 +8246,7 @@
 <p><br></p>
 <h2 id="05">05. キーパスの関数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_9">キーパスの関数とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>テンプレートや<code>values</code>ファイルを出力する時に、特定のキーパスにアクセスする。</p>
+<p>テンプレートや<code>values</code>ファイルを出力する時に、特定のキーパスにリクエストを送信する。</p>
 <p><br></p>
 <h3 id="_10"><code>.</code> (ドット)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ドットとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -8272,10 +8272,10 @@
 <h3 id="_12"><code>$</code> (ドル)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ドルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>出力時に、<code>.yaml</code>ファイルのルートを明示的に出力する。</p>
-<p>アクションの中でアクションで、<code>.yaml</code>ファイルのルートにアクセスしたい場合に役立つ。</p>
+<p>アクションの中でアクションで、<code>.yaml</code>ファイルのルートにリクエストしたい場合に役立つ。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>range</code>関数を使用すると、<code>.yaml</code>ファイルへのアクセスのルートが変わってしまう。</p>
-<p>ルートを明示することにより、<code>range</code>関数内でも<code>.yaml</code>ファイルの正しいルートにリクエストできるようなる。</p>
+<p>ルートを明示することにより、<code>range</code>関数内でも<code>.yaml</code>ファイルの正しいルートにリクエストを送信できるようなる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range $.Values.foo.namespaces</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>

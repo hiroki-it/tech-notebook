@@ -8479,7 +8479,7 @@
 <p>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにリクエストを送信するために必要なロールのこと。</p>
 <p>AWS管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
 <p>このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
-<p>ECSタスク内のコンテナがリソースにリクエストするために必要なタスクロールとは区別すること。</p>
+<p>ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -8501,7 +8501,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>datadogエージェントがECSクラスターやコンテナにリクエストできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
+<p>datadogエージェントがECSクラスターやコンテナにリクエストを送信できるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -9109,7 +9109,7 @@
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
 <p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。</p>
 <p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
 <p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
@@ -9139,7 +9139,7 @@
 <dt><code>(3)</code></dt>
 <dd>
 <p>ECSタスク実行ロールにIAMポリシーを付与する。</p>
-<p>これにより、ECSタスクがセッションマネージャーにリクエストできるようになる。</p>
+<p>これにより、ECSタスクがセッションマネージャーにリクエストを送信できるようになる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>

@@ -8385,14 +8385,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <dt><code>(3)</code></dt>
 <dd>
 <p><code>443</code>番ポートにルーティングできる<code>L7</code>ロードバランサーを作成する。</p>
-<p>この時、IngressとIngressコントローラーを作成するか、<code>kubectl port-forward</code>コマンドなど実行することにより、ダッシュボードにアクセスする。</p>
+<p>この時、IngressとIngressコントローラーを作成するか、<code>kubectl port-forward</code>コマンドなど実行することにより、ダッシュボードにリクエストを送信する。</p>
 <p><code>minikube tunnel</code>コマンドでは、ポート番号を指定できないことに注意する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストできるようにする。</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストを送信できるようにする。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/argocd-server<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span><span class="m">8080</span>:443
 
-<span class="c1"># ホストポートを介してPodのポートにアクセスする。</span>
+<span class="c1"># ホストポートを介してPodのポートにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080
 </code></pre></div>
 <h4 id="argocd_1">▼ <code>argocd</code>コマンドを使用して<a class="headerlink" href="#argocd_1" title="Permanent link">&para;</a></h4>
