@@ -8385,8 +8385,8 @@
 <p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
 <p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。</p>
 <p>これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
-<p>また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
-<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが<code>9000</code>番ポートでインバウンド通信を受信し、加えてコンテナが<code>9000</code>番ポートを開放する必要がある。</p>
+<p>また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
+<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが<code>9000</code>番ポートでリクエストを受信し、加えてコンテナが<code>9000</code>番ポートを開放する必要がある。</p>
 <p>しかし、awsvpcモードではコンテナポートを開放する必要はない。</p>
 <p><img alt="network-mode_awsvpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png" /></p>
 <blockquote>
@@ -8401,9 +8401,9 @@
 <p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。</p>
 <p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。</p>
 <h4 id="_9">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、NAT Gatewayを配置する必要がある。</p>
 <h4 id="vpcaws">▼ VPC外のAWSリソースに対する通信<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
 <p>もしNAT Gatewayを配置したとする。</p>
 <p>この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。</p>
 <p><img alt="ecs_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png" /></p>
@@ -9109,10 +9109,10 @@
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
 <p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。</p>
 <p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
-<p>注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
+<p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec">https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec</a></li>
@@ -9253,7 +9253,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     

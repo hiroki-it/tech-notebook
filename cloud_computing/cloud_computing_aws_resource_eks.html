@@ -4021,17 +4021,17 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      プライベートサブネット内のデータプレーンへのインバウンド通信
+      プライベートサブネット外から内のデータプレーンへの通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="プライベートサブネット内のデータプレーンへのインバウンド通信">
+    <nav class="md-nav" aria-label="プライベートサブネット外から内のデータプレーンへの通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Podへのインバウンド通信
+      ▼ Pod外から内への通信
     </span>
   </a>
   
@@ -4045,11 +4045,11 @@
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      コントロールプレーンへのインバウンド通信
+      コントロールプレーン外から内への通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コントロールプレーンへのインバウンド通信">
+    <nav class="md-nav" aria-label="コントロールプレーン外から内への通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8450,17 +8450,17 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      プライベートサブネット内のデータプレーンへのインバウンド通信
+      プライベートサブネット外から内のデータプレーンへの通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="プライベートサブネット内のデータプレーンへのインバウンド通信">
+    <nav class="md-nav" aria-label="プライベートサブネット外から内のデータプレーンへの通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Podへのインバウンド通信
+      ▼ Pod外から内への通信
     </span>
   </a>
   
@@ -8474,11 +8474,11 @@
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      コントロールプレーンへのインバウンド通信
+      コントロールプレーン外から内への通信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コントロールプレーンへのインバウンド通信">
+    <nav class="md-nav" aria-label="コントロールプレーン外から内への通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -9945,7 +9945,7 @@
 <p><br></p>
 <h2 id="03-03-cluster">03-03. Cluster内外の通信<a class="headerlink" href="#03-03-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="_15">サブネット<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBからインバウンド通信を受信すると良い。</p>
+<p>EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBから通信を受信すると良い。</p>
 <p>この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。</p>
 <p>そのために、パブリックサブネットにNAT Gatewayを置く。</p>
 <blockquote>
@@ -9953,9 +9953,9 @@
 <li><a href="https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/">https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/</a></li>
 </ul>
 </blockquote>
-<h3 id="_16">プライベートサブネット内のデータプレーンへのインバウンド通信<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="pod">▼ Podへのインバウンド通信<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークからのインバウンド通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。</p>
+<h3 id="_16">プライベートサブネット外から内のデータプレーンへの通信<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="pod">▼ Pod外から内への通信<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへの通信をAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。</p>
 <p><img alt="eks_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -9963,7 +9963,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_17">コントロールプレーンへのインバウンド通信<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="_17">コントロールプレーン外から内への通信<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ アクセス制限<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンでは、<code>kubectl</code>コマンドのエンドポイントとしてNLBが配置されている。</p>
 <p>このNLBを介して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
@@ -9978,6 +9978,43 @@
 <h4 id="_20">▼ パブリックとプライベートの場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。</p>
 <p>また、Cluster内からkube-apiserverへのアクセスには、VPCエンドポイントが必要である。</p>
+<p>プライベートサブネット内のEC2ワーカーNodeからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
+<table>
+<thead>
+<tr>
+<th>VPCエンドポイントの接続先</th>
+<th>プライベートDNS名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CloudWatchログ</td>
+<td><code>logs.ap-northeast-1.amazonaws.com</code></td>
+<td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>ECR</td>
+<td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
+<td>イメージのGETリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>なし</td>
+<td>イメージのレイヤーをPOSTリクエストを送信するため</td>
+</tr>
+<tr>
+<td>Systems Manager</td>
+<td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>Secrets Manager</td>
+<td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+<td>Secrets Managerを使用するため。</td>
+</tr>
+</tbody>
+</table>
 <h4 id="_21">▼ プライベートのみ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
 <p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにアクセスできるようにする方法としては、以下のパターンがある。</p>
@@ -10176,7 +10213,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_27">パブリックサブネット内のデータプレーンからのアウトバウンド通信<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するために特に必要なものは無い。</p>
+<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するために特に必要なものは無い。</p>
 <p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
@@ -10203,7 +10240,7 @@
 <span class="w">  </span><span class="nt">SQS_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
 <h4 id="vpcaws">▼ VPC外の他のAWSリソースへのアウトバウンド通信<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。</p>
+<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。</p>
 <p>この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。</p>
 <p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
@@ -10900,7 +10937,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
   </span>
 
     
