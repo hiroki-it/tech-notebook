@@ -3381,7 +3381,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
+      ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
     </span>
   </a>
   
@@ -3390,7 +3390,7 @@
           <li class="md-nav__item">
   <a href="#vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
     </span>
   </a>
   
@@ -3399,7 +3399,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
+      ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
     </span>
   </a>
   
@@ -6339,7 +6339,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
+      ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
     </span>
   </a>
   
@@ -6348,7 +6348,7 @@
           <li class="md-nav__item">
   <a href="#vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
     </span>
   </a>
   
@@ -6357,7 +6357,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
+      ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
     </span>
   </a>
   
@@ -6634,19 +6634,19 @@
 <tr>
 <td>publicサブネット</td>
 <td>パブリック</td>
-<td>非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのインバウンド通信を待ち受ける。</td>
+<td>非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのリクエストを待ち受ける。</td>
 <td>ALB、NAT Gateway</td>
 </tr>
 <tr>
 <td>protectedサブネット</td>
 <td>プライベート</td>
-<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのインバウンド通信のみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのリクエストのみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
 <td>EC2、Fargate</td>
 </tr>
 <tr>
 <td>privateサブネット</td>
 <td>プライベート</td>
-<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのインバウンド通信のみを待ち受ける。また、リクエストを送信しない。</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのリクエストのみを待ち受ける。また、リクエストを送信しない。</td>
 <td>RDS、Redis</td>
 </tr>
 </tbody>
@@ -6697,10 +6697,10 @@
 <p><br></p>
 <h3 id="_5">ルートテーブルの設計<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><img alt="route-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png" /></p>
-<h4 id="_6">▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>上の図中で、サブネット3にはルートテーブル2が紐付けられている。</p>
-<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、インバウンド通信と見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
-<p>一方で、<code>0.0.0.0/0</code> (local以外の全IPアドレス) の範囲内にあれば、アウトバウンド通信と見なし、Internet Gatewayを宛先に選択する。</p>
+<h4 id="_6">▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット<code>3</code>にはルートテーブル<code>2</code>が紐付けられている。</p>
+<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>一方で、<code>0.0.0.0/0</code> (local以外の全IPアドレス) の範囲内にあれば、リクエストと見なし、Internet Gatewayを宛先に選択する。</p>
 <table>
 <thead>
 <tr>
@@ -6719,9 +6719,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="vpc_1">▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
-<p>上の図中で、サブネット2にはルートテーブル1が紐付けられている。</p>
-<p>サブネット2内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、インバウンド通信と見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<h4 id="vpc_1">▼ プライベートサブネットのリクエストをVPC内に閉じる場合<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット<code>2</code>にはルートテーブル1が紐付けられている。</p>
+<p>サブネット<code>2</code>内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
 <p>一方で、範囲外にあれば通信を破棄する。</p>
 <table>
 <thead>
@@ -6737,7 +6737,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_7">▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
@@ -6748,7 +6748,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><code>10.0.0.0/24</code> (サブネット1のCIDRブロック)</td>
+<td style="text-align: center;"><code>10.0.0.0/24</code> (サブネット<code>1</code>のCIDRブロック)</td>
 <td style="text-align: center;">local</td>
 </tr>
 </tbody>

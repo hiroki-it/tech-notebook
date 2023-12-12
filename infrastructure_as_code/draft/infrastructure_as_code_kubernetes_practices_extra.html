@@ -6145,7 +6145,7 @@
 <hr />
 <p>PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、様々な対処事項 (例：SSL証明書管理、相互TLSの有無) で実装難易度が上がる。</p>
 <p>仮にサービスメッシュを採用すれば対処しやすくなるが、採用しないのであれば自前での対処は大変である。</p>
-<p>IngressをSSL/TLS終端にすると、Podへの通信はHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。</p>
+<p>IngressをSSL/TLS終端にすると、PodへのリクエストはHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。</p>
 <blockquote>
 <p><a href="https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/">https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/</a></p>
 </blockquote>

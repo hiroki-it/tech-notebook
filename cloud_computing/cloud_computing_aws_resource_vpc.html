@@ -8050,7 +8050,7 @@
 <h4 id="_5">▼ プライベートサブネットとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>LAN内の内部ネットワークに相当する。</p>
 <p>サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。</p>
-<p>ただし、サブネット内からサブネット外へのアウトバウンド通信は許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。</p>
+<p>ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。</p>
 <p><img alt="public-subnet_private-subnet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png" /></p>
 <p><br></p>
 <h2 id="03-network-aclnetwork-access-control-list">03. Network ACL：Network Access Control List<a class="headerlink" href="#03-network-aclnetwork-access-control-list" title="Permanent link">&para;</a></h2>
@@ -8062,7 +8062,7 @@
 <p><br></p>
 <h3 id="acl">ACLルール<a class="headerlink" href="#acl" title="Permanent link">&para;</a></h3>
 <p>ルールは上から順に適用される。</p>
-<p>例えば、インバウンドルールが以下だった場合、ルール100が最初に適用され、サブネットに対する、全IPアドレス (<code>0.0.0.0/0</code>) からのインバウンド通信を許可していることになる。</p>
+<p>例えば、インバウンドルールが以下だった場合、ルール100が最初に適用され、サブネットに対する、全IPアドレス (<code>0.0.0.0/0</code>) からのリクエストを許可していることになる。</p>
 <table>
 <thead>
 <tr>
@@ -8097,7 +8097,7 @@
 <h2 id="04">04. ルートテーブル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ルートテーブルとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>クラウドルーターのマッピングテーブルとして働く。</p>
-<p>サブネットに紐付けることにより、サブネット内からサブネット外に出るアウトバウンド通信のルーティングを制御する。</p>
+<p>サブネットに紐付けることにより、サブネット内からサブネット外に出るリクエストのルーティングを制御する。</p>
 <p>注意点として、Network ACLよりも後に評価される。</p>
 <blockquote>
 <ul>
@@ -8128,9 +8128,9 @@
 <p><br></p>
 <h2 id="05-vpc">05. VPCエンドポイント<a class="headerlink" href="#05-vpc" title="Permanent link">&para;</a></h2>
 <h3 id="vpc_1">VPCエンドポイントとは<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h3>
-<p>VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、アウトバウンド通信を実行できるようにする。</p>
+<p>VPCのプライベートサブネット内のリソースが、VPC外のリソースに対して、リクエストを実行できるようにする。</p>
 <p>Gateway型とInterface型がある。</p>
-<p>VPCエンドポイントを使用しない場合、プライベートサブネット内からのアウトバウンド通信には、Internet GatewayとNAT Gatewayを使用する必要がある。</p>
+<p>VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとNAT Gatewayを使用する必要がある。</p>
 <p><img alt="VPCエンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png" /></p>
 <p><br></p>
 <h3 id="vpcnat-gateway">VPCエンドポイントとNAT Gatewayの料金比較<a class="headerlink" href="#vpcnat-gateway" title="Permanent link">&para;</a></h3>
@@ -8165,7 +8165,7 @@
 <h4 id="internet-gateway_1">▼ Internet Gatewayとは<a class="headerlink" href="#internet-gateway_1" title="Permanent link">&para;</a></h4>
 <p>DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス) をプライベートIPアドレス (VPC内のIPアドレス) に変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、<code>1</code>個のプライベートIPを紐付けられる。</p>
-<p>つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、複数のパブリックIPアドレスで送信する。</p>
+<p>つまり、VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。</p>
 <p><img alt="InternetGatewayとNATGateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png" /></p>
 <blockquote>
 <ul>
@@ -8178,7 +8178,7 @@
 <h4 id="nat-gateway_1">▼ NAT Gatewayとは<a class="headerlink" href="#nat-gateway_1" title="Permanent link">&para;</a></h4>
 <p>SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレス) をグローバルIPアドレス (VPC外のIPアドレス) に変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、複数のプライベートIPを紐付けられる。</p>
-<p>つまり、VPC内の複数のインスタンスからのアウトバウンド通信を、<code>1</code>個のパブリックIPアドレスで送信する。</p>
+<p>つまり、VPC内の複数のインスタンスからのリクエストを、<code>1</code>個のパブリックIPアドレスで送信する。</p>
 <p>そのため、送信元はこのパブリックIPアドレスになる。</p>
 <p>この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。</p>
 <p><img alt="InternetGatewayとNATGateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png" /></p>
@@ -8341,11 +8341,11 @@
 <h2 id="09">09. セキュリティグループ<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="_12">セキュリティグループとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く。</p>
-<p>インバウンド通信 (プライベートネットワーク向き通信) では、プロトコルや受信元IPアドレスを設定でき、アウトバウンド通信 (パブリックネットワーク向き通信) では、プロトコルや宛先プロトコルを設定できる。</p>
+<p>リクエスト (プライベートネットワーク向き通信) では、プロトコルや受信元IPアドレスを設定でき、リクエスト (パブリックネットワーク向き通信) では、プロトコルや宛先プロトコルを設定できる。</p>
 <p><br></p>
 <h2 id="09-02">09-02. セットアップ<a class="headerlink" href="#09-02" title="Permanent link">&para;</a></h2>
 <h3 id="_13">コンソール画面の場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>インバウンド通信を許可するルールとアウトバウンドルールを設定できる。</p>
+<p>リクエストを許可するルールとアウトバウンドルールを設定できる。</p>
 <p>特定のセキュリティグループに紐付けられているAWSリソースを見つけたい場合は、ENIでセキュリティグループのIDを検索する。</p>
 <p>インスタンスIDや説明文から、いずれのAWSリソースが紐づいているか否かを確認する。</p>
 <p><br></p>
