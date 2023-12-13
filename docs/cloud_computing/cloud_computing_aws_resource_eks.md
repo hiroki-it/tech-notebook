@@ -645,13 +645,85 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 ## 03-04. データプレーン内外へのリクエスト
 
-### Pod外から内へのリクエスト
+### パブリックサブネット内のデータプレーンからのリクエスト
+
+Podをパブリックサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するために特に必要なものは無い。
+
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+
+> - https://note.com/tyrwzl/n/n715a8ef3c28a
+> - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
+
+<br>
+
+### プライベートサブネット内のデータプレーンからのリクエスト
+
+#### ▼ Pod外から内へのリクエスト
 
 Podをプライベートサブネットに配置した場合に、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancerコントローラーで受信し、AWS ALBを使用してPodにルーティングする。
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
+
+#### ▼ 宛先情報の管理方法
+
+リクエストの宛先情報は、Secretで管理し、Podにマウントする。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  # RDS (Aurora) の宛先情報
+  DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
+  DB_HOST_READ: <リードレプリカのエンドポイント>
+  DB_USER: bar
+  DB_PASSWORD: baz
+  # SQSの宛先情報
+  SQS_QUEUE_NAME: foo-queue.fifo
+  SQS_REGION: ap-northeast-1
+```
+
+#### ▼ VPC外の他のAWSリソースへのリクエスト
+
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+
+この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
+
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
+
+また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
+
+```log
+Pod provisioning timed out (will retry) for pod
+```
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
+
+#### ▼ VPC外のコントロールプレーンへのリクエスト
+
+EKS Clusterを作成すると、ENIも作成する。
+
+これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
+
+データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、Interface型VPCエンドポイントまたはNAT Gatewayが必要になる。
+
+| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
+| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
+| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
+| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+
+> - https://dev.classmethod.jp/articles/eks_basic/
+> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+
+#### ▼ VPC内の他のAWSリソースへのリクエスト
+
+VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
 
 <br>
 
@@ -867,72 +939,6 @@ Nodeグループ (マネージドNodeグループ、セルフマネージドNode
 | `kubernetes.io/cluster/<EKS Cluster名>` | `owned`               | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2をNodeグループに参加させるために、必要である。           |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-
-<br>
-
-### パブリックサブネット内のデータプレーンからのリクエスト
-
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するために特に必要なものは無い。
-
-この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
-
-> - https://note.com/tyrwzl/n/n715a8ef3c28a
-> - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
-
-<br>
-
-### プライベートサブネット内のデータプレーンからのリクエスト
-
-#### ▼ 宛先情報の管理方法
-
-リクエストの宛先情報は、Secretで管理し、Podにマウントする。
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: foo-secret
-data:
-  # RDS (Aurora) の宛先情報
-  DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
-  DB_HOST_READ: <リードレプリカのエンドポイント>
-  DB_USER: bar
-  DB_PASSWORD: baz
-  # SQSの宛先情報
-  SQS_QUEUE_NAME: foo-queue.fifo
-  SQS_REGION: ap-northeast-1
-```
-
-#### ▼ VPC外の他のAWSリソースへのリクエスト
-
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
-
-この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
-
-以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
-
-また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
-
-```log
-Pod provisioning timed out (will retry) for pod
-```
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
-
-#### ▼ VPC外のコントロールプレーンへのリクエスト
-
-EKS Clusterを作成すると、ENIも作成する。
-
-これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
-
-執筆時点 (2022/05/27) では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
-
-> - https://dev.classmethod.jp/articles/eks_basic/
-> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
-
-#### ▼ VPC内の他のAWSリソースへのリクエスト
-
-VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
 
 <br>
 
