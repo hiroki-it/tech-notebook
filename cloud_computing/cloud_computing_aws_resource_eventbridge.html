@@ -3687,6 +3687,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベント受信対象のAWSリソース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントパターン
@@ -7000,6 +7009,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ イベント受信対象のAWSリソース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントパターン
@@ -7112,19 +7130,21 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-eventbridge">01. EventBridgeとは<a class="headerlink" href="#01-eventbridge" title="Permanent link">&para;</a></h2>
-<p>AWSリソースで発生したイベントを、他のAWSリソースに転送する。</p>
-<p>サポート対象のAWSリソースは以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html">https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html</a></li>
-</ul>
-</blockquote>
+<p>AWSリソースで発生したイベントを受信し、他のAWSリソースや外部APIに送信する。</p>
+<p>イベントの書き換えロジックがLambdaで実装するほど複雑でない場合に、Lambdaの代わりに使用できる。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">パターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="aws">▼ イベント受信対象のAWSリソース<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
+<p>イベント受信対象のAWSリソースは以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-service-event-list.html">https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-service-event-list.html</a></li>
+</ul>
+</blockquote>
 <h4 id="_3">▼ イベントパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>指定したAWSリソースでイベントが起こると、以下のようなJSONを送信する。</p>
-<p>イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに転送する。</p>
+<p>イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに送信する。</p>
 <p>イベントパターンに定義しないキーは任意のデータと見なされる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">,</span>
@@ -7140,7 +7160,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Amplifyの指定したIDのアプリケーションが、<code>Amplify Deployment Status Change</code>のイベントを送信し、これの<code>jobStatus</code>が<code>SUCCEED</code>/<code>FAILED</code>だった場合、これを転送する。</p>
+<p>Amplifyの指定したIDのアプリケーションが、<code>Amplify Deployment Status Change</code>のイベントを送信し、これの<code>jobStatus</code>が<code>SUCCEED</code>/<code>FAILED</code>だった場合、これを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;jobStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SUCCEED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span><span class="p p-Indicator">]},</span>
 <span class="w">  </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">],</span>
@@ -7169,7 +7189,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ デバッグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>EventBridgeでは、どのようなJSONのイベントをターゲットに転送したかを確認できない。</p>
+<p>EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。</p>
 <p>そこで、デバッグ時はEventBridgeのターゲットにLambdaを設定し、イベント構造をログから確認する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>あらかじめ、イベントの内容を出力する関数をLambdaに作成しておく。</p>
@@ -7178,7 +7198,7 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに転送するように設定する。</p>
+<p>対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに送信するように設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>AWSリソースで意図的にイベントを起こし、Lambdaのロググループから内容を確認する。</p>
@@ -7207,13 +7227,37 @@
 <p><br></p>
 <h3 id="_8">入力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 入力トランスフォーマー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>入力パスで使用する値を抽出し、入力テンプレートで転送するJSONを定義できる。</p>
+<p>入力パスで使用する値を抽出し、入力テンプレートで送信するJSONを定義できる。</p>
 <p>イベントのJSONの値を変数として出力できる。</p>
 <p><code>event</code>キーをドルマークとして、ドットで繋いでアクセスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>入力パスにて、使用する値を抽出する。</p>
 <p>Amplifyで発生したイベントのJSONを変数として取り出す。</p>
+<p>ここでは、以下のAmplifyのイベントを受信したとする。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;event&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;b4a07570-eda1-9fe1-da5e-b672a1705c39&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イベントの発生時間&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;AmplifyのアプリケーションのARN&gt;&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アプリケーションID&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;branchName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ブランチ名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;jobId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ジョブID&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;jobStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;CI/CDパイプラインのステータス&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <p>JSONのキー名が変数名として動作する。</p>
+<p><code>$</code>でJSONのルートのキーを指定できる。</p>
+<p>ここでは、<code>detail</code>キーを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.detail.appId&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;branchName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.detail.branchName&quot;</span><span class="p p-Indicator">,</span>
@@ -7222,7 +7266,7 @@
 <span class="w">  </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.region&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>入力テンプレートにて、転送するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。</p>
+<p>入力テンプレートにて、送信するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。</p>
 <p>出力する時は、入力パスの変数名を『<code>&lt;&gt;</code>』で囲う。</p>
 <p>Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -7296,7 +7340,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-13</span>
   </span>
 
     
