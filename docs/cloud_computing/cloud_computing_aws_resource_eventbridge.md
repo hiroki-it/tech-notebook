@@ -15,11 +15,9 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 ## 01. EventBridgeとは
 
-AWSリソースで発生したイベントを、他のAWSリソースに転送する。
+AWSリソースで発生したイベントを受信し、他のAWSリソースや外部APIに送信する。
 
-サポート対象のAWSリソースは以下のリンクを参考にせよ。
-
-> - https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
+イベントの書き換えロジックがLambdaで実装するほど複雑でない場合に、Lambdaの代わりに使用できる。
 
 <br>
 
@@ -27,11 +25,17 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 ### パターン
 
+#### ▼ イベント受信対象のAWSリソース
+
+イベント受信対象のAWSリソースは以下のリンクを参考にせよ。
+
+> - https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-service-event-list.html
+
 #### ▼ イベントパターン
 
 指定したAWSリソースでイベントが起こると、以下のようなJSONを送信する。
 
-イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに転送する。
+イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに送信する。
 
 イベントパターンに定義しないキーは任意のデータと見なされる。
 
@@ -52,7 +56,7 @@ AWSリソースで発生したイベントを、他のAWSリソースに転送�
 
 **＊実装例＊**
 
-Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Status Change`のイベントを送信し、これの`jobStatus`が`SUCCEED`/`FAILED`だった場合、これを転送する。
+Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Status Change`のイベントを送信し、これの`jobStatus`が`SUCCEED`/`FAILED`だった場合、これを送信する。
 
 ```yaml
 {
@@ -82,7 +86,7 @@ cron式またはrate式を使用して、スケジュールを定義する。
 
 #### ▼ デバッグ
 
-EventBridgeでは、どのようなJSONのイベントをターゲットに転送したかを確認できない。
+EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。
 
 そこで、デバッグ時はEventBridgeのターゲットにLambdaを設定し、イベント構造をログから確認する。
 
@@ -97,7 +101,7 @@ exports.handler = async (event) => {
 };
 ```
 
-対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに転送するように設定する。
+対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに送信するように設定する。
 
 ```yaml
 {"source": "aws.amplify"}
@@ -136,7 +140,7 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
 
 #### ▼ 入力トランスフォーマー
 
-入力パスで使用する値を抽出し、入力テンプレートで転送するJSONを定義できる。
+入力パスで使用する値を抽出し、入力テンプレートで送信するJSONを定義できる。
 
 イベントのJSONの値を変数として出力できる。
 
@@ -148,7 +152,36 @@ AWSリソースで意図的にイベントを起こし、Lambdaのロググル�
 
 Amplifyで発生したイベントのJSONを変数として取り出す。
 
+ここでは、以下のAmplifyのイベントを受信したとする。
+
+```yaml
+{
+  "event":
+    {
+      "version": "0",
+      "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
+      "detail-type": "Amplify Deployment Status Change",
+      "source": "aws.amplify",
+      "account": "<AWSアカウントID>",
+      "time": "<イベントの発生時間>",
+      "region": "ap-northeast-1",
+      "resources": ["<AmplifyのアプリケーションのARN>"],
+      "detail":
+        {
+          "appId": "<アプリケーションID>",
+          "branchName": "<ブランチ名>",
+          "jobId": "<ジョブID>",
+          "jobStatus": "<CI/CDパイプラインのステータス>",
+        },
+    },
+}
+```
+
 JSONのキー名が変数名として動作する。
+
+`$`でJSONのルートのキーを指定できる。
+
+ここでは、`detail`キーを指定する。
 
 ```yaml
 {
@@ -160,7 +193,7 @@ JSONのキー名が変数名として動作する。
 }
 ```
 
-入力テンプレートにて、転送するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。
+入力テンプレートにて、送信するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。
 
 出力する時は、入力パスの変数名を『`<>`』で囲う。
 
