@@ -1501,13 +1501,13 @@ as a Service | ツール固有
 
 適切にラベルを付与しておくと、仕様を理解する上での助けになる。
 
-| よくラベル                          | 説明                                                                       | 値の例             |
-| ----------------------------------- | -------------------------------------------------------------------------- | ------------------ |
-| http://app.kubernetes.io/name       | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus         |
-| http://app.kubernetes.io/component  | K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。            | app、database      |
-| http://app.kubernetes.io/part-of    | K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。    | argocd             |
-| http://app.kubernetes.io/managed-by | K8sリソースの管理ツール名を設定する。                                      | helm、foo-operator |
-| …                                   |                                                                            |                    |
+| よくラベル                          | 説明                                                                       | 値の例                                        |
+| ----------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------- |
+| http://app.kubernetes.io/name       | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus                                    |
+| http://app.kubernetes.io/component  | K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。            | app、database                                 |
+| http://app.kubernetes.io/part-of    | K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。    | argocd                                        |
+| http://app.kubernetes.io/managed-by | K8sリソースの管理ツール名を設定する。                                      | helm、foo-operator、EKS (AWS EKSアドオンなど) |
+| …                                   |                                                                            |                                               |
 
 > [https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/](https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/)
 

@@ -3867,6 +3867,31 @@ spec:
 
 **＊実装例＊**
 
+`kube-system`で管理したいような重要なPodに`CriticalAddonsOnly`キーのTolerationsを設定する。
+
+合わせてNodeのTaintにも`CriticalAddonsOnly`キーを設定することで、Taintに耐性のあるPod (`CriticalAddonsOnly`キー) しか、このNodeにスケジューリングできなくなる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-coredns
+  namespace: kube-system
+spec:
+  containers:
+    - name: coredns
+      image: coredns
+      imagePullPolicy: IfNotPresent
+  # Taintへの耐性をtolerationsで定義する
+  tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+```
+
+> - https://news.mynavi.jp/techplus/article/k8ssecurity-6/2
+
+**＊実装例＊**
+
 ```bash
 $ kubectl taint node foo-node group=monitoring:NoSchedule
 ```
