@@ -35,6 +35,7 @@ theme:
   features:
     - navigation.expand
     - navigation.instant
+    - navigation.instant.progress
     - navigation.path
     - navigation.tabs
     - navigation.tabs.sticky
