@@ -505,7 +505,14 @@ test_istio:
       mv ./kubectl /usr/local/bin/kubectl
       kubectl version
     # Clusterを作成する
-    - k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2
+    # Clusterを作成する
+    # もし該当のバージョンのイメージがなければ、rc版を使用する
+    - |
+      if [ $? -ne 0 ]; then \
+        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2; \
+      else \
+        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2; \
+      fi
     # Nodeにラベル付けする
     - |
       kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress

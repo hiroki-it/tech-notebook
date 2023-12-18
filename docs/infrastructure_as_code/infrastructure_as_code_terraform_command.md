@@ -291,7 +291,7 @@ $ terraform init --reconfigure
 # プロバイダーの置き換え
 $ PROVIDER_VER="<バージョン>"
 $ PROVIDER_NAME="aws"
-$ ARCH=$(if [ `uname -m` = 'arm64' ] ; then ; echo "darwin_arm64" ; else ; echo "darwin_amd64" ; fi)
+$ ARCH=$(if [ `uname -m` = 'arm64' ]; then echo "darwin_arm64"; else echo "darwin_amd64"; fi)
 
 $ mkdir -p $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/${PROVIDER_NAME}/${PROVIDER_VER}/${ARCH}/ \
     && wget "https://releases.hashicorp.com/terraform-provider-${PROVIDER_NAME}/${PROVIDER_VER}/terraform-provider-${PROVIDER_NAME}_${PROVIDER_VER}_${ARCH}.zip" \

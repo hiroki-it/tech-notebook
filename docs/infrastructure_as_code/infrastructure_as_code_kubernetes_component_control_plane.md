@@ -193,17 +193,15 @@ the server could not find the requested resource
 
 ![kubernetes_kube-apiserver_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_architecture.png)
 
-| レイヤー                   | 責務                              |
-|------------------------|---------------------------------|
-| UI                     | Chainで、認証認可を実施する。               |
-| 〃                      | admissionで、バリデーションを実施する。        |
-| アプリケーション + ドメイン + インフラ | REST logicで、リソースの状態をetcdに永続化する。 |
+| レイヤー                               | 責務                                                                 |
+| -------------------------------------- | -------------------------------------------------------------------- |
+| UI                                     | ハンドラーチェインで、認証認可を実施する。                           |
+| 〃                                     | リソースハンドラーのadmissionで、バリデーションを実施する。          |
+| アプリケーション + ドメイン + インフラ | リソースハンドラーのREST logicで、リソースの状態をetcdに永続化する。 |
 
 > - https://www.slideshare.net/sttts/kubernetes-api-codebase-tour#15
 > - https://speakerdeck.com/bells17/kube-api-server?slide=41
 > - https://www.amazon.co.jp/Programming-Kubernetes-Developing-Cloud-native-Applications/dp/1492047104
-
-
 
 <br>
 

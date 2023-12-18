@@ -77,11 +77,11 @@ Pod
 
 AWS Load Balancerコントローラーは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。
 
-Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのAWS VPCサブネットに設定する。
+Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのパブリックサブネットに設定する。
 
-プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
+一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
 
-またいずれの場合であっても`kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は`shared`、単一のAWS EKS Clusterの場合は`owned`とする) を設定する。
+またパブリックサブネットまたはプライベートサブネットのいずれであっても`kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は`shared`、単一のAWS EKS Clusterの場合は`owned`とする) を設定する。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets

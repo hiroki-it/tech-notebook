@@ -598,9 +598,9 @@ DIFF=$(git diff origin/main)
 
 # 差分があるかどうかを検証する
 if [ $DIFF="" ] ; then
-  echo "差分なし"
+  echo "差分なし";
 else
-  echo "差分あり"
+  echo "差分あり";
 fi
 ```
 
@@ -778,7 +778,7 @@ git add .
 
 if [ -z "$(git status --porcelain)" ]; then
   echo "変更点がないため、終了しました。"
-  exit 0
+  exit 0;
 fi
 
 git commit -m "CIツールが自動的にプッシュしました。"
