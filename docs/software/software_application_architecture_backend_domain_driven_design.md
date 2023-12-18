@@ -365,9 +365,16 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 最初に提唱された実現方法。
 
+- UI (コントローラー、認証認可）
+- アプリケーション層 (ユースケース)
+- ドメイン層 (ドメインモデル)
+- インフラストラクチャ層 (永続化)
+
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
 
 > - https://www.amazon.co.jp/dp/4798121967
+> - https://techblog.yahoo.co.jp/entry/2021011230061115/
+> - https://zenn.dev/praha/articles/5c05ab671fb7ab#%E6%AE%8B%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF%E4%B8%80%E7%95%AA%E5%A4%96%E5%81%B4%E3%81%AEui%2Finfrastructure%E3%81%AE%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B
 
 #### ▼ ヘキサゴナルアーキテクチャ
 
