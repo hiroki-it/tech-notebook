@@ -1016,7 +1016,18 @@ service EndpointDiscoveryService {
 
 ## 01-04. スレッド
 
-### メインスレッド
+### マルチスレッドモデル
+
+Envoyのスレッドには、メインスレッドとワーカースレッドがある。
+
+> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model
+
+<br>
+
+### メインスレッド (プライマリスレッド)
+
+#### ▼ メインスレッドとは
 
 以下の処理を担う。
 
@@ -1024,7 +1035,7 @@ service EndpointDiscoveryService {
 - XDS-APIに関する処理
 - ランタイム
 - メモリバッファ上の統計情報のフラッシュ
-- Envoyのプロセスの様々な処理
+- Envoyのプロセスの様々な処理 (ホットリロード、など)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
@@ -1032,6 +1043,8 @@ service EndpointDiscoveryService {
 <br>
 
 ### ワーカースレッド
+
+#### ▼ ワーカースレッドとは
 
 ![envoy_thread.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 
