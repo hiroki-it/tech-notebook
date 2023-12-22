@@ -22785,7 +22785,9 @@
 <p><br></p>
 <h2 id="01-04">01-04. スレッド<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
 <h3 id="_33">マルチスレッドモデル<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<p>Envoyのスレッドには、メインスレッドとワーカースレッドがある。</p>
+<p>Envoyはマルチスレッドでパケットを処理する。</p>
+<p>メモリ上の特定のプロセスで、メインスレッドとワーカースレッドを実行する。</p>
+<p>これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy">https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy</a></li>
@@ -22814,7 +22816,8 @@
 <h4 id="_37">▼ ワーカースレッドとは<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p><img alt="envoy_thread.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png" /></p>
 <p>プロキシ処理をに担う。</p>
-<p>リクエストを待ち受け、リスナー/フィルター/ルート/クラスター/エンドポイントを経て、宛先にロードバランシングする。</p>
+<p>各ワーカースレッドが独立してリクエストを待ち受ける。</p>
+<p>通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。</p>
 <p><code>--concurrency</code>オプションで並列実行数を設定できる。</p>
 <blockquote>
 <ul>
