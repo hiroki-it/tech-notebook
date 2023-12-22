@@ -1014,6 +1014,38 @@ service EndpointDiscoveryService {
 
 <br>
 
+## 01-04. スレッド
+
+### メインスレッド
+
+以下の処理を担う。
+
+- サーバー/コンテナの起動/停止
+- XDS-APIに関する処理
+- ランタイム
+- メモリバッファ上の統計情報のフラッシュ
+- Envoyのプロセスの様々な処理
+
+> - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
+> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+
+<br>
+
+### ワーカースレッド
+
+![envoy_thread.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
+
+プロキシ処理をに担う。
+
+リクエストを待ち受け、リスナー/フィルター/ルート/クラスター/エンドポイントを経て、宛先にロードバランシングする。
+
+`--concurrency`オプションで並列実行数を設定できる。
+
+> - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
+> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+
+<br>
+
 ## 02. ユースケース
 
 ### リバースプロキシのミドルウェアとして

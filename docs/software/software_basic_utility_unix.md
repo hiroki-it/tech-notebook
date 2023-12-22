@@ -686,6 +686,21 @@ $ diff -u foo.txt bar.txt
 
 <br>
 
+### リダイレクトの比較
+
+リダイレクトしたテキストを比較する。
+
+```bash
+$ diff <(echo 'test') <(echo 'tests')
+
+-test
++tests
+```
+
+> - https://tech-blog.rakus.co.jp/entry/20220905/diff
+
+<br>
+
 ## du
 
 ### duとは

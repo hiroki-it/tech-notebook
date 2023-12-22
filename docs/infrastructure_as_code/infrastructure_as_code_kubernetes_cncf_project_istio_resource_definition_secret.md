@@ -43,3 +43,15 @@ data:
 ```
 
 <br>
+
+## 02. istio-remote-secret
+
+### istio-remote-secretとは
+
+マルチClusterメッシュを採用する場合に必要である。
+
+プライマリClusterがリモートClusterのkube-apiserverをコールできるように、SSL証明書を持つ。
+
+> - https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/
+
+<br>

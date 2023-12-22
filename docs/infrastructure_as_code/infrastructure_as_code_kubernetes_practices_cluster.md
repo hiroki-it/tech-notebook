@@ -87,6 +87,12 @@ GitOpsを採用できないため、CIOpsになる。
 
 そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが `Ready`コンディションかどうかを確認しておく。
 
+#### ▼ 自動アップグレードを採用できるのであれば採用する
+
+一連のコマンドを自動化できるツール (例：AWS StepFunction、Fablic、など) を使用して、アップグレードの実行から動作確認を自動化する。
+
+> - https://www.slideshare.net/techblogyahoo/yahoo-japaniaaskubernetes-yjtc#17
+
 <br>
 
 ### コントロールプレーンNodeのアップグレード
@@ -111,6 +117,8 @@ GitOpsを採用できないため、CIOpsになる。
 > - https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
 
 #### ▼ ローリング方式
+
+記入中...
 
 <br>
 
