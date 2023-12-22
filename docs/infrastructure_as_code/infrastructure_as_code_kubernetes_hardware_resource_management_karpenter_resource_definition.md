@@ -273,7 +273,8 @@ spec:
   tags:
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
-    Name: foo-node-karpenter
+    # Karpenterが管理することがわかりやすいように、接尾辞は "karpenter" とする
+    Name: bar-cluster-foo-karpenter
     karpenter.sh/discovery: foo-cluster
 ```
 

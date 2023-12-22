@@ -1050,8 +1050,6 @@ Envoyはマルチスレッドでパケットを処理する。
 
 #### ▼ ワーカースレッドとは
 
-![envoy_thread.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
-
 プロキシ処理をに担う。
 
 各ワーカースレッドが独立してリクエストを待ち受ける。
@@ -1059,6 +1057,8 @@ Envoyはマルチスレッドでパケットを処理する。
 通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。
 
 `--concurrency`オプションで並列実行数を設定できる。
+
+![envoy_thread.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy

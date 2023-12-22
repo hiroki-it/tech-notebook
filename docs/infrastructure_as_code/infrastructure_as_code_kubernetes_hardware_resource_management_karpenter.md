@@ -33,6 +33,8 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
+この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にEC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
+
 なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
 
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)

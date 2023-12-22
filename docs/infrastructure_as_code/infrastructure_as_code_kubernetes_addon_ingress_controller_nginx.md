@@ -15,7 +15,7 @@ description: Nginx Ingressコントローラー＠Ingressコントローラー�
 
 ## 01. Nginx Ingressコントローラーの仕組み
 
-`L4`/`L7`ロードバランサーとして、インバウンド通信をロードバランシングする。
+`L4`/`L7`ロードバランサーとして、インバウンド通信を`L4`/`L7`ロードバランシングする。
 
 > - https://docs.nginx.com/nginx-ingress-controller/intro/how-nginx-ingress-controller-works/#the-ingress-controller-pod
 

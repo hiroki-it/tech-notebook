@@ -34,6 +34,26 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 <br>
 
+### Nodeをターゲットグループに登録/ドレイン
+
+#### ▼ 登録するする流れ
+
+AWS Load Balancerコントローラーは、以下の仕組みでターゲットグループに新しいNodeを登録する。
+
+1. 対象のClusterのサブネット内にEC2 Nodeが起動状態に移行すると、AWS Load Balancerコントローラーはそれを検知する。
+2. 検知したEC2 Nodeをターゲットグループに追加する。
+3. EC2 Nodeが正常になれば、Nodeにルーティングできるようになる。
+
+#### ▼ ドレインするする流れ
+
+AWS Load Balancerコントローラーは、以下の仕組みでターゲットグループからEC2 Nodeをドレインする。
+
+1. EC2 Nodeが停止状態に移行すると、AWS Load Balancerコントローラーはそれを検知する。
+2. 検知したEC2 Nodeをターゲットグループからドレインする。
+3. 停止状態移行中のEC2 Node以外のNodeにリクエストをロードバランシングする。
+
+<br>
+
 ### AWS Load Balancerコントローラーを使用しない場合
 
 もしAWS CLBを作成したい場合は、AWS Load Balancerコントローラーを使用しない。
@@ -374,7 +394,7 @@ metadata:
 spec:
   containers:
     - args:
-        # Cluster名を設定する
+        # AWS ALBでL7ロードバランシングするCluster名を設定する
         - "--cluster-name=foo-cluster"
         # Ingressに紐づけるIngressClassを設定する
         - "--ingress-class=alb"
