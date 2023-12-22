@@ -45,9 +45,7 @@ $ kubectl get events -n foo
 
 ### kube-schedulerだけでは足りない理由
 
-kube-schedulerは、既存のPodを退避させられない。
-
-そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。
+Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは現在のNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。
 
 他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
 

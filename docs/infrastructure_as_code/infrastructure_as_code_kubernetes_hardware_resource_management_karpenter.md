@@ -40,6 +40,7 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
+> - https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921
 
 <br>
 
