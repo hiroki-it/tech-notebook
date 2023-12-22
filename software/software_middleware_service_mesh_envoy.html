@@ -4323,6 +4323,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-04. スレッド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. スレッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      メインスレッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      ワーカースレッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       02. ユースケース
@@ -4333,7 +4366,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -4361,7 +4394,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルホスト外にあるマイクロサービスにプロキシする
     </span>
@@ -21613,6 +21646,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-04. スレッド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. スレッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      メインスレッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      ワーカースレッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       02. ユースケース
@@ -21623,7 +21689,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -21651,7 +21717,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルホスト外にあるマイクロサービスにプロキシする
     </span>
@@ -22639,8 +22705,37 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="01-04">01-04. スレッド<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
+<h3 id="_33">メインスレッド<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>以下の処理を担う。</p>
+<ul>
+<li>サーバー/コンテナの起動/停止</li>
+<li>XDS-APIに関する処理</li>
+<li>ランタイム</li>
+<li>メモリバッファ上の統計情報のフラッシュ</li>
+<li>Envoyのプロセスの様々な処理</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310">https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310</a></li>
+<li><a href="https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy">https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_34">ワーカースレッド<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p><img alt="envoy_thread.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png" /></p>
+<p>プロキシ処理をに担う。</p>
+<p>リクエストを待ち受け、リスナー/フィルター/ルート/クラスター/エンドポイントを経て、宛先にロードバランシングする。</p>
+<p><code>--concurrency</code>オプションで並列実行数を設定できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310">https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310</a></li>
+<li><a href="https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy">https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_33">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h3 id="_35">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <h4 id="ingress">▼ 外からインバウンド通信から待ち受ける (Ingressリスナー / インバウンドリスナー)<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。</p>
 <p>この時、Envoyは<code>http://localhost:&lt;ポート番号&gt;</code>で待ち受け、一方で外部が指定するURLも<code>http://localhost:&lt;ポート番号&gt;</code>である。</p>
@@ -22667,7 +22762,7 @@
 <li><a href="https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/">https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/</a></li>
 </ul>
 </blockquote>
-<h4 id="_34">▼ ローカルホスト外にあるマイクロサービスにプロキシする<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<h4 id="_36">▼ ローカルホスト外にあるマイクロサービスにプロキシする<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信をプロキシする</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
@@ -22726,7 +22821,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
   </span>
 
     

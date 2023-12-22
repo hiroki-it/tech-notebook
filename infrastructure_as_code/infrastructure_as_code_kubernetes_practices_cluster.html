@@ -13740,6 +13740,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自動アップグレードを採用できるのであれば採用する
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -13765,7 +13774,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ インプレース方式
     </span>
@@ -13774,7 +13783,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローリング方式
     </span>
@@ -13807,7 +13816,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ インプレース方式
     </span>
@@ -13816,7 +13825,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
     </span>
@@ -13825,7 +13834,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドなローリング方式
     </span>
@@ -13834,7 +13843,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブルー/グリーン方式 (マイグレーション方式)
     </span>
@@ -13848,7 +13857,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ツール別
     </span>
@@ -20927,6 +20936,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自動アップグレードを採用できるのであれば採用する
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20952,7 +20970,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ インプレース方式
     </span>
@@ -20961,7 +20979,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローリング方式
     </span>
@@ -20994,7 +21012,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ インプレース方式
     </span>
@@ -21003,7 +21021,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
     </span>
@@ -21012,7 +21030,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドなローリング方式
     </span>
@@ -21021,7 +21039,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブルー/グリーン方式 (マイグレーション方式)
     </span>
@@ -21035,7 +21053,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ツール別
     </span>
@@ -21178,6 +21196,13 @@
 <p>動作確認として、<code>Ready</code>コンディションと <code>Running</code>ステータスを <code>kubectl get pod</code>で確認する。</p>
 <p>また加えて、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
 <p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが <code>Ready</code>コンディションかどうかを確認しておく。</p>
+<h4 id="_5">▼ 自動アップグレードを採用できるのであれば採用する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>一連のコマンドを自動化できるツール (例：AWS StepFunction、Fablic、など) を使用して、アップグレードの実行から動作確認を自動化する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.slideshare.net/techblogyahoo/yahoo-japaniaaskubernetes-yjtc#17">https://www.slideshare.net/techblogyahoo/yahoo-japaniaaskubernetes-yjtc#17</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="node_2">コントロールプレーンNodeのアップグレード<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
 <h4 id="node_3">▼ コントロールプレーンNodeのアップグレードとは<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
@@ -21189,7 +21214,7 @@
 <li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ インプレース方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ インプレース方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンNodeのkube-apiserverのアップグレード時間がダウンタイムに相当する。</p>
 <p>ただし、コントロールプレーンNodeがマネージドなクラウドプロバイダーのいくつか (例：AWS) では、kube-apiserverでダウンタイムの発生しないアップグレードを手法を採用している。</p>
 <p>このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されている (ワーカーNodeではダウンタイムが発生してしまう) 。</p>
@@ -21198,7 +21223,8 @@
 <li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ ローリング方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ ローリング方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
 <h3 id="node_4">ワーカーNodeのアップグレード<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h3>
 <h4 id="node_5">▼ ワーカーNodeのアップグレードとは<a class="headerlink" href="#node_5" title="Permanent link">&para;</a></h4>
@@ -21243,7 +21269,7 @@
 <li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ インプレース方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ インプレース方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>既存のNodeグループ内のワーカーNodeをそのままアップグレードする。</p>
 <p>ワーカーNodeのアップグレード時間がそのままダウンタイムになるため、メンテナンス時間を設けられる場合にのみ使用できる。</p>
 <blockquote>
@@ -21261,7 +21287,7 @@
 <p>ワーカーNodeを再作成する。</p>
 </dd>
 </dl>
-<h4 id="_8">▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_live-upgrade" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png" /></p>
 <p>『サージ方式』『ライブ方式』ともいう。</p>
 <p>新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。</p>
@@ -21316,7 +21342,7 @@
 </li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ マネージドなローリング方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ マネージドなローリング方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー (例：AWS、Google Cloud) ではローリング方式をサポートしている。</p>
 <p>クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。</p>
 <p>例えばAWS EC2AutoScalingであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。</p>
@@ -21338,7 +21364,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 <li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ ブルー/グリーン方式 (マイグレーション方式)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ ブルー/グリーン方式 (マイグレーション方式)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_cluster-migration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png" /></p>
 <p>『マイグレーション方式』ともいう。</p>
 <p>新しいClusterを作成することにより、ワーカーNodeをアップグレードする。</p>
@@ -21367,7 +21393,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_11">ツール別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">ツール別<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="argocd">▼ ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
 <p>ArgoCDの場合、チャート (ArgoCDのコンテナイメージ) とCRDの両方のアップグレードする。</p>
 <p>ArgoCDをNamespacedスコープで分割している場合、カスタムリソースがCluster内に1つしかないCRDを共有しているため、CRDをアップグレードすると全サービスのカスタムリソースに影響が出る。</p>
@@ -21409,7 +21435,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
   </span>
 
     
