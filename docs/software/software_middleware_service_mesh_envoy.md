@@ -1018,7 +1018,11 @@ service EndpointDiscoveryService {
 
 ### マルチスレッドモデル
 
-Envoyのスレッドには、メインスレッドとワーカースレッドがある。
+Envoyはマルチスレッドでパケットを処理する。
+
+メモリ上の特定のプロセスで、メインスレッドとワーカースレッドを実行する。
+
+これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model
@@ -1050,7 +1054,9 @@ Envoyのスレッドには、メインスレッドとワーカースレッドが
 
 プロキシ処理をに担う。
 
-リクエストを待ち受け、リスナー/フィルター/ルート/クラスター/エンドポイントを経て、宛先にロードバランシングする。
+各ワーカースレッドが独立してリクエストを待ち受ける。
+
+通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。
 
 `--concurrency`オプションで並列実行数を設定できる。
 
