@@ -4335,7 +4335,7 @@
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-      メインスレッド
+      マルチスレッドモデル
     </span>
   </a>
   
@@ -4344,9 +4344,48 @@
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
+      メインスレッド (プライマリスレッド)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メインスレッド (プライマリスレッド)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メインスレッドとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
       ワーカースレッド
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ワーカースレッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ワーカースレッドとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4366,7 +4405,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -4394,7 +4433,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
+  <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルホスト外にあるマイクロサービスにプロキシする
     </span>
@@ -21658,7 +21697,7 @@
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-      メインスレッド
+      マルチスレッドモデル
     </span>
   </a>
   
@@ -21667,9 +21706,48 @@
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
+      メインスレッド (プライマリスレッド)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メインスレッド (プライマリスレッド)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メインスレッドとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
       ワーカースレッド
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ワーカースレッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ワーカースレッドとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -21689,7 +21767,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -21717,7 +21795,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
+  <a href="#_39" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルホスト外にあるマイクロサービスにプロキシする
     </span>
@@ -22706,14 +22784,24 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-04">01-04. スレッド<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
-<h3 id="_33">メインスレッド<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h3 id="_33">マルチスレッドモデル<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>Envoyのスレッドには、メインスレッドとワーカースレッドがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy">https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_34">メインスレッド (プライマリスレッド)<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<h4 id="_35">▼ メインスレッドとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p>以下の処理を担う。</p>
 <ul>
 <li>サーバー/コンテナの起動/停止</li>
 <li>XDS-APIに関する処理</li>
 <li>ランタイム</li>
 <li>メモリバッファ上の統計情報のフラッシュ</li>
-<li>Envoyのプロセスの様々な処理</li>
+<li>Envoyのプロセスの様々な処理 (ホットリロード、など)</li>
 </ul>
 <blockquote>
 <ul>
@@ -22722,7 +22810,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_34">ワーカースレッド<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<h3 id="_36">ワーカースレッド<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="_37">▼ ワーカースレッドとは<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p><img alt="envoy_thread.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png" /></p>
 <p>プロキシ処理をに担う。</p>
 <p>リクエストを待ち受け、リスナー/フィルター/ルート/クラスター/エンドポイントを経て、宛先にロードバランシングする。</p>
@@ -22735,7 +22824,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_35">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h3 id="_38">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <h4 id="ingress">▼ 外からインバウンド通信から待ち受ける (Ingressリスナー / インバウンドリスナー)<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。</p>
 <p>この時、Envoyは<code>http://localhost:&lt;ポート番号&gt;</code>で待ち受け、一方で外部が指定するURLも<code>http://localhost:&lt;ポート番号&gt;</code>である。</p>
@@ -22762,7 +22851,7 @@
 <li><a href="https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/">https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/</a></li>
 </ul>
 </blockquote>
-<h4 id="_36">▼ ローカルホスト外にあるマイクロサービスにプロキシする<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<h4 id="_39">▼ ローカルホスト外にあるマイクロサービスにプロキシする<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信をプロキシする</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
