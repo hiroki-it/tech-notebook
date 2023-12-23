@@ -4436,9 +4436,9 @@ data:
 
 ### .spec.maxUnavailable
 
-古いPodをNodeから退避させる時に、Nodeで削除できる古いPodの最大数を設定する。
+古いPodをNodeから退避させる時に、Nodeで退避できる古いPodの最大数を設定する。
 
-これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て削除してしまう問題が起こる。
+これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て退避してしまう問題が起こる。
 
 まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
@@ -4448,7 +4448,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # 古いPodをNodeから退避させる時に、古いPod1個のみを削除できる。
+  # 古いPodをNodeから退避させる時に、古いPod1個のみを退避できる。
   maxUnavailable: 1
 ```
 
@@ -4904,7 +4904,7 @@ data:
 
 Kubernetesの`v1.24`以降では、Secretが自動的に作成されないようになっている。
 
-`.metadata.annotation`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
+`.metadata.annotations`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
 
 このトークンには、失効期限がない。
 

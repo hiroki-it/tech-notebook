@@ -342,9 +342,7 @@ ClusterスコープなKubernetesリソースであるため、Namespaceは設定
 
 #### ▼ consolidationPolicy
 
-コストを考慮するかどうかを設定する。
-
-EC2 Nodeを削除できる状況では不要なEC2 Nodeを削除し、また削除できない状況ではEC2 Nodeのスペックをスケールインする。
+Node統合の条件を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -357,7 +355,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
-> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
+> - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 
 #### ▼ consolidateAfter
 
@@ -374,7 +372,7 @@ spec:
 ```
 
 > - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
-> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
+> - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 
 #### ▼ expireAfter
 
@@ -393,7 +391,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 
 <br>
 
