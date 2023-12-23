@@ -21847,8 +21847,7 @@
 <p><br></p>
 <h3 id="disruption">disruption<a class="headerlink" href="#disruption" title="Permanent link">&para;</a></h3>
 <h4 id="consolidationpolicy">▼ consolidationPolicy<a class="headerlink" href="#consolidationpolicy" title="Permanent link">&para;</a></h4>
-<p>コストを考慮するかどうかを設定する。</p>
-<p>EC2 Nodeを削除できる状況では不要なEC2 Nodeを削除し、また削除できない状況ではEC2 Nodeのスペックをスケールインする。</p>
+<p>Node統合の条件を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -21860,7 +21859,7 @@
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
 </ul>
 </blockquote>
 <h4 id="consolidateafter">▼ consolidateAfter<a class="headerlink" href="#consolidateafter" title="Permanent link">&para;</a></h4>
@@ -21876,7 +21875,7 @@
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/">https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/</a></li>
-<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
 </ul>
 </blockquote>
 <h4 id="expireafter">▼ expireAfter<a class="headerlink" href="#expireafter" title="Permanent link">&para;</a></h4>
@@ -21893,7 +21892,7 @@
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22341,7 +22340,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-23</span>
   </span>
 
     

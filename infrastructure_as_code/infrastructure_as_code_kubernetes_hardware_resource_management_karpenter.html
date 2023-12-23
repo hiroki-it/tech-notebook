@@ -14464,7 +14464,7 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スケールアウトの場合
+      ▼ スケールアウト/スケールアップの場合
     </span>
   </a>
   
@@ -14473,7 +14473,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スケールインの場合
+      ▼ スケールイン/スケールダウンの場合
     </span>
   </a>
   
@@ -21209,7 +21209,7 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スケールアウトの場合
+      ▼ スケールアウト/スケールアップの場合
     </span>
   </a>
   
@@ -21218,7 +21218,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スケールインの場合
+      ▼ スケールイン/スケールダウンの場合
     </span>
   </a>
   
@@ -21349,8 +21349,8 @@
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeをスケールアウトする。</p>
-<p>また反対に、EC2 Nodeをスケールインする。</p>
+<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeをスケールアウト/スケールアップする。</p>
+<p>また反対に、EC2 Nodeをスケールイン/スケールダウンする。</p>
 <p>Karpenterはバージョニングされてない独立した起動テンプレートを作成する。</p>
 <p>そのため、残骸として残らないように、その都度起動テンプレートを削除する。</p>
 <div class="highlight"><pre><span></span><code>...
@@ -21406,7 +21406,26 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ コスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ハードウェアリソースが過剰に余っている場合、より低いインスタンスタイプのNodeにスケールインする。</p>
+<p>より低コストになるようにEC2 Nodeを統合する。</p>
+<p>以下のような条件の場合に、統合を発動する。</p>
+<ul>
+<li>EC2 NodeにPodがおらず、これを削除できる</li>
+<li>Podが特定のEC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。</li>
+<li>現在のインスタンスタイプより低いインスタンスタイプにしても、問題なくPodを動かせる。</li>
+</ul>
+<p>反対に、以下のような条件の場合には統合しない。</p>
+<ul>
+<li>コントローラーが不明なPodがいる</li>
+<li>Podの退避を拒否するPodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。</li>
+<li>Podの<code>metadata.annotations</code>キー配下に<code>karpenter.sh/do-not-evict</code>キーがある。</li>
+<li>PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
+<li><a href="https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation">https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="node">削除対象のNode選定<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
@@ -21466,7 +21485,7 @@
 <h4 id="node_1">▼ マネージドNodeグループ (有無に関係ない)<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
 <p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートAPIを動的にコールする。</p>
-<p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
+<p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features">https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features</a></li>
@@ -21508,9 +21527,9 @@
 <li><a href="https://github.com/aws/karpenter/issues/1226">https://github.com/aws/karpenter/issues/1226</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ スケールアウトの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。</p>
-<p>Karpenterは、スケジューリングできないPod (<code>Pending</code>状態) が出現すると、スケールアウトを検討する。</p>
+<h4 id="_10">▼ スケールアウト/スケールアップの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウト/スケールアップを実行する。</p>
+<p>Karpenterは、スケジューリングできないPod (<code>Pending</code>状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -21536,7 +21555,7 @@
 <li><a href="https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382">https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ スケールインの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ スケールイン/スケールダウンの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能なNodeを選ぶ。</p>
 <blockquote>
 <ul>
@@ -21797,7 +21816,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-23</span>
   </span>
 
     
