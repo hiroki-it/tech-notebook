@@ -121,6 +121,11 @@ Karpenterを使用しない場合、クラウドプロバイダーのNode数は�
 
 Karpenterは、様々な情報に基づいて、Nodeをスケーリングするか否かを決定する。
 
+鳥の群れの動きをモデリングしたBoidsアルゴリズムに似たような方法で、スケーリング対象のNodeを選定する。
+
+> - https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation
+> - https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm
+
 #### ▼ Podのスケジューリングの可否
 
 kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (`Pending`状態) を検知し、Nodeのスケジューリングを検討する。
