@@ -213,6 +213,18 @@ DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス)
 
 <br>
 
+### SNAT処理
+
+Internet Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+
+一方で、宛先IPアドレスや宛先ポート番号は変換しない。
+
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
+
+> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
+
+<br>
+
 ## 06-02. NAT Gateway
 
 ### NAT Gatewayとは
@@ -236,7 +248,11 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 ### SNAT処理
 
-![nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-gateway_snat.png)
+NAT Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+
+一方で、宛先IPアドレスや宛先ポート番号は変換しない。
+
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 
