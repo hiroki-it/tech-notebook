@@ -196,11 +196,9 @@ S3、DynamoDBのみ
 
 <br>
 
-## 06. Internet Gateway、NAT Gateway
+## 06. Internet Gateway
 
-### Internet Gateway
-
-#### ▼ Internet Gatewayとは
+### Internet Gatewayとは
 
 DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス) をプライベートIPアドレス (VPC内のIPアドレス) に変換する。
 
@@ -208,16 +206,16 @@ DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス)
 
 つまり、VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。
 
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 <br>
 
-### NAT Gateway
+## 06-02. NAT Gateway
 
-#### ▼ NAT Gatewayとは
+### NAT Gatewayとは
 
 SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレス) をグローバルIPアドレス (VPC外のIPアドレス) に変換する。
 
@@ -229,10 +227,29 @@ SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレ�
 
 この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
 
-![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/InternetGatewayとNATGateway.png)
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+
+<br>
+
+### SNAT処理
+
+![nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-gateway_snat.png)
+
+> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
+
+<br>
+
+## 06-03. NAT EC2インスタンス
+
+### NAT EC2インスタンスとは
+
+専用のAMIから作成したEC2で、NAT処理 (SNAT処理のみで、DNAT処理は持たない) をもつ。
+
+> - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-nat-comparison.html
+> - https://zenn.dev/yoshinori_satoh/articles/aws-nat-pattern#nat%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9(ec2)
 
 <br>
 
