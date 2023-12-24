@@ -11458,6 +11458,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dnat" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNAT処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#snat" class="md-nav__link">
     <span class="md-ellipsis">
       SNAT処理
@@ -21422,6 +21431,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dnat" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNAT処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#snat" class="md-nav__link">
     <span class="md-ellipsis">
       SNAT処理
@@ -21928,21 +21946,31 @@
 <p><br></p>
 <h2 id="06-internet-gateway">06. Internet Gateway<a class="headerlink" href="#06-internet-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="internet-gateway">Internet Gatewayとは<a class="headerlink" href="#internet-gateway" title="Permanent link">&para;</a></h3>
-<p>DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス) をプライベートIPアドレス (VPC内のIPアドレス) に変換する。</p>
+<p>NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレスとプライベートIPアドレスを相互変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、<code>1</code>個のプライベートIPを紐付けられる。</p>
 <p>つまり、VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。</p>
 <p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
 <blockquote>
 <ul>
+<li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html</a></li>
 <li><a href="https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/">https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
-<p>Internet Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<h3 id="dnat">DNAT処理<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h3>
+<p>Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
-<p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/">https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
+<p>Internet GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
+<p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
@@ -21951,23 +21979,25 @@
 <p><br></p>
 <h2 id="06-02-nat-gateway">06-02. NAT Gateway<a class="headerlink" href="#06-02-nat-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="nat-gateway">NAT Gatewayとは<a class="headerlink" href="#nat-gateway" title="Permanent link">&para;</a></h3>
-<p>SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレス) をグローバルIPアドレス (VPC外のIPアドレス) に変換する。</p>
+<p>SNAT処理を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。</p>
+<p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、複数のプライベートIPを紐付けられる。</p>
+<p>この時のパブリックIPは、Elastic IPである。</p>
 <p>つまり、VPC内の複数のインスタンスからのリクエストを、<code>1</code>個のパブリックIPアドレスで送信する。</p>
 <p>そのため、送信元はこのパブリックIPアドレスになる。</p>
-<p>この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。</p>
 <p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics</a></li>
+<li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
 <li><a href="https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/">https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="snat_1">SNAT処理<a class="headerlink" href="#snat_1" title="Permanent link">&para;</a></h3>
-<p>NAT Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
-<p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
+<p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
