@@ -200,7 +200,7 @@ S3、DynamoDBのみ
 
 ### Internet Gatewayとは
 
-DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス) をプライベートIPアドレス (VPC内のIPアドレス) に変換する。
+NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレスとプライベートIPアドレスを相互変換する。
 
 `1`個のパブリックIPに対して、`1`個のプライベートIPを紐付けられる。
 
@@ -208,18 +208,29 @@ DNAT処理を実行し、グローバルIPアドレス (VPC外のIPアドレス)
 
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
+> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 > - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+> - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+
+<br>
+
+### DNAT処理
+
+Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
+
+一方で、宛先IPアドレスや宛先ポート番号は変換しない。
+
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 <br>
 
 ### SNAT処理
 
-Internet Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+Internet GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
-![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
+![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 
@@ -229,30 +240,33 @@ Internet Gatewayは、プライベートサブネットからリクエストを�
 
 ### NAT Gatewayとは
 
-SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレス) をグローバルIPアドレス (VPC外のIPアドレス) に変換する。
+SNAT処理を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。
+
+また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。
 
 `1`個のパブリックIPに対して、複数のプライベートIPを紐付けられる。
+
+この時のパブリックIPは、Elastic IPである。
 
 つまり、VPC内の複数のインスタンスからのリクエストを、`1`個のパブリックIPアドレスで送信する。
 
 そのため、送信元はこのパブリックIPアドレスになる。
 
-この時のパブリックIPとして、Elastic IPをNAT Gatewayに割り当てる必要がある。
-
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
+> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 <br>
 
 ### SNAT処理
 
-NAT Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
-![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
+![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 

@@ -130,9 +130,9 @@ NAT処理を実行できるルーターのこと。
 > - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
 > - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
 
-#### ▼ DNAT：Destination NAT
+#### ▼ DNAT処理：Destination NAT
 
-NATルーターの処理のうち、宛先IPアドレスを変換すること (`グローバルIPアドレス` ➡︎ `プライベートIPアドレス`、`プライベートIPアドレス` ➡︎ `プライベートIPアドレス`) 。
+NAT処理のうち、宛先IPアドレスを変換すること (`グローバルIPアドレス` ➡︎ `プライベートIPアドレス`、`プライベートIPアドレス` ➡︎ `プライベートIPアドレス`) 。
 
 NATルーター自体を複数のプライベートネットワークで共有することがある。
 
@@ -144,11 +144,11 @@ NATルーター自体を複数のプライベートネットワークで共有�
 
 NATルーターは、プライベートネットワークに入る時に、パケットのヘッダー情報における『宛先』のグローバルIPアドレスをプライベートIPアドレスに変換する。
 
-#### ▼ SNAT：Source NAT
+#### ▼ SNAT処理：Source NAT
 
 ![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プライベートからグローバルへのnat変換.png)
 
-NATルーターの処理のうち送信元IPアドレスを変換すること (`プライベートIPアドレス` ➡︎ `グローバルIPアドレス`、`プライベートIPアドレス` ➡︎ `プライベートIPアドレス`) 。
+NAT処理のうち送信元IPアドレスを変換すること (`プライベートIPアドレス` ➡︎ `グローバルIPアドレス`、`プライベートIPアドレス` ➡︎ `プライベートIPアドレス`) 。
 
 NATルーター自体を複数のプライベートネットワークで共有することがある。
 
