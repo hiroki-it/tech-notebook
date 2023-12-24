@@ -200,7 +200,7 @@ S3、DynamoDBのみ
 
 ### Internet Gatewayとは
 
-NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレスとプライベートIPアドレスを相互変換する。
+NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (VPC外のIPアドレス) とプライベートIPアドレス (VPC内のIPアドレス) を相互変換する。
 
 `1`個のパブリックIPに対して、`1`個のプライベートIPを紐付けられる。
 
@@ -218,6 +218,8 @@ NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレスとプライ
 
 Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
 
+NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT GatewayのElastic IPアドレスに変換する。
+
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
@@ -226,7 +228,7 @@ Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、
 
 ### SNAT処理
 
-Internet GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+Internet GatewayのSNAT処理では、VPC内からリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
@@ -240,7 +242,7 @@ Internet GatewayのSNAT処理では、プライベートサブネットからリ
 
 ### NAT Gatewayとは
 
-SNAT処理を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。
+SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。
 
 また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。
 
@@ -262,7 +264,9 @@ SNAT処理を実行し、受信したリクエストの送信元IPアドレス�
 
 ### SNAT処理
 
-NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
+
+また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 

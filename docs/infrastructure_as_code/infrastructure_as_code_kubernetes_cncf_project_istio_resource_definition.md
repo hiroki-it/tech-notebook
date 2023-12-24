@@ -1677,11 +1677,56 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   namespace: istio-system
-  name: foo-virtual-service
+  name: foo-ingress-virtual-service
 spec:
   gateways:
-    - foo-gateway
+    - foo-ingressgateway
 ```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-egress-virtual-service
+spec:
+  hosts:
+    - example.com
+  gateways:
+    # PodからIstio EgressGatewayへの通信で使う
+    - mesh
+    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+    - istio-egressgateway
+  tls:
+    # PodからIstio EgressGatewayへの通信で使う
+    # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    - match:
+        - gateways:
+            - mesh
+          port: 443
+          sniHosts:
+            - example.com
+      route:
+        - destination:
+            host: istio-egressgateway.istio-system.svc.cluster.local
+            subset: mitm
+            port:
+              number: 443
+  http:
+    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+    # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
+    - match:
+        - gateways:
+            - istio-egressgateway
+          port: 443
+      route:
+        - destination:
+            host: example.com
+            port:
+              number: 443
+```
+
+> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 
 #### ▼ mesh
 
