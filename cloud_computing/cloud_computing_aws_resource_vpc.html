@@ -11457,6 +11457,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#snat" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNAT処理
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -11482,7 +11491,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#snat" class="md-nav__link">
+  <a href="#snat_1" class="md-nav__link">
     <span class="md-ellipsis">
       SNAT処理
     </span>
@@ -21412,6 +21421,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#snat" class="md-nav__link">
+    <span class="md-ellipsis">
+      SNAT処理
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21437,7 +21455,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#snat" class="md-nav__link">
+  <a href="#snat_1" class="md-nav__link">
     <span class="md-ellipsis">
       SNAT処理
     </span>
@@ -21921,6 +21939,16 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
+<p>Internet Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
+<p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="06-02-nat-gateway">06-02. NAT Gateway<a class="headerlink" href="#06-02-nat-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="nat-gateway">NAT Gatewayとは<a class="headerlink" href="#nat-gateway" title="Permanent link">&para;</a></h3>
 <p>SNAT処理を実行し、プライベートIPアドレス (VPC内のIPアドレス) をグローバルIPアドレス (VPC外のIPアドレス) に変換する。</p>
@@ -21936,8 +21964,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
-<p><img alt="nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-gateway_snat.png" /></p>
+<h3 id="snat_1">SNAT処理<a class="headerlink" href="#snat_1" title="Permanent link">&para;</a></h3>
+<p>NAT Gatewayは、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
+<p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
