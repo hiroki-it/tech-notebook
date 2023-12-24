@@ -21946,7 +21946,7 @@
 <p><br></p>
 <h2 id="06-internet-gateway">06. Internet Gateway<a class="headerlink" href="#06-internet-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="internet-gateway">Internet Gatewayとは<a class="headerlink" href="#internet-gateway" title="Permanent link">&para;</a></h3>
-<p>NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレスとプライベートIPアドレスを相互変換する。</p>
+<p>NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (VPC外のIPアドレス) とプライベートIPアドレス (VPC内のIPアドレス) を相互変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、<code>1</code>個のプライベートIPを紐付けられる。</p>
 <p>つまり、VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。</p>
 <p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
@@ -21960,6 +21960,7 @@
 <p><br></p>
 <h3 id="dnat">DNAT処理<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h3>
 <p>Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
+<p>NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT GatewayのElastic IPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <blockquote>
 <ul>
@@ -21968,7 +21969,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
-<p>Internet GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>Internet GatewayのSNAT処理では、VPC内からリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
@@ -21979,7 +21980,7 @@
 <p><br></p>
 <h2 id="06-02-nat-gateway">06-02. NAT Gateway<a class="headerlink" href="#06-02-nat-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="nat-gateway">NAT Gatewayとは<a class="headerlink" href="#nat-gateway" title="Permanent link">&para;</a></h3>
-<p>SNAT処理を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。</p>
+<p>SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。</p>
 <p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、複数のプライベートIPを紐付けられる。</p>
 <p>この時のパブリックIPは、Elastic IPである。</p>
@@ -21995,7 +21996,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="snat_1">SNAT処理<a class="headerlink" href="#snat_1" title="Permanent link">&para;</a></h3>
-<p>NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
+<p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
