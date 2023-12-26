@@ -21352,12 +21352,15 @@
 </blockquote>
 <h4 id="pod">▼ Podのバインド<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。</p>
-<p>cluster-autoscalerであれば、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。</p>
+<p>kube-schedulerの代わりに、KarpenterがNodeを選定しているため、Podのスケジューリングが早い。</p>
+<p>一方で、cluster-autoscalerであれば、Podをバインドしない。</p>
+<p>cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/threat-model/">https://karpenter.sh/preview/reference/threat-model/</a></li>
 <li><a href="https://sreake.com/blog/learn-about-karpenter/">https://sreake.com/blog/learn-about-karpenter/</a></li>
 <li><a href="https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372">https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372</a></li>
+<li><a href="https://kubesandclouds.com/2022-01-04-karpenter/">https://kubesandclouds.com/2022-01-04-karpenter/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
