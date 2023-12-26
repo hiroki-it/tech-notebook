@@ -217,22 +217,37 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 <br>
 
-## 02. サービスメッシュ外へのリクエスト送信
+## 02-02. サービスメッシュ外へのリクエスト送信
 
-### 通信パターン
+### 安全な通信パターン
 
 #### ▼ 任意の外部システムに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカー) を経由して、任意の外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーとIstio EgressGatewayの両方) を経由して、任意の外部システムにリクエストを送信できるようにする。
 
 外部システムは識別できない。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
 #### ▼ 登録した外部システムに送信できるようにする
 
-サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカー、Istio EgressGateway) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーとIstio EgressGatewayの両方) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。
+
+外部システムを識別できる。
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
+> - https://istio.io/v1.14/blog/2019/egress-performance/
+
+<br>
+
+### 安全ではない通信パターン
+
+#### ▼ 登録した外部システムに送信できるようにする
+
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカーのみ) を経由して、任意の外部システムにリクエストを送信できるようにする。
+
+外部システムは識別できない。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
 > - https://istio.io/v1.14/blog/2019/egress-performance/
@@ -246,7 +261,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
  <br>
 
-### 外部システムの登録
+### 外部システムの種類
 
 #### ▼ `PassthroughCluster`
 
