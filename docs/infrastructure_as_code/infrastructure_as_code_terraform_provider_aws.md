@@ -271,7 +271,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 APIの再デプロイのトリガーとして、`redeployment`パラメーターに`body`パラメーターのハッシュ値を渡すようにする。
 
-これにより、インポート元の`.yaml`ファイルに差分があった場合、Terraformが`redeployment`パラメーターの値の変化を認識できるようになり、再デプロイを実行できる。
+これにより、インポート元の`.yaml`ファイルに差分があった場合、Terraformが`redeployment`パラメーターの値の変化を識別できるようになり、再デプロイを実行できる。
 
 <br>
 

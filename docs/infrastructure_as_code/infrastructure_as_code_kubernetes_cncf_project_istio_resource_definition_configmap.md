@@ -151,11 +151,11 @@ data:
 
 #### ▼ outboundTrafficPolicyとは
 
-メッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
+サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
 #### ▼ ALLOW_ANY
 
-メッシュ外へのリクエストの宛先を、デフォルトで`PassthroughCluster`として扱う。
+サービスメッシュ外へのリクエストの宛先を、デフォルトで`PassthroughCluster`として扱う。
 
 ```yaml
 apiVersion: v1
@@ -174,7 +174,7 @@ data:
 
 #### ▼ ALLOW_ANY
 
-メッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster`として扱う。
+サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster`として扱う。
 
 `PassthroughCluster`として扱いたい宛先は、ServiceEntryに設定する。
 

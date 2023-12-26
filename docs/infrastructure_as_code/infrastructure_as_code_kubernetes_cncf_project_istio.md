@@ -86,7 +86,7 @@ waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 アプリコンテナのPod
 ```
 
-メッシュ外へのリクエストの経路は以下の通りである。
+サービスメッシュ外へのリクエストの経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -217,19 +217,48 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 <br>
 
-### メッシュ外へのリクエスト
+## 02. サービスメッシュ外へのリクエスト送信
+
+### 通信パターン
+
+#### ▼ 任意の外部システムに送信できるようにする
+
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカー) を経由して、任意の外部システムにリクエストを送信できるようにする。
+
+外部システムは識別できない。
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - https://istio.io/v1.14/blog/2019/egress-performance/
+
+#### ▼ 登録した外部システムに送信できるようにする
+
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナ (マイクロサービスのサイドカー、Istio EgressGateway) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - https://istio.io/v1.14/blog/2019/egress-performance/
+
+#### ▼ `istio-proxy`コンテナを経由せずに送信できるようにする
+
+サービスメッシュ内のマイクロサービスから、`istio-proxy`コンテナを経由せずに、外部システムにリクエストを送信できるようにする。
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - https://istio.io/v1.14/blog/2019/egress-performance/
+
+ <br>
+
+### 外部システムの登録
 
 #### ▼ `PassthroughCluster`
 
 IPアドレスを指定した送信できる宛先のこと。
 
-Istio `v1.3`以降で、デフォルトで全てのメッシュ外へのリクエストのポリシーが`ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
+Istio `v1.3`以降で、デフォルトで全てのサービスメッシュ外へのリクエストのポリシーが`ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
 
-メッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。
+サービスメッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。
 
-そのため、メッシュ外へのリクエストは`PassthroughCluster`に属する。
+そのため、サービスメッシュ外へのリクエストは`PassthroughCluster`に属する。
 
-注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信が`BlackHoleCluster`になってしまう
+注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が`BlackHoleCluster`になってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
@@ -239,7 +268,7 @@ Istio `v1.3`以降で、デフォルトで全てのメッシュ外へのリク�
 
 IPアドレスを指定して送信できない宛先のこと。
 
-基本的に、メッシュ外へのリクエストは失敗し、`502`ステータスになる。
+基本的に、サービスメッシュ外へのリクエストは失敗し、`502`ステータスになる。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 
