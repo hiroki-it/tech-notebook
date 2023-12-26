@@ -46,11 +46,16 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。
 
-cluster-autoscalerであれば、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。
+kube-schedulerの代わりに、KarpenterがNodeを選定しているため、Podのスケジューリングが早い。
+
+一方で、cluster-autoscalerであれば、Podをバインドしない。
+
+cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。
 
 > - https://karpenter.sh/preview/reference/threat-model/
 > - https://sreake.com/blog/learn-about-karpenter/
 > - https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372
+> - https://kubesandclouds.com/2022-01-04-karpenter/
 
 <br>
 
