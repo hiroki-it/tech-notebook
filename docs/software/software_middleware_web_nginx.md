@@ -110,7 +110,7 @@ http {
             set $tmp $http_x_request_id;
         }
 
-        access_log logs/access1.log  main;
+        access_log logs/access.log  main;
 
         location / {
             proxy_pass http://127.0.0.2:8080/server;
@@ -141,7 +141,7 @@ http {
             set $tmp $http_x_request_id;
         }
 
-        access_log logs/access1.log  main;
+        access_log logs/access.log  main;
 
         location = /server {
             echo "This is server side";

@@ -562,13 +562,14 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 ### kube-schedulerとは
 
-Nodeが複数ある場合、NodeとPodのスペックを基に、Podをスケジューリングさせる必要があるNodeを判定する。
+Nodeが複数ある場合、NodeとPodのスペックを基に、PodをスケジューリングさせるべきNodeを選定する。
 
-なお、kube-schedulerはPodを再スケジューリングできず、deschedulerを使用する必要がある。
-
-> - https://thinkit.co.jp/article/17453
+なお、kube-schedulerは一度スケジューリングしたPodを再スケジューリングできず、deschedulerを使用する必要がある。
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler.png)
+
+> - https://thinkit.co.jp/article/17453
+> - https://discuss.kubernetes.io/t/rescheduling-pod-after-scale-up/18967/7
 
 <br>
 

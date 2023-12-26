@@ -50,6 +50,7 @@ cluster-autoscalerであれば、kube-schedulerがNode選定処理に基づい�
 
 > - https://karpenter.sh/preview/reference/threat-model/
 > - https://sreake.com/blog/learn-about-karpenter/
+> - https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372
 
 <br>
 
