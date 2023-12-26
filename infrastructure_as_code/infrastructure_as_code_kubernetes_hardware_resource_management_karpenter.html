@@ -14218,6 +14218,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Podのバインド
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -14285,7 +14294,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#pod_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Podのスケジューリングの可否
     </span>
@@ -20963,6 +20972,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Podのバインド
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21030,7 +21048,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#pod_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Podのスケジューリングの可否
     </span>
@@ -21332,6 +21350,15 @@
 <li><a href="https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921">https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921</a></li>
 </ul>
 </blockquote>
+<h4 id="pod">▼ Podのバインド<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。</p>
+<p>cluster-autoscalerであれば、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/reference/threat-model/">https://karpenter.sh/preview/reference/threat-model/</a></li>
+<li><a href="https://sreake.com/blog/learn-about-karpenter/">https://sreake.com/blog/learn-about-karpenter/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="disruption-controller">disruption-controller<a class="headerlink" href="#disruption-controller" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -21403,7 +21430,7 @@
 <li><a href="https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm">https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm</a></li>
 </ul>
 </blockquote>
-<h4 id="pod">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<h4 id="pod_1">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
 <p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code>状態) を検知し、Nodeのスケジューリングを検討する。</p>
 <p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
 <blockquote>
@@ -21823,7 +21850,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-26</span>
   </span>
 
     
