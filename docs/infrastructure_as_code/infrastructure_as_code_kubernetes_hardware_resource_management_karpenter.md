@@ -42,6 +42,15 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 > - https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921
 
+#### ▼ Podのバインド
+
+Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。
+
+cluster-autoscalerであれば、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。
+
+> - https://karpenter.sh/preview/reference/threat-model/
+> - https://sreake.com/blog/learn-about-karpenter/
+
 <br>
 
 ### disruption-controller
