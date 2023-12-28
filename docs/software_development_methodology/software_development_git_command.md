@@ -1278,7 +1278,7 @@ $ git filter-branch --force --env-filter '
     fi
 
     # GIT_COMMITTER_NAMEの書き換え
-    if [ "$GIT_COMMITTER_NAME"="" ];
+    if [ "$GIT_COMMITTER_NAME"="<変更前のコミッター名>" ];
     then
       GIT_COMMITTER_NAME="<変更後のコミッター名>";
     fi

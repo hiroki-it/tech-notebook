@@ -413,8 +413,7 @@ Envoyで、起動時に読み込まれる設定を取得する。
 ```yaml
 $ istioctl proxy-config bootstrap foo-pod \
 -n foo-namespace \
--o yaml \
-| yq
+-o yaml | yq
 ---
 bootstrap:
   admin:
