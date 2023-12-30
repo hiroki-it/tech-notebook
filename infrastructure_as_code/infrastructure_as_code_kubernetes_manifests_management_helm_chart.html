@@ -21994,12 +21994,12 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p>サブチャートには、<code>values</code>ファイルで変数を渡せる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 親チャートのvaluesファイル</span>
 <span class="nt">foo</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="c1"># fooサブチャートのvaluesファイルにある.replicasキーに値を渡す。</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
 <span class="nt">bar</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="c1"># barサブチャートのvaluesファイルにある.replicasキーに値を渡す。</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
@@ -22143,7 +22143,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p>CRDはCluster内に<code>1</code>個あれば十分であるが、Clusterに複数のHelmリリースをインストールする場合、<code>meta.helm.sh</code>キーでお互いがコンフリクトを起こしてしまう。</p>
 <p>そのため、CRDのみHelmの管理外に置くという必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">crds</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">install</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 </code></pre></div>
 <h4 id="fullnameoverride">▼ fullnameOverride<a class="headerlink" href="#fullnameoverride" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
@@ -22182,7 +22182,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 </code></pre></div>
 <h4 id="ingressenabled">▼ ingress.enabled<a class="headerlink" href="#ingressenabled" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p>Ingressの作成を有効化する。</p>
 <h4 id="ingresshosts">▼ ingress.hosts<a class="headerlink" href="#ingresshosts" title="Permanent link">&para;</a></h4>
@@ -22215,7 +22215,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="podsecuritycontext">▼ podSecurityContext<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h4>
 <p>チャート内のDeploymentの<code>.spec.template.spec.securityContext</code>キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">securityContext</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 </code></pre></div>
 <h4 id="replicacount">▼ replicaCount<a class="headerlink" href="#replicacount" title="Permanent link">&para;</a></h4>
 <p>チャート内のDeploymentの<code>.spec.replicas</code>キーに値を設定する。</p>
@@ -22236,7 +22236,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="serviceaccountcreate">▼ serviceAccount.create<a class="headerlink" href="#serviceaccountcreate" title="Permanent link">&para;</a></h4>
 <p>ServiceAccountの作成を有効化する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">serviceAccount</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="serviceaccountannotations">▼ serviceAccount.annotations<a class="headerlink" href="#serviceaccountannotations" title="Permanent link">&para;</a></h4>
 <p>チャート内のServiceAccountの<code>.metadata.annotations</code>オプションに値を設定する。</p>
@@ -22282,7 +22282,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
   </span>
 
     

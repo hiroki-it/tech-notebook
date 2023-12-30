@@ -21481,7 +21481,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">&lt;component名&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">      </span><span class="nt">k8s</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># HorizontalPodAutoscaler</span>
 <span class="w">        </span><span class="nt">hpaSpec</span><span class="p">:</span>
@@ -21516,7 +21516,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">base</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="cni">▼ cni<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h4>
 <p>istio-cniコンポーネントのオプションを設定する。</p>
@@ -21533,7 +21533,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cni</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
 </code></pre></div>
 <h4 id="egressgateways">▼ egressGateways<a class="headerlink" href="#egressgateways" title="Permanent link">&para;</a></h4>
@@ -21548,7 +21548,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">egressGateways</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="ingressgateways">▼ ingressGateways<a class="headerlink" href="#ingressgateways" title="Permanent link">&para;</a></h4>
 <p>ingressGatewaysコンポーネントのオプションを設定する。</p>
@@ -21562,7 +21562,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ingressGateways</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p><code>.spec.ingressGateways.k8s</code>キーでIstio IngressGatewayを設定できるが、これは非推奨である。</p>
 <blockquote>
@@ -21579,7 +21579,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ingressGateways</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">        </span><span class="nt">k8s</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">service</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">ports</span><span class="p">:</span>
@@ -21618,7 +21618,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">allocateLoadBalancerNodePorts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">allocateLoadBalancerNodePorts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
 <span class="w">  </span><span class="nt">clusterIPs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
@@ -21668,7 +21668,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istiodRemote</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 </code></pre></div>
 <h4 id="pilot">▼ pilot<a class="headerlink" href="#pilot" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -21684,7 +21684,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">pilot</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specdefaultrevision">.spec.defaultRevision<a class="headerlink" href="#specdefaultrevision" title="Permanent link">&para;</a></h3>
@@ -21700,7 +21700,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">defaultRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">defaultRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechub">.spec.hub<a class="headerlink" href="#spechub" title="Permanent link">&para;</a></h3>
@@ -21805,7 +21805,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">base</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enableCRDTemplates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">enableCRDTemplates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 <span class="w">      </span><span class="nt">validationURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
 <h4 id="gatewaysistio-egressgateway">▼ gateways.istio-egressgateway<a class="headerlink" href="#gatewaysistio-egressgateway" title="Permanent link">&para;</a></h4>
@@ -21821,7 +21821,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">      </span><span class="c1"># Istio EgressGateway</span>
 <span class="w">      </span><span class="nt">istio-egressgateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">        </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway</span>
 <span class="w">        </span><span class="nt">secretVolumes</span><span class="p">:</span>
@@ -21846,8 +21846,8 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">      </span><span class="nt">istio-ingressgateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">        </span><span class="c1"># IstioOperatorをroot権限の実行ユーザーを使用する</span>
-<span class="w">        </span><span class="nt">runAsRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">        </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">runAsRoot</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">        </span><span class="nt">secretVolumes</span><span class="p">:</span>
@@ -21868,7 +21868,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">pilot</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">      </span><span class="nt">autoscaleMin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">autoscaleMax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">      </span><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -21879,11 +21879,11 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">        </span><span class="nt">targetAverageUtilization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">      </span><span class="nt">keepaliveMaxServerConnectionAge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
-<span class="w">      </span><span class="nt">enableProtocolSniffingForOutbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">enableProtocolSniffingForInbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">enableProtocolSniffingForOutbound</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">enableProtocolSniffingForInbound</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">      </span><span class="nt">deploymentLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">podLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">configMap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">configMap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="proxy_init">▼ proxy_init<a class="headerlink" href="#proxy_init" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
@@ -21946,7 +21946,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
   </span>
 
     

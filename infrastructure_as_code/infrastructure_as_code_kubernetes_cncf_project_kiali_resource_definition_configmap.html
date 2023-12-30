@@ -20839,7 +20839,7 @@
 <span class="w">    </span><span class="no">ingress:</span>
 <span class="w">      </span><span class="no">additional_labels: {}</span>
 <span class="w">      </span><span class="no">class_name: nginx</span>
-<span class="w">      </span><span class="no">enabled: false</span>
+<span class="w">      </span><span class="no">enabled: &quot;false&quot;</span>
 <span class="w">      </span><span class="no">override_yaml:</span>
 <span class="w">        </span><span class="no">metadata: {}</span>
 <span class="w">    </span><span class="no">instance_name: kiali</span>
@@ -20868,7 +20868,7 @@
 <span class="w">    </span><span class="no">service_type: &quot;&quot;</span>
 <span class="w">    </span><span class="no">tolerations: []</span>
 <span class="w">    </span><span class="no">version_label: v1.60.0</span>
-<span class="w">    </span><span class="no">view_only_mode: true</span>
+<span class="w">    </span><span class="no">view_only_mode: &quot;true&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="external_services">external_services<a class="headerlink" href="#external_services" title="Permanent link">&para;</a></h3>
@@ -20884,8 +20884,8 @@
 <span class="w">      </span><span class="no">custom_dashboards:</span>
 <span class="w">        </span><span class="no"># Kialiの性能が悪い場合は、自動検出を無効化する。</span>
 <span class="w">        </span><span class="no"># https://kiali.io/docs/faq/general/#why-is-the-workload-or-application-detail-page-so-slow-or-not-responding</span>
-<span class="w">        </span><span class="no">discovery_enabled: false</span>
-<span class="w">        </span><span class="no">enabled: true</span>
+<span class="w">        </span><span class="no">discovery_enabled: &quot;false&quot;</span>
+<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
 <span class="w">        </span><span class="no">prometheus:</span>
 <span class="w">          </span><span class="no"># PrometheusのServiceの宛先情報を設定する。</span>
 <span class="w">          </span><span class="no">url: http://foo-prometheus.foo-namespace:9090</span>
@@ -20905,7 +20905,7 @@
 <span class="w">            </span><span class="no">variables:</span>
 <span class="w">              </span><span class="no">namespace: var-namespace</span>
 <span class="w">              </span><span class="no">workload: var-workload</span>
-<span class="w">        </span><span class="no">enabled: true</span>
+<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
 <span class="w">        </span><span class="no"># GrafanaのServiceの宛先情報を設定する。</span>
 <span class="w">        </span><span class="no">in_cluster_url: http://foo-grafana.foo-namespace</span>
 <span class="w">        </span><span class="no"># GrafanaダッシュボードのURLを設定する。</span>
@@ -20920,12 +20920,12 @@
 <span class="w">              </span><span class="no">namespace: istio-ingress</span>
 <span class="w">          </span><span class="no"># Masthead indicatorを表示するかどうかを設定する。</span>
 <span class="w">          </span><span class="no"># https://kiali.io/docs/features/security/#masthead-indicator</span>
-<span class="w">          </span><span class="no">enabled: true</span>
+<span class="w">          </span><span class="no">enabled: &quot;true&quot;</span>
 <span class="w">        </span><span class="no"># Istioが使用しているConfigMap名</span>
 <span class="w">        </span><span class="no">config_map_name: istio-&lt;リビジョン番号&gt;</span>
 <span class="w">        </span><span class="no">istio_identity_domain: svc.cluster.local</span>
 <span class="w">        </span><span class="no">istio_sidecar_annotation: sidecar.istio.io/status</span>
-<span class="w">        </span><span class="no">istio_status_enabled: true</span>
+<span class="w">        </span><span class="no">istio_status_enabled: &quot;true&quot;</span>
 <span class="w">        </span><span class="no">root_namespace: istio-system</span>
 <span class="w">        </span><span class="no"># サービスメッシュ全体のヘルスチェックのため、IstioのService名を設定する。</span>
 <span class="w">        </span><span class="no">url_service_version: http://istiod-&lt;リビジョン番号&gt;:15014/version</span>
@@ -20934,7 +20934,7 @@
 <span class="w">        </span><span class="no"># PrometheusのServiceの宛先情報を設定する。</span>
 <span class="w">        </span><span class="no">url: http://foo-prometheus.foo-namespace:9090</span>
 <span class="w">      </span><span class="no">tracing:</span>
-<span class="w">        </span><span class="no">enabled: false</span>
+<span class="w">        </span><span class="no">enabled: &quot;false&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="identity">identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h3>
@@ -20974,12 +20974,12 @@
 <span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">kiali_feature_flags:</span>
 <span class="w">      </span><span class="no">certificates_information_indicators:</span>
-<span class="w">        </span><span class="no">enabled: true</span>
+<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
 <span class="w">        </span><span class="no">secrets:</span>
 <span class="w">          </span><span class="no">- cacerts</span>
 <span class="w">          </span><span class="no">- istio-ca-secret</span>
 <span class="w">      </span><span class="no">clustering:</span>
-<span class="w">        </span><span class="no">enabled: true</span>
+<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
 <span class="w">      </span><span class="no">disabled_features: []</span>
 <span class="w">      </span><span class="no">validations:</span>
 <span class="w">        </span><span class="no">ignore:</span>
@@ -21016,7 +21016,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">server:</span>
-<span class="w">      </span><span class="no">metrics_enabled: true</span>
+<span class="w">      </span><span class="no">metrics_enabled: &quot;true&quot;</span>
 <span class="w">      </span><span class="no">metrics_port: 9090</span>
 <span class="w">      </span><span class="no">port: 20001</span>
 <span class="w">      </span><span class="no">web_root: /kiali</span>
@@ -21048,7 +21048,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
   </span>
 
     
