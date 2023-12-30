@@ -5408,9 +5408,13 @@ spec:
   ports:
     - name: http-foo
       protocol: TCP
-      nodePort: 30000 # 指定しなければ、コントロールプレーンNodeがランダムで決める。
-      port: 8080 # Serviceが待ち受けるポート番号
-      targetPort: 8080 # ルーティング先のポート番号 (containerPort名でもよい)
+      # Nodeが待ち受けるポート番号
+      # 指定しなければ、コントロールプレーンNodeがランダムで決める。
+      nodePort: 30000
+      # Serviceが待ち受けるポート番号
+      port: 8080
+      # ルーティング先のポート番号 (containerPort名でもよい)
+      targetPort: 8080
   selector:
     app.kubernetes.io/name: foo-pod
 ```
