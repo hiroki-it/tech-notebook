@@ -4363,9 +4363,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 2&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &gt;
+      ▼ &gt;|
     </span>
   </a>
   
@@ -4375,15 +4384,6 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ &gt;&gt;
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ &gt;|
     </span>
   </a>
   
@@ -4410,7 +4410,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       パイプラインとは
     </span>
@@ -4419,7 +4419,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       標準入力に対する入力例
     </span>
@@ -21108,9 +21108,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 2&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &gt;
+      ▼ &gt;|
     </span>
   </a>
   
@@ -21120,15 +21129,6 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ &gt;&gt;
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ &gt;|
     </span>
   </a>
   
@@ -21155,7 +21155,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       パイプラインとは
     </span>
@@ -21164,7 +21164,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       標準入力に対する入力例
     </span>
@@ -21436,28 +21436,22 @@ Hello<span class="w"> </span>World
 </code></pre></div>
 <p><br></p>
 <h3 id="_10">ファイルに対するリダイレクト例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ <code>&gt;</code><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="2">▼ <code>2&gt;</code><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p>リダイレクト前に<code>stdout.txt</code>ファイルを新しく作成し、<code>echo</code>コマンドの標準出力をこれにリダイレクトする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>stdout.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
-<p>リダイレクト前に<code>stderr.txt</code>ファイルを新しく作成し、lsプロセスの標準エラー出力をこれにリダイレクトする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>foo<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>stderr.txt
-
-$<span class="w"> </span>cat<span class="w"> </span>stderr.txt
-ls:<span class="w"> </span>cannot<span class="w"> </span>access<span class="w"> </span>foo:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+<h4 id="_11">▼ <code>&gt;|</code><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>リダイレクト前に<code>stdout.txt</code>ファイルを新しく作成し、<code>echo</code>コマンドの標準出力をこれにリダイレクトする。</p>
+<p>また、すでにファイルが存在している場合は、ファイルを上書き (再作成) する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>stdout.txt
 </code></pre></div>
 <h4 id="_12">▼ <code>&gt;&gt;</code><a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><code>echo</code>コマンドの標準出力を既存の<code>stdout.txt</code>ファイルにリダイレクトし、加えて追記する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
-<h4 id="_13">▼ <code>&gt;|</code><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>リダイレクト前に<code>stdout.txt</code>ファイルを新しく作成し、<code>echo</code>コマンドの標準出力をこれにリダイレクトする。</p>
-<p>また、すでにファイルが存在している場合は、ファイルを上書き (再作成) する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>stdout.txt
-</code></pre></div>
 <p><br></p>
 <h2 id="02-03">02-03. パイプライン<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
-<h3 id="_14">パイプラインとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_13">パイプラインとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>『<code>|</code>』の縦棒記号のこと。特定のプロセスの標準出力/標準エラー出力を他のプロセスの標準入力に繋げる。</p>
 <p><img alt="pipeline" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline.png" /></p>
 <p>シェルは、プロセスの処理結果をパイプラインに出力する。</p>
@@ -21469,7 +21463,7 @@ ls:<span class="w"> </span>cannot<span class="w"> </span>access<span class="w"> 
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_15">標準入力に対する入力例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_14">標準入力に対する入力例<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="awk">▼ awkプロセスに対する入力<a class="headerlink" href="#awk" title="Permanent link">&para;</a></h4>
 <p>コマンドの出力結果に対して、<code>awk</code>コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
@@ -21615,7 +21609,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-30</span>
   </span>
 
     
