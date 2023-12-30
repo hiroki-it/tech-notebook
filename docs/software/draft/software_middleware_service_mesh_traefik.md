@@ -53,10 +53,10 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
       "ServiceURL":
         {
           "Path": "",
-          "ForceQuery": false,
+          "ForceQuery": "false",
           "RawPath": "",
           "RawFragment": "",
-          "OmitHost": false,
+          "OmitHost": "false",
           "Scheme": "http",
           "Opaque": "",
           "Host": "*.*.*.*:<ポート番号>",

@@ -498,7 +498,7 @@ spec:
         operator: DoesNotExist
   namespaceSelector:
     # istio-proxyをインジェクションしているNamespaceを網羅できるようにする
-    any: true
+    any: "true"
   jobLabel: envoy-stats
   podMetricsEndpoints:
     # istio-proxyコンテナが公開しているメトリクス収集用のエンドポイントを指定する

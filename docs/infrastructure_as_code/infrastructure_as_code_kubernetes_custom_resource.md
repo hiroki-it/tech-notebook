@@ -383,7 +383,7 @@ metadata:
   name: foo.example.com
 spec:
   versions:
-    - served: true
+    - served: "true"
 ```
 
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
@@ -430,7 +430,7 @@ metadata:
   name: foo.example.com
 spec:
   versions:
-    - storage: true
+    - storage: "true"
 ```
 
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd

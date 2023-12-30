@@ -395,11 +395,11 @@ spec:
       volumeMounts:
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
-          readOnly: true
+          readOnly: "true"
         # OIDCのプロバイダーによるトークンをコンテナにマウントする
         - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
           name: aws-iam-token
-          readOnly: true
+          readOnly: "true"
   volumes:
     - name: kube-api-access-*****
       projected:
@@ -480,7 +480,7 @@ metadata:
     eks.amazonaws.com/role-arn: <IAMロールのARN>
   name: <信頼されたエンティティで指定したユーザー名にあるServiceAccount名>
   namespace: <信頼されたエンティティで指定したユーザー名にあるNamespace名>
-automountServiceAccountToken: true
+automountServiceAccountToken: "true"
 ```
 
 `(4)`
@@ -1027,8 +1027,8 @@ EC2ワーカーNodeのkubeletを設定する。
   "address": "0.0.0.0",
   "authentication":
     {
-      "anonymous": {"enabled": false},
-      "webhook": {"cacheTTL": "2m0s", "enabled": true},
+      "anonymous": {"enabled": "false"},
+      "webhook": {"cacheTTL": "2m0s", "enabled": "true"},
       "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
     },
   "authorization":
@@ -1041,10 +1041,10 @@ EC2ワーカーNodeのkubeletを設定する。
   "readOnlyPort": 0,
   "cgroupDriver": "cgroupfs",
   "cgroupRoot": "/",
-  "featureGates": {"RotateKubeletServerCertificate": true},
-  "protectKernelDefaults": true,
-  "serializeImagePulls": false,
-  "serverTLSBootstrap": true,
+  "featureGates": {"RotateKubeletServerCertificate": "true"},
+  "protectKernelDefaults": "true",
+  "serializeImagePulls": "false",
+  "serverTLSBootstrap": "true",
   "tlsCipherSuites":
     [
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",

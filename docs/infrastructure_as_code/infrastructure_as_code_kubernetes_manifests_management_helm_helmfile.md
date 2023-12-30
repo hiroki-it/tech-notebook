@@ -253,7 +253,7 @@ helmfiles:
 
 ```yaml
 releases:
-  - atomic: true
+  - atomic: "true"
 ```
 
 #### ▼ chart
@@ -275,7 +275,7 @@ releases:
 
 ```yaml
 releases:
-  - createNamespace: false
+  - createNamespace: "false"
 ```
 
 #### ▼ dependencies
@@ -338,7 +338,7 @@ releases:
       - name: foo
         value: FOO
       - name: bar\.enabled
-        value: true
+        value: "true"
 ```
 
 #### ▼ name
@@ -443,14 +443,14 @@ OCIリポジトリをチャートリポジトリとして使用する場合に�
 repositories:
   - name: karpenter
     url: public.ecr.aws/karpenter
-    oci: true
+    oci: "true"
 
 releases:
   - name: karpenter
     namespace: karpenter
     chart: karpenter/karpenter
     version: v0.31.0
-    atomic: true
+    atomic: "true"
     values:
       - foo-values.yaml
 ```

@@ -532,7 +532,7 @@ services:
 ```yaml
 services:
   app:
-    stdin_open: true
+    stdin_open: "true"
 ```
 
 <br>
@@ -548,7 +548,7 @@ services:
 ```yaml
 services:
   app:
-    tty: true
+    tty: "true"
 ```
 
 <br>
@@ -745,7 +745,7 @@ services:
 networks:
   # 公開したい外部ネットワーク名
   foo:
-    external: true
+    external: "true"
 ```
 
 フロントエンドコンテナにて、同じ名前の外部ネットワークを作成し、公開する。
@@ -763,7 +763,7 @@ services:
 networks:
   # 公開したい外部ネットワーク名
   foo:
-    external: true
+    external: "true"
 ```
 
 <br>

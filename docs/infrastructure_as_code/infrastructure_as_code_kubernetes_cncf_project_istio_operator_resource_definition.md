@@ -124,7 +124,7 @@ metadata:
 spec:
   components:
     <component名>:
-      enabled: true
+      enabled: "true"
       k8s:
         # HorizontalPodAutoscaler
         hpaSpec:
@@ -161,7 +161,7 @@ metadata:
 spec:
   components:
     base:
-      enabled: true
+      enabled: "true"
 ```
 
 #### ▼ cni
@@ -179,7 +179,7 @@ metadata:
 spec:
   components:
     cni:
-      enabled: true
+      enabled: "true"
       namespace: kube-system
 ```
 
@@ -199,7 +199,7 @@ spec:
   components:
     egressGateways:
       - name: istio-egressgateway
-        enabled: true
+        enabled: "true"
 ```
 
 #### ▼ ingressGateways
@@ -218,7 +218,7 @@ spec:
   components:
     ingressGateways:
       - name: istio-ingressgateway
-        enabled: true
+        enabled: "true"
 ```
 
 `.spec.ingressGateways.k8s`キーでIstio IngressGatewayを設定できるが、これは非推奨である。
@@ -235,7 +235,7 @@ spec:
   components:
     ingressGateways:
       - name: istio-ingressgateway
-        enabled: true
+        enabled: "true"
         k8s:
           service:
             ports:
@@ -275,7 +275,7 @@ metadata:
   name: istio-ingressgateway
   namespace: istio-system
 spec:
-  allocateLoadBalancerNodePorts: true
+  allocateLoadBalancerNodePorts: "true"
   clusterIP: *.*.*.*
   clusterIPs:
   - *.*.*.*
@@ -326,7 +326,7 @@ metadata:
 spec:
   components:
     istiodRemote:
-      enabled: false
+      enabled: "false"
 ```
 
 #### ▼ pilot
@@ -342,7 +342,7 @@ metadata:
 spec:
   components:
     pilot:
-      enabled: true
+      enabled: "true"
 ```
 
 <br>
@@ -360,7 +360,7 @@ metadata:
   namespace: istio-system
   name: istio-operator
 spec:
-  defaultRevision: true
+  defaultRevision: "true"
 ```
 
 <br>
@@ -490,7 +490,7 @@ metadata:
 spec:
   values:
     base:
-      enableCRDTemplates: false
+      enableCRDTemplates: "false"
       validationURL: ""
 ```
 
@@ -510,7 +510,7 @@ spec:
       # Istio EgressGateway
       istio-egressgateway:
         env: {}
-        autoscaleEnabled: true
+        autoscaleEnabled: "true"
         type: ClusterIP
         name: istio-egressgateway
         secretVolumes:
@@ -539,8 +539,8 @@ spec:
       istio-ingressgateway:
         env: {}
         # IstioOperatorをroot権限の実行ユーザーを使用する
-        runAsRoot: true
-        autoscaleEnabled: true
+        runAsRoot: "true"
+        autoscaleEnabled: "true"
         type: LoadBalancer
         name: istio-ingressgateway
         secretVolumes:
@@ -565,7 +565,7 @@ metadata:
 spec:
   values:
     pilot:
-      autoscaleEnabled: true
+      autoscaleEnabled: "true"
       autoscaleMin: 1
       autoscaleMax: 5
       replicaCount: 1
@@ -576,11 +576,11 @@ spec:
         targetAverageUtilization: 80
       nodeSelector: {}
       keepaliveMaxServerConnectionAge: 30m
-      enableProtocolSniffingForOutbound: true
-      enableProtocolSniffingForInbound: true
+      enableProtocolSniffingForOutbound: "true"
+      enableProtocolSniffingForInbound: "true"
       deploymentLabels:
       podLabels: {}
-      configMap: true
+      configMap: "true"
 ```
 
 #### ▼ proxy_init

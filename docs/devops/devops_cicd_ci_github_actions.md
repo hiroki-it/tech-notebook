@@ -146,7 +146,7 @@ jobs:
 jobs:
   build:
     steps:
-      - continue-on-error: true
+      - continue-on-error: "true"
         run: |
           exit 1
       - if: failure() # 成功扱いのため、このステップには入らない。
@@ -313,7 +313,7 @@ jobs:
 inputs:
   foo:
     description: foo
-    required: true
+    required: "true"
 
 runs:
   using: "composite"
@@ -495,7 +495,7 @@ jobs:
 ```yaml
 inputs:
   bar:
-    required: true
+    required: "true"
 
 runs:
   using: "composite"
@@ -534,7 +534,7 @@ jobs:
 ```yaml
 inputs:
   foo: # マスキングされ、.yamlファイルの構文解析でエラーになってしまう
-    required: true
+    required: "true"
 
 runs:
   using: "composite"

@@ -266,7 +266,7 @@ data:
   type: helm
   username: foo
   password: bar
-  enableOCI: true # OCIリポジトリを有効化する。
+  enableOCI: "true" # OCIリポジトリを有効化する。
 ---
 # bar-repositoryをポーリングするためのargocd-repo
 apiVersion: v1
@@ -286,7 +286,7 @@ data:
   username: baz
   password: qux
   # OCIリポジトリを有効化する。
-  enableOCI: true
+  enableOCI: "true"
 ```
 
 AWS ECRのように認証情報に有効期限がある場合は、認証情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
@@ -554,7 +554,7 @@ data:
     awsAuthConfig:
       clusterName: <デプロイ先のCluster名>
     tlsClientConfig:
-      insecure: false
+      insecure: "false"
       caData: <HTTPSに必要なSSL証明書>
   name: foo-cluster
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
@@ -575,7 +575,7 @@ data:
   config: |
     awsAuthConfig: <ServiceAccountのトークン>
     tlsClientConfig:
-      insecure: false
+      insecure: "false"
       caData: <HTTPSに必要なSSL証明書>
   name: foo-cluster
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com

@@ -219,7 +219,7 @@ API Gatewayは、Lambdaからのレスポンスを、以下のJSON型データ�
 
 ```yaml
 {
-  "isBase64Encoded": true,
+  "isBase64Encoded": "true",
   "statusCode": httpStatusCode,
   "headers": {"headerName": "headerValue", ...},
   "multiValueHeaders":

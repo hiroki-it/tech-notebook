@@ -386,7 +386,7 @@ import axios from "axios";
 
 const client = axios.create({
   baseURL: "https://foo.co.jp",
-  withCredentials: true, // オプションの有効化
+  withCredentials: "true", // オプションの有効化
 });
 
 return new Promise((resolve, reject) => {
@@ -420,7 +420,7 @@ return new Promise((resolve, reject) => {
 # 許可された送信元オリジン
 Access-Control-Allow-Origin: https://example.com
 # リクエストがCookieヘッダーを持つことを許可する場合
-Access-Control-Allow-Credentials: true
+Access-Control-Allow-Credentials: "true"
 # 許可するHTTPメソッド
 Access-Control-Allow-Methods: GET,POST,HEAD,OPTIONS
 # その他、許可するHTTPヘッダー

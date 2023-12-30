@@ -73,11 +73,11 @@ hostAliases: # /etc/hosts style entries to be injected into /etc/hosts in the no
       - cloud.flare.dns
 options:
   k3d: # k3d runtime settings
-    wait: true # wait for cluster to be usable before returning; same as `--wait` (default: true)
+    wait: "true" # wait for cluster to be usable before returning; same as `--wait` (default: "true")
     timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
-    disableLoadbalancer: false # same as `--no-lb`
-    disableImageVolume: false # same as `--no-image-volume`
-    disableRollback: false # same as `--no-Rollback`
+    disableLoadbalancer: "false" # same as `--no-lb`
+    disableImageVolume: "false" # same as `--no-image-volume`
+    disableRollback: "false" # same as `--no-Rollback`
     loadbalancer:
       configOverrides:
         - settings.workerConnections=2048
@@ -91,8 +91,8 @@ options:
         nodeFilters:
           - agent:1
   kubeconfig:
-    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
-    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
+    updateDefaultKubeconfig: "true" # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: "true")
+    switchCurrentContext: "true" # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: "true")
   runtime: # runtime (docker) specific options
     gpuRequest: all # same as `--gpus all`
     labels:

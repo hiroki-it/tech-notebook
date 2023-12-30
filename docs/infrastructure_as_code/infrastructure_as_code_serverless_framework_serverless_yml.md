@@ -274,7 +274,7 @@ Serverless Frameworkで操作するクラウドインフラベンダーを設定
 ```yaml
 provider:
   ecr:
-    scanOnPush: true
+    scanOnPush: "true"
 ```
 
 #### ▼ images
@@ -304,7 +304,7 @@ EventBridgeをCloudFormationで作成するか否かを設定する。
 ```yaml
 provider:
   eventBridge:
-    useCloudFormation: true
+    useCloudFormation: "true"
 ```
 
 <br>
@@ -431,7 +431,7 @@ service: foo-service
 **＊実装例＊**
 
 ```yaml
-useDotenv: true
+useDotenv: "true"
 ```
 
 <br>

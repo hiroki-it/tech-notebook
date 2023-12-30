@@ -155,8 +155,8 @@ kubeletを設定する。
   "address": "0.0.0.0",
   "authentication":
     {
-      "anonymous": {"enabled": false},
-      "webhook": {"cacheTTL": "2m0s", "enabled": true},
+      "anonymous": {"enabled": "false"},
+      "webhook": {"cacheTTL": "2m0s", "enabled": "true"},
       "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
     },
   "authorization":
@@ -169,10 +169,10 @@ kubeletを設定する。
   "readOnlyPort": 0,
   "cgroupDriver": "cgroupfs",
   "cgroupRoot": "/",
-  "featureGates": {"RotateKubeletServerCertificate": true},
-  "protectKernelDefaults": true,
-  "serializeImagePulls": false,
-  "serverTLSBootstrap": true,
+  "featureGates": {"RotateKubeletServerCertificate": "true"},
+  "protectKernelDefaults": "true",
+  "serializeImagePulls": "false",
+  "serverTLSBootstrap": "true",
   "tlsCipherSuites":
     [
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",

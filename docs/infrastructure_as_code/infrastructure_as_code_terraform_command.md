@@ -441,7 +441,7 @@ $ terraform output -json
 
 {
   "vpc_id": {
-    "sensitive": false,
+    "sensitive": "false",
     "type": "string",
     "value": "vpc-004c2d1ba7394b3d6"
   }

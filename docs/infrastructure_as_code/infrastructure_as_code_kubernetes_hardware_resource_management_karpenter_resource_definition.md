@@ -502,7 +502,7 @@ spec:
         evictionMaxPodGracePeriod: 60
         imageGCHighThresholdPercent: 85
         imageGCLowThresholdPercent: 80
-        cpuCFSQuota: true
+        cpuCFSQuota: "true"
         podsPerCore: 2
         maxPods: 20
 ```
@@ -809,9 +809,9 @@ data:
   zap-logger-config: |
     {
       "level": "debug",
-      "development": false,
-      "disableStacktrace": true,
-      "disableCaller": true,
+      "development": "false",
+      "disableStacktrace": "true",
+      "disableCaller": "true",
       "sampling": {
         "initial": 100,
         "thereafter": 100

@@ -799,7 +799,7 @@ const getBacketBasedOnDeviceType = (headers) => {
                     "action": "read-only",
                     "data": "",
                     "encoding": "base64",
-                    "inputTruncated": false,
+                    "inputTruncated": "false",
                   },
                 "clientIp": "*.*.*.*",
                 "headers":
@@ -812,13 +812,23 @@ const getBacketBasedOnDeviceType = (headers) => {
                         },
                       ],
                     "cloudfront-is-mobile-viewer":
-                      [{"key": "CloudFront-Is-Mobile-Viewer", "value": true}],
+                      [{"key": "CloudFront-Is-Mobile-Viewer", "value": "true"}],
                     "cloudfront-is-tablet-viewer":
-                      [{"key": "loudFront-Is-Tablet-Viewer", "value": false}],
+                      [{"key": "loudFront-Is-Tablet-Viewer", "value": "false"}],
                     "cloudfront-is-smarttv-viewer":
-                      [{"key": "CloudFront-Is-SmartTV-Viewer", "value": false}],
+                      [
+                        {
+                          "key": "CloudFront-Is-SmartTV-Viewer",
+                          "value": "false",
+                        },
+                      ],
                     "cloudfront-is-desktop-viewer":
-                      [{"key": "CloudFront-Is-Desktop-Viewer", "value": false}],
+                      [
+                        {
+                          "key": "CloudFront-Is-Desktop-Viewer",
+                          "value": "false",
+                        },
+                      ],
                     "user-agent":
                       [{"key": "User-Agent", "value": "Amazon CloudFront"}],
                   },

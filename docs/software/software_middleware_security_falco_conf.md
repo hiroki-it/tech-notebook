@@ -94,7 +94,7 @@ load_plugins: []
 記入中...
 
 ```yaml
-watch_config_files: true
+watch_config_files: "true"
 ```
 
 <br>
@@ -104,7 +104,7 @@ watch_config_files: true
 記入中...
 
 ```yaml
-time_format_iso_8601: false
+time_format_iso_8601: "false"
 ```
 
 <br>
@@ -114,7 +114,7 @@ time_format_iso_8601: false
 記入中...
 
 ```yaml
-json_output: false
+json_output: "false"
 ```
 
 <br>
@@ -124,7 +124,7 @@ json_output: false
 記入中...
 
 ```yaml
-json_include_output_property: true
+json_include_output_property: "true"
 ```
 
 <br>
@@ -134,7 +134,7 @@ json_include_output_property: true
 記入中...
 
 ```yaml
-json_include_tags_property: true
+json_include_tags_property: "true"
 ```
 
 <br>
@@ -144,7 +144,7 @@ json_include_tags_property: true
 記入中...
 
 ```yaml
-log_stderr: true
+log_stderr: "true"
 ```
 
 <br>
@@ -154,7 +154,7 @@ log_stderr: true
 記入中...
 
 ```yaml
-log_syslog: true
+log_syslog: "true"
 ```
 
 <br>
@@ -175,7 +175,7 @@ log_level: info
 
 ```yaml
 libs_logger:
-  enabled: false
+  enabled: "false"
   severity: debug
 ```
 
@@ -196,7 +196,7 @@ priority: debug
 記入中...
 
 ```yaml
-buffered_outputs: false
+buffered_outputs: "false"
 ```
 
 <br>
@@ -213,7 +213,7 @@ syscall_event_drops:
     - alert
   rate: 0.03333
   max_burst: 1
-  simulate_drops: false
+  simulate_drops: "false"
 ```
 
 <br>
@@ -267,7 +267,7 @@ outputs:
 
 ```yaml
 syslog_output:
-  enabled: true
+  enabled: "true"
 ```
 
 <br>
@@ -278,8 +278,8 @@ syslog_output:
 
 ```yaml
 file_output:
-  enabled: false
-  keep_alive: false
+  enabled: "false"
+  keep_alive: "false"
   filename: ./events.txt
 ```
 
@@ -291,7 +291,7 @@ file_output:
 
 ```yaml
 stdout_output:
-  enabled: true
+  enabled: "true"
 ```
 
 <br>
@@ -302,11 +302,11 @@ stdout_output:
 
 ```yaml
 webserver:
-  enabled: true
+  enabled: "true"
   threadiness: 0
   listen_port: 8765
   k8s_healthz_endpoint: /healthz
-  ssl_enabled: false
+  ssl_enabled: "false"
   ssl_certificate: /etc/falco/falco.pem
 ```
 
@@ -318,8 +318,8 @@ webserver:
 
 ```yaml
 program_output:
-  enabled: false
-  keep_alive: false
+  enabled: "false"
+  keep_alive: "false"
   program: >-
     jq '{text: .output}' | curl -d @- -X POST
     https://hooks.slack.com/services/XXX
@@ -333,7 +333,7 @@ program_output:
 
 ```yaml
 http_output:
-  enabled: false
+  enabled: "false"
   url: "http://some.url"
   user_agent: falcosecurity/falco
 ```
@@ -346,7 +346,7 @@ http_output:
 
 ```yaml
 grpc:
-  enabled: false
+  enabled: "false"
   bind_address: "unix:///run/falco/falco.sock"
   threadiness: 0
 ```
@@ -359,7 +359,7 @@ grpc:
 
 ```yaml
 grpc_output:
-  enabled: false
+  enabled: "false"
 ```
 
 <br>

@@ -199,7 +199,7 @@ metadata:
   name: argocd-application-controller
   labels:
     app.kubernetes.io/part-of: argocd
-automountServiceAccountToken: true
+automountServiceAccountToken: "true"
 secrets:
   - name: argocd-application-controller-token-*****
 ```

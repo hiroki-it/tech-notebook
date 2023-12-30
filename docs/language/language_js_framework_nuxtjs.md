@@ -246,7 +246,7 @@ import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   build: {
-    hardSource: true,
+    hardSource: "true",
   },
 };
 ```
@@ -347,7 +347,7 @@ import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
   build: {
-    quiet: false,
+    quiet: "false",
   },
 };
 ```

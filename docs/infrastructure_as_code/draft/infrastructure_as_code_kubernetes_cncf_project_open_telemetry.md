@@ -38,12 +38,12 @@ data:
       otlp:
         endpoint: "otel-collector.default:4317"
         tls:
-          insecure: true
+          insecure: "true"
         sending_queue:
           num_consumers: 4
           queue_size: 100
         retry_on_failure:
-          enabled: true
+          enabled: "true"
     processors:
       batch:
       memory_limiter:

@@ -129,7 +129,7 @@ metadata:
   name: nginx-ingress
   namespace: ingress
 data:
-  use-forwarded-headers: true
+  use-forwarded-headers: "true"
 ```
 
 > - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers

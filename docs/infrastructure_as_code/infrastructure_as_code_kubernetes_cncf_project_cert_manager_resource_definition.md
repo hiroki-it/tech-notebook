@@ -174,7 +174,7 @@ metadata:
   name: foo-certificate-request
   namespace: cert-manager
 spec:
-  isCA: false
+  isCA: "false"
 ```
 
 <br>

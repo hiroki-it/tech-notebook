@@ -129,11 +129,11 @@ api_key: <APIキー>
 # Log collection Configuration
 # ---------------------------------------------
 
-## @param logs_enabled - boolean - optional - default: false
-## @env DD_LOGS_ENABLED - boolean - optional - default: false
+## @param logs_enabled - boolean - optional - default: "false"
+## @env DD_LOGS_ENABLED - boolean - optional - default: "false"
 ## Enable Datadog Agent log collection by setting logs_enabled to true.
 #
-logs_enabled: true
+logs_enabled: "true"
 ```
 
 <br>
@@ -222,7 +222,7 @@ Datadogが提供するdatadogイメージによって作成されるコンテナ
     # datadogコンテナ (サイドカー)
     "name": "datadog",
     "image": "datadog/agent:latest",
-    "essential": false,
+    "essential": "false",
     "portMappings":
       [
         {

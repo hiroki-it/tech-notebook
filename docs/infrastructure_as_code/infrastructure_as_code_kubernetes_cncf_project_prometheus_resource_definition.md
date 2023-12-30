@@ -605,7 +605,7 @@ spec:
   remoteWrite:
     - name: victoria-metrics
       tlsConfig:
-        insecureSkipVerify: true
+        insecureSkipVerify: "true"
       url: "https://*.*.*.*:8248/api/v1/write"
 ```
 
@@ -852,7 +852,7 @@ spec:
     - port: http-foo
       path: /metrics
   namespaceSelector:
-    any: true
+    any: "true"
   selector:
     matchLabels:
       app.kubernetes.io/name: foo-servive
@@ -891,7 +891,7 @@ spec:
       tlsConfig:
         caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         serverName: kubernetes
-        insecureSkipVerify: false
+        insecureSkipVerify: "false"
   jobLabel: component
   namespaceSelector:
     matchNames:
@@ -1076,7 +1076,7 @@ metadata:
   namespace: prometheus
 spec:
   namespaceSelector:
-    any: true
+    any: "true"
 ```
 
 #### ▼ matchNames

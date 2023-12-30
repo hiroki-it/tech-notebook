@@ -781,7 +781,7 @@ spec:
   endpoints:
     - port: http-metrics
   namespaceSelector:
-    any: true
+    any: "true"
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-metrics
@@ -796,7 +796,7 @@ spec:
   endpoints:
     - port: http-metrics
   namespaceSelector:
-    any: true
+    any: "true"
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-redis
@@ -811,7 +811,7 @@ spec:
   endpoints:
     - port: http-metrics
   namespaceSelector:
-    any: true
+    any: "true"
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-repo-server-metrics
@@ -826,7 +826,7 @@ spec:
   endpoints:
     - port: http-metrics
   namespaceSelector:
-    any: true
+    any: "true"
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-server-metrics

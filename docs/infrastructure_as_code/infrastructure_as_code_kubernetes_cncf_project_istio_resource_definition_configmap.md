@@ -231,7 +231,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      enablePrometheusMerge: true
+      enablePrometheusMerge: "true"
 ```
 
 #### ▼ holdApplicationUntilProxyStarts
@@ -245,7 +245,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      holdApplicationUntilProxyStarts: true
+      holdApplicationUntilProxyStarts: "true"
 ```
 
 #### ▼ proxyMetadata
@@ -262,10 +262,10 @@ data:
   mesh: |
     defaultConfig:
       proxyMetadata:
-        ISTIO_META_DNS_CAPTURE: true
-        BOOTSTRAP_XDS_AGENT: true
+        ISTIO_META_DNS_CAPTURE: "true"
+        BOOTSTRAP_XDS_AGENT: "true"
         # ServiceからPod内のistio-proxyへのリクエストがなくなったら、istio-proxyコンテナを終了させる
-        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
 ```
 
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
@@ -301,7 +301,7 @@ metadata:
 data:
   mesh: |
     defaultConfig:
-      enableTracing: true
+      enableTracing: "true"
       tracing:
         sampling: 100
         zipkin:
@@ -381,7 +381,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    enableTracing: true
+    enableTracing: "true"
     defaultConfig:
       tracing:
         sampling: 100
@@ -407,7 +407,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    enableTracing: true
+    enableTracing: "true"
     defaultConfig:
       tracing:
         sampling: 100
@@ -654,7 +654,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    holdApplicationUntilProxyStarts: true
+    holdApplicationUntilProxyStarts: "true"
 ```
 
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB

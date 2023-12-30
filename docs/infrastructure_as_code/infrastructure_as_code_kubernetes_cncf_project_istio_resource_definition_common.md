@@ -42,14 +42,14 @@ kind: Namespace
 metadata:
   name: observability-namespace
   labels:
-    istio-injection: disabled
+    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: chaos-mesh-namespace
   labels:
-    istio-injection: disabled
+    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
@@ -88,7 +88,7 @@ kind: Namespace
 metadata:
   name: chaos-mesh-namespace
   labels:
-    istio-injection: disabled
+    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
 ```
 
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
@@ -226,7 +226,7 @@ spec:
 
 ### sidecar.istio.io/inject
 
-特定のPodで、Istioとこれのインプレースアップグレードを有効化するか否かを設定する。
+特定のPod (例：DB) にサイドカーを注入するか否かを設定する。
 
 **＊実装例＊**
 
@@ -242,7 +242,7 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/inject: false
+        sidecar.istio.io/inject: "false"
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy

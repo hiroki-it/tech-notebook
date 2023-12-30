@@ -130,35 +130,35 @@ DATADOG TRACER CONFIGURATION => { ... } # ここに設定のJSONが得られる
     "lang": "php",
     "lang_version": "8.0.8",
     "env": null,
-    "enabled": true,
+    "enabled": "true",
     "service": null,
-    "enabled_cli": false,
+    "enabled_cli": "false",
     "agent_url": "http://localhost:8126", # datadogコンテナのアドレスポート
-    "debug": false,
-    "analytics_enabled": false,
+    "debug": "false",
+    "analytics_enabled": "false",
     "sample_rate": 1.000000,
     "sampling_rules": null,
     "tags": {},
     "service_mapping": {},
-    "distributed_tracing_enabled": true,
-    "priority_sampling_enabled": true,
+    "distributed_tracing_enabled": "true",
+    "priority_sampling_enabled": "true",
     "dd_version": null,
     "architecture": "x86_64",
     "sapi": "cli",
     "datadog.trace.request_init_hook": "/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php",
-    "open_basedir_configured": false,
+    "open_basedir_configured": "false",
     "uri_fragment_regex": null,
     "uri_mapping_incoming": null,
     "uri_mapping_outgoing": null,
-    "auto_flush_enabled": false,
-    "generate_root_span": true,
-    "http_client_split_by_domain": false,
-    "measure_compile_time": true,
-    "report_hostname_on_root_span": false,
+    "auto_flush_enabled": "false",
+    "generate_root_span": "true",
+    "http_client_split_by_domain": "false",
+    "measure_compile_time": "true",
+    "report_hostname_on_root_span": "false",
     "traced_internal_functions": null,
-    "auto_prepend_file_configured": false,
+    "auto_prepend_file_configured": "false",
     "integrations_disabled": "default",
-    "enabled_from_env": true,
+    "enabled_from_env": "true",
     "opcache.file_cache": null,
     "agent_error": "Failed to connect to localhost port 8126: Connection refused", # エラーメッセージ
     "DDTRACE_REQUEST_INIT_HOOK": "'DDTRACE_REQUEST_INIT_HOOK=/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php' is deprecated, use DD_TRACE_REQUEST_INIT_HOOK instead."
@@ -202,8 +202,8 @@ tracer.init({
   version: DD_VERSION,
 
   // 検証時のオプション
-  debug: true,
-  startupLogs: true,
+  debug: "true",
+  startupLogs: "true",
 });
 
 export default datadogTracer;
@@ -238,7 +238,7 @@ DATADOG TRACER CONFIGURATION -
     "service": "foo",
     "agent_url": "http://127.0.0.1:8126",
     "agent_error": "Network error trying to reach the agent: socket hang up",
-    "debug": false,
+    "debug": "false",
     "sample_rate": 1,
     "sampling_rules": [],
     "tags": {
@@ -248,16 +248,16 @@ DATADOG TRACER CONFIGURATION -
         "runtime-id": "*****"
     },
     "dd_version": "<バージョンタグ>",
-    "log_injection_enabled": false,
-    "runtime_metrics_enabled": false,
-    "profiling_enabled": false,
+    "log_injection_enabled": "false",
+    "runtime_metrics_enabled": "false",
+    "profiling_enabled": "false",
     "integrations_loaded": [
         "connect@3.7.0",
         "fs",
         "http",
         "https"
     ],
-    "appsec_enabled": false
+    "appsec_enabled": "false"
 }
 
 WARN  DATADOG TRACER DIAGNOSTIC - Agent Error: Network error trying to reach the agent: socket hang up

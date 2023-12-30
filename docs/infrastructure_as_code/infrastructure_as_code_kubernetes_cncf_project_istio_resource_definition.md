@@ -521,7 +521,7 @@ spec:
   trafficPolicy:
     loadBalancer:
       localityLbSetting:
-        enabled: true
+        enabled: "true"
         distribute:
           - from: <リージョン名>/<ゾーン名>/*
             to:
@@ -1058,9 +1058,11 @@ spec:
 
 #### ▼ selectorとは
 
-IngressGatewayに付与された`.metadata.labels`キーを設定する。
+Istio IngressGateway/EgressGatewayに付与された`.metadata.labels`キーを設定する。
 
-デフォルトでは、IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
+デフォルトでは、Istio IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
+
+また、Istio EgressGatewayには`istio`ラベルがあり、値は`egressgateway`である。
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
@@ -1574,6 +1576,8 @@ spec:
 #### ▼ exportToとは
 
 そのVirtualServiceを使用できるNamespaceを設定する。
+
+認可されたNamespace内のサイドカーやIstio IngressGatewayのみが、そのVirtualServiceを使用できる。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 

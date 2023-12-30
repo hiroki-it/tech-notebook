@@ -165,7 +165,7 @@ var vm = new Vue({
     */
   data: function () {
     return {
-      isLoading: false,
+      isLoading: "false",
       staffData: [],
       criteria: {
         id: null,
@@ -282,12 +282,12 @@ var vm = new Vue({
     props: {
       criteria: {
         type: Object,
-        required: true,
+        required: "true",
       },
 
       foo: {
         type: Object,
-        required: true,
+        required: "true",
       },
     },
 

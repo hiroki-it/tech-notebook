@@ -382,13 +382,13 @@ spec:
             configMapKeyRef:
               key: *****
               name: argocd-cmd-params-cm
-              optional: true
+              optional: "true"
         - name: *****
           valueFrom:
             secretKeyRef:
               key: *****
               name: argocd-redis
-              optional: true
+              optional: "true"
       # Volumeの各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
@@ -433,7 +433,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-styles-cm
-        optional: true
+        optional: "true"
     # repo-serverにHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-repo-server-tls
       secret:
@@ -445,7 +445,7 @@ spec:
             path: tls.key
           - key: ca.crt
             path: ca.crt
-        optional: true
+        optional: "true"
         secretName: argocd-repo-server-tls
     # dex-serverにHTTPSリクエストを送信するために、SSL証明書を設定する
     - name: argocd-dex-server-tls
@@ -456,7 +456,7 @@ spec:
             path: tls.crt
           - key: ca.crt
             path: ca.crt
-        optional: true
+        optional: "true"
         secretName: argocd-dex-server-tls
 ```
 
@@ -501,19 +501,19 @@ spec:
             configMapKeyRef:
               key: *****
               name: argocd-cm
-              optional: true
+              optional: "true"
         - name: *****
           valueFrom:
             configMapKeyRef:
               key: *****
               name: argocd-cmd-params-cm
-              optional: true
+              optional: "true"
         - name: *****
           valueFrom:
             secretKeyRef:
               key: *****
               name: argocd-redis
-              optional: true
+              optional: "true"
       # Volumeの各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
@@ -638,7 +638,7 @@ spec:
             path: tls.key
           - key: ca.crt
             path: ca.crt
-        optional: true
+        optional: "true"
         secretName: argocd-repo-server-tls
 
   ...
@@ -711,7 +711,7 @@ spec:
             configMapKeyRef:
               key: *****
               name: argocd-cmd-params-cm
-              optional: true
+              optional: "true"
 
   ...
 
@@ -728,7 +728,7 @@ spec:
             path: tls.key
           - key: ca.crt
             path: ca.crt
-        optional: true
+        optional: "true"
         secretName: argocd-dex-server-tls
 
   ...
@@ -771,19 +771,19 @@ spec:
             configMapKeyRef:
               key: *****
               name: argocd-cm
-              optional: true
+              optional: "true"
         - name: *****
           valueFrom:
             configMapKeyRef:
               key: *****
               name: argocd-cmd-params-cm
-              optional: true
+              optional: "true"
         - name: *****
           valueFrom:
             secretKeyRef:
               key: ****
               name: argocd-redis
-              optional: true
+              optional: "true"
       # Volumeの各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
@@ -804,7 +804,7 @@ spec:
             path: tls.key
           - key: ca.crt
             path: ca.crt
-        optional: true
+        optional: "true"
         secretName: argocd-repo-server-tls
 
  ...
@@ -1008,7 +1008,7 @@ spec:
   source:
     path: ./manifests
     directory:
-      recurse: true
+      recurse: "true"
 ```
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L78
@@ -1467,9 +1467,9 @@ metadata:
 spec:
   syncPolicy:
     automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
+      allowEmpty: "true"
+      prune: "true"
+      selfHeal: "true"
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
@@ -1877,7 +1877,7 @@ spec:
       activeService: foo-active-service
       previewService: foo-preview-service
       previewReplicaCount: 1
-      autoPromotionEnabled: true
+      autoPromotionEnabled: "true"
       scaleDownDelaySeconds: 30
 ```
 

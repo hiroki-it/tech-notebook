@@ -299,7 +299,7 @@ kube-apiserverは、特定のリクエストを受信すると、webhookサー�
     },
     # ドライランモードで実行されていることを表す。
     # etcdに永続化されない。
-    "dryRun": false
+    "dryRun": "false"
   }
 
   ...
@@ -326,7 +326,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を
   "response": {
       "uid": "<value from request.uid>",
       # 宛先のwebhookサーバーが受信したか否かを表す。
-      "allowed": true,
+      "allowed": "true",
       # PathによるPatch処理を行う。
       "patchType": "JSONPatch",
       # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
@@ -378,7 +378,7 @@ webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデー�
   "response": {
       "uid": "<value from request.uid>",
       # 宛先のwebhookサーバーが受信したか否かを表す。
-      "allowed": true,
+      "allowed": "true",
       "status":
         {
           "code": 403,

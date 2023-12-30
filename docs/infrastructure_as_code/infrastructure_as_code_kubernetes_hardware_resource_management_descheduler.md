@@ -146,12 +146,12 @@ data:
   policy.yaml: |
     apiVersion: "descheduler/v1alpha1"
     kind: "DeschedulerPolicy"
-    evictLocalStoragePods: true
+    evictLocalStoragePods: "true"
     strategies:
       HighNodeUtilization:
-        enabled: true
+        enabled: "true"
       LowNodeUtilization:
-        enabled: true
+        enabled: "true"
         params:
           nodeResourceUtilizationThresholds:
             targetThresholds:
@@ -163,24 +163,24 @@ data:
               memory: 20
               pods: 20
       PodLifeTime:
-        enabled: true
+        enabled: "true"
       RemoveDuplicates:
-        enabled: true
+        enabled: "true"
       RemoveFailedPods:
-        enabled: true
+        enabled: "true"
       RemovePodsHavingTooManyRestarts:
-        enabled: true
+        enabled: "true"
       RemovePodsViolatingInterPodAntiAffinity:
-        enabled: true
+        enabled: "true"
       RemovePodsViolatingNodeAffinity:
-        enabled: true
+        enabled: "true"
         params:
           nodeAffinityType:
           - requiredDuringSchedulingIgnoredDuringExecution
       RemovePodsViolatingNodeTaints:
-        enabled: true
+        enabled: "true"
       RemovePodsViolatingTopologySpreadConstraint:
-        enabled: true
+        enabled: "true"
 ```
 
 <br>
@@ -212,7 +212,7 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   LowNodeUtilization:
-    enabled: true
+    enabled: "true"
     params:
       nodeResourceUtilizationThresholds:
         # ターゲット閾値 (この値を超過したNodeからPodを退避させる)
@@ -241,7 +241,7 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemoveDuplicates:
-    enabled: true
+    enabled: "true"
 ```
 
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
@@ -258,14 +258,14 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemoveFailedPods:
-    enabled: true
+    enabled: "true"
     params:
       failedPods:
         minPodLifetimeSeconds: 3600
         # Failedステータスになった理由でフィルタリングする
         reasons:
           - NodeAffinity
-        includingInitContainers: true
+        includingInitContainers: "true"
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler#removefailedpods
@@ -282,11 +282,11 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemovePodsHavingTooManyRestarts:
-    enabled: true
+    enabled: "true"
     params:
       podsHavingTooManyRestarts:
         podRestartThreshold: 100
-        includingInitContainers: true
+        includingInitContainers: "true"
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
@@ -300,7 +300,7 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemovePodsViolatingNodeAffinity:
-    enabled: true
+    enabled: "true"
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
@@ -314,7 +314,7 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemovePodsViolatingInterPodAntiAffinity:
-    enabled: true
+    enabled: "true"
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
@@ -333,11 +333,11 @@ apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
 strategies:
   RemovePodsViolatingTopologySpreadConstraint:
-    enabled: true
+    enabled: "true"
     params:
       podsHavingTooManyRestarts:
         podRestartThreshold: 100
-        includingInitContainers: true
+        includingInitContainers: "true"
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml

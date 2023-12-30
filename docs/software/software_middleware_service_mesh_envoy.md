@@ -490,7 +490,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
       address: 172.16.0.1 # 全ての宛先IPアドレスを合致させる場合は、0.0.0.0 とする。
       # Serviceのポート番号
       portValue: 50001
-  bindToPort: false
+  bindToPort: "false"
   filterChains:
     - filters:
         - name: istio.stats
@@ -526,7 +526,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
     socketAddress:
       address: 172.16.0.2
       portValue: 50002
-  bindToPort: false
+  bindToPort: "false"
   filterChains:
     - filters:
         - name: istio.stats
@@ -561,7 +561,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
     socketAddress:
       address: 172.16.0.3
       portValue: 50003
-  bindToPort: false
+  bindToPort: "false"
   filterChains:
     - filters:
         - name: istio.stats

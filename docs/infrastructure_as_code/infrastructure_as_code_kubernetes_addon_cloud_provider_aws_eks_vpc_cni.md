@@ -95,7 +95,7 @@ spec:
     spec:
       priorityClassName: "system-node-critical"
       serviceAccountName: aws-node
-      hostNetwork: true
+      hostNetwork: "true"
       initContainers:
         - name: aws-vpc-cni-init
           image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon-k8s-cni-init:v1.15.3
@@ -105,7 +105,7 @@ spec:
             - name: ENABLE_IPv6
               value: "false"
           securityContext:
-            privileged: true
+            privileged: "true"
           resources:
             requests:
               cpu: 25m
@@ -237,7 +237,7 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
-            privileged: true
+            privileged: "true"
           volumeMounts:
             - mountPath: /host/opt/cni/bin
               name: cni-bin-dir

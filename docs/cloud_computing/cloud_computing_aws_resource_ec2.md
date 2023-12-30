@@ -552,7 +552,7 @@ $ aws ec2 modify-instance-attribute \
   {
     "DeviceName": "/dev/sda1",
     "Ebs": {
-      "DeleteOnTermination": false
+      "DeleteOnTermination": "false"
     }
   }
 ]

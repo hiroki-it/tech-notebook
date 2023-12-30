@@ -248,7 +248,7 @@ variables:
         # 静的解析以外の処理のためのテンプレート
         # -kオプションで何も指定しない場合、defaultテンプレートになる
         default:
-          - when: true
+          - when: "true"
             template: |
 
               ## `{{ .Vars.TestName }}`
@@ -274,7 +274,7 @@ variables:
 
         # 静的解析のためのテンプレート
         test:
-          - when: true
+          - when: "true"
             template: |
 
               ## `{{ .Vars.TestName }}`
@@ -430,7 +430,7 @@ fmt:
     - terraform fmt -check -recursive
   # 0以外の全ての終了コードの場合のみ終了する
   # インデントを揃えるべき場所がある場合に、Jobを失敗させる
-  allow_failure: true
+  allow_failure: "true"
   rules:
     # MRを作成/更新したタイミングで発火する
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -444,7 +444,7 @@ foo_job:
     - echo foo-1 || true
     - echo foo-2
   # 0以外の全ての終了コードの場合のみ終了する
-  allow_failure: true
+  allow_failure: "true"
 ```
 
 #### ▼ `0`以外の特定の終了コードの場合

@@ -116,15 +116,15 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
           {
             "builtIn": 1,
             "datasource": "-- Grafana --",
-            "enable": true,
-            "hide": true,
+            "enable": "true",
+            "hide": "true",
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
             "type": "dashboard",
           },
         ],
     },
-  "editable": true,
+  "editable": "true",
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
@@ -141,10 +141,10 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
             "folderId": 0,
             "maxItems": 100,
             "query": "",
-            "showHeadings": true,
-            "showRecentlyViewed": false,
-            "showSearch": true,
-            "showStarred": false,
+            "showHeadings": "true",
+            "showRecentlyViewed": "false",
+            "showSearch": "true",
+            "showStarred": "false",
             "tags": [],
           },
         "pluginVersion": "8.0.0",
@@ -162,7 +162,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "time": {"from": "now-6h", "to": "now"},
   "timepicker":
     {
-      "hidden": true,
+      "hidden": "true",
       "refresh_intervals":
         ["5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
       "time_options":
@@ -569,7 +569,7 @@ IstioのPodからデータポイントを収集する。
 ダッシュボードをGUIから編集可能かを設定する。
 
 ```yaml
-{"editable": false}
+{"editable": "false"}
 ```
 
 <br>
@@ -616,8 +616,8 @@ PromQLを定義する。
               "colors": [],
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 2,
-              "link": true,
-              "linkTargetBlank": false,
+              "link": "true",
+              "linkTargetBlank": "false",
               "linkTooltip": "Drill down to pods",
               # 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell",
@@ -633,8 +633,8 @@ PromQLを定義する。
               "colors": [],
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 0,
-              "link": true,
-              "linkTargetBlank": false,
+              "link": "true",
+              "linkTargetBlank": "false",
               "linkTooltip": "Drill down to workloads",
               # 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
@@ -650,8 +650,8 @@ PromQLを定義する。
               "colors": [],
               "dateFormat": "YYYY-MM-DD HH:mm:ss",
               "decimals": 0,
-              "link": true,
-              "linkTargetBlank": false,
+              "link": "true",
+              "linkTargetBlank": "false",
               "linkTooltip": "Drill down to pods",
               # 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
@@ -711,7 +711,7 @@ templatingセクションを有効化する。
 デフォルトで`true`である。
 
 ```yaml
-{"templating": {"enable": true}}
+{"templating": {"enable": "true"}}
 ```
 
 #### ▼ list
@@ -738,7 +738,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # プルダウンの値を変更すれば、current値も動的に変わる
             "current": {
                 # 固定できるように true としておく
-                "selected": true,
+                "selected": "true",
                 # デフォルトのデータソースのフィルタリング値をPrometheusとする
                 "text": "Prometheus",
                 "value": "Prometheus",
@@ -748,9 +748,9 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
             # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            "includeAll": "false",
             "label": null,
-            "multi": false,
+            "multi": "false",
             # データソース名。変数名としても使用できるようになる。
             "name": "datasource",
             "options": [],
@@ -758,7 +758,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "query": "prometheus",
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             # 変数タイプを設定する。
             "type": "datasource",
           },
@@ -768,9 +768,9 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトのclusterラベルのフィルタリング値を null とする
-                "isNone": true,
+                "isNone": "true",
                 # ラベルが選ばれない限り表示されないため、 false としておく
-                "selected": false,
+                "selected": "false",
                 "text": "None",
                 "value": "",
               },
@@ -781,10 +781,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             "hide": 0,
             # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            "includeAll": "false",
             "label": null,
             # clusterは1つだけ選ぶようにする
-            "multi": false,
+            "multi": "false",
             # ラベル名。変数名としても使用できるようになる。
             "name": "cluster",
             "options": [],
@@ -800,13 +800,13 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
             # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             # アルファベットの昇順にする。
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
           # namespaceラベル値のプルダウン
           {
@@ -815,7 +815,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "current": {
                 # デフォルトでは全てのラベル値を選択する
                 # multiラベルの場合は、配列とする
-                "selected": true,
+                "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
@@ -826,10 +826,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             "hide": 0,
             # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
-            "includeAll": true,
+            "includeAll": "true",
             "label": null,
             # 全ての値の中から複数選択して選べるようにする。
-            "multi": true,
+            "multi": "true",
             "name": "namespace",
             "options": [],
             "query": {
@@ -841,12 +841,12 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
             # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
           # podラベル値のプルダウン
           {
@@ -855,7 +855,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "current": {
                 # デフォルトでは全てのラベル値を選択する
                 # multiラベルの場合は、配列とする
-                "selected": true,
+                "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
@@ -866,10 +866,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             "hide": 0,
             # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
-            "includeAll": true,
+            "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": true,
+            "multi": "true",
             "name": "pod",
             "options": [],
             "query": {
@@ -881,12 +881,12 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
             # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
           # label_eks_amazonaws_com_nodegroupラベル値のプルダウン
           {
@@ -897,22 +897,22 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "hide": 0,
             # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
-            "includeAll": true,
+            "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": true,
+            "multi": "true",
             "name": "nodegroup",
             "options": [],
             "query": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "refresh": 1,
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             "sort": 0,
             "tagValuesQuery": "",
             "tags": [],
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
           # nodeラベル値のプルダウン
           {
@@ -921,7 +921,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "current": {
                 # デフォルトでは全てのラベルを表示する
                 # multiラベルの場合は、配列とする
-                "selected": true,
+                "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
@@ -932,10 +932,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             "hide": 0,
             # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
-            "includeAll": true,
+            "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": true,
+            "multi": "true",
             "name": "namespace",
             "options": [],
             "query": {
@@ -948,12 +948,12 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
             # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
           # containerラベル値のプルダウン
           {
@@ -962,7 +962,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "current": {
                 # デフォルトでは全てのラベルを表示する
                 # multiラベルの場合は、配列とする
-                "selected": true,
+                "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
@@ -973,10 +973,10 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             "hide": 0,
             # multiオプションを無効化しているため、Allのチェックボックスは無効化する
-            "includeAll": false,
+            "includeAll": "false",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": true,
+            "multi": "true",
             "name": "container",
             "options": [],
             "query": {
@@ -989,12 +989,12 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
             # ただ、label_values内で『=~』を使った方が良いかもしれない。
             "regex": "",
-            "skipUrlSync": false,
+            "skipUrlSync": "false",
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
-            "useTags": false,
+            "useTags": "false",
           },
         ],
     },

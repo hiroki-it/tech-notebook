@@ -89,8 +89,8 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
+        "sort-packages": "true",
+        "optimize-autoloader": "true"
     }
 
     ...

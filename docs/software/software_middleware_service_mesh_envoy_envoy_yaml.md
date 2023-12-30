@@ -977,7 +977,7 @@ static_resources:
         envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
           "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
           upstream_http_protocol_options:
-            auto_sni: true
+            auto_sni: "true"
 ```
 
 <br>
@@ -1106,7 +1106,7 @@ staticResources:
 ```yaml
 dynamic_resources:
   ads_config:
-    set_node_on_first_message_only: true
+    set_node_on_first_message_only: "true"
 ```
 
 #### ▼ transport_api_version

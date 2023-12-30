@@ -32,7 +32,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 # appサーバー
 - hosts: app
   become: yes
-  force_handlers: true
+  force_handlers: "true"
   # rolesディレクトリ以下に処理を切り分ける。上から順にrolesを実行する。
   roles:
     - shared
@@ -41,7 +41,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 # dbサーバー
 - hosts: db
   become: yes
-  force_handlers: true
+  force_handlers: "true"
   roles:
     - shared
     - db
@@ -49,7 +49,7 @@ appサーバー、dbサーバー、webサーバーをセットアップする。
 # webサーバー
 - hosts: web
   become: yes
-  force_handlers: true
+  force_handlers: "true"
   roles:
     - shared
     - web

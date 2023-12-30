@@ -132,7 +132,7 @@ Skaffoldは基本的には開発環境でしか使わないため、これは無
 ```yaml
 build:
   local:
-    push: false
+    push: "false"
 ```
 
 #### ▼ useBuildkit
@@ -144,7 +144,7 @@ BuildKitではイメージレイヤーが並列的に作成されるため、ビ
 ```yaml
 build:
   local:
-    useBuildkit: false
+    useBuildkit: "false"
 ```
 
 > - https://genzouw.com/entry/2021/07/17/100615/2724/
@@ -227,7 +227,7 @@ schemaVersion: 2.0.0
 fileExistenceTests:
   - name: PHP file
     path: /var/www/public/index.php
-    shouldExist: true
+    shouldExist: "true"
 ```
 
 > - https://qiita.com/Kta-M/items/83db480075caabcb0b7a

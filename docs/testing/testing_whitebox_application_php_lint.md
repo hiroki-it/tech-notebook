@@ -72,8 +72,8 @@ parameters:
   excludes_analyse:
     - ./src/Foo/*
 
-  checkMissingIterableValueType: false
-  inferPrivatePropertyTypeFromConstructor: true
+  checkMissingIterableValueType: "false"
+  inferPrivatePropertyTypeFromConstructor: "true"
 ```
 
 <br>

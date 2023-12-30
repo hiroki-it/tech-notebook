@@ -136,8 +136,8 @@ spec:
         # https://github.com/kubernetes-sigs/metrics-server/issues/1056#issuecomment-1288198994
         initialDelaySeconds: 80
       securityContext:
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
+        readOnlyRootFilesystem: "true"
+        runAsNonRoot: "true"
         runAsUser: 1000
       volumeMounts:
         - mountPath: /tmp
@@ -167,7 +167,7 @@ metadata:
 spec:
   group: metrics.k8s.io
   groupPriorityMinimum: 100
-  insecureSkipTLSVerify: true
+  insecureSkipTLSVerify: "true"
   service:
     name: metrics-server
     namespace: kube-system

@@ -109,7 +109,7 @@ spec:
           name: kiali-cabundle
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
-          readOnly: true
+          readOnly: "true"
 
   ...
 

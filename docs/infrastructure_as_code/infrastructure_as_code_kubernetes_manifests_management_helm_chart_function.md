@@ -253,7 +253,7 @@ metadata:
 
 ```yaml
 foo:
-  isFoo: true
+  isFoo: "true"
   params: FOO
 bar:
   params: BAR
@@ -650,7 +650,7 @@ receivers:
   - name: slack_webhook
     slack_configs:
       - channel: prd
-        send_resolved: true
+        send_resolved: "true"
         api_url: https://hooks.slack.com/services/*****
         # 波括弧 ({}) をエスケープするために、『{{``}}』とprintfを使用している。
         # エスケープする場合は、必ず改行で出力する必要がある。

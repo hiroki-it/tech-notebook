@@ -742,7 +742,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value:
-              disable_host_header_fallback: true
+              disable_host_header_fallback: "true"
     # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
@@ -767,7 +767,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value:
-              disable_host_header_fallback: true
+              disable_host_header_fallback: "true"
   # デフォルトのフィルターよりも先に適用する
   priority: -1
 ```

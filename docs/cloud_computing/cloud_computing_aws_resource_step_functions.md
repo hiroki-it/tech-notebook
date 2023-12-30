@@ -46,7 +46,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
             },
           "Retry":
             [{"ErrorEquals": ["<再試行の対象とするエラー>"], "MaxAttempts": 0}],
-          "End": true,
+          "End": "true",
           "Comment": "The state that call Lambda",
         },
     },

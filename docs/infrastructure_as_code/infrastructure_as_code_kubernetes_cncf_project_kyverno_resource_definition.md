@@ -70,7 +70,7 @@ metadata:
   name: foo-policy
   namespace: kyverno
 spec:
-  background: false
+  background: "false"
 ```
 
 > - https://kyverno.io/docs/writing-policies/background/

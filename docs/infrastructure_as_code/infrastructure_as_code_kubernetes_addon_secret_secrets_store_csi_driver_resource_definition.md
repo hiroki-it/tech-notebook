@@ -75,13 +75,13 @@ spec:
       volumeMounts:
         - name: foo-secrets-store-csi-volume
           mountPath: /etc/secrets
-          readOnly: true
+          readOnly: "true"
   volumes:
     # CSIボリュームを設定する。
     - name: foo-secrets-store-csi-volume
       csi:
         driver: secrets-store.csi.k8s.io
-        readOnly: true
+        readOnly: "true"
         volumeAttributes:
           # SecretProviderClassを指定する。
           secretProviderClass: foo-aws-secret-provider-class

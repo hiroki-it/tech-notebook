@@ -92,13 +92,13 @@ EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 #### ▼ ena_support
 
 ```yaml
-{"builders": [{"type": "amazon-ebs", "ena_support": true}]}
+{"builders": [{"type": "amazon-ebs", "ena_support": "true"}]}
 ```
 
 #### ▼ encrypt_boot
 
 ```yaml
-{"builders": [{"type": "amazon-ebs", "encrypt_boot": false}]}
+{"builders": [{"type": "amazon-ebs", "encrypt_boot": "false"}]}
 ```
 
 #### ▼ force_deregister
@@ -112,7 +112,7 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 そういった場合に必要になる。
 
 ```yaml
-{"builders": [{"type": "amazon-ebs", "force_deregister": true}]}
+{"builders": [{"type": "amazon-ebs", "force_deregister": "true"}]}
 ```
 
 #### ▼ launch_block_device_mappings

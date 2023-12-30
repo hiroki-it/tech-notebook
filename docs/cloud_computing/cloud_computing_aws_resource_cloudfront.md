@@ -115,10 +115,10 @@ sec-fetch-mode: navigate
 sec-fetch-user: ?1
 sec-fetch-dest: document
 # デバイスタイプ
-CloudFront-Is-Mobile-Viewer: true
-CloudFront-Is-Tablet-Viewer: false
-CloudFront-Is-SmartTV-Viewer: false
-CloudFront-Is-Desktop-Viewer: false
+CloudFront-Is-Mobile-Viewer: "true"
+CloudFront-Is-Tablet-Viewer: "false"
+CloudFront-Is-SmartTV-Viewer: "false"
+CloudFront-Is-Desktop-Viewer: "false"
 # リクエストの送信元の国名
 CloudFront-Viewer-Country: JP
 # リクエストのプロトコル

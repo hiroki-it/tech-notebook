@@ -166,8 +166,8 @@ jobs:
       custom_checkout:
         type: boolean
         # デフォルト値
-        default: false
-    machine: true
+        default: "false"
+    machine: "true"
     steps:
       - when:
           # 引数がtrueの場合
@@ -185,7 +185,7 @@ workflows:
     jobs:
       - job_with_optional_custom_checkout:
           # workflowにてboolean型の値を設定
-          custom_checkout: true
+          custom_checkout: "true"
 ```
 
 #### ▼ enum型
@@ -459,7 +459,7 @@ version: 2.1
 
 jobs:
   build:
-    machine: true
+    machine: "true"
     steps:
       - checkout
       - run: | # DockerHubに対するログイン
@@ -519,8 +519,8 @@ jobs:
       custom_checkout_parameters:
         type: bool
         # デフォルト値はfalse
-        default: false
-    machine: true
+        default: "false"
+    machine: "true"
     steps:
       # 引数がtrueの場合
       - when:
@@ -539,7 +539,7 @@ workflows:
     jobs:
       - custom_checkout:
           # 引数名: 渡す値
-          custom_checkout_parameters: true
+          custom_checkout_parameters: "true"
 ```
 
 #### ▼ restore_cache、save_cache
@@ -864,7 +864,7 @@ version: 2.1
 
 jobs:
   bar:
-    machine: true
+    machine: "true"
     steps:
       - checkout
       - run:
@@ -1410,7 +1410,7 @@ jobs:
     machine:
       image: ubuntu-1604:201903-01
       # DLCを有効化
-      docker_layer_caching: true
+      docker_layer_caching: "true"
     steps:
       - checkout
       - run:
@@ -1442,7 +1442,7 @@ jobs:
     steps:
       - setup_remote_docker:
           # DLCを有効化
-          docker_layer_caching: true
+          docker_layer_caching: "true"
       - checkout
       - docker/check
       - docker/build:

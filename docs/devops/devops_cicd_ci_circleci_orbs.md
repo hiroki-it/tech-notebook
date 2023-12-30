@@ -202,9 +202,9 @@ jobs:
   aws-ecr/build-and-push-image:
     name: ecr_build_and_push_image
     # Docker Layer Cacheを使用するか否か (有料)
-    remote-docker-layer-caching: true
+    remote-docker-layer-caching: "true"
     # リポジトリがない時に作成するか否か。
-    create-repo: true
+    create-repo: "true"
     no-output-timeout: 20m
     # projectを作業ディレクトリとした時の相対パス
     dockerfile: ./infra/docker/Dockerfile
@@ -215,7 +215,7 @@ jobs:
     # ハッシュ値だけでなく、プレフィクスに日付をつけてもよい。
     tag: $CIRCLE_SHA1
     # job内にて、attach_workspaceステップを実行。
-    attach-workspace: true
+    attach-workspace: "true"
     # attach_workspaceステップ実行時のrootディレクトリ
     workspace-root: <ディレクトリ名>
 ```
@@ -262,7 +262,7 @@ jobs:
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # AWS ECSタスク定義に基づくECSタスク数の監視
-    verify-revision-is-deployed: true
+    verify-revision-is-deployed: "true"
     # 監視の試行回数
     max-poll-attempts: 30
     # 試行の間隔
@@ -323,7 +323,7 @@ jobs:
     # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # AWS ECSサービス更新後のECSタスク監視
-    verify-revision-is-deployed: true
+    verify-revision-is-deployed: "true"
 
 workflows:
   # ステージング環境にデプロイ
@@ -376,7 +376,7 @@ jobs:
     cluster: "${SERVICE}-ecs-cluster"
     # LATESTとするとその時点の最新バージョンを自動的に割り振られてしまう。
     platform-version: 1.4.0
-    awsvpc: true
+    awsvpc: "true"
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS

@@ -151,11 +151,11 @@ paths:
 #===========================
 x-amazon-apigateway-request-validators:
   本文、クエリ文字列パラメーター、およびヘッダーの検証:
-    validateRequestParameters: true # クエリパラメーターとヘッダー
-    validateRequestBody: true # ボディ
+    validateRequestParameters: "true" # クエリパラメーターとヘッダー
+    validateRequestBody: "true" # ボディ
   クエリ文字列パラメーターおよびヘッダーの検証:
-    validateRequestParameters: true
-    validateRequestBody: false
+    validateRequestParameters: "true"
+    validateRequestBody: "false"
 ```
 
 <br>
@@ -189,11 +189,11 @@ paths:
 #===========================
 x-amazon-apigateway-request-validators:
   本文、クエリ文字列パラメーター、およびヘッダーの検証:
-    validateRequestParameters: true # クエリパラメーターとヘッダー
-    validateRequestBody: true # ボディ
+    validateRequestParameters: "true" # クエリパラメーターとヘッダー
+    validateRequestBody: "true" # ボディ
   クエリ文字列パラメーターおよびヘッダーの検証:
-    validateRequestParameters: true
-    validateRequestBody: false
+    validateRequestParameters: "true"
+    validateRequestBody: "false"
 ```
 
 <br>
@@ -281,7 +281,7 @@ paths:
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -415,7 +415,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -491,7 +491,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -555,11 +555,11 @@ paths:
 #===========================
 x-amazon-apigateway-request-validators:
   本文、クエリ文字列パラメーター、およびヘッダーの検証:
-    validateRequestParameters: true # クエリパラメーターとヘッダー
-    validateRequestBody: true # ボディ
+    validateRequestParameters: "true" # クエリパラメーターとヘッダー
+    validateRequestBody: "true" # ボディ
   クエリ文字列パラメーターおよびヘッダーの検証:
-    validateRequestParameters: true
-    validateRequestBody: false
+    validateRequestParameters: "true"
+    validateRequestBody: "false"
 
 components:
   #===========================
@@ -678,7 +678,7 @@ paths:
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -827,7 +827,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -911,7 +911,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -981,11 +981,11 @@ paths:
 #===========================
 x-amazon-apigateway-request-validators:
   本文、クエリ文字列パラメーター、およびヘッダーの検証:
-    validateRequestParameters: true # クエリパラメーターとヘッダー
-    validateRequestBody: true # ボディ
+    validateRequestParameters: "true" # クエリパラメーターとヘッダー
+    validateRequestBody: "true" # ボディ
   クエリ文字列パラメーターおよびヘッダーの検証:
-    validateRequestParameters: true
-    validateRequestBody: false
+    validateRequestParameters: "true"
+    validateRequestBody: "false"
 
 components:
   #===========================
@@ -1112,7 +1112,7 @@ paths:
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -1250,7 +1250,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -1329,7 +1329,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -1394,11 +1394,11 @@ paths:
 #===========================
 x-amazon-apigateway-request-validators:
   本文、クエリ文字列パラメーター、およびヘッダーの検証:
-    validateRequestParameters: true # クエリパラメーターとヘッダー
-    validateRequestBody: true # ボディ
+    validateRequestParameters: "true" # クエリパラメーターとヘッダー
+    validateRequestBody: "true" # ボディ
   クエリ文字列パラメーターおよびヘッダーの検証:
-    validateRequestParameters: true
-    validateRequestBody: false
+    validateRequestParameters: "true"
+    validateRequestBody: "false"
 
 components:
   #===========================

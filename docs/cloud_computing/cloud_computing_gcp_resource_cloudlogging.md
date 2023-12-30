@@ -97,7 +97,7 @@ CloudLoggingでログを処理するためのAPI (`logging.googleapis.com`) を�
     {
       "id": "get_data",
       "producer": "github.com/MyProject/MyApplication",
-      "first": true,
+      "first": "true",
     },
   "trace": "projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824",
   "sourceLocation":

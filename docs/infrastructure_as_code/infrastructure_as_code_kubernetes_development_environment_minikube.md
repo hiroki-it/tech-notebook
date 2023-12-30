@@ -235,9 +235,9 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
     "name": "crio",
     "type": "bridge",
     "bridge": "cni0",
-    "isGateway": true,
-    "ipMasq": true,
-    "hairpinMode": true,
+    "isGateway": "true",
+    "ipMasq": "true",
+    "hairpinMode": "true",
     "ipam": {
         "type": "host-local",
         "routes": [

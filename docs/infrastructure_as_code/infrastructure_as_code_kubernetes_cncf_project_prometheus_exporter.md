@@ -216,15 +216,15 @@ modules:
       # 優先するIPアドレスの種類
       preferred_ip_protocol: ip4
       # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: true
-      follow_redirects: true
+      ip_protocol_fallback: "true"
+      follow_redirects: "true"
     tcp:
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
     icmp:
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
     dns:
-      ip_protocol_fallback: true
-      recursion_desired: true
+      ip_protocol_fallback: "true"
+      recursion_desired: "true"
 
   # GETの場合 (HTTPS)
   http_2xx_get:
@@ -239,10 +239,10 @@ modules:
       # 優先するIPアドレスの種類
       preferred_ip_protocol: ip4
       # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
       tls_config:
         # SSL証明書を任意にする
-        insecure_skip_verify: true
+        insecure_skip_verify: "true"
 ```
 
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
@@ -265,7 +265,7 @@ modules:
       valid_status_codes:
         - 200
       # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
       method: POST
       # リクエストヘッダー
       headers:
@@ -275,14 +275,14 @@ modules:
         Content-Type: application/x-www-form-urlencode
       # メッセージボディ
       body: "{}"
-      follow_redirects: true
+      follow_redirects: "true"
     tcp:
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
     icmp:
-      ip_protocol_fallback: true
+      ip_protocol_fallback: "true"
     dns:
-      ip_protocol_fallback: true
-      recursion_desired: true
+      ip_protocol_fallback: "true"
+      recursion_desired: "true"
 ```
 
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
@@ -330,12 +330,12 @@ spec:
   replicas: 1
   template:
     spec:
-      hostNetwork: false
+      hostNetwork: "false"
       serviceAccountName: kube-state-metrics
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
-        runAsNonRoot: true
+        runAsNonRoot: "true"
         runAsUser: 65534
         seccompProfile:
           type: RuntimeDefault
@@ -366,7 +366,7 @@ spec:
             initialDelaySeconds: 5
             timeoutSeconds: 5
           securityContext:
-            allowPrivilegeEscalation: false
+            allowPrivilegeEscalation: "false"
             capabilities:
               drop:
                 - ALL

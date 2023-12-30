@@ -54,7 +54,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
-  exec.enabled: true
+  exec.enabled: "true"
 ```
 
 argocd-serverに紐づけるClusterRoleでは、Podの`exec`リソースと`create`アクションを許可する必要がある。
@@ -312,7 +312,7 @@ metadata:
   namespace: argocd
   name: argocd-cm
 data:
-  admin.enabled: true
+  admin.enabled: "true"
 
   # OIDCに必要なIDやトークンを設定する。
   oidc.config: |
@@ -348,7 +348,7 @@ metadata:
   namespace: argocd
   name: argocd-cm
 data:
-  admin.enabled: true
+  admin.enabled: "true"
 
   # 必要なIDやトークンを設定する。
   dex.config: |

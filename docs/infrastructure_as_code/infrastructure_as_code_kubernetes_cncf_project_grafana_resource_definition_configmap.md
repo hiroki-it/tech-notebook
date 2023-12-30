@@ -59,7 +59,7 @@ spec:
           name: sc-datasources-volume
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-****
-          readOnly: true
+          readOnly: "true"
 ```
 
 > - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources
@@ -91,7 +91,7 @@ data:
         url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090/
         access: proxy
         # デフォルトのデータソースとするか否かを設定する
-        isDefault: true
+        isDefault: "true"
         jsonData:
           timeInterval: 30s
 ```
@@ -119,7 +119,7 @@ data:
         type: prometheus
         url: http://<VictoriaMetricsのサーバーのIPアドレス>:8248/
         access: proxy
-        isDefault: false
+        isDefault: "false"
         jsonData:
           timeInterval: 30s
 ```
@@ -519,11 +519,11 @@ data:
         orgId: 1
         folder: ''
         type: file
-        disableDeletion: false
-        allowUiUpdates: false
+        disableDeletion: "false"
+        allowUiUpdates: "false"
         updateIntervalSeconds: 30
         options:
-          foldersFromFilesStructure: false
+          foldersFromFilesStructure: "false"
           path: /tmp/dashboards
 ```
 
@@ -588,7 +588,7 @@ spec:
           name: sc-dashboard-volume
         - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
           name: kube-api-access-*****
-          readOnly: true
+          readOnly: "true"
 ```
 
 サイドカーがConfigMapを検知できるように、`metadata.labels`キーにデフォルトで`grafana_dashboard: "1"`を設定する必要がある。

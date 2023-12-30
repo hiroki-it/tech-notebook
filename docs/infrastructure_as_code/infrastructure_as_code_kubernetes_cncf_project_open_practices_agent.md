@@ -173,7 +173,7 @@ $ curl \
     127.0.0.1:8181/v1/data/httpapi/authz/allow | jq .
 
 {
-  "result": true
+  "result": "true"
 }
 ```
 

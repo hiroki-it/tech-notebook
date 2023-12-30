@@ -61,7 +61,7 @@ $ ./github-comment exec -k <テンプレート名>  -var "TestName:foo-test" -va
 ---
 exec:
   default:
-    - when: true
+    - when: "true"
       template: |
 
         ## `{{ .Vars.TestName }}`
@@ -219,7 +219,7 @@ exec:
   # テンプレート名
   default:
     # hen=true は必ず設定する
-    - when: true
+    - when: "true"
       template: |
         ...
 ```
@@ -231,12 +231,12 @@ exec:
   # テンプレート名
   default:
     # when=true は必ず設定する
-    - when: true
+    - when: "true"
       template: |
         ...
 
   test:
-    - when: true
+    - when: "true"
       template: |
         ...
 ```
@@ -248,7 +248,7 @@ exec:
 exec:
   # 静的解析以外の処理のためのテンプレート
   default:
-    - when: true
+    - when: "true"
       template: |
 
         ## `{{ .Vars.TestName }}`
@@ -274,7 +274,7 @@ exec:
 
   # 静的解析のためのテンプレート
   test:
-    - when: true
+    - when: "true"
       template: |
 
         ## `{{ .Vars.TestName }}`
@@ -327,12 +327,12 @@ $ ./github-comment exec -k test -- <好きなコマンド>
 exec:
   default:
     # when=true は必ず設定する
-    - when: true
+    - when: "true"
       template: |
         ...
 hide:
   old-comment:
-    - when: true
+    - when: "true"
       # 一致しないコミットによるレビューコメントは非表示にする
       template: |
         Comment.HasMeta && Comment.Meta.SHA1 != Commit.SHA1
@@ -372,7 +372,7 @@ hide:
 exec:
   default:
     # when=true は必ず設定する
-    - when: true
+    - when: "true"
       template: |
 
         ## `{{ .Vars.TestName }}`
@@ -417,7 +417,7 @@ exec:
 exec:
   test:
     # when=true は必ず設定する
-    - when: true
+    - when: "true"
       template: |
 
         ## `{{ .Vars.TestName }}`

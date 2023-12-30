@@ -285,7 +285,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
       {
         "name": "<コンテナ名>",
         "image": "<IMAGE1_NAME>",
-        "essential": true,
+        "essential": "true",
         "portMappings": [
             {
               # コンテナポート

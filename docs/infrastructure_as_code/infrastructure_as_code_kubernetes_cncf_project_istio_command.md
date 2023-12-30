@@ -429,7 +429,7 @@ bootstrap:
       grpcServices:
         - envoyGrpc:
             clusterName: xds-grpc
-      setNodeOnFirstMessageOnly: true
+      setNodeOnFirstMessageOnly: "true"
       transportApiVersion: V3
     cdsConfig:
       # ADS-APIから取得した宛先情報のうち、クラスター値を設定する。
@@ -574,7 +574,7 @@ $ istioctl proxy-config endpoints foo-pod \
 ---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
-  addedViaApi: true
+  addedViaApi: "true"
   observabilityName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   hostStatuses:
     - address:
@@ -733,7 +733,7 @@ $ istioctl proxy-config routes foo-pod \
 
           ...
 
-      includeRequestAttemptCount: true
+      includeRequestAttemptCount: "true"
     # foo-podからbar-podにリクエストを送信する時に選ばれる。
     - name: bar-service.bar-namespace.svc.cluster.local:50002
       domains:
@@ -760,7 +760,7 @@ $ istioctl proxy-config routes foo-pod \
 
           ...
 
-      includeRequestAttemptCount: true
+      includeRequestAttemptCount: "true"
     # foo-podからbaz-podにリクエストを送信する時に選ばれる。
     - name: baz-service.baz-namespace.svc.cluster.local:50003
       domains:
@@ -784,7 +784,7 @@ $ istioctl proxy-config routes foo-pod \
             ...
 
           maxGrpcTimeout: 10800s
-      includeRequestAttemptCount: true
+      includeRequestAttemptCount: "true"
 
     ...
 
@@ -800,8 +800,8 @@ $ istioctl proxy-config routes foo-pod \
             cluster: PassthroughCluster
             timeout: 0s
             maxGrpcTimeout: 0s
-      includeRequestAttemptCount: true
-  validateClusters: false
+      includeRequestAttemptCount: "true"
+  validateClusters: "false"
 
 ...
 ```

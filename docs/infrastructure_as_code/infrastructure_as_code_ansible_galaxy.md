@@ -90,7 +90,7 @@ repository/
 
 ```yaml
 - hosts: all
-  become: true
+  become: "true"
   roles:
     - foo
 ```

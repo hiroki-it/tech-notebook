@@ -1582,7 +1582,7 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
     "name": "laravel",
     # ECRのURL。タグを指定しない場合はlatestが割り当てられる。
     "image": "${laravel_ecr_repository_url}",
-    "essential": true,
+    "essential": "true",
     "portMappings": [
         # AWS ECSのホストとコンテナのポートマッピング
         {"containerPort": 80, "hostPort": 80, "protocol": "tcp"},

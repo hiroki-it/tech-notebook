@@ -242,7 +242,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
@@ -299,7 +299,7 @@ paths:
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
-          required: true
+          required: "true"
           description: ユーザーID
           schema:
             type: string
