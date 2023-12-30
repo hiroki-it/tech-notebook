@@ -46,13 +46,13 @@ theme:
     - toc.follow
 
 # URL形式
-use_directory_urls: false
+use_directory_urls: "false"
 
 extra:
   analytics:
     provider: google
     property: G-HPJGWKTH9W
-  generator: false
+  generator: "false"
   homepage: https://hiroki-it.github.io/tech-notebook/
   social:
     - icon: fontawesome/brands/github
@@ -80,7 +80,7 @@ markdown_extensions:
   # コードブロックのハイライト化
   - pymdownx.highlight:
       # highlight.jsを使用する場合は、falseにする。
-      use_pygments: true
+      use_pygments: "true"
       # pygmentsのテーマ名は以下で選択できるが、機能しない...
       # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
   - pymdownx.superfences:
@@ -96,7 +96,7 @@ markdown_extensions:
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=conten#table-of-contents
   - toc:
       title: 'このページの内容'
-      permalink: true
+      permalink: "true"
       toc_depth: 4
   # メタタグの有効化
   - meta
