@@ -190,29 +190,12 @@ Hello World
 
 ### ファイルに対するリダイレクト例
 
-#### ▼ `>`
+#### ▼ `2>`
 
 リダイレクト前に`stdout.txt`ファイルを新しく作成し、`echo`コマンドの標準出力をこれにリダイレクトする。
 
 ```bash
-$ echo 'Hello World' > stdout.txt
-```
-
-リダイレクト前に`stderr.txt`ファイルを新しく作成し、lsプロセスの標準エラー出力をこれにリダイレクトする。
-
-```bash
-$ ls foo 2> stderr.txt
-
-$ cat stderr.txt
-ls: cannot access foo: No such file or directory
-```
-
-#### ▼ `>>`
-
-`echo`コマンドの標準出力を既存の`stdout.txt`ファイルにリダイレクトし、加えて追記する。
-
-```bash
-$ echo 'Hello World' >> stdout.txt
+$ echo 'Hello World' 2> stdout.txt
 ```
 
 #### ▼ `>|`
@@ -223,6 +206,14 @@ $ echo 'Hello World' >> stdout.txt
 
 ```bash
 $ echo 'Hello World' >| stdout.txt
+```
+
+#### ▼ `>>`
+
+`echo`コマンドの標準出力を既存の`stdout.txt`ファイルにリダイレクトし、加えて追記する。
+
+```bash
+$ echo 'Hello World' >> stdout.txt
 ```
 
 <br>

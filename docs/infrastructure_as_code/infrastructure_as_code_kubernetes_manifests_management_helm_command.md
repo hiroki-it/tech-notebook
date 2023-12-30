@@ -481,6 +481,8 @@ $ helm push <チャートアーカイブへのパス> <チャートリポジト�
 
 ```bash
 # AWSの場合
+$ aws ecr get-login-password --region ap-northeast-1 | helm registry login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+
 $ helm push <チャートアーカイブへのパス> oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
 ```
 

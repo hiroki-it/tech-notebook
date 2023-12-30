@@ -193,7 +193,7 @@ FROM data/agent:latest
 [
   {
     "name": "datadog",
-    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****",
+    "image": "<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****",
   },
 ]
 ```
