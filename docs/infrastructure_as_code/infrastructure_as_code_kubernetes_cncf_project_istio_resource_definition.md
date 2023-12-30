@@ -1354,7 +1354,8 @@ spec:
 apiVersion: install.istio.io/v1alpha1
 kind: PeerAuthentication
 metadata:
-  namespace: istio-system
+  # foo内の全てのサイドカーにPeerAuthenticationを適用する
+  namespace: foo
   name: peer-authentication
 spec:
   mtls:
