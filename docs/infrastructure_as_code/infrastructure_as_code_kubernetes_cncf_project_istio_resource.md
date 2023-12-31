@@ -119,7 +119,22 @@ configs:
 
 #### ▼ `404`ステータス
 
-受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+Gatewayで受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+`istioctl proxy-config route`コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
+
+```bash
+# VirtualServiceが404になっている。
+$ istioctl proxy-config route foo-pod
+
+NAME           VHOST NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
+http.50003     blackhole:50003     *           /*                     404
+http.50002     blackhole:50002     *           /*                     404
+http.50001     blackhole:50001     *           /*                     404
+http.50004     blackhole:50004     *           /*                     404
+               backend             *           /stats/prometheus*
+               backend             *           /healthz/ready*
+```
 
 > - https://stackoverflow.com/a/73824193
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -433,7 +448,18 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 #### ▼ `404`ステータス
 
-Gatewayから受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+VirtualServiceで受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+`istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。
+
+```bash
+# helloworldでは、紐づくDestinationが見つからない
+$ istioctl proxy-config cluster <Pod名>
+
+SERVICE FQDN                                                                    PORT      SUBSET     DIRECTION     TYPE           DESTINATION
+helloworld-app-service.services.svc.cluster.local                               50002     -          outbound      EDS
+httpbin-app-service.services.svc.cluster.local                                  50003     -          outbound      EDS            httpbin-app-destination-rule.services
+```
 
 #### ▼ VirtualService数
 
