@@ -1064,8 +1064,6 @@ Istio IngressGateway/EgressGatewayに付与された`.metadata.labels`キーを�
 
 また、Istio EgressGatewayには`istio`ラベルがあり、値は`egressgateway`である。
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
-
 **＊実装例＊**
 
 ```yaml
@@ -1088,13 +1086,15 @@ metadata:
     istio: ingressgateway
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+
 <br>
 
 ### .spec.servers
 
 #### ▼ port.name
 
-ポート名を設定する。
+Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定する。
 
 **＊実装例＊**
 
@@ -1114,13 +1114,11 @@ spec:
 
 #### ▼ port.number
 
-インバウンド通信を待ち受けるポート番号を設定する。
+Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
 
-IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて`30000`番ポートとする。
+IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeのターゲットポート番号に合わせる。
 
-一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。
-
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできるターゲットポート番号とする。
 
 **＊実装例＊**
 
@@ -1136,11 +1134,11 @@ spec:
         number: 30000
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
 #### ▼ port.protocol
 
-受信する通信のプロトコルを設定する。
-
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。
 
 **＊実装例＊**
 
@@ -1156,11 +1154,11 @@ spec:
         protocol: HTTP
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+
 #### ▼ port.targetPort
 
-ServiceEntryで追加したサービスディスカバリーの宛先のポート番号を設定する。
-
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+Istio IngressGateway/EgressGatewayのPodのターゲットポート番号を設定する。
 
 **＊実装例＊**
 
@@ -1175,6 +1173,8 @@ spec:
     - port:
         targetPort: 80
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
 #### ▼ hosts
 
@@ -1224,8 +1224,6 @@ SSL証明書のファイルを指定する場合は、`.spec.servers[*].tls.serv
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
-> - https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
-
 **＊実装例＊**
 
 ```yaml
@@ -1239,6 +1237,8 @@ spec:
     - tls:
         credentialName: istio-gateway-certificate-secret
 ```
+
+> - https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert
 
 #### ▼ tls.mode
 
