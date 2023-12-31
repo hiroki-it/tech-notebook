@@ -171,10 +171,11 @@ data:
 
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
 > - https://istiobyexample.dev/monitoring-egress-traffic/
+> - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
 
-#### ▼ ALLOW_ANY
+#### ▼ REGISTRY_ONLY
 
-サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster`として扱う。
+サービスメッシュ外へのリクエストの宛先を、デフォルトで`BlackHoleCluster` (`502 Bad Gateway`) として扱う。
 
 `PassthroughCluster`として扱いたい宛先は、ServiceEntryに設定する。
 

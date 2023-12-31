@@ -157,10 +157,13 @@ data:
       # https://v1-48.kiali.io/docs/features/istio-component-status/
       istio:
         component_status:
+          # ステータスを連携したいIstioのコンポーネントを設定する
           components:
             - app_label: istiod
             - app_label: istio-ingressgateway
               namespace: istio-ingress
+            - app_label: istio-egressgateway
+              namespace: istio-egress
           # Masthead indicatorを表示するかどうかを設定する。
           # https://kiali.io/docs/features/security/#masthead-indicator
           enabled: "true"

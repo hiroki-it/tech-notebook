@@ -1448,6 +1448,27 @@ spec:
 
 <br>
 
+### .spec.location
+
+#### ▼ locationとは
+
+登録したシステムがサービスメッシュ内か否かを設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: foo-service-entry
+spec:
+  location: EXTERNAL_MESH
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
+
+<br>
+
 ### .spec.ports
 
 #### ▼ portsとは
