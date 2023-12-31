@@ -23461,14 +23461,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="03-destinationrule">03. DestinationRule<a class="headerlink" href="#03-destinationrule" title="Permanent link">&para;</a></h2>
 <h3 id="specexportto">.spec.exportTo<a class="headerlink" href="#specexportto" title="Permanent link">&para;</a></h3>
 <h4 id="exportto">▼ exportToとは<a class="headerlink" href="#exportto" title="Permanent link">&para;</a></h4>
-<p>そのDestinationRuleを使用できるNamespaceを設定する。</p>
+<p>そのDestinationRuleにリクエストできるNamespaceを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService">https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>全てのNamespaceで使用できるようにする。</p>
+<p>全てのNamespaceからリクエストできるようにする。</p>
+<p>もし他のNamespace (例：<code>istio-ingress</code>) 内のIstio IngressGatewayからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -23478,10 +23479,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-gateway</span>
 </code></pre></div>
 <h4 id="_7">▼ <code>.</code> (ドット)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>全てのNamespaceのうちで、<code>.metadata.namespace</code>キーのNamespaceのみで使用できるようにする。</p>
-<p>DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。</p>
+<p>同じNamespaceからのみリクエストできるようにする。</p>
+<p>Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -23491,6 +23494,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechost">.spec.host<a class="headerlink" href="#spechost" title="Permanent link">&para;</a></h3>
@@ -24139,11 +24144,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Istio IngressGateway/EgressGatewayに付与された<code>.metadata.labels</code>キーを設定する。</p>
 <p>デフォルトでは、Istio IngressGatewayには<code>istio</code>ラベルがあり、値は<code>ingressgateway</code>である。</p>
 <p>また、Istio EgressGatewayには<code>istio</code>ラベルがあり、値は<code>egressgateway</code>である。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway">https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24161,10 +24161,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway">https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specservers">.spec.servers<a class="headerlink" href="#specservers" title="Permanent link">&para;</a></h3>
 <h4 id="portname">▼ port.name<a class="headerlink" href="#portname" title="Permanent link">&para;</a></h4>
-<p>ポート名を設定する。</p>
+<p>Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24182,14 +24187,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="portnumber">▼ port.number<a class="headerlink" href="#portnumber" title="Permanent link">&para;</a></h4>
-<p>インバウンド通信を待ち受けるポート番号を設定する。</p>
-<p>IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeが待ち受けるポート番号に合わせて<code>30000</code>番ポートとする。</p>
-<p>一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる任意のポート番号とする。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Port">https://istio.io/latest/docs/reference/config/networking/gateway/#Port</a></li>
-</ul>
-</blockquote>
+<p>Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。</p>
+<p>IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeの宛先ポート番号に合わせる。</p>
+<p>一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる宛先ポート番号とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24201,13 +24201,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 </code></pre></div>
-<h4 id="portprotocol">▼ port.protocol<a class="headerlink" href="#portprotocol" title="Permanent link">&para;</a></h4>
-<p>受信する通信のプロトコルを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Port">https://istio.io/latest/docs/reference/config/networking/gateway/#Port</a></li>
 </ul>
 </blockquote>
+<h4 id="portprotocol">▼ port.protocol<a class="headerlink" href="#portprotocol" title="Permanent link">&para;</a></h4>
+<p>Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24219,13 +24219,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
 </code></pre></div>
-<h4 id="porttargetport">▼ port.targetPort<a class="headerlink" href="#porttargetport" title="Permanent link">&para;</a></h4>
-<p>ServiceEntryで追加したサービスディスカバリーの宛先のポート番号を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Port">https://istio.io/latest/docs/reference/config/networking/gateway/#Port</a></li>
 </ul>
 </blockquote>
+<h4 id="porttargetport">▼ port.targetPort<a class="headerlink" href="#porttargetport" title="Permanent link">&para;</a></h4>
+<p>Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24237,6 +24237,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Port">https://istio.io/latest/docs/reference/config/networking/gateway/#Port</a></li>
+</ul>
+</blockquote>
 <h4 id="hosts">▼ hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>Gatewayでフィルタリングするインバウンド通信の<code>Host</code>ヘッダー名を設定する。</p>
 <p>ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (<code>*</code>) を使用して全てのドメインを許可しても良い。</p>
@@ -24273,11 +24278,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>CAを含むSSL証明書を保持するSecretを設定する。</p>
 <p>SSL証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code>キーを設定する。</p>
 <p>Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。</p>
-<blockquote>
-<ul>
-<li><a href="https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert">https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -24289,6 +24289,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">credentialName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-gateway-certificate-secret</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert">https://stackoverflow.com/questions/63621461/updating-istio-ingressgateway-tls-cert</a></li>
+</ul>
+</blockquote>
 <h4 id="tlsmode_1">▼ tls.mode<a class="headerlink" href="#tlsmode_1" title="Permanent link">&para;</a></h4>
 <p>Gatewayの宛先との通信の暗号化方式を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -24579,15 +24584,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="10-virtualservice">10. VirtualService<a class="headerlink" href="#10-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
 <h4 id="exportto_1">▼ exportToとは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
-<p>そのVirtualServiceを使用できるNamespaceを設定する。</p>
-<p>認可されたNamespace内のサイドカーやIstio IngressGatewayのみが、そのVirtualServiceを使用できる。</p>
+<p>そのVirtualServiceにリクエストできるNamespaceを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService">https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService</a></li>
 </ul>
 </blockquote>
 <h4 id="_8">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>全てのNamespaceのみで使用できるようにする。</p>
+<p>全てのNamespaceのみからリクエストできるようにする。</p>
+<p>もし他のNamespace (例：<code>istio-ingress</code>) 内のIstio IngressGatewayからリクエストを受信する場合、<code>*</code>とする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -24597,10 +24602,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-gateway</span>
 </code></pre></div>
 <h4 id="_9">▼ <code>.</code> (ドット)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>VirtualServiceと同じNamespaceで、そのVirtualServiceを指定できるようにする。</p>
-<p>VirtualServiceを想定外のNamespaceで指定してしまうことを防ぐ。</p>
+<p>同じNamespaceからのみリクエストできるようにする。</p>
+<p>Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、<code>.</code>とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -24610,6 +24617,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechosts_1">.spec.hosts<a class="headerlink" href="#spechosts_1" title="Permanent link">&para;</a></h3>
@@ -24709,6 +24718,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="mesh">▼ mesh<a class="headerlink" href="#mesh" title="Permanent link">&para;</a></h4>
 <p>VirtualServiceを、Pod間通信で使用する場合は<code>mesh</code>とする。</p>
+<p>ホストヘッダーに<code>*</code> (ワイルドカード) を使用できず、特定のホストヘッダーのみを許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -24718,6 +24728,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ワイルドカードを指定できず、特定のホストヘッダーを許可する必要がある</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">account-app</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechttp">.spec.http<a class="headerlink" href="#spechttp" title="Permanent link">&para;</a></h3>
@@ -25007,6 +25020,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="c1"># foo-service</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 </code></pre></div>
 <h4 id="routedestinationport_1">▼ route.destination.port<a class="headerlink" href="#routedestinationport_1" title="Permanent link">&para;</a></h4>
@@ -25021,6 +25035,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="c1"># foo-service</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
@@ -25038,12 +25054,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="c1"># foo-service</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="c1"># foo-service</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>

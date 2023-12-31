@@ -23999,7 +23999,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <h4 id="_5">▼ 待ち受けるポート番号の確認<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Pod内のコンテナ内で<code>netstat</code>コマンドを実行することにより、コンテナが待ち受けているポート番号を確認できる。</p>
+<p>Pod内のコンテナ内で<code>netstat</code>コマンドを実行することにより、コンテナが待ち受けるポート番号を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--<span class="w"> </span>netstat<span class="w"> </span>-tulpn
 
 Active<span class="w"> </span>Internet<span class="w"> </span>connections<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>servers<span class="o">)</span>

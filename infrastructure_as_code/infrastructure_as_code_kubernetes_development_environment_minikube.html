@@ -21526,10 +21526,23 @@ docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/cni/ne
 <p><br></p>
 <h3 id="nodeport-service">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h3>
 <p>NodePort Serviceの場合、<code>minikube service</code>コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。</p>
-<p><code>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
+<p><code>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;</code>の形式でURLが発行されるため、ブラウザや<code>curl</code>コマンドで接続を確認できる。</p>
+<p>NodePort Serviceで指定した宛先ポート番号の数だけ、これに紐づくトンネルポート番号を発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>service<span class="w"> </span>&lt;NodePort<span class="w"> </span>Service名&gt;<span class="w"> </span>--url<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
-$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;自動的に発行されたポート番号&gt;
+http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号1&gt;
+http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号2&gt;
+http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号3&gt;
+
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;自動的に発行されたトンネルポート番号&gt;
+</code></pre></div>
+<p><code>ps</code>コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>docker@127.0.0.1
+
+ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>-N<span class="w"> </span>docker@127.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">55972</span><span class="w"> </span>-i<span class="w"> </span>/Users/FOO/.minikube/machines/minikube/id_rsa
+-L<span class="w"> </span>&lt;トンネルポート番号1&gt;:&lt;ClusterIP<span class="w"> </span>ServiceのIPアドレス&gt;:&lt;NodePort<span class="w"> </span>Serviceの宛先ポート番号1&gt;
+-L<span class="w"> </span>&lt;トンネルポート番号2&gt;:&lt;ClusterIP<span class="w"> </span>ServiceのIPアドレス&gt;:&lt;NodePort<span class="w"> </span>Serviceの宛先ポート番号2&gt;
+-L<span class="w"> </span>&lt;トンネルポート番号3&gt;:&lt;ClusterIP<span class="w"> </span>ServiceのIPアドレス&gt;:&lt;NodePort<span class="w"> </span>Serviceの宛先ポート番号3&gt;
 </code></pre></div>
 <p>これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>service<span class="w"> </span>istio-ingressgateway<span class="w"> </span>--url<span class="w"> </span>-n<span class="w"> </span>istio-ingress

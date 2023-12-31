@@ -21718,7 +21718,19 @@
 <p><br></p>
 <h3 id="_4">プラクティス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="404">▼ <code>404</code>ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
-<p>受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p>Gatewayで受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p><code>istioctl proxy-config route</code>コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># VirtualServiceが404になっている。</span>
+$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>route<span class="w"> </span>foo-pod
+
+NAME<span class="w">           </span>VHOST<span class="w"> </span>NAME<span class="w">          </span>DOMAINS<span class="w">     </span>MATCH<span class="w">                  </span>VIRTUAL<span class="w"> </span>SERVICE
+http.50003<span class="w">     </span>blackhole:50003<span class="w">     </span>*<span class="w">           </span>/*<span class="w">                     </span><span class="m">404</span>
+http.50002<span class="w">     </span>blackhole:50002<span class="w">     </span>*<span class="w">           </span>/*<span class="w">                     </span><span class="m">404</span>
+http.50001<span class="w">     </span>blackhole:50001<span class="w">     </span>*<span class="w">           </span>/*<span class="w">                     </span><span class="m">404</span>
+http.50004<span class="w">     </span>blackhole:50004<span class="w">     </span>*<span class="w">           </span>/*<span class="w">                     </span><span class="m">404</span>
+<span class="w">               </span>backend<span class="w">             </span>*<span class="w">           </span>/stats/prometheus*
+<span class="w">               </span>backend<span class="w">             </span>*<span class="w">           </span>/healthz/ready*
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/73824193">https://stackoverflow.com/a/73824193</a></li>
@@ -21766,9 +21778,12 @@
 <span class="w">  </span><span class="c1"># ルーティング先のPodのポート番号が設定される。</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-foo</span>
+<span class="w">      </span><span class="c1"># Nodeが待ち受けるポート番号</span>
 <span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30001</span>
+<span class="w">      </span><span class="c1"># NodePort Serviceが待ち受けるポート番号</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="c1"># NodePort Serviceの宛先ポート番号 (Istio IngressGatewayのPodが待ち受けるポート番号)</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-bar</span>
 <span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30002</span>
@@ -22000,7 +22015,15 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="_8">プラクティス<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayから受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p>VirtualServiceで受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p><code>istioctl proxy-config cluster</code>コマンドで、VirtualServiceに紐づくDestinationRuleがいるかを確認できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># helloworldでは、紐づくDestinationが見つからない</span>
+$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>&lt;Pod名&gt;
+
+SERVICE<span class="w"> </span>FQDN<span class="w">                                                                    </span>PORT<span class="w">      </span>SUBSET<span class="w">     </span>DIRECTION<span class="w">     </span>TYPE<span class="w">           </span>DESTINATION
+helloworld-app-service.services.svc.cluster.local<span class="w">                               </span><span class="m">50002</span><span class="w">     </span>-<span class="w">          </span>outbound<span class="w">      </span>EDS
+httpbin-app-service.services.svc.cluster.local<span class="w">                                  </span><span class="m">50003</span><span class="w">     </span>-<span class="w">          </span>outbound<span class="w">      </span>EDS<span class="w">            </span>httpbin-app-destination-rule.services
+</code></pre></div>
 <h4 id="virtualservice_1">▼ VirtualService数<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>

@@ -22690,7 +22690,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>endpoints<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 ENDPOINT<span class="w">                                              </span>STATUS<span class="w">      </span>OUTLIER<span class="w"> </span>CHECK<span class="w">     </span>CLUSTER
-&lt;PodのIPアドレス&gt;:&lt;Pod内のコンテナが待ち受けているポート番号&gt;<span class="w">  </span>HEALTHY<span class="w">     </span>OK<span class="w">                </span>&lt;紐づいているクラスター名&gt;
+&lt;PodのIPアドレス&gt;:&lt;Pod内のコンテナが待ち受けるポート番号&gt;<span class="w">  </span>HEALTHY<span class="w">     </span>OK<span class="w">                </span>&lt;紐づいているクラスター名&gt;
 <span class="m">10</span>.0.0.1:80<span class="w">                                           </span>HEALTHY<span class="w">     </span>OK<span class="w">                </span>outbound<span class="p">|</span><span class="m">50001</span><span class="p">|</span>v1<span class="p">|</span>foo-service.foo-namespace.svc.cluster.local
 <span class="m">10</span>.0.0.2:80<span class="w">                                           </span>HEALTHY<span class="w">     </span>OK<span class="w">                </span>outbound<span class="p">|</span><span class="m">50002</span><span class="p">|</span>v1<span class="p">|</span>foo-service.foo-namespace.svc.cluster.local
 <span class="m">10</span>.0.0.3:80<span class="w">                                           </span>HEALTHY<span class="w">     </span>OK<span class="w">                </span>outbound<span class="p">|</span><span class="m">50003</span><span class="p">|</span>v1<span class="p">|</span>foo-service.foo-namespace.svc.cluster.local
@@ -22725,7 +22725,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <span class="w">        </span><span class="nt">socketAddress</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 冗長化されたbar-podのインスタンスのIPアドレス</span>
 <span class="w">          </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.1</span>
-<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けているポート番号</span>
+<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けるポート番号</span>
 <span class="w">          </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
@@ -22737,7 +22737,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <span class="w">        </span><span class="nt">socketAddress</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 冗長化されたbar-podのインスタンスのIPアドレス</span>
 <span class="w">          </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.2</span>
-<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けているポート番号</span>
+<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けるポート番号</span>
 <span class="w">          </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
@@ -22749,7 +22749,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <span class="w">        </span><span class="nt">socketAddress</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># bar-podのインスタンスのIPアドレス</span>
 <span class="w">          </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.3</span>
-<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けているポート番号</span>
+<span class="w">          </span><span class="c1"># bar-pod内のコンテナが待ち受けるポート番号</span>
 <span class="w">          </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>

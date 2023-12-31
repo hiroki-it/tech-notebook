@@ -13855,6 +13855,63 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. 通信のデバッグ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 通信のデバッグ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podのアウトバウンド通信のデバッグ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Podのアウトバウンド通信のデバッグ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl runコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-debug-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl debug nodeコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ用Podを起動しておく
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -21192,6 +21249,63 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. 通信のデバッグ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 通信のデバッグ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podのアウトバウンド通信のデバッグ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Podのアウトバウンド通信のデバッグ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl runコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubectl-debug-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubectl debug nodeコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ用Podを起動しておく
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -21454,6 +21568,93 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="07">07. 通信のデバッグ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="pod_2">Podのアウトバウンド通信のデバッグ<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h3>
+<h4 id="kubectl-run">▼ <code>kubectl run</code>コマンド<a class="headerlink" href="#kubectl-run" title="Permanent link">&para;</a></h4>
+<p><code>kubectl exec</code>コマンドが運用的に禁止されているような状況がある。</p>
+<p>そのような状況下で、シングルNodeの場合は、<code>kubectl run</code>コマンドで、<code>--rm</code>オプションを有効化し、Clusterネットワーク内に<code>curl</code>コマンドによる検証用のPodを一時的に新規作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># シングルNodeの場合</span>
+
+<span class="c1"># curl送信用のコンテナを作成する。</span>
+<span class="c1"># rmオプションを指定し、使用後に自動的に削除されるようにする。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span>multitool<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="o">=</span>praqma/network-multitool<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>Never<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--<span class="w"> </span>/bin/bash
+
+<span class="c1"># curlコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+
+<span class="c1"># tcptracerouteコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>tcptraceroute<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+
+<span class="c1"># mtrコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>mtr<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+</code></pre></div>
+<h4 id="kubectl-debug-node">▼ <code>kubectl debug node</code>コマンド<a class="headerlink" href="#kubectl-debug-node" title="Permanent link">&para;</a></h4>
+<p>マルチNodeの場合は、指定したNode上でPodを作成できない。</p>
+<p>(たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。</p>
+<p>そのため、代わりに<code>kubectl debug</code>コマンドを使用する。</p>
+<p>ただし、<code>kubectl debug</code>コマンドで作成されたPodは、使用後に手動で削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># マルチNodeの場合</span>
+
+<span class="c1"># Podが稼働するNodeを確認する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-o<span class="w"> </span>wide
+
+<span class="c1"># 指定したNode上で、curl送信用のコンテナを作成する。</span>
+<span class="c1"># rmオプションはない。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>debug<span class="w"> </span>node/&lt;Node名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="o">=</span>praqma/network-multitool
+
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span><span class="nv">$exit</span>
+
+<span class="c1"># 使用後は手動で削除する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>node-debugger-*****
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tkusumi/items/a62c209972bd0d4913fc">https://qiita.com/tkusumi/items/a62c209972bd0d4913fc</a></li>
+<li><a href="https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89</a></li>
+</ul>
+</blockquote>
+<h4 id="pod_3">▼ デバッグ用Podを起動しておく<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
+<p>デバッグ用Podを起動しておく方法もある。</p>
+<p><code>curl</code>コマンド専用イメージを使用する場合、コンテナ起動後に<code>curl</code>コマンドを実行し、すぐに終了してしまう。</p>
+<p>そのため、CrashLoopBackOffになってしまう。</p>
+<p>これを防ぐために、<code>sleep infinity</code>コマンドを実行し、ずっとスリープするようにしておく。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-curl</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curlimages/curl:8.5.0</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infinity</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://vamdemicsystem.black/kubernetes/%E3%80%90kubernetes%E3%80%91kubernetes%E3%81%A7ubuntu%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8Bdeployment%E3%81%AE%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB">https://vamdemicsystem.black/kubernetes/%E3%80%90kubernetes%E3%80%91kubernetes%E3%81%A7ubuntu%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8Bdeployment%E3%81%AE%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -21474,7 +21675,7 @@ options<span class="w"> </span>ndots:5
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-01</span>
   </span>
 
     
