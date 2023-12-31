@@ -289,7 +289,7 @@ spec:
 
 全てのNamespaceからリクエストできるようにする。
 
-もしIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
+もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 
 **＊実装例＊**
 
@@ -302,11 +302,15 @@ metadata:
 spec:
   exportTo:
     - "*"
+  gateways:
+    - foo-gateway
 ```
 
 #### ▼ `.` (ドット)
 
 同じNamespaceからのみリクエストできるようにする。
+
+Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
 
 **＊実装例＊**
 
@@ -319,6 +323,8 @@ metadata:
 spec:
   exportTo:
     - "."
+  gateways:
+    - mesh
 ```
 
 <br>
@@ -1583,7 +1589,7 @@ spec:
 
 全てのNamespaceのみからリクエストできるようにする。
 
-もしIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
+もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 
 **＊実装例＊**
 
@@ -1596,11 +1602,15 @@ metadata:
 spec:
   exportTo:
     - "*"
+  gateways:
+    - foo-gateway
 ```
 
 #### ▼ `.` (ドット)
 
 同じNamespaceからのみリクエストできるようにする。
+
+Pod間通信の場合、他のNamespaceからリクエストを受信しなてもよければ、`.`とする。
 
 **＊実装例＊**
 
@@ -1613,6 +1623,8 @@ metadata:
 spec:
   exportTo:
     - "."
+  gateways:
+    - mesh
 ```
 
 <br>
