@@ -281,13 +281,15 @@ spec:
 
 #### ▼ exportToとは
 
-そのDestinationRuleを使用できるNamespaceを設定する。
+そのDestinationRuleにリクエストできるNamespaceを設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ `*` (アスタリスク)
 
-全てのNamespaceで使用できるようにする。
+全てのNamespaceからリクエストできるようにする。
+
+もしIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 
 **＊実装例＊**
 
@@ -304,9 +306,7 @@ spec:
 
 #### ▼ `.` (ドット)
 
-全てのNamespaceのうちで、`.metadata.namespace`キーのNamespaceのみで使用できるようにする。
-
-DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+同じNamespaceからのみリクエストできるようにする。
 
 **＊実装例＊**
 
@@ -1575,15 +1575,15 @@ spec:
 
 #### ▼ exportToとは
 
-そのVirtualServiceを使用できるNamespaceを設定する。
-
-認可されたNamespace内のサイドカーやIstio IngressGatewayのみが、そのVirtualServiceを使用できる。
+そのVirtualServiceにリクエストできるNamespaceを設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
 #### ▼ `*` (アスタリスク)
 
-全てのNamespaceのみで使用できるようにする。
+全てのNamespaceのみからリクエストできるようにする。
+
+もしIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 
 **＊実装例＊**
 
@@ -1600,9 +1600,7 @@ spec:
 
 #### ▼ `.` (ドット)
 
-VirtualServiceと同じNamespaceで、そのVirtualServiceを指定できるようにする。
-
-VirtualServiceを想定外のNamespaceで指定してしまうことを防ぐ。
+同じNamespaceからのみリクエストできるようにする。
 
 **＊実装例＊**
 
@@ -2088,6 +2086,7 @@ spec:
     - route:
         - destination:
             # Service名でも良い
+            # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
 ```
 
@@ -2107,6 +2106,8 @@ spec:
   tcp:
     - route:
         - destination:
+            # Service名でも良い
+            # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
@@ -2129,12 +2130,14 @@ spec:
     - route:
         - destination:
             # Service名でも良い
+            # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
             subset: v1
         - destination:
             # Service名でも良い
+            # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000

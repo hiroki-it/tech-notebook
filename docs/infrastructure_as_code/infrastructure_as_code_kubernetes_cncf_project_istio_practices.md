@@ -143,11 +143,11 @@ spec:
 
 <br>
 
-### Istioリソースの使用可能範囲を限定する
+### Istioリソースのリクエスト可能な範囲を限定する
 
 Istioリソースの`.spec.exportTo`キーでは『`.` (ドット) 』を設定する。
 
-これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
+これにより、同じNamespaceからしかリクエストを受信できないようにする。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
