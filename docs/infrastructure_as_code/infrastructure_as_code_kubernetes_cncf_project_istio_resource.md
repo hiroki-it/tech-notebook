@@ -175,10 +175,10 @@ spec:
     - name: http-foo
       # Nodeが待ち受けるポート番号
       nodePort: 30001
-      # Istio IngressGatewayのServiceのポート番号
+      # NodePort Serviceが待ち受けるポート番号
       port: 443
       protocol: TCP
-      # Istio IngressGatewayのPodの宛先のServiceが待ち受けているポート番号
+      # NodePort Serviceの宛先ポート番号 (Istio IngressGatewayのPodが待ち受けるポート番号)
       targetPort: 443
     - name: http-bar
       nodePort: 30002

@@ -1116,9 +1116,9 @@ spec:
 
 Istio IngressGateway/EgressGatewayのPodで待ち受けるポート番号を設定する。
 
-IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeのターゲットポート番号に合わせる。
+IngressGatewayの内部的なServiceのタイプに関して、NodePort Serviceを選んだ場合、Nodeの宛先ポート番号に合わせる。
 
-一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできるターゲットポート番号とする。
+一方で、LoadBalancer Serviceを選んだ場合、LoadBalancerがルーティングできる宛先ポート番号とする。
 
 **＊実装例＊**
 
@@ -1158,7 +1158,7 @@ spec:
 
 #### ▼ port.targetPort
 
-Istio IngressGateway/EgressGatewayのPodのターゲットポート番号を設定する。
+Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する。
 
 **＊実装例＊**
 

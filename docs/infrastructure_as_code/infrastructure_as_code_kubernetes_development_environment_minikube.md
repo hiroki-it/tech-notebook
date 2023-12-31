@@ -274,7 +274,7 @@ NodePort Serviceの場合、`minikube service`コマンドを使用して、Mini
 
 `http://127.0.0.1:<自動的に発行されたトンネルポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
 
-NodePort Serviceで指定したターゲットポート番号の数だけ、これに紐づくトンネルポート番号を発行する。
+NodePort Serviceで指定した宛先ポート番号の数だけ、これに紐づくトンネルポート番号を発行する。
 
 ```bash
 $ minikube service <NodePort Service名> --url -n foo-namespace
@@ -286,15 +286,15 @@ http://127.0.0.1:<自動的に発行されたトンネルポート番号3>
 $ curl http://127.0.0.1:<自動的に発行されたトンネルポート番号>
 ```
 
-`ps`コマンドを使用して、NodePort Serviceのいずれのターゲットポート番号がトンネルポート番号に紐づいているかを確認できる。
+`ps`コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。
 
 ```bash
 $ ps -ef | grep docker@127.0.0.1
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -N docker@127.0.0.1 -p 55972 -i /Users/FOO/.minikube/machines/minikube/id_rsa
--L <トンネルポート番号1>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceのターゲットポート番号1>
--L <トンネルポート番号2>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceのターゲットポート番号2>
--L <トンネルポート番号3>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceのターゲットポート番号3>
+-L <トンネルポート番号1>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceの宛先ポート番号1>
+-L <トンネルポート番号2>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceの宛先ポート番号2>
+-L <トンネルポート番号3>:<ClusterIP ServiceのIPアドレス>:<NodePort Serviceの宛先ポート番号3>
 ```
 
 これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。

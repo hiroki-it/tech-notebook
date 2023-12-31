@@ -573,7 +573,7 @@ session.gc_divisor = 1
 
 `L7`プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。
 
-`L7`ロードバランサーは、これらの情報に基づいて通信を待ち受けているサーバーに、通信をロードバランシングする。
+`L7`ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
 > - https://www.infraexpert.com/study/tcpip16.html

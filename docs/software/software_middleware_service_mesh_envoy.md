@@ -797,7 +797,7 @@ static_resources:
                     socket_address:
                       # 宛先のIPアドレス
                       address: 10.0.0.1
-                      # 宛先が待ち受けているポート番号
+                      # 宛先が待ち受けるポート番号
                       port_value: 80
               - endpoint:
                   address:

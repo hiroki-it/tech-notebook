@@ -546,7 +546,7 @@ $ istioctl proxy-config endpoints <Pod名> -n <PodのNamespace名>
 $ istioctl proxy-config endpoints foo-pod -n foo-namespace
 
 ENDPOINT                                              STATUS      OUTLIER CHECK     CLUSTER
-<PodのIPアドレス>:<Pod内のコンテナが待ち受けているポート番号>  HEALTHY     OK                <紐づいているクラスター名>
+<PodのIPアドレス>:<Pod内のコンテナが待ち受けるポート番号>  HEALTHY     OK                <紐づいているクラスター名>
 10.0.0.1:80                                           HEALTHY     OK                outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
 10.0.0.2:80                                           HEALTHY     OK                outbound|50002|v1|foo-service.foo-namespace.svc.cluster.local
 10.0.0.3:80                                           HEALTHY     OK                outbound|50003|v1|foo-service.foo-namespace.svc.cluster.local
@@ -581,7 +581,7 @@ $ istioctl proxy-config endpoints foo-pod \
         socketAddress:
           # 冗長化されたbar-podのインスタンスのIPアドレス
           address: 10.0.0.1
-          # bar-pod内のコンテナが待ち受けているポート番号
+          # bar-pod内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1
@@ -593,7 +593,7 @@ $ istioctl proxy-config endpoints foo-pod \
         socketAddress:
           # 冗長化されたbar-podのインスタンスのIPアドレス
           address: 10.0.0.2
-          # bar-pod内のコンテナが待ち受けているポート番号
+          # bar-pod内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1
@@ -605,7 +605,7 @@ $ istioctl proxy-config endpoints foo-pod \
         socketAddress:
           # bar-podのインスタンスのIPアドレス
           address: 10.0.0.3
-          # bar-pod内のコンテナが待ち受けているポート番号
+          # bar-pod内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1

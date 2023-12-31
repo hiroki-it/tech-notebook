@@ -149,7 +149,7 @@ unix://./etc/foo.sock
 
 `L4`プロトコルは、ヘッダーに宛先の情報 (例：IPアドレス、ポート番号) をもっている。
 
-`L4`ロードバランサーは、これらの情報に基づいて通信を待ち受けているサーバーに、通信をロードバランシングする。
+`L4`ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
 > - https://www.infraexpert.com/study/tcpip8.html

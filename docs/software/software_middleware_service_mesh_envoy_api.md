@@ -269,7 +269,7 @@ configs:
                     socket_address:
                       # 冗長化されたbar-podのIPアドレス
                       address: 11.0.0.1
-                      # bar-pod内のコンテナが待ち受けているポート番号
+                      # bar-pod内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -290,7 +290,7 @@ configs:
                     socket_address:
                       # 冗長化されたbar-podのIPアドレス
                       address: 11.0.0.2
-                      # bar-pod内のコンテナが待ち受けているポート番号
+                      # bar-pod内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -311,7 +311,7 @@ configs:
                     socket_address:
                       # 冗長化されたbaz-podのIPアドレス
                       address: 11.0.0.3
-                      # baz-pod内のコンテナが待ち受けているポート番号
+                      # baz-pod内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
