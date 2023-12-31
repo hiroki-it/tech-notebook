@@ -294,3 +294,106 @@ options ndots:5
 > - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3
 
 <br>
+
+## 07. 通信のデバッグ
+
+### Podのアウトバウンド通信のデバッグ
+
+#### ▼ `kubectl run`コマンド
+
+`kubectl exec`コマンドが運用的に禁止されているような状況がある。
+
+そのような状況下で、シングルNodeの場合は、`kubectl run`コマンドで、`--rm`オプションを有効化し、Clusterネットワーク内に`curl`コマンドによる検証用のPodを一時的に新規作成する。
+
+```bash
+# シングルNodeの場合
+
+# curl送信用のコンテナを作成する。
+# rmオプションを指定し、使用後に自動的に削除されるようにする。
+$ kubectl run \
+    -n default \
+    -it multitool \
+    --image=praqma/network-multitool \
+    --rm \
+    --restart=Never \
+    -- /bin/bash
+
+# curlコマンドでデバッグする。
+[root@<Pod名>:~] $ curl -X GET https://<Serviceの完全修飾ドメイン名やIPアドレス>
+
+# tcptracerouteコマンドでデバッグする。
+[root@<Pod名>:~] $ tcptraceroute <Serviceの完全修飾ドメイン名やIPアドレス>
+
+# mtrコマンドでデバッグする。
+[root@<Pod名>:~] $ mtr <Serviceの完全修飾ドメイン名やIPアドレス>
+```
+
+#### ▼ `kubectl debug node`コマンド
+
+マルチNodeの場合は、指定したNode上でPodを作成できない。
+
+(たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。
+
+そのため、代わりに`kubectl debug`コマンドを使用する。
+
+ただし、`kubectl debug`コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+
+```bash
+# マルチNodeの場合
+
+# Podが稼働するNodeを確認する。
+$ kubectl get pod <Pod名> -o wide
+
+# 指定したNode上で、curl送信用のコンテナを作成する。
+# rmオプションはない。
+$ kubectl debug node/<Node名> \
+    -n default \
+    -it \
+    --image=praqma/network-multitool
+
+[root@<Pod名>:~] $exit
+
+# 使用後は手動で削除する。
+$ kubectl delete -n default node-debugger-*****
+```
+
+> - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
+> - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
+
+#### ▼ デバッグ用Podを起動しておく
+
+デバッグ用Podを起動しておく方法もある。
+
+`curl`コマンド専用イメージを使用する場合、コンテナ起動後に`curl`コマンドを実行し、すぐに終了してしまう。
+
+そのため、CrashLoopBackOffになってしまう。
+
+これを防ぐために、`sleep infinity`コマンドを実行し、ずっとスリープするようにしておく。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      containers:
+        - name: foo-curl
+          image: curlimages/curl:8.5.0
+          imagePullPolicy: IfNotPresent
+          command:
+            - sleep
+            - infinity
+```
+
+> - https://vamdemicsystem.black/kubernetes/%E3%80%90kubernetes%E3%80%91kubernetes%E3%81%A7ubuntu%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8Bdeployment%E3%81%AE%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+
+<br>
