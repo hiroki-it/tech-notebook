@@ -1091,7 +1091,7 @@ $ istioctl verify-install
 
 ...
 
-✅ Service: istio-egressgateway.istio-system checked successfully
+✅ Service: istio-egressgateway.istio-egress checked successfully
 ✅ ServiceAccount: istio-egressgateway-service-account.istio-system checked successfully
 Checked 14 custom resource definitions
 Checked 3 Istio Deployments

@@ -1744,7 +1744,7 @@ spec:
             - example.com
       route:
         - destination:
-            host: istio-egressgateway.istio-system.svc.cluster.local
+            host: istio-egressgateway.istio-egress.svc.cluster.local
             subset: mitm
             port:
               number: 443
@@ -2092,7 +2092,7 @@ spec:
           port: 443
       route:
         - destination:
-            host: istio-egressgateway.istio-system.svc.cluster.local
+            host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
               number: 443
     - match:
