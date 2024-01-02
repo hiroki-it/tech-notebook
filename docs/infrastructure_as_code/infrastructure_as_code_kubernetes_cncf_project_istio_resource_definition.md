@@ -1729,15 +1729,15 @@ spec:
   hosts:
     - example.com
   gateways:
-    # PodからIstio EgressGatewayへの通信で使う
+    # PodからIstio EgressGatewayのPodへの通信で使う
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使う
     - istio-egressgateway
   tls:
-    # PodからIstio EgressGatewayへの通信で使う
     # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
+            # PodからIstio EgressGatewayのPodへの通信で使う
             - mesh
           port: 443
           sniHosts:
@@ -1749,10 +1749,10 @@ spec:
             port:
               number: 443
   http:
-    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
     # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
             - istio-egressgateway
           port: 443
       route:
@@ -1838,46 +1838,6 @@ spec:
             # 遅延レスポンスを発生させる割合
             percentage:
               value: 100
-```
-
-#### ▼ match
-
-受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
-
-**＊実装例＊**
-
-受信した通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  namespace: istio-system
-  name: foo-virtual-service
-spec:
-  http:
-    - match:
-        - headers:
-            x-foo:
-              exact: bar
-```
-
-受信した通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
-
-> - https://istiobyexample.dev/path-based-routing/
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  namespace: istio-system
-  name: foo-virtual-service
-spec:
-  http:
-    - match:
-        - headers:
-            uri:
-              prefix: /foo
 ```
 
 #### ▼ retries.attempt
@@ -2075,6 +2035,103 @@ spec:
 
 > - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
+
+<br>
+
+### .spec.http.match
+
+#### ▼ http.match
+
+受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
+
+#### ▼ <ヘッダー名>
+
+ヘッダー名で合致条件を設定する。
+
+**＊実装例＊**
+
+受信した通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - match:
+        - headers:
+            x-foo:
+              exact: bar
+```
+
+#### ▼ gateways
+
+`.spec.gateways`キーで設定した`<Gateway名>`と`mesh`のうちで、その合致条件に使用する方を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - httpbin.org
+  gateways:
+    - foo-gateway
+    - mesh
+  http:
+    - match:
+        - gateways:
+            # PodからIstio EgressGatewayのPodへの通信で使う
+            - mesh
+          port: 443
+      route:
+        - destination:
+            host: istio-egressgateway.istio-system.svc.cluster.local
+            port:
+              number: 443
+    - match:
+        - gateways:
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+            - foo-gateway
+          port: 443
+      route:
+        - destination:
+            host: httpbin.org
+            port:
+              number: 443
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest
+
+#### ▼ uri
+
+ヘッダー名で合致条件を設定する。
+
+**＊実装例＊**
+
+受信した通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - match:
+        - headers:
+            uri:
+              prefix: /foo
+```
+
+> - https://istiobyexample.dev/path-based-routing/
 
 <br>
 
