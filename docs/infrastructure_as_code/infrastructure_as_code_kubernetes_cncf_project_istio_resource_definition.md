@@ -1654,11 +1654,13 @@ spec:
 
 #### ▼ hostsとは
 
-Gatewayから受信する通信の`Host`ヘッダー名を設定する。
+VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 
 ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (`*`) を使用して全てのドメインを許可しても良い。
 
 **＊実装例＊**
+
+全てのホストヘッダー値でVirtualServiceを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1727,6 +1729,49 @@ metadata:
   name: foo-egress-virtual-service
 spec:
   hosts:
+    #  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。
+    - example.com
+  gateways:
+    # PodからIstio EgressGatewayのPodへの通信で使う
+    - mesh
+    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+    - istio-egressgateway
+  http:
+    # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    - match:
+        - gateways:
+            # PodからIstio EgressGatewayのPodへの通信で使う
+            - mesh
+          port: 80
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: 80
+    # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
+    - match:
+        - gateways:
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+            - istio-egressgateway
+          port: 80
+      route:
+        - destination:
+            host: example.com
+            port:
+              number: 80
+```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-egress-virtual-service
+spec:
+  hosts:
+    #  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。
     - example.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使う
@@ -1745,7 +1790,6 @@ spec:
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
-            subset: mitm
             port:
               number: 443
   http:
@@ -1883,119 +1927,6 @@ spec:
         retryOn: "connect-failure,refused-stream,unavailable,503"
 ```
 
-#### ▼ route.destination.host
-
-受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-spec:
-  http:
-    - route:
-        - destination:
-            # Service名でも良い。
-            host: foo-service.foo-namespace.svc.cluster.local
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-
-#### ▼ route.destination.port
-
-受信する通信でルーティング先のポート番号を設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  namespace: istio-system
-  name: foo-virtual-service
-spec:
-  http:
-    - route:
-        - destination:
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-
-#### ▼ route.destination.subset
-
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
-
-紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
-
-DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  namespace: istio-system
-  name: foo-virtual-service
-spec:
-  http:
-    - route:
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v1
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v2
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
-
-#### ▼ route.weight
-
-Serviceの重み付けルーティングの割合を設定する。
-
-`.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  namespace: istio-system
-  name: foo-virtual-service
-spec:
-  http:
-    - route:
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v1
-          weight: 70
-        - destination:
-            # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local
-            port:
-              number: 80
-            subset: v1
-          weight: 30
-```
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
-
 #### ▼ timeout
 
 `istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
@@ -2132,6 +2063,123 @@ spec:
 ```
 
 > - https://istiobyexample.dev/path-based-routing/
+
+<br>
+
+### .spec.http.route
+
+#### ▼ destination.host
+
+受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+spec:
+  http:
+    - route:
+        - destination:
+            # Service名でも良い。
+            host: foo-service.foo-namespace.svc.cluster.local
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+#### ▼ destination.port
+
+受信する通信でルーティング先のポート番号を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+#### ▼ destination.subset
+
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
+
+紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
+
+DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - route:
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v1
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v2
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
+
+#### ▼ weight
+
+Serviceの重み付けルーティングの割合を設定する。
+
+`.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - route:
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v1
+          weight: 70
+        - destination:
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local
+            port:
+              number: 80
+            subset: v1
+          weight: 30
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
 <br>
 
