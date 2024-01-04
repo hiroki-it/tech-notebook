@@ -98,6 +98,8 @@ data:
 
 `istio-proxy`コンテナで作成するアクセスログの出力先を設定する。
 
+設定しないと、Envoyはアクセスログを出力しない。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -110,6 +112,7 @@ data:
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - https://github.com/istio/istio/issues/11938#issuecomment-465938259
 
 <br>
 

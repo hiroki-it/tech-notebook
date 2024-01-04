@@ -303,7 +303,7 @@ spec:
   exportTo:
     - "*"
   gateways:
-    - foo-gateway
+    - foo-igressgateway
 ```
 
 #### ▼ `.` (ドット)
@@ -1624,7 +1624,7 @@ spec:
   exportTo:
     - "*"
   gateways:
-    - foo-gateway
+    - foo-igressgateway
 ```
 
 #### ▼ `.` (ドット)
@@ -1735,7 +1735,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使う
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使う
-    - istio-egressgateway
+    - foo-egressgateway
   http:
     # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -1752,7 +1752,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使う
-            - istio-egressgateway
+            - foo-egressgateway
           port: 80
       route:
         - destination:
@@ -1777,7 +1777,7 @@ spec:
     # PodからIstio EgressGatewayのPodへの通信で使う
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使う
-    - istio-egressgateway
+    - foo-egressgateway
   tls:
     # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
@@ -1797,7 +1797,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使う
-            - istio-egressgateway
+            - foo-egressgateway
           port: 443
       route:
         - destination:
@@ -2013,7 +2013,7 @@ spec:
   hosts:
     - httpbin.org
   gateways:
-    - foo-gateway
+    - foo-igressgateway
     - mesh
   http:
     - match:
@@ -2029,7 +2029,7 @@ spec:
     - match:
         - gateways:
             # Istio EgressGatewayからエントリ済みシステムへの通信で使う
-            - foo-gateway
+            - foo-igressgateway
           port: 443
       route:
         - destination:
