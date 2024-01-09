@@ -83,6 +83,15 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
 
+#### ▼ 透過的
+
+サイドカープロキシメッシュでマイクロサービス間の通信を透過的にするためには、自動でサイドカープロキシを経由するような仕組みが必要である。
+
+例えば、iptablesによるサイドカープロキシへのリダイレクトがある。
+
+> - https://docs.kernel.org/networking/tproxy.html
+
+
 #### ▼ 適するリバースプロキシ
 
 マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー (レスポンスタイム) が重要である。
