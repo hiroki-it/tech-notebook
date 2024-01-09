@@ -74,6 +74,7 @@ JavaScriptのフレームワーク。
 以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストの構造を説明する。
 
 ```yaml
+# リクエストライン
 GET https://example.com/bar-form.php?text1=a&text2=b
 ---
 # リクエストされたドメイン名
@@ -112,6 +113,7 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 リクエストは、以下の要素に分類できる。
 
 ```yaml
+# リクエストライン
 POST https://example.com/bar-form.php
 ---
 # リクエストされたドメイン名
@@ -545,7 +547,7 @@ session.gc_divisor = 1
 
 : 最初、ブラウザはリクエストを送信する。
 
-     セッションIDを発行し、セッションIDごとに```sess_*****```ファイルを作成。
+     セッションIDを発行し、セッションIDごとに`sess_*****`ファイルを作成。
 
 `(2)`
 
@@ -577,5 +579,15 @@ session.gc_divisor = 1
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
 > - https://www.infraexpert.com/study/tcpip16.html
+
+<br>
+
+### 宛先の変更と保持
+
+`L7`ロードバランサーは、元々のリクエストの情報を保持しつつ、宛先を変更しなければならない。
+
+`L7`ヘッダーに含まれるヘッダーを保持し、NATの仕組みで`L4`ヘッダーに含まれる宛先IPアドレスやポート番号を変更している。
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html
 
 <br>

@@ -280,7 +280,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualServiceは、Istio IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
+VirtualServiceは、Istio IngressGatewayの一部として、受信した`L4`/`L7`通信をDestinationRuleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -477,7 +477,7 @@ httpbin-app-service.services.svc.cluster.local                                  
 
 #### ▼ ロードバランサーで使用する場合
 
-DestinationRuleは、Istio IngressGateway (VirtualService + DestinationRule) で受信した通信を、いずれのPodにルーティングするかを決める。
+DestinationRuleは、Istio IngressGateway (VirtualService + DestinationRule) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
 
 Istio IngressGatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。
 
@@ -489,7 +489,7 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 #### ▼ Pod間通信のみで使用する場合
 
-DestinationRuleは、VirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
+DestinationRuleは、VirtualServiceで受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
