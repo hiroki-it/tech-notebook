@@ -143,11 +143,24 @@ num  target     prot  opt  source     destination
 > - https://www.mapion.co.jp/news/column/cobs2366068-1-all/
 > - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d
 
+#### ▼ ローカルホストは`127.0.0.1`ではない
+
+`istio-proxy`コンテナがインバウンドをマイクロサービスにプロキシする時、`127.0.0.6`にリクエストを送信する。
+
+`127.0.0.1`にするとiptables上で処理がループしてしまう。
+
+Istio`v1.9`までは`127.0.0.1`で、`v1.10`から`127.0.0.6`になった。
+
+> - https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w
+> - https://github.com/istio/istio/issues/29603
+> - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
+> - https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/
+
 #### ▼ Pod外からのインバウンド通信の場合
 
 Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15006`番ポートにリダイレクトされる。
 
-`istio-proxy`コンテナはこれを受信し、ローカルホスト (`http://localhost:<アプリコンテナのポート番号>`) のアプリコンテナにルーティングする。
+`istio-proxy`コンテナはこれを受信し、ローカルホスト (`http://127.0.0.6:<アプリコンテナのポート番号>`) のアプリコンテナにルーティングする。
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
@@ -167,7 +180,7 @@ Pod外からアプリコンテナへのインバウンド通信は、istio-iptab
 
 #### ▼ ローカスホスト通信の場合
 
-アプリコンテナからローカルホスト (`http://localhost:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
+アプリコンテナからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptablesにより、`istio-proxy`コンテナの`15001`番ポートにリダイレクトされる。
 
 ![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
 
