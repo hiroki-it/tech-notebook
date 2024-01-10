@@ -17341,6 +17341,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#127001" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルホストは127.0.0.1ではない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Pod外からのインバウンド通信の場合
@@ -21039,6 +21048,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#127001" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ローカルホストは127.0.0.1ではない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Pod外からのインバウンド通信の場合
@@ -21467,9 +21485,21 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://zenn.dev/tayusa/articles/aa54bbff3d0d2d">https://zenn.dev/tayusa/articles/aa54bbff3d0d2d</a></li>
 </ul>
 </blockquote>
+<h4 id="127001">▼ ローカルホストは<code>127.0.0.1</code>ではない<a class="headerlink" href="#127001" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナがインバウンドをマイクロサービスにプロキシする時、<code>127.0.0.6</code>にリクエストを送信する。</p>
+<p><code>127.0.0.1</code>にするとiptables上で処理がループしてしまう。</p>
+<p>Istio<code>v1.9</code>までは<code>127.0.0.1</code>で、<code>v1.10</code>から<code>127.0.0.6</code>になった。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w">https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w</a></li>
+<li><a href="https://github.com/istio/istio/issues/29603">https://github.com/istio/istio/issues/29603</a></li>
+<li><a href="https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/">https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/</a></li>
+<li><a href="https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/">https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/</a></li>
+</ul>
+</blockquote>
 <h4 id="pod">▼ Pod外からのインバウンド通信の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <p>Pod外からアプリコンテナへのインバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15006</code>番ポートにリダイレクトされる。</p>
-<p><code>istio-proxy</code>コンテナはこれを受信し、ローカルホスト (<code>http://localhost:&lt;アプリコンテナのポート番号&gt;</code>) のアプリコンテナにルーティングする。</p>
+<p><code>istio-proxy</code>コンテナはこれを受信し、ローカルホスト (<code>http://127.0.0.6:&lt;アプリコンテナのポート番号&gt;</code>) のアプリコンテナにルーティングする。</p>
 <p><img alt="istio_iptables_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png" /></p>
 <blockquote>
 <ul>
@@ -21488,7 +21518,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="_5">▼ ローカスホスト通信の場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>アプリコンテナからローカルホスト (<code>http://localhost:&lt;ポート番号&gt;</code>) へのアウトバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15001</code>番ポートにリダイレクトされる。</p>
+<p>アプリコンテナからローカルホスト (<code>http://127.0.0.6:&lt;ポート番号&gt;</code>) へのアウトバウンド通信は、istio-iptablesにより、<code>istio-proxy</code>コンテナの<code>15001</code>番ポートにリダイレクトされる。</p>
 <p><img alt="istio_iptables_outbound_self" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png" /></p>
 <blockquote>
 <ul>
@@ -21903,7 +21933,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-10</span>
   </span>
 
     
