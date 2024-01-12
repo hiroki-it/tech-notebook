@@ -143,7 +143,7 @@ spec:
 
 ### securityGroupSelectorTerms
 
-EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのリソースを設定する。
+EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、クラスターセキュリティグループのリソースを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1

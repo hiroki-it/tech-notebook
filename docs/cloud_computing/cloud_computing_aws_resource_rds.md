@@ -421,6 +421,21 @@ Auroraをエンジンバージョンに選択した場合に使用できる。
 
 <br>
 
+### アップグレード可能かのバリデーション
+
+Aurora DBにSSH接続した上で、DBに対して以下のコマンドを実行すると、`v5.7`から`v8`系へのアップグレードで問題が起こるかを解析できる
+
+ただ、アプリ側のSQLのロジックを解析することはできず、あくまでMySQLの設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。
+
+```sql
+mysqlsh> util.checkForServerUpgrade()
+```
+
+> - https://mita2db.hateblo.jp/entry/2023/05/24/214131
+> - https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-upgrade.html
+
+<br>
+
 ### ダウンタイム
 
 #### ▼ ダウンタイムとは

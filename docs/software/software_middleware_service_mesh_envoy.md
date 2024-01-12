@@ -1137,6 +1137,8 @@ Nginx
 
 Envoyの文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。
 
+Istio IngressGatewayでEnvoyを使うユースケースは、これに属する。
+
 ![envoy_loadbalancer.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
