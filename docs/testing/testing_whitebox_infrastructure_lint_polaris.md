@@ -127,6 +127,7 @@ checks:
   memoryRequestsMissing: danger
 
   # PodDisruptionBudgetの作成し忘れ
+  # PodDisruptionBudgetで指定したラベル値をDeploymentが持たない場合でも、Missingとみなす‍♂️
   missingPodDisruptionBudget: danger
 
   # PodのpriorityClassの設定し忘れ

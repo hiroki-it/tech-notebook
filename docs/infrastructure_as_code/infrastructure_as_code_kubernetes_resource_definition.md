@@ -4482,7 +4482,7 @@ spec:
 
 ### .spec.selector
 
-古いPodをNodeから退避させる時に、対象のPodを設定する。
+古いPodをNodeから退避させる時に、Podの`metadata.labels`キーを設定する。
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -4492,8 +4492,22 @@ metadata:
 spec:
   selector:
     matchLabels:
-      # 対象のPod
+      # 対象のPodのラベル
       app.kubernetes.io/name: foo-pod
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: foo-pod
+spec:
+  template:
+    metadata:
+      # Podのラベル
+      labels:
+        app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
