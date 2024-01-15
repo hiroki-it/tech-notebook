@@ -110,7 +110,12 @@ OpenTelemetryのTraceProviderをアプリの実行時に動的にセットアッ
 
 一方で、実行前にコンパイルする言語 (コンパイル言語) だと、eBPFによる自動計装が適する。
 
+eBPFによる自動計装の方が、リクエスト処理のパフォーマンスが高くなる。
+
+一方で、自動計装だと手動計装より処理が増えるため、言語によっては起動パフォーマンスが悪くなることがある。
+
 > - https://opentelemetry.io/docs/instrumentation/
+> - https://odigos.io/blog/ebpf-instrumentation-faster-than-manual
 
 <br>
 

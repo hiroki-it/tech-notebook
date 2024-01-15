@@ -37,9 +37,9 @@ description: データプレーン＠Istioの知見を記録しています。
 
 コンテナの起動時に、`istio-iptables`コマンドを実行することにより、istio-iptablesをPodに適用する。
 
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
-
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
+
+> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 
 <br>
 
@@ -51,8 +51,6 @@ istio-iptablesは、`istio-proxy`コンテナを持つPod内のネットワー�
 
 サービスディスカバリーとしてPodのIPアドレスを持つのは`istio-proxy`コンテナであり、istio-iptablesではないことに注意する。
 
-> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
-
 ```bash
 # istio-initコンテナの起動時に実行する。
 $ istio-iptables \
@@ -63,8 +61,10 @@ $ istio-iptables \
     -i * \
     -x \
     -b * \
-    -d 15090,15021,15020
+    -d 15090,15020
 ```
+
+> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
 
 #### ▼ ルール
 
