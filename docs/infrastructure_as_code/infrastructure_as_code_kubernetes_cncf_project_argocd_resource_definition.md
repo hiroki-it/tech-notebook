@@ -974,11 +974,11 @@ spec:
 
 リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで`kubectl apply`コマンドを実行。
 
-| リポジトリの種類                                                   | 管理方法                                | マニフェストのapply方法                                                                                                       |
-| ------------------------------------------------------------------ | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストリポジトリ (例：GitHub内のリポジトリ)                  | マニフェストそのまま                    | ArgoCDで直接的に`kubectl apply`コマンドを実行する。                                                                           |
-| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ) | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
-| OCIリポジトリ (例：ECR内のリポジトリ)                              | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
+| リポジトリの種類                                                           | 管理方法                                | マニフェストのapply方法                                                                                                       |
+| -------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| マニフェストリポジトリ (例：GitHub内のリポジトリ)                          | マニフェストそのまま                    | ArgoCDで直接的に`kubectl apply`コマンドを実行する。                                                                           |
+| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、AWS S3) | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
+| OCIリポジトリ (例：ECR内のリポジトリ)                                      | チャートアーカイブ (`.tgz`形式ファイル) | Helmを使用して、ArgoCDで間接的に`kubectl apply`コマンドを実行する。パラメーターに応じて、内部的に`helm`コマンドが実行される。 |
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
@@ -1300,6 +1300,22 @@ spec:
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 > - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
+
+AWS S3をチャートリポジトリとして指定することもできる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  source:
+    # 例えば、AWS S3をチャートリポジトリとして扱う。
+    repoURL: https://foo-bucket.s3.ap-northeast-1.amazonaws.com
+```
+
+> - https://medium.com/gitops-and-argo-cd-overview/using-amazon-s3-as-a-helm-chart-repository-with-argo-cd-1b61a5bda798
 
 #### ▼ targetRevision
 

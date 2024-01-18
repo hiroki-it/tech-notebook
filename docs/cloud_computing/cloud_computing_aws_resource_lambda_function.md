@@ -808,7 +808,7 @@ const getBacketBasedOnDeviceType = (headers) => {
                       [
                         {
                           "key": "Host",
-                          "value": "prd-sp-bucket.s3.ap-northeast-1.amazonaws.com",
+                          "value": "sp-bucket.s3.ap-northeast-1.amazonaws.com",
                         },
                       ],
                     "cloudfront-is-mobile-viewer":
@@ -840,7 +840,7 @@ const getBacketBasedOnDeviceType = (headers) => {
                         "authMethod": "origin-access-identity",
                         "customHeaders":
                           {"env": [{"key": "env", "value": "prd"}]},
-                        "domainName": "prd-sp-bucket.s3.amazonaws.com",
+                        "domainName": "sp-bucket.s3.amazonaws.com",
                         "path": "",
                         "port": 443,
                         "protocol": "https",

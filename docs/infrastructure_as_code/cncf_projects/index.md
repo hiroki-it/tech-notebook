@@ -103,7 +103,7 @@
 
 ### OpenPolicyAgent
 
-* #### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html)
+* #### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html)
 
 <br>
 
