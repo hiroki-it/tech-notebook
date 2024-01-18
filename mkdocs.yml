@@ -419,7 +419,7 @@ nav:
               - トークン: security/security_auth_authentication_token.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
-              - OpenPolicyAgent: security/security_auth_authorization_open_practices_agent.md
+              - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
           - ■ SSO:
               - SSO: security/security_auth_sso.md
               - OAuth: security/security_auth_sso_oauth.md
@@ -689,7 +689,7 @@ nav:
           - ■ リソース定義:
               - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.md
       - ■ OpenPolicyAgent:
-          - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.md
+          - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.md
       - ■ Prometheus:
           - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.md
           - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.md
