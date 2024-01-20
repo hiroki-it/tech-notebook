@@ -33,7 +33,7 @@ Kubernetes上でアプリケーションを稼働させる概念のこと。
 
 所属するNamespace内のみにリクエストを送信できるNamespacedスコープなKubernetesリソースと、Cluster全体にリクエストを送信できるClusterスコープなKubernetesリソースがある。
 
-![namespaced-scope_vs_cluster-scoped.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
+![namespaced-scope_vs_cluster-scoped](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
 
 > - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
 
@@ -896,7 +896,7 @@ CoreDNSの代わりとして使用できる。
 
 ここ場合、`foo-db-service.default.svc.cluster.local`を指定すると、指定したCNAMEレコードに問い合わせるようになる。
 
-![kubernetes_externalname-service.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
+![kubernetes_externalname-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
 
 > - https://thinkit.co.jp/article/13739
 > - https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/
@@ -944,7 +944,7 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 ### パケットの処理方法
 
-![kube-proxy_iptables.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png)
+![kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png)
 
 Serviceは、パケットの`L4`に関するヘッダーの情報を見て、Podに`L4`ロードバランシングする。
 
@@ -1144,7 +1144,7 @@ Secretに永続化された値を復号化し、`kubectl`コマンドにパラ�
 
 Kubernetesで作成できるストレージは、作成場所で種類を分けられる。
 
-![kubernetes_storage_resource_types.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
+![kubernetes_storage_resource_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
 
 | ストレージの種類 | Volume         | PersistentVolume |
 | ---------------- | -------------- | ---------------- |
@@ -1160,7 +1160,7 @@ Kubernetesで作成できるストレージは、作成場所で種類を分け�
 
 #### ▼ PersistentVolumeとは
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 Node上のストレージ上にVolumeを作成する。
 
@@ -1266,7 +1266,7 @@ StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サ�
 
 また、外部ストレージを使用する場合には、CSIドライバーも必要である。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 <br>
 
@@ -1274,7 +1274,7 @@ StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サ�
 
 #### ▼ Volumeとは
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。
 
@@ -1420,7 +1420,7 @@ Podの`.spec.volumes`キーでPersistentVolumeClaimを宣言すれば、Volume�
 
 設定された条件に基づいて、Kubernetesで作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > - https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html
 
@@ -1569,7 +1569,7 @@ Kubernetes外部でプロビジョニングされたストレージ (例：AWS E
 
 StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で`reclaimPolicy`キーとして設定する。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > - https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/

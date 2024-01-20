@@ -356,7 +356,7 @@ JWTの取得方法として、例えば以下の方法がある。
 
 Pod間通信時に、AuthorizationPolicyを使用して、スコープに含まれる認証済みEnvoyの通信のみを認可する。
 
-![istio_authorization-policy.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
+![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
 
 > - https://istio.io/latest/docs/concepts/security/#authorization-policies
 > - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/

@@ -215,7 +215,7 @@ kubeletは、Pod内のコンテナが標準出力に出力したログを取得�
 
 kubeletではログの保管期間を設定できないため、もし保管期間を設定したい場合はNode上にログローテーションツール (例：logrotate) をインストールする必要がある。
 
-![kubernetes_kubelet_log-rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
+![kubernetes_kubelet_log-rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
 
 > - https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
 > - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/logs/container_log_manager.go

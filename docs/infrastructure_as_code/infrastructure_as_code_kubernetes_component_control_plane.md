@@ -191,7 +191,7 @@ the server could not find the requested resource
 
 ### アーキテクチャ
 
-![kubernetes_kube-apiserver_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_architecture.png)
+![kubernetes_kube-apiserver_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-apiserver_architecture.png)
 
 | レイヤー                               | 責務                                                                 |
 | -------------------------------------- | -------------------------------------------------------------------- |

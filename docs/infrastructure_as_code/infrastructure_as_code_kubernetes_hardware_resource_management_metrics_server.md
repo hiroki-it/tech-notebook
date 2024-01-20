@@ -78,7 +78,7 @@ kubeletのデーモンはメトリクス収集用エンドポイント (例：`/
 
 そのため、PodやNodeにメトリクス収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
-![metrics-server_scraper.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
+![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
 
 > - https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
 

@@ -27,7 +27,7 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 ### カスタムリソースの仕組み
 
-![custom_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
+![custom_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
 `(1)`
 

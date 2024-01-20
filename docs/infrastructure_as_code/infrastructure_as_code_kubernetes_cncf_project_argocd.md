@@ -145,11 +145,11 @@ Argo Rolloutをダッシュボードで操作する場合、執筆時点 (2023/0
 
 image-updaterを採用しない場合、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップがある。
 
-![gitops_without-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
+![gitops_without-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
 
 一方で、image-updaterを採用すると、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
 
-![gitops_with-image-updater.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
+![gitops_with-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
 
 image-updaterは、アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。
 
@@ -204,7 +204,7 @@ application-controllerを分離されている理由は、ArgoCD Workflowのマ�
 
 なお、フロントエンド部分としてargocd-serverが必要である。
 
-![argocd_argo-workflow_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
+![argocd_argo-workflow_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
 
 > - https://argoproj.github.io/argo-workflows/architecture/
 > - https://www.wantedly.com/companies/wantedly/post_articles/302473

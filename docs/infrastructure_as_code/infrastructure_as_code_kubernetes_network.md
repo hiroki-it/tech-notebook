@@ -78,7 +78,7 @@ Podのネットワークは複数の種類の名前空間から構成される�
 
 注意点として、Dockerとは名前空間の種類が異なる。
 
-![kubernetes_pod-network_namespace.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
+![kubernetes_pod-network_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
 
 > - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
 
@@ -120,7 +120,7 @@ Ingressコントローラーによる`L7`ロードバランサーは、受信し
 
 Serviceは`L4`ロードバランサーとして、インバウンド通信をPodにルーティングする。
 
-![kubernetes_network_l4-l7.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
+![kubernetes_network_l4-l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
 
 > - https://www.netone.co.jp/media/detail/20191226-1/
 

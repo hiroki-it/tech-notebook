@@ -21,7 +21,7 @@ PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとし�
 
 ステートレスなアプリケーションでは、AWS EBSにデータを永続化する必要はないため、AWS EBS CSIドライバーは不要である。
 
-![storage_class.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 

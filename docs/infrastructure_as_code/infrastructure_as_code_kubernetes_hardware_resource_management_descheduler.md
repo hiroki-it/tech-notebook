@@ -55,7 +55,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に退�
 
 このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
 
-![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
+![descheduler_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
 > - https://sreake.com/blog/kubernetes-descheduler/
 

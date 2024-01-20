@@ -21,7 +21,7 @@ VClusterは、コントロールプレーン、Syncer、といったコンポー
 
 仮想Cluster間では、Namespacedスコープはもちろん、ClusterスコープのKubernetesリソースも分離できる。
 
-![vcluster_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vcluster_architecture.png)
+![vcluster_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vcluster_architecture.png)
 
 > - https://www.vcluster.com/docs/architecture/basics
 > - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters

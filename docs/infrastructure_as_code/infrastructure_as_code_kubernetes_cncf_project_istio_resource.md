@@ -259,7 +259,7 @@ spec:
 
 チャートのアップグレードの作業が増えるが、責務 (パブリック/プライベート、宛先) を切り分けるユースケースがあってもよい。
 
-![istio_multiple_istio-ingressgateway.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multiple_istio-ingressgateway.png)
+![istio_multiple_istio-ingressgateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multiple_istio-ingressgateway.png)
 
 > - https://alibaba-cloud.medium.com/traffic-management-with-istio-1-unified-management-of-tcp-ingress-traffic-routing-based-on-909d961a3893
 > - https://medium.com/@dinup24/expose-apps-on-private-network-through-istio-ingress-gateway-7dcb8a16d5bc

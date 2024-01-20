@@ -17,7 +17,7 @@ description: FluentBit/Fluentd＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-![fluent-bit_fluentd_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png)
+![fluent-bit_fluentd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png)
 
 FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ、アウトプットレイヤー、から構成される。
 

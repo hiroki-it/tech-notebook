@@ -19,7 +19,7 @@ description: Karpenter＠ハードウェアリソース管理の知見を記録�
 
 Karpenterは、karpenterコントローラーから構成される。
 
-![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
+![karpenter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
 
@@ -37,7 +37,7 @@ karpenterコントローラーは、Karpenterのcustom-controllerとして、カ
 
 なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
 
-![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
+![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 > - https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921
@@ -248,7 +248,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
 
-![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
 > - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
 
@@ -262,7 +262,7 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。
 
-![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
 > - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
 > - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru

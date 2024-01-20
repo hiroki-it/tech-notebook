@@ -277,7 +277,7 @@ Namespaceに親子関係を定義し、各Namespaceをテナントとする。
 
 著名な書籍に一番多いテナントである。
 
-![namespace_teams.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
+![namespace_teams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
 
 > - https://www.amazon.co.jp/dp/1617293725
 > - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en

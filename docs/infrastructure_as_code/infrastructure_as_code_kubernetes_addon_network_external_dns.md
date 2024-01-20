@@ -21,7 +21,7 @@ ExternalDNSコントローラーは、ネットワークからのリクエスト
 
 Ingressコントローラー (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからのリクエストをArgoCDのダッシュボード (argocd-server) にルーティング可能にする。
 
-![external-dns_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
+![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
 > - https://networkop.co.uk/post/2020-08-k8s-gateway/
 > - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#how-do-i-specify-a-dns-name-for-my-kubernetes-objects

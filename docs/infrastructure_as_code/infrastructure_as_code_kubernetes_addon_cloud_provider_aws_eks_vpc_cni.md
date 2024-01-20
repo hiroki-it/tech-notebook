@@ -445,7 +445,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
      反対に、NodeのENIを解放し、ENIのプールに戻す。
 
-![aws-eks-vpc-cni-addon_standard-mode_architecture_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
+![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
 `(3)`
 
@@ -457,7 +457,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
      反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
-![aws-eks-vpc-cni-addon_standard-mode_architecture_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
+![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
@@ -522,7 +522,7 @@ ENIの個数を増やすごとに、`16`個分のIPアドレス (サブネット
 
 Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`*.*.*.*/28`よりも大きくしておく必要がある。
 
-![aws-eks-vpc-cni_prefix-delegation-mode.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
+![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/

@@ -265,7 +265,7 @@ webhooks:
 
 Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。
 
-![istio_control-plane_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png)
+![istio_control-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png)
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/

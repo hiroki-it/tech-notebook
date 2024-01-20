@@ -33,6 +33,8 @@ spec:
 
 > - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml
 
+<br>
+
 ### カスタムリソース
 
 Deploymentを管理するFooリソースとする。
@@ -89,7 +91,11 @@ spec:
 
 > - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml
 
+<br>
+
 ### カスタムコントローラー
+
+![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
 
 このカスタムコントローラーは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
 
