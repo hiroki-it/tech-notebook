@@ -29,7 +29,7 @@ Karpenterは、karpenterコントローラーから構成される。
 
 #### ▼ karpenterコントローラーとは
 
-karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。
+karpenterコントローラーは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
