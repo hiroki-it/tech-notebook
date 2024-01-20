@@ -40,3 +40,19 @@ Deploymentで指定したレプリカ数のPodがない場合に発火する。
 > - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch/
 
 <br>
+
+### `KubeControllerManagerDown`
+
+kube-controller-managerからレスポンスがない場合に発火する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/
+
+<br>
+
+### `KubeSchedulerDown`
+
+kube-schedulerからレスポンスがない場合に発火する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/
+
+<br>

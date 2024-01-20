@@ -945,3 +945,27 @@ bar:
 > - https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
 
 <br>
+
+### when
+
+Jobを実行する条件を設定する。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  # ワークフローのうちで、手動で実行した場合にのみ実行する
+  when: manual
+
+bar_job:
+  stage: build
+  script:
+    - echo bar
+  # ワークフローのうちで、前段のJobのステータスに関係なく、必ず実行する
+  when: always
+```
+
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+
+<br>
