@@ -31,6 +31,8 @@ spec:
   scope: Namespaced
 ```
 
+> - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml
+
 ### カスタムリソース
 
 Deploymentを管理するFooリソースとする。
@@ -85,6 +87,8 @@ spec:
     availableReplicas: 2
 ```
 
+> - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml
+
 ### カスタムコントローラー
 
 このカスタムコントローラーは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
@@ -96,6 +100,8 @@ import (
 	"context"
 	"fmt"
 	"time"
+
+	"golang.org/x/time/rate"
 
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -140,14 +146,19 @@ type Controller struct {
 	recorder record.EventRecorder
 }
 
-func NewController(kubeclientset kubernetes.Interface, sampleclientset clientset.Interface, deploymentInformer appsinformers.DeploymentInformer, fooInformer informers.FooInformer) *Controller {
+func NewController(ctx context.Context, kubeclientset kubernetes.Interface, sampleclientset clientset.Interface, deploymentInformer appsinformers.DeploymentInformer, fooInformer informers.FooInformer) *Controller {logger := klog.FromContext(ctx)
 
 	utilruntime.Must(samplescheme.AddToScheme(scheme.Scheme))
-	klog.V(4).Info("Creating event broadcaster")
+	logger.V(4).Info("Creating event broadcaster")
+
 	eventBroadcaster := record.NewBroadcaster()
 	eventBroadcaster.StartStructuredLogging(0)
 	eventBroadcaster.StartRecordingToSink(&typedcorev1.EventSinkImpl{Interface: kubeclientset.CoreV1().Events("")})
 	recorder := eventBroadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: controllerAgentName})
+	ratelimiter := workqueue.NewMaxOfRateLimiter(
+		workqueue.NewItemExponentialFailureRateLimiter(5*time.Millisecond, 1000*time.Second),
+		&workqueue.BucketRateLimiter{Limiter: rate.NewLimiter(rate.Limit(50), 300)},
+	)
 
 	controller := &Controller{
 		kubeclientset:     kubeclientset,
@@ -156,12 +167,11 @@ func NewController(kubeclientset kubernetes.Interface, sampleclientset clientset
 		deploymentsSynced: deploymentInformer.Informer().HasSynced,
 		foosLister:        fooInformer.Lister(),
 		foosSynced:        fooInformer.Informer().HasSynced,
-		workqueue:         workqueue.NewNamedRateLimitingQueue(workqueue.DefaultControllerRateLimiter(), "Foos"),
+		workqueue:         workqueue.NewRateLimitingQueue(ratelimiter),
 		recorder:          recorder,
 	}
 
-	klog.Info("Setting up event handlers")
-
+	logger.Info("Setting up event handlers")
 	// Fooリソースの状態をwatchし、状態が変化した時に発火する関数を定義する
 	fooInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.enqueueFoo,
@@ -187,40 +197,40 @@ func NewController(kubeclientset kubernetes.Interface, sampleclientset clientset
 	return controller
 }
 
-
-func (c *Controller) Run(threadiness int, stopCh <-chan struct{}) error {
-
+func (c *Controller) Run(ctx context.Context, workers int) error {
 	defer utilruntime.HandleCrash()
 	defer c.workqueue.ShutDown()
-	klog.Info("Starting Foo controller")
-	klog.Info("Waiting for informer caches to sync")
+	logger := klog.FromContext(ctx)
 
-	if ok := cache.WaitForCacheSync(stopCh, c.deploymentsSynced, c.foosSynced); !ok {
+	logger.Info("Starting Foo controller")
+
+	logger.Info("Waiting for informer caches to sync")
+
+	if ok := cache.WaitForCacheSync(ctx.Done(), c.deploymentsSynced, c.foosSynced); !ok {
 		return fmt.Errorf("failed to wait for caches to sync")
 	}
 
-	klog.Info("Starting workers")
-
-	for i := 0; i < threadiness; i++ {
-		go wait.Until(c.runWorker, time.Second, stopCh)
+	logger.Info("Starting workers", "count", workers)
+	for i := 0; i < workers; i++ {
+		go wait.UntilWithContext(ctx, c.runWorker, time.Second)
 	}
 
-	klog.Info("Started workers")
-	<-stopCh
-	klog.Info("Shutting down workers")
+	logger.Info("Started workers")
+	<-ctx.Done()
+	logger.Info("Shutting down workers")
 
 	return nil
 }
 
-
-func (c *Controller) runWorker() {
-	for c.processNextWorkItem() {
+func (c *Controller) runWorker(ctx context.Context) {
+	for c.processNextWorkItem(ctx) {
 	}
 }
 
 // ワーカーキューからアイテムを取得して処理する
-func (c *Controller) processNextWorkItem() bool {
+func (c *Controller) processNextWorkItem(ctx context.Context) bool {
 	obj, shutdown := c.workqueue.Get()
+	logger := klog.FromContext(ctx)
 
 	if shutdown {
 		return false
@@ -235,12 +245,12 @@ func (c *Controller) processNextWorkItem() bool {
 			utilruntime.HandleError(fmt.Errorf("expected string in workqueue but got %#v", obj))
 			return nil
 		}
-		if err := c.syncHandler(key); err != nil {
+		if err := c.syncHandler(ctx, key); err != nil {
 			c.workqueue.AddRateLimited(key)
 			return fmt.Errorf("error syncing '%s': %s, requeuing", key, err.Error())
 		}
 		c.workqueue.Forget(obj)
-		klog.Infof("Successfully synced '%s'", key)
+		logger.Info("Successfully synced", "resourceName", key)
 		return nil
 	}(obj)
 
@@ -252,9 +262,10 @@ func (c *Controller) processNextWorkItem() bool {
 	return true
 }
 
-
 // Reconciliationを実行する
-func (c *Controller) syncHandler(key string) error {
+func (c *Controller) syncHandler(ctx context.Context, key string) error {
+	logger := klog.LoggerWithValues(klog.FromContext(ctx), "resourceName", key)
+
 	namespace, name, err := cache.SplitMetaNamespaceKey(key)
 	if err != nil {
 		utilruntime.HandleError(fmt.Errorf("invalid resource key: %s", key))
@@ -272,7 +283,6 @@ func (c *Controller) syncHandler(key string) error {
 	}
 
 	deploymentName := foo.Spec.DeploymentName
-
 	if deploymentName == "" {
 		utilruntime.HandleError(fmt.Errorf("%s: deployment name must be specified", key))
 		return nil
@@ -285,22 +295,19 @@ func (c *Controller) syncHandler(key string) error {
 		deployment, err = c.kubeclientset.AppsV1().Deployments(foo.Namespace).Create(context.TODO(), newDeployment(foo), metav1.CreateOptions{})
 	}
 
-
 	if err != nil {
 		return err
 	}
 
-
 	if !metav1.IsControlledBy(deployment, foo) {
 		msg := fmt.Sprintf(MessageResourceExists, deployment.Name)
 		c.recorder.Event(foo, corev1.EventTypeWarning, ErrResourceExists, msg)
-		return fmt.Errorf(msg)
+		return fmt.Errorf("%s", msg)
 	}
 
-
 	// kube-apiserverから取得したFooと実体が異なる場合、望ましい状態に修復する
-	if (foo.Spec.Replicas != nil) && (*foo.Spec.Replicas != *deployment.Spec.Replicas) {
-		klog.V(4).Infof("Foo %s replicas: %d, deployment replicas: %d", name, *foo.Spec.Replicas, *deployment.Spec.Replicas)
+	if foo.Spec.Replicas != nil && *foo.Spec.Replicas != *deployment.Spec.Replicas {
+		logger.V(4).Info("Update deployment resource", "currentReplicas", *foo.Spec.Replicas, "desiredReplicas", *deployment.Spec.Replicas)
 		deployment, err = c.kubeclientset.AppsV1().Deployments(foo.Namespace).Update(context.TODO(), newDeployment(foo), metav1.UpdateOptions{})
 	}
 
@@ -319,10 +326,9 @@ func (c *Controller) syncHandler(key string) error {
 }
 
 func (c *Controller) updateFooStatus(foo *samplev1alpha1.Foo, deployment *appsv1.Deployment) error {
-
 	fooCopy := foo.DeepCopy()
 	fooCopy.Status.AvailableReplicas = deployment.Status.AvailableReplicas
-	_, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).Update(context.TODO(), fooCopy, metav1.UpdateOptions{})
+	_, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).UpdateStatus(context.TODO(), fooCopy, metav1.UpdateOptions{})
 	return err
 }
 
@@ -330,19 +336,17 @@ func (c *Controller) updateFooStatus(foo *samplev1alpha1.Foo, deployment *appsv1
 func (c *Controller) enqueueFoo(obj interface{}) {
 	var key string
 	var err error
-
 	if key, err = cache.MetaNamespaceKeyFunc(obj); err != nil {
 		utilruntime.HandleError(err)
 		return
 	}
-
 	c.workqueue.Add(key)
 }
 
 func (c *Controller) handleObject(obj interface{}) {
 	var object metav1.Object
 	var ok bool
-
+	logger := klog.FromContext(context.Background())
 	if object, ok = obj.(metav1.Object); !ok {
 		tombstone, ok := obj.(cache.DeletedFinalStateUnknown)
 		if !ok {
@@ -354,11 +358,9 @@ func (c *Controller) handleObject(obj interface{}) {
 			utilruntime.HandleError(fmt.Errorf("error decoding object tombstone, invalid type"))
 			return
 		}
-		klog.V(4).Infof("Recovered deleted object '%s' from tombstone", object.GetName())
+		logger.V(4).Info("Recovered deleted object", "resourceName", object.GetName())
 	}
-
-	klog.V(4).Infof("Processing object: %s", object.GetName())
-
+	logger.V(4).Info("Processing object", "object", klog.KObj(object))
 	if ownerRef := metav1.GetControllerOf(object); ownerRef != nil {
 
 		if ownerRef.Kind != "Foo" {
@@ -366,7 +368,6 @@ func (c *Controller) handleObject(obj interface{}) {
 		}
 
 		foo, err := c.foosLister.Foos(object.GetNamespace()).Get(ownerRef.Name)
-
 		if err != nil {
 			klog.V(4).Infof("ignoring orphaned object '%s' of foo '%s'", object.GetSelfLink(), ownerRef.Name)
 			return
@@ -414,77 +415,8 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 }
 ```
 
-```go
-package main
-
-import (
-	"flag"
-	"time"
-
-	kubeinformers "k8s.io/client-go/informers"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
-	"k8s.io/klog/v2"
-
-	clientset "k8s.io/sample-controller/pkg/generated/clientset/versioned"
-	informers "k8s.io/sample-controller/pkg/generated/informers/externalversions"
-	"k8s.io/sample-controller/pkg/signals"
-)
-
-var (
-	masterURL  string
-	kubeconfig string
-)
-
-func main() {
-	klog.InitFlags(nil)
-
-	flag.Parse()
-
-	stopCh := signals.SetupSignalHandler()
-
-	cfg, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
-
-	if err != nil {
-		klog.Fatalf("Error building kubeconfig: %s", err.Error())
-	}
-
-	kubeClient, err := kubernetes.NewForConfig(cfg)
-
-	if err != nil {
-		klog.Fatalf("Error building kubernetes clientset: %s", err.Error())
-	}
-
-	exampleClient, err := clientset.NewForConfig(cfg)
-
-	if err != nil {
-		klog.Fatalf("Error building example clientset: %s", err.Error())
-	}
-
-	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
-
-	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second*30)
-
-	controller := NewController(kubeClient, exampleClient, kubeInformerFactory.Apps().V1().Deployments(), exampleInformerFactory.Samplecontroller().V1alpha1().Foos())
-
-	kubeInformerFactory.Start(stopCh)
-
-	exampleInformerFactory.Start(stopCh)
-
-	if err = controller.Run(2, stopCh); err != nil {
-		klog.Fatalf("Error running controller: %s", err.Error())
-	}
-}
-
-func init() {
-	flag.StringVar(&kubeconfig, "kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
-	flag.StringVar(&masterURL, "master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
-}
-```
-
-> - https://github.com/kubernetes/sample-controller
+> - https://github.com/kubernetes/sample-controller/blob/master/controller.go
 > - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
 > - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
-> - https://zenn.dev/ap_com/articles/45f7a646f62f52
 
 <br>
