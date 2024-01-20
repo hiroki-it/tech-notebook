@@ -13,7 +13,7 @@ description: サンプル＠custom-controllerの知見を記録しています�
 
 <br>
 
-## 01. Fooカスタムリソースのカスタムコントローラー
+## 01. Fooリソースのカスタムコントローラー
 
 ### CRD
 
@@ -33,7 +33,7 @@ spec:
 
 ### カスタムリソース
 
-Deploymentを管理するFooカスタムリソースとする。
+Deploymentを管理するFooリソースとする。
 
 ```go
 package v1alpha1
@@ -87,7 +87,7 @@ spec:
 
 ### カスタムコントローラー
 
-このカスタムコントローラーは、FooカスタムリソースをReconciliationし、またDeploymentの状態を監視する。
+このカスタムコントローラーは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
 
 ```go
 package main
@@ -161,13 +161,16 @@ func NewController(kubeclientset kubernetes.Interface, sampleclientset clientset
 	}
 
 	klog.Info("Setting up event handlers")
-	//
+
+	// Fooリソースの状態をwatchし、状態が変化した時に発火する関数を定義する
 	fooInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.enqueueFoo,
 		UpdateFunc: func(old, new interface{}) {
 			controller.enqueueFoo(new)
 		},
 	})
+
+	// Deploymentの状態をwatchし、状態が変化した時に発火する関数を定義する
 	deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.handleObject,
 		UpdateFunc: func(old, new interface{}) {
@@ -186,17 +189,18 @@ func NewController(kubeclientset kubernetes.Interface, sampleclientset clientset
 
 
 func (c *Controller) Run(threadiness int, stopCh <-chan struct{}) error {
+
 	defer utilruntime.HandleCrash()
 	defer c.workqueue.ShutDown()
-
 	klog.Info("Starting Foo controller")
-
 	klog.Info("Waiting for informer caches to sync")
+
 	if ok := cache.WaitForCacheSync(stopCh, c.deploymentsSynced, c.foosSynced); !ok {
 		return fmt.Errorf("failed to wait for caches to sync")
 	}
 
 	klog.Info("Starting workers")
+
 	for i := 0; i < threadiness; i++ {
 		go wait.Until(c.runWorker, time.Second, stopCh)
 	}
@@ -214,7 +218,7 @@ func (c *Controller) runWorker() {
 	}
 }
 
-
+// ワーカーキューからアイテムを取得して処理する
 func (c *Controller) processNextWorkItem() bool {
 	obj, shutdown := c.workqueue.Get()
 
@@ -318,25 +322,27 @@ func (c *Controller) updateFooStatus(foo *samplev1alpha1.Foo, deployment *appsv1
 
 	fooCopy := foo.DeepCopy()
 	fooCopy.Status.AvailableReplicas = deployment.Status.AvailableReplicas
-
 	_, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).Update(context.TODO(), fooCopy, metav1.UpdateOptions{})
 	return err
 }
 
-
+// ワーカーキューにキーを追加する
 func (c *Controller) enqueueFoo(obj interface{}) {
 	var key string
 	var err error
+
 	if key, err = cache.MetaNamespaceKeyFunc(obj); err != nil {
 		utilruntime.HandleError(err)
 		return
 	}
+
 	c.workqueue.Add(key)
 }
 
 func (c *Controller) handleObject(obj interface{}) {
 	var object metav1.Object
 	var ok bool
+
 	if object, ok = obj.(metav1.Object); !ok {
 		tombstone, ok := obj.(cache.DeletedFinalStateUnknown)
 		if !ok {
@@ -350,13 +356,17 @@ func (c *Controller) handleObject(obj interface{}) {
 		}
 		klog.V(4).Infof("Recovered deleted object '%s' from tombstone", object.GetName())
 	}
+
 	klog.V(4).Infof("Processing object: %s", object.GetName())
+
 	if ownerRef := metav1.GetControllerOf(object); ownerRef != nil {
+
 		if ownerRef.Kind != "Foo" {
 			return
 		}
 
 		foo, err := c.foosLister.Foos(object.GetNamespace()).Get(ownerRef.Name)
+
 		if err != nil {
 			klog.V(4).Infof("ignoring orphaned object '%s' of foo '%s'", object.GetSelfLink(), ownerRef.Name)
 			return
@@ -402,7 +412,6 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 		},
 	}
 }
-
 ```
 
 ```go
@@ -476,5 +485,6 @@ func init() {
 > - https://github.com/kubernetes/sample-controller
 > - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
 > - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
+> - https://zenn.dev/ap_com/articles/45f7a646f62f52
 
 <br>
