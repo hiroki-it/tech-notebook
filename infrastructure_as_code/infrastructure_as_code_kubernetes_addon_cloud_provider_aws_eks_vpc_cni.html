@@ -21878,7 +21878,7 @@ Capacity:
 <p>反対に、NodeのENIを解放し、ENIのプールに戻す。</p>
 </dd>
 </dl>
-<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" /></p>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" /></p>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
@@ -21890,7 +21890,7 @@ Capacity:
 <p>反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。</p>
 </dd>
 </dl>
-<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
@@ -21945,7 +21945,7 @@ Capacity:
 <p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の<code>*.*.*.*/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
 <p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (サブネット内の<code>*.*.*.*/28</code>) を確保できる。</p>
 <p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>*.*.*.*/28</code>よりも大きくしておく必要がある。</p>
-<p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
+<p><img alt="aws-eks-vpc-cni_prefix-delegation-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/</a></li>
@@ -22066,7 +22066,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-21</span>
   </span>
 
     

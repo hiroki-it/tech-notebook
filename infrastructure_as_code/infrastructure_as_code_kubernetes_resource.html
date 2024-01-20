@@ -23483,7 +23483,7 @@
 <p><br></p>
 <h3 id="_2">スコープ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>所属するNamespace内のみにリクエストを送信できるNamespacedスコープなKubernetesリソースと、Cluster全体にリクエストを送信できるClusterスコープなKubernetesリソースがある。</p>
-<p><img alt="namespaced-scope_vs_cluster-scoped.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png" /></p>
+<p><img alt="namespaced-scope_vs_cluster-scoped" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html">https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html</a></li>
@@ -24334,7 +24334,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p>CoreDNSの代わりとして使用できる。</p>
 <p>例えば、<code>foo-db-service</code>というExternalName Serviceを作成したとする。</p>
 <p>ここ場合、<code>foo-db-service.default.svc.cluster.local</code>を指定すると、指定したCNAMEレコードに問い合わせるようになる。</p>
-<p><img alt="kubernetes_externalname-service.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
+<p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13739">https://thinkit.co.jp/article/13739</a></li>
@@ -24378,7 +24378,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p><br></p>
 <h2 id="03-04-service">03-04. Serviceの仕組み<a class="headerlink" href="#03-04-service" title="Permanent link">&para;</a></h2>
 <h3 id="_11">パケットの処理方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><img alt="kube-proxy_iptables.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png" /></p>
+<p><img alt="kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png" /></p>
 <p>Serviceは、パケットの<code>L4</code>に関するヘッダーの情報を見て、Podに<code>L4</code>ロードバランシングする。</p>
 <p>受信したリクエストをパケットとして処理していく流れを見ていく。</p>
 <dl>
@@ -24608,7 +24608,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <h2 id="06">06. ストレージ系リソース<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_17">ストレージ系リソースの種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>Kubernetesで作成できるストレージは、作成場所で種類を分けられる。</p>
-<p><img alt="kubernetes_storage_resource_types.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png" /></p>
+<p><img alt="kubernetes_storage_resource_types" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png" /></p>
 <table>
 <thead>
 <tr>
@@ -24643,7 +24643,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p><br></p>
 <h3 id="persistentvolume_1">PersistentVolume<a class="headerlink" href="#persistentvolume_1" title="Permanent link">&para;</a></h3>
 <h4 id="persistentvolume_2">▼ PersistentVolumeとは<a class="headerlink" href="#persistentvolume_2" title="Permanent link">&para;</a></h4>
-<p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p>Node上のストレージ上にVolumeを作成する。</p>
 <p>Node上のPod間でVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。</p>
 <p>PodがPersistentVolumeを使用するためには、PersistentVolumeClaimにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimを指定する必要がある。</p>
@@ -24738,11 +24738,11 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <p>外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。</p>
 <p>StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。</p>
 <p>また、外部ストレージを使用する場合には、CSIドライバーも必要である。</p>
-<p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p><br></p>
 <h3 id="volume_1">Volume<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h3>
 <h4 id="volume_2">▼ Volumeとは<a class="headerlink" href="#volume_2" title="Permanent link">&para;</a></h4>
-<p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p>既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。</p>
 <p>Podの<code>.spec.volumes</code>キーで指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
@@ -24870,7 +24870,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <h3 id="persistentvolumeclaim">PersistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <h4 id="persistentvolumeclaim_1">▼ PersistentVolumeClaimとは<a class="headerlink" href="#persistentvolumeclaim_1" title="Permanent link">&para;</a></h4>
 <p>設定された条件に基づいて、Kubernetesで作成済みのPersistentVolumeを要求し、指定したKubernetesリソースに割り当てる。</p>
-<p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html">https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html</a></li>
@@ -24996,7 +24996,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
 <p>そのため、PersistentVolumeも合わせて作成する必要がある。</p>
 <p>StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で<code>reclaimPolicy</code>キーとして設定する。</p>
-<p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning">https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning</a></li>
@@ -25188,7 +25188,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-21</span>
   </span>
 
     

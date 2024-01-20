@@ -20599,6 +20599,7 @@
 <li><a href="https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml">https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="_2">カスタムリソース<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Deploymentを管理するFooリソースとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">v1alpha1</span>
@@ -20652,7 +20653,9 @@
 <li><a href="https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml">https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="_3">カスタムコントローラー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="kubernetes_custome-controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png" /></p>
 <p>このカスタムコントローラーは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 

@@ -21330,7 +21330,7 @@
 <h2 id="01-karpenter">01. Karpenterの仕組み<a class="headerlink" href="#01-karpenter" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Karpenterは、karpenterコントローラーから構成される。</p>
-<p><img alt="karpenter_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
+<p><img alt="karpenter_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/threat-model/#karpenter-controller">https://karpenter.sh/preview/reference/threat-model/#karpenter-controller</a></li>
@@ -21343,7 +21343,7 @@
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
 <p>この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にEC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
 <p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
-<p><img alt="karpenter_controller.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
+<p><img alt="karpenter_controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/threat-model/#architecture--actors">https://karpenter.sh/preview/reference/threat-model/#architecture--actors</a></li>
@@ -21536,7 +21536,7 @@
 <p>AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。</p>
 <p>Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。</p>
 <p>そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。</p>
-<p><img alt="karpenter_vs_cluster-autoscaler.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
+<p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru">https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru</a></li>
@@ -21547,7 +21547,7 @@
 <p>そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。</p>
 <p>一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。</p>
 <p>そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。</p>
-<p><img alt="karpenter_vs_cluster-autoscaler.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
+<p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd">https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd</a></li>
