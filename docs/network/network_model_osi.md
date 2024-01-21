@@ -114,8 +114,6 @@ OSI参照モデルの各層と通信機器の間の対応関係は以下の通�
 
 ペイロードは、OSIの層を経るたびにヘッダーを追加していく。
 
-パケット自体が暗号化されているため、実際の中身を確認することは難しい。
-
 ![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_packet.png)
 
 `(1)`
