@@ -709,7 +709,7 @@ Istio EgressGatewayが必要になるため、VirtualServiceも必要になる�
 
 VirtualServiceは、Istio EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
 
-Istio EgressGatewayのPodへの送信では、`L7`ヘッダーの情報だけを書き換えて、`L4`ヘッダーだけを書き換える。
+Istio EgressGatewayのPodへの送信では、`L7`ヘッダーの持つ情報だけを書き換えて、`L4`ヘッダーだけを書き換える。
 
 これにより、Istio EgressGatewayに宛先を変更しつつ、Istio EgressGatewayからServiceEntryの宛先にリクエストを送信できる。
 

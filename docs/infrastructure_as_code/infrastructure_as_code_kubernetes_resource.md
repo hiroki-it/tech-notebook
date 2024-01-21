@@ -946,7 +946,7 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 ![kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png)
 
-Serviceは、パケットの`L4`に関するヘッダーの情報を見て、Podに`L4`ロードバランシングする。
+Serviceは、パケットの`L4`に関するヘッダーの持つ情報を見て、Podに`L4`ロードバランシングする。
 
 受信したリクエストをパケットとして処理していく流れを見ていく。
 

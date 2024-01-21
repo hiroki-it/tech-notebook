@@ -34,7 +34,7 @@ OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイ
 
 ![oauth2-proxy_kubernetes_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
 
-Ingressコントローラーは、リクエストヘッダーの情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
+Ingressコントローラーは、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
 
 未認証のリクエストの場合、IngressコントローラーはリクエストをOAuth2 Proxyに転送する。
 
