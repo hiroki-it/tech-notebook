@@ -95,7 +95,7 @@ Envoyは、通信を切断することなく、コントロールプレーンか
 
 #### ▼ CDS-API：Cluster Discovery Service
 
-単一のエンドポイントを提供し、クラスター値を取得できる。
+単一のエンドポイントを提供し、クラスターを取得できる。
 
 Envoyの実行時に、ルーティング先のClusterの設定を動的に検出可能にする。
 
@@ -104,7 +104,7 @@ Envoyの実行時に、ルーティング先のClusterの設定を動的に検�
 
 #### ▼ EDS-API：Endpoint Discovery Service
 
-単一のエンドポイントを提供し、エンドポイント値を取得できる。
+単一のエンドポイントを提供し、エンドポイントを取得できる。
 
 Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出可能にする。
 
@@ -113,7 +113,7 @@ Envoyの実行時に、ルーティング先のClusterに含まれるメンバ�
 
 #### ▼ LDS-API：Listener Discovery Service
 
-単一のエンドポイントを提供し、リスナー値を取得できる。
+単一のエンドポイントを提供し、リスナーを取得できる。
 
 Envoyの実行時に、リスナーの設定を動的に検出可能にする。
 
@@ -122,7 +122,7 @@ Envoyの実行時に、リスナーの設定を動的に検出可能にする。
 
 #### ▼ RDS-API：Route Discovery Service
 
-単一のエンドポイントを提供し、ルート値を取得できる。
+単一のエンドポイントを提供し、ルートを取得できる。
 
 Envoyの実行時に、ルーティングの設定を動的に検出可能にする。
 
@@ -265,27 +265,27 @@ Envoyが組み込まれたサービスメッシュツール (例：Istio、Linke
 
 `(1)`
 
-: Envoyは、起動時にリスナー値とクラスター値をXDS-APIから取得する。
+: Envoyは、起動時にリスナーとクラスターをXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
 `(2)`
 
-: Envoyは、リスナー値に紐付ける必要のあるルート値を特定する。
+: Envoyは、リスナーに紐付ける必要のあるルートを特定する。
 
 `(3)`
 
-: Envoyは、クラスター値に紐付ける必要のあるエンドポイント値を特定する。
+: Envoyは、クラスターに紐付ける必要のあるエンドポイントを特定する。
 
 `(4)`
 
-: Envoyは、ルート値とエンドポイント値をXDS-APIから取得する。
+: Envoyは、ルートとエンドポイントをXDS-APIから取得する。
 
      取得した宛先情報を自身に設定する。
 
 `(5)`
 
-: Envoyは、リスナー値とクラスター値をXDS-APIから定期的に取得する。
+: Envoyは、リスナーとクラスターをXDS-APIから定期的に取得する。
 
      取得した宛先情報を自身に設定する。
 
@@ -332,7 +332,7 @@ message DiscoveryResponse {
 
 #### ▼ リスナーの静的な登録
 
-`envoy.yaml`ファイルにて、`listeners`キーを設定することにより、Envoyに静的にリスナー値を静的に設定できる。
+`envoy.yaml`ファイルにて、`listeners`キーを設定することにより、Envoyに静的にリスナーを静的に設定できる。
 
 ```yaml
 static_resources:
@@ -429,9 +429,9 @@ static_resources:
 
 #### ▼ リスナーの動的な登録
 
-Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナー値を取得する。
+Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のリスナーを取得する。
 
-また、Envoyは宛先のリスナー値を自身に動的に設定する。
+また、Envoyは宛先のリスナーを自身に動的に設定する。
 
 ```protobuf
 
@@ -632,18 +632,18 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ ルート値の静的な登録
+#### ▼ ルートの静的な登録
 
 `static_resources.listeners`キー配下で、リスナーと合わせて設定する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
 
-#### ▼ ルート値の動的な登録
+#### ▼ ルートの動的な登録
 
-Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のルート値を取得する。
+Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のルートを取得する。
 
-また、Envoyは宛先のルート値を自身に動的に設定する。
+また、Envoyは宛先のルートを自身に動的に設定する。
 
 ```protobuf
 
@@ -782,9 +782,9 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントのIPアドレスとポートにロードバランシングする。
 
-#### ▼ クラスター値の静的な登録
+#### ▼ クラスターの静的な登録
 
-`envoy.yaml`ファイルにて、`clusters`キーを設定することにより、Envoyに静的にクラスター値を静的に設定できる。
+`envoy.yaml`ファイルにて、`clusters`キーを設定することにより、Envoyに静的にクラスターを静的に設定できる。
 
 ```yaml
 static_resources:
@@ -861,9 +861,9 @@ static_resources:
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
-#### ▼ クラスター値の動的な登録
+#### ▼ クラスターの動的な登録
 
-Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のクラスター値を取得する。
+Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のクラスターを取得する。
 
 また、Envoyは宛先のクラスター設定を自身に動的に設定する。
 
@@ -978,16 +978,16 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ エンドポイント値の静的な登録
+#### ▼ エンドポイントの静的な登録
 
 `static_resources.clusters`キー配下で、リスナーと合わせて設定する。
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
-#### ▼ エンドポイント値の動的な登録
+#### ▼ エンドポイントの動的な登録
 
-Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のエンドポイント値を取得する。
+Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、宛先のエンドポイントを取得する。
 
 また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。
 

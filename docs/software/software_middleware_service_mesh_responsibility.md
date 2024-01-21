@@ -95,9 +95,9 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 
 <br>
 
-## 05. 通信データの暗号化
+## 05. ペイロードの暗号化
 
-サービスメッシュは、通信データをSSL証明書で暗号化する。
+サービスメッシュは、ペイロードをSSL証明書で暗号化する。
 
 Kubernetesでは、Podの作成に応じて証明書のKubernetesリソース (Certificate、CertificateSigningRequest、など) を作成する必要がある。
 

@@ -15,22 +15,43 @@ description: リソース＠Istioの知見を記録しています。
 
 ## 01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
 
-|                                                                | リスナー値 |        ルート値        | クラスター値 | エンドポイント値 |
-| -------------------------------------------------------------- | :--------: | :--------------------: | :----------: | :--------------: |
-| Kubernetes Service                                             |     ✅     |           ✅           |      ✅      |                  |
-| Kubernetes Endpoints                                           |            |                        |              |        ✅        |
-| Istio Gateway                                                  |     ✅     |                        |              |                  |
-| Istio VirtualService                                           |     ✅     | ✅<br>(HTTPの場合のみ) |              |                  |
-| Istio DestinationRule                                          |            |                        |      ✅      |        ✅        |
-| Istio ServiceEntry                                             |            |                        |      ✅      |        ✅        |
-| Istio PeerAuthentication                                       |     ✅     |                        |      ✅      |                  |
-| Istio RequestAuthentication                                    |     ✅     |                        |              |                  |
-| Istio AuthorizationPolicies                                    |     ✅     |                        |              |                  |
-| Istio EnvoyFilter<br>(Envoyのフィルターを介して各設定値に影響) |     ✅     |           ✅           |      ✅      |        ✅        |
-| Istio Sidecar                                                  |     ✅     |           ✅           |      ✅      |        ✅        |
+### 一覧表
+
+|                                                                | リスナー |         ルート         | クラスター | エンドポイント |
+| -------------------------------------------------------------- | :------: | :--------------------: | :--------: | :------------: |
+| Kubernetes Service                                             |    ✅    |           ✅           |     ✅     |                |
+| Kubernetes Endpoints                                           |          |                        |            |       ✅       |
+| Istio Gateway                                                  |    ✅    |                        |            |                |
+| Istio VirtualService                                           |    ✅    | ✅<br>(HTTPの場合のみ) |            |                |
+| Istio DestinationRule                                          |          |                        |     ✅     |       ✅       |
+| Istio ServiceEntry                                             |          |                        |     ✅     |       ✅       |
+| Istio PeerAuthentication                                       |    ✅    |                        |     ✅     |                |
+| Istio RequestAuthentication                                    |    ✅    |                        |            |                |
+| Istio AuthorizationPolicies                                    |    ✅    |                        |            |                |
+| Istio EnvoyFilter<br>(Envoyのフィルターを介して各設定値に影響) |    ✅    |           ✅           |     ✅     |       ✅       |
+| Istio Sidecar                                                  |    ✅    |           ✅           |     ✅     |       ✅       |
 
 > - https://www.slideshare.net/AspenMesh/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down#19
 > - https://youtu.be/XAKY24b7XjQ?t=1131
+
+<br>
+
+### ルートへの変換
+
+いずれのIstioカスタムリソースがルートに変換されたかを確認できる。
+
+```yaml
+metadata:
+  filter_metadata:
+    istio:
+      config: /apis/networking.istio.io/v1alpha3/namespaces/services/virtual-service/foo-virtual-service
+```
+
+<br>
+
+### クラスターへの変換
+
+いずれのIstioカスタムリソースがクラスターに変換されたかを確認できる。
 
 <br>
 
@@ -58,11 +79,11 @@ Pod間通信には不要である。
 
 ### Envoyの設定値として
 
-#### ▼ リスナー値として
+#### ▼ リスナーとして
 
-Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナーに変換する。
 
-なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。
+なお、KubernetesのGatewayもEnvoyのリスナーと同等である。
 
 ```yaml
 $ kubectl exec \
@@ -74,7 +95,7 @@ $ kubectl exec \
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-    # リスナー値
+    # リスナー
     name: 0.0.0.0_50002
     active_state:
       version_info: 2022-11-24T12:13:05Z/468
@@ -286,7 +307,7 @@ Clusterネットワーク内から通信を受信し、フィルタリングし�
 
 ### Envoyの設定値として
 
-Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。
+Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスターに変換する。
 
 <br>
 
@@ -316,11 +337,11 @@ VirtualServiceは、宛先Podに紐づくVirtualServiceから情報を取得し�
 
 ### Envoyの設定値として
 
-#### ▼ リスナー値として
+#### ▼ リスナーとして
 
-Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナーに変換する。
 
-なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。
+なお、KubernetesのGatewayもEnvoyのリスナーと同等である。
 
 ```yaml
 $ kubectl exec \
@@ -332,7 +353,7 @@ $ kubectl exec \
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-    # リスナー値
+    # リスナー
     name: 0.0.0.0_50002
     active_state:
       version_info: 2022-11-24T12:13:05Z/468
@@ -371,9 +392,9 @@ configs:
 
 > - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
 
-#### ▼ ルート値として
+#### ▼ ルートとして
 
-Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。
+Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルートに変換する。
 
 ```yaml
 $ kubectl exec \
@@ -385,7 +406,7 @@ $ kubectl exec \
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
-    # ルート値
+    # ルート
     version_info: 2022-11-24T12:13:05Z/468
     route_config:
       "@type": type.googleapis.com/envoy.config.route.v3.RouteConfiguration
@@ -440,7 +461,7 @@ envoy
 ⬇⬆︎︎
 ------------
 ⬇⬆︎︎
-envoy # クライアント側Envoyからのリクエストをアプリが受信できるように、リスナー値とルート値になる
+envoy # クライアント側Envoyからのリクエストをアプリが受信できるように、リスナーとルートになる
 ⬇⬆︎︎
 アプリ
 ```
@@ -449,7 +470,7 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
-Envoyのリスナー値とルート値を確認すれば、VirtualServiceの設定が正しく適用できているかを確認できる。
+Envoyのリスナーとルートを確認すれば、VirtualServiceの設定が正しく適用できているかを確認できる。
 
 ```bash
 $ istioctl proxy-config routes foo-pod -n foo-namespace
@@ -516,13 +537,13 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 ### Envoyの設定値として
 
-#### ▼ クラスター値として
+#### ▼ クラスターとして
 
-Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。
+Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスターに変換する。
 
-なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから動的に取得する。
+なお、クラスター配下のエンドポイントは、KubernetesのServiceから動的に取得する。
 
-そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。
+そのため、Envoyのエンドポイントに相当するIstioのカスタムリソースはない。
 
 ```yaml
 $ kubectl exec \
@@ -534,7 +555,7 @@ $ kubectl exec \
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
-    # クラスター値
+    # クラスター
     version_info: 2022-11-24T12:13:05Z/468
 
     cluster:
@@ -563,7 +584,7 @@ $ kubectl exec \
 
 ---
 configs:
-  # エンドポイント値
+  # エンドポイント
   dynamic_endpoint_configs:
     - endpoint_config:
         "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
@@ -645,7 +666,7 @@ envoy
 ⬇⬆︎︎
 ------------
 ⬇⬆︎︎
-envoy # クライアント側Envoyからのリクエストをアプリが受信できるように、クラスター値とエンドポイント値になる
+envoy # クライアント側Envoyからのリクエストをアプリが受信できるように、クラスターとエンドポイントになる
 ⬇⬆︎︎
 アプリ
 ```
@@ -654,7 +675,7 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
-Envoyのクラスター値とエンドポイント値を確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。
+Envoyのクラスターとエンドポイントを確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。
 
 ```bash
 $ istioctl proxy-config cluster foo-pod -n foo-namespace

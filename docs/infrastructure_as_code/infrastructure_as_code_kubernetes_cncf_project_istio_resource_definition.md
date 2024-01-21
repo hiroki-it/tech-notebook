@@ -708,7 +708,7 @@ spec:
 
 #### ▼ cluster
 
-指定したクラスター値が存在する場合に、フィルターの設定値を変更する。
+指定したクラスターが存在する場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -727,7 +727,7 @@ spec:
 
 #### ▼ listener
 
-指定したリスナー値が存在する場合に、フィルターの設定値を変更する。
+指定したリスナーが存在する場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -1500,6 +1500,12 @@ spec:
 
 コンフィグストレージに登録する宛先のIPアドレスの設定する。
 
+なお、Istio EgressGatewayは値に注意が必要である。
+
+ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。
+
+そのため、DNS解決を`NONE`にすると、Istio EgressGatewayはServiceEntryを見つけられず、自分自身でループしてしまう。
+
 **＊実装例＊**
 
 ```yaml
@@ -1511,6 +1517,8 @@ spec:
   # DNSサーバーから返信されたIPアドレスを許可する
   resolution: DNS
 ```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/
 
 <br>
 
@@ -1729,15 +1737,15 @@ metadata:
   name: foo-egress-virtual-service
 spec:
   hosts:
-    #  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。
-    - example.com
+    #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    - external.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使う
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使う
     - foo-egressgateway
   http:
-    # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
             # PodからIstio EgressGatewayのPodへの通信で使う
@@ -1756,7 +1764,7 @@ spec:
           port: 80
       route:
         - destination:
-            host: example.com
+            host: external.com
             port:
               number: 80
 ```
@@ -1771,22 +1779,22 @@ metadata:
   name: foo-egress-virtual-service
 spec:
   hosts:
-    #  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。
-    - example.com
+    #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    - external.com
   gateways:
     # PodからIstio EgressGatewayのPodへの通信で使う
     - mesh
     # Istio EgressGatewayからエントリ済みシステムへの通信で使う
     - foo-egressgateway
   tls:
-    # example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
+    # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
             # PodからIstio EgressGatewayのPodへの通信で使う
             - mesh
           port: 443
           sniHosts:
-            - example.com
+            - external.com
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
@@ -1801,7 +1809,7 @@ spec:
           port: 443
       route:
         - destination:
-            host: example.com
+            host: external.com
             port:
               number: 443
 ```
@@ -1933,7 +1941,7 @@ spec:
 
 `0`秒の場合、タイムアウトは無制限になる。
 
-これは、Envoyのルート値の`grpc_timeout_header_max`と`timeout`の両方に適用される。
+これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
 
 指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
 

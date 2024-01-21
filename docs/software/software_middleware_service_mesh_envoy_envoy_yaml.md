@@ -319,7 +319,7 @@ RPCでは、JSON内のデータのデータ型を指定するために使用す�
 
 Envoyが`L4`プロトコルを処理できるようになる。
 
-`network.http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
+`network.http_connection_manager`とは異なり、ルートではなくクラスターに処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -331,7 +331,7 @@ static_resources:
             - name: envoy.filters.network.tcp_proxy
               typed_config:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
-                # クラスター値
+                # クラスター
                 cluster: foo_cluster
                 ...
 ```
@@ -345,7 +345,7 @@ static_resources:
 
 Envoyが`L7`プロトコルを処理できるようになる。
 
-`network.tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
+`network.tcp_proxy`とは異なり、ルートに処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -357,7 +357,7 @@ static_resources:
             - name: envoy.filters.network.http_connection_manager
               typed_config:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-                # ルート値
+                # ルート
                 route_config:
                    name: foo_route
                    ...

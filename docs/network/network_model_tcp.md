@@ -35,7 +35,7 @@ TCP階層モデルは、ネットワークインターフェース層、イン�
 
 TCP/IPモデルで使用されるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。
 
-暗号化プロトコルを使用している場合は、各階層でそのプロトコルがパケットヘッダーを暗号化する。
+暗号化プロトコルを使用している場合は、`L6`にて`L7`のペイロードを暗号化/復号化する。
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 

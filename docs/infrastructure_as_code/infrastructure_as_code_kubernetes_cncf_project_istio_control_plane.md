@@ -292,33 +292,33 @@ Clusterで作成されたIstioのカスタムリソースの状態を取得す�
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/discovery.go#L529-L565
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55
 
-#### ▼ リスナー値の場合
+#### ▼ リスナーの場合
 
-IstioのカスタムリソースをEnvoyのリスナー値に変換する。
+IstioのカスタムリソースをEnvoyのリスナーに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118
 
-#### ▼ ルート値の場合
+#### ▼ ルートの場合
 
-IstioのカスタムリソースをEnvoyのルート値に変換する。
+IstioのカスタムリソースをEnvoyのルートに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113
 
-#### ▼ クラスター値の場合
+#### ▼ クラスターの場合
 
-IstioのカスタムリソースをEnvoyのクラスター値に変換する。
+IstioのカスタムリソースをEnvoyのクラスターに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/cds.go#L35-L60
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269
 
-#### ▼ エンドポイント値の場合
+#### ▼ エンドポイントの場合
 
-IstioのカスタムリソースをEnvoyのエンドポイント値に変換する。
+IstioのカスタムリソースをEnvoyのエンドポイントに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245

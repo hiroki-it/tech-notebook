@@ -234,7 +234,7 @@ $ kubectl exec \
 
 #### ▼ `dynamic_endpoint_configs`キー
 
-準備済みのエンドポイント値が設定されている。
+準備済みのエンドポイントが設定されている。
 
 `cluster_name`キーは、`/config_dump?resource={dynamic_active_clusters}`エンドポイントから取得できるJSONの`service_name`キーのエイリアスと紐づいている。
 
@@ -351,7 +351,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 #### ▼ dynamic_active_clusters
 
-準備済みのクラスター値を、JSON形式でレスポンスとして返信する。
+準備済みのクラスターを、JSON形式でレスポンスとして返信する。
 
 クラスターに紐づく宛先に関して、`load_assignment`キーで宛先IPアドレスを直接的に設定する場合と、`service_name`キーでエイリアスを設定する場合がある。
 
@@ -407,14 +407,14 @@ configs:
 
 #### ▼ dynamic_warm_clusters
 
-準備が完了していない (ウォーミングアップ中の) クラスター値を、JSON形式でレスポンスとして返信する。
+準備が完了していない (ウォーミングアップ中の) クラスターを、JSON形式でレスポンスとして返信する。
 
 もしウォーミングアップ中の宛先にルーティングしてしまった場合は、`404`ステータスや`503`ステータス (特に、Istio) になる。
 
 ```bash
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}
 
-{} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
+{} # ウォーミングアップ中のクラスターが無ければ、空配列になる。
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
@@ -431,7 +431,7 @@ $ kubectl exec \
 -c istio-proxy \
 -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
 ---
-{} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
+{} # ウォーミングアップ中のクラスターが無ければ、空配列になる。
 ```
 
 #### ▼ dynamic_active_secrets
@@ -585,7 +585,7 @@ configs:
 
 #### ▼ static_listeners
 
-静的なリスナー値を返信する。
+静的なリスナーを返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。

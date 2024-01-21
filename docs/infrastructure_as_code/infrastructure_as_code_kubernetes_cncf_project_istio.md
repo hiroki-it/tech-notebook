@@ -167,7 +167,7 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | --------------------------------------------------- |
 | サービスメッシュコントロールプレーン         | Istiodコントロールプレーン (`discovery`コンテナ)                                                                                                                                                                                             | go-control-plane             | なし                                                |
 | サービスディスカバリーでのルーティング先設定 | DestinationRule                                                                                                                                                                                                                              | `route`キー                  | kube-proxy + Service                                |
-| サービスディスカバリーでのリスナー値         | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                  | `listener`キー               | kube-proxy + Service                                |
+| サービスディスカバリーでのリスナー           | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                  | `listener`キー               | kube-proxy + Service                                |
 | サービスディスカバリーでの追加サービス設定   | ServiceEntry + EndpointSlice                                                                                                                                                                                                                 | `cluster`キー                | EndpointSlice                                       |
 | Cluster外Nodeに対するサービスディスカバリー  | WorkloadEntry                                                                                                                                                                                                                                | `endpoint`キー               | Egress                                              |
 | サービスレジストリ                           | etcd                                                                                                                                                                                                                                         | etcd                         | etcd                                                |
@@ -206,11 +206,11 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 ### パケット処理の仕組み
 
-1. `istio-proxy`コンテナにて、リスナー値でリクエストを受信する。
+1. `istio-proxy`コンテナにて、リスナーでリクエストを受信する。
 2. EnvoyFilterがあれば、これをリスナーフィルターとしてEnvoyに適用する。
-3. ルート値でリクエストを受け取る。
-4. クラスター値でリクエストを受け取る。
-5. クラスター値配下のエンドポイント値にリクエストをプロキシする。
+3. ルートでリクエストを受け取る。
+4. クラスターでリクエストを受け取る。
+5. クラスター配下のエンドポイントにリクエストをプロキシする。
 
 > - https://github.com/istio/istio/issues/34030#issuecomment-880012551
 > - https://qiita.com/DaichiSasak1/items/1fb781e5dd2fa549ac48#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%87%A6%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC
@@ -374,13 +374,13 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 <br>
 
-## 05. 通信データの暗号化
+## 05. ペイロードの暗号化
 
 ### 相互TLS認証
 
 #### ▼ 相互TLS認証とは
 
-相互TLS認証を実施し、通信データを暗号化する。
+相互TLS認証を実施し、`L7`のペイロードを暗号化/復号化する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 

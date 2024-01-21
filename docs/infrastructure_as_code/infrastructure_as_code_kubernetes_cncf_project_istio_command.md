@@ -432,12 +432,12 @@ bootstrap:
       setNodeOnFirstMessageOnly: "true"
       transportApiVersion: V3
     cdsConfig:
-      # ADS-APIから取得した宛先情報のうち、クラスター値を設定する。
+      # ADS-APIから取得した宛先情報のうち、クラスターを設定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
     ldsConfig:
-      # ADS-APIから取得した宛先情報のうち、リスナー値を設定する。
+      # ADS-APIから取得した宛先情報のうち、リスナーを設定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
@@ -499,9 +499,9 @@ $ istioctl proxy-config cluster foo-pod \
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
-    # serviceNameをクラスター値として使用する。
-    # エンドポイント値はクラスター値と紐づいており、ADS-APIから取得したエンドポイント値をフィルタリングする。
-    # エンドポイント値にはいくつかのインスタンスが紐づいており、1個を選んでルーティングする。
+    # serviceNameをクラスターとして使用する。
+    # エンドポイントはクラスターと紐づいており、ADS-APIから取得したエンドポイントをフィルタリングする。
+    # エンドポイントにはいくつかのインスタンスが紐づいており、1個を選んでルーティングする。
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 ```
 
