@@ -17697,11 +17697,11 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 通信データの暗号化
+      05. ペイロードの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. 通信データの暗号化">
+    <nav class="md-nav" aria-label="05. ペイロードの暗号化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21920,11 +21920,11 @@
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 通信データの暗号化
+      05. ペイロードの暗号化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. 通信データの暗号化">
+    <nav class="md-nav" aria-label="05. ペイロードの暗号化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22509,7 +22509,7 @@
 <td>kube-proxy + Service</td>
 </tr>
 <tr>
-<td>サービスディスカバリーでのリスナー値</td>
+<td>サービスディスカバリーでのリスナー</td>
 <td>EnvoyFilter + EndpointSlice</td>
 <td><code>listener</code>キー</td>
 <td>kube-proxy + Service</td>
@@ -22589,11 +22589,11 @@
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_10">パケット処理の仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ol>
-<li><code>istio-proxy</code>コンテナにて、リスナー値でリクエストを受信する。</li>
+<li><code>istio-proxy</code>コンテナにて、リスナーでリクエストを受信する。</li>
 <li>EnvoyFilterがあれば、これをリスナーフィルターとしてEnvoyに適用する。</li>
-<li>ルート値でリクエストを受け取る。</li>
-<li>クラスター値でリクエストを受け取る。</li>
-<li>クラスター値配下のエンドポイント値にリクエストをプロキシする。</li>
+<li>ルートでリクエストを受け取る。</li>
+<li>クラスターでリクエストを受け取る。</li>
+<li>クラスター配下のエンドポイントにリクエストをプロキシする。</li>
 </ol>
 <blockquote>
 <ul>
@@ -22751,10 +22751,10 @@
 <h4 id="_27">▼ アプリの認可について<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>アプリ側の認可については、Istioの管理外である。</p>
 <p><br></p>
-<h2 id="05">05. 通信データの暗号化<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. ペイロードの暗号化<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="tls_1">相互TLS認証<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h3>
 <h4 id="tls_2">▼ 相互TLS認証とは<a class="headerlink" href="#tls_2" title="Permanent link">&para;</a></h4>
-<p>相互TLS認証を実施し、通信データを暗号化する。</p>
+<p>相互TLS認証を実施し、<code>L7</code>のペイロードを暗号化/復号化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#authentication-architecture">https://istio.io/latest/docs/concepts/security/#authentication-architecture</a></li>

@@ -21013,7 +21013,7 @@
 <p>リクエストを送信する前に、サーバーとのTCPコネクションの確立に要する時間のこと。</p>
 <p><br></p>
 <h3 id="bandwidth">Bandwidth (帯域幅)<a class="headerlink" href="#bandwidth" title="Permanent link">&para;</a></h3>
-<p>単位時間当たりの送信できる最大データサイズの理論値のこと。</p>
+<p>単位時間当たりの送信できる最大ペイロードサイズの理論値のこと。</p>
 <p>帯域幅の実測値は、すなわち『スループット』である。</p>
 <p>インターネットやWANの帯域幅が狭いと、ダウンロード (例：インストール、コンテナイメージのプル) やアップロード (例：POST送信、コンテナイメージのプッシュ) に時間がかかる。</p>
 <blockquote>
@@ -21025,9 +21025,9 @@
 <p><br></p>
 <h3 id="_8">スループット (伝送速度)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ スループットとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>単位時間当たりの送信できる最大データサイズの実測値こと。</p>
+<p>単位時間当たりの送信できる最大ペイロードサイズの実測値こと。</p>
 <p>スループットの理論値は、すなわち『帯域幅』である。</p>
-<p>ただし、スループットは、『プロバイダ』『光回線』『自宅の有線/無線』の<code>3</code>個に影響されるため、スループットで期待されるデータサイズを満たせないことが多い。</p>
+<p>ただし、スループットは、『プロバイダ』『光回線』『自宅の有線/無線』の<code>3</code>個に影響されるため、スループットで期待されるペイロードサイズを満たせないことが多い。</p>
 <p>他からの影響を受けたスループットを、特に『実効スループット』という。</p>
 <p><img alt="伝送速度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png" /></p>
 <blockquote>
@@ -21041,7 +21041,7 @@
 <p>相互の送信は、通信 (パケット送受信) と呼ぶ。</p>
 <h4 id="_11">▼ 伝送秒数の求め方<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">伝送秒数</span><span class="p">)</span>
-<span class="o">=</span><span class="w"> </span><span class="err">データサイズ</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="err">スループット</span><span class="p">(</span><span class="n">bit</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="err">伝送効率</span>
+<span class="o">=</span><span class="w"> </span><span class="err">ペイロードサイズ</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="err">スループット</span><span class="p">(</span><span class="n">bit</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="err">伝送効率</span>
 </code></pre></div>
 <h4 id="_12">▼ トラフィックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>とあるネットワーク地点でのスループットのこと。</p>
@@ -21051,7 +21051,7 @@
 <li><a href="https://xtech.nikkei.com/it/article/Keyword/20070222/262872/">https://xtech.nikkei.com/it/article/Keyword/20070222/262872/</a></li>
 </ul>
 </blockquote>
-<p>総務省のデータで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。</p>
+<p>総務省のペイロードで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。</p>
 <p><img alt="トラフィックのグラフ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png" /></p>
 <blockquote>
 <ul>
@@ -21079,7 +21079,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-22</span>
   </span>
 
     

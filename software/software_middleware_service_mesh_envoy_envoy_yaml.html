@@ -22702,7 +22702,7 @@
 <h4 id="networktcp_proxy">▼ <code>network.tcp_proxy</code><a class="headerlink" href="#networktcp_proxy" title="Permanent link">&para;</a></h4>
 <p><code>network.tcp_proxy</code>はデフォルトで有効になっているネットワークフィルターである。</p>
 <p>Envoyが<code>L4</code>プロトコルを処理できるようになる。</p>
-<p><code>network.http_connection_manager</code>とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。</p>
+<p><code>network.http_connection_manager</code>とは異なり、ルートではなくクラスターに処理を繋ぐ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -22711,7 +22711,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
-<span class="w">                </span><span class="c1"># クラスター値</span>
+<span class="w">                </span><span class="c1"># クラスター</span>
 <span class="w">                </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
 <span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -22724,7 +22724,7 @@
 <h4 id="networkhttp_connection_manager">▼ <code>network.http_connection_manager</code><a class="headerlink" href="#networkhttp_connection_manager" title="Permanent link">&para;</a></h4>
 <p><code>network.http_connection_manager</code>はデフォルトで有効になっているネットワークフィルターである。</p>
 <p>Envoyが<code>L7</code>プロトコルを処理できるようになる。</p>
-<p><code>network.tcp_proxy</code>とは異なり、ルート値に処理を繋ぐ。</p>
+<p><code>network.tcp_proxy</code>とは異なり、ルートに処理を繋ぐ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -22733,7 +22733,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
-<span class="w">                </span><span class="c1"># ルート値</span>
+<span class="w">                </span><span class="c1"># ルート</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                   </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -23422,7 +23422,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-22</span>
   </span>
 
     

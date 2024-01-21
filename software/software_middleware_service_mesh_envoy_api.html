@@ -21240,7 +21240,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <h4 id="dynamic_endpoint_configs">▼ <code>dynamic_endpoint_configs</code>キー<a class="headerlink" href="#dynamic_endpoint_configs" title="Permanent link">&para;</a></h4>
-<p>準備済みのエンドポイント値が設定されている。</p>
+<p>準備済みのエンドポイントが設定されている。</p>
 <p><code>cluster_name</code>キーは、<code>/config_dump?resource={dynamic_active_clusters}</code>エンドポイントから取得できるJSONの<code>service_name</code>キーのエイリアスと紐づいている。</p>
 <p><strong>＊例＊</strong></p>
 <p>foo-podに登録されているbar-podの<code>endpoint</code>値を確認してみる。</p>
@@ -21350,7 +21350,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <h4 id="dynamic_active_clusters">▼ dynamic_active_clusters<a class="headerlink" href="#dynamic_active_clusters" title="Permanent link">&para;</a></h4>
-<p>準備済みのクラスター値を、JSON形式でレスポンスとして返信する。</p>
+<p>準備済みのクラスターを、JSON形式でレスポンスとして返信する。</p>
 <p>クラスターに紐づく宛先に関して、<code>load_assignment</code>キーで宛先IPアドレスを直接的に設定する場合と、<code>service_name</code>キーでエイリアスを設定する場合がある。</p>
 <p><code>service_name</code>キーに紐づく宛先情報は、<code>/config_dump?include_eds</code>エンドポイントのレスポンスの<code>dynamic_endpoint_configs</code>キー配下にある<code>cluster_name</code>キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
@@ -21402,11 +21402,11 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <h4 id="dynamic_warm_clusters">▼ dynamic_warm_clusters<a class="headerlink" href="#dynamic_warm_clusters" title="Permanent link">&para;</a></h4>
-<p>準備が完了していない (ウォーミングアップ中の) クラスター値を、JSON形式でレスポンスとして返信する。</p>
+<p>準備が完了していない (ウォーミングアップ中の) クラスターを、JSON形式でレスポンスとして返信する。</p>
 <p>もしウォーミングアップ中の宛先にルーティングしてしまった場合は、<code>404</code>ステータスや<code>503</code>ステータス (特に、Istio) になる。</p>
 <div class="highlight"><pre><span></span><code>envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>dynamic_warming_clusters<span class="o">}</span>
 
-<span class="o">{}</span><span class="w"> </span><span class="c1"># ウォーミングアップ中のクラスター値が無ければ、空配列になる。</span>
+<span class="o">{}</span><span class="w"> </span><span class="c1"># ウォーミングアップ中のクラスターが無ければ、空配列になる。</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -21422,7 +21422,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
 <span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}&quot; | yq -P</span>
 <span class="nn">---</span>
-<span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># ウォーミングアップ中のクラスター値が無ければ、空配列になる。</span>
+<span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># ウォーミングアップ中のクラスターが無ければ、空配列になる。</span>
 </code></pre></div>
 <h4 id="dynamic_active_secrets">▼ dynamic_active_secrets<a class="headerlink" href="#dynamic_active_secrets" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -21560,7 +21560,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="static_listeners">▼ static_listeners<a class="headerlink" href="#static_listeners" title="Permanent link">&para;</a></h4>
-<p>静的なリスナー値を返信する。</p>
+<p>静的なリスナーを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>static_listeners<span class="o">}</span>
 </code></pre></div>
@@ -21617,7 +21617,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-22</span>
   </span>
 
     

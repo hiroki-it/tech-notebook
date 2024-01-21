@@ -24009,7 +24009,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>フィルターの設定値を変更する場合に、その実行条件を設定する。</p>
 <p>条件に合致する設定値があった場合、<code>.spec.configPatches.patch</code>キーで設定した内容の変更処理を実施する。</p>
 <h4 id="cluster">▼ cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
-<p>指定したクラスター値が存在する場合に、フィルターの設定値を変更する。</p>
+<p>指定したクラスターが存在する場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -24023,7 +24023,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <h4 id="listener">▼ listener<a class="headerlink" href="#listener" title="Permanent link">&para;</a></h4>
-<p>指定したリスナー値が存在する場合に、フィルターの設定値を変更する。</p>
+<p>指定したリスナーが存在する場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -24701,6 +24701,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specresolution">.spec.resolution<a class="headerlink" href="#specresolution" title="Permanent link">&para;</a></h3>
 <h4 id="resolution">▼ resolutionとは<a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のIPアドレスの設定する。</p>
+<p>なお、Istio EgressGatewayは値に注意が必要である。</p>
+<p>ServiceEntryに対するリクエストの宛先IPアドレスはIstio EgressGatewayに書き換えられている。</p>
+<p>そのため、DNS解決を<code>NONE</code>にすると、Istio EgressGatewayはServiceEntryを見つけられず、自分自身でループしてしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -24710,6 +24713,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># DNSサーバーから返信されたIPアドレスを許可する</span>
 <span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="09-telemetry">09. Telemetry<a class="headerlink" href="#09-telemetry" title="Permanent link">&para;</a></h2>
 <h3 id="accesslogging">accessLogging<a class="headerlink" href="#accesslogging" title="Permanent link">&para;</a></h3>
@@ -24880,15 +24888,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="c1">#  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">    </span><span class="c1">#  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使う</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使う</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egressgateway</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
+<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使う</span>
@@ -24907,7 +24915,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
@@ -24923,22 +24931,22 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egress-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="c1">#  ホストヘッダー値がexample.comの時にVirtualServiceを適用する。</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">    </span><span class="c1">#  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使う</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio EgressGatewayからエントリ済みシステムへの通信で使う</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-egressgateway</span>
 <span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># example.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
+<span class="w">    </span><span class="c1"># external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># PodからIstio EgressGatewayのPodへの通信で使う</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">          </span><span class="nt">sniHosts</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
@@ -24953,7 +24961,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 </code></pre></div>
@@ -25063,7 +25071,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。</p>
 <p><code>0</code>秒の場合、タイムアウトは無制限になる。</p>
-<p>これは、Envoyのルート値の<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
+<p>これは、Envoyのルートの<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -25439,7 +25447,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-22</span>
   </span>
 
     

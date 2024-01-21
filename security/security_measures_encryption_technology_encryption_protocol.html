@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="暗号化プロトコル＠通信データの暗号化技術の知見を記録しています。">
+        <meta name="description" content="暗号化プロトコル＠ペイロードの暗号化技術の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】暗号化プロトコル＠通信データの暗号化技術 - 俺の技術ノート</title>
+        <title>【IT技術の知見】暗号化プロトコル＠ペイロードの暗号化技術 - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】暗号化プロトコル＠通信データの暗号化技術
+              【IT技術の知見】暗号化プロトコル＠ペイロードの暗号化技術
             
           </span>
         </div>
@@ -9771,7 +9771,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 通信データの暗号化/復号化
+      ▼ ペイロードの暗号化/復号化
     </span>
   </a>
   
@@ -21268,7 +21268,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 通信データの暗号化/復号化
+      ▼ ペイロードの暗号化/復号化
     </span>
   </a>
   
@@ -21311,7 +21311,7 @@
   
 
 
-<h1 id="_1">暗号化プロトコル＠通信データの暗号化技術<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">暗号化プロトコル＠ペイロードの暗号化技術<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21494,7 +21494,7 @@
 <h4 id="l5l7">▼ <code>L5</code>〜<code>L7</code>のプロトコルの暗号化<a class="headerlink" href="#l5l7" title="Permanent link">&para;</a></h4>
 <p><code>L5</code>〜<code>L7</code>のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を暗号化する。</p>
 <p>『<code>S</code>』 (例：SMTPS) や『<code>over TLS/SSL</code>』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。</p>
-<p>HTTPSであれば、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。</p>
+<p>暗号化プロトコルを使用する場合、<code>L6</code>にて<code>L7</code>のペイロードを暗号化/復号かする。</p>
 <p><strong>＊例＊</strong></p>
 <p>Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。</p>
 <p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
@@ -21559,7 +21559,7 @@
 <li><a href="https://www.iim.co.jp/products/zscaler/zpa/">https://www.iim.co.jp/products/zscaler/zpa/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ 通信データの暗号化/復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ ペイロードの暗号化/復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。</p>
 <p>反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。</p>
 <p>接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。</p>
