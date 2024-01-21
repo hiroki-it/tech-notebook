@@ -20798,10 +20798,16 @@
 <span class="w">    </span><span class="s">&quot;k8s.io/client-go/kubernetes/scheme&quot;</span>
 <span class="w">    </span><span class="nx">typedcorev1</span><span class="w"> </span><span class="s">&quot;k8s.io/client-go/kubernetes/typed/core/v1&quot;</span>
 <span class="w">    </span><span class="nx">appslisters</span><span class="w"> </span><span class="s">&quot;k8s.io/client-go/listers/apps/v1&quot;</span>
+
+<span class="w">  </span><span class="c1">// リソースイベントハンドラー</span>
 <span class="w">    </span><span class="s">&quot;k8s.io/client-go/tools/cache&quot;</span>
-<span class="w">    </span><span class="s">&quot;k8s.io/client-go/tools/record&quot;</span>
+
+<span class="w">  </span><span class="s">&quot;k8s.io/client-go/tools/record&quot;</span>
+
+<span class="w">  </span><span class="c1">// ワークキュー</span>
 <span class="w">    </span><span class="s">&quot;k8s.io/client-go/util/workqueue&quot;</span>
-<span class="w">    </span><span class="s">&quot;k8s.io/klog/v2&quot;</span>
+
+<span class="w">  </span><span class="s">&quot;k8s.io/klog/v2&quot;</span>
 
 <span class="w">    </span><span class="nx">samplev1alpha1</span><span class="w"> </span><span class="s">&quot;k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1&quot;</span>
 <span class="w">    </span><span class="nx">clientset</span><span class="w"> </span><span class="s">&quot;k8s.io/sample-controller/pkg/generated/clientset/versioned&quot;</span>
@@ -20856,7 +20862,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Setting up event handlers&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// Fooリソースの状態をwatchし、状態が変化した時に発火する関数を定義する</span>
+<span class="w">    </span><span class="c1">// Fooリソースの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する</span>
 <span class="w">    </span><span class="nx">fooInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">AddEventHandler</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">ResourceEventHandlerFuncs</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">AddFunc</span><span class="p">:</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">enqueueFoo</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">UpdateFunc</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">old</span><span class="p">,</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
@@ -20864,7 +20870,7 @@
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="c1">// Deploymentの状態をwatchし、状態が変化した時に発火する関数を定義する</span>
+<span class="w">    </span><span class="c1">// Deploymentの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する</span>
 <span class="w">    </span><span class="nx">deploymentInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">AddEventHandler</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">ResourceEventHandlerFuncs</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">AddFunc</span><span class="p">:</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">handleObject</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">UpdateFunc</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">old</span><span class="p">,</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
@@ -20906,12 +20912,13 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
+<span class="c1">// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">runWorker</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">processNextWorkItem</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// ワーカーキューからアイテムを取得して処理する</span>
+<span class="c1">// ワーカーキューからアイテムを取得して処理し、syncHandlerをコールして処理する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">processNextWorkItem</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">shutdown</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">Get</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
