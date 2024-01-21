@@ -35,19 +35,18 @@ custom-controllerは、client-goコンポーネントとcustom-controller-compon
 
 ### client-goコンポーネント
 
-記入中...
+リファクター、インフォーマー、インデクサー、から構成される。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
-> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
+> - https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35
 
 <br>
 
 ### custom-controller-componentsコンポーネント
 
-記入中...
+リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
-> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
 
 <br>
 

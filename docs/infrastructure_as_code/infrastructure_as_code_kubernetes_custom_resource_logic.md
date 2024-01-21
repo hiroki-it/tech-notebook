@@ -118,10 +118,16 @@ import (
 	"k8s.io/client-go/kubernetes/scheme"
 	typedcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	appslisters "k8s.io/client-go/listers/apps/v1"
+
+  // リソースイベントハンドラー
 	"k8s.io/client-go/tools/cache"
-	"k8s.io/client-go/tools/record"
+
+  "k8s.io/client-go/tools/record"
+
+  // ワークキュー
 	"k8s.io/client-go/util/workqueue"
-	"k8s.io/klog/v2"
+
+  "k8s.io/klog/v2"
 
 	samplev1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
 	clientset "k8s.io/sample-controller/pkg/generated/clientset/versioned"
@@ -176,7 +182,7 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 	}
 
 	logger.Info("Setting up event handlers")
-	// Fooリソースの状態をwatchし、状態が変化した時に発火する関数を定義する
+	// Fooリソースの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する
 	fooInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.enqueueFoo,
 		UpdateFunc: func(old, new interface{}) {
@@ -184,7 +190,7 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 		},
 	})
 
-	// Deploymentの状態をwatchし、状態が変化した時に発火する関数を定義する
+	// Deploymentの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する
 	deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.handleObject,
 		UpdateFunc: func(old, new interface{}) {
@@ -226,12 +232,13 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 	return nil
 }
 
+// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する
 func (c *Controller) runWorker(ctx context.Context) {
 	for c.processNextWorkItem(ctx) {
 	}
 }
 
-// ワーカーキューからアイテムを取得して処理する
+// ワーカーキューからアイテムを取得して処理し、syncHandlerをコールして処理する
 func (c *Controller) processNextWorkItem(ctx context.Context) bool {
 	obj, shutdown := c.workqueue.Get()
 	logger := klog.FromContext(ctx)
