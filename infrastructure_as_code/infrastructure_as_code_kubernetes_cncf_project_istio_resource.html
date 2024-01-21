@@ -21780,15 +21780,24 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ルートへの変換<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioカスタムリソースがルートに変換されたかを確認できる。</p>
+<p>いずれのIstioカスタムリソースがルートに変換されたかは、ルートの<code>metadata.filter_metadata</code>キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/apis/networking.istio.io/v1alpha3/namespaces/services/virtual-service/foo-virtual-service</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/apis/networking.istio.io/v1alpha3/namespaces/foo-namespace/virtual-service/foo-virtual-service</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">クラスターへの変換<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioカスタムリソースがクラスターに変換されたかを確認できる。</p>
+<p>いずれのIstioカスタムリソースがクラスターに変換されたかは、クラスターの<code>metadata.filter_metadata</code>キーで確認できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/apis/networking.istio.io/v1alpha3/namespaces/foo-namespace/destination-rule/foo-destination-rule</span>
+<span class="w">      </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+<span class="w">          </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="02-gateway">02. Gateway<a class="headerlink" href="#02-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="gateway">Gatewayとは<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
