@@ -265,6 +265,7 @@ spec:
 > - https://medium.com/@dinup24/expose-apps-on-private-network-through-istio-ingress-gateway-7dcb8a16d5bc
 > - https://discuss.istio.io/t/how-to-run-multiple-ingress-gateway-with-different-class-names/1866
 > - https://getistio.io/istio-in-practice/multiple-ingress-gateways/
+> - https://istio.io/v1.13/blog/2018/v1alpha3-routing/
 
 <br>
 
@@ -690,24 +691,32 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 
 <br>
 
-### Istio EgressGatewayの使用
+### ServiceEntryと同時に必要なリソース
 
-ServiceEntryには、Istio EgressGatewayも必要である。
+#### ▼ Istio EgressGateway
 
-<br>
+ServiceEntryには、Istio EgressGatewayが必須ではない。
 
-### VirtualService
+ただし、Istio EgressGatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう
+
+そのため、システムの安全性が低くなります。
+
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
+
+#### ▼ VirtualService
 
 Istio EgressGatewayが必要になるため、VirtualServiceも必要になる。
 
-VirtualServiceは、EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
+VirtualServiceは、Istio EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。
+
+Istio EgressGatewayのPodへの送信では、`L7`ヘッダーの情報だけを書き換えて、`L4`ヘッダーだけを書き換える。
+
+これにより、Istio EgressGatewayに宛先を変更しつつ、Istio EgressGatewayからServiceEntryの宛先にリクエストを送信できる。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
-<br>
-
-### DestinationRule
+#### ▼ DestinationRule
 
 Istio EgressGatewayが必要になるため、DestinationRuleも必要になる。
 

@@ -173,7 +173,7 @@ SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定�
 
 #### ▼ `L5`〜`L7`のプロトコルの暗号化
 
-`L5`〜`L7`のプロトコル (例：HTTP、SMTP、POP3、など) を暗号化する。
+`L5`〜`L7`のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を暗号化する。
 
 『`S`』 (例：SMTPS) や『`over TLS/SSL`』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。
 

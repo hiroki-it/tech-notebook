@@ -587,6 +587,15 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 ### フィルター
 
+#### ▼ フィルターの機能別種類
+
+各フィルターは、ReadFilterとWriteFilterに分類できる。
+
+執筆時点 (2024/01/21) では、HTTPの処理に関するフィルターは全てReadFilterである。
+
+> - https://zhuanlan.zhihu.com/p/464828801
+> - https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html
+
 #### ▼ リスナーフィルター
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener
