@@ -22324,7 +22324,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h4 id="virtualservice_2">▼ VirtualService<a class="headerlink" href="#virtualservice_2" title="Permanent link">&para;</a></h4>
 <p>Istio EgressGatewayが必要になるため、VirtualServiceも必要になる。</p>
 <p>VirtualServiceは、Istio EgressGatewayのPodへの送信とServiceEntryへの送信の両方で必要になる。</p>
-<p>Istio EgressGatewayのPodへの送信では、<code>L7</code>ヘッダーの情報だけを書き換えて、<code>L4</code>ヘッダーだけを書き換える。</p>
+<p>Istio EgressGatewayのPodへの送信では、<code>L7</code>ヘッダーの持つ情報だけを書き換えて、<code>L4</code>ヘッダーだけを書き換える。</p>
 <p>これにより、Istio EgressGatewayに宛先を変更しつつ、Istio EgressGatewayからServiceEntryの宛先にリクエストを送信できる。</p>
 <blockquote>
 <ul>

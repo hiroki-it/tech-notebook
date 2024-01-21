@@ -20908,11 +20908,14 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じて、パケットのペイロードを作成し、<code>L7</code>ヘッダーを追加する。</p>
+<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じてパケットのペイロードを作成し、<code>L7</code>ヘッダーを追加する。</p>
+<p>プロトコルに応じてペイロードや<code>L7</code>ヘッダーの持つ情報は異なる。</p>
+<p>例えば、HTTPであればペイロードはHTMLやリクエストメッセージである。</p>
+<p>また、<code>L7</code>ヘッダーはリクエストヘッダーである。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>プレゼンテーション層 (<code>L6</code>) にて、メッセージの文字コード変換や暗号化/復号化を実施し、<code>L6</code>ヘッダーを追加する。</p>
+<p>プレゼンテーション層 (<code>L6</code>) にて、ペイロードの文字コード変換や暗号化/復号化を実施し、<code>L6</code>ヘッダーを追加する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -20921,10 +20924,14 @@
 <dt><code>(4)</code></dt>
 <dd>
 <p>トランスポート層 (<code>L4</code>) にて、<code>L4</code>ヘッダーを追加する。</p>
+<p>ペイロードはTCP/UDPパケットを持つ。</p>
+<p><code>L4</code>ヘッダーはIPアドレスを持つ。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
 <p>ネットワーク層 (<code>L3</code>) にて、<code>L3</code>ヘッダーを追加する。</p>
+<p>ペイロードはIPパケットを持つ。</p>
+<p><code>L3</code>ヘッダーはMACアドレスを持つ。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
@@ -20944,6 +20951,7 @@
 <li><a href="https://www.infraexpert.com/study/networking3.html">https://www.infraexpert.com/study/networking3.html</a></li>
 <li><a href="https://www.infraexpert.com/study/networking4.html">https://www.infraexpert.com/study/networking4.html</a></li>
 <li><a href="https://www.n-study.com/network-architecture/osi-communication-flow/">https://www.n-study.com/network-architecture/osi-communication-flow/</a></li>
+<li><a href="https://ox0xo.github.io/networking/wireshark">https://ox0xo.github.io/networking/wireshark</a></li>
 </ul>
 </blockquote>
 <p><br></p>
