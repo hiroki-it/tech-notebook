@@ -13,9 +13,7 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-## 01. custom-controller
-
-### custom-controllerとは
+## 01. custom-controllerとは
 
 カスタムリソースのためのkube-controllerに相当する。
 
@@ -25,7 +23,37 @@ description: custom-controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-### カスタムリソースの仕組み
+## 02. custom-controllerの仕組み
+
+### アーキテクチャ
+
+custom-controllerは、client-goコンポーネントとcustom-controller-componentsコンポーネントから構成される。
+
+![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
+
+<br>
+
+### client-goコンポーネント
+
+記入中...
+
+> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
+> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
+
+<br>
+
+### custom-controller-componentsコンポーネント
+
+記入中...
+
+> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
+> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
+
+<br>
+
+## 03. reconciliation
+
+### 処理の仕組み
 
 ![custom_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
@@ -66,7 +94,7 @@ kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行
 
 <br>
 
-## 02. セットアップ
+## 04. セットアップ
 
 ### 既にあるものを使用する
 
@@ -83,7 +111,7 @@ custom-controllerを自前で実装する。
 
 <br>
 
-## 03. Operatorパターン
+## 05. Operatorパターン
 
 ### Operatorパターンとは
 
@@ -151,9 +179,15 @@ OperatorHubで公開されている。
 
 <br>
 
-## 03-02 Operatorの開発
+## 06. Operatorのフレームワーク
 
-### 自前のOperatorを作成する場合
+### KubeBuilder
+
+記入中...
+
+<br>
+
+### OperatorFramework
 
 #### ▼ OperatorFrameworkとは
 
@@ -172,23 +206,5 @@ Operatorの、作成、削除、を管理する。
 #### ▼ Operator Metering
 
 記入中...
-
-<br>
-
-### 既存のOperatorをカスタマイズする場合
-
-#### ▼ client-goコンポーネント
-
-記入中...
-
-> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
-> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
-
-#### ▼ custom-controller-componentsコンポーネント
-
-記入中...
-
-> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
-> - https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22
 
 <br>

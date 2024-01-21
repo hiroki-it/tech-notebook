@@ -47,6 +47,8 @@
 
 * #### [custom-controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html)
 
+* #### [ロジック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.html)
+
 <br>
 
 ### ︎ハードウェアリソース管理

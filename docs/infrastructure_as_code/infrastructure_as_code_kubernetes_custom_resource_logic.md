@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】サンプル＠custom-controller
-description: サンプル＠custom-controllerの知見を記録しています。
+title: 【IT技術の知見】ロジック＠custom-controller
+description: ロジック＠custom-controllerの知見を記録しています。
 ---
 
-# サンプル＠custom-controller
+# ロジック＠custom-controller
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: サンプル＠custom-controllerの知見を記録しています�
 
 <br>
 
-## 01. Fooリソースのカスタムコントローラー
+## 01. Fooリソースのcustom-controller
 
 ### CRD
 
@@ -93,11 +93,9 @@ spec:
 
 <br>
 
-### カスタムコントローラー
+### custom-controller
 
-![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
-
-このカスタムコントローラーは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
+このcustom-controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
 
 ```go
 package main
@@ -447,7 +445,6 @@ func main() {
 	klog.InitFlags(nil)
 	flag.Parse()
 
-	// set up signals so we handle the shutdown signal gracefully
 	ctx := signals.SetupSignalHandler()
 	logger := klog.FromContext(ctx)
 
