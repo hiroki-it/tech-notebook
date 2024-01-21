@@ -182,7 +182,8 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 	}
 
 	logger.Info("Setting up event handlers")
-	// Fooリソースの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する
+	// Fooリソースの状態をwatchする
+	// また、状態が変化した時に発火するリソースイベントハンドラーを定義する
 	fooInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.enqueueFoo,
 		UpdateFunc: func(old, new interface{}) {
@@ -190,7 +191,8 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 		},
 	})
 
-	// Deploymentの状態をwatchし、状態が変化した時に発火するリソースイベントハンドラーを定義する
+	// Deploymentの状態をwatchする
+	// また、状態が変化した時に発火するリソースイベントハンドラーを定義する
 	deploymentInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
 		AddFunc: controller.handleObject,
 		UpdateFunc: func(old, new interface{}) {
@@ -208,12 +210,12 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 }
 
 func (c *Controller) Run(ctx context.Context, workers int) error {
+
 	defer utilruntime.HandleCrash()
 	defer c.workqueue.ShutDown()
-	logger := klog.FromContext(ctx)
 
+  logger := klog.FromContext(ctx)
 	logger.Info("Starting Foo controller")
-
 	logger.Info("Waiting for informer caches to sync")
 
 	if ok := cache.WaitForCacheSync(ctx.Done(), c.deploymentsSynced, c.foosSynced); !ok {
@@ -221,6 +223,7 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 	}
 
 	logger.Info("Starting workers", "count", workers)
+
 	for i := 0; i < workers; i++ {
 		go wait.UntilWithContext(ctx, c.runWorker, time.Second)
 	}
@@ -234,12 +237,14 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 
 // ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する
 func (c *Controller) runWorker(ctx context.Context) {
+
 	for c.processNextWorkItem(ctx) {
 	}
 }
 
 // ワーカーキューからアイテムを取得して処理し、syncHandlerをコールして処理する
 func (c *Controller) processNextWorkItem(ctx context.Context) bool {
+
 	obj, shutdown := c.workqueue.Get()
 	logger := klog.FromContext(ctx)
 
@@ -275,16 +280,19 @@ func (c *Controller) processNextWorkItem(ctx context.Context) bool {
 
 // Reconciliationを実行する
 func (c *Controller) syncHandler(ctx context.Context, key string) error {
-	logger := klog.LoggerWithValues(klog.FromContext(ctx), "resourceName", key)
 
+	logger := klog.LoggerWithValues(klog.FromContext(ctx), "resourceName", key)
 	namespace, name, err := cache.SplitMetaNamespaceKey(key)
+
 	if err != nil {
 		utilruntime.HandleError(fmt.Errorf("invalid resource key: %s", key))
 		return nil
 	}
 
+  // kube-apiserverからFooリソースの望ましい状態を取得する
 	foo, err := c.foosLister.Foos(namespace).Get(name)
-	if err != nil {
+
+  if err != nil {
 		if errors.IsNotFound(err) {
 			utilruntime.HandleError(fmt.Errorf("foo '%s' in work queue no longer exists", key))
 			return nil
@@ -294,11 +302,13 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 	}
 
 	deploymentName := foo.Spec.DeploymentName
+
 	if deploymentName == "" {
 		utilruntime.HandleError(fmt.Errorf("%s: deployment name must be specified", key))
 		return nil
 	}
 
+  // kube-apiserverからDeploymentの望ましい状態を取得する
 	deployment, err := c.deploymentsLister.Deployments(foo.Namespace).Get(deploymentName)
 
 	// kube-apiserverから取得したFooの実体がない場合、Deploymentを作成する
@@ -316,12 +326,11 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 		return fmt.Errorf("%s", msg)
 	}
 
-	// kube-apiserverから取得したFooと実体が異なる場合、望ましい状態に修復する
+	// kube-apiserverから取得したFooリソースと実体の状態が異なる場合、望ましい状態に修復する
 	if foo.Spec.Replicas != nil && *foo.Spec.Replicas != *deployment.Spec.Replicas {
 		logger.V(4).Info("Update deployment resource", "currentReplicas", *foo.Spec.Replicas, "desiredReplicas", *deployment.Spec.Replicas)
 		deployment, err = c.kubeclientset.AppsV1().Deployments(foo.Namespace).Update(context.TODO(), newDeployment(foo), metav1.UpdateOptions{})
 	}
-
 
 	if err != nil {
 		return err
@@ -332,6 +341,8 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 		return err
 	}
 
+  // custom-controllerの処理結果をイベントとして登録する
+  // kubectl eventsコマンドで確認できるようになる
 	c.recorder.Event(foo, corev1.EventTypeNormal, SuccessSynced, MessageResourceSynced)
 	return nil
 }
@@ -345,40 +356,53 @@ func (c *Controller) updateFooStatus(foo *samplev1alpha1.Foo, deployment *appsv1
 
 // ワーカーキューにキーを追加する
 func (c *Controller) enqueueFoo(obj interface{}) {
-	var key string
+
+  var key string
 	var err error
-	if key, err = cache.MetaNamespaceKeyFunc(obj); err != nil {
+
+  if key, err = cache.MetaNamespaceKeyFunc(obj); err != nil {
 		utilruntime.HandleError(err)
 		return
 	}
+
 	c.workqueue.Add(key)
 }
 
 func (c *Controller) handleObject(obj interface{}) {
+
 	var object metav1.Object
 	var ok bool
+
 	logger := klog.FromContext(context.Background())
-	if object, ok = obj.(metav1.Object); !ok {
+
+  if object, ok = obj.(metav1.Object); !ok {
 		tombstone, ok := obj.(cache.DeletedFinalStateUnknown)
+
 		if !ok {
 			utilruntime.HandleError(fmt.Errorf("error decoding object, invalid type"))
 			return
 		}
-		object, ok = tombstone.Obj.(metav1.Object)
-		if !ok {
+
+    object, ok = tombstone.Obj.(metav1.Object)
+
+    if !ok {
 			utilruntime.HandleError(fmt.Errorf("error decoding object tombstone, invalid type"))
 			return
 		}
-		logger.V(4).Info("Recovered deleted object", "resourceName", object.GetName())
+
+    logger.V(4).Info("Recovered deleted object", "resourceName", object.GetName())
 	}
-	logger.V(4).Info("Processing object", "object", klog.KObj(object))
-	if ownerRef := metav1.GetControllerOf(object); ownerRef != nil {
+
+  logger.V(4).Info("Processing object", "object", klog.KObj(object))
+
+  if ownerRef := metav1.GetControllerOf(object); ownerRef != nil {
 
 		if ownerRef.Kind != "Foo" {
 			return
 		}
 
 		foo, err := c.foosLister.Foos(object.GetNamespace()).Get(ownerRef.Name)
+
 		if err != nil {
 			klog.V(4).Infof("ignoring orphaned object '%s' of foo '%s'", object.GetSelfLink(), ownerRef.Name)
 			return
@@ -389,7 +413,6 @@ func (c *Controller) handleObject(obj interface{}) {
 	}
 }
 
-
 func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 	labels := map[string]string{
 		"app":        "nginx",
@@ -399,6 +422,8 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      foo.Spec.DeploymentName,
 			Namespace: foo.Namespace,
+      // リソースの親子関係を定義する
+      // FooリソースはDeploymentを管理するため、Fooリソースを親、Deploymentを子、として定義する
 			OwnerReferences: []metav1.OwnerReference{
 				*metav1.NewControllerRef(foo, samplev1alpha1.SchemeGroupVersion.WithKind("Foo")),
 			},
@@ -498,5 +523,6 @@ func init() {
 > - https://github.com/kubernetes/sample-controller/blob/master/controller.go
 > - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
 > - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
+> - https://kk-river108.hatenablog.com/entry/2020/12/16/184915
 
 <br>
