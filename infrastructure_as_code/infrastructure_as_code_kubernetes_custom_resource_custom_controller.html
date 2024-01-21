@@ -18,7 +18,7 @@
         <link rel="prev" href="infrastructure_as_code_kubernetes_custom_resource.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_custom_resource_logic.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -13857,6 +13857,8 @@
       
         
       
+        
+      
     
     
     
@@ -13974,26 +13976,68 @@
         <li class="md-nav__item">
   <a href="#01-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      01. custom-controller
+      01. custom-controllerとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. custom-controller">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-custom-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. custom-controllerの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. custom-controllerの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custom-controller_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      custom-controllerとは
+      アーキテクチャ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#client-go" class="md-nav__link">
     <span class="md-ellipsis">
-      カスタムリソースの仕組み
+      client-goコンポーネント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-controller-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      custom-controller-componentsコンポーネント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. reconciliation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      処理の仕組み
     </span>
   </a>
   
@@ -14014,17 +14058,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      04. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="04. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       既にあるものを使用する
     </span>
@@ -14033,7 +14077,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       自前で実装する
     </span>
@@ -14047,13 +14091,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-operator" class="md-nav__link">
+  <a href="#05-operator" class="md-nav__link">
     <span class="md-ellipsis">
-      03. Operatorパターン
+      05. Operatorパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Operatorパターン">
+    <nav class="md-nav" aria-label="05. Operatorパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14076,7 +14120,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アーキテクチャ
     </span>
@@ -14094,7 +14138,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 認可スコープ付与リソース
     </span>
@@ -14122,27 +14166,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-02-operator" class="md-nav__link">
+  <a href="#06-operator" class="md-nav__link">
     <span class="md-ellipsis">
-      03-02 Operatorの開発
+      06. Operatorのフレームワーク
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-02 Operatorの開発">
+    <nav class="md-nav" aria-label="06. Operatorのフレームワーク">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operator_4" class="md-nav__link">
+  <a href="#kubebuilder" class="md-nav__link">
     <span class="md-ellipsis">
-      自前のOperatorを作成する場合
+      KubeBuilder
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="自前のOperatorを作成する場合">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#operatorframework" class="md-nav__link">
+    <span class="md-ellipsis">
+      OperatorFramework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OperatorFramework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operatorframework_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ OperatorFrameworkとは
     </span>
@@ -14182,39 +14235,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#operator_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      既存のOperatorをカスタマイズする場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="既存のOperatorをカスタマイズする場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-go" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ client-goコンポーネント
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-controller-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ custom-controller-componentsコンポーネント
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -14224,6 +14244,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_custom_resource_logic.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ロジック
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -20820,26 +20861,68 @@
         <li class="md-nav__item">
   <a href="#01-custom-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      01. custom-controller
+      01. custom-controllerとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. custom-controller">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-custom-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. custom-controllerの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. custom-controllerの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#custom-controller_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      custom-controllerとは
+      アーキテクチャ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#client-go" class="md-nav__link">
     <span class="md-ellipsis">
-      カスタムリソースの仕組み
+      client-goコンポーネント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-controller-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      custom-controller-componentsコンポーネント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-reconciliation" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. reconciliation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. reconciliation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      処理の仕組み
     </span>
   </a>
   
@@ -20860,17 +20943,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      04. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="04. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       既にあるものを使用する
     </span>
@@ -20879,7 +20962,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       自前で実装する
     </span>
@@ -20893,13 +20976,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-operator" class="md-nav__link">
+  <a href="#05-operator" class="md-nav__link">
     <span class="md-ellipsis">
-      03. Operatorパターン
+      05. Operatorパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Operatorパターン">
+    <nav class="md-nav" aria-label="05. Operatorパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -20922,7 +21005,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アーキテクチャ
     </span>
@@ -20940,7 +21023,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 認可スコープ付与リソース
     </span>
@@ -20968,27 +21051,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-02-operator" class="md-nav__link">
+  <a href="#06-operator" class="md-nav__link">
     <span class="md-ellipsis">
-      03-02 Operatorの開発
+      06. Operatorのフレームワーク
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-02 Operatorの開発">
+    <nav class="md-nav" aria-label="06. Operatorのフレームワーク">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operator_4" class="md-nav__link">
+  <a href="#kubebuilder" class="md-nav__link">
     <span class="md-ellipsis">
-      自前のOperatorを作成する場合
+      KubeBuilder
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="自前のOperatorを作成する場合">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#operatorframework" class="md-nav__link">
+    <span class="md-ellipsis">
+      OperatorFramework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OperatorFramework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operatorframework_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ OperatorFrameworkとは
     </span>
@@ -21018,39 +21110,6 @@
   <a href="#operator-metering" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Operator Metering
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operator_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      既存のOperatorをカスタマイズする場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="既存のOperatorをカスタマイズする場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-go" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ client-goコンポーネント
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-controller-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ custom-controller-componentsコンポーネント
     </span>
   </a>
   
@@ -21093,13 +21152,36 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-custom-controller">01. custom-controller<a class="headerlink" href="#01-custom-controller" title="Permanent link">&para;</a></h2>
-<h3 id="custom-controller_1">custom-controllerとは<a class="headerlink" href="#custom-controller_1" title="Permanent link">&para;</a></h3>
+<h2 id="01-custom-controller">01. custom-controllerとは<a class="headerlink" href="#01-custom-controller" title="Permanent link">&para;</a></h2>
 <p>カスタムリソースのためのkube-controllerに相当する。</p>
 <p>ただし、kube-controllerとは異なりNode上で稼働する。</p>
 <p>実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
 <p><br></p>
-<h3 id="_2">カスタムリソースの仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="02-custom-controller">02. custom-controllerの仕組み<a class="headerlink" href="#02-custom-controller" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>custom-controllerは、client-goコンポーネントとcustom-controller-componentsコンポーネントから構成される。</p>
+<p><img alt="kubernetes_custome-controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png" /></p>
+<p><br></p>
+<h3 id="client-go">client-goコンポーネント<a class="headerlink" href="#client-go" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components</a></li>
+<li><a href="https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22">https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="custom-controller-components">custom-controller-componentsコンポーネント<a class="headerlink" href="#custom-controller-components" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components</a></li>
+<li><a href="https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22">https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-reconciliation">03. reconciliation<a class="headerlink" href="#03-reconciliation" title="Permanent link">&para;</a></h2>
+<h3 id="_3">処理の仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><img alt="custom_controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -21132,15 +21214,15 @@
 <p>これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
 <p>ただし、custom-controller自体は<code>kubectl</code>クライアントが作成する必要がある。</p>
 <p><br></p>
-<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">既にあるものを使用する<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="04">04. セットアップ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_4">既にあるものを使用する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
 <li><a href="https://github.com/mercari/certificate-expiry-monitor-controller">https://github.com/mercari/certificate-expiry-monitor-controller</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">自前で実装する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">自前で実装する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>custom-controllerを自前で実装する。</p>
 <blockquote>
 <ul>
@@ -21149,7 +21231,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-operator">03. Operatorパターン<a class="headerlink" href="#03-operator" title="Permanent link">&para;</a></h2>
+<h2 id="05-operator">05. Operatorパターン<a class="headerlink" href="#05-operator" title="Permanent link">&para;</a></h2>
 <h3 id="operator">Operatorパターンとは<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
 <p>custom-controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。</p>
 <blockquote>
@@ -21159,7 +21241,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="operator_1">Operatorパターンの仕組み<a class="headerlink" href="#operator_1" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ アーキテクチャ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ アーキテクチャ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>Operatorパターンは、カスタムリソース、custom-controllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。</p>
 <p><img alt="kubernetes_operator_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png" /></p>
 <blockquote>
@@ -21186,7 +21268,7 @@
 <li><a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#delete-a-customresourcedefinition">https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#delete-a-customresourcedefinition</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ 認可スコープ付与リソース<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 認可スコープ付与リソース<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Operatorがkube-apiserverにリクエストを送信できるように、Operatorに認可スコープを付与する。</p>
 <blockquote>
 <ul>
@@ -21212,9 +21294,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-02-operator">03-02 Operatorの開発<a class="headerlink" href="#03-02-operator" title="Permanent link">&para;</a></h2>
-<h3 id="operator_4">自前のOperatorを作成する場合<a class="headerlink" href="#operator_4" title="Permanent link">&para;</a></h3>
-<h4 id="operatorframework">▼ OperatorFrameworkとは<a class="headerlink" href="#operatorframework" title="Permanent link">&para;</a></h4>
+<h2 id="06-operator">06. Operatorのフレームワーク<a class="headerlink" href="#06-operator" title="Permanent link">&para;</a></h2>
+<h3 id="kubebuilder">KubeBuilder<a class="headerlink" href="#kubebuilder" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="operatorframework">OperatorFramework<a class="headerlink" href="#operatorframework" title="Permanent link">&para;</a></h3>
+<h4 id="operatorframework_1">▼ OperatorFrameworkとは<a class="headerlink" href="#operatorframework_1" title="Permanent link">&para;</a></h4>
 <p>Operatorを開発するためのフレームワークのこと。</p>
 <blockquote>
 <ul>
@@ -21227,24 +21312,6 @@
 <p>Operatorの、作成、削除、を管理する。</p>
 <h4 id="operator-metering">▼ Operator Metering<a class="headerlink" href="#operator-metering" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<p><br></p>
-<h3 id="operator_5">既存のOperatorをカスタマイズする場合<a class="headerlink" href="#operator_5" title="Permanent link">&para;</a></h3>
-<h4 id="client-go">▼ client-goコンポーネント<a class="headerlink" href="#client-go" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components</a></li>
-<li><a href="https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22">https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22</a></li>
-</ul>
-</blockquote>
-<h4 id="custom-controller-components">▼ custom-controller-componentsコンポーネント<a class="headerlink" href="#custom-controller-components" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components</a></li>
-<li><a href="https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22">https://wqwq3215.medium.com/client-go-work-queue%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-6d42614c7c22</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
