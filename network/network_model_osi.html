@@ -20908,14 +20908,15 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じてパケットのペイロードを作成し、<code>L7</code>ヘッダーを追加する。</p>
+<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じてパケットのペイロードを作成する。さらに、<code>L7</code>ヘッダーを追加する。</p>
 <p>プロトコルに応じてペイロードや<code>L7</code>ヘッダーの持つ情報は異なる。</p>
-<p>例えば、HTTPであればペイロードはHTMLやリクエストメッセージである。</p>
+<p>例えば、HTTPであればペイロードはWebページやリクエストメッセージである。</p>
 <p>また、<code>L7</code>ヘッダーはリクエストヘッダーである。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>プレゼンテーション層 (<code>L6</code>) にて、ペイロードの文字コード変換や暗号化/復号化を実施し、<code>L6</code>ヘッダーを追加する。</p>
+<p>プレゼンテーション層 (<code>L6</code>) にて、ペイロードを文字コード変換し、また暗号化/復号化する。さらに<code>L6</code>ヘッダーを追加する。</p>
+<p>例えば、HTTPであればWebページやリクエストメッセージを文字コード変換し、また暗号化/復号化する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -20948,10 +20949,9 @@
 </dl>
 <blockquote>
 <ul>
-<li><a href="https://www.infraexpert.com/study/networking3.html">https://www.infraexpert.com/study/networking3.html</a></li>
-<li><a href="https://www.infraexpert.com/study/networking4.html">https://www.infraexpert.com/study/networking4.html</a></li>
-<li><a href="https://www.n-study.com/network-architecture/osi-communication-flow/">https://www.n-study.com/network-architecture/osi-communication-flow/</a></li>
+<li><a href="https://twitter.com/bytebytego/status/1683351605528395778">https://twitter.com/bytebytego/status/1683351605528395778</a></li>
 <li><a href="https://ox0xo.github.io/networking/wireshark">https://ox0xo.github.io/networking/wireshark</a></li>
+<li><a href="https://www.n-study.com/network-architecture/osi-communication-flow/">https://www.n-study.com/network-architecture/osi-communication-flow/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
