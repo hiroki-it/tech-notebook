@@ -38,20 +38,31 @@ description: リソース＠Istioの知見を記録しています。
 
 ### ルートへの変換
 
-いずれのIstioカスタムリソースがルートに変換されたかを確認できる。
+いずれのIstioカスタムリソースがルートに変換されたかは、ルートの`metadata.filter_metadata`キーで確認できる。
 
 ```yaml
 metadata:
   filter_metadata:
     istio:
-      config: /apis/networking.istio.io/v1alpha3/namespaces/services/virtual-service/foo-virtual-service
+      config: /apis/networking.istio.io/v1alpha3/namespaces/foo-namespace/virtual-service/foo-virtual-service
 ```
 
 <br>
 
 ### クラスターへの変換
 
-いずれのIstioカスタムリソースがクラスターに変換されたかを確認できる。
+いずれのIstioカスタムリソースがクラスターに変換されたかは、クラスターの`metadata.filter_metadata`キーで確認できる。
+
+```yaml
+metadata:
+  filter_metadata:
+    istio:
+      config: /apis/networking.istio.io/v1alpha3/namespaces/foo-namespace/destination-rule/foo-destination-rule
+      services:
+        - name: foo-service
+          host: foo-service.foo-namespace.svc.cluster.local
+          namespace: foo-namespace
+```
 
 <br>
 
