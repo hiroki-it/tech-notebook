@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS OpenTelemetry Collector＠AWS EKSアドオン
-description: AWS OpenTelemetry Collector＠AWS EKSアドオンの知見を記録しています。
+title: 【IT技術の知見】AWS OpenTelemetry Collector Operator＠AWS EKSアドオン
+description: AWS OpenTelemetry Collector Operator＠AWS EKSアドオンの知見を記録しています。
 ---
 
-# AWS OpenTelemetry Collector＠AWS EKSアドオン
+# AWS OpenTelemetry Collector Operator＠AWS EKSアドオン
 
 ## はじめに
 
@@ -13,15 +13,23 @@ description: AWS OpenTelemetry Collector＠AWS EKSアドオンの知見を記録
 
 <br>
 
-## 01. セットアップ
+## 01. アーキテクチャ
+
+<br>
+
+## 02. セットアップ
 
 ### EKSアドオンとして
 
+#### ▼ Helmチャートの場合
+
+Helmチャートを使用する場合、KubernetesリソースでOpenTelemetry Collectorを作成することになる。
+
 #### ▼ Terraformの場合
 
-OpenTelemetry Collectorの前に、これのOperatorが必要である。
+Terraformを使用する場合、カスタムリソースでOpenTelemetry Collectorを作成することになる。
 
-Terraformを使用する。
+EKSアドオンは、OpenTelemetry Collector Operatorをデプロイする。
 
 Terraformの`aws_eks_addon`でEKSアドオンをインストールし、OpenTelemetry CollectorのOperatorに関するKubernetesリソースを作成する。
 
@@ -38,7 +46,9 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 }
 ```
 
-OpenTelemetry Collectorを作成する。
+OpenTelemetry Collectorのカスタムリソースを作成する。
+
+ここでは、分散トレーシングを送信するとする。
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1

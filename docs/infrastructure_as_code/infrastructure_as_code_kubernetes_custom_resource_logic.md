@@ -119,15 +119,15 @@ import (
 	typedcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 	appslisters "k8s.io/client-go/listers/apps/v1"
 
-  // リソースイベントハンドラー
+    // リソースイベントハンドラー
 	"k8s.io/client-go/tools/cache"
 
-  "k8s.io/client-go/tools/record"
+    "k8s.io/client-go/tools/record"
 
-  // ワークキュー
+    // ワークキュー
 	"k8s.io/client-go/util/workqueue"
 
-  "k8s.io/klog/v2"
+    "k8s.io/klog/v2"
 
 	samplev1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
 	clientset "k8s.io/sample-controller/pkg/generated/clientset/versioned"
