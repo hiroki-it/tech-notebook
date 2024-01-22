@@ -169,7 +169,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 ### サービスディスカバリーの要素
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;">
 
 サービスディスカバリーの仕組みは、次の要素からなる。
 
@@ -189,7 +189,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ クライアントサイドパターン
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_client-side" style="zoom:60%;">
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
@@ -218,7 +218,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 #### ▼ サーバーサイドパターンとは
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_server-side" style="zoom:60%;">
 
 サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
 
