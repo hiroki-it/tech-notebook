@@ -16219,9 +16219,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
+  <a href="#opentelemetryhelm" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Helmチャートの場合
+      ▼ OpenTelemetryによるHelmチャートの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awshelm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWSによるHelmチャートの場合
     </span>
   </a>
   
@@ -20701,9 +20710,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
+  <a href="#opentelemetryhelm" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Helmチャートの場合
+      ▼ OpenTelemetryによるHelmチャートの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awshelm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWSによるHelmチャートの場合
     </span>
   </a>
   
@@ -20756,15 +20774,34 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. アーキテクチャ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>AWS OpenTelemetry Collector Operatorは、OpenTelemetryコレクターに関するカスタムリソースのOperatorである。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/">https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="eks">EKSアドオンとして<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
-<h4 id="helm">▼ Helmチャートの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
-<p>Helmチャートを使用する場合、KubernetesリソースでOpenTelemetry Collectorを作成することになる。</p>
+<h4 id="opentelemetryhelm">▼ OpenTelemetryによるHelmチャートの場合<a class="headerlink" href="#opentelemetryhelm" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenTelemetryコレクターを作成することになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/README.md">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="awshelm">▼ AWSによるHelmチャートの場合<a class="headerlink" href="#awshelm" title="Permanent link">&para;</a></h4>
+<p>AWSによるHelmチャートを使用する場合、KubernetesリソースでOpenTelemetryコレクターを作成することになる。</p>
+<p>執筆時点 (2024/01/22) では、Helmチャートがメトリクス収集の設定にしか対応していない。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws-observability/aws-otel-helm-charts">https://github.com/aws-observability/aws-otel-helm-charts</a></li>
+</ul>
+</blockquote>
 <h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>Terraformを使用する場合、カスタムリソースでOpenTelemetry Collectorを作成することになる。</p>
+<p>Terraformを使用する場合、カスタムリソースでOpenTelemetryコレクターを作成することになる。</p>
 <p>EKSアドオンは、OpenTelemetry Collector Operatorをデプロイする。</p>
-<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、OpenTelemetry CollectorのOperatorに関するKubernetesリソースを作成する。</p>
+<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、OpenTelemetryコレクターのOperatorに関するKubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS EKSアドオンをインストールする。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;aws_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -20776,7 +20813,7 @@
 <span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>OpenTelemetry Collectorのカスタムリソースを作成する。</p>
+<p>OpenTelemetryコレクターのカスタムリソースを作成する。</p>
 <p>ここでは、分散トレーシングを送信するとする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OpenTelemetryCollector</span>
