@@ -29,7 +29,7 @@ AWS OpenTelemetry Collector Operatorは、OpenTelemetryコレクターに関す�
 
 OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenTelemetryコレクターを作成することになる。
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/README.md
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector
 
 #### ▼ AWSによるHelmチャートの場合
 
