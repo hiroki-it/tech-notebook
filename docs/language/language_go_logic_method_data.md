@@ -1607,9 +1607,9 @@ func main() {
 
 #### ▼ defer関数とは
 
-全ての処理の最後に必ず実行される遅延実行関数のこと。
+特定の関数の最後に必ず実行される遅延実行関数のこと。
 
-たとえ、ランタイムエラーのように処理が強制的に途中終了しても実行される。
+たとえ、ランタイムエラーのように処理が強制的に途中終了しても、その関数の最後に実行される。
 
 **＊実装例＊**
 
@@ -1667,6 +1667,156 @@ func main() {
 // 3
 // 2
 // 1
+```
+
+<br>
+
+### シャットダウンフック
+
+#### ▼ シャットダウンフックとは
+
+全ての関数の最後に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
+
+たとえ、ランタイムエラーのように処理が強制的に途中終了しても、全ての関数の最後に実行される。
+
+- 実行したい関数を追加する関数
+- 追加した関数を並行的にコールする関数
+
+を用意する必要がある。
+
+**＊実装例＊**
+
+```go
+package shutdown
+
+import (
+    "context"
+    "sync"
+)
+
+var (
+        mu    sync.Mutex
+        hooks []func(context.Context)
+)
+
+// 実行したい関数を追加する関数
+func Add(h func(ctx context.Context)) {
+
+	mu.Lock()
+    defer mu.Unlock()
+
+    hooks = append(hooks, h)
+}
+
+// 追加した関数を並行的にコールする関数
+func Invoke(ctx context.Context) error {
+
+	mu.Lock()
+    defer mu.Unlock()
+    wg := new(sync.WaitGroup)
+    wg.Add(len(hooks))
+
+    for i := range hooks {
+        go func(idx int) {
+            defer wg.Done()
+            hooks[idx](ctx)
+        }(i)
+    }
+
+    done := make(chan struct{})
+
+	go func() {
+        wg.Wait()
+        close(done)
+    }()
+
+    select {
+    case <-done:
+        return nil
+    case <-ctx.Done():
+        return ctx.Err()
+    }
+}
+```
+
+```go
+package main
+
+import (
+	"shutdown"
+)
+
+func main()
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook1")
+        time.Sleep(3 * time.Second)
+        fmt.Println("end hook1")
+    })
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook2")
+        time.Sleep(3 * time.Second)
+        fmt.Println("end hook2")
+    })
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook3")
+        time.Sleep(10 * time.Second)
+        fmt.Println("end hook3")
+    })
+
+
+    ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+    defer cancel()
+    shutdown.Invoke(ctx)
+}
+```
+
+> - https://christina04.hatenablog.com/entry/go-shudown-hooks
+> - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
+
+**＊実装例＊**
+
+```go
+package shutdown
+
+var hooks = make([]func(), 0)
+
+// 実行したい関数を追加する関数
+func AddShutdownHook(hook func()) {
+
+	hooks = append(hooks, hook)
+}
+
+// 追加した関数を並行的にコールする関数
+func Shutdown() {
+
+	hooks := hooks
+
+	for _, fun := range hooks {
+		fun()
+	}
+}
+```
+
+```go
+package main
+
+import (
+	"shutdown"
+)
+
+func init() {
+	go func() {
+		for {
+			// 関数を返却する関数
+			shutdownHook, err := returnFunctions()
+			shutdown.AddShutdownHook(shutdownHook)
+			break
+		}
+	}()
+}
 ```
 
 <br>
