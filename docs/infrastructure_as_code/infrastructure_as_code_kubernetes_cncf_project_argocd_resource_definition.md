@@ -901,7 +901,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
 > - https://blog.framinal.life/entry/2021/10/04/224722
 
-#### ▼ 合わせて`RespectIgnoreDifferences`キーも使う
+#### ▼ 合わせて`RespectIgnoreDifferences`キーも使用する
 
 注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。
 

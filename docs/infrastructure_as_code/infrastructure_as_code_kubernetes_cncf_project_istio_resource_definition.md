@@ -1740,15 +1740,15 @@ spec:
     #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
-    # PodからIstio EgressGatewayのPodへの通信で使う
+    # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
-    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+    # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
     - foo-egressgateway
   http:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使う
+            # PodからIstio EgressGatewayのPodへの通信で使用する
             - mesh
           port: 80
       route:
@@ -1759,7 +1759,7 @@ spec:
     # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
             - foo-egressgateway
           port: 80
       route:
@@ -1782,15 +1782,15 @@ spec:
     #  ホストヘッダー値がexternal.comの時にVirtualServiceを適用する。
     - external.com
   gateways:
-    # PodからIstio EgressGatewayのPodへの通信で使う
+    # PodからIstio EgressGatewayのPodへの通信で使用する
     - mesh
-    # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+    # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
     - foo-egressgateway
   tls:
     # external.comに対するリクエストは、Istio EgressGatewayにルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使う
+            # PodからIstio EgressGatewayのPodへの通信で使用する
             - mesh
           port: 443
           sniHosts:
@@ -1804,7 +1804,7 @@ spec:
     # Istio EgressGatewayに対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
             - foo-egressgateway
           port: 443
       route:
@@ -2026,7 +2026,7 @@ spec:
   http:
     - match:
         - gateways:
-            # PodからIstio EgressGatewayのPodへの通信で使う
+            # PodからIstio EgressGatewayのPodへの通信で使用する
             - mesh
           port: 443
       route:
@@ -2036,7 +2036,7 @@ spec:
               number: 443
     - match:
         - gateways:
-            # Istio EgressGatewayからエントリ済みシステムへの通信で使う
+            # Istio EgressGatewayからエントリ済みシステムへの通信で使用する
             - foo-igressgateway
           port: 443
       route:

@@ -85,7 +85,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories
 
 実行ユーザーを明示的に設定する。
 
-設定しない場合、現在のターミナルの実行ユーザーをそのまま使う。
+設定しない場合、現在のターミナルの実行ユーザーをそのまま使用する。
 
 ```bash
 $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/ディレクトリ>

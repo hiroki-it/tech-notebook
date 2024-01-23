@@ -759,7 +759,7 @@ addステージやcommitステージにファイルが存在しているか否�
 
 `git status`コマンドを他のコマンドに入力できる形式で出力する。
 
-CIの自動化で使うことが多い。
+CIの自動化で使用することが多い。
 
 > - https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
 

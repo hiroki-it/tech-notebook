@@ -56,7 +56,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムなIDを作成する。
 
-もしotel形式以外のランダムなIDがよければ、専用のIDGeneratorを使う必要がある。
+もしotel形式以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
 
 > - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
 
@@ -202,7 +202,7 @@ func initProvider() {
 
 <br>
 
-## 02-02. スパンの送信
+## 02-02. アプリでgRPCを使わない場合
 
 ### 宛先が標準出力の場合
 
@@ -1252,7 +1252,7 @@ func main() {
 
 <br>
 
-## 02-03. gRPCを使う場合
+## 02-03. アプリでgRPCを使用する場合
 
 ### 宛先が標準出力の場合
 

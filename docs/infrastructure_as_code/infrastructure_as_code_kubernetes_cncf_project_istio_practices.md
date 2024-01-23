@@ -481,7 +481,7 @@ test_istio:
   image:
     name: docker
   variables:
-    # K3Dを使うことで Docker in Docker となるため、そのための環境変数を設定する
+    # K3Dを使用することで Docker in Docker となるため、そのための環境変数を設定する
     # @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
     DOCKER_DRIVER: "overlay2"
     DOCKER_HOST: "tcp://docker:2375"

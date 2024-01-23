@@ -174,7 +174,7 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
-#### ▼ gRPCサーバー (インターセプターを使う場合)
+#### ▼ gRPCサーバー (インターセプターを使用する場合)
 
 gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
 
@@ -379,7 +379,7 @@ func main() {
 
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
-#### ▼ gRPCクライアント (インターセプターを使う場合)
+#### ▼ gRPCクライアント (インターセプターを使用する場合)
 
 gRPCクライアントでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
 

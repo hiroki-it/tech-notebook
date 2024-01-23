@@ -179,7 +179,7 @@ root権限を付与しないために、コンテナ内で`sudo`コマンドを�
 
 > - https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker
 
-どうしても`sudo`コマンドを実行したい場合は、gosuパッケージを使う。
+どうしても`sudo`コマンドを実行したい場合は、gosuパッケージを使用する。
 
 > - https://docs.docker.com/develop/develop-images/instructions/#user
 
@@ -452,7 +452,7 @@ RUN yum -y install php-pear
 RUN rm -Rf /var/cache/yum
 ```
 
-#### ▼ `&&`を使う
+#### ▼ `&&`を使用する
 
 `&&`を使い、イメージのレイヤー数を減らせる。
 
@@ -477,7 +477,7 @@ RUN yum -y install \
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
 
-#### ▼ ヒアドキュメントを使う
+#### ▼ ヒアドキュメントを使用する
 
 ```dockerfile
 RUN << EOF

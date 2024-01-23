@@ -367,7 +367,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 <br>
 
-### gRPCを使う場合
+### gRPCを使用する場合
 
 #### ▼ gRPCサーバー側
 

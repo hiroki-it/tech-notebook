@@ -211,7 +211,7 @@ remote-write-receiverを有効化すると、リモートストレージの種�
 
 Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。
 
-リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
+リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使用することなく、Grafanaのようにリアルタイムにデータを取得できるようになる。
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png)
 

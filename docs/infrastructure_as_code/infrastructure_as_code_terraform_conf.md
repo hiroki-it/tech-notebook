@@ -112,7 +112,7 @@ Acquiring state lock. This may take a few moments...
 Error: Error acquiring the state lock
 Error message: resource temporarily unavailable
 Lock Info:
-   ID:        89e54252-fef0-2a68-17bf-e0bb411ff1e3 # これを使う
+   ID:        89e54252-fef0-2a68-17bf-e0bb411ff1e3 # これを使用する
    Path:      terraform.tfstate
    Operation: OperationTypeInvalid
    Who:       hiroki-hasegawa
