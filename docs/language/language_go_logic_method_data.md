@@ -1812,6 +1812,10 @@ func init() {
 		for {
 			// 関数を返却する関数
 			shutdownHook, err := returnFunctions()
+			if err != nil {
+				time.Sleep(3 * time.Second)
+				continue
+			}
 			shutdown.AddShutdownHook(shutdownHook)
 			break
 		}

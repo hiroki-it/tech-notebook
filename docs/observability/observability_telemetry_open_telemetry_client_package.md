@@ -484,6 +484,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	resr, err := resource.New(
 		ctx,
+		// マイクロサービスの属性情報を設定する。
 		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
 	)
 
@@ -836,6 +837,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	resr, err := resource.New(
         ctx,
+		// マイクロサービスの属性情報を設定する。
 		resource.WithAttributes(semconv.ServiceNameKey.String("sample")),
 	)
 
