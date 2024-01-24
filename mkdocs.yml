@@ -110,12 +110,12 @@ markdown_extensions:
 
 # 外部プラグイン
 plugins:
-#  - git-committers:
-#      repository: hiroki-it/tech-notebook
-#      branch: main
-#      # トークンはレートリミット回避のためだけに使用し、スコープはない
-#      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
-#      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "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"]
+  #  - git-committers:
+  #      repository: hiroki-it/tech-notebook
+  #      branch: main
+  #      # トークンはレートリミット回避のためだけに使用し、スコープはない
+  #      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
+  #      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "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"]
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
@@ -364,8 +364,8 @@ nav:
                       - kics: testing/testing_whitebox_infrastructure_lint_kics.md
                       - kube-score: testing/testing_whitebox_infrastructure_lint_kube_score.md
           - ■ アプリ/インフラ両方:
-                  - ■ 脆弱性診断:
-                      - trivy: testing/testing_whitebox_lint_trivy.md
+              - ■ 脆弱性診断:
+                  - trivy: testing/testing_whitebox_lint_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
           - ■ 総合テスト:
