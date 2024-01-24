@@ -2294,7 +2294,9 @@ func main() {
 
 ## 04. 制御文
 
-### 条件文 (省略記法)
+### 条件文 (簡易記法)
+
+以下の二つの実装例は同じである。
 
 ```go
 package main
@@ -2302,22 +2304,26 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 )
 
 func main() {
 
-	file, err := os.Open("filename.txt")
+	// 数値を取得する
+	value := getNum()
 
-	if err != nil {
-		log.Printf("ERROR: %#v\n", err)
-		return
+	// 通常の記法
+	if value > 20 {
+		log.Print("20より大きいです")
 	}
 
-	fmt.Printf("%#v\n", file)
+	fmt.Printf("%#v\n", "20より大きいです")
 }
 ```
 
+簡易記法では、条件に処理の結果を使用できる。
+
+なお、処理の結果自体は条件内でしか使用できない。
+
 ```go
 package main
 
@@ -2328,13 +2334,13 @@ import (
 
 func main() {
 
-	if err := isFoo("Foo"); err != nil {
-		// エラーの内容を出力する。
-		log.Printf("ERROR: %#v\n", err)
-		return
+	// 簡易記法
+	if value := getNum(); value > 20 {
+		// value変数は条件内でしか使用できない
+		log.Print("valueは20より大きいです")
 	}
 
-	fmt.Printf("%#v\n", "End")
+	fmt.Printf("%#v\n", "20より大きいです")
 }
 ```
 
