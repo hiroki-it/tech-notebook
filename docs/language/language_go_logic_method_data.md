@@ -1215,11 +1215,11 @@ func main() {
 	foo, bar = 1, 2
 
 	// インターフェース型からinteger型に変換 (変換しないと演算できない)
-	a := x.(int)
-	b := y.(int)
-	z := a + b
+	foo := foo.(int)
+	bar := bar.(int)
+	baz := foo + bar
 
-	fmt.Printf("%#v\n", z)
+	fmt.Printf("%#v\n", baz)
 }
 ```
 
@@ -1310,7 +1310,38 @@ func main() {
 
 <br>
 
-## 02. 関数
+## 02. 関数の種類
+
+### init関数
+
+#### ▼ init関数とは
+
+`main.go`ファイル上で使用すれば`main`関数より先に、パッケージのファイル上で使用すればパッケージ内で一番最初に実行する。
+
+#### ▼ 環境変数の格納
+
+`init`関数は、環境変数の格納に使用する。
+
+```go
+package config
+
+import "os"
+
+const (
+	Foo = "FOO"
+	Bar = "BAR"
+	Baz = "BAZ"
+)
+
+func init() {
+	// 環境変数を取得して変数に格納する
+	foo = os.Getenv(Foo)
+	bar = os.Getenv(Bar)
+	baz = os.Getenv(Baz)
+}
+```
+
+<br>
 
 ### main関数
 
@@ -1603,68 +1634,6 @@ func main() {
 
 <br>
 
-### デフォルト値
-
-#### ▼ Functional Options Pattern
-
-Functional Options Patternを使用して、デフォルト値を実現する。
-
-このパターンでは、関数の引数に『デフォルト値を設定する無名関数』を渡す。
-
-```go
-package main
-
-// Optionという関数型を定義する
-type Option func (*Server)
-
-// デフォルト値を設定する関数を返却する
-func Timeout (t int) Option {
-
-	return func (s *Server) {
-		s.Timeout = time.Duration(t) * time.Second
-	}
-}
-
-func NewServer(addr string, options ...Option) (*Server, error) {
-
-	l, err := net.Listen("tcp", addr)
-
-	if err != nil {
-		return nil, err
-	}
-
-	srv := Server{
-		listener: l,
-	}
-
-	for _, option := range options {
-		// Server構造体を渡す
-		// タイムアウト値を設定する
-		option(&srv)
-	}
-
-	return &srv, nil
-}
-
-func main() {
-
-	...
-
-	srv, err := NewServer(
-		"localhost",
-		// Timeout関数を引数に渡す
-		Timeout(30),
-	)
-
-	...
-}
-```
-
-> - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
-> - https://blog.kazu69.net/2018/02/22/golang-functional-options/
-
-<br>
-
 ### defer関数
 
 #### ▼ defer関数とは
@@ -1730,6 +1699,93 @@ func main() {
 // 2
 // 1
 ```
+
+<br>
+
+### import
+
+#### ▼ 通常のインポート
+
+```go
+import "<パッケージ名>"
+```
+
+#### ▼ ブランクインポート
+
+Goでは、依存先のパッケージをインポートしなければならず、またこれをインポートしないとエラーになる。
+
+そこで、依存関係のパッケージを読み込むだけで使用しないようにするため、パッケージ名を`_`で宣言する。
+
+```go
+import _ "<パッケージ名>"
+```
+
+> - https://hogesuke.hateblo.jp/entry/2014/09/12/080005
+
+<br>
+
+## 02-02. 関数のプラクティス
+
+### 引数のデフォルト値
+
+#### ▼ Functional Options Pattern
+
+Functional Options Patternを使用して、デフォルト値を実現する。
+
+このパターンでは、関数の引数に『デフォルト値を設定する関数』を渡す。
+
+```go
+package main
+
+// Optionという関数型を定義する
+type Option func (*Server)
+
+// デフォルト値を設定する関数を返却する
+func Timeout (t int) Option {
+
+	// 無名関数
+	return func (s *Server) {
+		s.Timeout = time.Duration(t) * time.Second
+	}
+}
+
+func NewServer(addr string, options ...Option) (*Server, error) {
+
+	l, err := net.Listen("tcp", addr)
+
+	if err != nil {
+		return nil, err
+	}
+
+	srv := Server{
+		listener: l,
+	}
+
+	for _, option := range options {
+		// Server構造体を渡す
+		// タイムアウト値を設定する
+		option(&srv)
+	}
+
+	return &srv, nil
+}
+
+func main() {
+
+	...
+
+	srv, err := NewServer(
+		"localhost",
+		// Timeout関数を引数に渡す
+		Timeout(30),
+	)
+
+	...
+}
+```
+
+> - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
+> - https://blog.kazu69.net/2018/02/22/golang-functional-options/
 
 <br>
 
@@ -1891,28 +1947,6 @@ func init() {
 	}()
 }
 ```
-
-<br>
-
-### import
-
-#### ▼ 通常のインポート
-
-```go
-import "<パッケージ名>"
-```
-
-#### ▼ ブランクインポート
-
-Goでは、依存先のパッケージをインポートしなければならず、またこれをインポートしないとエラーになる。
-
-そこで、依存関係のパッケージを読み込むだけで使用しないようにするため、パッケージ名を`_`で宣言する。
-
-```go
-import _ "<パッケージ名>"
-```
-
-> - https://hogesuke.hateblo.jp/entry/2014/09/12/080005
 
 <br>
 
