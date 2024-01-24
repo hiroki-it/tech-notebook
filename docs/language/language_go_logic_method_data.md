@@ -1717,16 +1717,20 @@ func Invoke(ctx context.Context) error {
     wg.Add(len(hooks))
 
     for i := range hooks {
+		// Goルーチンを宣言して並列化
         go func(idx int) {
-            defer wg.Done()
+			// 時間のかかる処理
+			defer wg.Done()
             hooks[idx](ctx)
         }(i)
     }
 
     done := make(chan struct{})
 
+	// Goルーチンを宣言して並列化
 	go func() {
-        wg.Wait()
+		// 時間のかかる処理
+		wg.Wait()
         close(done)
     }()
 
@@ -1808,7 +1812,10 @@ import (
 )
 
 func init() {
+
+	// Goルーチンを宣言して並列化
 	go func() {
+		// 時間のかかる処理
 		for {
 			// 関数を返却する関数
 			shutdownHook, err := returnFunctions()
@@ -2246,7 +2253,7 @@ func main() {
 
 結果、完了する順番は順不同になる。
 
-関数でGoルーチンを宣言すると、その関数のコールを並列化できる。
+関数でGoルーチン (`go func()`) を宣言すると、その関数のコールを並列化できる。
 
 ただし、main関数はGoルーチン宣言された関数の完了を待たずに完了してしまうため、この関数の実行完了を待つようにする必要がある。
 
@@ -2283,9 +2290,9 @@ func main() {
 
 > - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
 
-#### ▼ channel
+#### ▼ channel (チャンネル)
 
-値を受信できるキューとして動作する。
+異なるGoルーチン間で値を受信できるキューとして動作する。
 
 キューに値を送信し、加えてキューから値を受信できる。
 
@@ -2297,10 +2304,13 @@ package main
 import "fmt"
 
 func main() {
+
 	// チャンネルを作成
 	channel := make(chan string)
 
+	// Goルーチンを宣言して並列化
 	go func() {
+		// 時間のかかる処理
 		// チャンネルに値を送信する。
 		channel <- "ping"
 	}()
@@ -2334,7 +2344,9 @@ func main() {
 	// チャンネルを作成
 	channel := make(chan string)
 
+	// Goルーチンを宣言して並列化
 	go func() {
+		// 時間のかかる処理
 		// チャンネルに値を送信する。
 		channel <- "ping"
 		// 並列処理を中断する
@@ -2403,8 +2415,8 @@ func main() {
 
 		// Goルーチンを宣言して並列化
 		go func(key int, value string) {
+			// 時間のかかる処理
 			defer wg.Done()
-			// 時間のかかる関数
 			print(key, value)
 		}(key, value)
 	}
@@ -2447,14 +2459,17 @@ func main() {
     c1 := make(chan string)
     c2 := make(chan string)
 
-	// ここに、完了タイミングのバラバラな処理があるとする。
+	// Goルーチンを宣言して並列化
     go func() {
+		// 時間のかかる処理
 		// 完了までに2秒かかるとする。
         time.Sleep(2 * time.Second)
 		// 値を送信する。
         c1 <- "one"
     }()
+	// Goルーチンを宣言して並列化
     go func() {
+		// 時間のかかる処理
 		// 完了までに1秒かかるとする。
         time.Sleep(1 * time.Second)
 		// 値を送信する。
@@ -2463,6 +2478,7 @@ func main() {
 
     for i := 0; i < 2; i++ {
         select {
+		// Goルーチンの処理の完了タイミングがバラバラになる
 		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
         case msg1 := <-c1:
             fmt.Println("received", msg1)

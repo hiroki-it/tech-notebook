@@ -120,6 +120,7 @@
 * #### <u>メトリクス</u>
   > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html)
   > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.html)
+  > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html)
 
 <br>
 
