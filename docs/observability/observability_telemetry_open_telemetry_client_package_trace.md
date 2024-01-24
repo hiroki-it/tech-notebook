@@ -595,7 +595,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	logger, err := zap.NewProduction()
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer logger.Sync()
@@ -631,12 +631,12 @@ func StartMainServer() {
 	shutdown, err := initProvider()
 
   if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Fatal("failed to shutdown TracerProvider: %w", err)
+			log.Print("failed to shutdown TracerProvider: %w", err)
 		}
 	}()
 
@@ -728,7 +728,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	logger, err := zap.NewProduction()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer logger.Sync()
@@ -934,12 +934,12 @@ func main() {
 	shutdown, err := initProvider()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Fatal("failed to shutdown TracerProvider: %w", err)
+			log.Print("failed to shutdown TracerProvider: %w", err)
 		}
 	}()
 
@@ -1011,12 +1011,12 @@ func main() {
 	shutdown, err := initProvider()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Fatal("failed to shutdown TracerProvider: %w", err)
+			log.Print("failed to shutdown TracerProvider: %w", err)
 		}
 	}()
 
@@ -1166,7 +1166,7 @@ func main() {
 	shutdown, err := initTracer()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer shutdown()
@@ -1218,7 +1218,7 @@ func main() {
 	shutdown, err := initTracer()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer shutdown()
@@ -1386,7 +1386,7 @@ func main() {
 	tp, err := config.Init()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	defer func() {

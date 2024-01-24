@@ -754,7 +754,8 @@ func main() {
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
+		log.Print(err)
+		return
 	}
 
 	// バリデーションを実行します。

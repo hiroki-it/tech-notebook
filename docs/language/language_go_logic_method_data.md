@@ -506,7 +506,8 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
+		log.Print(err)
+		return
 	}
 
 	// エンコード結果を出力
@@ -553,7 +554,8 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
+		log.Print(err)
+		return
 	}
 
 	// エンコード結果を出力
@@ -856,9 +858,7 @@ func main() {
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	s := []int{10, 20, 30, 40}
@@ -939,9 +939,7 @@ func main() {
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	// 『文字列:スライス』のマップ
@@ -1071,6 +1069,7 @@ func main() {
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	// メソッドを実行する。
@@ -1125,6 +1124,7 @@ func main() {
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	// メソッドを実行する。
@@ -1149,9 +1149,7 @@ Insect does not implement Animal (missing Eat method)
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var foo interface{}
@@ -1175,9 +1173,7 @@ func main() {
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var foo, bar interface{}
@@ -1204,9 +1200,7 @@ func main() {
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var foo, bar interface{}
@@ -1642,11 +1636,69 @@ func main() {
 
 たとえ、ランタイムエラーのように処理が強制的に途中終了しても、その関数の最後に実行される。
 
+#### ▼ 複数のdefer関数
+
+deferは複数の関数で宣言できる。
+
+複数宣言した場合、後に宣言されたものから実行される。
+
 **＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	fmt.Println("Start")
+
+	defer fmt.Println("1")
+    defer fmt.Println("2")
+    defer fmt.Println("3")
+
+	fmt.Println("End")
+}
+
+// Start
+// 3
+// 2
+// 1
+// End
+```
+
+#### ▼ ロギング処理
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+func main() {
+
+	fmt.Println("Start")
+
+
+	defer func() {
+		if recovered := recover(); recovered != nil {
+			log.Printf("panic occurred, error: %v", recovered)
+		}
+	}()
+
+	fmt.Println("End")
+}
+```
+
+#### ▼ リカバリー処理
 
 即時関数をdefer関数化している。
 
 処理の最後にランタイムエラーが発生したとき、これを`recover`メソッドで吸収できる。
+
+**＊実装例＊**
 
 ```go
 package main
@@ -1674,42 +1726,6 @@ func main() {
 // Start
 // Recover: "Runtime error"
 // End
-```
-
-#### ▼ 複数のdefer関数
-
-deferは複数の関数で宣言できる。
-
-複数宣言した場合、後に宣言されたものから実行される。
-
-**＊実装例＊**
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-    defer fmt.Println("1")
-    defer fmt.Println("2")
-    defer fmt.Println("3")
-}
-
-// 3
-// 2
-// 1
-```
-
-#### ▼ ロギング処理
-
-```go
-
-```
-
-#### ▼ リカバリー処理
-
-```go
-
 ```
 
 #### ▼ Close処理
@@ -2098,9 +2114,7 @@ func main() {
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	foo := 1
@@ -2280,6 +2294,54 @@ func main() {
 
 ## 04. 制御文
 
+### 条件文 (省略記法)
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		log.Printf("ERROR: %#v\n", err)
+		return
+	}
+
+	fmt.Printf("%#v\n", file)
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+func main() {
+
+	if err := isFoo("Foo"); err != nil {
+		// エラーの内容を出力する。
+		log.Printf("ERROR: %#v\n", err)
+		return
+	}
+
+	fmt.Printf("%#v\n", "End")
+}
+```
+
+> - https://code-database.com/knowledges/97
+
+<br>
+
 ### 配列またはスライスの走査
 
 #### ▼ `for ... range`
@@ -2291,9 +2353,7 @@ PHPの`foreach`に相当する。
 ```go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 
@@ -2347,13 +2407,13 @@ func main() {
 
 結果、終了する順番は順不同になる。
 
-> - https://golang.org/pkg/sync/
-
 **＊実装例＊**
 
 ```go
 ...
 ```
+
+> - https://golang.org/pkg/sync/
 
 <br>
 
@@ -2554,9 +2614,6 @@ func main() {
 
 チャンネルに対する格納を非同期で待機する。
 
-> - https://www.spinute.org/go-by-example/select.html
-> - https://leben.mobi/go/channel-and-select/go-programming/
-
 ```go
 package main
 
@@ -2603,6 +2660,9 @@ func main() {
     }
 }
 ```
+
+> - https://www.spinute.org/go-by-example/select.html
+> - https://leben.mobi/go/channel-and-select/go-programming/
 
 <br>
 
@@ -2677,10 +2737,11 @@ func main() {
 
 	if err != nil {
 		// エラーの内容を出力する。
-		log.Fatalf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %#v\n", err)
+		return
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2716,10 +2777,11 @@ func main() {
 	if err != nil {
 		// 独自エラーメッセージを設定する。
 		myErr := NewError()
-		log.Fatalf("ERROR: %#v\n", myErr)
+		log.Printf("ERROR: %#v\n", myErr)
+		return
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2751,9 +2813,10 @@ func main() {
 
 	if err != nil {
 		fmt.Errorf("ERROR: %s", err)
+		return
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2795,7 +2858,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2834,10 +2897,11 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := NewErrorWithTrace()
 		// %+v\n を使用する。
-		log.Fatalf("ERROR: %+v\n", errWithStack)
+		log.Printf("ERROR: %+v\n", errWithStack)
+		return
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2861,10 +2925,11 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := xerrors.Errorf("ERROR: %w", err)
 		// %+v\n を使用する。
-		log.Fatalf("ERROR: %+v\n", errWithStack)
+		log.Printf("ERROR: %+v\n", errWithStack)
+		return
 	}
 
-	fmt.Printf("%#v\n", flle)
+	fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2901,6 +2966,8 @@ if err != nil {
 
 渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス『1』で処理を完了する。
 
+プログラムが終了してしまうため、できるだけ使わない方が良い。
+
 **＊実装例＊**
 
 渡されたerrorインターフェースを標準出力に出力する。
@@ -2911,6 +2978,8 @@ if err != nil {
 	log.Fatalf("ERROR: %#v\n", err)
 }
 ```
+
+> - https://zenn.dev/snowcrush/articles/21f28163e067cb
 
 #### ▼ 接尾辞`Panic`メソッド
 
@@ -3210,7 +3279,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %#v\n", err)
 	}
 
 	// エンコード結果を出力
@@ -3265,7 +3334,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %#v\n", err)
 	}
 
 	// エンコード結果を出力
@@ -3317,7 +3386,7 @@ func main() {
 	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %#v\n", err)
 	}
 
 	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"} (変数が書き換えられた)
@@ -3333,8 +3402,6 @@ JSONから構造体にパースするために`Unmarshal`関数を実行した�
 CloudWatchは様々なイベントを処理するため、一部のJSON構造が動的に変化する。
 
 そのため、`RawMessage`関数が使用されている。
-
-> - https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 ```go
 package events
@@ -3361,9 +3428,7 @@ type CloudWatchEvent struct {
 ```go
 package handler
 
-import (
-	"fmt"
-)
+import "fmt"
 
 /**
  * Lambdaハンドラー関数
@@ -3373,6 +3438,8 @@ func HandleRequest(event events.CloudWatchEvent) (string) {
 	return fmt.Printf("%#v\n", event.Detail)
 }
 ```
+
+> - https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
 
 #### ▼ `Indent`関数
 
@@ -3407,7 +3474,7 @@ func main() {
 	byteJson, err := json.Marshal(objects)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	var buf bytes.Buffer
@@ -3454,7 +3521,13 @@ func main() {
 **＊実装例＊**
 
 ```go
-package mainimport "fmt"func main() {    fmt.Print("Hello world!") // Hello world! }
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Print("Hello world!") // Hello world!
+}
 ```
 
 **＊実装例＊**
@@ -3507,15 +3580,22 @@ func main() {
 
 標準出力に出力できる他の関数の引数として渡す必要がある。
 
-> - https://golang.org/pkg/fmt/#Sprint
-> - https://golang.org/pkg/fmt/#Sprintf
-> - https://golang.org/pkg/fmt/#Sprintln
-
 **＊実装例＊**
 
 ```go
-package mainimport "fmt"func main() {        // Sprintは返却するだけ    fmt.Print(fmt.Sprint(1, 2, 3)) // 1 2 3}
+package main
+
+import "fmt"
+
+func main() {
+	// Sprintは返却するだけ
+	fmt.Print(fmt.Sprint(1, 2, 3)) // 1 2 3
+}
 ```
+
+> - https://golang.org/pkg/fmt/#Sprint
+> - https://golang.org/pkg/fmt/#Sprintf
+> - https://golang.org/pkg/fmt/#Sprintln
 
 #### ▼ 接尾辞`ln`メソッド
 
@@ -3665,7 +3745,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	fmt.Println(response.Body)
@@ -3714,7 +3794,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	fmt.Println(response.Body)
@@ -3775,7 +3855,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil || response.StatusCode != 200 {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	// レスポンスのボディを取得する。
@@ -3812,7 +3892,7 @@ func main() {
 	// http.ListenAndServe(":8080", http.DefaultServeMux)
 
 	if err != nil {
-		log.Fatal("Error ListenAndServe : ", err)
+		log.Print("Error ListenAndServe : ", err)
 	}
 }
 ```
@@ -3850,7 +3930,7 @@ func main() {
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {
-		log.Fatal("Error ListenAndServe : ", err)
+		log.Print("Error ListenAndServe : ", err)
 	}
 }
 ```
@@ -3887,7 +3967,7 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 	byteJson, err := json.Marshal(user)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	// JSONをレスポンスとして返信する。
@@ -3905,7 +3985,7 @@ func main() {
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 }
 ```
@@ -3931,7 +4011,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %#v\n", err)
 	}
 
 	fmt.Printf("%#v\n", file)

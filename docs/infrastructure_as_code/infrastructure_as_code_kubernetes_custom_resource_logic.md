@@ -337,6 +337,7 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 	}
 
 	err = c.updateFooStatus(foo, deployment)
+
 	if err != nil {
 		return err
 	}
