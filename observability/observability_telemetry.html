@@ -17973,6 +17973,8 @@
       
         
       
+        
+      
     
     
     
@@ -18038,6 +18040,27 @@
   
   <span class="md-ellipsis">
     PromQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クライアントパッケージ
   </span>
   
 
@@ -21983,6 +22006,7 @@
 <th>アクション</th>
 <th style="text-align: center;">Datadogベース</th>
 <th style="text-align: center;">Istioベース</th>
+<th style="text-align: center;">OpenTelemetryベース</th>
 </tr>
 </thead>
 <tbody>
@@ -21990,14 +22014,17 @@
 <td>トレースIDとスパンIDの作成</td>
 <td style="text-align: center;">クライアントパッケージ</td>
 <td style="text-align: center;">Envoyによる各種IDの作成</td>
+<td style="text-align: center;">クライアントパッケージ</td>
 </tr>
 <tr>
 <td>各種IDのアプリ間の伝播</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
 </tr>
 <tr>
 <td>⬇︎</td>
+<td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 </tr>
@@ -22005,9 +22032,11 @@
 <td>分散トレースの収集<br>(いずれもプッシュ型による送信方式)</td>
 <td style="text-align: center;">datadogエージェント</td>
 <td style="text-align: center;">Envoyからjaegerコレクターへの送信</td>
+<td style="text-align: center;">OpenTelemtryコレクターへの送信</td>
 </tr>
 <tr>
 <td>⬇︎</td>
+<td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 </tr>
@@ -22015,9 +22044,11 @@
 <td>ビルトインローカルストレージへの保管</td>
 <td style="text-align: center;">Datadog</td>
 <td style="text-align: center;">JaegerのビルトインのCassandra、Elasticsearch</td>
+<td style="text-align: center;">-</td>
 </tr>
 <tr>
 <td>⬇︎</td>
+<td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 </tr>
@@ -22025,14 +22056,17 @@
 <td>監視バックエンドとして可視化</td>
 <td style="text-align: center;">Datadog</td>
 <td style="text-align: center;">Jaeger</td>
+<td style="text-align: center;">Grafana Tempo</td>
 </tr>
 <tr>
 <td>分析</td>
 <td style="text-align: center;">Datadog</td>
 <td style="text-align: center;">Jaeger</td>
+<td style="text-align: center;">Grafana Tempo</td>
 </tr>
 <tr>
 <td>レポートの作成</td>
+<td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 </tr>
@@ -22040,9 +22074,11 @@
 <td>⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
 <td style="text-align: center;">⬇︎</td>
+<td style="text-align: center;">⬇︎</td>
 </tr>
 <tr>
 <td>アラートの作成</td>
+<td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">-</td>
 </tr>
@@ -22217,7 +22253,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-24</span>
   </span>
 
     
