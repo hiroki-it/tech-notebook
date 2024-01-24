@@ -7622,7 +7622,7 @@
           <li class="md-nav__item">
   <a href="#_77" class="md-nav__link">
     <span class="md-ellipsis">
-      条件文 (省略記法)
+      条件文 (簡易記法)
     </span>
   </a>
   
@@ -23662,7 +23662,7 @@
           <li class="md-nav__item">
   <a href="#_77" class="md-nav__link">
     <span class="md-ellipsis">
-      条件文 (省略記法)
+      条件文 (簡易記法)
     </span>
   </a>
   
@@ -26483,27 +26483,30 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <p><br></p>
 <h2 id="04_1">04. 制御文<a class="headerlink" href="#04_1" title="Permanent link">&para;</a></h2>
-<h3 id="_77">条件文 (省略記法)<a class="headerlink" href="#_77" title="Permanent link">&para;</a></h3>
+<h3 id="_77">条件文 (簡易記法)<a class="headerlink" href="#_77" title="Permanent link">&para;</a></h3>
+<p>以下の二つの実装例は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 数値を取得する</span>
+<span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getNum</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="c1">// 通常の記法</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;20より大きいです&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;20より大きいです&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>簡易記法では、条件に処理の結果を使用できる。</p>
+<p>なお、処理の結果自体は条件内でしか使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -26513,13 +26516,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">isFoo</span><span class="p">(</span><span class="s">&quot;Foo&quot;</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// エラーの内容を出力する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="c1">// 簡易記法</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getNum</span><span class="p">();</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// value変数は条件内でしか使用できない</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;valueは20より大きいです&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;20より大きいです&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
