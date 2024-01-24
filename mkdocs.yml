@@ -755,7 +755,8 @@ nav:
           - Prometheus: observability/observability_telemetry_prometheus.md
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
-              - クライアントパッケージ: observability/observability_telemetry_open_telemetry_client_package.md
+              - ■ クライアントパッケージ:
+                  - トレース: observability/observability_telemetry_open_telemetry_client_package_trace.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
