@@ -700,6 +700,7 @@ nav:
           - ■ メトリクス:
               - メトリクス: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.md
               - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.md
+              - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.md
       - ■ VCluster:
           - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.md
 
