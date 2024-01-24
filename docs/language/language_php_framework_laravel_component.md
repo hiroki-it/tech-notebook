@@ -416,7 +416,7 @@ event(new UserCreatedEvent($user));
 
 Eloquentモデルでは、DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる。
 
-紐付けるために、プロパティで定義するか、あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある。
+紐付けるために、プロパティで定義するか、あるいは各タイミングで実行される無名関数でイベントを発生させる必要がある。
 
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
@@ -450,7 +450,7 @@ class User extends Authenticatable
 
 **＊実装例＊**
 
-クロージャーにて、`CREATE`処理に独自イベントクラスに紐付ける。
+無名関数にて、`CREATE`処理に独自イベントクラスに紐付ける。
 
 ```php
 <?php
@@ -2713,7 +2713,7 @@ public function authorize()
 
 一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
 
-これらのクラスはClosure (無名関数) として、`next`変数に格納されている。
+これらのクラスはクロージャー (無名関数) として、`next`変数に格納されている。
 
 **＊実装例＊**
 
@@ -2746,7 +2746,7 @@ class FooBeforeMiddleware
 
 あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
 
-これらのクラスはClosure (無名関数) として、`next`変数に格納されている。
+これらのクラスはクロージャー (無名関数) として、`next`変数に格納されている。
 
 **＊実装例＊**
 

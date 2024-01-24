@@ -1384,7 +1384,7 @@ func main() {
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 
-#### ▼ Closure (無名関数) とは
+#### ▼ クロージャー (無名関数) とは
 
 名前のない関数のこと。
 
@@ -1600,6 +1600,68 @@ func main() {
 	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
+
+<br>
+
+### デフォルト値
+
+#### ▼ Functional Options Pattern
+
+Functional Options Patternを使用して、デフォルト値を実現する。
+
+このパターンでは、関数の引数に『デフォルト値を設定する無名関数』を渡す。
+
+```go
+package main
+
+// Optionという関数型を定義する
+type Option func (*Server)
+
+// デフォルト値を設定する関数を返却する
+func Timeout (t int) Option {
+
+	return func (s *Server) {
+		s.Timeout = time.Duration(t) * time.Second
+	}
+}
+
+func NewServer(addr string, options ...Option) (*Server, error) {
+
+	l, err := net.Listen("tcp", addr)
+
+	if err != nil {
+		return nil, err
+	}
+
+	srv := Server{
+		listener: l,
+	}
+
+	for _, option := range options {
+		// Server構造体を渡す
+		// タイムアウト値を設定する
+		option(&srv)
+	}
+
+	return &srv, nil
+}
+
+func main() {
+
+	...
+
+	srv, err := NewServer(
+		"localhost",
+		// Timeout関数を引数に渡す
+		Timeout(30),
+	)
+
+	...
+}
+```
+
+> - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
+> - https://blog.kazu69.net/2018/02/22/golang-functional-options/
 
 <br>
 
