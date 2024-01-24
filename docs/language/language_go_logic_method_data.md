@@ -1700,6 +1700,24 @@ func main() {
 // 1
 ```
 
+#### ▼ ロギング処理
+
+```go
+
+```
+
+#### ▼ リカバリー処理
+
+```go
+
+```
+
+#### ▼ Close処理
+
+```go
+
+```
+
 <br>
 
 ### import
@@ -1707,6 +1725,8 @@ func main() {
 #### ▼ 通常のインポート
 
 ```go
+package main
+
 import "<パッケージ名>"
 ```
 
@@ -1717,6 +1737,8 @@ Goでは、依存先のパッケージをインポートしなければならず
 そこで、依存関係のパッケージを読み込むだけで使用しないようにするため、パッケージ名を`_`で宣言する。
 
 ```go
+package main
+
 import _ "<パッケージ名>"
 ```
 
@@ -1999,7 +2021,7 @@ func main() {
     file, _ := os.Open("filename.txt")
 
     // エラーキャッチする必要がなくなる
-    fmt.Printf("%#v\n", flle)
+    fmt.Printf("%#v\n", file)
 }
 ```
 
@@ -2081,13 +2103,13 @@ import (
 )
 
 func main() {
-	x := 1
+	foo := 1
 
 	// 新しい変数の宣言が含まれている
 	foo, bar := 2, 3
 
-	fmt.Printf("%#v\n", x) // 2
-	fmt.Printf("%#v\n", y) // 3
+	fmt.Printf("%#v\n", foo) // 2
+	fmt.Printf("%#v\n", bar) // 3
 }
 ```
 
@@ -2108,9 +2130,7 @@ func main() {
 ```go
 package main
 
-import (
-    "fmt"
-)
+import "fmt"
 
 // パッケージ変数
 var text string
@@ -2126,9 +2146,7 @@ func main() {
 ```go
 package main
 
-import (
-    "fmt"
-)
+import "fmt"
 
 // エラーになってしまう。
 text := "Hello World!"
@@ -2149,9 +2167,7 @@ func main() {
 ```go
 package main
 
-import (
-    "fmt"
-)
+import "fmt"
 
 func main() {
     // ローカル変数
@@ -2177,19 +2193,17 @@ package foo
 
 // 定数を定義する。
 const (
-	X  = "X"
+	Foo  = "FOO"
 )
 ```
 
 ```go
 package main
 
-import (
-    "fmt"
-)
+import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", foo) // foo
+    fmt.Printf("%#v\n", Foo) // FOO
 }
 ```
 
@@ -2200,19 +2214,21 @@ func main() {
 **＊実装例＊**
 
 ```go
-package main
-
-import (
-    "fmt"
-)
+package foo
 
 // 定数を定義する。
 const (
-	yZ = "yZ"
+	bar  = "BAR"
 )
+```
+
+```go
+package main
+
+import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", yZ) // yZ
+    fmt.Printf("%#v\n", bar) // コールできずにエラーになる
 }
 ```
 
