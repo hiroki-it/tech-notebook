@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】クライアントパッケージ＠OpenTelemetry
-description: クライアントパッケージ＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】分散トレース＠クライアントパッケージ
+description: 分散トレース＠クライアントパッケージの知見を記録しています。
 ---
 
-# クライアントパッケージ＠OpenTelemetry
+# 分散トレース＠クライアントパッケージ
 
 ## はじめに
 
@@ -1397,7 +1397,9 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
+		// 単項RPCの場合のインターセプター処理
 		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+		// ストリーミングRPCの場合のインターセプター処理
 		grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
 	)
 
@@ -1445,7 +1447,7 @@ func main() {
 
 <br>
 
-## 03-02. スパンの送信
+## 03-02. アプリでgRPCを使わない場合
 
 ### 宛先がGoogle CloudTraceの場合
 

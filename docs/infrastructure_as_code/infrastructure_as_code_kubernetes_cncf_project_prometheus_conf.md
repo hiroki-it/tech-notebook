@@ -35,6 +35,9 @@ Prometheusを設定する。
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
+  # メトリクスにラベルを追加する
+  external_labels:
+    cluster: foo
 ```
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file

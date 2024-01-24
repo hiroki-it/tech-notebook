@@ -22,7 +22,8 @@
 * #### [Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_prometheus.html)
 * #### <u>OpenTelemetry</u>
   > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry.html)
-  > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_client_package.html)
+  > * ##### <u>クライアントパッケージ</u>
+  > > * ##### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_client_package_trace.html)
 * #### <u>Datadog</u>
   > * ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html)
   > * ##### [︎監視](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_monitoring.html)
