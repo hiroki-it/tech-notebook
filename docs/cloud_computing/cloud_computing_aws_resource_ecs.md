@@ -41,22 +41,22 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 <br>
 
-### EKSとの比較
+### EKSとの機能比較
 
-| ECSの場合                              | EKSの場合                                      |
-| -------------------------------------- | ---------------------------------------------- |
-| ECSサービス + ECSタスク                | Deployment                                     |
-| Daemon型のECSサービス                  | DaemonSet                                      |
-| Replica型のECSサービス                 | ReplicaSet                                     |
-| なし                                   | StatefulSet                                    |
-| ECSタスク                              | Pod                                            |
-| ELB                                    | Ingress + Service                              |
-| ECSタスクの環境変数                    | ConfigMap                                      |
-| SecretManager                          | Secret                                         |
-| Taskスケーリング                       | HorizontalPodAutoscaler、VerticalPodAutoscaler |
-| キャパシティプロバイダー + AutoScaling | CusterAutoscaler、Karpenter                    |
-| PodDisruptionBudget                    | Minimum/Maximum Healthy Percent                |
-| AppMesh、ECS Service Connect           | Istio                                          |
+| ECSの機能                      | EKSで相当する機能                                    |
+|-----------------------------|-----------------------------------------------|
+| ECSサービス + ECSタスク            | Deployment                                    |
+| Daemon型のECSサービス             | DaemonSet                                     |
+| Replica型のECSサービス            | ReplicaSet                                    |
+| なし                          | StatefulSet                                   |
+| ECSタスク                      | Pod                                           |
+| ELB                         | Ingress + Service                             |
+| ECSタスクの環境変数                 | ConfigMap                                     |
+| SecretManager               | Secret                                        |
+| Taskスケーリング                  | HorizontalPodAutoscaler、VerticalPodAutoscaler |
+| キャパシティプロバイダー + AutoScaling  | CusterAutoscaler、Karpenter                    |
+| PodDisruptionBudget         | Minimum/Maximum Healthy Percent               |
+| AppMesh、ECS Service Connect | Istio                                         |
 
 
 <br>
