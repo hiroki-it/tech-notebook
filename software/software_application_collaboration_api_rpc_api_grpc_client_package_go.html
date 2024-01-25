@@ -2002,9 +2002,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
+  <a href="#go-grpc-middleware" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 単項RPCの場合
+      ▼ go-grpc-middlewareパッケージについて
     </span>
   </a>
   
@@ -2077,7 +2077,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
+  <a href="#rpc" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ストリーミングRPCの場合
     </span>
@@ -21225,9 +21225,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
+  <a href="#go-grpc-middleware" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 単項RPCの場合
+      ▼ go-grpc-middlewareパッケージについて
     </span>
   </a>
   
@@ -21300,7 +21300,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
+  <a href="#rpc" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ストリーミングRPCの場合
     </span>
@@ -21471,7 +21471,8 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;net&quot;</span>
 
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
 <span class="p">)</span>
@@ -21522,24 +21523,23 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <p>gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
 <p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
 <p>執筆時点 (202309/16) で、パッケージの<code>v1</code>は非推奨で、<code>v2</code>が推奨である。</p>
-<h4 id="rpc">▼ 単項RPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;net&quot;</span>
 
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
 <span class="w">    </span><span class="nx">prometheus</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
 <span class="p">)</span>
@@ -21600,7 +21600,9 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <li><a href="https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme">https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme</a></li>
 </ul>
 </blockquote>
-<p>なお、<code>go-grpc-middleware</code>パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。</p>
+<h4 id="go-grpc-middleware">▼ <code>go-grpc-middleware</code>パッケージについて<a class="headerlink" href="#go-grpc-middleware" title="Permanent link">&para;</a></h4>
+<p><code>go-grpc-middleware</code>パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。</p>
+<p><code>v1</code>系と<code>v2</code>系があり、関数の引数の設定方法が異なる。</p>
 <p>これを<code>Chain</code>関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。</p>
 <blockquote>
 <ul>
@@ -21669,7 +21671,8 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">    </span><span class="s">&quot;golang.org/x/net/context&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
 
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -21710,7 +21713,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <h4 id="_7">▼ インターセプターを使用する場合について<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
 <p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
-<h4 id="rpc_1">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
+<h4 id="rpc">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
