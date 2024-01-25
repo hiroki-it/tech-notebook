@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】クライアントパッケージ＠gRPC
-description: クライアントパッケージ＠gRPCの知見を記録しています。
+title: 【IT技術の知見】Go＠クライアントパッケージ
+description: Go＠クライアントパッケージの知見を記録しています。
 ---
 
-# クライアントパッケージ＠gRPC
+# Go＠クライアントパッケージ
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: クライアントパッケージ＠gRPCの知見を記録してい
 
 <br>
 
-## 01. 必要なもの
+## 01. セットアップ
 
 ### サーバー側
 
@@ -76,7 +76,7 @@ $ asdf install protoc
 > - https://maku.blog/p/37e6uck/
 > - https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile
 
-#### ▼ `pb.*`ファイル (拡張子は言語ごとに異なる)
+#### ▼ `pb.*`ファイル
 
 gRPCクライアント側とgRPCサーバー側の両方で、`proto`ファイルから`pb.*`ファイルを自動作成する。
 
@@ -104,11 +104,9 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 
 <br>
 
-## 02. Goの場合
+## 02. サーバー側
 
-### サーバー側
-
-#### ▼ プロトコルバッファー自動作成ツール
+### プロトコルバッファー自動作成ツール
 
 ```bash
 $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
@@ -118,7 +116,9 @@ $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 > - https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09
 
-#### ▼ gRPCサーバー (Interceptorがない場合)
+<br>
+
+### gRPCサーバー (Interceptorがない場合)
 
 gRPCサーバーを実装する。
 
@@ -174,7 +174,9 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
-#### ▼ gRPCサーバー (インターセプターを使用する場合)
+<br>
+
+### gRPCサーバー (インターセプターを使用する場合)
 
 gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
 
@@ -278,7 +280,9 @@ func main() {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
 
-#### ▼ ヘルスチェックサーバー
+<br>
+
+### ヘルスチェックサーバー
 
 `grpc_health_v1`パッケージの`RegisterHealthServer`関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
 
@@ -326,13 +330,15 @@ func main() {
 
 <br>
 
-### gRPCクライアント側
+## 03. gRPCクライアント側
 
-#### ▼ gRPCクライアントパッケージ
+### gRPCクライアントパッケージ
 
 記入中...
 
-#### ▼ gRPCクライアント
+<br>
+
+### gRPCクライアント
 
 gRPCクライアントを実装する。
 
@@ -379,7 +385,9 @@ func main() {
 
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
-#### ▼ gRPCクライアント (インターセプターを使用する場合)
+<br>
+
+### gRPCクライアント (インターセプターを使用する場合)
 
 gRPCクライアントでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
 
@@ -418,9 +426,9 @@ func main() {
 
 <br>
 
-### gRPCサーバーとクライアントの両方
+## 04. gRPCサーバーとクライアントの両方
 
-#### ▼ `proto`ファイル
+### `proto`ファイル
 
 クライアントからのコールで返信する構造体や関数を定義する。
 
@@ -453,7 +461,9 @@ service FooService {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://christina04.hatenablog.com/entry/protoc-usage
 
-#### ▼ `pb.go`ファイル
+<br>
+
+### `pb.go`ファイル
 
 事前に用意した`proto`ファイルを使用して、`pb.go`ファイルを自動作成する。
 
@@ -486,131 +496,5 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 > - https://christina04.hatenablog.com/entry/protoc-usage
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-
-<br>
-
-## 03. Pythonの場合
-
-### サーバー側
-
-#### ▼ プロトコルバッファー自動作成ツール
-
-pipリポジトリから、プロトコルバッファー自動作成ツールをインストールする。
-
-```bash
-$ pip3 install grpcio-tools
-```
-
-#### ▼ gRPCサーバー
-
-記入中...
-
-<br>
-
-### gRPCクライアント側
-
-#### ▼ gRPCクライアントパッケージ
-
-pipリポジトリから、gRPCクライアントをインストールする。
-
-```bash
-$ pip3 install grpcio
-```
-
-<br>
-
-### gRPCクライアントとgRPCサーバーの両方
-
-#### ▼ `proto`ファイル
-
-記入中...
-
-#### ▼ `pb.py`ファイル
-
-記入中...
-
-<br>
-
-## 04. Rubyの場合
-
-### サーバー側
-
-#### ▼ プロトコルバッファー自動作成ツール
-
-gemリポジトリから、プロトコルバッファー自動作成ツールをインストールする。
-
-```bash
-$ gem install grpc-tools
-```
-
-#### ▼ gRPCサーバー
-
-記入中...
-
-<br>
-
-### クライアント側
-
-#### ▼ gRPCクライアントパッケージ
-
-gemリポジトリから、gRPCクライアントをインストールする。
-
-```bash
-$ gem install grpc
-```
-
-<br>
-
-### gRPCサーバーとクライアントの両方
-
-#### ▼ `proto`ファイル
-
-記入中...
-
-#### ▼ `pb.rb`ファイル
-
-記入中...
-
-<br>
-
-## 05. Javascriptの場合
-
-### サーバー側
-
-#### ▼ プロトコルバッファー自動作成ツール
-
-npmリポジトリから、プロトコルバッファー自動作成ツールをインストールする。
-
-```bash
-$ npm install grpc-tools
-```
-
-#### ▼ gRPCサーバー
-
-記入中...
-
-<br>
-
-### gRPCクライアント側
-
-#### ▼ gRPCクライアントパッケージ
-
-npmリポジトリから、gRPCクライアントをインストールする。
-
-```bash
-$ npm install grpc
-```
-
-<br>
-
-### gRPCサーバーとクライアントの両方
-
-#### ▼ `proto`ファイル
-
-記入中...
-
-#### ▼ `pb.js`ファイル
-
-記入中...
 
 <br>

@@ -1681,14 +1681,11 @@ func main() {
 
 	fmt.Println("Start")
 
-
 	defer func() {
-		if recovered := recover(); recovered != nil {
-			log.Printf("panic occurred, error: %v", recovered)
-		}
+		log.Printf("End")
 	}()
 
-	fmt.Println("End")
+	fmt.Println("Processing...")
 }
 ```
 
@@ -1710,10 +1707,12 @@ func main() {
 
 	// あらかじめdefer関数を定義しておく
 	defer func() {
+
+		// リカバリー処理を実行する
 		err := recover()
 
 		if err != nil {
-			fmt.Printf("Recover: %#v\n", err)
+			fmt.Printf("panic occurred, error: %v", err)
 		}
 
 		fmt.Println("End")
