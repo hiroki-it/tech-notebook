@@ -26044,7 +26044,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_55">▼ リカバリー処理<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
-<p>即時関数をdefer関数化している。</p>
+<p><code>recover</code>関数を実行すると、panicになったその処理のみを終了し、他の並行処理を実行し続けられる。</p>
+<p>即時関数を<code>defer</code>関数化している。</p>
 <p>処理の最後にランタイムエラーが発生したとき、これを<code>recover</code>メソッドで吸収できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -26075,6 +26076,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// Recover: &quot;Runtime error&quot;</span>
 <span class="c1">// End</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://go.dev/doc/effective_go#recover">https://go.dev/doc/effective_go#recover</a></li>
+<li><a href="https://qiita.com/a-kym/items/1e7c646a776c5b541883">https://qiita.com/a-kym/items/1e7c646a776c5b541883</a></li>
+</ul>
+</blockquote>
 <h4 id="close">▼ Close処理<a class="headerlink" href="#close" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
@@ -27309,6 +27316,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">(</span><span class="s">&quot;start main&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="s">&quot;done main&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 空のコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// タイムアウト時間を設定する</span>
