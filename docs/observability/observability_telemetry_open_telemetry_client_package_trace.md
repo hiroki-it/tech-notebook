@@ -1318,7 +1318,8 @@ import (
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 
-	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	// pb.goファイルを読み込む。
+    pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {
@@ -1377,7 +1378,8 @@ import (
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 
-	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	// pb.goファイルを読み込む。
+    pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {

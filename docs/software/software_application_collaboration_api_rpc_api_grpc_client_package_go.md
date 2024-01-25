@@ -131,7 +131,8 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	// pb.goファイルを読み込む。
+    pb "github.com/hiroki-hasegawa/foo/foo"
 
 	"google.golang.org/grpc"
 )
@@ -186,26 +187,24 @@ gRPCサーバーでは、リクエスト/レスポンスの送受信前にイン
 
 執筆時点 (202309/16) で、パッケージの`v1`は非推奨で、`v2`が推奨である。
 
-#### ▼ 単項RPCの場合
-
 ```go
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"net"
 
-	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	// pb.goファイルを読み込む。
+    pb "github.com/hiroki-hasegawa/foo/foo"
 	prometheus "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 )
@@ -264,7 +263,11 @@ func main() {
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
 > - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
 
-なお、`go-grpc-middleware`パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
+#### ▼ `go-grpc-middleware`パッケージについて
+
+`go-grpc-middleware`パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
+
+`v1`系と`v2`系があり、関数の引数の設定方法が異なる。
 
 これを`Chain`関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。
 
@@ -342,7 +345,8 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	// pb.goファイルを読み込む。
+    pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {
