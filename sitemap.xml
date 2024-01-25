@@ -1866,7 +1866,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc_client_package.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc_client_package_go.html</loc>
          <lastmod>2024-01-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -2172,6 +2172,21 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_object_orientation_patterns.html</loc>
+         <lastmod>2024-01-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_javascript.html</loc>
+         <lastmod>2024-01-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_python.html</loc>
+         <lastmod>2024-01-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_ruby.html</loc>
          <lastmod>2024-01-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
