@@ -170,7 +170,8 @@ nav:
               - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
           - ■ RPC-API:
               - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
-              - クライアントパッケージ: software/software_application_collaboration_api_rpc_api_grpc_client_package.md
+              - ■ クライアントパッケージ:
+                  - Go: software/software_application_collaboration_api_rpc_api_grpc_client_package_go.md
           - ■ GraphQL-API:
               - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
   - 🤝🏻 ミドルウェア:
