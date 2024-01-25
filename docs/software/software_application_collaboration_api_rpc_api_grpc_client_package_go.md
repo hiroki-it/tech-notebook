@@ -197,50 +197,39 @@ import (
 
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
-	prometheus "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
+	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth"
+	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging"
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+	grpc_selector "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector"
+
 	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors"
-	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth"
-	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging"
-	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
-	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 )
 
 func main() {
 
-	...
-
-	metrics := prometheus.NewServerMetrics(
-		prometheus.WithServerHandlingTimeHistogram(
-			prometheus.WithHistogramBuckets(
-				...
-				),
-		),
-	)
-
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
 		// 単項RPCの場合のインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// 認証処理
-			selector.UnaryServerInterceptor(auth.UnaryServerInterceptor(authFn), selector.MatchFunc(allButHealthZ)),
+			grpc_selector.UnaryServerInterceptor(...),
 			// メトリクス処理
-			metrics.UnaryServerInterceptor(grpcprom.WithExemplarFromContext(exemplarFromContext)),
+	     	grpc_prometheus.UnaryServerInterceptor(...),
 			// ロギング処理
-			logging.UnaryServerInterceptor(interceptorLogger(rpcLogger), logging.WithFieldsFromContext(logTraceID)),
+		    grpc_logging.UnaryServerInterceptor(...),
 			// 分散トレーシング処理
-			otelgrpc.UnaryServerInterceptor(),
+			otelgrpc.UnaryServerInterceptor(...),
 			// パニックのgRPCエラー変換処理
-			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
+	        grpc_recovery.UnaryServerInterceptor(...),
 		),
 		// ストリーミングRPCの場合のインターセプター処理
 		grpc.ChainStreamInterceptor(
-			otelgrpc.StreamServerInterceptor(),
-
-			recovery.StreamServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler),
+			otelgrpc.StreamServerInterceptor(...),
+			recovery.StreamServerInterceptor(...),
 			),
 		),
 	)
