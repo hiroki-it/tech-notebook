@@ -1691,7 +1691,9 @@ func main() {
 
 #### ▼ リカバリー処理
 
-即時関数をdefer関数化している。
+`recover`関数を実行すると、panicになったその処理のみを終了し、他の並行処理を実行し続けられる。
+
+即時関数を`defer`関数化している。
 
 処理の最後にランタイムエラーが発生したとき、これを`recover`メソッドで吸収できる。
 
@@ -1726,6 +1728,9 @@ func main() {
 // Recover: "Runtime error"
 // End
 ```
+
+> - https://go.dev/doc/effective_go#recover
+> - https://qiita.com/a-kym/items/1e7c646a776c5b541883
 
 #### ▼ Close処理
 
@@ -3226,6 +3231,8 @@ func log(timing string) {
 func main() {
 	log("start main")
 	defer log("done main")
+
+	// 空のコンテキストを作成する
 	ctx := context.Background()
 
 	// タイムアウト時間を設定する

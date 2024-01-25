@@ -335,6 +335,7 @@ func httpRequest(ctx context.Context) error {
 func main() {
 
 	ctx, stop := signal.NotifyContext(
+		// 空のコンテキストを作成する
 		context.Background(),
 		os.Interrupt,
 		syscall.SIGTERM,
@@ -480,6 +481,7 @@ var tracer = otel.Tracer("<マイクロサービス名>")
 
 func initProvider() (func(context.Context) error, error) {
 
+    // 空のコンテキストを作成する
 	ctx := context.Background()
 
 	resr, err := resource.New(
@@ -833,6 +835,7 @@ import (
 
 func initProvider() (func(context.Context) error, error) {
 
+	// 空のコンテキストを作成する
 	ctx := context.Background()
 
 	resr, err := resource.New(
