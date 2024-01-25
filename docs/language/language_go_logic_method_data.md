@@ -2342,6 +2342,10 @@ func main() {
 
 	fmt.Printf("%#v\n", "20より大きいです")
 }
+
+func getNum() int {
+	return 20
+}
 ```
 
 > - https://code-database.com/knowledges/97

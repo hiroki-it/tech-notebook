@@ -41,6 +41,26 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 <br>
 
+### EKSとの比較
+
+| ECSの場合                              | EKSの場合                                      |
+| -------------------------------------- | ---------------------------------------------- |
+| ECSサービス + ECSタスク                | Deployment                                     |
+| Daemon型のECSサービス                  | DaemonSet                                      |
+| Replica型のECSサービス                 | ReplicaSet                                     |
+| なし                                   | StatefulSet                                    |
+| ECSタスク                              | Pod                                            |
+| ELB                                    | Ingress + Service                              |
+| ECSタスクの環境変数                    | ConfigMap                                      |
+| SecretManager                          | Secret                                         |
+| Taskスケーリング                       | HorizontalPodAutoscaler、VerticalPodAutoscaler |
+| キャパシティプロバイダー + AutoScaling | CusterAutoscaler、Karpenter                    |
+| PodDisruptionBudget                    | Minimum/Maximum Healthy Percent                |
+| AppMesh、ECS Service Connect           | Istio                                          |
+
+
+<br>
+
 ## 02. コントロールプレーンのコンポーネント
 
 記入中...
@@ -781,9 +801,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec
 : ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『`/bin/bash`』や『`/bin/sh`』で指定すると、binより上のパスもECSに送信されてしまう。
 
      例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。
-
+    
      これはCloudTrailでExecuteCommandイベントとして確認できる。
-
+    
      ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
 ```bash

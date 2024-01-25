@@ -17,6 +17,8 @@ description: AppMesh＠AWSの知見を記録しています。
 
 クラウドサービスメッシュとして機能する。
 
+VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成される。
+
 <br>
 
 ## 02. テレメトリーの収集
@@ -27,7 +29,7 @@ AppMesh上のEnvoyはX-rayデーモンにスパンを送信し、X-rayで分散�
 
 一方で、Istio上のEnvoyはこの機能を使えず、代わりにotelコレクターにスパンを送信しないといけず、AppMeshはAWSとの親和性が高い。
 
-- https://www.appmeshworkshop.com/x-ray/
-- https://nathanpeck.com/improving-observability-with-aws-app-mesh-amazon-ecs/
+> - https://www.appmeshworkshop.com/x-ray/
+> - https://nathanpeck.com/improving-observability-with-aws-app-mesh-amazon-ecs/
 
 <br>
