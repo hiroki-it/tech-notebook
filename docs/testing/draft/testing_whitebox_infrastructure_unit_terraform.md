@@ -84,7 +84,15 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 	url := fmt.Sprintf("http://%s:8080", publicIp)
 
     // 「Hello World」がレスポンスされるか否かを確認する。
-	http_helper.HttpGetWithRetry(t, url, nil, 200, "Hello, World!", 30, 5*time.Second)
+	http_helper.HttpGetWithRetry(
+        t,
+        url,
+        nil,
+        200,
+        "Hello, World!",
+        30,
+        5 * time.Second,
+    )
 }
 ```
 

@@ -1930,10 +1930,15 @@ func main()
         fmt.Println("end hook3")
     })
 
+    // タイムアウト時間設定済みのコンテキストを作成する
+    ctx, cancel := context.WithTimeout(
+        context.Background(),
+        5 * time.Second,
+    )
 
-    ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
-    shutdown.Invoke(ctx)
+
+shutdown.Invoke(ctx)
 }
 ```
 
@@ -2525,7 +2530,10 @@ import (
 
 func main() {
 
-	ctx, cancel := context.WithCancel(context.Background())
+	// タイムアウト時間設定済みのコンテキストを作成する
+	ctx, cancel := context.WithCancel(
+        context.Background()
+    )
 
 	// チャンネルを作成
 	channel := make(chan string)
@@ -3144,7 +3152,7 @@ import (
 
 func main() {
 
-	// タイムアウト時間を設定する
+	// タイムアウト時間設定済みのコンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を1秒に設定する
@@ -3229,15 +3237,14 @@ func log(timing string) {
 }
 
 func main() {
-	log("start main")
-	defer log("done main")
 
-	// 空のコンテキストを作成する
-	ctx := context.Background()
+    log("start main")
 
-	// タイムアウト時間を設定する
+    defer log("done main")
+
+	// タイムアウト時間設定済みのコンテキストを作成する
 	ctx, cancel := context.WithTimeout(
-		ctx,
+		context.Background(),
 		// タイムアウト時間を2秒に設定する
 		2*time.Second,
 	)
