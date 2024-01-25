@@ -408,7 +408,7 @@ func main() {
 
 	... // pb.goファイルに関する実装は省略している。
 
-	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
 		log.Printf("failed to listen: %v", err)

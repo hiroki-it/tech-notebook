@@ -1408,7 +1408,7 @@ func main() {
 	pb.RegisterFooServiceServer(grpcServer, &Server{})
 
 	// goサーバーで待ち受けるポート番号を設定する。
-	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
