@@ -2915,7 +2915,7 @@ ReadinessProbeチェックよりもヘルスチェックの意味合いが強い
 
 コンテナのLivenessProbeヘルスチェックで、ユーザー定義のヘルスチェックを実行する。
 
-LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPC) 以外で、ヘルスチェックを実行したい場合に役立つ。
+LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。
 
 ```yaml
 apiVersion: v1

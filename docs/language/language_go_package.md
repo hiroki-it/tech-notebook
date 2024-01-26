@@ -546,7 +546,7 @@ db.Save(&user)
 
 ## otelgrpc
 
-gRPCのHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
+gRPCによるHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
 
 `otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
 
@@ -563,6 +563,16 @@ HTTPリクエストの受信処理からコンテキストを抽出 (Extract) �
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
+## otlptracegrpc
+
+エクスポーターを提供する。
+
+gRPCによるHTTPリクエスト処理のテレメトリーをOTLP形式で送信する。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
 
 <br>
 

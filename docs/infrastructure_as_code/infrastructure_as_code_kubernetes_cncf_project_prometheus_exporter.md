@@ -183,7 +183,7 @@ modules:
 
 #### ▼ grpc
 
-外形監視でgRPCのHTTPリクエストを送信する。
+外形監視でgRPCによるHTTPリクエストを送信する。
 
 ```yaml
 modules:
