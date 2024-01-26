@@ -20683,13 +20683,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oidc" class="md-nav__link">
+  <a href="#01-oidc" class="md-nav__link">
     <span class="md-ellipsis">
-      OIDC
+      01. OIDC
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OIDC">
+    <nav class="md-nav" aria-label="01. OIDC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -20733,7 +20733,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h2>
+<h2 id="01-oidc">01. OIDC<a class="headerlink" href="#01-oidc" title="Permanent link">&para;</a></h2>
 <h3 id="keycloak">Keycloakの場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">connectors</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc</span>
@@ -20741,7 +20741,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keycloak</span>
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;</span>
-<span class="w">      </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-client</span>
+<span class="w">      </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Keycloakに認可リクエストを送信するクライアント名&gt;</span>
 <span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">      </span><span class="nt">redirectURI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;コールバックURL&gt;</span>
 <span class="w">      </span><span class="nt">scope</span><span class="p">:</span>

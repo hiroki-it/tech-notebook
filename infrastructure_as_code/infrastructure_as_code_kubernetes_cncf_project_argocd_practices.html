@@ -23310,10 +23310,20 @@
 <li>別のドメインでB/G Clusterにアクセスする方法。DNSレコードが異なる。一番簡単だが、ドメインを変更しないといけない。</li>
 <li>B/G ClusterをAWS Route53で切り替える方法。DNSレコードは既存のものを使って、これに紐づくAWS ALBが異なる。DNSキャッシュに注意する。</li>
 </ul>
+<blockquote>
+<ul>
+<li><a href="https://masayosu.hatenablog.com/entry/2022/12/14/090000">https://masayosu.hatenablog.com/entry/2022/12/14/090000</a></li>
+</ul>
+</blockquote>
 <h4 id="aws-alb_1">▼ 既存のAWS ALBを使用する場合<a class="headerlink" href="#aws-alb_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>TargetGroupBindingを新しく採用し、ALBの振り分けの重みづけでB/G Clusterを切り替える方法。ArgoCDが複数のプロダクトを管理している場合、プロダクトごとに切り替えられない。</li>
 </ul>
+<blockquote>
+<ul>
+<li><a href="https://masayosu.hatenablog.com/entry/2022/12/14/090000">https://masayosu.hatenablog.com/entry/2022/12/14/090000</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="15-prometheus">15. Prometheusによる監視<a class="headerlink" href="#15-prometheus" title="Permanent link">&para;</a></h2>
 <h3 id="_33">メトリクスの種類<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
