@@ -544,11 +544,33 @@ db.Save(&user)
 
 <br>
 
+## otelgrpc
+
+gRPCのHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
+
+`otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+> - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
+## otelhttp
+
+HTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
+
+`otelhttp`を使用しない場合、これらを自前で実装する必要がある。
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+> - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
 ## testify
 
 ### testifyとは
 
-モック、スタブ、アサーションメソッドを提供するパッケージ。
+モック、スタブ、アサーションの関数を提供するパッケージである。
 
 Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。
 
