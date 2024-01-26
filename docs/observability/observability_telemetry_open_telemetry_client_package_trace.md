@@ -34,7 +34,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google CloudTrace、otelコレクター、など) を決める処理を持つ。
 
-具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
+具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
 スパンの収集ツールがそれぞれパッケージを提供している。
 
