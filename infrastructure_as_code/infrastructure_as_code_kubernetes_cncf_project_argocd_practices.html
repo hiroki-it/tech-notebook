@@ -17227,6 +17227,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#aws-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      アップグレード手法 (AWS EKSの場合)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アップグレード手法 (AWS EKSの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 新しくAWS ALBを作成する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-alb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 既存のAWS ALBを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22453,6 +22486,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#aws-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      アップグレード手法 (AWS EKSの場合)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アップグレード手法 (AWS EKSの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 新しくAWS ALBを作成する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-alb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 既存のAWS ALBを使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23238,6 +23304,17 @@
 <p>この場合、Pruneを無効化した上で、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。</p>
 <p>新バージョンの動作が問題なければ、旧バージョンのKubernetesリソースをPruneで削除する。</p>
 <p><br></p>
+<h3 id="aws-eks">アップグレード手法 (AWS EKSの場合)<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h3>
+<h4 id="aws-alb">▼ 新しくAWS ALBを作成する場合<a class="headerlink" href="#aws-alb" title="Permanent link">&para;</a></h4>
+<ul>
+<li>別のドメインでB/G Clusterにアクセスする方法。DNSレコードが異なる。一番簡単だが、ドメインを変更しないといけない。</li>
+<li>B/G ClusterをAWS Route53で切り替える方法。DNSレコードは既存のものを使って、これに紐づくAWS ALBが異なる。DNSキャッシュに注意する。</li>
+</ul>
+<h4 id="aws-alb_1">▼ 既存のAWS ALBを使用する場合<a class="headerlink" href="#aws-alb_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>TargetGroupBindingを新しく採用し、ALBの振り分けの重みづけでB/G Clusterを切り替える方法。ArgoCDが複数のプロダクトを管理している場合、プロダクトごとに切り替えられない。</li>
+</ul>
+<p><br></p>
 <h2 id="15-prometheus">15. Prometheusによる監視<a class="headerlink" href="#15-prometheus" title="Permanent link">&para;</a></h2>
 <h3 id="_33">メトリクスの種類<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。</p>
@@ -23567,7 +23644,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-26</span>
   </span>
 
     
