@@ -7154,6 +7154,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otelgrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelgrpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otelhttp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelhttp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -21640,6 +21658,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otelgrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelgrpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otelhttp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelhttp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -22228,9 +22264,29 @@
 <span class="c1">// UPDATE users SET name=&#39;jinzhu 2&#39;, age=100, birthday=&#39;2016-01-01&#39;, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="otelgrpc">otelgrpc<a class="headerlink" href="#otelgrpc" title="Permanent link">&para;</a></h2>
+<p>gRPCのHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。</p>
+<p><code>otelgrpc</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="otelhttp">otelhttp<a class="headerlink" href="#otelhttp" title="Permanent link">&para;</a></h2>
+<p>HTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。</p>
+<p><code>otelhttp</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="testify">testify<a class="headerlink" href="#testify" title="Permanent link">&para;</a></h2>
 <h3 id="testify_1">testifyとは<a class="headerlink" href="#testify_1" title="Permanent link">&para;</a></h3>
-<p>モック、スタブ、アサーションメソッドを提供するパッケージ。</p>
+<p>モック、スタブ、アサーションの関数を提供するパッケージである。</p>
 <p>Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。</p>
 <p><br></p>
 <h3 id="mockassert">mock、assert<a class="headerlink" href="#mockassert" title="Permanent link">&para;</a></h3>
