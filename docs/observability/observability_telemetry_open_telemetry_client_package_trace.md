@@ -315,7 +315,8 @@ func httpRequest(ctx context.Context) error {
 
 	req, err := http.NewRequestWithContext(
 		ctx,
-		http.MethodGet, "https://example.com",
+		http.MethodGet,
+		"https://example.com",
 		http.NoBody,
 	)
 

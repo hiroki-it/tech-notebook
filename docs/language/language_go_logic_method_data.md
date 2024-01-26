@@ -3156,7 +3156,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を1秒に設定する
-		1*time.Second,
+		1 * time.Second,
 	)
 
 	defer cancel()
@@ -3246,7 +3246,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を2秒に設定する
-		2*time.Second,
+		2 * time.Second,
 	)
 
 	defer cancel()

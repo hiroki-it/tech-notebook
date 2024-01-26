@@ -166,7 +166,7 @@ func NewController(ctx context.Context, kubeclientset kubernetes.Interface, samp
 	eventBroadcaster.StartRecordingToSink(&typedcorev1.EventSinkImpl{Interface: kubeclientset.CoreV1().Events("")})
 	recorder := eventBroadcaster.NewRecorder(scheme.Scheme, corev1.EventSource{Component: controllerAgentName})
 	ratelimiter := workqueue.NewMaxOfRateLimiter(
-		workqueue.NewItemExponentialFailureRateLimiter(5*time.Millisecond, 1000*time.Second),
+		workqueue.NewItemExponentialFailureRateLimiter(5 * time.Millisecond, 1000 * time.Second),
 		&workqueue.BucketRateLimiter{Limiter: rate.NewLimiter(rate.Limit(50), 300)},
 	)
 
