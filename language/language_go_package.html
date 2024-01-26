@@ -7181,6 +7181,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otel" class="md-nav__link">
+    <span class="md-ellipsis">
+      otel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="otel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otelsdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      otel/sdk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otlptracehttp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlptracehttp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -21694,6 +21736,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otel" class="md-nav__link">
+    <span class="md-ellipsis">
+      otel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="otel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      otelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otelsdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      otel/sdk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otlptracehttp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlptracehttp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -21858,23 +21942,23 @@
 </code></pre></div>
 <h4 id="_5">▼ インターネットからインポート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。</p>
-<p><code>go mod tidy</code>コマンドによって<code>indirect</code>コメントのついたパッケージが実装される。</p>
+<p><code>go mod tidy</code>コマンドによって<code>// indirect</code>コメントのついたパッケージが実装される。</p>
 <p>これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。</p>
 <p>注意点として、パッケージ名は、使用したいパッケージの<code>go.mod</code>ファイルを参照すること。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file">https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">repository</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 
+<span class="c1">// 直接的に依存するパッケージ (アプリで使用するパッケージ)</span>
 <span class="nx">require</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nx">パッケージ名</span><span class="p">&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nx">バージョンタグ</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">foo</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.3.0</span>
 <span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">bar</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.0.0</span>
-<span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">baz</span><span class="w"> </span><span class="c1">// indirect</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="c1">// 間接的に依存するパッケージ (アプリで使用するパッケージが依存するパッケージ)</span>
+<span class="nx">require</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">baz</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.0.0</span><span class="w"> </span><span class="c1">// indirect</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/bar&quot;</span>
@@ -21883,6 +21967,12 @@
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file">https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file</a></li>
+<li><a href="https://developer.so-tech.co.jp/entry/2022/08/16/110108">https://developer.so-tech.co.jp/entry/2022/08/16/110108</a></li>
+</ul>
+</blockquote>
 <h4 id="_6">▼ ローカルマシンからインポート<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ローカルマシンのみで使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、<code>replace</code>関数を使用してインポートする必要がある。</p>
 <p>独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。</p>
@@ -22303,17 +22393,32 @@
 </blockquote>
 <p><br></p>
 <h2 id="otlptracegrpc">otlptracegrpc<a class="headerlink" href="#otlptracegrpc" title="Permanent link">&para;</a></h2>
-<p>エクスポーターを提供する。</p>
-<p>gRPCによるHTTPリクエスト処理のテレメトリーをOTLP形式で送信する。</p>
+<p>OTLP形式で送信するエクスポーターを提供する。</p>
+<p>gRPCによるHTTPリクエスト処理のテレメトリーを監視バックエンド (デフォルトでは<code>https://127.0.0.1:4317</code>) に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</a></li>
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="otel">otel<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h2>
+<h3 id="otel_1">otelとは<a class="headerlink" href="#otel_1" title="Permanent link">&para;</a></h3>
+<p>OpenTelemetryを提供する。</p>
+<h3 id="otelsdk">otel/sdk<a class="headerlink" href="#otelsdk" title="Permanent link">&para;</a></h3>
+<p>OpenTelemetryのTraceProviderを提供する。</p>
+<p><br></p>
+<h2 id="otlptracehttp">otlptracehttp<a class="headerlink" href="#otlptracehttp" title="Permanent link">&para;</a></h2>
+<p>OTLP形式で送信するエクスポーターを提供する。</p>
+<p>HTTPリクエスト処理のテレメトリーを監視バックエンド (デフォルトでは<code>https://127.0.0.1:4318/v1/traces</code>) に送信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="testify">testify<a class="headerlink" href="#testify" title="Permanent link">&para;</a></h2>
 <h3 id="testify_1">testifyとは<a class="headerlink" href="#testify_1" title="Permanent link">&para;</a></h3>
-<p>モック、スタブ、アサーションの関数を提供するパッケージである。</p>
+<p>モック、スタブ、アサーションの関数を提供する。</p>
 <p>Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。</p>
 <p><br></p>
 <h3 id="mockassert">mock、assert<a class="headerlink" href="#mockassert" title="Permanent link">&para;</a></h3>
