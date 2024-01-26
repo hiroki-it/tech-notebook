@@ -7172,6 +7172,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otlptracegrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlptracegrpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -21676,6 +21685,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#otlptracegrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlptracegrpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
       testify
@@ -22265,7 +22283,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="otelgrpc">otelgrpc<a class="headerlink" href="#otelgrpc" title="Permanent link">&para;</a></h2>
-<p>gRPCのHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。</p>
+<p>gRPCによるHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。</p>
 <p><code>otelgrpc</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
@@ -22281,6 +22299,15 @@
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp</a></li>
 <li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="otlptracegrpc">otlptracegrpc<a class="headerlink" href="#otlptracegrpc" title="Permanent link">&para;</a></h2>
+<p>エクスポーターを提供する。</p>
+<p>gRPCによるHTTPリクエスト処理のテレメトリーをOTLP形式で送信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</a></li>
 </ul>
 </blockquote>
 <p><br></p>
