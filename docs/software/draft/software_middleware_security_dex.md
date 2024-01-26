@@ -13,7 +13,7 @@ description: Dex＠セキュリティ系ミドルウェアの知見を記録し�
 
 <br>
 
-## OIDC
+## 01. OIDC
 
 ### Keycloakの場合
 
@@ -24,7 +24,7 @@ connectors:
     name: keycloak
     config:
       issuer: https://<Keycloakのドメイン>/auth/realms/<realm名>
-      clientID: foo-client
+      clientID: <Keycloakに認可リクエストを送信するクライアント名>
       clientSecret: *****
       redirectURI: <コールバックURL>
       scope:

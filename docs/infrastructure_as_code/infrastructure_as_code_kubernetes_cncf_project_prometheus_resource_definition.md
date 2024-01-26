@@ -531,6 +531,25 @@ spec:
 
 <br>
 
+### .spec.externalLabel
+
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: pod-prometheus
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/name: foo
+spec:
+  externalLabel:
+    cluster: foo-cluster
+```
+
+<br>
+
 ### .spec.externalUrl
 
 PrometheusのダッシュボードのURLを設定する。

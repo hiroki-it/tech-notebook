@@ -33,11 +33,13 @@ Prometheusを設定する。
 
 ```yaml
 global:
+  # 収集間隔を設定する
   scrape_interval: 15s
+  # アラート発火の条件とする間隔を設定する
   evaluation_interval: 15s
-  # メトリクスにラベルを追加する
+  # Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
   external_labels:
-    cluster: foo
+    cluster: foo-cluster
 ```
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
