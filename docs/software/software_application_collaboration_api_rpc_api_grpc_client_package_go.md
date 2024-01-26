@@ -252,17 +252,6 @@ func main() {
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
 > - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
 
-#### ▼ `go-grpc-middleware`パッケージについて
-
-`go-grpc-middleware`パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
-
-`v1`系と`v2`系があり、関数の引数の設定方法が異なる。
-
-これを`Chain`関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。
-
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
-
 <br>
 
 ### ヘルスチェックサーバー

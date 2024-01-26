@@ -12,7 +12,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 <br>
 
-## 01. ビルトインパッケージ
+## ビルトインパッケージ
 
 以下のリンクを参考にせよ。
 
@@ -20,7 +20,7 @@ title: 【IT技術の知見】パッケージ@Go
 
 <br>
 
-## 02. 外部パッケージの管理
+## 外部パッケージの管理
 
 ### コマンド
 
@@ -49,9 +49,9 @@ PHPにおける`composer.json`ファイルに相当する。
 
 インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。
 
-インストールしたい外部パッケージも定義できる。
+基本的には、パッケージのURLやディレクトリ構成と同じにする。
 
-```
+```go
 module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
@@ -69,7 +69,7 @@ go 1.16
 
 > - https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
-```
+```go
 module github.com/hiroki-hasegawa/repository
 
 go 1.16
@@ -100,7 +100,7 @@ func main() {
 
 > - https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
-```
+```go
 module foo.com/hiroki-it/repository
 
 go 1.16
@@ -122,7 +122,7 @@ repository/
     └── module.go
 ```
 
-```
+```go
 module foo.com/hiroki-it/foo-repository/local-pkg
 
 go 1.16
@@ -152,7 +152,7 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 <br>
 
-## 03. aws-sdk-go-v2
+## aws-sdk-go-v2
 
 ### aws-sdk-go-v2とは
 
@@ -179,7 +179,7 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 <br>
 
-## 04. aws-lambda-go
+## aws-lambda-go
 
 以下のリンクを参考にせよ。
 
@@ -187,7 +187,54 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 <br>
 
-## 05. gorm
+## go-chi
+
+ミドルウェア処理 (特にルーティング) のパッケージである。
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+)
+
+func main() {
+
+	r := chi.NewRouter()
+
+	r.Use(middleware.Logger)
+
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("welcome"))
+	})
+
+	http.ListenAndServe(":3000", r)
+}
+```
+
+> - https://github.com/go-chi/chi
+
+<br>
+
+## go-grpc-middleware
+
+gRPCに関するミドルウェア処理 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
+
+なお、gRPCはリモートプロシージャーコールであるため、ミドルウェア処理にルーティングは含まれない。
+
+`v1`系と`v2`系があり、関数の引数の設定方法が異なる。
+
+これを`Chain`関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。
+
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
+
+<br>
+
+## gorm
 
 ### gormとは
 
@@ -497,7 +544,7 @@ db.Save(&user)
 
 <br>
 
-## 06. testify
+## testify
 
 ### testifyとは
 
@@ -670,7 +717,7 @@ func (suite *FooSuite) TestMethod() {
 
 <br>
 
-## 07. validator
+## validator
 
 ### validatorとは
 
