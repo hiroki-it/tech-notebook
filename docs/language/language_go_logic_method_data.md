@@ -1322,16 +1322,17 @@ package config
 import "os"
 
 const (
-	Foo = "FOO"
-	Bar = "BAR"
-	Baz = "BAZ"
+	Foo = "foo"
+	Bar = "bar"
+	Baz = "baz"
 )
 
 func init() {
+
 	// 環境変数を取得して変数に格納する
 	foo = os.Getenv(Foo)
 	bar = os.Getenv(Bar)
-	baz = os.Getenv(Baz)
+	baz = os.Getenv(BAZ)
 }
 ```
 
@@ -1843,7 +1844,7 @@ const (
 )
 
 func main()  {
-    return getEnv(Foo, "FOO")
+    return getEnv(Foo, "foo")
 }
 
 func getEnv(key, fallback string) string {
@@ -2173,7 +2174,7 @@ func main() {
 
 ### 定義位置の種類
 
-#### ▼ パッケージ変数
+#### ▼ グローバル変数
 
 関数の外部で定義された変数のこと。
 
@@ -2181,14 +2182,14 @@ func main() {
 
 **＊実装例＊**
 
-パッケージ変数を宣言し、関数内で値を代入する。
+グローバル変数を宣言し、関数内で値を代入する。
 
 ```go
 package main
 
 import "fmt"
 
-// パッケージ変数
+// グローバル変数
 var text string
 
 func main() {
@@ -2212,6 +2213,8 @@ func main() {
 }
 ```
 
+> - https://recursionist.io/learn/languages/go/data-type/variable
+
 #### ▼ ローカル変数
 
 関数の内部で定義された変数のこと。
@@ -2232,6 +2235,8 @@ func main() {
 }
 ```
 
+> - https://recursionist.io/learn/languages/go/data-type/variable
+
 <br>
 
 ## 03. スコープ
@@ -2249,7 +2254,7 @@ package foo
 
 // 定数を定義する。
 const (
-	Foo  = "FOO"
+	Foo  = "foo"
 )
 ```
 
@@ -2259,7 +2264,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", Foo) // FOO
+    fmt.Printf("%#v\n", Foo) // foo
 }
 ```
 
@@ -2274,7 +2279,7 @@ package foo
 
 // 定数を定義する。
 const (
-	bar  = "BAR"
+	Bar  = "bar"
 )
 ```
 
@@ -2284,7 +2289,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", bar) // コールできずにエラーになる
+    fmt.Printf("%#v\n", Bar) // コールできずにエラーになる
 }
 ```
 
