@@ -21007,9 +21007,12 @@
 <h3 id="eks">EKSアドオンとして<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
 <h4 id="opentelemetryhelm">▼ OpenTelemetryによるHelmチャートの場合<a class="headerlink" href="#opentelemetryhelm" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenTelemetryコレクターを作成することになる。</p>
+<p>ただし、これにはX-RayのExporterが含まれていないため、AWS製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替える。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector</a></li>
+<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/</a></li>
+<li><a href="https://gallery.ecr.aws/aws-observability/aws-otel-collector">https://gallery.ecr.aws/aws-observability/aws-otel-collector</a></li>
 </ul>
 </blockquote>
 <h4 id="awshelm">▼ AWSによるHelmチャートの場合<a class="headerlink" href="#awshelm" title="Permanent link">&para;</a></h4>
@@ -21080,6 +21083,7 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml">https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml</a></li>
+<li><a href="https://github.com/aws-observability/aws-otel-helm-charts/blob/main/charts/adot-exporter-for-eks-on-ec2/templates/adot-collector/configmap.yaml">https://github.com/aws-observability/aws-otel-helm-charts/blob/main/charts/adot-exporter-for-eks-on-ec2/templates/adot-collector/configmap.yaml</a></li>
 <li><a href="https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson">https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson</a></li>
 <li><a href="https://zenn.dev/tmrekk/articles/689cae0e9b41bd">https://zenn.dev/tmrekk/articles/689cae0e9b41bd</a></li>
 </ul>
