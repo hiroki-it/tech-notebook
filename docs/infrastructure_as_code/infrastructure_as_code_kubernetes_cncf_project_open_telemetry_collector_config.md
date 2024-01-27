@@ -101,9 +101,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: <自身のPodのIPアドレス>:4317
+        endpoint: <OpenTelemetryコレクターPodのIPアドレス>:4317
       http:
-        endpoint: <自身のPodのIPアドレス>:4318
+        endpoint: <OpenTelemetryコレクターPodのIPアドレス>:4318
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#receivers
