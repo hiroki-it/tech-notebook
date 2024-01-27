@@ -68,10 +68,10 @@ OpenTelemetryコレクターのカスタムリソースを作成する。
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
-  name: foo-open-telemetry-collector
+  name: foo-opentelemetry-collector
 spec:
   mode: deployment
-  serviceAccount: open-telemetry-collector
+  serviceAccount: opentelemetry-collector
   config: |
 
     receivers:
@@ -92,7 +92,7 @@ spec:
       awsxray:
         region: ap-northeast-1
 
-    # open-telemetry-collectorの前段のServiceを設定する
+    # opentelemetry-collectorの前段のServiceを設定する
     service:
       pipelines:
         traces:

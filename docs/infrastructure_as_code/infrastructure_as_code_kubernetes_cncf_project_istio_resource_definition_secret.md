@@ -36,7 +36,7 @@ metadata:
 type: istio.io/ca-root
 data:
   ca-cert.pem: *****
-  ca-key.pem: ******
+  ca-key.pem: *****
   cert-chain.pem: ""
   key.pem: ""
   root-cert.pem: ""

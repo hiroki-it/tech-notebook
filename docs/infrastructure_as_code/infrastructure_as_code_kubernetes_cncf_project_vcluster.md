@@ -56,7 +56,8 @@ VClusterは、コントロールプレーン、Syncer、といったコンポー
 
 ```bash
 # vcluster cliをインストールする
-$ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-arm64" && sudo install -c -m 0755 vcluster /usr/local/bin
+$ curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-arm64"
+$ sudo install -c -m 0755 vcluster /usr/local/bin
 
 # 仮想Clusterを作成する
 $ vcluster create <Cluster名> \
