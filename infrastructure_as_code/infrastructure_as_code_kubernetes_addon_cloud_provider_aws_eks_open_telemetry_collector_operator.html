@@ -21055,28 +21055,31 @@
 <span class="w">            </span><span class="no">endpoint: 0.0.0.0:4318</span>
 
 <span class="w">    </span><span class="no">processors:</span>
-<span class="w">      </span><span class="no">batch/traces:</span>
+<span class="w">      </span><span class="no">batch:</span>
 <span class="w">        </span><span class="no">timeout: 5s</span>
 <span class="w">        </span><span class="no">send_batch_size: 50</span>
 
 <span class="w">    </span><span class="no">exporters:</span>
-<span class="w">      </span><span class="no"># 宛先はx-rayとする</span>
 <span class="w">      </span><span class="no">awsxray:</span>
 <span class="w">        </span><span class="no">region: ap-northeast-1</span>
+<span class="w">      </span><span class="no">datadog:</span>
+<span class="w">        </span><span class="no">api:</span>
+<span class="w">          </span><span class="no">site: datadoghq.com</span>
+<span class="w">          </span><span class="no">key: *****</span>
 
-<span class="w">    </span><span class="no"># opentelemetry-collectorの前段のServiceを設定する</span>
 <span class="w">    </span><span class="no">service:</span>
 <span class="w">      </span><span class="no">pipelines:</span>
 <span class="w">        </span><span class="no">traces:</span>
 <span class="w">          </span><span class="no">receivers:</span>
 <span class="w">            </span><span class="no">- otlp</span>
 <span class="w">          </span><span class="no">processors: </span>
-<span class="w">            </span><span class="no">- batch/traces</span>
+<span class="w">            </span><span class="no">- batch</span>
 <span class="w">          </span><span class="no">exporters: </span>
 <span class="w">            </span><span class="no">- awsxray</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml">https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml</a></li>
 <li><a href="https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson">https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson</a></li>
 <li><a href="https://zenn.dev/tmrekk/articles/689cae0e9b41bd">https://zenn.dev/tmrekk/articles/689cae0e9b41bd</a></li>
 </ul>
