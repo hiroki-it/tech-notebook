@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設定ファイル＠OpenTelemetry
-description: 設定ファイル＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】設定ファイル＠OpenTelemetryコレクター
+description: 設定ファイル＠OpenTelemetryコレクターの知見を記録しています。
 ---
 
-# 設定ファイル＠OpenTelemetry
+# 設定ファイル＠OpenTelemetryコレクター
 
 ## はじめに
 
@@ -13,9 +13,11 @@ description: 設定ファイル＠OpenTelemetryの知見を記録しています
 
 <br>
 
-## exporters
+## 01. exporters
 
 エクスポーターを設定する。
+
+OpenTelemetryコレクターは、設定した宛先にテレメトリーを送信する。
 
 ```yaml
 exporters:
@@ -28,7 +30,7 @@ exporters:
 
 <br>
 
-## extensions
+## 02. extensions
 
 ```yaml
 extensions:
@@ -40,7 +42,7 @@ extensions:
 
 <br>
 
-## processors
+## 03. processors
 
 プロセッサーを設定する
 
@@ -55,7 +57,7 @@ processors:
 
 <br>
 
-## receivers
+## 04. receivers
 
 レシーバーを設定する
 
@@ -75,7 +77,7 @@ receivers:
 
 <br>
 
-## service
+## 05. service
 
 使用したい設定を指定する
 

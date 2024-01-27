@@ -110,7 +110,7 @@
 ### OpenTelemetry
 
 * #### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry.html)
-* #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_config.html)
+* #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html)
 
 <br>
 
