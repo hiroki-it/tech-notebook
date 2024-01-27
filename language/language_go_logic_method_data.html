@@ -7563,7 +7563,7 @@
           <li class="md-nav__item">
   <a href="#_70" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ パッケージ変数
+      ▼ グローバル変数
     </span>
   </a>
   
@@ -23612,7 +23612,7 @@
           <li class="md-nav__item">
   <a href="#_70" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ パッケージ変数
+      ▼ グローバル変数
     </span>
   </a>
   
@@ -25779,16 +25779,17 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
-<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span>
-<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
+<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;baz&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="c1">// 環境変数を取得して変数に格納する</span>
 <span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">Bar</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">Baz</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">BAZ</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -26192,7 +26193,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">getEnv</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">getEnv</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getEnv</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
@@ -26480,16 +26481,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <p><br></p>
 <h3 id="_69">定義位置の種類<a class="headerlink" href="#_69" title="Permanent link">&para;</a></h3>
-<h4 id="_70">▼ パッケージ変数<a class="headerlink" href="#_70" title="Permanent link">&para;</a></h4>
+<h4 id="_70">▼ グローバル変数<a class="headerlink" href="#_70" title="Permanent link">&para;</a></h4>
 <p>関数の外部で定義された変数のこと。</p>
 <p>スコープとして、宣言されたパッケージ外部でも使用できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>パッケージ変数を宣言し、関数内で値を代入する。</p>
+<p>グローバル変数を宣言し、関数内で値を代入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
 
-<span class="c1">// パッケージ変数</span>
+<span class="c1">// グローバル変数</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="kt">string</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -26509,6 +26510,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://recursionist.io/learn/languages/go/data-type/variable">https://recursionist.io/learn/languages/go/data-type/variable</a></li>
+</ul>
+</blockquote>
 <h4 id="_71">▼ ローカル変数<a class="headerlink" href="#_71" title="Permanent link">&para;</a></h4>
 <p>関数の内部で定義された変数のこと。</p>
 <p>スコープとして、宣言されたパッケージ内部でしか使用できない。</p>
@@ -26523,6 +26529,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://recursionist.io/learn/languages/go/data-type/variable">https://recursionist.io/learn/languages/go/data-type/variable</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. スコープ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_72">変数、定数<a class="headerlink" href="#_72" title="Permanent link">&para;</a></h3>
@@ -26533,7 +26544,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="c1">// 定数を定義する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -26541,7 +26552,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// FOO</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// foo</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_74">▼ パッケージ内のみ参照可能<a class="headerlink" href="#_74" title="Permanent link">&para;</a></h4>
@@ -26551,7 +26562,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="c1">// 定数を定義する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">bar</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -26559,7 +26570,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// コールできずにエラーになる</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// コールできずにエラーになる</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
