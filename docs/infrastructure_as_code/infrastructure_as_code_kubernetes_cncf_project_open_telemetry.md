@@ -23,46 +23,8 @@ kind: ConfigMap
 metadata:
   name: opentelemetry-collector
 data:
-  relay: |
-    # エクスポーターを設定する
-    exporters:
-      # 宛先はx-rayとする
-      awsxray:
-        region: ap-northeast-1
-
-    extensions:
-      health_check:
-        endpoint: <OpenTelemetryコレクターのPodのIPアドレス>:13133
-
-    # プロセッサーを設定する
-    processors:
-      batch:
-        timeout: 5s
-        send_batch_size: 50
-
-    # レシーバーを設定する
-    # OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する
-    receivers:
-      otlp:
-        protocols:
-          grpc:
-            endpoint: <自身のPodのIPアドレス>:4317
-          http:
-            endpoint: <自身のPodのIPアドレス>:4318
-
-    # 使用したい設定を指定する
-    service:
-      extensions:
-        - health_check
-      # 使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する
-      pipelines:
-        traces:
-          receivers:
-            - otlp
-          processors: 
-            - batch
-          exporters: 
-            - awsxray
+  config: |
+    ...
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml
@@ -98,7 +60,7 @@ spec:
         - name: opentelemetry-collector
           command:
             - /otelcol-contrib
-            - --config=/conf/relay.yaml
+            - --config=/conf/config.yaml
           image: "otel/opentelemetry-collector-contrib:0.93.0"
           imagePullPolicy: IfNotPresent
           ports:
@@ -148,12 +110,12 @@ spec:
           configMap:
             name: opentelemetry-collector-agent
             items:
-              - key: relay
-                path: relay.yaml
+              - key: config
+                path: config.yaml
       hostNetwork: false
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml
 
 <br>
 
@@ -188,7 +150,7 @@ spec:
         - name: opentelemetry-collector
           command:
             - /otelcol-contrib
-            - --config=/conf/relay.yaml
+            - --config=/conf/config.yaml
           image: "otel/opentelemetry-collector-contrib:0.93.0"
           imagePullPolicy: IfNotPresent
           ports:
@@ -220,8 +182,8 @@ spec:
           configMap:
             name: opentelemetry-collector
             items:
-              - key: relay
-                path: relay.yaml
+              - key: config
+                path: config.yaml
       hostNetwork: false
 ```
 
