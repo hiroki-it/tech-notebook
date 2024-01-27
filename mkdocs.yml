@@ -693,6 +693,9 @@ nav:
               - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.md
       - ■ OpenPolicyAgent:
           - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.md
+      - ■ OpenTelemetry:
+            - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry.md
+            - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_config.md
       - ■ Prometheus:
           - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.md
           - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.md
