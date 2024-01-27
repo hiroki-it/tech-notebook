@@ -83,27 +83,30 @@ spec:
             endpoint: 0.0.0.0:4318
 
     processors:
-      batch/traces:
+      batch:
         timeout: 5s
         send_batch_size: 50
 
     exporters:
-      # 宛先はx-rayとする
       awsxray:
         region: ap-northeast-1
+      datadog:
+        api:
+          site: datadoghq.com
+          key: *****
 
-    # opentelemetry-collectorの前段のServiceを設定する
     service:
       pipelines:
         traces:
           receivers:
             - otlp
           processors: 
-            - batch/traces
+            - batch
           exporters: 
             - awsxray
 ```
 
+> - https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml
 > - https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson
 > - https://zenn.dev/tmrekk/articles/689cae0e9b41bd
 

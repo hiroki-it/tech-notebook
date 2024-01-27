@@ -21,9 +21,10 @@ OpenTelemetryコレクターは、設定した宛先にテレメトリーを送�
 
 ```yaml
 exporters:
-  # 宛先はx-rayとする
   awsxray:
     region: ap-northeast-1
+  debug: {}
+  logging: {}
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#exporters
