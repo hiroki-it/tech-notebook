@@ -20702,18 +20702,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#daemonset" class="md-nav__link">
+  <a href="#daemonset-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      DaemonSet
+      DaemonSet (Deploymentを使用しない場合)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+  <a href="#deployment-daemonset" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment
+      Deployment (DaemonSetを使用しない場合)
     </span>
   </a>
   
@@ -20765,189 +20765,210 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-conf</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-conf</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">otel-agent-config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="nt">relay</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no"># エクスポーターを設定する</span>
+<span class="w">    </span><span class="no">exporters:</span>
+<span class="w">      </span><span class="no"># 宛先はx-rayとする</span>
+<span class="w">      </span><span class="no">awsxray:</span>
+<span class="w">        </span><span class="no">region: ap-northeast-1</span>
+
+<span class="w">    </span><span class="no">extensions:</span>
+<span class="w">      </span><span class="no">health_check:</span>
+<span class="w">        </span><span class="no">endpoint: &lt;OpenTelemetryコレクターのPodのIPアドレス&gt;:13133</span>
+
+<span class="w">    </span><span class="no"># プロセッサーを設定する</span>
+<span class="w">    </span><span class="no">processors:</span>
+<span class="w">      </span><span class="no">batch:</span>
+<span class="w">        </span><span class="no">timeout: 5s</span>
+<span class="w">        </span><span class="no">send_batch_size: 50</span>
+
+<span class="w">    </span><span class="no"># レシーバーを設定する</span>
+<span class="w">    </span><span class="no"># OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する</span>
 <span class="w">    </span><span class="no">receivers:</span>
 <span class="w">      </span><span class="no">otlp:</span>
 <span class="w">        </span><span class="no">protocols:</span>
 <span class="w">          </span><span class="no">grpc:</span>
-<span class="w">            </span><span class="no">endpoint: ${env:MY_POD_IP}:4317</span>
+<span class="w">            </span><span class="no">endpoint: &lt;自身のPodのIPアドレス&gt;:4317</span>
 <span class="w">          </span><span class="no">http:</span>
-<span class="w">            </span><span class="no">endpoint: ${env:MY_POD_IP}:4318</span>
-<span class="w">    </span><span class="no">exporters:</span>
-<span class="w">      </span><span class="no">otlp:</span>
-<span class="w">        </span><span class="no">endpoint: &quot;otel-collector.default:4317&quot;</span>
-<span class="w">        </span><span class="no">tls:</span>
-<span class="w">          </span><span class="no">insecure: &quot;true&quot;</span>
-<span class="w">        </span><span class="no">sending_queue:</span>
-<span class="w">          </span><span class="no">num_consumers: 4</span>
-<span class="w">          </span><span class="no">queue_size: 100</span>
-<span class="w">        </span><span class="no">retry_on_failure:</span>
-<span class="w">          </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">    </span><span class="no">processors:</span>
-<span class="w">      </span><span class="no">batch:</span>
-<span class="w">      </span><span class="no">memory_limiter:</span>
-<span class="w">        </span><span class="no"># 80% of maximum memory up to 2G</span>
-<span class="w">        </span><span class="no">limit_mib: 400</span>
-<span class="w">        </span><span class="no"># 25% of limit up to 2G</span>
-<span class="w">        </span><span class="no">spike_limit_mib: 100</span>
-<span class="w">        </span><span class="no">check_interval: 5s</span>
-<span class="w">    </span><span class="no">extensions:</span>
-<span class="w">      </span><span class="no">zpages: {}</span>
-<span class="w">      </span><span class="no">memory_ballast:</span>
-<span class="w">        </span><span class="no"># Memory Ballast size should be max 1/3 to 1/2 of memory.</span>
-<span class="w">        </span><span class="no">size_mib: 165</span>
+<span class="w">            </span><span class="no">endpoint: &lt;自身のPodのIPアドレス&gt;:4318</span>
+
+<span class="w">    </span><span class="no"># 使用したい設定を指定する</span>
 <span class="w">    </span><span class="no">service:</span>
-<span class="w">      </span><span class="no">extensions: [zpages, memory_ballast]</span>
+<span class="w">      </span><span class="no">extensions:</span>
+<span class="w">        </span><span class="no">- health_check</span>
+<span class="w">      </span><span class="no"># 使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する</span>
 <span class="w">      </span><span class="no">pipelines:</span>
 <span class="w">        </span><span class="no">traces:</span>
-<span class="w">          </span><span class="no">receivers: [otlp]</span>
-<span class="w">          </span><span class="no">processors: [memory_limiter, batch]</span>
-<span class="w">          </span><span class="no">exporters: [otlp]</span>
+<span class="w">          </span><span class="no">receivers:</span>
+<span class="w">            </span><span class="no">- otlp</span>
+<span class="w">          </span><span class="no">processors: </span>
+<span class="w">            </span><span class="no">- batch</span>
+<span class="w">          </span><span class="no">exporters: </span>
+<span class="w">            </span><span class="no">- awsxray</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml">https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="daemonset">DaemonSet<a class="headerlink" href="#daemonset" title="Permanent link">&para;</a></h3>
+<h3 id="daemonset-deployment">DaemonSet (Deploymentを使用しない場合)<a class="headerlink" href="#daemonset-deployment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-agent</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">      </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">      </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent-collector</span>
+<span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">checksum/config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9e2c733798733e804f0f3840abda595a272a852f3ed54c14212a18bbcbe14d10</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">        </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">        </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent-collector</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/otelcol&quot;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--config=/conf/otel-agent-config.yaml&quot;</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel/opentelemetry-collector:0.86.0</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent</span>
-<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500Mi</span>
-<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Mi</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/otelcol-contrib</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--config=/conf/relay.yaml</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;otel/opentelemetry-collector-contrib:0.93.0&quot;</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">55679</span><span class="w"> </span><span class="c1"># ZPages endpoint.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span><span class="w"> </span><span class="c1"># Default OpenTelemetry receiver port.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888</span><span class="w"> </span><span class="c1"># Metrics.</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger-compact</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6831</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UDP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6831</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger-grpc</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14250</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14250</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger-thrift</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14268</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14268</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp-http</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zipkin</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9411</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">              </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9411</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_POD_IP</span>
 <span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">fieldRef</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">                  </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status.podIP</span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13133</span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13133</span>
 <span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-config-vol</span>
-<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/conf</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/conf</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-configmap</span>
 <span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMap</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-conf</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-configmap</span>
+<span class="w">          </span><span class="nt">configMap</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-agent</span>
 <span class="w">            </span><span class="nt">items</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-config</span>
-<span class="w">                </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-config.yaml</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-agent-config-vol</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay</span>
+<span class="w">                </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay.yaml</span>
+<span class="w">      </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml">https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
+<h3 id="deployment-daemonset">Deployment (DaemonSetを使用しない場合)<a class="headerlink" href="#deployment-daemonset" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">revisionHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">      </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
-<span class="w">  </span><span class="nt">minReadySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">  </span><span class="nt">progressDeadlineSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"> </span><span class="c1">#TODO - adjust this to your own requirements</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">      </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standalone-collector</span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">checksum/config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53da0e3c13d88832e551b80c5e4058ab64e37b0b6a27d08a06a3f09c105a9f15</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">        </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">        </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standalone-collector</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/otelcol&quot;</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--config=/conf/otel-collector-config.yaml&quot;</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel/opentelemetry-collector:0.86.0</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
-<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048Mi</span>
-<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200m</span>
-<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400Mi</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/otelcol-contrib</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--config=/conf/relay.yaml</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;otel/opentelemetry-collector-contrib:0.93.0&quot;</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">55679</span><span class="w"> </span><span class="c1"># Default endpoint for ZPages.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span><span class="w"> </span><span class="c1"># Default endpoint for OpenTelemetry receiver.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14250</span><span class="w"> </span><span class="c1"># Default endpoint for Jaeger gRPC receiver.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14268</span><span class="w"> </span><span class="c1"># Default endpoint for Jaeger HTTP receiver.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9411</span><span class="w"> </span><span class="c1"># Default endpoint for Zipkin receiver.</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888</span><span class="w"> </span><span class="c1"># Default endpoint for querying metrics.</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp-http</span>
+<span class="w">              </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
+<span class="w">              </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_POD_IP</span>
 <span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">fieldRef</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">                  </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status.podIP</span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13133</span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13133</span>
 <span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector-config-vol</span>
-<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/conf</span>
-<span class="w">      </span><span class="c1">#        - name: otel-collector-secrets</span>
-<span class="w">      </span><span class="c1">#          mountPath: /secrets</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/conf</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-configmap</span>
 <span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMap</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector-conf</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector-configmap</span>
+<span class="w">          </span><span class="nt">configMap</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="w">            </span><span class="nt">items</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector-config</span>
-<span class="w">                </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector-config.yaml</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector-config-vol</span>
-<span class="c1">#        - secret:</span>
-<span class="c1">#            name: otel-collector-secrets</span>
-<span class="c1">#            items:</span>
-<span class="c1">#              - key: cert.pem</span>
-<span class="c1">#                path: cert.pem</span>
-<span class="c1">#              - key: key.pem</span>
-<span class="c1">#                path: key.pem</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay</span>
+<span class="w">                </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay.yaml</span>
+<span class="w">      </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml">https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -20955,29 +20976,28 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
-<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp-grpc</span><span class="w"> </span><span class="c1"># Default endpoint for OpenTelemetry gRPC receiver.</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span>
-<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4317</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp-http</span><span class="w"> </span><span class="c1"># Default endpoint for OpenTelemetry HTTP receiver.</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">appProtocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp-http</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4318</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span><span class="w"> </span><span class="c1"># Default endpoint for querying metrics.</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standalone-collector</span>
+<span class="w">  </span><span class="nt">internalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml">https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -21001,7 +21021,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-27</span>
   </span>
 
     
