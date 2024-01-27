@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設定ファイル＠OpenTelemetryの知見を記録しています。">
+        <meta name="description" content="設定ファイル＠OpenTelemetryコレクターの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_config.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html">
       
       
         <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_open_telemetry.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設定ファイル＠OpenTelemetry - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠OpenTelemetryコレクター - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設定ファイル＠OpenTelemetry
+              【IT技術の知見】設定ファイル＠OpenTelemetryコレクター
             
           </span>
         </div>
@@ -17971,7 +17971,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="infrastructure_as_code_kubernetes_cncf_project_open_telemetry_config.html" class="md-nav__link md-nav__link--active">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -18008,45 +18008,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exporters" class="md-nav__link">
+  <a href="#01-exporters" class="md-nav__link">
     <span class="md-ellipsis">
-      exporters
+      01. exporters
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extensions" class="md-nav__link">
+  <a href="#02-extensions" class="md-nav__link">
     <span class="md-ellipsis">
-      extensions
+      02. extensions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#processors" class="md-nav__link">
+  <a href="#03-processors" class="md-nav__link">
     <span class="md-ellipsis">
-      processors
+      03. processors
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#receivers" class="md-nav__link">
+  <a href="#04-receivers" class="md-nav__link">
     <span class="md-ellipsis">
-      receivers
+      04. receivers
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
+  <a href="#05-service" class="md-nav__link">
     <span class="md-ellipsis">
-      service
+      05. service
     </span>
   </a>
   
@@ -20882,45 +20882,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exporters" class="md-nav__link">
+  <a href="#01-exporters" class="md-nav__link">
     <span class="md-ellipsis">
-      exporters
+      01. exporters
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extensions" class="md-nav__link">
+  <a href="#02-extensions" class="md-nav__link">
     <span class="md-ellipsis">
-      extensions
+      02. extensions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#processors" class="md-nav__link">
+  <a href="#03-processors" class="md-nav__link">
     <span class="md-ellipsis">
-      processors
+      03. processors
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#receivers" class="md-nav__link">
+  <a href="#04-receivers" class="md-nav__link">
     <span class="md-ellipsis">
-      receivers
+      04. receivers
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
+  <a href="#05-service" class="md-nav__link">
     <span class="md-ellipsis">
-      service
+      05. service
     </span>
   </a>
   
@@ -20944,7 +20944,7 @@
   
 
 
-<h1 id="opentelemetry">設定ファイル＠OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
+<h1 id="opentelemetry">設定ファイル＠OpenTelemetryコレクター<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -20953,8 +20953,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="exporters">exporters<a class="headerlink" href="#exporters" title="Permanent link">&para;</a></h2>
+<h2 id="01-exporters">01. exporters<a class="headerlink" href="#01-exporters" title="Permanent link">&para;</a></h2>
 <p>エクスポーターを設定する。</p>
+<p>OpenTelemetryコレクターは、設定した宛先にテレメトリーを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 宛先はx-rayとする</span>
 <span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
@@ -20966,7 +20967,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="extensions">extensions<a class="headerlink" href="#extensions" title="Permanent link">&para;</a></h2>
+<h2 id="02-extensions">02. extensions<a class="headerlink" href="#02-extensions" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">extensions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">health_check</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;OpenTelemetryコレクターのPodのIPアドレス&gt;:13133</span>
@@ -20977,7 +20978,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="processors">processors<a class="headerlink" href="#processors" title="Permanent link">&para;</a></h2>
+<h2 id="03-processors">03. processors<a class="headerlink" href="#03-processors" title="Permanent link">&para;</a></h2>
 <p>プロセッサーを設定する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">batch</span><span class="p">:</span>
@@ -20990,7 +20991,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="receivers">receivers<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h2>
+<h2 id="04-receivers">04. receivers<a class="headerlink" href="#04-receivers" title="Permanent link">&para;</a></h2>
 <p>レシーバーを設定する</p>
 <p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
@@ -21007,7 +21008,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="service">service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h2>
+<h2 id="05-service">05. service<a class="headerlink" href="#05-service" title="Permanent link">&para;</a></h2>
 <p>使用したい設定を指定する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">extensions</span><span class="p">:</span>
