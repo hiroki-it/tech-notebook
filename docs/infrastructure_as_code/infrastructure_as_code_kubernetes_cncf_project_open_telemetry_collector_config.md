@@ -68,7 +68,7 @@ exporters:
 ```yaml
 extensions:
   health_check:
-    endpoint: <OpenTelemetryコレクターのPodのIPアドレス>:13133
+    endpoint: <OpenTelemetryコレクターPodのIPアドレス>:13133
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#extensions
