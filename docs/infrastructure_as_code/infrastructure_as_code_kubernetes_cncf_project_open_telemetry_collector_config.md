@@ -15,19 +15,51 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 ## 01. exporters
 
+### exportersとは
+
 エクスポーターを設定する。
 
-OpenTelemetryコレクターは、設定した宛先にテレメトリーを送信する。
+OpenTelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
+
+<br>
+
+### debug
+
+```yaml
+exporters:
+  debug: {}
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#exporters
+
+<br>
+
+### logging
+
+```yaml
+exporters:
+  logging: {}
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#exporters
+
+<br>
+
+### awsxray
+
+X-rayにテレメトリーを送信する。
+
+ただし、OpenTelemetryにはX-RayのExporterが含まれていない。
+
+そのため、AWS製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替えておく必要がある。
 
 ```yaml
 exporters:
   awsxray:
     region: ap-northeast-1
-  debug: {}
-  logging: {}
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#exporters
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
 <br>
 
