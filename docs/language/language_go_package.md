@@ -187,6 +187,8 @@ PHPにおける`composer.lock`ファイルに相当する。
 
 ## aws-lambda-go
 
+### aws-lambda-goとは
+
 以下のリンクを参考にせよ。
 
 > - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html
@@ -194,6 +196,8 @@ PHPにおける`composer.lock`ファイルに相当する。
 <br>
 
 ## go-chi
+
+### go-chiとは
 
 ミドルウェア処理 (特にルーティング) のパッケージである。
 
@@ -550,7 +554,19 @@ db.Save(&user)
 
 <br>
 
+## grpc-go
+
+### grpc-goとは
+
+GoでgRPCを扱えるようにする。
+
+> - https://github.com/grpc/grpc-go
+
+<br>
+
 ## otelgrpc
+
+### otelgrpcとは
 
 gRPCによるHTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
 
@@ -563,6 +579,8 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを抽出
 
 ## otelhttp
 
+### otelhttpとは
+
 HTTPリクエストの受信処理からコンテキストを抽出 (Extract) し、次のリクエストの送信処理に注入 (Inject) する。
 
 `otelhttp`を使用しない場合、これらを自前で実装する必要がある。
@@ -573,6 +591,8 @@ HTTPリクエストの受信処理からコンテキストを抽出 (Extract) �
 <br>
 
 ## otlptracegrpc
+
+### otlptracegrpcとは
 
 OTLP形式で送信するエクスポーターを提供する。
 
@@ -588,6 +608,8 @@ gRPCによるHTTPリクエスト処理のテレメトリーを監視バックエ
 
 OpenTelemetryを提供する。
 
+<br>
+
 ### otel/sdk
 
 OpenTelemetryのTraceProviderを提供する。
@@ -595,6 +617,8 @@ OpenTelemetryのTraceProviderを提供する。
 <br>
 
 ## otlptracehttp
+
+### otlptracehttpとは
 
 OTLP形式で送信するエクスポーターを提供する。
 
@@ -645,8 +669,6 @@ type MockedAwsClient struct {
 
 #### ▼ スタブ化
 
-> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
 | よく使用するメソッド      | 説明                                                                                                                         |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `Mock.Called`メソッド     | 関数の一部の処理をスタブ化する時に使用する。関数に値が渡されたことをモックに伝える。                                         |
@@ -680,6 +702,8 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 }
 ```
 
+> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
 #### ▼ アサーションメソッドによる検証
 
 | よく使用するメソッド              | 説明                                                                                           |
@@ -698,8 +722,6 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 モックの作成のために使用すると良い。
 
 事前処理と事後処理については、以下のリンクを参考にせよ。
-
-> - https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
 | よく使用する関数 | 実行タイミング | 説明                                                                                                                                              |
 | ---------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -774,6 +796,8 @@ func (suite *FooSuite) TestMethod() {
 	// 以降にテスト処理
 }
 ```
+
+> - https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 
 <br>
 

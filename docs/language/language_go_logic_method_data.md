@@ -1831,6 +1831,39 @@ func main() {
 
 <br>
 
+### フォールバック
+
+変数や定数に値が格納されていない場合に、代わりに使用する処理のこと。
+
+```go
+package main
+
+const (
+	Foo = ""
+)
+
+func main()  {
+    return getEnv(Foo, "FOO")
+}
+
+func getEnv(key, fallback string) string {
+
+	value := os.Getenv(key)
+
+	if len(value) != 0 {
+		return value
+	}
+
+	// 環境変数の値が空文字だった場合は、fallbackを返却する
+	return fallback
+}
+```
+
+> - https://stackoverflow.com/a/40326580
+> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
+
+<br>
+
 ### シャットダウンフック
 
 #### ▼ シャットダウンフックとは

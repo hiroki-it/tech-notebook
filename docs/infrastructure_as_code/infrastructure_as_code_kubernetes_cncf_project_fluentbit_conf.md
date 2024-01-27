@@ -160,12 +160,12 @@ Inputs
 
 開発環境でパイプラインの動作を確認するために役立つ。
 
-> - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
-> - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
-
 ```yaml
 {"message": "dummy"}
 ```
+
+> - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
+> - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
 #### ▼ セットアップ
 
@@ -196,8 +196,6 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ▼ セットアップ
 
-> - https://docs.fluentbit.io/manual/pipeline/inputs/forward
-
 **＊実装例＊**
 
 ```bash
@@ -226,6 +224,8 @@ Fluent Bit v1.8.6
 [2021/01/01 12:00:00] [ info] [sp] stream processor started
 ```
 
+> - https://docs.fluentbit.io/manual/pipeline/inputs/forward
+
 #### ▼ コマンド
 
 **＊例＊**
@@ -250,8 +250,6 @@ $ /fluent-bit/bin/fluent-bit \
 
 #### ▼ セットアップ
 
-> - https://docs.fluentbit.io/manual/pipeline/inputs/tail
-
 **＊実装例＊**
 
 ```bash
@@ -275,11 +273,11 @@ log_router:
     - ./storage/logs:/var/www/foo/storage/logs
 ```
 
+> - https://docs.fluentbit.io/manual/pipeline/inputs/tail
+
 #### ▼ コマンド
 
 **＊例＊**
-
-> - https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
 
 ```bash
 $ fluent-bit \
@@ -307,6 +305,8 @@ $ fluent-bit \
 [1] tail.0: [1634640932.013139300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
 [2] tail.0: [1634640932.013147300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
 ```
+
+> - https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
 
 <br>
 
