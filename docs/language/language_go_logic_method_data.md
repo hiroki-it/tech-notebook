@@ -2476,7 +2476,7 @@ func main() {
 
 ### 並列処理
 
-#### ▼ 並列処理とは
+#### ▼ Goroutineによる並列処理
 
 指定した処理を同時に開始し、それぞれの処理が独立して完了する。
 
@@ -2519,11 +2519,15 @@ func main() {
 
 > - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
 
-#### ▼ 返却処理はできない
+#### ▼ 返却処理はエラーになる
 
 Goroutineは、処理の完了を待たずに後続の処理を実行させる。
 
-そのため、関数の返却を待つことはできず、`return`を実行することはできない。
+返却処理 (`return`) は、処理の完了を待つことになるため、Goroutineとは矛盾する。
+
+そのため、Goroutineで実行する関数に返却処理があると、エラーになる。
+
+代わりに、Goroutine間でchannelを介して処理結果を送受信する。
 
 ```go
 package main
@@ -2535,21 +2539,57 @@ import (
 func main() {
 
 	// "unexpected go" というエラーになる
-	result := go helloworld()
+	result := go foo()
 
 	fmt.Println(result)
 }
 
-func helloworld () string {
-	return "Hello world"
+func foo() string {
+	return "foo"
 }
 ```
 
 > - https://stackoverflow.com/a/41439170
 
-#### ▼ channel (チャンネル)
+#### ▼ Goroutineを入れ子にできる
 
-異なるGoroutine間で値を受信できるキューとして動作する。
+入れ子で実行した場合でも、全く独立して並列処理を実行する。
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	go foo()
+
+	// Goroutineを宣言したfoo関数の完了を待たない
+	fmt.Println("baz")
+}
+
+func foo() string {
+
+	go func() {
+		fmt.Println("bar")
+    }
+
+	// Goroutineを宣言した無名関数の完了を待たない
+	fmt.Println("foo")
+}
+```
+
+> - https://copyprogramming.com/howto/should-we-do-nested-goroutines
+
+<br>
+
+## 05-02. Goroutine
+
+### channel (チャンネル)
+
+異なるGoroutine間で値を送受信するキューとして動作する。
 
 キューに値を送信し、加えてキューから値を受信できる。
 
@@ -2581,7 +2621,9 @@ func main() {
 
 > - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
-#### ▼ Done
+<br>
+
+### Done
 
 `cancel`関数による並列処理の中断を検知する。
 
@@ -2633,7 +2675,9 @@ func main() {
 > - https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips
 > - https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20
 
-#### ▼ WaitGroup
+<br>
+
+### WaitGroup
 
 1つまたは複数の関数でGoroutineを宣言したい時に使用する。
 
@@ -2694,11 +2738,15 @@ func main() {
 // 経過秒数: 1s
 ```
 
-#### ▼ errgroup
+<br>
+
+### errgroup
 
 エラー処理を含む関数でGoroutineを宣言したい時に使用する。
 
-#### ▼ select
+<br>
+
+### select
 
 チャンネルに対する格納を非同期で待機する。
 
