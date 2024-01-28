@@ -171,7 +171,6 @@ OperatorHubで公開されている。
 - ArgoCDOperator
 - IstioOperator
 - PrometheusOperator
-
 - ...
 
 > - https://operatorhub.io/

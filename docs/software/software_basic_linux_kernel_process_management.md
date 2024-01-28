@@ -56,7 +56,7 @@ OSが稼働している間、メモリ上のアドレス空間の区画に恒常
 | `SIGKILL`        | プロセスを強制終了する。                 | `kill`コマンドを実行する。       |
 | `SIGTERM`        | プロセスを通常終了する。                 | ...                              |
 | `SIGTSTP`        | プロセスを一時中断する。                 | キーボードで `Ctrl + Z` を打つ。 |
-| `SIGQUIT`        | プロセスを終了させつつ、コアダンプする。 | キーボードで `Ctrl + \` を打つ。 |
+| `SIGQUIT`        | プロセスを終了させつつ、コアダンプする。 | キーボードで `Ctrl + Q` を打つ。 |
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html
 > - https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)

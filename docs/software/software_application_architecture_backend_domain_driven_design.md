@@ -263,7 +263,7 @@ ECサイトを運営するアスクルの例。
 
 契約管理コンテキスト、商品管理コンテキスト、請求管理コンテキスト、がある。
 
-取り組みとして、週次でユビキタス言語の更新を行っている。
+アルプでは、ユビキタス言語を定期的に認識合わせするために、週次でユビキタス言語を追加し、また定義を更新している。
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 

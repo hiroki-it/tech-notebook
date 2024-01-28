@@ -95,6 +95,8 @@ spec:
 
 ### custom-controller
 
+#### ▼ controller.go
+
 このcustom-controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
 
 ```go
@@ -452,6 +454,13 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 }
 ```
 
+> - https://github.com/kubernetes/sample-controller/blob/master/controller.go
+> - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
+> - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
+> - https://kk-river108.hatenablog.com/entry/2020/12/16/184915
+
+#### ▼ main.go
+
 ```go
 package main
 
@@ -479,6 +488,7 @@ func main() {
 	klog.InitFlags(nil)
 	flag.Parse()
 
+	// SIGINTとSIGTERMが発生した場合に、処理を停止できるようにする
 	ctx := signals.SetupSignalHandler()
 	logger := klog.FromContext(ctx)
 
@@ -490,7 +500,7 @@ func main() {
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
-	// kube-apiserverにクライアントを作成する
+	// Deploymentを操作するために、kube-apiserverにクライアントを作成する
 	kubeClient, err := kubernetes.NewForConfig(cfg)
 
 	if err != nil {
@@ -498,7 +508,7 @@ func main() {
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
-	// kube-apiserverのクライアントのセットを作成する
+	// Fooカスタムリソースを操作するために、kube-apiserverのクライアントのセットを作成する
 	exampleClient, err := clientset.NewForConfig(cfg)
 
 	if err != nil {
@@ -506,21 +516,27 @@ func main() {
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
-	// インフォーマーを作成する
+	// Deploymentを操作するために、インフォーマーを作成する
 	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second * 30)
+
+	// Fooカスタムリソースを操作するために、インフォーマーを作成する
 	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second * 30)
 
 	// custom-controllerを作成する
 	controller := NewController(
 		ctx,
+		// クライアント
 		kubeClient,
 		exampleClient,
+		// インフォーマー
 		kubeInformerFactory.Apps().V1().Deployments(),
 		exampleInformerFactory.Samplecontroller().V1alpha1().Foos(),
 	)
 
-	// インフォーマーを実行する
+	// Deploymentを操作するために、インフォーマーを実行する
 	kubeInformerFactory.Start(ctx.Done())
+
+	// Fooカスタムリソースを操作するために、インフォーマーを実行する
 	exampleInformerFactory.Start(ctx.Done())
 
 	// custom-controllerを実行する
@@ -550,9 +566,6 @@ func init() {
 }
 ```
 
-> - https://github.com/kubernetes/sample-controller/blob/master/controller.go
-> - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
-> - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
-> - https://kk-river108.hatenablog.com/entry/2020/12/16/184915
+> - https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0
 
 <br>
