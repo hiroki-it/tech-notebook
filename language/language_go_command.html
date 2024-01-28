@@ -6736,30 +6736,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ユーザー定義のオプション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ユーザー定義のオプション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flag" class="md-nav__link">
-    <span class="md-ellipsis">
-      flag
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -21280,30 +21256,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. ユーザー定義のオプション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ユーザー定義のオプション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flag" class="md-nav__link">
-    <span class="md-ellipsis">
-      flag
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -21450,33 +21402,6 @@ $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>
 <p>反対に、<code>foo_test.go</code>ファイルがなければ、そのパッケージの網羅率は解析しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-cover<span class="w"> </span>./...
 </code></pre></div>
-<p><br></p>
-<h2 id="02">02. ユーザー定義のオプション<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="flag">flag<a class="headerlink" href="#flag" title="Permanent link">&para;</a></h3>
-<p>コマンドでユーザー定義のオプションを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="o">...</span>
-
-<span class="nx">kubeconfig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span>
-<span class="w">     </span><span class="s">&quot;kubeconfig&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">home</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.kube&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;config&quot;</span><span class="p">),</span>
-<span class="w">     </span><span class="s">&quot;(optional) absolute path to the kubeconfig file&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
-
-<span class="o">...</span>
-</code></pre></div>
-<p><code>help</code>オプションで確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>run<span class="w"> </span>app<span class="w"> </span>--help
-Usage<span class="w"> </span>of<span class="w"> </span>app:
-<span class="w">  </span>-kubeconfig<span class="w"> </span>string
-<span class="w">        </span><span class="o">(</span>optional<span class="o">)</span><span class="w"> </span>absolute<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>kubeconfig<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/Users/foo/.kube/config&quot;</span><span class="o">)</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/oruharo/items/8f98e75264b9d6c7df2a#flag">https://qiita.com/oruharo/items/8f98e75264b9d6c7df2a#flag</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
