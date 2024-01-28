@@ -35,10 +35,18 @@ custom-controllerは、client-goコンポーネントとcustom-controller-compon
 
 ### client-goコンポーネント
 
+#### ▼ client-goコンポーネントの仕組み
+
 リファクター、インフォーマー、インデクサー、から構成される。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
 > - https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35
+
+#### ▼ `cache`ディレクトリ
+
+`cache`ディレクトリ配下の処理で、各コンポーネント (リファクター、インフォーマー、インデクサー) を実行する。
+
+> - https://github.com/kubernetes/client-go/tree/master/tools/cache
 
 <br>
 
