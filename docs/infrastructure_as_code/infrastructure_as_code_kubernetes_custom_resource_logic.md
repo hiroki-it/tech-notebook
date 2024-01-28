@@ -391,7 +391,7 @@ func (c *Controller) enqueueFoo(obj interface{}) {
     var key string
 	var err error
 
-	// namespace/nameの形式でキーを作成する
+	// <Namespace>/<Deploymentの名前>の形式でキーを作成する
     if key, err = cache.MetaNamespaceKeyFunc(obj); err != nil {
 		utilruntime.HandleError(err)
 		return
@@ -496,6 +496,12 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 
 #### ▼ main.go
 
+![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
+
+main.goの処理の流れは、custome-controllerの仕組みとおおよそ一致している。
+
+アーキテクチャ図の番号をコメントアウトで記載した。
+
 ```go
 package main
 
@@ -568,14 +574,17 @@ func main() {
 		exampleInformerFactory.Samplecontroller().V1alpha1().Foos(),
 	)
 
-	// Deploymentを操作するために、インフォーマーを実行する
+	// (4) 〜 (7)
+	// Deploymentを操作するために、インフォーマーをGoルーチンで実行する
 	// Deploymentでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	kubeInformerFactory.Start(ctx.Done())
 
-	// Fooカスタムリソースを操作するために、インフォーマーを実行する
+	// (4) 〜 (7)
+	// Fooカスタムリソースを操作するために、インフォーマーをGoルーチンで実行する
 	// Fooカスタムリソースでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	exampleInformerFactory.Start(ctx.Done())
 
+	// (1) 〜 (3) 、(8) 〜 (9)
 	// custom-controllerを実行する
 	// ワークキュー以降の処理を実行する
 	// https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md
