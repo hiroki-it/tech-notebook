@@ -239,7 +239,7 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 
 	// 無限ループを定義し、Reconciliationループを実行する
 	for i := 0; i < workers; i++ {
-		// Goルーチンを宣言して並列化
+		// Goroutineを宣言して並列化
 		go wait.UntilWithContext(
 			ctx,
 			// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する
@@ -575,12 +575,12 @@ func main() {
 	)
 
 	// (4) 〜 (7)
-	// Deploymentを操作するために、インフォーマーをGoルーチンで実行する
+	// Deploymentを操作するために、インフォーマーをGoroutineで実行する
 	// Deploymentでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	kubeInformerFactory.Start(ctx.Done())
 
 	// (4) 〜 (7)
-	// Fooカスタムリソースを操作するために、インフォーマーをGoルーチンで実行する
+	// Fooカスタムリソースを操作するために、インフォーマーをGoroutineで実行する
 	// Fooカスタムリソースでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	exampleInformerFactory.Start(ctx.Done())
 

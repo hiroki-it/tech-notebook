@@ -31,7 +31,7 @@ import (
 
 func init() {
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
 

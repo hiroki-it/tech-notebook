@@ -1911,7 +1911,7 @@ func Invoke(ctx context.Context) error {
     wg.Add(len(hooks))
 
     for i := range hooks {
-		// Goルーチンを宣言して並列化
+		// Goroutineを宣言して並列化
         go func(idx int) {
 			// 時間のかかる処理
 			defer wg.Done()
@@ -1921,7 +1921,7 @@ func Invoke(ctx context.Context) error {
 
     done := make(chan struct{})
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
 		wg.Wait()
@@ -2012,7 +2012,7 @@ import (
 
 func init() {
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
 		for {
@@ -2476,15 +2476,15 @@ func main() {
 
 ### 並列処理
 
-#### ▼ 並列処理
+#### ▼ 並列処理とは
 
 指定した処理を同時に開始し、それぞれの処理が独立して完了する。
 
 結果、完了する順番は順不同になる。
 
-関数でGoルーチン (`go func()`) を宣言すると、その関数のコールを並列化できる。
+関数でGoroutine (`go func()`) を宣言すると、その関数のコールを並列化できる。
 
-ただし、main関数はGoルーチン宣言された関数の完了を待たずに完了してしまうため、この関数の実行完了を待つようにする必要がある。
+ただし、main関数はGoroutine宣言された関数の完了を待たずに完了してしまうため、この関数の実行完了を待つようにする必要がある。
 
 方法には、以下の`3`個がある。
 
@@ -2519,9 +2519,37 @@ func main() {
 
 > - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
 
+#### ▼ 返却処理はできない
+
+Goroutineは、処理の完了を待たずに後続の処理を実行させる。
+
+そのため、関数の返却を待つことはできず、`return`を実行することはできない。
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	// "unexpected go" というエラーになる
+	result := go helloworld()
+
+	fmt.Println(result)
+}
+
+func helloworld () string {
+	return "Hello world"
+}
+```
+
+> - https://stackoverflow.com/a/41439170
+
 #### ▼ channel (チャンネル)
 
-異なるGoルーチン間で値を受信できるキューとして動作する。
+異なるGoroutine間で値を受信できるキューとして動作する。
 
 キューに値を送信し、加えてキューから値を受信できる。
 
@@ -2537,7 +2565,7 @@ func main() {
 	// チャンネルを作成
 	channel := make(chan string)
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
 		// チャンネルに値を送信する。
@@ -2576,7 +2604,7 @@ func main() {
 	// チャンネルを作成
 	channel := make(chan string)
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
 		// チャンネルに値を送信する。
@@ -2607,7 +2635,7 @@ func main() {
 
 #### ▼ WaitGroup
 
-1つまたは複数の関数でGoルーチンを宣言したい時に使用する。
+1つまたは複数の関数でGoroutineを宣言したい時に使用する。
 
 **＊実装例＊**
 
@@ -2617,7 +2645,7 @@ func main() {
 
 反復処理でこの関数をコールする場合、毎回の走査に一秒かかるため、反復の回数だけ秒数が増える。
 
-しかし、Goルーチンを宣言し並列化することにより、各走査が全て並列に実行されるため、反復回数が何回であっても、一秒で処理が終了する。
+しかし、Goroutineを宣言し並列化することにより、各走査が全て並列に実行されるため、反復回数が何回であっても、一秒で処理が終了する。
 
 ```go
 package main
@@ -2645,7 +2673,7 @@ func main() {
 
 		wg.Add(1) // go routineの宣言の数
 
-		// Goルーチンを宣言して並列化
+		// Goroutineを宣言して並列化
 		go func(key int, value string) {
 			// 時間のかかる処理
 			defer wg.Done()
@@ -2668,7 +2696,7 @@ func main() {
 
 #### ▼ errgroup
 
-エラー処理を含む関数でGoルーチンを宣言したい時に使用する。
+エラー処理を含む関数でGoroutineを宣言したい時に使用する。
 
 #### ▼ select
 
@@ -2688,7 +2716,7 @@ func main() {
     c1 := make(chan string)
     c2 := make(chan string)
 
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
     go func() {
 		// 時間のかかる処理
 		// 完了までに2秒かかるとする。
@@ -2696,7 +2724,7 @@ func main() {
 		// 値を送信する。
         c1 <- "one"
     }()
-	// Goルーチンを宣言して並列化
+	// Goroutineを宣言して並列化
     go func() {
 		// 時間のかかる処理
 		// 完了までに1秒かかるとする。
@@ -2707,7 +2735,7 @@ func main() {
 
     for i := 0; i < 2; i++ {
         select {
-		// Goルーチンの処理の完了タイミングがバラバラになる
+		// Goroutineの処理の完了タイミングがバラバラになる
 		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
         case msg1 := <-c1:
             fmt.Println("received", msg1)
