@@ -14080,6 +14080,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="custom-controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controllergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ controller.go
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ main.go
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -20913,6 +20937,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="custom-controller">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controllergo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ controller.go
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ main.go
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -21022,6 +21070,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="custom-controller_1">custom-controller<a class="headerlink" href="#custom-controller_1" title="Permanent link">&para;</a></h3>
+<h4 id="controllergo">▼ controller.go<a class="headerlink" href="#controllergo" title="Permanent link">&para;</a></h4>
 <p>このcustom-controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -21376,6 +21425,15 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/sample-controller/blob/master/controller.go">https://github.com/kubernetes/sample-controller/blob/master/controller.go</a></li>
+<li><a href="https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93">https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93</a></li>
+<li><a href="https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go">https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go</a></li>
+<li><a href="https://kk-river108.hatenablog.com/entry/2020/12/16/184915">https://kk-river108.hatenablog.com/entry/2020/12/16/184915</a></li>
+</ul>
+</blockquote>
+<h4 id="maingo">▼ main.go<a class="headerlink" href="#maingo" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -21402,6 +21460,7 @@
 <span class="w">    </span><span class="nx">klog</span><span class="p">.</span><span class="nx">InitFlags</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
 
+<span class="w">    </span><span class="c1">// SIGINTとSIGTERMが発生した場合に、処理を停止できるようにする</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signals</span><span class="p">.</span><span class="nx">SetupSignalHandler</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
@@ -21413,7 +21472,7 @@
 <span class="w">        </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FlushAndExit</span><span class="p">(</span><span class="nx">klog</span><span class="p">.</span><span class="nx">ExitFlushTimeout</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// kube-apiserverにクライアントを作成する</span>
+<span class="w">    </span><span class="c1">// Deploymentを操作するために、kube-apiserverにクライアントを作成する</span>
 <span class="w">    </span><span class="nx">kubeClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">kubernetes</span><span class="p">.</span><span class="nx">NewForConfig</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -21421,7 +21480,7 @@
 <span class="w">        </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FlushAndExit</span><span class="p">(</span><span class="nx">klog</span><span class="p">.</span><span class="nx">ExitFlushTimeout</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// kube-apiserverのクライアントのセットを作成する</span>
+<span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、kube-apiserverのクライアントのセットを作成する</span>
 <span class="w">    </span><span class="nx">exampleClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">clientset</span><span class="p">.</span><span class="nx">NewForConfig</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -21429,21 +21488,27 @@
 <span class="w">        </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FlushAndExit</span><span class="p">(</span><span class="nx">klog</span><span class="p">.</span><span class="nx">ExitFlushTimeout</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// インフォーマーを作成する</span>
+<span class="w">    </span><span class="c1">// Deploymentを操作するために、インフォーマーを作成する</span>
 <span class="w">    </span><span class="nx">kubeInformerFactory</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">kubeinformers</span><span class="p">.</span><span class="nx">NewSharedInformerFactory</span><span class="p">(</span><span class="nx">kubeClient</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、インフォーマーを作成する</span>
 <span class="w">    </span><span class="nx">exampleInformerFactory</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">informers</span><span class="p">.</span><span class="nx">NewSharedInformerFactory</span><span class="p">(</span><span class="nx">exampleClient</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// custom-controllerを作成する</span>
 <span class="w">    </span><span class="nx">controller</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewController</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// クライアント</span>
 <span class="w">        </span><span class="nx">kubeClient</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">exampleClient</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// インフォーマー</span>
 <span class="w">        </span><span class="nx">kubeInformerFactory</span><span class="p">.</span><span class="nx">Apps</span><span class="p">().</span><span class="nx">V1</span><span class="p">().</span><span class="nx">Deployments</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">exampleInformerFactory</span><span class="p">.</span><span class="nx">Samplecontroller</span><span class="p">().</span><span class="nx">V1alpha1</span><span class="p">().</span><span class="nx">Foos</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// インフォーマーを実行する</span>
+<span class="w">    </span><span class="c1">// Deploymentを操作するために、インフォーマーを実行する</span>
 <span class="w">    </span><span class="nx">kubeInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
+
+<span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、インフォーマーを実行する</span>
 <span class="w">    </span><span class="nx">exampleInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// custom-controllerを実行する</span>
@@ -21474,10 +21539,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/kubernetes/sample-controller/blob/master/controller.go">https://github.com/kubernetes/sample-controller/blob/master/controller.go</a></li>
-<li><a href="https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93">https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93</a></li>
-<li><a href="https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go">https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go</a></li>
-<li><a href="https://kk-river108.hatenablog.com/entry/2020/12/16/184915">https://kk-river108.hatenablog.com/entry/2020/12/16/184915</a></li>
+<li><a href="https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0">https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0</a></li>
 </ul>
 </blockquote>
 <p><br></p>
