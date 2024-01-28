@@ -21134,30 +21134,40 @@
 
 <span class="w">    </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">samplescheme</span><span class="p">.</span><span class="nx">AddToScheme</span><span class="p">(</span><span class="nx">scheme</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">))</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Creating event broadcaster&quot;</span><span class="p">)</span>
-
 <span class="w">    </span><span class="nx">eventBroadcaster</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">NewBroadcaster</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">eventBroadcaster</span><span class="p">.</span><span class="nx">StartStructuredLogging</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">eventBroadcaster</span><span class="p">.</span><span class="nx">StartRecordingToSink</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">typedcorev1</span><span class="p">.</span><span class="nx">EventSinkImpl</span><span class="p">{</span><span class="nx">Interface</span><span class="p">:</span><span class="w"> </span><span class="nx">kubeclientset</span><span class="p">.</span><span class="nx">CoreV1</span><span class="p">().</span><span class="nx">Events</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)})</span>
-<span class="w">    </span><span class="nx">recorder</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">eventBroadcaster</span><span class="p">.</span><span class="nx">NewRecorder</span><span class="p">(</span><span class="nx">scheme</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">,</span><span class="w"> </span><span class="nx">corev1</span><span class="p">.</span><span class="nx">EventSource</span><span class="p">{</span><span class="nx">Component</span><span class="p">:</span><span class="w"> </span><span class="nx">controllerAgentName</span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// イベントレコーダーを作成する</span>
+<span class="w">    </span><span class="nx">recorder</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">eventBroadcaster</span><span class="p">.</span><span class="nx">NewRecorder</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">scheme</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">corev1</span><span class="p">.</span><span class="nx">EventSource</span><span class="p">{</span><span class="nx">Component</span><span class="p">:</span><span class="w"> </span><span class="nx">controllerAgentName</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+
 <span class="w">    </span><span class="nx">ratelimiter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">NewMaxOfRateLimiter</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">NewItemExponentialFailureRateLimiter</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">),</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">BucketRateLimiter</span><span class="p">{</span><span class="nx">Limiter</span><span class="p">:</span><span class="w"> </span><span class="nx">rate</span><span class="p">.</span><span class="nx">NewLimiter</span><span class="p">(</span><span class="nx">rate</span><span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w"> </span><span class="mi">300</span><span class="p">)},</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">controller</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Controller</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// クライアント</span>
 <span class="w">        </span><span class="nx">kubeclientset</span><span class="p">:</span><span class="w">     </span><span class="nx">kubeclientset</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">sampleclientset</span><span class="p">:</span><span class="w">   </span><span class="nx">sampleclientset</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// インフォーマー</span>
 <span class="w">        </span><span class="nx">deploymentsLister</span><span class="p">:</span><span class="w"> </span><span class="nx">deploymentInformer</span><span class="p">.</span><span class="nx">Lister</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">deploymentsSynced</span><span class="p">:</span><span class="w"> </span><span class="nx">deploymentInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">HasSynced</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">foosLister</span><span class="p">:</span><span class="w">        </span><span class="nx">fooInformer</span><span class="p">.</span><span class="nx">Lister</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">foosSynced</span><span class="p">:</span><span class="w">        </span><span class="nx">fooInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">HasSynced</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ワークキュー</span>
 <span class="w">        </span><span class="nx">workqueue</span><span class="p">:</span><span class="w">         </span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">NewRateLimitingQueue</span><span class="p">(</span><span class="nx">ratelimiter</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// イベントレコーダー</span>
 <span class="w">        </span><span class="nx">recorder</span><span class="p">:</span><span class="w">          </span><span class="nx">recorder</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Setting up event handlers&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// Fooリソースの状態をwatchする</span>
-<span class="w">    </span><span class="c1">// また、状態が変化した時に発火するリソースイベントハンドラーを定義する</span>
+
+<span class="w">    </span><span class="c1">// 作成するコントローラーのインフォーマーにイベントハンドラーを設定する</span>
+<span class="w">    </span><span class="c1">// このイベントハンドラーは、Fooリソースの状態をwatchし、状態が変化した時に発火する</span>
 <span class="w">    </span><span class="nx">fooInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">AddEventHandler</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">ResourceEventHandlerFuncs</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">AddFunc</span><span class="p">:</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">enqueueFoo</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">UpdateFunc</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">old</span><span class="p">,</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
@@ -21165,8 +21175,8 @@
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="c1">// Deploymentの状態をwatchする</span>
-<span class="w">    </span><span class="c1">// また、状態が変化した時に発火するリソースイベントハンドラーを定義する</span>
+<span class="w">    </span><span class="c1">// 作成するコントローラーのインフォーマーにイベントハンドラーを設定する</span>
+<span class="w">    </span><span class="c1">// このイベントハンドラーは、Deploymentの状態をwatchし、状態が変化した時に発火する</span>
 <span class="w">    </span><span class="nx">deploymentInformer</span><span class="p">.</span><span class="nx">Informer</span><span class="p">().</span><span class="nx">AddEventHandler</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">ResourceEventHandlerFuncs</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">AddFunc</span><span class="p">:</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">handleObject</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">UpdateFunc</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">old</span><span class="p">,</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
@@ -21188,7 +21198,7 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">HandleCrash</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">ShutDown</span><span class="p">()</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Starting Foo controller&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Waiting for informer caches to sync&quot;</span><span class="p">)</span>
 
@@ -21198,6 +21208,7 @@
 
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Starting workers&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;count&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">workers</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// 無限ループを定義し、Reconciliationループを実行する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">workers</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="nx">wait</span><span class="p">.</span><span class="nx">UntilWithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">runWorker</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -21216,7 +21227,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// ワーカーキューからアイテムを取得して処理し、syncHandlerをコールして処理する</span>
+<span class="c1">// ワークキューからアイテムを取得して処理し、syncHandlerをコールして処理する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">processNextWorkItem</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">shutdown</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">Get</span><span class="p">()</span>
@@ -21263,10 +21274,10 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// kube-apiserverからFooリソースの望ましい状態を取得する</span>
+<span class="w">    </span><span class="c1">// kube-apiserverからFooリソースの望ましい状態を取得する</span>
 <span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">foosLister</span><span class="p">.</span><span class="nx">Foos</span><span class="p">(</span><span class="nx">namespace</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">IsNotFound</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">HandleError</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;foo &#39;%s&#39; in work queue no longer exists&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">))</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
@@ -21282,7 +21293,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="c1">// kube-apiserverからDeploymentの望ましい状態を取得する</span>
+<span class="w">    </span><span class="c1">// kube-apiserverからDeploymentの望ましい状態を取得する</span>
 <span class="w">    </span><span class="nx">deployment</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">deploymentsLister</span><span class="p">.</span><span class="nx">Deployments</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">Namespace</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">deploymentName</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// kube-apiserverから取得したFooの実体がない場合、Deploymentを作成する</span>
@@ -21322,20 +21333,29 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
+<span class="c1">// FooカスタムリソースのステータスとDeploymentのステータスが一致していない場合、FooカスタムリソースのステータスがDeploymentに合致するように更新する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">updateFooStatus</span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="o">*</span><span class="nx">samplev1alpha1</span><span class="p">.</span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="o">*</span><span class="nx">appsv1</span><span class="p">.</span><span class="nx">Deployment</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">fooCopy</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="p">.</span><span class="nx">DeepCopy</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">fooCopy</span><span class="p">.</span><span class="nx">Status</span><span class="p">.</span><span class="nx">AvailableReplicas</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">deployment</span><span class="p">.</span><span class="nx">Status</span><span class="p">.</span><span class="nx">AvailableReplicas</span>
-<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sampleclientset</span><span class="p">.</span><span class="nx">SamplecontrollerV1alpha1</span><span class="p">().</span><span class="nx">Foos</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">Namespace</span><span class="p">).</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">TODO</span><span class="p">(),</span><span class="w"> </span><span class="nx">fooCopy</span><span class="p">,</span><span class="w"> </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">UpdateOptions</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sampleclientset</span><span class="p">.</span><span class="nx">SamplecontrollerV1alpha1</span><span class="p">().</span><span class="nx">Foos</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">Namespace</span><span class="p">).</span><span class="nx">UpdateStatus</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">TODO</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">fooCopy</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">UpdateOptions</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 
-<span class="c1">// ワーカーキューにキーを追加する</span>
+<span class="c1">// Deploymentオブジェクトのキーをワークキューに追加する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">enqueueFoo</span><span class="p">(</span><span class="nx">obj</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cache</span><span class="p">.</span><span class="nx">MetaNamespaceKeyFunc</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// namespace/nameの形式でキーを作成する</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cache</span><span class="p">.</span><span class="nx">MetaNamespaceKeyFunc</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">HandleError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
@@ -21343,6 +21363,7 @@
 <span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
 <span class="p">}</span>
 
+<span class="c1">// Deploymentを参照し、親がFooリソースであれば、enqueueFoo関数を実行する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">handleObject</span><span class="p">(</span><span class="nx">obj</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">Object</span>
@@ -21350,7 +21371,7 @@
 
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.(</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">Object</span><span class="p">);</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.(</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">Object</span><span class="p">);</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tombstone</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">obj</span><span class="p">.(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">DeletedFinalStateUnknown</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
@@ -21358,19 +21379,19 @@
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tombstone</span><span class="p">.</span><span class="nx">Obj</span><span class="p">.(</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">Object</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tombstone</span><span class="p">.</span><span class="nx">Obj</span><span class="p">.(</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">Object</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">HandleError</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;error decoding object tombstone, invalid type&quot;</span><span class="p">))</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Recovered deleted object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;resourceName&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">object</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span>
+<span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Recovered deleted object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;resourceName&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">object</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Processing object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">KObj</span><span class="p">(</span><span class="nx">object</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Processing object&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">KObj</span><span class="p">(</span><span class="nx">object</span><span class="p">))</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">ownerRef</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">GetControllerOf</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span><span class="w"> </span><span class="nx">ownerRef</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">ownerRef</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">GetControllerOf</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span><span class="w"> </span><span class="nx">ownerRef</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">ownerRef</span><span class="p">.</span><span class="nx">Kind</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
@@ -21388,17 +21409,21 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
+<span class="c1">// FooカスタムリソースのCRDに基づいて、Fooカスタムリソースの子Deploymentを作成する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">newDeployment</span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="o">*</span><span class="nx">samplev1alpha1</span><span class="p">.</span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">appsv1</span><span class="p">.</span><span class="nx">Deployment</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">labels</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
 <span class="w">        </span><span class="s">&quot;app&quot;</span><span class="p">:</span><span class="w">        </span><span class="s">&quot;nginx&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;controller&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">foo</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">appsv1</span><span class="p">.</span><span class="nx">Deployment</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">ObjectMeta</span><span class="p">:</span><span class="w"> </span><span class="nx">metav1</span><span class="p">.</span><span class="nx">ObjectMeta</span><span class="p">{</span>
 <span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w">      </span><span class="nx">foo</span><span class="p">.</span><span class="nx">Spec</span><span class="p">.</span><span class="nx">DeploymentName</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">Namespace</span><span class="p">:</span><span class="w"> </span><span class="nx">foo</span><span class="p">.</span><span class="nx">Namespace</span><span class="p">,</span>
 <span class="w">            </span><span class="c1">// リソースの親子関係を定義する</span>
 <span class="w">            </span><span class="c1">// FooリソースはDeploymentを管理するため、Fooリソースを親、Deploymentを子、として定義する</span>
+<span class="w">            </span><span class="c1">// ガベージコレクションにより、親のFooカスタムリソースを削除すると、子のDeploymentも削除する</span>
 <span class="w">            </span><span class="nx">OwnerReferences</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">OwnerReference</span><span class="p">{</span>
 <span class="w">                </span><span class="o">*</span><span class="nx">metav1</span><span class="p">.</span><span class="nx">NewControllerRef</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">samplev1alpha1</span><span class="p">.</span><span class="nx">SchemeGroupVersion</span><span class="p">.</span><span class="nx">WithKind</span><span class="p">(</span><span class="s">&quot;Foo&quot;</span><span class="p">)),</span>
 <span class="w">            </span><span class="p">},</span>
@@ -21431,6 +21456,7 @@
 <li><a href="https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93">https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93</a></li>
 <li><a href="https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go">https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go</a></li>
 <li><a href="https://kk-river108.hatenablog.com/entry/2020/12/16/184915">https://kk-river108.hatenablog.com/entry/2020/12/16/184915</a></li>
+<li><a href="https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0">https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0</a></li>
 </ul>
 </blockquote>
 <h4 id="maingo">▼ main.go<a class="headerlink" href="#maingo" title="Permanent link">&para;</a></h4>
@@ -21512,6 +21538,8 @@
 <span class="w">    </span><span class="nx">exampleInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// custom-controllerを実行する</span>
+<span class="w">    </span><span class="c1">// custom-controllerコンポーネントの処理を実行する</span>
+<span class="w">    </span><span class="c1">// https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error running controller&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FlushAndExit</span><span class="p">(</span><span class="nx">klog</span><span class="p">.</span><span class="nx">ExitFlushTimeout</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>

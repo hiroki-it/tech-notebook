@@ -14059,6 +14059,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="client-goコンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ client-goコンポーネントの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cacheディレクトリ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -21138,6 +21162,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="client-goコンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ client-goコンポーネントの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cacheディレクトリ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -21408,11 +21456,19 @@
 <p><img alt="kubernetes_custome-controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png" /></p>
 <p><br></p>
 <h3 id="client-go">client-goコンポーネント<a class="headerlink" href="#client-go" title="Permanent link">&para;</a></h3>
+<h4 id="client-go_1">▼ client-goコンポーネントの仕組み<a class="headerlink" href="#client-go_1" title="Permanent link">&para;</a></h4>
 <p>リファクター、インフォーマー、インデクサー、から構成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components</a></li>
 <li><a href="https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35">https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35</a></li>
+</ul>
+</blockquote>
+<h4 id="cache">▼ <code>cache</code>ディレクトリ<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h4>
+<p><code>cache</code>ディレクトリ配下の処理で、各コンポーネント (リファクター、インフォーマー、インデクサー) を実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/client-go/tree/master/tools/cache">https://github.com/kubernetes/client-go/tree/master/tools/cache</a></li>
 </ul>
 </blockquote>
 <p><br></p>
