@@ -1910,6 +1910,7 @@ func Invoke(ctx context.Context) error {
     wg := new(sync.WaitGroup)
     wg.Add(len(hooks))
 
+    // Goroutineの関数を反復処理する
     for i := range hooks {
 		// Goroutineを宣言して並列化
         go func(idx int) {
@@ -2484,9 +2485,13 @@ func main() {
 
 関数でGoroutine (`go func()`) を宣言すると、その関数のコールを並列化できる。
 
-ただし、main関数はGoroutine宣言された関数の完了を待たずに完了してしまうため、この関数の実行完了を待つようにする必要がある。
+並列処理により、反復処理を素早く完了できる。
 
-方法には、以下の`3`個がある。
+実行完了に一秒かかる関数があると仮定する。
+
+反復処理でこの関数をコールする場合、毎回の走査に一秒かかるため、反復の回数だけ秒数が増える。
+
+しかし、Goroutineを宣言し並列化することにより、各走査が全て並列に実行されるため、反復回数が何回であっても、一秒で処理が終了する。
 
 ```go
 package main
@@ -2555,6 +2560,8 @@ func foo() string {
 
 入れ子で実行した場合でも、全く独立して並列処理を実行する。
 
+Goroutineの親子間に依存関係はない。
+
 ```go
 package main
 
@@ -2581,7 +2588,7 @@ func foo() string {
 }
 ```
 
-> - https://copyprogramming.com/howto/should-we-do-nested-goroutines
+> - https://stackoverflow.com/questions/21789287/should-we-do-nested-goroutines
 
 <br>
 
@@ -2679,17 +2686,11 @@ func main() {
 
 ### WaitGroup
 
-1つまたは複数の関数でGoroutineを宣言したい時に使用する。
+Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。
 
-**＊実装例＊**
+Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機した上で、これらの結果を使って後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
-並列処理により、反復処理を素早く完了できる。
-
-実行完了に一秒かかる関数があると仮定する。
-
-反復処理でこの関数をコールする場合、毎回の走査に一秒かかるため、反復の回数だけ秒数が増える。
-
-しかし、Goroutineを宣言し並列化することにより、各走査が全て並列に実行されるため、反復回数が何回であっても、一秒で処理が終了する。
+単一のGoroutineを待機するのは順次実行と変わらないので、`WaitGroup`は使わない。
 
 ```go
 package main
@@ -2702,7 +2703,6 @@ import (
 
 func print(key int, value string) {
 	fmt.Println(key, value)
-	time.Sleep(time.Second * 1) // 処理完了に一秒かかると仮定する。
 }
 
 func main() {
@@ -2713,6 +2713,7 @@ func main() {
 	// 処理の開始時刻を取得
 	start := time.Now()
 
+    // Goroutineの関数を反復処理する
 	for key, value := range slice {
 
 		wg.Add(1) // go routineの宣言の数
@@ -2725,10 +2726,10 @@ func main() {
 		}(key, value)
 	}
 
-	// Add関数で指定した数のgo routineが実行されるまで待機
-	wg.Wait()
+	// Add関数で指定した数のgo routineが実行されるまで待機する
+	wg.Wait(1)
 
-	// 開始時刻から経過した秒数を取得
+	// 開始時刻から経過した秒数を取得する
 	fmt.Printf("経過秒数: %s", time.Since(start))
 }
 
@@ -2737,6 +2738,8 @@ func main() {
 // 1 b
 // 経過秒数: 1s
 ```
+
+> - https://qiita.com/maroKanatani/items/d3ec50845b3d200c999d#waitgroup%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%88%B6%E5%BE%A1
 
 <br>
 
