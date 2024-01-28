@@ -2688,6 +2688,8 @@ func main() {
 
 Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。
 
+`Add`関数、`Done`関数、`Wait`関数、で制御する。
+
 Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機した上で、これらの結果を使って後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
 単一のGoroutineを待機するのは順次実行と変わらないので、`WaitGroup`は使わない。
@@ -2701,36 +2703,43 @@ import (
 	"time"
 )
 
-func print(key int, value string) {
-	fmt.Println(key, value)
-}
-
 func main() {
-	wg := &sync.WaitGroup{}
 
 	slice := []string{"a", "b", "c"}
+
+	wg := &sync.WaitGroup{}
 
 	// 処理の開始時刻を取得
 	start := time.Now()
 
     // Goroutineの関数を反復処理する
+	// a、b、c、の分だけ反復する
 	for key, value := range slice {
 
-		wg.Add(1) // go routineの宣言の数
+		// インクリメントする
+		// 完了の待機カウンターを設定する
+		wg.Add(1)
 
 		// Goroutineを宣言して並列化
 		go func(key int, value string) {
-			// 時間のかかる処理
-			defer wg.Done()
+
 			print(key, value)
+			// デクリメントする
+			// Wait関数のカウンターを減らす
+			wg.Done()
 		}(key, value)
 	}
 
-	// Add関数で指定した数のgo routineが実行されるまで待機する
-	wg.Wait(1)
+	// カウンターがゼロになるまで待機する
+	// 全てのGorourineでDone関数を実行するのを待機する
+	wg.Wait()
 
 	// 開始時刻から経過した秒数を取得する
 	fmt.Printf("経過秒数: %s", time.Since(start))
+}
+
+func print(key int, value string) {
+	fmt.Println(key, value)
 }
 
 // 2 c
@@ -2739,7 +2748,8 @@ func main() {
 // 経過秒数: 1s
 ```
 
-> - https://qiita.com/maroKanatani/items/d3ec50845b3d200c999d#waitgroup%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%88%B6%E5%BE%A1
+> - https://free-engineer.life/golang-sync-waitgroup/
+> - https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65
 
 <br>
 
