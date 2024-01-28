@@ -158,8 +158,9 @@ type Controller struct {
 	recorder record.EventRecorder
 }
 
-func NewController(ctx context.Context, kubeclientset kubernetes.Interface, sampleclientset clientset.Interface, deploymentInformer appsinformers.DeploymentInformer, fooInformer informers.FooInformer) *Controller {logger := klog.FromContext(ctx)
+func NewController(ctx context.Context, kubeclientset kubernetes.Interface, sampleclientset clientset.Interface, deploymentInformer appsinformers.DeploymentInformer, fooInformer informers.FooInformer) *Controller {
 
+	logger := klog.FromContext(ctx)
 	utilruntime.Must(samplescheme.AddToScheme(scheme.Scheme))
 	logger.V(4).Info("Creating event broadcaster")
 	eventBroadcaster := record.NewBroadcaster()
@@ -238,7 +239,13 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 
 	// 無限ループを定義し、Reconciliationループを実行する
 	for i := 0; i < workers; i++ {
-		go wait.UntilWithContext(ctx, c.runWorker, time.Second)
+		// Goルーチンを宣言して並列化
+		go wait.UntilWithContext(
+			ctx,
+			// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する
+			c.runWorker,
+			time.Second,
+		)
 	}
 
 	logger.Info("Started workers")
@@ -274,6 +281,7 @@ func (c *Controller) processNextWorkItem(ctx context.Context) bool {
 			utilruntime.HandleError(fmt.Errorf("expected string in workqueue but got %#v", obj))
 			return nil
 		}
+		// Reconciliationを実行する
 		if err := c.syncHandler(ctx, key); err != nil {
 			c.workqueue.AddRateLimited(key)
 			return fmt.Errorf("error syncing '%s': %s, requeuing", key, err.Error())
@@ -349,6 +357,7 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 		return err
 	}
 
+	// FooカスタムリソースのステータスとDeploymentのステータスが一致していない場合、FooカスタムリソースのステータスがDeploymentに合致するように更新する
 	err = c.updateFooStatus(foo, deployment)
 
 	if err != nil {
@@ -560,13 +569,15 @@ func main() {
 	)
 
 	// Deploymentを操作するために、インフォーマーを実行する
+	// Deploymentでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	kubeInformerFactory.Start(ctx.Done())
 
 	// Fooカスタムリソースを操作するために、インフォーマーを実行する
+	// Fooカスタムリソースでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する
 	exampleInformerFactory.Start(ctx.Done())
 
 	// custom-controllerを実行する
-	// custom-controllerコンポーネントの処理を実行する
+	// ワークキュー以降の処理を実行する
 	// https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md
 	if err = controller.Run(ctx, 2); err != nil {
 		logger.Error(err, "Error running controller")
