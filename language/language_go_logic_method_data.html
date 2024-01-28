@@ -26417,6 +26417,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><br></p>
 <h3 id="waitgroup">WaitGroup<a class="headerlink" href="#waitgroup" title="Permanent link">&para;</a></h3>
 <p>Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。</p>
+<p><code>Add</code>関数、<code>Done</code>関数、<code>Wait</code>関数、で制御する。</p>
 <p>Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機した上で、これらの結果を使って後続の処理を実行するような場合に、<code>WaitGroup</code>は役立つ。</p>
 <p>単一のGoroutineを待機するのは順次実行と変わらないので、<code>WaitGroup</code>は使わない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -26427,36 +26428,43 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="s">&quot;time&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
-<span class="p">}</span>
-
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">wg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
 
 <span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">wg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
 
 <span class="w">    </span><span class="c1">// 処理の開始時刻を取得</span>
 <span class="w">    </span><span class="nx">start</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Goroutineの関数を反復処理する</span>
+<span class="w">    </span><span class="c1">// a、b、c、の分だけ反復する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// go routineの宣言の数</span>
+<span class="w">        </span><span class="c1">// インクリメントする</span>
+<span class="w">        </span><span class="c1">// 完了の待機カウンターを設定する</span>
+<span class="w">        </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1">// Goroutineを宣言して並列化</span>
 <span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 時間のかかる処理</span>
-<span class="w">            </span><span class="k">defer</span><span class="w"> </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+
 <span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">            </span><span class="c1">// デクリメントする</span>
+<span class="w">            </span><span class="c1">// Wait関数のカウンターを減らす</span>
+<span class="w">            </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
 <span class="w">        </span><span class="p">}(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Add関数で指定した数のgo routineが実行されるまで待機する</span>
-<span class="w">    </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// カウンターがゼロになるまで待機する</span>
+<span class="w">    </span><span class="c1">// 全てのGorourineでDone関数を実行するのを待機する</span>
+<span class="w">    </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// 開始時刻から経過した秒数を取得する</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;経過秒数: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 2 c</span>
@@ -26466,7 +26474,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/maroKanatani/items/d3ec50845b3d200c999d#waitgroup%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%88%B6%E5%BE%A1">https://qiita.com/maroKanatani/items/d3ec50845b3d200c999d#waitgroup%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%88%B6%E5%BE%A1</a></li>
+<li><a href="https://free-engineer.life/golang-sync-waitgroup/">https://free-engineer.life/golang-sync-waitgroup/</a></li>
+<li><a href="https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65">https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65</a></li>
 </ul>
 </blockquote>
 <p><br></p>
