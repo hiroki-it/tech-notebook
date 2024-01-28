@@ -21130,8 +21130,9 @@
 <span class="w">    </span><span class="nx">recorder</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">EventRecorder</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">NewController</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">kubeclientset</span><span class="w"> </span><span class="nx">kubernetes</span><span class="p">.</span><span class="nx">Interface</span><span class="p">,</span><span class="w"> </span><span class="nx">sampleclientset</span><span class="w"> </span><span class="nx">clientset</span><span class="p">.</span><span class="nx">Interface</span><span class="p">,</span><span class="w"> </span><span class="nx">deploymentInformer</span><span class="w"> </span><span class="nx">appsinformers</span><span class="p">.</span><span class="nx">DeploymentInformer</span><span class="p">,</span><span class="w"> </span><span class="nx">fooInformer</span><span class="w"> </span><span class="nx">informers</span><span class="p">.</span><span class="nx">FooInformer</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewController</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">kubeclientset</span><span class="w"> </span><span class="nx">kubernetes</span><span class="p">.</span><span class="nx">Interface</span><span class="p">,</span><span class="w"> </span><span class="nx">sampleclientset</span><span class="w"> </span><span class="nx">clientset</span><span class="p">.</span><span class="nx">Interface</span><span class="p">,</span><span class="w"> </span><span class="nx">deploymentInformer</span><span class="w"> </span><span class="nx">appsinformers</span><span class="p">.</span><span class="nx">DeploymentInformer</span><span class="p">,</span><span class="w"> </span><span class="nx">fooInformer</span><span class="w"> </span><span class="nx">informers</span><span class="p">.</span><span class="nx">FooInformer</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">klog</span><span class="p">.</span><span class="nx">FromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">samplescheme</span><span class="p">.</span><span class="nx">AddToScheme</span><span class="p">(</span><span class="nx">scheme</span><span class="p">.</span><span class="nx">Scheme</span><span class="p">))</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">V</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Creating event broadcaster&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">eventBroadcaster</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">record</span><span class="p">.</span><span class="nx">NewBroadcaster</span><span class="p">()</span>
@@ -21210,7 +21211,13 @@
 
 <span class="w">    </span><span class="c1">// 無限ループを定義し、Reconciliationループを実行する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">workers</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="nx">wait</span><span class="p">.</span><span class="nx">UntilWithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">runWorker</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// Goルーチンを宣言して並列化</span>
+<span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="nx">wait</span><span class="p">.</span><span class="nx">UntilWithContext</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する</span>
+<span class="w">            </span><span class="nx">c</span><span class="p">.</span><span class="nx">runWorker</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Started workers&quot;</span><span class="p">)</span>
@@ -21246,6 +21253,7 @@
 <span class="w">            </span><span class="nx">utilruntime</span><span class="p">.</span><span class="nx">HandleError</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;expected string in workqueue but got %#v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">obj</span><span class="p">))</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// Reconciliationを実行する</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">syncHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">c</span><span class="p">.</span><span class="nx">workqueue</span><span class="p">.</span><span class="nx">AddRateLimited</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;error syncing &#39;%s&#39;: %s, requeuing&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
@@ -21321,6 +21329,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// FooカスタムリソースのステータスとDeploymentのステータスが一致していない場合、FooカスタムリソースのステータスがDeploymentに合致するように更新する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">updateFooStatus</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">deployment</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -21532,13 +21541,15 @@
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Deploymentを操作するために、インフォーマーを実行する</span>
+<span class="w">    </span><span class="c1">// Deploymentでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する</span>
 <span class="w">    </span><span class="nx">kubeInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、インフォーマーを実行する</span>
+<span class="w">    </span><span class="c1">// Fooカスタムリソースでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する</span>
 <span class="w">    </span><span class="nx">exampleInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// custom-controllerを実行する</span>
-<span class="w">    </span><span class="c1">// custom-controllerコンポーネントの処理を実行する</span>
+<span class="w">    </span><span class="c1">// ワークキュー以降の処理を実行する</span>
 <span class="w">    </span><span class="c1">// https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">controller</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error running controller&quot;</span><span class="p">)</span>
