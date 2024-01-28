@@ -342,8 +342,8 @@ func (c *Controller) syncHandler(ctx context.Context, key string) error {
 		return err
 	}
 
-  // custom-controllerの処理結果をイベントとして登録する
-  // kubectl eventsコマンドで確認できるようになる
+    // custom-controllerの処理結果をイベントとして登録する
+    // kubectl eventsコマンドで確認できるようになる
 	c.recorder.Event(foo, corev1.EventTypeNormal, SuccessSynced, MessageResourceSynced)
 	return nil
 }
@@ -423,8 +423,8 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      foo.Spec.DeploymentName,
 			Namespace: foo.Namespace,
-      // リソースの親子関係を定義する
-      // FooリソースはDeploymentを管理するため、Fooリソースを親、Deploymentを子、として定義する
+            // リソースの親子関係を定義する
+            // FooリソースはDeploymentを管理するため、Fooリソースを親、Deploymentを子、として定義する
 			OwnerReferences: []metav1.OwnerReference{
 				*metav1.NewControllerRef(foo, samplev1alpha1.SchemeGroupVersion.WithKind("Foo")),
 			},
@@ -475,40 +475,55 @@ var (
 )
 
 func main() {
+
 	klog.InitFlags(nil)
 	flag.Parse()
 
 	ctx := signals.SetupSignalHandler()
 	logger := klog.FromContext(ctx)
 
+	// kubeconfigを作成する
 	cfg, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
+
 	if err != nil {
 		logger.Error(err, "Error building kubeconfig")
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
+	// kube-apiserverにクライアントを作成する
 	kubeClient, err := kubernetes.NewForConfig(cfg)
+
 	if err != nil {
 		logger.Error(err, "Error building kubernetes clientset")
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
+	// kube-apiserverのクライアントのセットを作成する
 	exampleClient, err := clientset.NewForConfig(cfg)
+
 	if err != nil {
 		logger.Error(err, "Error building kubernetes clientset")
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
 	}
 
-	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
-	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second*30)
+	// インフォーマーを作成する
+	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second * 30)
+	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second * 30)
 
-	controller := NewController(ctx, kubeClient, exampleClient,
+	// custom-controllerを作成する
+	controller := NewController(
+		ctx,
+		kubeClient,
+		exampleClient,
 		kubeInformerFactory.Apps().V1().Deployments(),
-		exampleInformerFactory.Samplecontroller().V1alpha1().Foos())
+		exampleInformerFactory.Samplecontroller().V1alpha1().Foos(),
+	)
 
+	// インフォーマーを実行する
 	kubeInformerFactory.Start(ctx.Done())
 	exampleInformerFactory.Start(ctx.Done())
 
+	// custom-controllerを実行する
 	if err = controller.Run(ctx, 2); err != nil {
 		logger.Error(err, "Error running controller")
 		klog.FlushAndExit(klog.ExitFlushTimeout, 1)
@@ -516,8 +531,22 @@ func main() {
 }
 
 func init() {
-	flag.StringVar(&kubeconfig, "kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
-	flag.StringVar(&masterURL, "master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
+
+	// kubeconfigを設定する
+	flag.StringVar(
+		&kubeconfig,
+		"kubeconfig",
+		"",
+		"Path to a kubeconfig. Only required if out-of-cluster.",
+	)
+
+	// kube-apiserverのURLを設定する
+	flag.StringVar(
+		&masterURL,
+		"master",
+		"",
+		"The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster."
+	)
 }
 ```
 

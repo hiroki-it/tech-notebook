@@ -205,3 +205,38 @@ $ go test -cover ./...
 ```
 
 <br>
+
+## 02. ユーザー定義のオプション
+
+### flag
+
+コマンドでユーザー定義のオプションを設定する。
+
+```go
+
+...
+
+kubeconfig = flag.String(
+	 "kubeconfig",
+	 filepath.Join(home, ".kube", "config"),
+	 "(optional) absolute path to the kubeconfig file",
+)
+
+flag.Parse()
+
+...
+
+```
+
+`help`オプションで確認できる。
+
+```bash
+$ go run app --help
+Usage of app:
+  -kubeconfig string
+        (optional) absolute path to the kubeconfig file (default "/Users/foo/.kube/config")
+```
+
+> - https://qiita.com/oruharo/items/8f98e75264b9d6c7df2a#flag
+
+<br>

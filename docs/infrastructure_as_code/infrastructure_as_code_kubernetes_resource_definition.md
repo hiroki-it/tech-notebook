@@ -337,7 +337,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-kube-apiserverのクライアント (特に`kubectl`コマン実行者) のUserAccountの情報を設定する。
+kube-apiserverのクライアント (特に`kubectl`コマンド実行者) のUserAccountの情報を設定する。
 
 > - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
