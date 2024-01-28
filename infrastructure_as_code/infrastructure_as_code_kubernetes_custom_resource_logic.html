@@ -21211,7 +21211,7 @@
 
 <span class="w">    </span><span class="c1">// 無限ループを定義し、Reconciliationループを実行する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">workers</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Goルーチンを宣言して並列化</span>
+<span class="w">        </span><span class="c1">// Goroutineを宣言して並列化</span>
 <span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="nx">wait</span><span class="p">.</span><span class="nx">UntilWithContext</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">            </span><span class="c1">// ワークキューから継続的にアイテムを取得し、syncHandlerをコールして処理する</span>
@@ -21544,12 +21544,12 @@
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// (4) 〜 (7)</span>
-<span class="w">    </span><span class="c1">// Deploymentを操作するために、インフォーマーをGoルーチンで実行する</span>
+<span class="w">    </span><span class="c1">// Deploymentを操作するために、インフォーマーをGoroutineで実行する</span>
 <span class="w">    </span><span class="c1">// Deploymentでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する</span>
 <span class="w">    </span><span class="nx">kubeInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// (4) 〜 (7)</span>
-<span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、インフォーマーをGoルーチンで実行する</span>
+<span class="w">    </span><span class="c1">// Fooカスタムリソースを操作するために、インフォーマーをGoroutineで実行する</span>
 <span class="w">    </span><span class="c1">// Fooカスタムリソースでイベントが発生すれば、イベントハンドラーがワークキューにオブジェクトキーを格納する</span>
 <span class="w">    </span><span class="nx">exampleInformerFactory</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">())</span>
 
