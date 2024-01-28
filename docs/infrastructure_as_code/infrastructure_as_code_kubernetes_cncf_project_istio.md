@@ -374,13 +374,13 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 <br>
 
-## 05. ペイロードの暗号化
+## 05. パケットペイロードの暗号化
 
 ### 相互TLS認証
 
 #### ▼ 相互TLS認証とは
 
-相互TLS認証を実施し、`L7`のペイロードを暗号化/復号化する。
+相互TLS認証を実施し、`L7`のパケットペイロードを暗号化/復号化する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
