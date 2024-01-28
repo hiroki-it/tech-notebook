@@ -2483,15 +2483,7 @@ func main() {
 
 結果、完了する順番は順不同になる。
 
-関数でGoroutine (`go func()`) を宣言すると、その関数のコールを並列化できる。
-
-並列処理により、反復処理を素早く完了できる。
-
-実行完了に一秒かかる関数があると仮定する。
-
-反復処理でこの関数をコールする場合、毎回の走査に一秒かかるため、反復の回数だけ秒数が増える。
-
-しかし、Goroutineを宣言し並列化することにより、各走査が全て並列に実行されるため、反復回数が何回であっても、一秒で処理が終了する。
+関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。
 
 ```go
 package main
@@ -2526,7 +2518,7 @@ func main() {
 
 #### ▼ 返却処理はエラーになる
 
-Goroutineは、処理の完了を待たずに後続の処理を実行させる。
+関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。
 
 返却処理 (`return`) は、処理の完了を待つことになるため、Goroutineとは矛盾する。
 
@@ -2558,7 +2550,7 @@ func foo() string {
 
 #### ▼ Goroutineを入れ子にできる
 
-入れ子で実行した場合でも、全く独立して並列処理を実行する。
+入れ子で実行した場合でも、全く独立してGoroutineを実行する。
 
 Goroutineの親子間に依存関係はない。
 
@@ -2592,9 +2584,11 @@ func foo() string {
 
 <br>
 
-## 05-02. Goroutine
+## 05-02. Goroutineと合わせて使用する処理
 
 ### channel (チャンネル)
+
+#### ▼ channelとは
 
 異なるGoroutine間で値を送受信するキューとして動作する。
 
@@ -2628,11 +2622,9 @@ func main() {
 
 > - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
-<br>
+#### ▼ cancel、Done
 
-### Done
-
-`cancel`関数による並列処理の中断を検知する。
+`cancel`関数によるGoroutineの中断を検知する。
 
 ```go
 package main
@@ -2658,7 +2650,7 @@ func main() {
 		// 時間のかかる処理
 		// チャンネルに値を送信する。
 		channel <- "ping"
-		// 並列処理を中断する
+		// Goroutineを中断する
 		cancel()
 	}()
 
@@ -2671,7 +2663,7 @@ func main() {
 
 		// cancel関数を実行した場合
 		case <-ctx.Done():
-			log.Printf("並列処理が完了しました")
+			log.Printf("Goroutineが完了しました")
 			return
 		}
 	}
@@ -2682,17 +2674,94 @@ func main() {
 > - https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips
 > - https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20
 
+#### ▼ select
+
+チャンネルに対する格納を非同期で待機する。
+
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+
+	// チャンネルを作成する。
+    c1 := make(chan string)
+    c2 := make(chan string)
+
+	// Goroutineを宣言して並列化
+    go func() {
+		// 時間のかかる処理
+		// 完了までに2秒かかるとする。
+        time.Sleep(2 * time.Second)
+		// 値を送信する。
+        c1 <- "one"
+    }()
+
+	// Goroutineを宣言して並列化
+    go func() {
+		// 時間のかかる処理
+		// 完了までに1秒かかるとする。
+        time.Sleep(1 * time.Second)
+		// 値を送信する。
+        c2 <- "two"
+    }()
+
+    for i := 0; i < 2; i++ {
+        select {
+		// Goroutineの処理の完了タイミングがバラバラになる
+		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
+        case msg1 := <-c1:
+            fmt.Println("received", msg1)
+        case msg2 := <-c2:
+            fmt.Println("received", msg2)
+		// 受信が成功しなければ、defaultで処理する。
+        default:
+			fmt.Println("default")
+		}
+    }
+}
+```
+
+> - https://www.spinute.org/go-by-example/select.html
+> - https://leben.mobi/go/channel-and-select/go-programming/
+
+#### ▼ WaitGroupとの使い分け
+
+channelを使用すると、異なるGoroutine間で値を送受信できる。
+
+そのため、Goroutineの処理結果を使用したい場合は、WaitGroupではなくchannelを使用する方が良い。
+
+一方で、channelでは`select`関数が必要になり、処理が複雑になることに注意する。
+
+> - https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup
+
 <br>
 
 ### WaitGroup
+
+#### ▼ WaitGroupとは
 
 Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。
 
 `Add`関数、`Done`関数、`Wait`関数、で制御する。
 
-Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機した上で、これらの結果を使って後続の処理を実行するような場合に、`WaitGroup`は役立つ。
+Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
 単一のGoroutineを待機するのは順次実行と変わらないので、`WaitGroup`は使わない。
+
+**実行例**
+
+実行完了に1秒かかる関数があると仮定する。
+
+反復処理でこの関数をコールする場合、毎回の走査に1秒かかるため、反復の回数だけ秒数が増える。
+
+しかし、各関数をGoroutineとして実行すると、各反復処理を並列実行できる。
+
+そのため、反復回数が何回であっても、およそ1秒で処理が終了する。
 
 ```go
 package main
@@ -2751,67 +2820,21 @@ func print(key int, value string) {
 > - https://free-engineer.life/golang-sync-waitgroup/
 > - https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65
 
+#### ▼ channelとの使い分け
+
+WaitGroupを使用すると、`Add`関数、`Done`関数、`Wait`関数を使用して、Goroutineを簡単に制御できる。
+
+そのため、Goroutineの処理結果を使用したい場合は、WaitGroupではなくchannelを使用する方が良い。
+
+一方で、WaitGroupではGoroutine間で値の送受信はできないことに注意する。
+
+> - https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup
+
 <br>
 
 ### errgroup
 
 エラー処理を含む関数でGoroutineを宣言したい時に使用する。
-
-<br>
-
-### select
-
-チャンネルに対する格納を非同期で待機する。
-
-```go
-package main
-
-import (
-    "fmt"
-    "time"
-)
-
-func main() {
-
-	// チャンネルを作成する。
-    c1 := make(chan string)
-    c2 := make(chan string)
-
-	// Goroutineを宣言して並列化
-    go func() {
-		// 時間のかかる処理
-		// 完了までに2秒かかるとする。
-        time.Sleep(2 * time.Second)
-		// 値を送信する。
-        c1 <- "one"
-    }()
-	// Goroutineを宣言して並列化
-    go func() {
-		// 時間のかかる処理
-		// 完了までに1秒かかるとする。
-        time.Sleep(1 * time.Second)
-		// 値を送信する。
-        c2 <- "two"
-    }()
-
-    for i := 0; i < 2; i++ {
-        select {
-		// Goroutineの処理の完了タイミングがバラバラになる
-		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
-        case msg1 := <-c1:
-            fmt.Println("received", msg1)
-        case msg2 := <-c2:
-            fmt.Println("received", msg2)
-		// 受信が成功しなければ、defaultで処理する。
-        default:
-			fmt.Println("default")
-		}
-    }
-}
-```
-
-> - https://www.spinute.org/go-by-example/select.html
-> - https://leben.mobi/go/channel-and-select/go-programming/
 
 <br>
 
