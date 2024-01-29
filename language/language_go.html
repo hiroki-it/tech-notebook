@@ -21796,14 +21796,17 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_5">パッケージの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>パッケージの場合、<code>main.go</code>ファイルは不要である。</p>
+<p>代わりに、バージョンを取得するためのファイルを用意する。</p>
+<p>安全に処理を終了するGraceful Shutdown処理を定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$GOPATH/</span><span class="w"> </span><span class="c1"># 例えば、『$HOME/go』とする。</span>
 <span class="l l-Scalar l-Scalar-Plain">├── bin/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── &lt;パッケージ名&gt;/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── version.go</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── baz/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── baz-1.go</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-2.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── baz/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── shutdown/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── shutdown.go</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. ファイルの要素<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
