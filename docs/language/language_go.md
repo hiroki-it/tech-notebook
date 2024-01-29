@@ -205,6 +205,22 @@ func foo() {
 }
 ```
 
+#### ▼ type
+
+データ型にユーザー定義の名前をつけられる。
+
+`func`と同じファイルに定義する。
+
+```go
+type Foo int
+
+type Bar string
+
+type Baz struct {
+	...
+}
+```
+
 #### ▼ 文の区切り
 
 Goでは文の処理はセミコロンで区切られる。
