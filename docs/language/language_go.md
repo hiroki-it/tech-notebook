@@ -101,9 +101,9 @@ CMD ["/go/bin/cmd"]
 
 <br>
 
-## 03. 設計規約
+## 03. ディレクトリ構成規約
 
-### ディレクトリ構成規約
+### アプリの場合
 
 #### ▼ `$GOPATH`
 
@@ -169,9 +169,26 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 <br>
 
-### ファイルの要素
+### パッケージの場合
 
-#### ▼ package
+パッケージの場合、`main.go`ファイルは不要である。
+
+```yaml
+$GOPATH/ # 例えば、『$HOME/go』とする。
+├── bin/
+└── <パッケージ名>/
+    ├── foo/
+    ├── bar/
+    └── baz/
+        ├── baz-1.go
+        └── baz-2.go
+```
+
+<br>
+
+## 04. ファイルの要素
+
+### package
 
 名前空間として、パッケージ名を定義する。
 
@@ -181,7 +198,9 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 package main
 ```
 
-#### ▼ import
+<br>
+
+### import
 
 ビルトインパッケージ、内部パッケージ、事前にインストールされた外部パッケージを読み込む。
 
@@ -195,7 +214,9 @@ import "<パッケージ名>"
 
 ![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png)
 
-#### ▼ func
+<br>
+
+### func
 
 詳しくは、関数を参考にせよ。
 
@@ -205,7 +226,9 @@ func foo() {
 }
 ```
 
-#### ▼ type
+<br>
+
+### type
 
 データ型にユーザー定義の名前をつけられる。
 
@@ -221,7 +244,9 @@ type Baz struct {
 }
 ```
 
-#### ▼ 文の区切り
+<br>
+
+### 文の区切り
 
 Goでは文の処理はセミコロンで区切られる。
 
@@ -229,21 +254,25 @@ Goでは文の処理はセミコロンで区切られる。
 
 <br>
 
-### 命名規則
+## 05. 命名規則
 
-#### ▼ GitHubWikiによる規則
+### GitHubWikiによる規則
 
 Goの命名規則は、GitHubのWikiに記載されている。
 
 > - https://github.com/golang/go/wiki/CodeReviewComments
 
-#### ▼ ディレクトリ名
+<br>
+
+### ディレクトリ名
 
 小文字一単語またはケバブケースで命名する。
 
 ビルド時にシンタックスエラーとなる可能性があるため、できる限りハイフンを使用しない方が良い。
 
-#### ▼ パッケージ名
+<br>
+
+### パッケージ名
 
 親ディレクトリ名で命名する。
 
@@ -253,11 +282,15 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#package-names
 
-#### ▼ モジュール名
+<br>
+
+### モジュール名
 
 リポジトリ名で命名する。
 
-#### ▼ ファイル名
+<br>
+
+### ファイル名
 
 小文字一単語またはスネークケースで命名する。
 
@@ -267,17 +300,23 @@ Goの命名規則は、GitHubのWikiに記載されている。
 
 > - https://ja.stackoverflow.com/q/41599
 
-#### ▼ 関数、type、構造体
+<br>
+
+### 関数名、type、構造名
 
 アッパーキャメルケースまたはローワーキャメルケースで命名する。
 
-#### ▼ インターフェース名
+<br>
+
+### インターフェース名
 
 末尾に『`er`』をつける。
 
 > - https://golang.org/doc/effective_go#interface-names
 
-#### ▼ レシーバ名
+<br>
+
+### レシーバ名
 
 構造体名の頭一文字または頭二文字を取って命名する。
 
@@ -296,7 +335,9 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 > - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
 > - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
-#### ▼ 一時的な変数名
+<br>
+
+### 一時的な変数名
 
 英単語の頭一文字、頭二文字、略語、で命名する。
 
@@ -312,15 +353,21 @@ httpClientであれば、修飾語は『`http`』被修飾語『`client`』で�
 
 > - https://www.allacronyms.com/
 
-#### ▼ モックの変数
+<br>
+
+### モックの変数
 
 モック構造体を代入するための変数は、『`m`』とする。
 
-#### ▼ error構造体の変数
+<br>
+
+### error構造体の変数
 
 error構造体を変数に代入する場合、『`Err`』と接頭辞をつける。
 
-#### ▼ キー名の検証
+<br>
+
+### キー名の検証
 
 マップ型やスライス型で指定したキー名が存在するか検証する場合、boolean値を代入する変数を『`ok`』とする。
 
@@ -352,21 +399,25 @@ func main() {
 
 <br>
 
-### その他のお作法
+## 06. その他のお作法
 
-#### ▼ コメントの書式
+### コメントの書式
 
 記入中...
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
 
-#### ▼ Uber風のお作法
+<br>
+
+### Uber風のお作法
 
 Uber社が採用しているお作法。
 
 > - https://github.com/uber-go/guide/blob/master/style.md
 
-#### ▼ イミュータブルにできない
+<br>
+
+### イミュータブルにできない
 
 Goには、標準でイミュータブルの機能がなく、これを無理に実現しようとすると逆に保守性が低くなることがある。
 

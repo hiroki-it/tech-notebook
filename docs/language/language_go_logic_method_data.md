@@ -1993,7 +1993,7 @@ func AddShutdownHook(hook func()) {
 	hooks = append(hooks, hook)
 }
 
-// 追加した関数を並行的にコールする関数
+// プロセスを安全に終了する
 func Shutdown() {
 
 	hooks := hooks

@@ -1130,7 +1130,9 @@ func main() {
 
 #### ▼ `go mod tidy`
 
-インポートされているパッケージに合わせて、`go.mod`ファイルと`go.sum`ファイルを更新する。
+`import`で指定されているパッケージに合わせて、`go.mod`ファイルと`go.sum`ファイルを更新する。
+
+`import`で指定のないパッケージは、`go.mod`ファイルから削除する。
 
 また、パッケージがインストールされていない場合は、これをインストールする。
 
@@ -1144,6 +1146,8 @@ $ go mod tidy
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
         go get github.com/hiroki-hasegawa/bar/cmd
 ```
+
+> - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
 
 <br>
 
