@@ -2421,6 +2421,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_go_lint.html</loc>
+         <lastmod>2024-01-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_e2e.html</loc>
          <lastmod>2024-01-29</lastmod>
          <changefreq>daily</changefreq>
