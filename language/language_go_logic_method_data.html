@@ -25946,7 +25946,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hooks</span><span class="p">,</span><span class="w"> </span><span class="nx">hook</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">// 追加した関数を並行的にコールする関数</span>
+<span class="c1">// プロセスを安全に終了する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">Shutdown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">hooks</span>
