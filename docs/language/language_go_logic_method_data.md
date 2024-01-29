@@ -1987,7 +1987,7 @@ package shutdown
 
 var hooks = make([]func(), 0)
 
-// 実行したい関数を追加する関数
+// プロセスの終了前に実行したい関数を追加する
 func AddShutdownHook(hook func()) {
 
 	hooks = append(hooks, hook)
