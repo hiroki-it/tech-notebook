@@ -2181,6 +2181,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_structured_design.html</loc>
+         <lastmod>2024-01-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_javascript.html</loc>
          <lastmod>2024-01-29</lastmod>
          <changefreq>daily</changefreq>
