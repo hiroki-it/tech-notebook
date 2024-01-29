@@ -37,14 +37,36 @@ custom-controllerは、client-goコンポーネントとcustom-controller-compon
 
 #### ▼ client-goコンポーネントの仕組み
 
-リファクター、インフォーマー、インデクサー、から構成される。
+リフレクター、インフォーマー、インデクサー、から構成される。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
 > - https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35
 
-#### ▼ `cache`ディレクトリ
+#### ▼ リフレクター
 
-`cache`ディレクトリ配下の処理で、各コンポーネント (リファクター、インフォーマー、インデクサー) を実行する。
+kube-apiserverからKubernetesリソースのマニフェストの変更を検知する。
+
+また、変更内容に応じて作成したKubernetesリソースの実体をDelta FIFOキューに格納する。
+
+`cache`ディレクトリ配下の処理で、リフレクターを実行する。
+
+> - https://github.com/kubernetes/client-go/tree/master/tools/cache
+
+#### ▼ インフォーマー
+
+Delta FIFOキューからKubernetesリソースの実体を取得する。
+
+また、これをインデクサーやcustom-controllerに渡す。
+
+`cache`ディレクトリ配下の処理で、インフォーマーを実行する。
+
+> - https://github.com/kubernetes/client-go/tree/master/tools/cache
+
+#### ▼ インデクサー
+
+Kubernetesリソースの実体をNodeのメモリ上に保管する。
+
+`cache`ディレクトリ配下の処理で、インデクサーを実行する。
 
 > - https://github.com/kubernetes/client-go/tree/master/tools/cache
 
