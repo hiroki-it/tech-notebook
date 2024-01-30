@@ -1337,6 +1337,60 @@ func init() {
 }
 ```
 
+#### ▼ 環境変数に取得
+
+フォールバック (変数や定数に値が格納されていない場合に、代わりに使用する処理) で環境変数を取得すると、デフォルト値を設定できる。
+
+環境変数がstring型かfloat64型かに合わせて、関数を定義しておく。
+
+```go
+package config
+
+import "os"
+
+// 環境変数名を設定する
+const (
+	Foo = "FOO"
+	Bar = "BAR"
+	Baz = "Baz"
+)
+
+func init() {
+
+	// 環境変数名を指定して値を取得する
+	foo := getStringEnv(Foo, "foo")
+	bar := getStringEnv(Bar, "bar")
+	baz := getFloatEnv(Baz, 1.0)
+}
+
+// 環境変数をstring型で取得する
+func getStringEnv(key, fallback string) string {
+
+	value := os.Getenv(key)
+
+	// もし.envファイルなどで値を設定していれば、その値を返却する
+	if len(value) != 0 {
+		return value
+	}
+
+	// 環境変数の値が空文字だった場合は、fallbackをデフォルト値として返却する
+	return fallback
+}
+
+// 環境変数をfloat64型で取得する
+func getFloatEnv(key string, fallback float64) float64 {
+	value, err := strconv.ParseFloat(getStringEnv(key, "1.0"), 64)
+	if err != nil {
+		return fallback
+	}
+	return value
+}
+
+```
+
+> - https://stackoverflow.com/a/40326580
+> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
+
 <br>
 
 ### main関数
@@ -1830,39 +1884,6 @@ func main() {
 
 > - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
 > - https://blog.kazu69.net/2018/02/22/golang-functional-options/
-
-<br>
-
-### フォールバック
-
-変数や定数に値が格納されていない場合に、代わりに使用する処理のこと。
-
-```go
-package main
-
-const (
-	Foo = ""
-)
-
-func main()  {
-    return getEnv(Foo, "foo")
-}
-
-func getEnv(key, fallback string) string {
-
-	value := os.Getenv(key)
-
-	if len(value) != 0 {
-		return value
-	}
-
-	// 環境変数の値が空文字だった場合は、fallbackを返却する
-	return fallback
-}
-```
-
-> - https://stackoverflow.com/a/40326580
-> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
 
 <br>
 
