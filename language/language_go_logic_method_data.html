@@ -25389,18 +25389,19 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
 
+<span class="c1">// 環境変数名を設定する</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
-<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
-<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;baz&quot;</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span>
+<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// 環境変数を取得して変数に格納する</span>
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">Bar</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="nx">BAZ</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 環境変数名を指定して値を格納する</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">Bar</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">Baz</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

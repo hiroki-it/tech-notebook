@@ -23846,7 +23846,7 @@
 <h4 id="_15">▼ ユースケースとメソッド名<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。</p>
 <p>そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。</p>
-<p>フレームワークのLaravelの基本的なメソッド名 (index、store、create、show、update) が参考になる。</p>
+<p>フレームワークのLaravelの基本的なメソッド名 (<code>index</code>、<code>store</code>、<code>create</code>、<code>show</code>、<code>update</code>) が参考になる。</p>
 <p><code>CREATE</code>処理と<code>UPDATE</code>処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
@@ -23859,39 +23859,39 @@
 </thead>
 <tbody>
 <tr>
-<td>indexFoo</td>
-<td>indexFooRequest</td>
-<td>indexFooResponse</td>
+<td><code>indexFoo</code></td>
+<td><code>indexFooRequest</code></td>
+<td><code>indexFooResponse</code></td>
 <td></td>
 </tr>
 <tr>
-<td>showFoo</td>
-<td>showFooRequest</td>
-<td>showFooResponse</td>
+<td><code>showFoo</code></td>
+<td><code>showFooRequest</code></td>
+<td><code>showFooResponse</code></td>
 <td></td>
 </tr>
 <tr>
-<td>createFoo</td>
-<td>createFooRequest</td>
-<td>createFooResponse</td>
+<td><code>createFoo</code></td>
+<td><code>createFooRequest</code></td>
+<td><code>createFooResponse</code></td>
 <td></td>
 </tr>
 <tr>
-<td>updateFoo</td>
-<td>updateFooRequest</td>
-<td>updateFooResponse</td>
+<td><code>updateFoo</code></td>
+<td><code>updateFooRequest</code></td>
+<td><code>updateFooResponse</code></td>
 <td></td>
 </tr>
 <tr>
-<td>saveFoo (upsertFoo)</td>
-<td>saveFooRequest (upsertFooRequest)</td>
-<td>saveFooResponse (upsertFooResponse)</td>
+<td><code>saveFoo</code> (<code>upsertFoo</code>)</td>
+<td><code>saveFooRequest</code> (<code>upsertFooRequest</code>)</td>
+<td><code>saveFooResponse</code> (<code>upsertFooResponse</code>)</td>
 <td>リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>- <a href="https://github.com/little-hands/ddd-q-and-a/issues/241">https://github.com/little-hands/ddd-q-and-a/issues/241</a></td>
 </tr>
 <tr>
-<td>deleteFoo</td>
-<td>deleteFooRequest</td>
-<td>deleteFooResponse</td>
+<td><code>deleteFoo</code></td>
+<td><code>deleteFooRequest</code></td>
+<td><code>deleteFooResponse</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -26253,7 +26253,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-30</span>
   </span>
 
     
