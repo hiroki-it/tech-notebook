@@ -1005,6 +1005,52 @@ func main() {
 }
 ```
 
+#### ▼ ミドルウェア処理
+
+**＊実装例＊**
+
+HTMLをレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
+
+```go
+package main
+
+import (
+	"log"
+	"net/http"
+)
+
+// ミドルウェア処理として、Cookieヘッダーに "admin" を持つかをHandler処理前に検証する
+func requireAdminCookie(handler http.Handler) http.Handler {
+	fn := func(writer http.ResponseWriter, req *http.Request) {
+		_, err := r.Cookie("admin")
+		if err != nil {
+			http.Error(writer, "No admin cookie", http.StatusForbidden)
+			return
+		}
+		// Cookieヘッダーに問題がなければ、引数のリクエスト処理を返却する
+		handler.ServeHTTP(writer, req)
+	}
+	return http.HandlerFunc(fn)
+}
+
+func myHandler(writer http.ResponseWriter, request *http.Request) {
+	// HTMLをレスポンスとして返信する。
+	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+}
+
+
+func main() {
+	mux := http.NewServeMux()
+	// Hadler処理前にミドルウェア処理を実行する
+	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(handleAdmin)))
+	if err := http.ListenAndServe(":8080", mux); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+> - https://journal.lampetty.net/entry/implementing-middleware-with-http-package-in-go
+
 <br>
 
 ### os
