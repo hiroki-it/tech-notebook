@@ -21700,7 +21700,7 @@
 </ul>
 </blockquote>
 <h4 id="rpc_1">▼ 単項RPCのインターセプター<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
-<p>単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>UnaryInterceptor</code>で定義できる／</p>
+<p>単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>UnaryInterceptor</code>で定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">*</span><span class="nx">UnaryServerInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="nx">UnaryHandler</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">resp</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
@@ -21731,7 +21731,7 @@
 </ul>
 </blockquote>
 <h4 id="rpc_3">▼ サーバーストリーミングRPCのインターセプター<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
-<p>サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる／</p>
+<p>サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">srv</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">ServerStream</span><span class="p">,</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">*</span><span class="nx">StreamServerInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="nx">StreamHandler</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 </code></pre></div>
 <blockquote>
@@ -21762,7 +21762,7 @@
 </ul>
 </blockquote>
 <h4 id="rpc_5">▼ クライアントストリーミングRPCのインターセプター<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
-<p>クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる／</p>
+<p>クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">srv</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">ServerStream</span><span class="p">,</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">*</span><span class="nx">StreamServerInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="nx">StreamHandler</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 </code></pre></div>
 <blockquote>
@@ -21805,7 +21805,7 @@
 </ul>
 </blockquote>
 <h4 id="rpc_7">▼ 双方向ストリーミングRPCのインターセプター<a class="headerlink" href="#rpc_7" title="Permanent link">&para;</a></h4>
-<p>双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる／</p>
+<p>双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、<code>StreamServerInterceptor</code>で定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">srv</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">ServerStream</span><span class="p">,</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">*</span><span class="nx">StreamServerInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="nx">StreamHandler</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 </code></pre></div>
 <blockquote>
