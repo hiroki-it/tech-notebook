@@ -127,6 +127,15 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 ドメインの名前解決では、IPアドレスを指定した割合で返却する。
 
+| レコード名    | ルーティングポリシー | 重み付け | ルーティング先 |
+| ------------- | -------------------- | -------- | -------------- |
+| `example.com` | 加重                 | `30`     | Blue ALB       |
+| `example.com` | 加重                 | `70`     | Green ALB      |
+
+![aws_route53_routing-policy_weighted-routing.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
+
+> - https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000
+
 <br>
 
 ## 03 Route53 + DNSサーバーによる名前解決の仕組み

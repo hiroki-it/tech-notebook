@@ -78,7 +78,7 @@ service Request {
 
 #### ▼ 単項RPCのインターセプター
 
-単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、`UnaryInterceptor`で定義できる／
+単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、`UnaryInterceptor`で定義できる。
 
 ```go
 type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (resp interface{}, err error)
@@ -116,7 +116,7 @@ service Notification {
 
 #### ▼ サーバーストリーミングRPCのインターセプター
 
-サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる／
+サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
@@ -154,7 +154,7 @@ service Upload {
 
 #### ▼ クライアントストリーミングRPCのインターセプター
 
-クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる／
+クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
@@ -204,7 +204,7 @@ service Chat {
 
 #### ▼ 双方向ストリーミングRPCのインターセプター
 
-双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる／
+双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error

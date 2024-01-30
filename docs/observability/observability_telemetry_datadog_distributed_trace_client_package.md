@@ -397,12 +397,12 @@ func main() {
 		// 単項RPCの場合のインターセプター処理
 		grpc.UnaryInterceptor(grpc.UnaryServerInterceptor(
             // マイクロサービスの属性情報
-            grpctracer.WithServiceName("foo-service")),
+            grpctracer.WithServiceName("foo-service"),
         ),
 		// ストリーミングRPCの場合のインターセプター処理
 		grpc.StreamInterceptor(grpc.StreamServerInterceptor(
 			// マイクロサービスの属性情報
-            grpctracer.WithServiceName("foo-service")),
+            grpctracer.WithServiceName("foo-service"),
         ),
 	)
 
