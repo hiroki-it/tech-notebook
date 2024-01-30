@@ -1364,7 +1364,7 @@ func init() {
 }
 
 // 環境変数をstring型で取得する
-func getStringEnv(key, fallback string) string {
+func getStringEnv(key string, fallback string) string {
 
 	value := os.Getenv(key)
 
