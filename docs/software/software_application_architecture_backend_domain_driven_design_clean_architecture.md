@@ -181,18 +181,18 @@ class FormatValidator
 
 そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。
 
-フレームワークのLaravelの基本的なメソッド名 (index、store、create、show、update) が参考になる。
+フレームワークのLaravelの基本的なメソッド名 (`index`、`store`、`create`、`show`、`update`) が参考になる。
 
 `CREATE`処理と`UPDATE`処理をSAVE処理としてまとめても良い。
 
-| メソッド名          | 引数型                            | 返却値型                            | 処理内容                                                                                                                                                                           |
-| ------------------- | --------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| indexFoo            | indexFooRequest                   | indexFooResponse                    |                                                                                                                                                                                    |
-| showFoo             | showFooRequest                    | showFooResponse                     |                                                                                                                                                                                    |
-| createFoo           | createFooRequest                  | createFooResponse                   |                                                                                                                                                                                    |
-| updateFoo           | updateFooRequest                  | updateFooResponse                   |                                                                                                                                                                                    |
-| saveFoo (upsertFoo) | saveFooRequest (upsertFooRequest) | saveFooResponse (upsertFooResponse) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>- https://github.com/little-hands/ddd-q-and-a/issues/241 |
-| deleteFoo           | deleteFooRequest                  | deleteFooResponse                   |                                                                                                                                                                                    |
+| メソッド名              | 引数型                                | 返却値型                                | 処理内容                                                                                                                                                                           |
+| ----------------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `indexFoo`              | `indexFooRequest`                     | `indexFooResponse`                      |                                                                                                                                                                                    |
+| `showFoo`               | `showFooRequest`                      | `showFooResponse`                       |                                                                                                                                                                                    |
+| `createFoo`             | `createFooRequest`                    | `createFooResponse`                     |                                                                                                                                                                                    |
+| `updateFoo`             | `updateFooRequest`                    | `updateFooResponse`                     |                                                                                                                                                                                    |
+| `saveFoo` (`upsertFoo`) | `saveFooRequest` (`upsertFooRequest`) | `saveFooResponse` (`upsertFooResponse`) | リポジトリのfindメソッドをコールして重複確認を実行し、その結果に応じてcreateメソッドまたはupdateメソッドをコールする。<br>- https://github.com/little-hands/ddd-q-and-a/issues/241 |
+| `deleteFoo`             | `deleteFooRequest`                    | `deleteFooResponse`                     |                                                                                                                                                                                    |
 
 #### ▼ ユースケース図
 

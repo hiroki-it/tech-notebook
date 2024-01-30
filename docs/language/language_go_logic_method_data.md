@@ -1321,18 +1321,19 @@ package config
 
 import "os"
 
+// 環境変数名を設定する
 const (
-	Foo = "foo"
-	Bar = "bar"
-	Baz = "baz"
+	Foo = "FOO"
+	Bar = "BAR"
+	Baz = "BAZ"
 )
 
 func init() {
 
-	// 環境変数を取得して変数に格納する
-	foo = os.Getenv(Foo)
-	bar = os.Getenv(Bar)
-	baz = os.Getenv(BAZ)
+	// 環境変数名を指定して値を格納する
+	os.Setenv(Foo, "foo")
+	os.Setenv(Bar, "bar")
+	os.Setenv(Baz, "baz")
 }
 ```
 

@@ -173,14 +173,17 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 パッケージの場合、`main.go`ファイルは不要である。
 
-代わりに、バージョンを取得するためのファイルを用意する。
+その代わりに、以下を定義しておく。
 
-安全に処理を終了するGraceful Shutdown処理を定義しておく。
+- 環境変数を格納するための処理 (例：`config.go`)
+- バージョンを取得するための処理 (例：`version.go`)
+- 安全に処理を終了するGraceful Shutdown処理 (例：`shutdown.go`)
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
 ├── bin/
 └── <パッケージ名>/
+    ├── config.go
     ├── version.go
     ├── foo/
     ├── bar/

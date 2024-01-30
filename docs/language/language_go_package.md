@@ -1041,7 +1041,7 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 
 func main() {
 	mux := http.NewServeMux()
-	// Hadler処理前にミドルウェア処理を実行する
+	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(handleAdmin)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		log.Fatal(err)
