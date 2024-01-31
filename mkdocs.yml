@@ -325,7 +325,8 @@ nav:
           - ■ フレームワーク:
               - Gin: language/language_go_framework_gin.md
           - ■ パッケージ:
-              - パッケージ: language/language_go_package.md
+              - ビルトインパッケージ: language/language_go_package_builtin.md
+              - 外部パッケージ: language/language_go_package_external.md
       - ■ Python:
           - Python: language/language_python.md
           - ■ フレームワーク:
