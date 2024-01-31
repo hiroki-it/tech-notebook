@@ -13,36 +13,46 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 <br>
 
-## 01. 【`L2`～`L4`】ファイアウォール
+## 01. 【`L2`～`L4`】ネットワークファイアウォール
 
-### ファイアウォールとは
+### ネットワークファイアウォールとは
 
 `L2` (データリンク層) から`L4` (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャン、など) を防御する。
 
-> - https://digital-jyoshisu.com/archives/468
+<br>
+
+### ネットワークファイアウォールの種類
+
+| Webアプリファイアウォールの種類 | 説明                                                                   | 例                            |
+| ------------------------------- | ---------------------------------------------------------------------- | ----------------------------- |
+| ソフトウェア型                  | 記入中...                                                              | 記入中...                     |
+| アプライアンス型                | 記入中...                                                              | 記入中...                     |
+| クラウド型                      | クラウドプロバイダーが提供するネットワークファイアウォールを配置する。 | AWS NF (`L2`〜`L3`のみ)、など |
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
+> - https://digital-jyoshisu.com/archives/468
+
 <br>
 
-### パケットフィルタリング型ファイアウォール
+### パケットフィルタリング型ネットワークファイアウォール
 
-#### ▼ パケットフィルタリング型ファイアウォールとは
+#### ▼ パケットフィルタリング型ネットワークファイアウォールとは
 
 パケットのヘッダー情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可する必要があるか否かを決める。
 
 パケットのペイロードは検査しない。
 
-ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
+ネットワークファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
 
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 > - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
 
-#### ▼ iptables (Linux/Ubuntu) による標準的ファイアウォール
+#### ▼ iptables (Linux/Ubuntu) による標準的ネットワークファイアウォール
 
-Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ファイアウォールである。
+Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ネットワークファイアウォールである。
 
 特に、パケットフィルタリングのルールは、`/etc/sysconfig/iptables`ファイルの`filter`テーブルで設定する。
 
@@ -81,9 +91,9 @@ COMMIT
 > - https://linuc.org/study/knowledge/540/
 > - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
 
-#### ▼ firewalld (CentOS) による標準的ファイアウォール
+#### ▼ firewalld (CentOS) による標準的ネットワークファイアウォール
 
-CentOSでのfirewalldは、標準的なパケットフィルタリング型ファイアウォールである。
+CentOSでのfirewalldは、標準的なパケットフィルタリング型ネットワークファイアウォールである。
 
 デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。
 
@@ -125,9 +135,9 @@ public
   interfaces: ens192
 ```
 
-#### ▼ Windowsファイアウォール (Windows) による標準的ファイアウォール
+#### ▼ Windowsネットワークファイアウォール (Windows) による標準的ネットワークファイアウォール
 
-Windowsファイアウォールは、Windowsにおけるファイアウォールである。
+Windowsネットワークファイアウォールは、Windowsにおけるネットワークファイアウォールである。
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
 
@@ -137,7 +147,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 <br>
 
-### ゲートウェイ型ファイアウォール (プロキシサーバー型)
+### ゲートウェイ型ネットワークファイアウォール (プロキシサーバー型)
 
 パケットのペイロードに基づいて、パケットを許可する必要があるか否かを決める。
 
@@ -145,9 +155,9 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 <br>
 
-### サーキットレベル型ファイアウォール
+### サーキットレベル型ネットワークファイアウォール
 
-`L4` (トランスポート層) の段階でサイバー攻撃を遮断するファイアウォールのこと。
+`L4` (トランスポート層) の段階でサイバー攻撃を遮断するネットワークファイアウォールのこと。
 
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 
@@ -189,9 +199,9 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 <br>
 
-## 05. 【`L7`】WAF：Web Application Firewall
+## 05. 【`L7`】Webアプリファイアウォール：Web Application Firewall
 
-### WAFとは
+### Webアプリファイアウォールとは
 
 `L7` (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。
 
@@ -202,15 +212,15 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 <br>
 
-### WAFの種類
+### Webアプリファイアウォールの種類
 
-> - hhttps://liskul.com/waf-15products-35757
+| Webアプリファイアウォールの種類 | 説明                                                                                                    | 例                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| ソフトウェア型                  | Webアプリファイアウォールの能力を持つソフトウェアを自社サーバーにセットアップし、これを配置する。       | SuiteGuard、SmartCloud、など                                      |
+| アプライアンス型                | Webアプリファイアウォールのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など                   |
+| クラウド型                      | クラウドプロバイダーが提供するWebアプリファイアウォールを配置する。                                     | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など |
 
-| WAFの種類        | 説明                                                                              | 例                                                                |
-| ---------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| ソフトウェア型   | WAFの能力を持つソフトウェアを自社サーバーにセットアップし、これを配置する。       | SuiteGuard、SmartCloud、など                                      |
-| アプライアンス型 | WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。 | FortiWeb、Imperva SecureSphere、SiteGuard、など                   |
-| クラウド型       | クラウドプロバイダーが提供するWAFを配置する。                                     | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など |
+> - https://liskul.com/waf-15products-35757
 
 <br>
 
@@ -320,7 +330,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 そのため、これらのパラメーターが割り当てられているリクエストを拒否する。
 
-例えば、WAFを使用する。
+例えば、Webアプリファイアウォールを使用する。
 
 > - https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
@@ -605,6 +615,6 @@ max_input_vars = 1000
 
 同じ送信元からの`1`分間あたりのリクエスト数を制限する。
 
-例えば、WAF、API Gatewayを使用する。
+例えば、AWS WAF、API Gatewayを使用する。
 
 <br>

@@ -73,7 +73,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
 
-これらを組み合わせて、Reconcile処理を実行する。
+これらを組み合わせて、Reconciliationを実行する。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
 > - https://speakerdeck.com/bells17/controllerwozuo-tutemiyou-kubernetes-controllerhansuon?slide=7

@@ -206,7 +206,7 @@ metadata:
 
 ### `alb.ingress.kubernetes.io/waf-acl-id`キー
 
-LBに紐付けるWAFv1のIDを設定する。ALBと同じリージョンで、WAFv1を作成する必要がある。
+LBに紐付けるAWS WAF v1のIDを設定する。ALBと同じリージョンで、AWS WAF v1を作成する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -223,7 +223,7 @@ metadata:
 
 ### `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
 
-LBに紐付けるWAFv2のARNを設定する。ALBと同じリージョンで、WAFv2を作成する必要がある。
+LBに紐付けるAWS WAF v2のARNを設定する。ALBと同じリージョンで、AWS WAF v2を作成する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

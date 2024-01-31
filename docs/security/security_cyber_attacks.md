@@ -143,7 +143,7 @@ DBのSQLクエリのパラメーターとなる入力に、不正な文字列を
 
 #### ▼ XSSとは
 
-WebアプリケーションによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる 。
+WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる 。
 
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
 
