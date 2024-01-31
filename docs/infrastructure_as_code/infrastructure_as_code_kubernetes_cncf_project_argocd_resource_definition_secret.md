@@ -123,7 +123,7 @@ data:
   password: ******
 ```
 
-> - https://argo-cd.readthedocs.io/en/release-1.8/user-guide/private-repositories/#access-token
+> - https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#access-token
 
 #### ▼ HTTPS認証の場合
 

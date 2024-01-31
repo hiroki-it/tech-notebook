@@ -80,7 +80,8 @@
 * #### <u>フレームワーク</u>
   > * ##### [Gin](https://hiroki-it.github.io/tech-notebook/language/language_go_framework_gin.html)
 * #### <u>パッケージ</u>
-  > * ##### [パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package.html)
+  > * ##### [ビルトインパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_builtin.html)
+  > * ##### [外部パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_external.html)
 
 <br>
 
