@@ -77,6 +77,54 @@ Secretタイプは`repository`とする。
 
 プライベートなマニフェストレジストリごとに、異なるSecretで認証情報を設定する必要がある。
 
+#### ▼ アクセストークンの場合
+
+アクセストークンをパスワードに設定する。
+
+ユーザー名は、空文字以外の任意の文字列を設定できる。
+
+```yaml
+# foo-repositoryをポーリングするためのargocd-repo
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: foo-argocd-repo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+type: Opaque
+data:
+  # マニフェストリポジトリ名
+  name: foo-repository
+  url: https://github.com/hiroki-hasegawa/foo-manifest.git
+  type: git
+  # 空文字以外の任意の文字列を設定する
+  username: access-token
+  # アクセストークンを設定する
+  password: ******
+---
+# bar-repositoryをポーリングするためのargocd-repo
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: argocd
+  name: bar-argocd-repo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+type: Opaque
+data:
+  # マニフェストリポジトリ名
+  name: bar-repository
+  url: https://github.com/hiroki-hasegawa/bar-manifest.git
+  type: git
+  # 空文字以外の任意の文字列を設定する
+  username: access-token
+  # アクセストークンを設定する
+  password: ******
+```
+
+> - https://argo-cd.readthedocs.io/en/release-1.8/user-guide/private-repositories/#access-token
+
 #### ▼ HTTPS認証の場合
 
 HTTPS認証に必要なユーザー名とパスワードを設定する。
