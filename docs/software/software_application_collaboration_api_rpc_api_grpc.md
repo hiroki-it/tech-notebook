@@ -86,6 +86,34 @@ type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *Una
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"log"
+)
+
+// RecoverUnaryServerInterceptor UnaryServerInterceptorのパニックをリカバーする
+func RecoverUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (reply interface{}, err error) {
+		defer func() {
+			if recovered := recover(); recovered != nil {
+				log.Printf("panic occurred, error: %v", recovered)
+				err = status.Error(codes.Internal, "Internal Server Error")
+			}
+		}()
+		reply, err = handler(ctx, req)
+		return
+	}
+}
+```
+
 <br>
 
 ### Server Streaming RPC (サーバーストリーミングRPC)
@@ -123,6 +151,35 @@ type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *Stream
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"log"
+)
+
+// RecoverStreamServerInterceptor UnaryServerInterceptorのパニックをリカバーする
+func RecoverStreamServerInterceptor() grpc.StreamServerInterceptor {
+	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
+		defer func() {
+			if recovered := recover(); recovered != nil {
+				log.Printf("panic occurred, error: %v", recovered)
+				err = status.Error(codes.Internal, "Internal Server Error")
+			}
+		}()
+		err = handler(srv, ss)
+		return
+	}
+}
+
+```
 
 <br>
 

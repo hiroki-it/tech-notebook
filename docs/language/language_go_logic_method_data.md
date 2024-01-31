@@ -1142,6 +1142,8 @@ Insect does not implement Animal (missing Eat method)
 
 様々な値をインターフェース型として定義できる。
 
+エイリアスとして、`any`型でも定義できる。
+
 また、他の型に変換もできる。
 
 **＊実装例＊**
@@ -1190,6 +1192,8 @@ func main() {
 	fmt.Printf("%#v\n", baz)
 }
 ```
+
+> - https://zenn.dev/syumai/articles/c6q5un1j0msim0aj0ca0
 
 #### ▼ 型アサーション
 

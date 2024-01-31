@@ -797,7 +797,6 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
 }
 
-
 func main() {
 	mux := http.NewServeMux()
 	// Handler処理前にミドルウェア処理を実行する
@@ -929,7 +928,7 @@ func main() {
 	// リクエストを作成する。
 	request, err := http.NewRequest(
 		"POST",                    // HTTPメソッド
-		"https://example.api.com",      // URL
+		"https://example.api.com", // URL
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
 
