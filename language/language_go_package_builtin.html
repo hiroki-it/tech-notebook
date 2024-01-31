@@ -22335,7 +22335,6 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">writer</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
-
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
 <span class="w">    </span><span class="c1">// Handler処理前にミドルウェア処理を実行する</span>
@@ -22455,7 +22454,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// リクエストを作成する。</span>
 <span class="w">    </span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
 <span class="w">        </span><span class="s">&quot;POST&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// HTTPメソッド</span>
-<span class="w">        </span><span class="s">&quot;https://example.api.com&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// URL</span>
+<span class="w">        </span><span class="s">&quot;https://example.api.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// URL</span>
 <span class="w">        </span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBuffer</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">),</span><span class="w"> </span><span class="c1">// メッセージボディ</span>
 <span class="w">    </span><span class="p">)</span>
 
