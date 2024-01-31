@@ -48,35 +48,45 @@ kube-apiserverからKubernetesリソースのマニフェストの変更を検�
 
 また、変更内容に応じて作成したKubernetesリソースの実体をDelta FIFOキューに格納する。
 
-`cache`ディレクトリ配下の処理で、リフレクターを実行する。
-
-> - https://github.com/kubernetes/client-go/tree/master/tools/cache
+> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go
+> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/delta_fifo.go
 
 #### ▼ インフォーマー
 
 Delta FIFOキューからKubernetesリソースの実体を取得する。
 
-また、これをインデクサーやcustom-controllerに渡す。
+また、取得した実体をインデクサーを介して保管し、Kubernetesリソースの種類に応じてリソースイベントハンドラーをコールする。
 
-`cache`ディレクトリ配下の処理で、インフォーマーを実行する。
-
-> - https://github.com/kubernetes/client-go/tree/master/tools/cache
+> - https://github.com/kubernetes/client-go/tree/v12.0.0/informers
 
 #### ▼ インデクサー
 
-Kubernetesリソースの実体をNodeのメモリ上に保管する。
+キャッシュとして、Kubernetesリソースの実体をNodeのメモリ上に保管する。
 
-`cache`ディレクトリ配下の処理で、インデクサーを実行する。
-
-> - https://github.com/kubernetes/client-go/tree/master/tools/cache
+> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/store.go
 
 <br>
 
 ### custom-controller-componentsコンポーネント
 
+#### ▼ custom-controller-componentsコンポーネントとは
+
 リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
 
+これらを組み合わせて、Reconcile処理を実行する。
+
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
+> - https://speakerdeck.com/bells17/controllerwozuo-tutemiyou-kubernetes-controllerhansuon?slide=7
+
+#### ▼ リソースイベントハンドラー
+
+記入中...
+
+#### ▼ ワークキュー
+
+記入中...
+
+> - https://github.com/kubernetes/client-go/blob/v12.0.0/util/workqueue
 
 <br>
 

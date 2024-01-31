@@ -538,6 +538,18 @@ Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl
 > - https://kubernetes.io/docs/concepts/architecture/controller/
 > - https://github.com/kubernetes/kubernetes/tree/master/pkg/controller
 
+#### ▼ kube-controllerの種類
+
+各Kubernetesリソースに対応して、kube-controllerがいる。
+
+- deployment-controller
+- replicaset-controller
+- daemonset-controller
+
+...
+
+> - https://speakerdeck.com/bells17/controllerwozuo-tutemiyou-kubernetes-controllerhansuon?slide=13
+
 <br>
 
 ### kube-controller-managerの仕組み

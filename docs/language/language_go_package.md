@@ -1193,7 +1193,17 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
         go get github.com/hiroki-hasegawa/bar/cmd
 ```
 
+> - https://go.dev/ref/mod#go-mod-tidy
 > - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
+
+#### ▼ `go mod download`
+
+`import`で指定されているパッケージかに関係なく、パッケージをインストールする。
+
+基本的には、`go mod tidy`コマンドを使用すれば問題ない。
+
+> - https://go.dev/ref/mod#go-mod-download
+> - https://github.com/golang/go/issues/35832#issuecomment-571799739
 
 <br>
 

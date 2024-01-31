@@ -29,7 +29,7 @@ AWS OpenTelemetry Collector Operatorは、OpenTelemetryコレクターに関す�
 
 OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenTelemetryコレクターを作成することになる。
 
-ただし、これにはX-RayのExporterが含まれていないため、AWS製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替える。
+ただし、これにはX-RayのExporterが含まれていないため、AWS製のコンテナイメージ (パブリックECRの`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替える。
 
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/
