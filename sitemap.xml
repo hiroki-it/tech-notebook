@@ -311,6 +311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_aws_resource_nf.html</loc>
+         <lastmod>2024-01-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_aws_resource_xray.html</loc>
          <lastmod>2024-01-31</lastmod>
          <changefreq>daily</changefreq>
