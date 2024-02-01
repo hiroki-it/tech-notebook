@@ -21822,6 +21822,20 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="p">)</span>
 
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">WithUnaryServerChain</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">RecoverUnaryServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+
 <span class="c1">// RecoverUnaryServerInterceptor UnaryServerInterceptorのパニックをリカバーする</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">RecoverUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">*</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryHandler</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">reply</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -21857,6 +21871,20 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/status&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">WithUnaryServerChain</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">RecoverStreamServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
 
 <span class="c1">// RecoverStreamServerInterceptor UnaryServerInterceptorのパニックをリカバーする</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">RecoverStreamServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="p">{</span>
