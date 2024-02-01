@@ -379,7 +379,7 @@ func (c *Controller) updateFooStatus(foo *samplev1alpha1.Foo, deployment *appsv1
 	_, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).UpdateStatus(
 		context.TODO(),
 		fooCopy,
-		metav1.UpdateOptions{}
+		metav1.UpdateOptions{},
 	)
 
 	return err
