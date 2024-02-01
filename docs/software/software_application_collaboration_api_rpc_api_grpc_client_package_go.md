@@ -104,7 +104,128 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 
 <br>
 
-## 02. サーバー側
+## 02. gRPCにおけるミドルウェア処理
+
+### インターセプター
+
+gRPCでは、ミドルウェア処理として、インターセプターをリクエスト処理やレスポンス処理の前後に挿入する。
+
+<br>
+
+### 単項RPCの場合
+
+#### ▼ UnaryServerInterceptor
+
+単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、`UnaryInterceptor`で定義できる。
+
+```go
+type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (resp interface{}, err error)
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"log"
+)
+
+// RecoverUnaryServerInterceptor UnaryServerInterceptorのパニックをリカバーする
+func RecoverUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (reply interface{}, err error) {
+		defer func() {
+			if recovered := recover(); recovered != nil {
+				log.Printf("panic occurred, error: %v", recovered)
+				err = status.Error(codes.Internal, "Internal Server Error")
+			}
+		}()
+		reply, err = handler(ctx, req)
+		return
+	}
+}
+```
+
+<br>
+
+### サーバーストリーミングRPCの場合
+
+#### ▼ StreamServerInterceptor
+
+サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+
+```go
+type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"log"
+)
+
+// RecoverStreamServerInterceptor UnaryServerInterceptorのパニックをリカバーする
+func RecoverStreamServerInterceptor() grpc.StreamServerInterceptor {
+	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
+		defer func() {
+			if recovered := recover(); recovered != nil {
+				log.Printf("panic occurred, error: %v", recovered)
+				err = status.Error(codes.Internal, "Internal Server Error")
+			}
+		}()
+		err = handler(srv, ss)
+		return
+	}
+}
+
+```
+
+<br>
+
+### クライアントストリーミングRPCの場合
+
+##### ▼ StreamServerInterceptor
+
+クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+
+```go
+type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+<br>
+
+### 双方向ストリーミングRPCの場合
+
+#### ▼ StreamServerInterceptor
+
+双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+
+```go
+type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+<br>
+
+## 03. サーバー側
 
 ### プロトコルバッファー自動作成ツール
 
@@ -118,7 +239,7 @@ $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 <br>
 
-### gRPCサーバー (Interceptorがない場合)
+### gRPCサーバー (インターセプターがない場合)
 
 gRPCサーバーを実装する。
 
@@ -302,7 +423,7 @@ func main() {
 
 <br>
 
-## 03. gRPCクライアント側
+## 04. gRPCクライアント側
 
 ### gRPCクライアントパッケージ
 
