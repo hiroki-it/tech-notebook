@@ -137,6 +137,20 @@ import (
 	"log"
 )
 
+func main() {
+
+	...
+
+	s := grpc.NewServer(
+		grpc_middleware.WithUnaryServerChain(
+			RecoverUnaryServerInterceptor(),
+		),
+	)
+
+	...
+
+}
+
 // RecoverUnaryServerInterceptor UnaryServerInterceptorのパニックをリカバーする
 func RecoverUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (reply interface{}, err error) {
@@ -178,6 +192,20 @@ import (
 	"google.golang.org/grpc/status"
 	"log"
 )
+
+func main() {
+
+	...
+
+	s := grpc.NewServer(
+		grpc_middleware.WithUnaryServerChain(
+			RecoverStreamServerInterceptor(),
+		),
+	)
+
+	...
+
+}
 
 // RecoverStreamServerInterceptor UnaryServerInterceptorのパニックをリカバーする
 func RecoverStreamServerInterceptor() grpc.StreamServerInterceptor {
