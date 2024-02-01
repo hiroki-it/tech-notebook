@@ -127,10 +127,16 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 
 ドメインの名前解決では、IPアドレスを指定した割合で返却する。
 
-| レコード名    | ルーティングポリシー | 重み付け | ルーティング先 |
-| ------------- | -------------------- | -------- | -------------- |
-| `example.com` | 加重                 | `30`     | Blue ALB       |
-| `example.com` | 加重                 | `70`     | Green ALB      |
+同じ名前で複数のレコードを作成し、各レコードのルーティングポリシーを加重とする。
+
+これらの重み付けが合計`100`になるようにする。
+
+現環境から新環境にできるだけ素早く切り替えられるように、DNSキャッシュであるTTL (秒) はあらかじめ短く設定しておく。
+
+| レコード名    | ルーティングポリシー | TTL (秒) | 重み付け | ルーティング先             |
+| ------------- | -------------------- | -------- | -------- | -------------------------- |
+| `example.com` | 加重                 | `60`     | `30`     | ブルー環境のALB (現環境)   |
+| `example.com` | 加重                 | `60`     | `70`     | グリーン環境のALB (新環境) |
 
 ![aws_route53_routing-policy_weighted-routing.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
 

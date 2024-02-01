@@ -169,11 +169,11 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 <br>
 
-### 負荷分散アルゴリズム
+### 負荷分散方式
 
-#### ▼ 負荷分散アルゴリズムとは
+#### ▼ 負荷分散方式とは
 
-ターゲットに対するリクエスト転送時の加重ルールを設定する。
+ターゲットに対するリクエスト転送時の負荷分散方式を設定する。
 
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
 

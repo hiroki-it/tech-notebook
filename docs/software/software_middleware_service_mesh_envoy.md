@@ -794,7 +794,7 @@ static_resources:
     - name: foo-cluster
       connect_timeout: 0.25s
       type: STATIC
-      # 負荷分散アルゴリズム
+      # 負荷分散方式
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: foo-cluster
@@ -816,7 +816,7 @@ static_resources:
     - name: bar-cluster
       connect_timeout: 0.25s
       type: STATIC
-      # 負荷分散アルゴリズム
+      # 負荷分散方式
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: bar-cluster
@@ -837,7 +837,7 @@ static_resources:
     - name: baz-cluster
       connect_timeout: 0.25s
       type: STATIC
-      # 負荷分散アルゴリズム
+      # 負荷分散方式
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: baz-cluster
