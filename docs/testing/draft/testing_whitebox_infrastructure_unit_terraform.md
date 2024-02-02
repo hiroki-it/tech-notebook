@@ -29,6 +29,7 @@ description: Terratest＠単体テストの知見を記録しています。
 
 ### 単体テスト
 
+- `terraform test`コマンド
 - Terratest
 - Goss
 - Serverspec
@@ -37,13 +38,21 @@ description: Terratest＠単体テストの知見を記録しています。
 
 <br>
 
-## 02. Terratest
+## 02. terraform testコマンド
+
+記入中...
+
+> - https://www.hashicorp.com/blog/testing-hashicorp-terraform
+
+<br>
+
+## 03. Terratest
 
 ### コマンド
 
 <br>
 
-## 02-02. テストケース
+## 03-02. テストケース
 
 ### 単体テストの場合
 
