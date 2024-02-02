@@ -31,12 +31,12 @@ Knativeを使わない場合、イベント駆動関数の公開に必要なKube
 ```go
 package main
 
-func Handle(ctx context.Context, res http.ResponseWriter, req *http.Request) {
+func Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 
-  body, err := ioutil.ReadAll(req.Body)
-  defer req.Body.Close()
+  body, err := ioutil.ReadAll(r.Body)
+  defer w.Body.Close()
   if err != nil {
-	http.Error(res, err.Error(), 500)
+	http.Error(w, err.Error(), 500)
 	return
   }
 

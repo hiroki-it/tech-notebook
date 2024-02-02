@@ -1182,9 +1182,9 @@ func main() {
 
 	defer shutdown()
 
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
+	helloHandler := func(w http.ResponseWriter, r *http.Request) {
 
-		ctx := req.Context()
+		ctx := r.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
 		_, _ = io.WriteString(w, "Hello, world!\n")
@@ -1234,8 +1234,8 @@ func main() {
 
 	defer shutdown()
 
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		ctx := req.Context()
+	helloHandler := func(w http.ResponseWriter, r *http.Request) {
+		ctx := r.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
 		_, _ = io.WriteString(w, "Hello, world!\n")

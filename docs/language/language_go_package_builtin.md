@@ -853,21 +853,21 @@ import (
 
 // ミドルウェア処理として、Cookieヘッダーに "admin" を持つかをHandler処理前に検証する
 func requireAdminCookie(handler http.Handler) http.Handler {
-	fn := func(writer http.ResponseWriter, req *http.Request) {
+	fn := func(w http.ResponseWriter, r *http.Request) {
 		_, err := r.Cookie("admin")
 		if err != nil {
-			http.Error(writer, "No admin cookie", http.StatusForbidden)
+			http.Error(w, "No admin cookie", http.StatusForbidden)
 			return
 		}
 		// Cookieヘッダーに問題がなければ、引数のリクエスト処理を返却する
-		handler.ServeHTTP(writer, req)
+		handler.ServeHTTP(w, r)
 	}
 	return http.HandlerFunc(fn)
 }
 
-func myHandler(writer http.ResponseWriter, request *http.Request) {
+func myHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
-	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
 
 func main() {
@@ -920,9 +920,9 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 	}
 }
 
-func myHandler(writer http.ResponseWriter, request *http.Request) {
+func myHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
-	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
 
 func main() {
@@ -1136,9 +1136,9 @@ import (
 	"net/http"
 )
 
-func myHandler(writer http.ResponseWriter, request *http.Request) {
+func myHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
-	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
 
 func main() {
@@ -1181,7 +1181,7 @@ func NewUser(id int, name string) *User {
 	}
 }
 
-func myHandler(writer http.ResponseWriter, request *http.Request) {
+func myHandler(w http.ResponseWriter, r *http.Request) {
 
 	user := NewUser(1, "Hiroki")
 
@@ -1192,8 +1192,8 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 	}
 
 	// JSONをレスポンスとして返信する。
-	writer.Header().Set("Content-Type", "application/json; charset=utf-8")
-	writer.Write(byteJson)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Write(byteJson)
 }
 
 func main() {

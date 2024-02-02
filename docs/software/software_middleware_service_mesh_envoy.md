@@ -180,8 +180,8 @@ package server
 
 ...
 
-func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
-	p := path.Clean(req.URL.Path)
+func (h *HTTPGateway) ServeHTTP(r *http.Request) ([]byte, int, error) {
+	p := path.Clean(r.URL.Path)
 
 	typeURL := ""
 	switch p {
@@ -211,7 +211,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 	...
 
-	res, err := h.Server.Fetch(req.Context(), out)
+	res, err := h.Server.Fetch(r.Context(), out)
 
 	...
 
