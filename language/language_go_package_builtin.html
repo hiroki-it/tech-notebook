@@ -7061,6 +7061,24 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ ロギング系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メトリクス系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ リカバー系
     </span>
   </a>
@@ -21596,6 +21614,24 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ ロギング系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メトリクス系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ リカバー系
     </span>
   </a>
@@ -22522,9 +22558,20 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <li><a href="https://journal.lampetty.net/entry/implementing-middleware-with-http-package-in-go">https://journal.lampetty.net/entry/implementing-middleware-with-http-package-in-go</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ リカバー系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>HTTPの処理で起こったパニックを<code>Internal Server Error</code>に変換する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// RecoverHttpMiddleware HttpHandlerのパニックをリカバーする</span>
+<h4 id="_7">▼ ロギング系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="_8">▼ メトリクス系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="_9">▼ リカバー系<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>HTTPの処理で起こったパニックを、<code>Internal Server Error</code>として処理する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// RecoverHttpMiddleware HttpHandlerのパニックをリカバーする</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
