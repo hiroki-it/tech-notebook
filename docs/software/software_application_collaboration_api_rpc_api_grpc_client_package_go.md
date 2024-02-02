@@ -128,6 +128,35 @@ gRPCでは、ミドルウェア処理として、インターセプターをリ�
 
 gRPCの処理で起こったパニックを`Internal Server Error`に変換する。
 
+```go
+package main
+
+import (
+
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+
+	"google.golang.org/grpc"
+
+	...
+
+)
+
+func main() {
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		// 単項RPCの場合のインターセプター処理
+		grpc.ChainUnaryInterceptor(
+			// リカバー処理
+	        grpc_recovery.UnaryServerInterceptor(...),
+		),
+	)
+
+    ...
+
+}
+```
+
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go
 > - https://ybalexdp.hatenablog.com/entry/grpc_recovery
 

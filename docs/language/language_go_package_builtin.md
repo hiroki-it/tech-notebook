@@ -835,9 +835,9 @@ HTTPクライアントまたはWebサーバを提供する。
 
 <br>
 
-### 用途
+### ミドルウェア処理
 
-#### ▼ ミドルウェア処理
+#### ▼ 認証系
 
 **＊実装例＊**
 
@@ -881,6 +881,47 @@ func main() {
 ```
 
 > - https://journal.lampetty.net/entry/implementing-middleware-with-http-package-in-go
+
+#### ▼ リカバー系
+
+HTTPの処理で起こったパニックを`Internal Server Error`に変換する。
+
+```go
+
+// RecoverHttpMiddleware HttpHandlerのパニックをリカバーする
+func RecoverHttpMiddleware() func(http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		fn := func(w http.ResponseWriter, r *http.Request) {
+			defer func() {
+				if err := recover(); err != nil && err != http.ErrAbortHandler {
+					log.Printf("panic on application running, error: %v", err)
+					// Internal Server Errorとして処理する
+					w.WriteHeader(http.StatusInternalServerError)
+				}
+			}()
+
+			next.ServeHTTP(w, r)
+		}
+		return http.HandlerFunc(fn)
+	}
+}
+
+func myHandler(writer http.ResponseWriter, request *http.Request) {
+	// HTMLをレスポンスとして返信する。
+	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+}
+
+func main() {
+	mux := http.NewServeMux()
+	// Handler処理前にミドルウェア処理を実行する
+	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(myHandler)))
+	if err := http.ListenAndServe(":8080", mux); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+> - https://medium.com/@masnun/panic-recovery-middleware-for-go-http-handlers-51147c941f9
 
 <br>
 
