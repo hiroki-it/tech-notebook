@@ -6970,6 +6970,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      logとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Printメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fatal" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Fatalメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panic" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Panicメソッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nethttp" class="md-nav__link">
     <span class="md-ellipsis">
       net/http
@@ -21445,6 +21496,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      logとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Printメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fatal" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Fatalメソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panic" class="md-nav__link">
+    <span class="md-ellipsis">
+      接尾辞Panicメソッド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nethttp" class="md-nav__link">
     <span class="md-ellipsis">
       net/http
@@ -22293,6 +22395,59 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="log">log<a class="headerlink" href="#log" title="Permanent link">&para;</a></h2>
+<h3 id="log_1">logとは<a class="headerlink" href="#log_1" title="Permanent link">&para;</a></h3>
+<p>Goにはデフォルトで、ロギング用パッケージが用意されている。</p>
+<p>ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/log">https://pkg.go.dev/log</a></li>
+<li><a href="https://github.com/sirupsen/logrus">https://github.com/sirupsen/logrus</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="print">接尾辞<code>Print</code>メソッド<a class="headerlink" href="#print" title="Permanent link">&para;</a></h3>
+<p>渡された値を標準出力に出力する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="fatal">接尾辞<code>Fatal</code>メソッド<a class="headerlink" href="#fatal" title="Permanent link">&para;</a></h3>
+<p>渡された値を標準出力に出力し、<code>os.Exit(1)</code>を実行して、ステータス『1』で処理を完了する。</p>
+<p>プログラムが終了してしまうため、できるだけ使わない方が良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 内部でos.Exit(1)を実行する。</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/snowcrush/articles/21f28163e067cb">https://zenn.dev/snowcrush/articles/21f28163e067cb</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="panic">接尾辞<code>Panic</code>メソッド<a class="headerlink" href="#panic" title="Permanent link">&para;</a></h3>
+<p>渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして<code>panic</code>メソッドを実行する。</p>
+<p>補足として、<code>panic</code>メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。</p>
+<p>ただし、<code>panic</code>ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/golang/go/wiki/CodeReviewComments#dont-panic">https://github.com/golang/go/wiki/CodeReviewComments#dont-panic</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// panicメソッドを実行する。</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Panicf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
 <h2 id="nethttp">net/http<a class="headerlink" href="#nethttp" title="Permanent link">&para;</a></h2>
 <h3 id="http">httpパッケージとは<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <p>HTTPクライアントまたはWebサーバを提供する。</p>
@@ -22707,7 +22862,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-02</span>
   </span>
 
     
