@@ -108,15 +108,68 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 
 ### インターセプター
 
+#### ▼ インターセプターとは
+
 gRPCでは、ミドルウェア処理として、インターセプターをリクエスト処理やレスポンス処理の前後に挿入する。
+
+#### ▼ 認証系
+
+記入中...
+
+#### ▼ メトリクス系
+
+記入中...
+
+#### ▼ 分散トレース系
+
+記入中...
+
+#### ▼ リカバー系
+
+gRPCの処理で起こったパニックを`Internal Server Error`に変換する。
+
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go
+> - https://ybalexdp.hatenablog.com/entry/grpc_recovery
 
 <br>
 
-### 単項RPCの場合
+### 単項RPCを送信するクライアントの場合
+
+#### ▼ UnaryClientInterceptor
+
+単項RPCを送信するクライアント側のミドルウェア処理は、`UnaryClientInterceptor`で定義できる。
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"strings"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+)
+
+// OpenTelemetryUnaryClientInterceptor OpenTelemetryがgRPCアプリを計装するために必要なUnaryClientInterceptorを返却する
+func OpenTelemetryUnaryClientInterceptor(opts ...otelgrpc.Option) grpc.UnaryClientInterceptor {
+	delegate := otelgrpc.UnaryClientInterceptor(opts...)
+	return func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, callOpts ...grpc.CallOption) error {
+		return delegate(ctx, method, req, reply, cc, invoker, callOpts...)
+	}
+}
+```
+
+<br>
+
+### 単項RPCを受信するサーバーの場合
 
 #### ▼ UnaryServerInterceptor
 
-単項RPCによるリクエスト/レスポンス前後のミドルウェア処理は、`UnaryInterceptor`で定義できる。
+単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`で定義できる。
 
 ```go
 type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (resp interface{}, err error)
@@ -131,48 +184,37 @@ package grpc
 
 import (
 	"context"
+	"strings"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-	"log"
 )
 
-func main() {
+const (
+	// grpcHealthCheckPathPrefix gRPCのヘルスチェックパスの接頭辞
+	grpcHealthCheckPathPrefix = "/grpc.health.v1.Health"
+)
 
-	...
-
-	s := grpc.NewServer(
-		grpc_middleware.WithUnaryServerChain(
-			RecoverUnaryServerInterceptor(),
-		),
-	)
-
-	...
-
-}
-
-// RecoverUnaryServerInterceptor UnaryServerInterceptorのパニックをリカバーする
-func RecoverUnaryServerInterceptor() grpc.UnaryServerInterceptor {
-	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (reply interface{}, err error) {
-		defer func() {
-			if recovered := recover(); recovered != nil {
-				log.Printf("panic occurred, error: %v", recovered)
-				err = status.Error(codes.Internal, "Internal Server Error")
-			}
-		}()
-		reply, err = handler(ctx, req)
-		return
+// OpenTelemetryUnaryServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なUnaryServerInterceptorを返却する
+func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
+	delegate := otelgrpc.UnaryServerInterceptor(opts...)
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+		// ヘルスチェックパスへのリクエストの場合、OpenTelemetryのインターセプターは不要なので実行しない
+		if strings.HasPrefix(info.FullMethod, grpcHealthCheckPathPrefix) {
+			return handler(ctx, req)
+		}
+		return delegate(ctx, req, info, handler)
 	}
 }
 ```
 
 <br>
 
-### サーバーストリーミングRPCの場合
+### ストリーミングRPCを送信するクライアントの場合
 
-#### ▼ StreamServerInterceptor
+##### ▼ StreamClientInterceptor
 
-サーバーストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
@@ -187,68 +229,65 @@ package grpc
 
 import (
 	"context"
+	"strings"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-	"log"
 )
 
-func main() {
-
-	...
-
-	s := grpc.NewServer(
-		grpc_middleware.WithUnaryServerChain(
-			RecoverStreamServerInterceptor(),
-		),
-	)
-
-	...
-
-}
-
-// RecoverStreamServerInterceptor UnaryServerInterceptorのパニックをリカバーする
-func RecoverStreamServerInterceptor() grpc.StreamServerInterceptor {
-	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
-		defer func() {
-			if recovered := recover(); recovered != nil {
-				log.Printf("panic occurred, error: %v", recovered)
-				err = status.Error(codes.Internal, "Internal Server Error")
-			}
-		}()
-		err = handler(srv, ss)
-		return
+// OpenTelemetryStreamClientInterceptor OpenTelemetryがgRPCアプリを計装するために必要なStreamClientInterceptorを返却する
+func OpenTelemetryStreamClientInterceptor(opts ...otelgrpc.Option) grpc.StreamClientInterceptor {
+	delegate := otelgrpc.StreamClientInterceptor(opts...)
+	return func(ctx context.Context, desc *grpc.StreamDesc, cc *grpc.ClientConn, method string, streamer grpc.Streamer, callOpts ...grpc.CallOption) (grpc.ClientStream, error) {
+		return delegate(ctx, desc, cc, method, streamer, callOpts...)
 	}
 }
 ```
 
 <br>
 
-### クライアントストリーミングRPCの場合
-
-##### ▼ StreamServerInterceptor
-
-クライアントストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
-
-```go
-type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
-```
-
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
-
-<br>
-
-### 双方向ストリーミングRPCの場合
+### ストリーミングRPCを受信するサーバーの場合
 
 #### ▼ StreamServerInterceptor
 
-双方向ストリーミングRPCによるリクエスト/レスポンス前後のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+ストリーミングRPCを受信するサーバー側のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+
+#### ▼ 独自のインターセプター
+
+```go
+package grpc
+
+import (
+	"context"
+	"strings"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+)
+
+const (
+	// grpcHealthCheckPathPrefix gRPCのヘルスチェックパスの接頭辞
+	grpcHealthCheckPathPrefix = "/grpc.health.v1.Health"
+)
+
+// OpenTelemetryStreamServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なStreamServerInterceptorを返却する
+func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamServerInterceptor {
+	delegate := otelgrpc.StreamServerInterceptor(opts...)
+	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
+		// ヘルスチェックパスへのリクエストの場合、OpenTelemetryのインターセプターは不要なので実行しない
+		if strings.HasPrefix(info.FullMethod, instrumentation.GetGrpcHealthCheckPathPrefix()) {
+			return handler(srv, ss)
+		}
+		return delegate(srv, ss, info, handler)
+	}
+}
+```
 
 <br>
 
@@ -371,7 +410,7 @@ func main() {
 		    grpc_logging.UnaryServerInterceptor(...),
 			// 分散トレーシング処理
 			otelgrpc.UnaryServerInterceptor(...),
-			// パニックのgRPCエラー変換処理
+			// リカバー処理
 	        grpc_recovery.UnaryServerInterceptor(...),
 		),
 		// ストリーミングRPCの場合のインターセプター処理
