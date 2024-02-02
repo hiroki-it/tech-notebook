@@ -882,11 +882,25 @@ func main() {
 
 > - https://journal.lampetty.net/entry/implementing-middleware-with-http-package-in-go
 
+#### ▼ ロギング系
+
+記入中...
+
+#### ▼ メトリクス系
+
+記入中...
+
 #### ▼ リカバー系
 
-HTTPの処理で起こったパニックを`Internal Server Error`に変換する。
+HTTPの処理で起こったパニックを、`Internal Server Error`として処理する。
 
 ```go
+package main
+
+import (
+	"log"
+	"net/http"
+)
 
 // RecoverHttpMiddleware HttpHandlerのパニックをリカバーする
 func RecoverHttpMiddleware() func(http.Handler) http.Handler {
