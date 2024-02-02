@@ -307,8 +307,8 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
+
 	// 現在の処理からコンテキストを取得する。
-    // 変数にすでにコンテキストが注入されていないので、親スパンが作成される
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
@@ -396,8 +396,8 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
+
 	// 現在の処理にコンテキストを注入する。
-    // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
@@ -585,7 +585,6 @@ import (
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	// 現在の処理にコンテキストを注入する。
-    // 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -717,7 +716,6 @@ import (
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
 	// 現在の処理にコンテキストを注入する。
-    // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -967,9 +965,10 @@ func parent(ctx *gin.Context) {
 
 	var tracer = otel.Tracer("sample")
 
-	// スパンを作成する
+	// 現在の処理にコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
+		// サービス名
 		"sample1",
 	)
 
@@ -1044,15 +1043,16 @@ func child(ctx *gin.Context) {
 
 	var tracer = otel.Tracer("sample")
 
-	// スパンを作成する
+	// 現在の処理にコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
-		"sample1",
+		// サービス名
+		"sample2",
 	)
 
 	time.Sleep(time.Second * 1)
 
-	log.Println("sample1 done.")
+	log.Println("sample2 done.")
 
 	span.End()
 }
@@ -1552,7 +1552,6 @@ def hello_world():
     ...
 
     # 現在の処理にコンテキストを注入する。
-    # 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -1586,7 +1585,6 @@ def hello_world():
     ...
 
     # 現在の処理にコンテキストを注入する。
-    # 変数にすでにコンテキストが注入されているので、子スパンが作成される。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
