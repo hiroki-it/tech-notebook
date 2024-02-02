@@ -747,6 +747,79 @@ func main() {
 
 <br>
 
+## log
+
+### logとは
+
+Goにはデフォルトで、ロギング用パッケージが用意されている。
+
+ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。
+
+> - https://pkg.go.dev/log
+> - https://github.com/sirupsen/logrus
+
+<br>
+
+### 接尾辞`Print`メソッド
+
+渡された値を標準出力に出力する。
+
+**＊実装例＊**
+
+渡されたerrorインターフェースを標準出力に出力する。
+
+```go
+if err != nil {
+	log.Printf("ERROR: %#v\n", err)
+}
+```
+
+<br>
+
+### 接尾辞`Fatal`メソッド
+
+渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス『1』で処理を完了する。
+
+プログラムが終了してしまうため、できるだけ使わない方が良い。
+
+**＊実装例＊**
+
+渡されたerrorインターフェースを標準出力に出力する。
+
+```go
+if err != nil {
+	// 内部でos.Exit(1)を実行する。
+	log.Fatalf("ERROR: %#v\n", err)
+}
+```
+
+> - https://zenn.dev/snowcrush/articles/21f28163e067cb
+
+<br>
+
+### 接尾辞`Panic`メソッド
+
+渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして`panic`メソッドを実行する。
+
+補足として、`panic`メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。
+
+ただし、`panic`ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
+
+> - https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+
+**＊実装例＊**
+
+渡されたerrorインターフェースを標準出力に出力する。
+
+```go
+if err != nil {
+    // panicメソッドを実行する。
+    log.Panicf("ERROR: %#v\n", err)
+}
+```
+
+<br>
+
 ## net/http
 
 ### httpパッケージとは

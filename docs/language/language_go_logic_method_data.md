@@ -1316,82 +1316,6 @@ func main() {
 
 `main.go`ファイル上で使用すれば`main`関数より先に、パッケージのファイル上で使用すればパッケージ内で一番最初に実行する。
 
-#### ▼ 環境変数の格納
-
-`init`関数は、環境変数の格納に使用する。
-
-```go
-package config
-
-import "os"
-
-// 環境変数名を設定する
-const (
-	Foo = "FOO"
-	Bar = "BAR"
-	Baz = "BAZ"
-)
-
-func init() {
-
-	// 環境変数名を指定して値を格納する
-	os.Setenv(Foo, "foo")
-	os.Setenv(Bar, "bar")
-	os.Setenv(Baz, "baz")
-}
-```
-
-#### ▼ 環境変数に取得
-
-フォールバック (変数や定数に値が格納されていない場合に、代わりに使用する処理) で環境変数を取得すると、デフォルト値を設定できる。
-
-環境変数がstring型かfloat64型かに合わせて、関数を定義しておく。
-
-```go
-package config
-
-import "os"
-
-// 環境変数名を設定する
-const (
-	Foo = "FOO"
-	Bar = "BAR"
-	Baz = "Baz"
-)
-
-func init() {
-
-	// 環境変数名を指定して値を取得する
-	foo := getStringEnv(Foo, "foo")
-	bar := getStringEnv(Bar, "bar")
-	baz := getFloatEnv(Baz, 1.0)
-}
-
-// 環境変数をstring型で取得する
-func getStringEnv(key string, fallback string) string {
-
-	value := os.Getenv(key)
-
-	// もし.envファイルなどで値を設定していれば、その値を返却する
-	if len(value) != 0 {
-		return value
-	}
-
-	// 環境変数の値が空文字だった場合は、fallbackをデフォルト値として返却する
-	return fallback
-}
-
-// 環境変数をfloat64型で取得する
-func getFloatEnv(key string, fallback float64) float64 {
-	value, err := strconv.ParseFloat(getStringEnv(key, "1.0"), 64)
-	if err != nil {
-		return fallback
-	}
-	return value
-}
-
-```
-
 > - https://stackoverflow.com/a/40326580
 > - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
 
@@ -2113,7 +2037,7 @@ func main() {
 
 <br>
 
-## 04. 変数
+## 03. 変数
 
 ### 定義 (宣言+代入)
 
@@ -2266,7 +2190,114 @@ func main() {
 
 <br>
 
-## 03. スコープ
+## 04. 定数
+
+### 環境変数
+
+#### ▼ `init`関数による環境変数出力
+
+環境変数は、`.env`ファイルを使用する以外に、`init`関数で出力する方法もある。
+
+#### ▼ アプリ側の環境変数
+
+```go
+package config
+
+import "os"
+
+// 環境変数名を設定する
+const (
+	FooEnvKey = "FOO"
+	BarEnvKey = "BAR"
+	BazEnvKey = "BAZ"
+)
+
+func init() {
+
+	// 環境変数名を指定して値を格納する
+	os.Setenv(FooEnvKey, "foo")
+	os.Setenv(BarEnvKey, "bar")
+	os.Setenv(BazEnvKey, "baz")
+}
+```
+
+#### ▼ パッケージ側の環境変数
+
+パッケージ側では、アプリが設定した環境変数を出力できるような処理が必要になる。
+
+この時、フォールバック (変数や定数に値が格納されていない場合に、代わりに使用する処理) で環境変数を取得すると、デフォルト値を設定できる。
+
+環境変数がstring型かfloat64型かに合わせて、関数を定義しておく。
+
+```go
+package config
+
+import (
+	"os"
+	"strconv"
+)
+
+// 環境変数名を設定する
+const (
+	FooEnvKey = "FOO"
+	BarEnvKey = "BAR"
+	BazEnvKey = "Baz"
+)
+
+var (
+	Foo string
+	Bar string
+	Baz string
+)
+
+func init() {
+
+	// 環境変数名を指定して値を取得する
+	foo := getStringEnv(FooEnvKey, "foo")
+	bar := getStringEnv(BarEnvKey, "bar")
+	baz := getFloatEnv(BazEnvKey, 1.0)
+}
+
+// ゲッター
+func GetFoo() string {
+    return foo
+}
+
+func GetBar() string {
+	return bar
+}
+
+func GetBaz() string {
+	return baz
+}
+
+// 環境変数をstring型で取得する
+func getStringEnv(key string, fallback string) string {
+
+	value := os.Getenv(key)
+
+	// マイクロサービス側で値を設定していれば、それを使用する
+	if len(value) != 0 {
+		return value
+	}
+
+	// 環境変数の値が空文字だった場合は、fallbackをデフォルト値として返却する
+	return fallback
+}
+
+// 環境変数をfloat64型で取得する
+func getFloatEnv(key string, fallback float64) float64 {
+	value, err := strconv.ParseFloat(getStringEnv(key, "1.0"), 64)
+	if err != nil {
+		return fallback
+	}
+	return value
+}
+```
+
+<br>
+
+## 05. スコープ
 
 ### 変数、定数
 
@@ -2366,7 +2397,7 @@ func main() {
 
 <br>
 
-## 04. 制御文
+## 06. 制御文
 
 ### 条件文 (初期化ステートメント)
 
@@ -2455,7 +2486,7 @@ func main() {
 
 <br>
 
-## 05. 処理の種類
+## 07. 処理の種類
 
 ### 同期処理
 
@@ -2610,7 +2641,7 @@ func foo() string {
 
 <br>
 
-## 05-02. Goroutineと合わせて使用する処理
+## 07-02. Goroutineと合わせて使用する処理
 
 ### channel (チャンネル)
 
@@ -2864,7 +2895,7 @@ WaitGroupを使用すると、`Add`関数、`Done`関数、`Wait`関数を使用
 
 <br>
 
-## 06. エラーキャッチ、例外スロー
+## 08. エラーキャッチ、例外スロー
 
 ### Goにおけるエラーキャッチと例外スロー
 
@@ -3133,76 +3164,7 @@ func main() {
 
 <br>
 
-## 06-02. ロギング
-
-### logパッケージ
-
-#### ▼ logパッケージとは
-
-Goにはデフォルトで、ロギング用パッケージが用意されている。
-
-ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。
-
-> - https://pkg.go.dev/log
-> - https://github.com/sirupsen/logrus
-
-#### ▼ 接尾辞`Print`メソッド
-
-渡された値を標準出力に出力する。
-
-**＊実装例＊**
-
-渡されたerrorインターフェースを標準出力に出力する。
-
-```go
-if err != nil {
-	log.Printf("ERROR: %#v\n", err)
-}
-```
-
-#### ▼ 接尾辞`Fatal`メソッド
-
-渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス『1』で処理を完了する。
-
-プログラムが終了してしまうため、できるだけ使わない方が良い。
-
-**＊実装例＊**
-
-渡されたerrorインターフェースを標準出力に出力する。
-
-```go
-if err != nil {
-	// 内部でos.Exit(1)を実行する。
-	log.Fatalf("ERROR: %#v\n", err)
-}
-```
-
-> - https://zenn.dev/snowcrush/articles/21f28163e067cb
-
-#### ▼ 接尾辞`Panic`メソッド
-
-渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして`panic`メソッドを実行する。
-
-補足として、`panic`メソッドによって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。
-
-ただし、`panic`ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
-
-> - https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
-
-**＊実装例＊**
-
-渡されたerrorインターフェースを標準出力に出力する。
-
-```go
-if err != nil {
-    // panicメソッドを実行する。
-    log.Panicf("ERROR: %#v\n", err)
-}
-```
-
-<br>
-
-## 07. テンプレート
+## 09. テンプレート
 
 ### ロジック
 
