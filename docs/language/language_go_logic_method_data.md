@@ -1316,6 +1316,11 @@ func main() {
 
 `main.go`ファイル上で使用すれば`main`関数より先に、パッケージのファイル上で使用すればパッケージ内で一番最初に実行する。
 
+`import`、`const`、`var`、`init`関数の順で実行する。
+
+なお、`init`関数は`init.go`ファイルとして切り分けた方が良い。
+
+> - https://stackoverflow.com/a/49831018
 > - https://stackoverflow.com/a/40326580
 > - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
 

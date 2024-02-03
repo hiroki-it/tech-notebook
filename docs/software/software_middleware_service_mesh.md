@@ -70,9 +70,19 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 <br>
 
-### サイドカープロキシメッシュ
+### 共有ライブラリモデル
 
-#### ▼ サイドカープロキシメッシュとは
+サービスメッシュが登場する前のモデル。
+
+各マイクロサービスに共有ライブラリを配置する。
+
+> - https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14
+
+<br>
+
+### サイドカープロキシモデル
+
+#### ▼ サイドカープロキシモデルとは
 
 マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。
 
@@ -103,9 +113,11 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <br>
 
-### Nodeエージェントメッシュ
+### カーネルモデルとは
 
-記入中...
+Node上にエージェントを配置し、これを介してマイクロサービス間で通信する。
+
+> - https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14
 
 <br>
 

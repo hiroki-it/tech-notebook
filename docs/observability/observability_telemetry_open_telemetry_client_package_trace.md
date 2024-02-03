@@ -637,21 +637,21 @@ func StartMainServer() {
 
   ...
 
-	shutdown, err := initProvider()
+  shutdown, err := initProvider()
 
   if err != nil {
 		log.Print(err)
-	}
+  }
 
-	defer func() {
+  defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("failed to shutdown TracerProvider: %w", err)
 		}
-	}()
+  }()
 
   ...
 
-	rTodos.Use(checkSession())
+  rTodos.Use(checkSession())
 
   ...
 
@@ -669,8 +669,8 @@ func checkSession() gin.HandlerFunc {
     ...
 
     // イベントごとに同階層スパンを作成する
-		defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
-	}
+	defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
+  }
 }
 
 ```
