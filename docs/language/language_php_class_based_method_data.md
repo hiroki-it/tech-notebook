@@ -991,10 +991,6 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの`EventDispatcher`クラスが簡単である。
 
-以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
-
 ```php
 <?php
 

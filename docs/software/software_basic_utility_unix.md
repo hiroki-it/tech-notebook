@@ -795,10 +795,6 @@ $ echo "$<変数名>"
 
 基本的な手順としては、シェル変数を設定し、これを環境変数に追加する。
 
-シェル変数と環境変数については、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
-
 ```bash
 # シェル変数を設定
 $ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>

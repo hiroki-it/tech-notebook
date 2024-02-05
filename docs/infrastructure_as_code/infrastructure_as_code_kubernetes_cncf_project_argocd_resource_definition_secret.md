@@ -99,7 +99,7 @@ data:
   url: https://github.com/hiroki-hasegawa/foo-manifest.git
   type: git
   # 空文字以外の任意の文字列を設定する
-  username: access-token
+  username: personal-access-token
   # アクセストークンを設定する
   password: ******
 ---
@@ -118,7 +118,7 @@ data:
   url: https://github.com/hiroki-hasegawa/bar-manifest.git
   type: git
   # 空文字以外の任意の文字列を設定する
-  username: access-token
+  username: personal-access-token
   # アクセストークンを設定する
   password: ******
 ```
