@@ -20183,7 +20183,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーション側のサンプリング率
+      ▼ クライアント側のサンプリング率
     </span>
   </a>
   
@@ -20192,7 +20192,7 @@
           <li class="md-nav__item">
   <a href="#opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OpenTelemetryコレクター側のサンプリング率
+      ▼ サーバー側 (OpenTelemetryコレクター) のサンプリング率
     </span>
   </a>
   
@@ -21743,7 +21743,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーション側のサンプリング率
+      ▼ クライアント側のサンプリング率
     </span>
   </a>
   
@@ -21752,7 +21752,7 @@
           <li class="md-nav__item">
   <a href="#opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OpenTelemetryコレクター側のサンプリング率
+      ▼ サーバー側 (OpenTelemetryコレクター) のサンプリング率
     </span>
   </a>
   
@@ -22491,11 +22491,11 @@
 <tbody>
 <tr>
 <td>Head-based</td>
-<td>アプリケーションで、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
+<td>クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
 </tr>
 <tr>
 <td>Tail-based</td>
-<td>OpenTelemetryコレクターで、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
+<td>サーバー側 (OpenTelemetryコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
 </tr>
 </tbody>
 </table>
@@ -22505,8 +22505,8 @@
 <li><a href="https://opentelemetry.io/docs/concepts/sampling/">https://opentelemetry.io/docs/concepts/sampling/</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ アプリケーション側のサンプリング率<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>アプリケーション側でのサンプリング率を設定する。</p>
+<h4 id="_5">▼ クライアント側のサンプリング率<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>クライアント側でのサンプリング率を設定する。</p>
 <p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>とする。</p>
 <p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
 <table>
@@ -22543,7 +22543,7 @@
 <li><a href="https://opentelemetry.io/docs/concepts/sampling/#tail-sampling">https://opentelemetry.io/docs/concepts/sampling/#tail-sampling</a></li>
 </ul>
 </blockquote>
-<h4 id="opentelemetry">▼ OpenTelemetryコレクター側のサンプリング率<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
+<h4 id="opentelemetry">▼ サーバー側 (OpenTelemetryコレクター) のサンプリング率<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
 <p>Tail-based方式の場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
@@ -22570,17 +22570,35 @@
 <thead>
 <tr>
 <th>環境変数名</th>
+<th>説明</th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>OTEL_SERVICE_NAME</code></td>
+<td>Resourceの<code>service.name</code>を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OTEL_RESOURCE_ATTRIBUTES</code></td>
+<td>Resourceの任意の属性を設定する。キーバリュー式 (<code>key1=value1,key2=value2</code>) で設定できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OTEL_TRACES_EXPORTER</code></td>
+<td>Exporterの名前を設定する。執筆時点 (2024/02/06) では、<code>otlp</code>、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
+<td></td>
+</tr>
+<tr>
 <td><code>OTEL_TRACES_SAMPLER</code></td>
 <td>使用するSamplerを設定する。</td>
+<td></td>
 </tr>
 <tr>
 <td><code>OTEL_TRACES_SAMPLER_ARG</code></td>
 <td>Samplerのパラメーター (例：サンプリング率) を設定する。</td>
+<td></td>
 </tr>
 </tbody>
 </table>
