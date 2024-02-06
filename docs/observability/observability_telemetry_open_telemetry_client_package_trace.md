@@ -138,7 +138,7 @@ func initProvider() {
 
 #### ▼ Sampler
 
-スパンのサンプリング率を設定する処理を持つ。
+スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
@@ -148,6 +148,21 @@ func initProvider() {
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
+
+<br>
+
+### 環境変数
+
+#### ▼ Sampler
+
+指定するSamplerやパラメーターを環境変数で設定できる。
+
+|                           |                                                         |
+| ------------------------- | ------------------------------------------------------- |
+| `OTEL_TRACES_SAMPLER`     | 使用するSamplerを設定する。                             |
+| `OTEL_TRACES_SAMPLER_ARG` | Samplerのパラメーター (例：サンプリング率) を設定する。 |
+
+> - https://opentelemetry.io/docs/languages/sdk-configuration/general/
 
 <br>
 
@@ -246,6 +261,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// TraceProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
+	    // ExporterをTraceProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(attributes),
@@ -1120,8 +1136,9 @@ func initProvider() (func(), error) {
 
 	// TraceProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		// ExporterをTraceProviderに登録する
 		sdktrace.WithBatcher(exporter),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
 
 	// パッケージをセットアップする。
@@ -1293,8 +1310,9 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	// TraceProviderを作成する
 	traceProvider := sdktrace.NewTracerProvider(
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		// ExporterをTraceProviderに登録する
 		sdktrace.WithBatcher(exporter),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
 
 	otel.SetTracerProvider(traceProvider)

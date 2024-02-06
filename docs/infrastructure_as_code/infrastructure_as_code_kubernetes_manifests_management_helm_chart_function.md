@@ -1020,7 +1020,9 @@ baz:
 
 ### hasKey
 
-キーが存在する場合、`true`を返却する。
+#### ▼ hasKeyとは
+
+指定したキーが存在する場合、`true`を返却する。
 
 キーが存在する場合にのみ、そのキー配下の構造を使用するような場面で役立つ。
 
@@ -1037,7 +1039,7 @@ foo:
 foo:
 {{- if hasKey .Values.foo "baz" }}
   baz:
-    {{- range baz }}
+    {{- range .Values.foo.baz }}
     - {{ . }}
     {{- end }}
   ...
@@ -1046,6 +1048,30 @@ foo:
 
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
+
+### ▼ indexでも代用可
+
+`index`関数で`hasKey`関数を代用できる。
+
+指定した文字列が存在する場合、`true`を返却する。
+
+```yaml
+foo:
+  baz:
+    - FOO
+    - BAR
+```
+
+```yaml
+foo:
+  {{- if (index .Values.foo "baz") }}
+  baz:
+    {{- range .Values.foo.baz }}
+    - {{ . }}
+    {{- end }}
+  ...
+{{- end }}
+```
 
 <br>
 
