@@ -22490,11 +22490,11 @@
 </thead>
 <tbody>
 <tr>
-<td>Head-based sampling</td>
+<td>Head-based</td>
 <td>アプリケーションで、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
 </tr>
 <tr>
-<td>Tail-based sampling</td>
+<td>Tail-based</td>
 <td>OpenTelemetryコレクターで、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
 </tr>
 </tbody>
@@ -22507,7 +22507,8 @@
 </blockquote>
 <h4 id="_5">▼ アプリケーション側のサンプリング率<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>アプリケーション側でのサンプリング率を設定する。</p>
-<p>Tail-based samplingの場合、基本的に全てサンプリングした上でOpenTelemetryコレクターに送信するため、<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>とする。</p>
+<p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>とする。</p>
+<p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
 <table>
 <thead>
 <tr>
@@ -22539,10 +22540,11 @@
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26</a></li>
 <li><a href="https://zenn.dev/ishii1648/articles/167e199bab5396">https://zenn.dev/ishii1648/articles/167e199bab5396</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141">https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141</a></li>
+<li><a href="https://opentelemetry.io/docs/concepts/sampling/#tail-sampling">https://opentelemetry.io/docs/concepts/sampling/#tail-sampling</a></li>
 </ul>
 </blockquote>
 <h4 id="opentelemetry">▼ OpenTelemetryコレクター側のサンプリング率<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
-<p>Tail-based samplingの場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。</p>
+<p>Tail-based方式の場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
@@ -22553,19 +22555,12 @@
 <span class="w">  </span><span class="nt">tail_sampling</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">decision_wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">    </span><span class="nt">num_traces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">    </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">[</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">longer-than-500ms</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">latency</span><span class="p p-Indicator">,</span><span class="nt"> latency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">threshold_ms</span><span class="p">:</span><span class="w"> </span><span class="nv">500</span><span class="p p-Indicator">}},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="nt">          type</span><span class="p">:</span><span class="w"> </span><span class="nv">string_attribute</span><span class="p p-Indicator">,</span>
-<span class="nt">          string_attribute</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http.url&quot;</span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://www.google.co.jp&quot;</span><span class="p p-Indicator">]},</span>
-<span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">policies</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">always-sample</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">always_sample</span><span class="p p-Indicator">}]</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/ishii1648/articles/167e199bab5396#processors">https://zenn.dev/ishii1648/articles/167e199bab5396#processors</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor</a></li>
 </ul>
 </blockquote>
 <p><br></p>
