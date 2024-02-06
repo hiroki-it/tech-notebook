@@ -172,10 +172,10 @@ func initProvider() {
 
 サンプリングする場所によって、方式が異なる。
 
-| 方式                | 説明                                                                                                                                                                                                           |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Head-based sampling | アプリケーションで、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                          |
-| Tail-based sampling | OpenTelemetryコレクターで、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+| 方式       | 説明                                                                                                                                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Head-based | アプリケーションで、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                          |
+| Tail-based | OpenTelemetryコレクターで、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
 > - https://opentelemetry.io/docs/concepts/sampling/
@@ -184,7 +184,9 @@ func initProvider() {
 
 アプリケーション側でのサンプリング率を設定する。
 
-Tail-based samplingの場合、基本的に全てサンプリングした上でOpenTelemetryコレクターに送信するため、`AlwaysOn`または`TraceIdRationBased=1.0`とする。
+Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、`AlwaysOn`または`TraceIdRationBased=1.0`とする。
+
+ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。
 
 | 設定                 | 説明                                                                                    |
 | -------------------- | --------------------------------------------------------------------------------------- |
@@ -196,10 +198,11 @@ Tail-based samplingの場合、基本的に全てサンプリングした上でO
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 > - https://zenn.dev/ishii1648/articles/167e199bab5396
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
+> - https://opentelemetry.io/docs/concepts/sampling/#tail-sampling
 
 #### ▼ OpenTelemetryコレクター側のサンプリング率
 
-Tail-based samplingの場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
+Tail-based方式の場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
 
 ```yaml
 processors:
@@ -214,16 +217,13 @@ processors:
     num_traces: 10
     policies:
       [
-        {name: longer-than-500ms, type: latency, latency: {threshold_ms: 500}},
-        {
-          type: string_attribute,
-          string_attribute:
-            {key: "http.url", values: ["https://www.google.co.jp"]},
-        },
-      ]
+        { name: always-sample
+        type: always_sample}
+         ]
 ```
 
 > - https://zenn.dev/ishii1648/articles/167e199bab5396#processors
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 
 <br>
 
