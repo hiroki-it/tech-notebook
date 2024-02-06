@@ -13,7 +13,7 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 <br>
 
-## 01. TraceProvider
+## 01-02. TraceProvider
 
 ### TraceProviderとは
 
@@ -28,9 +28,11 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### TraceProviderの処理の要素
+## 01. TraceProviderの処理の要素
 
-#### ▼ Exporter
+### Exporter
+
+#### ▼ Exporterとは
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google CloudTrace、otelコレクター、など) を決める処理を持つ。
 
@@ -50,7 +52,11 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
 
-#### ▼ IDGenerator
+<br>
+
+### IDGenerator
+
+#### ▼ IDGeneratorとは
 
 特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
 
@@ -60,7 +66,11 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 
 > - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
 
-#### ▼ SpanProcessor
+<br>
+
+### SpanProcessor
+
+#### ▼ SpanProcessorとは
 
 他の処理コンポーネントを操作する処理を持つ。
 
@@ -73,7 +83,11 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
 
-#### ▼ Propagator
+<br>
+
+### Propagator
+
+#### ▼ Propagatorとは
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
@@ -136,7 +150,11 @@ func initProvider() {
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-#### ▼ Sampler
+<br>
+
+### Sampler
+
+#### ▼ Samplerとは
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
 
@@ -149,11 +167,14 @@ func initProvider() {
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 
-<br>
+#### ▼ サンプリング方式
 
-### 環境変数
+| 方式                | 説明                                                                      |
+| ------------------- | ------------------------------------------------------------------------- |
+| Head-based sampling | リクエストの中からランダムにスパンを作成する。                            |
+| Tail-based sampling | 全てのリクエストでスパンを作成する。OpenTelemetryコレクターが必要である。 |
 
-#### ▼ Sampler
+#### ▼ 環境変数
 
 指定するSamplerやパラメーターを環境変数で設定できる。
 

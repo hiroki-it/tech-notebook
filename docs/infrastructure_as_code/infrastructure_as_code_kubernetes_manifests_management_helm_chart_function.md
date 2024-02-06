@@ -1049,7 +1049,7 @@ foo:
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
 
-### ▼ indexでも代用可
+#### ▼ indexでも代用可
 
 `index`関数で`hasKey`関数を代用できる。
 
