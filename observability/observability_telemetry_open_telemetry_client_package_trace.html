@@ -20189,6 +20189,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenTelemetryコレクター側のサンプリング率
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21740,6 +21749,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenTelemetryコレクター側のサンプリング率
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22518,9 +22536,36 @@
 </table>
 <blockquote>
 <ul>
-<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-sampling">https://christina04.hatenablog.com/entry/opentelemetry-sampling</a></li>
-<li><a href="https://opentelemetry.io/docs/languages/go/sampling/">https://opentelemetry.io/docs/languages/go/sampling/</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26</a></li>
+<li><a href="https://zenn.dev/ishii1648/articles/167e199bab5396">https://zenn.dev/ishii1648/articles/167e199bab5396</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141">https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141</a></li>
+</ul>
+</blockquote>
+<h4 id="opentelemetry">▼ OpenTelemetryコレクター側のサンプリング率<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
+<p>Tail-based samplingの場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collector</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel-collector</span>
+<span class="w">        </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">insert</span>
+
+<span class="w">  </span><span class="nt">tail_sampling</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">decision_wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">    </span><span class="nt">num_traces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">longer-than-500ms</span><span class="p p-Indicator">,</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">latency</span><span class="p p-Indicator">,</span><span class="nt"> latency</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">threshold_ms</span><span class="p">:</span><span class="w"> </span><span class="nv">500</span><span class="p p-Indicator">}},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="nt">          type</span><span class="p">:</span><span class="w"> </span><span class="nv">string_attribute</span><span class="p p-Indicator">,</span>
+<span class="nt">          string_attribute</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http.url&quot;</span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://www.google.co.jp&quot;</span><span class="p p-Indicator">]},</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/ishii1648/articles/167e199bab5396#processors">https://zenn.dev/ishii1648/articles/167e199bab5396#processors</a></li>
 </ul>
 </blockquote>
 <p><br></p>
