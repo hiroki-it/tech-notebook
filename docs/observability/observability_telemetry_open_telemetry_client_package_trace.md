@@ -168,29 +168,34 @@ func initProvider() {
 
 ### サンプリング方式
 
-#### ▼ 種類
+#### ▼ 場所
 
-| 方式                   | 説明                                                                                                                                                                                                                                               |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Head-based sampling    | アプリケーションで、スパンをランダムにサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストを取りこぼす可能性がある。                                                                                  |
-| Rate-limiting sampling | アプリケーションで、上限率を超えない範囲でスパンをサンプリングする。                                                                                                                                                                               |
-| Tail-based sampling    | アプリケーションからのスパンをOpenTelemetryコレクターで収集し、必要なスパンのみをサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+サンプリングする場所によって、方式が異なる。
 
-> - https://uptrace.dev/opentelemetry/sampling.html
+| 方式                | 説明                                                                                                                                                                                                           |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Head-based sampling | アプリケーションで、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                          |
+| Tail-based sampling | OpenTelemetryコレクターで、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
+> - https://opentelemetry.io/docs/concepts/sampling/
 
-#### ▼ Head-based sampling
+#### ▼ アプリケーション側のサンプリング率
 
-| Head-based samplingの設定 | 説明                                                                             |
-| ------------------------- | -------------------------------------------------------------------------------- |
-| `AlwaysOn`                | 全てのスパンをサンプリングする。本番環境で非推奨である。                         |
-| `AlwaysOff`               | スパンをサンプリングしない。                                                     |
-| `TraceIdRationBased`      | 指定した割合でスパンをサンプリングする。                                         |
-| `ParentBased`             | 親スパンの設定を継承する。`TraceIdRationBased`と組み合わせて使用することが多い。 |
+アプリケーション側でのサンプリング率を設定する。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
+Tail-based samplingの場合、基本的に全てサンプリングした上でOpenTelemetryコレクターに送信するため、`AlwaysOn`または`TraceIdRationBased=1.0`とする。
+
+| 設定                 | 説明                                                                                    |
+| -------------------- | --------------------------------------------------------------------------------------- |
+| `AlwaysOn`           | 全てのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。 |
+| `AlwaysOff`          | スパンをサンプリングしない。                                                            |
+| `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                      |
+| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased`と組み合わせて使用することが多い。        |
+
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
+> - https://opentelemetry.io/docs/languages/go/sampling/
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
 
 <br>
 
