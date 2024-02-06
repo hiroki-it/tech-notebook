@@ -22674,6 +22674,7 @@
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/stdout/stdouttrace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
 
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="p">)</span>
@@ -22687,7 +22688,7 @@
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
-<span class="w">    </span><span class="nx">attributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">SchemaURL</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceVersionKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;1.0.0&quot;</span><span class="p">),</span>
@@ -22698,7 +22699,7 @@
 <span class="w">        </span><span class="c1">// ExporterをTraceProviderに登録する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">attributes</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
@@ -22933,7 +22934,7 @@
 <span class="w">    </span><span class="c1">// 空のコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">resr</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
 <span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">)),</span>
@@ -22969,7 +22970,7 @@
 <span class="w">    </span><span class="c1">// TraceProviderを作成する</span>
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resr</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -23278,7 +23279,7 @@
 <span class="w">    </span><span class="c1">// 空のコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">resr</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
 <span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">)),</span>
@@ -23317,7 +23318,7 @@
 <span class="w">    </span><span class="c1">// TraceProviderを作成する</span>
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resr</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// X-ray形式の各種IDを新しく作成する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
