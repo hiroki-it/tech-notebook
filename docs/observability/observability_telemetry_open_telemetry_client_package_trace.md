@@ -193,9 +193,37 @@ Tail-based samplingの場合、基本的に全てサンプリングした上でO
 | `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                      |
 | `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased`と組み合わせて使用することが多い。        |
 
-> - https://christina04.hatenablog.com/entry/opentelemetry-sampling
-> - https://opentelemetry.io/docs/languages/go/sampling/
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
+> - https://zenn.dev/ishii1648/articles/167e199bab5396
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
+
+#### ▼ OpenTelemetryコレクター側のサンプリング率
+
+Tail-based samplingの場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
+
+```yaml
+processors:
+  attributes:
+    actions:
+      - key: collector
+        value: otel-collector
+        action: insert
+
+  tail_sampling:
+    decision_wait: 10s
+    num_traces: 10
+    policies:
+      [
+        {name: longer-than-500ms, type: latency, latency: {threshold_ms: 500}},
+        {
+          type: string_attribute,
+          string_attribute:
+            {key: "http.url", values: ["https://www.google.co.jp"]},
+        },
+      ]
+```
+
+> - https://zenn.dev/ishii1648/articles/167e199bab5396#processors
 
 <br>
 
