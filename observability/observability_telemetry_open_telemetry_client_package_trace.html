@@ -22472,7 +22472,7 @@
 <tbody>
 <tr>
 <td>Head-based sampling</td>
-<td>アプリケーションで、スパンをランダムにサンプリングする。パフォーマンスに影響が低いが、エラーリクエストを取りこぼす可能性がある。</td>
+<td>アプリケーションで、スパンをランダムにサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストを取りこぼす可能性がある。</td>
 </tr>
 <tr>
 <td>Rate-limiting sampling</td>
@@ -22480,13 +22480,14 @@
 </tr>
 <tr>
 <td>Tail-based sampling</td>
-<td>アプリケーションからのスパンをOpenTelemetryコレクターで収集し、必要なスパンのみをサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンスに影響があるが、エラーリクエストもトレーシングできる。</td>
+<td>アプリケーションからのスパンをOpenTelemetryコレクターで収集し、必要なスパンのみをサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://uptrace.dev/opentelemetry/sampling.html">https://uptrace.dev/opentelemetry/sampling.html</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-sampling">https://christina04.hatenablog.com/entry/opentelemetry-sampling</a></li>
 </ul>
 </blockquote>
 <h4 id="head-based-sampling">▼ Head-based sampling<a class="headerlink" href="#head-based-sampling" title="Permanent link">&para;</a></h4>
@@ -22500,7 +22501,7 @@
 <tbody>
 <tr>
 <td><code>AlwaysOn</code></td>
-<td>全てのスパンをサンプリングする。</td>
+<td>全てのスパンをサンプリングする。本番環境で非推奨である。</td>
 </tr>
 <tr>
 <td><code>AlwaysOff</code></td>
@@ -22512,7 +22513,7 @@
 </tr>
 <tr>
 <td><code>ParentBased</code></td>
-<td>親スパンの割合を継承する。</td>
+<td>親スパンの設定を継承する。<code>TraceIdRationBased</code>と組み合わせて使用することが多い。</td>
 </tr>
 </tbody>
 </table>
@@ -22520,6 +22521,7 @@
 <ul>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-sampling">https://christina04.hatenablog.com/entry/opentelemetry-sampling</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22528,7 +22530,7 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th>環境変数名</th>
 <th></th>
 </tr>
 </thead>
