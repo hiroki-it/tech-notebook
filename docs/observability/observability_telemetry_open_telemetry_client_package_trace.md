@@ -13,7 +13,7 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 <br>
 
-## 01-02. TraceProvider
+## 01. TraceProvider
 
 ### TraceProviderとは
 
@@ -28,11 +28,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-## 01. TraceProviderの処理の要素
+## 02. Exporter
 
-### Exporter
-
-#### ▼ Exporterとは
+### Exporterとは
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google CloudTrace、otelコレクター、など) を決める処理を持つ。
 
@@ -54,9 +52,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### IDGenerator
+## 02-02. IDGenerator
 
-#### ▼ IDGeneratorとは
+### IDGeneratorとは
 
 特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
 
@@ -68,9 +66,9 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 
 <br>
 
-### SpanProcessor
+## 02-03. SpanProcessor
 
-#### ▼ SpanProcessorとは
+### SpanProcessorとは
 
 他の処理コンポーネントを操作する処理を持つ。
 
@@ -85,9 +83,9 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 
 <br>
 
-### Propagator
+## 02-04. Propagator
 
-#### ▼ Propagatorとは
+### Propagatorとは
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
@@ -130,7 +128,11 @@ func initProvider() {
 > - https://www.lottohub.jp/posts/otelsql-grpc/
 > - https://github.com/openzipkin/b3-propagation#overall-process
 
-#### ▼ Resource
+<br>
+
+## 02-05. Resource
+
+### Resourceとは
 
 スパンにコンテキストを設定する処理を持つ。
 
@@ -152,29 +154,45 @@ func initProvider() {
 
 <br>
 
-### Sampler
+## 02-06. Sampler
 
-#### ▼ Samplerとは
+### Samplerとは
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
-
-具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
 | 項目 | 必要なパッケージ                                                 |
 | ---- | ---------------------------------------------------------------- |
 | Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
 
+<br>
+
+### サンプリング方式
+
+#### ▼ 種類
+
+| 方式                   | 説明                                                                                                                                                                                                              |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Head-based sampling    | アプリケーションで、スパンをランダムにサンプリングする。パフォーマンスに影響が低いが、エラーリクエストを取りこぼす可能性がある。                                                                                  |
+| Rate-limiting sampling | アプリケーションで、上限率を超えない範囲でスパンをサンプリングする。                                                                                                                                              |
+| Tail-based sampling    | アプリケーションからのスパンをOpenTelemetryコレクターで収集し、必要なスパンのみをサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンスに影響があるが、エラーリクエストもトレーシングできる。 |
+
+> - https://uptrace.dev/opentelemetry/sampling.html
+
+#### ▼ Head-based sampling
+
+| Head-based samplingの設定 | 説明                                     |
+| ------------------------- | ---------------------------------------- |
+| `AlwaysOn`                | 全てのスパンをサンプリングする。         |
+| `AlwaysOff`               | スパンをサンプリングしない。             |
+| `TraceIdRationBased`      | 指定した割合でスパンをサンプリングする。 |
+| `ParentBased`             | 親スパンの割合を継承する。               |
+
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 
-#### ▼ サンプリング方式
+<br>
 
-| 方式                | 説明                                                                      |
-| ------------------- | ------------------------------------------------------------------------- |
-| Head-based sampling | リクエストの中からランダムにスパンを作成する。                            |
-| Tail-based sampling | 全てのリクエストでスパンを作成する。OpenTelemetryコレクターが必要である。 |
-
-#### ▼ 環境変数
+### 環境変数
 
 指定するSamplerやパラメーターを環境変数で設定できる。
 
