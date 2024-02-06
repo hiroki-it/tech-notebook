@@ -215,11 +215,7 @@ processors:
   tail_sampling:
     decision_wait: 10s
     num_traces: 10
-    policies:
-      [
-        { name: always-sample
-        type: always_sample}
-         ]
+    policies: [{name: always-sample, type: always_sample}]
 ```
 
 > - https://zenn.dev/ishii1648/articles/167e199bab5396#processors
