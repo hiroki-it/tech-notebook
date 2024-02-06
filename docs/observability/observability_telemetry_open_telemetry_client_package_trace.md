@@ -313,6 +313,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/sdk/resource"
 
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
@@ -326,7 +327,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	)
 
 	// マイクロサービスの属性情報を設定する。
-	attributes := resource.NewWithAttributes(
+	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
 		semconv.ServiceNameKey.String("foo-service"),
 		semconv.ServiceVersionKey.String("1.0.0"),
@@ -337,7 +338,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	    // ExporterをTraceProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(attributes),
+		sdktrace.WithResource(resourceWithAttributes),
 	)
 
 	// パッケージをセットアップする。
@@ -581,7 +582,7 @@ func initProvider() (func(context.Context) error, error) {
     // 空のコンテキストを作成する
 	ctx := context.Background()
 
-	resr, err := resource.New(
+	resourceWithAttributes, err := resource.New(
 		ctx,
 		// マイクロサービスの属性情報を設定する。
 		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
@@ -617,7 +618,7 @@ func initProvider() (func(context.Context) error, error) {
 	// TraceProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(resr),
+		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
@@ -933,7 +934,7 @@ func initProvider() (func(context.Context) error, error) {
 	// 空のコンテキストを作成する
 	ctx := context.Background()
 
-	resr, err := resource.New(
+	resourceWithAttributes, err := resource.New(
         ctx,
 		// マイクロサービスの属性情報を設定する。
 		resource.WithAttributes(semconv.ServiceNameKey.String("sample")),
@@ -972,7 +973,7 @@ func initProvider() (func(context.Context) error, error) {
     // TraceProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(resr),
+		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 		// X-ray形式の各種IDを新しく作成する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
