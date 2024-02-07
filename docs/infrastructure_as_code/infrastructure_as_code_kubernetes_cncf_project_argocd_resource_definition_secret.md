@@ -561,6 +561,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
+  # OIDCに必要なIDやトークンを設定する
   oidc.config: |
     name: Auth0
     clientID: *****

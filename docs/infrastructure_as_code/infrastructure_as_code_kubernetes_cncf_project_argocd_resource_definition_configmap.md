@@ -314,7 +314,7 @@ metadata:
 data:
   admin.enabled: "true"
 
-  # OIDCに必要なIDやトークンを設定する。
+  # OIDCに必要なIDやトークンを設定する
   oidc.config: |
     connectors:
       - type: github
@@ -326,7 +326,7 @@ data:
         # dex-serverが認可レスポンスを受信するURLを設定する
         redirectURI: https://example.com/api/dex/callback
 
-  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # ArgoCDのダッシュボードのNode外公開URLを設定する
   # 開発環境では、https://127.0.0.1:8080
   url: <URL>
 ```

@@ -51,19 +51,19 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 #### ▼ 設定項目と説明
 
-| 設定項目                         | 説明                                                                                   | 補足                                                                                                                                                                                                                                                                                                                |
-| -------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 名前                             | クラスターの名前を設定する。                                                           |                                                                                                                                                                                                                                                                                                                     |
-| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。                                      | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>- https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
-| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。                                          | - https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                                                                                                            |
-| シークレット                     | Secretに保持するデータをKMSの暗号化キーで暗号化するか否かを設定する。                  |                                                                                                                                                                                                                                                                                                                     |
-| VPC、サブネット                  | ENIを配置するサブネットを設定する。                                                    | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                                                                                                |
-| クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。                                          | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって`eks-cluster-sg-<EKS Cluster名>`というセキュリティグループも自動設定される。<br>- https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。          |                                                                                                                                                                                                                                                                                                                     |
-| CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                      |                                                                                                                                                                                                                                                                                                                     |
-| クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                             |                                                                                                                                                                                                                                                                                                                     |
-| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                                                                            |
-| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                       |
+| 設定項目                         | 説明                                                                                   | 補足                                                                                                                                                                                                                                                                                                              |
+| -------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 名前                             | クラスターの名前を設定する。                                                           |                                                                                                                                                                                                                                                                                                                   |
+| Kubernetesバージョン             | EKS上で稼働するKubernetesのバージョンを設定する。                                      | EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
+| クラスターサービスロール         | EKS Clusterのサービスリンクロールを設定する。                                          | - https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                                                                                                          |
+| シークレット                     | Secretに保持するデータをKMSの暗号化キーで暗号化するか否かを設定する。                  |                                                                                                                                                                                                                                                                                                                   |
+| VPC、サブネット                  | ENIを配置するサブネットを設定する。                                                    | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                                                                                              |
+| クラスターセキュリティグループ   | EKS Clusterのセキュリティグループを設定する。                                          | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって`eks-cluster-sg-<EKS Cluster名>`というセキュリティグループも自動設定される。<br>https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。          |                                                                                                                                                                                                                                                                                                                   |
+| CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                      |                                                                                                                                                                                                                                                                                                                   |
+| クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                             |                                                                                                                                                                                                                                                                                                                   |
+| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cniアドオン、を使用できる。                                                                                                                                                                                          |
+| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                     |
 
 <br>
 
@@ -189,11 +189,11 @@ $ kubectl get pod
 
 ### 対応関係
 
-| コントロールプレーン上のAWSリソース            | Kubernetesリソース       | 補足                                                                      |
-| ---------------------------------------------- | ------------------------ | ------------------------------------------------------------------------- |
-| EKSコントロールプレーン                        | コントロールプレーンNode | - https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
-| kube-apiserver                                 | kube-apiserver           |                                                                           |
-| kube-apiserverのロードバランサー (例：HAProxy) | NLB                      |                                                                           |
+| コントロールプレーン上のAWSリソース            | Kubernetesリソース       | 補足                                                                    |
+| ---------------------------------------------- | ------------------------ | ----------------------------------------------------------------------- |
+| EKSコントロールプレーン                        | コントロールプレーンNode | https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html |
+| kube-apiserver                                 | kube-apiserver           |                                                                         |
+| kube-apiserverのロードバランサー (例：HAProxy) | NLB                      |                                                                         |
 
 <br>
 
@@ -205,7 +205,7 @@ $ kubectl get pod
 
 ### kube-apiserver
 
-#### ▼ Kubernetes RBACとの連携
+#### ▼ aws-authを介したKubernetes RBACとの連携
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
@@ -275,6 +275,12 @@ data:
 > - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
 > - https://www.karakaram.com/eks-system-masters-group/
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
+
+#### ▼ Access Entryを介したKubernetes RBACとの連携
+
+記入中...
+
+> - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 
 #### ▼ パブリックアクセス/プライベートアクセス
 
@@ -1520,12 +1526,12 @@ EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode
 
 Fargateを設定する。
 
-| コンポーネント名           | 説明                                                                                                       | 補足                                                                                                                                                                                                                                                                            |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod実行ロール              | kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。                                | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>- https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
-| サブネット                 | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                  | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                    |
-| ポッドセレクタ (Namespace) | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                   |
-| ポッドセレクタ (Label)     | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                                 |
+| コンポーネント名           | 説明                                                                                                       | 補足                                                                                                                                                                                                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pod実行ロール              | kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。                                | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com`を設定する必要がある。<br>https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| サブネット                 | EKS FargateワーカーNodeが起動するサブネットIDを設定する。                                                  | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                  |
+| ポッドセレクタ (Namespace) | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。       | ・`kube-system`や`default`を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。                                 |
+| ポッドセレクタ (Label)     | EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。 |                                                                                                                                                                                                                                                                               |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
 
