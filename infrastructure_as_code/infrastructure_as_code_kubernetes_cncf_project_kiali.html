@@ -18185,9 +18185,33 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      通信のトラブルシューティング
+      トラブルシューティング
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="トラブルシューティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ レスポンスタイム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -18207,7 +18231,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       他のテレメトリーとの紐付け
     </span>
@@ -18217,7 +18241,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メトリクスとの紐付け
     </span>
@@ -18226,7 +18250,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ログとの紐付け
     </span>
@@ -18240,7 +18264,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       サービスメッシュトポロジーとの紐付け
     </span>
@@ -21715,9 +21739,33 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      通信のトラブルシューティング
+      トラブルシューティング
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="トラブルシューティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ レスポンスタイム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -21737,7 +21785,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       他のテレメトリーとの紐付け
     </span>
@@ -21747,7 +21795,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ メトリクスとの紐付け
     </span>
@@ -21756,7 +21804,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ログとの紐付け
     </span>
@@ -21770,7 +21818,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       サービスメッシュトポロジーとの紐付け
     </span>
@@ -21978,7 +22026,7 @@
 <p>そのため、アプリコンテナのNamespaceのみをフィルタリングして表示する。</p>
 <h4 id="tls">▼ 相互TLS認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、マイクロサービス間のいずれの通信が相互TLS認証になっているかを表示しない。</p>
-<p>そのため、Securityバッジを有効化する。</p>
+<p>そのため、凡例でSecurityを有効化する。</p>
 <p><br></p>
 <h3 id="_16">汎用ラベルの意味合い<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 表示するべき凡例<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
@@ -22001,40 +22049,48 @@
 </blockquote>
 <p><br></p>
 <h3 id="istio_1">Istioのマニフェストの検証<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
-<p>Kialiでは、Istioのマニフェストを検証できる。</p>
-<p>ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。</p>
+<p>Kialiでは、Istioカスタムリソースのマニフェストを検証できる。</p>
+<p>ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、Istioカスタムリソースのマニフェストに問題があることがわかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration">https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">通信のトラブルシューティング<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_19">トラブルシューティング<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ レスポンスタイム<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>マイクロサービス間のレスポンスタイムやエラー率を基点として、ボトルネックになっているマイクロサービスを特定していく。</p>
-<p>凡例で、レスポンスタイムと閾値 (<code>rt &gt; マイクロ秒数</code>) を使用することにより、いずれのマイクロサービス間で通信に時間がかかっているのかを調査できる。</p>
+<p>凡例で、レスポンスタイムと閾値 (<code>rt &gt; マイクロ秒数</code>) を設定し、いずれのマイクロサービス間で通信に時間がかかっているのかを調査できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali">https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali</a></li>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021</a></li>
 </ul>
 </blockquote>
+<h4 id="envoy">▼ Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
+<p>Workloadsタブから、各Podの<code>istio-proxy</code>コンテナにどんなEnvoy設定値 (リスナー、ルート、クラスター、エンドポイント) を適用しているかを確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://kiali.io/docs/features/details/#envoy">https://kiali.io/docs/features/details/#envoy</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. トレースと他のデータ間の紐付け<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_20">他のテレメトリーとの紐付け<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<h4 id="_21">▼ メトリクスとの紐付け<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<h3 id="_21">他のテレメトリーとの紐付け<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ メトリクスとの紐付け<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/features/tracing/#metric-correlation">https://kiali.io/docs/features/tracing/#metric-correlation</a></li>
 </ul>
 </blockquote>
-<h4 id="_22">▼ ログとの紐付け<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h4 id="_23">▼ ログとの紐付け<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/features/tracing/#logs-correlation">https://kiali.io/docs/features/tracing/#logs-correlation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_23">サービスメッシュトポロジーとの紐付け<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h3 id="_24">サービスメッシュトポロジーとの紐付け<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/features/tracing/#graph-correlation">https://kiali.io/docs/features/tracing/#graph-correlation</a></li>
@@ -22061,7 +22117,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-07</span>
   </span>
 
     
