@@ -242,7 +242,7 @@ TCPスリーウェイハンドシェイクのレスポンスタイムやエラ�
 
 デフォルトでは、マイクロサービス間のいずれの通信が相互TLS認証になっているかを表示しない。
 
-そのため、Securityバッジを有効化する。
+そのため、凡例でSecurityを有効化する。
 
 <br>
 
@@ -269,22 +269,30 @@ TCPスリーウェイハンドシェイクのレスポンスタイムやエラ�
 
 ### Istioのマニフェストの検証
 
-Kialiでは、Istioのマニフェストを検証できる。
+Kialiでは、Istioカスタムリソースのマニフェストを検証できる。
 
-ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、マニフェストに問題があることがわかる。
+ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、Istioカスタムリソースのマニフェストに問題があることがわかる。
 
 > - https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
 
 <br>
 
-### 通信のトラブルシューティング
+### トラブルシューティング
+
+#### ▼ レスポンスタイム
 
 マイクロサービス間のレスポンスタイムやエラー率を基点として、ボトルネックになっているマイクロサービスを特定していく。
 
-凡例で、レスポンスタイムと閾値 (`rt > マイクロ秒数`) を使用することにより、いずれのマイクロサービス間で通信に時間がかかっているのかを調査できる。
+凡例で、レスポンスタイムと閾値 (`rt > マイクロ秒数`) を設定し、いずれのマイクロサービス間で通信に時間がかかっているのかを調査できる。
 
 > - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
+
+#### ▼ Envoy
+
+Workloadsタブから、各Podの`istio-proxy`コンテナにどんなEnvoy設定値 (リスナー、ルート、クラスター、エンドポイント) を適用しているかを確認できる。
+
+> - https://kiali.io/docs/features/details/#envoy
 
 <br>
 
