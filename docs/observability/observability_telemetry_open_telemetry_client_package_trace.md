@@ -243,13 +243,99 @@ processors:
 
 ### otelクライアントパッケージ
 
-#### ▼ Exporter
+#### ▼ パッケージの初期化
 
-> - https://github.com/open-telemetry/opentelemetry-go/tree/v1.18.0/exporters
+```go
+package app
 
-#### ▼ Propagator
+import (
+	"context"
+	"fmt"
+	"log"
 
-> - https://github.com/open-telemetry/opentelemetry-go/tree/v1.18.0/propagation
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	"go.opentelemetry.io/otel/trace"
+)
+
+var tracer trace.Tracer
+
+func newExporter(ctx context.Context)  {
+}
+
+func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+	r, err := resource.Merge(
+		resource.Default(),
+		resource.NewWithAttributes(
+			semconv.SchemaURL,
+			semconv.ServiceName("ExampleService"),
+		),
+	)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exp),
+		sdktrace.WithResource(r),
+	)
+}
+
+func main() {
+	ctx := context.Background()
+
+	exp, err := newExporter(ctx)
+	if err != nil {
+		log.Fatalf("failed to initialize exporter: %v", err)
+	}
+
+	tp := newTraceProvider(exp)
+
+	defer func() { _ = tp.Shutdown(ctx) }()
+
+	otel.SetTracerProvider(tp)
+
+	tracer = tp.Tracer("ExampleService")
+}
+```
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer
+
+#### ▼ 親スパンの作成
+
+```go
+func parentFunction(ctx context.Context) {
+	ctx, parentSpan := tracer.Start(ctx, "parent")
+	defer parentSpan.End()
+
+	childFunction(ctx)
+}
+```
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
+
+#### ▼ コンテキスト注入と子スパン作成
+
+```go
+func childFunction(ctx context.Context) {
+	ctx, childSpan := tracer.Start(ctx, "child")
+	defer childSpan.End()
+
+}
+
+func main() {
+
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+}
+```
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#propagators-and-context
 
 <br>
 
@@ -371,6 +457,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 ```
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#getting
 
 #### ▼ 親スパン作成
 
