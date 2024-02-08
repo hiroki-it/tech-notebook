@@ -325,6 +325,30 @@ variables:
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#variables
 
+#### ▼ ファイルの切り分け
+
+可能であれば、`variables`キーを`variables.yml`ファイルとして切り分け、これを読み込むようにする。
+
+可読性が高くなる。
+
+```yaml
+# variables.ymlファイル
+# variablesで空文字を設定する
+variables:
+  FOO: ""
+```
+
+```yaml
+include:
+  - local: .gitlab-ci/variables.yml
+
+foo_job:
+  stage: build
+  script:
+    # ダブルクオートがない
+    - echo ${FOO}
+```
+
 #### ▼ 空文字の出力
 
 空文字を設定したい場合、`variables`キーに設定しても空文字として出力されない。
