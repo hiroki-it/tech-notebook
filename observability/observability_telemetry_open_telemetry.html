@@ -20002,19 +20002,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_1" class="md-nav__link">
+  <a href="#opentelemetry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      otelコレクター
+      opentelemetryコレクター
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="otelコレクター">
+    <nav class="md-nav" aria-label="opentelemetryコレクター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_2" class="md-nav__link">
+  <a href="#opentelemetry_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ otelコレクターとは
+      ▼ opentelemetryコレクターとは
     </span>
   </a>
   
@@ -21149,19 +21149,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_1" class="md-nav__link">
+  <a href="#opentelemetry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      otelコレクター
+      opentelemetryコレクター
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="otelコレクター">
+    <nav class="md-nav" aria-label="opentelemetryコレクター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_2" class="md-nav__link">
+  <a href="#opentelemetry_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ otelコレクターとは
+      ▼ opentelemetryコレクターとは
     </span>
   </a>
   
@@ -21332,7 +21332,7 @@
 <p><br></p>
 <h2 id="01-opentelemetry">01. OpenTelemetryの仕組み<a class="headerlink" href="#01-opentelemetry" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーコンシューマー (例：otelコレクター、など) といったコンポーネントから構成されている。</p>
+<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーコンシューマー (例：opentelemetryコレクター、など) といったコンポーネントから構成されている。</p>
 <p>OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。</p>
 <p><img alt="open-telemetry_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png" /></p>
 <blockquote>
@@ -21349,7 +21349,7 @@
 <h3 id="otel">otelクライアントパッケージ<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h3>
 <p>otelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、といったコンポーネントから構成されている。</p>
 <p>アプリケーションをインスツルメント化する。</p>
-<p>otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやotelコレクターにこれを渡す。</p>
+<p>otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやopentelemetryコレクターにこれを渡す。</p>
 <p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。</p>
 <p><img alt="open-telemetry_client-package" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png" /></p>
 <blockquote>
@@ -21359,12 +21359,12 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-03">01-03. テレメトリーコンシューマー<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
-<h3 id="otel_1">otelコレクター<a class="headerlink" href="#otel_1" title="Permanent link">&para;</a></h3>
-<h4 id="otel_2">▼ otelコレクターとは<a class="headerlink" href="#otel_2" title="Permanent link">&para;</a></h4>
-<p>otelコレクターは、レシーバー、プロセッサー、エクスポーター、といったコンポーネントから構成されている。</p>
+<h3 id="opentelemetry_1">opentelemetryコレクター<a class="headerlink" href="#opentelemetry_1" title="Permanent link">&para;</a></h3>
+<h4 id="opentelemetry_2">▼ opentelemetryコレクターとは<a class="headerlink" href="#opentelemetry_2" title="Permanent link">&para;</a></h4>
+<p>opentelemetryコレクターは、レシーバー、プロセッサー、エクスポーター、といったコンポーネントから構成されている。</p>
 <p>otelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
-<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、otelコレクターを使用した方が良い。</p>
-<p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがotelコレクターにテレメトリーデータを送信する責務を持つ。</p>
+<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、opentelemetryコレクターを使用した方が良い。</p>
+<p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがopentelemetryコレクターにテレメトリーデータを送信する責務を持つ。</p>
 <p><img alt="open-telemetry_collector" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png" /></p>
 <blockquote>
 <ul>
@@ -21388,7 +21388,7 @@
 </blockquote>
 <h4 id="_6">▼ エクスポーター<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。</p>
-<p>非対応の監視バックエンド (例：X-ray) に関しては、その形式の監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。</p>
+<p>非対応の監視バックエンド (例：X-ray) に関しては、その形式の監視バックエンドが提供するエクスポーター (例：AWS Distro for opentelemetryコレクターのエクスポーター) を使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md</a></li>

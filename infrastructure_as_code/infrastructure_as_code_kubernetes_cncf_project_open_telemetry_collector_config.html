@@ -21063,7 +21063,7 @@
 <h2 id="01-exporters">01. exporters<a class="headerlink" href="#01-exporters" title="Permanent link">&para;</a></h2>
 <h3 id="exporters">exportersとは<a class="headerlink" href="#exporters" title="Permanent link">&para;</a></h3>
 <p>エクスポーターを設定する。</p>
-<p>otelコレクターは、設定した監視バックエンドにテレメトリーを送信する。</p>
+<p>opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
 <h3 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
@@ -21102,7 +21102,7 @@
 <h2 id="02-extensions">02. extensions<a class="headerlink" href="#02-extensions" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">extensions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">health_check</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;otelコレクターPodのIPアドレス&gt;:13133</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0:13133</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -21125,7 +21125,8 @@
 <p><br></p>
 <h2 id="04-receivers">04. receivers<a class="headerlink" href="#04-receivers" title="Permanent link">&para;</a></h2>
 <p>レシーバーを設定する</p>
-<p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する</p>
+<p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。</p>
+<p>クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">protocols</span><span class="p">:</span>
@@ -21137,6 +21138,7 @@
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/collector/configuration/#receivers">https://opentelemetry.io/docs/collector/configuration/#receivers</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>

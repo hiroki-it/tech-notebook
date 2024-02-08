@@ -21019,7 +21019,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. アーキテクチャ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>AWS OpenTelemetry Collector Operatorは、otelコレクターに関するカスタムリソースのOperatorである。</p>
+<p>AWS OpenTelemetry Collector Operatorは、opentelemetryコレクターに関するカスタムリソースのOperatorである。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/">https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/</a></li>
@@ -21029,7 +21029,7 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="eks">EKSアドオンとして<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
 <h4 id="opentelemetryhelm">▼ OpenTelemetryによるHelmチャートの場合<a class="headerlink" href="#opentelemetryhelm" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryによるHelmチャートの場合、Kubernetesリソースでotelコレクターを作成することになる。</p>
+<p>OpenTelemetryによるHelmチャートの場合、Kubernetesリソースでopentelemetryコレクターを作成することになる。</p>
 <p>ただし、これにはX-RayのExporterが含まれていないため、AWS製のコンテナイメージ (パブリックECRの<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替える。</p>
 <blockquote>
 <ul>
@@ -21039,7 +21039,7 @@
 </ul>
 </blockquote>
 <h4 id="awshelm">▼ AWSによるHelmチャートの場合<a class="headerlink" href="#awshelm" title="Permanent link">&para;</a></h4>
-<p>AWSによるHelmチャートを使用する場合、Kubernetesリソースでotelコレクターを作成することになる。</p>
+<p>AWSによるHelmチャートを使用する場合、Kubernetesリソースでopentelemetryコレクターを作成することになる。</p>
 <p>執筆時点 (2024/01/22) では、Helmチャートがメトリクス収集の設定にしか対応していない。</p>
 <blockquote>
 <ul>
@@ -21047,9 +21047,9 @@
 </ul>
 </blockquote>
 <h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>Terraformを使用する場合、カスタムリソースでotelコレクターを作成することになる。</p>
+<p>Terraformを使用する場合、カスタムリソースでopentelemetryコレクターを作成することになる。</p>
 <p>EKSアドオンは、OpenTelemetry Collector Operatorをデプロイする。</p>
-<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、otelコレクターのOperatorに関するKubernetesリソースを作成する。</p>
+<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、opentelemetryコレクターのOperatorに関するKubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS EKSアドオンをインストールする。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;aws_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -21061,7 +21061,7 @@
 <span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>otelコレクターのカスタムリソースを作成する。</p>
+<p>opentelemetryコレクターのカスタムリソースを作成する。</p>
 <p>ここでは、分散トレーシングを送信するとする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OpenTelemetryCollector</span>
