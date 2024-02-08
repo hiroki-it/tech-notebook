@@ -355,6 +355,8 @@ spec:
 
 #### ▼ subsetsとは
 
+VirtualServiceを起点としたPodのカナリアリリースで使用する。
+
 ルーティング先のPodの`.metadata.labels`キーを設定する。
 
 `.spec.subsets[*].name`キーの値は、VirtualServiceで設定した`.spec.http[*].route[*].destination.subset`キーに合わせる必要がある。
@@ -381,10 +383,10 @@ spec:
   subsets:
     - name: v1
       labels:
-        version: v1
+        version: v1 # 旧Pod
     - name: v2
       labels:
-        version: v2
+        version: v2 # 新Pod
 ```
 
 <br>
@@ -1961,14 +1963,14 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1
+            subset: v1 # 旧Pod
           weight: 70
         - destination:
             # Service名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1
+            subset: v2 # 新Pod
           weight: 30
 ```
 
@@ -2122,6 +2124,8 @@ spec:
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
+VirtualServiceを起点としたPodのカナリアリリースで使用する。
+
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
 DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
@@ -2142,13 +2146,15 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1
+            subset: v1 # 旧Pod
+          weight: 70
         - destination:
             # Service名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v2
+            subset: v2 # 新Pod
+          weight: 30
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
@@ -2176,14 +2182,14 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1
+            subset: v1 # 旧Pod
           weight: 70
         - destination:
             # Service名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1
+            subset: v2 # 新Pod
           weight: 30
 ```
 
@@ -2280,14 +2286,16 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
-            subset: v1
+            subset: v1 # 旧Pod
+          weight: 70
         - destination:
             # Service名でも良い
             # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
-            subset: v2
+            subset: v2 # 新Pod
+          weight: 30
 ```
 
 <br>
