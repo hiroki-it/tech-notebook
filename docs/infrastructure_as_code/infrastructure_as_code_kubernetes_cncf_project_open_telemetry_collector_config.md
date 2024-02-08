@@ -19,7 +19,7 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 エクスポーターを設定する。
 
-OpenTelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
+otelコレクターは、設定した監視バックエンドにテレメトリーを送信する。
 
 <br>
 
@@ -68,7 +68,7 @@ exporters:
 ```yaml
 extensions:
   health_check:
-    endpoint: <OpenTelemetryコレクターPodのIPアドレス>:13133
+    endpoint: <otelコレクターPodのIPアドレス>:13133
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#extensions
@@ -101,9 +101,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: <OpenTelemetryコレクターPodのIPアドレス>:4317
+        endpoint: 0.0.0.0:4317
       http:
-        endpoint: <OpenTelemetryコレクターPodのIPアドレス>:4318
+        endpoint: 0.0.0.0:4318
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#receivers

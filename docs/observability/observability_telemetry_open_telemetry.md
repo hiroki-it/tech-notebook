@@ -120,6 +120,7 @@ OpenTelemetryのコンポーネントが独立して発展できるようにす�
 ![open-telemetry_schema.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_schema.png)
 
 > - https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/schema.go
 
 <br>
 
