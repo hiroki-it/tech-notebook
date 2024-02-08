@@ -27,7 +27,7 @@ VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成�
 
 AppMesh上のEnvoyはX-rayデーモンにスパンを送信し、X-rayで分散トレースを監視できるようにする。
 
-一方で、Istio上のEnvoyはこの機能を使えず、代わりにotelコレクターにスパンを送信しないといけず、AppMeshはAWSとの親和性が高い。
+一方で、Istio上のEnvoyはこの機能を使えず、代わりにopentelemetryコレクターにスパンを送信しないといけず、AppMeshはAWSとの親和性が高い。
 
 > - https://www.appmeshworkshop.com/x-ray/
 > - https://nathanpeck.com/improving-observability-with-aws-app-mesh-amazon-ecs/

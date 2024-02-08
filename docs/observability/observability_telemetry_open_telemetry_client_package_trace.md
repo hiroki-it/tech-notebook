@@ -32,19 +32,19 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 ### Exporterとは
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google CloudTrace、otelコレクター、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
 
-具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
+具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.tracing.svc.cluster.local:4317`、など) を設定できる。
 
 スパンの収集ツールがそれぞれパッケージを提供している。
 
-| 項目               | 必要なパッケージ                                                                                                                                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Goと標準出力       | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでotelコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
-| Goとotelコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                   |
-| GoとJaeger         | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                   |
-| GoとX-ray          | 一度、otelコレクター互換のAWS Distro for otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                                |
-| GoとCloud Trace    | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                         |
+| 項目                        | 必要なパッケージ                                                                                                                                                                                                                         |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goと標準出力                | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでopentelemetryコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
+| Goとopentelemetryコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                            |
+| GoとJaeger                  | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                            |
+| GoとX-ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                       |
+| GoとCloud Trace             | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                                  |
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
@@ -93,10 +93,10 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
-| 項目               | 必要なパッケージ                                                                                                                                                 |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Goとotelコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                               |
-| GoとX-ray          | 一度、otelコレクター互換のAWS Distro for otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
+| 項目                        | 必要なパッケージ                                                                                                                                                                   |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goとopentelemetryコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                                                 |
+| GoとX-ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
 
 ```go
 // クライアント側マイクロサービス
@@ -177,10 +177,10 @@ func newTraceProvider() {
 
 サンプリングする場所によって、方式が異なる。
 
-| 方式       | 説明                                                                                                                                                                                                                |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                 |
-| Tail-based | サーバー側 (otelコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+| 方式       | 説明                                                                                                                                                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                          |
+| Tail-based | サーバー側 (opentelemetryコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
 > - https://opentelemetry.io/docs/concepts/sampling/
@@ -205,9 +205,9 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
 > - https://opentelemetry.io/docs/concepts/sampling/#tail-sampling
 
-#### ▼ サーバー側 (otelコレクター) のサンプリング率
+#### ▼ サーバー側 (opentelemetryコレクター) のサンプリング率
 
-Tail-based方式の場合、otelコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
+Tail-based方式の場合、opentelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
 
 ```yaml
 processors:
@@ -356,7 +356,7 @@ func main() {
 
 #### ▼ Propagator
 
-標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for otelコレクター) を、使用できるようになる。
+標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for opentelemetryコレクター) を、使用できるようになる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators
 
@@ -370,7 +370,7 @@ func main() {
 
 拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
 
-#### ▼ AWS Distro for otelコレクター
+#### ▼ AWS Distro for opentelemetryコレクター
 
 > - https://github.com/aws/aws-xray-sdk-go
 > - https://github.com/aws-samples/aws-xray-sdk-go-sample
@@ -411,7 +411,7 @@ import (
 
 func newTracer(shutdownTimeout time.Duration) (func(), error) {
 
-	// スパンの宛先として、標準出力を設定する。
+	// Exporter (スパンの宛先) として、標準出力を設定する。
 	exporter := stdouttrace.New(
 		stdouttrace.WithPrettyPrint(),
 		stdouttrace.WithWriter(os.Stderr),
@@ -639,7 +639,7 @@ func main() {
 
 <br>
 
-### 宛先がotelコレクターの場合
+### 宛先がopentelemetryコレクターの場合
 
 #### ▼ パッケージの初期化
 
@@ -686,8 +686,8 @@ func newTraceProvider() (func(context.Context) error, error) {
 
 	conn, err := grpc.DialContext(
         ctx,
-        // otelコレクターの完全修飾ドメイン名
-        "otel-collector.foo.svc.cluster.local:4317",
+        // opentelemetryコレクターの完全修飾ドメイン名
+        "opentelemetry-collector.tracing.svc.cluster.local:4317",
         grpc.WithTransportCredentials(insecure.NewCredentials()),
         grpc.WithBlock(),
     )
@@ -696,7 +696,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
-	// スパンの宛先として、otelコレクターを設定する。
+	// Exporter (スパンの宛先) として、opentelemetryコレクターを設定する。
 	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
@@ -1039,7 +1039,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
 	}
 
-	// AWS Distro for otelコレクターに接続する
+	// AWS Distro for opentelemetryコレクターに接続する
 	conn, err := grpc.DialContext(
 		ctx,
 		"sample-collector.sample.svc.cluster.local:4318",
@@ -1051,7 +1051,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
-	// スパンの宛先として、AWS Distro for otelコレクターを設定する。
+	// Exporter (スパンの宛先) として、AWS Distro for opentelemetryコレクターを設定する。
 	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
@@ -1682,7 +1682,7 @@ resource = Resource.create({
 
 tracer_provider = TracerProvider()
 
-# スパンの宛先として、Google CloudTraceを設定する。
+# Exporter (スパンの宛先) として、Google CloudTraceを設定する。
 cloud_trace_exporter = CloudTraceSpanExporter()
 
 tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))

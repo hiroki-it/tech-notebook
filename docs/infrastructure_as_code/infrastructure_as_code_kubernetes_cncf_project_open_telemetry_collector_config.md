@@ -19,7 +19,7 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 エクスポーターを設定する。
 
-otelコレクターは、設定した監視バックエンドにテレメトリーを送信する。
+opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
 
 <br>
 
@@ -68,7 +68,7 @@ exporters:
 ```yaml
 extensions:
   health_check:
-    endpoint: <otelコレクターPodのIPアドレス>:13133
+    endpoint: 0.0.0.0:13133
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#extensions
@@ -94,7 +94,9 @@ processors:
 
 レシーバーを設定する
 
-OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する
+OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。
+
+クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。
 
 ```yaml
 receivers:
@@ -107,6 +109,7 @@ receivers:
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#receivers
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
 
 <br>
 

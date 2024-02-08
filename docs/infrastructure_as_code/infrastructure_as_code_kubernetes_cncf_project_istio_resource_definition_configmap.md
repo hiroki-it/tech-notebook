@@ -569,7 +569,7 @@ spec:
 
 #### ▼ opentelemetry
 
-分散トレースの監視バックエンドとするotelコレクターの宛先情報を設定する。
+分散トレースの監視バックエンドとするopentelemetryコレクターの宛先情報を設定する。
 
 コンテキストの仕様は選べず、強制的にW3C Trace Contextになる。
 
@@ -584,7 +584,7 @@ data:
     extensionProviders:
       - name: opentelemetry
         opentelemetry:
-          # otelコレクターを宛先として設定する
+          # opentelemetryコレクターを宛先として設定する
           service: opentelemetry-collector.tracing.svc.cluster.local
           port: 4317
 ```
