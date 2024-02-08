@@ -101,7 +101,7 @@ Carrierからコンテキストを注入する操作を『注入 (Inject)』、�
 ```go
 // クライアント側マイクロサービス
 // 前のマイクロサービスにとってはサーバー側にもなる
-func initProvider() {
+func newTraceProvider() {
 
     // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
     otel.SetTextMapPropagator(
@@ -113,7 +113,7 @@ func initProvider() {
 ```go
 // サーバー側マイクロサービス
 // 後続のマイクロサービスにとってはクライアント側にもなる
-func initProvider() {
+func newTraceProvider() {
 
     // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
@@ -404,7 +404,7 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
-func initTracer(shutdownTimeout time.Duration) (func(), error) {
+func newTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// スパンの宛先として、標準出力を設定する。
 	exporter := stdouttrace.New(
@@ -528,7 +528,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := tracer.initTracer(10 * time.Second)
+	cleanUp, err := tracer.newTracer(10 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -615,7 +615,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := tracer.initTracer(10 * time.Second)
+	cleanUp, err := tracer.newTracer(10 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -664,7 +664,7 @@ import (
 
 var tracer = otel.Tracer("<マイクロサービス名>")
 
-func initProvider() (func(context.Context) error, error) {
+func newTraceProvider() (func(context.Context) error, error) {
 
     // 空のコンテキストを作成する
 	ctx := context.Background()
@@ -814,7 +814,7 @@ func StartMainServer() {
 
   ...
 
-  shutdown, err := initProvider()
+  shutdown, err := newTraceProvider()
 
   if err != nil {
 		log.Print(err)
@@ -1016,7 +1016,7 @@ import (
 ...
 
 
-func initProvider() (func(context.Context) error, error) {
+func newTraceProvider() (func(context.Context) error, error) {
 
 	// 空のコンテキストを作成する
 	ctx := context.Background()
@@ -1117,7 +1117,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := initProvider()
+	shutdown, err := newTraceProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1195,7 +1195,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := initProvider()
+	shutdown, err := newTraceProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1285,7 +1285,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
 
-func initProvider() (func(), error) {
+func newTraceProvider() (func(), error) {
 	projectID := os.Getenv("PROJECT_ID")
 
 	// CloudTraceを宛先に設定する。
@@ -1352,7 +1352,7 @@ func main() {
 
 	installPropagators()
 
-	shutdown, err := initTracer()
+	shutdown, err := newTracer()
 
 	if err != nil {
 		log.Print(err)
@@ -1404,7 +1404,7 @@ func main() {
 
 	installPropagators()
 
-	shutdown, err := initTracer()
+	shutdown, err := newTracer()
 
 	if err != nil {
 		log.Print(err)
@@ -1470,7 +1470,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 	}
 
 	// TraceProviderを作成する
-	traceProvider := sdktrace.NewTracerProvider(
+	traceProvider := sdktrace.NewTraceProvider(
 		// ExporterをTraceProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
