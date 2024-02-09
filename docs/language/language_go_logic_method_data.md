@@ -1755,7 +1755,7 @@ import _ "<パッケージ名>"
 
 <br>
 
-## 02-02. 関数のプラクティス
+## 02-02. 関数の出入力
 
 ### 引数のデフォルト値
 
@@ -1817,173 +1817,6 @@ func main() {
 
 > - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
 > - https://blog.kazu69.net/2018/02/22/golang-functional-options/
-
-<br>
-
-### シャットダウンフック
-
-#### ▼ シャットダウンフックとは
-
-バイナリの終了前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
-
-たとえ、ランタイムエラーのように処理が強制的に途中終了しても、全ての関数の最後に実行される。
-
-- 実行したい関数を追加する関数
-- 追加した関数を並行的にコールする関数
-
-を用意する必要がある。
-
-**＊実装例＊**
-
-```go
-package shutdown
-
-import (
-    "context"
-    "sync"
-)
-
-var (
-        mu    sync.Mutex
-        hooks []func(context.Context)
-)
-
-// 実行したい関数を追加する関数
-func Add(h func(ctx context.Context)) {
-
-	mu.Lock()
-    defer mu.Unlock()
-
-    hooks = append(hooks, h)
-}
-
-// 追加した関数を並行的にコールする関数
-func Invoke(ctx context.Context) error {
-
-	mu.Lock()
-    defer mu.Unlock()
-    wg := new(sync.WaitGroup)
-    wg.Add(len(hooks))
-
-    // Goroutineの関数を反復処理する
-    for i := range hooks {
-		// Goroutineを宣言して並列化
-        go func(idx int) {
-			// 時間のかかる処理
-			defer wg.Done()
-            hooks[idx](ctx)
-        }(i)
-    }
-
-    done := make(chan struct{})
-
-	// Goroutineを宣言して並列化
-	go func() {
-		// 時間のかかる処理
-		wg.Wait()
-        close(done)
-    }()
-
-    select {
-    case <-done:
-        return nil
-    case <-ctx.Done():
-        return ctx.Err()
-    }
-}
-```
-
-```go
-package main
-
-import (
-	"shutdown"
-)
-
-func main()
-
-    shutdown.Add(func(ctx context.Context) {
-        fmt.Println("start hook1")
-        time.Sleep(3 * time.Second)
-        fmt.Println("end hook1")
-    })
-
-    shutdown.Add(func(ctx context.Context) {
-        fmt.Println("start hook2")
-        time.Sleep(3 * time.Second)
-        fmt.Println("end hook2")
-    })
-
-    shutdown.Add(func(ctx context.Context) {
-        fmt.Println("start hook3")
-        time.Sleep(10 * time.Second)
-        fmt.Println("end hook3")
-    })
-
-    // タイムアウト時間設定済みのコンテキストを作成する
-    ctx, cancel := context.WithTimeout(
-        context.Background(),
-        5 * time.Second,
-    )
-
-    defer cancel()
-
-shutdown.Invoke(ctx)
-}
-```
-
-> - https://christina04.hatenablog.com/entry/go-shudown-hooks
-> - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
-
-**＊実装例＊**
-
-```go
-package shutdown
-
-var hooks = make([]func(), 0)
-
-// プロセスの終了前に実行したい関数を追加する
-func AddShutdownHook(hook func()) {
-
-	hooks = append(hooks, hook)
-}
-
-// プロセスを安全に終了する
-func Shutdown() {
-
-	hooks := hooks
-
-	for _, fun := range hooks {
-		fun()
-	}
-}
-```
-
-```go
-package main
-
-import (
-	"shutdown"
-)
-
-func init() {
-
-	// Goroutineを宣言して並列化
-	go func() {
-		// 時間のかかる処理
-		for {
-			// 関数を返却する関数
-			shutdownHook, err := returnFunctions()
-			if err != nil {
-				time.Sleep(3 * time.Second)
-				continue
-			}
-			shutdown.AddShutdownHook(shutdownHook)
-			break
-		}
-	}()
-}
-```
 
 <br>
 
@@ -3230,5 +3063,218 @@ Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジック
 ```
 
 > - https://stackoverflow.com/a/38941123
+
+<br>
+
+## 10. 自前の外部パッケージ
+
+### シャットダウンフック
+
+#### ▼ シャットダウンフックとは
+
+バイナリの終了前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
+
+多くのパッケージでは、パッケージの処理をGraceful Shutdownするように実装している。
+
+自前で外部パッケージを作成する時もこれが必要である。
+
+#### ▼ 実装方法
+
+たとえ、ランタイムエラーのように処理が強制的に途中終了しても、全ての関数の最後に実行される。
+
+- 実行したい関数を追加する関数
+- 追加した関数を並行的にコールする関数
+
+を用意する必要がある。
+
+**＊実装例＊**
+
+```go
+package shutdown
+
+import (
+    "context"
+    "sync"
+)
+
+var (
+        mu    sync.Mutex
+        hooks []func(context.Context)
+)
+
+// 実行したい関数を追加する関数
+func Add(h func(ctx context.Context)) {
+
+	mu.Lock()
+    defer mu.Unlock()
+
+    hooks = append(hooks, h)
+}
+
+// 追加した関数を並行的にコールする関数
+func Invoke(ctx context.Context) error {
+
+	mu.Lock()
+    defer mu.Unlock()
+    wg := new(sync.WaitGroup)
+    wg.Add(len(hooks))
+
+    // Goroutineの関数を反復処理する
+    for i := range hooks {
+		// Goroutineを宣言して並列化
+        go func(idx int) {
+			// 時間のかかる処理
+			defer wg.Done()
+            hooks[idx](ctx)
+        }(i)
+    }
+
+    done := make(chan struct{})
+
+	// Goroutineを宣言して並列化
+	go func() {
+		// 時間のかかる処理
+		wg.Wait()
+        close(done)
+    }()
+
+    select {
+    case <-done:
+        return nil
+    case <-ctx.Done():
+        return ctx.Err()
+    }
+}
+```
+
+```go
+package main
+
+import (
+	"shutdown"
+)
+
+func main()
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook1")
+        time.Sleep(3 * time.Second)
+        fmt.Println("end hook1")
+    })
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook2")
+        time.Sleep(3 * time.Second)
+        fmt.Println("end hook2")
+    })
+
+    shutdown.Add(func(ctx context.Context) {
+        fmt.Println("start hook3")
+        time.Sleep(10 * time.Second)
+        fmt.Println("end hook3")
+    })
+
+    // タイムアウト時間設定済みのコンテキストを作成する
+    ctx, cancel := context.WithTimeout(
+        context.Background(),
+        5 * time.Second,
+    )
+
+    defer cancel()
+
+shutdown.Invoke(ctx)
+}
+```
+
+> - https://christina04.hatenablog.com/entry/go-shudown-hooks
+> - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
+
+**＊実装例＊**
+
+```go
+package shutdown
+
+var hooks = make([]func(), 0)
+
+// プロセスの終了前に実行したい関数を追加する
+func AddShutdownHook(hook func()) {
+
+	hooks = append(hooks, hook)
+}
+
+// プロセスを安全に終了する
+func GracefulShutdown() {
+
+	hooks := hooks
+
+	for _, fun := range hooks {
+		fun()
+	}
+}
+```
+
+```go
+package main
+
+import (
+	"shutdown"
+)
+
+func init() {
+
+	// Goroutineを宣言して並列化
+	go func() {
+		// 時間のかかる処理
+		for {
+			// 関数を返却する関数
+			shutdownHook, err := returnFunctions()
+			if err != nil {
+				time.Sleep(3 * time.Second)
+				continue
+			}
+			shutdown.AddShutdownHook(shutdownHook)
+			break
+		}
+	}()
+}
+```
+
+<br>
+
+<br>
+
+## 11. テスト
+
+### 事前/事後処理
+
+```go
+package integration
+
+import (
+	"net/http"
+	"testing"
+)
+
+// setup ユニットテストの前処理の結果と，後処理の関数を返却します．
+func setup() (*http.Client, func()) {
+
+	// クライアントを作成します．
+	client := &http.Client{}
+
+	return client, func() {
+		// 事後処理
+	}
+}
+
+// TestIntegration 統合テストを実行します．
+func TestIntegration(t *testing.T) {
+
+	t.Helper()
+	client, teardown := setup()
+	defer teardown()
+
+	...
+}
+```
 
 <br>
