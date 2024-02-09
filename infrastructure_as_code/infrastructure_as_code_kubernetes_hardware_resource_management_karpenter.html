@@ -14616,18 +14616,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#terraform-terraform-aws-modulesiam-assumable-role-with-oidc" class="md-nav__link">
+  <a href="#terraform-1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (terraform-aws-modules/iam-assumable-role-with-oidc) の場合
+      ▼ Terraformの公式モジュール (1) の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform-terraform-aws-moduleskarpenter" class="md-nav__link">
+  <a href="#terraform-2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (terraform-aws-modules/karpenter) の場合
+      ▼ Terraformの公式モジュール (2) の場合
     </span>
   </a>
   
@@ -21564,18 +21564,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#terraform-terraform-aws-modulesiam-assumable-role-with-oidc" class="md-nav__link">
+  <a href="#terraform-1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (terraform-aws-modules/iam-assumable-role-with-oidc) の場合
+      ▼ Terraformの公式モジュール (1) の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform-terraform-aws-moduleskarpenter" class="md-nav__link">
+  <a href="#terraform-2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (terraform-aws-modules/karpenter) の場合
+      ▼ Terraformの公式モジュール (2) の場合
     </span>
   </a>
   
@@ -21895,7 +21895,8 @@
 <p><br></p>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="aws_1">AWS側<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
-<h4 id="terraform-terraform-aws-modulesiam-assumable-role-with-oidc">▼ Terraformの公式モジュール (<code>terraform-aws-modules/iam-assumable-role-with-oidc</code>) の場合<a class="headerlink" href="#terraform-terraform-aws-modulesiam-assumable-role-with-oidc" title="Permanent link">&para;</a></h4>
+<h4 id="terraform-1">▼ Terraformの公式モジュール (1) の場合<a class="headerlink" href="#terraform-1" title="Permanent link">&para;</a></h4>
+<p><code>terraform-aws-modules/iam/.../iam-assumable-role-with-oidc</code>を使用する。</p>
 <p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
 <p>ここでは、Terraformの公式モジュールを使用する。</p>
 <p>コマンド (例：<code>eksctl</code>コマンド) を使用しても良い。</p>
@@ -22073,7 +22074,8 @@
 <li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
 </ul>
 </blockquote>
-<h4 id="terraform-terraform-aws-moduleskarpenter">▼ Terraformの公式モジュール (<code>terraform-aws-modules/karpenter</code>) の場合<a class="headerlink" href="#terraform-terraform-aws-moduleskarpenter" title="Permanent link">&para;</a></h4>
+<h4 id="terraform-2">▼ Terraformの公式モジュール (2) の場合<a class="headerlink" href="#terraform-2" title="Permanent link">&para;</a></h4>
+<p><code>terraform-aws-modules/eks/.../karpenter</code>を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;eks_iam_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/eks/aws//modules/karpenter&quot;</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 19.18.0&quot;</span>
@@ -22145,7 +22147,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-09</span>
   </span>
 
     

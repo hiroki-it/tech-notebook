@@ -11618,9 +11618,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ec2node_3" class="md-nav__link">
+  <a href="#ec2nodegraceful-shutdown" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 安全なEC2ワーカーNodeシャットダウン
+      ▼ EC2ワーカーNodeのGraceful Shutdown
     </span>
   </a>
   
@@ -11795,7 +11795,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ec2node_4" class="md-nav__link">
+  <a href="#ec2node_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ EC2ワーカーNodeとの比較
     </span>
@@ -22986,9 +22986,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ec2node_3" class="md-nav__link">
+  <a href="#ec2nodegraceful-shutdown" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 安全なEC2ワーカーNodeシャットダウン
+      ▼ EC2ワーカーNodeのGraceful Shutdown
     </span>
   </a>
   
@@ -23163,7 +23163,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ec2node_4" class="md-nav__link">
+  <a href="#ec2node_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ EC2ワーカーNodeとの比較
     </span>
@@ -24655,7 +24655,7 @@
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/</a></li>
 </ul>
 </blockquote>
-<h4 id="ec2node_3">▼ 安全なEC2ワーカーNodeシャットダウン<a class="headerlink" href="#ec2node_3" title="Permanent link">&para;</a></h4>
+<h4 id="ec2nodegraceful-shutdown">▼ EC2ワーカーNodeのGraceful Shutdown<a class="headerlink" href="#ec2nodegraceful-shutdown" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、EC2ワーカーNodeは新しいPodのスケジューリングを禁止した後、Podの退避を待たずに停止してしまう。</p>
 <p>kubeletを使用してEC2ワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeから退避させる) までの時間を稼ぐ。</p>
 <p>ワーカーNodeの停止までの待機中に終了できたPodは、<code>Failed</code>ステータスとなる。</p>
@@ -24918,7 +24918,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p><br></p>
 <h2 id="05-02">05-02. セットアップ<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="_33">コンソール画面の場合<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<h4 id="ec2node_4">▼ EC2ワーカーNodeとの比較<a class="headerlink" href="#ec2node_4" title="Permanent link">&para;</a></h4>
+<h4 id="ec2node_3">▼ EC2ワーカーNodeとの比較<a class="headerlink" href="#ec2node_3" title="Permanent link">&para;</a></h4>
 <p>EC2ワーカーNodeと比較して、使用できない機能については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>

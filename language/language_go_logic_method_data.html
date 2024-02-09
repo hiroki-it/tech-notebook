@@ -25920,7 +25920,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h2 id="02-03">02-03. 関数の制御<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="_61">シャットダウンフック<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h3>
 <h4 id="_62">▼ シャットダウンフックとは<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h4>
-<p>バイナリの終了前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。</p>
+<p>シャットダウン前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。</p>
+<p>例えば、トランザクション中にシャットダウン処理が起こった場合に、トランザクションの完了を待ってからシャットダウンする。</p>
 <h4 id="_63">▼ 外部パッケージからコールする<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h4>
 <p>多くのパッケージでは、パッケージの処理をGraceful Shutdownするように実装している。</p>
 <p>ここでは、<code>github.com/gorilla/mux</code>パッケージのサーバーを使用するとする。</p>
@@ -25940,13 +25941,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// 割り込み処理を設定する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// SIGTERMが発生した時にGracefulShutdownを実行する</span>
+<span class="w">        </span><span class="c1">// SIGTERMシグナル</span>
 <span class="w">        </span><span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// 中断処理が発生した時にGracefulShutdownを実行する</span>
+<span class="w">        </span><span class="c1">// 中断シグナル</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// Killが発生した時にGracefulShutdownを実行する</span>
+<span class="w">        </span><span class="c1">// Killシグナル</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Kill</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -25964,14 +25966,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="c1">// もし中断処理が実行されると、Goroutineが終了する</span>
+<span class="w">    </span><span class="c1">// もし割り込み処理が実行されると、Goroutineが終了する</span>
 <span class="w">    </span><span class="c1">// Done()で、Goroutineの終了を検知する</span>
 <span class="w">    </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
 
+<span class="w">    </span><span class="c1">// 割り込み処理の実行後から強制終了までの時間を設定する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
+<span class="w">    </span><span class="c1">// シャットダウンする</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">srv</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -25981,6 +25985,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/nekoshita/articles/dba0a7139854bb">https://zenn.dev/nekoshita/articles/dba0a7139854bb</a></li>
 <li><a href="https://zenn.dev/pyotarou/articles/87d43169e0abe0">https://zenn.dev/pyotarou/articles/87d43169e0abe0</a></li>
 <li><a href="https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/">https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/</a></li>
 </ul>
