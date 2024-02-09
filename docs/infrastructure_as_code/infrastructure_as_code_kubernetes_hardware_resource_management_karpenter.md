@@ -320,7 +320,9 @@ Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能な
 
 ### AWS側
 
-#### ▼ Terraformの公式モジュール (`terraform-aws-modules/iam-assumable-role-with-oidc`) の場合
+#### ▼ Terraformの公式モジュール (1) の場合
+
+`terraform-aws-modules/iam/.../iam-assumable-role-with-oidc`を使用する。
 
 Kapenterのセットアップのうち、AWS側で必要なものをまとめる。
 
@@ -501,7 +503,9 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
-#### ▼ Terraformの公式モジュール (`terraform-aws-modules/karpenter`) の場合
+#### ▼ Terraformの公式モジュール (2) の場合
+
+`terraform-aws-modules/eks/.../karpenter`を使用する。
 
 ```terraform
 module "eks_iam_karpenter_controller" {

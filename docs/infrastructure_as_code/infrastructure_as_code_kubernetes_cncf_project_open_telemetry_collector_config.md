@@ -13,7 +13,68 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 <br>
 
-## 01. exporters
+## 01. 設定方法
+
+各コンポーネントで、`タイプ/<任意の文字列>`でテレメトリーの処理方法を設定する。
+
+```yaml
+receivers:
+  <タイプ>/foo:
+    ...
+  <タイプ>/bar:
+    ...
+
+processors:
+  <タイプ>/foo:
+    ...
+  <タイプ>/bar:
+    ...
+
+exporters:
+  <タイプ>/foo:
+    ...
+  <タイプ>/bar:
+    ...
+
+service:
+  pipelines:
+    metrics:
+      receivers:
+        - <タイプ>/foo
+        - <タイプ>/bar
+      processors:
+        - <タイプ>/foo
+        - <タイプ>/bar
+      exporters:
+        - <タイプ>/foo
+        - <タイプ>/bar
+    ...
+```
+
+タイプさえ正しければ問題なく、同じタイプを複数設定できる。
+
+例えば、`exporters`の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。
+
+```yaml
+exporters:
+  prometheusremotewrite/1:
+    endpoint: <宛先>
+  prometheusremotewrite/2:
+    endpoint: <宛先>
+
+service:
+  pipelines:
+    metrics:
+      exporters:
+        - prometheusremotewrite/1
+        - prometheusremotewrite/2
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#basics
+
+<br>
+
+## 02. exporters
 
 ### exportersとは
 
@@ -63,7 +124,7 @@ exporters:
 
 <br>
 
-## 02. extensions
+## 03. extensions
 
 ```yaml
 extensions:
@@ -75,7 +136,7 @@ extensions:
 
 <br>
 
-## 03. processors
+## 04. processors
 
 プロセッサーを設定する
 
@@ -90,7 +151,7 @@ processors:
 
 <br>
 
-## 04. receivers
+## 05. receivers
 
 レシーバーを設定する
 
@@ -113,7 +174,7 @@ receivers:
 
 <br>
 
-## 05. service
+## 06. service
 
 使用したい設定を指定する
 

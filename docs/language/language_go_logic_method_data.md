@@ -1881,7 +1881,9 @@ func main() {
 
 #### ▼ シャットダウンフックとは
 
-バイナリの終了前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
+シャットダウン前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
+
+例えば、トランザクション中にシャットダウン処理が起こった場合に、トランザクションの完了を待ってからシャットダウンする。
 
 #### ▼ 外部パッケージからコールする
 
@@ -1906,13 +1908,14 @@ import (
 
 func main() {
 
+	// 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		context.Background(),
-		// SIGTERMが発生した時にGracefulShutdownを実行する
+		// SIGTERMシグナル
 		syscall.SIGTERM,
-		// 中断処理が発生した時にGracefulShutdownを実行する
+		// 中断シグナル
 		os.Interrupt,
-		// Killが発生した時にGracefulShutdownを実行する
+		// Killシグナル
 		os.Kill,
     )
 
@@ -1930,14 +1933,16 @@ func main() {
 		}
 	}()
 
-	// もし中断処理が実行されると、Goroutineが終了する
+	// もし割り込み処理が実行されると、Goroutineが終了する
 	// Done()で、Goroutineの終了を検知する
 	<-ctx.Done()
 
+	// 割り込み処理の実行後から強制終了までの時間を設定する
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 
 	defer cancel()
 
+	// シャットダウンする
 	err = srv.Shutdown(ctx)
 
 	if err != nil {
@@ -1947,6 +1952,7 @@ func main() {
 
 ```
 
+> - https://zenn.dev/nekoshita/articles/dba0a7139854bb
 > - https://zenn.dev/pyotarou/articles/87d43169e0abe0
 > - https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/
 

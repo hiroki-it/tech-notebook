@@ -1301,6 +1301,44 @@ int
 
 <br>
 
+## signal
+
+### NotifyContext
+
+プロセスのシグナル
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "os/signal"
+    "time"
+)
+
+func main() {
+
+	// 割り込み処理を設定する
+	ctx, stop := signal.NotifyContext(
+		context.Background(),
+		// 中断シグナル
+		os.Interrupt,
+	)
+
+	// 処理を終了する
+    defer stop()
+
+	...
+}
+```
+
+> - https://zenn.dev/nekoshita/articles/dba0a7139854bb
+> - https://pkg.go.dev/context#CancelFunc
+
+<br>
+
 ## strings
 
 ### `Builder`関数

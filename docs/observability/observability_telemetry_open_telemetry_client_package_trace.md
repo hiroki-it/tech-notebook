@@ -536,6 +536,7 @@ func httpRequest(ctx context.Context) error {
 
 func main() {
 
+    // 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		// 空のコンテキストを作成する
 		context.Background(),
@@ -624,6 +625,7 @@ func httpRequest(ctx context.Context) error {
 
 func main() {
 
+	// 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		context.Background(),
 		os.Interrupt,
@@ -1130,6 +1132,7 @@ import (
 
 func main() {
 
+	// 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		context.Background(),
 		os.Interrupt,
@@ -1208,6 +1211,7 @@ import (
 
 func main() {
 
+	// 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		context.Background(),
 		os.Interrupt,

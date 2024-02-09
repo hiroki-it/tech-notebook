@@ -1204,7 +1204,7 @@ fi
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/
 
-#### ▼ 安全なEC2ワーカーNodeシャットダウン
+#### ▼ EC2ワーカーNodeのGraceful Shutdown
 
 デフォルトでは、EC2ワーカーNodeは新しいPodのスケジューリングを禁止した後、Podの退避を待たずに停止してしまう。
 
