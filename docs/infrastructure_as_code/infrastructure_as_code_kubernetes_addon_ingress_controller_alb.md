@@ -142,8 +142,10 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
 
 # GitHubにリクエストを送信し、IAMポリシーのファイルを取得する
 data "http" "aws_load_balancer_controller_policy" {
-  # Helm側でaws-load-balancer-controllerのバージョンは固定しているが、IAMポリシーは最新でも問題ないと判断し、mainブランチを指定する
-  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json"
+  # チャートバージョンが提供するIAMポリシーのURLを指定する
+  # (例) チャートのバージョンが 1.5.3 の場合
+  # https://github.com/kubernetes-sigs/aws-load-balancer-controller/blob/v2.5.2/helm/aws-load-balancer-controller/Chart.yaml#L4
+  url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.2/docs/install/iam_policy.json"
 }
 
 # レスポンスからJSONファイルの内容を取得する

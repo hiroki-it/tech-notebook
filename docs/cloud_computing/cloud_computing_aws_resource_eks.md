@@ -290,6 +290,15 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 
 > - https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
 
+#### ▼ EKS Upgrade insights
+
+非推奨apiVersion検出ツール (例：pluto) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。
+
+kube-apiserverの監査ログから非推奨apiVersionを検出する。
+
+> - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
+> - https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd
+
 <br>
 
 ### NLB

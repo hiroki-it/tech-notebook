@@ -34,7 +34,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
 
-具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.tracing.svc.cluster.local:4317`、など) を設定できる。
+具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`、など) を設定できる。
 
 スパンの収集ツールがそれぞれパッケージを提供している。
 
@@ -58,11 +58,23 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
 
-IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムなIDを作成する。
+IDGeneratorを使用しない場合、IDGeneratorはW3C形式のランダムなIDを作成する。
 
-もしotel形式以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
+もしW3C形式以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
 
 > - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
+
+<br>
+
+### IDGeneratorが不要な場合
+
+OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。
+
+W3C形式でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C形式からExporterの形式にIDを変換してくれる。
+
+例えば、AWS製OpenTelemetryコレクターはW3C形式をX-ray形式に変換する。
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel
 
 <br>
 
@@ -441,7 +453,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
         propagation.TraceContext{},
     )
 
-	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
+	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
 	cleanUp := func() {
 
 		// タイムアウト時間設定済みのコンテキストを作成する
@@ -687,7 +699,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	conn, err := grpc.DialContext(
         ctx,
         // opentelemetryコレクターの完全修飾ドメイン名
-        "opentelemetry-collector.tracing.svc.cluster.local:4317",
+        "opentelemetry-collector.foo-namespace.svc.cluster.local:4317",
         grpc.WithTransportCredentials(insecure.NewCredentials()),
         grpc.WithBlock(),
     )
@@ -1250,7 +1262,7 @@ func child(ctx *gin.Context) {
 
 #### ▼ ログへのID出力
 
-`trace.Span`から取得できるトレースIDはotel形式である。
+`trace.Span`から取得できるトレースIDはW3C形式である。
 
 そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。
 

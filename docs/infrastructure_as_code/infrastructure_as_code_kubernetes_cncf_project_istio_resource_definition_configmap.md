@@ -520,7 +520,7 @@ data:
       - name: datadog-tracing
         datadog:
           # datadogエージェントを宛先として設定する
-          service: datadog-agent.tracing.svc.cluster.local
+          service: datadog-agent.foo-namespace.svc.cluster.local
           port: 8126
 ```
 
@@ -585,7 +585,7 @@ data:
       - name: opentelemetry
         opentelemetry:
           # opentelemetryコレクターを宛先として設定する
-          service: opentelemetry-collector.tracing.svc.cluster.local
+          service: opentelemetry-collector.foo-namespace.svc.cluster.local
           port: 4317
 ```
 
