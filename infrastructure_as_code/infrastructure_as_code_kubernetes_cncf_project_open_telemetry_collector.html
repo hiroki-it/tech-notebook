@@ -18306,6 +18306,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      resource
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="resource">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ resourceとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sampler" class="md-nav__link">
     <span class="md-ellipsis">
       sampler
@@ -21388,6 +21412,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      resource
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="resource">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ resourceとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sampler" class="md-nav__link">
     <span class="md-ellipsis">
       sampler
@@ -21696,24 +21744,30 @@
 <h2 id="03-instrumentation">03. Instrumentationリソース<a class="headerlink" href="#03-instrumentation" title="Permanent link">&para;</a></h2>
 <h3 id="podmetadataannotations">Podの<code>.metadata.annotations</code>キー<a class="headerlink" href="#podmetadataannotations" title="Permanent link">&para;</a></h3>
 <p>Podにアノテーションを設定し、自動計装を実施するPodを制御できる。</p>
+<p>アノテーションを設定すると、自動計装を実施するInitContainer (<code>opentelemetry-auto-instrumentation</code>) を挿入できる。</p>
+<p>言語ごとにアノテーションのキー名が異なる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">instrumentation.opentelemetry.io/inject-go</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">instrumentation.opentelemetry.io/otel-go-auto-target-exe</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/container/executable</span>
+<span class="w">    </span><span class="nt">instrumentation.opentelemetry.io/inject-python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/kubernetes/operator/automatic/#opt-in-a-go-service">https://opentelemetry.io/docs/kubernetes/operator/automatic/#opt-in-a-go-service</a></li>
+<li><a href="https://opentelemetry.io/docs/kubernetes/operator/automatic/#were-the-resources-deployed-in-the-right-order">https://opentelemetry.io/docs/kubernetes/operator/automatic/#were-the-resources-deployed-in-the-right-order</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="exporter">exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
 <h4 id="exporter_1">▼ exporterとは<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h4>
 <p>自動計装でExporterを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecexporter">https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecexporter</a></li>
+</ul>
+</blockquote>
 <h4 id="endpoint">▼ endpoint<a class="headerlink" href="#endpoint" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrumentation</span>
@@ -21721,7 +21775,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-instrumentation</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exporter</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://demo-collector:4318</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="propagators">propagators<a class="headerlink" href="#propagators" title="Permanent link">&para;</a></h3>
@@ -21737,9 +21791,22 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baggage</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="resource">resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
+<h4 id="resource_1">▼ resourceとは<a class="headerlink" href="#resource_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecresource">https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecresource</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="sampler">sampler<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h3>
 <h4 id="sampler_1">▼ samplerとは<a class="headerlink" href="#sampler_1" title="Permanent link">&para;</a></h4>
 <p>自動計装でSamplerを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecsampler">https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecsampler</a></li>
+</ul>
+</blockquote>
 <h4 id="type">▼ type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instrumentation</span>
