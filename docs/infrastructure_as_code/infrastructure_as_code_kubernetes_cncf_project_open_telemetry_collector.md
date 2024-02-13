@@ -220,3 +220,137 @@ spec:
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml
 
 <br>
+
+## 02. OpenTelemetryCollectorリソース
+
+### mode
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: foo-opentelemetry-collector
+spec:
+  mode: deployment
+```
+
+<br>
+
+### serviceAccount
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: foo-opentelemetry-collector
+spec:
+  serviceAccount: opentelemetry-collector
+```
+
+<br>
+
+### config
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: foo-opentelemetry-collector
+spec:
+  config: |
+    ...
+```
+
+<br>
+
+## 03. Instrumentationリソース
+
+### Podの`.metadata.annotations`キー
+
+Podにアノテーションを設定し、自動計装を実施するPodを制御できる。
+
+```yaml
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: foo-pod
+  annotations:
+    instrumentation.opentelemetry.io/inject-go: "true"
+    instrumentation.opentelemetry.io/otel-go-auto-target-exe: /path/to/container/executable
+spec: ...
+```
+
+> - https://opentelemetry.io/docs/kubernetes/operator/automatic/#opt-in-a-go-service
+
+<br>
+
+### exporter
+
+#### ▼ exporterとは
+
+自動計装でExporterを設定する。
+
+#### ▼ endpoint
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: foo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+```
+
+<br>
+
+### propagators
+
+#### ▼ propagatorsとは
+
+自動計装でPropagatorを設定する。
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: foo-instrumentation
+spec:
+  propagators:
+    - tracecontext
+    - baggage
+```
+
+<br>
+
+### sampler
+
+#### ▼ samplerとは
+
+自動計装でSamplerを設定する。
+
+#### ▼ type
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: foo-instrumentation
+spec:
+  sampler:
+    type: parentbased_traceidratio
+```
+
+#### ▼ argument
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: foo-instrumentation
+spec:
+  sampler:
+    argument: "1"
+```
+
+<br>
