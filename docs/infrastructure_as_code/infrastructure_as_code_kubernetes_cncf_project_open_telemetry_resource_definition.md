@@ -178,5 +178,3 @@ spec:
 ```
 
 <br>
-
-## 03. OpenTelemetryOperator
