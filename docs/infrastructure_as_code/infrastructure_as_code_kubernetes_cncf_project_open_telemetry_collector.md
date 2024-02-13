@@ -220,3 +220,13 @@ spec:
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml
 
 <br>
+
+## 02. カスタムリソースを使用する場合
+
+カスタムリソースを使用して、OpenTelemetryを定義することもできる。
+
+この場合、OpenTelemetry OperatorがInitContainerを介して、アプリコンテナにOpenTelemetryの実装を挿入する。
+
+> - https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377
+
+<br>
