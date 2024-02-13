@@ -603,9 +603,11 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 
 ### otlptracegrpcとは
 
-OTLP形式で送信するエクスポーターを提供する。
+OTLP形式でテレメトリーを送信するエクスポーターを提供する。
 
-gRPCによるHTTPリクエスト処理のテレメトリーを監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
+これは、gRPCによるHTTPプロトコルで監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
+
+OpenTelemetryコレクターを使用している場合、レシーバーのgRPC用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
 
@@ -629,9 +631,11 @@ OpenTelemetryのTraceProviderを提供する。
 
 ### otlptracehttpとは
 
-OTLP形式で送信するエクスポーターを提供する。
+OTLP形式でテレメトリーを送信するエクスポーターを提供する。
 
-HTTPリクエスト処理のテレメトリーを監視バックエンド (デフォルトでは`https://127.0.0.1:4318/v1/traces`) に送信する。
+これは、HTTPプロトコルで監視バックエンド (デフォルトでは`https://127.0.0.1:4318/v1/traces`) に送信する。
+
+OpenTelemetryコレクターを使用している場合、レシーバーのHTTP用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
 

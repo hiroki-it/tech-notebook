@@ -1310,19 +1310,23 @@ func main() {
 
 ## 02. 関数の種類
 
+### 実行タイミング
+
+`import`、`const`、`var`、`init`関数の順で実行する。
+
+> - https://stackoverflow.com/a/49831018
+
 ### init関数
 
 #### ▼ init関数とは
 
-`main.go`ファイル上で使用すれば`main`関数より先に、パッケージのファイル上で使用すればパッケージ内で一番最初に実行する。
+パッケージを`import`したタイミングで実行する。
 
-`import`、`const`、`var`、`init`関数の順で実行する。
+`main.go`ファイル上で使用すれば`main`関数より先に、それ以外のパッケージで使用すればそのパッケージ上の関数で一番最初に実行できる。
 
 なお、`init`関数は`init.go`ファイルとして切り分けた方が良い。
 
-> - https://stackoverflow.com/a/49831018
-> - https://stackoverflow.com/a/40326580
-> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
+> - https://one-sthead.hatenablog.com/entry/2021/01/19/191538
 
 <br>
 
@@ -2380,6 +2384,9 @@ func getFloatEnv(key string, fallback float64) float64 {
 	return value
 }
 ```
+
+> - https://stackoverflow.com/a/40326580
+> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
 
 <br>
 

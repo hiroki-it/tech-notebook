@@ -21,8 +21,27 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーは、パラメーターストアや暗号化ツール (例：SOPS、kubesec) で使用できる。
 
-『フルマネージド型』と『カスタマーマネージド型』があるが、セキュリティ上の理由でカスタマーマネージド型の方が良い。
+<br>
 
+### フルマネージド型
+
+暗号化キーを使用するAWSリソースが、ユーザーに代わって暗号化キーを管理する。
+
+暗号化キーを使用できるユーザーを設定できない。
+
+> - https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/concepts.html#aws-managed-cmk
+> - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
+> - https://aws.amazon.com/kms/features/#AWS_Service_Integration
+
+<br>
+
+### カスタマーマネージド型
+
+ユーザーが暗号化キーを管理する。
+
+暗号化キーを使用できるユーザーを設定できる。
+
+> - https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/concepts.html#key-mgmt
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
 
 <br>

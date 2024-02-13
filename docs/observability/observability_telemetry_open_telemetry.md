@@ -165,6 +165,15 @@ eBPFによる自動計装の方が、リクエスト処理のパフォーマン�
 
 <br>
 
+### 比較
+
+手動計装と自動計装には、それぞれメリット/デメリットがある。
+
+> - https://www.elastic.co/blog/best-practices-instrumenting-opentelemetry
+> - https://signoz.io/blog/opentelemetry-python-auto-and-manual-instrumentation/#a-brief-overview-of-opentelemetry-manual-instrumentation
+
+<br>
+
 ## 03. テレメトリー間の紐付け
 
 記入中...
