@@ -22778,8 +22778,8 @@
 <h2 id="02-02-idgenerator">02-02. IDGenerator<a class="headerlink" href="#02-02-idgenerator" title="Permanent link">&para;</a></h2>
 <h3 id="idgenerator">IDGeneratorとは<a class="headerlink" href="#idgenerator" title="Permanent link">&para;</a></h3>
 <p>特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。</p>
-<p>IDGeneratorを使用しない場合、IDGeneratorはW3C形式のランダムなIDを作成する。</p>
-<p>もしW3C形式以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。</p>
+<p>IDGeneratorを使用しない場合、IDGeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。</p>
+<p>もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90">https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90</a></li>
@@ -22788,8 +22788,8 @@
 <p><br></p>
 <h3 id="idgenerator_1">IDGeneratorが不要な場合<a class="headerlink" href="#idgenerator_1" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。</p>
-<p>W3C形式でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C形式からExporterの形式にIDを変換してくれる。</p>
-<p>例えば、AWS製OpenTelemetryコレクターはW3C形式をX-ray形式に変換する。</p>
+<p>W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。</p>
+<p>例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-ray仕様に変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel">https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel</a></li>
@@ -24035,7 +24035,7 @@
 </ul>
 </blockquote>
 <h4 id="id">▼ ログへのID出力<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p><code>trace.Span</code>から取得できるトレースIDはW3C形式である。</p>
+<p><code>trace.Span</code>から取得できるトレースIDはW3C Trace Context仕様である。</p>
 <p>そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">getXrayTraceID</span><span class="p">(</span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
