@@ -269,18 +269,21 @@ spec:
 
 Podにアノテーションを設定し、自動計装を実施するPodを制御できる。
 
+アノテーションを設定すると、自動計装を実施するInitContainer (`opentelemetry-auto-instrumentation`) を挿入できる。
+
+言語ごとにアノテーションのキー名が異なる。
+
 ```yaml
 apiVersion: apps/v1
 kind: Pod
 metadata:
   name: foo-pod
   annotations:
-    instrumentation.opentelemetry.io/inject-go: "true"
-    instrumentation.opentelemetry.io/otel-go-auto-target-exe: /path/to/container/executable
+    instrumentation.opentelemetry.io/inject-python: "true"
 spec: ...
 ```
 
-> - https://opentelemetry.io/docs/kubernetes/operator/automatic/#opt-in-a-go-service
+> - https://opentelemetry.io/docs/kubernetes/operator/automatic/#were-the-resources-deployed-in-the-right-order
 
 <br>
 
@@ -289,6 +292,8 @@ spec: ...
 #### ▼ exporterとは
 
 自動計装でExporterを設定する。
+
+> - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecexporter
 
 #### ▼ endpoint
 
@@ -299,7 +304,7 @@ metadata:
   name: foo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4318
+    endpoint: http://foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317
 ```
 
 <br>
@@ -323,11 +328,21 @@ spec:
 
 <br>
 
+### resource
+
+#### ▼ resourceとは
+
+> - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecresource
+
+<br>
+
 ### sampler
 
 #### ▼ samplerとは
 
 自動計装でSamplerを設定する。
+
+> - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecsampler
 
 #### ▼ type
 
