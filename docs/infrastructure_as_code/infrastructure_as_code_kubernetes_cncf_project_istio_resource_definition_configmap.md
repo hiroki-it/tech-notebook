@@ -571,7 +571,7 @@ spec:
 
 分散トレースの監視バックエンドとするopentelemetryコレクターの宛先情報を設定する。
 
-コンテキストの仕様は選べず、強制的にW3C Trace Contextになる。
+コンテキストの仕様は選べず、強制的にW3C Trace Context仕様になる。
 
 ```yaml
 apiVersion: v1

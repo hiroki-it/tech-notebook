@@ -160,9 +160,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
 
-IDGeneratorを使用しない場合、IDGeneratorはW3C形式のランダムなIDを作成する。
+IDGeneratorを使用しない場合、IDGeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。
 
-もしW3C形式以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
+もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
 
 > - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
 
@@ -172,9 +172,9 @@ IDGeneratorを使用しない場合、IDGeneratorはW3C形式のランダムなI
 
 OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。
 
-W3C形式でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C形式からExporterの形式にIDを変換してくれる。
+W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
 
-例えば、AWS製OpenTelemetryコレクターはW3C形式をX-ray形式に変換する。
+例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-ray仕様に変換する。
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel
 
@@ -1368,7 +1368,7 @@ func child(ctx *gin.Context) {
 
 #### ▼ ログへのID出力
 
-`trace.Span`から取得できるトレースIDはW3C形式である。
+`trace.Span`から取得できるトレースIDはW3C Trace Context仕様である。
 
 そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。
 
