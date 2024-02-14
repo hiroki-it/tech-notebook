@@ -2492,7 +2492,9 @@ func main() {
 
 ## 06. 制御文
 
-### 条件文 (初期化ステートメント)
+### 条件文
+
+#### ▼ 初期化ステートメント
 
 以下の二つの実装例は同じである。
 
@@ -2511,10 +2513,10 @@ func main() {
 
 	// 通常の記法
 	if value > 20 {
-		log.Print("20より大きいです")
+		fmt.Printf("%#v: 20より大きいです\n", value)
 	}
 
-	fmt.Printf("%#v\n", "20より大きいです")
+	fmt.Printf("%#v: 20より小さいです\n", value)
 }
 ```
 
@@ -2527,7 +2529,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 )
 
 func main() {
@@ -2535,10 +2536,10 @@ func main() {
 	// 簡易記法
 	if value := getNum(); value > 20 {
 		// value変数は条件内でしか使用できない
-		log.Print("valueは20より大きいです")
+		fmt.Printf("%#v: 20より大きいです\n", value)
 	}
 
-	fmt.Printf("%#v\n", "20より大きいです")
+	fmt.Printf("%#v: 20より小さいです\n", value)
 }
 
 func getNum() int {
@@ -2547,6 +2548,53 @@ func getNum() int {
 ```
 
 > - https://code-database.com/knowledges/97
+
+<br>
+
+#### ▼ `if else-if`の代替
+
+Goには`if else-if`があるが、可読性が低い場合は代わりに`if`を連続させる。
+
+事前に`var`で変数を宣言し、各`if`内で変数に値を格納する。
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func getFooX() {
+	return "FooX"
+}
+
+func getFooY() {
+	return "FooY"
+}
+
+func getFooZ() {
+	return "FooZ"
+}
+
+func main() {
+
+	var foo string
+
+	if isX {
+		foo = getFooX()
+	}
+
+	if isY {
+		foo = getFooY()
+	}
+
+	if isZ {
+		foo = getFooZ()
+	}
+
+	fmt.Print(foo)
+}
+```
 
 <br>
 
@@ -2956,7 +3004,7 @@ func main() {
 	wg.Wait()
 
 	// 開始時刻から経過した秒数を取得する
-	fmt.Printf("経過秒数: %s", time.Since(start))
+	fmt.Printf("経過秒数: %s\n", time.Since(start))
 }
 
 func print(key int, value string) {

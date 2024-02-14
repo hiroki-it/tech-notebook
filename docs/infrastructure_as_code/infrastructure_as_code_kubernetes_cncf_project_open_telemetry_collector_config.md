@@ -98,7 +98,7 @@ exporters:
 
 #### ▼ insecure
 
-TLSを無効化する。
+TLSを有効化するかどうかを設定する。
 
 ```yaml
 receivers:

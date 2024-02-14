@@ -959,6 +959,12 @@ To github.com:hiroki-hasegawa/foo-repository.git
  + f0d8b1a...f81c813 main -> main (forced update)
 ```
 
+#### ▼ 強制的にpullする
+
+```bash
+$ git reset --hard origin/<ブランチ名>
+```
+
 <br>
 
 ### rebase
