@@ -18227,9 +18227,66 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 設定方法
+      01. 共通
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 共通">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      タイプ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cert_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cert_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insecure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ insecure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ key_file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -18308,6 +18365,21 @@
       05. receivers
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="05. receivers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      receiversとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -21176,9 +21248,66 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 設定方法
+      01. 共通
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 共通">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      タイプ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      tls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="tls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cert_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cert_file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insecure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ insecure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key_file" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ key_file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -21258,6 +21387,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="05. receivers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      receiversとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -21296,7 +21440,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 設定方法<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 共通<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">タイプ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>各コンポーネントで、<code>タイプ/&lt;任意の文字列&gt;</code>でテレメトリーの処理方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;タイプ&gt;/foo</span><span class="p">:</span>
@@ -21348,6 +21493,59 @@
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/collector/configuration/#basics">https://opentelemetry.io/docs/collector/configuration/#basics</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h3>
+<h4 id="cert_file">▼ cert_file<a class="headerlink" href="#cert_file" title="Permanent link">&para;</a></h4>
+<p>SSL証明書やクライアント証明書を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cert_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server.crt</span>
+
+<span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cert_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client.crt</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="insecure">▼ insecure<a class="headerlink" href="#insecure" title="Permanent link">&para;</a></h4>
+<p>TLSを無効化する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="key_file">▼ key_file<a class="headerlink" href="#key_file" title="Permanent link">&para;</a></h4>
+<p>SSL証明書やクライアント証明書に紐づく秘密鍵を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server.key</span>
+
+<span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client.key</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -21415,6 +21613,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="05-receivers">05. receivers<a class="headerlink" href="#05-receivers" title="Permanent link">&para;</a></h2>
+<h3 id="receivers">receiversとは<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h3>
 <p>レシーバーを設定する</p>
 <p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。</p>
 <p>クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。</p>
@@ -21474,7 +21673,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-14</span>
   </span>
 
     

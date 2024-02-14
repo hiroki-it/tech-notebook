@@ -10372,6 +10372,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リージョン間ネットワーク遅延
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -10417,7 +10426,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       タグ付け戦略
     </span>
@@ -10427,7 +10436,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ よくあるタグ
     </span>
@@ -10436,7 +10445,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ タグ付けによる検索
     </span>
@@ -21253,6 +21262,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リージョン間ネットワーク遅延
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21298,7 +21316,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       タグ付け戦略
     </span>
@@ -21308,7 +21326,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ よくあるタグ
     </span>
@@ -21317,7 +21335,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ タグ付けによる検索
     </span>
@@ -21381,6 +21399,16 @@
 <p>グローバルサービスは、物理サーバーが世界中にあり、これらの間ではパブリックネットワークが作成されている。</p>
 <p>そのため、特定のリージョンに依存せずに、全てのリージョンと連携できる。</p>
 <p><img alt="edge-location" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/edge-location.png" /></p>
+<h4 id="_5">▼ リージョン間ネットワーク遅延<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>同じリージョン内よりも異なるリージョン間の方がレイテンシーは大きくなる。</p>
+<p><code>cloudping.so</code>というサイトで、リージョン間のレイテンシーを確認できる。</p>
+<p>例えば、Tokyo (<code>ap-northeast-1</code>) からVirginia (<code>us-east-1</code>) への通信の色で、レイテンシーの程度がわかる。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.cloudping.co/grid">https://www.cloudping.co/grid</a></li>
+<li><a href="https://github.com/mda590/cloudping.co">https://github.com/mda590/cloudping.co</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="azavailability-zones">AZ：Availability Zones<a class="headerlink" href="#azavailability-zones" title="Permanent link">&para;</a></h3>
 <h4 id="az">▼ AZとは<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
@@ -21390,8 +21418,8 @@
 <p>もし、AZを跨いで作成できないようなAWSリソースの場合は、リージョンを跨ぐようにする。</p>
 <p><br></p>
 <h2 id="02">02. タグ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_5">タグ付け戦略<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ よくあるタグ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_6">タグ付け戦略<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ よくあるタグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -21433,7 +21461,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_7">▼ タグ付けによる検索<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ タグ付けによる検索<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>AWSの各リソースには、タグをつけられる。</p>
 <p>例えば、AWSコストエクスプローラーにて、このタグで検索することにより、任意のタグが付いたリソースの請求合計額を確認できる。</p>
 <p><br></p>
@@ -21457,7 +21485,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-14</span>
   </span>
 
     
