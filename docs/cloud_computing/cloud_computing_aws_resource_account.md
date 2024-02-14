@@ -42,6 +42,17 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 ![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/edge-location.png)
 
+#### ▼ リージョン間ネットワーク遅延
+
+同じリージョン内よりも異なるリージョン間の方がレイテンシーは大きくなる。
+
+`cloudping.so`というサイトで、リージョン間のレイテンシーを確認できる。
+
+例えば、Tokyo (`ap-northeast-1`) からVirginia (`us-east-1`) への通信の色で、レイテンシーの程度がわかる。
+
+> - https://www.cloudping.co/grid
+> - https://github.com/mda590/cloudping.co
+
 <br>
 
 ### AZ：Availability Zones

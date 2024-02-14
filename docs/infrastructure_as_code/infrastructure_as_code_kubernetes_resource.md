@@ -1632,7 +1632,7 @@ ServiceAccountは、ServiceAccount本体、service-account-controller、token-co
 
 特にServiceAccountには、より正確な定義のユーザー名がある。
 
-ユーザー名は、`system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞`で定義されている。
+ServiceAccountのユーザー名は、`system:serviceaccount:＜Namespace名＞:＜ServiceAccount名＞`で定義されている。
 
 これは、RoleBindingやClusterBindingの定義時に使用できる。
 

@@ -75,7 +75,10 @@ otelクライアントパッケージからのテレメトリーデータを、�
 
 OTLP形式のテレメトリーを受信する。
 
+HTTPSで受信する場合には、SSL証明書が必要である。
+
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
 
 #### ▼ プロセッサー
 
@@ -89,8 +92,11 @@ OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) の�
 
 非対応の監視バックエンド (例：X-ray) に関しては、その形式の監視バックエンドが提供するエクスポーター (例：AWS Distro for opentelemetryコレクターのエクスポーター) を使用する必要がある。
 
+HTTPSで送信する場合には、クライアント証明書が必要である。
+
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md
 > - https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration
 
 <br>
 

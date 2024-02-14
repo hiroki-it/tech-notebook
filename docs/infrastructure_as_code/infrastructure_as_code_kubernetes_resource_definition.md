@@ -269,7 +269,7 @@ contexts:
 
 #### ▼ context
 
-実際に使用するCluster名とユーザー名を、`.contexts[*].context.cluster`キーと`.contexts[*].context.user`キーから選んで設定する。
+実際に使用するCluster名とServiceAccountユーザー名を、`.contexts[*].context.cluster`キーと`.contexts[*].context.user`キーから選んで設定する。
 
 ```yaml
 apiVersion: v1
@@ -4722,7 +4722,7 @@ subjects:
   - apiGroup: ""
     # ServiceAccountに紐付ける。
     kind: ServiceAccount
-    # ユーザー名 (system:useraccounts:foo-service-account) でもよい。
+    # ServiceAccountのユーザー名 (system:useraccounts:foo-service-account) でもよい。
     name: foo-service-account
 ```
 

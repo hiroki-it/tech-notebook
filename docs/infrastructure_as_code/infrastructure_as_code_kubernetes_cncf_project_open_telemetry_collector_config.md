@@ -13,7 +13,9 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 <br>
 
-## 01. 設定方法
+## 01. 共通
+
+### タイプ
 
 各コンポーネントで、`タイプ/<任意の文字列>`でテレメトリーの処理方法を設定する。
 
@@ -71,6 +73,64 @@ service:
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#basics
+
+<br>
+
+### tls
+
+#### ▼ cert_file
+
+SSL証明書やクライアント証明書を設定する。
+
+```yaml
+receivers:
+  <タイプ>:
+    tls:
+      cert_file: server.crt
+
+exporters:
+  <タイプ>:
+    tls:
+      cert_file: client.crt
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
+
+#### ▼ insecure
+
+TLSを無効化する。
+
+```yaml
+receivers:
+  <タイプ>:
+    tls:
+      insecure: true
+
+exporters:
+  <タイプ>:
+    tls:
+      insecure: true
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
+
+#### ▼ key_file
+
+SSL証明書やクライアント証明書に紐づく秘密鍵を設定する。
+
+```yaml
+receivers:
+  <タイプ>:
+    tls:
+      key_file: server.key
+
+exporters:
+  <タイプ>:
+    tls:
+      key_file: client.key
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
 
 <br>
 
@@ -152,6 +212,8 @@ processors:
 <br>
 
 ## 05. receivers
+
+### receiversとは
 
 レシーバーを設定する
 
