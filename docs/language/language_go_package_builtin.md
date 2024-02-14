@@ -225,7 +225,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Printf("ERROR: %#v\n", err)
+		fmt.Printf("ERROR: %#v\n", err)
 	}
 
 	// エンコード結果を出力
@@ -280,7 +280,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Printf("ERROR: %#v\n", err)
+		fmt.Printf("ERROR: %#v\n", err)
 	}
 
 	// エンコード結果を出力
@@ -334,7 +334,7 @@ func main() {
 	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
-		log.Printf("ERROR: %#v\n", err)
+		fmt.Printf("ERROR: %#v\n", err)
 	}
 
 	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"} (変数が書き換えられた)
@@ -908,7 +908,7 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			defer func() {
 				if err := recover(); err != nil && err != http.ErrAbortHandler {
-					log.Printf("panic on application running, error: %v", err)
+					fmt.Printf("panic on application running, error: %v", err)
 					// Internal Server Errorとして処理する
 					w.WriteHeader(http.StatusInternalServerError)
 				}
@@ -1232,7 +1232,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		log.Printf("ERROR: %#v\n", err)
+		fmt.Printf("ERROR: %#v\n", err)
 	}
 
 	fmt.Printf("%#v\n", file)

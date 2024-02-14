@@ -398,7 +398,7 @@ func main() {
 	userId, ok := userIds["user_id"]
 
 	if ok == false {
-		log.Print("user_id does not exist") // 2009/11/10 23:00:00 user_id does not exist
+		fmt.Print("user_id does not exist") // 2009/11/10 23:00:00 user_id does not exist
 	}
 
 	fmt.Printf("%#v\n", userId) // 1

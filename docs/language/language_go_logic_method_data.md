@@ -1675,7 +1675,7 @@ func main() {
 	fmt.Println("Start")
 
 	defer func() {
-		log.Printf("End")
+		fmt.Printf("End")
 	}()
 
 	fmt.Println("Processing...")
@@ -2549,8 +2549,6 @@ func getNum() int {
 
 > - https://code-database.com/knowledges/97
 
-<br>
-
 #### ▼ `if else-if`の代替
 
 Goには`if else-if`があるが、可読性が低い場合は代わりに`if`を連続させる。
@@ -2863,7 +2861,7 @@ func main() {
 
 		// cancel関数を実行した場合
 		case <-ctx.Done():
-			log.Printf("Goroutineが完了しました")
+			fmt.Printf("Goroutineが完了しました")
 			return
 		}
 	}
@@ -3109,7 +3107,7 @@ func main() {
 
 	if err != nil {
 		// エラーの内容を出力する。
-		log.Printf("ERROR: %#v\n", err)
+		fmt.Printf("ERROR: %#v\n", err)
 		return
 	}
 
@@ -3149,7 +3147,7 @@ func main() {
 	if err != nil {
 		// 独自エラーメッセージを設定する。
 		myErr := NewError()
-		log.Printf("ERROR: %#v\n", myErr)
+		fmt.Printf("ERROR: %#v\n", myErr)
 		return
 	}
 
@@ -3269,7 +3267,7 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := NewErrorWithTrace()
 		// %+v\n を使用する。
-		log.Printf("ERROR: %+v\n", errWithStack)
+		fmt.Printf("ERROR: %+v\n", errWithStack)
 		return
 	}
 
@@ -3297,7 +3295,7 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := xerrors.Errorf("ERROR: %w", err)
 		// %+v\n を使用する。
-		log.Printf("ERROR: %+v\n", errWithStack)
+		fmt.Printf("ERROR: %+v\n", errWithStack)
 		return
 	}
 
