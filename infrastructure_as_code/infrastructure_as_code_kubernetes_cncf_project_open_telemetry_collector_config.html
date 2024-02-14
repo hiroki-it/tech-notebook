@@ -18334,6 +18334,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="awsxray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awsxray_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ awsxrayとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no_verify_ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ no_verify_ssl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ region
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -21355,6 +21388,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="awsxray">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awsxray_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ awsxrayとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no_verify_ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ no_verify_ssl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ region
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -21575,16 +21641,35 @@
 </blockquote>
 <p><br></p>
 <h3 id="awsxray">awsxray<a class="headerlink" href="#awsxray" title="Permanent link">&para;</a></h3>
+<h4 id="awsxray_1">▼ awsxrayとは<a class="headerlink" href="#awsxray_1" title="Permanent link">&para;</a></h4>
 <p>X-rayにテレメトリーを送信する。</p>
 <p>ただし、OpenTelemetryにはX-RayのExporterが含まれていない。</p>
 <p>そのため、AWS製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替えておく必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB</a></li>
+</ul>
+</blockquote>
+<h4 id="no_verify_ssl">▼ no_verify_ssl<a class="headerlink" href="#no_verify_ssl" title="Permanent link">&para;</a></h4>
+<p>X-rayへの通信でTLSを有効化するか否かを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">no_verify_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
+</ul>
+</blockquote>
+<h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
+<p>X-rayのあるリージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
