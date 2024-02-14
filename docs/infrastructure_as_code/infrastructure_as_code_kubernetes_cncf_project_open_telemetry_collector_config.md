@@ -168,11 +168,31 @@ exporters:
 
 ### awsxray
 
+#### ▼ awsxrayとは
+
 X-rayにテレメトリーを送信する。
 
 ただし、OpenTelemetryにはX-RayのExporterが含まれていない。
 
 そのため、AWS製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替えておく必要がある。
+
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+#### ▼ no_verify_ssl
+
+X-rayへの通信でTLSを有効化するか否かを設定する。
+
+```yaml
+exporters:
+  awsxray:
+    no_verify_ssl: true
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
+
+#### ▼ region
+
+X-rayのあるリージョンを設定する。
 
 ```yaml
 exporters:
@@ -180,7 +200,7 @@ exporters:
     region: ap-northeast-1
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
 
 <br>
 
