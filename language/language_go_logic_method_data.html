@@ -26034,7 +26034,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Processing...&quot;</span><span class="p">)</span>
@@ -26776,7 +26776,6 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://code-database.com/knowledges/97">https://code-database.com/knowledges/97</a></li>
 </ul>
 </blockquote>
-<p><br></p>
 <h4 id="if-else-if">▼ <code>if else-if</code>の代替<a class="headerlink" href="#if-else-if" title="Permanent link">&para;</a></h4>
 <p>Goには<code>if else-if</code>があるが、可読性が低い場合は代わりに<code>if</code>を連続させる。</p>
 <p>事前に<code>var</code>で変数を宣言し、各<code>if</code>内で変数に値を格納する。</p>
@@ -27043,7 +27042,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">        </span><span class="c1">// cancel関数を実行した場合</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Goroutineが完了しました&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Goroutineが完了しました&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -27250,7 +27249,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// エラーの内容を出力する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -27286,7 +27285,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 独自エラーメッセージを設定する。</span>
 <span class="w">        </span><span class="nx">myErr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewError</span><span class="p">()</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myErr</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myErr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -27385,7 +27384,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="c1">// errorインターフェースが返却された行数が付与される。</span>
 <span class="w">        </span><span class="nx">errWithStack</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewErrorWithTrace</span><span class="p">()</span>
 <span class="w">        </span><span class="c1">// %+v\n を使用する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -27410,7 +27409,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="c1">// errorインターフェースが返却された行数が付与される。</span>
 <span class="w">        </span><span class="nx">errWithStack</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xerrors</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;ERROR: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// %+v\n を使用する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
