@@ -18241,6 +18241,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="タイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ タイプとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 同じタイプの複数定義
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -18381,6 +18405,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      extensionとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health_check" class="md-nav__link">
+    <span class="md-ellipsis">
+      health_check
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -18420,6 +18468,15 @@
   
     <nav class="md-nav" aria-label="batch">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ batchとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#timeout" class="md-nav__link">
@@ -18463,6 +18520,15 @@
   <a href="#receivers" class="md-nav__link">
     <span class="md-ellipsis">
       receiversとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlp
     </span>
   </a>
   
@@ -21418,6 +21484,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="タイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ タイプとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 同じタイプの複数定義
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -21558,6 +21648,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      extensionとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health_check" class="md-nav__link">
+    <span class="md-ellipsis">
+      health_check
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -21597,6 +21711,15 @@
   
     <nav class="md-nav" aria-label="batch">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ batchとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#timeout" class="md-nav__link">
@@ -21640,6 +21763,15 @@
   <a href="#receivers" class="md-nav__link">
     <span class="md-ellipsis">
       receiversとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      otlp
     </span>
   </a>
   
@@ -21754,6 +21886,8 @@
 <p><br></p>
 <h2 id="01">01. 共通<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">タイプ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ タイプとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>設定名のこと。</p>
 <p>各コンポーネントで、<code>タイプ/&lt;任意の文字列&gt;</code>でテレメトリーの処理方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;タイプ&gt;/foo</span><span class="p">:</span>
@@ -21787,6 +21921,14 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;タイプ&gt;/bar</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
+<p>タイプは、コア機能と拡張機能から選べる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-collector</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib">https://github.com/open-telemetry/opentelemetry-collector-contrib</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 同じタイプの複数定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>タイプさえ正しければ問題なく、同じタイプを複数設定できる。</p>
 <p>例えば、<code>exporters</code>の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
@@ -21920,15 +22062,19 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-extensions">03. extensions<a class="headerlink" href="#03-extensions" title="Permanent link">&para;</a></h2>
+<h3 id="extension">extensionとは<a class="headerlink" href="#extension" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="health_check">health_check<a class="headerlink" href="#health_check" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">extensions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">health_check</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;PodのIPアドレス&gt;:13133</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#extensions">https://opentelemetry.io/docs/collector/configuration/#extensions</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="04-processors">04. processors<a class="headerlink" href="#04-processors" title="Permanent link">&para;</a></h2>
 <h3 id="processors">processorsとは<a class="headerlink" href="#processors" title="Permanent link">&para;</a></h3>
@@ -21953,6 +22099,14 @@
 </blockquote>
 <p><br></p>
 <h3 id="batch">batch<a class="headerlink" href="#batch" title="Permanent link">&para;</a></h3>
+<h4 id="batch_1">▼ batchとは<a class="headerlink" href="#batch_1" title="Permanent link">&para;</a></h4>
+<p>テレメトリーファイルを圧縮するバッチ処理を実行する。</p>
+<p>推奨である。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md</a></li>
+</ul>
+</blockquote>
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">batch</span><span class="p">:</span>
@@ -21960,7 +22114,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#processors">https://opentelemetry.io/docs/collector/configuration/#processors</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md</a></li>
 </ul>
 </blockquote>
 <h4 id="send_batch_size">▼ send_batch_size<a class="headerlink" href="#send_batch_size" title="Permanent link">&para;</a></h4>
@@ -21970,14 +22124,22 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#processors">https://opentelemetry.io/docs/collector/configuration/#processors</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="05-receivers">05. receivers<a class="headerlink" href="#05-receivers" title="Permanent link">&para;</a></h2>
 <h3 id="receivers">receiversとは<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h3>
-<p>レシーバーを設定する</p>
+<p>レシーバーを設定する。</p>
 <p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="otlp">otlp<a class="headerlink" href="#otlp" title="Permanent link">&para;</a></h3>
+<p>OTLP形式でテレメトリーを受信する。</p>
 <p>クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
@@ -21989,7 +22151,6 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#receivers">https://opentelemetry.io/docs/collector/configuration/#receivers</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md</a></li>
 </ul>
 </blockquote>
@@ -22028,12 +22189,20 @@
 <h3 id="telemetry">telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
 <h4 id="telemetry_1">▼ telemetryとは<a class="headerlink" href="#telemetry_1" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryコレクター自体のテレメトリーの作成方法を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md</a></li>
+</ul>
+</blockquote>
 <h4 id="logs">▼ logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryコレクターのログの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">telemetry</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logs</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># ログの出力先</span>
+<span class="w">      </span><span class="c1"># 通常ログの出力</span>
+<span class="w">      </span><span class="nt">output_paths</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stdout</span>
+<span class="w">      </span><span class="c1"># エラーログの出力先</span>
 <span class="w">      </span><span class="nt">error_output_paths</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stderr</span>
 <span class="w">      </span><span class="c1"># ログレベル</span>
@@ -22044,7 +22213,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#telemetry">https://opentelemetry.io/docs/collector/configuration/#telemetry</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md</a></li>
 </ul>
 </blockquote>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
@@ -22058,7 +22227,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#telemetry">https://opentelemetry.io/docs/collector/configuration/#telemetry</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22082,7 +22251,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
   </span>
 
     
