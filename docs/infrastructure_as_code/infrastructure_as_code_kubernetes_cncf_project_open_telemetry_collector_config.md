@@ -209,7 +209,7 @@ exporters:
 ```yaml
 extensions:
   health_check:
-    endpoint: 0.0.0.0:13133
+    endpoint: <PodのIPアドレス>:13133
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#extensions
@@ -218,12 +218,49 @@ extensions:
 
 ## 04. processors
 
+### processorsとは
+
 プロセッサーを設定する
+
+<br>
+
+### attribute
+
+テレメトリーに付与する属性を設定する。
+
+```yaml
+processors:
+  attributes:
+    actions:
+      - key: env
+        value: prd
+        action: insert
+      - key: service
+        value: foo
+        action: insert
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md
+
+<br>
+
+### batch
+
+#### ▼ timeout
 
 ```yaml
 processors:
   batch:
     timeout: 5s
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#processors
+
+#### ▼ send_batch_size
+
+```yaml
+processors:
+  batch:
     send_batch_size: 50
 ```
 
@@ -246,9 +283,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: 0.0.0.0:4317
+        endpoint: <PodのIPアドレス>:4317
       http:
-        endpoint: 0.0.0.0:4318
+        endpoint: <PodのIPアドレス>:4318
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#receivers
@@ -258,13 +295,26 @@ receivers:
 
 ## 06. service
 
-使用したい設定を指定する
+### extensions
+
+使用したい拡張を指定する。
 
 ```yaml
 service:
   extensions:
     - health_check
-  # 使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#service
+
+<br>
+
+### pipelines
+
+使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する。
+
+```yaml
+service:
   pipelines:
     traces:
       receivers:
@@ -276,5 +326,48 @@ service:
 ```
 
 > - https://opentelemetry.io/docs/collector/configuration/#service
+
+<br>
+
+### telemetry
+
+#### ▼ telemetryとは
+
+OpenTelemetryコレクター自体のテレメトリーの作成方法を設定する。
+
+#### ▼ logs
+
+OpenTelemetryコレクターのログの作成方法を設定する。
+
+```yaml
+service:
+  telemetry:
+    logs:
+      # ログの出力先
+      error_output_paths:
+        - stderr
+      # ログレベル
+      level: DEBUG
+      # ログに追加するフィールド
+      initial_fields:
+        service: foo
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#telemetry
+
+#### ▼ metrics
+
+OpenTelemetryコレクターのメトリクスの作成方法を設定する。
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      level: detailed
+      # メトリクスのエンドポイント
+      address: <PodのIPアドレス>:8888
+```
+
+> - https://opentelemetry.io/docs/collector/configuration/#telemetry
 
 <br>

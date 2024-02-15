@@ -2680,9 +2680,36 @@ spec:
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D
 
+#### ▼ env
+
+環境変数を設定する。
+
+**＊実装例＊**
+
+`status.podIP`から自身のIPアドレスを取得し、`MY_POD_IP`という名前で設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+```
+
 #### ▼ envFrom
 
-`.spec.volumes.secret`キーとは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。
+`.spec.volumes.secret`キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。
 
 **＊実装例＊**
 
@@ -2699,9 +2726,11 @@ spec:
         - containerPort: 8080
       envFrom:
         - secretRef:
-            name: foo-secret # 環境変数としてコンテナに出力するSecret
+            # 環境変数としてコンテナに出力するSecret
+            name: foo-secret
         - configMapRef:
-            name: foo-config-map # 環境変数としてコンテナに出力するConfigMap
+            # 環境変数としてコンテナに出力するConfigMap
+            name: foo-config-map
 ```
 
 #### ▼ ports
@@ -4380,7 +4409,7 @@ spec:
 
 Secretの`.data`キー配下のキーをファイルとしてマウントする。
 
-`.spec.containers[*].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。
+`.spec.containers[*].envFrom`キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。
 
 ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設定することに注意する。
 
