@@ -18223,18 +18223,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#daemonset-deployment" class="md-nav__link">
+  <a href="#daemonset-daemonset" class="md-nav__link">
     <span class="md-ellipsis">
-      DaemonSet (Deploymentを使用しない場合)
+      DaemonSet (DaemonSetモード)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment-daemonset" class="md-nav__link">
+  <a href="#deployment-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment (DaemonSetを使用しない場合)
+      Deployment (Deploymentモード)
     </span>
   </a>
   
@@ -18244,6 +18244,15 @@
   <a href="#service" class="md-nav__link">
     <span class="md-ellipsis">
       Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      StatefulSet (StatefulSetモード)
     </span>
   </a>
   
@@ -21157,18 +21166,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#daemonset-deployment" class="md-nav__link">
+  <a href="#daemonset-daemonset" class="md-nav__link">
     <span class="md-ellipsis">
-      DaemonSet (Deploymentを使用しない場合)
+      DaemonSet (DaemonSetモード)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment-daemonset" class="md-nav__link">
+  <a href="#deployment-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment (DaemonSetを使用しない場合)
+      Deployment (Deploymentモード)
     </span>
   </a>
   
@@ -21178,6 +21187,15 @@
   <a href="#service" class="md-nav__link">
     <span class="md-ellipsis">
       Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      StatefulSet (StatefulSetモード)
     </span>
   </a>
   
@@ -21240,7 +21258,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="daemonset-deployment">DaemonSet (Deploymentを使用しない場合)<a class="headerlink" href="#daemonset-deployment" title="Permanent link">&para;</a></h3>
+<h3 id="daemonset-daemonset">DaemonSet (DaemonSetモード)<a class="headerlink" href="#daemonset-daemonset" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -21324,10 +21342,11 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml</a></li>
+<li><a href="https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9">https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="deployment-daemonset">Deployment (DaemonSetを使用しない場合)<a class="headerlink" href="#deployment-daemonset" title="Permanent link">&para;</a></h3>
+<h3 id="deployment-deployment">Deployment (Deploymentモード)<a class="headerlink" href="#deployment-deployment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -21395,6 +21414,7 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml">https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml</a></li>
+<li><a href="https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9">https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -21427,6 +21447,9 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="statefulset-statefulset">StatefulSet (StatefulSetモード)<a class="headerlink" href="#statefulset-statefulset" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
 <h2 id="02">02. カスタムリソースを使用する場合<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <p>カスタムリソースを使用して、OpenTelemetryを定義することもできる。</p>
 <p>この場合、OpenTelemetry OperatorがInitContainerを介して、アプリコンテナにOpenTelemetryの実装を挿入する。</p>
@@ -21456,7 +21479,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-15</span>
   </span>
 
     
