@@ -16393,6 +16393,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#envfrom" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ envFrom
@@ -27746,6 +27755,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#envfrom" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ envFrom
@@ -31923,8 +31941,29 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D">https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D</a></li>
 </ul>
 </blockquote>
+<h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
+<p>環境変数を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p><code>status.podIP</code>から自身のIPアドレスを取得し、<code>MY_POD_IP</code>という名前で設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_POD_IP</span>
+<span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">fieldRef</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">              </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">status.podIP</span>
+</code></pre></div>
 <h4 id="envfrom">▼ envFrom<a class="headerlink" href="#envfrom" title="Permanent link">&para;</a></h4>
-<p><code>.spec.volumes.secret</code>キーとは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。</p>
+<p><code>.spec.volumes.secret</code>キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -31938,9 +31977,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 <span class="w">      </span><span class="nt">envFrom</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span><span class="w"> </span><span class="c1"># 環境変数としてコンテナに出力するSecret</span>
+<span class="w">            </span><span class="c1"># 環境変数としてコンテナに出力するSecret</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span><span class="w"> </span><span class="c1"># 環境変数としてコンテナに出力するConfigMap</span>
+<span class="w">            </span><span class="c1"># 環境変数としてコンテナに出力するConfigMap</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span>
 </code></pre></div>
 <h4 id="ports_1">▼ ports<a class="headerlink" href="#ports_1" title="Permanent link">&para;</a></h4>
 <p>コンテナが待ち受けるポート番号を、仕様として設定する。</p>
@@ -33436,7 +33477,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="secret">▼ secret<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
 <p>Secretの<code>.data</code>キー配下のキーをファイルとしてマウントする。</p>
-<p><code>.spec.containers[*].envFrom</code>キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。</p>
+<p><code>.spec.containers[*].envFrom</code>キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。</p>
 <p>ConfigMapをマウントする場合は、<code>.spec.volumes.configMap</code>キーで設定することに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Secretが持つ認証情報ファイル (ここでは<code>credentials.json</code>キー) をコンテナにファイルとしてマウントする</p>
@@ -34682,7 +34723,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-15</span>
   </span>
 
     
