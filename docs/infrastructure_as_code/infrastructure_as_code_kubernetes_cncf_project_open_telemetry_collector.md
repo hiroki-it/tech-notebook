@@ -31,7 +31,7 @@ data:
 
 <br>
 
-### DaemonSet (Deploymentを使用しない場合)
+### DaemonSet (DaemonSetモード)
 
 ```yaml
 apiVersion: apps/v1
@@ -116,10 +116,11 @@ spec:
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml
+> - https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9
 
 <br>
 
-### Deployment (DaemonSetを使用しない場合)
+### Deployment (Deploymentモード)
 
 ```yaml
 apiVersion: apps/v1
@@ -188,6 +189,7 @@ spec:
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml
+> - https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9
 
 <br>
 
@@ -218,6 +220,12 @@ spec:
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml
+
+<br>
+
+### StatefulSet (StatefulSetモード)
+
+記入中...
 
 <br>
 
