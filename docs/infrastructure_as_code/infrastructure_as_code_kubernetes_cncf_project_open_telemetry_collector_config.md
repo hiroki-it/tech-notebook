@@ -157,23 +157,36 @@ opentelemetryコレクターは、設定した監視バックエンドにテレ�
 
 ### debug
 
+#### ▼ debugとは
+
+標準エラー出力にテレメトリーを出力する。
+
+#### ▼ verbosity
+
+重要度レベルを設定する。
+
 ```yaml
 exporters:
-  debug: {}
+  debug:
+    verbosity: detailed
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#exporters
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md
 
 <br>
 
 ### logging
+
+これは非推奨である。
+
+代わりに、`debug`を使用すること。
 
 ```yaml
 exporters:
   logging: {}
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#exporters
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/loggingexporter/README.md
 
 <br>
 
