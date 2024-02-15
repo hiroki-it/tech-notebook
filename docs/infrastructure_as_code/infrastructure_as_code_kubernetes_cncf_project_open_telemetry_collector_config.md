@@ -17,6 +17,10 @@ description: 設定ファイル＠OpenTelemetryコレクターの知見を記録
 
 ### タイプ
 
+#### ▼ タイプとは
+
+設定名のこと。
+
 各コンポーネントで、`タイプ/<任意の文字列>`でテレメトリーの処理方法を設定する。
 
 ```yaml
@@ -52,6 +56,13 @@ service:
         - <タイプ>/bar
     ...
 ```
+
+タイプは、コア機能と拡張機能から選べる。
+
+> - https://github.com/open-telemetry/opentelemetry-collector
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib
+
+#### ▼ 同じタイプの複数定義
 
 タイプさえ正しければ問題なく、同じタイプを複数設定できる。
 
@@ -206,13 +217,21 @@ exporters:
 
 ## 03. extensions
 
+### extensionとは
+
+記入中...
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md
+
+<br>
+
+### health_check
+
 ```yaml
 extensions:
   health_check:
     endpoint: <PodのIPアドレス>:13133
 ```
-
-> - https://opentelemetry.io/docs/collector/configuration/#extensions
 
 <br>
 
@@ -246,6 +265,14 @@ processors:
 
 ### batch
 
+#### ▼ batchとは
+
+テレメトリーファイルを圧縮するバッチ処理を実行する。
+
+推奨である。
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
+
 #### ▼ timeout
 
 ```yaml
@@ -254,7 +281,7 @@ processors:
     timeout: 5s
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#processors
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
 
 #### ▼ send_batch_size
 
@@ -264,7 +291,7 @@ processors:
     send_batch_size: 50
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#processors
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
 
 <br>
 
@@ -272,9 +299,17 @@ processors:
 
 ### receiversとは
 
-レシーバーを設定する
+レシーバーを設定する。
 
 OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+
+<br>
+
+### otlp
+
+OTLP形式でテレメトリーを受信する。
 
 クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。
 
@@ -288,7 +323,6 @@ receivers:
         endpoint: <PodのIPアドレス>:4318
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#receivers
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
 
 <br>
@@ -335,6 +369,8 @@ service:
 
 OpenTelemetryコレクター自体のテレメトリーの作成方法を設定する。
 
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
+
 #### ▼ logs
 
 OpenTelemetryコレクターのログの作成方法を設定する。
@@ -343,7 +379,10 @@ OpenTelemetryコレクターのログの作成方法を設定する。
 service:
   telemetry:
     logs:
-      # ログの出力先
+      # 通常ログの出力
+      output_paths:
+        - stdout
+      # エラーログの出力先
       error_output_paths:
         - stderr
       # ログレベル
@@ -353,7 +392,7 @@ service:
         service: foo
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#telemetry
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 
 #### ▼ metrics
 
@@ -368,6 +407,6 @@ service:
       address: <PodのIPアドレス>:8888
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#telemetry
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 
 <br>
