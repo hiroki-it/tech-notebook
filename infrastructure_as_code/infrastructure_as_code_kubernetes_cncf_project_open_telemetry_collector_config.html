@@ -18340,6 +18340,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ debugとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbosity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ verbosity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -21583,6 +21607,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ debugとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbosity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ verbosity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22009,22 +22057,29 @@
 <p>opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
 <h3 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
+<h4 id="debug_1">▼ debugとは<a class="headerlink" href="#debug_1" title="Permanent link">&para;</a></h4>
+<p>標準エラー出力にテレメトリーを出力する。</p>
+<h4 id="verbosity">▼ verbosity<a class="headerlink" href="#verbosity" title="Permanent link">&para;</a></h4>
+<p>重要度レベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detailed</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#exporters">https://opentelemetry.io/docs/collector/configuration/#exporters</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="logging">logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
+<p>これは非推奨である。</p>
+<p>代わりに、<code>debug</code>を使用すること。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/collector/configuration/#exporters">https://opentelemetry.io/docs/collector/configuration/#exporters</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/loggingexporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/loggingexporter/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
