@@ -19749,7 +19749,16 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 依存関係
+      ▼ アーティファクト依存関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobの依存関係
     </span>
   </a>
   
@@ -22276,7 +22285,16 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 依存関係
+      ▼ アーティファクト依存関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobの依存関係
     </span>
   </a>
   
@@ -23207,8 +23225,8 @@
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs">https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ 依存関係<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>並列実行した各Jobに対して、異なる依存関係を設定できる。</p>
+<h4 id="_11">▼ アーティファクト依存関係<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>並列実行した各Jobに対して、アーティファクトの依存関係を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -23236,6 +23254,41 @@
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job">https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job</a></li>
+</ul>
+</blockquote>
+<h4 id="job">Jobの依存関係<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
+<p>並列実行した各Jobに対して、Jobの依存関係を設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+
+<span class="nt">foo_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">parallel</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo3</span>
+<span class="w">  </span><span class="c1"># foo1、foo2、foo3、を出力する異なるJobを並列実行する</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${ENV}</span>
+
+<span class="nt">baz_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
+<span class="w">      </span><span class="nt">parallel</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># foo2に依存する</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/76956828">https://stackoverflow.com/a/76956828</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/#needsparallelmatrix">https://docs.gitlab.com/ee/ci/yaml/#needsparallelmatrix</a></li>
 </ul>
 </blockquote>
 <p><br></p>
