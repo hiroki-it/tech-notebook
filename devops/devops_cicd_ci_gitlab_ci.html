@@ -19728,6 +19728,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      parallel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parallel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ parallelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 依存関係
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rules" class="md-nav__link">
     <span class="md-ellipsis">
       rules
@@ -19789,7 +19822,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数のコンテナを同時に起動するため
     </span>
@@ -22222,6 +22255,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      parallel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parallel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parallel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ parallelとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 依存関係
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rules" class="md-nav__link">
     <span class="md-ellipsis">
       rules
@@ -22283,7 +22349,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数のコンテナを同時に起動するため
     </span>
@@ -22463,6 +22529,15 @@
 <h3 id="_5">予約変数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="ci_commit_branch">▼ <code>CI_COMMIT_BRANCH</code><a class="headerlink" href="#ci_commit_branch" title="Permanent link">&para;</a></h4>
 <p>現在のブランチ名が割り当てられている。</p>
+<p>featureブランチの名前によらずにCIを実行する条件を定義できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># featureブランチ (develop、main、以外) のみで実行する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;push&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;develop&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;main&#39;</span>
+</code></pre></div>
 <h4 id="ci_commit_tag">▼ <code>CI_COMMIT_TAG</code><a class="headerlink" href="#ci_commit_tag" title="Permanent link">&para;</a></h4>
 <p>タグの作成時にパイプラインを発火させる。</p>
 <h4 id="ci_pipeline_source">▼ <code>CI_PIPELINE_SOURCE</code><a class="headerlink" href="#ci_pipeline_source" title="Permanent link">&para;</a></h4>
@@ -22763,6 +22838,8 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${FOO}&quot;</span>
 </code></pre></div>
 <h4 id="_10">▼ リスト<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>変数でリストを定義できる。</p>
+<p>これを使用して、単一のJob内で<code>for</code>を実行できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1 foo2 foo3</span>
@@ -23109,6 +23186,59 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="parallel">parallel<a class="headerlink" href="#parallel" title="Permanent link">&para;</a></h3>
+<h4 id="parallel_1">▼ parallelとは<a class="headerlink" href="#parallel_1" title="Permanent link">&para;</a></h4>
+<p>同じJobを複数並列実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">parallel</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo3</span>
+<span class="w">  </span><span class="c1"># foo1、foo2、foo3、を出力する異なるJobを並列実行する</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${ENV}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/#parallelmatrix">https://docs.gitlab.com/ee/ci/yaml/#parallelmatrix</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs">https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs</a></li>
+</ul>
+</blockquote>
+<h4 id="_11">▼ 依存関係<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>並列実行した各Jobに対して、異なる依存関係を設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+
+<span class="nt">foo_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">parallel</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo3</span>
+<span class="w">  </span><span class="c1"># foo1、foo2、foo3、を出力する異なるJobを並列実行する</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${ENV}</span>
+
+<span class="nt">baz_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
+<span class="w">  </span><span class="c1"># foo_jobのfoo1のアーティファクトのみを継承する</span>
+<span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo_job:</span><span class="nv"> </span><span class="s">[foo1]&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job">https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="rules">rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h3>
 <h4 id="rules_1">▼ rulesとは<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
 <p>Jobの発火条件を設定する。</p>
@@ -23179,7 +23309,7 @@
 <li><a href="https://about.gitlab.com/blog/2019/07/31/docker-in-docker-with-docker-19-dot-03/#disable-tls">https://about.gitlab.com/blog/2019/07/31/docker-in-docker-with-docker-19-dot-03/#disable-tls</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ 複数のコンテナを同時に起動するため<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 複数のコンテナを同時に起動するため<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>Jobでアプリコンテナを動かし、DBコンテナを別に起動しておく場合、もう一つコンテナが必要になる。</p>
 <p>これを回避するために使用する。</p>
 <blockquote>
