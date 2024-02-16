@@ -811,9 +811,9 @@ foo_job:
 > - https://docs.gitlab.com/ee/ci/yaml/#parallelmatrix
 > - https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs
 
-#### ▼ 依存関係
+#### ▼ アーティファクト依存関係
 
-並列実行した各Jobに対して、異なる依存関係を設定できる。
+並列実行した各Jobに対して、アーティファクトの依存関係を設定できる。
 
 ```yaml
 stages:
@@ -842,6 +842,42 @@ baz_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
+
+#### Jobの依存関係
+
+並列実行した各Jobに対して、Jobの依存関係を設定できる。
+
+```yaml
+stages:
+  - build
+  - deploy
+
+foo_job:
+  stage: build
+  parallel:
+    matrix:
+      - ENV:
+          - foo1
+          - foo2
+          - foo3
+  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+  script:
+    - echo ${ENV}
+
+baz_job:
+  stage: deploy
+  script:
+    - echo baz
+  needs:
+    - job: foo_job
+      parallel:
+        matrix:
+          # foo2に依存する
+          - ENV: foo2
+```
+
+> - https://stackoverflow.com/a/76956828
+> - https://docs.gitlab.com/ee/ci/yaml/#needsparallelmatrix
 
 <br>
 
