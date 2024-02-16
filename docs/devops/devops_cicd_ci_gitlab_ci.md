@@ -61,6 +61,18 @@ repository/
 
 現在のブランチ名が割り当てられている。
 
+featureブランチの名前によらずにCIを実行する条件を定義できる。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  rules:
+    # featureブランチ (develop、main、以外) のみで実行する
+    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH != 'develop' && $CI_COMMIT_BRANCH != 'main'
+```
+
 #### ▼ `CI_COMMIT_TAG`
 
 タグの作成時にパイプラインを発火させる。
@@ -383,6 +395,10 @@ foo_job:
 ```
 
 #### ▼ リスト
+
+変数でリストを定義できる。
+
+これを使用して、単一のJob内で`for`を実行できる。
 
 ```yaml
 foo_job:
@@ -769,6 +785,63 @@ baz_job:
   script:
     - echo baz
 ```
+
+<br>
+
+### parallel
+
+#### ▼ parallelとは
+
+同じJobを複数並列実行する。
+
+```yaml
+foo_job:
+  stage: build
+  parallel:
+    matrix:
+      - ENV:
+          - foo1
+          - foo2
+          - foo3
+  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+  script:
+    - echo ${ENV}
+```
+
+> - https://docs.gitlab.com/ee/ci/yaml/#parallelmatrix
+> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs
+
+#### ▼ 依存関係
+
+並列実行した各Jobに対して、異なる依存関係を設定できる。
+
+```yaml
+stages:
+  - build
+  - deploy
+
+foo_job:
+  stage: build
+  parallel:
+    matrix:
+      - ENV:
+          - foo1
+          - foo2
+          - foo3
+  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+  script:
+    - echo ${ENV}
+
+baz_job:
+  stage: deploy
+  script:
+    - echo baz
+  # foo_jobのfoo1のアーティファクトのみを継承する
+  dependencies:
+    - "foo_job: [foo1]"
+```
+
+> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
 
 <br>
 
