@@ -61,11 +61,40 @@ repository/
 
 現在のブランチ名が割り当てられている。
 
+#### ▼ `$CI_COMMIT_TAG`
+
+タグの作成時にパイプラインを発火させる。
+
 #### ▼ `CI_PIPELINE_SOURCE`
 
 現在のパイプラインを発火させたイベント名が割り当てられている。
 
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
+
+#### ▼ `CI_PIPELINE_SOURCE`
+
+イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
+
+タグの付与時にパイプラインを発火させる場合、`$CI_COMMIT_TAG`を使用する。
+
+```yaml
+foo_job:
+  stage: build
+  script:
+    - echo foo
+  rules:
+    # MRを作成/更新したタイミングで発火する
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+| 値                    | 説明                             |
+| --------------------- | -------------------------------- |
+| `merge_request_event` | マージリクエストの作成時を表す。 |
+| `push`                | プッシュ時を表す。               |
+| `web`                 | 画面からの手動実行時を表す。     |
+
+> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
+> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
 
 #### ▼ `GIT_SUBMODULE_STRATEGY`
 
@@ -78,23 +107,6 @@ foo_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/git_submodules.html#use-git-submodules-in-cicd-jobs
-
-#### ▼ `CI_PIPELINE_SOURCE`
-
-イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
-
-```yaml
-foo_job:
-  stage: build
-  script:
-    - echo foo
-  rules:
-    # MRを作成/更新したタイミングで発火する
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-```
-
-> - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
-> - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
 
 <br>
 
