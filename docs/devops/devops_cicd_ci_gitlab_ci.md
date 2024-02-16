@@ -61,19 +61,13 @@ repository/
 
 現在のブランチ名が割り当てられている。
 
-#### ▼ `$CI_COMMIT_TAG`
+#### ▼ `CI_COMMIT_TAG`
 
 タグの作成時にパイプラインを発火させる。
 
 #### ▼ `CI_PIPELINE_SOURCE`
 
-現在のパイプラインを発火させたイベント名が割り当てられている。
-
-> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
-
-#### ▼ `CI_PIPELINE_SOURCE`
-
-イベントの発生元 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
+現在のパイプラインを発火させたイベント名 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
 
 タグの付与時にパイプラインを発火させる場合、`$CI_COMMIT_TAG`を使用する。
 
@@ -93,6 +87,7 @@ foo_job:
 | `push`                | プッシュ時を表す。               |
 | `web`                 | 画面からの手動実行時を表す。     |
 
+> - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
 > - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 > - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
 
@@ -386,6 +381,25 @@ foo_job:
     # ダブルクオートがある
     - echo "${FOO}"
 ```
+
+#### ▼ リスト
+
+```yaml
+foo_job:
+  variables:
+    LIST: foo1 foo2 foo3
+  script:
+    - |
+      for VALUES in $LIST
+        do
+          echo ${VALUES}
+        done
+```
+
+> - https://docs.gitlab.com/ee/ci/variables/#store-multiple-values-in-one-variable
+> - https://stackoverflow.com/a/74059668
+
+<br>
 
 ### workflow
 
@@ -984,24 +998,58 @@ bar:
 
 ### when
 
+#### ▼ whenとは
+
 Jobを実行する条件を設定する。
+
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+
+#### ▼ always
+
+ワークフローのうちで、前段のJobのステータスに関係なく、必ず実行する
+
+```yaml
+bar_job:
+  stage: build
+  script:
+    - echo bar
+  when: always
+```
+
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+
+#### ▼ manual
+
+ワークフローのうちで、手動で実行した場合にのみ実行する
 
 ```yaml
 foo_job:
   stage: build
   script:
     - echo foo
-  # ワークフローのうちで、手動で実行した場合にのみ実行する
   when: manual
-
-bar_job:
-  stage: build
-  script:
-    - echo bar
-  # ワークフローのうちで、前段のJobのステータスに関係なく、必ず実行する
-  when: always
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#when
+
+#### ▼ never
+
+特定の条件の場合に、Jobを実行しない。
+
+なお、`when: never`のみの定義は意味がない。
+
+```yaml
+baz_job:
+  stage: build
+  script:
+    - echo bar
+  # BAZ変数がfalseの場合は実行しない (never)
+  rules:
+    - if: $BAZ == 'false'
+      when: never
+```
+
+> - https://blogs.networld.co.jp/entry/2022/11/01/090000
+> - https://stackoverflow.com/a/74885985
 
 <br>
