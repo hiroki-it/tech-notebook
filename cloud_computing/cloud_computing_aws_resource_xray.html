@@ -11516,7 +11516,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 初期化
+      初期化
     </span>
   </a>
   
@@ -11525,7 +11525,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパンの作成
+      親スパンの作成
     </span>
   </a>
   
@@ -11534,7 +11534,7 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 子スパンの作成
+      子スパンの作成
     </span>
   </a>
   
@@ -11543,7 +11543,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションの実行
+      アプリケーションの実行
     </span>
   </a>
   
@@ -21410,7 +21410,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 初期化
+      初期化
     </span>
   </a>
   
@@ -21419,7 +21419,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパンの作成
+      親スパンの作成
     </span>
   </a>
   
@@ -21428,7 +21428,7 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 子スパンの作成
+      子スパンの作成
     </span>
   </a>
   
@@ -21437,7 +21437,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションの実行
+      アプリケーションの実行
     </span>
   </a>
   
@@ -21494,15 +21494,15 @@
 <tbody>
 <tr>
 <td>Limits</td>
-<td></td>
+<td>セグメントの収集に関する上限値を設定する。</td>
 </tr>
 <tr>
 <td>Matching Criteria</td>
-<td>X-Rayで受信するリクエストの条件 (例：宛先サービス、宛先パス、HTTPメソッド、など)</td>
+<td>セグメントのキーに基づくフィルタリング条件を設定する。</td>
 </tr>
 <tr>
 <td>Matching attributes</td>
-<td></td>
+<td>記入中...</td>
 </tr>
 </tbody>
 </table>
@@ -21577,12 +21577,6 @@
 <h4 id="http">▼ <code>http</code>キー<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
 <p>スパンのHTTPリクエストの情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;004f72be19cddc2a&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;names.example.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;remote&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1484786387.131</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;end_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1484786387.501</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="c1"># HTTPリクエストデータ</span>
 <span class="w">  </span><span class="s">&quot;http&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="s">&quot;request&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://names.example.com/&quot;</span><span class="p p-Indicator">},</span>
@@ -21597,34 +21591,38 @@
 </blockquote>
 <h4 id="aws">▼ <code>aws</code>キー<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
 <p>スパンの作成元のAWSリソース情報を持つ。</p>
-<div class="highlight"><pre><span></span><code><span class="s">&quot;aws&quot;</span><span class="l l-Scalar l-Scalar-Plain">:{</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">&quot;elastic_beanstalk&quot;:{</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;version_label&quot;:&quot;app-5a56-170119_190650-stage-170119_190650&quot;,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;deployment_id&quot;:32,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;environment_name&quot;:&quot;scorekeep&quot;</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">},</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">&quot;ec2&quot;:{</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;availability_zone&quot;:&quot;us-west-2c&quot;,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;instance_id&quot;:&quot;i-075ad396f12bc325a&quot;,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;ami_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
-<span class="w">   </span><span class="err">},</span>
-<span class="w">   </span><span class="s">&quot;cloudwatch_logs&quot;</span><span class="l l-Scalar l-Scalar-Plain">:[</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">         </span><span class="l l-Scalar l-Scalar-Plain">&quot;log_group&quot;:&quot;my-cw-log-group&quot;,</span>
-<span class="w">         </span><span class="l l-Scalar l-Scalar-Plain">&quot;arn&quot;:&quot;arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group&quot;</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">],</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain"># X-Rayのクライアントパッケージ情報</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">&quot;xray&quot;:{</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;auto_instrumentation&quot;:false,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;sdk&quot;:&quot;X-Ray for Java&quot;,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;sdk_version&quot;:&quot;2.8.0&quot;</span>
-<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;aws&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;elastic_beanstalk&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;version_label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app-5a56-170119_190650-stage-170119_190650&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;deployment_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">32</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;environment_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;scorekeep&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;ec2&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;availability_zone&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;us-west-2c&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;instance_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;i-075ad396f12bc325a&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;ami_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;cloudwatch_logs&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;log_group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;my-cw-log-group&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="c1"># X-Rayのクライアントパッケージ情報</span>
+<span class="w">      </span><span class="s">&quot;xray&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;auto_instrumentation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;sdk&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;X-Ray</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Java&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;sdk_version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2.8.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-lambda">03. Lambdaの場合<a class="headerlink" href="#03-lambda" title="Permanent link">&para;</a></h2>
-<h4 id="_8">▼ 初期化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h3 id="_8">初期化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
 <p>X-Rayのパッケージを初期化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21645,7 +21643,8 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ 親スパンの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_9">親スパンの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>親スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21695,7 +21694,8 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ 子スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_10">子スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>子スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21745,7 +21745,8 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ アプリケーションの実行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_11">アプリケーションの実行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
