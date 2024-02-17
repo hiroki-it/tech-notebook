@@ -72,6 +72,33 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
 
+#### ▼ セグメントのスキーマ
+
+セグメントの構造やデータ型を定義したもの。
+
+```yaml
+{
+  # スキーマURL
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Segment document schema",
+  # スキーマのバージョン
+  "version": "1.0.0",
+  # 構造
+  "type": "object",
+  # データ型
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "minLength": 35,
+      "pattern": "\\d+-[A-Fa-f0-9]*-[A-Fa-f0-9]{24}"
+    }
+    ...
+  }
+}
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+
 #### ▼ `subsegments`キー
 
 記入中...
@@ -114,7 +141,7 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
    "ec2":{
       "availability_zone":"us-west-2c",
       "instance_id":"i-075ad396f12bc325a",
-      "ami_id":
+      "ami_id": "*****"
    },
    "cloudwatch_logs":[
       {
