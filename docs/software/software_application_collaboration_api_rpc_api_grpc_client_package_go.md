@@ -437,7 +437,7 @@ func main() {
 	     	grpc_prometheus.UnaryServerInterceptor(...),
 			// ロギング処理
 		    grpc_logging.UnaryServerInterceptor(...),
-			// 分散トレーシング処理
+			// 分散トレースのスパン作成処理
 			otelgrpc.UnaryServerInterceptor(...),
 			// リカバー処理
 	        grpc_recovery.UnaryServerInterceptor(...),
