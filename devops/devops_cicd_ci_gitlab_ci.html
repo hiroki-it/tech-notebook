@@ -10226,6 +10226,8 @@
       
         
       
+        
+      
     
     
       
@@ -11303,6 +11305,27 @@
   
   <span class="md-ellipsis">
     WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud_computing/cloud_computing_aws_resource_xray.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    X-Ray
   </span>
   
 
@@ -19758,7 +19781,7 @@
           <li class="md-nav__item">
   <a href="#job" class="md-nav__link">
     <span class="md-ellipsis">
-      Jobの依存関係
+      ▼ Jobの依存関係
     </span>
   </a>
   
@@ -22294,7 +22317,7 @@
           <li class="md-nav__item">
   <a href="#job" class="md-nav__link">
     <span class="md-ellipsis">
-      Jobの依存関係
+      ▼ Jobの依存関係
     </span>
   </a>
   
@@ -23256,7 +23279,7 @@
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job">https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job</a></li>
 </ul>
 </blockquote>
-<h4 id="job">Jobの依存関係<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
+<h4 id="job">▼ Jobの依存関係<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
 <p>並列実行した各Jobに対して、Jobの依存関係を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -23265,12 +23288,12 @@
 <span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">parallel</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># foo1、foo2、foo3、を出力する異なるJobを並列実行する</span>
 <span class="w">    </span><span class="nt">matrix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo3</span>
-<span class="w">  </span><span class="c1"># foo1、foo2、foo3、を出力する異なるJobを並列実行する</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${ENV}</span>
 
@@ -23282,7 +23305,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 <span class="w">      </span><span class="nt">parallel</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">matrix</span><span class="p">:</span>
-<span class="w">          </span><span class="c1"># foo2に依存する</span>
+<span class="w">          </span><span class="c1"># foo_jobのfoo2に依存する</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
 </code></pre></div>
 <blockquote>
@@ -23563,7 +23586,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-17</span>
   </span>
 
     

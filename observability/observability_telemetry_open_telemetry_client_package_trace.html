@@ -10226,6 +10226,8 @@
       
         
       
+        
+      
     
     
       
@@ -11303,6 +11305,27 @@
   
   <span class="md-ellipsis">
     WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud_computing/cloud_computing_aws_resource_xray.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    X-Ray
   </span>
   
 
@@ -20719,11 +20742,11 @@
           <li class="md-nav__item">
   <a href="#x-ray" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がX-rayの場合
+      宛先がX-Rayの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がX-rayの場合">
+    <nav class="md-nav" aria-label="宛先がX-Rayの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22344,11 +22367,11 @@
           <li class="md-nav__item">
   <a href="#x-ray" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がX-rayの場合
+      宛先がX-Rayの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がX-rayの場合">
+    <nav class="md-nav" aria-label="宛先がX-Rayの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22758,7 +22781,7 @@
 <td><code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージからコールできる。</td>
 </tr>
 <tr>
-<td>GoとX-ray</td>
+<td>GoとX-Ray</td>
 <td>一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
 </tr>
 <tr>
@@ -22789,7 +22812,7 @@
 <h3 id="idgenerator_1">IDGeneratorが不要な場合<a class="headerlink" href="#idgenerator_1" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。</p>
 <p>W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。</p>
-<p>例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-ray仕様に変換する。</p>
+<p>例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-Ray仕様に変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel">https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel</a></li>
@@ -22839,7 +22862,7 @@
 <td><code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</td>
 </tr>
 <tr>
-<td>GoとX-ray</td>
+<td>GoとX-Ray</td>
 <td>一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
 </tr>
 </tbody>
@@ -23106,11 +23129,13 @@
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to initialize exporter: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">tp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">(</span><span class="nx">exp</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">(</span><span class="nx">exp</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">}()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tp</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">traceProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;ExampleService&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -23780,7 +23805,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="x-ray">宛先がX-rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
+<h3 id="x-ray">宛先がX-Rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パッケージの初期化<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">collection</span>
 
@@ -23856,7 +23881,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
-<span class="w">        </span><span class="c1">// X-ray形式の各種IDを新しく作成する</span>
+<span class="w">        </span><span class="c1">// X-Ray形式の各種IDを新しく作成する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -23864,7 +23889,7 @@
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// X-ray形式のコンテキストを伝播できるPropagatorを設定する</span>
+<span class="w">        </span><span class="c1">// X-Ray形式のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -24036,7 +24061,7 @@
 </blockquote>
 <h4 id="id">▼ ログへのID出力<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
 <p><code>trace.Span</code>から取得できるトレースIDはW3C Trace Context仕様である。</p>
-<p>そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。</p>
+<p>そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">getXrayTraceID</span><span class="p">(</span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">xrayTraceID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">TraceID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
@@ -24551,7 +24576,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-17</span>
   </span>
 
     
