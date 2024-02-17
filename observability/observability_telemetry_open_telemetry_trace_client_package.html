@@ -20299,6 +20299,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      失敗時のリカバリー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="失敗時のリカバリー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 未送信スパンの処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ハードウェアリソースの解放
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -20453,7 +20486,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       サンプリング方式
     </span>
@@ -20463,7 +20496,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 場所
     </span>
@@ -20472,7 +20505,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クライアント側のサンプリング率
     </span>
@@ -20495,7 +20528,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       環境変数
     </span>
@@ -21477,6 +21510,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      失敗時のリカバリー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="失敗時のリカバリー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 未送信スパンの処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ハードウェアリソースの解放
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21631,7 +21697,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       サンプリング方式
     </span>
@@ -21641,7 +21707,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 場所
     </span>
@@ -21650,7 +21716,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クライアント側のサンプリング率
     </span>
@@ -21673,7 +21739,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       環境変数
     </span>
@@ -21820,6 +21886,88 @@
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/concepts/signals/traces/">https://opentelemetry.io/docs/concepts/signals/traces/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">失敗時のリカバリー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 未送信スパンの処理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>処理の失敗時にSpanProcessor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resource</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">            </span><span class="mi">5</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
+
+<span class="w">        </span><span class="c1">// SpanProcessor内の処理中スパンをExporterに送信する</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">ForceFlush</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to trace porvider force flush %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-in-go">https://christina04.hatenablog.com/entry/opentelemetry-in-go</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush">https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ ハードウェアリソースの解放<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>処理の失敗時にハードウェアリソースを確保してしまっている場合、これを解放した方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resource</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">            </span><span class="mi">5</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
+
+<span class="w">        </span><span class="c1">// 処理に割り当てられていたハードウェアリソースを解放する</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to shutdown tracer provider %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-in-go">https://christina04.hatenablog.com/entry/opentelemetry-in-go</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown">https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22017,8 +22165,8 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_5">サンプリング方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 場所<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_8">サンプリング方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 場所<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>サンプリングする場所によって、方式が異なる。</p>
 <table>
 <thead>
@@ -22044,7 +22192,7 @@
 <li><a href="https://opentelemetry.io/docs/concepts/sampling/">https://opentelemetry.io/docs/concepts/sampling/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ クライアント側のサンプリング率<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ クライアント側のサンプリング率<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>クライアント側でのサンプリング率を設定する。</p>
 <p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>とする。</p>
 <p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
@@ -22103,7 +22251,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">環境変数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_11">環境変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>指定するSamplerやパラメーターを環境変数で設定できる。</p>
 <table>
 <thead>
