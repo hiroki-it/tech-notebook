@@ -1691,7 +1691,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_client_package_trace.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_trace_client_package.html</loc>
+         <lastmod>2024-02-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_trace_client_package_go.html</loc>
+         <lastmod>2024-02-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_trace_client_package_python.html</loc>
          <lastmod>2024-02-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
