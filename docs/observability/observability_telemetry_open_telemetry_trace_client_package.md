@@ -130,6 +130,92 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
+### 失敗時のリカバリー
+
+#### ▼ 未送信スパンの処理
+
+処理の失敗時にSpanProcessor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
+
+```go
+func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+
+	...
+
+	traceProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+    )
+
+	...
+
+	cleanUp := func() {
+
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			5*time.Second
+        )
+
+		defer cancel()
+
+		// SpanProcessor内の処理中スパンをExporterに送信する
+		if err := tp.ForceFlush(ctx); err != nil {
+			log.Printf("failed to trace porvider force flush %v", err)
+		}
+
+		...
+	}
+
+	return traceProvider, cleanUp, nil
+}
+```
+
+> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush
+
+#### ▼ ハードウェアリソースの解放
+
+処理の失敗時にハードウェアリソースを確保してしまっている場合、これを解放した方が良い。
+
+```go
+func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+
+	...
+
+	traceProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+    )
+
+	...
+
+	cleanUp := func() {
+
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			5*time.Second
+        )
+
+		defer cancel()
+
+		// 処理に割り当てられていたハードウェアリソースを解放する
+		if err := tp.Shutdown(ctx); err != nil {
+			log.Printf("failed to shutdown tracer provider %v", err)
+		}
+
+		...
+	}
+
+	return traceProvider, cleanUp, nil
+}
+```
+
+> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown
+
+<br>
+
 ## 02. Exporter
 
 ### Exporterとは
