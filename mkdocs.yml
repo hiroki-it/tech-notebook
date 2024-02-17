@@ -698,8 +698,8 @@ nav:
       - ■ OpenTelemetry:
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.md
           - ■ OpenTelemetryコレクター:
-            - OpenTelemetryコレクター: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.md
-            - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.md
+              - OpenTelemetryコレクター: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.md
       - ■ Prometheus:
           - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.md
           - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.md
@@ -764,8 +764,10 @@ nav:
           - Prometheus: observability/observability_telemetry_prometheus.md
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_open_telemetry.md
-              - ■ クライアントパッケージ:
-                  - トレース: observability/observability_telemetry_open_telemetry_client_package_trace.md
+              - ■ 分散トレース:
+                  - クライアントパッケージ: observability/observability_telemetry_open_telemetry_trace_client_package.md
+                  - Go: observability/observability_telemetry_open_telemetry_trace_client_package_go.md
+                  - Python: observability/observability_telemetry_open_telemetry_trace_client_package_python.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_datadog_monitoring.md
