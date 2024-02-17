@@ -38,9 +38,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 {
   "name": "hello",
   "context": {
-      # 自身のトレースID
+      # ルートスパンのトレースID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 自身のスパンID
+      # ルートスパンのスパンID
       "span_id": "0x051581bf3cb55c13",
     },
   # ルートスパンのため、親スパンのスパンIDがない
@@ -61,7 +61,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 > - https://opentelemetry.io/docs/concepts/signals/traces/
 
-#### ▼ 親スパン (1)
+#### ▼ 親スパンX
 
 １つ目の親スパンの構造である。
 
@@ -71,10 +71,10 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
   "context": {
       # ルートスパンのトレースID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 自身のスパンID
+      # 親スパンXのスパンID
       "span_id": "0x5fb397be34d26b51",
     },
-  # 親スパンのスパンID (ルートスパンのスパンIDと一致する)
+  # 親スパンXのスパンID (ルートスパンのスパンIDと一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
@@ -97,7 +97,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 > - https://opentelemetry.io/docs/concepts/signals/traces/
 
-#### ▼ 親スパン (2)
+#### ▼ 親スパンY
 
 ２つ目の親スパンの構造である。
 
@@ -105,12 +105,12 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 {
   "name": "hello-salutations",
   "context": {
-      # ルートスパンのID
+      # ルートスパンのトレースID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 自身のスパンID
+      # 親スパンYのスパンID
       "span_id": "0x93564f51e1abe1c2",
     },
-  # 親スパンのスパンID (ルートスパンのスパンIDと一致する)
+  # 親スパンYのスパンID (ルートスパンのスパンIDと一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",

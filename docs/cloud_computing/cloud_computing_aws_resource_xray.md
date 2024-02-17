@@ -45,37 +45,50 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 
 #### ▼ セグメントとは
 
+スパンの情報を持つ。
+
 ```yaml
 {
-  "name": "example.com",
-  "id": "70de5b6f19ff9a0a",
-  "start_time": 1.478293361271E9,
+  # スパンのトレースID
   "trace_id": "1-581cf771-a006649127e371903a2de979",
+  # スパンのスパンID
+  "id": "70de5b6f19ff9a0a",
+  "name": "example.com",
+  "start_time": 1.478293361271E9,
   "end_time": 1.478293361449E9,
+  "service": {...},
+  "user": {...},
+  "service": {...},
+  "origin": {...},
+  "parent_id": {...},
+  "http": {...},
+  "aws": {...},
+  "error": {...},
+  "annotations": {...},
+  "metadata": {...},
+  "subsegments": {...},
 }
 ```
 
-<br>
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
 
-### サブセグメント
-
-#### ▼ サブセグメントとは
+#### ▼ `subsegments`キー
 
 記入中...
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
 
-#### ▼ HTTPリクエストデータ
+#### ▼ `http`キー
 
 スパンのHTTPリクエストの情報を持つ。
 
 ```yaml
 {
   "id": "004f72be19cddc2a",
-  "start_time": 1484786387.131,
-  "end_time": 1484786387.501,
   "name": "names.example.com",
   "namespace": "remote",
+  "start_time": 1484786387.131,
+  "end_time": 1484786387.501,
   # HTTPリクエストデータ
   "http":
     {
@@ -87,7 +100,7 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http
 
-#### ▼ AWSリソースデータ
+#### ▼ `aws`キー
 
 スパンの作成元のAWSリソース情報を持つ。
 
