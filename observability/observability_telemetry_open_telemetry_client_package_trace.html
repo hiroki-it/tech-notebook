@@ -20273,18 +20273,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#x" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパン (1)
+      ▼ 親スパンX
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#y" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパン (2)
+      ▼ 親スパンY
     </span>
   </a>
   
@@ -21898,18 +21898,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#x" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパン (1)
+      ▼ 親スパンX
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#y" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 親スパン (2)
+      ▼ 親スパンY
     </span>
   </a>
   
@@ -22664,9 +22664,9 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;context&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="c1"># 自身のトレースID</span>
+<span class="w">      </span><span class="c1"># ルートスパンのトレースID</span>
 <span class="w">      </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x5b8aa5a2d2c872e8321cf37308d69df2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="c1"># 自身のスパンID</span>
+<span class="w">      </span><span class="c1"># ルートスパンのスパンID</span>
 <span class="w">      </span><span class="s">&quot;span_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x051581bf3cb55c13&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="c1"># ルートスパンのため、親スパンのスパンIDがない</span>
@@ -22689,17 +22689,17 @@
 <li><a href="https://opentelemetry.io/docs/concepts/signals/traces/">https://opentelemetry.io/docs/concepts/signals/traces/</a></li>
 </ul>
 </blockquote>
-<h4 id="1">▼ 親スパン (1)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<h4 id="x">▼ 親スパンX<a class="headerlink" href="#x" title="Permanent link">&para;</a></h4>
 <p>１つ目の親スパンの構造である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello-greetings&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;context&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="c1"># ルートスパンのトレースID</span>
 <span class="w">      </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x5b8aa5a2d2c872e8321cf37308d69df2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="c1"># 自身のスパンID</span>
+<span class="w">      </span><span class="c1"># 親スパンXのスパンID</span>
 <span class="w">      </span><span class="s">&quot;span_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x5fb397be34d26b51&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="c1"># 親スパンのスパンID (ルートスパンのスパンIDと一致する)</span>
+<span class="w">  </span><span class="c1"># 親スパンXのスパンID (ルートスパンのスパンIDと一致する)</span>
 <span class="w">  </span><span class="s">&quot;parent_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x051581bf3cb55c13&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2022-04-29T18:52:58.114304Z&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;end_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2022-04-29T22:52:58.114561Z&quot;</span><span class="p p-Indicator">,</span>
@@ -22724,17 +22724,17 @@
 <li><a href="https://opentelemetry.io/docs/concepts/signals/traces/">https://opentelemetry.io/docs/concepts/signals/traces/</a></li>
 </ul>
 </blockquote>
-<h4 id="2">▼ 親スパン (2)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<h4 id="y">▼ 親スパンY<a class="headerlink" href="#y" title="Permanent link">&para;</a></h4>
 <p>２つ目の親スパンの構造である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello-salutations&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;context&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="c1"># ルートスパンのID</span>
+<span class="w">      </span><span class="c1"># ルートスパンのトレースID</span>
 <span class="w">      </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x5b8aa5a2d2c872e8321cf37308d69df2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="c1"># 自身のスパンID</span>
+<span class="w">      </span><span class="c1"># 親スパンYのスパンID</span>
 <span class="w">      </span><span class="s">&quot;span_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x93564f51e1abe1c2&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="c1"># 親スパンのスパンID (ルートスパンのスパンIDと一致する)</span>
+<span class="w">  </span><span class="c1"># 親スパンYのスパンID (ルートスパンのスパンIDと一致する)</span>
 <span class="w">  </span><span class="s">&quot;parent_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0x051581bf3cb55c13&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2022-04-29T18:52:58.114492Z&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;end_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2022-04-29T18:52:58.114631Z&quot;</span><span class="p p-Indicator">,</span>
