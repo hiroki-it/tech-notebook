@@ -31,11 +31,11 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 
 #### ▼ サンプリング
 
-| 項目                | 説明                                                                             |
-| ------------------- | -------------------------------------------------------------------------------- |
-| Limits              |                                                                                  |
-| Matching Criteria   | X-Rayで受信するリクエストの条件 (例：宛先サービス、宛先パス、HTTPメソッド、など) |
-| Matching attributes |                                                                                  |
+| 項目                | 説明                                                   |
+| ------------------- | ------------------------------------------------------ |
+| Limits              | セグメントの収集に関する上限値を設定する。             |
+| Matching Criteria   | セグメントのキーに基づくフィルタリング条件を設定する。 |
+| Matching attributes | 記入中...                                              |
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
 
@@ -111,12 +111,6 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 
 ```yaml
 {
-  "id": "004f72be19cddc2a",
-  "name": "names.example.com",
-  "namespace": "remote",
-  "start_time": 1484786387.131,
-  "end_time": 1484786387.501,
-  # HTTPリクエストデータ
   "http":
     {
       "request": {"method": "GET", "url": "https://names.example.com/"},
@@ -132,37 +126,41 @@ X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し�
 スパンの作成元のAWSリソース情報を持つ。
 
 ```yaml
-"aws":{
-   "elastic_beanstalk":{
-      "version_label":"app-5a56-170119_190650-stage-170119_190650",
-      "deployment_id":32,
-      "environment_name":"scorekeep"
-   },
-   "ec2":{
-      "availability_zone":"us-west-2c",
-      "instance_id":"i-075ad396f12bc325a",
-      "ami_id": "*****"
-   },
-   "cloudwatch_logs":[
-      {
-         "log_group":"my-cw-log-group",
-         "arn":"arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group"
-      }
-   ],
-   # X-Rayのクライアントパッケージ情報
-   "xray":{
-      "auto_instrumentation":false,
-      "sdk":"X-Ray for Java",
-      "sdk_version":"2.8.0"
-   }
-}
+{"aws": {
+      "elastic_beanstalk":
+        {
+          "version_label": "app-5a56-170119_190650-stage-170119_190650",
+          "deployment_id": 32,
+          "environment_name": "scorekeep",
+        },
+      "ec2":
+        {
+          "availability_zone": "us-west-2c",
+          "instance_id": "i-075ad396f12bc325a",
+          "ami_id": "*****",
+        },
+      "cloudwatch_logs":
+        [
+          {
+            "log_group": "my-cw-log-group",
+            "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
+          },
+        ],
+      # X-Rayのクライアントパッケージ情報
+      "xray":
+        {
+          "auto_instrumentation": false,
+          "sdk": "X-Ray for Java",
+          "sdk_version": "2.8.0",
+        },
+    }}
 ```
 
 <br>
 
 ## 03. Lambdaの場合
 
-#### ▼ 初期化
+### 初期化
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -185,7 +183,9 @@ func init() {
 
 > - https://qiita.com/smith-30/items/225e27e6d9a110bce725
 
-#### ▼ 親スパンの作成
+<br>
+
+### 親スパンの作成
 
 親スパンを作成する。
 
@@ -237,7 +237,9 @@ func getExample(ctx context.Context) ([]byte, error) {
 
 > - https://qiita.com/smith-30/items/225e27e6d9a110bce725
 
-#### ▼ 子スパンの作成
+<br>
+
+### 子スパンの作成
 
 子スパンを作成する。
 
@@ -289,7 +291,9 @@ func getExample(ctx context.Context) ([]byte, error) {
 
 > - https://qiita.com/smith-30/items/225e27e6d9a110bce725
 
-#### ▼ アプリケーションの実行
+<br>
+
+### アプリケーションの実行
 
 ```go
 package main
