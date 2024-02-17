@@ -145,7 +145,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 | Goと標準出力                | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでopentelemetryコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
 | Goとopentelemetryコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                            |
 | GoとJaeger                  | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                            |
-| GoとX-ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                       |
+| GoとX-Ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                       |
 | GoとCloud Trace             | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                                  |
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
@@ -174,7 +174,7 @@ OpenTelemetryコレクターでExporterを使用する場合、クライアン�
 
 W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
 
-例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-ray仕様に変換する。
+例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-Ray仕様に変換する。
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel
 
@@ -210,7 +210,7 @@ Carrierからコンテキストを注入する操作を『注入 (Inject)』、�
 | 項目                        | 必要なパッケージ                                                                                                                                                                   |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Goとopentelemetryコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                                                 |
-| GoとX-ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
+| GoとX-Ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
 
 ```go
 // クライアント側マイクロサービス
@@ -412,11 +412,13 @@ func main() {
 		log.Fatalf("failed to initialize exporter: %v", err)
 	}
 
-	tp := newTraceProvider(exp)
+	traceProvider := newTraceProvider(exp)
 
-	defer func() { _ = tp.Shutdown(ctx) }()
+	defer func() {
+        _ = tp.Shutdown(ctx)
+    }()
 
-	otel.SetTracerProvider(tp)
+	otel.SetTracerProvider(traceProvider)
 
 	tracer = tp.Tracer("ExampleService")
 }
@@ -1107,7 +1109,7 @@ func createUser(c *gin.Context) {
 
 <br>
 
-### 宛先がX-rayの場合
+### 宛先がX-Rayの場合
 
 #### ▼ パッケージの初期化
 
@@ -1186,7 +1188,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
-		// X-ray形式の各種IDを新しく作成する
+		// X-Ray形式の各種IDを新しく作成する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
@@ -1194,7 +1196,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// X-ray形式のコンテキストを伝播できるPropagatorを設定する
+		// X-Ray形式のコンテキストを伝播できるPropagatorを設定する
         xray.Propagator{},
     )
 
@@ -1370,7 +1372,7 @@ func child(ctx *gin.Context) {
 
 `trace.Span`から取得できるトレースIDはW3C Trace Context仕様である。
 
-そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。
+そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。
 
 ```go
 func getXrayTraceID(span trace.Span) string {

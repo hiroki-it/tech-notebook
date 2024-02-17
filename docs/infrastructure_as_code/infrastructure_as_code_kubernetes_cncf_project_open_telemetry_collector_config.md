@@ -194,7 +194,7 @@ exporters:
 
 #### ▼ awsxrayとは
 
-X-rayにテレメトリーを送信する。
+X-Rayにテレメトリーを送信する。
 
 ただし、OpenTelemetryにはX-RayのExporterが含まれていない。
 
@@ -204,7 +204,7 @@ X-rayにテレメトリーを送信する。
 
 #### ▼ no_verify_ssl
 
-X-rayへの通信でTLSを有効化するか否かを設定する。
+X-Rayへの通信でTLSを有効化するか否かを設定する。
 
 ```yaml
 exporters:
@@ -216,7 +216,7 @@ exporters:
 
 #### ▼ region
 
-X-rayのあるリージョンを設定する。
+X-Rayのあるリージョンを設定する。
 
 ```yaml
 exporters:

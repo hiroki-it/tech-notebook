@@ -674,7 +674,7 @@ Istio上のEnvoyは、スパンを作成する。
 
 Istio上のEnvoyは、スパンを分散トレース収集ツール (例：jaegerコレクター、opentelemetryコレクター、など) に送信する。
 
-Envoyでは宛先として対応していても、Istio上のEnvoyでは使用できない場合がある。(例：X-rayデーモン)
+Envoyでは宛先として対応していても、Istio上のEnvoyでは使用できない場合がある。(例：X-Rayデーモン)
 
 > - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
 > - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237

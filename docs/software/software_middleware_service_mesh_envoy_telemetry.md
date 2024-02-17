@@ -211,20 +211,20 @@ Envoyは、Exporterとしてコンテキストを監視バックエンドに送�
 
 - Datadog (Datadogコンテキスト)
 - OpenTelemetry (W3C Trace Context、Baggage)
-- X-Ray (X-rayコンテキスト)
+- X-Ray (X-Rayコンテキスト)
 - Zipkin (B3)
 - など
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing
 
-#### ▼ X-rayの場合
+#### ▼ X-Rayの場合
 
-スパンをX-rayデーモンに送信して、X-rayで分散トレースを監視できる。
+スパンをX-Rayデーモンに送信して、X-Rayで分散トレースを監視できる。
 
-一部のサービスメッシュツール (例：AppMesh) では、Envoyのこの機能を使用して、X-rayにスパンを送信する。
+一部のサービスメッシュツール (例：AppMesh) では、Envoyのこの機能を使用して、X-Rayにスパンを送信する。
 
-注意点として、サービスメッシュツール (例：Istio) によっては、X-rayデーモンにスパンを送信できず、代わりにopentelemetryコレクターにスパンを送信しないといけない場合がある。
+注意点として、サービスメッシュツール (例：Istio) によっては、X-Rayデーモンにスパンを送信できず、代わりにopentelemetryコレクターにスパンを送信しないといけない場合がある。
 
 > - https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto
 > - https://github.com/istio/istio/issues/36599

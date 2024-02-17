@@ -25,7 +25,7 @@ VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成�
 
 ### 分散トレース
 
-AppMesh上のEnvoyはX-rayデーモンにスパンを送信し、X-rayで分散トレースを監視できるようにする。
+AppMesh上のEnvoyはX-Rayデーモンにスパンを送信し、X-Rayで分散トレースを監視できるようにする。
 
 一方で、Istio上のEnvoyはこの機能を使えず、代わりにopentelemetryコレクターにスパンを送信しないといけず、AppMeshはAWSとの親和性が高い。
 

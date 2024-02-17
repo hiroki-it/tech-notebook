@@ -843,7 +843,7 @@ baz_job:
 
 > - https://docs.gitlab.com/ee/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
 
-#### Jobの依存関係
+#### ▼ Jobの依存関係
 
 並列実行した各Jobに対して、Jobの依存関係を設定できる。
 
@@ -855,12 +855,12 @@ stages:
 foo_job:
   stage: build
   parallel:
+    # foo1、foo2、foo3、を出力する異なるJobを並列実行する
     matrix:
       - ENV:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
   script:
     - echo ${ENV}
 
@@ -872,7 +872,7 @@ baz_job:
     - job: foo_job
       parallel:
         matrix:
-          # foo2に依存する
+          # foo_jobのfoo2に依存する
           - ENV: foo2
 ```
 

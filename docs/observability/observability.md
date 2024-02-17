@@ -432,7 +432,7 @@ jsonPayload.traceId="<トレースID>"
 - W3C Baggage
 - B3 (Zipkin)
 - Jaeger
-- 独自仕様 (AWS X-ray、Datadog、LightStep、など)
+- 独自仕様 (AWS X-Ray、Datadog、LightStep、など)
 
 ```yaml
 # W3C Trace Context

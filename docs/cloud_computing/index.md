@@ -59,6 +59,7 @@
   > * ##### [VPC](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_vpc.html)
   > * ##### [WAF](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_waf.html)
   > * ##### [WorkMail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_work_mail.html)
+  > * ##### [X-Ray](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_xray.html)
 * #### <u>プラクティス集</u>
   > * ##### [︎可用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_availability.html)
   > * ##### [︎信頼性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_reliability.html)
