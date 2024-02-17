@@ -11458,6 +11458,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セグメントのスキーマ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#subsegments" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ subsegmentsキー
@@ -11505,7 +11514,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 初期化
     </span>
@@ -11514,7 +11523,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 親スパンの作成
     </span>
@@ -11523,7 +11532,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 子スパンの作成
     </span>
@@ -11532,7 +11541,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションの実行
     </span>
@@ -21343,6 +21352,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セグメントのスキーマ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#subsegments" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ subsegmentsキー
@@ -21390,7 +21408,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 初期化
     </span>
@@ -21399,7 +21417,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 親スパンの作成
     </span>
@@ -21408,7 +21426,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 子スパンの作成
     </span>
@@ -21417,7 +21435,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリケーションの実行
     </span>
@@ -21523,6 +21541,32 @@
 <li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields">https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields</a></li>
 </ul>
 </blockquote>
+<h4 id="_7">▼ セグメントのスキーマ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>セグメントの構造やデータ型を定義したもの。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="c1"># スキーマURL</span>
+<span class="w">  </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Segment</span><span class="nv"> </span><span class="s">document</span><span class="nv"> </span><span class="s">schema&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># スキーマのバージョン</span>
+<span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># 構造</span>
+<span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># データ型</span>
+<span class="w">  </span><span class="s">&quot;properties&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;minLength&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">35</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;pattern&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;\\d+-[A-Fa-f0-9]*-[A-Fa-f0-9]{24}&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nv">...</span>
+<span class="w">  </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html">https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html</a></li>
+</ul>
+</blockquote>
 <h4 id="subsegments">▼ <code>subsegments</code>キー<a class="headerlink" href="#subsegments" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <blockquote>
@@ -21562,7 +21606,7 @@
 <span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">&quot;ec2&quot;:{</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;availability_zone&quot;:&quot;us-west-2c&quot;,</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;instance_id&quot;:&quot;i-075ad396f12bc325a&quot;,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;ami_id&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">&quot;ami_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
 <span class="w">   </span><span class="err">},</span>
 <span class="w">   </span><span class="s">&quot;cloudwatch_logs&quot;</span><span class="l l-Scalar l-Scalar-Plain">:[</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">{</span>
@@ -21580,7 +21624,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03-lambda">03. Lambdaの場合<a class="headerlink" href="#03-lambda" title="Permanent link">&para;</a></h2>
-<h4 id="_7">▼ 初期化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 初期化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
 <p>X-Rayのパッケージを初期化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21601,7 +21645,7 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ 親スパンの作成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 親スパンの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>親スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21651,7 +21695,7 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ 子スパンの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ 子スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>子スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21701,7 +21745,7 @@
 <li><a href="https://qiita.com/smith-30/items/225e27e6d9a110bce725">https://qiita.com/smith-30/items/225e27e6d9a110bce725</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ アプリケーションの実行<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ アプリケーションの実行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
