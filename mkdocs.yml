@@ -481,6 +481,7 @@ nav:
               - VPC: cloud_computing/cloud_computing_aws_resource_vpc.md
               - WAF: cloud_computing/cloud_computing_aws_resource_waf.md
               - WorkMail: cloud_computing/cloud_computing_aws_resource_work_mail.md
+              - X-Ray: cloud_computing/cloud_computing_aws_resource_xray.md
           - ■ プラクティス集:
               - 可用性: cloud_computing/cloud_computing_aws_practices_availability.md
               - 信頼性: cloud_computing/cloud_computing_aws_practices_reliability.md
