@@ -132,7 +132,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 ### エラー時の事後処理
 
-#### ▼ 未送信スパンの処理
+#### ▼ 未送信スパンの送信
 
 処理の失敗時にSpanProcessor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
 
@@ -258,6 +258,10 @@ Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`1
 
 ### エラー時の事後処理
 
+#### ▼ 未送信スパンの送信
+
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-2
+
 #### ▼ Graceful Shutdown処理
 
 Exporterは、Graceful Shutdown処理を実行するための関数を持っている。
@@ -316,6 +320,8 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 }
 ```
 
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2
+
 <br>
 
 ## 02-02. IDGenerator
@@ -371,8 +377,15 @@ Goの場合、`BatchSpanProcessor`関数を使用して、スパンを圧縮す�
 
 ### エラー時の事後処理
 
+#### ▼ 未送信スパンの送信
+
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-1
+
 #### ▼ Graceful Shutdown処理
 
+SpanProcessorは、Graceful Shutdown処理を実行するための関数を持っている。
+
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
 
 <br>
