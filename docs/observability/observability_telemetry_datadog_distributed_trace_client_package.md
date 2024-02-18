@@ -318,7 +318,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 	)
 
 	if err != nil {
-		log.Printf("failed to inject: %s", err)
+		log.Printf("Failed to inject: %s", err)
 	}
 
 	http.DefaultClient.Do(req)
@@ -349,7 +349,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {
-		log.Printf("failed to extract: %s", err)
+		log.Printf("Failed to extract: %s", err)
 	}
 
 	// 子スパンを作成する。
@@ -411,16 +411,16 @@ func main() {
 	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
-		log.Printf("failed to listen: %v", err)
+		log.Printf("Failed to listen: %v", err)
 	}
 
 	// gRPCサーバーでリクエストを受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Printf("failed to serve: %s", err)
+		log.Printf("Failed to serve: %s", err)
 	}
 
 	if err != nil {
-		log.Printf("failed to serve: %v", err)
+		log.Printf("Failed to serve: %v", err)
 	}
 }
 ```

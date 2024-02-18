@@ -161,7 +161,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 		// SpanProcessor内の処理中スパンをExporterに送信する
 		if err := traceProvider.ForceFlush(ctx); err != nil {
-			log.Printf("failed to trace porvider force flush %v", err)
+			log.Printf("Failed to force flush trace provider %v", err)
 		}
 
 		...
@@ -171,10 +171,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 }
 ```
 
-> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush
+> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 
 #### ▼ Graceful Shutdown処理
+
+TraceProviderは、Graceful Shutdown処理を実行するための関数を持っている。
 
 処理の失敗時にGraceful Shutdown処理を実行する。
 
@@ -203,9 +206,9 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
-		// 処理に割り当てられていたハードウェアリソースを解放する
+		// Graceful Shutdown処理を実行する
 		if err := traceProvider.Shutdown(ctx); err != nil {
-			log.Printf("failed to shutdown tracer provider %v", err)
+			log.Printf("Failed to shutdown tracer provider %v", err)
 		}
 
 		...
@@ -215,8 +218,9 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 }
 ```
 
-> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown
+> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 
 <br>
 
@@ -253,6 +257,64 @@ Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`1
 <br>
 
 ### エラー時の事後処理
+
+#### ▼ Graceful Shutdown処理
+
+Exporterは、Graceful Shutdown処理を実行するための関数を持っている。
+
+```go
+func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+
+	...
+
+    exporter, err := NewGrpcExporter(ctx)
+
+	...
+
+	cleanUp := func() {
+
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			5*time.Second
+        )
+
+		// タイムアウトの場合に処理を中断する
+		defer cancel()
+
+		// Graceful Shutdown処理を実行する
+		if err := exporter.Shutdown(ctx); err != nil {
+			log.Printf("exporter shutdown error %v", err)
+        }
+
+		...
+	}
+
+	return traceProvider, cleanUp, nil
+}
+
+func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
+
+	conn, err := grpc.DialContext(
+		ctx,
+		// gRPCでOpenTelemetryコレクターに接続する
+		"opentelemetry-collector.backend.svc.cluster.local:4317",
+		// 通信は非TLSとする
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		// コネクションを確立できるまで待機する
+		grpc.WithBlock(),
+	)
+
+	if err != nil {
+		log.Printf("Failed to create gRPC connection: %v", err)
+		return nil, err
+	}
+
+	return otlptracegrpc.New(
+		ctx,
+		otlptracegrpc.WithGRPCConn(conn),
+	)
+}
+```
 
 <br>
 
@@ -304,6 +366,14 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 ### スパンの圧縮
 
 Goの場合、`BatchSpanProcessor`関数を使用して、スパンを圧縮する。
+
+<br>
+
+### エラー時の事後処理
+
+#### ▼ Graceful Shutdown処理
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
 
 <br>
 

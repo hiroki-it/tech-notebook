@@ -64,7 +64,7 @@ func main() {
 
 	exp, err := newExporter(ctx)
 	if err != nil {
-		log.Fatalf("failed to initialize exporter: %v", err)
+		log.Fatalf("Failed to initialize exporter: %v", err)
 	}
 
 	traceProvider := newTraceProvider(exp)
@@ -455,7 +455,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create resource: %w", err)
+		return nil, fmt.Errorf("Failed to create resource: %w", err)
 	}
 
 	conn, err := grpc.DialContext(
@@ -467,7 +467,7 @@ func newTraceProvider() (func(context.Context) error, error) {
     )
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
+		return nil, fmt.Errorf("Failed to create gRPC connection to collector: %w", err)
 	}
 
 	// Exporter (スパンの宛先) として、opentelemetryコレクターを設定する。
@@ -477,7 +477,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
+		return nil, fmt.Errorf("Failed to create trace exporter: %w", err)
 	}
 
     var tracerProvider *sdktrace.TracerProvider
@@ -604,7 +604,7 @@ func StartMainServer() {
 
   defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Print("failed to shutdown TracerProvider: %w", err)
+			log.Print("Failed to shutdown tracer provider: %w", err)
 		}
   }()
 
@@ -810,7 +810,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create resource: %w", err)
+		return nil, fmt.Errorf("Failed to create resource: %w", err)
 	}
 
 	// AWS Distro for opentelemetryコレクターに接続する
@@ -822,7 +822,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
+		return nil, fmt.Errorf("Failed to create gRPC connection to collector: %w", err)
 	}
 
 	// Exporter (スパンの宛先) として、AWS Distro for opentelemetryコレクターを設定する。
@@ -832,7 +832,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 	)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
+		return nil, fmt.Errorf("Failed to create trace exporter: %w", err)
 	}
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
@@ -908,7 +908,7 @@ func main() {
 
 	defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Print("failed to shutdown TracerProvider: %w", err)
+			log.Print("Failed to shutdown tracer provider: %w", err)
 		}
 	}()
 
@@ -987,7 +987,7 @@ func main() {
 
 	defer func() {
 		if err := shutdown(ctx); err != nil {
-			log.Print("failed to shutdown TracerProvider: %w", err)
+			log.Print("Failed to shutdown tracer provider: %w", err)
 		}
 	}()
 
@@ -1387,12 +1387,12 @@ func main() {
 	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		log.Fatalf("Failed to listen: %v", err)
 	}
 
 	// gRPCサーバーとして、goサーバーでリクエストを受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %s", err)
 	}
 }
 ```

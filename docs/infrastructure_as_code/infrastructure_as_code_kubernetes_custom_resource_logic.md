@@ -232,7 +232,7 @@ func (c *Controller) Run(ctx context.Context, workers int) error {
 	logger.Info("Waiting for informer caches to sync")
 
 	if ok := cache.WaitForCacheSync(ctx.Done(), c.deploymentsSynced, c.foosSynced); !ok {
-		return fmt.Errorf("failed to wait for caches to sync")
+		return fmt.Errorf("Failed to wait for caches to sync")
 	}
 
 	logger.Info("Starting workers", "count", workers)

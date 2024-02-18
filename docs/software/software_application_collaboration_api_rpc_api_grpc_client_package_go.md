@@ -376,12 +376,12 @@ func main() {
 	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		log.Fatalf("Failed to listen: %v", err)
 	}
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %s", err)
 	}
 
 	...
@@ -458,7 +458,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %s", err)
 	}
 
 	...
@@ -507,7 +507,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %s", err)
 	}
 
 	...
