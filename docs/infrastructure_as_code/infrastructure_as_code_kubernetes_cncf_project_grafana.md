@@ -43,7 +43,7 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 Grafanaのコンポーネントを部分的にマネージドにしたサービス。
 
-執筆時点 (2023/05/16時点) では、フルマネージドにしてくれる。
+執筆時点 (2023/05/16時点) では、AWSマネージドにしてくれる。
 
 > - https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-vpc.html
 
