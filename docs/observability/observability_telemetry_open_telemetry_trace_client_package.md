@@ -287,7 +287,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 		// Graceful Shutdown処理を実行する
 		if err := exporter.Shutdown(ctx); err != nil {
-			log.Printf("exporter shutdown error %v", err)
+			log.Printf("Failed to shutdown exporter: %v", err)
         }
 
 		...
@@ -394,11 +394,11 @@ SpanProcessorは、Graceful Shutdown処理を実行するための関数を持�
 
 ### Propagatorとは
 
-![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
-
 コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
+
+![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
 <br>
 

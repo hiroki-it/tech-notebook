@@ -401,7 +401,7 @@ func main() {
 		fmt.Print("user_id does not exist") // 2009/11/10 23:00:00 user_id does not exist
 	}
 
-	fmt.Printf("%#v\n", userId) // 1
+	log.Printf("%v", userId) // 1
 }
 ```
 

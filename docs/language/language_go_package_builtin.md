@@ -42,7 +42,7 @@ func main() {
 
 	buffer.WriteString("world!")
 
-	fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
+	log.Printf("%v", buffer.String()) // "Hello world!"
 }
 ```
 
@@ -157,7 +157,7 @@ func fn2(ctx context.Context) {
 }
 
 func log(timing string) {
-	fmt.Printf("%s second:%v\n", timing, time.Now().Second())
+	log.Printf("%v second:%v", timing, time.Now().Second())
 }
 
 func main() {
@@ -227,11 +227,11 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		fmt.Printf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %v", err)
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+	log.Printf("%v", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -282,11 +282,11 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		fmt.Printf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %v", err)
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+	log.Printf("%v", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -330,16 +330,16 @@ func main() {
 
 	var person Person
 
-	fmt.Printf("%#v\n", person) // main.Person{Name:""} (変数はまだ書き換えられていない)
+	log.Printf("%v", person) // main.Person{Name:""} (変数はまだ書き換えられていない)
 
 	// person変数を変換後の値に書き換えている。
 	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
-		fmt.Printf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %v", err)
 	}
 
-	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"} (変数が書き換えられた)
+	log.Printf("%v", person) // main.Person{Name:"Hiroki"} (変数が書き換えられた)
 }
 ```
 
@@ -387,7 +387,7 @@ import "fmt"
  */
 func HandleRequest(event events.CloudWatchEvent) (string) {
 
-	return fmt.Printf("%#v\n", event.Detail)
+	return log.Printf("%v", event.Detail)
 }
 ```
 
@@ -668,6 +668,7 @@ func main() {
 | ------------------ | ---------------------------- | ---------------------------------------------------- |
 | `%s`               | 文字列またはスライスとして   |                                                      |
 | `%p`               | ポインタとして               |                                                      |
+| `%v`               | 様々な型として               |                                                      |
 | `%+v`              | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
 | `%#v`              | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
 
@@ -772,7 +773,7 @@ Goにはデフォルトで、ロギング用パッケージが用意されてい
 
 ```go
 if err != nil {
-	log.Printf("ERROR: %#v\n", err)
+	log.Printf("ERROR: %v", err)
 }
 ```
 
@@ -791,7 +792,7 @@ if err != nil {
 ```go
 if err != nil {
 	// 内部でos.Exit(1)を実行する。
-	log.Fatalf("ERROR: %#v\n", err)
+	log.Fatalf("ERROR: %v", err)
 }
 ```
 
@@ -816,7 +817,7 @@ if err != nil {
 ```go
 if err != nil {
     // panicメソッドを実行する。
-    log.Panicf("ERROR: %#v\n", err)
+    log.Panicf("ERROR: %v", err)
 }
 ```
 
@@ -910,7 +911,7 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			defer func() {
 				if err := recover(); err != nil && err != http.ErrAbortHandler {
-					fmt.Printf("panic on application running, error: %v", err)
+					log.Printf("panic on application running, error: %v", err)
 					// Internal Server Errorとして処理する
 					w.WriteHeader(http.StatusInternalServerError)
 				}
@@ -1234,10 +1235,10 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		fmt.Printf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %v", err)
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 

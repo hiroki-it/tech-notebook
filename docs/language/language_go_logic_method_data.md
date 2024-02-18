@@ -199,7 +199,7 @@ func main() {
 		Name: "Hiroki",
 	}
 
-	fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	log.Printf("%v", person.Name) // "Hiroki"
 }
 ```
 
@@ -220,7 +220,7 @@ func main() {
 		"Hiroki",
 	}
 
-	fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	log.Printf("%v", person.Name) // "Hiroki"
 }
 ```
 
@@ -253,7 +253,7 @@ func newPerson(name string) *Person {
 	person := new(Person)
 
     // ポインタ型の初期化された構造体が返却される。
-	fmt.Printf("%#v\n", person) // &main.Person{Name:""}
+	log.Printf("%v", person) // &main.Person{Name:""}
 
 	// フィールドに代入する
 	person.Name = name
@@ -263,7 +263,7 @@ func newPerson(name string) *Person {
 
 func main() {
 	person := newPerson("Hiroki")
-	fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	log.Printf("%v", person.Name) // "Hiroki"
 }
 ```
 
@@ -327,7 +327,7 @@ func main() {
 	// コンストラクタインジェクションによるDI
 	person := NewPerson(name)
 
-	fmt.Printf("%#v\n", person.getName().fullName()) // "Hiroki Hasegawa"
+	log.Printf("%v", person.getName().fullName()) // "Hiroki Hasegawa"
 }
 ```
 
@@ -390,7 +390,7 @@ func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
 	// myName構造体は、Name構造体のメソッドをコールできる。
-	fmt.Printf("%#v\n", myName.fullName()) // "Hiroki Hasegawa"
+	log.Printf("%v", myName.fullName()) // "Hiroki Hasegawa"
 }
 ```
 
@@ -442,7 +442,7 @@ func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
 	// 同じメソッドがある場合、委譲された側が優先。
-	fmt.Printf("%#v\n", myName.fullName()) // "委譲された構造体です"
+	log.Printf("%v", myName.fullName()) // "委譲された構造体です"
 }
 ```
 
@@ -471,7 +471,7 @@ func main() {
 		Name: "Hiroki",
 	}
 
-	fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	log.Printf("%v", person.Name) // "Hiroki"
 }
 ```
 
@@ -511,7 +511,7 @@ func main() {
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+	log.Printf("%v", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -559,7 +559,7 @@ func main() {
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(byteJson)) // "{\"id\":1}"
+	log.Printf("%v", string(byteJson)) // "{\"id\":1}"
 }
 ```
 
@@ -594,8 +594,8 @@ func main() {
 	z[0] = "Hiroki"
 	z[1] = "Gopher"
 
-	fmt.Printf("%#v\n", z) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
+	log.Printf("%v", z) // [Hiroki Gopher]
+	log.Printf("%v", z) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -612,8 +612,8 @@ func main() {
 
 	var y [2]string = [2]string{"Hiroki", "Gopher"}
 
-	fmt.Printf("%#v\n", y) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
+	log.Printf("%v", y) // [Hiroki Gopher]
+	log.Printf("%v", y) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -630,8 +630,8 @@ func main() {
 
 	x := [...]string{"Hiroki", "Gopher"}
 
-	fmt.Printf("%#v\n", x) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
+	log.Printf("%v", x) // [Hiroki Gopher]
+	log.Printf("%v", x) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -676,10 +676,10 @@ func main() {
 	// p := &x と同じ
 
 	// メモリアドレスを参照する前
-	fmt.Printf("%#v\n", x) // "a"
+	log.Printf("%v", x) // "a"
 
 	// メモリアドレスを参照した後
-	fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+	log.Printf("%v", p) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -704,13 +704,13 @@ func main() {
 	y := *p
 
 	// メモリアドレスを参照する前
-	fmt.Printf("%#v\n", x) // "a"
+	log.Printf("%v", x) // "a"
 
 	// メモリアドレスを参照した後
-	fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+	log.Printf("%v", p) // (*string)(0xc0000841e0)
 
 	// メモリアドレスに割り当てられたデータ
-	fmt.Printf("%#v\n", y) // "a"
+	log.Printf("%v", y) // "a"
 }
 ```
 
@@ -758,8 +758,8 @@ func main() {
 
 	var y []string = []string{"Hiroki", "Gopher"}
 
-	fmt.Printf("%+v\n", y) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", y) // []string{"Hiroki", "Gopher"}
+	log.Printf("%v", y) // [Hiroki Gopher]
+	log.Printf("%v", y) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -776,8 +776,8 @@ func main() {
 
 	x := []string{"Hiroki", "Gopher"}
 
-	fmt.Printf("%+v\n", x) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
+	log.Printf("%v", x) // [Hiroki Gopher]
+	log.Printf("%v", x) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -793,8 +793,8 @@ import "fmt"
 func main() {
 	x := []byte("abc")
 
-	fmt.Printf("%+v\n", x) // [97 98 99]
-	fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
+	log.Printf("%v", x) // [97 98 99]
+	log.Printf("%v", x) // []byte{0x61, 0x62, 0x63}
 }
 ```
 
@@ -814,8 +814,8 @@ type Person struct {
 func main() {
 	person := []Person{{ Name: "Hiroki" }}
 
-	fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
-	fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
+	log.Printf("%v", person) // [{Name:Hiroki}]
+	log.Printf("%v", person) // []main.Person{main.Person{Name:"Hiroki"}}
 }
 ```
 
@@ -831,23 +831,23 @@ import "fmt"
 func main() {
 	// 最後の要素の後にもカンマが必要である。
 	x := [5]string{"あ", "い", "う", "え", "お"}
-	fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
+	log.Printf("%v", x) // [5]string{"あ", "い", "う", "え", "お"}
 
     // 0から3番目を参照する。
 	xa := x[0:3]
-	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
+	log.Printf("%v", xa) // []string{"あ", "い", "う"}
 
     // 2から5番目を参照する。
 	xb := x[2:5]
-	fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
+	log.Printf("%v", xb) // []string{"う", "え", "お"}
 
 	// xbスライスの0番目 ("う") を上書きする。
 	xb[0] = "Hiroki"
 
 	// xbしか上書きしていないが、他のスライスにも反映される。
-	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
-	fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
-	fmt.Printf("%#v\n", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
+	log.Printf("%v", xa) // []string{"あ", "い", "Hiroki"}
+	log.Printf("%v", xb) // []string{"Hiroki", "え", "お"}
+	log.Printf("%v", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
 }
 ```
 
@@ -1157,16 +1157,16 @@ func main() {
 	var foo interface{}
 
 	foo = 1
-	fmt.Printf("%#v\n", foo) // 1
+	log.Printf("%v", foo) // 1
 
 	foo = 3.14
-	fmt.Printf("%#v\n", foo) // 3.14
+	log.Printf("%v", foo) // 3.14
 
 	foo = "Hiroki"
-	fmt.Printf("%#v\n", foo) // "Hiroki"
+	log.Printf("%v", foo) // "Hiroki"
 
 	foo = [...]uint8{1, 2, 3, 4, 5}
-	fmt.Printf("%#v\n", x) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
+	log.Printf("%v", x) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
 }
 ```
 
@@ -1182,14 +1182,14 @@ func main() {
 
 	// インターフェース型
 	foo, bar = 1, 2
-	fmt.Printf("%#v\n", foo) // 1
-	fmt.Printf("%#v\n", bar) // 2
+	log.Printf("%v", foo) // 1
+	log.Printf("%v", bar) // 2
 
 	// エラーになってしまう。
 	// invalid operation: foo + bar (operator + not defined on interface)
 	baz := foo + bar
 
-	fmt.Printf("%#v\n", baz)
+	log.Printf("%v", baz)
 }
 ```
 
@@ -1217,7 +1217,7 @@ func main() {
 	bar := bar.(int)
 	baz := foo + bar
 
-	fmt.Printf("%#v\n", baz)
+	log.Printf("%v", baz)
 }
 ```
 
@@ -1285,8 +1285,8 @@ func main() {
 	// ポインタ型の変数を定義代入
 	var p2 *string = &x
 
-	fmt.Printf("%#v\n", p1) // (*string)(nil)
-	fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
+	log.Printf("%v", p1) // (*string)(nil)
+	log.Printf("%v", p2) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -1302,7 +1302,7 @@ import "fmt"
 func main() {
 	var foo interface{}
 
-	fmt.Printf("%#v\n", foo) // <nil>
+	log.Printf("%v", foo) // <nil>
 }
 ```
 
@@ -1350,7 +1350,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("%#v\n", "Hello world!")
+	log.Printf("%v", "Hello world!")
 }
 ```
 
@@ -1424,7 +1424,7 @@ func main() {
 		return "Closure is working!"
 	}()
 
-	fmt.Printf("%#v\n", result)
+	log.Printf("%v", result)
 }
 ```
 
@@ -1447,7 +1447,7 @@ func main() {
 
 	}("Closure is working!") // 引数に値を渡す
 
-	fmt.Printf("%#v\n", result)
+	log.Printf("%v", result)
 }
 ```
 
@@ -1487,7 +1487,7 @@ func (a Age) PrintAge() string {
 func main() {
     var age Age = 20
 
-    fmt.Printf("%#v\n", age.printAge())
+    log.Printf("%v", age.printAge())
 }
 ```
 
@@ -1522,7 +1522,7 @@ func main() {
 	// 構造体を初期化
 	person := NewPerson("Hiroki")
 
-	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
+	log.Printf("%v", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -1571,7 +1571,7 @@ func main() {
 
 	person.SetName("Hiroki")
 
-	fmt.Printf("%#v\n", person.GetName()) // "Gopher"
+	log.Printf("%v", person.GetName()) // "Gopher"
 }
 ```
 
@@ -1615,7 +1615,7 @@ func main() {
 
 	person.SetName("Hiroki")
 
-	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
+	log.Printf("%v", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -1675,7 +1675,7 @@ func main() {
 	fmt.Println("Start")
 
 	defer func() {
-		fmt.Printf("End")
+		log.Printf("End")
 	}()
 
 	fmt.Println("Processing...")
@@ -1707,7 +1707,7 @@ func main() {
 		err := recover()
 
 		if err != nil {
-			fmt.Printf("panic occurred, error: %v", err)
+			log.Printf("panic occurred, error: %v", err)
 		}
 
 		fmt.Println("End")
@@ -1850,7 +1850,7 @@ func division(x int, y int) (int, int) {
 func main() {
 	// 10÷3を計算する。
 	q, r := division(10, 3)
-	fmt.Printf("商=%d、余り=%d", q, r)
+	log.Printf("商=%d、余り=%d", q, r)
 }
 ```
 
@@ -1873,7 +1873,7 @@ func main() {
     file, _ := os.Open("filename.txt")
 
     // エラーキャッチする必要がなくなる
-    fmt.Printf("%#v\n", file)
+    log.Printf("%v", file)
 }
 ```
 
@@ -1888,6 +1888,8 @@ func main() {
 プロセスの終了前に必ず実行したい関数をまとめてコールし、安全にプロセスを終了する仕組みである。
 
 例えば、トランザクション中にエラーが起こった場合に、トランザクションの完了を待ってからプロセスを終了する。
+
+関数の実行時とは逆順で、Graceful Shutdown処理を実行する。
 
 #### ▼ 外部パッケージからコールする
 
@@ -2208,8 +2210,8 @@ func main() {
 	// 新しい変数の宣言が含まれている
 	foo, bar := 2, 3
 
-	fmt.Printf("%#v\n", foo) // 2
-	fmt.Printf("%#v\n", bar) // 3
+	log.Printf("%v", foo) // 2
+	log.Printf("%v", bar) // 3
 }
 ```
 
@@ -2237,7 +2239,7 @@ var text string
 
 func main() {
     text = "Hello World!"
-    fmt.Printf("%#v\n", text)
+    log.Printf("%v", text)
 }
 ```
 
@@ -2252,7 +2254,7 @@ import "fmt"
 text := "Hello World!"
 
 func main() {
-    fmt.Printf("%#v\n", text)
+    log.Printf("%v", text)
 }
 ```
 
@@ -2274,7 +2276,7 @@ import "fmt"
 func main() {
     // ローカル変数
     text := "Hello World!"
-    fmt.Printf("%#v\n", text)
+    log.Printf("%v", text)
 }
 ```
 
@@ -2417,7 +2419,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", Foo) // foo
+    log.Printf("%v", Foo) // foo
 }
 ```
 
@@ -2442,7 +2444,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Printf("%#v\n", Bar) // コールできずにエラーになる
+    log.Printf("%v", Bar) // コールできずにエラーになる
 }
 ```
 
@@ -2515,10 +2517,10 @@ func main() {
 
 	// 通常の記法
 	if value > 20 {
-		fmt.Printf("%#v: 20より大きいです\n", value)
+		log.Printf("%v: 20より大きいです\n", value)
 	}
 
-	fmt.Printf("%#v: 20より小さいです\n", value)
+	log.Printf("%v: 20より小さいです\n", value)
 }
 ```
 
@@ -2538,10 +2540,10 @@ func main() {
 	// 簡易記法
 	if value := getNum(); value > 20 {
 		// value変数は条件内でしか使用できない
-		fmt.Printf("%#v: 20より大きいです\n", value)
+		log.Printf("%v: 20より大きいです\n", value)
 	}
 
-	fmt.Printf("%#v: 20より小さいです\n", value)
+	log.Printf("%v: 20より小さいです\n", value)
 }
 
 func getNum() int {
@@ -2863,7 +2865,7 @@ func main() {
 
 		// cancel関数を実行した場合
 		case <-ctx.Done():
-			fmt.Printf("Goroutineが完了しました")
+			log.Printf("Goroutineが完了しました")
 			return
 		}
 	}
@@ -3004,7 +3006,7 @@ func main() {
 	wg.Wait()
 
 	// 開始時刻から経過した秒数を取得する
-	fmt.Printf("経過秒数: %s\n", time.Since(start))
+	log.Printf("経過秒数: %s\n", time.Since(start))
 }
 
 func print(key int, value string) {
@@ -3109,11 +3111,11 @@ func main() {
 
 	if err != nil {
 		// エラーの内容を出力する。
-		fmt.Printf("ERROR: %#v\n", err)
+		log.Printf("ERROR: %v", err)
 		return
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 
@@ -3149,11 +3151,11 @@ func main() {
 	if err != nil {
 		// 独自エラーメッセージを設定する。
 		myErr := NewError()
-		fmt.Printf("ERROR: %#v\n", myErr)
+		log.Printf("ERROR: %v", myErr)
 		return
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 
@@ -3184,11 +3186,11 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		fmt.Errorf("ERROR: %s", err)
+		fmt.Errorf("ERROR: %v", err)
 		return
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 
@@ -3215,7 +3217,7 @@ type Error struct {
 }
 
 func (error *Error) Error() string {
-	return fmt.Sprintf("ERROR: %s", error.Message)
+	return fmt.Sprintf("ERROR: %v", error.Message)
 }
 
 func main() {
@@ -3226,11 +3228,11 @@ func main() {
 		// 構造体に値を設定する。
 		myError := &Error{Message: "エラーが発生したため、処理を完了しました。"}
 		// 構造体をコールするのみで、Errorメソッドが実行される。
-		fmt.Printf("%#v\n", myError)
+		log.Printf("%v", myError)
 		os.Exit(1)
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 
@@ -3269,11 +3271,11 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := NewErrorWithTrace()
 		// %+v\n を使用する。
-		fmt.Printf("ERROR: %+v\n", errWithStack)
+		log.Printf("ERROR: %+v\n", errWithStack)
 		return
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 
@@ -3297,11 +3299,11 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := xerrors.Errorf("ERROR: %w", err)
 		// %+v\n を使用する。
-		fmt.Printf("ERROR: %+v\n", errWithStack)
+		log.Printf("ERROR: %+v\n", errWithStack)
 		return
 	}
 
-	fmt.Printf("%#v\n", file)
+	log.Printf("%v", file)
 }
 ```
 

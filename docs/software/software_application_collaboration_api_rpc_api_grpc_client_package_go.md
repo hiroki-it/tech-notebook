@@ -359,7 +359,7 @@ type Server struct {
 
 // Helloを返信する関数
 func (s *Server) SayHello (ctx context.Context, in *pb.Message) (*Message, error) {
-	log.Printf("Received message body from client: %s", in.Body)
+	log.Printf("Received message body from client: %v", in.Body)
 	return &pb.Message{Body: "Hello From the Server!"}, nil
 }
 
@@ -381,7 +381,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("Failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %v", err)
 	}
 
 	...
@@ -458,7 +458,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("Failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %v", err)
 	}
 
 	...
@@ -507,7 +507,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("Failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %v", err)
 	}
 
 	...
@@ -549,7 +549,7 @@ func main() {
 	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
 
 	if err != nil {
-		log.Fatalf("did not connect: %s", err)
+		log.Fatalf("did not connect: %v", err)
 	}
 
 	defer conn.Close()
@@ -564,11 +564,11 @@ func main() {
     )
 
 	if err != nil {
-		log.Fatalf("Error when calling SayHello: %s", err)
+		log.Fatalf("Error when calling SayHello: %v", err)
 	}
 
 	// goサーバーからの返却を確認する。
-	log.Printf("Response from server: %s", response.Body)
+	log.Printf("Response from server: %v", response.Body)
 }
 ```
 

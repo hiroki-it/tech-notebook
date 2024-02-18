@@ -461,7 +461,7 @@ func main() {
 	)
 
 	if err != nil {
-		log.Printf("did not connect: %s", err)
+		log.Printf("Failed to create gRPC connection: %v", err)
 	}
 
 	defer conn.Close()

@@ -1092,7 +1092,7 @@ func newTraceProvider() (func(), error) {
 	return func() {
 		err := traceProvider.Shutdown(context.Background())
 		if err != nil {
-			fmt.Printf("error shutting down trace provider: %+v", err)
+			log.Printf("error shutting down trace provider: %v", err)
 		}
 	}, nil
 }
@@ -1367,7 +1367,7 @@ func main() {
 
 	defer func() {
 		if err := traceProvider.Shutdown(context.Background()); err != nil {
-			log.Printf("Error shutting down tracer provider: %v", err)
+			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}
 	}()
 
@@ -1392,7 +1392,7 @@ func main() {
 
 	// gRPCサーバーとして、goサーバーでリクエストを受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("Failed to serve: %s", err)
+		log.Fatalf("Failed to serve: %v", err)
 	}
 }
 ```

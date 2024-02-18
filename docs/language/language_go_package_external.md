@@ -908,7 +908,7 @@ func main() {
 	if len(errorMessages) > 0 {
 		// マップをJSONに変換します。
 		byteJson, _ := json.Marshal(errorMessages)
-		fmt.Printf("%#v\n", byteJson)
+		log.Printf("%v", byteJson)
 	}
 
 	// エンコード結果を出力します。
