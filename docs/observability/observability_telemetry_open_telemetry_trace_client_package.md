@@ -222,7 +222,9 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
 
-具体的には、`WithEndpoint`関数を使用して、宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`、など) を設定できる。
+<br>
+
+### パッケージ
 
 スパンの収集ツールがそれぞれパッケージを提供している。
 
@@ -237,6 +239,12 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
+
+<br>
+
+### スパンの宛先
+
+Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`、など) を設定する。
 
 <br>
 
@@ -272,7 +280,9 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 他の処理コンポーネントを操作する処理を持つ。
 
-具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
+<br>
+
+### パッケージ
 
 | 項目 | 必要なパッケージ                                                 |
 | ---- | ---------------------------------------------------------------- |
@@ -280,6 +290,12 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
+
+<br>
+
+### スパンの圧縮
+
+Goの場合、`BatchSpanProcessor`関数を使用して、スパンを圧縮する。
 
 <br>
 
@@ -293,10 +309,20 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
+<br>
+
+### パッケージ
+
 | 項目                        | 必要なパッケージ                                                                                                                                                                   |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Goとopentelemetryコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                                                 |
 | GoとX-Ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
+
+<br>
+
+### スパンの仕様の設定
+
+Goの場合、`SetTextMapPropagator`関数を使用して、
 
 ```go
 // クライアント側マイクロサービス
@@ -336,6 +362,10 @@ func newTraceProvider() {
 
 スパンに属性を設定する処理を持つ。
 
+<br>
+
+### パッケージ
+
 | 項目 | 必要なパッケージ                                                |
 | ---- | --------------------------------------------------------------- |
 | Go   | `go.opentelemetry.io/otel/resource`パッケージからコールできる。 |
@@ -364,6 +394,10 @@ func newTraceProvider() {
 ### Samplerとは
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
+
+<br>
+
+### パッケージ
 
 | 項目 | 必要なパッケージ                                                 |
 | ---- | ---------------------------------------------------------------- |
