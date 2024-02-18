@@ -329,23 +329,23 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 
 <br>
 
-## 02-02. IDGenerator
+## 02-02. ID Generator
 
-### IDGeneratorとは
+### ID Generatorとは
 
 特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
 
-IDGeneratorを使用しない場合、IDGeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。
+ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。
 
-もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。
+もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のID Generatorを使用する必要がある。
 
 > - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
 
 <br>
 
-### IDGeneratorが不要な場合
+### ID Generatorが不要な場合
 
-OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。
+OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。
 
 W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
 
