@@ -22260,6 +22260,7 @@
 <p>TraceProviderは、Graceful Shutdown処理を実行するための関数を持っている。</p>
 <p>処理の失敗時にGraceful Shutdown処理を実行する。</p>
 <p>これにより、例えば確保しているハードウェアリソースを解放できる。</p>
+<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -22297,7 +22298,7 @@
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown">https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown</a></li>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown">https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown</a></li>
-<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-in-go">https://christina04.hatenablog.com/entry/opentelemetry-in-go</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-collector">https://christina04.hatenablog.com/entry/opentelemetry-collector</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22357,6 +22358,7 @@
 </blockquote>
 <h4 id="graceful-shutdown_1">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_1" title="Permanent link">&para;</a></h4>
 <p>Exporterは、Graceful Shutdown処理を実行するための関数を持っている。</p>
+<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -22412,6 +22414,7 @@
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2">https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-collector">https://christina04.hatenablog.com/entry/opentelemetry-collector</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22464,7 +22467,7 @@
 <p><br></p>
 <h3 id="span-processor_1">Span Processorの種類<a class="headerlink" href="#span-processor_1" title="Permanent link">&para;</a></h3>
 <h4 id="batch-span-processor">▼ Batch Span Processor<a class="headerlink" href="#batch-span-processor" title="Permanent link">&para;</a></h4>
-<p>テレメトリーファイルを圧縮するバッチ処理を実行し、その上でExporterに渡す。</p>
+<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。</p>
 <p>Exporterがまとめてスパンを送信できるようになるため、スパン送信のスループットを高められる。</p>
 <p>Goの場合、<code>BatchSpanProcessor</code>関数を使用する。</p>
 <blockquote>
@@ -22489,10 +22492,12 @@
 </blockquote>
 <h4 id="graceful-shutdown_2">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_2" title="Permanent link">&para;</a></h4>
 <p>Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。</p>
+<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1">https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1</a></li>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor">https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-collector">https://christina04.hatenablog.com/entry/opentelemetry-collector</a></li>
 </ul>
 </blockquote>
 <p><br></p>
