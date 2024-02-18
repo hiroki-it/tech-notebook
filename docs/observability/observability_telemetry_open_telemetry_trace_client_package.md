@@ -174,9 +174,11 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 > - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush
 
-#### ▼ ハードウェアリソースの解放
+#### ▼ Graceful Shutdown処理
 
-処理の失敗時にハードウェアリソースを確保してしまっている場合、これを解放した方が良い。
+処理の失敗時にGraceful Shutdown処理を実行する。
+
+これにより、例えば確保しているハードウェアリソースを解放できる。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {

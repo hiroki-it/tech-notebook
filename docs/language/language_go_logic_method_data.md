@@ -1879,15 +1879,15 @@ func main() {
 
 <br>
 
-## 02-03. 関数の制御
+## 02-03. エラー時の事後処理
 
-### シャットダウンフック
+### Graceful Shutdown処理
 
-#### ▼ シャットダウンフックとは
+#### ▼ Graceful Shutdown処理とは
 
-シャットダウン前に必ず実行したい関数をまとめてコールする仕組みであり、Graceful Shutdownを実現できる。
+プロセスの終了前に必ず実行したい関数をまとめてコールし、安全にプロセスを終了する仕組みである。
 
-例えば、トランザクション中にシャットダウン処理が起こった場合に、トランザクションの完了を待ってからシャットダウンする。
+例えば、トランザクション中にエラーが起こった場合に、トランザクションの完了を待ってからプロセスを終了する。
 
 #### ▼ 外部パッケージからコールする
 
@@ -1947,7 +1947,7 @@ func main() {
     // タイムアウトの場合に処理を中断する
 	defer cancel()
 
-	// シャットダウンする
+	// Graceful Shutdown処理を実行する
 	err = srv.Shutdown(ctx)
 
 	if err != nil {
@@ -2063,11 +2063,10 @@ func main()
         5 * time.Second,
     )
 
-
 	// タイムアウトの場合に処理を中断する
     defer cancel()
 
-shutdown.Invoke(ctx)
+	shutdown.Invoke(ctx)
 }
 ```
 
@@ -2823,7 +2822,7 @@ func main() {
 
 #### ▼ context.cancel、context.Done
 
-`cancel`関数によるGoroutineの中断を検知する。
+`cancel`関数のGoroutineの中断を検知する。
 
 `sync.WaitGroup.Done`関数とは区別する。
 
