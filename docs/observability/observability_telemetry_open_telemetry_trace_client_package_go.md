@@ -70,12 +70,12 @@ func main() {
 	traceProvider := newTraceProvider(exp)
 
 	defer func() {
-        _ = tp.Shutdown(ctx)
+        _ = traceProvider.Shutdown(ctx)
     }()
 
 	otel.SetTracerProvider(traceProvider)
 
-	tracer = tp.Tracer("ExampleService")
+	tracer = traceProvider.Tracer("ExampleService")
 }
 ```
 
@@ -221,6 +221,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
             5 * time.Second,
         )
 
+		// タイムアウトの場合に処理を中断する
         defer cancel()
 
         if err := tracerProvider.Shutdown(ctx); err != nil {
@@ -1089,7 +1090,7 @@ func newTraceProvider() (func(), error) {
 	otel.SetTracerProvider(tracerProvider)
 
 	return func() {
-		err := tp.Shutdown(context.Background())
+		err := traceProvider.Shutdown(context.Background())
 		if err != nil {
 			fmt.Printf("error shutting down trace provider: %+v", err)
 		}
@@ -1358,14 +1359,14 @@ import (
 func main() {
 
 	// otelパッケージを初期化する
-	tp, err := config.Init()
+	traceProvider, err := config.Init()
 
 	if err != nil {
 		log.Print(err)
 	}
 
 	defer func() {
-		if err := tp.Shutdown(context.Background()); err != nil {
+		if err := traceProvider.Shutdown(context.Background()); err != nil {
 			log.Printf("Error shutting down tracer provider: %v", err)
 		}
 	}()

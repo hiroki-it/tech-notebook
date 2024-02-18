@@ -82,6 +82,7 @@ func main() {
 		1 * time.Second,
 	)
 
+	// タイムアウトの場合に処理を中断する
 	defer cancel()
 
 	req, err := http.NewRequest("GET", "http://localhost:8080/example", nil)
@@ -172,6 +173,7 @@ func main() {
 		2 * time.Second,
 	)
 
+	// タイムアウトの場合に処理を中断する
 	defer cancel()
 
 	// タイムアウト時間をfn1に伝播する

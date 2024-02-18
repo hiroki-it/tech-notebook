@@ -1944,6 +1944,7 @@ func main() {
 	// 割り込み処理の実行後から強制終了までの時間を設定する
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 
+    // タイムアウトの場合に処理を中断する
 	defer cancel()
 
 	// シャットダウンする
@@ -2062,6 +2063,8 @@ func main()
         5 * time.Second,
     )
 
+
+	// タイムアウトの場合に処理を中断する
     defer cancel()
 
 shutdown.Invoke(ctx)

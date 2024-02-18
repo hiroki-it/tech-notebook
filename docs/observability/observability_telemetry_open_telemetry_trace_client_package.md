@@ -28,7 +28,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### スパン
+### スパンの構造
 
 #### ▼ ルートスパン
 
@@ -130,7 +130,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### 失敗時のリカバリー
+### エラー時の事後処理
 
 #### ▼ 未送信スパンの処理
 
@@ -156,10 +156,11 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 			5*time.Second
         )
 
+		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
 		// SpanProcessor内の処理中スパンをExporterに送信する
-		if err := tp.ForceFlush(ctx); err != nil {
+		if err := traceProvider.ForceFlush(ctx); err != nil {
 			log.Printf("failed to trace porvider force flush %v", err)
 		}
 
@@ -197,10 +198,11 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 			5*time.Second
         )
 
+		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
 		// 処理に割り当てられていたハードウェアリソースを解放する
-		if err := tp.Shutdown(ctx); err != nil {
+		if err := traceProvider.Shutdown(ctx); err != nil {
 			log.Printf("failed to shutdown tracer provider %v", err)
 		}
 
@@ -242,9 +244,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 <br>
 
-### スパンの宛先
+### スパン宛先の設定
 
 Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`、など) を設定する。
+
+<br>
+
+### エラー時の事後処理
 
 <br>
 
