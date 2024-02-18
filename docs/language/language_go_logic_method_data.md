@@ -1707,7 +1707,7 @@ func main() {
 		err := recover()
 
 		if err != nil {
-			log.Printf("panic occurred, error: %v", err)
+			log.Printf("Failed to run application: %v" %v", err)
 		}
 
 		fmt.Println("End")

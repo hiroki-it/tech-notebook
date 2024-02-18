@@ -134,7 +134,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 #### ▼ 未送信スパンの送信
 
-処理の失敗時にSpanProcessor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
+処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -159,7 +159,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
-		// SpanProcessor内の処理中スパンをExporterに送信する
+		// Span Processor内の処理中スパンをExporterに送信する
 		if err := traceProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
 		}
@@ -350,9 +350,9 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 <br>
 
-## 02-03. SpanProcessor
+## 02-03. Span Processor
 
-### SpanProcessorとは
+### Span Processorとは
 
 他の処理コンポーネントを操作する処理を持つ。
 
@@ -369,9 +369,23 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 <br>
 
-### スパンの圧縮
+### Span Processorの種類
 
-Goの場合、`BatchSpanProcessor`関数を使用して、スパンを圧縮する。
+#### ▼ Batch Span Processor
+
+テレメトリーファイルを圧縮するバッチ処理を実行し、その上でExporterに渡す。
+
+Exporterがまとめてスパンを送信できるようになるため、スパン送信のスループットを高められる。
+
+Goの場合、`BatchSpanProcessor`関数を使用する。
+
+> - https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor
+
+#### ▼ Simple Span Processor
+
+テレメトリーファイルをそのままExporterに渡す。
+
+> - https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor
 
 <br>
 
@@ -383,7 +397,7 @@ Goの場合、`BatchSpanProcessor`関数を使用して、スパンを圧縮す�
 
 #### ▼ Graceful Shutdown処理
 
-SpanProcessorは、Graceful Shutdown処理を実行するための関数を持っている。
+Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
@@ -532,7 +546,7 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 
 #### ▼ サーバー側 (opentelemetryコレクター) のサンプリング率
 
-Tail-based方式の場合、opentelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、SpanProcessorでサンプリング率を決める。
+Tail-based方式の場合、opentelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
 
 ```yaml
 processors:

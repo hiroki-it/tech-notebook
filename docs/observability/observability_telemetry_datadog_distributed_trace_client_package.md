@@ -318,7 +318,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 	)
 
 	if err != nil {
-		log.Printf("Failed to inject: %s", err)
+		log.Printf("Failed to inject context: %s", err)
 	}
 
 	http.DefaultClient.Do(req)
@@ -349,7 +349,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {
-		log.Printf("Failed to extract: %s", err)
+		log.Printf("Failed to extract context: %s", err)
 	}
 
 	// 子スパンを作成する。

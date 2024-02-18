@@ -282,7 +282,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Printf("ERROR: %v", err)
+		log.Printf("Failed to marshal: %v", err)
 	}
 
 	// エンコード結果を出力
@@ -911,7 +911,7 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			defer func() {
 				if err := recover(); err != nil && err != http.ErrAbortHandler {
-					log.Printf("panic on application running, error: %v", err)
+					log.Printf("Failed to handle http: %v", err)
 					// Internal Server Errorとして処理する
 					w.WriteHeader(http.StatusInternalServerError)
 				}
