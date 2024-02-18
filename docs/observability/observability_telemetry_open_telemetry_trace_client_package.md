@@ -183,6 +183,8 @@ TraceProviderは、Graceful Shutdown処理を実行するための関数を持�
 
 これにより、例えば確保しているハードウェアリソースを解放できる。
 
+なお、TraceProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。
+
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
@@ -220,7 +222,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown
-> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
 
@@ -265,6 +267,8 @@ Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`1
 #### ▼ Graceful Shutdown処理
 
 Exporterは、Graceful Shutdown処理を実行するための関数を持っている。
+
+なお、TraceProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -321,6 +325,7 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 ```
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2
+> - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
 
@@ -373,7 +378,7 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 #### ▼ Batch Span Processor
 
-テレメトリーファイルを圧縮するバッチ処理を実行し、その上でExporterに渡す。
+テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。
 
 Exporterがまとめてスパンを送信できるようになるため、スパン送信のスループットを高められる。
 
@@ -399,8 +404,11 @@ Goの場合、`BatchSpanProcessor`関数を使用する。
 
 Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。
 
+なお、TraceProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。
+
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
+> - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
 
