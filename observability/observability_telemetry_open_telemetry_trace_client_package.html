@@ -20413,28 +20413,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02-idgenerator" class="md-nav__link">
+  <a href="#02-02-id-generator" class="md-nav__link">
     <span class="md-ellipsis">
-      02-02. IDGenerator
+      02-02. ID Generator
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. IDGenerator">
+    <nav class="md-nav" aria-label="02-02. ID Generator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#idgenerator" class="md-nav__link">
+  <a href="#id-generator" class="md-nav__link">
     <span class="md-ellipsis">
-      IDGeneratorとは
+      ID Generatorとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#idgenerator_1" class="md-nav__link">
+  <a href="#id-generator_1" class="md-nav__link">
     <span class="md-ellipsis">
-      IDGeneratorが不要な場合
+      ID Generatorが不要な場合
     </span>
   </a>
   
@@ -21786,28 +21786,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02-idgenerator" class="md-nav__link">
+  <a href="#02-02-id-generator" class="md-nav__link">
     <span class="md-ellipsis">
-      02-02. IDGenerator
+      02-02. ID Generator
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. IDGenerator">
+    <nav class="md-nav" aria-label="02-02. ID Generator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#idgenerator" class="md-nav__link">
+  <a href="#id-generator" class="md-nav__link">
     <span class="md-ellipsis">
-      IDGeneratorとは
+      ID Generatorとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#idgenerator_1" class="md-nav__link">
+  <a href="#id-generator_1" class="md-nav__link">
     <span class="md-ellipsis">
-      IDGeneratorが不要な場合
+      ID Generatorが不要な場合
     </span>
   </a>
   
@@ -22418,19 +22418,19 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-02-idgenerator">02-02. IDGenerator<a class="headerlink" href="#02-02-idgenerator" title="Permanent link">&para;</a></h2>
-<h3 id="idgenerator">IDGeneratorとは<a class="headerlink" href="#idgenerator" title="Permanent link">&para;</a></h3>
+<h2 id="02-02-id-generator">02-02. ID Generator<a class="headerlink" href="#02-02-id-generator" title="Permanent link">&para;</a></h2>
+<h3 id="id-generator">ID Generatorとは<a class="headerlink" href="#id-generator" title="Permanent link">&para;</a></h3>
 <p>特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。</p>
-<p>IDGeneratorを使用しない場合、IDGeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。</p>
-<p>もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のIDGeneratorを使用する必要がある。</p>
+<p>ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。</p>
+<p>もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のID Generatorを使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90">https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="idgenerator_1">IDGeneratorが不要な場合<a class="headerlink" href="#idgenerator_1" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではIDGeneratorを使用する必要はない。</p>
+<h3 id="id-generator_1">ID Generatorが不要な場合<a class="headerlink" href="#id-generator_1" title="Permanent link">&para;</a></h3>
+<p>OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。</p>
 <p>W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。</p>
 <p>例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-Ray仕様に変換する。</p>
 <blockquote>
