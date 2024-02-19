@@ -2,7 +2,7 @@ Babel==2.14.0
 click==8.1.7
 ghp-import==2.1.0
 gitdb==4.0.11
-GitPython==3.1.41
+GitPython==3.1.42
 importlib-metadata==7.0.1
 Jinja2==3.1.3
 Markdown==3.5.2
@@ -12,7 +12,7 @@ mkdocs==1.5.3
 mkdocs-exclude-search==0.6.6
 mkdocs-git-committers-plugin-2==2.2.3
 mkdocs-git-revision-date-localized-plugin==1.2.4
-mkdocs-material==9.5.9
+mkdocs-material==9.5.10
 mkdocs-material-extensions==1.3.1
 mkdocs-redirects==1.2.1
 packaging==22.0
