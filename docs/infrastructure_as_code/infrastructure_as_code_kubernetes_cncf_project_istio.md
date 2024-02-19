@@ -189,6 +189,7 @@ waypoint-proxyのEnvoyの`L7`処理で
 
 > - https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/
 > - https://juejin.cn/post/7161975827473645575
+> - https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/
 
 <br>
 
