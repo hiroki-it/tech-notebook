@@ -23034,24 +23034,30 @@
 </blockquote>
 <h4 id="envoy">▼ Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
 <p>(たぶん) Envoyの設定値は以下のように機能している。</p>
-<p>送信元ztunnelのEnvoyの処理で</p>
-<ul>
-<li>前半のListenerとCluster：宛先マイクロサービスを決めている</li>
-<li>後半のListenerとCluster：宛先waypoint-proxyを決めている</li>
-</ul>
-<p>waypoint-proxyのEnvoyの処理で</p>
-<ul>
-<li>前半のListerとCluster：リクエストの受信</li>
-<li>真ん中のListerとCluster：宛先マイクロサービスを決めている</li>
-<li>後半のListenerとCluster：宛先Ztunnelを決めている</li>
-</ul>
-<p>宛先ztunnelのEnvoyの処理で</p>
-<ul>
-<li>ListenerとCluster：宛先マイクロサービスを決めている</li>
-</ul>
+<p>送信元ztunnelのEnvoyの<code>L4</code>処理で</p>
+<ol>
+<li>前半のListenerとCluster：宛先マイクロサービスを決める</li>
+<li>後半のListenerとCluster：宛先waypoint-proxyを決める</li>
+</ol>
+<p>waypoint-proxyのEnvoyの<code>L7</code>処理で</p>
+<ol>
+<li>inbound_CONNECT_terminate Listener：HBORNを介したリクエストを受信する</li>
+<li>Internal Inbound VIP Cluster：Inbound VIP Listenerにルーティングする</li>
+<li>Inbound VIP Listener：VirtualServiceのルーティングポリシーを適用する</li>
+<li>Inbound VIP Cluster：Inbound Pod Listenerにロードバランシングする</li>
+<li>Inbound Pod Listener：HBORNのメタデータをセットアップする</li>
+<li>Inbound Pod Cluster</li>
+<li>inbound_CONNECT_originate Listener</li>
+<li>inbound_CONNECT_originate Cluster：宛先ztunnelを決める</li>
+</ol>
+<p>宛先ztunnelのEnvoyの<code>L4</code>処理で</p>
+<ol>
+<li>ListenerとCluster：宛先マイクロサービスを決める</li>
+</ol>
 <blockquote>
 <ul>
-<li><a href="https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/#traffic-routing-using-waypoint-proxy">https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/#traffic-routing-using-waypoint-proxy</a></li>
+<li><a href="https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/">https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/</a></li>
+<li><a href="https://juejin.cn/post/7161975827473645575">https://juejin.cn/post/7161975827473645575</a></li>
 </ul>
 </blockquote>
 <p><br></p>

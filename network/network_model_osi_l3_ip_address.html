@@ -22285,8 +22285,11 @@
 <h4 id="-">▼ サブ-サブドメイン<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
 <p>サブドメインのサブドメインである。</p>
 <p>サブ-サブドメインでネットワークするためには、以下の作業が必要である。</p>
-<p>ワイルドカード証明書は、ドットで区切られたサブ-サブドメインを一つのサブドメインのように扱う (例：<code>sub.sub.example.com</code>、<code>sub.example.com</code>、を両方ともサブドメインとして扱う) 。</p>
-<p>そのため、ドメイン (例：ホストゾーン) のDNSレコード (例：Route53レコード) にサブ-サブドメインを登録すると、ドメインの所有者であることを証明できる。</p>
+<ol>
+<li>サブ-サブドメインの親サブドメインを取得する。 (例：AWS Route53ホストゾーン)</li>
+<li>サブドメインのワイルドカード証明書 (例：AWS ACM) を取得する。ドットで区切られたサブ-サブドメインを一つのサブドメインのように扱う (例：<code>sub.sub.example.com</code>、<code>sub.example.com</code>、を両方ともサブドメインとして扱う) 。</li>
+<li>親サブドメインのDNSレコードにサブ-サブドメインを登録する。 (例：AWS Route53 DNSレコード)</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/57680951">https://stackoverflow.com/a/57680951</a></li>
