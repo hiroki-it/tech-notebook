@@ -22644,7 +22644,7 @@
 </blockquote>
 <h4 id="_20">▼ クライアント側のサンプリング率<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>クライアント側でのサンプリング率を設定する。</p>
-<p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>とする。</p>
+<p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、サンプリング率は<code>100</code>% (<code>AlwaysOn</code>または<code>TraceIdRationBased=1.0</code>) が推奨である。</p>
 <p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
 <table>
 <thead>

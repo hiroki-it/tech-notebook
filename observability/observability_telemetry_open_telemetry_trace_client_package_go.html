@@ -22005,6 +22005,7 @@
 
 <span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">(</span><span class="nx">exp</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
@@ -22503,7 +22504,7 @@
 <span class="c1">// ログイン画面を返却する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">getLogin</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">    </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ログイン画面取得&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">generateHTML</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;layout&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;public_navbar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;footer&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22511,42 +22512,42 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">StartMainServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="o">...</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="w">  </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">()</span>
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 事後処理</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}()</span>
+<span class="w">    </span><span class="p">}()</span>
 
-<span class="w">  </span><span class="o">...</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="w">  </span><span class="nx">rTodos</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">checkSession</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">rTodos</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">checkSession</span><span class="p">())</span>
 
-<span class="w">  </span><span class="o">...</span>
-
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">checkSession</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">        </span><span class="o">...</span>
 
-<span class="w">    </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック開始&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+<span class="w">        </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック開始&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">        </span><span class="o">...</span>
 
-<span class="w">    </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック終了&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック終了&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22816,6 +22817,7 @@
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -22893,6 +22895,7 @@
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -23263,6 +23266,7 @@
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">());</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>

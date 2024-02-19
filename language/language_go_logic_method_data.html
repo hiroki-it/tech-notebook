@@ -26102,6 +26102,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
@@ -26121,7 +26122,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// あらかじめdefer関数を定義しておく</span>
+<span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="c1">// リカバリー処理を実行する</span>
