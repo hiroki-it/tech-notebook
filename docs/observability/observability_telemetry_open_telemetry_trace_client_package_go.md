@@ -69,6 +69,7 @@ func main() {
 
 	traceProvider := newTraceProvider(exp)
 
+    // 事後処理
 	defer func() {
         _ = traceProvider.Shutdown(ctx)
     }()
@@ -586,7 +587,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 // ログイン画面を返却する
 func getLogin(c *gin.Context) {
 
-  // イベントごとに同階層スパンを作成する
+    // イベントごとに同階層スパンを作成する
 	defer LoggerAndCreateSpan(c, "ログイン画面取得").End()
 	generateHTML(c, nil, "login", "layout", "login", "public_navbar", "footer")
 }
@@ -594,42 +595,42 @@ func getLogin(c *gin.Context) {
 
 func StartMainServer() {
 
-  ...
+    ...
 
-  shutdown, err := newTraceProvider()
+    shutdown, err := newTraceProvider()
 
-  if err != nil {
-		log.Print(err)
-  }
+    if err != nil {
+	  	log.Print(err)
+    }
 
-  defer func() {
+    // 事後処理
+    defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
 		}
-  }()
+    }()
 
-  ...
+    ...
 
-  rTodos.Use(checkSession())
+    rTodos.Use(checkSession())
 
-  ...
-
+    ...
 }
 
 func checkSession() gin.HandlerFunc {
 
-  return func(c *gin.Context) {
+    return func(c *gin.Context) {
 
-    ...
+        ...
 
-    // イベントごとに同階層スパンを作成する
-    defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
+        // イベントごとに同階層スパンを作成する
+        defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
 
-    ...
+        ...
 
-    // イベントごとに同階層スパンを作成する
-	defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
-  }
+        // イベントごとに同階層スパンを作成する
+	    defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
+    }
 }
 
 ```
@@ -906,6 +907,7 @@ func main() {
 		log.Print(err)
 	}
 
+	// 事後処理
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
@@ -985,6 +987,7 @@ func main() {
 		log.Print(err)
 	}
 
+	// 事後処理
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
@@ -1365,6 +1368,7 @@ func main() {
 		log.Print(err)
 	}
 
+	// 事後処理
 	defer func() {
 		if err := traceProvider.Shutdown(context.Background()); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)

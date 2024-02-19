@@ -215,11 +215,15 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 サブドメインのサブドメインである。
 
-この場合、一つ上の階層のサブドメインをドメインとして扱うために、一度サブドメインをドメインレジストラ (例：Route53) のドメイン (例：Route53ホストゾーン) として登録する必要がある。
+サブ-サブドメインでネットワークするためには、以下の作業が必要である。
 
-このドメインとしてのサブドメイン (例：サブドメインのRoute53ホストゾーン) にサブサブドメインのDNSレコード (例：Route53レコード) を登録すると、サブサブドメインの所有者であることをSSL証明書 (例：AWS ACM) で証明できるようになる。
+ワイルドカード証明書は、ドットで区切られたサブ-サブドメインを一つのサブドメインのように扱う (例：`sub.sub.example.com`、`sub.example.com`、を両方ともサブドメインとして扱う) 。
+
+そのため、ドメイン (例：ホストゾーン) のDNSレコード (例：Route53レコード) にサブ-サブドメインを登録すると、ドメインの所有者であることを証明できる。
 
 > - https://stackoverflow.com/a/57680951
+> - https://www.reddit.com/r/aws/comments/12yo2dp/can_route53_handle_multiple_subdomains_with/
+> - https://github.com/amplify-education/serverless-domain-manager/issues/255#issuecomment-662619960
 
 <br>
 

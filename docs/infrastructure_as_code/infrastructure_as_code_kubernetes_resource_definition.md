@@ -1484,7 +1484,7 @@ spec:
 
 #### ▼ istio-waypointの場合
 
-IstioのWaypointを作成する
+Istioのwaypoint-proxyを作成する
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1

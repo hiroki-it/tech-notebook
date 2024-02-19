@@ -70,7 +70,7 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 
 ハードウェアリソースの消費量の少ない`L4`プロトコルと、消費量の多い`L7`プロトコルのプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、`L4`プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。
 
-メッシュ内へのリクエストの経路は以下の通りである。
+サービスメッシュ内へのリクエストの経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -80,25 +80,50 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 # L4ロードバランサー
 ztunnelのPod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
 ⬇⬆︎︎
+⬇⬆︎︎ # HBONE
+⬇⬆︎︎
 # L7ロードバランサー
-waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
+waypoint-proxyのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 ⬇⬆︎︎
 アプリコンテナのPod
+```
+
+サービスメッシュ内のリクエストの経路は以下の通りである。
+
+```yaml
+アプリコンテナのPod # クライアント側
+⬇⬆︎︎
+# L4ロードバランサー
+ztunnelのPod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
+⬇⬆︎︎
+⬇⬆︎︎ # HBONE
+⬇⬆︎︎
+# L7ロードバランサー
+waypoint-proxyのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
+⬇⬆︎︎
+⬇⬆︎︎ # HBONE
+⬇⬆︎︎
+# L4ロードバランサー
+ztunnelのPod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
+⬇⬆︎︎
+アプリコンテナのPod # サーバー側
 ```
 
 サービスメッシュ外へのリクエストの経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
-⬆︎
+⬆︎⬇
 # L7ロードバランサー
-waypointのPod (L7) # Deployment配下なので、任意のNodeにいる
-⬆︎
+waypoint-proxyのPod (L7) # Deployment配下なので、任意のNodeにいる
+⬆︎⬇
+⬆︎⬇ # HBONE
+⬆︎⬇
 # L4ロードバランサー
 ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
-⬆︎
+⬆︎⬇
 リダイレクト
-⬆︎
+⬆︎⬇
 アプリコンテナのPod
 ```
 
@@ -137,6 +162,27 @@ spec:
 ```
 
 > - https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/
+
+#### ▼ Envoy
+
+(たぶん) Envoyの設定値は以下のように機能している。
+
+送信元ztunnelのEnvoyの処理で
+
+- 前半のListenerとCluster：宛先マイクロサービスを決めている
+- 後半のListenerとCluster：宛先waypoint-proxyを決めている
+
+waypoint-proxyのEnvoyの処理で
+
+- 前半のListerとCluster：リクエストの受信
+- 真ん中のListerとCluster：宛先マイクロサービスを決めている
+- 後半のListenerとCluster：宛先Ztunnelを決めている
+
+宛先ztunnelのEnvoyの処理で
+
+- ListenerとCluster：宛先マイクロサービスを決めている
+
+> - https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/#traffic-routing-using-waypoint-proxy
 
 <br>
 

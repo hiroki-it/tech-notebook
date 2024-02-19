@@ -909,6 +909,7 @@ import (
 func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
+			// 事後処理
 			defer func() {
 				if err := recover(); err != nil && err != http.ErrAbortHandler {
 					log.Printf("Failed to handle http: %v", err)

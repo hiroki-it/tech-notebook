@@ -1674,6 +1674,7 @@ func main() {
 
 	fmt.Println("Start")
 
+	// 事後処理
 	defer func() {
 		log.Printf("End")
 	}()
@@ -1700,7 +1701,7 @@ import "fmt"
 func main() {
 	fmt.Println("Start")
 
-	// あらかじめdefer関数を定義しておく
+	// 事後処理
 	defer func() {
 
 		// リカバリー処理を実行する
