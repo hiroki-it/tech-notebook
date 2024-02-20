@@ -22402,10 +22402,32 @@
 <p>Contextでは親子関係を設定できる。</p>
 <p>先に作成したContextが親、後に作成したContextが子になる。</p>
 <p>親コンテキストの処理をキャンセルすると、子コンテキストの処理も連鎖的にキャンセルできる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 親コンテキストを作成する</span>
+<span class="w">    </span><span class="nx">parentCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
+
+<span class="w">    </span><span class="c1">// 親コンテキストをパラメータとして、子コンテキストを作成する</span>
+<span class="w">    </span><span class="nx">childCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">parentCtx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">parentCancel</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain">https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain</a></li>
 <li><a href="https://castaneai.hatenablog.com/entry/2020/01/28/133843">https://castaneai.hatenablog.com/entry/2020/01/28/133843</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain">https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/tips-for-context-with-cancel_1">https://christina04.hatenablog.com/entry/tips-for-context-with-cancel_1</a></li>
 </ul>
 </blockquote>
