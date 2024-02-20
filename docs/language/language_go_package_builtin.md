@@ -52,21 +52,26 @@ func main() {
 
 ### contextとは
 
-複数の関数に渡って処理の情報 (タイムアウト時間、キャンセルシグナル、リクエストスコープ、など) を伝達する。
+タイムアウト時間を設定し、またキャンセルを実行する。
+
+また、複数の関数に渡って処理の情報 (タイムアウト時間、キャンセルシグナル、リクエストスコープ、など) を伝達する。
+
+```go
+type Context interface {
+
+	// タイムアウト時間
+    Deadline() (deadline time.Time, ok bool)
+
+    Done() <-chan struct{}
+
+    Err() error
+
+	// コンテキストの情報
+    Value(key interface{}) interface{}
+}
+```
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/definition
-
-<br>
-
-### 伝達のユースケース
-
-#### ▼ Goroutine間での伝達
-
-> - https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B
-
-<br>
-
-### 伝達できる情報
 
 #### ▼ タイムアウト時間
 
@@ -127,6 +132,20 @@ func main() {
 ```
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
+
+<br>
+
+### 伝達のユースケース
+
+#### ▼ Goroutine間での伝達
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B
+
+<br>
+
+### 伝達できる情報
+
+#### ▼ タイムアウト時間
 
 タイムアウト時間を伝播できる。
 
@@ -231,9 +250,12 @@ func main() {
 
 ```
 
+> - https://golangbyexample.com/using-context-in-golang-complete-guide/
 > - https://castaneai.hatenablog.com/entry/2020/01/28/133843
-> - https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain
-> - https://christina04.hatenablog.com/entry/tips-for-context-with-cancel_1
+
+#### ▼ リクエストスコープ
+
+セッションID、認証トークン、などを伝達できる。
 
 <br>
 
