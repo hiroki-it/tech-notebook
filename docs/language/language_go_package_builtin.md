@@ -206,8 +206,33 @@ Contextでは親子関係を設定できる。
 
 親コンテキストの処理をキャンセルすると、子コンテキストの処理も連鎖的にキャンセルできる。
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain
+```go
+package main
+
+import (
+    "context"
+    "log"
+)
+
+func main() {
+
+	// 親コンテキストを作成する
+    parentCtx, parentCancel := context.WithCancel(context.Background())
+
+	// 親コンテキストをパラメータとして、子コンテキストを作成する
+    childCtx, _ := context.WithCancel(parentCtx)
+
+    go func() {
+		parentCancel()
+    }()
+
+	...
+}
+
+```
+
 > - https://castaneai.hatenablog.com/entry/2020/01/28/133843
+> - https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain
 > - https://christina04.hatenablog.com/entry/tips-for-context-with-cancel_1
 
 <br>
