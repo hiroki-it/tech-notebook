@@ -499,6 +499,24 @@ $ curl https://foo.example.com -v
 > - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
 > - https://weblabo.oscasierra.net/openssl-gencert-1/
 
+#### ▼ 一括管理
+
+`openssl`コマンド以外にも、SSL証明書を作成できるツールがある。
+
+各ツールで追加機能がある。
+
+```bash
+$ ssh-keygen -t rsa
+```
+
+```bash
+# SSL証明書の作成のほかにキーストアを操作できる
+$ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公開鍵の作成先のディレクトリ>
+```
+
+> - https://superuser.com/questions/1535116/generating-privatepublic-keypair-for-ssh-difference-between-ssh-keygen-and-ope
+> - https://security.stackexchange.com/a/98290
+
 <br>
 
 ## 04. その他のセキュリティ技術

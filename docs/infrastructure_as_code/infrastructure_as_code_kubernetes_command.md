@@ -391,7 +391,7 @@ secret/foo-secret created
 SSL証明書を持つSecretを作成する。
 
 ```bash
-$ kubectl create secret tls tls-secret --cert=./foo.cert --key=./foo.key
+$ kubectl create secret tls tls-secret --cert=/etc/ssl/certs/foo.crt --key=./foo.key
 ```
 
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-

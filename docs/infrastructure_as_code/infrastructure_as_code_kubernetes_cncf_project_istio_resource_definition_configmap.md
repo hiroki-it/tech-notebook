@@ -395,6 +395,16 @@ data:
 
 <br>
 
+### enablePrometheusMerge
+
+#### ▼ enablePrometheusMergeとは
+
+アプリケーションのメトリクスを`istio-proxy`コンテナを介して取得できるようにする (マージする) かどうかを設定する。
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/
+
+<br>
+
 ### enableTracing
 
 #### ▼ enableTracingとは
