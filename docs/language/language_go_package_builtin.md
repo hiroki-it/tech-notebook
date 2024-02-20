@@ -52,13 +52,23 @@ func main() {
 
 ### contextとは
 
-HTTPコンテキストの仕組みで、リクエスト/レスポンスを処理する。
+複数の関数に渡って処理の情報 (タイムアウト時間、キャンセルシグナル、リクエストスコープ、など) を伝達する。
 
-contextが持つ情報は、関数やコンテナ間で伝播できる。
+> - https://zenn.dev/hsaki/books/golang-context/viewer/definition
 
 <br>
 
-### タイムアウト
+### 伝達のユースケース
+
+#### ▼ Goroutine間での伝達
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B
+
+<br>
+
+### 伝達できる情報
+
+#### ▼ タイムアウト時間
 
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
 
@@ -187,6 +197,18 @@ func main() {
 ```
 
 > - https://www.wakuwakubank.com/posts/867-go-context/#index_id4
+
+#### ▼ キャンセル
+
+Contextでは親子関係を設定できる。
+
+先に作成したContextが親、後に作成したContextが子になる。
+
+親コンテキストの処理をキャンセルすると、子コンテキストの処理も連鎖的にキャンセルできる。
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/cancelchain
+> - https://castaneai.hatenablog.com/entry/2020/01/28/133843
+> - https://christina04.hatenablog.com/entry/tips-for-context-with-cancel_1
 
 <br>
 
