@@ -154,13 +154,13 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 #### ▼ Producer
 
-メッセージブローカーやメッセージキューからのリクエストの受信処理に関する操作の情報を持つ。
+パブリッシャー (プロデューサー) からのメッセージの受信処理に関する操作の情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Consumer
 
-メッセージブローカーやメッセージキューへのリクエストの送信処理に関する操作の情報を持つ。
+コンシューマー (サブスクライバー) からのメッセージの送信処理に関する操作の情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
