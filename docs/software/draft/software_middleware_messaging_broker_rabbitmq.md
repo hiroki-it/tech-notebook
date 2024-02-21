@@ -12,3 +12,9 @@ description: RabbitMQ＠メッセージングブローカー系ミドルウェ�
 > - https://hiroki-it.github.io/tech-notebook/
 
 <br>
+
+## 01. RabbitMQとは
+
+メッセージングブローカーとして、メッセージをキューイングし、また加工した上でルーティングする。
+
+<br>

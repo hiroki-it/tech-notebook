@@ -12,3 +12,9 @@ description: Kafka＠メッセージングストリーム系ミドルウェア�
 > - https://hiroki-it.github.io/tech-notebook/
 
 <br>
+
+## 01. Kafkaとは
+
+メッセージングストリームとして、メッセージを連続的にキューイングし、また加工した上で連続的にルーティングする。
+
+<br>
