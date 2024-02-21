@@ -17552,6 +17552,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolloutとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specanalysis" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.analysis
@@ -17632,6 +17641,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectemplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.template
+    </span>
+  </a>
   
 </li>
         
@@ -23140,6 +23158,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#rollout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rolloutとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specanalysis" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.analysis
@@ -23220,6 +23247,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectemplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.template
+    </span>
+  </a>
   
 </li>
         
@@ -24536,13 +24572,13 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tbody>
 <tr>
 <td><code>releaseName</code></td>
-<td>リリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をリリース名としており、リリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、<code>releaseName</code>を明示的に設定した方が良い。</td>
+<td>Helmリリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をHelmリリース名としており、Helmリリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、<code>releaseName</code>を明示的に設定した方が良い。</td>
 <td></td>
 </tr>
 <tr>
 <td><code>values</code></td>
 <td><code>helm</code>コマンドに渡す<code>values</code>ファイルの値をハードコーディングする。</td>
-<td>執筆時点 (2022/10/31) では、<code>values</code>ファイルは、同じチャートリポジトリ内にある必要がある。チャートと<code>values</code>ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code>ファイルは独自で定義する) 、<code>valueFiles</code>オプションの代わりに<code>values</code>オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに<code>values</code>ファイルをハードコーディングした場合に、共有<code>values</code>ファイルと差分<code>values</code>ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code>オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの<code>values</code>ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに<code>values</code>ファイルがあっても<code>valueFiles</code>オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
+<td>執筆時点 (2022/10/31) では、<code>values</code>ファイルは、同じチャートリポジトリ内にある必要がある。チャートと<code>values</code>ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code>ファイルは独自で定義する) 、<code>valueFiles</code>オプションの代わりに<code>values</code>オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに<code>values</code>ファイルをハードコーディングした場合に、共有<code>values</code>ファイルと差分<code>values</code>ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code>オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの<code>values</code>ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに<code>values</code>ファイルがあっても<code>valueFiles</code>オプションで指定できるようになる。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
 </tr>
 <tr>
 <td><code>valueFiles</code></td>
@@ -24648,7 +24684,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.data.AWS_SECRET_ACCESS_KEY | b64en</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p>ArgoCDはHelmの<code>v2</code>と<code>v3</code>の両方を保持している。</p>
-<p>リリースするチャートの<code>.apiVersion</code>キーの値が<code>v1</code>であれば、ArgoCDはHelmの<code>v2</code>を使用して、一方で<code>.apiVersion</code>キーの値が<code>v2</code>であれば、Helmの<code>v3</code>を使用するようになっている。</p>
+<p>Helmリリースするチャートの<code>.apiVersion</code>キーの値が<code>v1</code>であれば、ArgoCDはHelmの<code>v2</code>を使用して、一方で<code>.apiVersion</code>キーの値が<code>v2</code>であれば、Helmの<code>v3</code>を使用するようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681">https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681</a></li>
@@ -24665,9 +24701,9 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <li><a href="https://qiita.com/kyohmizu/items/118bf654d0288da2294e">https://qiita.com/kyohmizu/items/118bf654d0288da2294e</a></li>
 </ul>
 </blockquote>
-<p>そのため、Helmを手動でマニフェストをリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。</p>
-<p>一方で、リリース履歴が存在しない。</p>
-<p>Helmのリリース履歴の代わりとして、<code>argocd app history</code>コマンドで確認できる。</p>
+<p>そのため、Helmを手動でマニフェストをHelmリリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。</p>
+<p>一方で、Helmリリース履歴が存在しない。</p>
+<p>Helmリリースの履歴の代わりとして、<code>argocd app history</code>コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">history</span><span class="w"> </span>&lt;Application名&gt;
 
 ID<span class="w">  </span>DATE<span class="w">                           </span>REVISION
@@ -25178,6 +25214,10 @@ spec:
 </blockquote>
 <p><br></p>
 <h2 id="07-rollout">07. Rollout<a class="headerlink" href="#07-rollout" title="Permanent link">&para;</a></h2>
+<h3 id="rollout">Rolloutとは<a class="headerlink" href="#rollout" title="Permanent link">&para;</a></h3>
+<p>KubernetesのDeploymentに代わって、Podのライフサイクルを管理する。</p>
+<p>Deploymentよりも複雑な手法でPodをデプロイできる。</p>
+<p><br></p>
 <h3 id="specanalysis">.spec.analysis<a class="headerlink" href="#specanalysis" title="Permanent link">&para;</a></h3>
 <h4 id="analysis">▼ analysisとは<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h4>
 <p>Progressive Deliveryを使用する場合、詳細を設定する。</p>
@@ -25211,10 +25251,10 @@ spec:
 <h4 id="strategy">▼ strategyとは<a class="headerlink" href="#strategy" title="Permanent link">&para;</a></h4>
 <p>デプロイ手法を設定する。</p>
 <p>大前提として、そもそもArgoCDは<code>kubectl apply</code>コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの<code>.spec.strategy</code>キーや、DaemonSetとStatefulSetの<code>.spec.updateStrategy</code>キーの設定値に依存する。</p>
-<p>ArgoCDのstrategyオプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。</p>
+<p>ArgoCDの<code>strategy</code>オプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。</p>
 <h4 id="bluegreen">▼ blueGreen<a class="headerlink" href="#bluegreen" title="Permanent link">&para;</a></h4>
 <p><img alt="argocd_blue-green-deployment" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_blue-green-deployment.png" /></p>
-<p>ブルー/グリーンデプロイメントを使用して、新しいPodをリリースする。</p>
+<p>ブルー/グリーンデプロイメントを使用して、新しいPodをデプロイする。</p>
 <table>
 <thead>
 <tr>
@@ -25273,7 +25313,7 @@ spec:
 </blockquote>
 <h4 id="canary">▼ canary<a class="headerlink" href="#canary" title="Permanent link">&para;</a></h4>
 <p><img alt="argocd_canary-release" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_canary-release.png" /></p>
-<p>カナリアリリースを使用して、新しいPodをリリースする。</p>
+<p>カナリアリリースを使用して、新しいPodをデプロイする。</p>
 <table>
 <thead>
 <tr>
@@ -25328,6 +25368,18 @@ spec:
 <li><a href="https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/">https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="spectemplate">.spec.template<a class="headerlink" href="#spectemplate" title="Permanent link">&para;</a></h3>
+<p>Deploymentの<code>spec.template</code>キーと同じである。</p>
+<p>Rolloutで管理したいPodを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-canary-rollout</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="08-workflow">08. Workflow<a class="headerlink" href="#08-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="specentrypoint">.spec.entrypoint<a class="headerlink" href="#specentrypoint" title="Permanent link">&para;</a></h3>
@@ -25531,7 +25583,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-21</span>
   </span>
 
     
