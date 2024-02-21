@@ -17,6 +17,8 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 クラウドメッセージキューとして働く。
 
+メッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
+
 パブリッシャーが送信したメッセージは、一旦SQSに追加される。
 
 その後、サブスクライバーは、SQSに対してリクエストを送信し、メッセージを取り出す。
@@ -24,6 +26,8 @@ description: SQS＠AWSリソースの知見を記録しています。
 異なるVPC間でも、メッセージキューを同期できる。
 
 ![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQS.jpeg)
+
+> - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 
 <br>
 

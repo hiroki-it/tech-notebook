@@ -15,9 +15,13 @@ description: SNS＠AWSリソースの知見を記録しています。
 
 ## 01. SNSとは：Simple Notification Service
 
-パブリッシャーから発信されたメッセージをエンドポイントで受信し、サブスクライバーに転送するAWSリソース。
+メッセージキュー (例：AWS SNS) やメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
+
+パブリッシャーから発信されたメッセージをエンドポイントで受信し、サブスクライバーに転送する。
 
 ![SNSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SNSとは.png)
+
+> - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 
 <br>
 

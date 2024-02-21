@@ -29,7 +29,7 @@ AWSリソースで発生したイベントを受信し、他のAWSリソース�
 
 イベント受信対象のAWSリソースは以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-service-event-list.html
+> - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-list.html
 
 #### ▼ イベントパターン
 

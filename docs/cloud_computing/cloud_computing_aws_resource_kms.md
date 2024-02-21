@@ -29,7 +29,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーを使用できるユーザーを設定できない。
 
-> - https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/concepts.html#aws-managed-cmk
+> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
 > - https://aws.amazon.com/kms/features/#AWS_Service_Integration
 
@@ -41,7 +41,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーを使用できるユーザーを設定できる。
 
-> - https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/concepts.html#key-mgmt
+> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
 
 <br>

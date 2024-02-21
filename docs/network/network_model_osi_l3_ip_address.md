@@ -344,7 +344,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 基本的には、キャッシュDNSサーバーとDNSサーバーは区別される。
 
-ただし、Amazon Route53のように、キャッシュDNSサーバーとDNSサーバーの処理を実行できるものもある。
+ただし、AWS Route53のように、キャッシュDNSサーバーとDNSサーバーの処理を実行できるものもある。
 
 <br>
 

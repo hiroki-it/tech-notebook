@@ -19,6 +19,8 @@ description: Platform Engineering＠DevOpsの知見を記録しています。
 
 DevOpsというインターフェースを実装したエンジニアリング手法である。
 
+SREingとは異なり、開発者体験の向上からDevOpsを実現する。
+
 出典は要記入...
 
 <br>

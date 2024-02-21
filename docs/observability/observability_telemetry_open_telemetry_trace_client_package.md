@@ -28,6 +28,8 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
+## 01-02. スパンの作成
+
 ### スパンの構造
 
 #### ▼ ルートスパン
@@ -130,9 +132,43 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### エラー時の事後処理
+### スパンの操作別種類
 
-#### ▼ 未送信スパンの送信
+#### ▼ Internal
+
+アプリケーションの内部操作に関する情報を持つ。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+#### ▼ Server
+
+クライアントからのリクエストの受信処理に関する操作の情報を持つ。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+#### ▼ Client
+
+サーバーへのリクエストの送信処理に関する操作の情報を持つ。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+#### ▼ Producer
+
+メッセージブローカーやメッセージキューからのリクエストの受信処理に関する操作の情報を持つ。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+#### ▼ Consumer
+
+メッセージブローカーやメッセージキューへのリクエストの送信処理に関する操作の情報を持つ。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+<br>
+
+## 01-03. エラー時の事後処理
+
+### 未送信スパンの送信
 
 処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
 
@@ -175,7 +211,9 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush
 > - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 
-#### ▼ Graceful Shutdown処理
+<br>
+
+### Graceful Shutdown処理
 
 TraceProviderは、Graceful Shutdown処理を実行するための関数を持っている。
 

@@ -280,7 +280,7 @@ processors:
 
 #### ▼ batchとは
 
-テレメトリーファイルを圧縮するバッチ処理を実行する。
+テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。
 
 推奨である。
 
@@ -291,17 +291,21 @@ processors:
 ```yaml
 processors:
   batch:
-    timeout: 5s
+    timeout: 8192s
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
 
 #### ▼ send_batch_size
 
+バッチ当たりの上限サイズを設定する。
+
+`0`は上限なしを表す。
+
 ```yaml
 processors:
   batch:
-    send_batch_size: 50
+    send_batch_size: 0
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md

@@ -804,7 +804,7 @@ CIDR内のセカンダリープライベートIPアドレスが使用中であ�
 
 もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。
 
-> - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/subnet-cidr-reservation.html
+> - https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html
 
 <br>
 
