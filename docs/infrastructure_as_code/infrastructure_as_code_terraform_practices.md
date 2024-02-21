@@ -125,7 +125,7 @@ repository/
     │   ├── ecs/        # ECS
     │   ├── lambda/     # Lambda
     │   │   └── functions/
-    │   │       └── foo_function/ # スクリプト
+    │   │       └── foo_function/ # スクリプトのディレクトリ
     │   │
     │   └── rds/        # RDS
     │

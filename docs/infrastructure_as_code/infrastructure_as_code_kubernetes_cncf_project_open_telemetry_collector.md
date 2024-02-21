@@ -236,5 +236,6 @@ spec:
 この場合、OpenTelemetry OperatorがInitContainerを介して、アプリコンテナにOpenTelemetryの実装を挿入する。
 
 > - https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377
+> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52
 
 <br>
