@@ -21,7 +21,7 @@ description: SREing：Site Reliability Engineering＠DevOpsの知見を記録し
 
 サイトの信頼性向上を目的としたエンジニアリング手法のこと。
 
-DevOpsを実践したエンジニアリング手法でもある。
+DevOpsというインターフェースを実装したエンジニアリング手法でもある。
 
 <br>
 
