@@ -21276,7 +21276,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-snssimple-notification-service">01. SNSとは：Simple Notification Service<a class="headerlink" href="#01-snssimple-notification-service" title="Permanent link">&para;</a></h2>
-<p>メッセージキュー (例：AWS SNS) やメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
+<p>クラウドパブリッシュ/サブスクライブシステムとして働く。</p>
+<p>メッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
+<p>また、メッセージキュー (例：AWS SNS) とは異なりメッセージをルーティングできるが、メッセージをキューイングできない。</p>
 <p>パブリッシャーから発信されたメッセージをエンドポイントで受信し、サブスクライバーに転送する。</p>
 <p><img alt="SNSとは" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SNSとは.png" /></p>
 <blockquote>

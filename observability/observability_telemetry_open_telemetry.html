@@ -20229,11 +20229,11 @@
         <li class="md-nav__item">
   <a href="#01-03" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. テレメトリーコンシューマー
+      01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. テレメトリーコンシューマー">
+    <nav class="md-nav" aria-label="01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21437,11 +21437,11 @@
         <li class="md-nav__item">
   <a href="#01-03" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. テレメトリーコンシューマー
+      01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. テレメトリーコンシューマー">
+    <nav class="md-nav" aria-label="01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21637,7 +21637,7 @@
 <p><br></p>
 <h2 id="01-opentelemetry">01. OpenTelemetryの仕組み<a class="headerlink" href="#01-opentelemetry" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーコンシューマー (例：opentelemetryコレクター、など) といったコンポーネントから構成されている。</p>
+<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：opentelemetryコレクター、など) といったコンポーネントから構成されている。</p>
 <p>OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。</p>
 <p><img alt="open-telemetry_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png" /></p>
 <blockquote>
@@ -21663,9 +21663,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-03">01-03. テレメトリーコンシューマー<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
+<h2 id="01-03">01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="opentelemetry_1">opentelemetryコレクター<a class="headerlink" href="#opentelemetry_1" title="Permanent link">&para;</a></h3>
 <h4 id="opentelemetry_2">▼ opentelemetryコレクターとは<a class="headerlink" href="#opentelemetry_2" title="Permanent link">&para;</a></h4>
+<p>『テレメトリーコンシューマー』ともいう。</p>
 <p>opentelemetryコレクターは、レシーバー、プロセッサー、エクスポーター、といったコンポーネントから構成されている。</p>
 <p>otelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
 <p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、opentelemetryコレクターを使用した方が良い。</p>
@@ -21708,7 +21709,7 @@
 <h2 id="01-04">01-04. テレメトリースキーマ<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
 <h3 id="_7">テレメトリースキーマとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>テレメトリーの構造やデータ型を定義したもの。</p>
-<p>コンポーネント (テレメトリーソース、テレメトリーコンシューマー) 間でテレメトリーを変換できる。</p>
+<p>コンポーネント (テレメトリーソース、テレメトリーサブスクライバー) 間でテレメトリーを変換できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/schemas/#how-schemas-work">https://opentelemetry.io/docs/specs/otel/schemas/#how-schemas-work</a></li>
@@ -21820,7 +21821,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-21</span>
   </span>
 
     

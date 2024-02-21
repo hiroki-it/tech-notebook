@@ -21272,6 +21272,7 @@
 <h2 id="01-sqssimple-queue-service">01. SQSとは：Simple Queue Service<a class="headerlink" href="#01-sqssimple-queue-service" title="Permanent link">&para;</a></h2>
 <p>クラウドメッセージキューとして働く。</p>
 <p>メッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
+<p>パブリッシュ/サブスクライブシステム (例：AWS SNS) とは異なりメッセージをキューイングできるが、メッセージをルーティングできない。</p>
 <p>パブリッシャーが送信したメッセージは、一旦SQSに追加される。</p>
 <p>その後、サブスクライバーは、SQSに対してリクエストを送信し、メッセージを取り出す。</p>
 <p>異なるVPC間でも、メッセージキューを同期できる。</p>
