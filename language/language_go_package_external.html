@@ -22656,8 +22656,19 @@
 <h4 id="_5">▼ パブリックリポジトリから (開発中)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>コミットハッシュ値を使用して、パブリックリポジトリから開発中のパッケージをインポートする。</p>
 <p>この場合、<code>go get</code>コマンドで特定のコミットIDのモジュールをインストールする。</p>
-<p>これにより、<code>go.mod</code>ファイルにインポート定義が追加される。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/bar.git@&lt;コミットID&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo@&lt;コミットID&gt;
+
+go:<span class="w"> </span>downloading<span class="w"> </span>github.com/foo<span class="w"> </span>v0.0.0-&lt;コミット日時のタイムスタンプ&gt;-&lt;コミットID&gt;
+go:<span class="w"> </span>added<span class="w"> </span>github.com/foo<span class="w"> </span>v0.0.0-&lt;コミット日時のタイムスタンプ&gt;-&lt;コミットID&gt;
+</code></pre></div>
+<p><code>go get</code>コマンドは、<code>go.mod</code>ファイルにインポート定義を追加する。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">repository</span>
+
+<span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
+
+<span class="nx">require</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">foo</span><span class="w"> </span><span class="nx">v0</span><span class="mf">.0.0</span><span class="o">-</span><span class="p">&lt;</span><span class="nx">コミット日時のタイムスタンプ</span><span class="p">&gt;</span><span class="o">-</span><span class="p">&lt;</span><span class="nx">コミットID</span><span class="p">&gt;</span><span class="w"> </span><span class="c1">// indirect</span>
+<span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22666,14 +22677,14 @@
 </blockquote>
 <h4 id="_6">▼ プライベートリポジトリから<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、プライベートリポジトリのパッケージをインポートできない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo.git
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo
 
-github.com/foo.git@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>module:<span class="w"> </span>github.com/foo.git@v1.0.0:<span class="w"> </span>reading<span class="w"> </span>https://sum.golang.org/lookup/github.com/foo.git@v1.0.0:<span class="w"> </span><span class="m">410</span><span class="w"> </span>Gone
+github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>module:<span class="w"> </span>github.com/foo@v1.0.0:<span class="w"> </span>reading<span class="w"> </span>https://sum.golang.org/lookup/github.com/foo@v1.0.0:<span class="w"> </span><span class="m">410</span><span class="w"> </span>Gone
 <span class="w">    </span>server<span class="w"> </span>response:
-<span class="w">    </span>not<span class="w"> </span>found:<span class="w"> </span>github.com/foo.git@v1.0.0:<span class="w"> </span>invalid<span class="w"> </span>version:<span class="w"> </span>git<span class="w"> </span>ls-remote<span class="w"> </span>-q<span class="w"> </span>origin<span class="w"> </span><span class="k">in</span><span class="w"> </span>/tmp/gopath/pkg/mod/cache/vcs/*****:<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">128</span>:
+<span class="w">    </span>not<span class="w"> </span>found:<span class="w"> </span>github.com/foo@v1.0.0:<span class="w"> </span>invalid<span class="w"> </span>version:<span class="w"> </span>git<span class="w"> </span>ls-remote<span class="w"> </span>-q<span class="w"> </span>origin<span class="w"> </span><span class="k">in</span><span class="w"> </span>/tmp/gopath/pkg/mod/cache/vcs/*****:<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">128</span>:
 <span class="w">        </span>fatal:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>look<span class="w"> </span>up<span class="w"> </span>github.com/foo.git<span class="w"> </span><span class="o">(</span>port<span class="w"> </span><span class="m">9418</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>Name<span class="w"> </span>or<span class="w"> </span>service<span class="w"> </span>not<span class="w"> </span>known<span class="o">)</span>
 </code></pre></div>
-<p><code>GOPRIVATE</code>にプライベートリポジトリのURLを設定することで、インポートできるようになる。</p>
+<p><code>GOPRIVATE</code>変数にプライベートリポジトリのURLを設定することで、インポートできるようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>env<span class="w"> </span>-w<span class="w"> </span><span class="nv">GOPRIVATE</span><span class="o">=</span>github.com/foo.git,github.com/bar.git,...
 </code></pre></div>
 <blockquote>
