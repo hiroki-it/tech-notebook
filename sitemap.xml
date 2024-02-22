@@ -1721,6 +1721,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_telemetry_open_telemetry_trace_client_package_nginx.html</loc>
+         <lastmod>2024-02-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/security/index.html</loc>
          <lastmod>2024-02-22</lastmod>
          <changefreq>daily</changefreq>
