@@ -24883,12 +24883,12 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <tr>
 <td><code>prune</code></td>
 <td>リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化した方が良い。<code>rev:&lt;番号&gt;</code>という表記があるKubernetesリソースは、<code>prune</code>を忘れて新旧バージョンが存在していることを表す。Applicationを削除する時には、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。</td>
-<td>- <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning</a></td>
+<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning</a></td>
 </tr>
 <tr>
 <td><code>selfHeal</code></td>
 <td>ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。</td>
-<td>- <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing</a></td>
+<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing</a></td>
 </tr>
 </tbody>
 </table>
@@ -24944,12 +24944,12 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <tr>
 <td><code>PruneLast</code></td>
 <td>通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度全てのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。</td>
-<td>- <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last">https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last</a></td>
+<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last">https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last</a></td>
 </tr>
 <tr>
 <td><code>ServerSideApply</code></td>
 <td>Sync時に、<code>kubectl apply</code>コマンド<code>--server-side</code>オプションを有効化する。</td>
-<td>- <a href="https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply">https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply</a></td>
+<td>・<a href="https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply">https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply</a></td>
 </tr>
 </tbody>
 </table>
@@ -25583,7 +25583,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-22</span>
   </span>
 
     
