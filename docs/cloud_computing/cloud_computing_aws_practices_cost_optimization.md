@@ -96,10 +96,10 @@ EBSボリュームは、ボリュームの使用率に関わらず、最大サ�
 
 | 使い方名                 | 説明                                                                                                                                                                                        | 補足                                                                               |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| オンデマンドインスタンス | EC2の使用期間に応じて使用料金を支払う。                                                                                                                                                     | - https://aws.amazon.com/jp/ec2/pricing/on-demand/                                 |
+| オンデマンドインスタンス | EC2の使用期間に応じて使用料金を支払う。                                                                                                                                                     | ・https://aws.amazon.com/jp/ec2/pricing/on-demand/                                 |
 | Savings Plans            |                                                                                                                                                                                             |                                                                                    |
 | リザーブドインスタンス   | EC2の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。                                                                                                                 |                                                                                    |
-| スポットインスタンス     | 休止しているEC2を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
+| スポットインスタンス     | 休止しているEC2を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ・https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 > - https://tech.nri-net.com/entry/2021/04/21/094600
@@ -181,8 +181,8 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 | 使い方名                 | 説明                                                                                                                                                                                         |
 | :----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| オンデマンドインスタンス | - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                                                       |
-| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
+| オンデマンドインスタンス | ・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                                                       |
+| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 

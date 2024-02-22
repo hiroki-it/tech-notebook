@@ -242,9 +242,9 @@ API Gatewayは上記のJSON型データを受信した後、`body`のみ値を�
 
 | 設定項目                           | 説明                                                                                                                                      |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| キャッシュ設定                     | - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                                   |
+| キャッシュ設定                     | ・https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                                   |
 | デフォルトのメソッドスロットリング | リクエスト数 (個/秒) 制限を設定する。<br>https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
-| WAF                                | - https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                                     |
+| WAF                                | ・https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                                     |
 | クライアント証明書                 | 紐付けるWAFを設定する。                                                                                                                   |
 
 #### ▼ ステージ変数

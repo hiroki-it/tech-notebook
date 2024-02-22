@@ -137,9 +137,9 @@ exports.handler = (event, context, callback) => {
 
 | 引数                | 説明                                                                                                                   | 補足                                                                                                                                                                 |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                         | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>- https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                         | オブジェクトの構造は以下の通り<br>- https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                 |
-| callback関数        | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | - https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                   |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                         | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                         | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                 |
+| callback関数        | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                   |
 
 #### ▼ テストとデバッグ
 
@@ -384,8 +384,8 @@ CloudWatchログにてこれを確認する。
 
 | パッケージ名            | 説明                                                                               | 補足                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                              | - https://nodejs.org/api/index.html                                 |
-| aws-sdk.js              | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | - https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| Node.jsの標準パッケージ | Node.jsにデフォルトで組み込まれている関数を使用できる                              | ・https://nodejs.org/api/index.html                                 |
+| aws-sdk.js              | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 

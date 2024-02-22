@@ -468,9 +468,9 @@ SQLの種類に合わせてツールが用意されている。
 
 | SQLの種類  | ポイントインタイムリカバリーのツール例 | 補足                                                           |
 | ---------- | -------------------------------------- | -------------------------------------------------------------- |
-| MySQL      | XtraBackup                             | - https://developers.cyberagent.co.jp/blog/archives/28454/     |
-| PostgreSQL | Barman                                 | - https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
-| MariaDB    | Xpand                                  | - https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
+| MySQL      | XtraBackup                             | ・https://developers.cyberagent.co.jp/blog/archives/28454/     |
+| PostgreSQL | Barman                                 | ・https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
+| MariaDB    | Xpand                                  | ・https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
 
 ```bash
 # 例えば、一週間分の保管期間を設定した場合

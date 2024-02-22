@@ -373,10 +373,10 @@ fields @timestamp, @message, @logStream
 
 | メトリクス名                    |                                                                                                                                                                             | 補足                                                                  |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                        | - https://e-words.jp/w/MTTF.html                                      |
-| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                            | - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                        | ・https://e-words.jp/w/MTTF.html                                      |
+| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                            | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                    |                                                                       |
-| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTR：Mean Time To Repair       | 障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633

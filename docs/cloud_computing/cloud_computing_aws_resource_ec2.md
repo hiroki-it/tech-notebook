@@ -305,7 +305,7 @@ EC2のクラウド内蔵ストレージとして働く。
 | サイズ                | 選択したボリュームタイプでのサイズを設定する。                   |                                                                                                                                                        |
 | IOPS (I/O per second) | EC2とEBSボリューム間のI/O処理のリクエスト数 (個/秒) を設定する。 | ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>- https://www.idcf.jp/words/io.html |
 | AZ                    | EBSボリュームを作成するAZ。                                      | EC2は、同じAZにあるEBSボリュームしか選択できないので注意する。                                                                                         |
-| 暗号化                | EC2とEBSボリューム間のI/O処理を暗号化するか否かを設定する。      | - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                                                               |
+| 暗号化                | EC2とEBSボリューム間のI/O処理を暗号化するか否かを設定する。      | ・https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html                                                                               |
 
 <br>
 

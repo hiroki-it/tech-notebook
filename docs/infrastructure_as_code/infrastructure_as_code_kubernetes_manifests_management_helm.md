@@ -97,8 +97,8 @@ Kubernetesをアップグレードした場合に、Helmもアップグレード
 
 | レジストリ             | 補足                                               |
 | ---------------------- | -------------------------------------------------- |
-| ArtifactHub (Helm公式) | - https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages   | - https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| ArtifactHub (Helm公式) | ・https://helm.sh/docs/topics/chart_repository/    |
+| GitHub、GitHub Pages   | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
 | AWSリソース (ECR、S3)  |                                                    |
 | Google Cloudリソース   |                                                    |
 
