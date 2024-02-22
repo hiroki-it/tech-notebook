@@ -210,6 +210,8 @@ package main
 
 ### import
 
+#### ▼ importとは
+
 ビルトインパッケージ、内部パッケージ、事前にインストールされた外部パッケージを読み込む。
 
 ```go
@@ -221,6 +223,17 @@ import "<パッケージ名>"
 インターフェースと構造体の両方を同じパッケージに置いていると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
 
 ![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png)
+
+#### ▼ 他の言語でGo製パッケージをインポートする
+
+言語によっては、Go製パッケージをインポートできるパッケージが用意されている。
+
+- `ctypes` (Python)
+- `ffi` (Ruby)
+- `node-ffi` (Node.js)
+- `jna`、`jni`、`swig` (Java)
+
+> - https://medium.com/learning-the-go-programming-language/calling-go-functions-from-other-languages-4c7d8bcc69bf
 
 <br>
 

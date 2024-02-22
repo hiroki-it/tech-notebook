@@ -132,7 +132,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### スパンの操作別種類
+### スパンの操作別の種類
 
 #### ▼ Internal
 

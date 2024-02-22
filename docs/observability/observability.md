@@ -424,39 +424,6 @@ jsonPayload.traceId="<トレースID>"
 - 各種ID
 - マイクロサービスの属性情報
 
-#### ▼ コンテキスト仕様の種類
-
-コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。
-
-- W3C Trace Context
-- W3C Baggage
-- B3 (Zipkin)
-- Jaeger
-- 独自仕様 (AWS X-Ray、Datadog、LightStep、など)
-
-```yaml
-# W3C Trace Context
-GET /my-service HTTP/1.1
----
-Host: myhost.com
-traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
-tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
-```
-
-```yaml
-# B3 (Zipkin)
-GET /my-service HTTP/1.1
----
-Host: myhost.com
-X-B3-TraceId: f102024f34f30692b676c13f47cbcf03
-X-B3-SpanId: e2695f90dfd76b09
-X-B3-Sampled: 1
-```
-
-> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
-> - https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5
-
 #### ▼ コンテキスト作成の仕組み
 
 ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にコンテキストを作成する。
@@ -494,6 +461,49 @@ X-B3-Sampled: 1
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
+
+<br>
+
+### コンテキスト仕様の種類
+
+#### ▼ 一覧
+
+コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。
+
+- W3C Trace Context
+- W3C Baggage
+- B3 (Zipkin)
+- Jaeger
+- 独自仕様 (AWS X-Ray、Datadog、LightStep、など)
+
+> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5
+
+#### ▼ W3C Trace Context
+
+```yaml
+GET /my-service HTTP/1.1
+---
+Host: foo.com
+# バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ
+traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
+# セッションID、特定のリクエストにのみ付与されたデータ、などをリスト形式で運ぶ
+tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
+```
+
+> - https://www.w3.org/TR/trace-context/
+
+#### ▼ B3 (Zipkin)
+
+```yaml
+GET /my-service HTTP/1.1
+---
+Host: foo.com
+X-B3-TraceId: f102024f34f30692b676c13f47cbcf03
+X-B3-SpanId: e2695f90dfd76b09
+X-B3-Sampled: 1
+```
 
 <br>
 
