@@ -66,9 +66,9 @@ module github.com/hiroki-hasegawa/foo-repository
 go 1.16
 ```
 
-#### ▼ インターネットからインポート
+#### ▼ パブリックリポジトリから (リリース済み)
 
-パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。
+パッケージ名とバージョンタグを使用して、パブリックリポジトリからリリース済みのパッケージをインポートする。
 
 `go mod tidy`コマンドによって`// indirect`コメントのついたパッケージが実装される。
 
@@ -86,7 +86,7 @@ require (
     <パッケージ名> <バージョンタグ>
     github.com/foo v1.3.0
     github.com/bar v1.0.0
-	)
+)
 
 // 間接的に依存するパッケージ (アプリで使用するパッケージが依存するパッケージ)
 require (
@@ -105,9 +105,45 @@ func main() {
 > - https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 > - https://developer.so-tech.co.jp/entry/2022/08/16/110108
 
-#### ▼ ローカルマシンからインポート
+#### ▼ パブリックリポジトリから (開発中)
 
-ローカルマシンのみで使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、`replace`関数を使用してインポートする必要がある。
+コミットハッシュ値を使用して、パブリックリポジトリから開発中のパッケージをインポートする。
+
+この場合、`go get`コマンドで特定のコミットIDのモジュールをインストールする。
+
+これにより、`go.mod`ファイルにインポート定義が追加される。
+
+```bash
+$ go get github.com/bar.git@<コミットID>
+```
+
+> - https://stackoverflow.com/a/53682399
+
+#### ▼ プライベートリポジトリから
+
+デフォルトでは、プライベートリポジトリのパッケージをインポートできない。
+
+```bash
+$ go get github.com/foo.git
+
+github.com/foo.git@v1.0.0: verifying module: github.com/foo.git@v1.0.0: reading https://sum.golang.org/lookup/github.com/foo.git@v1.0.0: 410 Gone
+	server response:
+	not found: github.com/foo.git@v1.0.0: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/*****: exit status 128:
+		fatal: unable to look up github.com/foo.git (port 9418) (Name or service not known)
+```
+
+`GOPRIVATE`にプライベートリポジトリのURLを設定することで、インポートできるようになる。
+
+```bash
+$ go env -w GOPRIVATE=github.com/foo.git,github.com/bar.git,...
+```
+
+> - https://goproxy.io/docs/GOPRIVATE-env.html
+> - https://kawaken.dev/posts/20220426_goprivate/
+
+#### ▼ ローカルマシンから
+
+ローカルマシンのみで使用する独自共有パッケージは、パブリックリポジトリ上での自身のリポジトリからインポートせずに、`replace`関数を使用してインポートする必要がある。
 
 独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
 
