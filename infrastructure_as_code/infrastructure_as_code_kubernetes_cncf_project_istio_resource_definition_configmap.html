@@ -18337,6 +18337,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ configとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatessidecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ .templates.sidecar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22387,6 +22411,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ configとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatessidecar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ .templates.sidecar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -23138,6 +23186,7 @@
 <p><br></p>
 <h2 id="04-istio-sidecar-injector">04. istio-sidecar-injector<a class="headerlink" href="#04-istio-sidecar-injector" title="Permanent link">&para;</a></h2>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<h4 id="config_1">▼ configとは<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -23154,17 +23203,32 @@
 <span class="w">    </span><span class="no">template: &quot;{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}&quot;</span>
 <span class="w">    </span><span class="no">templates:</span>
 <span class="w">      </span><span class="no">sidecar: |</span>
+<span class="w">        </span><span class="no"># Helmのテンプレート</span>
+</code></pre></div>
+<h4 id="templatessidecar">▼ .templates.sidecar<a class="headerlink" href="#templatessidecar" title="Permanent link">&para;</a></h4>
+<p>サイドカーの設定値をHelmテンプレートの状態で管理する。</p>
+<p>Istioは、istio-sidecar-injectorの<code>.values</code>キーを使用してテンプレートを動的に完成させる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-sidecar-injector-&lt;リビジョン番号&gt;</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">templates:</span>
+<span class="w">      </span><span class="no">sidecar: |</span>
 
 <span class="w">        </span><span class="no">... # Helmのテンプレート</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection">https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303">https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="values">values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h3>
-<p>istio-sidecar-injector (ConfigMap) に出力できる変数を管理する。</p>
+<p>istio-sidecar-injectorの<code>.templates.sidecar</code>キーに出力する値を<code>values</code>ファイルとして管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -23178,6 +23242,12 @@
 <span class="w">      </span><span class="no">sidecarInjectorWebhook: { ... }</span>
 <span class="w">    </span><span class="no">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karlstoney.com/ci-for-istio-mesh/">https://karlstoney.com/ci-for-istio-mesh/</a></li>
+<li><a href="https://blog.1q77.com/2020/03/istio-part12/">https://blog.1q77.com/2020/03/istio-part12/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="05">05. 環境変数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="istiod">Istiod<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h3>
@@ -23285,7 +23355,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-22</span>
   </span>
 
     
