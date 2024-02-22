@@ -788,6 +788,8 @@ data:
 
 ### config
 
+#### ▼ configとは
+
 Istiodコントロールプレーン (`discovery`コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。
 
 ```yaml
@@ -806,17 +808,37 @@ data:
     template: "{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}"
     templates:
       sidecar: |
+        # Helmのテンプレート
+```
+
+#### ▼ .templates.sidecar
+
+サイドカーの設定値をHelmテンプレートの状態で管理する。
+
+Istioは、istio-sidecar-injectorの`.values`キーを使用してテンプレートを動的に完成させる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-sidecar-injector-<リビジョン番号>
+  namespace: istio-system
+data:
+  config: |
+    templates:
+      sidecar: |
 
         ... # Helmのテンプレート
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+> - https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303
 
 <br>
 
 ### values
 
-istio-sidecar-injector (ConfigMap) に出力できる変数を管理する。
+istio-sidecar-injectorの`.templates.sidecar`キーに出力する値を`values`ファイルとして管理する。
 
 ```yaml
 apiVersion: v1
@@ -832,6 +854,9 @@ data:
       sidecarInjectorWebhook: { ... }
     }
 ```
+
+> - https://karlstoney.com/ci-for-istio-mesh/
+> - https://blog.1q77.com/2020/03/istio-part12/
 
 <br>
 

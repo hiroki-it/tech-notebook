@@ -1167,7 +1167,9 @@ source "${EXPORT_ENVS}"
 
 #### ▼ EC2ワーカーNodeのイメージキャッシュ削除
 
-kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。
+kubeletは、Nodeのイメージのキャッシュを作成する。
+
+イメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。
 
 KubeletConfigurationの`--image-gc-high-threshold`オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。
 
