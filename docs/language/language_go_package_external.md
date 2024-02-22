@@ -111,10 +111,23 @@ func main() {
 
 この場合、`go get`コマンドで特定のコミットIDのモジュールをインストールする。
 
-これにより、`go.mod`ファイルにインポート定義が追加される。
-
 ```bash
-$ go get github.com/bar.git@<コミットID>
+$ go get github.com/foo@<コミットID>
+
+go: downloading github.com/foo v0.0.0-<コミット日時のタイムスタンプ>-<コミットID>
+go: added github.com/foo v0.0.0-<コミット日時のタイムスタンプ>-<コミットID>
+```
+
+`go get`コマンドは、`go.mod`ファイルにインポート定義を追加する。
+
+```go
+module github.com/hiroki-hasegawa/repository
+
+go 1.16
+
+require (
+    github.com/foo v0.0.0-<コミット日時のタイムスタンプ>-<コミットID> // indirect
+)
 ```
 
 > - https://stackoverflow.com/a/53682399
@@ -124,15 +137,15 @@ $ go get github.com/bar.git@<コミットID>
 デフォルトでは、プライベートリポジトリのパッケージをインポートできない。
 
 ```bash
-$ go get github.com/foo.git
+$ go get github.com/foo
 
-github.com/foo.git@v1.0.0: verifying module: github.com/foo.git@v1.0.0: reading https://sum.golang.org/lookup/github.com/foo.git@v1.0.0: 410 Gone
+github.com/foo@v1.0.0: verifying module: github.com/foo@v1.0.0: reading https://sum.golang.org/lookup/github.com/foo@v1.0.0: 410 Gone
 	server response:
-	not found: github.com/foo.git@v1.0.0: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/*****: exit status 128:
+	not found: github.com/foo@v1.0.0: invalid version: git ls-remote -q origin in /tmp/gopath/pkg/mod/cache/vcs/*****: exit status 128:
 		fatal: unable to look up github.com/foo.git (port 9418) (Name or service not known)
 ```
 
-`GOPRIVATE`にプライベートリポジトリのURLを設定することで、インポートできるようになる。
+`GOPRIVATE`変数にプライベートリポジトリのURLを設定することで、インポートできるようになる。
 
 ```bash
 $ go env -w GOPRIVATE=github.com/foo.git,github.com/bar.git,...
