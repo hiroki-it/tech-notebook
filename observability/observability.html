@@ -23486,10 +23486,49 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 </blockquote>
 <h4 id="_56">▼ スパン名<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
 <p>スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。</p>
-<p>例えば、<code>&lt;クラス名&gt;.&lt;メソッド名&gt;</code>とする。</p>
+<p>例えば、ユーザー情報を取得するマイクロサービスのスパン名として、以下の候補がある。</p>
+<p>区切り記号は、ドット (<code>.</code>) や スラッシュ(<code>/</code>) が良い。</p>
+<table>
+<thead>
+<tr>
+<th>スパン名</th>
+<th>構成</th>
+<th style="text-align: center;">良し悪し</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get</code></td>
+<td><code>&lt;HTTPメソッド名&gt;</code></td>
+<td style="text-align: center;">×</td>
+<td></td>
+</tr>
+<tr>
+<td><code>get_account.42</code></td>
+<td><code>&lt;アプリのメソッド名&gt;.&lt;ID&gt;</code></td>
+<td style="text-align: center;">×</td>
+<td></td>
+</tr>
+<tr>
+<td><code>get_account</code></td>
+<td><code>&lt;アプリのメソッド名&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+<td>スパンの属性にアカウントIDを設定するとよい。</td>
+</tr>
+<tr>
+<td><code>get_account.accountId</code></td>
+<td><code>&lt;アプリのメソッド名&gt;.&lt;エンドポイント名&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://opentelemetry.io/docs/languages/java/automatic/annotations/#creating-spans-around-methods-with-withspan">https://opentelemetry.io/docs/languages/java/automatic/annotations/#creating-spans-around-methods-with-withspan</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span">https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span</a></li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name</a></li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions</a></li>
 </ul>
 </blockquote>
 <h4 id="_57">▼ データポイント化<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h4>
