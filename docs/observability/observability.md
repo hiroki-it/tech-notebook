@@ -568,9 +568,20 @@ SaaSツールによってJSON型の構造が異なる。
 
 スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。
 
-例えば、`<クラス名>.<メソッド名>`とする。
+例えば、ユーザー情報を取得するマイクロサービスのスパン名として、以下の候補がある。
 
-> - https://opentelemetry.io/docs/languages/java/automatic/annotations/#creating-spans-around-methods-with-withspan
+区切り記号は、ドット (`.`) や スラッシュ(`/`) が良い。
+
+| スパン名                | 構成                                      | 良し悪し | 補足                                         |
+| ----------------------- | ----------------------------------------- | :------: | -------------------------------------------- |
+| `get`                   | `<HTTPメソッド名>`                        |    ×     |                                              |
+| `get_account.42`        | `<アプリのメソッド名>.<ID>`               |    ×     |                                              |
+| `get_account`           | `<アプリのメソッド名>`                    |    ⭕️    | スパンの属性にアカウントIDを設定するとよい。 |
+| `get_account.accountId` | `<アプリのメソッド名>.<エンドポイント名>` |    ⭕️    |                                              |
+
+> - https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span
+> - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
+> - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions
 
 #### ▼ データポイント化
 
