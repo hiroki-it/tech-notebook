@@ -25975,34 +25975,49 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>データ型や型リテラルに紐付けられている関数のこと。</p>
 <p>Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。</p>
 <h4 id="_51">▼ メソッド名の取得<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
+<p><code>runtime.Caller(1)</code>から、ランタイムの情報を取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;reflect&quot;</span>
 <span class="w">    </span><span class="s">&quot;runtime&quot;</span>
 <span class="p">)</span>
 
 <span class="c1">// メソッド名を取得する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">GetFunctionName</span><span class="p">(</span><span class="nx">function</span><span class="w"> </span><span class="kd">interface</span><span class="p">{})</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">function</span><span class="p">).</span><span class="nx">Pointer</span><span class="p">()).</span><span class="nx">Name</span><span class="p">()</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetCurrentFunctionName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 他に実行中ファイルや行数も取得できる</span>
+<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/runtime#Caller</span>
+<span class="w">    </span><span class="nx">pc</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Failed to get runtime information&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">fn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Failed to get function information&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fn</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 任意の処理</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">GetCurrentFunctionName</span><span class="p">())</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// fooメソッドを渡す</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">GetFunctionName</span><span class="p">(</span><span class="nx">foo</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="c1">// main.foo</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://stackoverflow.com/a/7053871">https://stackoverflow.com/a/7053871</a></li>
-<li><a href="https://golang.hateblo.jp/entry/golang-runtime-file-name-line-number">https://golang.hateblo.jp/entry/golang-runtime-file-name-line-number</a></li>
+<li><a href="https://forum.golangbridge.org/t/get-function-name/31529/3">https://forum.golangbridge.org/t/get-function-name/31529/3</a></li>
+<li><a href="https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples">https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples</a></li>
+<li><a href="https://stackoverflow.com/a/57949382">https://stackoverflow.com/a/57949382</a></li>
 </ul>
 </blockquote>
 <h4 id="_52">▼ レシーバによる紐付け<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
