@@ -1461,6 +1461,37 @@ func main() {
 
 Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。
 
+#### ▼ メソッド名の取得
+
+```go
+package main
+
+import (
+    "fmt"
+    "reflect"
+    "runtime"
+)
+
+// メソッド名を取得する
+func GetFunctionName(function interface{}) string {
+    return runtime.FuncForPC(reflect.ValueOf(function).Pointer()).Name()
+}
+
+func foo() {
+	// 任意の処理
+}
+
+func main() {
+	// fooメソッドを渡す
+    fmt.Println(GetFunctionName(foo))
+}
+
+// main.foo
+```
+
+> - https://stackoverflow.com/a/7053871
+> - https://golang.hateblo.jp/entry/golang-runtime-file-name-line-number
+
 #### ▼ レシーバによる紐付け
 
 データ型や型リテラルなどを関数のレシーバとして渡すことによって、それに関数を紐付けられる。

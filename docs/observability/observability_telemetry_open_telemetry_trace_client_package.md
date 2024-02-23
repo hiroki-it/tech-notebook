@@ -132,35 +132,59 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### スパンの操作別の種類
+### Span Status
+
+#### ▼ Unset
+
+スパンに対応する処理が成功したことを表す。
+
+> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+
+#### ▼ Error
+
+スパンに対応する処理が失敗したことを表す。
+
+> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+
+#### ▼ Ok
+
+スパンに対応する処理を成功したと強制的にみなすことを表す。
+
+成功以外にしたくない場合に使用する。
+
+> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+
+<br>
+
+### Span Kind
 
 #### ▼ Internal
 
-アプリケーションの内部操作に関する情報を持つ。
+アプリケーションの内部処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Server
 
-クライアントからのリクエストの受信処理に関する操作の情報を持つ。
+クライアントからのリクエストの受信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Client
 
-サーバーへのリクエストの送信処理に関する操作の情報を持つ。
+サーバーへのリクエストの送信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Producer
 
-パブリッシャー (プロデューサー) からのメッセージの受信処理に関する操作の情報を持つ。
+パブリッシャー (プロデューサー) からのメッセージの受信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Consumer
 
-コンシューマー (サブスクライバー) からのメッセージの送信処理に関する操作の情報を持つ。
+コンシューマー (サブスクライバー) からのメッセージの送信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
