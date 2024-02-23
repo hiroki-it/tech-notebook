@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Karpenter＠ハードウェアリソース管理の知見を記録しています。">
+        <meta name="description" content="metrics-server＠ハードウェアリソース管理の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_hardware_resource_management_karpenter_resource_definition.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Karpenter＠ハードウェアリソース管理 - 俺の技術ノート</title>
+        <title>【IT技術の知見】metrics-server＠ハードウェアリソース管理 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#karpenter" class="md-skip">
+        <a href="#metrics-server" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Karpenter＠ハードウェアリソース管理
+              【IT技術の知見】metrics-server＠ハードウェアリソース管理
             
           </span>
         </div>
@@ -494,12 +494,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes/index.html" class="md-tabs__link">
           
   
@@ -516,10 +514,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
@@ -13482,8 +13482,6 @@
       
   
   
-    
-  
   
   
     
@@ -13505,22 +13503,19 @@
       
         
       
-        
-      
     
     
-      
-        
-        
       
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
         
           
           
@@ -13536,13 +13531,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="">
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -14175,663 +14170,6 @@
                 
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_6" id="__nav_16_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ ハードウェアリソース管理
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_6">
-            <span class="md-nav__icon md-icon"></span>
-            ■ ハードウェアリソース管理
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    addon-resizer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    cluster-autoscaler
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    descheduler
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    metrics-server
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_6_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_6_5" id="__nav_16_6_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Karpenter
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_6_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_6_5">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Karpenter
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Karpenter
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Karpenter
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-karpenter" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. Karpenterの仕組み
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. Karpenterの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      アーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#karpenter_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      karpenterコントローラー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="karpenterコントローラー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ karpenterコントローラーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Podのバインド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#disruption-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      disruption-controller
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#termination-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      termination-controller
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. スケーリング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. スケーリング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      スケーリングの仕組み
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      スケーリングパラメーター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="スケーリングパラメーター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スケーリングパラメーターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Podのスケジューリングの可否
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コスト
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      削除対象のNode選定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="削除対象のNode選定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#finalizer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Finalizer
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expiration" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Expiration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consolidation" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Consolidation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drift" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Drift
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interruption" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Interruption
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWSリソースとの連携
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWSリソースとの連携">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 起動テンプレート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ EC2フリート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マネージドNodeグループ (有無に関係ない)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#karpentercluster-autoscaler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Karpenterとcluster-autoscaler
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Karpenterとcluster-autoscaler">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#karpenter_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Karpenterのいいところ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-autoscaler" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ cluster-autoscalerのいいところ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      水平/垂直スケーリング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="水平/垂直スケーリング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 対応するスケーリング
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スケールアウト/スケールアップの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スケールイン/スケールダウンの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS側
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS側">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#terraform-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (1) の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (2) の場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    リソース定義
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     
@@ -14853,10 +14191,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6" >
         
           
-          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6" id="__nav_16_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14867,8 +14205,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6">
             <span class="md-nav__icon md-icon"></span>
             ■ 開発
           </label>
@@ -14922,10 +14260,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2" id="__nav_16_7_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2" id="__nav_16_6_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14936,8 +14274,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 開発環境
           </label>
@@ -14968,10 +14306,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_1" id="__nav_16_7_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_1" id="__nav_16_6_2_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14982,8 +14320,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Minikube
           </label>
@@ -15062,10 +14400,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_2" id="__nav_16_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_2" id="__nav_16_6_2_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15076,8 +14414,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Kind
           </label>
@@ -15135,10 +14473,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_3" id="__nav_16_7_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_3" id="__nav_16_6_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15149,8 +14487,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_3">
             <span class="md-nav__icon md-icon"></span>
             ■ K3D
           </label>
@@ -15226,10 +14564,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7" >
         
           
-          <label class="md-nav__link" for="__nav_16_8" id="__nav_16_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15240,8 +14578,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7">
             <span class="md-nav__icon md-icon"></span>
             ■ マニフェスト管理
           </label>
@@ -15278,10 +14616,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1" id="__nav_16_8_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1" id="__nav_16_7_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15292,8 +14630,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Helm
           </label>
@@ -15345,10 +14683,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_2" id="__nav_16_8_1_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_2" id="__nav_16_7_1_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15359,8 +14697,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_2">
             <span class="md-nav__icon md-icon"></span>
             ■ コマンド
           </label>
@@ -15443,10 +14781,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_3" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_3" id="__nav_16_8_1_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_3" id="__nav_16_7_1_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15457,8 +14795,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_3">
             <span class="md-nav__icon md-icon"></span>
             ■ チャート
           </label>
@@ -15581,10 +14919,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_5" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_5" id="__nav_16_8_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_5" id="__nav_16_7_1_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15595,8 +14933,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_5">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_5">
             <span class="md-nav__icon md-icon"></span>
             ■ Helmfile
           </label>
@@ -15687,10 +15025,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_2" id="__nav_16_8_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_2" id="__nav_16_7_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15701,8 +15039,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Kustomize
           </label>
@@ -15798,6 +15136,8 @@
       
   
   
+    
+  
   
   
     
@@ -15817,19 +15157,22 @@
       
         
       
+        
+      
     
     
+      
+        
+        
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
         
           
           
@@ -15845,13 +15188,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             ⏬ K8sアドオン
@@ -16206,6 +15549,594 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17_4" id="__nav_17_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理アドオン
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ハードウェアリソース管理アドオン
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    addon-resizer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cluster-autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    descheduler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. metrics-serverの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. metrics-serverの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      拡張APIサーバー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拡張APIサーバー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 拡張APIサーバーとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ローカルストレージ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクレイパー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. マニフェスト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マニフェスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploymentpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment配下のPod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIService
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-kubectl-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. kubectl topコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. kubectl topコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    <span class="md-ellipsis">
+      node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ nodeとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      pod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ podとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --containers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. Podの自動水平スケーリング/自動垂直スケーリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Podの自動水平スケーリング/自動垂直スケーリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler" class="md-nav__link">
+    <span class="md-ellipsis">
+      HorizontalPodAutoscaler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HorizontalPodAutoscaler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ HorizontalPodAutoscalerとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 最大Pod数の求め方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ レプリカ数との衝突
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メトリクスでのPodの増減
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verticalpodautoscaler" class="md-nav__link">
+    <span class="md-ellipsis">
+      VerticalPodAutoscaler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VerticalPodAutoscaler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verticalpodautoscaler_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ VerticalPodAutoscalerとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Podの再作成のない垂直スケーリング
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_4_5" id="__nav_17_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Karpenter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Karpenter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Karpenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -16229,10 +16160,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5" >
         
           
-          <label class="md-nav__link" for="__nav_17_4" id="__nav_17_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_5" id="__nav_17_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16243,8 +16174,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_5">
             <span class="md-nav__icon md-icon"></span>
             ■ ネットワークアドオン
           </label>
@@ -16317,10 +16248,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_17_4_3" id="__nav_17_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_5_3" id="__nav_17_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16331,8 +16262,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_4_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_5_3">
             <span class="md-nav__icon md-icon"></span>
             ■ CoreDNS
           </label>
@@ -16421,10 +16352,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6" >
         
           
-          <label class="md-nav__link" for="__nav_17_5" id="__nav_17_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6" id="__nav_17_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16435,8 +16366,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6">
             <span class="md-nav__icon md-icon"></span>
             ■ Secretアドオン
           </label>
@@ -16467,10 +16398,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_1" >
         
           
-          <label class="md-nav__link" for="__nav_17_5_1" id="__nav_17_5_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6_1" id="__nav_17_6_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16481,8 +16412,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ SecretsストアCSIドライバー
           </label>
@@ -16561,10 +16492,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_17_5_2" id="__nav_17_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6_2" id="__nav_17_6_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16575,8 +16506,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ ExternalSecretsOperator
           </label>
@@ -16642,10 +16573,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_7" >
         
           
-          <label class="md-nav__link" for="__nav_17_6" id="__nav_17_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_7" id="__nav_17_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16656,8 +16587,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_7">
             <span class="md-nav__icon md-icon"></span>
             ■ クラウドプロバイダーアドオン
           </label>
@@ -16692,10 +16623,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_17_6_1" id="__nav_17_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_7_1" id="__nav_17_7_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16706,8 +16637,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_6_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_7_1">
             <span class="md-nav__icon md-icon"></span>
             ■ AWS EKSアドオン
           </label>
@@ -21536,13 +21467,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-karpenter" class="md-nav__link">
+  <a href="#01-metrics-server" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Karpenterの仕組み
+      01. metrics-serverの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. Karpenterの仕組み">
+    <nav class="md-nav" aria-label="01. metrics-serverの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21555,28 +21486,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#karpenter_1" class="md-nav__link">
+  <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
-      karpenterコントローラー
+      拡張APIサーバー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="karpenterコントローラー">
+    <nav class="md-nav" aria-label="拡張APIサーバー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
+  <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ karpenterコントローラーとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Podのバインド
+      ▼ 拡張APIサーバーとは
     </span>
   </a>
   
@@ -21586,44 +21508,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#disruption-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      disruption-controller
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#termination-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      termination-controller
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. スケーリング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. スケーリング">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      スケーリングの仕組み
+      ローカルストレージ
     </span>
   </a>
   
@@ -21632,26 +21521,116 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      スケーリングパラメーター
+      スクレイパー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="スケーリングパラメーター">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. マニフェスト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マニフェスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#deploymentpod" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スケーリングパラメーターとは
+      Deployment配下のPod
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#apiservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIService
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-kubectl-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. kubectl topコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. kubectl topコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    <span class="md-ellipsis">
+      node
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ nodeとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      pod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#pod_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Podのスケジューリングの可否
+      ▼ podとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --containers
     </span>
   </a>
   
@@ -21660,184 +21639,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コスト
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    <span class="md-ellipsis">
-      削除対象のNode選定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="削除対象のNode選定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#finalizer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Finalizer
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expiration" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Expiration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consolidation" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Consolidation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drift" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Drift
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#interruption" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Interruption
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWSリソースとの連携
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWSリソースとの連携">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 起動テンプレート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ EC2フリート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マネージドNodeグループ (有無に関係ない)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#karpentercluster-autoscaler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Karpenterとcluster-autoscaler
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Karpenterとcluster-autoscaler">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#karpenter_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Karpenterのいいところ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-autoscaler" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ cluster-autoscalerのいいところ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      水平/垂直スケーリング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="水平/垂直スケーリング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 対応するスケーリング
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スケールアウト/スケールアップの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スケールイン/スケールダウンの場合
+      ▼ デバッグ
     </span>
   </a>
   
@@ -21854,38 +21656,98 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#03-pod" class="md-nav__link">
     <span class="md-ellipsis">
-      03. セットアップ
+      03. Podの自動水平スケーリング/自動垂直スケーリング
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. セットアップ">
+    <nav class="md-nav" aria-label="03. Podの自動水平スケーリング/自動垂直スケーリング">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws_1" class="md-nav__link">
+  <a href="#horizontalpodautoscaler" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS側
+      HorizontalPodAutoscaler
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS側">
+    <nav class="md-nav" aria-label="HorizontalPodAutoscaler">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#terraform-1" class="md-nav__link">
+  <a href="#horizontalpodautoscaler_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (1) の場合
+      ▼ HorizontalPodAutoscalerとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform-2" class="md-nav__link">
+  <a href="#pod_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの公式モジュール (2) の場合
+      ▼ 最大Pod数の求め方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ デバッグ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ レプリカ数との衝突
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メトリクスでのPodの増減
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verticalpodautoscaler" class="md-nav__link">
+    <span class="md-ellipsis">
+      VerticalPodAutoscaler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VerticalPodAutoscaler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verticalpodautoscaler_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ VerticalPodAutoscalerとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Podの再作成のない垂直スケーリング
     </span>
   </a>
   
@@ -21919,7 +21781,7 @@
   
 
 
-<h1 id="karpenter">Karpenter＠ハードウェアリソース管理<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h1>
+<h1 id="metrics-server">metrics-server＠ハードウェアリソース管理<a class="headerlink" href="#metrics-server" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21928,512 +21790,309 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-karpenter">01. Karpenterの仕組み<a class="headerlink" href="#01-karpenter" title="Permanent link">&para;</a></h2>
+<h2 id="01-metrics-server">01. metrics-serverの仕組み<a class="headerlink" href="#01-metrics-server" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、karpenterコントローラーから構成される。</p>
-<p><img alt="karpenter_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/reference/threat-model/#karpenter-controller">https://karpenter.sh/preview/reference/threat-model/#karpenter-controller</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
-<h4 id="karpenter_2">▼ karpenterコントローラーとは<a class="headerlink" href="#karpenter_2" title="Permanent link">&para;</a></h4>
-<p>karpenterコントローラーは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。</p>
-<p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
-<p>この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にEC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
-<p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
-<p><img alt="karpenter_controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/reference/threat-model/#architecture--actors">https://karpenter.sh/preview/reference/threat-model/#architecture--actors</a></li>
-<li><a href="https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921">https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921</a></li>
-</ul>
-</blockquote>
-<h4 id="pod">▼ Podのバインド<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。</p>
-<p>kube-schedulerの代わりに、KarpenterがNodeを選定しているため、Podのスケジューリングが早い。</p>
-<p>一方で、cluster-autoscalerであれば、Podをバインドしない。</p>
-<p>cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/reference/threat-model/">https://karpenter.sh/preview/reference/threat-model/</a></li>
-<li><a href="https://sreake.com/blog/learn-about-karpenter/">https://sreake.com/blog/learn-about-karpenter/</a></li>
-<li><a href="https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372">https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372</a></li>
-<li><a href="https://kubesandclouds.com/2022-01-04-karpenter/">https://kubesandclouds.com/2022-01-04-karpenter/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="disruption-controller">disruption-controller<a class="headerlink" href="#disruption-controller" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="termination-controller">termination-controller<a class="headerlink" href="#termination-controller" title="Permanent link">&para;</a></h3>
-<p>EC2ワーカーNodeの削除命令を検知し、EC2ワーカーNodeのGraceful Shutdownから削除までを行う。</p>
-<p>EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。</p>
-<p>そのため、<code>kubelet-config.json</code>ファイル (KubeletConfiguration)の<code>--shutdown-grace-period</code>オプションを使用する必要がある。</p>
-<p>一方で、Karpenterを使用すると、termination-controllerがGraceful Shutdownを実施してくれる。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/disruption/#termination-controller">https://karpenter.sh/docs/concepts/disruption/#termination-controller</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeをスケールアウト/スケールアップする。</p>
-<p>また反対に、EC2 Nodeをスケールイン/スケールダウンする。</p>
-<p>Karpenterはバージョニングされてない独立した起動テンプレートを作成する。</p>
-<p>そのため、残骸として残らないように、その都度起動テンプレートを削除する。</p>
-<div class="highlight"><pre><span></span><code>...
-
-<span class="m">2023</span>-11-30T08:28:56.735Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>found<span class="w"> </span>provisionable<span class="w"> </span>pod<span class="o">(</span>s<span class="o">)</span><span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:28:56.735Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>computed<span class="w"> </span>new<span class="w"> </span>nodeclaim<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>fit<span class="w"> </span>pod<span class="o">(</span>s<span class="o">)</span><span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:28:56.748Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>created<span class="w"> </span>nodeclaim<span class="w">   </span><span class="o">{</span>...<span class="o">}</span>
-
-<span class="c1"># 起動テンプレート作成</span>
-<span class="m">2023</span>-11-30T08:28:56.957Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>created<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:28:57.121Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>created<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:28:57.297Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>created<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-
-<span class="c1"># EC2 Node作成</span>
-<span class="m">2023</span>-11-30T08:28:59.211Z<span class="w">    </span>INFO<span class="w">    </span>controller.nodeclaim.lifecycle<span class="w">  </span>launched<span class="w"> </span>nodeclaim<span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:29:14.009Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.disruption<span class="w">   </span>discovered<span class="w"> </span>subnets<span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:29:33.910Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>registered<span class="w"> </span>nodeclaim<span class="w">    </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:29:46.264Z<span class="w">    </span>INFO<span class="w">    </span>controller.nodeclaim.lifecycle<span class="w">  </span>initialized<span class="w"> </span>nodeclaim<span class="w">   </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:30:15.505Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.disruption<span class="w">   </span>discovered<span class="w"> </span>subnets<span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
-
-<span class="c1"># 起動テンプレート削除</span>
-<span class="m">2023</span>-11-30T08:32:58.872Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:32:59.027Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-<span class="m">2023</span>-11-30T08:32:59.299Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
-
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/aws/karpenter/pull/1278">https://github.com/aws/karpenter/pull/1278</a></li>
-</ul>
-</blockquote>
-<p>そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。</p>
-<p>Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
-<blockquote>
-<ul>
-<li><a href="https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs">https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs</a></li>
-<li><a href="https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/">https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/</a></li>
-<li><a href="https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010">https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_4">スケーリングパラメーター<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ スケーリングパラメーターとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、様々な情報に基づいて、Nodeをスケーリングするか否かを決定する。</p>
-<p>鳥の群れの動きをモデリングしたBoidsアルゴリズムに似たような方法で、スケーリング対象のNodeを選定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation">https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation</a></li>
-<li><a href="https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm">https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm</a></li>
-</ul>
-</blockquote>
-<h4 id="pod_1">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code>状態) を検知し、Nodeのスケジューリングを検討する。</p>
-<p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#scheduling">https://karpenter.sh/docs/concepts/#scheduling</a></li>
-<li><a href="https://karpenter.sh/docs/concepts/provisioners/#max-pods">https://karpenter.sh/docs/concepts/provisioners/#max-pods</a></li>
-</ul>
-</blockquote>
-<h4 id="_6">▼ コスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>より低コストになるようにEC2 Nodeを統合する。</p>
-<p>以下のような条件の場合に、統合を発動する。</p>
-<ul>
-<li>EC2 NodeにPodがおらず、これを削除できる</li>
-<li>Podが特定のEC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。</li>
-<li>現在のインスタンスタイプより低いインスタンスタイプにしても、問題なくPodを動かせる。</li>
-</ul>
-<p>反対に、以下のような条件の場合には統合しない。</p>
-<ul>
-<li>コントローラーが不明なPodがいる</li>
-<li>Podの退避を拒否するPodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。</li>
-<li>Podの<code>metadata.annotations</code>キー配下に<code>karpenter.sh/do-not-evict</code>キーがある。</li>
-<li>PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
-<li><a href="https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation">https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="node">削除対象のNode選定<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
-<p>Nodeの削除はKarpenterが管理する。</p>
-<p>Karpenter外から削除操作 (例：<code>kubectl delete</code>コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
-</ul>
-</blockquote>
-<h4 id="expiration">▼ Expiration<a class="headerlink" href="#expiration" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
-</ul>
-</blockquote>
-<h4 id="consolidation">▼ Consolidation<a class="headerlink" href="#consolidation" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
-</ul>
-</blockquote>
-<h4 id="drift">▼ Drift<a class="headerlink" href="#drift" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
-</ul>
-</blockquote>
-<h4 id="interruption">▼ Interruption<a class="headerlink" href="#interruption" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。</p>
-<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
-<p>不都合があって廃止した経緯がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md">https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md</a></li>
-<li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547">https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547</a></li>
-</ul>
-</blockquote>
-<h4 id="ec2">▼ EC2フリート<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/o2346/items/6277a7ff6b1826d8de11">https://qiita.com/o2346/items/6277a7ff6b1826d8de11</a></li>
-</ul>
-</blockquote>
-<h4 id="node_1">▼ マネージドNodeグループ (有無に関係ない)<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
-<p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートAPIを動的にコールする。</p>
-<p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features">https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features</a></li>
-<li><a href="https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas">https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="karpentercluster-autoscaler">Karpenterとcluster-autoscaler<a class="headerlink" href="#karpentercluster-autoscaler" title="Permanent link">&para;</a></h3>
-<h4 id="karpenter_3">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_3" title="Permanent link">&para;</a></h4>
-<p>AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。</p>
-<p>Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。</p>
-<p>そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。</p>
-<p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru">https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru</a></li>
-</ul>
-</blockquote>
-<h4 id="cluster-autoscaler">▼ cluster-autoscalerのいいところ<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">&para;</a></h4>
-<p>cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。</p>
-<p>そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。</p>
-<p>一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。</p>
-<p>そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。</p>
-<p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd">https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd</a></li>
-<li><a href="https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru">https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru</a></li>
-<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_8">水平/垂直スケーリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ 対応するスケーリング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、現在のハードウェアリソースの使用量に応じて、Nodeを水平/垂直スケーリングする。</p>
-<p>なお、Karpeneterでは垂直スケーリングを代わりに『deprovisioning』という。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/aws/karpenter/issues/1226">https://github.com/aws/karpenter/issues/1226</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ スケールアウト/スケールアップの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウト/スケールアップを実行する。</p>
-<p>Karpenterは、スケジューリングできないPod (<code>Pending</code>状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
+<p>metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。</p>
+<p>PodとNodeのメトリクスのデータポイントを収集し、<code>kubectl top</code>コマンドでこれを取得できる。</p>
+<p>また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。</p>
+<p>KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスのデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。</p>
+<p>似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Podが、Nodeの<code>70</code>%にあたるハードウェアリソースを要求する。</p>
-<p>しかし、Nodeが<code>1</code>台では足りない。<code>70 + 70 = 140%</code>になるため、既存のNodeの少なくとも<code>1.4</code>倍のスペックが必要となる。</p>
+<p>クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照しようとする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>新しく決定したスペックで、Nodeを新しく作成する。</p>
+<p>クライアントは、kube-apiserverにリクエストが送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新しく作成したNodeにPodをスケジューリングさせる。また、既存のNodeが不要であれば削除する。</p>
+<p>kube-apiserverは、metrics-serverのプロキシ (APIService) にリクストを転送する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>結果として、<code>1</code>台で<code>2</code>個のPodをスケジューリングさせている。</p>
+<p>APIServiceは、クライアントにメトリクスを返信する。</p>
 </dd>
 </dl>
+<p><img alt="kubernetes_metrics-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88">https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88</a></li>
-<li><a href="https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382">https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382</a></li>
-</ul>
-</blockquote>
-<h4 id="_11">▼ スケールイン/スケールダウンの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能なNodeを選ぶ。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/disruption/">https://karpenter.sh/preview/concepts/disruption/</a></li>
-<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
+<li><a href="https://speakerdeck.com/bells17/metrics-server?slide=20">https://speakerdeck.com/bells17/metrics-server?slide=20</a>&gt;</li>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base">https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base</a>&gt;</li>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server">https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="aws_1">AWS側<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
-<h4 id="terraform-1">▼ Terraformの公式モジュール (1) の場合<a class="headerlink" href="#terraform-1" title="Permanent link">&para;</a></h4>
-<p><code>terraform-aws-modules/iam/.../iam-assumable-role-with-oidc</code>を使用する。</p>
-<p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
-<p>ここでは、Terraformの公式モジュールを使用する。</p>
-<p>コマンド (例：<code>eksctl</code>コマンド) を使用しても良い。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
-
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-
-<span class="c1">  # karpenterコントローラーのPodに紐付けるIAMロール</span>
-<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller&quot;</span>
-
-<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
-
-<span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
-<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.karpenter_controller.arn</span>
-
-<span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
-<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
-<span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:karpenter:karpenter&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller-policy&quot;</span>
-<span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
-<span class="p">}</span>
-
-<span class="c1"># karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のタグのみを持つEC2を指定できるようにする</span>
-<span class="c1"># EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく</span>
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSubnets&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSpotPriceHistory&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeLaunchTemplates&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypes&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypeOfferings&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeAvailabilityZones&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のタグを持つEC2しか指定できない</span>
-<span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
-<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
-<span class="c1">      # 起動テンプレートからEC2 Nodeを作成する</span>
-<span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のタグを持つEC2しか指定できない</span>
-<span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
-<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
-<span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
-<span class="w">      </span><span class="p">]</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="c1">    # 起動テンプレートからEC2 Nodeを作成する</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:launch-template/*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*::snapshot/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*::image/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:volume/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:subnet/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:spot-instances-request/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:security-group/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:network-interface/*&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:instance/*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;arn:aws:ssm:*:*:parameter/aws/service/*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;iam:PassRole&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="nv">module.eks_managed_node_group.iam_role_arn</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;eks:DescribeCluster&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="nv">module.eks.cluster_arn</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;iam:TagInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:RemoveRoleFromInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:GetInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:DeleteInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:CreateInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:AddRoleToInstanceProfile&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;*&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h3 id="api">拡張APIサーバー<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h4 id="api_1">▼ 拡張APIサーバーとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<p>拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。</p>
+<p>データポイントはローカルストレージに保管している。</p>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
-<li><a href="https://github.com/aws/karpenter/pull/1332#issue-1135967441">https://github.com/aws/karpenter/pull/1332#issue-1135967441</a></li>
-<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
-<li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
+<li><a href="https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html">https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html</a>&gt;</li>
+<li><a href="https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58">https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58</a>&gt;</li>
 </ul>
 </blockquote>
-<h4 id="terraform-2">▼ Terraformの公式モジュール (2) の場合<a class="headerlink" href="#terraform-2" title="Permanent link">&para;</a></h4>
-<p><code>terraform-aws-modules/eks/.../karpenter</code>を使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;eks_iam_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/eks/aws//modules/karpenter&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 19.18.0&quot;</span>
-
-<span class="w">  </span><span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.eks.cluster_name</span>
-
-<span class="w">  </span><span class="na">create_iam_role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="w">  </span><span class="na">create_instance_profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="w">  </span><span class="na">enable_karpenter_instance_profile_creation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-
-<span class="w">  </span><span class="na">enable_spot_termination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="w">  </span><span class="na">queue_managed_sse_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="w">  </span><span class="na">irsa_oidc_provider_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.eks.oidc_provider_arn</span>
-
-<span class="w">  </span><span class="na">irsa_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller&quot;</span>
-
-<span class="w">  </span><span class="na">irsa_use_name_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
-<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
-<span class="w">  </span><span class="na">irsa_namespace_service_accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;karpenter:karpenter&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-
-<span class="c1">  # 特定のタグを持つEC2しか指定できない</span>
-<span class="w">  </span><span class="na">irsa_tag_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;karpenter.sh/discovery&quot;</span>
-
-<span class="w">  </span><span class="na">irsa_tag_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-
-<span class="w">  </span><span class="nb">iam_role_additional_policies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">AmazonSSMManagedInstanceCore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="na">iam_role_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.eks_managed_node_group.worker_iam_role_arn</span>
-<span class="p">}</span>
+<p><br></p>
+<h3 id="_3">ローカルストレージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>ローカルストレージは、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。</p>
+<p><br></p>
+<h3 id="_4">スクレイパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。</p>
+<p>kubeletのデーモンはメトリクス収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code>、など) を持ち、これがスクレイパーの収集対象になる。</p>
+<p>そのため、PodやNodeにメトリクス収集用エンドポイント (例：<code>/metrics</code>) を設ける必要はない。</p>
+<p><img alt="metrics-server_scraper" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/">https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/metrics-server/metrics-server:v0.6.3</span>
+<span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--cert-dir=/tmp</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--secure-port=4443</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--kubelet-use-node-status-port</span>
+<span class="w">        </span><span class="c1"># メトリクスの収集間隔を最小にする。</span>
+<span class="w">        </span><span class="c1"># https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-resolution=15s</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Mi</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">          </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4443</span>
+<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/readyz</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPS</span>
+<span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/livez</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPS</span>
+<span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">        </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">        </span><span class="c1"># metrics-serverの準備完了を待たずにReadinessProbeヘルスチェックを実施しないように、初回のヘルスチェックを開始するまでの待機時間を延長する</span>
+<span class="w">        </span><span class="c1"># https://github.com/kubernetes-sigs/metrics-server/issues/1056#issuecomment-1288198994</span>
+<span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp-dir</span>
+<span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system-cluster-critical</span>
+<span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp-dir</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
-<li><a href="https://github.com/aws/karpenter/pull/1332#issue-1135967441">https://github.com/aws/karpenter/pull/1332#issue-1135967441</a></li>
-<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
-<li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml">https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="apiservice">APIService<a class="headerlink" href="#apiservice" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiregistration.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">APIService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1beta1.metrics.k8s.io</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics.k8s.io</span>
+<span class="w">  </span><span class="nt">groupPriorityMinimum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">  </span><span class="nt">insecureSkipTLSVerify</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1beta1</span>
+<span class="w">  </span><span class="nt">versionPriority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml">https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-kubectl-top">02. <code>kubectl top</code>コマンド<a class="headerlink" href="#02-kubectl-top" title="Permanent link">&para;</a></h2>
+<h3 id="node">node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
+<h4 id="node_1">▼ nodeとは<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
+<p>Nodeのハードウェアリソースの消費量を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Nodeのメトリクスを取得</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>node
+
+NAME<span class="w">       </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>CPU%<span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span><span class="w">   </span>MEMORY%
+foo-node<span class="w">   </span>174m<span class="w">         </span><span class="m">2</span>%<span class="w">     </span>8604Mi<span class="w">          </span><span class="m">30</span>%
+bar-node<span class="w">   </span>2917m<span class="w">        </span><span class="m">82</span>%<span class="w">    </span>16455Mi<span class="w">         </span><span class="m">57</span>%
+baz-node<span class="w">   </span>352m<span class="w">         </span><span class="m">4</span>%<span class="w">     </span>9430Mi<span class="w">          </span><span class="m">33</span>%
+</code></pre></div>
+<p>また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張APIサーバーからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。</p>
+<p><img alt="horizontal-pod-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/">https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ デバッグ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が<code>&lt;unknown&gt;</code>になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>node
+
+NAME<span class="w">      </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">  </span>CPU%<span class="w">       </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span><span class="w">  </span>MEMORY%
+master-1<span class="w">  </span>192m<span class="w">        </span><span class="m">2</span>%<span class="w">         </span>10874Mi<span class="w">        </span><span class="m">68</span>%
+node-1<span class="w">    </span>582m<span class="w">        </span><span class="m">7</span>%<span class="w">         </span>9792Mi<span class="w">         </span><span class="m">61</span>%
+node-2<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;unknown&gt;<span class="w">  </span>&lt;unknown&gt;<span class="w">      </span>&lt;unknown&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes">https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="pod">pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="pod_1">▼ podとは<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
+<p>Podのハードウェアリソースの消費量を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+NAME<span class="w">      </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span>
+foo-pod<span class="w">   </span>5m<span class="w">           </span>104Mi
+</code></pre></div>
+<h4 id="-containers">▼ --containers<a class="headerlink" href="#-containers" title="Permanent link">&para;</a></h4>
+<p>Podのコンテナに関して、ハードウェアリソースの消費量を取得する。</p>
+<p>コンテナのKubernetesリソース使用量を足した値が、Pod内で使用するリソース消費量になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>--container<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+POD<span class="w">       </span>NAME<span class="w">            </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span>
+foo-pod<span class="w">   </span>foo-container<span class="w">   </span>1m<span class="w">           </span>19Mi
+foo-pod<span class="w">   </span>istio-proxy<span class="w">     </span>5m<span class="w">           </span>85Mi
+</code></pre></div>
+<h4 id="_6">▼ デバッグ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が<code>&lt;unknown&gt;</code>になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod
+
+NAME<span class="w">       </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">  </span>CPU%<span class="w">       </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span><span class="w">  </span>MEMORY%
+foo-pod<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;unknown&gt;<span class="w">  </span>&lt;unknown&gt;<span class="w">      </span>&lt;unknown&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics">https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-pod">03. Podの自動水平スケーリング/自動垂直スケーリング<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
+<h3 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h3>
+<h4 id="horizontalpodautoscaler_1">▼ HorizontalPodAutoscalerとは<a class="headerlink" href="#horizontalpodautoscaler_1" title="Permanent link">&para;</a></h4>
+<p>Deployment、StatefulSet、ReplicaSet、の単位でPodの自動水平スケーリングを実行する。</p>
+<p>metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。</p>
+<p>設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。</p>
+<p>HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。</p>
+<p><img alt="horizontal-pod-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/">https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/">https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/</a></li>
+</ul>
+</blockquote>
+<h4 id="pod_2">▼ 最大Pod数の求め方<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h4>
+<p>オートスケーリング時の現在のPod数は、次の計算式で算出される。</p>
+<p>算出結果に基づいて、スケールアウト/スケールインが実行される。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">必要な最大</span><span class="n">Pod</span><span class="err">数</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">数</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">の</span><span class="n">CPU</span><span class="err">平均使用率</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">の</span><span class="n">CPU</span><span class="err">使用率のターゲット値</span><span class="p">)</span>
+</code></pre></div>
+<p>例えば、『<code>現在のPod数 = 5</code>』『<code>現在のPodのCPU平均使用率 = 90</code>』『<code>現在のPodのCPU使用率のターゲット値 = 70</code>』だとすると、『<code>必要な最大Pod数 = 7</code>』となる。</p>
+<p>算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14">https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14</a>&gt;</li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ デバッグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Deployment配下のPodで、<code>.spec.containers[]resources</code>キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。</p>
+<p>一方でこれを取得できていない場合、設定が無いか、metrics-serverが正しく動作していない可能性がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>hpa<span class="w"> </span>-A
+
+NAMESPACE<span class="w">  </span>NAME<span class="w">             </span>REFERENCE<span class="w">                   </span>TARGETS<span class="w">         </span>MINPODS<span class="w">   </span>MAXPODS<span class="w">   </span>REPLICAS<span class="w">   </span>AGE
+foo<span class="w">        </span>foo-deployment<span class="w">   </span>Deployment/foo-deployment<span class="w">   </span>&lt;unknown&gt;/80%<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">          </span>391d
+bar<span class="w">        </span>bar-deployment<span class="w">   </span>Deployment/bar-deployment<span class="w">   </span>&lt;unknown&gt;/80%<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">          </span>391d
+baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deployment/baz-deployment<span class="w">   </span>&lt;unknown&gt;/80%<span class="w">   </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">         </span><span class="m">1</span><span class="w">          </span>391d
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.framinal.life/entry/2020/04/14/190601">https://blog.framinal.life/entry/2020/04/14/190601</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ レプリカ数との衝突<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>Deploymentのレプリカ数よりも、HorizontalPodAutoscalerが優先される。</p>
+<p>そのため、もしDeploymentにレプリカ数が設定されていると、マニフェストをデプロイした場合に一度レプリカ数に戻される。</p>
+<p>HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の設定を削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling</a></li>
+<li><a href="https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets">https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets</a></li>
+</ul>
+</blockquote>
+<h4 id="pod_3">▼ メトリクスでのPodの増減<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
+<p>メトリクス上では、既存のPodが削除されて、新しいPodが作成されていることを確認できる。</p>
+<p><br></p>
+<h3 id="verticalpodautoscaler">VerticalPodAutoscaler<a class="headerlink" href="#verticalpodautoscaler" title="Permanent link">&para;</a></h3>
+<h4 id="verticalpodautoscaler_1">▼ VerticalPodAutoscalerとは<a class="headerlink" href="#verticalpodautoscaler_1" title="Permanent link">&para;</a></h4>
+<p>Podの垂直スケーリングを実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://ccvanishing.hateblo.jp/entry/2018/10/02/203205">https://ccvanishing.hateblo.jp/entry/2018/10/02/203205</a>&gt;</li>
+<li><a href="https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8">https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8</a>&gt;</li>
+</ul>
+</blockquote>
+<h4 id="pod_4">▼ Podの再作成のない垂直スケーリング<a class="headerlink" href="#pod_4" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2022/12/31) の仕様では、Podを垂直スケーリングする場合に、Podの再作成が必要になる。</p>
+<p>これを解決するために、いくつかの方法が提案されている。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>マニフェストの新しい設定値の追加</td>
+<td>マニフェストに、垂直スケーリング時のルールに関する設定値 (例：<code>.spec.containers[*].resources[*].resizePolicy</code>キー) を追加する。</td>
+</tr>
+<tr>
+<td>eBPFによるインプレース変更</td>
+<td>ハードウェアリソースの不足が検知された時に、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12">https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12</a>&gt;</li>
+<li><a href="https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet">https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet</a>&gt;</li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode">https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler#vertical_pod_autoscaling_in_auto_mode</a>&gt;</li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22457,7 +22116,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
   </span>
 
     

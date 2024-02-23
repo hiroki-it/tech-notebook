@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="descheduler＠ハードウェアリソース管理の知見を記録しています。">
+        <meta name="description" content="addon-resizer＠ハードウェアリソース管理の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】descheduler＠ハードウェアリソース管理 - 俺の技術ノート</title>
+        <title>【IT技術の知見】addon-resizer＠ハードウェアリソース管理 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#descheduler" class="md-skip">
+        <a href="#addon-resizer" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】descheduler＠ハードウェアリソース管理
+              【IT技術の知見】addon-resizer＠ハードウェアリソース管理
             
           </span>
         </div>
@@ -494,12 +494,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes/index.html" class="md-tabs__link">
           
   
@@ -516,10 +514,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
@@ -13482,8 +13482,6 @@
       
   
   
-    
-  
   
   
     
@@ -13505,22 +13503,19 @@
       
         
       
-        
-      
     
     
-      
-        
-        
       
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
         
           
           
@@ -13536,13 +13531,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="">
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -14175,18 +14170,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -14198,509 +14185,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6" >
         
           
           <label class="md-nav__link" for="__nav_16_6" id="__nav_16_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ ハードウェアリソース管理
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_6">
-            <span class="md-nav__icon md-icon"></span>
-            ■ ハードウェアリソース管理
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    addon-resizer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    cluster-autoscaler
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    descheduler
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    descheduler
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-descheduler" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. descheduler
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. descheduler">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      アーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kube-scheduler" class="md-nav__link">
-    <span class="md-ellipsis">
-      kube-schedulerだけでは足りない理由
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      マニフェストの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#job" class="md-nav__link">
-    <span class="md-ellipsis">
-      Job
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      ConfigMap
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-deschedulerpolicy" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. DeschedulerPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. DeschedulerPolicy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deschedulerpolicy" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeschedulerPolicyとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deschedulerpolicy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeschedulerPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DeschedulerPolicy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lownodeutilization" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ LowNodeUtilization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeduplicates" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemoveDuplicates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removefailed" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemoveFailed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodshavingtoomanyrestarts" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsHavingTooManyRestarts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingnodeaffinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingNodeAffinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatinginterpodantiaffinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingInterPodAntiAffinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingnodetaints" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingNodeTaints
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingTopologySpreadConstraint
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      グローバルオプション
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="グローバルオプション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nodefit" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ nodeFit
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    metrics-server
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_16_6_5" id="__nav_16_6_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Karpenter
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_6_5">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Karpenter
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Karpenter
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    リソース定義
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14711,8 +14205,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6">
             <span class="md-nav__icon md-icon"></span>
             ■ 開発
           </label>
@@ -14766,10 +14260,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2" id="__nav_16_7_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2" id="__nav_16_6_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14780,8 +14274,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 開発環境
           </label>
@@ -14812,10 +14306,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_1" id="__nav_16_7_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_1" id="__nav_16_6_2_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14826,8 +14320,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Minikube
           </label>
@@ -14906,10 +14400,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_2" id="__nav_16_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_2" id="__nav_16_6_2_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14920,8 +14414,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Kind
           </label>
@@ -14979,10 +14473,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_6_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_16_7_2_3" id="__nav_16_7_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_6_2_3" id="__nav_16_6_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14993,8 +14487,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_7_2_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_6_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_6_2_3">
             <span class="md-nav__icon md-icon"></span>
             ■ K3D
           </label>
@@ -15070,10 +14564,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7" >
         
           
-          <label class="md-nav__link" for="__nav_16_8" id="__nav_16_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15084,8 +14578,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7">
             <span class="md-nav__icon md-icon"></span>
             ■ マニフェスト管理
           </label>
@@ -15122,10 +14616,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1" id="__nav_16_8_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1" id="__nav_16_7_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15136,8 +14630,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Helm
           </label>
@@ -15189,10 +14683,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_2" id="__nav_16_8_1_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_2" id="__nav_16_7_1_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15203,8 +14697,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_2">
             <span class="md-nav__icon md-icon"></span>
             ■ コマンド
           </label>
@@ -15287,10 +14781,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_3" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_3" id="__nav_16_8_1_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_3" id="__nav_16_7_1_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15301,8 +14795,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_3">
             <span class="md-nav__icon md-icon"></span>
             ■ チャート
           </label>
@@ -15425,10 +14919,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_1_5" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_1_5" id="__nav_16_8_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_1_5" id="__nav_16_7_1_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15439,8 +14933,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_1_5">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_1_5">
             <span class="md-nav__icon md-icon"></span>
             ■ Helmfile
           </label>
@@ -15531,10 +15025,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_8_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_16_8_2" id="__nav_16_8_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_16_7_2" id="__nav_16_7_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -15545,8 +15039,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_16_8_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16_7_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Kustomize
           </label>
@@ -15642,6 +15136,8 @@
       
   
   
+    
+  
   
   
     
@@ -15661,19 +15157,22 @@
       
         
       
+        
+      
     
     
+      
+        
+        
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
         
           
           
@@ -15689,13 +15188,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_17" id="__nav_17_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             ⏬ K8sアドオン
@@ -16050,6 +15549,393 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17_4" id="__nav_17_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理アドオン
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ハードウェアリソース管理アドオン
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    addon-resizer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    addon-resizer
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-addon-resizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. addon-resizer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. addon-resizer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. マニフェスト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マニフェスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      マニフェストの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploymentpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment配下のPod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment配下のPod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nanny" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ nanny
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configmap-nanny-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigMap (nanny-config)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfigMap (nanny-config)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ metrics-serverの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cluster-autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    descheduler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_17_4_5" id="__nav_17_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Karpenter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Karpenter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Karpenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -16073,10 +15959,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5" >
         
           
-          <label class="md-nav__link" for="__nav_17_4" id="__nav_17_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_5" id="__nav_17_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16087,8 +15973,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_5">
             <span class="md-nav__icon md-icon"></span>
             ■ ネットワークアドオン
           </label>
@@ -16161,10 +16047,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_4_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_17_4_3" id="__nav_17_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_5_3" id="__nav_17_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16175,8 +16061,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_4_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_5_3">
             <span class="md-nav__icon md-icon"></span>
             ■ CoreDNS
           </label>
@@ -16265,10 +16151,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6" >
         
           
-          <label class="md-nav__link" for="__nav_17_5" id="__nav_17_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6" id="__nav_17_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16279,8 +16165,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6">
             <span class="md-nav__icon md-icon"></span>
             ■ Secretアドオン
           </label>
@@ -16311,10 +16197,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_1" >
         
           
-          <label class="md-nav__link" for="__nav_17_5_1" id="__nav_17_5_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6_1" id="__nav_17_6_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16325,8 +16211,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ SecretsストアCSIドライバー
           </label>
@@ -16405,10 +16291,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_5_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_17_5_2" id="__nav_17_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_6_2" id="__nav_17_6_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16419,8 +16305,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_5_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ ExternalSecretsOperator
           </label>
@@ -16486,10 +16372,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_7" >
         
           
-          <label class="md-nav__link" for="__nav_17_6" id="__nav_17_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_7" id="__nav_17_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16500,8 +16386,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_7">
             <span class="md-nav__icon md-icon"></span>
             ■ クラウドプロバイダーアドオン
           </label>
@@ -16536,10 +16422,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_6_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_17_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_17_6_1" id="__nav_17_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17_7_1" id="__nav_17_7_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -16550,8 +16436,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_17_6_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17_7_1">
             <span class="md-nav__icon md-icon"></span>
             ■ AWS EKSアドオン
           </label>
@@ -21380,28 +21266,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-descheduler" class="md-nav__link">
+  <a href="#01-addon-resizer" class="md-nav__link">
     <span class="md-ellipsis">
-      01. descheduler
+      01. addon-resizer
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. descheduler">
+    <nav class="md-nav" aria-label="01. addon-resizer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       アーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kube-scheduler" class="md-nav__link">
-    <span class="md-ellipsis">
-      kube-schedulerだけでは足りない理由
     </span>
   </a>
   
@@ -21415,11 +21292,11 @@
         <li class="md-nav__item">
   <a href="#01-02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02
+      01-02. マニフェスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02">
+    <nav class="md-nav" aria-label="01-02. マニフェスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21432,124 +21309,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#job" class="md-nav__link">
+  <a href="#deploymentpod" class="md-nav__link">
     <span class="md-ellipsis">
-      Job
+      Deployment配下のPod
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      ConfigMap
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-deschedulerpolicy" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. DeschedulerPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. DeschedulerPolicy">
+    <nav class="md-nav" aria-label="Deployment配下のPod">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deschedulerpolicy" class="md-nav__link">
+  <a href="#nanny" class="md-nav__link">
     <span class="md-ellipsis">
-      DeschedulerPolicyとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deschedulerpolicy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeschedulerPolicy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DeschedulerPolicy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lownodeutilization" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ LowNodeUtilization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeduplicates" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemoveDuplicates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removefailed" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemoveFailed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodshavingtoomanyrestarts" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsHavingTooManyRestarts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingnodeaffinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingNodeAffinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatinginterpodantiaffinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingInterPodAntiAffinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingnodetaints" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingNodeTaints
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ RemovePodsViolatingTopologySpreadConstraint
+      ▼ nanny
     </span>
   </a>
   
@@ -21561,19 +21333,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#configmap-nanny-config" class="md-nav__link">
     <span class="md-ellipsis">
-      グローバルオプション
+      ConfigMap (nanny-config)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="グローバルオプション">
+    <nav class="md-nav" aria-label="ConfigMap (nanny-config)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nodefit" class="md-nav__link">
+  <a href="#metrics-server" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ nodeFit
+      ▼ metrics-serverの場合
     </span>
   </a>
   
@@ -21607,7 +21379,7 @@
   
 
 
-<h1 id="descheduler">descheduler＠ハードウェアリソース管理<a class="headerlink" href="#descheduler" title="Permanent link">&para;</a></h1>
+<h1 id="addon-resizer">addon-resizer＠ハードウェアリソース管理<a class="headerlink" href="#addon-resizer" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21616,300 +21388,70 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-descheduler">01. descheduler<a class="headerlink" href="#01-descheduler" title="Permanent link">&para;</a></h2>
+<h2 id="01-addon-resizer">01. addon-resizer<a class="headerlink" href="#01-addon-resizer" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させる。</p>
-<p>その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>foo
-
-<span class="c1"># deschedulerがPodを退避させる</span>
-35m<span class="w">         </span>Normal<span class="w">   </span>LowNodeUtilization<span class="w">       </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>pod<span class="w"> </span>evicted<span class="w"> </span>from<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal<span class="w"> </span>node<span class="w"> </span>by<span class="w"> </span>sigs.k8s.io/descheduler
-35m<span class="w">         </span>Normal<span class="w">   </span>Killing<span class="w">                  </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>Stopping<span class="w"> </span>container<span class="w"> </span>foo
-
-<span class="c1"># kube-schedulerがPodを再スケジューリングさせる</span>
-35m<span class="w">         </span>Normal<span class="w">   </span>Scheduled<span class="w">                </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Successfully<span class="w"> </span>assigned<span class="w"> </span>foo-5c844554c5-vgdjl<span class="w"> </span>to<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal
-35m<span class="w">         </span>Normal<span class="w">   </span>Pulled<span class="w">                   </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Container<span class="w"> </span>image<span class="w"> </span><span class="s2">&quot;public.ecr.aws/docker/library/foo:*.*.*&quot;</span><span class="w"> </span>already<span class="w"> </span>present<span class="w"> </span>on<span class="w"> </span>machine
-35m<span class="w">         </span>Normal<span class="w">   </span>Created<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Created<span class="w"> </span>container<span class="w"> </span>foo
-35m<span class="w">         </span>Normal<span class="w">   </span>Started<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Started<span class="w"> </span>container<span class="w"> </span>foo
-35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
-</code></pre></div>
+<p>addon-resizerは、サイドカーコンテナとして稼働し、指定したコンテナのハードウェアリソースの要求量を動的に垂直スケーリングする。</p>
+<p>マイクロサービスのためというよりは、インフラのために使用する。</p>
+<p>特に、NodeでDaemonSetとして稼働するテレメトリー収集系のコンテナ (例：metrics-server、kube-state-metrics、heaper) では、Node内のコンテナが増えるほどハードウェアリソースの要求量が増える。</p>
+<p>コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。</p>
 <blockquote>
 <ul>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-<li><a href="https://torumakabe.github.io/post/k8s_descheduler/">https://torumakabe.github.io/post/k8s_descheduler/</a></li>
-<li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8</a></li>
-<li><a href="https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31">https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31</a></li>
+<li><a href="https://github.com/kubernetes/autoscaler/tree/master/addon-resizer">https://github.com/kubernetes/autoscaler/tree/master/addon-resizer</a>&gt;</li>
+<li><a href="https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy">https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy</a></li>
+<li><a href="https://qiita.com/superbrothers/items/650d6591aa6531bdbd08">https://qiita.com/superbrothers/items/650d6591aa6531bdbd08</a>&gt;</li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="kube-scheduler">kube-schedulerだけでは足りない理由<a class="headerlink" href="#kube-scheduler" title="Permanent link">&para;</a></h3>
-<p>Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは現在のNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。</p>
-<p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
-<p><code>kubectl rollout restart</code>コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。</p>
-<p>deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。</p>
-<p>このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。</p>
-<p><img alt="descheduler_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-02">01-02<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">マニフェストの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストから構成されている。</p>
+<p>addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) 、などのマニフェストから構成されている。</p>
 <p><br></p>
-<h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
-<p>ここでは、CronJob配下で定義したとする。</p>
-<p>Deschedulerの実行頻度が高すぎると可用性が低下するため、システムの特徴に合わせて実行頻度を設定する。</p>
-<p>例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に<code>1</code>回だけ実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
+<h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
+<h4 id="nanny">▼ nanny<a class="headerlink" href="#nanny" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 毎日 00:00 (JST) にdeschedulerを実行する</span>
-<span class="w">  </span><span class="c1"># AWS EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
-
-<span class="w">  </span><span class="c1"># その他の例</span>
-<span class="w">  </span><span class="c1"># 12:00 と 24:00 (JST) にdeschedulerを実行する</span>
-<span class="w">  </span><span class="c1"># schedule: &quot;0 3,15 * * *&quot;</span>
-
-<span class="w">  </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Forbid</span>
-<span class="w">  </span><span class="nt">successfulJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">failedJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">jobTemplate</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># ConfigMapの変更に応じて、Jobを更新する。</span>
-<span class="w">            </span><span class="nt">checksum/configmap</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="w">          </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">              </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/descheduler/descheduler:latest</span>
-<span class="w">              </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/descheduler</span>
-<span class="w">              </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;--policy-config-file&#39;</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/policy-dir/policy.yaml</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;--v&#39;</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
-<span class="w">              </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/policy-dir</span>
-<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy-volume</span>
-<span class="w">          </span><span class="c1"># ポリシーの設定ファイルを読み込む</span>
-<span class="w">          </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMap</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy-volume</span>
+<span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-nanny</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/autoscaling/addon-resizer:1.8.14</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-nanny</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pod_nanny</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--config-dir=/etc/config</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--cpu=300m</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--extra-cpu=20m</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--memory=200Mi</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--extra-memory=10Mi</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--threshold=5</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--deployment=nanny-v1</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="configmap">ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
-<p>DeschedulerPolicyのマニフェストを設定する。</p>
+<h3 id="configmap-nanny-config">ConfigMap (nanny-config)<a class="headerlink" href="#configmap-nanny-config" title="Permanent link">&para;</a></h3>
+<h4 id="metrics-server">▼ metrics-serverの場合<a class="headerlink" href="#metrics-server" title="Permanent link">&para;</a></h4>
+<p>以下のようなConfigMapを作成する。</p>
+<p><code>addonmanager.kubernetes.io/mode</code>キーに<code>EnsureExists</code>を設定しないと、addon-managerがデフォルト値に上書きしてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
+<span class="w">    </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnsureExists</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics-server-config</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">policy.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">apiVersion: &quot;descheduler/v1alpha1&quot;</span>
-<span class="w">    </span><span class="no">kind: &quot;DeschedulerPolicy&quot;</span>
-<span class="w">    </span><span class="no">evictLocalStoragePods: &quot;true&quot;</span>
-<span class="w">    </span><span class="no">strategies:</span>
-<span class="w">      </span><span class="no">HighNodeUtilization:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">LowNodeUtilization:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">        </span><span class="no">params:</span>
-<span class="w">          </span><span class="no">nodeResourceUtilizationThresholds:</span>
-<span class="w">            </span><span class="no">targetThresholds:</span>
-<span class="w">              </span><span class="no">cpu: 50</span>
-<span class="w">              </span><span class="no">memory: 50</span>
-<span class="w">              </span><span class="no">pods: 50</span>
-<span class="w">            </span><span class="no">thresholds:</span>
-<span class="w">              </span><span class="no">cpu: 20</span>
-<span class="w">              </span><span class="no">memory: 20</span>
-<span class="w">              </span><span class="no">pods: 20</span>
-<span class="w">      </span><span class="no">PodLifeTime:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemoveDuplicates:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemoveFailedPods:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemovePodsHavingTooManyRestarts:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemovePodsViolatingInterPodAntiAffinity:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemovePodsViolatingNodeAffinity:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">        </span><span class="no">params:</span>
-<span class="w">          </span><span class="no">nodeAffinityType:</span>
-<span class="w">          </span><span class="no">- requiredDuringSchedulingIgnoredDuringExecution</span>
-<span class="w">      </span><span class="no">RemovePodsViolatingNodeTaints:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-<span class="w">      </span><span class="no">RemovePodsViolatingTopologySpreadConstraint:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02-deschedulerpolicy">02. DeschedulerPolicy<a class="headerlink" href="#02-deschedulerpolicy" title="Permanent link">&para;</a></h2>
-<h3 id="deschedulerpolicy">DeschedulerPolicyとは<a class="headerlink" href="#deschedulerpolicy" title="Permanent link">&para;</a></h3>
-<p>退避の対象とするPodの選定ルールを設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler#policy-and-strategies">https://github.com/kubernetes-sigs/descheduler#policy-and-strategies</a>&gt;</li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
-<h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。</p>
-<p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。</p>
-<p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。</p>
-<p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">LowNodeUtilization</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">nodeResourceUtilizationThresholds</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># ターゲット閾値 (この値を超過したNodeからPodを退避させる)</span>
-<span class="w">        </span><span class="nt">targetThresholds</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">        </span><span class="c1"># 閾値 (kube-schedulerを使用して、この値を超過していないNodeにPodを再スケジューリングさせる)</span>
-<span class="w">        </span><span class="nt">thresholds</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">  </span><span class="nt">NannyConfiguration</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">apiVersion: nannyconfig/v1alpha1</span>
+<span class="w">    </span><span class="no">kind: NannyConfiguration</span>
+<span class="w">    </span><span class="no">baseMemory: 100Mi</span>
+<span class="w">    </span><span class="no">memoryPerNode: 20Mi</span>
+<span class="w">    </span><span class="no">cpuPerNode: 1m</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23</a></li>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-</ul>
-</blockquote>
-<h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
-<p>Workload (例：Deployment、StatefulSet、Job) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。</p>
-<p>該当するNodeがない場合、退避させない。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemoveDuplicates</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18</a></li>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-</ul>
-</blockquote>
-<h4 id="removefailed">▼ RemoveFailed<a class="headerlink" href="#removefailed" title="Permanent link">&para;</a></h4>
-<p><code>Failed</code>ステータスなPodはそのままでは削除されない。</p>
-<p>そのため、<code>Failed</code>ステータスなPodがある場合は、このPodをNodeから削除する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemoveFailedPods</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">failedPods</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">minPodLifetimeSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
-<span class="w">        </span><span class="c1"># Failedステータスになった理由でフィルタリングする</span>
-<span class="w">        </span><span class="nt">reasons</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodeAffinity</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler#removefailedpods">https://github.com/kubernetes-sigs/descheduler#removefailedpods</a></li>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-</ul>
-</blockquote>
-<h4 id="removepodshavingtoomanyrestarts">▼ RemovePodsHavingTooManyRestarts<a class="headerlink" href="#removepodshavingtoomanyrestarts" title="Permanent link">&para;</a></h4>
-<p>再起動を繰り返しているPodがある場合に、このPodをNodeから退避させる。</p>
-<p>再起動の回数の閾値を設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemovePodsHavingTooManyRestarts</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">podsHavingTooManyRestarts</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">podRestartThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
-</ul>
-</blockquote>
-<h4 id="removepodsviolatingnodeaffinity">▼ RemovePodsViolatingNodeAffinity<a class="headerlink" href="#removepodsviolatingnodeaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.spec.nodeAffinity</code>キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemovePodsViolatingNodeAffinity</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
-</ul>
-</blockquote>
-<h4 id="removepodsviolatinginterpodantiaffinity">▼ RemovePodsViolatingInterPodAntiAffinity<a class="headerlink" href="#removepodsviolatinginterpodantiaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.podAffinity</code>キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemovePodsViolatingInterPodAntiAffinity</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
-<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-</ul>
-</blockquote>
-<h4 id="removepodsviolatingnodetaints">▼ RemovePodsViolatingNodeTaints<a class="headerlink" href="#removepodsviolatingnodetaints" title="Permanent link">&para;</a></h4>
-<p>taintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
-<h4 id="removepodsviolatingtopologyspreadconstraint">▼ RemovePodsViolatingTopologySpreadConstraint<a class="headerlink" href="#removepodsviolatingtopologyspreadconstraint" title="Permanent link">&para;</a></h4>
-<p>TopologySpreadConstraintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
-<span class="nt">strategies</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">RemovePodsViolatingTopologySpreadConstraint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">podsHavingTooManyRestarts</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">podRestartThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_4">グローバルオプション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="nodefit">▼ nodeFit<a class="headerlink" href="#nodefit" title="Permanent link">&para;</a></h4>
-<p>Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity、など) であるかを検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-sigs/descheduler#node-fit-filtering">https://github.com/kubernetes-sigs/descheduler#node-fit-filtering</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager">https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/addon-manager#addon-manager</a>&gt;</li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -21933,7 +21475,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
   </span>
 
     
