@@ -423,7 +423,21 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-## 06. コンテナランタイム (コンテナエンジン)
+## 06-01. コンテナエンジン
+
+### コンテナエンジンの種類
+
+- Docker Engine
+- Podman
+
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+
+> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
+> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
+
+<br>
+
+## 06-02. コンテナランタイム
 
 ### コンテナランタイムとは
 
@@ -442,27 +456,40 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-### ランタイムの種類
+### コンテナランタイムの種類
 
-#### ▼ CRIランタイムとは
+#### ▼ CRIランタイム
 
 高レベルなランタイムであり、Podやコンテナを管理する。
 
-> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#4
-> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#8
+- containerd
+- CRI-O
+- Docker runtime
+
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+
 > - https://thinkit.co.jp/article/18024
+> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
+> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
 
 #### ▼ OCIランタイム
 
 低レベルなランタイムであり、Nodeのカーネルと通信し、コンテナの作成に必要な環境を整備する。
 
-> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#4
-> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#15
+- runC
+- crun
+- gVisor
+- Kata Containers Runtime
+
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+
 > - https://thinkit.co.jp/article/18024
+> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
+> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
 
 <br>
 
-## 06-02. Containerdの場合
+## 06-03. Containerdの場合
 
 ### セットアップ (Containerdの場合)
 
@@ -492,13 +519,13 @@ $ modprobe br_netfilter
 
 : `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルパラメーターを設定する。
 
-> - https://www.memotansu.jp/kubernetes/3790/#toc2
-
 ```bash
 net.bridge.bridge-nf-call-iptables=1
 net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables=1
 ```
+
+> - https://www.memotansu.jp/kubernetes/3790/#toc2
 
 `(4)`
 
