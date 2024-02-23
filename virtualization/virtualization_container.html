@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ネットワークの知見を記録しています。">
+        <meta name="description" content="コンテナ＠仮想化の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/network/network.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container.html">
       
       
-        <link rel="prev" href="index.html">
+        <link rel="prev" href="virtualization.html">
       
       
-        <link rel="next" href="network_model_osi.html">
+        <link rel="next" href="virtualization_container_docker.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】ネットワーク - 俺の技術ノート</title>
+        <title>【IT技術の知見】コンテナ＠仮想化 - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】ネットワーク
+              【IT技術の知見】コンテナ＠仮想化
             
           </span>
         </div>
@@ -394,13 +394,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
           
   
     
@@ -456,11 +454,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../virtualization/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -8610,8 +8610,6 @@
       
   
   
-    
-  
   
   
     
@@ -8628,22 +8626,21 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../network/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -8654,13 +8651,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="">
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             🌏 ネットワーク
@@ -8673,30 +8670,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    ネットワーク
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="network.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../network/network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8705,205 +8682,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. ネットワークの全体像
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. インターネット
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. インターネット">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      インターネットとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. 通信の方向/位置
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. 通信の方向/位置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      インバウンド/アウトバウンド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      アップストリーム/ダウンストリーム
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. ネットワークの性能指標
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ネットワークの性能指標">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      レスポンスタイム (≒レイテンシー)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      レイテンシー (≒レスポンスタイム)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connection-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection Time (接続時間)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bandwidth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bandwidth (帯域幅)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      スループット (伝送速度)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="スループット (伝送速度)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スループットとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 伝送
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 伝送秒数の求め方
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ トラフィックとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -9016,7 +8794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi.html" class="md-nav__link">
+      <a href="../network/network_model_osi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9083,7 +8861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l5_l7.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l5_l7.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9104,7 +8882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l5_l7_http.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l5_l7_http.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9179,7 +8957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l4.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l4.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9200,7 +8978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l4_port.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l4_port.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9277,7 +9055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l3.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l3.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9298,7 +9076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l3_ip_address.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l3_ip_address.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9319,7 +9097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l3_router.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l3_router.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9348,7 +9126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l2.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l2.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9369,7 +9147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_osi_l1.html" class="md-nav__link">
+      <a href="../network/network_model_osi_l1.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9398,7 +9176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="network_model_tcp.html" class="md-nav__link">
+      <a href="../network/network_model_tcp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12016,6 +11794,8 @@
       
   
   
+    
+  
   
   
     
@@ -12032,21 +11812,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../virtualization/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -12057,13 +11838,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             📦 仮想化
@@ -12079,7 +11860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization.html" class="md-nav__link">
+      <a href="virtualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12097,8 +11878,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -12114,13 +11897,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3" checked>
         
           
           <label class="md-nav__link" for="__nav_14_3" id="__nav_14_3_label" tabindex="0">
@@ -12134,7 +11915,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_14_3">
             <span class="md-nav__icon md-icon"></span>
             ■ コンテナ型仮想化
@@ -12145,10 +11926,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    コンテナ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="virtualization_container.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -12157,6 +11958,127 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. コンテナエンジン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. コンテナエンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンテナエンジンの種類
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. コンテナランタイム
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コンテナランタイム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンテナランタイムとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      イメージレイヤーのキャッシュ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンテナランタイムの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナランタイムの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cri" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CRIランタイム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oci" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OCIランタイム
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -12219,7 +12141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker.html" class="md-nav__link">
+      <a href="virtualization_container_docker.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12240,7 +12162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_storage.html" class="md-nav__link">
+      <a href="virtualization_container_docker_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12261,7 +12183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_network.html" class="md-nav__link">
+      <a href="virtualization_container_docker_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12282,7 +12204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_command.html" class="md-nav__link">
+      <a href="virtualization_container_docker_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12357,7 +12279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_containerd.html" class="md-nav__link">
+      <a href="virtualization_container_containerd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12378,7 +12300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_containerd_command.html" class="md-nav__link">
+      <a href="virtualization_container_containerd_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21340,26 +21262,17 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ネットワークの全体像
+      01. コンテナエンジン
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. インターネット
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. インターネット">
+    <nav class="md-nav" aria-label="01. コンテナエンジン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      インターネットとは
+      コンテナエンジンの種類
     </span>
   </a>
   
@@ -21371,19 +21284,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 通信の方向/位置
+      02. コンテナランタイム
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. 通信の方向/位置">
+    <nav class="md-nav" aria-label="02. コンテナランタイム">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      インバウンド/アウトバウンド
+      コンテナランタイムとは
     </span>
   </a>
   
@@ -21392,104 +21305,35 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      アップストリーム/ダウンストリーム
+      イメージレイヤーのキャッシュ
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. ネットワークの性能指標
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ネットワークの性能指標">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      レスポンスタイム (≒レイテンシー)
+      コンテナランタイムの種類
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      レイテンシー (≒レスポンスタイム)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#connection-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection Time (接続時間)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bandwidth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bandwidth (帯域幅)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      スループット (伝送速度)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="スループット (伝送速度)">
+    <nav class="md-nav" aria-label="コンテナランタイムの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#cri" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ スループットとは
+      ▼ CRIランタイム
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#oci" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 伝送
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 伝送秒数の求め方
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ トラフィックとは
+      ▼ OCIランタイム
     </span>
   </a>
   
@@ -21523,7 +21367,7 @@
   
 
 
-<h1 id="_1">ネットワーク<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">コンテナ＠仮想化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21532,108 +21376,68 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ネットワークの全体像<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>ネットワークには、『インターネット』『WAN』『LAN』がある。</p>
-<p>自宅内LAN、学内LAN、企業内LAN、企業WANなど、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。</p>
-<p><img alt="network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network.png" /></p>
-<p><br></p>
-<h2 id="03">03. インターネット<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_3">インターネットとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>あらゆるLAN間のハブになるパブリックネットワークのこと。</p>
-<p>WANと比較して、通信の利用者が限定されていないため、サイバー攻撃の脆弱性が高い。</p>
-<p>一方で金銭的負担が小さく、帯域幅を考慮しなくてもよい。</p>
-<p><br></p>
-<h2 id="05">05. 通信の方向/位置<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_4">インバウンド/アウトバウンド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>サーバーを中心とした方向で通信を見た時、サーバーに流入する方向をインバウンドという。</p>
-<p>反対に、サーバーから流出する方向をアウトバウンドという。</p>
-<p><img alt="inbound_outbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png" /></p>
+<h2 id="01">01. コンテナエンジン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">コンテナエンジンの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Docker Engine</li>
+<li>Podman</li>
+</ul>
+<p><img alt="container_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://www.amazon.co.jp/dp/B0043D2EKO/">https://www.amazon.co.jp/dp/B0043D2EKO/</a></li>
-<li><a href="https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html">https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html</a></li>
+<li><a href="https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7">https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7</a></li>
+<li><a href="https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html">https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">アップストリーム/ダウンストリーム<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>レスポンスを中心とした方向で通信を見た時に、レスポンスの送信元をアップストリーム、レスポンスの宛先をダウンストリームという。</p>
-<p>反対に、通信が受信される後半の位置を相対的にダウンストリームという。</p>
-<p><img alt="upstream_downstream" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png" /></p>
+<h2 id="02">02. コンテナランタイム<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_4">コンテナランタイムとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.amazon.co.jp/dp/B0043D2EKO/">https://www.amazon.co.jp/dp/B0043D2EKO/</a></li>
-<li><a href="https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html">https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html</a></li>
-<li><a href="https://stackoverflow.com/a/32365658">https://stackoverflow.com/a/32365658</a></li>
+<li><a href="https://thinkit.co.jp/article/17453">https://thinkit.co.jp/article/17453</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. ネットワークの性能指標<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_6">レスポンスタイム (≒レイテンシー)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>リクエストを送信してから、サーバーが処理を実行し、レスポンスが返信されるまでに要する時間のこと。</p>
-<p>ただし、レイテンシーと区別しない場合がある。</p>
+<h3 id="_5">イメージレイヤーのキャッシュ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：<code>var/lib/docker</code>ディレクトリ、<code>var/lib/containerd</code>ディレクトリ、など) に保管する。</p>
 <blockquote>
 <ul>
-<li><a href="https://ec-orange.jp/ec-media/?p=24447">https://ec-orange.jp/ec-media/?p=24447</a></li>
+<li><a href="https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images">https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images</a></li>
+<li><a href="https://stackoverflow.com/a/75905173">https://stackoverflow.com/a/75905173</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">レイテンシー (≒レスポンスタイム)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>リクエストを送信してから、レスポンスが返信されるまで要する時間のこと。</p>
-<p>サーバーの処理時間は含まない。</p>
-<p>ただし、レスポンスタイムと区別しない場合がある。</p>
+<h3 id="_6">コンテナランタイムの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="cri">▼ CRIランタイム<a class="headerlink" href="#cri" title="Permanent link">&para;</a></h4>
+<p>高レベルなランタイムであり、Podやコンテナを管理する。</p>
+<ul>
+<li>containerd</li>
+<li>CRI-O</li>
+<li>Docker runtime</li>
+</ul>
+<p><img alt="container_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://ec-orange.jp/ec-media/?p=24447">https://ec-orange.jp/ec-media/?p=24447</a></li>
+<li><a href="https://thinkit.co.jp/article/18024">https://thinkit.co.jp/article/18024</a></li>
+<li><a href="https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7">https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7</a></li>
+<li><a href="https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html">https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="connection-time">Connection Time (接続時間)<a class="headerlink" href="#connection-time" title="Permanent link">&para;</a></h3>
-<p>リクエストを送信する前に、サーバーとのTCPコネクションの確立に要する時間のこと。</p>
-<p><br></p>
-<h3 id="bandwidth">Bandwidth (帯域幅)<a class="headerlink" href="#bandwidth" title="Permanent link">&para;</a></h3>
-<p>単位時間当たりの送信できる最大ペイロードサイズの理論値のこと。</p>
-<p>帯域幅の実測値は、すなわち『スループット』である。</p>
-<p>インターネットやWANの帯域幅が狭いと、ダウンロード (例：インストール、コンテナイメージのプル) やアップロード (例：POST送信、コンテナイメージのプッシュ) に時間がかかる。</p>
-<blockquote>
+<h4 id="oci">▼ OCIランタイム<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h4>
+<p>低レベルなランタイムであり、コンテナホストのカーネルと通信し、コンテナの作成に必要な環境を整備する。</p>
 <ul>
-<li><a href="https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html">https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html</a></li>
-<li><a href="https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput">https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput</a></li>
+<li>runC</li>
+<li>crun</li>
+<li>gVisor</li>
+<li>Kata Containers Runtime</li>
 </ul>
-</blockquote>
-<p><br></p>
-<h3 id="_8">スループット (伝送速度)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ スループットとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>単位時間当たりの送信できる最大ペイロードサイズの実測値こと。</p>
-<p>スループットの理論値は、すなわち『帯域幅』である。</p>
-<p>ただし、スループットは、『プロバイダ』『光回線』『自宅の有線/無線』の<code>3</code>個に影響されるため、スループットで期待されるペイロードサイズを満たせないことが多い。</p>
-<p>他からの影響を受けたスループットを、特に『実効スループット』という。</p>
-<p><img alt="伝送速度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png" /></p>
+<p><img alt="container_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html">https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html</a></li>
-<li><a href="https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput">https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ 伝送<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>サーバーからクライアントPCにパケットを送信すること。</p>
-<p>相互の送信は、通信 (パケット送受信) と呼ぶ。</p>
-<h4 id="_11">▼ 伝送秒数の求め方<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">伝送秒数</span><span class="p">)</span>
-<span class="o">=</span><span class="w"> </span><span class="err">ペイロードサイズ</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="err">スループット</span><span class="p">(</span><span class="n">bit</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="err">伝送効率</span>
-</code></pre></div>
-<h4 id="_12">▼ トラフィックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>とあるネットワーク地点でのスループットのこと。</p>
-<p><img alt="トラフィック" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://xtech.nikkei.com/it/article/Keyword/20070222/262872/">https://xtech.nikkei.com/it/article/Keyword/20070222/262872/</a></li>
-</ul>
-</blockquote>
-<p>総務省のペイロードで、日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある。</p>
-<p><img alt="トラフィックのグラフ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/">https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/</a></li>
+<li><a href="https://thinkit.co.jp/article/18024">https://thinkit.co.jp/article/18024</a></li>
+<li><a href="https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7">https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7</a></li>
+<li><a href="https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html">https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -21657,7 +21461,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
   </span>
 
     

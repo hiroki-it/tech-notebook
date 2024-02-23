@@ -2496,6 +2496,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container.html</loc>
+         <lastmod>2024-02-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_containerd.html</loc>
          <lastmod>2024-02-23</lastmod>
          <changefreq>daily</changefreq>
