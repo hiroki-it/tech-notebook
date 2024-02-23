@@ -15,6 +15,14 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 ## 01. コンテナエンジン
 
+### コンテナエンジンとは
+
+クライアントからリクエストを受信し、コンテナライムを操作する。
+
+> - https://developers.redhat.com/blog/2018/02/22/container-terminology-practical-introduction#advanced_vocabulary
+
+<br>
+
 ### コンテナエンジンの種類
 
 - Docker Engine
@@ -31,18 +39,9 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 ### コンテナランタイムとは
 
-イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
+コンテナのライフサイクル (例：イメージのプル、コンテナ作成削除、コンテナ起動停止、など) を管理する。
 
 > - https://thinkit.co.jp/article/17453
-
-<br>
-
-### イメージレイヤーのキャッシュ
-
-コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
-
-> - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
-> - https://stackoverflow.com/a/75905173
 
 <br>
 
@@ -76,5 +75,16 @@ description: コンテナ＠仮想化の知見を記録しています。
 > - https://thinkit.co.jp/article/18024
 > - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
 > - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
+
+<br>
+
+### 機能
+
+#### ▼ イメージレイヤーのキャッシュ
+
+コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
+
+> - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
+> - https://stackoverflow.com/a/75905173
 
 <br>

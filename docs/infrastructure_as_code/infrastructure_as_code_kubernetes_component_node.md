@@ -423,7 +423,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-## 06. Containerd
+## 06. コンテナランタイム (Containerd)
 
 ### セットアップ
 
