@@ -501,6 +501,7 @@ nav:
       - virtualization/index.md
       - 仮想化: virtualization/virtualization.md
       - ■ コンテナ型仮想化:
+          - コンテナ: virtualization/virtualization_container.md
           - ■ Docker:
               - Docker: virtualization/virtualization_container_docker.md
               - ストレージ: virtualization/virtualization_container_docker_storage.md
