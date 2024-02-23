@@ -125,7 +125,7 @@ echo $a.$i.$u; // あいう
 
 <br>
 
-### Queue型
+### キュー型
 
 ![Queue1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue1.gif)
 
@@ -174,9 +174,9 @@ print_r($array);
 echo $theFirst; // Blue
 ```
 
-#### ▼ メッセージQueue
+#### ▼ メッセージキュー
 
-送信側の好きなタイミングでファイル (メッセージ) をメッセージQueueに追加できる。
+送信側の好きなタイミングでファイル (メッセージ) をメッセージキューに追加できる。
 
 また、受信側の好きなタイミングでメッセージを取り出せる。
 
@@ -210,7 +210,7 @@ PHPでは、`array_push`メソッドと`array_pop`メソッドで実装可能。
 
 #### ▼ ヒープ
 
-Priority Queueを実現する時に使用される。
+プライオリティキューを実現する時に使用される。
 
 各ノードにデータが格納されている。
 
@@ -250,23 +250,23 @@ PHPの連想配列に相当する。
 
 <br>
 
-### LinkedList型
+### 連結リスト型
 
 値をポインタによって順序通り並べたデータ格納形式のこと。
 
-#### ▼ 単方向List
+#### ▼ 単方向リスト
 
 > - https://www.amazon.co.jp/dp/4297124513
 
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-1.gif)
 
-#### ▼ 双方向List
+#### ▼ 双方向リスト
 
 > - https://www.amazon.co.jp/dp/4297124513
 
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-2.gif)
 
-#### ▼ 循環List
+#### ▼ 循環リスト
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -274,15 +274,15 @@ PHPの連想配列に相当する。
 
 <br>
 
-### Queue型
+### キュー型
 
 <br>
 
-### Stack型
+### スタック型
 
 <br>
 
-### Tree型
+### ツリー型
 
 <br>
 
