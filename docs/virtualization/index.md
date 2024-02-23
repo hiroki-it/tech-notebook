@@ -11,6 +11,8 @@
 
 ### コンテナ型仮想化
 
+* #### [コンテナ](https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container.html)
+
 * #### <u>Docker</u>
 > * ##### [︎Docker](https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html)
 > * ##### [ストレージ](https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_storage.html)

@@ -106,7 +106,7 @@ $ minikube start
 
 そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざNodeのPersistentVolumeを作成する必要がない。
 
-ただし、DockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
+ただし、MinikubeのDockerドライバーとPodmanドライバーを使用する場合は、この機能がないことに注意する。
 
 - `/data`
 - `/var/lib/minikube`

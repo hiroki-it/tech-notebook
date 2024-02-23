@@ -369,8 +369,6 @@ num  target                     prot   opt   source      destination
 
 #### ▼ iptablesプロキシモード
 
-![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
-
 デフォルトのプロキシモードである。
 
 | 項目                                     | 仕組み                                                                                                                            |
@@ -378,25 +376,25 @@ num  target                     prot   opt   source      destination
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | `L4`プロトコルの負荷分散方式             | ランダム方式のみ。                                                                                                                |
 
+![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
+
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
 #### ▼ userspaceプロキシモード
 
-![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
-
 | 項目                                     | 仕組み                                                                                                                            |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
 | `L4`プロトコルの負荷分散方式             | ラウンドロビン方式のみ。                                                                                                          |
 
+![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
+
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
 #### ▼ ipvsプロキシモード
-
-![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
 kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxyMode=true`、`--proxy-mode`オプションに`ipvs`を設定する。
 
@@ -404,6 +402,8 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
 | `L4`プロトコルの負荷分散方式             | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
+
+![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
 > - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
@@ -423,75 +423,9 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-## 06-01. コンテナエンジン
+## 06. Containerd
 
-### コンテナエンジンの種類
-
-- Docker Engine
-- Podman
-
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
-
-> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
-> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
-
-<br>
-
-## 06-02. コンテナランタイム
-
-### コンテナランタイムとは
-
-イメージのプル、コンテナ作成削除、コンテナ起動停止、などを行う。
-
-> - https://thinkit.co.jp/article/17453
-
-<br>
-
-### イメージレイヤーのキャッシュ
-
-コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
-
-> - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
-> - https://stackoverflow.com/a/75905173
-
-<br>
-
-### コンテナランタイムの種類
-
-#### ▼ CRIランタイム
-
-高レベルなランタイムであり、Podやコンテナを管理する。
-
-- containerd
-- CRI-O
-- Docker runtime
-
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
-
-> - https://thinkit.co.jp/article/18024
-> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
-> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
-
-#### ▼ OCIランタイム
-
-低レベルなランタイムであり、Nodeのカーネルと通信し、コンテナの作成に必要な環境を整備する。
-
-- runC
-- crun
-- gVisor
-- Kata Containers Runtime
-
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
-
-> - https://thinkit.co.jp/article/18024
-> - https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7
-> - https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html
-
-<br>
-
-## 06-03. Containerdの場合
-
-### セットアップ (Containerdの場合)
+### セットアップ
 
 #### ▼ Containerdのインストールの事前作業
 

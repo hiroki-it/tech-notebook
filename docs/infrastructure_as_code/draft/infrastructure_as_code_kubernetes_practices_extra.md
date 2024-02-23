@@ -1190,7 +1190,7 @@ readOnlyRootFilesystem |
 
 コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。
 
-例えば、コンテナをrootユーザーで実行している状況で、コンテナのrunc (OCIランタイムの一種) の脆弱性を突かれると、コンテナがNodeのrootユーザーを操作できてしまう ([CVE-2019-5736](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/))
+例えば、コンテナをrootユーザーで実行している状況で、コンテナのrunC (OCIランタイムの一種) の脆弱性を突かれると、コンテナがNodeのrootユーザーを操作できてしまう ([CVE-2019-5736](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/))
 
 よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。
 
