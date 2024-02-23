@@ -1463,34 +1463,50 @@ Goは、言語としてオブジェクトという機能を持っていないが
 
 #### ▼ メソッド名の取得
 
+`runtime.Caller(1)`から、ランタイムの情報を取得できる。
+
 ```go
 package main
 
 import (
     "fmt"
-    "reflect"
     "runtime"
 )
 
 // メソッド名を取得する
-func GetFunctionName(function interface{}) string {
-    return runtime.FuncForPC(reflect.ValueOf(function).Pointer()).Name()
+func GetCurrentFunctionName() string {
+
+	// 他に実行中ファイルや行数も取得できる
+	// @see https://pkg.go.dev/runtime#Caller
+	pc, _, _, _ := runtime.Caller(1)
+
+	if !ok {
+		return "Failed to get runtime information"
+	}
+
+	fn := runtime.FuncForPC(pc)
+
+	if fn == nil {
+		return "Failed to get function information"
+	}
+
+	return fn.Name()
 }
 
 func foo() {
-	// 任意の処理
+	fmt.Println(GetCurrentFunctionName())
 }
 
 func main() {
-	// fooメソッドを渡す
-    fmt.Println(GetFunctionName(foo))
+	foo()
 }
 
 // main.foo
 ```
 
-> - https://stackoverflow.com/a/7053871
-> - https://golang.hateblo.jp/entry/golang-runtime-file-name-line-number
+> - https://forum.golangbridge.org/t/get-function-name/31529/3
+> - https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples
+> - https://stackoverflow.com/a/57949382
 
 #### ▼ レシーバによる紐付け
 
