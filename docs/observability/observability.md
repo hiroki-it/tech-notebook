@@ -564,6 +564,14 @@ SaaSツールによってJSON型の構造が異なる。
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
 
+#### ▼ スパン名
+
+スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。
+
+例えば、`<クラス名>.<メソッド名>`とする。
+
+> - https://opentelemetry.io/docs/languages/java/automatic/annotations/#creating-spans-around-methods-with-withspan
+
 #### ▼ データポイント化
 
 スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。

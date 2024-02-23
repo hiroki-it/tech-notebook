@@ -195,15 +195,18 @@ kubeletを設定する。
 
 ### コンテナランタイムの操作
 
-#### ▼ コンテナイメージのガベージコレクション
+#### ▼ ガベージコレクション
 
-kubeletは、`5`分ごとにコンテナイメージ、`10`分ごとにコンテナ、のガベージコレクションを実行する。
+コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
+
+kubeletは、使用されていないイメージレイヤー (`5`分ごと) やコンテナ (`10`分ごと) のキャッシュのガベージコレクションを実行する。
 
 コンテナイメージのガベージコレクションであれば、Nodeのストレージ使用量が`85`%を超過していると、kubeletは`80`%未満になるようにコンテナイメージの残骸を削除する。
 
 > - https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 > - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
 > - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76
+> - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 
 #### ▼ ログローテション
 
@@ -430,7 +433,16 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
-### CRIランタイム
+### イメージレイヤーのキャッシュ
+
+コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
+
+> - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
+> - https://stackoverflow.com/a/75905173
+
+<br>
+
+### ランタイムの種類
 
 #### ▼ CRIランタイムとは
 
@@ -440,9 +452,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 > - https://www.slideshare.net/KoheiTokunaga/ss-123664087#8
 > - https://thinkit.co.jp/article/18024
 
-<br>
-
-### OCIランタイム
+#### ▼ OCIランタイム
 
 低レベルなランタイムであり、Nodeのカーネルと通信し、コンテナの作成に必要な環境を整備する。
 
