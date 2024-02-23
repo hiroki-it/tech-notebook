@@ -13834,7 +13834,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンテナイメージのガベージコレクション
+      ▼ ガベージコレクション
     </span>
   </a>
   
@@ -14077,17 +14077,26 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cri" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      CRIランタイム
+      イメージレイヤーのキャッシュ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CRIランタイム">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ランタイムの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ランタイムの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cri_1" class="md-nav__link">
+  <a href="#cri" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ CRIランタイムとは
     </span>
@@ -14095,17 +14104,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#oci" class="md-nav__link">
     <span class="md-ellipsis">
-      OCIランタイム
+      ▼ OCIランタイム
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -14176,7 +14185,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ログ
     </span>
@@ -14200,7 +14209,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ライフサイクルフェーズ
     </span>
@@ -21823,7 +21832,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンテナイメージのガベージコレクション
+      ▼ ガベージコレクション
     </span>
   </a>
   
@@ -22066,17 +22075,26 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cri" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      CRIランタイム
+      イメージレイヤーのキャッシュ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CRIランタイム">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ランタイムの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ランタイムの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cri_1" class="md-nav__link">
+  <a href="#cri" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ CRIランタイムとは
     </span>
@@ -22084,17 +22102,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#oci" class="md-nav__link">
     <span class="md-ellipsis">
-      OCIランタイム
+      ▼ OCIランタイム
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22165,7 +22183,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       ログ
     </span>
@@ -22189,7 +22207,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       ライフサイクルフェーズ
     </span>
@@ -22414,14 +22432,16 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">コンテナランタイムの操作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ コンテナイメージのガベージコレクション<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>kubeletは、<code>5</code>分ごとにコンテナイメージ、<code>10</code>分ごとにコンテナ、のガベージコレクションを実行する。</p>
+<h4 id="_5">▼ ガベージコレクション<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：<code>var/lib/docker</code>ディレクトリ、<code>var/lib/containerd</code>ディレクトリ、など) に保管する。</p>
+<p>kubeletは、使用されていないイメージレイヤー (<code>5</code>分ごと) やコンテナ (<code>10</code>分ごと) のキャッシュのガベージコレクションを実行する。</p>
 <p>コンテナイメージのガベージコレクションであれば、Nodeのストレージ使用量が<code>85</code>%を超過していると、kubeletは<code>80</code>%未満になるようにコンテナイメージの残骸を削除する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8">https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8</a></li>
 <li><a href="https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144">https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144</a></li>
 <li><a href="https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76">https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76</a></li>
+<li><a href="https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images">https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ ログローテション<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -22656,8 +22676,17 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cri">CRIランタイム<a class="headerlink" href="#cri" title="Permanent link">&para;</a></h3>
-<h4 id="cri_1">▼ CRIランタイムとは<a class="headerlink" href="#cri_1" title="Permanent link">&para;</a></h4>
+<h3 id="_15">イメージレイヤーのキャッシュ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：<code>var/lib/docker</code>ディレクトリ、<code>var/lib/containerd</code>ディレクトリ、など) に保管する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images">https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images</a></li>
+<li><a href="https://stackoverflow.com/a/75905173">https://stackoverflow.com/a/75905173</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_16">ランタイムの種類<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="cri">▼ CRIランタイムとは<a class="headerlink" href="#cri" title="Permanent link">&para;</a></h4>
 <p>高レベルなランタイムであり、Podやコンテナを管理する。</p>
 <blockquote>
 <ul>
@@ -22666,8 +22695,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <li><a href="https://thinkit.co.jp/article/18024">https://thinkit.co.jp/article/18024</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="oci">OCIランタイム<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h3>
+<h4 id="oci">▼ OCIランタイム<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h4>
 <p>低レベルなランタイムであり、Nodeのカーネルと通信し、コンテナの作成に必要な環境を整備する。</p>
 <blockquote>
 <ul>
@@ -22808,7 +22836,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_15">ログ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_17">ログ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>ワーカーNodeでデーモンとして常駐しているため、<code>journalctl</code>コマンドでログを取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>containerd.service
 
@@ -22817,7 +22845,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. コンテナ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="_16">ライフサイクルフェーズ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h3 id="_18">ライフサイクルフェーズ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>コンテナのライフサイクルにはフェーズがある。</p>
 <table>
 <thead>
@@ -22867,7 +22895,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-23</span>
   </span>
 
     
