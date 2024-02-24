@@ -20262,19 +20262,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-traceprovider" class="md-nav__link">
+  <a href="#01-tracerprovider" class="md-nav__link">
     <span class="md-ellipsis">
-      01. TraceProvider
+      01. TracerProvider
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. TraceProvider">
+    <nav class="md-nav" aria-label="01. TracerProvider">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traceprovider" class="md-nav__link">
+  <a href="#tracerprovider" class="md-nav__link">
     <span class="md-ellipsis">
-      TraceProviderとは
+      TracerProviderとは
     </span>
   </a>
   
@@ -21752,19 +21752,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-traceprovider" class="md-nav__link">
+  <a href="#01-tracerprovider" class="md-nav__link">
     <span class="md-ellipsis">
-      01. TraceProvider
+      01. TracerProvider
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. TraceProvider">
+    <nav class="md-nav" aria-label="01. TracerProvider">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#traceprovider" class="md-nav__link">
+  <a href="#tracerprovider" class="md-nav__link">
     <span class="md-ellipsis">
-      TraceProviderとは
+      TracerProviderとは
     </span>
   </a>
   
@@ -22360,8 +22360,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-traceprovider">01. TraceProvider<a class="headerlink" href="#01-traceprovider" title="Permanent link">&para;</a></h2>
-<h3 id="traceprovider">TraceProviderとは<a class="headerlink" href="#traceprovider" title="Permanent link">&para;</a></h3>
+<h2 id="01-tracerprovider">01. TracerProvider<a class="headerlink" href="#01-tracerprovider" title="Permanent link">&para;</a></h2>
+<h3 id="tracerprovider">TracerProviderとは<a class="headerlink" href="#tracerprovider" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryをセットアップし、スパンを作成する機能を提供する。</p>
 <p>Goなら、<code>go.opentelemetry.io/otel/sdk</code>パッケージからコールできる。</p>
 <blockquote>
@@ -22539,7 +22539,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resource</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
@@ -22558,14 +22558,14 @@
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
 <span class="w">        </span><span class="c1">// Span Processor内の処理中スパンをExporterに送信する</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">.</span><span class="nx">ForceFlush</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">ForceFlush</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to force flush trace provider %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22577,15 +22577,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="graceful-shutdown">Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
-<p>TraceProviderは、Graceful Shutdown処理を実行するための関数を持っている。</p>
+<p>TracerProviderは、Graceful Shutdown処理を実行するための関数を持っている。</p>
 <p>処理の失敗時にGraceful Shutdown処理を実行する。</p>
 <p>これにより、例えば確保しているハードウェアリソースを解放できる。</p>
-<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。</p>
+<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resource</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
@@ -22604,14 +22604,14 @@
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
 <span class="w">        </span><span class="c1">// Graceful Shutdown処理を実行する</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22678,7 +22678,7 @@
 </blockquote>
 <h4 id="graceful-shutdown_1">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_1" title="Permanent link">&para;</a></h4>
 <p>Exporterは、Graceful Shutdown処理を実行するための関数を持っている。</p>
-<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。</p>
+<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -22705,7 +22705,7 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewGrpcExporter</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">otlptrace</span><span class="p">.</span><span class="nx">Exporter</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -22812,7 +22812,7 @@
 </blockquote>
 <h4 id="graceful-shutdown_2">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_2" title="Permanent link">&para;</a></h4>
 <p>Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。</p>
-<p>なお、TraceProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。</p>
+<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1">https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1</a></li>
@@ -22851,7 +22851,7 @@
 <p>Goの場合、<code>SetTextMapPropagator</code>関数を使用して、</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// クライアント側マイクロサービス</span>
 <span class="c1">// 前のマイクロサービスにとってはサーバー側にもなる</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
@@ -22861,7 +22861,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// サーバー側マイクロサービス</span>
 <span class="c1">// 後続のマイクロサービスにとってはクライアント側にもなる</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTraceProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>

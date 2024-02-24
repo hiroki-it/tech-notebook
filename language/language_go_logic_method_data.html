@@ -7261,7 +7261,7 @@
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 引数の型
+      ▼ 関数名の取得
     </span>
   </a>
   
@@ -7270,7 +7270,7 @@
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クロージャー (無名関数) とは
+      ▼ 引数の型
     </span>
   </a>
   
@@ -7278,6 +7278,15 @@
         
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クロージャー (無名関数) とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 即時関数とは
     </span>
@@ -7291,7 +7300,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_49" class="md-nav__link">
+  <a href="#_50" class="md-nav__link">
     <span class="md-ellipsis">
       メソッド
     </span>
@@ -7301,18 +7310,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_50" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メソッドとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_51" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メソッド名の取得
+      ▼ メソッドとは
     </span>
   </a>
   
@@ -23523,7 +23523,7 @@
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 引数の型
+      ▼ 関数名の取得
     </span>
   </a>
   
@@ -23532,7 +23532,7 @@
           <li class="md-nav__item">
   <a href="#_47" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クロージャー (無名関数) とは
+      ▼ 引数の型
     </span>
   </a>
   
@@ -23540,6 +23540,15 @@
         
           <li class="md-nav__item">
   <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クロージャー (無名関数) とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 即時関数とは
     </span>
@@ -23553,7 +23562,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_49" class="md-nav__link">
+  <a href="#_50" class="md-nav__link">
     <span class="md-ellipsis">
       メソッド
     </span>
@@ -23563,18 +23572,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_50" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メソッドとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_51" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メソッド名の取得
+      ▼ メソッドとは
     </span>
   </a>
   
@@ -25647,7 +25647,8 @@
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// 構造体に関数を紐付ける。インターフェースを暗黙的に実装する。</span>
+<span class="c1">// 構造体に明示的にインターフェースを埋め込む必要はない</span>
+<span class="c1">// インターフェースを満たす関数 (ここでいうName、Eat、Sleep) を構造体に紐付けると、インターフェースを暗黙的に実装できる</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">InsectImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">name</span>
 <span class="p">}</span>
@@ -25912,6 +25913,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h3 id="_44">独自関数<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <h4 id="_45">▼ 関数とは<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p>構造体に紐付けられていない関数のこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function">https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function</a></li>
+</ul>
+</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25926,16 +25932,65 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">Foo</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_46">▼ 引数の型<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<h4 id="_46">▼ 関数名の取得<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p><code>runtime.Caller(1)</code>から、ランタイムの情報を取得できる。</p>
+<p>これを使用して、現在実行中の関数名を取得する。</p>
+<p>構造体のメソッドで実行すれば、メソッド名を取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;runtime&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 関数名を取得する</span>
+<span class="c1">// ここでは構造体がいないため、関数名を取得するとする</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetCurrentFunctionName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 他に実行中ファイルや行数も取得できる</span>
+<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/runtime#Caller</span>
+<span class="w">    </span><span class="nx">pc</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">fn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fn</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">GetCurrentFunctionName</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// main.foo</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://forum.golangbridge.org/t/get-function-name/31529/3">https://forum.golangbridge.org/t/get-function-name/31529/3</a></li>
+<li><a href="https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples">https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples</a></li>
+<li><a href="https://stackoverflow.com/a/57949382">https://stackoverflow.com/a/57949382</a></li>
+</ul>
+</blockquote>
+<h4 id="_47">▼ 引数の型<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>引数の型として、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/golang/go/wiki/CodeReviewComments#pass-values">https://github.com/golang/go/wiki/CodeReviewComments#pass-values</a></li>
 </ul>
 </blockquote>
-<h4 id="_47">▼ クロージャー (無名関数) とは<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<h4 id="_48">▼ クロージャー (無名関数) とは<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
 <p>名前のない関数のこと。</p>
-<h4 id="_48">▼ 即時関数とは<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<h4 id="_49">▼ 即時関数とは<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <p>定義したその場でコールされる無名関数のこと。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>main関数で即時関数を実行する。</p>
@@ -25970,56 +26025,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_49">メソッド<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
-<h4 id="_50">▼ メソッドとは<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<h3 id="_50">メソッド<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
+<h4 id="_51">▼ メソッドとは<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
 <p>データ型や型リテラルに紐付けられている関数のこと。</p>
 <p>Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。</p>
-<h4 id="_51">▼ メソッド名の取得<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
-<p><code>runtime.Caller(1)</code>から、ランタイムの情報を取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;runtime&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// メソッド名を取得する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">GetCurrentFunctionName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// 他に実行中ファイルや行数も取得できる</span>
-<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/runtime#Caller</span>
-<span class="w">    </span><span class="nx">pc</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Failed to get runtime information&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">fn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Failed to get function information&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fn</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">GetCurrentFunctionName</span><span class="p">())</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="c1">// main.foo</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://forum.golangbridge.org/t/get-function-name/31529/3">https://forum.golangbridge.org/t/get-function-name/31529/3</a></li>
-<li><a href="https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples">https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples</a></li>
-<li><a href="https://stackoverflow.com/a/57949382">https://stackoverflow.com/a/57949382</a></li>
-</ul>
-</blockquote>
 <h4 id="_52">▼ レシーバによる紐付け<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
 <p>データ型や型リテラルなどを関数のレシーバとして渡すことによって、それに関数を紐付けられる。</p>
 <p>紐付け後、関数はメソッドと呼ばれるようになる。</p>
