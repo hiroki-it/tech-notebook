@@ -1777,7 +1777,7 @@
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 機能を単位とした分割
+      ▼ ルートエンティティを単位とした分割 (エンティティサービス)
     </span>
   </a>
   
@@ -1786,7 +1786,7 @@
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ルートエンティティを単位とした分割 (エンティティサービス)
+      ▼ ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)
     </span>
   </a>
   
@@ -22094,7 +22094,7 @@
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 機能を単位とした分割
+      ▼ ルートエンティティを単位とした分割 (エンティティサービス)
     </span>
   </a>
   
@@ -22103,7 +22103,7 @@
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ルートエンティティを単位とした分割 (エンティティサービス)
+      ▼ ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)
     </span>
   </a>
   
@@ -22699,20 +22699,14 @@
 <li><a href="https://booth.pm/ja/items/1835632">https://booth.pm/ja/items/1835632</a></li>
 </ul>
 </blockquote>
-<h4 id="_26">▼ 機能を単位とした分割<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>全てのレイヤー (インターフェース層、ユースケース層、ドメイン層、リポジトリ層) で機能をマイクロサービスの単位とする。</p>
-<p>この場合、境界付けられたコンテキストよりもマイクロサービスの粒度が小さい。</p>
-<p>そのため、複数のマイクロサービスで1つの境界付けられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類のデータを持つオブジェクトを処理する。</p>
-<p>各レイヤーにマイクロサービスがいる (例：〇〇インターフェースサービス、〇〇ユースケースサービス、〇〇ドメインサービス、〇〇リポジトリサービス) ため、数が非常に多くなってしまうデメリットがある。</p>
-<p>また、各レイヤーのマイクロサービス自体もレイヤーを持つ (〇〇リポジトリサービスが、インターフェース層からリポジトリ層までを持つ) 。</p>
-<p>各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名すると良い。</p>
-<h4 id="_27">▼ ルートエンティティを単位とした分割 (エンティティサービス)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<h4 id="_26">▼ ルートエンティティを単位とした分割 (エンティティサービス)<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>『エンティティサービス』ともいう。</p>
 <p>ドメイン層のルートエンティティをマイクロサービスの単位とする。</p>
 <p>この場合、境界付けられたコンテキストよりもマイクロサービスの粒度が小さい。</p>
 <p>そのため、複数のマイクロサービスで1つの境界付けられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類のデータを持つオブジェクトを処理する。</p>
 <p>ドメイン層にはマイクロサービス (例：〇〇ドメインサービス) があり、ドメイン層以外のレイヤー (インターフェース層、ユースケース層、リポジトリ層) はマイクロサービスではない。</p>
-<p>ただし、データに着目した従来のステートソーシングのルートエンティティを使用することはアンチパターンである。</p>
+<p>ルートエンティティの単位でデータの書き込み/読み出しのトランザクション処理を実行することになるため、マイクロサービスの単位がわかりやすい。</p>
+<p>一方で、データに着目した従来のステートソーシングのルートエンティティを使用することはアンチパターンである。</p>
 <p>最良な解決策として、振舞に着目したイベントソーシングを使用する必要がある。</p>
 <p>また、各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名すると良い。</p>
 <p>その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。</p>
@@ -22721,8 +22715,12 @@
 <li><a href="https://www.koslib.com/posts/entity-services-anti-pattern/">https://www.koslib.com/posts/entity-services-anti-pattern/</a></li>
 <li><a href="https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/">https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/</a></li>
 <li><a href="https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b">https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b</a></li>
+<li><a href="https://www.infoq.com/news/2017/12/entity-services-antipattern/">https://www.infoq.com/news/2017/12/entity-services-antipattern/</a></li>
 </ul>
 </blockquote>
+<h4 id="_27">▼ ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>ドメイン層は境界付けられたコンテキスト単位で分割し、他のレイヤーは様々な単位で分割する。</p>
+<p>ルートエンティティの単位でデータの書き込み/読み出しのトランザクション処理を実行することになるため、インフラ層のリポジトリはルートエンティティ単位で分割する。</p>
 <p><br></p>
 <h3 id="_28">分割例<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <table>
