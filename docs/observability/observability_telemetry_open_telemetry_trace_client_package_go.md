@@ -41,8 +41,11 @@ func newExporter(ctx context.Context)  {
 }
 
 func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+
 	r, err := resource.Merge(
 		resource.Default(),
+		// アプリ内の全ての処理に共通する属性を設定する
+		// 処理ごとに異なる属性はスパンの作成時に設定する
 		resource.NewWithAttributes(
 			semconv.SchemaURL,
 			semconv.ServiceName("ExampleService"),
@@ -88,9 +91,16 @@ func main() {
 
 #### ▼ 親スパンの作成
 
+親スパンを作成する。
+
 ```go
 func parentFunction(ctx context.Context) {
-	ctx, parentSpan := tracer.Start(ctx, "parent")
+
+	ctx, parentSpan := tracer.Start(
+		ctx,
+		"parent"
+	)
+
 	defer parentSpan.End()
 
 	childFunction(ctx)
@@ -99,19 +109,40 @@ func parentFunction(ctx context.Context) {
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
 
+TracerProviderの作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。
+
+アプリ内の全ての処理に共通する属性は、TracerProviderで設定すると良い。
+
+```go
+func parentFunction(ctx context.Context) {
+
+	ctx, parentSpan := tracer.Start(
+		ctx,
+		"parent",
+		trace.WithAttributes(attribute.String("hello", "world"))
+    )
+
+	defer parentSpan.End()
+
+	childFunction(ctx)
+}
+```
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
+
 #### ▼ コンテキスト注入と子スパン作成
 
 ```go
 func childFunction(ctx context.Context) {
-	ctx, childSpan := tracer.Start(ctx, "child")
-	defer childSpan.End()
 
+	ctx, childSpan := tracer.Start(ctx, "child")
+
+	defer childSpan.End()
 }
 
 func main() {
 
 	otel.SetTextMapPropagator(propagation.TraceContext{})
-
 }
 ```
 

@@ -141,7 +141,7 @@ func GetCurrentFunctionName() string {
 }
 
 func foo() {
-	fmt.Println(GetCurrentFunctionName())
+	fmt.Print(GetCurrentFunctionName())
 }
 
 func main() {
@@ -154,6 +154,40 @@ func main() {
 > - https://forum.golangbridge.org/t/get-function-name/31529/3
 > - https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples
 > - https://stackoverflow.com/a/57949382
+
+#### ▼ 現在のモジュール名の取得
+
+`debug.ReadBuildInfo()`を使用して、現在実行中のモジュール名を取得する。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"runtime/debug"
+)
+
+func GetCurrentModuleName() string {
+
+	info, ok := debug.ReadBuildInfo()
+
+	if !ok {
+		log.Print("Failed to read build info")
+		return "unknown"
+	}
+
+	return info.Path
+}
+
+func main() {
+	fmt.Print(GetCurrentModuleName())
+}
+
+// 以下のモジュール名とする
+-- go.mod --
+module example.com/foo
+```
 
 #### ▼ 引数の型
 
