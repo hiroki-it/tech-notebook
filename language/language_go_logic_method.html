@@ -7510,18 +7510,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#goroutine-done-channelclose" class="md-nav__link">
+  <a href="#goroutine1-done-channelclose" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutine中断 (done channel、close)
+      ▼ Goroutine中断方法１ (done channel、close)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#goroutine-contextcancelcontextdone" class="md-nav__link">
+  <a href="#goroutine2-contextcancelcontextdone" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutine中断 (context.cancel、context.Done)
+      ▼ Goroutine中断方法２ (context.cancel、context.Done)
     </span>
   </a>
   
@@ -23256,18 +23256,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#goroutine-done-channelclose" class="md-nav__link">
+  <a href="#goroutine1-done-channelclose" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutine中断 (done channel、close)
+      ▼ Goroutine中断方法１ (done channel、close)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#goroutine-contextcancelcontextdone" class="md-nav__link">
+  <a href="#goroutine2-contextcancelcontextdone" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutine中断 (context.cancel、context.Done)
+      ▼ Goroutine中断方法２ (context.cancel、context.Done)
     </span>
   </a>
   
@@ -24990,8 +24990,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB">https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB</a></li>
 </ul>
 </blockquote>
-<h4 id="goroutine-done-channelclose">▼ Goroutine中断 (done channel、close)<a class="headerlink" href="#goroutine-done-channelclose" title="Permanent link">&para;</a></h4>
+<h4 id="goroutine1-done-channelclose">▼ Goroutine中断方法１ (done channel、close)<a class="headerlink" href="#goroutine1-done-channelclose" title="Permanent link">&para;</a></h4>
 <p>Goroutineを中断するための<code>done</code>チャンネルを作成し、これを<code>close</code>関数で中断する。</p>
+<p><code>done</code>チャンネルは使い捨てのため、サイズがゼロの空構造体として定義するよとい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25010,6 +25011,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// チャンネルを作成</span>
 <span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// Goroutineを中断するためのdoneチャンネルを作成</span>
+<span class="w">    </span><span class="c1">// 空構造体はサイズがゼロなので、使い捨てのチャンネルと相性がいい</span>
 <span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
@@ -25041,9 +25043,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86">https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86</a></li>
 <li><a href="https://www.reddit.com/r/golang/comments/171i5gv/context_cancel_or_done_channel/">https://www.reddit.com/r/golang/comments/171i5gv/context_cancel_or_done_channel/</a></li>
 <li><a href="https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84">https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84</a></li>
+<li><a href="https://stackoverflow.com/a/22627240">https://stackoverflow.com/a/22627240</a></li>
 </ul>
 </blockquote>
-<h4 id="goroutine-contextcancelcontextdone">▼ Goroutine中断 (context.cancel、context.Done)<a class="headerlink" href="#goroutine-contextcancelcontextdone" title="Permanent link">&para;</a></h4>
+<h4 id="goroutine2-contextcancelcontextdone">▼ Goroutine中断方法２ (context.cancel、context.Done)<a class="headerlink" href="#goroutine2-contextcancelcontextdone" title="Permanent link">&para;</a></h4>
 <p><code>cancel</code>関数のGoroutineの中断を検知する。</p>
 <p><code>sync.WaitGroup.Done</code>関数とは区別する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -25255,8 +25258,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="go_2">▼ Goには例外が無い<a class="headerlink" href="#go_2" title="Permanent link">&para;</a></h4>
 <p>例えばPHPでは、エラーをキャッチし、ソフトウェア開発者にわかる言葉に変換した例外としてスローする。</p>
 <p>Goには例外クラスに相当するものが無い。</p>
-<p>その代わり、エラーそのものがerrorインターフェースに保持されており、これを<code>1</code>個の値として扱える。</p>
-<p>下流で発生したerrorインターフェースを、そのまま上流に返却する。</p>
+<p>その代わり、エラーそのものが<code>error</code>インターフェースに保持されており、これを<code>1</code>個の値として扱える。</p>
+<p>下流で発生した<code>error</code>インターフェースを、そのまま上流に返却する。</p>
 <p><br></p>
 <h3 id="_51">エラーキャッチ<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h3>
 <h4 id="nil">▼ nilの比較検証<a class="headerlink" href="#nil" title="Permanent link">&para;</a></h4>
@@ -25268,15 +25271,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><br></p>
 <h3 id="error">errorインターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
 <h4 id="_52">▼ 標準エラー<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
-<p>Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後にerrorインターフェースが返却されるようになっている。</p>
-<p>errorインターフェースは暗黙的に<code>Error</code>メソッドをコールする。</p>
+<p>Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後に<code>error</code>インターフェースが返却されるようになっている。</p>
+<p><code>error</code>インターフェースは暗黙的に<code>Error</code>メソッドをコールする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>osパッケージの<code>Open</code>メソッドからerrorインターフェースが返却される。</p>
-<p>errorインターフェースはErrorメソッドを自動的に実行し、標準エラー出力に出力する。</p>
+<p>osパッケージの<code>Open</code>メソッドから<code>error</code>インターフェースが返却される。</p>
+<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行し、標準エラー出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25300,13 +25303,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <h4 id="new">▼ <code>New</code>関数による独自エラー<a class="headerlink" href="#new" title="Permanent link">&para;</a></h4>
 <p>errorsパッケージの<code>New</code>メソッドにエラーを設定する。</p>
-<p>これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。</p>
-<p>errorインターフェースはErrorメソッドを自動的に実行する。</p>
-<blockquote>
-<ul>
-<li><a href="https://golang.org/pkg/errors/#New">https://golang.org/pkg/errors/#New</a></li>
-</ul>
-</blockquote>
+<p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
+<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25334,16 +25332,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golang.org/pkg/errors/#New">https://golang.org/pkg/errors/#New</a></li>
+</ul>
+</blockquote>
 <h4 id="fmterrorf">▼ <code>fmt.Errorf</code>メソッドによる独自エラー<a class="headerlink" href="#fmterrorf" title="Permanent link">&para;</a></h4>
 <p>fmtパッケージの<code>Errorf</code>メソッドで独自エラーを作成できる。</p>
 <p>事前に定義したフォーマットを元にエラーを設定する。</p>
-<p>これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。</p>
-<p>errorインターフェースはErrorメソッドを自動的に実行する。</p>
-<blockquote>
-<ul>
-<li><a href="https://golang.org/pkg/fmt/#Errorf">https://golang.org/pkg/fmt/#Errorf</a></li>
-</ul>
-</blockquote>
+<p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
+<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25365,9 +25363,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_53">▼ 構造体による独自エラー<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
-<p>構造体に<code>Error</code>メソッドを定義すると、この構造体にerrorインターフェースが自動的に委譲される。</p>
-<p>これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。</p>
-<p>errorインターフェースはErrorメソッドを自動的に実行する。</p>
+<p>構造体に<code>Error</code>メソッドを定義すると、この構造体に<code>error</code>インターフェースが自動的に委譲される。</p>
+<p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
+<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25399,11 +25397,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golang.org/pkg/fmt/#Errorf">https://golang.org/pkg/fmt/#Errorf</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="xerrors">xerrorsパッケージ<a class="headerlink" href="#xerrors" title="Permanent link">&para;</a></h3>
 <h4 id="xerrors_1">▼ xerrorsパッケージとは<a class="headerlink" href="#xerrors_1" title="Permanent link">&para;</a></h4>
 <p>標準のerrorsパッケージには、エラーにスタックトレース情報が含まれていない。</p>
-<p>xerrorsパッケージによって作成されるerrorインターフェースには、errorインターフェースが返却された行数がスタックトレースとして含まれている。</p>
+<p>xerrorsパッケージによって作成される<code>error</code>インターフェースには、<code>error</code>インターフェースが返却された行数がスタックトレースとして含まれている。</p>
 <h4 id="new_1">▼ <code>New</code>関数によるトレース付与<a class="headerlink" href="#new_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>

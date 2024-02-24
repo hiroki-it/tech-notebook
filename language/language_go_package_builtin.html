@@ -23064,7 +23064,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <h3 id="print">接尾辞<code>Print</code>メソッド<a class="headerlink" href="#print" title="Permanent link">&para;</a></h3>
 <p>渡された値を標準出力に出力する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<p>渡された<code>error</code>インターフェースを標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ERROR: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="p">}</span>
@@ -23074,7 +23074,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <p>渡された値を標準出力に出力し、<code>os.Exit(1)</code>を実行して、ステータス『1』で処理を完了する。</p>
 <p>プログラムが終了してしまうため、できるだけ使わない方が良い。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<p>渡された<code>error</code>インターフェースを標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 内部でos.Exit(1)を実行する。</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;ERROR: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -23096,7 +23096,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>渡されたerrorインターフェースを標準出力に出力する。</p>
+<p>渡された<code>error</code>インターフェースを標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// panicメソッドを実行する。</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Panicf</span><span class="p">(</span><span class="s">&quot;ERROR: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
