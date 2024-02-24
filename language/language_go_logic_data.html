@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="メソッド/データ@Goの知見を記録しています。">
+        <meta name="description" content="データ@Goの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】メソッド/データ@Go - 俺の技術ノート</title>
+        <title>【IT技術の知見】データ@Go - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】メソッド/データ@Go
+              【IT技術の知見】データ@Go
             
           </span>
         </div>
@@ -7071,7 +7071,25 @@
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 暗黙的な埋め込み
+      ▼ 暗黙的に実装する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インターフェースを構造体に埋め込む
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インターフェースを実装する構造体を構造体に埋め込む
     </span>
   </a>
   
@@ -7083,7 +7101,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
       アップキャストの可否を利用した検証
     </span>
@@ -7092,7 +7110,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
       緩い型としてのインターフェース
     </span>
@@ -7101,7 +7119,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       型アサーション
     </span>
@@ -7152,7 +7170,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ポインタの場合
     </span>
@@ -7161,7 +7179,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       インターフェースの場合
     </span>
@@ -22157,7 +22175,25 @@
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 暗黙的な埋め込み
+      ▼ 暗黙的に実装する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インターフェースを構造体に埋め込む
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インターフェースを実装する構造体を構造体に埋め込む
     </span>
   </a>
   
@@ -22169,7 +22205,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
       アップキャストの可否を利用した検証
     </span>
@@ -22178,7 +22214,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
       緩い型としてのインターフェース
     </span>
@@ -22187,7 +22223,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       型アサーション
     </span>
@@ -22238,7 +22274,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ポインタの場合
     </span>
@@ -22247,7 +22283,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       インターフェースの場合
     </span>
@@ -22278,7 +22314,7 @@
   
 
 
-<h1 id="go">メソッド/データ@Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
+<h1 id="go">データ@Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23263,9 +23299,8 @@
 <p><br></p>
 <h2 id="09">09. インターフェース<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="_29">委譲<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<h4 id="_30">▼ 暗黙的な埋め込み<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>構造体のフィールドとして別のインターフェースを埋め込むことにより、埋め込まれた構造体に処理の全てを委譲する。</p>
-<p>ただし、構造体に明示的にインターフェースを埋め込む必要はなく、インターフェースを満たす関数を構造体に紐付けると、インターフェースを暗黙的に実装できる。</p>
+<h4 id="_30">▼ 暗黙的に実装する<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>インターフェースを満たす関数を構造体に紐付けると、インターフェースを暗黙的に実装できる。</p>
 <p>構造体の委譲とは異なり、アップキャストを行える。</p>
 <p>つまり、委譲された構造体は委譲するインターフェースのデータ型にキャストでき、同じデータ型として扱える。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -23300,7 +23335,6 @@
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// 構造体に明示的にインターフェースを埋め込む必要はない</span>
 <span class="c1">// インターフェースを満たす関数 (ここでいうName、Eat、Sleep) を構造体に紐付けると、インターフェースを暗黙的に実装できる</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">InsectImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">name</span>
@@ -23333,8 +23367,21 @@
 <li><a href="https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1%3A-%E6%9D%A1%E4%BB%B6%E3%82%92%E5%85%A8%E3%81%A6%E6%BA%80%E3%81%9F%E3%81%99">https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1%3A-%E6%9D%A1%E4%BB%B6%E3%82%92%E5%85%A8%E3%81%A6%E6%BA%80%E3%81%9F%E3%81%99</a></li>
 </ul>
 </blockquote>
+<h4 id="_31">▼ インターフェースを構造体に埋め込む<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>構造体のフィールドとして別のインターフェースを埋め込むことにより、埋め込まれた構造体に処理の全てを委譲する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80">https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80</a></li>
+</ul>
+</blockquote>
+<h4 id="_32">▼ インターフェースを実装する構造体を構造体に埋め込む<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE3%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%BA%80%E3%81%9F%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80">https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE3%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%BA%80%E3%81%9F%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_31">アップキャストの可否を利用した検証<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<h3 id="_33">アップキャストの可否を利用した検証<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>もし、構造体に実装されたメソッドに不足があると、委譲が自動的に取り消される。</p>
 <p>エラーは発生しないため、実装されたメソッドが十分であることを実装者が知らなければならない。</p>
 <p>アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。</p>
@@ -23389,7 +23436,7 @@ cannot<span class="w"> </span>use<span class="w"> </span>insect<span class="w"> 
 Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>implement<span class="w"> </span>Animal<span class="w"> </span><span class="o">(</span>missing<span class="w"> </span>Eat<span class="w"> </span>method<span class="o">)</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_32">緩い型としてのインターフェース<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<h3 id="_34">緩い型としてのインターフェース<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <p>様々な値をインターフェース型として定義できる。</p>
 <p>エイリアスとして、<code>any</code>型でも定義できる。</p>
 <p>また、他の型に変換もできる。</p>
@@ -23440,7 +23487,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_33">型アサーション<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h3 id="_35">型アサーション<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <p>インターフェース型を他の型に変換する。</p>
 <p>インターフェース型の変数で『<code>.(データ型)</code>』を宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -23494,7 +23541,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <h3 id="nil">nilとは<a class="headerlink" href="#nil" title="Permanent link">&para;</a></h3>
 <p>いくつかのデータ型における初期値のこと。</p>
 <p><br></p>
-<h3 id="_34">ポインタの場合<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<h3 id="_36">ポインタの場合<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -23515,7 +23562,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_35">インターフェースの場合<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h3 id="_37">インターフェースの場合<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
