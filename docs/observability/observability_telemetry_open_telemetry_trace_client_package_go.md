@@ -40,7 +40,7 @@ var tracer trace.Tracer
 func newExporter(ctx context.Context)  {
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	r, err := resource.Merge(
 		resource.Default(),
 		resource.NewWithAttributes(
@@ -67,16 +67,16 @@ func main() {
 		log.Fatalf("Failed to initialize exporter: %v", err)
 	}
 
-	traceProvider := newTraceProvider(exp)
+	tracerProvider := newTracerProvider(exp)
 
     // 事後処理
 	defer func() {
-        _ = traceProvider.Shutdown(ctx)
+        _ = tracerProvider.Shutdown(ctx)
     }()
 
-	otel.SetTracerProvider(traceProvider)
+	otel.SetTracerProvider(tracerProvider)
 
-	tracer = traceProvider.Tracer("ExampleService")
+	tracer = tracerProvider.Tracer("ExampleService")
 }
 ```
 
@@ -196,9 +196,9 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 		semconv.ServiceVersionKey.String("1.0.0"),
 	)
 
-	// TraceProviderを作成する
+	// TracerProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
-	    // ExporterをTraceProviderに登録する
+	    // ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
@@ -444,7 +444,7 @@ import (
 
 var tracer = otel.Tracer("<マイクロサービス名>")
 
-func newTraceProvider() (func(context.Context) error, error) {
+func newTracerProvider() (func(context.Context) error, error) {
 
     // 空のコンテキストを作成する
 	ctx := context.Background()
@@ -485,7 +485,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
-	// TraceProviderを作成する
+	// TracerProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
@@ -597,7 +597,7 @@ func StartMainServer() {
 
     ...
 
-    shutdown, err := newTraceProvider()
+    shutdown, err := newTracerProvider()
 
     if err != nil {
 	  	log.Print(err)
@@ -799,7 +799,7 @@ import (
 ...
 
 
-func newTraceProvider() (func(context.Context) error, error) {
+func newTracerProvider() (func(context.Context) error, error) {
 
 	// 空のコンテキストを作成する
 	ctx := context.Background()
@@ -840,7 +840,7 @@ func newTraceProvider() (func(context.Context) error, error) {
 
 	var tracerProvider *sdktrace.TracerProvider
 
-    // TraceProviderを作成する
+    // TracerProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
@@ -901,7 +901,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := newTraceProvider()
+	shutdown, err := newTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -981,7 +981,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := newTraceProvider()
+	shutdown, err := newTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1072,7 +1072,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
 
-func newTraceProvider() (func(), error) {
+func newTracerProvider() (func(), error) {
 	projectID := os.Getenv("PROJECT_ID")
 
 	// CloudTraceを宛先に設定する。
@@ -1082,9 +1082,9 @@ func newTraceProvider() (func(), error) {
 		return nil, err
 	}
 
-	// TraceProviderを作成する
+	// TracerProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
-		// ExporterをTraceProviderに登録する
+		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
@@ -1093,7 +1093,7 @@ func newTraceProvider() (func(), error) {
 	otel.SetTracerProvider(tracerProvider)
 
 	return func() {
-		err := traceProvider.Shutdown(context.Background())
+		err := tracerProvider.Shutdown(context.Background())
 		if err != nil {
 			log.Printf("error shutting down trace provider: %v", err)
 		}
@@ -1256,14 +1256,14 @@ func Init() (*sdktrace.TracerProvider, error) {
 		return nil, err
 	}
 
-	// TraceProviderを作成する
-	traceProvider := sdktrace.NewTraceProvider(
-		// ExporterをTraceProviderに登録する
+	// TracerProviderを作成する
+	tracerProvider := sdktrace.NewTracerProvider(
+		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
 
-	otel.SetTracerProvider(traceProvider)
+	otel.SetTracerProvider(tracerProvider)
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
@@ -1276,7 +1276,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 			),
 		)
 
-	return traceProvider, nil
+	return tracerProvider, nil
 }
 ```
 
@@ -1362,7 +1362,7 @@ import (
 func main() {
 
 	// otelパッケージを初期化する
-	traceProvider, err := config.Init()
+	tracerProvider, err := config.Init()
 
 	if err != nil {
 		log.Print(err)
@@ -1370,7 +1370,7 @@ func main() {
 
 	// 事後処理
 	defer func() {
-		if err := traceProvider.Shutdown(context.Background()); err != nil {
+		if err := tracerProvider.Shutdown(context.Background()); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}
 	}()

@@ -672,7 +672,7 @@ OpenTelemetryを提供する。
 
 ### otel/sdk
 
-OpenTelemetryのTraceProviderを提供する。
+OpenTelemetryのTracerProviderを提供する。
 
 <br>
 

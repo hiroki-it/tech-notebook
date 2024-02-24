@@ -13,9 +13,9 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 <br>
 
-## 01. TraceProvider
+## 01. TracerProvider
 
-### TraceProviderとは
+### TracerProviderとは
 
 OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
 
@@ -201,7 +201,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	...
 
-	traceProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resource),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -220,14 +220,14 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
-		if err := traceProvider.ForceFlush(ctx); err != nil {
+		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
 		}
 
 		...
 	}
 
-	return traceProvider, cleanUp, nil
+	return tracerProvider, cleanUp, nil
 }
 ```
 
@@ -239,20 +239,20 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 ### Graceful Shutdown処理
 
-TraceProviderは、Graceful Shutdown処理を実行するための関数を持っている。
+TracerProviderは、Graceful Shutdown処理を実行するための関数を持っている。
 
 処理の失敗時にGraceful Shutdown処理を実行する。
 
 これにより、例えば確保しているハードウェアリソースを解放できる。
 
-なお、TraceProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。
+なお、TracerProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
-	traceProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resource),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -271,14 +271,14 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		defer cancel()
 
 		// Graceful Shutdown処理を実行する
-		if err := traceProvider.Shutdown(ctx); err != nil {
+		if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider %v", err)
 		}
 
 		...
 	}
 
-	return traceProvider, cleanUp, nil
+	return tracerProvider, cleanUp, nil
 }
 ```
 
@@ -330,7 +330,7 @@ Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`1
 
 Exporterは、Graceful Shutdown処理を実行するための関数を持っている。
 
-なお、TraceProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。
+なお、TracerProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -359,7 +359,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return traceProvider, cleanUp, nil
+	return tracerProvider, cleanUp, nil
 }
 
 func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
@@ -466,7 +466,7 @@ Goの場合、`BatchSpanProcessor`関数を使用する。
 
 Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。
 
-なお、TraceProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。
+なお、TracerProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
@@ -502,7 +502,7 @@ Goの場合、`SetTextMapPropagator`関数を使用して、
 ```go
 // クライアント側マイクロサービス
 // 前のマイクロサービスにとってはサーバー側にもなる
-func newTraceProvider() {
+func newTracerProvider() {
 
     // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
     otel.SetTextMapPropagator(
@@ -514,7 +514,7 @@ func newTraceProvider() {
 ```go
 // サーバー側マイクロサービス
 // 後続のマイクロサービスにとってはクライアント側にもなる
-func newTraceProvider() {
+func newTracerProvider() {
 
     // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(

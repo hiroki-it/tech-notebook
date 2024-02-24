@@ -138,7 +138,7 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 ### 手動計装
 
-OpenTelemetryのTraceProviderを手動でセットアップする。
+OpenTelemetryのTracerProviderを手動でセットアップする。
 
 > - https://opentelemetry.io/docs/instrumentation/
 
@@ -148,7 +148,7 @@ OpenTelemetryのTraceProviderを手動でセットアップする。
 
 #### ▼ 自動計装とは
 
-OpenTelemetryのTraceProviderをアプリの実行時に動的にセットアップする。
+OpenTelemetryのTracerProviderをアプリの実行時に動的にセットアップする。
 
 ファイルの構造や環境変数名から、自動的に言語を検出してくれる。
 

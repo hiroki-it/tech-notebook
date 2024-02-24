@@ -1051,7 +1051,8 @@ func NewInsect(name string) (*InsectImpl, error) {
 	}, nil
 }
 
-// 構造体に関数を紐付ける。インターフェースを暗黙的に実装する。
+// 構造体に明示的にインターフェースを埋め込む必要はない
+// インターフェースを満たす関数 (ここでいうName、Eat、Sleep) を構造体に紐付けると、インターフェースを暗黙的に実装できる
 func (i *InsectImpl) Name() string {
 	return i.name
 }
@@ -1379,6 +1380,8 @@ runtime.main: undefined: main.main
 
 構造体に紐付けられていない関数のこと。
 
+> - https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function
+
 **＊実装例＊**
 
 ```go
@@ -1395,6 +1398,58 @@ func main() {
 	Foo("Hello world!")
 }
 ```
+
+#### ▼ 関数名の取得
+
+`runtime.Caller(1)`から、ランタイムの情報を取得できる。
+
+これを使用して、現在実行中の関数名を取得する。
+
+構造体のメソッドで実行すれば、メソッド名を取得できる。
+
+```go
+package main
+
+import (
+    "fmt"
+    "runtime"
+)
+
+// 関数名を取得する
+// ここでは構造体がいないため、関数名を取得するとする
+func GetCurrentFunctionName() string {
+
+	// 他に実行中ファイルや行数も取得できる
+	// @see https://pkg.go.dev/runtime#Caller
+	pc, _, _, ok := runtime.Caller(1)
+
+	if !ok {
+		return "unknown"
+	}
+
+	fn := runtime.FuncForPC(pc)
+
+	if fn == nil {
+		return "unknown"
+	}
+
+	return fn.Name()
+}
+
+func foo() {
+	fmt.Println(GetCurrentFunctionName())
+}
+
+func main() {
+	foo()
+}
+
+// main.foo
+```
+
+> - https://forum.golangbridge.org/t/get-function-name/31529/3
+> - https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples
+> - https://stackoverflow.com/a/57949382
 
 #### ▼ 引数の型
 
@@ -1460,53 +1515,6 @@ func main() {
 データ型や型リテラルに紐付けられている関数のこと。
 
 Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。
-
-#### ▼ メソッド名の取得
-
-`runtime.Caller(1)`から、ランタイムの情報を取得できる。
-
-```go
-package main
-
-import (
-    "fmt"
-    "runtime"
-)
-
-// メソッド名を取得する
-func GetCurrentFunctionName() string {
-
-	// 他に実行中ファイルや行数も取得できる
-	// @see https://pkg.go.dev/runtime#Caller
-	pc, _, _, _ := runtime.Caller(1)
-
-	if !ok {
-		return "Failed to get runtime information"
-	}
-
-	fn := runtime.FuncForPC(pc)
-
-	if fn == nil {
-		return "Failed to get function information"
-	}
-
-	return fn.Name()
-}
-
-func foo() {
-	fmt.Println(GetCurrentFunctionName())
-}
-
-func main() {
-	foo()
-}
-
-// main.foo
-```
-
-> - https://forum.golangbridge.org/t/get-function-name/31529/3
-> - https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples
-> - https://stackoverflow.com/a/57949382
 
 #### ▼ レシーバによる紐付け
 
