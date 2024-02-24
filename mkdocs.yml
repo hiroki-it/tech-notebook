@@ -320,7 +320,8 @@ nav:
           - Go: language/language_go.md
           - コマンド: language/language_go_command.md
           - ■ ロジック:
-              - メソッド/データ: language/language_go_logic_method_data.md
+              - データ: language/language_go_logic_data.md
+              - メソッド: language/language_go_logic_method.md
               - 検証ロジック: language/language_go_logic_validation.md
           - ■ フレームワーク:
               - Gin: language/language_go_framework_gin.md
