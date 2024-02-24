@@ -1296,7 +1296,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_logic_data.html</loc>
+         <lastmod>2024-02-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method.html</loc>
          <lastmod>2024-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
