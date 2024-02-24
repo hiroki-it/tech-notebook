@@ -67,6 +67,7 @@ func main() {
 		log.Fatalf("Failed to initialize exporter: %v", err)
 	}
 
+	// TracerProviderのインターフェースを作成する
 	tracerProvider := newTracerProvider(exp)
 
     // 事後処理
@@ -74,13 +75,16 @@ func main() {
         _ = tracerProvider.Shutdown(ctx)
     }()
 
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	tracer = tracerProvider.Tracer("ExampleService")
+	...
 }
 ```
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70
 
 #### ▼ 親スパンの作成
 
@@ -204,7 +208,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 		sdktrace.WithResource(resourceWithAttributes),
 	)
 
-	// パッケージをセットアップする。
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
 	// ダウンストリーム側マイクロサービスからコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにコンテキストを注入できるようにする。
@@ -492,7 +496,7 @@ func newTracerProvider() (func(context.Context) error, error) {
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
-	// パッケージをセットアップする。
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
@@ -849,6 +853,7 @@ func newTracerProvider() (func(context.Context) error, error) {
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
@@ -1089,7 +1094,7 @@ func newTracerProvider() (func(), error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
 
-	// パッケージをセットアップする。
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
 	return func() {
@@ -1263,6 +1268,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 	)
 
+	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
