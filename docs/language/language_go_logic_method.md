@@ -1616,9 +1616,11 @@ func main() {
 
 > - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
-#### ▼ Goroutine中断 (done channel、close)
+#### ▼ Goroutine中断方法１ (done channel、close)
 
 Goroutineを中断するための`done`チャンネルを作成し、これを`close`関数で中断する。
+
+`done`チャンネルは使い捨てのため、サイズがゼロの空構造体として定義するよとい。
 
 ```go
 package main
@@ -1639,6 +1641,7 @@ func main() {
 	// チャンネルを作成
 	channel := make(chan string)
 	// Goroutineを中断するためのdoneチャンネルを作成
+	// 空構造体はサイズがゼロなので、使い捨てのチャンネルと相性がいい
 	done := make(chan struct{})
 
 	// Goroutineを宣言して並列化
@@ -1669,8 +1672,9 @@ func main() {
 > - https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86
 > - https://www.reddit.com/r/golang/comments/171i5gv/context_cancel_or_done_channel/
 > - https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84
+> - https://stackoverflow.com/a/22627240
 
-#### ▼ Goroutine中断 (context.cancel、context.Done)
+#### ▼ Goroutine中断方法２ (context.cancel、context.Done)
 
 `cancel`関数のGoroutineの中断を検知する。
 
@@ -1906,9 +1910,9 @@ WaitGroupを使用すると、`Add`関数、`Done`関数、`Wait`関数を使用
 
 Goには例外クラスに相当するものが無い。
 
-その代わり、エラーそのものがerrorインターフェースに保持されており、これを`1`個の値として扱える。
+その代わり、エラーそのものが`error`インターフェースに保持されており、これを`1`個の値として扱える。
 
-下流で発生したerrorインターフェースを、そのまま上流に返却する。
+下流で発生した`error`インターフェースを、そのまま上流に返却する。
 
 <br>
 
@@ -1930,9 +1934,9 @@ if err != nil {
 
 #### ▼ 標準エラー
 
-Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後にerrorインターフェースが返却されるようになっている。
+Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後に`error`インターフェースが返却されるようになっている。
 
-errorインターフェースは暗黙的に`Error`メソッドをコールする。
+`error`インターフェースは暗黙的に`Error`メソッドをコールする。
 
 ```go
 type error interface {
@@ -1942,9 +1946,9 @@ type error interface {
 
 **＊実装例＊**
 
-osパッケージの`Open`メソッドからerrorインターフェースが返却される。
+osパッケージの`Open`メソッドから`error`インターフェースが返却される。
 
-errorインターフェースはErrorメソッドを自動的に実行し、標準エラー出力に出力する。
+`error`インターフェースは`Error`メソッドを自動的に実行し、標準エラー出力に出力する。
 
 ```go
 package main
@@ -1973,11 +1977,9 @@ func main() {
 
 errorsパッケージの`New`メソッドにエラーを設定する。
 
-これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。
+これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-errorインターフェースはErrorメソッドを自動的に実行する。
-
-> - https://golang.org/pkg/errors/#New
+`error`インターフェースは`Error`メソッドを自動的に実行する。
 
 **＊実装例＊**
 
@@ -2009,17 +2011,17 @@ func main() {
 }
 ```
 
+> - https://golang.org/pkg/errors/#New
+
 #### ▼ `fmt.Errorf`メソッドによる独自エラー
 
 fmtパッケージの`Errorf`メソッドで独自エラーを作成できる。
 
 事前に定義したフォーマットを元にエラーを設定する。
 
-これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。
+これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-errorインターフェースはErrorメソッドを自動的に実行する。
-
-> - https://golang.org/pkg/fmt/#Errorf
+`error`インターフェースは`Error`メソッドを自動的に実行する。
 
 **＊実装例＊**
 
@@ -2046,11 +2048,11 @@ func main() {
 
 #### ▼ 構造体による独自エラー
 
-構造体に`Error`メソッドを定義すると、この構造体にerrorインターフェースが自動的に委譲される。
+構造体に`Error`メソッドを定義すると、この構造体に`error`インターフェースが自動的に委譲される。
 
-これにより、ユーザー定義のエラーを保持するerrorインターフェースを定義できる。
+これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-errorインターフェースはErrorメソッドを自動的に実行する。
+`error`インターフェースは`Error`メソッドを自動的に実行する。
 
 **＊実装例＊**
 
@@ -2086,6 +2088,8 @@ func main() {
 }
 ```
 
+> - https://golang.org/pkg/fmt/#Errorf
+
 <br>
 
 ### xerrorsパッケージ
@@ -2094,7 +2098,7 @@ func main() {
 
 標準のerrorsパッケージには、エラーにスタックトレース情報が含まれていない。
 
-xerrorsパッケージによって作成されるerrorインターフェースには、errorインターフェースが返却された行数がスタックトレースとして含まれている。
+xerrorsパッケージによって作成される`error`インターフェースには、`error`インターフェースが返却された行数がスタックトレースとして含まれている。
 
 #### ▼ `New`関数によるトレース付与
 
