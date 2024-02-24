@@ -22049,6 +22049,7 @@
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;Failed to initialize exporter: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// TracerProviderのインターフェースを作成する</span>
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">(</span><span class="nx">exp</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 事後処理</span>
@@ -22056,14 +22057,17 @@
 <span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;ExampleService&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer">https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39">https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70">https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70</a></li>
 </ul>
 </blockquote>
 <h4 id="_3">▼ 親スパンの作成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -22178,7 +22182,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ダウンストリーム側マイクロサービスからコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
@@ -22457,7 +22461,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
@@ -22807,6 +22811,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
@@ -23039,7 +23044,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -23207,6 +23212,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
