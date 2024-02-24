@@ -75,7 +75,8 @@
 * #### [Go](https://hiroki-it.github.io/tech-notebook/language/language_go.html)
 * #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_go_command.html)
 * #### <u>ロジック</u>
-  > * ##### [メソッド/データ](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html)
+  > * ##### [データ](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_data.html)
+  > * ##### [メソッド](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method.html)
   > * ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_validation.html)
 * #### <u>フレームワーク</u>
   > * ##### [Gin](https://hiroki-it.github.io/tech-notebook/language/language_go_framework_gin.html)
