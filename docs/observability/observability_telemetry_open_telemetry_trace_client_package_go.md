@@ -98,7 +98,7 @@ func parentFunction(ctx context.Context) {
 
 	ctx, parentSpan := tracer.Start(
 		ctx,
-		"parent"
+		"parent",
 	)
 
 	defer parentSpan.End()
@@ -119,7 +119,7 @@ func parentFunction(ctx context.Context) {
 	ctx, parentSpan := tracer.Start(
 		ctx,
 		"parent",
-		trace.WithAttributes(attribute.String("hello", "world"))
+		trace.WithAttributes(attribute.String("<キー名>", "<キー値>")),
     )
 
 	defer parentSpan.End()
@@ -129,13 +129,17 @@ func parentFunction(ctx context.Context) {
 ```
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ コンテキスト注入と子スパン作成
 
 ```go
 func childFunction(ctx context.Context) {
 
-	ctx, childSpan := tracer.Start(ctx, "child")
+	ctx, childSpan := tracer.Start(
+		ctx,
+		"child",
+    )
 
 	defer childSpan.End()
 }

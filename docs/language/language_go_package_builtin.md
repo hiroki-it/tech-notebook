@@ -163,6 +163,7 @@ func fn1(ctx context.Context) {
 	defer log("done fn1")
 	for i := 1; i <= 4; i++ {
 		select {
+        // cancel関数が実行された場合
 		case <-ctx.Done():
 			return
 		default:
@@ -177,6 +178,7 @@ func fn2(ctx context.Context) {
 	defer log("done fn2")
 	for i := 1; i <= 4; i++ {
 		select {
+		// cancel関数が実行された場合
 		case <-ctx.Done():
 			return
 		default:

@@ -769,64 +769,6 @@ func main() {
 **＊実装例＊**
 
 ```go
-package shutdown
-
-import (
-    "context"
-    "sync"
-)
-
-var (
-	mu    sync.Mutex
-	hooks []func(context.Context)
-)
-
-// 実行したい関数を追加する関数
-func Add(h func(ctx context.Context)) {
-
-	mu.Lock()
-    defer mu.Unlock()
-
-    hooks = append(hooks, h)
-}
-
-// 追加した関数を並行的にコールする関数
-func Invoke(ctx context.Context) error {
-
-	mu.Lock()
-    defer mu.Unlock()
-    wg := new(sync.WaitGroup)
-    wg.Add(len(hooks))
-
-    // Goroutineの関数を反復処理する
-    for i := range hooks {
-		// Goroutineを宣言して並列化
-        go func(i int) {
-			// 時間のかかる処理
-			defer wg.Done()
-            hooks[i](ctx)
-        }(i)
-    }
-
-    done := make(chan struct{})
-
-	// Goroutineを宣言して並列化
-	go func() {
-		// 時間のかかる処理
-		wg.Wait()
-        close(done)
-    }()
-
-    select {
-    case <-done:
-        return nil
-    case <-ctx.Done():
-        return ctx.Err()
-    }
-}
-```
-
-```go
 package main
 
 import (
@@ -866,32 +808,72 @@ func main()
 }
 ```
 
+```go
+package shutdown
+
+import (
+    "context"
+    "sync"
+)
+
+var (
+	mu    sync.Mutex
+	hooks []func(context.Context)
+)
+
+// 実行したい関数を追加する関数
+func Add(h func(ctx context.Context)) {
+
+	mu.Lock()
+    defer mu.Unlock()
+
+    hooks = append(hooks, h)
+}
+
+// 追加した関数を並行的にコールする関数
+func Invoke(ctx context.Context) error {
+
+	mu.Lock()
+    defer mu.Unlock()
+    wg := new(sync.WaitGroup)
+    wg.Add(len(hooks))
+
+    // Goroutineの関数を反復処理する
+    for i := range hooks {
+		// Goroutineを宣言して並列化
+        go func(i int) {
+			// 時間のかかる処理
+			defer wg.Done()
+            hooks[i](ctx)
+        }(i)
+    }
+
+	// Goroutineを中断するためのdoneチャンネルを作成
+	done := make(chan struct{})
+
+	// Goroutineを宣言して並列化
+	go func() {
+		// 時間のかかる処理
+		wg.Wait()
+		// Goroutineを終了する
+        close(done)
+    }()
+
+    select {
+    // close関数が実行された場合
+    case <-done:
+        return nil
+    // cancel関数が実行された場合
+    case <-ctx.Done():
+        return ctx.Err()
+    }
+}
+```
+
 > - https://christina04.hatenablog.com/entry/go-shudown-hooks
 > - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
 
 **＊実装例＊**
-
-```go
-package shutdown
-
-var hooks = make([]func(), 0)
-
-// プロセスの終了前に実行したい関数を追加する
-func AddShutdownHook(hook func()) {
-
-	hooks = append(hooks, hook)
-}
-
-// プロセスを安全に終了する
-func GracefulShutdown() {
-
-	hooks := hooks
-
-	for _, fun := range hooks {
-		fun()
-	}
-}
-```
 
 ```go
 package main
@@ -916,6 +898,28 @@ func init() {
 			break
 		}
 	}()
+}
+```
+
+```go
+package shutdown
+
+var hooks = make([]func(), 0)
+
+// プロセスの終了前に実行したい関数を追加する
+func AddShutdownHook(hook func()) {
+
+	hooks = append(hooks, hook)
+}
+
+// プロセスを安全に終了する
+func GracefulShutdown() {
+
+	hooks := hooks
+
+	for _, fun := range hooks {
+		fun()
+	}
 }
 ```
 
@@ -1612,7 +1616,61 @@ func main() {
 
 > - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
-#### ▼ context.cancel、context.Done
+#### ▼ Goroutine中断 (done channel、close)
+
+Goroutineを中断するための`done`チャンネルを作成し、これを`close`関数で中断する。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+)
+
+func main() {
+
+	// タイムアウト時間設定済みのコンテキストを作成する
+	ctx, cancel := context.WithCancel(
+        context.Background()
+    )
+
+	// チャンネルを作成
+	channel := make(chan string)
+	// Goroutineを中断するためのdoneチャンネルを作成
+	done := make(chan struct{})
+
+	// Goroutineを宣言して並列化
+	go func() {
+		// 時間のかかる処理
+		// チャンネルに値を送信する。
+		channel <- "ping"
+		// Goroutineを中断する
+		close(done)
+	}()
+
+	for {
+		select {
+
+		// チャンネルから値を受信した場合
+		case value := <-channel:
+			fmt.Println(value)
+
+		// cancel関数が実行された場合
+		case <-done:
+			log.Printf("Goroutineが完了しました")
+			return
+		}
+	}
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86
+> - https://www.reddit.com/r/golang/comments/171i5gv/context_cancel_or_done_channel/
+> - https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84
+
+#### ▼ Goroutine中断 (context.cancel、context.Done)
 
 `cancel`関数のGoroutineの中断を検知する。
 
@@ -1653,7 +1711,7 @@ func main() {
 		case value := <-channel:
 			fmt.Println(value)
 
-		// cancel関数を実行した場合
+		// cancel関数が実行された場合
 		case <-ctx.Done():
 			log.Printf("Goroutineが完了しました")
 			return
@@ -1681,8 +1739,8 @@ import (
 func main() {
 
 	// チャンネルを作成する。
-    c1 := make(chan string)
-    c2 := make(chan string)
+    channel1 := make(chan string)
+	channel2 := make(chan string)
 
 	// Goroutineを宣言して並列化
     go func() {
@@ -1690,7 +1748,7 @@ func main() {
 		// 完了までに2秒かかるとする。
         time.Sleep(2 * time.Second)
 		// 値を送信する。
-        c1 <- "one"
+		channel1 <- "one"
     }()
 
 	// Goroutineを宣言して並列化
@@ -1699,16 +1757,18 @@ func main() {
 		// 完了までに1秒かかるとする。
         time.Sleep(1 * time.Second)
 		// 値を送信する。
-        c2 <- "two"
+		channel2 <- "two"
     }()
 
     for i := 0; i < 2; i++ {
         select {
 		// Goroutineの処理の完了タイミングがバラバラになる
-		// c1とc2の受信を非同期で待機し、受信した順番で処理する。
-        case msg1 := <-c1:
+		// channel1とchannel2の受信を非同期で待機し、受信した順番で処理する。
+		// channel1 <- "one" を受信したタイミングで出力する
+        case msg1 := <-channel1:
             fmt.Println("received", msg1)
-        case msg2 := <-c2:
+        // channel2 <- "two" を受信したタイミングで出力する
+		case msg2 := <-channel2:
             fmt.Println("received", msg2)
 		// 受信が成功しなければ、defaultで処理する。
         default:
