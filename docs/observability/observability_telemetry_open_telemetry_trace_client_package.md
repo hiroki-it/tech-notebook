@@ -639,16 +639,43 @@ processors:
 
 ### 環境変数
 
+#### ▼ 全体
+
 指定するSamplerやパラメーターを環境変数で設定できる。
 
-| 環境変数名                 | 説明                                                                                                       |     |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------- | --- |
-| `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                       |     |
-| `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                  |     |
-| `OTEL_TRACES_EXPORTER`     | Exporterの名前を設定する。執筆時点 (2024/02/06) では、`otlp`、`jaeger`、`zipkin`、`none`、から設定できる。 |     |
-| `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                |     |
-| `OTEL_TRACES_SAMPLER_ARG`  | Samplerのパラメーター (例：サンプリング率) を設定する。                                                    |     |
+| 環境変数名                 | 説明                                                                                                                 |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                         |
+| `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。                                                                                   |
+| `OTEL_PROPAGATORS`         | スパンの仕様を設定する。                                                                                             |
+| `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                                 |
+| `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                            |
+| `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp`、`jaeger`、`zipkin`、`none`、から設定できる。 |
+| `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                          |
+| `OTEL_TRACES_SAMPLER_ARG`  | Samplerのパラメーター (例：サンプリング率) を設定する。                                                              |
 
 > - https://opentelemetry.io/docs/languages/sdk-configuration/general/
+
+#### ▼ Exporter
+
+| 環境変数名                            | 説明 |
+| ------------------------------------- | ---- |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`         |      |
+| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  |      |
+| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` |      |
+| `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`    |      |
+| `OTEL_EXPORTER_OTLP_HEADERS`          |      |
+| `OTEL_EXPORTER_OTLP_TRACES_HEADERS`   |      |
+| `OTEL_EXPORTER_OTLP_METRICS_HEADERS`  |      |
+| `OTEL_EXPORTER_OTLP_LOGS_HEADERS`     |      |
+| `OTEL_EXPORTER_OTLP_TIMEOUT`          |      |
+| `OTEL_EXPORTER_OTLP_TRACES_TIMEOUT`   |      |
+| `OTEL_EXPORTER_OTLP_METRICS_TIMEOUT`  |      |
+| `OTEL_EXPORTER_OTLP_LOGS_TIMEOUT`     |      |
+| `OTEL_EXPORTER_OTLP_PROTOCOL`         |      |
+| `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`  |      |
+| `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` |      |
+
+> - https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/
 
 <br>
