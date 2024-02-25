@@ -15,9 +15,21 @@ description: 外部パッケージ@Goの知見を記録しています。
 
 ## 外部パッケージの管理
 
-### コマンド
+### `go mod edit`コマンド
 
-#### ▼ `go mod tidy`
+#### ▼ `go mod edit`コマンドとは
+
+`go.mod`ファイルで指定しているバージョンを変更する。
+
+```bash
+$ go mod edit -go <バージョン>
+```
+
+<br>
+
+### `go mod tidy`コマンド
+
+#### ▼ `go mod tidy`コマンドとは
 
 `import`で指定されているパッケージに合わせて、`go.mod`ファイルと`go.sum`ファイルを更新する。
 
@@ -39,7 +51,19 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 > - https://go.dev/ref/mod#go-mod-tidy
 > - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
 
-#### ▼ `go mod download`
+#### ▼ `-go`
+
+Goのバージョンを指定して、`go.mod`ファイルと`go.sum`ファイルを更新する。
+
+```bash
+$ go mod tidy -go <バージョン>
+```
+
+<br>
+
+### `go mod download`コマンド
+
+#### ▼ `go mod download`コマンドとは
 
 `import`で指定されているパッケージかに関係なく、パッケージをインストールする。
 

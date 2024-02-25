@@ -67,7 +67,7 @@ gRPCクライアント側とgRPCサーバー側の両方で、自動作成のた
 ```bash
 $ asdf plugin list all | grep protoc
 
-$ asdf plugin add protoc  https://github.com/paxosglobal/asdf-protoc.git
+$ asdf plugin add protoc https://github.com/paxosglobal/asdf-protoc.git
 
 $ asdf install protoc
 ```

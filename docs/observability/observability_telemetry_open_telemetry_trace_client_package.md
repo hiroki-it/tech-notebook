@@ -391,7 +391,7 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 
 <br>
 
-## 02-02. ID Generator
+## 03. ID Generator
 
 ### ID Generatorとは
 
@@ -417,7 +417,7 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 <br>
 
-## 02-03. Span Processor
+## 04. Span Processor
 
 ### Span Processorとは
 
@@ -474,7 +474,7 @@ Span Processorは、Graceful Shutdown処理を実行するための関数を持�
 
 <br>
 
-## 02-04. Propagator
+## 05. Propagator
 
 ### Propagatorとは
 
@@ -531,7 +531,7 @@ func newTracerProvider() {
 
 <br>
 
-## 02-05. Resource
+## 06. Resource
 
 ### Resourceとは
 
@@ -564,7 +564,7 @@ func newTracerProvider() {
 
 <br>
 
-## 02-06. Sampler
+## 07. Sampler
 
 ### Samplerとは
 
