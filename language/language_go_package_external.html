@@ -22739,7 +22739,7 @@
 <p>また、パッケージがインストールされていない場合は、これをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy
 </code></pre></div>
-<p>もし<code>go.sum</code>ファイルがあるのにも関わらず、以下のようなエラーが出る時は、<code>go mod tidy</code>コマンドを実行して<code>go.sum</code>ファイルを更新する必要がある。</p>
+<p>もし<code>go.sum</code>ファイルにモジュールの指定があるのにも関わらず、以下のようなエラーが出る時は、<code>go mod tidy</code>コマンドを実行して<code>go.sum</code>ファイルを更新する必要がある。</p>
 <div class="highlight"><pre><span></span><code>cmd/main.go:4:5:<span class="w"> </span>missing<span class="w"> </span>go.sum<span class="w"> </span>entry<span class="w"> </span><span class="k">for</span><span class="w"> </span>module<span class="w"> </span>providing<span class="w"> </span>package<span class="w"> </span>github.com/foo/foo-package<span class="w"> </span><span class="o">(</span>imported<span class="w"> </span>by<span class="w"> </span>github.com/hiroki-it/bar/cmd<span class="o">)</span><span class="p">;</span><span class="w"> </span>to<span class="w"> </span>add:
 <span class="w">        </span>go<span class="w"> </span>get<span class="w"> </span>github.com/hiroki-hasegawa/bar/cmd
 </code></pre></div>

@@ -21694,13 +21694,32 @@
 <p>内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install
 </code></pre></div>
+<p>なお、インストールしたパッケージで<code>replace</code>を使用している場合、クローンしてから直接インストールする必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>&lt;パッケージのリポジトリ&gt;
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;バイナリのディレクトリ&gt;
+$<span class="w"> </span>go<span class="w"> </span>install
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://go.dev/doc/go-get-install-deprecation">https://go.dev/doc/go-get-install-deprecation</a></li>
+<li><a href="https://github.com/golang/go/issues/44840#issuecomment-1828537390">https://github.com/golang/go/issues/44840#issuecomment-1828537390</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="get_1">▼ getとは<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
 <p>指定したパスからパッケージをダウンロードし、これに対して<code>install</code>コマンドを実行する。</p>
+<p>また、<code>go.mod</code>ファイルも更新する。</p>
 <p>これにより、内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
+<p><code>go get</code>コマンドは不用意に<code>go.mod</code>ファイル上の他のパッケージの定義も更新してしまうため、非推奨である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://go.dev/doc/go-get-install-deprecation">https://go.dev/doc/go-get-install-deprecation</a></li>
+<li><a href="https://qiita.com/eihigh/items/9fe52804610a8c4b7e41">https://qiita.com/eihigh/items/9fe52804610a8c4b7e41</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="build_1">▼ buildとは<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
@@ -21834,7 +21853,7 @@ $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-26</span>
   </span>
 
     
