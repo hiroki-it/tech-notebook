@@ -31,11 +31,10 @@ $ go mod edit -go <バージョン>
 
 #### ▼ `go mod tidy`コマンドとは
 
-`import`で指定されているパッケージに合わせて、`go.mod`ファイルと`go.sum`ファイルを更新する。
-
-`import`で指定のないパッケージは、`go.mod`ファイルから削除する。
-
-また、パッケージがインストールされていない場合は、これをインストールする。
+- `import`で指定されているが`go get`コマンドでインストールされていない場合は、これをインストールする。
+- `import`で指定のないパッケージは、`go.mod`ファイルと`go.sum`ファイルから削除する。
+- `import`で指定されているが`go.mod`ファイルと`go.sum`ファイルに定義がない場合は、これを追加する。
+- アップグレード可能なパッケージはバージョンを変更する。
 
 ```bash
 $ go mod tidy
@@ -50,14 +49,35 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 > - https://go.dev/ref/mod#go-mod-tidy
 > - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
+> - https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy
+
+#### ▼ 代わりに手動
+
+`go mod tidy`コマンドは、特定のパッケージの未定義を追加することはできない。
+
+そのため、特定のパッケージは手動で追加する必要がある。
 
 #### ▼ `-go`
 
 Goのバージョンを指定して、`go.mod`ファイルと`go.sum`ファイルを更新する。
 
+これを指定しないと、呼び出し側のGoのバージョンに関係なく、パッケージを最新に更新してしまう。
+
 ```bash
 $ go mod tidy -go <バージョン>
 ```
+
+#### ▼ `-v`
+
+`import`していないために`go.mod`ファイルから削除したパッケージを、標準出力に出力する。
+
+```bash
+$ go mod tidy -v
+                                                                                                       (arn:aws:eks:ap-northeast-1:382750151955:cluster/jdebit-tes-green)
+unused <go.modファイルから削除したパッケージ>
+```
+
+> - https://developer.so-tech.co.jp/entry/2022/08/16/110108
 
 <br>
 
@@ -74,7 +94,7 @@ $ go mod tidy -go <バージョン>
 
 <br>
 
-### go.modファイル
+### `go.mod`ファイル
 
 #### ▼ `go.mod`ファイルとは
 
@@ -228,7 +248,7 @@ func main() {
 
 <br>
 
-### go.sumファイル
+### `go.sum`ファイル
 
 #### ▼ `go.sum`ファイルとは
 

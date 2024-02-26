@@ -237,3 +237,20 @@ $ go test -cover ./...
 ```
 
 <br>
+
+### version
+
+#### ▼ -m
+
+バイナリで使用しているGoのバージョンと、モジュールのバージョンを出力する。
+
+```bash
+$ go version -m <Goのバイナリのパス>
+
+<Goのバイナリのパス>: go 1.19.5
+...
+```
+
+> - https://knqyf263.hatenablog.com/entry/2021/02/12/162928
+
+<br>
