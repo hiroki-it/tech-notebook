@@ -70,8 +70,8 @@ RUN go get github.com/cosmtrek/air@v1.27.3
 
 COPY ../software /go/src/
 
-# go mod tidyの実行を忘れると、次回のコンテナイメージのビルド時に、goのビルドに失敗するようになってしまう。
-# そのため、保険としてgo mod tidyを実行しておく。
+# go mod tidyの実行を忘れると、次回のコンテナイメージのビルド時に、goのビルドに失敗 (missing go.sum entry for module providing package) するようになってしまう。
+# @see https://stackoverflow.com/a/67203642
 RUN go mod tidy \
   `# リクエストを受信する場合、アプリケーションを実行後にコンテナがすぐ終了しないよう、起動前にフレームワークをインストールしておく。` \
   `# これにより、アプリケーションの実行でインバウンド通信の受信が開始される。` \

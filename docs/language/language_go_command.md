@@ -27,6 +27,17 @@ description: コマンド@Goの知見を記録しています。
 $ go install
 ```
 
+なお、インストールしたパッケージで`replace`を使用している場合、クローンしてから直接インストールする必要がある。
+
+```bash
+$ git clone <パッケージのリポジトリ>
+$ cd <バイナリのディレクトリ>
+$ go install
+```
+
+> - https://go.dev/doc/go-get-install-deprecation
+> - https://github.com/golang/go/issues/44840#issuecomment-1828537390
+
 <br>
 
 ### get
@@ -35,11 +46,18 @@ $ go install
 
 指定したパスからパッケージをダウンロードし、これに対して`install`コマンドを実行する。
 
+また、`go.mod`ファイルも更新する。
+
 これにより、内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば`bin`ディレクトリ配下に配置し、それ以外 (例：`.a`ファイル) であれば`pkg`ディレクトリ配下に配置する。
+
+`go get`コマンドは不用意に`go.mod`ファイル上の他のパッケージの定義も更新してしまうため、非推奨である。
 
 ```bash
 $ go get <ドメインをルートとしたURL>
 ```
+
+> - https://go.dev/doc/go-get-install-deprecation
+> - https://qiita.com/eihigh/items/9fe52804610a8c4b7e41
 
 <br>
 
