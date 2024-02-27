@@ -34,7 +34,17 @@ TracerProviderのデフォルト値である。
 
 多くの言語で、TracerProviderのインターフェースの実装である。
 
-また、TracerProviderを意図的に無効化したい場合にも役立つ。
+また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つ。
+
+```go
+type TracerProvider interface {
+	...
+}
+
+type noopTracerProvider struct{
+	TracerProvider
+}
+```
 
 > - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
