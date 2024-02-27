@@ -20303,6 +20303,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nooptracerprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoopTracerProvider
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21817,6 +21826,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nooptracerprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoopTracerProvider
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22441,6 +22459,17 @@
 <li><a href="https://christina04.hatenablog.com/entry/opentelemetry-in-go">https://christina04.hatenablog.com/entry/opentelemetry-in-go</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="nooptracerprovider">NoopTracerProvider<a class="headerlink" href="#nooptracerprovider" title="Permanent link">&para;</a></h3>
+<p>TracerProviderのデフォルト値である。</p>
+<p>多くの言語で、TracerProviderのインターフェースの実装である。</p>
+<p>また、TracerProviderを意図的に無効化したい場合にも役立つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458">https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider">https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23109,7 +23138,7 @@
 </tr>
 <tr>
 <td><code>OTEL_METRICS_EXPORTER</code></td>
-<td>メトリクスのExporter名を設定する。</td>
+<td>メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>prometheus</code>、<code>none</code>、から設定できる。</td>
 </tr>
 <tr>
 <td><code>OTEL_PROPAGATORS</code></td>
@@ -23125,7 +23154,7 @@
 </tr>
 <tr>
 <td><code>OTEL_TRACES_EXPORTER</code></td>
-<td>分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code>、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
+<td>分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
 </tr>
 <tr>
 <td><code>OTEL_TRACES_SAMPLER</code></td>
@@ -23239,7 +23268,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-27</span>
   </span>
 
     
