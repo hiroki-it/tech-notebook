@@ -22465,7 +22465,15 @@
 <h3 id="nooptracerprovider">NoopTracerProvider<a class="headerlink" href="#nooptracerprovider" title="Permanent link">&para;</a></h3>
 <p>TracerProviderのデフォルト値である。</p>
 <p>多くの言語で、TracerProviderのインターフェースの実装である。</p>
-<p>また、TracerProviderを意図的に無効化したい場合にも役立つ。</p>
+<p>また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">TracerProvider</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">noopTracerProvider</span><span class="w"> </span><span class="kd">struct</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">TracerProvider</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458">https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458</a></li>
