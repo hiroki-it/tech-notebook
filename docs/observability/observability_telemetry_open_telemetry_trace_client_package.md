@@ -28,6 +28,19 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
+### NoopTracerProvider
+
+TracerProviderのデフォルト値である。
+
+多くの言語で、TracerProviderのインターフェースの実装である。
+
+また、TracerProviderを意図的に無効化したい場合にも役立つ。
+
+> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
+
+<br>
+
 ## 01-02. スパンの作成
 
 ### スパンの構造
@@ -643,16 +656,16 @@ processors:
 
 指定するSamplerやパラメーターを環境変数で設定できる。
 
-| 環境変数名                 | 説明                                                                                                                 |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                         |
-| `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。                                                                                   |
-| `OTEL_PROPAGATORS`         | スパンの仕様を設定する。                                                                                             |
-| `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                                 |
-| `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                            |
-| `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp`、`jaeger`、`zipkin`、`none`、から設定できる。 |
-| `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                          |
-| `OTEL_TRACES_SAMPLER_ARG`  | Samplerのパラメーター (例：サンプリング率) を設定する。                                                              |
+| 環境変数名                 | 説明                                                                                                                              |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
+| `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
+| `OTEL_PROPAGATORS`         | スパンの仕様を設定する。                                                                                                          |
+| `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                                              |
+| `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                         |
+| `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
+| `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                                       |
+| `OTEL_TRACES_SAMPLER_ARG`  | Samplerのパラメーター (例：サンプリング率) を設定する。                                                                           |
 
 > - https://opentelemetry.io/docs/languages/sdk-configuration/general/
 

@@ -224,8 +224,10 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// Exporter (スパンの宛先) として、標準出力を設定する。
 	exporter := stdouttrace.New(
+		// 見やすくなるように出力前に整形する
 		stdouttrace.WithPrettyPrint(),
-		stdouttrace.WithWriter(os.Stderr),
+		// 標準出力または標準エラー出力を設定する
+		stdouttrace.WithWriter(os.Stdout),
 	)
 
 	// マイクロサービスの属性情報を設定する。
