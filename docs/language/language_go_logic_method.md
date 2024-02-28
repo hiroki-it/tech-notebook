@@ -622,7 +622,7 @@ import "<パッケージ名>"
 ```go
 package main
 
-import _ "<パッケージ名>"
+import _ "<パッケージ名>" // init関数のみを実行する
 ```
 
 > - https://hogesuke.hateblo.jp/entry/2014/09/12/080005

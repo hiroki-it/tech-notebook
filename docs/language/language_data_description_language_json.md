@@ -15,7 +15,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ## 01. JSONとは
 
-異なる言語間で変換できるデータ記述型言語である。
+異なる言語間やサーバー間で変換できるデータ記述型言語である。
 
 元はJavaScriptから生まれた。
 
