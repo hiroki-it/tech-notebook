@@ -192,6 +192,37 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 ### スパン作成の無効化
 
+#### ▼ TracerProviderをコールしない
+
+一番単純な方法として、スパンを作成しない場合は、TracerProviderのセットアップをコールしないことである。
+
+以下のように条件分岐を実装する。
+
+```go
+package main
+
+import (
+	"os"
+)
+
+func main() {
+
+	...
+
+	traceEnabled := os.Getenv("TRACE_ENABLED")
+
+	// TRACE_ENABLEDが有効になっている場合に、分散トレースのスパンを作成する
+	if traceEnabled {
+        // TracerProviderに関する一連の処理
+	}
+
+	...
+
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
+
 #### ▼ NoopTracerProvider
 
 TracerProviderのデフォルト値である。
