@@ -76,6 +76,82 @@ runtime.main: main.main: not defined
 runtime.main: undefined: main.main
 ```
 
+#### ▼ 処理の終え方
+
+`panic`関数は、プロセスを強制的に終了する。
+
+`defer`関数があれば、`panic`関数の前にこれを実行する。
+
+一番強い終了方法であり、基本的には`defer`関数と`recover`関数と組み合わせて使用する。
+
+```go
+package main
+
+func main() {
+
+	...
+
+	if err != nil {
+		panic(err)
+	}
+
+	...
+}
+```
+
+`Exit`関数は、設定した終了コード (`0`以外) でプロセスを強制的に終了する。
+
+一般的な強制終了方法である。
+
+`defer`関数があても、これを実行せずにプロセスを終了する。
+
+```go
+package main
+
+import "os"
+
+func main() {
+
+	...
+
+	if err != nil {
+		os.Exit(1)
+	}
+
+	...
+}
+```
+
+`Goexit`関数は、プロセスを強制的に終了する。
+
+`defer`関数があれば、`panic`関数の前にこれを実行する。
+
+また、Goroutineがあればこれを待つ。
+
+`main`関数では実行しない方が良い。
+
+```go
+package main
+
+import "runtime"
+
+func main() {
+
+	...
+
+	if err != nil {
+		runtime.Goexit()
+	}
+
+	...
+}
+```
+
+> - https://blog.logicoffee.tech/posts/programming/golang-exit.html
+> - https://budougumi0617.github.io/2021/06/30/which_termination_method_should_choose_on_go/#go%E3%81%A7%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95
+> - https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer
+> - https://pkg.go.dev/runtime#Goexit
+
 <br>
 
 ### 独自関数

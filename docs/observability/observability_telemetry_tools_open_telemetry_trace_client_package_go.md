@@ -66,8 +66,9 @@ func main() {
 	ctx := context.Background()
 
 	exp, err := newExporter(ctx)
+
 	if err != nil {
-		log.Fatalf("Failed to initialize exporter: %v", err)
+		log.Printf("Failed to initialize exporter: %v", err)
 	}
 
 	// TracerProviderのインターフェースを作成する
@@ -1434,12 +1435,12 @@ func main() {
 	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
-		log.Fatalf("Failed to listen: %v", err)
+		log.Printf("Failed to listen: %v", err)
 	}
 
 	// gRPCサーバーとして、goサーバーでリクエストを受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("Failed to serve: %v", err)
+		log.Printf("Failed to serve: %v", err)
 	}
 }
 ```

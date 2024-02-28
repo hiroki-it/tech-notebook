@@ -862,9 +862,9 @@ if err != nil {
 
 ### 接尾辞`Fatal`メソッド
 
-渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス『1』で処理を完了する。
+渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス `1` で処理を完了する。
 
-プログラムが終了してしまうため、できるだけ使わない方が良い。
+ただ、この仕様がわかりにくいため、`os.Exit(1)`と`log.Printf`関数を別々に実行した方が良い。
 
 **＊実装例＊**
 
@@ -959,7 +959,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(handleAdmin)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 }
 ```
@@ -1015,7 +1015,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(myHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Fatal(err)
+		log.Print(err)
 	}
 }
 ```
