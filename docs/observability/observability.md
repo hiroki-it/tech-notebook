@@ -415,16 +415,70 @@ jsonPayload.traceId="<トレースID>"
 
 <br>
 
-### コンテキスト
+### 分散トレースの読み方
 
-#### ▼ コンテキストとは
+上から下に読むと、ダウンストリーム側マイクロサービス (上位スパン) がアップストリーム側マイクロサービス (下位スパン) を処理をコールしていることを確認できる。
+
+下から上に読むと、アップストリーム側マイクロサービス (下位スパン) からダウンストリーム側マイクロサービス (上位スパン) に結果を返却していることを確認できる。
+
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
+
+> - https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+
+<br>
+
+### モノリシックアーキテクチャにおける分散トレース
+
+モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
+
+> - https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+
+**＊例＊**
+
+`(1)`
+
+: `a1`：クライアントがリクエストを送信する。
+
+`(2)`
+
+: `a1`：リクエストがロードバランサ－に到達する。
+
+`(3)`
+
+: `a1`～`a2`：ロードバランサ－で処理が実行される。
+
+`(4)`
+
+: `a2`：ロードバランサ－がリクエストをアプリケーションにルーティングする。
+
+`(5)`
+
+: `a2`：リクエストがアプリケーションに到達する。
+
+`(6)`
+
+: `a2`～`a3`：アプリケーションで処理が実行される。
+
+`(7)`
+
+: `a3`：アプリケーションがレスポンスをクライアントに返信する。
+
+![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png)
+
+<br>
+
+## 04-02. コンテキスト
+
+### コンテキストとは
 
 各スパンに含まれる情報のこと。
 
 - 各種ID
 - マイクロサービスの属性情報
 
-#### ▼ コンテキスト作成の仕組み
+<br>
+
+### コンテキスト作成の仕組み
 
 ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にコンテキストを作成する。
 
@@ -461,6 +515,11 @@ jsonPayload.traceId="<トレースID>"
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
+
+#### ▼ 異なる言語間での受け渡し
+
+- 異なる言語の各アプリで、計装パッケージによるTracerProviderのセットアップやスパンの作成は必要 
+- 言語間で計装パッケージの仕様は標準化されているため、言語が違ってもリクエストからコンテキストの中身 (スパンID、トレースIDなど) を抽出したり注入したりできる
 
 <br>
 
@@ -548,9 +607,12 @@ AWS X-Rayが使用するヘッダーを追加する。
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
-### スパン
+<br>
 
-#### ▼ スパンとは
+
+## 04-03. スパン
+
+### スパンとは
 
 マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。
 
@@ -564,7 +626,9 @@ SaaSツールによってJSON型の構造が異なる。
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
 > - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
 
-#### ▼ スパン名
+<br>
+
+### スパン名
 
 スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。
 
@@ -583,11 +647,9 @@ SaaSツールによってJSON型の構造が異なる。
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
 > - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions
 
-#### ▼ データポイント化
+<br>
 
-スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。
-
-#### ▼ スパンの粒度
+### スパンの粒度
 
 スパンの適切な粒度は、マイクロサービスの粒度による。
 
@@ -598,57 +660,16 @@ SaaSツールによってJSON型の構造が異なる。
 
 <br>
 
-### 分散トレースの読み方
 
-上から下に読むと、ダウンストリーム側マイクロサービス (上位スパン) がアップストリーム側マイクロサービス (下位スパン) を処理をコールしていることを確認できる。
+### データポイント化
 
-下から上に読むと、アップストリーム側マイクロサービス (下位スパン) からダウンストリーム側マイクロサービス (上位スパン) に結果を返却していることを確認できる。
+スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。
 
-![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
 
-> - https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
 <br>
 
-### モノリシックアーキテクチャにおける分散トレース
 
-モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
-
-> - https://deepsource.io/blog/distributed-tracing/#monolithic-observability
-
-**＊例＊**
-
-`(1)`
-
-: `a1`：クライアントがリクエストを送信する。
-
-`(2)`
-
-: `a1`：リクエストがロードバランサ－に到達する。
-
-`(3)`
-
-: `a1`～`a2`：ロードバランサ－で処理が実行される。
-
-`(4)`
-
-: `a2`：ロードバランサ－がリクエストをアプリケーションにルーティングする。
-
-`(5)`
-
-: `a2`：リクエストがアプリケーションに到達する。
-
-`(6)`
-
-: `a2`～`a3`：アプリケーションで処理が実行される。
-
-`(7)`
-
-: `a3`：アプリケーションがレスポンスをクライアントに返信する。
-
-![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png)
-
-<br>
 
 ## 05. プロファイル
 

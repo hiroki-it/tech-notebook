@@ -19,9 +19,32 @@ description: X-Ray＠AWSの知見を記録しています。
 
 分散トレースの監視バックエンドとして機能する。
 
-X-Rayデーモンまたはopentelemetryコレクターにスパンを送信し、X-Rayで分散トレースを監視できるようになる。
+計装したアプリからX-Rayデーモン (EC2、ECS) またはopentelemetryコレクター (EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。
 
 サービスメッシュツール (例：AppMesh、Istio) によって、X-Rayデーモンまたはopentelemetryコレクターのいずれに送信すれば良いのかが異なる。
+
+<br>
+
+### 計装パッケージ
+
+- X-Ray SDK (X-Rayデーモンに送る場合)
+- OpenTelemetryクライアント (opentelemetryコレクターに送る場合)
+
+<br>
+
+### X-Rayデーモン
+
+EC2であればデーモンプロセスとして、ECSであればサイドカーとして稼働させる。
+
+> - https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/
+
+<br>
+
+### opentelemetryコレクター
+
+EKSでDamonSetとして稼働させる。
+
+執筆時点 (2024/02/28) ではサイドカーには対応していない。
 
 <br>
 

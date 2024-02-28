@@ -17,7 +17,7 @@ description: Go＠クライアントパッケージの知見を記録してい�
 
 ### otelクライアントパッケージ
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 ```go
 package app
@@ -196,7 +196,7 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -278,7 +278,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#getting
 
-#### ▼ 親スパン作成
+#### ▼ 親スパン作成 (親のみ)
 
 親スパンを作成する。
 
@@ -457,7 +457,7 @@ func main() {
 
 ### 宛先がopentelemetryコレクターの場合
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -551,7 +551,7 @@ func newTracerProvider() (func(context.Context) error, error) {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93
 
-#### ▼ 親スパン作成
+#### ▼ 親スパン作成 (親のみ)
 
 親スパンを作成する
 
@@ -681,7 +681,7 @@ func checkSession() gin.HandlerFunc {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成 (子のみ)
 
 現在の処理にコンテキストを注入し、また子スパンを作成する。
 
@@ -809,7 +809,7 @@ func createUser(c *gin.Context) {
 
 ### 宛先がX-Rayの場合
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 ```go
 package collection
@@ -991,7 +991,7 @@ func parent(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成 (子のみ)
 
 現在の処理にコンテキストを注入し、また子スパンを作成する。
 
@@ -1095,7 +1095,7 @@ func getXrayTraceID(span trace.Span) string {
 
 ### 宛先がGoogle CloudTraceの場合
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 ```go
 package main
@@ -1163,7 +1163,7 @@ func installPropagators() {
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L39-L72
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L37-L70
 
-#### ▼ 親スパン作成
+#### ▼ 親スパン作成 (親のみ)
 
 ```go
 package main
@@ -1211,7 +1211,7 @@ func main() {
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ コンテキスト注入と子スパン作成 (子のみ)
 
 現在の処理にコンテキストを注入し、また子スパンを作成する。
 
@@ -1274,7 +1274,7 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージの初期化
+#### ▼ パッケージの初期化 (親子共通)
 
 gRPCを使わない場合と実装方法は同じである。
 
@@ -1326,7 +1326,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
 > - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
 
-#### ▼ 親スパンの作成 (gRPCクライアント)
+#### ▼ 親スパンの作成 (親のみ)
 
 ```go
 package main
@@ -1385,7 +1385,7 @@ func (s *server) workHard(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
-#### ▼ コンテキスト注入と子スパン作成 (gRPCサーバー)
+#### ▼ コンテキスト注入と子スパン作成 (子のみ)
 
 ```go
 package main
