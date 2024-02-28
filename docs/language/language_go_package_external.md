@@ -73,11 +73,27 @@ $ go mod tidy -go <バージョン>
 
 ```bash
 $ go mod tidy -v
-                                                                                                     
+
 unused <go.modファイルから削除したパッケージ>
 ```
 
 > - https://developer.so-tech.co.jp/entry/2022/08/16/110108
+
+<br>
+
+### `go mod verify`コマンド
+
+#### ▼ `go mod verify`コマンドとは
+
+`go.sum`ファイルが正しいかどうかを検証する。
+
+```bash
+$ go mod verify
+
+all modules verified
+```
+
+> - https://go.dev/ref/mod#go-mod-verify
 
 <br>
 

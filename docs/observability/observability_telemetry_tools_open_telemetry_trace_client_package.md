@@ -359,22 +359,47 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
 
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
+
 <br>
 
-### パッケージ
+### 種類
 
-スパンの収集ツールがそれぞれパッケージを提供している。
+#### ▼ Stdout Exporter
 
-| 項目                        | 必要なパッケージ                                                                                                                                                                                                                         |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Goと標準出力                | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでopentelemetryコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
-| Goとopentelemetryコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                            |
-| GoとJaeger                  | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                            |
-| GoとX-Ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                       |
-| GoとCloud Trace             | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                                  |
+標準出力を宛先とする。
+
+例えばGoであれば、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。
+
+`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。
+
+#### ▼ OTLP Exporter
+
+OpenTelemetryコレクターを宛先とする。
+
+otelクライアントはgRPCでopentelemetryコレクター接続する。
+
+例えばGoであれば、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
+
+#### ▼ Jaeger Exporter
+
+Jaegerを宛先とする。
+
+例えばGoであれば、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。
+
+#### ▼ X-Ray Exporter
+
+X-Rayを宛先とする。
+
+一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。
+
+#### ▼ CloudTrace Exporter
+
+CloudTraceを宛先とする。
+
+例えばGoであれば、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
 
 <br>
@@ -488,6 +513,8 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 他の処理コンポーネントを操作する処理を持つ。
 
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
+
 <br>
 
 ### パッケージ
@@ -497,7 +524,6 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 | Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
 
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
 
 <br>
 
@@ -602,6 +628,8 @@ func newTracerProvider() {
 
 スパンに属性を設定する処理を持つ。
 
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
+
 <br>
 
 ### パッケージ
@@ -624,7 +652,6 @@ func newTracerProvider() {
 }
 ```
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1772-L1824
 
 <br>
@@ -634,6 +661,8 @@ func newTracerProvider() {
 ### Samplerとは
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
+
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 
 <br>
 
