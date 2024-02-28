@@ -21429,9 +21429,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#otlp-exporter" class="md-nav__link">
+  <a href="#otlp-http-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OTLP Exporter
+      ▼ OTLP HTTP Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otlp-grpc-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OTLP gRPC Exporter
     </span>
   </a>
   
@@ -22192,9 +22201,13 @@
 <p>標準出力を宛先とする。</p>
 <p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージからコールできる。</p>
 <p><code>go.opentelemetry.io/otel/sdk/export/</code>パッケージは執筆時点 (2023/09/18時点) で非推奨である。</p>
-<h4 id="otlp-exporter">▼ OTLP Exporter<a class="headerlink" href="#otlp-exporter" title="Permanent link">&para;</a></h4>
+<h4 id="otlp-http-exporter">▼ OTLP HTTP Exporter<a class="headerlink" href="#otlp-http-exporter" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryコレクターを宛先とする。</p>
-<p>otelクライアントはgRPCでopentelemetryコレクター接続する。</p>
+<p>HTTPでopentelemetryコレクター接続する。</p>
+<p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</code>パッケージからコールできる。</p>
+<h4 id="otlp-grpc-exporter">▼ OTLP gRPC Exporter<a class="headerlink" href="#otlp-grpc-exporter" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetryコレクターを宛先とする。</p>
+<p>gRPCでopentelemetryコレクター接続する。</p>
 <p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>パッケージからコールできる。</p>
 <h4 id="jaeger-exporter">▼ Jaeger Exporter<a class="headerlink" href="#jaeger-exporter" title="Permanent link">&para;</a></h4>
 <p>Jaegerを宛先とする。</p>
