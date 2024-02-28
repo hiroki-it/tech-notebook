@@ -28,29 +28,6 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### NoopTracerProvider
-
-TracerProviderのデフォルト値である。
-
-多くの言語で、TracerProviderのインターフェースの実装である。
-
-また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つ。
-
-```go
-type TracerProvider interface {
-	...
-}
-
-type noopTracerProvider struct{
-	TracerProvider
-}
-```
-
-> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
-
-<br>
-
 ## 01-02. スパンの作成
 
 ### スパンの構造
@@ -210,6 +187,40 @@ type noopTracerProvider struct{
 コンシューマー (サブスクライバー) からのメッセージの送信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+<br>
+
+### スパン作成の無効化
+
+#### ▼ NoopTracerProvider
+
+TracerProviderのデフォルト値である。
+
+多くの言語で、TracerProviderのインターフェースの実装である。
+
+また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部のメソッド (`ForceFlush`関数) がある場合は使用できない。
+
+Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したので、アップグレード時はパッケージを変更する必要がある。
+
+```go
+type TracerProvider interface {
+	...
+}
+
+type noopTracerProvider struct{
+	embedded.TracerProvider
+}
+```
+
+> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/trace/noop.go#L35
+
+#### ▼ Samplerの無効化
+
+Samplerを無効化すると、スパンの作成を無効化できる。
+
+> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
 
 <br>
 

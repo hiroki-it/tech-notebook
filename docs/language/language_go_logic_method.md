@@ -150,7 +150,7 @@ func main() {
 > - https://blog.logicoffee.tech/posts/programming/golang-exit.html
 > - https://budougumi0617.github.io/2021/06/30/which_termination_method_should_choose_on_go/#go%E3%81%A7%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer
-> - https://pkg.go.dev/runtime#Goexit
+> - https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer
 
 <br>
 
