@@ -21321,6 +21321,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#tracerprovider_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ TracerProviderをコールしない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nooptracerprovider" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ NoopTracerProvider
@@ -21971,6 +21980,35 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">スパン作成の無効化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="tracerprovider_1">▼ TracerProviderをコールしない<a class="headerlink" href="#tracerprovider_1" title="Permanent link">&para;</a></h4>
+<p>一番単純な方法として、スパンを作成しない場合は、TracerProviderのセットアップをコールしないことである。</p>
+<p>以下のように条件分岐を実装する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">traceEnabled</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TRACE_ENABLED&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// TRACE_ENABLEDが有効になっている場合に、分散トレースのスパンを作成する</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">traceEnabled</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// TracerProviderに関する一連の処理</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300">https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300</a></li>
+</ul>
+</blockquote>
 <h4 id="nooptracerprovider">▼ NoopTracerProvider<a class="headerlink" href="#nooptracerprovider" title="Permanent link">&para;</a></h4>
 <p>TracerProviderのデフォルト値である。</p>
 <p>多くの言語で、TracerProviderのインターフェースの実装である。</p>
