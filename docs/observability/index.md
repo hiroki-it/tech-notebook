@@ -13,6 +13,14 @@
 
 <br>
 
+### テレメトリー
+
+* #### [ログ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_log.html)
+* #### [メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_metrics.html)
+* #### [分散トレース](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_trace.html)
+
+<br>
+
 ### テレメトリー収集ツール
 
 * #### [テレメトリー収集ツール](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools.html)
