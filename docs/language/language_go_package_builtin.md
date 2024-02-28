@@ -611,6 +611,14 @@ Usage of main.go:
 
 ## fmt
 
+### fmtとは
+
+標準エラー出力に出力する`log`パッケージとは異なり、標準出力に設定したメッセージを出力する。
+
+> - https://zenn.dev/link/comments/0247de9ed6c174
+
+<br>
+
 ### 接頭接尾辞無しメソッド
 
 接頭接尾辞の無いメソッド (例：`Print`メソッド、`Sprint`メソッド、`Fprint`メソッド、など) が所属する。
@@ -827,12 +835,12 @@ func main() {
 
 ### logとは
 
+標準出力に出力する`fmt`パッケージとは異なり、標準エラー出力に設定したメッセージを出力する。
+
 Goにはデフォルトで、ロギング用パッケージが用意されている。
 
-ただし、機能が乏しいため、外部パッケージ (例：logrus) も推奨である。
-
 > - https://pkg.go.dev/log
-> - https://github.com/sirupsen/logrus
+> - https://zenn.dev/link/comments/0247de9ed6c174
 
 <br>
 

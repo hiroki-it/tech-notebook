@@ -1290,9 +1290,7 @@ func main() {
 
 ## 05. 制御文
 
-### 条件文
-
-#### ▼ 初期化ステートメント
+### 初期化ステートメント
 
 以下の二つの実装例は同じである。
 
@@ -1347,9 +1345,13 @@ func getNum() int {
 
 > - https://code-database.com/knowledges/97
 
-#### ▼ `if else-if`の代替
+<br>
 
-Goには`if else-if`があるが、可読性が低い場合は代わりに`if`を連続させる。
+### `if-else-if`の代替
+
+#### ▼ `if`の連続
+
+Goには`if-else-if`があるが、可読性が低い場合は代わりに`if`を連続させる。
 
 事前に`var`で変数を宣言し、各`if`内で変数に値を格納する。
 
@@ -1385,6 +1387,50 @@ func main() {
 	}
 
 	if isZ {
+		foo = getFooZ()
+	}
+
+	fmt.Print(foo)
+}
+```
+
+#### ▼ `switch-case`
+
+Goには`if-else-if`があるが、可読性が低い場合は代わりに`switch-case`を使用する。
+
+事前に`var`で変数を宣言し、各`switch-case`内で変数に値を格納する。
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func getFooX() {
+	return "FooX"
+}
+
+func getFooY() {
+	return "FooY"
+}
+
+func getFooZ() {
+	return "FooZ"
+}
+
+func main() {
+
+	var foo string
+
+	switch {
+	case isX:
+		foo = getFooX()
+
+	case isY:
+		foo = getFooY()
+
+	case isZ:
 		foo = getFooZ()
 	}
 
