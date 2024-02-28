@@ -373,11 +373,19 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 `go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。
 
-#### ▼ OTLP Exporter
+#### ▼ OTLP HTTP Exporter
 
 OpenTelemetryコレクターを宛先とする。
 
-otelクライアントはgRPCでopentelemetryコレクター接続する。
+HTTPでopentelemetryコレクター接続する。
+
+例えばGoであれば、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
+
+#### ▼ OTLP gRPC Exporter
+
+OpenTelemetryコレクターを宛先とする。
+
+gRPCでopentelemetryコレクター接続する。
 
 例えばGoであれば、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
 
