@@ -1501,6 +1501,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_data_description_language_protocol_buffer.html</loc>
+         <lastmod>2024-02-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_data_description_language_yaml_query.html</loc>
          <lastmod>2024-02-28</lastmod>
          <changefreq>daily</changefreq>
