@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="テレメトリー間の紐付け＠Datadog">
+        <meta name="description" content="Grafana＠テレメトリー収集ツールの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_telemetry_association.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_grafana.html">
       
       
-        <link rel="prev" href="observability_telemetry_datadog_distributed_trace_client_package.html">
-      
-      
-        <link rel="next" href="observability_telemetry_google_analytics.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】テレメトリー間の紐付け＠Datadog - 俺の技術ノート</title>
+        <title>【IT技術の知見】Grafana＠テレメトリー収集ツール - 俺の技術ノート</title>
       
     
     
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datadog" class="md-skip">
+        <a href="#grafana" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】テレメトリー間の紐付け＠Datadog
+              【IT技術の知見】Grafana＠テレメトリー収集ツール
             
           </span>
         </div>
@@ -594,12 +590,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -19740,8 +19734,6 @@
       
   
   
-    
-  
   
   
     
@@ -19762,17 +19754,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
         
           
           
@@ -19788,13 +19779,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="">
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             🔎 可観測性
@@ -19947,10 +19938,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -19976,11 +19965,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4" >
         
           
           <label class="md-nav__link" for="__nav_21_4" id="__nav_21_4_label" tabindex="0">
@@ -19994,7 +19985,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4">
             <span class="md-nav__icon md-icon"></span>
             ■ テレメトリー収集ツール
@@ -20008,7 +19999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20029,7 +20020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="observability_telemetry_fluentbit_fluentd.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20050,7 +20041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_grafana.html" class="md-nav__link">
+      <a href="observability_telemetry_grafana.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20071,7 +20062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_jaeger.html" class="md-nav__link">
+      <a href="observability_telemetry_jaeger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20092,7 +20083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_prometheus.html" class="md-nav__link">
+      <a href="observability_telemetry_prometheus.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20159,7 +20150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20228,7 +20219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20249,7 +20240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_go.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_go.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20270,7 +20261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_python.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_python.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20304,10 +20295,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -20325,11 +20314,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4_7" >
         
           
           <label class="md-nav__link" for="__nav_21_4_7" id="__nav_21_4_7_label" tabindex="0">
@@ -20343,7 +20334,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_4_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_4_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4_7">
             <span class="md-nav__icon md-icon"></span>
             ■ Datadog
@@ -20357,7 +20348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_agent_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_agent_conf.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20378,7 +20369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_monitoring.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_monitoring.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20399,7 +20390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_integration.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_integration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20417,10 +20408,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -20438,11 +20427,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4_7_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4_7_4" >
         
           
           <label class="md-nav__link" for="__nav_21_4_7_4" id="__nav_21_4_7_4_label" tabindex="0">
@@ -20456,7 +20447,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_4_7_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_4_7_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4_7_4">
             <span class="md-nav__icon md-icon"></span>
             ■ テレメトリー収集
@@ -20470,7 +20461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_metrics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20491,7 +20482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_log.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_log.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20558,7 +20549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20579,7 +20570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20605,30 +20596,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    テレメトリー間の紐づけ
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="observability_telemetry_datadog_telemetry_association.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="observability_telemetry_datadog_telemetry_association.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20637,328 +20608,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. タグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. タグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      タグの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      統合タグ付け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      各コンソール画面での使い方
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. 命名規則例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. 命名規則例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレースのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分散トレースのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ version
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-ecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS ECSコンテナのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS ECSコンテナのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ version
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ログのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#source" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      タグの候補
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="タグの候補">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#role" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ role
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 構造化ログと他テレメトリー間の紐付け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 構造化ログと他テレメトリー間の紐付け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレース全体との紐付け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      スパンとの紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. メトリクスと他テレメトリー間の紐付け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. メトリクスと他テレメトリー間の紐付け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      仮想環境のメトリクスとの紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -21033,7 +20682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_analytics.html" class="md-nav__link">
+      <a href="observability_telemetry_google_analytics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21054,7 +20703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_search_console.html" class="md-nav__link">
+      <a href="observability_telemetry_google_search_console.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21484,293 +21133,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. タグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. タグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      タグの種類
+      こちらまで
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      統合タグ付け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      各コンソール画面での使い方
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. 命名規則例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. 命名規則例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレースのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分散トレースのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ version
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-ecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS ECSコンテナのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="AWS ECSコンテナのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ version
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ログのタグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログのタグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ env
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#source" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      タグの候補
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="タグの候補">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#role" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ role
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 構造化ログと他テレメトリー間の紐付け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 構造化ログと他テレメトリー間の紐付け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレース全体との紐付け
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      スパンとの紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. メトリクスと他テレメトリー間の紐付け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. メトリクスと他テレメトリー間の紐付け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      仮想環境のメトリクスとの紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -21792,7 +21159,7 @@
   
 
 
-<h1 id="datadog">テレメトリー間の紐付け＠Datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h1>
+<h1 id="grafana">Grafana＠テレメトリー収集ツール<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21801,275 +21168,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. タグ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">タグの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>タグ名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>host</code></td>
-<td>メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。</td>
-</tr>
-<tr>
-<td><code>device</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>source</code></td>
-<td>ログの作成元のベンダー名を示す。</td>
-</tr>
-<tr>
-<td><code>service</code></td>
-<td>メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。</td>
-</tr>
-<tr>
-<td><code>env</code></td>
-<td>メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td>メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。</td>
-</tr>
-</tbody>
-</table>
+<h2 id="_2">こちらまで<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Grafanaはセクションが重複しており、以下のセクションを参照してください。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/getting_started/tagging/">https://docs.datadoghq.com/getting_started/tagging/</a></li>
-<li><a href="https://www.datadoghq.com/ja/blog/tagging-best-practices/">https://www.datadoghq.com/ja/blog/tagging-best-practices/</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_3">統合タグ付け<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>統合タグ (<code>service</code>、<code>env</code>、<code>version</code>) に同じ値を割り当てると、テレメトリー間を紐付けられる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes">https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_4">各コンソール画面での使い方<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/getting_started/tagging/using_tags/">https://docs.datadoghq.com/getting_started/tagging/using_tags/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-02">01-02. 命名規則例<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_5">分散トレースのタグ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ セットアップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>分散トレースのクライアントパッケージを導入したコンテナの環境変数で値を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;environment&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">[</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_ENV&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_SERVICE_NAME&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;order&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_SERVICE_MAPPING&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;pdo:order-eloquent&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_VERSION&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">    </span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="nv">...</span><span class="p p-Indicator">,</span>
-<span class="p p-Indicator">}</span>
-</code></pre></div>
-<h4 id="service">▼ service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
-<p>スパンの作成元のアプリケーション名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;-&lt;フレームワーク名/パッケージ名&gt;</code></td>
-<td>・<code>order-pdo</code><br>・<code>order-phpredis</code><br>・<code>order-eloquent</code><br>・<code>order-doctrine</code></td>
-</tr>
-</tbody>
-</table>
-<p>ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『<code>&lt;マイクロサービス名&gt;</code>』とする。</p>
-<p>なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐付ける時に、同じマイクロサービス名をタグに使用しなければならないためである。</p>
-<p>〇：<code>laravel</code> ➡︎ <code>order</code>、<code>order-service</code>
-✕：<code>laravel</code> ➡︎ <code>order-laravel</code>、<code>order-service-laravel</code></p>
-<p>フレームワーク以外のパッケージなどの分散トレースに関しては、紐付けられないことを許容している。</p>
-<p>APMのservice名とAWS ECSタスク/ログのserviceタグは、名前の付け方が異なることに注意する。</p>
-<p>service名はインテグレーション名が自動的に割り当てられるが、パッケージに環境変数を渡して変更もできる。</p>
-<p>フレームワークのインテグレーション名は <code>DD_SERVICE_NAME</code> から設定する一方で、それ以外のタグ名は <code>DD_SERVICE_MAPPING</code> から設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D">https://docs.datadoghq.com/tracing/setup/php/#%E3%82%A4%E3%83%B3%E3%83%86%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%90%8D</a></li>
-</ul>
-</blockquote>
-<h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
-<p>スパンの作成元の実行環境名を表す。</p>
-<p>envタグは、datadogコンテナの環境変数を使用してタグ付けする。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
-<p>リリース時のタグのバージョンを表す。</p>
-<p>ただし、リリースの度に変更することが面倒なため、<code>1.0.0</code>で固定する。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;リリースタグのバージョン&gt;</code></td>
-<td><code>1.0.0</code></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="aws-ecs">AWS ECSコンテナのタグ<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Dockerラベルからタグ付けする。</p>
-<h4 id="env_1">▼ env<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
-<p>AWSの実行環境名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="service_1">▼ service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>コンテナのアプリケーション名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;</code></td>
-<td>・<code>order-service</code><br>・<code>account-service</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="version_1">▼ version<a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h4>
-<p>リリース時のタグのバージョンを表す。</p>
-<p>ただし、リリースの度に変更することが面倒なため、<code>1.0.0</code>で固定する。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;リリースタグのバージョン&gt;</code></td>
-<td><code>1.0.0</code></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_8">ログのタグ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>FluentBitの設定ファイルからタグ付けする。</p>
-<h4 id="env_2">▼ env<a class="headerlink" href="#env_2" title="Permanent link">&para;</a></h4>
-<p>ログの作成元の実行環境名 (dev、stg、prd) を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="service_2">▼ service<a class="headerlink" href="#service_2" title="Permanent link">&para;</a></h4>
-<p>ログの作成元のアプリケーション名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;</code></td>
-<td>・<code>order</code><br>・<code>order-service</code><br>・<code>account</code><br>・<code>account-service</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="source">▼ source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h4>
-<p>ログの作成元のベンダー名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;ソース名&gt;</code></td>
-<td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>apigateway</code></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_10">タグの候補<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="role">▼ role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h4>
-<p>もし、<code>web</code>や<code>app</code>といった役割名をタグとして付与したい場合は、<code>role</code>タグを新たに作成すると良いかも。</p>
-<p><br></p>
-<h2 id="02">02. 構造化ログと他テレメトリー間の紐付け<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_11">分散トレース全体との紐付け<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>スパンと構造化ログの統合タグ (<code>service</code>、<code>env</code>、<code>version</code>) に同じ値を割り当てると、分散トレース全体と構造化ログ間を紐付けられる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/tracing/connect_logs_and_traces/">https://docs.datadoghq.com/tracing/connect_logs_and_traces/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_12">スパンとの紐付け<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>スパンと構造化ログに、同じトレースIDとスパンIDを割り当てると、スパンと構造化ログ間を紐付けられる。</p>
-<p>これにより、その構造化ログが、いずれのマイクロサービスで、またどのタイミングで発生したものかを確認できる。</p>
-<p><img alt="datadog_trace-viewer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_trace-viewer.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs">https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. メトリクスと他テレメトリー間の紐付け<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_13">仮想環境のメトリクスとの紐付け<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>スパンとコンテナのDockerラベルの統合タグ (<code>service</code>、<code>env</code>、<code>version</code>) に、同じ値を割り当てると、分散トレースと仮想環境のOSに関するメトリクスを紐付けられる。</p>
 <p><br></p>
 
 
@@ -22091,7 +21196,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-28</span>
   </span>
 
     

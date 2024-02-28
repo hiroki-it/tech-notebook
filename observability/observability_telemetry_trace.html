@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="監視＠Datadogの知見を記録しています。">
+        <meta name="description" content="分散トレース＠テレメトリーの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_monitoring.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_trace.html">
       
       
-        <link rel="prev" href="observability_telemetry_datadog_agent_conf.html">
-      
-      
-        <link rel="next" href="observability_telemetry_datadog_integration.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】監視＠Datadog - 俺の技術ノート</title>
+        <title>【IT技術の知見】分散トレース＠テレメトリー - 俺の技術ノート</title>
       
     
     
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datadog" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】監視＠Datadog
+              【IT技術の知見】分散トレース＠テレメトリー
             
           </span>
         </div>
@@ -594,12 +590,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -19740,8 +19734,6 @@
       
   
   
-    
-  
   
   
     
@@ -19762,17 +19754,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
         
           
           
@@ -19788,13 +19779,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="">
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             🔎 可観測性
@@ -19947,10 +19938,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -19976,11 +19965,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4" >
         
           
           <label class="md-nav__link" for="__nav_21_4" id="__nav_21_4_label" tabindex="0">
@@ -19994,7 +19985,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4">
             <span class="md-nav__icon md-icon"></span>
             ■ テレメトリー収集ツール
@@ -20008,7 +19999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20029,7 +20020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="observability_telemetry_fluentbit_fluentd.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20050,7 +20041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_grafana.html" class="md-nav__link">
+      <a href="observability_telemetry_grafana.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20071,7 +20062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_jaeger.html" class="md-nav__link">
+      <a href="observability_telemetry_jaeger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20092,7 +20083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_prometheus.html" class="md-nav__link">
+      <a href="observability_telemetry_prometheus.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20159,7 +20150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20228,7 +20219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20249,7 +20240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_go.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_go.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20270,7 +20261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_python.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_python.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20304,10 +20295,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -20325,11 +20314,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4_7" >
         
           
           <label class="md-nav__link" for="__nav_21_4_7" id="__nav_21_4_7_label" tabindex="0">
@@ -20343,7 +20334,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_4_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_4_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4_7">
             <span class="md-nav__icon md-icon"></span>
             ■ Datadog
@@ -20357,7 +20348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_agent_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_agent_conf.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20375,30 +20366,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    監視
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="observability_telemetry_datadog_monitoring.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="observability_telemetry_datadog_monitoring.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20407,466 +20378,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. モニター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. モニター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      モニターとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ログモニター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログモニター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ログクエリの動作確認
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ シングルアラート
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マルチアラート
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. アラートの発火
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. アラートの発火">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      グループ化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      作成条件
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="作成条件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#auto-resolve" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Auto resolve
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-03" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-03. アラートの通知内容
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-03. アラートの通知内容">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      変数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="変数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 変数を使用した重要度レベルの共通化
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ テンプレート変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ マルチアラート変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ タグ変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コンポジットモニター変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 条件変数
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      メッセージの構成
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メッセージの構成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ タイトル
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 本文
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-rum" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. リアルユーザー監視 (RUM)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. リアルユーザー監視 (RUM)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ブラウザエラー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ブラウザエラー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ブラウザエラーとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 合成監視
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. 合成監視">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ブラウザテスト
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ブラウザテスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 送信元IPアドレス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ヘッダー
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIテスト
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      マルチステップAPIテスト
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. セキュリティ監視
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. グラフ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. グラフ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      図の種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      スケールの種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="スケールの種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ log (対数) スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linear" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ linear (線形) スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ２の累乗スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqrt" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sqrt (平方根) スケール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. コスト
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -20879,7 +20390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_integration.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_integration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20950,7 +20461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_metrics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20971,7 +20482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_log.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_log.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21038,7 +20549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21059,7 +20570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21088,7 +20599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_telemetry_association.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_telemetry_association.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21171,7 +20682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_analytics.html" class="md-nav__link">
+      <a href="observability_telemetry_google_analytics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21192,7 +20703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_search_console.html" class="md-nav__link">
+      <a href="observability_telemetry_google_search_console.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21613,7 +21124,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -21624,45 +21135,36 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. モニター
+      01. 分散トレース
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. モニター">
+    <nav class="md-nav" aria-label="01. 分散トレース">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      モニターとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ログモニター
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログモニター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ログクエリの動作確認
+      分散トレースとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散トレースの用途
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分散トレースの用途">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ シングルアラート
+      ▼ レスポンスタイムの最適化
     </span>
   </a>
   
@@ -21671,7 +21173,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチアラート
+      ▼ 悪意のあるリクエストの検出
     </span>
   </a>
   
@@ -21681,26 +21183,11 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. アラートの発火
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. アラートの発火">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      グループ化
+      分散トレースの読み方
     </span>
   </a>
   
@@ -21709,24 +21196,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      作成条件
+      モノリシックアーキテクチャにおける分散トレース
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="作成条件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#auto-resolve" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Auto resolve
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -21736,29 +21208,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-03" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. アラートの通知内容
+      02. コンテキスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. アラートの通知内容">
+    <nav class="md-nav" aria-label="02. コンテキスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      変数
+      コンテキストとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="変数">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 変数を使用した重要度レベルの共通化
+      コンテキスト作成の仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテキスト作成の仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ IDの種類
     </span>
   </a>
   
@@ -21767,7 +21248,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ テンプレート変数
+      ▼ コンテキスト伝播 (分散コンテキスト伝播)
     </span>
   </a>
   
@@ -21776,25 +21257,73 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ マルチアラート変数
+      ▼ 異なる言語間での受け渡し
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ タグ変数
+      コンテキスト仕様の種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテキスト仕様の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 一覧
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#w3c-trace-context" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンポジットモニター変数
+      ▼ W3C Trace Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3-zipkin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ B3 (Zipkin)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      ツールごとのCarrier
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ツールごとのCarrier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carrier_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Carrierとは
     </span>
   </a>
   
@@ -21803,79 +21332,25 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 条件変数
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      メッセージの構成
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メッセージの構成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ タイトル
+      ▼ 標準ヘッダー
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#zipkin" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 本文
+      ▼ zipkin系ヘッダー
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-rum" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. リアルユーザー監視 (RUM)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. リアルユーザー監視 (RUM)">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#aws-x-ray" class="md-nav__link">
     <span class="md-ellipsis">
-      ブラウザエラー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ブラウザエラー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ブラウザエラーとは
+      ▼ AWS X-Ray系ヘッダー
     </span>
   </a>
   
@@ -21894,59 +21369,44 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 合成監視
+      03. スパン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 合成監視">
+    <nav class="md-nav" aria-label="03. スパン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      ブラウザテスト
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ブラウザテスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 送信元IPアドレス
+      スパンとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ヘッダー
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      APIテスト
+      スパン名
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#api_1" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      マルチステップAPIテスト
+      スパンの粒度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      データポイント化
     </span>
   </a>
   
@@ -21960,72 +21420,17 @@
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. セキュリティ監視
+      04. プロファイル
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. グラフ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. グラフ">
+    <nav class="md-nav" aria-label="04. プロファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
-      図の種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      スケールの種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="スケールの種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ log (対数) スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linear" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ linear (線形) スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ２の累乗スケール
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqrt" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sqrt (平方根) スケール
+      プロファイルとは
     </span>
   </a>
   
@@ -22033,20 +21438,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. コスト
-    </span>
-  </a>
   
 </li>
       
@@ -22068,8 +21459,8 @@
   
 
 
-<h1 id="datadog">監視＠Datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">分散トレース＠テレメトリー<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -22077,222 +21468,372 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. モニター<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">モニターとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>メトリクス/ログを監視し、システムの予測できる不具合の発生を未然に防ぐ。</p>
-<p><br></p>
-<h3 id="_3">ログモニター<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ ログクエリの動作確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ログモニターのクエリは、ログコンソールと同じ仕組みで動作する。</p>
-<p>そのため、最初はログコンソールで必要なログを絞り込めるかを確認し、問題なければログモニターのクエリを設定する。</p>
+<h2 id="01">01. 分散トレース<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">分散トレースとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>マイクロサービスから収集されたスパンのセットのこと。</p>
+<p>スパンをトレースIDで紐付けることによって、<code>1</code>個のリクエストで発生したマイクロサービスを横断する処理を、一繋ぎに表現できるようになる。</p>
+<p><img alt="distributed-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B">https://docs.datadoghq.com/monitors/monitor_types/log/#%E6%A4%9C%E7%B4%A2%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ シングルアラート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<h4 id="_6">▼ マルチアラート<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ログクエリで<code>group by</code>句を定義すると、選択できるようになる。</p>
-<p><br></p>
-<h2 id="01-02">01-02. アラートの発火<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_7">グループ化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p><br></p>
-<h3 id="_8">作成条件<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="auto-resolve">▼ Auto resolve<a class="headerlink" href="#auto-resolve" title="Permanent link">&para;</a></h4>
-<p>アラートを通知した後に、一定期間同じエラーイベントが発生しなければ、発火したアラートを取り下げる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve">https://docs.datadoghq.com/monitors/create/configuration/?tab=thresholdalert#auto-resolve</a></li>
+<li><a href="https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/">https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/</a></li>
+<li><a href="https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/">https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/</a></li>
+<li><a href="https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058">https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058</a></li>
+<li><a href="https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/">https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-03">01-03. アラートの通知内容<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
-<h3 id="_9">変数<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ 変数を使用した重要度レベルの共通化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>重要度レベルは、アプリケーション間で共通である方が良い。</p>
-<p>通知内容に変数を使用することにより、異なるアプリケーションに共通のアラート条件を適用できるようになる。</p>
-<p>そのため、アプリケーション間で重要度レベルを共通化できる。</p>
-<p>ステータスに応じてアラートするか否かの決め方については、以下のリンクを参考にせよ。</p>
+<h3 id="_4">分散トレースの用途<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ レスポンスタイムの最適化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>分散トレースを収集すると、マイクロサービス間のレスポンスタイムを可視化できる。</p>
+<p>例えば、性能テストでシステム全体の性能劣化があったとする。</p>
+<p>分散トレースで特定のマイクロサービス間でレスポンスタイムを可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。</p>
+<p>そのダウンストリーム側マイクロサービスのリクエストまたはアップストリーム側マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。</p>
+<p><img alt="distributed-trace_connection-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html">https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html</a></li>
+<li><a href="https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing">https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ テンプレート変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<h4 id="_6">▼ 悪意のあるリクエストの検出<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>分散トレースを収集すると、悪意のあるリクエストを検出できる。</p>
+<p>例えば、特定のマイクロサービスへのリクエストが異常に多ければ、そのマイクロサービスに悪意のあるリクエストが送信されている可能性がある。</p>
+<p><br></p>
+<h3 id="_7">分散トレースの読み方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>上から下に読むと、ダウンストリーム側マイクロサービス (上位スパン) がアップストリーム側マイクロサービス (下位スパン) を処理をコールしていることを確認できる。</p>
+<p>下から上に読むと、アップストリーム側マイクロサービス (下位スパン) からダウンストリーム側マイクロサービス (上位スパン) に結果を返却していることを確認できる。</p>
+<p><img alt="distributed-trace_reading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables">https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables</a></li>
-</ul>
-</blockquote>
-<h4 id="_12">▼ マルチアラート変数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>クエリの<code>group by</code>句に割り当てたタグやファセットを変数として出力する。</p>
-<p>マルチアラートモニターを使用する場合のみ、使用できる。</p>
-<h4 id="_13">▼ タグ変数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>構造化ログの属性値またはタグ値を変数として出力する。</p>
-<p><code>{{ log.attributes.&lt;キー名&gt; }}</code> または<code>{{ log.tags.&lt;キー名&gt; }}</code>として実装する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables">https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables</a></li>
-</ul>
-</blockquote>
-<h4 id="_14">▼ コンポジットモニター変数<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables">https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#composite-monitor-variables</a></li>
-</ul>
-</blockquote>
-<h4 id="_15">▼ 条件変数<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables">https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#conditional-variables</a></li>
+<li><a href="https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace">https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_16">メッセージの構成<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ タイトル<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>通知先にタイトルとして表示するテキストを定義する。</p>
-<p>タイトルに変数を出力できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- タグ変数を出力する --&gt;</span>
-
-【{{ log.attributes.service }}】{{ log.attributes.env
-}}環境でエラーを検知しました。
-</code></pre></div>
-<h4 id="_18">▼ 本文<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>通知先とテキストを定義する。</p>
-<p>マークダウン記法を使用できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Datadogに設定した通知先 --&gt;</span>
-
-<span class="cm">&lt;!-- アラート状態の時に表示するテキスト --&gt;</span>
-
-{{ #is_alert }}
-
-<span class="cm">&lt;!-- 復旧通知を転送しない場合、is_alert構文の中で定義する必要がある --&gt;</span>
-
-@<span class="p">&lt;</span><span class="nt">本番環境のアラートチャンネル</span><span class="p">&gt;</span> 実行環境名：{{ log.attributes.env }}
-アプリケーション名：{{ log.attributes.service }} ログステータス：{{
-log.attributes.log_status }} ソース名：{{ log.tags.source }} リージョン名：{{
-log.attributes.region }} {{ /is_alert }}
-</code></pre></div>
+<h3 id="_8">モノリシックアーキテクチャにおける分散トレース<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b">https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b</a></li>
+<li><a href="https://deepsource.io/blog/distributed-tracing/#monolithic-observability">https://deepsource.io/blog/distributed-tracing/#monolithic-observability</a></li>
 </ul>
 </blockquote>
+<p><strong>＊例＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>a1</code>：クライアントがリクエストを送信する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>a1</code>：リクエストがロードバランサ－に到達する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>a1</code>～<code>a2</code>：ロードバランサ－で処理が実行される。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p><code>a2</code>：ロードバランサ－がリクエストをアプリケーションにルーティングする。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p><code>a2</code>：リクエストがアプリケーションに到達する。</p>
+</dd>
+<dt><code>(6)</code></dt>
+<dd>
+<p><code>a2</code>～<code>a3</code>：アプリケーションで処理が実行される。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p><code>a3</code>：アプリケーションがレスポンスをクライアントに返信する。</p>
+</dd>
+</dl>
+<p><img alt="monolith-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png" /></p>
 <p><br></p>
-<h2 id="02-rum">02. リアルユーザー監視 (RUM)<a class="headerlink" href="#02-rum" title="Permanent link">&para;</a></h2>
-<h3 id="_19">ブラウザエラー<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="_20">▼ ブラウザエラーとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>Datadogで、ブラウザのエラーは以下に分類される。</p>
+<h2 id="02">02. コンテキスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">コンテキストとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>各スパンに含まれる情報のこと。</p>
+<ul>
+<li>各種ID</li>
+<li>マイクロサービスの属性情報</li>
+</ul>
+<p><br></p>
+<h3 id="_10">コンテキスト作成の仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にコンテキストを作成する。</p>
+<p>これらは、コンテキストがIDが持っているかを検証する。</p>
+<p>もしIDがなければ、スパンにIDを新しく割り当てる。</p>
+<p><img alt="distributed-tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B">https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html</a></li>
+</ul>
+</blockquote>
+<h4 id="id">▼ IDの種類<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
+<p>コンテキストには、以下のIDが含まれている。</p>
 <table>
 <thead>
 <tr>
-<th>エラーのソース</th>
-<th>エラーの例</th>
+<th>ID</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>コード上</td>
-<td>・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示されたPromiseオブジェクトの<code>reject</code>メソッドの結果</td>
+<td>トレースID</td>
+<td>リクエストIDである。全てのマイクロサービスで同じになる。</td>
 </tr>
 <tr>
-<td>ブラウザコンソール上</td>
-<td><code>console.error</code>メソッドによって、コンソール上に出力されたテキスト</td>
+<td>スパンID</td>
+<td>各マイクロサービス固有の処理IDである。 全てのマイクロサービスで異なっている。</td>
 </tr>
 <tr>
-<td>カスタム</td>
-<td><code>@datadog/browser-rum</code>パッケージの<code>addError</code>メソッドによって、datadog-APIに送信されたテキスト</td>
+<td>親スパンID</td>
+<td>クライアントのマイクロサービスの処理IDである。クライアントが同じマイクロサービス間で同じになる。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm">https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm</a></li>
+<li><a href="https://docs.lightstep.com/docs/understand-distributed-tracing#context">https://docs.lightstep.com/docs/understand-distributed-tracing#context</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="03">03. 合成監視<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_21">ブラウザテスト<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<h4 id="ip">▼ 送信元IPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>Datadog社の物理サーバーがリクエストを送信する。</p>
-<p>物理サーバー自体はAWSやAzureによって管理されており、使用する物理サーバーのリージョンを選択できる。</p>
-<p>リージョンごとに数個ずつ物理サーバーが存在しているため、もし合成監視対象のアプリケーションでIP制限が行われている場合は、これらの物理サーバーのIPからのリクエストを許可する必要がある。</p>
+<h4 id="_11">▼ コンテキスト伝播 (分散コンテキスト伝播)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスで、受信した通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。</p>
+<p>分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからコンテキストを簡単に取り出せるパッケージを使用すると良い。</p>
+<p>インバウンド通信がHTTPプロコトルでアウトバウンド通信が、gRPCによるHTTPリクエストである場合も、ヘッダー間での受け渡しが必要である。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests">https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests</a></li>
+<li><a href="https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing">https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing</a></li>
+<li><a href="https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B">https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B</a></li>
+<li><a href="https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643">https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643</a></li>
 </ul>
 </blockquote>
-<h4 id="_22">▼ ヘッダー<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 異なる言語間での受け渡し<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>異なる言語の各アプリで、計装パッケージによるTracerProviderのセットアップやスパンの作成は必要</li>
+<li>言語間で計装パッケージの仕様は標準化されているため、言語が違ってもリクエストからコンテキストの中身 (スパンID、トレースIDなど) を抽出したり注入したりできる</li>
+</ul>
+<p><br></p>
+<h3 id="_13">コンテキスト仕様の種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 一覧<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。</p>
+<ul>
+<li>W3C Trace Context</li>
+<li>W3C Baggage</li>
+<li>B3 (Zipkin)</li>
+<li>Jaeger</li>
+<li>独自仕様 (AWS X-Ray、Datadog、LightStep、など)</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution">https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
+<li><a href="https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5">https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5</a></li>
+</ul>
+</blockquote>
+<h4 id="w3c-trace-context">▼ W3C Trace Context<a class="headerlink" href="#w3c-trace-context" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<span class="nn">---</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.com</span>
+<span class="c1"># バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ</span>
+<span class="nt">traceparent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01</span>
+<span class="c1"># セッションID、特定のリクエストにのみ付与されたデータ、などをリスト形式で運ぶ</span>
+<span class="nt">tracestate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.w3.org/TR/trace-context/">https://www.w3.org/TR/trace-context/</a></li>
+</ul>
+</blockquote>
+<h4 id="b3-zipkin">▼ B3 (Zipkin)<a class="headerlink" href="#b3-zipkin" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<span class="nn">---</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.com</span>
+<span class="nt">X-B3-TraceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f102024f34f30692b676c13f47cbcf03</span>
+<span class="nt">X-B3-SpanId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e2695f90dfd76b09</span>
+<span class="nt">X-B3-Sampled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="carrier">ツールごとのCarrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
+<h4 id="carrier_1">▼ Carrierとは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
+<p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
+<p>コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。</p>
+<p>伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、など) を『Carrier』という。</p>
+<h4 id="_15">▼ 標準ヘッダー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
-<th>ヘッダー</th>
-<th>値</th>
+<th>ヘッダー名</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>user-agent</code></td>
-<td>ブラウザテストで設定したブラウザが割り当てられる。</td>
+<td><code>X-REQUEST-ID</code></td>
+<td>トレースIDが割り当てられている。</td>
 </tr>
 <tr>
-<td><code>sec-datadog</code></td>
-<td>ブラウザテストのIDが割り当てられる。</td>
+<td><code>GRPC-TRACE-BIN</code></td>
+<td>RPCによるリクエストにて、トレースIDが割り当てられている。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="zipkin">▼ zipkin系ヘッダー<a class="headerlink" href="#zipkin" title="Permanent link">&para;</a></h4>
+<p>Zipkinが使用するヘッダーを追加する。</p>
+<table>
+<thead>
+<tr>
+<th>ヘッダー名</th>
+<th>説明</th>
+<th>値の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-B3-SAMPLED</code></td>
+<td></td>
+<td><code>1</code></td>
 </tr>
 <tr>
-<td><code>x-datadog-trace-id</code></td>
-<td>バックエンドがマイクロサービスアーキテクチャの場合、収集できる分散トレースを紐付けるIDが割り当てられる。</td>
+<td><code>X-B3-SPANID</code></td>
+<td>スパンIDが割り当てられている。</td>
+<td><code>a2fb4a1d1a96d312</code></td>
 </tr>
 <tr>
-<td><code>x-datadog-parent-id</code></td>
-<td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、<code>0</code>が割り当てられる。</td>
+<td><code>X-B3-TRACEID</code></td>
+<td>トレースIDが割り当てられている。</td>
+<td><code>463ac35c9f6413ad48485a3953bb6124</code></td>
 </tr>
 <tr>
-<td><code>x-datadog-origin</code></td>
-<td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースがAPMクオータに影響しないように、<code>synthetics-browser</code>が割り当てられる。</td>
-</tr>
-<tr>
-<td><code>x-datadog-sampling-priority</code></td>
-<td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、<code>1</code>が割り当てれる。</td>
+<td><code>X-B3-PARENTSPANId</code></td>
+<td>親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。</td>
+<td><code>0020000000000001</code></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers">https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers</a></li>
-<li><a href="https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests">https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests</a></li>
+<li><a href="https://github.com/openzipkin/b3-propagation#multiple-headers">https://github.com/openzipkin/b3-propagation#multiple-headers</a></li>
+</ul>
+</blockquote>
+<h4 id="aws-x-ray">▼ AWS X-Ray系ヘッダー<a class="headerlink" href="#aws-x-ray" title="Permanent link">&para;</a></h4>
+<p>AWS X-Rayが使用するヘッダーを追加する。</p>
+<table>
+<thead>
+<tr>
+<th>ヘッダー名</th>
+<th>説明</th>
+<th>値の例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-AMZN-TRACE-ID</code></td>
+<td>トレースIDが割り当てられている。トレースIDはALBで作られる。</td>
+<td><code>1-5759e988-bd862e3fe1be46a994272793</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html">https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="api">APIテスト<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="api_1">マルチステップAPIテスト<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h2 id="04">04. セキュリティ監視<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<p>記入中</p>
-<p><br></p>
-<h2 id="05">05. グラフ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_23">図の種類<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="_24">スケールの種類<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<h4 id="log">▼ log (対数) スケール<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="linear">▼ linear (線形) スケール<a class="headerlink" href="#linear" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="2">▼ ２の累乗スケール<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="sqrt">▼ sqrt (平方根) スケール<a class="headerlink" href="#sqrt" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<p><br></p>
-<h2 id="06">06. コスト<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<h2 id="03">03. スパン<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_16">スパンとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。</p>
+<p>スパンには親子関係があり、最上位の親スパンを『ルートスパン』ともいう。</p>
+<p>JSON型で定義されることが多い。</p>
+<p>SaaSツールによってJSON型の構造が異なる。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.datadoghq.com/account_management/billing/usage_details/">https://docs.datadoghq.com/account_management/billing/usage_details/</a></li>
+<li><a href="https://opentracing.io/docs/overview/spans/">https://opentracing.io/docs/overview/spans/</a></li>
+<li><a href="https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB">https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB</a></li>
+<li><a href="https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines">https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_17">スパン名<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。</p>
+<p>例えば、ユーザー情報を取得するマイクロサービスのスパン名として、以下の候補がある。</p>
+<p>区切り記号は、ドット (<code>.</code>) や スラッシュ(<code>/</code>) が良い。</p>
+<table>
+<thead>
+<tr>
+<th>スパン名</th>
+<th>構成</th>
+<th style="text-align: center;">良し悪し</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get</code></td>
+<td><code>&lt;HTTPメソッド名&gt;</code></td>
+<td style="text-align: center;">×</td>
+<td></td>
+</tr>
+<tr>
+<td><code>get_account.42</code></td>
+<td><code>&lt;アプリのメソッド名&gt;.&lt;ID&gt;</code></td>
+<td style="text-align: center;">×</td>
+<td></td>
+</tr>
+<tr>
+<td><code>get_account</code></td>
+<td><code>&lt;アプリのメソッド名&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+<td>スパンの属性にアカウントIDを設定するとよい。</td>
+</tr>
+<tr>
+<td><code>get_account.accountId</code></td>
+<td><code>&lt;アプリのメソッド名&gt;.&lt;エンドポイント名&gt;</code></td>
+<td style="text-align: center;">⭕️</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span">https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span</a></li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name</a></li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions">https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_18">スパンの粒度<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>スパンの適切な粒度は、マイクロサービスの粒度による。</p>
+<table>
+<thead>
+<tr>
+<th>マイクロサービスの粒度</th>
+<th>スパンの粒度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>境界付けられたコンテキスト</td>
+<td>マイクロサービスごと、関数ごとに</td>
+</tr>
+<tr>
+<td>ルートエンティティ</td>
+<td>マイクロサービスごと</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_19">データポイント化<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。</p>
+<p><br></p>
+<h2 id="04">04. プロファイル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_20">プロファイルとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>分散トレースのスパンにハードウェアリソース消費量の情報を加えたもの。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95">https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95</a></li>
+<li><a href="https://github.com/google/pprof">https://github.com/google/pprof</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22316,7 +21857,7 @@ log.attributes.region }} {{ /is_alert }}
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-28</span>
   </span>
 
     

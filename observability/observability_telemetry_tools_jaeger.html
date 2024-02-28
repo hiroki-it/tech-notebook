@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="テレメトリー収集ツール＠可観測性の知見を記録しています。">
+        <meta name="description" content="Jaeger＠テレメトリー収集ツールの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_jaeger.html">
       
       
-        <link rel="prev" href="observability_monitoring_service_level.html">
-      
-      
-        <link rel="next" href="observability_telemetry_fluentbit_fluentd.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】テレメトリー収集ツール＠可観測性 - 俺の技術ノート</title>
+        <title>【IT技術の知見】Jaeger＠テレメトリー収集ツール - 俺の技術ノート</title>
       
     
     
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#jaeger" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】テレメトリー収集ツール＠可観測性
+              【IT技術の知見】Jaeger＠テレメトリー収集ツール
             
           </span>
         </div>
@@ -594,12 +590,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -19740,8 +19734,6 @@
       
   
   
-    
-  
   
   
     
@@ -19762,17 +19754,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
         
           
           
@@ -19788,13 +19779,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="">
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             🔎 可観測性
@@ -19947,10 +19938,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -19976,11 +19965,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_4" >
         
           
           <label class="md-nav__link" for="__nav_21_4" id="__nav_21_4_label" tabindex="0">
@@ -19994,7 +19985,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_21_4">
             <span class="md-nav__icon md-icon"></span>
             ■ テレメトリー収集ツール
@@ -20005,30 +19996,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    テレメトリー収集ツール
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="observability_telemetry.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="observability_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20037,364 +20008,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. テレメトリー収集ツールの比較
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. テレメトリー収集ツールの比較">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ログの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレースの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分散トレースの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      テレメトリー間の紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. テレメトリーを利用したデバッグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. テレメトリーを利用したデバッグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      前提
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の場所の切り分け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の場所の切り分け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      (1) メッシュトポロジー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      (2) メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      (3) ログ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の種類の切り分け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の種類の切り分け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      (4) ハードウェアリソース系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      (5) 状態系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      (6) ネットワーク系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の特定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の特定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#7-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      (7) Podのハードウェアリソース不足
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      (8) Nodeのハードウェアリソース不足
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9" class="md-nav__link">
-    <span class="md-ellipsis">
-      (9) ミドルウェア/アプリのロジックの問題
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#10-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      (10) Nodeの障害
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#11-resource-quota" class="md-nav__link">
-    <span class="md-ellipsis">
-      (11) Resource Quotaの問題
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-eviction-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      (12) Evictionの発生 (Podの予期せぬ退避)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-pull" class="md-nav__link">
-    <span class="md-ellipsis">
-      (13) コンテナイメージのPullエラー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-liveness-probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      (14) Liveness Probeの失敗
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15" class="md-nav__link">
-    <span class="md-ellipsis">
-      (15) ミドルウェア/アプリのその他の問題
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -20407,7 +20020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="observability_telemetry_fluentbit_fluentd.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20428,7 +20041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_grafana.html" class="md-nav__link">
+      <a href="observability_telemetry_grafana.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20449,7 +20062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_jaeger.html" class="md-nav__link">
+      <a href="observability_telemetry_jaeger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20470,7 +20083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_prometheus.html" class="md-nav__link">
+      <a href="observability_telemetry_prometheus.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20537,7 +20150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20606,7 +20219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20627,7 +20240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_go.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_go.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20648,7 +20261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_open_telemetry_trace_client_package_python.html" class="md-nav__link">
+      <a href="observability_telemetry_open_telemetry_trace_client_package_python.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20735,7 +20348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_agent_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_agent_conf.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20756,7 +20369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_monitoring.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_monitoring.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20777,7 +20390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_integration.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_integration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20848,7 +20461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_metrics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20869,7 +20482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_log.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_log.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20936,7 +20549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20957,7 +20570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_distributed_trace_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_distributed_trace_client_package.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20986,7 +20599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_datadog_telemetry_association.html" class="md-nav__link">
+      <a href="observability_telemetry_datadog_telemetry_association.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21069,7 +20682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_analytics.html" class="md-nav__link">
+      <a href="observability_telemetry_google_analytics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21090,7 +20703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="observability_telemetry_google_search_console.html" class="md-nav__link">
+      <a href="observability_telemetry_google_search_console.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21511,7 +21124,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -21520,329 +21133,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      01. テレメトリー収集ツールの比較
+      こちらまで
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. テレメトリー収集ツールの比較">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ログの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ログの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      分散トレースの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="分散トレースの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 組み合わせの例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      テレメトリー間の紐付け
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. テレメトリーを利用したデバッグ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. テレメトリーを利用したデバッグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      前提
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の場所の切り分け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の場所の切り分け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      (1) メッシュトポロジー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      (2) メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      (3) ログ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の種類の切り分け
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の種類の切り分け">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      (4) ハードウェアリソース系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      (5) 状態系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      (6) ネットワーク系メトリクス
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      原因の特定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="原因の特定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#7-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      (7) Podのハードウェアリソース不足
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      (8) Nodeのハードウェアリソース不足
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9" class="md-nav__link">
-    <span class="md-ellipsis">
-      (9) ミドルウェア/アプリのロジックの問題
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#10-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      (10) Nodeの障害
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#11-resource-quota" class="md-nav__link">
-    <span class="md-ellipsis">
-      (11) Resource Quotaの問題
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-eviction-pod" class="md-nav__link">
-    <span class="md-ellipsis">
-      (12) Evictionの発生 (Podの予期せぬ退避)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-pull" class="md-nav__link">
-    <span class="md-ellipsis">
-      (13) コンテナイメージのPullエラー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-liveness-probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      (14) Liveness Probeの失敗
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15" class="md-nav__link">
-    <span class="md-ellipsis">
-      (15) ミドルウェア/アプリのその他の問題
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -21864,8 +21159,8 @@
   
 
 
-<h1 id="_1">テレメトリー収集ツール＠可観測性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="jaeger">Jaeger＠テレメトリー収集ツール<a class="headerlink" href="#jaeger" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -21873,867 +21168,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. テレメトリー収集ツールの比較<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">メトリクスの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>メトリクス収集ツールを比較した。</p>
-<p>プル型またはプッシュ型でメトリクスのデータポイントを収集するツールに分類できる。</p>
-<p>プッシュ型の場合、メトリクスを送信できるエージェントが必要である。</p>
-<p><code>()</code>内では、各ツールのコンポーネント名を表す。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">アクション</th>
-<th style="text-align: center;">AWS CloudWatch</th>
-<th style="text-align: center;">Datadog</th>
-<th style="text-align: center;">Istio<br>(連携しない状態)</th>
-<th style="text-align: center;">Istio<br>(ビルトインPrometheusと連携した状態)</th>
-<th style="text-align: center;">OpenTelemetry</th>
-<th style="text-align: center;">Prometheus</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">メトリクスのデータポイントの作成</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
-<td style="text-align: center;">✅<br>(Envoyによるリクエスト系メトリクスの作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによるリクエスト系メトリクスの作成)</td>
-<td style="text-align: center;">✅<br>(クライアントパッケージ)</td>
-<td style="text-align: center;">✅<br>(Exporter)</td>
-</tr>
-<tr>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td style="text-align: center;">メトリクスのデータポイントを収集<br>(プル型またはプッシュ型)</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンによる収集)</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンによる収集)</td>
-<td style="text-align: center;">✅<br>(opentelemetryコレクター)</td>
-<td style="text-align: center;">✅<br>(Exporter)</td>
-</tr>
-<tr>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td style="text-align: center;">ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchメトリクス)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td style="text-align: center;">監視バックエンドとして可視化</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchメトリクス)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Istiodコントロールプレーンを介したprometheusサーバーによる収集)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
-</tr>
-<tr>
-<td style="text-align: center;">分析</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchメトリクス)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td style="text-align: center;">レポートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Contributor Insights)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td style="text-align: center;">アラートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchアラーム)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(prometheusサーバー)</td>
-</tr>
-</tbody>
-</table>
+<h2 id="_2">こちらまで<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Jaegerはセクションが重複しており、以下のセクションを参照してください。</p>
 <blockquote>
 <ul>
-<li><a href="https://landscape.cncf.io/card-mode?category=monitoring&amp;grouping=category&amp;sort=stars">https://landscape.cncf.io/card-mode?category=monitoring&amp;grouping=category&amp;sort=stars</a></li>
-<li><a href="https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6">https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6</a></li>
-<li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ 組み合わせの例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS CloudWatchベース</th>
-<th style="text-align: center;">Datadogベース</th>
-<th style="text-align: center;">Istioベース</th>
-<th style="text-align: center;">Prometheusベース</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>メトリクスのデータポイントの作成</td>
-<td style="text-align: center;">AWS CloudWatchエージェント</td>
-<td style="text-align: center;">datadogエージェント</td>
-<td style="text-align: center;">Exporter<br>+ <br>Envoyによるリクエスト系メトリクスの作成</td>
-<td style="text-align: center;">Exporter</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>メトリクスのデータポイントを収集<br>(プル型またはプッシュ型)</td>
-<td style="text-align: center;">AWS CloudWatchエージェント</td>
-<td style="text-align: center;">datadogエージェント</td>
-<td style="text-align: center;">Exporter<br>+ <br>Istiodコントロールプレーンによる収集</td>
-<td style="text-align: center;">Exporter</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">AWS CloudWatchメトリクス</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>監視バックエンドとして可視化</td>
-<td style="text-align: center;">AWS CloudWatchメトリクス</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">prometheusサーバー</td>
-<td style="text-align: center;">prometheusサーバー</td>
-</tr>
-<tr>
-<td>分析</td>
-<td style="text-align: center;">AWS CloudWatchメトリクス</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>レポートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>アラートの作成</td>
-<td style="text-align: center;">AWS CloudWatchアラーム</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">prometheusサーバー</td>
-<td style="text-align: center;">prometheusサーバー</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_6">ログの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ログ収集ツールを比較した。</p>
-<p>いずれもプッシュ型でログを収集し、ログを監視バックエンドに送信できるエージェントが必要である。</p>
-<p><code>()</code>内では、各ツールのコンポーネント名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS CloudWatch</th>
-<th style="text-align: center;">Elasticsearch</th>
-<th style="text-align: center;">Fluentd<br>Fluentbit</th>
-<th style="text-align: center;">Grafana Loki</th>
-<th style="text-align: center;">Istio<br>(連携しない状態)</th>
-<th style="text-align: center;">Istio<br>(ビルトインOpenTelemetryと連携した状態)</th>
-<th style="text-align: center;">OpenTelemetry</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>実行ログの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>アクセスログの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyによるアクセスログ作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによるアクセスログ作成)</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ログの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">✅<br>(cloudwatchエージェント)</td>
-<td style="text-align: center;">✅<br>(Logstach)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅<br>(Promtail)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyからopentelemetryコレクターへの送信)</td>
-<td style="text-align: center;">✅<br>(opentelemetryコレクター)</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchログ)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(BoltDB)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>監視バックエンドとして可視化</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchログ)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>分析</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchメトリクスのログメトリクス)</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>レポートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatch Contributor Insights)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>アラートの作成</td>
-<td style="text-align: center;">✅<br>(AWS CloudWatchアラーム)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://landscape.cncf.io/card-mode?category=logging&amp;grouping=category&amp;sort=stars">https://landscape.cncf.io/card-mode?category=logging&amp;grouping=category&amp;sort=stars</a></li>
-<li><a href="https://qiita.com/kazookie/items/eef3071a0667cb4d5136">https://qiita.com/kazookie/items/eef3071a0667cb4d5136</a></li>
-<li><a href="https://www.reddit.com/r/kubernetes/comments/qv6qqx/comment/hkul7kb/?utm_source=share&amp;utm_medium=web2x&amp;context=3">https://www.reddit.com/r/kubernetes/comments/qv6qqx/comment/hkul7kb/?utm_source=share&amp;utm_medium=web2x&amp;context=3</a></li>
-<li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ 組み合わせの例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS CloudWatchベース</th>
-<th style="text-align: center;">Datadogベース</th>
-<th style="text-align: center;">Istioベース</th>
-<th style="text-align: center;">Prometheusベース</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>実行ログの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>アクセスログの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">Envoyによるアクセスログ作成</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ログの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">Fluentd<br>Fluentbit</td>
-<td style="text-align: center;">Fluentd<br>Fluentbit</td>
-<td style="text-align: center;">Fluentd<br>Fluentbit<br>(opentelemetryコレクターでも可)</td>
-<td style="text-align: center;">Promtail</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">AWS CloudWatchログ</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Grafana Loki</td>
-<td style="text-align: center;">Grafana Loki</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>監視バックエンドとして可視化</td>
-<td style="text-align: center;">AWS CloudWatchログ</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Grafana</td>
-<td style="text-align: center;">Grafana</td>
-</tr>
-<tr>
-<td>分析</td>
-<td style="text-align: center;">AWS CloudWatchログインサイト</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Grafana</td>
-<td style="text-align: center;">Grafana</td>
-</tr>
-<tr>
-<td>レポートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>アラートの作成</td>
-<td style="text-align: center;">AWS CloudWatchアラーム</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">prometheusサーバー</td>
-<td style="text-align: center;">prometheusサーバー</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_9">分散トレースの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ 種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>分散トレース収集ツールを比較した。</p>
-<p>いずれもプッシュ型で分散トレースを収集し、分散トレースを監視バックエンドに送信できるエージェントが必要である。</p>
-<p><code>()</code>内では、各ツールのコンポーネント名を表す。</p>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS X-Ray</th>
-<th style="text-align: center;">Datadog</th>
-<th style="text-align: center;">Grafana Tempo</th>
-<th style="text-align: center;">Istio<br>(連携しない状態)</th>
-<th style="text-align: center;">Istio<br>(ビルトインJaegerと連携した状態)</th>
-<th style="text-align: center;">Jaeger</th>
-<th style="text-align: center;">OpenTelemetry</th>
-<th style="text-align: center;">Zipkin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>トレースIDとスパンIDの作成</td>
-<td style="text-align: center;">✅<br>(x-rayクライアントパッケージ)</td>
-<td style="text-align: center;">✅<br>(datadogクライアントパッケージ)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyによる各種IDの作成)</td>
-<td style="text-align: center;">✅<br>(Envoyによる各種IDの作成)</td>
-<td style="text-align: center;">✅<br>(jaegerエージェント)</td>
-<td style="text-align: center;">✅<br>(otelクライアントパッケージ)</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>各種IDのアプリ間の伝播</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>分散トレースの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">✅<br>(x-rayエージェント)</td>
-<td style="text-align: center;">✅<br>(datadogエージェント)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(Envoyからjaegerコレクターへの送信)</td>
-<td style="text-align: center;">✅<br>(jaegerコレクター)</td>
-<td style="text-align: center;">✅<br>(opentelemetryコレクター)</td>
-<td style="text-align: center;">✅<br>(zipkinコレクター)</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅<br>(JaegerのビルトインのCassandra、Elasticsearch)</td>
-<td style="text-align: center;">✅<br>(Cassandra、Elasticsearch)</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>監視バックエンドとして可視化</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>分析</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>レポートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>アラートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://landscape.cncf.io/card-mode?category=tracing&amp;grouping=category&amp;sort=stars">https://landscape.cncf.io/card-mode?category=tracing&amp;grouping=category&amp;sort=stars</a></li>
-<li><a href="https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection">https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection</a></li>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022">https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022</a></li>
-<li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19</a></li>
-</ul>
-</blockquote>
-<h4 id="_11">▼ 組み合わせの例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">Datadogベース</th>
-<th style="text-align: center;">Istioベース</th>
-<th style="text-align: center;">OpenTelemetryベース</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>トレースIDとスパンIDの作成</td>
-<td style="text-align: center;">クライアントパッケージ</td>
-<td style="text-align: center;">Envoyによる各種IDの作成</td>
-<td style="text-align: center;">クライアントパッケージ</td>
-</tr>
-<tr>
-<td>各種IDのアプリ間の伝播</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>分散トレースの収集<br>(いずれもプッシュ型による送信方式)</td>
-<td style="text-align: center;">datadogエージェント</td>
-<td style="text-align: center;">Envoyからjaegerコレクターへの送信</td>
-<td style="text-align: center;">OpenTelemtryコレクターへの送信</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>ビルトインローカルストレージへの保管</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">JaegerのビルトインのCassandra、Elasticsearch</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>監視バックエンドとして可視化</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Jaeger</td>
-<td style="text-align: center;">Grafana Tempo</td>
-</tr>
-<tr>
-<td>分析</td>
-<td style="text-align: center;">Datadog</td>
-<td style="text-align: center;">Jaeger</td>
-<td style="text-align: center;">Grafana Tempo</td>
-</tr>
-<tr>
-<td>レポートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-<tr>
-<td>⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-<td style="text-align: center;">⬇︎</td>
-</tr>
-<tr>
-<td>アラートの作成</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">-</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_12">テレメトリー間の紐付け<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>テレメトリー間の紐付けツールを比較した。</p>
-<p>トレースIDとスパンIDを付与したログ、スパンメトリクス、分散トレース、の間を紐付けられる。</p>
-<p>各種ツールで、テレメトリーを保管しておく場所 (データソース) に制限がある。</p>
-<table>
-<thead>
-<tr>
-<th>アクション</th>
-<th style="text-align: center;">AWS CloudWatch</th>
-<th style="text-align: center;">Datadog</th>
-<th style="text-align: center;">Grafana</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ログと分散トレース間の紐付け</td>
-<td style="text-align: center;">✅<br>(ログはAWS CloudWatchログに要保管)</td>
-<td style="text-align: center;">✅<br>(ログはDatadogに要保管)</td>
-<td style="text-align: center;">✅<br>(ログの保管ツールの種類に制限あり)</td>
-</tr>
-<tr>
-<td>メトリクスと分散トレース間の紐付け</td>
-<td style="text-align: center;">✅<br>(一部の言語のx-rayクライアントパッケージのみ対応)</td>
-<td style="text-align: center;">✅<br>(ログはDatadogに要保管)</td>
-<td style="text-align: center;">✅<br>(ログの保管ツールの種類に制限あり)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03">https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03</a></li>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04">https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_logintegration.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_logintegration.html</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_segments.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_segments.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02">02. テレメトリーを利用したデバッグ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_13">前提<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスなシステムにおいて、REDメトリクスに問題があったとする。</p>
-<p>ここでいうREDメトリクスとは、Rate (秒あたりのリクエスト数)、Errors (リクエストの失敗数)、Duration (レイテンシー)、のことである。</p>
-<p>この時、可観測性を使用してデバッグしていく。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#01">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#01</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_14">原因の場所の切り分け<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="1"><code>(1)</code> メッシュトポロジー<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>メッシュトポロジー (例：Kiali) を使用して、いずれのマイクロサービス間の通信がボトルネックになっているのかを見つける。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021</a></li>
-</ul>
-</blockquote>
-<h4 id="2"><code>(2)</code> メトリクス<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>メトリクス (例：PrometheusとGrafana) を使用して、いずれのコンポーネント (例：Node、Deployment、Pod、コンテナ) がボトルネックになっているのかを見つける。</p>
-<p>コンポーネント単位でフィルタリングできるようなメトリクスダッシュボードがあると、原因を特定しやすい。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#022">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#022</a></li>
-</ul>
-</blockquote>
-<h4 id="3"><code>(3)</code> ログ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>ログ (例：Fluentd) を使用して、いずれのマイクロサービスがボトルネックになっているのかを見つける。</p>
-<p>ログにレスポンスタイムやエラーメッセージを出力していると、原因を特定しやすい。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#023">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#023</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_15">原因の種類の切り分け<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="4"><code>(4)</code> ハードウェアリソース系メトリクス<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
-<p>ハードウェアリソース系のメトリクスから、いずれのコンポーネント (例：Node、Deployment、Pod、コンテナ) がボトルネックになっているのかを見つける。</p>
-<p>ハードウェアリソース系のメトリクスを監視できるようなメトリクスダッシュボードがあると、原因を特定しやすい。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#042">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#042</a></li>
-</ul>
-</blockquote>
-<h4 id="5"><code>(5)</code> 状態系メトリクス<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
-<p>ステータス系のメトリクスから、いずれのコンポーネント (例：Node、Deployment、Pod、コンテナ) がボトルネックになっているのかを見つける。</p>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#043">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#043</a></li>
-</ul>
-</blockquote>
-<h4 id="6"><code>(6)</code> ネットワーク系メトリクス<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
-<p>ネットワーク系のメトリクスから、いずれのコンポーネント (例：Node、Deployment、Pod、コンテナ) がボトルネックになっているのかを見つける。</p>
-<p><br></p>
-<h3 id="_16">原因の特定<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="7-pod"><code>(7)</code> Podのハードウェアリソース不足<a class="headerlink" href="#7-pod" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#061">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#061</a></li>
-</ul>
-</blockquote>
-<h4 id="8-node"><code>(8)</code> Nodeのハードウェアリソース不足<a class="headerlink" href="#8-node" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#062">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#062</a></li>
-</ul>
-</blockquote>
-<h4 id="9"><code>(9)</code> ミドルウェア/アプリのロジックの問題<a class="headerlink" href="#9" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#063">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#063</a></li>
-</ul>
-</blockquote>
-<h4 id="10-node"><code>(10)</code> Nodeの障害<a class="headerlink" href="#10-node" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#064">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#064</a></li>
-</ul>
-</blockquote>
-<h4 id="11-resource-quota"><code>(11)</code> Resource Quotaの問題<a class="headerlink" href="#11-resource-quota" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#065">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#065</a></li>
-</ul>
-</blockquote>
-<h4 id="12-eviction-pod"><code>(12)</code> Evictionの発生 (Podの予期せぬ退避)<a class="headerlink" href="#12-eviction-pod" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#066">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#066</a></li>
-</ul>
-</blockquote>
-<h4 id="13-pull"><code>(13)</code> コンテナイメージのPullエラー<a class="headerlink" href="#13-pull" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#067">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#067</a></li>
-</ul>
-</blockquote>
-<h4 id="14-liveness-probe"><code>(14)</code> Liveness Probeの失敗<a class="headerlink" href="#14-liveness-probe" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#068">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#068</a></li>
-</ul>
-</blockquote>
-<h4 id="15"><code>(15)</code> ミドルウェア/アプリのその他の問題<a class="headerlink" href="#15" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#069">https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#069</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22757,7 +21196,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-28</span>
   </span>
 
     
