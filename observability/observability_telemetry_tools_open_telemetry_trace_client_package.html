@@ -21412,9 +21412,60 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      パッケージ
+      種類
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdout-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Stdout Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otlp-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OTLP Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jaeger-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Jaeger Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-ray-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ X-Ray Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudtrace-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CloudTrace Exporter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22130,43 +22181,33 @@
 <h2 id="02-exporter">02. Exporter<a class="headerlink" href="#02-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="exporter">Exporterとは<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
 <p>スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_7">パッケージ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>スパンの収集ツールがそれぞれパッケージを提供している。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>必要なパッケージ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Goと標準出力</td>
-<td><code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージからコールできる。otelクライアントはgRPCでopentelemetryコレクター接続する。<code>go.opentelemetry.io/otel/sdk/export/</code>パッケージは執筆時点 (2023/09/18時点) で非推奨である。</td>
-</tr>
-<tr>
-<td>Goとopentelemetryコレクター</td>
-<td><code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>パッケージからコールできる。</td>
-</tr>
-<tr>
-<td>GoとJaeger</td>
-<td><code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージからコールできる。</td>
-</tr>
-<tr>
-<td>GoとX-Ray</td>
-<td>一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
-</tr>
-<tr>
-<td>GoとCloud Trace</td>
-<td><code>github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace</code>パッケージからコールできる。</td>
-</tr>
-</tbody>
-</table>
+<h3 id="_7">種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="stdout-exporter">▼ Stdout Exporter<a class="headerlink" href="#stdout-exporter" title="Permanent link">&para;</a></h4>
+<p>標準出力を宛先とする。</p>
+<p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージからコールできる。</p>
+<p><code>go.opentelemetry.io/otel/sdk/export/</code>パッケージは執筆時点 (2023/09/18時点) で非推奨である。</p>
+<h4 id="otlp-exporter">▼ OTLP Exporter<a class="headerlink" href="#otlp-exporter" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetryコレクターを宛先とする。</p>
+<p>otelクライアントはgRPCでopentelemetryコレクター接続する。</p>
+<p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>パッケージからコールできる。</p>
+<h4 id="jaeger-exporter">▼ Jaeger Exporter<a class="headerlink" href="#jaeger-exporter" title="Permanent link">&para;</a></h4>
+<p>Jaegerを宛先とする。</p>
+<p>例えばGoであれば、<code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージからコールできる。</p>
+<h4 id="x-ray-exporter">▼ X-Ray Exporter<a class="headerlink" href="#x-ray-exporter" title="Permanent link">&para;</a></h4>
+<p>X-Rayを宛先とする。</p>
+<p>一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</p>
+<h4 id="cloudtrace-exporter">▼ CloudTrace Exporter<a class="headerlink" href="#cloudtrace-exporter" title="Permanent link">&para;</a></h4>
+<p>CloudTraceを宛先とする。</p>
+<p>例えばGoであれば、<code>github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace</code>パッケージからコールできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
-<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11">https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11</a></li>
 </ul>
 </blockquote>
@@ -22267,6 +22308,11 @@
 <h2 id="04-span-processor">04. Span Processor<a class="headerlink" href="#04-span-processor" title="Permanent link">&para;</a></h2>
 <h3 id="span-processor">Span Processorとは<a class="headerlink" href="#span-processor" title="Permanent link">&para;</a></h3>
 <p>他の処理コンポーネントを操作する処理を持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_11">パッケージ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
@@ -22286,7 +22332,6 @@
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
-<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22387,6 +22432,11 @@
 <h2 id="06-resource">06. Resource<a class="headerlink" href="#06-resource" title="Permanent link">&para;</a></h2>
 <h3 id="resource">Resourceとは<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
 <p>スパンに属性を設定する処理を持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_16">パッケージ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <table>
@@ -22415,7 +22465,6 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1772-L1824">https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1772-L1824</a></li>
 </ul>
 </blockquote>
@@ -22423,6 +22472,11 @@
 <h2 id="07-sampler">07. Sampler<a class="headerlink" href="#07-sampler" title="Permanent link">&para;</a></h2>
 <h3 id="sampler_1">Samplerとは<a class="headerlink" href="#sampler_1" title="Permanent link">&para;</a></h3>
 <p>スパンのサンプリング方式やサンプリング率を設定する処理を持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_17">パッケージ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <table>
