@@ -73,7 +73,7 @@ $ go mod tidy -go <バージョン>
 
 ```bash
 $ go mod tidy -v
-                                                                                                       (arn:aws:eks:ap-northeast-1:382750151955:cluster/jdebit-tes-green)
+                                                                                                     
 unused <go.modファイルから削除したパッケージ>
 ```
 
