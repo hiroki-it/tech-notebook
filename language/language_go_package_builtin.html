@@ -23097,8 +23097,8 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 </code></pre></div>
 <p><br></p>
 <h3 id="fatal">接尾辞<code>Fatal</code>メソッド<a class="headerlink" href="#fatal" title="Permanent link">&para;</a></h3>
-<p>渡された値を標準出力に出力し、<code>os.Exit(1)</code>を実行して、ステータス『1』で処理を完了する。</p>
-<p>プログラムが終了してしまうため、できるだけ使わない方が良い。</p>
+<p>渡された値を標準出力に出力し、<code>os.Exit(1)</code>を実行して、ステータス <code>1</code> で処理を完了する。</p>
+<p>ただ、この仕様がわかりにくいため、<code>os.Exit(1)</code>と<code>log.Printf</code>関数を別々に実行した方が良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>渡された<code>error</code>インターフェースを標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -23176,7 +23176,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// Handler処理前にミドルウェア処理を実行する</span>
 <span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAdminCookie</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">handleAdmin</span><span class="p">)))</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -23227,7 +23227,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// Handler処理前にミドルウェア処理を実行する</span>
 <span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">myHandler</span><span class="p">)))</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
