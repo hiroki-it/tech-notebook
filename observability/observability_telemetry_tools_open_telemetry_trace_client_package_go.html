@@ -22247,7 +22247,7 @@
 <h3 id="otel">otelクライアントパッケージ<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">app</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
@@ -22422,7 +22422,7 @@
 <h4 id="_6">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
@@ -22674,7 +22674,7 @@
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
 <p>初期化の段階で、トレースコンテキストを伝播する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
@@ -22693,7 +22693,7 @@
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 空のトレースコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
@@ -22844,7 +22844,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23014,7 +23014,7 @@
 <h3 id="x-ray">宛先がX-Rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">collection</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
@@ -23042,7 +23042,7 @@
 <span class="o">...</span>
 
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 空のトレースコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
@@ -23143,7 +23143,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23221,7 +23221,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23293,7 +23293,7 @@
 <h3 id="google-cloudtrace_1">宛先がGoogle CloudTraceの場合<a class="headerlink" href="#google-cloudtrace_1" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
@@ -23309,7 +23309,7 @@
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;PROJECT_ID&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// CloudTraceを宛先に設定する。</span>
@@ -23468,7 +23468,7 @@
 <h3 id="_18">宛先が標準出力の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>gRPCを使わない場合と実装方法は同じである。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
@@ -23478,7 +23478,7 @@
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">Init</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 標準出力を宛先に設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdout</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">WithPrettyPrint</span><span class="p">())</span>
@@ -23554,12 +23554,12 @@
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">server</span><span class="p">)</span><span class="w"> </span><span class="nx">workHard</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">server</span><span class="p">)</span><span class="w"> </span><span class="nx">parent</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// スパンを作成する</span>
 <span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;workHard&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;parent&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;extra.key&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;extra.value&quot;</span><span class="p">)),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -23594,7 +23594,7 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// otelパッケージを初期化する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">Init</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23643,6 +23643,43 @@
 <h2 id="04-aws-sqs">04. メッセージキュー (AWS SQS) を挟む場合<a class="headerlink" href="#04-aws-sqs" title="Permanent link">&para;</a></h2>
 <h3 id="_22">パッケージ初期化とトレースコンテキスト抽出<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="k">go</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">svc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sqs</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">sess</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">SendMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">SendMessageInput</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">MessageAttributes</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;The Whistler&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s">&quot;Author&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;John Grisham&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s">&quot;WeeksOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Number&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;6&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">MessageBody</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Information about current NY Times fiction bestseller for week of 12/11/2016.&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">QueueUrl</span><span class="p">:</span><span class="w">    </span><span class="nx">queueURL</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html">https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 

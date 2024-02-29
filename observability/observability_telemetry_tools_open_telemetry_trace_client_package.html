@@ -23378,7 +23378,7 @@
 <p>Goの場合、<code>SetTextMapPropagator</code>関数を使用して、</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// クライアント側マイクロサービス</span>
 <span class="c1">// 前のマイクロサービスにとってはサーバー側にもなる</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
@@ -23388,7 +23388,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// サーバー側マイクロサービス</span>
 <span class="c1">// 後続のマイクロサービスにとってはクライアント側にもなる</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
