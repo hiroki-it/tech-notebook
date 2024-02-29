@@ -17,7 +17,9 @@ description: Go＠クライアントパッケージの知見を記録してい�
 
 ### otelクライアントパッケージ
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+
+パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
 package app
@@ -90,7 +92,7 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70
 
-#### ▼ 親スパンの作成
+#### ▼ 親スパン作成 (親のみ)
 
 親スパンを作成する。
 
@@ -132,7 +134,7 @@ func parentFunction(ctx context.Context) {
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ トレースコンテキスト注入と子スパン作成
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
 ```go
 func childFunction(ctx context.Context) {
@@ -197,13 +199,11 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
-otelクライアントパッケージを初期化する。
-
-初期化の段階で、トレースコンテキストを伝播する。
+パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
 package main
@@ -369,7 +369,7 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ トレースコンテキスト注入と子スパン作成
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
 現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
@@ -458,7 +458,7 @@ func main() {
 
 ### 宛先がopentelemetryコレクターの場合
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -810,7 +810,9 @@ func createUser(c *gin.Context) {
 
 ### 宛先がX-Rayの場合
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+
+パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
 package collection
@@ -911,7 +913,7 @@ func newTracerProvider() (func(context.Context) error, error) {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74
 
-#### ▼ 親スパンの作成
+#### ▼ 親スパン作成
 
 親スパンを作成する
 
@@ -1096,7 +1098,9 @@ func getXrayTraceID(span trace.Span) string {
 
 ### 宛先がGoogle CloudTraceの場合
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+
+パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
 package main
@@ -1275,7 +1279,7 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージの初期化 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
 
 gRPCを使わない場合と実装方法は同じである。
 
@@ -1327,7 +1331,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
 > - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
 
-#### ▼ 親スパンの作成 (親のみ)
+#### ▼ 親スパン作成 (親のみ)
 
 ```go
 package main
@@ -1448,5 +1452,13 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
+## 04. メッセージキュー (AWS SQS) を挟む場合
+
+### パッケージ初期化とトレースコンテキスト抽出
+
+パッケージを初期化し、トレースコンテキストを抽出する。
 
 <br>
