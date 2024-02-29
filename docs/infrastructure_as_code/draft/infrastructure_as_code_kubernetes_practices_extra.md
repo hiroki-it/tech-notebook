@@ -1354,10 +1354,10 @@ Kubernetesのマニフェストファイルに対する静的解析ツールが�
 
 なお、HelmチャートやKustomizeを使用している場合、テンプレートからマニフェストを作成し、これをツールに渡すとよい。
 
-```yaml
+```bash
 # 例：helmチャートから作成したマニフェストをplutoの標準入力に渡す
-$ helm template . -f foo-values.yaml \\
-| pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
+$ helm template . -f foo-values.yaml \
+  | pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
 ```
 
 | 観点                                                                                                                                               | ツール名                                                           | 概要                                                                                                                   | 推奨ツール | ★の理由 (2023/11時点)                                                                                                                                                 | 開発初期時点で採用推奨 |
