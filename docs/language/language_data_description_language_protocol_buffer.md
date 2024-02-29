@@ -23,38 +23,6 @@ description: Protocol Buffer＠データ記述型言語の知見を記録して�
 
 ## 02. 文法
 
-### syntax
-
-Protocol Bufferコンパイラーのバージョンを設定する。
-
-Protocol Bufferコンパイラーは、`proto`ファイルから`pb`ファイルを自動的に作成する。
-
-```protobuf
-syntax = "proto3";
-```
-
-> - https://protobuf.dev/programming-guides/proto3/
-> - https://protobuf.dev/programming-guides/proto3/#generated
-
-<br>
-
-### message
-
-リクエストメッセージで送信するデータ構造を設定する。
-
-```protobuf
-syntax = "proto3";
-
-message Person {
-  optional int32 id = 1;
-  optional string name = 2;
-}
-```
-
-> - https://protobuf.dev/overview/#syntax
-
-<br>
-
 ### enum
 
 enum型のデータを設定する。
@@ -77,6 +45,31 @@ message Person {
 
 <br>
 
+### map
+
+記入中...
+
+> - https://protobuf.dev/overview/#syntax
+
+<br>
+
+### message
+
+リクエストメッセージで送信するデータ構造を設定する。
+
+```protobuf
+syntax = "proto3";
+
+message Person {
+  optional int32 id = 1;
+  optional string name = 2;
+}
+```
+
+> - https://protobuf.dev/overview/#syntax
+
+<br>
+
 ### oneof
 
 記入中...
@@ -85,10 +78,29 @@ message Person {
 
 <br>
 
-### map
+### package
 
-記入中...
+`pb`ファイルに自動的に定義するパッケージ名を設定する。
 
-> - https://protobuf.dev/overview/#syntax
+例えばGoであれば、`pb.go`ファイルでパッケージ名を自動的に定義する。
+
+```protobuf
+package foo;
+```
+
+<br>
+
+### syntax
+
+Protocol Bufferコンパイラーのバージョンを設定する。
+
+Protocol Bufferコンパイラーは、`proto`ファイルから`pb`ファイルを自動的に作成する。
+
+```protobuf
+syntax = "proto3";
+```
+
+> - https://protobuf.dev/programming-guides/proto3/
+> - https://protobuf.dev/programming-guides/proto3/#generated
 
 <br>
