@@ -33,7 +33,7 @@ $ helmfile <サブコマンド>
 Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。
 
 ```bash
-$ helmfile -e dev <コマンド>
+$ helmfile -e prd <コマンド>
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#cli-reference
@@ -41,11 +41,11 @@ $ helmfile -e dev <コマンド>
 **＊例＊**
 
 ```bash
-$ helmfile -e dev diff
+$ helmfile -e prd diff
 ```
 
 ```bash
-$ helmfile -e dev apply
+$ helmfile -e prd apply
 ```
 
 #### ▼ -f
@@ -53,7 +53,7 @@ $ helmfile -e dev apply
 使用する`helmfile.yaml`ファイルを指定する。
 
 ```bash
-$ helmfile -e dev -f ./helmfile.yaml <コマンド>
+$ helmfile -e prd -f ./helmfile.yaml <コマンド>
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#cli-reference
@@ -63,7 +63,7 @@ $ helmfile -e dev -f ./helmfile.yaml <コマンド>
 コマンドの実行前の確認を要求する。
 
 ```bash
-$ helmfile -e dev --interactive destroy
+$ helmfile -e prd --interactive destroy
 
 ...
 
@@ -86,7 +86,7 @@ Do you really want to delete?
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
 ```bash
-$ helmfile -e dev apply
+$ helmfile -e prd apply
 
 Upgrading release=foo-release, chart=./charts/foo
 Release "foo-release" has been upgraded. Happy Helming!
@@ -117,7 +117,7 @@ CRDの作成をスキップする。
 注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。
 
 ```bash
-$ helmfile -e dev apply --skip-crds
+$ helmfile -e prd apply --skip-crds
 ```
 
 #### ▼ --skip-diff-on-install
@@ -125,7 +125,7 @@ $ helmfile -e dev apply --skip-crds
 `helmfile apply`コマンド時に`helmfile diff`コマンドを実行しない。
 
 ```bash
-$ helmfile -e dev apply --skip-diff-on-install
+$ helmfile -e prd apply --skip-diff-on-install
 ```
 
 > - https://github.com/roboll/helmfile/issues/1840
@@ -141,7 +141,7 @@ $ helmfile -e dev apply --skip-diff-on-install
 CRDも削除する。
 
 ```bash
-$ helmfile -e dev destroy
+$ helmfile -e prd destroy
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#destroy
@@ -156,7 +156,7 @@ $ helmfile -e dev destroy
 $ helm uninstall <Helmリリース名>
 
 # 削除したHelmリリースのみが差分として出力される
-$ helmfile -e dev diff
+$ helmfile -e prd diff
 ```
 
 <br>
@@ -187,7 +187,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 helm-diffプラグインでは、前回のHelmリリースと、今回の`helm upgrade --dry-run`コマンドの差分を取得する。
 
 ```bash
-$ helmfile -e dev diff
+$ helmfile -e prd diff
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#diff
@@ -203,7 +203,7 @@ $ helmfile -e dev diff
 `--debug`オプションであれば、これらを確認できる。
 
 ```bash
-$ helmfile -e dev --debug diff
+$ helmfile -e prd --debug diff
 ```
 
 #### ▼ 色付け
@@ -213,7 +213,7 @@ $ helmfile -e dev --debug diff
 ただ、バージョンによって機能しないことがあるため、その場合は明示的に`HELM_DIFF_COLOR`変数を有効化する。
 
 ```bash
-$ HELM_DIFF_COLOR=true helmfile -e dev diff
+$ HELM_DIFF_COLOR=true helmfile -e prd diff
 ```
 
 > - https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
@@ -225,7 +225,7 @@ $ HELM_DIFF_COLOR=true helmfile -e dev diff
 `grep`コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
-$ helmfile -e dev diff | grep kind
+$ helmfile -e prd diff | grep kind
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 kind: Service
@@ -234,7 +234,7 @@ kind: PersistentVolume
 ```
 
 ```bash
-$ helmfile -e dev diff | grep Source
+$ helmfile -e prd diff | grep Source
 
 # 差分のあるマニフェストのkindキーのみを取得する。
 Source: project/manifests/service.yaml
@@ -255,7 +255,7 @@ Source: project/manifests/persistent-volume.yaml
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
 ```bash
-$ helmfile -e dev sync
+$ helmfile -e prd sync
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#diff
@@ -270,7 +270,7 @@ $ helmfile -e dev sync
 全てのHelmリリースに関して、`helm template`コマンドを実行する。
 
 ```bash
-$ helmfile -e dev template
+$ helmfile -e prd template
 ```
 
 #### ▼ --include-crds
@@ -278,7 +278,7 @@ $ helmfile -e dev template
 CRDも含めて、`helm template`コマンドを実行する。
 
 ```bash
-$ helmfile -e dev template --include-crds
+$ helmfile -e prd template --include-crds
 ```
 
 <br>
@@ -294,7 +294,7 @@ $ helmfile -e dev template --include-crds
 この時に、`helmfile write-values`コマンドを使用すると、優先された値で定義された`values`ファイルを確認できる。
 
 ```bash
-$ helmfile -e dev -f ./helmfile.yaml write-values
+$ helmfile -e prd -f ./helmfile.yaml write-values
 
 # helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。
 Writing values file foo-77cab19b/foo.yaml

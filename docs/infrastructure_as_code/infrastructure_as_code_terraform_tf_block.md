@@ -816,9 +816,9 @@ variable "env" {
 # Resource EC2
 # ---------------------------------------------
 resource "aws_instance" "server" {
-  # dev環境とstg環境以外でプロビジョニングする
+  # テスト環境とステージング環境以外でプロビジョニングする
   count = (
-    var.environment != "dev"
+    var.environment != "tes"
     || var.environment != "stg"
   ) ? 1 : 0
 

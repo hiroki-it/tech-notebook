@@ -605,6 +605,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	start := time.Now()
 
 	logger, err := zap.NewProduction()
+
 	if err != nil {
 		log.Print(err)
 	}
@@ -1456,9 +1457,9 @@ func main() {
 
 <br>
 
-## 04. メッセージキュー (AWS SQS) を挟む場合
+## 04. メッセージキューを挟む場合
 
-### 宛先がopentelemetryコレクターの場合
+### AWS SQSの場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
 

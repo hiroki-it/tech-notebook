@@ -450,15 +450,15 @@ workflow:
     # developブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
-        ENV: "tes"
+        ENV: "stg"
     # MRにて、任意の方法でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       variables:
-        ENV: "dev"
+        ENV: "tes"
     # 上記以外で、webから手動でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
-        ENV: "dev"
+        ENV: "tes"
 
 variables:
   # EKSはK8sのマイナーバージョンを公開していないため、".0"と仮定して処理する

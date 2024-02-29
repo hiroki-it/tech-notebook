@@ -1108,7 +1108,7 @@ foo:
 `or`演算子と`()`記号を使用する。
 
 ```yaml
-{{- if or (eq .Values.global.env "dev") (eq .Values.global.env "tes") }}
+{{- if or (eq .Values.global.env "tes") (eq .Values.global.env "stg") }}
   ...
 {{- end }}
 ```
@@ -1122,7 +1122,7 @@ foo:
 `ne`演算子 (not equalの略) を使用する。
 
 ```yaml
-{{- if ne .Values.global.env "dev" }}
+{{- if ne .Values.global.env "tes" }}
   ...
 {{- end }}
 ```

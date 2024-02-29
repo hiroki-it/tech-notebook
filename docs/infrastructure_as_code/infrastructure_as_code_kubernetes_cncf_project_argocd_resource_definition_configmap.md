@@ -610,8 +610,8 @@ data:
 
 実行環境 (`dev`、`prd`) 別にAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
-- `developer`ロールに、dev環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ
-- `maintainer`ロールに、dev環境とprd環境の両方を操作できる認可スコープ
+- `developer`ロールに、開発環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ
+- `maintainer`ロールに、開発環境と本番環境の両方を操作できる認可スコープ
 - 認証グループに該当する認可ロールがなければ、`readonly`になる。
 
 ```yaml

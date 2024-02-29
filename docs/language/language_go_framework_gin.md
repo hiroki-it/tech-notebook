@@ -149,7 +149,9 @@ import (
 
 // ConvertId パスパラメーターのidのデータ型を変換します。
 func ConvertId() gin.HandlerFunc {
+
 	return func(ctx *gin.Context) {
+
 		id, err := strconv.Atoi(ctx.Param("id"))
 
 		if err != nil {
@@ -184,6 +186,7 @@ func (uc *UserController) GetUser(ctx *gin.Context) {
             400,
             []string{"Parameters are not found."},
         )
+
 		return
 	}
 ```

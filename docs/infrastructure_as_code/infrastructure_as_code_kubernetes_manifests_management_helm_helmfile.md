@@ -117,7 +117,7 @@ releases:
     version: <バージョンタグ>
     # 実行環境ごとに、読み込むvalues.yaml.gotmplファイルを切り替える。
     values:
-      {{- if or (eq .Environment.Name "dev") (eq .Environment.Name "tes") }}
+      {{- if or (eq .Environment.Name "tes") (eq .Environment.Name "stg") }}
       - values-nonprd.yaml.gotmpl
       {{- end }}
       {{- if eq .Environment.Name "prd" }}
@@ -134,7 +134,7 @@ releases:
 `helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.d`ファイル内の`.Environment.Name`に出力できる。
 
 ```bash
-$ helmfile -e dev -f helmfile.yaml
+$ helmfile -e prd -f helmfile.yaml
 ```
 
 ```yaml
@@ -146,7 +146,7 @@ $ helmfile -e dev -f helmfile.yaml
 `helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.d`ファイル内の`.Values`に出力できる。
 
 ```bash
-$ helmfile -e dev -f helmfile.yaml --state-values-set region=tokyo
+$ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
 ```
 
 ```yaml
@@ -187,7 +187,7 @@ releases:
 
 ```bash
 # 環境名を渡す。
-$ helmfile -e dev apply
+$ helmfile -e prd apply
 ```
 
 > - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
@@ -223,7 +223,7 @@ releases:
 
 ```bash
 # 環境名を渡す。
-$ helmfile -e dev apply
+$ helmfile -e prd apply
 ```
 
 <br>

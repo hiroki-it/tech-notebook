@@ -221,6 +221,37 @@ func main() {
 }
 ```
 
+マイクロサービスで使用するConfigMapにて、分散トレースの有効化を実行環境別に切り替えられるようにするとよい。
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: tes
+data:
+  # テスト環境では分散トレースを無効化する
+  TRACE_ENABLED: "false"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: stg
+data:
+  # ステージング環境では分散トレースを無効化する
+  TRACE_ENABLED: "true"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: prd
+data:
+  # 本番環境では分散トレースを無効化する
+  TRACE_ENABLED: "true"
+```
+
 > - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
 
 #### ▼ NoopTracerProvider
@@ -656,6 +687,7 @@ func NewTracerProvider() {
   "service.namespace": "<Kubernetes Namespace名>",
   "service.instance.id": "<Kubernetes Pod名>",
   "service.version": "1.0.0",
+  "service.env": "prd",
   "telemetry.sdk.name": "otel",
 }
 ```
