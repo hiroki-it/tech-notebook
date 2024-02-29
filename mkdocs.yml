@@ -274,6 +274,8 @@ nav:
               - JSONクエリ: language/language_data_description_language_json_query.md
           - ■ YAML:
               - YAML: language/language_data_description_language_yaml.md
+          - ■ Protocol Buffer:
+                - Protocol Buffer: language/language_data_description_language_protocol_buffer.md
       - ■ PHP:
           - PHP: language/language_php.md
           - コマンド: language/language_php_command.md
