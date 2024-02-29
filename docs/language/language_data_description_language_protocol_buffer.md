@@ -37,7 +37,7 @@ enum GenderType {
 message Person {
   optional int32 id = 1;
   optional string name = 2;
-  optional GenderType enum = 3;
+  optional GenderType gender_type = 3;
 }
 ```
 
