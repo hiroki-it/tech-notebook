@@ -219,7 +219,7 @@ workflows:
   deploy:
     jobs:
       - deploy:
-          # workflowにてenum型の値を設定
+          # workflowにてenum型のデータを設定する
           environment: stg
 ```
 

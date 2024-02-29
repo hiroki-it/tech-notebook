@@ -51,9 +51,9 @@ $ npm run watch
 
 > - https://github.com/BenSampo/laravel-enum
 
-#### ▼ Enumクラスの定義
+#### ▼ enum型のクラスの定義
 
-BenSampoのEnumクラスを継承し、区分値と判定メソッドを実装する。
+BenSampoのenum型のクラスを継承し、区分値と判定メソッドを実装する。
 
 **＊実装例＊**
 
@@ -124,11 +124,11 @@ class RoleType extends Enum
 }
 ```
 
-#### ▼ Enumクラスの使い方
+#### ▼ enum型のクラスの使い方
 
 **＊実装例＊**
 
-DBから区分値をSELECTした後、これを元にEnumクラスを作成する。
+DBから区分値をSELECTした後、これを元にenum型のクラスを作成する。
 
 ```php
 <?php
@@ -136,7 +136,7 @@ DBから区分値をSELECTした後、これを元にEnumクラスを作成す�
 // Staff
 $staff = new Staff();
 
-// DBから取得した区分値 (開発職：2) からEnumクラスを作成
+// DBから取得した区分値 (開発職：2) からenum型のクラスを作成
 $staff->roleType = new RoleType($fetched["role_type"]);
 // 以下の方法でも良い。
 // $staff->roleType = RoleType::fromValue($fetched["role_type"]);
