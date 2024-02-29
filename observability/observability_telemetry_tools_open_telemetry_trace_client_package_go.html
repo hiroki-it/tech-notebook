@@ -23376,6 +23376,7 @@
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;PROJECT_ID&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// CloudTraceを宛先に設定する。</span>
@@ -23710,8 +23711,7 @@
 <h3 id="opentelemetry_1">宛先がopentelemetryコレクターの場合<a class="headerlink" href="#opentelemetry_1" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<h4 id="_23">▼ 親スパン作成 (親のみ)<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;flag&quot;</span>
@@ -23723,7 +23723,10 @@
 <span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/service/sqs&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 空のトレースコンテキストを作成する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -23752,7 +23755,7 @@
 
 <span class="w">    </span><span class="c1">// AWS SQSにメッセージを送信する</span>
 <span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">SendMessageWithContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// トレースコンテキスト</span>
+<span class="w">        </span><span class="c1">// 現在のトレースコンテキストを注入する</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">SendMessageInput</span><span class="p">{</span>
 <span class="w">            </span><span class="nx">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
@@ -23783,6 +23786,8 @@
 <li><a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message">https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message</a></li>
 </ul>
 </blockquote>
+<h4 id="_23">▼ 親スパン作成 (親のみ)<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <h4 id="_24">▼ トレースコンテキスト注入と子スパン作成 (子のみ)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -23834,7 +23839,7 @@
 
 <span class="w">    </span><span class="c1">// AWS SQSからメッセージを受信する</span>
 <span class="w">    </span><span class="nx">msgResult</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">ReceiveMessageWithContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// トレースコンテキスト</span>
+<span class="w">        </span><span class="c1">// トレースコンテキストを抽出する</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">ReceiveMessageInput</span><span class="p">{</span>
 <span class="w">            </span><span class="nx">AttributeNames</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="kt">string</span><span class="p">{</span>
