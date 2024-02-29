@@ -1120,6 +1120,7 @@ import (
 )
 
 func NewTracerProvider() (func(), error) {
+
 	projectID := os.Getenv("PROJECT_ID")
 
 	// CloudTraceを宛先に設定する。
@@ -1463,10 +1464,8 @@ func main() {
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
-#### ▼ 親スパン作成 (親のみ)
-
 ```go
-package main
+package trace
 
 import (
 	"flag"
@@ -1478,7 +1477,10 @@ import (
 	"github.com/aws/aws-sdk-go/service/sqs"
 )
 
-func main() {
+func NewTracerProvider() {
+
+	// 空のトレースコンテキストを作成する
+	ctx := context.Background()
 
 	...
 
@@ -1507,7 +1509,7 @@ func main() {
 
 	// AWS SQSにメッセージを送信する
 	_, err := svc.SendMessageWithContext(
-		// トレースコンテキスト
+		// 現在のトレースコンテキストを注入する
 		ctx,
 		&sqs.SendMessageInput{
 			DelaySeconds: aws.Int64(10),
@@ -1535,6 +1537,10 @@ func main() {
 ```
 
 > - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message
+
+#### ▼ 親スパン作成 (親のみ)
+
+記入中...
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
@@ -1589,7 +1595,7 @@ func main() {
 
 	// AWS SQSからメッセージを受信する
 	msgResult, err := svc.ReceiveMessageWithContext(
-		// トレースコンテキスト
+		// トレースコンテキストを抽出する
 		ctx,
 		&sqs.ReceiveMessageInput{
 			AttributeNames: []*string{
