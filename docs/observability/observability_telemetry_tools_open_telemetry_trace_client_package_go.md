@@ -1457,45 +1457,160 @@ func main() {
 
 ## 04. メッセージキュー (AWS SQS) を挟む場合
 
-### パッケージ初期化とトレースコンテキスト抽出
+### 宛先がopentelemetryコレクターの場合
+
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
+#### ▼ 親スパン作成 (親のみ)
 
 ```go
-package go
+package main
 
-func main()  {
-	
+import (
+	"flag"
+	"fmt"
+
+	// ここではv1を使用しているが、v2が推奨である
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/sqs"
+)
+
+func main() {
+
 	...
-	
+
+	// キュー名を取得する
+	queue := flag.String("q", "", "The name of the queue")
+	flag.Parse()
+
+	if *queue == "" {
+		fmt.Println("You must supply the name of a queue (-q QUEUE)")
+		return
+	}
+
+	// 認証情報を読み込む
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		SharedConfigState: session.SharedConfigEnable,
+	}))
+
 	svc := sqs.New(sess)
 
-	_, err := svc.SendMessage(&sqs.SendMessageInput{
-		DelaySeconds: aws.Int64(10),
-		MessageAttributes: map[string]*sqs.MessageAttributeValue{
-			"Title": &sqs.MessageAttributeValue{
-				DataType:    aws.String("String"),
-				StringValue: aws.String("The Whistler"),
-			},
-			"Author": &sqs.MessageAttributeValue{
-				DataType:    aws.String("String"),
-				StringValue: aws.String("John Grisham"),
-			},
-			"WeeksOn": &sqs.MessageAttributeValue{
-				DataType:    aws.String("Number"),
-				StringValue: aws.String("6"),
-			},
-		},
-		MessageBody: aws.String("Information about current NY Times fiction bestseller for week of 12/11/2016."),
-		QueueUrl:    queueURL,
+	// キューURLを取得する
+	urlResult, err := svc.GetQueueUrl(&sqs.GetQueueUrlInput{
+		QueueName: queue,
 	})
-	
+
+	queueURL := urlResult.QueueUrl
+
+	// AWS SQSにメッセージを送信する
+	_, err := svc.SendMessageWithContext(
+		// トレースコンテキスト
+		ctx,
+		&sqs.SendMessageInput{
+			DelaySeconds: aws.Int64(10),
+			MessageAttributes: map[string]*sqs.MessageAttributeValue{
+				"Title": &sqs.MessageAttributeValue{
+					DataType:    aws.String("String"),
+					StringValue: aws.String("The Whistler"),
+				},
+				"Author": &sqs.MessageAttributeValue{
+					DataType:    aws.String("String"),
+					StringValue: aws.String("John Grisham"),
+				},
+				"WeeksOn": &sqs.MessageAttributeValue{
+					DataType:    aws.String("Number"),
+					StringValue: aws.String("6"),
+				},
+			},
+			MessageBody: aws.String("Information about current NY Times fiction bestseller for week of 12/11/2016."),
+			QueueUrl:    queueURL,
+	})
+
 	...
 
 }
 ```
 
-> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html
+> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message
+
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+
+```go
+package main
+
+import (
+	"flag"
+	"fmt"
+
+	// ここではv1を使用しているが、v2が推奨である
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/sqs"
+)
+
+func main() {
+
+	...
+
+	// キュー名を取得する
+	queue := flag.String("q", "", "The name of the queue")
+	timeout := flag.Int64("t", 5, "How long, in seconds, that the message is hidden from others")
+	flag.Parse()
+
+	if *queue == "" {
+		fmt.Println("You must supply the name of a queue (-q QUEUE)")
+		return
+	}
+
+	if *timeout < 0 {
+		*timeout = 0
+	}
+
+	if *timeout > 12*60*60 {
+		*timeout = 12 * 60 * 60
+	}
+
+	// 認証情報を読み込む
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		SharedConfigState: session.SharedConfigEnable,
+	}))
+
+	svc := sqs.New(sess)
+
+	// キューURLを取得する
+	urlResult, err := svc.GetQueueUrl(&sqs.GetQueueUrlInput{
+		QueueName: queue,
+	})
+
+	queueURL := urlResult.QueueUrl
+
+	// AWS SQSからメッセージを受信する
+	msgResult, err := svc.ReceiveMessageWithContext(
+		// トレースコンテキスト
+		ctx,
+		&sqs.ReceiveMessageInput{
+			AttributeNames: []*string{
+				aws.String(sqs.MessageSystemAttributeNameSentTimestamp),
+			},
+			MessageAttributeNames: []*string{
+				aws.String(sqs.QueueAttributeNameAll),
+			},
+			QueueUrl:            queueURL,
+			MaxNumberOfMessages: aws.Int64(1),
+			VisibilityTimeout:   timeout,
+		},
+    )
+
+	fmt.Println("Message Handle: " + *msgResult.Messages[0].ReceiptHandle)
+
+	...
+
+}
+```
+
+> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage
 
 <br>
