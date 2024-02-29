@@ -31,17 +31,18 @@ enum型のデータを設定する。
 enum GenderType {
   UNKNOWN = 0;
   MAN = 1;
-  WOMAM = 2;
+  WOMAN = 2;
 }
 
 message Person {
   optional int32 id = 1;
   optional string name = 2;
-  optional Enum gender_type = 3;
+  optional GenderType enum = 3;
 }
 ```
 
 > - https://protobuf.dev/overview/#syntax
+> - https://protobuf.dev/programming-guides/enum/
 
 <br>
 
