@@ -5217,9 +5217,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
+  <a href="#enum" class="md-nav__link">
     <span class="md-ellipsis">
-      syntax
+      enum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
     </span>
   </a>
   
@@ -5235,15 +5244,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enum" class="md-nav__link">
-    <span class="md-ellipsis">
-      enum
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#oneof" class="md-nav__link">
     <span class="md-ellipsis">
       oneof
@@ -5253,9 +5253,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
+  <a href="#package" class="md-nav__link">
     <span class="md-ellipsis">
-      map
+      package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      syntax
     </span>
   </a>
   
@@ -21477,9 +21486,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
+  <a href="#enum" class="md-nav__link">
     <span class="md-ellipsis">
-      syntax
+      enum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      map
     </span>
   </a>
   
@@ -21495,15 +21513,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enum" class="md-nav__link">
-    <span class="md-ellipsis">
-      enum
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#oneof" class="md-nav__link">
     <span class="md-ellipsis">
       oneof
@@ -21513,9 +21522,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
+  <a href="#package" class="md-nav__link">
     <span class="md-ellipsis">
-      map
+      package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      syntax
     </span>
   </a>
   
@@ -21562,33 +21580,6 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="syntax">syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
-<p>Protocol Bufferコンパイラーのバージョンを設定する。</p>
-<p>Protocol Bufferコンパイラーは、<code>proto</code>ファイルから<code>pb</code>ファイルを自動的に作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://protobuf.dev/programming-guides/proto3/">https://protobuf.dev/programming-guides/proto3/</a></li>
-<li><a href="https://protobuf.dev/programming-guides/proto3/#generated">https://protobuf.dev/programming-guides/proto3/#generated</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="message">message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
-<p>リクエストメッセージで送信するデータ構造を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
-
-<span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://protobuf.dev/overview/#syntax">https://protobuf.dev/overview/#syntax</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h3 id="enum">enum<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h3>
 <p>enum型のデータを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="n">GenderType</span><span class="w"> </span><span class="p">{</span>
@@ -21609,6 +21600,29 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="map">map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://protobuf.dev/overview/#syntax">https://protobuf.dev/overview/#syntax</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="message">message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
+<p>リクエストメッセージで送信するデータ構造を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+
+<span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://protobuf.dev/overview/#syntax">https://protobuf.dev/overview/#syntax</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="oneof">oneof<a class="headerlink" href="#oneof" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <blockquote>
@@ -21617,11 +21631,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="map">map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
+<p><code>pb</code>ファイルに自動的に定義するパッケージ名を設定する。</p>
+<p>例えばGoであれば、<code>pb.go</code>ファイルでパッケージ名を自動的に定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">foo</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="syntax">syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<p>Protocol Bufferコンパイラーのバージョンを設定する。</p>
+<p>Protocol Bufferコンパイラーは、<code>proto</code>ファイルから<code>pb</code>ファイルを自動的に作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://protobuf.dev/overview/#syntax">https://protobuf.dev/overview/#syntax</a></li>
+<li><a href="https://protobuf.dev/programming-guides/proto3/">https://protobuf.dev/programming-guides/proto3/</a></li>
+<li><a href="https://protobuf.dev/programming-guides/proto3/#generated">https://protobuf.dev/programming-guides/proto3/#generated</a></li>
 </ul>
 </blockquote>
 <p><br></p>
