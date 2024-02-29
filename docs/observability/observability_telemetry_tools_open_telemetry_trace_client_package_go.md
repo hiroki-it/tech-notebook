@@ -22,7 +22,7 @@ description: Go＠クライアントパッケージの知見を記録してい�
 パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
-package app
+package trace
 
 import (
 	"context"
@@ -206,7 +206,7 @@ func main() {
 パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
-package main
+package trace
 
 import (
 	"context"
@@ -467,7 +467,7 @@ otelクライアントパッケージを初期化する。
 初期化の段階で、トレースコンテキストを伝播する。
 
 ```go
-package main
+package trace
 
 import (
 	"context"
@@ -486,7 +486,7 @@ import (
 
 var tracer = otel.Tracer("<マイクロサービス名>")
 
-func newTracerProvider() (func(context.Context) error, error) {
+func NewTracerProvider() (func(context.Context) error, error) {
 
     // 空のトレースコンテキストを作成する
 	ctx := context.Background()
@@ -639,7 +639,7 @@ func StartMainServer() {
 
     ...
 
-    shutdown, err := newTracerProvider()
+    shutdown, err := NewTracerProvider()
 
     if err != nil {
 	  	log.Print(err)
@@ -815,7 +815,7 @@ func createUser(c *gin.Context) {
 パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
-package collection
+package trace
 
 import (
 	"context"
@@ -843,7 +843,7 @@ import (
 ...
 
 
-func newTracerProvider() (func(context.Context) error, error) {
+func NewTracerProvider() (func(context.Context) error, error) {
 
 	// 空のトレースコンテキストを作成する
 	ctx := context.Background()
@@ -946,7 +946,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := newTracerProvider()
+	shutdown, err := NewTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1026,7 +1026,7 @@ func main() {
 
 	defer stop()
 
-	shutdown, err := newTracerProvider()
+	shutdown, err := NewTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1103,7 +1103,7 @@ func getXrayTraceID(span trace.Span) string {
 パッケージを初期化し、トレースコンテキストを抽出する。
 
 ```go
-package main
+package trace
 
 import (
 	"context"
@@ -1119,7 +1119,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
 
-func newTracerProvider() (func(), error) {
+func NewTracerProvider() (func(), error) {
 	projectID := os.Getenv("PROJECT_ID")
 
 	// CloudTraceを宛先に設定する。
@@ -1284,7 +1284,7 @@ func main() {
 gRPCを使わない場合と実装方法は同じである。
 
 ```go
-package main
+package trace
 
 import (
 	"go.opentelemetry.io/otel"
@@ -1294,7 +1294,7 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
-func Init() (*sdktrace.TracerProvider, error) {
+func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 	// 標準出力を宛先に設定する。
 	exporter, err := stdout.New(stdout.WithPrettyPrint())
@@ -1370,12 +1370,12 @@ func main() {
 	...
 }
 
-func (s *server) workHard(ctx context.Context) {
+func (s *server) parent(ctx context.Context) {
 
 	// スパンを作成する
 	_, span := tracer.Start(
 		ctx,
-		"workHard",
+		"parent",
 		trace.WithAttributes(attribute.String("extra.key", "extra.value")),
 	)
 
@@ -1410,7 +1410,7 @@ import (
 func main() {
 
 	// otelパッケージを初期化する
-	tracerProvider, err := config.Init()
+	tracerProvider, err := config.NewTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1460,5 +1460,42 @@ func main() {
 ### パッケージ初期化とトレースコンテキスト抽出
 
 パッケージを初期化し、トレースコンテキストを抽出する。
+
+
+```go
+package go
+
+func main()  {
+	
+	...
+	
+	svc := sqs.New(sess)
+
+	_, err := svc.SendMessage(&sqs.SendMessageInput{
+		DelaySeconds: aws.Int64(10),
+		MessageAttributes: map[string]*sqs.MessageAttributeValue{
+			"Title": &sqs.MessageAttributeValue{
+				DataType:    aws.String("String"),
+				StringValue: aws.String("The Whistler"),
+			},
+			"Author": &sqs.MessageAttributeValue{
+				DataType:    aws.String("String"),
+				StringValue: aws.String("John Grisham"),
+			},
+			"WeeksOn": &sqs.MessageAttributeValue{
+				DataType:    aws.String("Number"),
+				StringValue: aws.String("6"),
+			},
+		},
+		MessageBody: aws.String("Information about current NY Times fiction bestseller for week of 12/11/2016."),
+		QueueUrl:    queueURL,
+	})
+	
+	...
+
+}
+```
+
+> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html
 
 <br>

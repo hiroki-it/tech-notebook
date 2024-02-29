@@ -601,7 +601,7 @@ Goの場合、`SetTextMapPropagator`関数を使用して、
 ```go
 // クライアント側マイクロサービス
 // 前のマイクロサービスにとってはサーバー側にもなる
-func newTracerProvider() {
+func NewTracerProvider() {
 
     // 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
     otel.SetTextMapPropagator(
@@ -613,7 +613,7 @@ func newTracerProvider() {
 ```go
 // サーバー側マイクロサービス
 // 後続のマイクロサービスにとってはクライアント側にもなる
-func newTracerProvider() {
+func NewTracerProvider() {
 
     // 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
