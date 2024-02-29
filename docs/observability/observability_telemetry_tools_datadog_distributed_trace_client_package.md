@@ -311,7 +311,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 
 	req = req.WithContext(ctx)
 
-	// アップストリーム側マイクロサービスにコンテキストを伝播する。
+	// アップストリーム側マイクロサービスにトレースコンテキストを伝播する。
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),
@@ -329,7 +329,7 @@ func newTracer(w http.ResponseWriter, r *http.Request) {
 
 #### ▼ 下流のマイクロサービス
 
-下流のマイクロサービスでは、受信した通信からコンテキストを取得する。
+下流のマイクロサービスでは、受信した通信からトレースコンテキストを取得する。
 
 また、子スパンを作成する。
 
@@ -345,7 +345,7 @@ import (
 
 func newTracer(w http.ResponseWriter, r *http.Request) {
 
-	// インバウンド通信のリクエストヘッダーからコンテキストを取得する。
+	// インバウンド通信のリクエストヘッダーからトレースコンテキストを取得する。
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {

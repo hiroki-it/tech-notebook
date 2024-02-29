@@ -43,7 +43,7 @@ description: Python＠クライアントパッケージの知見を記録して�
 
 otelクライアントパッケージを初期化する。
 
-初期化の段階で、コンテキストの伝播処理も実行する。
+初期化の段階で、トレースコンテキストを伝播する。
 
 ```python
 import time
@@ -56,10 +56,10 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
-# ダウンストリーム側マイクロサービスのリクエストからコンテキストを抽出する。
+# ダウンストリーム側マイクロサービスのリクエストからトレースコンテキストを抽出する。
 set_global_textmap(CloudTraceFormatPropagator())
 
-# 任意のコンテキストを設定する
+# 任意のトレースコンテキストを設定する
 resource = Resource.create({
         "service.name": "flask_e2e_client",
         "service.namespace": "examples",
@@ -124,7 +124,7 @@ def hello_world():
 
     ...
 
-    # 現在の処理にコンテキストを注入する。
+    # 現在の処理にトレースコンテキストを注入する。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -136,9 +136,9 @@ def hello_world():
 > - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ トレースコンテキスト注入と子スパン作成
 
-現在の処理にコンテキストを注入し、また子スパンを作成する。
+現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -157,7 +157,7 @@ def hello_world():
 
     ...
 
-    # 現在の処理にコンテキストを注入する。
+    # 現在の処理にトレースコンテキストを注入する。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 

@@ -193,7 +193,7 @@ Envoyは、`X-REQUEST-ID`ヘッダーの自動作成IDと`X-CLIENT-TRACE-ID`の�
 
 #### ▼ スパンの送信
 
-Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。
+Envoyは、Exporterとしてスパンを監視バックエンドに送信する。
 
 これにより、マイクロサービス側でExporterを実装する必要がなくなる。
 
@@ -205,9 +205,9 @@ Envoyは、Exporterとしてコンテキストを監視バックエンドに送�
 > - https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works
 > - https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/
 
-#### ▼ コンテキスト仕様
+#### ▼ トレースコンテキスト仕様
 
-監視バックエンドの種類を指定することで、送信するコンテキストの仕様を切り替えられる。
+監視バックエンドの種類を指定することで、送信するトレースコンテキストの仕様を切り替えられる。
 
 - Datadog (Datadogコンテキスト)
 - OpenTelemetry (W3C Trace Context、Baggage)

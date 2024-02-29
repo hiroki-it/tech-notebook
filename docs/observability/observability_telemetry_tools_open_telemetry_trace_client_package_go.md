@@ -132,7 +132,7 @@ func parentFunction(ctx context.Context) {
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ トレースコンテキスト注入と子スパン作成
 
 ```go
 func childFunction(ctx context.Context) {
@@ -203,7 +203,7 @@ func main() {
 
 otelクライアントパッケージを初期化する。
 
-初期化の段階で、コンテキストの伝播処理も実行する。
+初期化の段階で、トレースコンテキストを伝播する。
 
 ```go
 package main
@@ -249,16 +249,16 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// ダウンストリーム側マイクロサービスからコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
 	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
 	cleanUp := func() {
 
-		// タイムアウト時間設定済みのコンテキストを作成する
+		// タイムアウト時間設定済みのトレースコンテキストを作成する
 		ctx, cancel := context.WithTimeout(
             context.Background(),
             5 * time.Second,
@@ -305,7 +305,7 @@ func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
 
-	// 現在の処理からコンテキストを取得する。
+	// 現在の処理からトレースコンテキストを取得する。
 	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
 
 	defer span.End()
@@ -341,7 +341,7 @@ func main() {
 
     // 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
-		// 空のコンテキストを作成する
+		// 空のトレースコンテキストを作成する
 		context.Background(),
 		os.Interrupt,
 		syscall.SIGTERM,
@@ -369,9 +369,9 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ コンテキスト注入と子スパン作成
+#### ▼ トレースコンテキスト注入と子スパン作成
 
-現在の処理にコンテキストを注入し、また子スパンを作成する。
+現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -395,7 +395,7 @@ func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
 
-	// 現在の処理にコンテキストを注入する。
+	// 現在の処理にトレースコンテキストを注入する。
 	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
 
 	defer span.End()
@@ -464,7 +464,7 @@ func main() {
 
 otelクライアントパッケージを初期化する。
 
-初期化の段階で、コンテキストの伝播処理も実行する。
+初期化の段階で、トレースコンテキストを伝播する。
 
 ```go
 package main
@@ -488,7 +488,7 @@ var tracer = otel.Tracer("<マイクロサービス名>")
 
 func newTracerProvider() (func(context.Context) error, error) {
 
-    // 空のコンテキストを作成する
+    // 空のトレースコンテキストを作成する
 	ctx := context.Background()
 
 	resourceWithAttributes, err := resource.New(
@@ -537,9 +537,9 @@ func newTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
+		// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -586,7 +586,7 @@ import (
 
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 現在の処理にコンテキストを注入する。
+	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -682,9 +682,9 @@ func checkSession() gin.HandlerFunc {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125
 
-#### ▼ コンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
-現在の処理にコンテキストを注入し、また子スパンを作成する。
+現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -717,7 +717,7 @@ import (
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 
-	// 現在の処理にコンテキストを注入する。
+	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), msg)
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -843,7 +843,7 @@ import (
 
 func newTracerProvider() (func(context.Context) error, error) {
 
-	// 空のコンテキストを作成する
+	// 空のトレースコンテキストを作成する
 	ctx := context.Background()
 
 	resourceWithAttributes, err := resource.New(
@@ -894,9 +894,9 @@ func newTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// X-Ray形式のコンテキストを伝播できるPropagatorを設定する
+		// X-Ray形式のトレースコンテキストを伝播できるPropagatorを設定する
         xray.Propagator{},
     )
 
@@ -970,7 +970,7 @@ func parent(ctx *gin.Context) {
 
 	var tracer = otel.Tracer("sample")
 
-	// 現在の処理にコンテキストを注入する。
+	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
@@ -992,9 +992,9 @@ func parent(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
-#### ▼ コンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
-現在の処理にコンテキストを注入し、また子スパンを作成する。
+現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -1050,7 +1050,7 @@ func child(ctx *gin.Context) {
 
 	var tracer = otel.Tracer("sample")
 
-	// 現在の処理にコンテキストを注入する。
+	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
@@ -1145,15 +1145,15 @@ func newTracerProvider() (func(), error) {
 
 func installPropagators() {
 
-	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
         // 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
-			// CloudTrace形式のコンテキストを伝播できるPropagatorを設定する
+			// CloudTrace形式のトレースコンテキストを伝播できるPropagatorを設定する
 			gcppropagator.CloudTraceOneWayPropagator{},
-			// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
+			// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			propagation.TraceContext{},
-			// W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
+			// W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			propagation.Baggage{},
 		),
 	)
@@ -1212,9 +1212,9 @@ func main() {
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
 
-#### ▼ コンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
-現在の処理にコンテキストを注入し、また子スパンを作成する。
+現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -1309,13 +1309,13 @@ func Init() (*sdktrace.TracerProvider, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
 		// 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
-			    // W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
+			    // W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			    propagation.TraceContext{},
-			    // W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
+			    // W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			    propagation.Baggage{},
 			),
 		)
@@ -1386,7 +1386,7 @@ func (s *server) workHard(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
-#### ▼ コンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
 
 ```go
 package main
