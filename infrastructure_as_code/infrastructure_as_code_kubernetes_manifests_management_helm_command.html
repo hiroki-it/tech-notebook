@@ -23193,9 +23193,19 @@ kind:<span class="w"> </span>Deployment
 </code></pre></div>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
 <p>指定した<code>values</code>ファイル使用して、<code>helm install</code>コマンドを実行する。</p>
-<p>チャートのルートパスに『<code>values.yaml</code>』の名前でファイルが存在している場合、自動的に読み込まれるため、このオプションは不要である。</p>
+<p>チャートのルートディレクトリに『<code>values.yaml</code>』の名前でファイルが存在している場合、自動的に読み込まれる.</p>
+<p>そのため、このオプションは不要である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;
+</code></pre></div>
 <p>これ以外の名前の場合は、オプションによる<code>values</code>ファイルの指定が必要になる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
+</code></pre></div>
+<p>複数を指定することができ、同じ設定値がある場合は、より後に読み込んだ<code>values</code>ファイルの設定値を優先する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>bar-values.yaml
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23670,7 +23680,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-29</span>
   </span>
 
     
