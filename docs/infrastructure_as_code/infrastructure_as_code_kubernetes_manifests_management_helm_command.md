@@ -221,6 +221,8 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 
 複数を指定することができ、同じ設定値がある場合は、より後に読み込んだ`values`ファイルの設定値を優先する。
 
+同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+
 ```bash
 # デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml -f bar-values.yaml
@@ -320,7 +322,12 @@ Error: 1 chart(s) linted, 1 chart(s) failed
 
 指定した`values`ファイル使用して、`helm lint`コマンドを実行する。
 
+なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+
+この`values`ファイルは、デフォルト値として使用される。
+
 ```bash
+# デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
 $ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting kubernetes
@@ -333,6 +340,7 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 複数のチャートに対して、同じ`values`ファイルを渡すこともできる。
 
 ```bash
+# デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
 $ helm lint <チャートへのパス> -f foo-values.yaml
 
 ==> Linting <チャート>
@@ -712,7 +720,12 @@ $ helm template . -f foo-values.yaml >| releases.yaml
 
 指定した`values`ファイル使用して、`helm template`コマンドを実行する。
 
+なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+
+この`values`ファイルは、デフォルト値として使用される。
+
 ```bash
+# デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
 $ helm template . -f foo-values.yaml >| <出力先ファイル>
 ```
 
