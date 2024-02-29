@@ -20902,11 +20902,44 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#opentelemetry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      パッケージ初期化とトレースコンテキスト抽出
+      宛先がopentelemetryコレクターの場合
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="宛先がopentelemetryコレクターの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 親スパン作成 (親のみ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22203,11 +22236,44 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#opentelemetry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      パッケージ初期化とトレースコンテキスト抽出
+      宛先がopentelemetryコレクターの場合
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="宛先がopentelemetryコレクターの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 親スパン作成 (親のみ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23641,34 +23707,71 @@
 </blockquote>
 <p><br></p>
 <h2 id="04-aws-sqs">04. メッセージキュー (AWS SQS) を挟む場合<a class="headerlink" href="#04-aws-sqs" title="Permanent link">&para;</a></h2>
-<h3 id="_22">パッケージ初期化とトレースコンテキスト抽出<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h3 id="opentelemetry_1">宛先がopentelemetryコレクターの場合<a class="headerlink" href="#opentelemetry_1" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="k">go</span>
+<h4 id="_23">▼ 親スパン作成 (親のみ)<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;flag&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="w">    </span><span class="c1">// ここではv1を使用しているが、v2が推奨である</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws/session&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/service/sqs&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
+<span class="w">    </span><span class="c1">// キュー名を取得する</span>
+<span class="w">    </span><span class="nx">queue</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;The name of the queue&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">*</span><span class="nx">queue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;You must supply the name of a queue (-q QUEUE)&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 認証情報を読み込む</span>
+<span class="w">    </span><span class="nx">sess</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">NewSessionWithOptions</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">SharedConfigState</span><span class="p">:</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">SharedConfigEnable</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}))</span>
+
 <span class="w">    </span><span class="nx">svc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sqs</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">sess</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">SendMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">SendMessageInput</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">MessageAttributes</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
-<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;The Whistler&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// キューURLを取得する</span>
+<span class="w">    </span><span class="nx">urlResult</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">GetQueueUrl</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">GetQueueUrlInput</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">QueueName</span><span class="p">:</span><span class="w"> </span><span class="nx">queue</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">queueURL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">urlResult</span><span class="p">.</span><span class="nx">QueueUrl</span>
+
+<span class="w">    </span><span class="c1">// AWS SQSにメッセージを送信する</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">SendMessageWithContext</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// トレースコンテキスト</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">SendMessageInput</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">MessageAttributes</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                </span><span class="s">&quot;Title&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;The Whistler&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">&quot;Author&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;John Grisham&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s">&quot;WeeksOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Number&quot;</span><span class="p">),</span>
+<span class="w">                    </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;6&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="p">},</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s">&quot;Author&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">),</span>
-<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;John Grisham&quot;</span><span class="p">),</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s">&quot;WeeksOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageAttributeValue</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">DataType</span><span class="p">:</span><span class="w">    </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Number&quot;</span><span class="p">),</span>
-<span class="w">                </span><span class="nx">StringValue</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;6&quot;</span><span class="p">),</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nx">MessageBody</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Information about current NY Times fiction bestseller for week of 12/11/2016.&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">QueueUrl</span><span class="p">:</span><span class="w">    </span><span class="nx">queueURL</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">MessageBody</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;Information about current NY Times fiction bestseller for week of 12/11/2016.&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">QueueUrl</span><span class="p">:</span><span class="w">    </span><span class="nx">queueURL</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -23677,7 +23780,84 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html">https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html</a></li>
+<li><a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message">https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message</a></li>
+</ul>
+</blockquote>
+<h4 id="_24">▼ トレースコンテキスト注入と子スパン作成 (子のみ)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;flag&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="w">    </span><span class="c1">// ここではv1を使用しているが、v2が推奨である</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws/session&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/service/sqs&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// キュー名を取得する</span>
+<span class="w">    </span><span class="nx">queue</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;The name of the queue&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">timeout</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;How long, in seconds, that the message is hidden from others&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">*</span><span class="nx">queue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;You must supply the name of a queue (-q QUEUE)&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">*</span><span class="nx">timeout</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="nx">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">*</span><span class="nx">timeout</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">12</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="nx">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 認証情報を読み込む</span>
+<span class="w">    </span><span class="nx">sess</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">NewSessionWithOptions</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">SharedConfigState</span><span class="p">:</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">SharedConfigEnable</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}))</span>
+
+<span class="w">    </span><span class="nx">svc</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sqs</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">sess</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// キューURLを取得する</span>
+<span class="w">    </span><span class="nx">urlResult</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">GetQueueUrl</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">GetQueueUrlInput</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">QueueName</span><span class="p">:</span><span class="w"> </span><span class="nx">queue</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">queueURL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">urlResult</span><span class="p">.</span><span class="nx">QueueUrl</span>
+
+<span class="w">    </span><span class="c1">// AWS SQSからメッセージを受信する</span>
+<span class="w">    </span><span class="nx">msgResult</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">svc</span><span class="p">.</span><span class="nx">ReceiveMessageWithContext</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// トレースコンテキスト</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">ReceiveMessageInput</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">AttributeNames</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">MessageSystemAttributeNameSentTimestamp</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">MessageAttributeNames</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">aws</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">sqs</span><span class="p">.</span><span class="nx">QueueAttributeNameAll</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">QueueUrl</span><span class="p">:</span><span class="w">            </span><span class="nx">queueURL</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">MaxNumberOfMessages</span><span class="p">:</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">VisibilityTimeout</span><span class="p">:</span><span class="w">   </span><span class="nx">timeout</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Message Handle: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="nx">msgResult</span><span class="p">.</span><span class="nx">Messages</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">ReceiptHandle</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage">https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage</a></li>
 </ul>
 </blockquote>
 <p><br></p>
