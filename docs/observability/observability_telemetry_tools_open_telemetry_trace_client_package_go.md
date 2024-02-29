@@ -17,7 +17,7 @@ description: Go＠クライアントパッケージの知見を記録してい�
 
 ### otelクライアントパッケージ
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
@@ -92,7 +92,7 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 親スパンを作成する。
 
@@ -134,7 +134,7 @@ func parentFunction(ctx context.Context) {
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 ```go
 func childFunction(ctx context.Context) {
@@ -199,7 +199,7 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -279,7 +279,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#getting
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 親スパンを作成する。
 
@@ -369,7 +369,7 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
@@ -458,7 +458,7 @@ func main() {
 
 ### 宛先がopentelemetryコレクターの場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
 
@@ -537,7 +537,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
 		// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
         propagation.TraceContext{},
@@ -552,7 +552,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 親スパンを作成する
 
@@ -683,7 +683,7 @@ func checkSession() gin.HandlerFunc {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
@@ -811,7 +811,7 @@ func createUser(c *gin.Context) {
 
 ### 宛先がX-Rayの場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
@@ -897,7 +897,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
 		// X-Ray形式のトレースコンテキストを伝播できるPropagatorを設定する
         xray.Propagator{},
@@ -995,7 +995,7 @@ func parent(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
@@ -1099,7 +1099,7 @@ func getXrayTraceID(span trace.Span) string {
 
 ### 宛先がGoogle CloudTraceの場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
@@ -1151,7 +1151,7 @@ func NewTracerProvider() (func(), error) {
 
 func installPropagators() {
 
-	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
         // 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
@@ -1170,7 +1170,7 @@ func installPropagators() {
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L39-L72
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L37-L70
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 ```go
 package main
@@ -1218,7 +1218,7 @@ func main() {
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
 
@@ -1281,7 +1281,7 @@ func main() {
 
 ### 宛先が標準出力の場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 gRPCを使わない場合と実装方法は同じである。
 
@@ -1315,7 +1315,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
 		// 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
@@ -1333,7 +1333,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
 > - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 ```go
 package main
@@ -1392,7 +1392,7 @@ func (s *server) parent(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 ```go
 package main
@@ -1461,7 +1461,7 @@ func main() {
 
 ### AWS SQSの場合
 
-#### ▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)
+#### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
@@ -1539,11 +1539,11 @@ func NewTracerProvider() {
 
 > - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message
 
-#### ▼ 親スパン作成 (親のみ)
+#### ▼ 親スパン作成 (クライアント側のみ)
 
 記入中...
 
-#### ▼ トレースコンテキスト注入と子スパン作成 (子のみ)
+#### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
 ```go
 package main

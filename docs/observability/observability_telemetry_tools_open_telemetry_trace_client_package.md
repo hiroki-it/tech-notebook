@@ -394,13 +394,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 <br>
 
-### 種類
+### Exporterの種類
 
 #### ▼ Stdout Exporter
 
 標準出力を宛先とする。
 
-例えばGoであれば、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。
 
 `go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。
 
@@ -410,7 +410,7 @@ OpenTelemetryコレクターを宛先とする。
 
 HTTPでopentelemetryコレクター接続する。
 
-例えばGoであれば、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
@@ -418,13 +418,13 @@ OpenTelemetryコレクターを宛先とする。
 
 gRPCでopentelemetryコレクター接続する。
 
-例えばGoであれば、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
 
 #### ▼ Jaeger Exporter
 
 Jaegerを宛先とする。
 
-例えばGoであれば、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。
 
 #### ▼ X-Ray Exporter
 
@@ -436,7 +436,7 @@ X-Rayを宛先とする。
 
 CloudTraceを宛先とする。
 
-例えばGoであれば、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
+例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
@@ -616,25 +616,32 @@ Carrierからトレースコンテキストを注入する操作を『注入 (In
 
 <br>
 
-### パッケージ
+### トレースコンテキスト仕様の種類
 
-| 項目                        | 必要なパッケージ                                                                                                                                                                   |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Goとopentelemetryコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                                                 |
-| GoとX-Ray                   | 一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
+#### ▼ OpenTelemetry
+
+OpenTelemetryが定めるトレースコンテキスト仕様である。
+
+例えばGoの場合、`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
+
+#### ▼ X-Ray
+
+X-Rayが定めるトレースコンテキスト仕様である。
 
 <br>
 
-### スパンの仕様の設定
+### トレースコンテキスト仕様の設定
 
-Goの場合、`SetTextMapPropagator`関数を使用して、
+いずれのトレースコンテキスト仕様を使用するかをクライアント側とサーバー側の両方で設定する必要がある。
+
+例えばGoの場合、`SetTextMapPropagator`関数を使用してトレースコンテキスト仕様を設定する。
 
 ```go
 // クライアント側マイクロサービス
 // 前のマイクロサービスにとってはサーバー側にもなる
 func NewTracerProvider() {
 
-    // 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+    // 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
     otel.SetTextMapPropagator(
       ...
     )
@@ -646,7 +653,7 @@ func NewTracerProvider() {
 // 後続のマイクロサービスにとってはクライアント側にもなる
 func NewTracerProvider() {
 
-    // 監視バックエンドが対応するトレースコンテキストの仕様を設定する必要がある
+    // 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
       ...
 	)
@@ -692,7 +699,7 @@ func NewTracerProvider() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1772-L1824
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1760-L1813
 
 <br>
 
@@ -781,7 +788,7 @@ processors:
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
 | `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
-| `OTEL_PROPAGATORS`         | スパンの仕様を設定する。                                                                                                          |
+| `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                              |
 | `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                                              |
 | `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                         |
 | `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |

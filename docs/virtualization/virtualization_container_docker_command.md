@@ -62,6 +62,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 > - https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target
 
 ```bash
+# ローカル環境のターゲットを指定する
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --target dev .
 ```
 
