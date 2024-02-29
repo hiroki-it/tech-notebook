@@ -23204,6 +23204,7 @@ kind:<span class="w"> </span>Deployment
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
 <p>複数を指定することができ、同じ設定値がある場合は、より後に読み込んだ<code>values</code>ファイルの設定値を優先する。</p>
+<p>同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>bar-values.yaml
 </code></pre></div>
@@ -23283,7 +23284,10 @@ Error:<span class="w"> </span><span class="m">1</span><span class="w"> </span>ch
 </blockquote>
 <h4 id="-f_1">▼ -f<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h4>
 <p>指定した<code>values</code>ファイル使用して、<code>helm lint</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
+$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 
 <span class="o">==</span>&gt;<span class="w"> </span>Linting<span class="w"> </span>kubernetes
 <span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Chart.yaml:<span class="w"> </span>icon<span class="w"> </span>is<span class="w"> </span>recommended
@@ -23292,7 +23296,8 @@ Error:<span class="w"> </span><span class="m">1</span><span class="w"> </span>ch
 <span class="m">1</span><span class="w"> </span>chart<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>linted,<span class="w"> </span><span class="m">0</span><span class="w"> </span>chart<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>failed
 </code></pre></div>
 <p>複数のチャートに対して、同じ<code>values</code>ファイルを渡すこともできる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
+$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 
 <span class="o">==</span>&gt;<span class="w"> </span>Linting<span class="w"> </span>&lt;チャート&gt;
 <span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Chart.yaml:<span class="w"> </span>icon<span class="w"> </span>is<span class="w"> </span>recommended
@@ -23542,7 +23547,10 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </code></pre></div>
 <h4 id="-f_2">▼ -f<a class="headerlink" href="#-f_2" title="Permanent link">&para;</a></h4>
 <p>指定した<code>values</code>ファイル使用して、<code>helm template</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
+<p>なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの<code>values</code>ファイルも暗黙的に読み込まれていることに注意する。</p>
+<p>この<code>values</code>ファイルは、デフォルト値として使用される。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
