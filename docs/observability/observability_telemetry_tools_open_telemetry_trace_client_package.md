@@ -556,16 +556,6 @@ W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信し�
 
 <br>
 
-### パッケージ
-
-| 項目 | 必要なパッケージ                                                 |
-| ---- | ---------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
-
-> - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
-
-<br>
-
 ### Span Processorの種類
 
 #### ▼ Batch Span Processor
@@ -678,28 +668,24 @@ func NewTracerProvider() {
 
 <br>
 
-### パッケージ
+### Resourceの種類
 
-| 項目 | 必要なパッケージ                                                |
-| ---- | --------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/resource`パッケージからコールできる。 |
+デフォルトで、様々な属性を持っている。
 
-例えば、以下の属性を設定できる。
+例えばGoであれば、`go.opentelemetry.io/otel/resource`パッケージからコールできる。
 
-アプリはKubernetesリソースの情報を知らないはずなので、`service.name`、`service.version`、`telemetry.sdk.name`である。
+有益な属性として、以下がある。
 
 ```yaml
 {
-  "service.name": "foo-service",
-  "service.namespace": "<Kubernetes Namespace名>",
-  "service.instance.id": "<Kubernetes Pod名>",
-  "service.version": "1.0.0",
-  "service.env": "prd",
-  "telemetry.sdk.name": "otel",
+  "service.name": "<マイクロサービス名>",
+  "service.version": "<バージョンタグ>",
+  "deployment.environment": "<実行環境名>",
+  ...,
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go#L1760-L1813
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go
 
 <br>
 
