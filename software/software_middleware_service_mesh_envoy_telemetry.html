@@ -4201,7 +4201,7 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンテキスト仕様
+      ▼ トレースコンテキスト仕様
     </span>
   </a>
   
@@ -21909,7 +21909,7 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンテキスト仕様
+      ▼ トレースコンテキスト仕様
     </span>
   </a>
   
@@ -22175,7 +22175,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <p><br></p>
 <h3 id="_13">監視バックエンドへのスパンの送信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ スパンの送信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。</p>
+<p>Envoyは、Exporterとしてスパンを監視バックエンドに送信する。</p>
 <p>これにより、マイクロサービス側でExporterを実装する必要がなくなる。</p>
 <p>ただし、もしマイクロサービス側でExporterを設定しないとEnvoyとマイクロサービスの処理時間を合計したスパンを送信する。</p>
 <p>マイクロサービスとEnvoyの両方で設定すると、Envoyとマイクロサービスをちゃんと区別したスパンになる。</p>
@@ -22186,8 +22186,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <li><a href="https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/">https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/</a></li>
 </ul>
 </blockquote>
-<h4 id="_15">▼ コンテキスト仕様<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>監視バックエンドの種類を指定することで、送信するコンテキストの仕様を切り替えられる。</p>
+<h4 id="_15">▼ トレースコンテキスト仕様<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>監視バックエンドの種類を指定することで、送信するトレースコンテキストの仕様を切り替えられる。</p>
 <ul>
 <li>Datadog (Datadogコンテキスト)</li>
 <li>OpenTelemetry (W3C Trace Context、Baggage)</li>
@@ -22233,7 +22233,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-29</span>
   </span>
 
     
