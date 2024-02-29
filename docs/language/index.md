@@ -17,6 +17,8 @@
   > * ##### [︎JSONクエリ](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json_query.html)
 * #### <u>YAML</u>
   > * ##### [︎YAML](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html)
+* #### <u>Protocol Buffer</u>
+  > * ##### [Protocol Buffer](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer.html)
 
 <br>
 
