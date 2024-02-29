@@ -20892,23 +20892,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-aws-sqs" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. メッセージキュー (AWS SQS) を挟む場合
+      04. メッセージキューを挟む場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. メッセージキュー (AWS SQS) を挟む場合">
+    <nav class="md-nav" aria-label="04. メッセージキューを挟む場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opentelemetry_1" class="md-nav__link">
+  <a href="#aws-sqs" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がopentelemetryコレクターの場合
+      AWS SQSの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がopentelemetryコレクターの場合">
+    <nav class="md-nav" aria-label="AWS SQSの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22226,23 +22226,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-aws-sqs" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. メッセージキュー (AWS SQS) を挟む場合
+      04. メッセージキューを挟む場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. メッセージキュー (AWS SQS) を挟む場合">
+    <nav class="md-nav" aria-label="04. メッセージキューを挟む場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opentelemetry_1" class="md-nav__link">
+  <a href="#aws-sqs" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がopentelemetryコレクターの場合
+      AWS SQSの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がopentelemetryコレクターの場合">
+    <nav class="md-nav" aria-label="AWS SQSの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22876,6 +22876,7 @@
 <span class="w">    </span><span class="nx">start</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -23707,8 +23708,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-aws-sqs">04. メッセージキュー (AWS SQS) を挟む場合<a class="headerlink" href="#04-aws-sqs" title="Permanent link">&para;</a></h2>
-<h3 id="opentelemetry_1">宛先がopentelemetryコレクターの場合<a class="headerlink" href="#opentelemetry_1" title="Permanent link">&para;</a></h3>
+<h2 id="04">04. メッセージキューを挟む場合<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="aws-sqs">AWS SQSの場合<a class="headerlink" href="#aws-sqs" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ パッケージ初期化とトレースコンテキスト抽出 (親子共通)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>

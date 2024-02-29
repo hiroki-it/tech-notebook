@@ -22023,7 +22023,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&
 </blockquote>
 <h4 id="-e">▼ -e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h4>
 <p>Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>&lt;コマンド&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>&lt;コマンド&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22031,13 +22031,13 @@ $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>apply
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 </code></pre></div>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
 <p>使用する<code>helmfile.yaml</code>ファイルを指定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>&lt;コマンド&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>&lt;コマンド&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22046,7 +22046,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&
 </blockquote>
 <h4 id="-interactive">▼ --interactive<a class="headerlink" href="#-interactive" title="Permanent link">&para;</a></h4>
 <p>コマンドの実行前の確認を要求する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>--interactive<span class="w"> </span>destroy
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>--interactive<span class="w"> </span>destroy
 
 ...
 
@@ -22061,7 +22061,7 @@ Do<span class="w"> </span>you<span class="w"> </span>really<span class="w"> </sp
 <p>まず<code>helmfile diff</code>コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code>コマンドを実行する。</p>
 <p><code>helmfile sync</code>コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>apply
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 
 Upgrading<span class="w"> </span><span class="nv">release</span><span class="o">=</span>foo-release,<span class="w"> </span><span class="nv">chart</span><span class="o">=</span>./charts/foo
 Release<span class="w"> </span><span class="s2">&quot;foo-release&quot;</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>upgraded.<span class="w"> </span>Happy<span class="w"> </span>Helming!
@@ -22089,11 +22089,11 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <p>CRDの作成をスキップする。</p>
 <p><code>kubectl apply</code>コマンドでCRDを作成した場合に役立つ。</p>
 <p>注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>apply<span class="w"> </span>--skip-crds
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply<span class="w"> </span>--skip-crds
 </code></pre></div>
 <h4 id="-skip-diff-on-install">▼ --skip-diff-on-install<a class="headerlink" href="#-skip-diff-on-install" title="Permanent link">&para;</a></h4>
 <p><code>helmfile apply</code>コマンド時に<code>helmfile diff</code>コマンドを実行しない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>apply<span class="w"> </span>--skip-diff-on-install
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply<span class="w"> </span>--skip-diff-on-install
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22105,7 +22105,7 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <h4 id="destroy_1">▼ destroyとは<a class="headerlink" href="#destroy_1" title="Permanent link">&para;</a></h4>
 <p>インストール済みの全てのチャートをアンインストールする。</p>
 <p>CRDも削除する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>destroy
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>destroy
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22118,7 +22118,7 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;Helmリリース名&gt;
 
 <span class="c1"># 削除したHelmリリースのみが差分として出力される</span>
-$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff
+$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <p><br></p>
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
@@ -22136,7 +22136,7 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 <h4 id="diff_1">▼ diffとは<a class="headerlink" href="#diff_1" title="Permanent link">&para;</a></h4>
 <p>全てのHelmリリースに対して、helm-diffプラグインを実行する。</p>
 <p>helm-diffプラグインでは、前回のHelmリリースと、今回の<code>helm upgrade --dry-run</code>コマンドの差分を取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22151,12 +22151,12 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 <li><code>helm upgrade --dry-run</code>コマンドのどの段階でエラーになったかがわからない。</li>
 </ul>
 <p><code>--debug</code>オプションであれば、これらを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>--debug<span class="w"> </span>diff
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>--debug<span class="w"> </span>diff
 </code></pre></div>
 <h4 id="_3">▼ 色付け<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><code>helmfile diff</code>コマンドでは、差分を色付けできる。</p>
 <p>ただ、バージョンによって機能しないことがあるため、その場合は明示的に<code>HELM_DIFF_COLOR</code>変数を有効化する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HELM_DIFF_COLOR</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HELM_DIFF_COLOR</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22166,14 +22166,14 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 <h4 id="grep">▼ grepとの組み合わせ<a class="headerlink" href="#grep" title="Permanent link">&para;</a></h4>
 <p>マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。</p>
 <p><code>grep</code>コマンドを使用して、差分のあるリソースやファイルを確認しておく。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kind
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kind
 
 <span class="c1"># 差分のあるマニフェストのkindキーのみを取得する。</span>
 kind:<span class="w"> </span>Service
 kind:<span class="w"> </span>Deployment
 kind:<span class="w"> </span>PersistentVolume
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Source
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Source
 
 <span class="c1"># 差分のあるマニフェストのkindキーのみを取得する。</span>
 Source:<span class="w"> </span>project/manifests/service.yaml
@@ -22186,7 +22186,7 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p>全てのHelmリリースに関して、<code>helm upgrade --install</code>コマンドを実行する。</p>
 <p><code>helmfile apply</code>コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョン番号を更新する。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>sync
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>sync
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22198,11 +22198,11 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
 <p>全てのHelmリリースに関して、<code>helm template</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>template
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template
 </code></pre></div>
 <h4 id="-include-crds">▼ --include-crds<a class="headerlink" href="#-include-crds" title="Permanent link">&para;</a></h4>
 <p>CRDも含めて、<code>helm template</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>template<span class="w"> </span>--include-crds
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template<span class="w"> </span>--include-crds
 </code></pre></div>
 <p><br></p>
 <h3 id="write-values">write-values<a class="headerlink" href="#write-values" title="Permanent link">&para;</a></h3>
@@ -22210,7 +22210,7 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p>個人的に感動したコマンド。<code>helmfile</code>コマンドの実行で使用される<code>values</code>ファイルを、ファイルに書き出す。</p>
 <p>複数の<code>values</code>ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた<code>values</code>ファイルが優先されるようになっている。</p>
 <p>この時に、<code>helmfile write-values</code>コマンドを使用すると、優先された値で定義された<code>values</code>ファイルを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>write-values
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>write-values
 
 <span class="c1"># helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。</span>
 Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"> </span>foo-77cab19b/foo.yaml
@@ -22236,7 +22236,7 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-29</span>
   </span>
 
     

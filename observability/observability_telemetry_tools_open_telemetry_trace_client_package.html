@@ -23028,6 +23028,34 @@
 
 <span class="p">}</span>
 </code></pre></div>
+<p>マイクロサービスで使用するConfigMapにて、分散トレースの有効化を実行環境別に切り替えられるようにするとよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tes</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># テスト環境では分散トレースを無効化する</span>
+<span class="w">  </span><span class="nt">TRACE_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="nn">---</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stg</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ステージング環境では分散トレースを無効化する</span>
+<span class="w">  </span><span class="nt">TRACE_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="nn">---</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 本番環境では分散トレースを無効化する</span>
+<span class="w">  </span><span class="nt">TRACE_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300">https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300</a></li>
@@ -23437,6 +23465,7 @@
 <span class="w">  </span><span class="s">&quot;service.namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Kubernetes</span><span class="nv"> </span><span class="s">Namespace名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;service.instance.id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Kubernetes</span><span class="nv"> </span><span class="s">Pod名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;service.version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;telemetry.sdk.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;otel&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
