@@ -13,7 +13,7 @@ description: 検証ロジック＠Goの知見を記録しています。
 
 <br>
 
-## 検証
+## ビルトイン
 
 ### 検証パターンと検証メソッドの対応
 
@@ -39,5 +39,67 @@ description: 検証ロジック＠Goの知見を記録しています。
 > - https://stackoverflow.com/a/61877328
 > - https://stackoverflow.com/a/38512327
 > - https://tutuz-tech.hatenablog.com/entry/2019/10/20/145302
+
+<br>
+
+## ユーザー定義
+
+### 重複の検知
+
+```go
+package main
+
+import (
+	"errors"
+	"log"
+	"os"
+)
+
+func IsDuplicateFoo() bool {
+
+	slice := []bool{
+		isFoo1,
+		isFoo2,
+		isFoo3,
+	}
+
+	encountered := make(map[bool]bool)
+
+	for _, v := range slice {
+		if encountered[v] {
+			return true
+		}
+		encountered[v] = true
+	}
+
+	return false
+}
+
+func main()  {
+	var foo Foo
+	var err error
+
+	switch {
+	// 有効化が重複する場合
+	case IsDuplicateFoo():
+		log.Print("Failed to initialize foo: Foo is duplicate")
+		// 後続の処理を実行できないので、ここでプロセスを終了させる
+		os.Exit(1)
+
+	// Foo1を使用する場合
+	case IsFoo1():
+		foo, err = NewFoo1()
+
+	// Foo2を使用する場合
+	case isFoo2():
+		foo, err = NewFoo2()
+
+	// Foo3を使用する場合
+	case isFoo3():
+		foo, err = NewFoo3()
+	}
+
+}
+```
 
 <br>

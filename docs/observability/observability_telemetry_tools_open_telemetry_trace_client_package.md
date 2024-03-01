@@ -296,6 +296,9 @@ TracerProviderがスローするエラーを独自のエラーに変更する。
 package main
 
 import (
+	"error"
+	"fmt"
+
 	"go.opentelemetry.io/otel"
 )
 
@@ -327,6 +330,8 @@ func main() {
 	...
 }
 ```
+
+> - https://opentelemetry.io/docs/specs/otel/error-handling/#configuring-error-handlers
 
 <br>
 
