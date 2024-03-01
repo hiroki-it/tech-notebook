@@ -288,6 +288,48 @@ Samplerを無効化すると、スパンの作成を無効化できる。
 
 ## 01-03. エラー時の事後処理
 
+### 独自のエラーの使用
+
+TracerProviderがスローするエラーを独自のエラーに変更する。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+type ErrorHandler interface {
+  Handle(err error)
+}
+
+type IgnoreExporterErrorsHandler struct{}
+
+func Handler() ErrorHandler
+
+func (IgnoreExporterErrorsHandler) Handle(err error) {
+
+	switch err.(type) {
+	// SpanExporterのエラーの場合は何もしない
+	case *SpanExporterError:
+
+	default:
+		fmt.Println(err)
+	}
+}
+
+func main() {
+
+	...
+
+	otel.SetErrorHandler(IgnoreExporterErrorsHandler{})
+
+	...
+}
+```
+
+<br>
+
 ### 未送信スパンの送信
 
 処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。

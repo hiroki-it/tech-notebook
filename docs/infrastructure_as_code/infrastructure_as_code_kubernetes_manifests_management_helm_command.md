@@ -293,6 +293,8 @@ $ helm install foo-release . -f foo-values.yaml --wait
 
 チャートの構造の誤り (例：`values`ファイルや`Chart.yaml`ファイルがあるか) を実行する。
 
+例えば、以下ではエラーになっていない。
+
 ```bash
 $ helm lint <チャートへのパス> -f foo-values.yaml
 
@@ -302,6 +304,8 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 
 Error: 0 chart(s) linted, 0 chart(s) failed
 ```
+
+例えば、以下ではエラーになっている。
 
 ```bash
 $ helm lint <チャートへのパス> -f foo-values.yaml
@@ -335,19 +339,6 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 [INFO] values.yaml: file does not exist
 
 1 chart(s) linted, 0 chart(s) failed
-```
-
-複数のチャートに対して、同じ`values`ファイルを渡すこともできる。
-
-```bash
-# デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
-$ helm lint <チャートへのパス> -f foo-values.yaml
-
-==> Linting <チャート>
-[INFO] Chart.yaml: icon is recommended
-[INFO] values.yaml: file does not exist
-
-5 chart(s) linted, 0 chart(s) failed
 ```
 
 #### ▼ --quiet

@@ -30,11 +30,11 @@ repository/
 │   └── kustomization.yaml
 │
 └── overlays
-├── dev/
+├── stg/
 │   └── kustomization.yaml
 │
-├── prd/
-└── stg/
+├── tes/
+└── prd/
 ```
 
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
