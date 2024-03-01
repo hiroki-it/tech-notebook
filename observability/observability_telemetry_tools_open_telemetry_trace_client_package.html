@@ -23143,6 +23143,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;error&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="p">)</span>
 
@@ -23174,6 +23177,11 @@
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/specs/otel/error-handling/#configuring-error-handlers">https://opentelemetry.io/docs/specs/otel/error-handling/#configuring-error-handlers</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_7">未送信スパンの送信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。</p>
