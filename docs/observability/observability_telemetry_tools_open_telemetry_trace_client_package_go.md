@@ -238,12 +238,15 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 		semconv.ServiceVersionKey.String("1.0.0"),
 	)
 
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
+
 	// TracerProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
 	    // ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
 	// TraceProviderインターフェースを実装する構造体を作成する
@@ -881,14 +884,15 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create trace exporter: %w", err)
 	}
 
-	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
-
 	var tracerProvider *sdktrace.TracerProvider
+
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
     // TracerProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 		// X-Ray形式の各種IDを新しく作成する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
@@ -1131,11 +1135,14 @@ func NewTracerProvider() (func(), error) {
 		return nil, err
 	}
 
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
+
 	// TracerProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
 		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
 	// TraceProviderインターフェースを実装する構造体を作成する
@@ -1304,6 +1311,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TracerProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(

@@ -21,15 +21,22 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
 
+`NewTracerProvider`関数に分散トレースのオプションを渡す。
+
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
 	tracerProvider := sdktrace.NewTracerProvider(
+		// Exporterを設定する
 		sdktrace.WithBatcher(exporter),
+		// Resourceを設定する
 		sdktrace.WithResource(resource),
+		// Samplerを設定する
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		// Span Processorを設定する
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
 	...
@@ -65,7 +72,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 ### TracerProviderOption
 
-TracerProviderOptionを別に作成し、TracerProviderに渡してもよい。
+分散トレースのオプションを持つ`TracerProviderOption`構造体を別に作成し、TracerProviderに渡してもよい。
 
 ```go
 func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -76,6 +83,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resource),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	}
 
 	tracerProvider := sdktrace.NewTracerProvider(options...)
@@ -428,6 +436,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resource),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+        sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
 	...
@@ -479,6 +488,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resource),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
 	...
