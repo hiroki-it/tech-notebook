@@ -42,9 +42,9 @@ var tracer trace.Tracer
 func newExporter(ctx context.Context)  {
 }
 
-func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
 
-	r, err := resource.Merge(
+	resourceWithAttirbute, err := resource.Merge(
 		resource.Default(),
 		// アプリ内の全ての処理に共通する属性を設定する
 		// 処理ごとに異なる属性はスパンの作成時に設定する
@@ -59,22 +59,22 @@ func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	}
 
 	return sdktrace.NewTracerProvider(
-		sdktrace.WithBatcher(exp),
-		sdktrace.WithResource(r),
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resourceWithAttirbute),
 	)
 }
 
 func main() {
 	ctx := context.Background()
 
-	exp, err := newExporter(ctx)
+	exporter, err := newExporter(ctx)
 
 	if err != nil {
 		log.Printf("Failed to initialize exporter: %v", err)
 	}
 
 	// TracerProviderのインターフェースを作成する
-	tracerProvider := newTracerProvider(exp)
+	tracerProvider := newTracerProvider(exporter
 
     // 事後処理
 	defer func() {

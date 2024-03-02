@@ -21,10 +21,90 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
 
+```go
+func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+
+	...
+
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+    )
+
+	...
+
+	cleanUp := func() {
+
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			5*time.Second
+        )
+
+		// タイムアウトの場合に処理を中断する
+		defer cancel()
+
+		// Span Processor内の処理中スパンをExporterに送信する
+		if err := tracerProvider.ForceFlush(ctx); err != nil {
+			log.Printf("Failed to force flush trace provider %v", err)
+		}
+
+		...
+	}
+
+	return tracerProvider, cleanUp, nil
+}
+```
+
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace
 > - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21
+
+<br>
+
+### TracerProviderOption
+
+TracerProviderOptionを別に作成し、TracerProviderに渡してもよい。
+
+```go
+func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+
+	...
+
+	options := []trace.TracerProviderOption{
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resource),
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+	}
+
+	tracerProvider := sdktrace.NewTracerProvider(options...)
+
+	...
+
+	cleanUp := func() {
+
+		ctx, cancel := context.WithTimeout(
+			context.Background(),
+			5*time.Second
+        )
+
+		// タイムアウトの場合に処理を中断する
+		defer cancel()
+
+		// Span Processor内の処理中スパンをExporterに送信する
+		if err := tracerProvider.ForceFlush(ctx); err != nil {
+			log.Printf("Failed to force flush trace provider %v", err)
+		}
+
+		...
+	}
+
+	return tracerProvider, cleanUp, nil
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.24.0/sdk/trace/provider.go#L37-L56
 
 <br>
 
