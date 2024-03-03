@@ -22205,13 +22205,19 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 <p>コマンドからターミナルに対して、エラーデータを出力するためのインターフェースのこと。</p>
 <p>プロセスごとに存在する。</p>
 <h4 id="_7">▼ 標準エラー出力に全て出力<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>コマンド処理の後に、『<code>1&gt;&amp;2</code>』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトすることにより、処理の全ての結果を標準エラー出力に出力できるうになる。</p>
+<p>コマンド処理の後に、『<code>1&gt;&amp;2</code> (または<code>&gt;&amp;2</code>)』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトする。</p>
+<p><code>1</code>は標準出力であり、<code>2</code>は標準エラー出力、を表す。</p>
+<p>これにより、処理の全ての結果を標準エラー出力に出力できるうになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://teratail.com/questions/1285">https://teratail.com/questions/1285</a></li>
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+
+<span class="c1"># または</span>
+
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 </code></pre></div>
 <p>また、プロセスの標準出力は<code>/proc/&lt;プロセスID&gt;/fd</code>ディレクトリのファイルディスクリプタ番号【２番) で確認できる。プロセスIDは<code>ps</code>コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
@@ -22429,7 +22435,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-04</span>
   </span>
 
     
