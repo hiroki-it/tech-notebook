@@ -22316,10 +22316,6 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
@@ -22349,11 +22345,19 @@
 <span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttirbutes</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
@@ -22503,7 +22507,7 @@
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">newTracer</span><span class="p">(</span><span class="nx">shutdownTimeout</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">shutdownTimeout</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、標準出力を設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
@@ -22523,7 +22527,7 @@
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// ExporterをTracerProviderに登録する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
@@ -22632,7 +22636,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">newTracer</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -22718,7 +22722,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">newTracer</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -22804,7 +22808,7 @@
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
@@ -23154,7 +23158,7 @@
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
@@ -23394,7 +23398,7 @@
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// ExporterをTracerProviderに登録する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
@@ -23451,7 +23455,7 @@
 
 <span class="w">    </span><span class="nx">installPropagators</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracer</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23501,7 +23505,7 @@
 
 <span class="w">    </span><span class="nx">installPropagators</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracer</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -23565,7 +23569,7 @@
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// ExporterをTracerProviderに登録する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>

@@ -22906,7 +22906,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Exporterを設定する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// Resourceを設定する</span>
@@ -22962,7 +22962,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span><span class="nx">options</span><span class="o">...</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">options</span><span class="o">...</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -23290,7 +23290,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
@@ -23337,7 +23337,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
