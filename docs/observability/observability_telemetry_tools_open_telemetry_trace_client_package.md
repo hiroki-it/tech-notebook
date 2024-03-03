@@ -32,7 +32,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		// Exporterを設定する
 		sdktrace.WithBatcher(exporter),
 		// Resourceを設定する
-		sdktrace.WithResource(resource),
+		sdktrace.WithResource(resourceWithAttributes),
 		// Samplerを設定する
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		// Span Processorを設定する
@@ -81,7 +81,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	options := []trace.TracerProviderOption{
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resource),
+		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	}
@@ -434,7 +434,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resource),
+		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
         sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
@@ -486,7 +486,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resource),
+		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )

@@ -388,7 +388,7 @@ function bestFirstSearchByDijkstra(
     define("GOAL_POINT", $goalPoint));
 
     // 無限大の定数のINFを使いたいが、定数は上書きできないため、代わりに-1を使用。
-    // 各頂点に対して、最短ルート地点番号、地点間距離の初期値、最短距離確定フラグを設定。
+    // 各頂点に対して、最短ルート地点番号、地点間距離のゼロ値、最短距離確定フラグを設定。
     for($i = 0; $i < self::POINT_NUMBER; $i ++){
         $route[$i] = -1;
         $distance[$i] = -1;

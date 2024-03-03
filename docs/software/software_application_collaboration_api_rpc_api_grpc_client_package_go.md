@@ -446,8 +446,7 @@ func main() {
 		grpc.ChainStreamInterceptor(
 			otelgrpc.StreamServerInterceptor(...),
 			recovery.StreamServerInterceptor(...),
-			),
-		),
+        ),
 	)
 
 	...

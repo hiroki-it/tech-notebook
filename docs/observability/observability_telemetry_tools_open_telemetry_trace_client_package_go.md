@@ -60,7 +60,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 	return sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resourceWithAttirbute),
+		sdktrace.WithResource(resourceWithAttirbutes),
 	)
 }
 

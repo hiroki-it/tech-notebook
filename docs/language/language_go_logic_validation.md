@@ -44,7 +44,51 @@ description: 検証ロジック＠Goの知見を記録しています。
 
 ## ユーザー定義
 
-### 重複の検知
+### フラグ
+
+フラグを管理する構造体を定義する。
+
+構造体の`bool`型フィールドのゼロ値は`false`である。
+
+```go
+package flags
+
+type FooEnabled struct {
+	foo1Enabled bool
+	foo2Enabled bool
+	foo3Enabled bool
+}
+
+// EnableFoo1 foo1Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo1() {
+	fooEnabled.foo1Enabled = true
+}
+
+// EnableFoo2 foo2Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo2() {
+	fooEnabled.foo2Enabled = true
+}
+
+// EnableFoo3 foo3Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo3() {
+	fooEnabled.foo3Enabled = true
+}
+
+// GetFoo3Enabled foo1Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo1Enabled() bool {
+	return fooEnabled.foo1Enabled
+}
+
+// GetFoo2Enabled foo2Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo2Enabled() bool {
+	return fooEnabled.foo2Enabled
+}
+
+// GetFoo3Enabled foo3Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo3Enabled() bool {
+	return fooEnabled.foo3Enabled
+}
+```
 
 ```go
 package main
@@ -55,12 +99,43 @@ import (
 	"os"
 )
 
-func IsDuplicateFoo() bool {
+func main() {
+
+	fooEnabled := &FooEnabled{}
+
+	// foo3Enabledを有効化する
+	fooEnabled.EnableFoo3()
+
+	// true になる
+	fmt.Print(fooEnabled.GetFoo3Enabled)
+}
+```
+
+<br>
+
+### 重複の検知
+
+```go
+package flags
+
+import (
+	"errors"
+	"log"
+	"os"
+)
+
+type FooEnabled struct {
+	foo1Enabled bool
+	foo2Enabled bool
+	foo3Enabled bool
+}
+
+func (fooEnabled *FooEnabled) IsDuplicateExporter() bool {
 
 	slice := []bool{
-		isFoo1,
-		isFoo2,
-		isFoo3,
+		fooEnabled.foo1Enabled,
+		fooEnabled.foo2Enabled,
+		fooEnabled.foo3Enabled,
 	}
 
 	encountered := make(map[bool]bool)
@@ -74,9 +149,48 @@ func IsDuplicateFoo() bool {
 
 	return false
 }
+// EnableFoo1 foo1Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo1() {
+	fooEnabled.foo1Enabled = true
+}
+
+// EnableFoo2 foo2Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo2() {
+	fooEnabled.foo2Enabled = true
+}
+
+// EnableFoo3 foo3Enabledを有効化する
+func (fooEnabled *FooEnabled) EnableFoo3() {
+	fooEnabled.foo3Enabled = true
+}
+
+// GetFoo3Enabled foo1Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo1Enabled() bool {
+	return fooEnabled.foo1Enabled
+}
+
+// GetFoo2Enabled foo2Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo2Enabled() bool {
+	return fooEnabled.foo2Enabled
+}
+
+// GetFoo3Enabled foo3Enabledを取得する
+func (fooEnabled *FooEnabled) GetFoo3Enabled() bool {
+	return fooEnabled.foo3Enabled
+}
+```
+
+```go
+package main
+
+import (
+	"log"
+	"os"
+)
 
 func main()  {
-	var foo Foo
+
+	var fooEnabled FooEnabled
 	var err error
 
 	switch {
