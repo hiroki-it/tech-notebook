@@ -22229,6 +22229,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 </ul>
 </blockquote>
 <h4 id="grpc_3">▼ gRPCクライアント側<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
+<p>gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22247,7 +22248,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="c1">// 単項RPCの場合のインターセプター処理</span>
 <span class="w">    </span><span class="nx">streamClientInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;bar-service&quot;</span><span class="p">))</span>
 
-<span class="w">    </span><span class="c1">// gRPCコネクションを作成する。</span>
+<span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
 <span class="w">        </span><span class="s">&quot;:9000&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>

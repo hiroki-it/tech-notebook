@@ -22849,7 +22849,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <p>記入中...</p>
 <p><br></p>
 <h3 id="grpc_7">gRPCクライアント<a class="headerlink" href="#grpc_7" title="Permanent link">&para;</a></h3>
-<p>gRPCクライアントを実装する。</p>
+<p>gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22864,8 +22864,11 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// gRPCコネクションを作成する。</span>
-<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="s">&quot;:9000&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">())</span>
+<span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;:9000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;did not connect: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -22913,6 +22916,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="w">    </span><span class="o">...</span>
 
+<span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">address</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCの場合のインターセプター処理</span>

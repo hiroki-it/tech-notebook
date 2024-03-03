@@ -6,34 +6,30 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コマンド@Goの知見を記録しています。">
+        <meta name="description" content="Telemetrygen＠OpenTelemetryの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_go_command.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_telemetrygen.html">
       
       
-        <link rel="prev" href="language_go.html">
       
       
-        <link rel="next" href="language_go_logic_data.html">
-      
-      
-      <link rel="icon" href="../assets/images/logo_v2.png">
+      <link rel="icon" href="../../assets/images/logo_v2.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
-        <title>【IT技術の知見】コマンド@Go - 俺の技術ノート</title>
+        <title>【IT技術の知見】Telemetrygen＠OpenTelemetry - 俺の技術ノート</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -90,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#go" class="md-skip">
+        <a href="#telemetrygenopentelemetry" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -108,7 +104,7 @@
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -125,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コマンド@Go
+              【IT技術の知見】Telemetrygen＠OpenTelemetry
             
           </span>
         </div>
@@ -202,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../index.html" class="md-tabs__link">
+      <a href="../../index.html" class="md-tabs__link">
         
   
     
@@ -219,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../about.html" class="md-tabs__link">
+      <a href="../../about.html" class="md-tabs__link">
         
   
     
@@ -238,7 +234,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
     
@@ -258,7 +254,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="../../software/index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+        <a href="../../software/application/index.html" class="md-tabs__link">
           
   
     
@@ -298,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+        <a href="../../software/middleware/index.html" class="md-tabs__link">
           
   
     
@@ -318,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="../../software/basic/index.html" class="md-tabs__link">
           
   
     
@@ -334,13 +330,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../language/index.html" class="md-tabs__link">
           
   
     
@@ -360,7 +354,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../testing/index.html" class="md-tabs__link">
+        <a href="../../testing/index.html" class="md-tabs__link">
           
   
     
@@ -380,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../hardware/index.html" class="md-tabs__link">
+        <a href="../../hardware/index.html" class="md-tabs__link">
           
   
     
@@ -400,7 +394,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../network/index.html" class="md-tabs__link">
+        <a href="../../network/index.html" class="md-tabs__link">
           
   
     
@@ -420,7 +414,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../security/index.html" class="md-tabs__link">
+        <a href="../../security/index.html" class="md-tabs__link">
           
   
     
@@ -440,7 +434,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cloud_computing/index.html" class="md-tabs__link">
+        <a href="../../cloud_computing/index.html" class="md-tabs__link">
           
   
     
@@ -460,7 +454,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../virtualization/index.html" class="md-tabs__link">
+        <a href="../../virtualization/index.html" class="md-tabs__link">
           
   
     
@@ -480,7 +474,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="../index.html" class="md-tabs__link">
           
   
     
@@ -500,7 +494,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+        <a href="../kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +514,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="../kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +534,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+        <a href="../cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -560,7 +554,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../devops/index.html" class="md-tabs__link">
+        <a href="../../devops/index.html" class="md-tabs__link">
           
   
     
@@ -580,7 +574,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../devops/cicd/index.html" class="md-tabs__link">
+        <a href="../../devops/cicd/index.html" class="md-tabs__link">
           
   
     
@@ -600,7 +594,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/index.html" class="md-tabs__link">
+        <a href="../../observability/index.html" class="md-tabs__link">
           
   
     
@@ -620,7 +614,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+        <a href="../../software_development_methodology/index.html" class="md-tabs__link">
           
   
     
@@ -663,7 +657,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     俺の技術ノート
@@ -690,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -710,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about.html" class="md-nav__link">
+      <a href="../../about.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -757,7 +751,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../system/index.html" class="md-nav__link ">
+            <a href="../../system/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -790,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/system.html" class="md-nav__link">
+      <a href="../../system/system.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/system_architecture_characteristics.html" class="md-nav__link">
+      <a href="../../system/system_architecture_characteristics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +860,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/index.html" class="md-nav__link ">
+            <a href="../../software/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -899,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software.html" class="md-nav__link">
+      <a href="../../software/software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -920,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_practices.html" class="md-nav__link">
+      <a href="../../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -981,7 +975,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/application/index.html" class="md-nav__link ">
+            <a href="../../software/application/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1014,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1133,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1154,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1204,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1225,7 +1219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_cqrs.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_backend_cqrs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1319,7 +1313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_frontend.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1398,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_microservices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1419,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_auth.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_microservices_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1440,7 +1434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_database.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_microservices_database.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1461,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_network.html" class="md-nav__link">
+      <a href="../../software/software_application_architecture_microservices_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1540,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_communication.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_communication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1607,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_restful.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_api_restful.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1628,7 +1622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_restful_api_specification.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_api_restful_api_specification.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1703,7 +1697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_rpc_api_grpc.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_api_rpc_api_grpc.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1768,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1849,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_graphql_api_graphql.html" class="md-nav__link">
+      <a href="../../software/software_application_collaboration_api_graphql_api_graphql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1926,7 +1920,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/middleware/index.html" class="md-nav__link ">
+            <a href="../../software/middleware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2053,7 +2047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_nginx.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2074,7 +2068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_nginx_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2095,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_command.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_nginx_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2172,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_apache.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2193,7 +2187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_apache_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2214,7 +2208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_command.html" class="md-nav__link">
+      <a href="../../software/software_middleware_web_apache_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2389,7 +2383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+      <a href="../../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2410,7 +2404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2537,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
+      <a href="../../software/software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2558,7 +2552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2639,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
+      <a href="../../software/software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2820,7 +2814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2841,7 +2835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2862,7 +2856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2939,7 +2933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_mysql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2960,7 +2954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3029,7 +3023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3050,7 +3044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3071,7 +3065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3154,7 +3148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3175,7 +3169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3258,7 +3252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_tsdb.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3325,7 +3319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3346,7 +3340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3473,7 +3467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3494,7 +3488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3585,7 +3579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_linux.html" class="md-nav__link">
+      <a href="../../software/software_middleware_security_linux.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3652,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco.html" class="md-nav__link">
+      <a href="../../software/software_middleware_security_falco.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3673,7 +3667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco_conf.html" class="md-nav__link">
+      <a href="../../software/software_middleware_security_falco_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3758,7 +3752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3779,7 +3773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_responsibility.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_responsibility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3852,7 +3846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_envoy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3873,7 +3867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3894,7 +3888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3915,7 +3909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3936,7 +3930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
+      <a href="../../software/software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4009,7 +4003,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/basic/index.html" class="md-nav__link ">
+            <a href="../../software/basic/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4096,7 +4090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4117,7 +4111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_process_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel_process_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4138,7 +4132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_memory_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel_memory_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4159,7 +4153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_storage_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel_storage_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4180,7 +4174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_io_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel_io_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4201,7 +4195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_job_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_linux_kernel_job_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4284,7 +4278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4305,7 +4299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_unix.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_unix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4326,7 +4320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_shell.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_shell.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4347,7 +4341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_script.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_script.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4418,7 +4412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_memory.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_memory.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4439,7 +4433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_network.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4460,7 +4454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_security.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_security.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4481,7 +4475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_storage.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4560,7 +4554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4581,7 +4575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_linux.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_management_linux.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4602,7 +4596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_redhat.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_management_redhat.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4623,7 +4617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_debian.html" class="md-nav__link">
+      <a href="../../software/software_basic_utility_package_management_debian.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4706,7 +4700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor.html" class="md-nav__link">
+      <a href="../../software/software_basic_language_processor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4727,7 +4721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
+      <a href="../../software/software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4760,8 +4754,6 @@
       
   
   
-    
-  
   
   
     
@@ -4790,22 +4782,21 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../../language/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4816,13 +4807,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             🔠 言語
@@ -4838,7 +4829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_type.html" class="md-nav__link">
+      <a href="../../language/language_type.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4859,7 +4850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_process_mode.html" class="md-nav__link">
+      <a href="../../language/language_process_mode.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4974,7 +4965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json.html" class="md-nav__link">
+      <a href="../../language/language_data_description_language_json.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4995,7 +4986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json_query.html" class="md-nav__link">
+      <a href="../../language/language_data_description_language_json_query.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5068,7 +5059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_yaml.html" class="md-nav__link">
+      <a href="../../language/language_data_description_language_yaml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5141,7 +5132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_protocol_buffer.html" class="md-nav__link">
+      <a href="../../language/language_data_description_language_protocol_buffer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5232,7 +5223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php.html" class="md-nav__link">
+      <a href="../../language/language_php.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5253,7 +5244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_command.html" class="md-nav__link">
+      <a href="../../language/language_php_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5322,7 +5313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based.html" class="md-nav__link">
+      <a href="../../language/language_php_class_based.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5343,7 +5334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_method_data.html" class="md-nav__link">
+      <a href="../../language/language_php_class_based_method_data.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5364,7 +5355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_data_structure.html" class="md-nav__link">
+      <a href="../../language/language_php_class_based_data_structure.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5445,7 +5436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_validation.html" class="md-nav__link">
+      <a href="../../language/language_php_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5466,7 +5457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_error_and_error_handling.html" class="md-nav__link">
+      <a href="../../language/language_php_logic_error_and_error_handling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5487,7 +5478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_iteration.html" class="md-nav__link">
+      <a href="../../language/language_php_logic_iteration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5508,7 +5499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_algorithm.html" class="md-nav__link">
+      <a href="../../language/language_php_logic_algorithm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5529,7 +5520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_debug.html" class="md-nav__link">
+      <a href="../../language/language_php_logic_debug.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5656,7 +5647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_laravel_component.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5677,7 +5668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5698,7 +5689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_laravel_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5719,7 +5710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package_auth.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_laravel_package_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5740,7 +5731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_command.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_laravel_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5815,7 +5806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_component.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_symfony_component.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5836,7 +5827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
+      <a href="../../language/language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5921,7 +5912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_management.html" class="md-nav__link">
+      <a href="../../language/language_php_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5942,7 +5933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_sql.html" class="md-nav__link">
+      <a href="../../language/language_php_package_sql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5963,7 +5954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_others.html" class="md-nav__link">
+      <a href="../../language/language_php_package_others.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6098,7 +6089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based.html" class="md-nav__link">
+      <a href="../../language/language_js_prototype_based.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6119,7 +6110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_prototype_based_method_data.html" class="md-nav__link">
+      <a href="../../language/language_js_prototype_based_method_data.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6196,7 +6187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_validation.html" class="md-nav__link">
+      <a href="../../language/language_js_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6217,7 +6208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="../../language/language_js_logic_asynchronous_process.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6238,7 +6229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_logic_debug.html" class="md-nav__link">
+      <a href="../../language/language_js_logic_debug.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6313,7 +6304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      <a href="../../language/language_js_framework_vuejs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6334,7 +6325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_framework_nuxtjs.html" class="md-nav__link">
+      <a href="../../language/language_js_framework_nuxtjs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6407,7 +6398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_package_management.html" class="md-nav__link">
+      <a href="../../language/language_js_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6480,7 +6471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_js_browser_rendering.html" class="md-nav__link">
+      <a href="../../language/language_js_browser_rendering.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6514,10 +6505,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -6537,11 +6526,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
         
           
           <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
@@ -6555,7 +6546,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_7">
             <span class="md-nav__icon md-icon"></span>
             ■ Go
@@ -6569,7 +6560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go.html" class="md-nav__link">
+      <a href="../../language/language_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6587,30 +6578,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    コマンド
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_go_command.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../language/language_go_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6619,304 +6590,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-go" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. goコマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. goコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      build
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ buildとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-o" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -o
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clean" class="md-nav__link">
-    <span class="md-ellipsis">
-      clean
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#env" class="md-nav__link">
-    <span class="md-ellipsis">
-      env
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="env">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#env_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ envとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fmt" class="md-nav__link">
-    <span class="md-ellipsis">
-      fmt
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="fmt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fmt_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ fmtとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      get
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="get">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ getとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
-    <span class="md-ellipsis">
-      install
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="install">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ installとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
-    <span class="md-ellipsis">
-      run
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="run">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#run_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ runとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      test
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ testとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-v" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -v
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-cover" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -cover
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      version
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="version">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-m" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -m
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vet" class="md-nav__link">
-    <span class="md-ellipsis">
-      vet
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="vet">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vet_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ vetとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6977,7 +6650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_data.html" class="md-nav__link">
+      <a href="../../language/language_go_logic_data.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6998,7 +6671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_method.html" class="md-nav__link">
+      <a href="../../language/language_go_logic_method.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7019,7 +6692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_validation.html" class="md-nav__link">
+      <a href="../../language/language_go_logic_validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7092,7 +6765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_framework_gin.html" class="md-nav__link">
+      <a href="../../language/language_go_framework_gin.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7167,7 +6840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_builtin.html" class="md-nav__link">
+      <a href="../../language/language_go_package_builtin.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7188,7 +6861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_external.html" class="md-nav__link">
+      <a href="../../language/language_go_package_external.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7273,7 +6946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python.html" class="md-nav__link">
+      <a href="../../language/language_python.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7384,7 +7057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_component.html" class="md-nav__link">
+      <a href="../../language/language_python_framework_flask_component.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7405,7 +7078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_command.html" class="md-nav__link">
+      <a href="../../language/language_python_framework_flask_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7486,7 +7159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_package_management.html" class="md-nav__link">
+      <a href="../../language/language_python_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7523,7 +7196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_r.html" class="md-nav__link">
+      <a href="../../language/language_r.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7578,7 +7251,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../testing/index.html" class="md-nav__link ">
+            <a href="../../testing/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -7663,7 +7336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7684,7 +7357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_microservices_test.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_microservices_test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7799,7 +7472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_application_php.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_application_php.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7820,7 +7493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_application_php_lint.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_application_php_lint.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7841,7 +7514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_application_php_unit.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_application_php_unit.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7914,7 +7587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_application_go.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_application_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8049,7 +7722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8114,7 +7787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_kubeconform.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_kubeconform.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8187,7 +7860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_confest.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_confest.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8260,7 +7933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_polaris.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_polaris.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8335,7 +8008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_pluto.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_pluto.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8356,7 +8029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_nova.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_nova.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8433,7 +8106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_checkov.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_checkov.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8454,7 +8127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_kics.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_kics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8475,7 +8148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_kube_score.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_infrastructure_lint_kube_score.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8608,7 +8281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_lint_trivy.html" class="md-nav__link">
+      <a href="../../testing/testing_whitebox_lint_trivy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8699,7 +8372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_blackbox.html" class="md-nav__link">
+      <a href="../../testing/testing_blackbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8768,7 +8441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_blackbox_system_test.html" class="md-nav__link">
+      <a href="../../testing/testing_blackbox_system_test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8789,7 +8462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_blackbox_system_test_jmeter.html" class="md-nav__link">
+      <a href="../../testing/testing_blackbox_system_test_jmeter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8810,7 +8483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_blackbox_system_test_chaos_mesh.html" class="md-nav__link">
+      <a href="../../testing/testing_blackbox_system_test_chaos_mesh.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8887,7 +8560,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../hardware/index.html" class="md-nav__link ">
+            <a href="../../hardware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -8920,7 +8593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hardware.html" class="md-nav__link">
+      <a href="../../hardware/hardware.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8941,7 +8614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hardware_cpu.html" class="md-nav__link">
+      <a href="../../hardware/hardware_cpu.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8962,7 +8635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hardware_memory.html" class="md-nav__link">
+      <a href="../../hardware/hardware_memory.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8983,7 +8656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hardware_storage.html" class="md-nav__link">
+      <a href="../../hardware/hardware_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9004,7 +8677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hardware/hardware_embedded_system.html" class="md-nav__link">
+      <a href="../../hardware/hardware_embedded_system.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9059,7 +8732,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../network/index.html" class="md-nav__link ">
+            <a href="../../network/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -9092,7 +8765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network.html" class="md-nav__link">
+      <a href="../../network/network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9213,7 +8886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi.html" class="md-nav__link">
+      <a href="../../network/network_model_osi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9280,7 +8953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l5_l7.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l5_l7.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9301,7 +8974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l5_l7_http.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l5_l7_http.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9376,7 +9049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l4.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l4.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9397,7 +9070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l4_port.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l4_port.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9474,7 +9147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l3.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l3.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9495,7 +9168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l3_ip_address.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l3_ip_address.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9516,7 +9189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l3_router.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l3_router.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9545,7 +9218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l2.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l2.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9566,7 +9239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_osi_l1.html" class="md-nav__link">
+      <a href="../../network/network_model_osi_l1.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9595,7 +9268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/network_model_tcp.html" class="md-nav__link">
+      <a href="../../network/network_model_tcp.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9660,7 +9333,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../security/index.html" class="md-nav__link ">
+            <a href="../../security/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -9739,7 +9412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_cyber_attacks.html" class="md-nav__link">
+      <a href="../../security/security_cyber_attacks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9760,7 +9433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_cyber_attacks_malware.html" class="md-nav__link">
+      <a href="../../security/security_cyber_attacks_malware.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9835,7 +9508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_measures.html" class="md-nav__link">
+      <a href="../../security/security_measures.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9904,7 +9577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_measures_encryption_technology.html" class="md-nav__link">
+      <a href="../../security/security_measures_encryption_technology.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9925,7 +9598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_measures_encryption_technology_encryption_method.html" class="md-nav__link">
+      <a href="../../security/security_measures_encryption_technology_encryption_method.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9946,7 +9619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_measures_encryption_technology_encryption_protocol.html" class="md-nav__link">
+      <a href="../../security/security_measures_encryption_technology_encryption_protocol.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10079,7 +9752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication.html" class="md-nav__link">
+      <a href="../../security/security_auth_authentication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10100,7 +9773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_http.html" class="md-nav__link">
+      <a href="../../security/security_auth_authentication_http.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10121,7 +9794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authentication_token.html" class="md-nav__link">
+      <a href="../../security/security_auth_authentication_token.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10196,7 +9869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authorization.html" class="md-nav__link">
+      <a href="../../security/security_auth_authorization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10217,7 +9890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_authorization_open_policy_agent.html" class="md-nav__link">
+      <a href="../../security/security_auth_authorization_open_policy_agent.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10296,7 +9969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_sso.html" class="md-nav__link">
+      <a href="../../security/security_auth_sso.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10317,7 +9990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_sso_oauth.html" class="md-nav__link">
+      <a href="../../security/security_auth_sso_oauth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10338,7 +10011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_sso_saml.html" class="md-nav__link">
+      <a href="../../security/security_auth_sso_saml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10359,7 +10032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/security_auth_sso_oidc.html" class="md-nav__link">
+      <a href="../../security/security_auth_sso_oidc.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10432,7 +10105,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cloud_computing/index.html" class="md-nav__link ">
+            <a href="../../cloud_computing/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -10465,7 +10138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10536,7 +10209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_cli.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_cli.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10687,7 +10360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_account.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_account.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10708,7 +10381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_amplify.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_amplify.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10775,7 +10448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10796,7 +10469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_api_gateway_import.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_api_gateway_import.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10825,7 +10498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10846,7 +10519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_backup.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_backup.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10867,7 +10540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10888,7 +10561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10909,7 +10582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10930,7 +10603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_cloudfront.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_cloudfront.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10951,7 +10624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10972,7 +10645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10993,7 +10666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_code.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11014,7 +10687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11035,7 +10708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11056,7 +10729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_ec2.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_ec2.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11077,7 +10750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_ecr.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_ecr.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11098,7 +10771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_ecs.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_ecs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11119,7 +10792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_efs.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_efs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11140,7 +10813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_eks.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11161,7 +10834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11182,7 +10855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11203,7 +10876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_firelens.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_firelens.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11224,7 +10897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11245,7 +10918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_glue.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_glue.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11266,7 +10939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_iam.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_iam.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11287,7 +10960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11308,7 +10981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_kms.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_kms.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11375,7 +11048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_lambda.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_lambda.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11396,7 +11069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_lambda_function.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_lambda_function.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11425,7 +11098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_lb.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_lb.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11446,7 +11119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_rds.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_rds.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11467,7 +11140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_redshift.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_redshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11488,7 +11161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_route53.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_route53.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11509,7 +11182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_s3.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_s3.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11530,7 +11203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11551,7 +11224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_ses.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_ses.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11572,7 +11245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_sns.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_sns.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11593,7 +11266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_sqs.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_sqs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11614,7 +11287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11635,7 +11308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_sts.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_sts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11656,7 +11329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11677,7 +11350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_vpc.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_vpc.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11698,7 +11371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_waf.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_waf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11719,7 +11392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11740,7 +11413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_resource_xray.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_resource_xray.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11819,7 +11492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_practices_availability.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_practices_availability.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11840,7 +11513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_practices_reliability.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_practices_reliability.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11861,7 +11534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_practices_security.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_practices_security.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11882,7 +11555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_practices_cost_optimization.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_practices_cost_optimization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11911,7 +11584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_aws_tools.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_aws_tools.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11986,7 +11659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_gcp_cli.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_gcp_cli.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12101,7 +11774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_gcp_resource_anthos.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_gcp_resource_anthos.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12122,7 +11795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12151,7 +11824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_gcp_resource_cloudlogging.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_gcp_resource_cloudlogging.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12172,7 +11845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing_gcp_resource_iam.html" class="md-nav__link">
+      <a href="../../cloud_computing/cloud_computing_gcp_resource_iam.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12243,7 +11916,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../virtualization/index.html" class="md-nav__link ">
+            <a href="../../virtualization/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -12276,7 +11949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12345,7 +12018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12416,7 +12089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_docker.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12437,7 +12110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_storage.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_docker_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12458,7 +12131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_network.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_docker_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12479,7 +12152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_docker_command.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_docker_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12554,7 +12227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_containerd.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_containerd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12575,7 +12248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../virtualization/virtualization_container_containerd_command.html" class="md-nav__link">
+      <a href="../../virtualization/virtualization_container_containerd_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12648,7 +12321,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
+            <a href="../index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -12681,7 +12354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
+      <a href="../infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12800,7 +12473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_ansible.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12821,7 +12494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_ansible_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12842,7 +12515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_playbook.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_ansible_playbook.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12863,7 +12536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_cfg.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_ansible_cfg.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12884,7 +12557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_ansible_galaxy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12961,7 +12634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -12982,7 +12655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_docker_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_docker_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13003,7 +12676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_docker_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_docker_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13138,7 +12811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13159,7 +12832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_docker_compose_yml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13234,7 +12907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_packer.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_packer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13255,7 +12928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_packer_template_json.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_packer_template_json.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13330,7 +13003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13351,7 +13024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_serverless_framework_serverless_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13434,7 +13107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13455,7 +13128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13522,7 +13195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13543,7 +13216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_tf_module.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13618,7 +13291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13639,7 +13312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_provider_kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13668,7 +13341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13735,7 +13408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13756,7 +13429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13839,7 +13512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13860,7 +13533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_vagrant_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_vagrant_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -13939,7 +13612,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
+            <a href="../kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -14024,7 +13697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14045,7 +13718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14066,7 +13739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14087,7 +13760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14108,7 +13781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14187,7 +13860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14208,7 +13881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14229,7 +13902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_practices_component.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14250,7 +13923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_practices_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14325,7 +13998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14394,7 +14067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14415,7 +14088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_resource_definition_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14436,7 +14109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_resource_definition_aws_eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14521,7 +14194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14542,7 +14215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_custom_resource_custom_controller.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14563,7 +14236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_custom_resource_logic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14638,7 +14311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14753,7 +14426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_development_environment_minikube.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14774,7 +14447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_development_environment_minikube_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14847,7 +14520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_development_environment_kind_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14920,7 +14593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_development_environment_k3d_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15063,7 +14736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15130,7 +14803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15151,7 +14824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15228,7 +14901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15249,7 +14922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15270,7 +14943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15299,7 +14972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15366,7 +15039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15387,7 +15060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15472,7 +15145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15493,7 +15166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_kustomize_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15514,7 +15187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_manifests_management_kustomize_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15593,7 +15266,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="../kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -15670,7 +15343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15747,7 +15420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15814,7 +15487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15835,7 +15508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15910,7 +15583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15931,7 +15604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16020,7 +15693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16041,7 +15714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16062,7 +15735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16083,7 +15756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16150,7 +15823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16171,7 +15844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16256,7 +15929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16277,7 +15950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_network_external_dns.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16344,7 +16017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16365,7 +16038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_network_coredns_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16494,7 +16167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16515,7 +16188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16588,7 +16261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16719,7 +16392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16740,7 +16413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16761,7 +16434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16782,7 +16455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16873,7 +16546,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
+            <a href="../cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -16956,7 +16629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16977,7 +16650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16998,7 +16671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17075,7 +16748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17096,7 +16769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17117,7 +16790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_plugin.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_plugin.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17138,7 +16811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_auth.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17159,7 +16832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_configmap.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17180,7 +16853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_secret.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_secret.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17201,7 +16874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_job.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_job.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17282,7 +16955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17357,7 +17030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17426,7 +17099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17447,7 +17120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17468,7 +17141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_fluentbit_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17551,7 +17224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17620,7 +17293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17641,7 +17314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17662,7 +17335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17745,7 +17418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17766,7 +17439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17851,7 +17524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17872,7 +17545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17893,7 +17566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17914,7 +17587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17935,7 +17608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17956,7 +17629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18023,7 +17696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18094,7 +17767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18115,7 +17788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18136,7 +17809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_configmap.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18157,7 +17830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_secret.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_secret.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18246,7 +17919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18321,7 +17994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18386,7 +18059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18467,7 +18140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18542,7 +18215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18609,7 +18282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18630,7 +18303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18719,7 +18392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18740,7 +18413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18761,7 +18434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18782,7 +18455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18851,7 +18524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18872,7 +18545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18893,7 +18566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18974,7 +18647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      <a href="../infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19039,7 +18712,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../devops/index.html" class="md-nav__link ">
+            <a href="../../devops/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -19118,7 +18791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops.html" class="md-nav__link">
+      <a href="../../devops/devops.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19185,7 +18858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_sreing.html" class="md-nav__link">
+      <a href="../../devops/devops_sreing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19206,7 +18879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_sreing_antipattern.html" class="md-nav__link">
+      <a href="../../devops/devops_sreing_antipattern.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19333,7 +19006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_documentation.html" class="md-nav__link">
+      <a href="../../devops/devops_documentation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19354,7 +19027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_documentation_mermaid.html" class="md-nav__link">
+      <a href="../../devops/devops_documentation_mermaid.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19435,7 +19108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_culture.html" class="md-nav__link">
+      <a href="../../devops/devops_culture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19504,7 +19177,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../devops/cicd/index.html" class="md-nav__link ">
+            <a href="../../devops/cicd/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -19537,7 +19210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19558,7 +19231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_deploy.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_deploy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19631,7 +19304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_github_actions.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_github_actions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19652,7 +19325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_gitlab_ci.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_gitlab_ci.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19673,7 +19346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_capistrano.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_capistrano.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19744,7 +19417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_circleci.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_circleci.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19765,7 +19438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_circleci_config_yml.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_circleci_config_yml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19786,7 +19459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_circleci_orbs.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_circleci_orbs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19807,7 +19480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_circleci_practices.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_circleci_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19882,7 +19555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_skaffold_yaml.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_skaffold_yaml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19903,7 +19576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_ci_skaffold_command.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_ci_skaffold_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -19984,7 +19657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_cd_argocd.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_cd_argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20061,7 +19734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_auto_review_github_comment.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_auto_review_github_comment.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20082,7 +19755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_auto_review_reviewdog.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_auto_review_reviewdog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20103,7 +19776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devops/devops_cicd_auto_review_tfnotify.html" class="md-nav__link">
+      <a href="../../devops/devops_cicd_auto_review_tfnotify.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20172,7 +19845,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../observability/index.html" class="md-nav__link ">
+            <a href="../../observability/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -20205,7 +19878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability.html" class="md-nav__link">
+      <a href="../../observability/observability.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20274,7 +19947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring.html" class="md-nav__link">
+      <a href="../../observability/observability_monitoring.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20295,7 +19968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring_oncall_incident_management.html" class="md-nav__link">
+      <a href="../../observability/observability_monitoring_oncall_incident_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20316,7 +19989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring_service_level.html" class="md-nav__link">
+      <a href="../../observability/observability_monitoring_service_level.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20393,7 +20066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_log.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_log.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20414,7 +20087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_metrics.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20435,7 +20108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_trace.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20522,7 +20195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20543,7 +20216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_fluentbit_fluentd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20564,7 +20237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_grafana.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_grafana.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20585,7 +20258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_jaeger.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_jaeger.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20606,7 +20279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_prometheus.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20673,7 +20346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_open_telemetry.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20742,7 +20415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_trace_client_package.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_open_telemetry_trace_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20763,7 +20436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_trace_client_package_go.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_open_telemetry_trace_client_package_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20784,7 +20457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_trace_client_package_python.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_open_telemetry_trace_client_package_python.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20871,7 +20544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_agent_conf.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_agent_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20892,7 +20565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_monitoring.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_monitoring.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20913,7 +20586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_integration.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_integration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20984,7 +20657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_metrics.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21005,7 +20678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_log.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_log.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21072,7 +20745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_distributed_trace.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_distributed_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21093,7 +20766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_distributed_trace_client_package.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_distributed_trace_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21122,7 +20795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_telemetry_association.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_datadog_telemetry_association.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21205,7 +20878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_google_analytics.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_google_analytics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21226,7 +20899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_google_search_console.html" class="md-nav__link">
+      <a href="../../observability/observability_telemetry_tools_google_search_console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21307,7 +20980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_incident_management_pagerduty.html" class="md-nav__link">
+      <a href="../../observability/observability_incident_management_pagerduty.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21374,7 +21047,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software_development_methodology/index.html" class="md-nav__link ">
+            <a href="../../software_development_methodology/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -21407,7 +21080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_development_methodology/software_development_methodology.html" class="md-nav__link">
+      <a href="../../software_development_methodology/software_development_methodology.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21428,7 +21101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_development_methodology/software_development_organization.html" class="md-nav__link">
+      <a href="../../software_development_methodology/software_development_organization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21449,7 +21122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_development_methodology/software_development_project_management.html" class="md-nav__link">
+      <a href="../../software_development_methodology/software_development_project_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21560,7 +21233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_development_methodology/software_development_git_command.html" class="md-nav__link">
+      <a href="../../software_development_methodology/software_development_git_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21581,7 +21254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_development_methodology/software_development_git_github.html" class="md-nav__link">
+      <a href="../../software_development_methodology/software_development_git_github.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21656,257 +21329,83 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-go" class="md-nav__link">
+  <a href="#01-telemetrygen" class="md-nav__link">
     <span class="md-ellipsis">
-      01. goコマンド
+      01. Telemetrygenとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. goコマンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. セットアップ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-telemetrygen" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. telemetrygenコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. telemetrygenコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
+  <a href="#logs" class="md-nav__link">
     <span class="md-ellipsis">
-      build
+      logs
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="build">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traces" class="md-nav__link">
+    <span class="md-ellipsis">
+      traces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="traces">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
+  <a href="#-child-spans" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ buildとは
+      ▼ --child-spans
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-o" class="md-nav__link">
+  <a href="#-service" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ -o
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clean" class="md-nav__link">
-    <span class="md-ellipsis">
-      clean
+      ▼ --service
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#env" class="md-nav__link">
+  <a href="#-traces" class="md-nav__link">
     <span class="md-ellipsis">
-      env
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="env">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#env_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ envとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fmt" class="md-nav__link">
-    <span class="md-ellipsis">
-      fmt
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="fmt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fmt_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ fmtとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      get
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="get">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ getとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
-    <span class="md-ellipsis">
-      install
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="install">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ installとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
-    <span class="md-ellipsis">
-      run
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="run">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#run_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ runとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      test
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ testとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-v" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -v
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-cover" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -cover
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    <span class="md-ellipsis">
-      version
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="version">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-m" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ -m
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vet" class="md-nav__link">
-    <span class="md-ellipsis">
-      vet
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="vet">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vet_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ vetとは
+      ▼ --traces
     </span>
   </a>
   
@@ -21940,7 +21439,7 @@
   
 
 
-<h1 id="go">コマンド@Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
+<h1 id="telemetrygenopentelemetry">Telemetrygen＠OpenTelemetry<a class="headerlink" href="#telemetrygenopentelemetry" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21949,183 +21448,38 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-go">01. goコマンド<a class="headerlink" href="#01-go" title="Permanent link">&para;</a></h2>
-<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
-<h4 id="build_1">▼ buildとは<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスをビルド対象として、ビルドのアーティファクトを作成する。</p>
-<p><code>foo_test.go</code>ファイルはビルドから自動的に除外される。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># cmdディレクトリをビルド対象として、ルートディレクトリにcmdアーティファクトを作成する。</span>
-$<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>./cmd
-</code></pre></div>
-<p>もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、<code>panic</code>メソッドが原因を握りつぶしている可能性を考える。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">2</span>.<span class="w"> </span>Docker<span class="w"> </span>build<span class="w"> </span>ran<span class="w"> </span>into<span class="w"> </span>internal<span class="w"> </span>error.<span class="w"> </span>Please<span class="w"> </span>retry.<span class="w"> </span>If<span class="w"> </span>this<span class="w"> </span>keeps<span class="w"> </span>happening,<span class="w"> </span>please<span class="w"> </span>open<span class="w"> </span>an<span class="w"> </span>issue..
-</code></pre></div>
-<h4 id="-o">▼ <code>-o</code><a class="headerlink" href="#-o" title="Permanent link">&para;</a></h4>
-<p>指定したパスにビルドのアーティファクトを作成する。</p>
-<p>ビルド対象パスを指定しない場合、ルートディレクトリのgoファイルをビルドの対象とする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ルートディレクトリ内のgoファイルをビルド対象として</span>
-<span class="c1"># $HOME/go/binディレクトリにルートディレクトリ名アーティファクトを作成する。</span>
-$<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span><span class="nv">$HOME</span>/go/bin
-</code></pre></div>
-<p>また、指定したパス内のgoファイルをビルド対象として、指定したパスにビルドのアーティファクトを作成もできる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># cmdディレクトリ内のgoファイルをビルド対象として</span>
-<span class="c1"># $HOME/go/binディレクトリにcmdアーティファクトを作成する。</span>
-$<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span><span class="nv">$HOME</span>/go/bin<span class="w"> </span>./cmd
-</code></pre></div>
-<p>補足として、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code>package<span class="w"> </span>foo<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>GOROOT<span class="w"> </span><span class="o">(</span>/usr/local/go/src/foo<span class="o">)</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="clean">clean<a class="headerlink" href="#clean" title="Permanent link">&para;</a></h3>
-<p>モジュールのキャッシュを削除する。</p>
-<p>ローカル環境での開発中に<code>go install</code>コマンドを実行しても、モジュールをアップグレードできない場合に使用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>clean<span class="w"> </span>--modcache
-
-$<span class="w"> </span>go<span class="w"> </span>install
-</code></pre></div>
-<p><br></p>
-<h3 id="env">env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
-<h4 id="env_1">▼ envとは<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
-<p>Goに関する環境変数を出力する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>env
-
-<span class="c1"># go.modの有効化</span>
-<span class="nv">GO111MODULE</span><span class="o">=</span><span class="s2">&quot;on&quot;</span>
-<span class="c1"># コンパイラが実行されるCPUアーキテクチャ</span>
-<span class="nv">GOARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
-<span class="c1"># installコマンドによるアーティファクトを配置するディレクトリ (指定無しの場合、$GOPATH/bin)</span>
-<span class="nv">GOBIN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOCACHE</span><span class="o">=</span><span class="s2">&quot;/root/.cache/go-build&quot;</span>
-<span class="nv">GOENV</span><span class="o">=</span><span class="s2">&quot;/root/.config/go/env&quot;</span>
-<span class="nv">GOEXE</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOFLAGS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOHOSTARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
-<span class="c1"># コンパイラが実行されるOS</span>
-<span class="nv">GOHOSTOS</span><span class="o">=</span><span class="s2">&quot;linux&quot;</span>
-<span class="nv">GOINSECURE</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOMODCACHE</span><span class="o">=</span><span class="s2">&quot;/go/pkg/mod&quot;</span>
-<span class="nv">GONOPROXY</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GONOSUMDB</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOOS</span><span class="o">=</span><span class="s2">&quot;linux&quot;</span>
-<span class="c1"># コードが配置されるディレクトリ</span>
-<span class="nv">GOPATH</span><span class="o">=</span><span class="s2">&quot;/go&quot;</span>
-<span class="nv">GOPRIVATE</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOPROXY</span><span class="o">=</span><span class="s2">&quot;https://proxy.golang.org,direct&quot;</span>
-<span class="c1"># Go本体を配置するディレクトリ</span>
-<span class="nv">GOROOT</span><span class="o">=</span><span class="s2">&quot;/usr/local/go&quot;</span>
-<span class="nv">GOSUMDB</span><span class="o">=</span><span class="s2">&quot;sum.golang.org&quot;</span>
-<span class="nv">GOTMPDIR</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">GOTOOLDIR</span><span class="o">=</span><span class="s2">&quot;/usr/local/go/pkg/tool/linux_amd64&quot;</span>
-<span class="nv">GCCGO</span><span class="o">=</span><span class="s2">&quot;gccgo&quot;</span>
-<span class="nv">AR</span><span class="o">=</span><span class="s2">&quot;ar&quot;</span>
-<span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;gcc&quot;</span>
-<span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;g++&quot;</span>
-<span class="c1"># c言語製のパッケージの有効化。無効化しないと、vetコマンドが失敗する。</span>
-<span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="nv">GOMOD</span><span class="o">=</span><span class="s2">&quot;/go/src/go.mod&quot;</span>
-<span class="nv">CGO_CFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
-<span class="nv">CGO_CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="nv">CGO_CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
-<span class="nv">CGO_FFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
-<span class="nv">CGO_LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
-<span class="nv">PKG_CONFIG</span><span class="o">=</span><span class="s2">&quot;pkg-config&quot;</span>
-<span class="nv">GOGCCFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches&quot;</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link">&para;</a></h3>
-<h4 id="fmt_1">▼ fmtとは<a class="headerlink" href="#fmt_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスのファイルのインデントを整形する。</p>
-<p>パスとして『<code>./...</code>』を指定して、再帰的に実行するのがおすすめ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>fmt<span class="w"> </span>./...
-</code></pre></div>
-<p><br></p>
-<h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
-<h4 id="get_1">▼ getとは<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスからパッケージをダウンロードし、これに対して<code>install</code>コマンドを実行する。</p>
-<p>また、<code>go.mod</code>ファイルも更新する。</p>
-<p>これにより、内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
-<p><code>go get</code>コマンドは不用意に<code>go.mod</code>ファイル上の他のパッケージの定義も更新してしまうため、非推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># インストールの場合</span>
-$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;
-
-go:<span class="w"> </span>downloading<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;<span class="w"> </span>&lt;バージョン&gt;
-go:<span class="w"> </span>added<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;<span class="w"> </span>&lt;バージョン&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># アップグレードの場合</span>
-$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;
-
-go:<span class="w"> </span>downloading<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;<span class="w"> </span>&lt;バージョン&gt;
-go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインをルートとしたURL&gt;<span class="w"> </span>&lt;バージョン&gt;
-</code></pre></div>
+<h2 id="01-telemetrygen">01. Telemetrygenとは<a class="headerlink" href="#01-telemetrygen" title="Permanent link">&para;</a></h2>
+<p>ローカル環境で擬似的に分散トレースを作成し、OpenTelemetryコレクターがこれを正しく処理できるかを検証する。</p>
+<p>別途、宛先のOpenTelemetryコレクターを起動し、ログを出力しておく。</p>
 <blockquote>
 <ul>
-<li><a href="https://go.dev/doc/go-get-install-deprecation">https://go.dev/doc/go-get-install-deprecation</a></li>
-<li><a href="https://qiita.com/eihigh/items/9fe52804610a8c4b7e41">https://qiita.com/eihigh/items/9fe52804610a8c4b7e41</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
-<h4 id="install_1">▼ installとは<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h4>
-<p>コードと外部パッケージに対して<code>build</code>コマンドを実行することにより、<code>$GOPATH</code>以下の<code>bin</code>ディレクトリまたは<code>pkg</code>ディレクトリにインストール (配置) する。</p>
-<p>内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば<code>bin</code>ディレクトリ配下に配置し、それ以外 (例：<code>.a</code>ファイル) であれば<code>pkg</code>ディレクトリ配下に配置する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install
-</code></pre></div>
-<p>なお、インストールしたパッケージで<code>replace</code>を使用している場合、クローンしてから直接インストールする必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>&lt;パッケージのリポジトリ&gt;
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;バイナリのディレクトリ&gt;
-$<span class="w"> </span>go<span class="w"> </span>install
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://go.dev/doc/go-get-install-deprecation">https://go.dev/doc/go-get-install-deprecation</a></li>
-<li><a href="https://github.com/golang/go/issues/44840#issuecomment-1828537390">https://github.com/golang/go/issues/44840#issuecomment-1828537390</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
-<h4 id="run_1">▼ runとは<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
-<p><code>go build</code>コマンドを実行しつつ、バイナリを実行する。</p>
-<p>ソースコードを変更した後に動作を簡易的に確認する場合に便利である。</p>
-<p>ただ、<code>log</code>パッケージなど処理中のメッセージは表示されず、<code>main.go</code>ファイルの実行結果しかわからないため、エラーのデバッグには使いにくい。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>run<span class="w"> </span>./...
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
 </code></pre></div>
 <p><br></p>
-<h3 id="test">test<a class="headerlink" href="#test" title="Permanent link">&para;</a></h3>
-<h4 id="test_1">▼ testとは<a class="headerlink" href="#test_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスの<code>foo_test.go</code>ファイルで『<code>Test</code>』から始まるテスト関数を実行する。</p>
-<p>testディレクトリ内を再帰的に実行するのがおすすめ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>./...
-</code></pre></div>
-<h4 id="-v">▼ -v<a class="headerlink" href="#-v" title="Permanent link">&para;</a></h4>
-<p>テスト時にテストの実施時間を出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-v<span class="w"> </span>./...
-</code></pre></div>
-<h4 id="-cover">▼ -cover<a class="headerlink" href="#-cover" title="Permanent link">&para;</a></h4>
-<p>テスト時に、<code>foo_test.go</code>ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する。</p>
-<p>反対に、<code>foo_test.go</code>ファイルがなければ、そのパッケージの網羅率は解析しない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-cover<span class="w"> </span>./...
-</code></pre></div>
+<h2 id="03-telemetrygen">03. telemetrygenコマンド<a class="headerlink" href="#03-telemetrygen" title="Permanent link">&para;</a></h2>
+<h3 id="logs">logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
 <p><br></p>
-<h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
-<h4 id="-m">▼ -m<a class="headerlink" href="#-m" title="Permanent link">&para;</a></h4>
-<p>バイナリで使用しているGoのバージョンと、モジュールのバージョンを出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>version<span class="w"> </span>-m<span class="w"> </span>&lt;Goのバイナリのパス&gt;
-
-&lt;Goのバイナリのパス&gt;:<span class="w"> </span>go<span class="w"> </span><span class="m">1</span>.19.5
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knqyf263.hatenablog.com/entry/2021/02/12/162928">https://knqyf263.hatenablog.com/entry/2021/02/12/162928</a></li>
-</ul>
-</blockquote>
+<h3 id="metrics">metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
 <p><br></p>
-<h3 id="vet">vet<a class="headerlink" href="#vet" title="Permanent link">&para;</a></h3>
-<h4 id="vet_1">▼ vetとは<a class="headerlink" href="#vet_1" title="Permanent link">&para;</a></h4>
-<p>指定したパスのファイルに対して、静的解析を実施する。</p>
-<p>パスとして『<code>./...</code>』を指定して、再帰的に実行するのがおすすめ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>vet<span class="w"> </span>./...
+<h3 id="traces">traces<a class="headerlink" href="#traces" title="Permanent link">&para;</a></h3>
+<h4 id="-child-spans">▼ --child-spans<a class="headerlink" href="#-child-spans" title="Permanent link">&para;</a></h4>
+<p>作成する子スパンの数を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>telemetrygen<span class="w"> </span>traces<span class="w"> </span>--child-spans<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<h4 id="-service">▼ --service<a class="headerlink" href="#-service" title="Permanent link">&para;</a></h4>
+<p>スパンに付与するサービス名を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>telemetrygen<span class="w"> </span>traces<span class="w"> </span>--service<span class="w"> </span>foo-service
+</code></pre></div>
+<h4 id="-traces">▼ --traces<a class="headerlink" href="#-traces" title="Permanent link">&para;</a></h4>
+<p>作成する分散トレースの数を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>telemetrygen<span class="w"> </span>traces<span class="w"> </span>--traces<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <p><br></p>
 
@@ -22220,10 +21574,10 @@ $<span class="w"> </span>go<span class="w"> </span>install
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

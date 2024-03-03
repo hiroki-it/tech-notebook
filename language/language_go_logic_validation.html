@@ -21690,6 +21690,11 @@
 <span class="w">    </span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="kt">bool</span>
 <span class="p">}</span>
 
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">FooEnabled</span><span class="p">)</span>
+<span class="p">}</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">IsDuplicateExporter</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">bool</span><span class="p">{</span>
@@ -21724,18 +21729,18 @@
 <span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 
-<span class="c1">// GetFoo3Enabled foo1Enabledを取得する</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">GetFoo1Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// getFoo1Enabled foo1Enabledを取得する</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">getFoo1Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo1Enabled</span>
 <span class="p">}</span>
 
-<span class="c1">// GetFoo2Enabled foo2Enabledを取得する</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">GetFoo2Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// getFoo2Enabled foo2Enabledを取得する</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">getFoo2Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo2Enabled</span>
 <span class="p">}</span>
 
-<span class="c1">// GetFoo3Enabled foo3Enabledを取得する</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">GetFoo3Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// getFoo3Enabled foo3Enabledを取得する</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">getFoo3Enabled</span><span class="p">()</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -21748,26 +21753,26 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="w"> </span><span class="nx">FooEnabled</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewFooEnabled</span><span class="p">()</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 有効化が重複する場合</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">IsDuplicateFoo</span><span class="p">():</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">IsDuplicateFoo</span><span class="p">():</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to initialize foo: Foo is duplicate&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// 後続の処理を実行できないので、ここでプロセスを終了させる</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Foo1を使用する場合</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">IsFoo1</span><span class="p">():</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo1Enabled</span><span class="p">():</span>
 <span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo1</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Foo2を使用する場合</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isFoo2</span><span class="p">():</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo2Enabled</span><span class="p">():</span>
 <span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo2</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Foo3を使用する場合</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isFoo3</span><span class="p">():</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo3Enabled</span><span class="p">():</span>
 <span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo3</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
