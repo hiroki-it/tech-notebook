@@ -466,6 +466,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_auto_release_goreleaser.html</loc>
+         <lastmod>2024-03-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_cd_pipecd.html</loc>
          <lastmod>2024-03-03</lastmod>
          <changefreq>daily</changefreq>
