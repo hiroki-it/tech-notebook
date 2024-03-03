@@ -795,7 +795,7 @@ func createUser(c *gin.Context) {
         )
 	} else {
 
-    user := models.User{
+		user := models.User{
 			Name:     json.Name,
 			Email:    json.Email,
 			PassWord: json.PassWord,

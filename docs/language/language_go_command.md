@@ -71,7 +71,7 @@ package foo is not in GOROOT (/usr/local/go/src/foo)
 ```bash
 $ go clean --modcache
 
-$ go install
+$ go mod tidy
 ```
 
 <br>
@@ -160,7 +160,7 @@ $ go fmt ./...
 
 ```bash
 # インストールの場合
-$ go get <ドメインをルートとしたURL>
+$ go get <ドメインをルートとしたURL>@<バージョン>
 
 go: downloading <ドメインをルートとしたURL> <バージョン>
 go: added <ドメインをルートとしたURL> <バージョン>
@@ -168,7 +168,7 @@ go: added <ドメインをルートとしたURL> <バージョン>
 
 ```bash
 # アップグレードの場合
-$ go get <ドメインをルートとしたURL>
+$ go get <ドメインをルートとしたURL>@<バージョン>
 
 go: downloading <ドメインをルートとしたURL> <バージョン>
 go: upgraded <ドメインをルートとしたURL> <バージョン>
@@ -182,6 +182,8 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 ### install
 
 #### ▼ installとは
+
+`go get`コマンドとは異なり、Goのバイナリをパッケージとしてでなく、ツールとしてグローバルにインストールする。
 
 コードと外部パッケージに対して`build`コマンドを実行することにより、`$GOPATH`以下の`bin`ディレクトリまたは`pkg`ディレクトリにインストール (配置) する。
 

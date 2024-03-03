@@ -1408,8 +1408,12 @@ func main() {
 	// 割り込み処理を設定する
 	ctx, stop := signal.NotifyContext(
 		context.Background(),
+		// SIGTERMシグナル
+		syscall.SIGTERM,
 		// 中断シグナル
 		os.Interrupt,
+		// Killシグナル
+		os.Kill,
 	)
 
 	// 処理を終了する

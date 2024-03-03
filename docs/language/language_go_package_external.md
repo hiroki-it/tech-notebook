@@ -40,7 +40,7 @@ $ go mod edit -go <バージョン>
 $ go mod tidy
 ```
 
-もし`go.sum`ファイルにモジュールの指定があるのにも関わらず、以下のようなエラーが出る時は、`go mod tidy`コマンドを実行して`go.sum`ファイルを更新する必要がある。
+もし`go.sum`ファイルにモジュールの指定があるのにも関わらず、以下のようなエラー (`missing go.sum entry`) が出る時は、`go mod tidy`コマンドを実行して`go.sum`ファイルを更新する必要がある。
 
 ```bash
 cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
@@ -167,9 +167,9 @@ func main() {
 
 #### ▼ パブリックリポジトリから (開発中)
 
-コミットハッシュ値を使用して、パブリックリポジトリから開発中のパッケージをインポートする。
+コミットIDやバージョンタグを使用して、パブリックリポジトリから開発中のパッケージをインポートする。
 
-この場合、`go get`コマンドで特定のコミットIDのモジュールをインストールする。
+この場合、`go get`コマンドで特定のコミットIDやバージョンタグを指定し、モジュールをインストールする。
 
 ```bash
 $ go get github.com/foo@<コミットID>
@@ -197,7 +197,7 @@ require (
 デフォルトでは、プライベートリポジトリのパッケージをインポートできない。
 
 ```bash
-$ go get github.com/foo
+$ go get github.com/foo@<コミットID/バージョンタグ>
 
 github.com/foo@v1.0.0: verifying module: github.com/foo@v1.0.0: reading https://sum.golang.org/lookup/github.com/foo@v1.0.0: 410 Gone
 	server response:
