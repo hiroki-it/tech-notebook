@@ -432,6 +432,8 @@ func main() {
 
 #### ▼ gRPCクライアント側
 
+gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
+
 ```go
 package main
 
@@ -451,7 +453,7 @@ func main() {
 	// 単項RPCの場合のインターセプター処理
 	streamClientInterceptor := grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))
 
-	// gRPCコネクションを作成する。
+	// gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
 		":9000",
 		grpc.WithInsecure(),

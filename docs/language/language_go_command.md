@@ -15,20 +15,6 @@ description: コマンド@Goの知見を記録しています。
 
 ## 01. goコマンド
 
-### clean
-
-モジュールのキャッシュを削除する。
-
-ローカル環境での開発中に`go install`コマンドを実行しても、モジュールをアップグレードできない場合に使用する。
-
-```bash
-$ go clean --modcache
-
-$ go install
-```
-
-<br>
-
 ### build
 
 #### ▼ buildとは
@@ -72,6 +58,20 @@ $ go build -o $HOME/go/bin ./cmd
 
 ```bash
 package foo is not in GOROOT (/usr/local/go/src/foo)
+```
+
+<br>
+
+### clean
+
+モジュールのキャッシュを削除する。
+
+ローカル環境での開発中に`go install`コマンドを実行しても、モジュールをアップグレードできない場合に使用する。
+
+```bash
+$ go clean --modcache
+
+$ go install
 ```
 
 <br>
@@ -159,7 +159,19 @@ $ go fmt ./...
 `go get`コマンドは不用意に`go.mod`ファイル上の他のパッケージの定義も更新してしまうため、非推奨である。
 
 ```bash
+# インストールの場合
 $ go get <ドメインをルートとしたURL>
+
+go: downloading <ドメインをルートとしたURL> <バージョン>
+go: added <ドメインをルートとしたURL> <バージョン>
+```
+
+```bash
+# アップグレードの場合
+$ go get <ドメインをルートとしたURL>
+
+go: downloading <ドメインをルートとしたURL> <バージョン>
+go: upgraded <ドメインをルートとしたURL> <バージョン>
 ```
 
 > - https://go.dev/doc/go-get-install-deprecation

@@ -130,6 +130,11 @@ type FooEnabled struct {
 	foo3Enabled bool
 }
 
+func NewFooEnabled() *FooEnabled {
+
+	return new(FooEnabled)
+}
+
 func (fooEnabled *FooEnabled) IsDuplicateExporter() bool {
 
 	slice := []bool{
@@ -164,18 +169,18 @@ func (fooEnabled *FooEnabled) EnableFoo3() {
 	fooEnabled.foo3Enabled = true
 }
 
-// GetFoo3Enabled foo1Enabledを取得する
-func (fooEnabled *FooEnabled) GetFoo1Enabled() bool {
+// getFoo1Enabled foo1Enabledを取得する
+func (fooEnabled *FooEnabled) getFoo1Enabled() bool {
 	return fooEnabled.foo1Enabled
 }
 
-// GetFoo2Enabled foo2Enabledを取得する
-func (fooEnabled *FooEnabled) GetFoo2Enabled() bool {
+// getFoo2Enabled foo2Enabledを取得する
+func (fooEnabled *FooEnabled) getFoo2Enabled() bool {
 	return fooEnabled.foo2Enabled
 }
 
-// GetFoo3Enabled foo3Enabledを取得する
-func (fooEnabled *FooEnabled) GetFoo3Enabled() bool {
+// getFoo3Enabled foo3Enabledを取得する
+func (fooEnabled *FooEnabled) getFoo3Enabled() bool {
 	return fooEnabled.foo3Enabled
 }
 ```
@@ -190,26 +195,26 @@ import (
 
 func main()  {
 
-	var fooEnabled FooEnabled
+	fooEnabled := NewFooEnabled()
 	var err error
 
 	switch {
 	// 有効化が重複する場合
-	case IsDuplicateFoo():
+	case fooEnabled.IsDuplicateFoo():
 		log.Print("Failed to initialize foo: Foo is duplicate")
 		// 後続の処理を実行できないので、ここでプロセスを終了させる
 		os.Exit(1)
 
 	// Foo1を使用する場合
-	case IsFoo1():
+	case fooEnabled.getFoo1Enabled():
 		foo, err = NewFoo1()
 
 	// Foo2を使用する場合
-	case isFoo2():
+	case fooEnabled.getFoo2Enabled():
 		foo, err = NewFoo2()
 
 	// Foo3を使用する場合
-	case isFoo3():
+	case fooEnabled.getFoo3Enabled():
 		foo, err = NewFoo3()
 	}
 

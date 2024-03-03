@@ -527,7 +527,7 @@ func main() {
 
 ### gRPCクライアント
 
-gRPCクライアントを実装する。
+gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
 
 ```go
 package main
@@ -544,8 +544,11 @@ import (
 
 func main() {
 
-	// gRPCコネクションを作成する。
-	conn, err := grpc.Dial(":9000", grpc.WithInsecure())
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+        ":9000",
+        grpc.WithInsecure(),
+    )
 
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
@@ -598,6 +601,7 @@ func main() {
 
 	...
 
+	// gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
 		address,
 		// ストリーミングRPCの場合のインターセプター処理

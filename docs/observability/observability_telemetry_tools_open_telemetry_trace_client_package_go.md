@@ -1350,6 +1350,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
+gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
+
 ```go
 package main
 
@@ -1366,12 +1368,13 @@ import (
 
 func main() {
 
+    // gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
 		    ":7777",
 			grpc.WithTransportCredentials(insecure.NewCredentials()),
 			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
 			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
-		)
+    )
 
 	defer conn.Close()
 
