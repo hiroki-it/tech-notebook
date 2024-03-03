@@ -293,7 +293,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func newTracer(w http.ResponseWriter, r *http.Request) {
+func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	// 親スパンを作成する。
 	span, ctx := tracer.StartSpanFromContext(
@@ -343,7 +343,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func newTracer(w http.ResponseWriter, r *http.Request) {
+func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	// インバウンド通信のリクエストヘッダーからトレースコンテキストを取得する。
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))

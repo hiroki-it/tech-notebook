@@ -25,10 +25,6 @@ description: Go＠クライアントパッケージの知見を記録してい�
 package trace
 
 import (
-	"context"
-	"fmt"
-	"log"
-
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -58,11 +54,21 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 		panic(err)
 	}
 
-	return sdktrace.NewTracerProvider(
+	return sdktrace.New(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resourceWithAttirbutes),
 	)
 }
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+)
 
 func main() {
 	ctx := context.Background()
@@ -221,7 +227,7 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
-func newTracer(shutdownTimeout time.Duration) (func(), error) {
+func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
 	// Exporter (スパンの宛先) として、標準出力を設定する。
 	exporter := stdouttrace.New(
@@ -241,7 +247,7 @@ func newTracer(shutdownTimeout time.Duration) (func(), error) {
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TracerProviderを作成する
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 	    // ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -352,7 +358,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := tracer.newTracer(10 * time.Second)
+	cleanUp, err := trace.InitTracerProvider(10 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -440,7 +446,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := tracer.newTracer(10 * time.Second)
+	cleanUp, err := trace.InitTracerProvider(10 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -531,7 +537,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TracerProviderを作成する
-	tracerProvider = sdktrace.NewTracerProvider(
+	tracerProvider = sdktrace.New(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
@@ -889,7 +895,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
     // TracerProviderを作成する
-	tracerProvider = sdktrace.NewTracerProvider(
+	tracerProvider = sdktrace.New(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
@@ -1138,7 +1144,7 @@ func NewTracerProvider() (func(), error) {
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TracerProviderを作成する
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -1195,7 +1201,7 @@ func main() {
 
 	installPropagators()
 
-	shutdown, err := newTracer()
+	shutdown, err := InitTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1247,7 +1253,7 @@ func main() {
 
 	installPropagators()
 
-	shutdown, err := newTracer()
+	shutdown, err := InitTracerProvider()
 
 	if err != nil {
 		log.Print(err)
@@ -1315,7 +1321,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TracerProviderを作成する
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),

@@ -28,7 +28,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	...
 
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 		// Exporterを設定する
 		sdktrace.WithBatcher(exporter),
 		// Resourceを設定する
@@ -86,7 +86,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	}
 
-	tracerProvider := sdktrace.NewTracerProvider(options...)
+	tracerProvider := sdktrace.New(options...)
 
 	...
 
@@ -432,7 +432,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	...
 
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -484,7 +484,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	...
 
-	tracerProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.New(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
