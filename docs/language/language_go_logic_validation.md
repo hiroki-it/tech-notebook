@@ -146,12 +146,16 @@ func (fooEnabled *FooEnabled) IsDuplicateExporter() bool {
 	encountered := make(map[bool]bool)
 
 	for _, v := range slice {
+
 		if encountered[v] {
+			// 重複あり
 			return true
 		}
+
 		encountered[v] = true
 	}
 
+	// 重複なし
 	return false
 }
 // EnableFoo1 foo1Enabledを有効化する

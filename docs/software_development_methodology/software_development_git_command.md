@@ -212,11 +212,20 @@ $ git init
 
 #### ▼ global ignore
 
-`~/.config/git/ignore`ファイルに設定されたファイルは、グローバルに無視される。
+`gitignore`ファイルとして、`~/.config/git/ignore`ファイルを作成する。
+
+この`gitignore`ファイルで指定したファイルは、グローバルにバージョン管理から無視される。
 
 ```ignore
-.DS_Store
-.idea/
+# IDEA
+*.idea/*
+
+# VSCode
+*.code-workspace
+.vscode/
+
+# Mac
+*.DS_Store
 ```
 
 > - https://zenn.dev/phi/articles/gitignore-global-ds-store

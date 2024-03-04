@@ -61,6 +61,8 @@ builds:
 
 <br>
 
+### changelog
+
 ```yaml
 changelog:
   sort: asc
