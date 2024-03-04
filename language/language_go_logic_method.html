@@ -7252,21 +7252,21 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 定数
+      03. 環境変数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 定数">
+    <nav class="md-nav" aria-label="03. 環境変数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-      環境変数
+      環境変数の出入力
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="環境変数">
+    <nav class="md-nav" aria-label="環境変数の出入力">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7298,6 +7298,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      string型以外の値
+    </span>
+  </a>
   
 </li>
         
@@ -7961,6 +7970,21 @@
       事前/事後処理
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="事前/事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 環境変数の出入力
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23137,21 +23161,21 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 定数
+      03. 環境変数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 定数">
+    <nav class="md-nav" aria-label="03. 環境変数">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_33" class="md-nav__link">
     <span class="md-ellipsis">
-      環境変数
+      環境変数の出入力
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="環境変数">
+    <nav class="md-nav" aria-label="環境変数の出入力">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23183,6 +23207,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    <span class="md-ellipsis">
+      string型以外の値
+    </span>
+  </a>
   
 </li>
         
@@ -23846,6 +23879,21 @@
       事前/事後処理
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="事前/事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 環境変数の出入力
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -24838,8 +24886,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. 定数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_33">環境変数<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. 環境変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_33">環境変数の出入力<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <h4 id="init_2">▼ <code>init</code>関数による環境変数出力<a class="headerlink" href="#init_2" title="Permanent link">&para;</a></h4>
 <p>環境変数は、<code>.env</code>ファイルを使用する以外に、<code>init</code>関数で出力する方法もある。</p>
 <h4 id="_34">▼ アプリ側の環境変数<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
@@ -24936,6 +24984,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html">https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="string">string型以外の値<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p>環境変数は全てstring型で定義する必要がある。</p>
+<p>そのため、出入力前にstring型への (からの) 変換が必要になる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// int型をstring型に変換した上で、環境変数として設定する</span>
+<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
+
+<span class="c1">// bool型をstring型に変換した上で、環境変数として設定する</span>
+<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatBool</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="04">04. スコープ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_36">変数、定数<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
@@ -25841,17 +25899,46 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><br></p>
 <h2 id="09">09. テスト<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="_61">事前/事後処理<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">integration</span>
+<h4 id="_62">▼ 環境変数の出入力<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h4>
+<p>アプリケーション外 (例：ConfigMap、<code>.env</code>ファイル、など) で環境変数を管理している場合、これをテスト時に事前に出入力する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 環境変数を設定する</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;300&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 事後処理</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestServer</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">t</span><span class="p">.</span><span class="nx">Helper</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">teardown</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// setup ユニットテストの前処理の結果と，後処理の関数を返却します．</span>
+<span class="c1">// setup ユニットテストの前処理の結果と，後処理の関数を返却する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// クライアントを作成します．</span>
+<span class="w">    </span><span class="c1">// クライアントを作成する</span>
 <span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -25859,7 +25946,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// TestIntegration 統合テストを実行します．</span>
+<span class="c1">// TestIntegration 統合テストを実行する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">TestIntegration</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">t</span><span class="p">.</span><span class="nx">Helper</span><span class="p">()</span>
