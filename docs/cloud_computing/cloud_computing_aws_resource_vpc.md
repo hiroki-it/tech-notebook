@@ -348,7 +348,7 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 異なるVPCのネットワークをVPC Latticeサービスネットワークを介して接続する。
 
-![vpc-lattice.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
+![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 
 > - https://yuj1osm.hatenablog.com/entry/2023/04/16/170124
 > - https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021

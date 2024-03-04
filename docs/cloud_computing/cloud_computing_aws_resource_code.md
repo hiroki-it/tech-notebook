@@ -114,7 +114,7 @@ artifacts:
 
 CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェントがS3バケットからソースコードの圧縮ファイルをプルする。
 
-![code-deploy_agent.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
+![code-deploy_agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
 
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html
 > - https://inokara.hateblo.jp/entry/2015/07/15/175955

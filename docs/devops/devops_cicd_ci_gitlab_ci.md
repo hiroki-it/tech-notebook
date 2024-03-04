@@ -945,7 +945,7 @@ gemerate_template:
 
 #### ▼ services
 
-![gitlab_service-container.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
+![gitlab_service-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
 
 JobのCIの実行コンテナとは別のサービスコンテナを作成する。
 

@@ -654,7 +654,7 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 プライマリーENIは、EC2から解除できない。
 
-![aws_eni_primary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
+![aws_eni_primary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
@@ -665,7 +665,7 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 セカンダリーENIは、EC2から解除できる。
 
-![aws_eni_secondary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
+![aws_eni_secondary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0

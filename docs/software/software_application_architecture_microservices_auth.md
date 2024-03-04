@@ -129,7 +129,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 サイドカーは認可サービスにリクエストを送信し、認可サービスは認可スコープに応じてboolean型値を返却する。
 
-![micro-authentication_type_jwt_service-mesh.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt_service-mesh.png)
+![micro-authentication_type_jwt_service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt_service-mesh.png)
 
 > - https://thinkit.co.jp/article/22484
 > - https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/

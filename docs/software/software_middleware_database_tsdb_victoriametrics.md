@@ -143,7 +143,7 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 
 この断片数が多くなる程、読み出しで負荷がかかる。
 
-![victoria-metrics_cardinality.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_cardinality.png)
+![victoria-metrics_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_cardinality.png)
 
 > - https://victoriametrics.com/blog/cardinality-explorer/
 

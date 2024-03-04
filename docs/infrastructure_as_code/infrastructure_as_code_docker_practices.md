@@ -40,7 +40,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 この親プロセスは、子プロセスを実行する。
 
-![container_processes.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png)
+![container_processes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png)
 
 なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。
 
@@ -56,27 +56,27 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 サーバーの場合、`init`プロセスが`PID=1`として稼働している。
 
-![container_pid_1_problem_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png)
+![container_pid_1_problem_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png)
 
 `init`プロセスは、配下のいずれかの親プロセスを終了したとする。
 
-![container_pid_1_problem_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png)
+![container_pid_1_problem_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png)
 
 すると、これの子プロセスも連鎖的に終了してくれる。
 
-![container_pid_1_problem_3.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png)
+![container_pid_1_problem_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png)
 
 #### ▼ コンテナのプロセス
 
 コンテナの場合、ホスト上の`init`プロセスが`PID=1`として動いており、またコンテナのアプリやミドルウェアのプロセスも`PID=1`として稼働している。
 
-![host_container_pid_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png)
+![host_container_pid_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png)
 
 アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。
 
 そのため、子プロセスが残骸として残ってしまう。
 
-![container_pid_1_problem_4.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png)
+![container_pid_1_problem_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png)
 
 > - https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
 > - https://tech-lab.sios.jp/archives/18811

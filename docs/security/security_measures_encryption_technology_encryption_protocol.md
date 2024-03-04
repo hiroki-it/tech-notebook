@@ -252,7 +252,7 @@ SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler)
 
 このクライアント証明書をVPNのクライアント側に設定する必要がある。
 
-![vpn_certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
+![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection

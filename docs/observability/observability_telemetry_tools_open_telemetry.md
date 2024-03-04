@@ -127,7 +127,7 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 5. バックエンドは、自身のスキーマファイルに応じてテレメトリーをストレージに保管する。
 6. バックエンドのダッシュボードは、自身のスキーマファイルに応じてストレージからテレメトリーを取得する。
 
-![open-telemetry_schema.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_schema.png)
+![open-telemetry_schema](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_schema.png)
 
 > - https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/schema.go

@@ -19,7 +19,7 @@ description: TSDBの知見を記録しています。
 
 また、とある期間を単位として時系列データをグループ化し、一連の連続データとして表現する。
 
-![tsdb.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tsdb.png)
+![tsdb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tsdb.png)
 
 > - https://thecustomizewindows.com/2019/10/what-is-time-series-database-tsdb/
 

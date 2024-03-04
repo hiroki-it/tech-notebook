@@ -41,7 +41,7 @@ Envoyは、通信を切断することなく、コントロールプレーンか
 
 ホットリロードでは、現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。
 
-![envoy_hot-reload.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
+![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining
@@ -1067,7 +1067,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 `--concurrency`オプションで並列実行数を設定できる。
 
-![envoy_thread.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
+![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
@@ -1086,7 +1086,7 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 
 サービスメッシュ外や他のPodからリクエストを受信するために使用する。
 
-![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
+![envoy_ingress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
@@ -1101,7 +1101,7 @@ Envoyは、リバースプロキシとして、ローカルホストにあるマ
 
 サービスメッシュ外や他のPodにリクエストを送信するために使用する。
 
-![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
+![envoy_egress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
@@ -1148,7 +1148,7 @@ Envoyの文脈では、ロードバランサーとしての使い方を『フロ
 
 Istio IngressGatewayでEnvoyを使用するユースケースは、これに属する。
 
-![envoy_loadbalancer.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
+![envoy_loadbalancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy

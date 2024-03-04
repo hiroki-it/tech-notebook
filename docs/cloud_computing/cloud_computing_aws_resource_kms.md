@@ -58,7 +58,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 もしマルチリージョン化したい場合、暗号化キーを再作成する必要がある。
 
-![kms_multi-region.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
+![kms_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
 
@@ -138,7 +138,7 @@ KMSのリクエスト制限を設定する。
 
 暗号化キーのキーマテリアルを一定期間で自動的に更新する。
 
-![kms_key_rotation.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
+![kms_key_rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
 

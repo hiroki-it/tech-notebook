@@ -21,7 +21,7 @@ OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイ
 
 また、一連の処理の後に認可レスポンスを受信する。
 
-![oauth2-proxy_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
+![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
 
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 > - https://blog.doctor-cha.com/google-sso-with-kubernetes-oauth-proxy
@@ -32,7 +32,7 @@ OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイ
 
 ### Kubernetesの場合
 
-![oauth2-proxy_kubernetes_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
+![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
 
 Ingressコントローラーは、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
 

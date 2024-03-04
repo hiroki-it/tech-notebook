@@ -49,7 +49,7 @@ OSI参照モデルは、物理層 (`L1`) 、データリンク層 (`L2`) 、ネ�
 
 ### 通信機器との対応関係
 
-![OSI参照モデルと通信機器.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデルと通信機器.jpg)
+![OSI参照モデルと通信機器](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデルと通信機器.jpg)
 
 OSI参照モデルの各層と通信機器の間の対応関係は以下の通りである。
 

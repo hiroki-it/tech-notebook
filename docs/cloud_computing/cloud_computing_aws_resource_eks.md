@@ -367,7 +367,7 @@ PodのファイルはワーカーNodeにマウントされるため、異なる�
 
 #### ▼ IRSAとは
 
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 特にKubernetesリソースの認可スコープを制御する仕組みのこと。
 
@@ -754,7 +754,7 @@ VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュ�
 
 VPC外からNLBへの`443`番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。
 
-![eks_control-plane_worker_network.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png)
+![eks_control-plane_worker_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png)
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
 
@@ -779,7 +779,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 - NAT Gatewayを介して、NAT Gatewayを介して、パブリック制限を通過する
 - ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する
 
-![eks_control-plane_worker_network_public_private_endpoint.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
+![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
 
 VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 

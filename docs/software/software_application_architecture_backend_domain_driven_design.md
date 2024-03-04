@@ -280,7 +280,7 @@ ECサイトを運営するアスクルの例。
 
 財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキスト、がある。
 
-![freee_bounded-context.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
+![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
 > - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 

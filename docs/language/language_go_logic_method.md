@@ -1711,7 +1711,7 @@ func foo() string {
 
 キューに値を送信し、加えてキューから値を受信できる。
 
-![go_channel.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/go_channel.png)
+![go_channel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/go_channel.png)
 
 ```go
 package main

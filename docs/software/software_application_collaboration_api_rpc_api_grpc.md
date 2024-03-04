@@ -53,7 +53,7 @@ gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に�
 
 #### ▼ 単項RPCとは
 
-![grpc_unary-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
+![grpc_unary-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
 
 まず、`1`個のTCPコネクションを確立し、その中に`1`個のストリームを作成する。
 
@@ -82,7 +82,7 @@ service Request {
 
 #### ▼ サーバーストリーミングRPCとは
 
-![grpc_server-streaming.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
+![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
 
 まず、`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
 
@@ -110,7 +110,7 @@ service Notification {
 
 #### ▼ クライアントストリーミングRPC とは
 
-![grpc_client-streaming-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
+![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
 まず、`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
 
@@ -138,7 +138,7 @@ service Upload {
 
 #### ▼ 双方向ストリーミングRPCとは
 
-![grpc_bidrectional-streaming-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
+![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
 
 まず、`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
 
@@ -221,7 +221,7 @@ HTTP/`1.1`の場合、`1`個のリクエストとレスポンスを送受信す�
 
 この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。
 
-![grpc_streaming-rpc_response-time.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png)
+![grpc_streaming-rpc_response-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png)
 
 > - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
