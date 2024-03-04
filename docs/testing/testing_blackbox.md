@@ -44,7 +44,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ### ブラックボックスの環境
 
-![environments.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png)
+![environments](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png)
 
 | 実行環境名                                | 略称           | 説明                                                                                                                                                                       |
 | ----------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

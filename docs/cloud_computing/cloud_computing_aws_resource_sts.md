@@ -284,7 +284,7 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 #### ▼ EKSをIDプロバイダーとする場合
 
-![eks_oidc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
 

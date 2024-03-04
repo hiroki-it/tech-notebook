@@ -182,7 +182,7 @@ GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGo
 7. GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
 8. GoogleCloudリソースのAPIにリクエストを送信できるようになる。
 
-![google-cloud_workload-identity.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
+![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
 
 > - https://christina04.hatenablog.com/entry/workload-identity-federation
 > - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9

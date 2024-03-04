@@ -31,7 +31,7 @@ NIC、有線LAN、無線LAN、スマートフォン、などに紐づけられ�
 
 同じ識別子は他に存在しない。
 
-![mac-address.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mac-address.png)
+![mac-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mac-address.png)
 
 > - https://hogetech.info/network/osi/layer2#toc5
 > - https://www.cman.jp/network/term/mac/

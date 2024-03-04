@@ -44,11 +44,11 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
 
-![envoy_upstream-request-timeout_outbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
+![envoy_upstream-request-timeout_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
 
 インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスであり、送信元Envoyからマイクロサービスへのリクエストがタイムアウトになっている。
 
-![envoy_upstream-request-timeout_inbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
+![envoy_upstream-request-timeout_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
 > - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage

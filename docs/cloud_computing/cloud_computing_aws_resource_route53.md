@@ -138,7 +138,7 @@ DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーと
 | `example.com` | 加重                 | `60`     | `30`     | ブルー環境のALB (現環境)   |
 | `example.com` | 加重                 | `60`     | `70`     | グリーン環境のALB (新環境) |
 
-![aws_route53_routing-policy_weighted-routing.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
+![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
 
 > - https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000
 
