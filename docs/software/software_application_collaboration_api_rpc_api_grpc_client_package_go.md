@@ -120,9 +120,9 @@ gRPCでは、ミドルウェア処理として、インターセプターをリ�
 
 ### 単項RPCの場合
 
-#### ▼ UnaryClientInterceptor
+#### ▼ 既製のインターセプター
 
-単項RPCを送信するクライアント側のミドルウェア処理は、`UnaryClientInterceptor`関数で定義できる。
+gRPCでは、単項RPCを送信するクライアント側のミドルウェア処理は`UnaryClientInterceptor`という名前で定義されている。
 
 ```go
 type UnaryClientInterceptor func(ctx context.Context, method string, req, reply interface{}, cc *ClientConn, invoker UnaryInvoker, opts ...CallOption) error
@@ -195,9 +195,9 @@ func OpenTelemetryUnaryClientInterceptor(opts ...otelgrpc.Option) grpc.UnaryClie
 
 ### ストリーミングRPCの場合
 
-##### ▼ StreamClientInterceptor
+##### ▼ 既製のインターセプター
 
-ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`関数で定義できる。
+gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`という名前にすることが定められている。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
@@ -268,8 +268,6 @@ func OpenTelemetryStreamClientInterceptor(opts ...otelgrpc.Option) grpc.StreamCl
 
 <br>
 
-<br>
-
 ## 03. サーバー側のインターセプター
 
 ### サーバー側のインターセプターとは
@@ -277,8 +275,6 @@ func OpenTelemetryStreamClientInterceptor(opts ...otelgrpc.Option) grpc.StreamCl
 gRPCでは、ミドルウェア処理として、インターセプターをレスポンス処理の前後に挿入する。
 
 <br>
-
-## 03-02. インターセプターの設定方法
 
 ### インターセプターの種類
 
@@ -332,11 +328,13 @@ func main() {
 
 <br>
 
+## 03-02. インターセプターの設定方法
+
 ### 単項RPCの場合
 
-#### ▼ UnaryServerInterceptor
+#### ▼ 既製のインターセプター
 
-単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`で定義できる。
+gRPCでは、単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`という名前にすることが定められている。
 
 ```go
 type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (resp interface{}, err error)
@@ -379,9 +377,9 @@ func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServ
 
 ### ストリーミングRPCの場合
 
-#### ▼ StreamServerInterceptor
+#### ▼ 既製のインターセプター
 
-ストリーミングRPCを受信するサーバー側のミドルウェア処理は、`StreamServerInterceptor`で定義できる。
+gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェア処理は`StreamServerInterceptor`という名前にすることが定められている。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
