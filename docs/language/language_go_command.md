@@ -331,12 +331,6 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 > - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
 > - https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy
 
-#### ▼ 代わりに手動
-
-`go mod tidy`コマンドは、特定のパッケージの未定義を追加することはできない。
-
-そのため、特定のパッケージは手動で追加する必要がある。
-
 #### ▼ `-go`
 
 Goのバージョンを指定して、`go.mod`ファイルと`go.sum`ファイルを更新する。
@@ -360,6 +354,12 @@ unused <go.modファイルから削除したパッケージ>
 ```
 
 > - https://developer.so-tech.co.jp/entry/2022/08/16/110108
+
+#### ▼ 注意点
+
+`go mod tidy`コマンドは、たとえ`-go`オプションを使用しても、インストールするパッケージのバージョンを完全には制御できない。
+
+そのため、特定のバージョンは`go get`コマンドでインストールする必要がある。
 
 <br>
 
