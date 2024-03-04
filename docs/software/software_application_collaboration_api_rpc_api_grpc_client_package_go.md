@@ -155,8 +155,8 @@ func main() {
 
     // gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
-		    ":7777",
-			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		":7777",
+		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
 	...
@@ -196,8 +196,8 @@ func main() {
 
     // gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
-		    ":7777",
-			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		":7777",
+		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
 	defer conn.Close()
