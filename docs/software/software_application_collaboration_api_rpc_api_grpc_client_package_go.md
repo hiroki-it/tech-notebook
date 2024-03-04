@@ -166,7 +166,50 @@ func main() {
 
 #### ▼ UnaryClientInterceptor
 
-単項RPCを送信するクライアント側のミドルウェア処理は、`UnaryClientInterceptor`で定義できる。
+単項RPCを送信するクライアント側のミドルウェア処理は、`UnaryClientInterceptor`関数で定義できる。
+
+```go
+type UnaryClientInterceptor func(ctx context.Context, method string, req, reply interface{}, cc *ClientConn, invoker UnaryInvoker, opts ...CallOption) error
+```
+
+これをgRPCサーバーとのコネクション作成時に、`WithUnaryInterceptor`関数に渡す。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+
+	// pb.goファイルを読み込む。
+	pb "github.com/hiroki-hasegawa/foo/foo"
+)
+
+func main() {
+
+	...
+
+    // gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+		    ":7777",
+			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+    )
+
+	defer conn.Close()
+
+	// gRPCクライアントを作成する
+	client := pb.NewFooServiceClient(conn)
+
+	// goサーバーをリモートプロシージャーコールする。
+	response, err := client.SayHello(
+        context.Background(),
+        &pb.Message{Body: "Hello From Client!"},
+    )
+
+	...
+}
+```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
@@ -243,10 +286,49 @@ func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServ
 
 ##### ▼ StreamClientInterceptor
 
-ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`で定義できる。
+ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`関数で定義できる。
 
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+```
+
+これをgRPCサーバーとのコネクション作成時に、`WithStreamInterceptor`関数に渡す。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+
+	// pb.goファイルを読み込む。
+	pb "github.com/hiroki-hasegawa/foo/foo"
+)
+
+func main() {
+
+	...
+
+    // gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+		    ":7777",
+			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+    )
+
+	defer conn.Close()
+
+	// gRPCクライアントを作成する
+	client := pb.NewFooServiceClient(conn)
+
+	// goサーバーをリモートプロシージャーコールする。
+	response, err := client.SayHello(
+        context.Background(),
+        &pb.Message{Body: "Hello From Client!"},
+    )
+
+	...
+}
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
