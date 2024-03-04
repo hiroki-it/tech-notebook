@@ -6976,15 +6976,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 代わりに手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#-go" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -go
@@ -6997,6 +6988,15 @@
   <a href="#-v_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -v
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 注意点
     </span>
   </a>
   
@@ -22216,15 +22216,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 代わりに手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#-go" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -go
@@ -22237,6 +22228,15 @@
   <a href="#-v_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -v
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 注意点
     </span>
   </a>
   
@@ -22623,9 +22623,6 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 <li><a href="https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy">https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ 代わりに手動<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>go mod tidy</code>コマンドは、特定のパッケージの未定義を追加することはできない。</p>
-<p>そのため、特定のパッケージは手動で追加する必要がある。</p>
 <h4 id="-go">▼ <code>-go</code><a class="headerlink" href="#-go" title="Permanent link">&para;</a></h4>
 <p>Goのバージョンを指定して、<code>go.mod</code>ファイルと<code>go.sum</code>ファイルを更新する。</p>
 <p>これを指定しないと、呼び出し側のGoのバージョンに関係なく、パッケージを最新に更新してしまう。</p>
@@ -22643,6 +22640,9 @@ unused<span class="w"> </span>&lt;go.modファイルから削除したパッケ�
 <li><a href="https://developer.so-tech.co.jp/entry/2022/08/16/110108">https://developer.so-tech.co.jp/entry/2022/08/16/110108</a></li>
 </ul>
 </blockquote>
+<h4 id="_3">▼ 注意点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><code>go mod tidy</code>コマンドは、たとえ<code>-go</code>オプションを使用しても、インストールするパッケージのバージョンを完全には制御できない。</p>
+<p>そのため、特定のバージョンは<code>go get</code>コマンドでインストールする必要がある。</p>
 <p><br></p>
 <h3 id="go-mod-verify">go mod verify<a class="headerlink" href="#go-mod-verify" title="Permanent link">&para;</a></h3>
 <h4 id="go-mod-verify_1">▼ go mod verifyとは<a class="headerlink" href="#go-mod-verify_1" title="Permanent link">&para;</a></h4>
