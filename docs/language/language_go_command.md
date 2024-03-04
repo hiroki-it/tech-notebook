@@ -254,6 +254,12 @@ $ go vet ./...
 
 ## 02. パッケージ管理系
 
+### 大前提
+
+Goでは、思想的にパッケージのバージョンを固定して運用せず、常に新しいバージョンを強制的に利用させるような仕組みがある。
+
+<br>
+
 ### get
 
 #### ▼ getとは
@@ -285,7 +291,7 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 > - https://go.dev/doc/go-get-install-deprecation
 > - https://qiita.com/eihigh/items/9fe52804610a8c4b7e41
 
-#### ▼ 注意点
+#### ▼ go mod tidyとの使い分け
 
 先にインストールしたパッケージのバージョンが優先になり、このバージョンを基準として他のパッケージのバージョンが決まる。
 
@@ -293,11 +299,15 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 
 その反面、`go mod tidy`コマンドは同じ結果になる。
 
+もし全てのパッケージのバージョンを開発者に限らず揃えたいなら、`go mod tidy`コマンドを使用する。
+
+> - https://blog.lufia.org/entry/2020/02/24/171513
+
 <br>
 
-### go mod edit
+### mod edit
 
-#### ▼ go mod editとは
+#### ▼ mod editとは
 
 `go.mod`ファイルで指定しているバージョンを変更する。
 
@@ -307,9 +317,9 @@ $ go mod edit -go <バージョン>
 
 <br>
 
-### go mod tidy
+### mod tidy
 
-#### ▼ go mod tidyとは
+#### ▼ mod tidyとは
 
 - `import`で指定されているが`go get`コマンドでインストールされていない場合は、これをインストールする。
 - `import`で指定のないパッケージは、`go.mod`ファイルと`go.sum`ファイルから削除する。
@@ -335,9 +345,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 Goのバージョンを指定して、`go.mod`ファイルと`go.sum`ファイルを更新する。
 
-これを指定しないと、呼び出し側のGoのバージョンに関係なく、パッケージを最新に更新してしまう。
-
-`-go`オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。
+ただし、`-go`オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。
 
 ```bash
 $ go mod tidy -go <バージョン>
@@ -355,17 +363,23 @@ unused <go.modファイルから削除したパッケージ>
 
 > - https://developer.so-tech.co.jp/entry/2022/08/16/110108
 
-#### ▼ 注意点
+#### ▼ go getとの使い分け
 
 `go mod tidy`コマンドは、たとえ`-go`オプションを使用しても、インストールするパッケージのバージョンを完全には制御できない。
 
-そのため、特定のバージョンは`go get`コマンドでインストールする必要がある。
+(Goの思想的にも) できるだけ新しいバージョンを強制しようとするため、想定するバージョンよりも新しいパッケージをインストールしてしまう可能性がある。
+
+そのため、特定のバージョン (特にコミットIDでの指定) は`go get`コマンドでインストールする必要がある。
+
+ただ推奨としては、Goの思想に則り、`go mod tidy`コマンドを実行して常に新しいバージョンを使う方が良いが...
+
+> - https://blog.lufia.org/entry/2020/02/24/171513
 
 <br>
 
-### go mod verify
+### mod verify
 
-#### ▼ go mod verifyとは
+#### ▼ mod verifyとは
 
 `go.sum`ファイルが正しいかどうかを検証する。
 
@@ -379,9 +393,9 @@ all modules verified
 
 <br>
 
-### go mod download
+### mod download
 
-#### ▼ go mod downloadとは
+#### ▼ mod downloadとは
 
 - `import`で指定されているが`go get`コマンドでインストールされていない場合は、これをインストールする。
 - `import`で指定されているが`go.mod`ファイルと`go.sum`ファイルに定義がない場合は、これを追加する。
