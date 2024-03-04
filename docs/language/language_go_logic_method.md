@@ -1155,9 +1155,9 @@ func main() {
 
 <br>
 
-## 03. 定数
+## 03. 環境変数
 
-### 環境変数
+### 環境変数の出入力
 
 #### ▼ `init`関数による環境変数出力
 
@@ -1262,6 +1262,22 @@ func getFloatEnv(key string, fallback float64) float64 {
 
 > - https://stackoverflow.com/a/40326580
 > - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
+
+<br>
+
+### string型以外の値
+
+環境変数は全てstring型で定義する必要がある。
+
+そのため、出入力前にstring型への (からの) 変換が必要になる。
+
+```go
+// int型をstring型に変換した上で、環境変数として設定する
+os.Setenv("FOO_TIMEOUT", strconv.Itoa(300))
+
+// bool型をstring型に変換した上で、環境変数として設定する
+os.Setenv("FOO_ENABLED", strconv.FormatBool(true))
+```
 
 <br>
 
@@ -2354,18 +2370,52 @@ Goのテンプレートでは、『`{{ `』と『`}}`』の記号がロジック
 
 ### 事前/事後処理
 
+#### ▼ 環境変数の出入力
+
+アプリケーション外 (例：ConfigMap、`.env`ファイル、など) で環境変数を管理している場合、これをテスト時に事前に出入力する必要がある。
+
 ```go
-package integration
+package test
+
+import "os"
+
+func setup() func() {
+
+	// 環境変数を設定する
+	os.Setenv("FOO_TIMEOUT", "300")
+	os.Setenv("FOO_ENABLED", "false")
+
+	return func() {
+		// 事後処理
+		os.Unsetenv("FOO_TIMEOUT")
+		os.Unsetenv("FOO_ENABLED", "false")
+	}
+}
+
+func TestServer(t *testing.T) {
+
+	t.Helper()
+	teardown := setup()
+	defer teardown()
+
+	...
+}
+```
+
+<br>
+
+```go
+package test
 
 import (
 	"net/http"
 	"testing"
 )
 
-// setup ユニットテストの前処理の結果と，後処理の関数を返却します．
+// setup ユニットテストの前処理の結果と，後処理の関数を返却する
 func setup() (*http.Client, func()) {
 
-	// クライアントを作成します．
+	// クライアントを作成する
 	client := &http.Client{}
 
 	return client, func() {
@@ -2373,7 +2423,7 @@ func setup() (*http.Client, func()) {
 	}
 }
 
-// TestIntegration 統合テストを実行します．
+// TestIntegration 統合テストを実行する
 func TestIntegration(t *testing.T) {
 
 	t.Helper()
