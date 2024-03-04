@@ -114,6 +114,55 @@ gRPCでは、ミドルウェア処理として、インターセプターをリ�
 
 ### インターセプターの種類
 
+#### ▼ メトリクス系
+
+```go
+package main
+
+import (
+
+	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+		":7777",
+		grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
+	)
+
+	...
+}
+```
+
+#### ▼ 分散トレース系
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	...
+
+    // gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+		    ":7777",
+			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+    )
+
+	...
+}
+```
+
 <br>
 
 ## 02-02. インターセプターの設定方法
@@ -136,7 +185,6 @@ package main
 import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 
 	// pb.goファイルを読み込む。
 	pb "github.com/hiroki-hasegawa/foo/foo"
@@ -211,7 +259,6 @@ package main
 import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 
 	// pb.goファイルを読み込む。
 	pb "github.com/hiroki-hasegawa/foo/foo"
