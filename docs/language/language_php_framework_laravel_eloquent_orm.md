@@ -81,7 +81,7 @@ class Foo extends Model
 
 Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を`table`プロパティに自動的に代入する。
 
-また、テーブル名を独自で命名したい場合は、代入によるOverrideを行っても良い。
+また、テーブル名を自前で命名したい場合は、代入によるOverrideを行っても良い。
 
 **＊実装例＊**
 
@@ -223,7 +223,7 @@ class Foo extends Model
 
 Eloquentは、`timestamps`プロパティの値が`true`の時に、Eloquentモデルに紐付くテーブルの`created_at`カラムと`updated_at`カラムを自動的に更新する。
 
-また、TIMESTAMP型カラム名を独自で命名したい場合は、代入によるOverideを行っても良い。
+また、TIMESTAMP型カラム名を自前で命名したい場合は、代入によるOverideを行っても良い。
 
 **＊実装例＊**
 

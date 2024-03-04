@@ -154,7 +154,7 @@ func main() {
 
 <br>
 
-### 独自関数
+### 自前関数
 
 #### ▼ 関数とは
 
@@ -2096,7 +2096,7 @@ func main() {
 }
 ```
 
-#### ▼ `New`関数による独自エラー
+#### ▼ `New`関数による自前エラー
 
 errorsパッケージの`New`メソッドにエラーを設定する。
 
@@ -2124,7 +2124,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		// 独自エラーメッセージを設定する。
+		// 自前エラーメッセージを設定する。
 		myErr := NewError()
 		log.Printf("ERROR: %v", myErr)
 		return
@@ -2136,9 +2136,9 @@ func main() {
 
 > - https://golang.org/pkg/errors/#New
 
-#### ▼ `fmt.Errorf`メソッドによる独自エラー
+#### ▼ `fmt.Errorf`メソッドによる自前エラー
 
-fmtパッケージの`Errorf`メソッドで独自エラーを作成できる。
+fmtパッケージの`Errorf`メソッドで自前エラーを作成できる。
 
 事前に定義したフォーマットを元にエラーを設定する。
 
@@ -2169,7 +2169,7 @@ func main() {
 }
 ```
 
-#### ▼ 構造体による独自エラー
+#### ▼ 構造体による自前エラー
 
 構造体に`Error`メソッドを定義すると、この構造体に`error`インターフェースが自動的に委譲される。
 

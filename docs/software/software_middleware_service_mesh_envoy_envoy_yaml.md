@@ -27,7 +27,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 #### ▼ Dockerfile
 
-Dockerfileにて、独自の`/etc/envoy/envoy.yaml`ファイルを組み込む。
+Dockerfileにて、自前の`/etc/envoy/envoy.yaml`ファイルを組み込む。
 
 拡張子は、`.yml`ではなく、`.yaml`とする。
 

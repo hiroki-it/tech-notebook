@@ -114,6 +114,10 @@ gRPCでは、ミドルウェア処理として、インターセプターをリ�
 
 ### インターセプターの種類
 
+<br>
+
+## 02-02. インターセプターの設定方法
+
 ### 単項RPCの場合
 
 #### ▼ UnaryClientInterceptor
@@ -165,7 +169,7 @@ func main() {
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
-#### ▼ 独自のインターセプター
+#### ▼ 自前のインターセプター
 
 ```go
 package grpc
@@ -240,7 +244,7 @@ func main() {
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
-#### ▼ 独自のインターセプター
+#### ▼ 自前のインターセプター
 
 ```go
 package grpc
@@ -266,13 +270,15 @@ func OpenTelemetryStreamClientInterceptor(opts ...otelgrpc.Option) grpc.StreamCl
 
 <br>
 
-## 02-02. サーバー側のインターセプター
+## 03. サーバー側のインターセプター
 
 ### サーバー側のインターセプターとは
 
 gRPCでは、ミドルウェア処理として、インターセプターをレスポンス処理の前後に挿入する。
 
 <br>
+
+## 03-02. インターセプターの設定方法
 
 ### インターセプターの種類
 
@@ -338,7 +344,7 @@ type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *Una
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
-#### ▼ 独自のインターセプター
+#### ▼ 自前のインターセプター
 
 ```go
 package grpc
@@ -383,7 +389,7 @@ type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *Stream
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
-#### ▼ 独自のインターセプター
+#### ▼ 自前のインターセプター
 
 ```go
 package grpc
@@ -416,7 +422,7 @@ func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamSe
 
 <br>
 
-## 03. サーバー側
+## 04. サーバー側
 
 ### プロトコルバッファー自動作成ツール
 
@@ -613,7 +619,7 @@ func main() {
 
 <br>
 
-## 04. gRPCクライアント側
+## 05. gRPCクライアント側
 
 ### gRPCクライアントパッケージ
 
@@ -718,7 +724,7 @@ func main() {
 
 <br>
 
-## 04. gRPCサーバーとクライアントの両方
+## 06. gRPCサーバーとクライアントの両方
 
 ### `proto`ファイル
 

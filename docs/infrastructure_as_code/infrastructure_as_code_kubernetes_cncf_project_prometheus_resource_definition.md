@@ -703,7 +703,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 #### ▼ 公開ルールレシピとは
 
-独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用した方が良い。
+自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用した方が良い。
 
 > - https://monitoring.mixins.dev
 

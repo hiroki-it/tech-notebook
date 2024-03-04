@@ -39,7 +39,7 @@ $ istioctl install --manifests=foo-chart
 
 #### ▼ Operatorとして (ユーザー定義)
 
-プロファイルを使用する代わりに、IstioOperatorを独自で定義しても良い。
+プロファイルを使用する代わりに、IstioOperatorを自前で定義しても良い。
 
 ```yaml
 # istio-operator.yamlファイル
