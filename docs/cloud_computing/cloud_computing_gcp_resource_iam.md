@@ -109,7 +109,7 @@ $ gcloud info
 
 #### ▼ 自動認証
 
-認証情報ファイルを環境変数の`GOOGLE_APPLICATION_CREDENTIALS`に設定する。
+認証情報ファイルを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
