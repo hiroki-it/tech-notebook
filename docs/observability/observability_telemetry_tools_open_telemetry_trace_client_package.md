@@ -370,7 +370,56 @@ type noopTracerProvider struct{
 
 Samplerを無効化すると、スパンの作成を無効化できる。
 
+```go
+package trace
+
+import (
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
+)
+
+// newTracerProvider TracerProviderを作成する
+func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
+
+	resourceWithAttributes := resource.NewWithAttributes(
+		semconv.SchemaURL,
+		semconv.ServiceNameKey.String("foo-service"),
+	)
+
+	sampler := newSampler()
+
+	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
+
+	// OpenTelemetryコレクターでW3C形式からX-ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resourceWithAttributes),
+		sdktrace.WithSampler(sampler),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
+	)
+
+	return tracerProvider
+}
+
+// newSampler Samplerを作成する
+func newSampler() sdktrace.Sampler {
+
+	traceEnabled := os.Getenv("TRACE_ENABLED")
+
+	if traceEnabled() {
+		// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
+		return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0)
+	}
+
+	return sdktrace.NeverSample()
+}
+
+```
+
 > - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
+> - https://stackoverflow.com/a/75901212
 
 <br>
 
@@ -543,17 +592,15 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 #### ▼ OTLP HTTP Exporter
 
-OpenTelemetryコレクターを宛先とする。
-
-HTTPでopentelemetryコレクター接続する。
+OpenTelemetryコレクターを宛先とし、HTTPでopentelemetryコレクター接続する。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
-OpenTelemetryコレクターを宛先とする。
+OpenTelemetryコレクターを宛先とし、gRPCでopentelemetryコレクター接続する。
 
-gRPCでopentelemetryコレクター接続する。
+gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
 
