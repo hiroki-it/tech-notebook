@@ -22885,7 +22885,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <span class="w">        </span><span class="c1">// 単項RPCの場合のインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// ヘルスチェックへのリクエストを無視する</span>
-<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()))),</span>
+<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;/grpc.health.v1.Health&quot;</span><span class="p">))),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
