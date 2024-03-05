@@ -220,23 +220,7 @@ func main() {
 #### ▼ 自前のインターセプター
 
 ```go
-package grpc
 
-import (
-	"context"
-	"strings"
-
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"google.golang.org/grpc"
-)
-
-// OpenTelemetryUnaryClientInterceptor OpenTelemetryがgRPCアプリを計装するために必要なUnaryClientInterceptorを返却する
-func OpenTelemetryUnaryClientInterceptor(opts ...otelgrpc.Option) grpc.UnaryClientInterceptor {
-	delegate := otelgrpc.UnaryClientInterceptor(opts...)
-	return func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, callOpts ...grpc.CallOption) error {
-		return delegate(ctx, method, req, reply, cc, invoker, callOpts...)
-	}
-}
 ```
 
 <br>
@@ -294,23 +278,7 @@ func main() {
 #### ▼ 自前のインターセプター
 
 ```go
-package grpc
 
-import (
-	"context"
-	"strings"
-
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"google.golang.org/grpc"
-)
-
-// OpenTelemetryStreamClientInterceptor OpenTelemetryがgRPCアプリを計装するために必要なStreamClientInterceptorを返却する
-func OpenTelemetryStreamClientInterceptor(opts ...otelgrpc.Option) grpc.StreamClientInterceptor {
-	delegate := otelgrpc.StreamClientInterceptor(opts...)
-	return func(ctx context.Context, desc *grpc.StreamDesc, cc *grpc.ClientConn, method string, streamer grpc.Streamer, callOpts ...grpc.CallOption) (grpc.ClientStream, error) {
-		return delegate(ctx, desc, cc, method, streamer, callOpts...)
-	}
-}
 ```
 
 <br>
@@ -373,6 +341,41 @@ func main() {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go
 > - https://ybalexdp.hatenablog.com/entry/grpc_recovery
 
+#### ▼ フィルター系
+
+分散トレースの作成を無視する場合を設定する。
+
+```go
+package main
+
+import (
+
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+
+	...
+
+)
+
+func main() {
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		// 単項RPCの場合のインターセプター処理
+		grpc.ChainUnaryInterceptor(
+			// ヘルスチェックへのリクエストを無視する
+	        grpc_recovery.UnaryServerInterceptor(otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck()))),
+		),
+	)
+
+    ...
+
+}
+```
+
 <br>
 
 ## 03-02. インターセプターの設定方法
@@ -402,19 +405,13 @@ import (
 	"google.golang.org/grpc"
 )
 
-const (
-	// grpcHealthCheckPathPrefix gRPCのヘルスチェックパスの接頭辞
-	grpcHealthCheckPathPrefix = "/grpc.health.v1.Health"
-)
-
 // OpenTelemetryUnaryServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なUnaryServerInterceptorを返却する
 func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
 	delegate := otelgrpc.UnaryServerInterceptor(opts...)
 	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
-		// ヘルスチェックパスへのリクエストの場合、OpenTelemetryのインターセプターは不要なので実行しない
-		if strings.HasPrefix(info.FullMethod, grpcHealthCheckPathPrefix) {
-			return handler(ctx, req)
-		}
+
+		// ここに自前の処理を定義する
+
 		return delegate(ctx, req, info, handler)
 	}
 }
@@ -447,19 +444,13 @@ import (
 	"google.golang.org/grpc"
 )
 
-const (
-	// grpcHealthCheckPathPrefix gRPCのヘルスチェックパスの接頭辞
-	grpcHealthCheckPathPrefix = "/grpc.health.v1.Health"
-)
-
 // OpenTelemetryStreamServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なStreamServerInterceptorを返却する
 func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamServerInterceptor {
 	delegate := otelgrpc.StreamServerInterceptor(opts...)
 	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
-		// ヘルスチェックパスへのリクエストの場合、OpenTelemetryのインターセプターは不要なので実行しない
-		if strings.HasPrefix(info.FullMethod, instrumentation.GetGrpcHealthCheckPathPrefix()) {
-			return handler(srv, ss)
-		}
+
+		// ここに自前の処理を定義する
+
 		return delegate(srv, ss, info, handler)
 	}
 }

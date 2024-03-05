@@ -1391,17 +1391,7 @@ func main() {
 }
 
 func (s *server) parent(ctx context.Context) {
-
-	// スパンを作成する
-	_, span := tracer.Start(
-		ctx,
-		"parent",
-		trace.WithAttributes(attribute.String("extra.key", "extra.value")),
-	)
-
-	defer span.End()
-
-	time.Sleep(50 * time.Millisecond)
+	// スパンの作成は不要
 }
 ```
 
