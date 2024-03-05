@@ -395,7 +395,7 @@ type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *Una
 #### ▼ 自前のインターセプター
 
 ```go
-package grpc
+package interceptor
 
 import (
 	"context"
@@ -434,7 +434,7 @@ type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *Stream
 #### ▼ 自前のインターセプター
 
 ```go
-package grpc
+package interceptor
 
 import (
 	"context"

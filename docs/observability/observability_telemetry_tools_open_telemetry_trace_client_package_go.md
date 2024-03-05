@@ -1352,6 +1352,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
 
+クライアント側では、ClientInterceptorを使用する。
+
 ```go
 package main
 
@@ -1371,7 +1373,7 @@ func main() {
     // gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.Dial(
 		    ":7777",
-			grpc.WithTransportCredentials(insecure.NewCredentials()),
+            // クライアントのInterceptor
 			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
 			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
     )
@@ -1400,7 +1402,43 @@ func (s *server) parent(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
+注意点として、直近では`WithStatsHandler`関数の使用が推奨になっている。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.Dial(
+		":7777",
+		// クライアント側を一括でセットアップする
+		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor
+
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
+
+サーバー側では、ServerInterceptorを使用する。
 
 ```go
 package main
@@ -1462,6 +1500,38 @@ func main() {
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+
+注意点として、直近では`WithStatsHandler`関数の使用が推奨になっている。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		grpc.StatsHandler(otelgrpc.NewServerHandler()),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor
 
 <br>
 
