@@ -23600,6 +23600,7 @@
 </blockquote>
 <h4 id="_20">▼ 親スパン作成 (クライアント側のみ)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。</p>
+<p>クライアント側では、ClientInterceptorを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23618,7 +23619,7 @@
 <span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
 <span class="w">            </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
+<span class="w">            </span><span class="c1">// クライアントのInterceptor</span>
 <span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
 <span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -23649,7 +23650,42 @@
 <li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
 </ul>
 </blockquote>
+<p>注意点として、直近では<code>WithStatsHandler</code>関数の使用が推奨になっている。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// クライアント側を一括でセットアップする</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewClientHandler</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc">https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor</a></li>
+</ul>
+</blockquote>
 <h4 id="_21">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>サーバー側では、ServerInterceptorを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23710,6 +23746,38 @@
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
 <li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<p>注意点として、直近では<code>WithStatsHandler</code>関数の使用が推奨になっている。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
+<span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewServerHandler</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc">https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor</a></li>
 </ul>
 </blockquote>
 <p><br></p>
