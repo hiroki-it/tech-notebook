@@ -1530,8 +1530,8 @@ func main() {
 ```
 
 > - https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamServerInterceptor
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryServerInterceptor
 
 <br>
 

@@ -146,13 +146,14 @@ func (fooEnabled *FooEnabled) IsDuplicateExporter() bool {
 	encountered := make(map[bool]bool)
 
 	for _, v := range slice {
+        if v {
+			if encountered[v] {
+				// 重複あり
+				return true
+			}
 
-		if encountered[v] {
-			// 重複あり
-			return true
+			encountered[v] = true
 		}
-
-		encountered[v] = true
 	}
 
 	// 重複なし
