@@ -271,7 +271,7 @@ X-CSRF-TOKEN: <トークン>
      他に、metaタグにトークンを割り当てることもある。
 
 ```html
-<form method="POST" action="http://foo.com/bar-form.php">
+<form method="POST" action="http://example.com/bar-form.php">
   <input type="hidden" name="csrftoken" value="<csrfトークン>" />
   <input type="text" name="email" />
   <input type="text" name="password" />
@@ -385,7 +385,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 > - https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
 
 ```yaml
-GET https://foo.com/bar
+GET https://example.com/bar
 ---
 # 送信元オリジン
 Origin: https://example.com

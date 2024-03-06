@@ -95,7 +95,6 @@ EKSでDamonSetとして稼働させる。
   "end_time": 1.478293361449E9,
   "service": {...},
   "user": {...},
-  "service": {...},
   "origin": {...},
   "parent_id": {...},
   "http": {...},
@@ -192,6 +191,84 @@ EKSでDamonSetとして稼働させる。
         },
     }}
 ```
+
+<br>
+
+### フィルター
+
+#### ▼ デフォルト
+
+```bash
+http.url = "http://example.com/foo"
+```
+
+#### ▼ 時間
+
+レスポンス時間でフィルタリングする。
+
+```bash
+# レスポンス時間が5秒以上のスパン
+responsetime >= 5
+```
+
+```bash
+# レスポンス時間が5-10秒以上のスパン
+responsetime >= 5 AND responsetime <= 10
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax
+
+#### ▼ HTTPステータスコード
+
+HTTPステータスコード名でフィルタリングする。
+
+```bash
+http.status != 200
+```
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
+
+#### ▼ AWSリソース
+
+AWSリソース名でフィルタリングする。
+
+```bash
+service("<AWSリソース名>")
+```
+
+タイプを指定することで、異なるタイプの同名のAWSリソースを区別できる。
+
+```bash
+service(id(name: "<AWSリソース名>", type: "AWS::EC2::Instance"))
+```
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
+
+#### ▼ 送信元/宛先のAWSリソース
+
+送信元と宛先のAWSリソース名でフィルタリングする。
+
+```bash
+edge("<送信元AWSリソース名>", "<宛先AWSリソース名>")
+```
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
+
+#### ▼ アノテーション
+
+ユーザー定義のラベルでフィルタリングする。
+
+```python
+def put_annotaion(key, value):
+    # ユーザー定義のラベルを設定する
+    subsegment.put_annotation('component', value)
+```
+
+```bash
+Annotation.component = "<コンポーネント名>"
+```
+
+> - https://qiita.com/ykarakita/items/6e117c4d13d042836bcb#annotation%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B
 
 <br>
 

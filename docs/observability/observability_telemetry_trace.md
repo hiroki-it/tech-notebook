@@ -183,7 +183,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 ```yaml
 GET /my-service HTTP/1.1
 ---
-Host: foo.com
+Host: example.com
 # バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ
 traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
 # セッションID、特定のリクエストにのみ付与されたデータ、などをリスト形式で運ぶ
@@ -197,7 +197,7 @@ tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
 ```yaml
 GET /my-service HTTP/1.1
 ---
-Host: foo.com
+Host: example.com
 X-B3-TraceId: f102024f34f30692b676c13f47cbcf03
 X-B3-SpanId: e2695f90dfd76b09
 X-B3-Sampled: 1

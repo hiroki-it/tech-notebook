@@ -164,7 +164,7 @@ GET送信ではあるが、ボディにクエリパラメーターを記述し�
 ```php
 <?php
 
-define("URL", "https://foo.com");
+define("URL", "https://example.com");
 
 // curlセッションを初期化する
 $curl = curl_init();

@@ -520,7 +520,7 @@ $ go env -w GOPRIVATE=github.com/foo.git,github.com/bar.git,...
 > - https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```go
-module foo.com/hiroki-it/repository
+module example.com/hiroki-it/repository
 
 go 1.16
 
@@ -542,7 +542,7 @@ repository/
 ```
 
 ```go
-module foo.com/hiroki-it/foo-repository/local-pkg
+module example.com/hiroki-it/foo-repository/local-pkg
 
 go 1.16
 ```
