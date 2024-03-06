@@ -196,7 +196,7 @@ exporters:
 
 X-Rayにテレメトリーを送信する。
 
-ただし、OpenTelemetryにはX-RayのExporterが含まれていない。
+ただし、OpenTelemetryにはAWS X-Ray exporterが含まれていない。
 
 そのため、AWS製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替えておく必要がある。
 

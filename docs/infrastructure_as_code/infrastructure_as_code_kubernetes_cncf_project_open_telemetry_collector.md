@@ -13,7 +13,25 @@ description: OpenTelemetryコレクター＠CNCFの知見を記録していま�
 
 <br>
 
-## 01. マニフェスト
+## 01. OpenTelemetryコレクターの仕組み
+
+### Exporter
+
+#### ▼ Exporterとは
+
+スパンの宛先と決め、 またOpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する処理を持つ。
+
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
+
+#### ▼ AWS X-Ray Exporter
+
+AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
+
+<br>
+
+## 02. マニフェスト
 
 ### ConfigMap
 
@@ -229,7 +247,7 @@ spec:
 
 <br>
 
-## 02. カスタムリソースを使用する場合
+## 03. カスタムリソースを使用する場合
 
 カスタムリソースを使用して、OpenTelemetryを定義することもできる。
 

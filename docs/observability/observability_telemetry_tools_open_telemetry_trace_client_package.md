@@ -576,15 +576,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
-
 <br>
 
 ### Exporterの種類
 
 #### ▼ Stdout Exporter
 
-標準出力を宛先とする。
+標準出力をスパンの宛先とする。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。
 
@@ -592,13 +590,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 #### ▼ OTLP HTTP Exporter
 
-OpenTelemetryコレクターを宛先とし、HTTPでopentelemetryコレクター接続する。
+OpenTelemetryコレクターをスパンの宛先とし、HTTPでopentelemetryコレクター接続する。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
-OpenTelemetryコレクターを宛先とし、gRPCでopentelemetryコレクター接続する。
+OpenTelemetryコレクターをスパンの宛先とし、gRPCでopentelemetryコレクター接続する。
 
 gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。
 
@@ -606,19 +604,17 @@ gRPCクライアントとして、gRPCサーバーに接続可能なアプリケ
 
 #### ▼ Jaeger Exporter
 
-Jaegerを宛先とする。
+Jaegerをスパンの宛先とする。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。
 
-#### ▼ X-Ray Exporter
+#### ▼ AWS X-Ray Exporter
 
-X-Rayを宛先とする。
+AWS X-Rayをスパンの宛先とする。
 
-一度、opentelemetryコレクター互換のAWS Distro for opentelemetryコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。
+#### ▼ Google CloudTrace Exporter
 
-#### ▼ CloudTrace Exporter
-
-CloudTraceを宛先とする。
+Google CloudTraceをスパンの宛先とする。
 
 例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
 
