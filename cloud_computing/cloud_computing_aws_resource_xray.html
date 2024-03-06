@@ -11672,7 +11672,7 @@
           <li class="md-nav__item">
   <a href="#http_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTPステータスコード
+      ▼ HTTPヘッダー
     </span>
   </a>
   
@@ -21870,7 +21870,7 @@
           <li class="md-nav__item">
   <a href="#http_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTPステータスコード
+      ▼ HTTPヘッダー
     </span>
   </a>
   
@@ -22209,9 +22209,11 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax">https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax</a></li>
 </ul>
 </blockquote>
-<h4 id="http_1">▼ HTTPステータスコード<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
-<p>HTTPステータスコード名でフィルタリングする。</p>
+<h4 id="http_1">▼ HTTPヘッダー<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
+<p>HTTPヘッダー値でフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code>http.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">200</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>http.useragent<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ELB-HealthChecker/2.0&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22241,15 +22243,18 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </blockquote>
 <h4 id="_14">▼ アノテーション<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のラベルでフィルタリングする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">put_annotaion</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-    <span class="c1"># ユーザー定義のラベルを設定する</span>
-    <span class="n">subsegment</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</code></pre></div>
 <div class="highlight"><pre><span></span><code>Annotation.component<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;コンポーネント名&gt;&quot;</span>
 </code></pre></div>
+<p>各言語のSDKの関数でラベルを設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">xray</span><span class="p">.</span><span class="nx">AddAnnotation</span><span class="p">(</span><span class="s">&quot;component&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">subsegment</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="s2">&quot;component&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<p>似たものとしてメタデータがあるが、こちらはフィルタリングに使用できない。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/ykarakita/items/6e117c4d13d042836bcb#annotation%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/ykarakita/items/6e117c4d13d042836bcb#annotation%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B</a></li>
+<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations">https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations</a></li>
+<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations">https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations</a></li>
 </ul>
 </blockquote>
 <p><br></p>
