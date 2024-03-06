@@ -748,6 +748,28 @@ func main() {
 }
 ```
 
+#### ▼ 関数の返却
+
+引数型と返却型を指定して、関数を返却できる。
+
+**＊実装例＊**
+
+`http.Handler`を引数型、`http.Handler`を返却型、として設定する。
+
+```go
+func FooMiddleware() func(http.Handler) http.Handler {
+	// Handlerインターフェースを実装する関数を定義する
+	fn := func(w http.ResponseWriter, r *http.Request) {
+
+		// 関数の処理
+
+		next.ServeHTTP(w, r)
+	}
+	// Handlerインターフェースの実装をHandlerFunc型に変換する
+	return http.HandlerFunc(fn)
+}
+```
+
 <br>
 
 ## 01-03. エラー時の事後処理

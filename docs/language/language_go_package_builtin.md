@@ -919,6 +919,50 @@ HTTPクライアントまたはWebサーバを提供する。
 
 <br>
 
+### Handler系
+
+#### ▼ Handler
+
+`ServeHTTP`関数の実装を強制するインターフェースである。
+
+`ServeHTTP`関数は、`ResponseWriter`と`Request`を引数に持つ必要がある。
+
+```go
+type Handler interface {
+    ServeHTTP(ResponseWriter, *Request)
+}
+```
+
+> - https://azukiazusa.dev/blog/go-http/#handler%E6%A7%8B%E9%80%A0%E4%BD%93
+
+#### ▼ HandlerFunc
+
+Handlerの実装である。
+
+```go
+type HandlerFunc func(ResponseWriter, *Request)
+```
+
+`Handler`の実装は、`HandlerFunc`に型変換できる。
+
+```go
+func FooMiddleware() func(http.Handler) http.Handler {
+	// Handlerインターフェースを実装する関数を定義する
+	fn := func(w http.ResponseWriter, r *http.Request) {
+
+		// 関数の処理
+
+		next.ServeHTTP(w, r)
+	}
+	// Handlerインターフェースの実装をHandlerFunc型に変換する
+	return http.HandlerFunc(fn)
+}
+```
+
+> - https://azukiazusa.dev/blog/go-http/#handlerfunc
+
+<br>
+
 ### ミドルウェア処理
 
 #### ▼ 認証系
