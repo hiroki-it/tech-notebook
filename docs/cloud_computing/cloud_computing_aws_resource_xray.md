@@ -218,12 +218,16 @@ responsetime >= 5 AND responsetime <= 10
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax
 
-#### ▼ HTTPステータスコード
+#### ▼ HTTPヘッダー
 
-HTTPステータスコード名でフィルタリングする。
+HTTPヘッダー値でフィルタリングする。
 
 ```bash
 http.status != 200
+```
+
+```bash
+http.useragent = "ELB-HealthChecker/2.0"
 ```
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
@@ -258,17 +262,24 @@ edge("<送信元AWSリソース名>", "<宛先AWSリソース名>")
 
 ユーザー定義のラベルでフィルタリングする。
 
-```python
-def put_annotaion(key, value):
-    # ユーザー定義のラベルを設定する
-    subsegment.put_annotation('component', value)
-```
-
 ```bash
 Annotation.component = "<コンポーネント名>"
 ```
 
-> - https://qiita.com/ykarakita/items/6e117c4d13d042836bcb#annotation%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B
+各言語のSDKの関数でラベルを設定できる。
+
+```go
+xray.AddAnnotation("component", value)
+```
+
+```python
+subsegment.put_annotation("component", value)
+```
+
+似たものとしてメタデータがあるが、こちらはフィルタリングに使用できない。
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations
 
 <br>
 
