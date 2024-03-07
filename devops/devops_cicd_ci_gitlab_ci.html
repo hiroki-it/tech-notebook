@@ -19565,6 +19565,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ci_project_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CI_PROJECT_DIR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#git_submodule_strategy" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GIT_SUBMODULE_STRATEGY
@@ -22268,6 +22277,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ci_project_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CI_PROJECT_DIR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#git_submodule_strategy" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GIT_SUBMODULE_STRATEGY
@@ -22914,10 +22932,11 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;push&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;develop&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;main&#39;</span>
 </code></pre></div>
 <h4 id="ci_commit_tag">▼ <code>CI_COMMIT_TAG</code><a class="headerlink" href="#ci_commit_tag" title="Permanent link">&para;</a></h4>
-<p>タグの作成時にパイプラインを発火させる。</p>
+<p>現在のタグ名が割り当てられている。</p>
+<p>条件文と組み合わせれば、タグの作成時にパイプラインを発火させられる。</p>
 <h4 id="ci_pipeline_source">▼ <code>CI_PIPELINE_SOURCE</code><a class="headerlink" href="#ci_pipeline_source" title="Permanent link">&para;</a></h4>
 <p>現在のパイプラインを発火させたイベント名 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。</p>
-<p>タグの付与時にパイプラインを発火させる場合、<code>$CI_COMMIT_TAG</code>を使用する。</p>
+<p>タグの付与時にパイプラインを発火させる場合、<code>CI_COMMIT_TAG</code>変数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -22955,6 +22974,9 @@
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules">https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules</a></li>
 </ul>
 </blockquote>
+<h4 id="ci_project_dir">▼ <code>CI_PROJECT_DIR</code><a class="headerlink" href="#ci_project_dir" title="Permanent link">&para;</a></h4>
+<p>GitLabの実行環境のルートディレクトリが割り当てられている。</p>
+<p>GitLabは、ルートディレクトリにGitLabリポジトリをクローンする。</p>
 <h4 id="git_submodule_strategy">▼ <code>GIT_SUBMODULE_STRATEGY</code><a class="headerlink" href="#git_submodule_strategy" title="Permanent link">&para;</a></h4>
 <p>デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
@@ -23920,7 +23942,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
   </span>
 
     
