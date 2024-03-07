@@ -18342,62 +18342,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
+      03. テレメトリースキーマ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. テレメトリーサブスクライバー (テレメトリーコンシューマー)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#opentelemetry" class="md-nav__link">
-    <span class="md-ellipsis">
-      opentelemetryコレクター
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#receiver" class="md-nav__link">
-    <span class="md-ellipsis">
-      Receiver
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Processor
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exporter
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. テレメトリースキーマ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. テレメトリースキーマ">
+    <nav class="md-nav" aria-label="03. テレメトリースキーマ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21612,62 +21561,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
+      03. テレメトリースキーマ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. テレメトリーサブスクライバー (テレメトリーコンシューマー)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#opentelemetry" class="md-nav__link">
-    <span class="md-ellipsis">
-      opentelemetryコレクター
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#receiver" class="md-nav__link">
-    <span class="md-ellipsis">
-      Receiver
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#processor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Processor
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exporter
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. テレメトリースキーマ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. テレメトリースキーマ">
+    <nav class="md-nav" aria-label="03. テレメトリースキーマ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21722,7 +21620,7 @@
 <p><br></p>
 <h2 id="01-opentelemetry">01. OpenTelemetryの仕組み<a class="headerlink" href="#01-opentelemetry" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：opentelemetryコレクター、など) といったコンポーネントから構成されている。</p>
+<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：OpenTelemetryコレクター、など) といったコンポーネントから構成されている。</p>
 <p>OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。</p>
 <p><img alt="open-telemetry_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png" /></p>
 <blockquote>
@@ -21739,7 +21637,7 @@
 <h3 id="otel">otelクライアントパッケージ<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h3>
 <p>otelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、といったコンポーネントから構成されている。</p>
 <p>アプリケーションをインスツルメント化する。</p>
-<p>otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやopentelemetryコレクターにこれを渡す。</p>
+<p>otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやOpenTelemetryコレクターにこれを渡す。</p>
 <p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。</p>
 <p><img alt="open-telemetry_client-package" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png" /></p>
 <blockquote>
@@ -21748,52 +21646,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. テレメトリーサブスクライバー (テレメトリーコンシューマー)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="opentelemetry">opentelemetryコレクター<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h3>
-<p>『テレメトリーコンシューマー』ともいう。</p>
-<p>opentelemetryコレクターは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。</p>
-<p>otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
-<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、opentelemetryコレクターを使用した方が良い。</p>
-<p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがopentelemetryコレクターにテレメトリーデータを送信する責務を持つ。</p>
-<p><img alt="open-telemetry_collector" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.logicmonitor.com/blog/what-is-an-otel-collector">https://www.logicmonitor.com/blog/what-is-an-otel-collector</a></li>
-<li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="receiver">Receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h3>
-<p>OTLP形式のテレメトリーを受信する。</p>
-<p>HTTPSで受信する場合には、SSL証明書が必要である。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="processor">Processor<a class="headerlink" href="#processor" title="Permanent link">&para;</a></h3>
-<p>テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="exporter">Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
-<p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。</p>
-<p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for opentelemetryコレクターのExporter) を使用する必要がある。</p>
-<p>HTTPSで送信する場合には、クライアント証明書が必要である。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md</a></li>
-<li><a href="https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters">https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04">04. テレメトリースキーマ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. テレメトリースキーマ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">テレメトリースキーマとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>テレメトリーの構造やデータ型を定義したもの。</p>
 <p>コンポーネント (テレメトリーソース、テレメトリーサブスクライバー) 間でテレメトリーを変換できる。</p>
