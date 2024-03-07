@@ -272,6 +272,22 @@ users:
 
 <br>
 
+### cordon
+
+#### ▼ cordonとは
+
+指定したNodeにこれ以上Podをスケジューリングできないようにする (`SchedulingDisabled`状態) 。
+
+`kubectl drain`コマンドとは異なり、Podを退避させることはない。
+
+```bash
+$ kubectl cordon <Node名>
+```
+
+> - https://made.livesense.co.jp/entry/2023/03/28/080000#Pod%E3%81%8C%E9%85%8D%E7%BD%AE%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8BCordon
+
+<br>
+
 ### cp
 
 #### ▼ cpとは
@@ -535,9 +551,9 @@ $ curl "https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crd
 
 #### ▼ drainとは
 
-Nodeへの新しいPodのスケジューリングを無効化 (`kubectl cordon`コマンドを実行) し、加えて既存のPodを退避させる。
+Nodeにこれ以上Podをスケジューリングできないようにし (`SchedulingDisabled`状態) 、また既存のPodを退避させる。
 
-Nodeが他に存在すれば、そのNode上でPodが再作成される。
+Nodeが他に存在すれば、そのNode上でPodをスケジューリングさせる。
 
 ```bash
 $ kubectl drain <Node名>
