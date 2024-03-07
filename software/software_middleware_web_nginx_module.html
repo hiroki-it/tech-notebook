@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="オブジェクト指向設計＠アーキテクチャの知見を記録しています。">
+        <meta name="description" content="モジュール＠Nginxの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module.html">
       
       
-        <link rel="prev" href="software_application_architecture_backend_object_orientation_analysis.html">
+        <link rel="prev" href="software_middleware_web_nginx_command.html">
       
       
-        <link rel="next" href="software_application_architecture_backend_domain_driven_design.html">
+        <link rel="next" href="software_middleware_web_apache.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】モジュール＠Nginx - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#nginx" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】オブジェクト指向設計＠アーキテクチャ
+              【IT技術の知見】モジュール＠Nginx
             
           </span>
         </div>
@@ -274,12 +274,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="application/index.html" class="md-tabs__link">
           
   
@@ -296,10 +294,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="middleware/index.html" class="md-tabs__link">
           
   
@@ -945,8 +945,6 @@
       
   
   
-    
-  
   
   
     
@@ -969,17 +967,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           
@@ -995,13 +992,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             🚀 アプリ
@@ -1035,10 +1032,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1056,11 +1051,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
@@ -1074,7 +1071,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             ■ バックエンドアーキテクチャ
@@ -1085,10 +1082,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1104,11 +1099,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_1" >
         
           
           <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
@@ -1122,7 +1119,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_3_1">
             <span class="md-nav__icon md-icon"></span>
             ■ オブジェクト指向
@@ -1175,30 +1172,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    オブジェクト指向設計
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_application_architecture_backend_object_orientation_design.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1207,310 +1184,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. オブジェクト指向設計
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. オブジェクト指向設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      構造の視点
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      振舞の視点
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      構造とビジネスルール/制約の視点
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. クラス図
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. クラス図">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラス図とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      記法の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="記法の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#has-onehas-many" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ has-one、has-many (データとして保持する関係性)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#is-a-kind-of" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ is-a-kind-of (グループとメンバーの関係性)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ use (引数型/返却値型として使用する関係性)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      データとして保持する関係性の多重度
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="データとして保持する関係性の多重度">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multiplicity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ multiplicity (多重度) とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 記法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-erentity-relation-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. ER図：Entity Relation Diagram
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. ER図：Entity Relation Diagram">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#er" class="md-nav__link">
-    <span class="md-ellipsis">
-      ER図とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ie" class="md-nav__link">
-    <span class="md-ellipsis">
-      IE記法
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="IE記法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンティティ、属性
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リレーション、カーディナリティ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      関係性の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="関係性の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：多 (リレーションが曖昧な状態)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#11_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：1 以上
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. シーケンス図
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. シーケンス図">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      シーケンス図とは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. コンポーネント図
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2217,6 +1890,8 @@
       
   
   
+    
+  
   
   
     
@@ -2239,16 +1914,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           
@@ -2264,13 +1940,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -2283,8 +1959,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2298,13 +1976,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2318,7 +1994,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Web系
@@ -2329,8 +2005,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2348,13 +2026,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
@@ -2368,7 +2044,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Nginx
@@ -2442,10 +2118,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="software_middleware_web_nginx_module.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    モジュール
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_middleware_web_nginx_module.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2454,6 +2150,139 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. gRPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. gRPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      grpcモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grpcモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. OpenTelemetry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. OpenTelemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      opentelemetry-cppモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="opentelemetry-cppモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-cpp-contrib" class="md-nav__link">
+    <span class="md-ellipsis">
+      opentelemetry-cpp-contribモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="opentelemetry-cpp-contribモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -21699,7 +21528,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -21708,131 +21537,92 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      01. オブジェクト指向設計
+      01. gRPC
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. オブジェクト指向設計">
+    <nav class="md-nav" aria-label="01. gRPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      grpcモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grpcモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. OpenTelemetry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. OpenTelemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      opentelemetry-cppモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="opentelemetry-cppモジュール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      構造の視点
+      ▼ ビルド
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry-cpp-contrib" class="md-nav__link">
+    <span class="md-ellipsis">
+      opentelemetry-cpp-contribモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="opentelemetry-cpp-contribモジュール">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      振舞の視点
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      構造とビジネスルール/制約の視点
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. クラス図
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. クラス図">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      クラス図とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      記法の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="記法の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#has-onehas-many" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ has-one、has-many (データとして保持する関係性)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#is-a-kind-of" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ is-a-kind-of (グループとメンバーの関係性)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ use (引数型/返却値型として使用する関係性)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      データとして保持する関係性の多重度
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="データとして保持する関係性の多重度">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multiplicity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ multiplicity (多重度) とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 記法
+      ▼ ビルド
     </span>
   </a>
   
@@ -21845,138 +21635,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-erentity-relation-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. ER図：Entity Relation Diagram
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. ER図：Entity Relation Diagram">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#er" class="md-nav__link">
-    <span class="md-ellipsis">
-      ER図とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ie" class="md-nav__link">
-    <span class="md-ellipsis">
-      IE記法
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="IE記法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ エンティティ、属性
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リレーション、カーディナリティ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      関係性の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="関係性の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：多 (リレーションが曖昧な状態)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#11_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 1：1 以上
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. シーケンス図
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. シーケンス図">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      シーケンス図とは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. コンポーネント図
-    </span>
-  </a>
   
 </li>
       
@@ -21998,8 +21656,8 @@
   
 
 
-<h1 id="_1">オブジェクト指向設計＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="nginx">モジュール＠Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -22007,267 +21665,81 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. オブジェクト指向設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">構造の視点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>クラス図、ER図、などがある。</p>
-<p><br></p>
-<h3 id="_4">振舞の視点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>シーケンス図などがある。</p>
-<p><br></p>
-<h3 id="_5">構造とビジネスルール/制約の視点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>ドメインモデル図がある。</p>
+<h2 id="01-grpc">01. gRPC<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
+<h3 id="grpc">grpcモジュール<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
+<h4 id="_2">▼ ビルド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--shallow-submodules<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>https://github.com/grpc/grpc
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>grpc
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>cmake/build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>cmake/build
+$<span class="w"> </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_INSTALL<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_TESTS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_NODE_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_PHP_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_PHP_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_PYTHON_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DgRPC_BUILD_GRPC_RUBY_PLUGIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>../..
+$<span class="w"> </span>make<span class="w"> </span>-j2
+$<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html</a>&gt;</li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. クラス図<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_6">クラス図とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>クラス間の関係性を基に、ソフトウェアの『静的構造』を表す。</p>
-<p>オブジェクト図のインスタンス間の関係性を参考にして、クラス間の関係性の種類を判断する。</p>
-<p><br></p>
-<h3 id="_7">記法の種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="has-onehas-many">▼ has-one、has-many (データとして保持する関係性)<a class="headerlink" href="#has-onehas-many" title="Permanent link">&para;</a></h4>
-<p><img alt="データとして保持する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png" /></p>
-<p>『has-one』『has-many』な関係と表現され、より具体的に説明すると、とデータとして保持する関係性である。</p>
-<p>Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。</p>
-<p>『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。</p>
+<h2 id="02-opentelemetry">02. OpenTelemetry<a class="headerlink" href="#02-opentelemetry" title="Permanent link">&para;</a></h2>
+<h3 id="opentelemetry-cpp">opentelemetry-cppモジュール<a class="headerlink" href="#opentelemetry-cpp" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ ビルド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--shallow-submodules<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>https://github.com/open-telemetry/opentelemetry-cpp.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>opentelemetry-cpp
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_PREFIX_PATH<span class="o">=</span>/install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_ZIPKIN<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_JAEGER<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_OTLP<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_OTLP_GRPC<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_OTLP_HTTP<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DBUILD_TESTING<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_EXAMPLES<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DWITH_ABSEIL<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_POSITION_INDEPENDENT_CODE<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>..
+$<span class="w"> </span>make<span class="w"> </span>-j2
+$<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html</a>&gt;</li>
-</ul>
-</blockquote>
-<h4 id="is-a-kind-of">▼ is-a-kind-of (グループとメンバーの関係性)<a class="headerlink" href="#is-a-kind-of" title="Permanent link">&para;</a></h4>
-<p><img alt="グループとメンバーの関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png" /></p>
-<p>『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。</p>
-<p>Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html</a>&gt;</li>
-</ul>
-</blockquote>
-<h4 id="use">▼ use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
-<p><img alt="引数型または返却値型として使用する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png" /></p>
-<p>『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として使用する関係性である。</p>
-<p>Dependency (依存) が使用される。</p>
-<p>実装例は以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html</a>&gt;</li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">データとして保持する関係性の多重度<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="multiplicity">▼ multiplicity (多重度) とは<a class="headerlink" href="#multiplicity" title="Permanent link">&para;</a></h4>
-<p>クラス間がデータとして保持する関係性にある時に、保持される側クラスが何個のクラスに保持されるか、また反対に保持する側クラスが保持される側クラスを何個保持するか、を表す。</p>
-<p>このように<code>2</code>個の見方があることが混乱するので注意する。</p>
-<p>オブジェクト図のインスタンス間のリンク記号数を参考にして定義する。</p>
+<h3 id="opentelemetry-cpp-contrib">opentelemetry-cpp-contribモジュール<a class="headerlink" href="#opentelemetry-cpp-contrib" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ビルド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/open-telemetry/opentelemetry-cpp-contrib.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>opentelemetry-cpp-contrib/instrumentation/nginx
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DNGINX_BIN<span class="o">=</span>/usr/sbin/nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_PREFIX_PATH<span class="o">=</span>/install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr/lib/nginx/modules<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-DCURL_LIBRARY<span class="o">=</span>/usr/lib/libcurl.so.4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>..
+$<span class="w"> </span>make<span class="w"> </span>-j2
+$<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html">https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html</a>&gt;</li>
-</ul>
-</blockquote>
-<h4 id="_9">▼ 記法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">保持する/保持されるクラスの個数</th>
-<th style="text-align: center;">記法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">1</td>
-<td style="text-align: center;"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">0以上1以下 (つまり、0または1)</td>
-<td style="text-align: center;"><code>0..1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">0以上n以下</td>
-<td style="text-align: center;"><code>0..n</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">m以上n以下</td>
-<td style="text-align: center;"><code>m..n</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">0以上無限大以下 (つまり、0以上)</td>
-<td style="text-align: center;"><code>*</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">0以上無限大以下 (つまり、0以上)</td>
-<td style="text-align: center;"><code>0..*</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>＊例＊</strong></p>
-<p>社員は<code>1</code>個の会社にしか所属できないとする。</p>
-<p>『社員クラス』から見た時に、<code>1</code>個の『会社クラス』にしか保持されない。</p>
-<p>よって、会社クラスに『<code>1</code>』を付記する。</p>
-<p>一方で『会社クラス』から見た時に、0以上の『社員クラス』を保持する。</p>
-<p>よって、会社クラスに『<code>0..*</code>』を付記する。</p>
-<p><img alt="多重度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重度.png" /></p>
-<p><br></p>
-<h2 id="03-erentity-relation-diagram">03. ER図：Entity Relation Diagram<a class="headerlink" href="#03-erentity-relation-diagram" title="Permanent link">&para;</a></h2>
-<h3 id="er">ER図とは<a class="headerlink" href="#er" title="Permanent link">&para;</a></h3>
-<p>DBテーブルのカラム間の関係性を基に、DBの構造を表す。</p>
-<p>『IE記法』と『IDEF1X記法』が一般的に使用される。</p>
-<p><br></p>
-<h3 id="ie">IE記法<a class="headerlink" href="#ie" title="Permanent link">&para;</a></h3>
-<p><img alt="er-diagram_ie" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/er-diagram_ie.png" /></p>
-<h4 id="_10">▼ エンティティ、属性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>テーブルに相当するエンティティと、カラムに相当する属性がある。</p>
-<p><img alt="エンティティとアトリビュート" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/エンティティとアトリビュート.png" /></p>
-<h4 id="_11">▼ リレーション、カーディナリティ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>リレーションとカーディナリティを組み合わせて、エンティティ間の関係性の強さを表す。</p>
-<p><code>(カラム数/レコード数)</code>で導かれ、カーディナリティが高いほど、より効率的なDBインデックスを作成できる。</p>
-<p><img alt="リレーションとカーディナリティ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リレーションとカーディナリティ.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb">https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb</a>&gt;</li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_12">関係性の種類<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="11">▼ 1：1<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
-<p><img alt="1対1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png" /></p>
-<h4 id="1">▼ 1：多 (リレーションが曖昧な状態)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化しく。</p>
-<p><img alt="1対1以上" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png" /></p>
-<h4 id="11_1">▼ 1：1 以上<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h4>
-<p><img alt="1対1以上" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png" /></p>
-<p><br></p>
-<h2 id="04">04. シーケンス図<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_13">シーケンス図とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。</p>
-<table>
-<thead>
-<tr>
-<th>記号名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ライフライン</td>
-<td>オブジェクト (クラス、インスタンス) を表す。</td>
-<td>粒度を大きくして、システムのコンポーネントをライフラインとすることもある。</td>
-</tr>
-<tr>
-<td>実行仕様</td>
-<td>ライフライン上で実行されている処理を表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>停止</td>
-<td>ライフラインが削除されることを表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>同期メッセージ</td>
-<td>既存のライフラインを同期的にコールすることを表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>非同期メッセージ</td>
-<td>既存のライフラインを非同期的にコールすることを表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>生成メッセージ</td>
-<td>ライフラインを新しく作成することを表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>自己メッセージ</td>
-<td>ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。</td>
-<td>・<a href="https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc">https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc</a>&gt;</td>
-</tr>
-<tr>
-<td>再帰的メッセージ</td>
-<td>ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。</td>
-<td>・<a href="https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc">https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc</a>&gt;</td>
-</tr>
-<tr>
-<td>入れ子実行仕様</td>
-<td>再帰的メッセージによってコールされた別の実行仕様を表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>返却メッセージ</td>
-<td>コールの結果を他のライフラインに返却することを表す。</td>
-<td></td>
-</tr>
-<tr>
-<td>複合フラグメント (結合フラグメント)</td>
-<td>条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
-<td>条件分岐の場合はオペレーター名を<code>alt</code> (<code>alternative</code>) 、繰り返しの場合は<code>loop</code>とする。<br>・<a href="https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88</a>&gt;</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://rainbow-engine.com/sequence-diagram-sample/">https://rainbow-engine.com/sequence-diagram-sample/</a></li>
-<li><a href="https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html">https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html</a>&gt;</li>
-</ul>
-</blockquote>
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>5つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品DBオブジェクト、商品詳細画面オブジェクト) を設定する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。</p>
-</dd>
-</dl>
-<p><img alt="シーケンス図" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png" /></p>
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p><code>3</code>個のライフラインを設定する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。</p>
-</dd>
-</dl>
-<p><img alt="シーケンス図_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png" /></p>
-<p><br></p>
-<h2 id="05">05. コンポーネント図<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>複数のクラスから構成される処理を<code>1</code>個の図で表現した図のこと。</p>
-<table>
-<thead>
-<tr>
-<th>記号名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>コンポーネント名</td>
-<td>処理コンポーネントを表す。</td>
-</tr>
-<tr>
-<td>提供側インターフェース</td>
-<td></td>
-</tr>
-<tr>
-<td>要求側インターフェース</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.itsenka.com/contents/development/uml/component.html">https://www.itsenka.com/contents/development/uml/component.html</a></li>
-<li><a href="https://www.bcm.co.jp/site/2002/uml/uml10.htm">https://www.bcm.co.jp/site/2002/uml/uml10.htm</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22291,7 +21763,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
   </span>
 
     

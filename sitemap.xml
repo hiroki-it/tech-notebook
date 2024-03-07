@@ -2241,6 +2241,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module.html</loc>
+         <lastmod>2024-03-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_practices.html</loc>
          <lastmod>2024-03-07</lastmod>
          <changefreq>daily</changefreq>
