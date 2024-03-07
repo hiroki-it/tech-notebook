@@ -14028,6 +14028,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cordon" class="md-nav__link">
+    <span class="md-ellipsis">
+      cordon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="cordon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cordon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cordonとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cp" class="md-nav__link">
     <span class="md-ellipsis">
       cp
@@ -22583,6 +22607,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cordon" class="md-nav__link">
+    <span class="md-ellipsis">
+      cordon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="cordon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cordon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cordonとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cp" class="md-nav__link">
     <span class="md-ellipsis">
       cp
@@ -23565,6 +23613,18 @@ users:
 <span class="w">    </span>client-key:<span class="w"> </span>/Users/h.hasegawa/.minikube/profiles/minikube/client.key
 </code></pre></div>
 <p><br></p>
+<h3 id="cordon">cordon<a class="headerlink" href="#cordon" title="Permanent link">&para;</a></h3>
+<h4 id="cordon_1">▼ cordonとは<a class="headerlink" href="#cordon_1" title="Permanent link">&para;</a></h4>
+<p>指定したNodeにこれ以上Podをスケジューリングできないようにする (<code>SchedulingDisabled</code>状態) 。</p>
+<p><code>kubectl drain</code>コマンドとは異なり、Podを退避させることはない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cordon<span class="w"> </span>&lt;Node名&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://made.livesense.co.jp/entry/2023/03/28/080000#Pod%E3%81%8C%E9%85%8D%E7%BD%AE%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8BCordon">https://made.livesense.co.jp/entry/2023/03/28/080000#Pod%E3%81%8C%E9%85%8D%E7%BD%AE%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8BCordon</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="cp">cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
 <h4 id="cp_1">▼ cpとは<a class="headerlink" href="#cp_1" title="Permanent link">&para;</a></h4>
 <p>ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。</p>
@@ -23750,8 +23810,8 @@ Name:<span class="w">               </span>baz-node
 <p><br></p>
 <h3 id="drain">drain<a class="headerlink" href="#drain" title="Permanent link">&para;</a></h3>
 <h4 id="drain_1">▼ drainとは<a class="headerlink" href="#drain_1" title="Permanent link">&para;</a></h4>
-<p>Nodeへの新しいPodのスケジューリングを無効化 (<code>kubectl cordon</code>コマンドを実行) し、加えて既存のPodを退避させる。</p>
-<p>Nodeが他に存在すれば、そのNode上でPodが再作成される。</p>
+<p>Nodeにこれ以上Podをスケジューリングできないようにし (<code>SchedulingDisabled</code>状態) 、また既存のPodを退避させる。</p>
+<p>Nodeが他に存在すれば、そのNode上でPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;Node名&gt;
 </code></pre></div>
 <p><img alt="kubernetes_drain_node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png" /></p>
@@ -24602,7 +24662,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
   </span>
 
     
