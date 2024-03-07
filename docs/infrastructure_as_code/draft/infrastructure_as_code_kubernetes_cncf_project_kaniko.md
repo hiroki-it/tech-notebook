@@ -81,18 +81,6 @@ $ cat > /kaniko/.docker/config.json << EOF
 
 ## 03. /kaniko/executorコマンド
 
-### --dockerfile
-
-コンテナ内でビルドしたいDockerfileのパスを設定する。
-
-```bash
-$ /kaniko/executor --dockerfile=./docker/Dockerfile
-```
-
-> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile
-
-<br>
-
 ### --context
 
 指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。
@@ -112,6 +100,32 @@ $ /kaniko/executor --context=.
 ```bash
 $ /kaniko/executor --destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
 ```
+
+<br>
+
+### --dockerfile
+
+コンテナ内でビルドしたいDockerfileのパスを設定する。
+
+```bash
+$ /kaniko/executor --dockerfile=./docker/Dockerfile
+```
+
+> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile
+
+<br>
+
+### --no-push
+
+コンテナ内でビルドしたコンテナイメージをプッシュしない。
+
+ビルドのみを実行したい場合に使用する。
+
+```bash
+$ /kaniko/executor --no-push
+```
+
+> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---no-push
 
 <br>
 
