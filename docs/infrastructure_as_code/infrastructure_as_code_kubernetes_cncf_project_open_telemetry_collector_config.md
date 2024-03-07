@@ -149,7 +149,7 @@ exporters:
 
 ### exportersとは
 
-エクスポーターを設定する。
+Exporterを設定する。
 
 opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
 
@@ -252,7 +252,7 @@ extensions:
 
 ### processorsとは
 
-プロセッサーを設定する
+Processorを設定する
 
 <br>
 
@@ -316,9 +316,9 @@ processors:
 
 ### receiversとは
 
-レシーバーを設定する。
+Receiverを設定する。
 
-OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。
+OpenTelemetryのクライアントは、Receiverを指定し、テレメトリーを送信する。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
 
@@ -362,7 +362,7 @@ service:
 
 ### pipelines
 
-使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する。
+使用したい設定 (Receiver、Processor、Exporter) を指定する。
 
 ```yaml
 service:
