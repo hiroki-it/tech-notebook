@@ -18186,6 +18186,8 @@
       
         
       
+        
+      
     
     
       
@@ -18216,6 +18218,27 @@
             ■ OpenTelemetry
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_open_telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenTelemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -18263,10 +18286,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_11_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_11_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_18_11_2" id="__nav_18_11_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_18_11_3" id="__nav_18_11_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -18277,8 +18300,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_11_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_18_11_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_11_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_11_3">
             <span class="md-nav__icon md-icon"></span>
             ■ OpenTelemetryコレクター
           </label>
@@ -22364,7 +22387,7 @@
 <p><br></p>
 <h2 id="02-exporters">02. exporters<a class="headerlink" href="#02-exporters" title="Permanent link">&para;</a></h2>
 <h3 id="exporters">exportersとは<a class="headerlink" href="#exporters" title="Permanent link">&para;</a></h3>
-<p>エクスポーターを設定する。</p>
+<p>Exporterを設定する。</p>
 <p>opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
 <h3 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
@@ -22444,7 +22467,7 @@
 <p><br></p>
 <h2 id="04-processors">04. processors<a class="headerlink" href="#04-processors" title="Permanent link">&para;</a></h2>
 <h3 id="processors">processorsとは<a class="headerlink" href="#processors" title="Permanent link">&para;</a></h3>
-<p>プロセッサーを設定する</p>
+<p>Processorを設定する</p>
 <p><br></p>
 <h3 id="attribute">attribute<a class="headerlink" href="#attribute" title="Permanent link">&para;</a></h3>
 <p>テレメトリーに付与する属性を設定する。</p>
@@ -22498,8 +22521,8 @@
 <p><br></p>
 <h2 id="05-receivers">05. receivers<a class="headerlink" href="#05-receivers" title="Permanent link">&para;</a></h2>
 <h3 id="receivers">receiversとは<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h3>
-<p>レシーバーを設定する。</p>
-<p>OpenTelemetryのクライアントは、レシーバーを指定し、テレメトリーを送信する。</p>
+<p>Receiverを設定する。</p>
+<p>OpenTelemetryのクライアントは、Receiverを指定し、テレメトリーを送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md</a></li>
@@ -22537,7 +22560,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="pipelines">pipelines<a class="headerlink" href="#pipelines" title="Permanent link">&para;</a></h3>
-<p>使用したい設定 (レシーバー、プロセッサー、エクスポーター) を指定する。</p>
+<p>使用したい設定 (Receiver、Processor、Exporter) を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">pipelines</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">traces</span><span class="p">:</span>
@@ -22619,7 +22642,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
   </span>
 
     
