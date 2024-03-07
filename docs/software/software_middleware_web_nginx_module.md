@@ -214,13 +214,25 @@ load_module /path/to/ngx_otel_module.so;
 
 <br>
 
-### ngx_http_opentelemetry_moduleモジュール
+### otel-webserverモジュール
 
-#### ▼ ngx_http_opentelemetry_moduleモジュールとは
+#### ▼ otel-webserverモジュールとは
+
+ApacheまたはNginxをOpenTelemetryで計装できるようにする。
+
+otel_apache_moduleモジュールとngx_http_opentelemetry_moduleモジュールの両方を含んでいる。
+
+#### ▼ otel_apache_moduleモジュール
 
 OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
+> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module
 > - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
+
+#### ▼ ngx_http_opentelemetry_moduleモジュール
+
+OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
+
+> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#nginx-webserver-module
 
 <br>
