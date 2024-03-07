@@ -17,7 +17,7 @@ description: OpenTelemetry＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：opentelemetryコレクター、など) といったコンポーネントから構成されている。
+OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：OpenTelemetryコレクター、など) といったコンポーネントから構成されている。
 
 OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
 
@@ -42,7 +42,7 @@ otelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 アプリケーションをインスツルメント化する。
 
-otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやopentelemetryコレクターにこれを渡す。
+otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやOpenTelemetryコレクターにこれを渡す。
 
 もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
 
@@ -52,61 +52,7 @@ otelクライアントパッケージは、テレメトリーデータをAPIパ�
 
 <br>
 
-## 03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
-
-### opentelemetryコレクター
-
-『テレメトリーコンシューマー』ともいう。
-
-opentelemetryコレクターは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。
-
-otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
-
-テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、opentelemetryコレクターを使用した方が良い。
-
-もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがopentelemetryコレクターにテレメトリーデータを送信する責務を持つ。
-
-![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
-
-> - https://www.logicmonitor.com/blog/what-is-an-otel-collector
-> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
-
-<br>
-
-### Receiver
-
-OTLP形式のテレメトリーを受信する。
-
-HTTPSで受信する場合には、SSL証明書が必要である。
-
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
-
-<br>
-
-### Processor
-
-テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。
-
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md
-
-<br>
-
-### Exporter
-
-OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
-
-非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for opentelemetryコレクターのExporter) を使用する必要がある。
-
-HTTPSで送信する場合には、クライアント証明書が必要である。
-
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md
-> - https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration
-
-<br>
-
-## 04. テレメトリースキーマ
+## 03. テレメトリースキーマ
 
 ### テレメトリースキーマとは
 

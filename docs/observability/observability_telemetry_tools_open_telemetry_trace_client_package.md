@@ -574,7 +574,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 ### Exporterとは
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for opentelemetryコレクター、Google CloudTrace、opentelemetryコレクター、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetryコレクター、Google CloudTrace、OpenTelemetryコレクター、など) を決める処理を持つ。
 
 <br>
 
@@ -590,13 +590,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 #### ▼ OTLP HTTP Exporter
 
-OpenTelemetryコレクターをスパンの宛先とし、HTTPでopentelemetryコレクター接続する。
+OpenTelemetryコレクターをスパンの宛先とし、HTTPでOpenTelemetryコレクター接続する。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
-OpenTelemetryコレクターをスパンの宛先とし、gRPCでopentelemetryコレクター接続する。
+OpenTelemetryコレクターをスパンの宛先とし、gRPCでOpenTelemetryコレクター接続する。
 
 gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。
 
@@ -896,7 +896,7 @@ func NewTracerProvider() {
 | 方式       | 説明                                                                                                                                                                                                                         |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                          |
-| Tail-based | サーバー側 (opentelemetryコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+| Tail-based | サーバー側 (OpenTelemetryコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
 > - https://opentelemetry.io/docs/concepts/sampling/
@@ -921,9 +921,9 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
 > - https://opentelemetry.io/docs/concepts/sampling/#tail-sampling
 
-#### ▼ サーバー側 (opentelemetryコレクター) のサンプリング率
+#### ▼ サーバー側 (OpenTelemetryコレクター) のサンプリング率
 
-Tail-based方式の場合、opentelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
+Tail-based方式の場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
 
 ```yaml
 processors:

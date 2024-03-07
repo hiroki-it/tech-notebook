@@ -151,7 +151,7 @@ exporters:
 
 Exporterを設定する。
 
-opentelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
+OpenTelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
 
 <br>
 

@@ -15,13 +15,59 @@ description: OpenTelemetryコレクター＠CNCFの知見を記録していま�
 
 ## 01. OpenTelemetryコレクターの仕組み
 
+### アーキテクチャ
+
+『テレメトリーコンシューマー』ともいう。
+
+OpenTelemetryコレクターは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。
+
+otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
+
+テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetryコレクターを使用した方が良い。
+
+もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetryコレクターにテレメトリーデータを送信する責務を持つ。
+
+![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
+
+> - https://www.logicmonitor.com/blog/what-is-an-otel-collector
+> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
+
+<br>
+
+### Receiver
+
+OTLP形式のテレメトリーを受信する。
+
+HTTPSで受信する場合には、SSL証明書が必要である。
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
+
+<br>
+
+### Processor
+
+テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md
+
+<br>
+
 ### Exporter
 
-#### ▼ Exporterとは
+#### ▼ Exporter
 
-スパンの宛先と決め、 またOpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する処理を持つ。
+OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
+また、OpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する。
+
+非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetryコレクターのExporter) を使用する必要がある。
+
+HTTPSで送信する場合には、クライアント証明書が必要である。
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md
+> - https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration
 
 #### ▼ AWS X-Ray Exporter
 
