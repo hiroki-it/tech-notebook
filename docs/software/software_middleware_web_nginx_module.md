@@ -15,11 +15,11 @@ description: モジュール＠Nginxの知見を記録しています。
 
 ## 01. gRPC
 
-### grpcモジュール
+### gRPCパッケージ
 
-#### ▼ grpcモジュールとは
+#### ▼ gRPCパッケージとは
 
-NginxがgRPCを使えるようにする。
+nginxモジュールがgRPCを使用できるようにする。
 
 > - https://github.com/grpc/grpc
 
@@ -47,16 +47,19 @@ $ make install
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
+> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
 
 <br>
 
 ## 02. OpenTelemetry
 
-### opentelemetry-cppモジュール
+### opentelemetry-cppパッケージ
 
-#### ▼ opentelemetry-cppモジュールとは
+#### ▼ opentelemetry-cppパッケージとは
 
-記入中...
+C++で計装できるようにする。
+
+NginxはC++で実装されているため、opentelemetry-cppパッケージが必要である。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp
 
@@ -85,14 +88,17 @@ $ make install
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
+> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
 
 <br>
 
-### opentelemetry-cpp-contribモジュール
+### otel_ngx_moduleモジュール
 
-#### ▼ opentelemetry-cpp-contribモジュールとは
+#### ▼ otel_ngx_moduleモジュールとは
 
-記入中...
+NginxをOpenTelemetryで計装できるようにする。
+
+gRPC Exporterを使用するために、gRPCパッケージが必要である。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
 
@@ -114,5 +120,6 @@ $ make install
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
+> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
 
 <br>
