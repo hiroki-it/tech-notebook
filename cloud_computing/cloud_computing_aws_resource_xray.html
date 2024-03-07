@@ -11644,11 +11644,11 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      フィルター
+      フィルター式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="フィルター">
+    <nav class="md-nav" aria-label="フィルター式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21865,11 +21865,11 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      フィルター
+      フィルター式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="フィルター">
+    <nav class="md-nav" aria-label="フィルター式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22055,11 +22055,11 @@
 </tr>
 <tr>
 <td>Matching Criteria</td>
-<td>スパンのキーに基づくフィルタリング条件を設定する。</td>
+<td>スパンのキーに基づくフィルタリングの一致条件を設定する。</td>
 </tr>
 <tr>
 <td>Matching attributes</td>
-<td>記入中...</td>
+<td>AWS以外の文脈で付与されたラベル (例：OpenTelemetryのAttribute) の一致条件を設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -22215,7 +22215,7 @@
 <span class="w">    </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_11">フィルター<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_11">フィルター式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ デフォルト<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>http.url<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://example.com/foo&quot;</span>
 </code></pre></div>
@@ -22269,9 +22269,11 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <div class="highlight"><pre><span></span><code>Annotation.component<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;コンポーネント名&gt;&quot;</span>
 </code></pre></div>
 <p>各言語のSDKの関数でラベルを設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">xray</span><span class="p">.</span><span class="nx">AddAnnotation</span><span class="p">(</span><span class="s">&quot;component&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Goの場合</span>
+<span class="nx">xray</span><span class="p">.</span><span class="nx">AddAnnotation</span><span class="p">(</span><span class="s">&quot;component&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">subsegment</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="s2">&quot;component&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pythonの場合</span>
+<span class="n">subsegment</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="s2">&quot;component&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div>
 <p>似たものとしてメタデータがあるが、こちらはフィルタリングに使用できない。</p>
 <blockquote>

@@ -23276,7 +23276,7 @@
 <span class="w">    </span><span class="c1">// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする</span>
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// OpenTelemetryコレクターでW3C形式からX-ray形式にIDを変換できるため、ここではW3C形式でIDを作成する</span>
+<span class="w">    </span><span class="c1">// OpenTelemetryコレクターでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する</span>
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resourceWithAttributes</span><span class="p">),</span>
