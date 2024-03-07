@@ -17,13 +17,25 @@ description: モジュール＠Nginxの知見を記録しています。
 
 ### Docker
 
+マルチステージビルドを使用して、モジュールのビルド用のステージと実際に使用するステージを分ける。
+
 ```dockerfile
+# -----------------
+# builderステージ
+# -----------------
 FROM nginx:<バージョン>-alpine as builder
 
-...
+# ここでモジュールをビルドする
 
+# -----------------
+# mainステージ
+# -----------------
+FROM nginx:1.23.1-alpine
+
+# builderステージからビルド後のモジュールを取り出す
 COPY --from=builder /usr/lib/nginx/modules/otel_ngx_module.so /usr/lib/nginx/modules/
 
+...
 
 ```
 
@@ -116,7 +128,7 @@ $ make install
 
 #### ▼ otel_ngx_moduleモジュールとは
 
-OpenTelemetryコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。
+OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
 gRPC Exporterを使用するために、gRPCパッケージが必要である。
 
@@ -158,7 +170,7 @@ load_module /path/to/otel_ngx_module.so;
 
 #### ▼ ngx_otel_moduleモジュールとは
 
-Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。
+Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
 #### ▼ ビルド
 
@@ -181,5 +193,16 @@ load_module /path/to/ngx_otel_module.so;
 ```
 
 > - https://github.com/nginxinc/nginx-otel
+
+<br>
+
+### ngx_http_opentelemetry_moduleモジュール
+
+#### ▼ ngx_http_opentelemetry_moduleモジュールとは
+
+OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
+
+> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
+> - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
 
 <br>
