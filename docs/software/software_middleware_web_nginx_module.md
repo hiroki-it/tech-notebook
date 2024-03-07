@@ -57,9 +57,7 @@ $ make install
 
 #### ▼ opentelemetry-cppパッケージとは
 
-C++で計装できるようにする。
-
-NginxはC++で実装されているため、opentelemetry-cppパッケージが必要である。
+C++でNginxを計装できるようにする。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp
 
@@ -99,6 +97,8 @@ $ make install
 NginxをOpenTelemetryで計装できるようにする。
 
 gRPC Exporterを使用するために、gRPCパッケージが必要である。
+
+また、NginxはC++で実装されているため、opentelemetry-cppパッケージが必要である。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
 
