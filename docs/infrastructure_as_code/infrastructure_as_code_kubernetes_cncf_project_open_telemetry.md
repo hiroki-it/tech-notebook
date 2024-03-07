@@ -28,7 +28,7 @@ OpenTelemetryを導入することにより、テレメトリーごとに異な�
 
 <br>
 
-## 01-02. テレメトリーソース
+## 02. テレメトリーソース
 
 ### サードパーティパッケージ
 
@@ -52,11 +52,9 @@ otelクライアントパッケージは、テレメトリーデータをAPIパ�
 
 <br>
 
-## 01-03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
+## 03. テレメトリーサブスクライバー (テレメトリーコンシューマー)
 
 ### opentelemetryコレクター
-
-#### ▼ opentelemetryコレクターとは
 
 『テレメトリーコンシューマー』ともいう。
 
@@ -73,7 +71,9 @@ otelクライアントパッケージからのテレメトリーデータを、R
 > - https://www.logicmonitor.com/blog/what-is-an-otel-collector
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
 
-#### ▼ Receiver
+<br>
+
+### Receiver
 
 OTLP形式のテレメトリーを受信する。
 
@@ -82,13 +82,17 @@ HTTPSで受信する場合には、SSL証明書が必要である。
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
 
-#### ▼ Processor
+<br>
+
+### Processor
 
 テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md
 
-#### ▼ Exporter
+<br>
+
+### Exporter
 
 OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
 
@@ -102,7 +106,7 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 <br>
 
-## 01-04. テレメトリースキーマ
+## 04. テレメトリースキーマ
 
 ### テレメトリースキーマとは
 
@@ -131,13 +135,5 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 > - https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/schema.go
-
-<br>
-
-## 03. テレメトリー間の紐付け
-
-記入中...
-
-> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
 
 <br>

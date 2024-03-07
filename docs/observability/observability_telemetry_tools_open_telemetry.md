@@ -68,3 +68,11 @@ eBPFによる自動計装の方が、リクエスト処理のパフォーマン�
 ## 03. メトリクスの計装
 
 <br>
+
+## 04. テレメトリー間の紐付け
+
+記入中...
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
+
+<br>
