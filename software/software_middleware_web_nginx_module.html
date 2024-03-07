@@ -2301,6 +2301,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_otel_moduleモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_otel_moduleモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ngx_otel_moduleモジュールとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21687,6 +21720,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_otel_moduleモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_otel_moduleモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ngx_otel_moduleモジュールとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21794,7 +21860,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <p><br></p>
 <h3 id="otel_ngx_module">otel_ngx_moduleモジュール<a class="headerlink" href="#otel_ngx_module" title="Permanent link">&para;</a></h3>
 <h4 id="otel_ngx_module_1">▼ otel_ngx_moduleモジュールとは<a class="headerlink" href="#otel_ngx_module_1" title="Permanent link">&para;</a></h4>
-<p>NginxをOpenTelemetryで計装できるようにする。</p>
+<p>OpenTelemetryコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。</p>
 <p>gRPC Exporterを使用するために、gRPCパッケージが必要である。</p>
 <p>また、NginxはC++で実装されているため、opentelemetry-cppパッケージが必要である。</p>
 <blockquote>
@@ -21820,6 +21886,23 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801</a></li>
 <li><a href="https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89">https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ngx_otel_module">ngx_otel_moduleモジュール<a class="headerlink" href="#ngx_otel_module" title="Permanent link">&para;</a></h3>
+<h4 id="ngx_otel_module_1">▼ ngx_otel_moduleモジュールとは<a class="headerlink" href="#ngx_otel_module_1" title="Permanent link">&para;</a></h4>
+<p>Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。</p>
+<h4 id="_5">▼ ビルド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nginx-otel
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>-DNGX_OTEL_NGINX_BUILD_DIR<span class="o">=</span>/path/to/configured/nginx/objs<span class="w"> </span>..
+$<span class="w"> </span>make
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/nginx-otel">https://github.com/nginxinc/nginx-otel</a></li>
 </ul>
 </blockquote>
 <p><br></p>
