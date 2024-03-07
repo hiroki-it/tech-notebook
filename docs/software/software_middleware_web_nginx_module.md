@@ -199,7 +199,7 @@ $ git clone https://github.com/nginxinc/nginx-otel.git
 $ cd nginx-otel
 $ mkdir build
 $ cd build
-$ cmake -DNGX_OTEL_NGINX_BUILD_DIR=/path/to/configured/nginx/objs ..
+$ cmake -DNGX_OTEL_NGINX_BUILD_DIR=/path/to/configured/nginx/objs
 $ make -j2
 $ make install
 ```

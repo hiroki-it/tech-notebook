@@ -210,6 +210,10 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 ホスト側 (第一引数) のディレクトリ/ファイルをコンテナ側 (第二引数) にコピーする。
 
+```dockerfile
+COPY ./src src/
+```
+
 コンテナ側のパスは、`WORKDIR`をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。
 
 ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『`/`』で終える必要がある。
@@ -219,6 +223,22 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 設定ファイル (例：`nginx.conf`ファイル、`php.ini`ファイル) をホストからコンテナにコピーしたい時によく使用する。
 
 > - https://docs.docker.com/engine/reference/builder/#copy
+
+<br>
+
+### --from
+
+他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHubのみ) のコンテナイメージ名、を指定して、そのコンテナイメージが持つファイルをコピーする。
+
+```dockerfile
+COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer
+```
+
+```dockerfile
+COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
+```
+
+> - https://docs.docker.com/build/building/multi-stage/#use-an-external-image-as-a-stage
 
 <br>
 

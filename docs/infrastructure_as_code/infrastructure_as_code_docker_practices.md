@@ -406,7 +406,7 @@ RUN dnf upgrade -y \
   && rm -Rf /var/cache/dnf
 
 # DockerHubのComposerイメージからバイナリファイルを取得
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer
 ```
 
 **＊実装例＊**

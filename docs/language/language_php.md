@@ -44,7 +44,8 @@ $ apt -y install php=1.0.0
 #===================
 # Global ARG
 #===================
-ARG PHP_FPM_VERSION="8.0.13"
+ARG PHP_FPM_VERSION="<バージョン>"
+ARG PHP_COMPOSER_VERSION="<バージョン>"
 ARG LABEL="Hiroki <example@gmail.com>"
 
 #===================
@@ -63,7 +64,7 @@ RUN apt-get update -y \
       pdo_mysql \
   && apt-get clean
 
-COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:${PHP_COMPOSER_VERSION} /usr/bin/composer /usr/bin/composer
 
 #===================
 # Development Stage

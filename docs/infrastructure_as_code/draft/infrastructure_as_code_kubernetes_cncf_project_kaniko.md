@@ -79,7 +79,43 @@ $ cat > /kaniko/.docker/config.json << EOF
 
 <br>
 
-## 03. Pod上で実行する場合
+## 03. /kaniko/executorコマンド
+
+### --dockerfile
+
+コンテナ内でビルドしたいDockerfileのパスを設定する。
+
+```bash
+$ /kaniko/executor --dockerfile=./docker/Dockerfile
+```
+
+> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile
+
+<br>
+
+### --context
+
+指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。
+
+```bash
+$ /kaniko/executor --context=.
+```
+
+> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#kaniko-build-contexts
+
+<br>
+
+### --destination
+
+ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する
+
+```bash
+$ /kaniko/executor --destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
+```
+
+<br>
+
+## 04. Pod上で実行する場合
 
 ### AWS ECR
 
@@ -93,11 +129,8 @@ spec:
     - name: kaniko
       image: gcr.io/kaniko-project/executor:latest
       args:
-        # コンテナ内でビルドしたいDockerfileのパスを設定する
         - "--dockerfile=./docker/Dockerfile"
-        # 指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する
         - "--context=."
-        # ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する
         - "--destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko"
       volumeMounts:
         - name: aws-credentials
@@ -114,7 +147,7 @@ spec:
 
 <br>
 
-## 04. GitLab上で実行する場合
+## 05. GitLab上で実行する場合
 
 ### DockerHub
 

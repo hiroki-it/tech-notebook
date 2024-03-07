@@ -162,7 +162,9 @@ EKSでDamonSetとして稼働させる。
 スパンの作成元のAWSリソース情報を持つ。
 
 ```yaml
-{"aws": {
+{
+  # AWSリソース情報
+  "aws": {
       "elastic_beanstalk":
         {
           "version_label": "app-5a56-170119_190650-stage-170119_190650",
@@ -189,7 +191,8 @@ EKSでDamonSetとして稼働させる。
           "sdk": "X-Ray for Java",
           "sdk_version": "2.8.0",
         },
-    }}
+    },
+}
 ```
 
 <br>
