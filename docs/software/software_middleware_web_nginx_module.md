@@ -94,7 +94,7 @@ $ make install
 
 #### ▼ otel_ngx_moduleモジュールとは
 
-NginxをOpenTelemetryで計装できるようにする。
+OpenTelemetryコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。
 
 gRPC Exporterを使用するために、gRPCパッケージが必要である。
 
@@ -121,5 +121,26 @@ $ make install
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
 > - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
+
+<br>
+
+### ngx_otel_moduleモジュール
+
+#### ▼ ngx_otel_moduleモジュールとは
+
+Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。
+
+#### ▼ ビルド
+
+```bash
+$ git clone https://github.com/nginxinc/nginx-otel.git
+$ cd nginx-otel
+$ mkdir build
+$ cd build
+$ cmake -DNGX_OTEL_NGINX_BUILD_DIR=/path/to/configured/nginx/objs ..
+$ make
+```
+
+> - https://github.com/nginxinc/nginx-otel
 
 <br>
