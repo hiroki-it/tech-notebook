@@ -2358,6 +2358,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ngx_http_opentelemetry_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_http_opentelemetry_moduleモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_http_opentelemetry_moduleモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_opentelemetry_module_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ngx_http_opentelemetry_moduleモジュールとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21801,6 +21825,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ngx_http_opentelemetry_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_http_opentelemetry_moduleモジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_http_opentelemetry_moduleモジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_http_opentelemetry_module_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ngx_http_opentelemetry_moduleモジュールとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21835,11 +21883,23 @@
 <p><br></p>
 <h2 id="01">01. モジュールの組み込み方<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:&lt;バージョン&gt;-alpine</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+<p>マルチステージビルドを使用して、モジュールのビルド用のステージと実際に使用するステージを分ける。</p>
+<div class="highlight"><pre><span></span><code><span class="c"># -----------------</span>
+<span class="c"># builderステージ</span>
+<span class="c"># -----------------</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:&lt;バージョン&gt;-alpine</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+
+<span class="c"># ここでモジュールをビルドする</span>
+
+<span class="c"># -----------------</span>
+<span class="c"># mainステージ</span>
+<span class="c"># -----------------</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:1.23.1-alpine</span>
+
+<span class="c"># builderステージからビルド後のモジュールを取り出す</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/usr/lib/nginx/modules/otel_ngx_module.so<span class="w"> </span>/usr/lib/nginx/modules/
 
 ...
-
-<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/usr/lib/nginx/modules/otel_ngx_module.so<span class="w"> </span>/usr/lib/nginx/modules/
 </code></pre></div>
 <blockquote>
 <ul>
@@ -21924,7 +21984,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <p><br></p>
 <h3 id="otel_ngx_module">otel_ngx_moduleモジュール<a class="headerlink" href="#otel_ngx_module" title="Permanent link">&para;</a></h3>
 <h4 id="otel_ngx_module_1">▼ otel_ngx_moduleモジュールとは<a class="headerlink" href="#otel_ngx_module_1" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。</p>
+<p>OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
 <p>gRPC Exporterを使用するために、gRPCパッケージが必要である。</p>
 <p>また、NginxはC++で実装されているため、opentelemetry-cppパッケージが必要である。</p>
 <blockquote>
@@ -21959,7 +22019,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <p><br></p>
 <h3 id="ngx_otel_module">ngx_otel_moduleモジュール<a class="headerlink" href="#ngx_otel_module" title="Permanent link">&para;</a></h3>
 <h4 id="ngx_otel_module_1">▼ ngx_otel_moduleモジュールとは<a class="headerlink" href="#ngx_otel_module_1" title="Permanent link">&para;</a></h4>
-<p>Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。</p>
+<p>Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
 <h4 id="_5">▼ ビルド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>モジュールをインポートする前に、ビルドする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
@@ -21976,6 +22036,16 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <blockquote>
 <ul>
 <li><a href="https://github.com/nginxinc/nginx-otel">https://github.com/nginxinc/nginx-otel</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ngx_http_opentelemetry_module">ngx_http_opentelemetry_moduleモジュール<a class="headerlink" href="#ngx_http_opentelemetry_module" title="Permanent link">&para;</a></h3>
+<h4 id="ngx_http_opentelemetry_module_1">▼ ngx_http_opentelemetry_moduleモジュールとは<a class="headerlink" href="#ngx_http_opentelemetry_module_1" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module">https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module</a></li>
+<li><a href="https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/">https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
