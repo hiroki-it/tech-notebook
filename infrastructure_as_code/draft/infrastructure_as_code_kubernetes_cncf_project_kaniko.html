@@ -21441,13 +21441,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-pod" class="md-nav__link">
+  <a href="#03-kanikoexecutor" class="md-nav__link">
     <span class="md-ellipsis">
-      03. Pod上で実行する場合
+      03. /kaniko/executorコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. Pod上で実行する場合">
+    <nav class="md-nav" aria-label="03. /kaniko/executorコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      --dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      --context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-destination" class="md-nav__link">
+    <span class="md-ellipsis">
+      --destination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Pod上で実行する場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Pod上で実行する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21465,13 +21507,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-gitlab" class="md-nav__link">
+  <a href="#05-gitlab" class="md-nav__link">
     <span class="md-ellipsis">
-      04. GitLab上で実行する場合
+      05. GitLab上で実行する場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. GitLab上で実行する場合">
+    <nav class="md-nav" aria-label="05. GitLab上で実行する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21586,7 +21628,33 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-pod">03. Pod上で実行する場合<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
+<h2 id="03-kanikoexecutor">03. /kaniko/executorコマンド<a class="headerlink" href="#03-kanikoexecutor" title="Permanent link">&para;</a></h2>
+<h3 id="-dockerfile">--dockerfile<a class="headerlink" href="#-dockerfile" title="Permanent link">&para;</a></h3>
+<p>コンテナ内でビルドしたいDockerfileのパスを設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--dockerfile<span class="o">=</span>./docker/Dockerfile
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-context">--context<a class="headerlink" href="#-context" title="Permanent link">&para;</a></h3>
+<p>指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--context<span class="o">=</span>.
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#kaniko-build-contexts">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#kaniko-build-contexts</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-destination">--destination<a class="headerlink" href="#-destination" title="Permanent link">&para;</a></h3>
+<p>ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--destination<span class="o">=</span>****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
+</code></pre></div>
+<p><br></p>
+<h2 id="04-pod">04. Pod上で実行する場合<a class="headerlink" href="#04-pod" title="Permanent link">&para;</a></h2>
 <h3 id="aws-ecr">AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -21597,11 +21665,8 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaniko</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcr.io/kaniko-project/executor:latest</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># コンテナ内でビルドしたいDockerfileのパスを設定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--dockerfile=./docker/Dockerfile&quot;</span>
-<span class="w">        </span><span class="c1"># 指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--context=.&quot;</span>
-<span class="w">        </span><span class="c1"># ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko&quot;</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-credentials</span>
@@ -21619,7 +21684,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-gitlab">04. GitLab上で実行する場合<a class="headerlink" href="#04-gitlab" title="Permanent link">&para;</a></h2>
+<h2 id="05-gitlab">05. GitLab上で実行する場合<a class="headerlink" href="#05-gitlab" title="Permanent link">&para;</a></h2>
 <h3 id="dockerhub">DockerHub<a class="headerlink" href="#dockerhub" title="Permanent link">&para;</a></h3>
 <p>DockerHubの認証情報は、エンコードした上で、あらかじめGitLab CIの変数 (<code>DOCKERHUB_TOKEN</code>) に設定しておく。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>USER:PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
