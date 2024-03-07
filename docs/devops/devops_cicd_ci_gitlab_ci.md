@@ -75,13 +75,15 @@ foo_job:
 
 #### ▼ `CI_COMMIT_TAG`
 
-タグの作成時にパイプラインを発火させる。
+現在のタグ名が割り当てられている。
+
+条件文と組み合わせれば、タグの作成時にパイプラインを発火させられる。
 
 #### ▼ `CI_PIPELINE_SOURCE`
 
 現在のパイプラインを発火させたイベント名 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
 
-タグの付与時にパイプラインを発火させる場合、`$CI_COMMIT_TAG`を使用する。
+タグの付与時にパイプラインを発火させる場合、`CI_COMMIT_TAG`変数を使用する。
 
 ```yaml
 foo_job:
@@ -102,6 +104,12 @@ foo_job:
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
 > - https://docs.gitlab.com/ee/ci/variables/predefined_variables.html
 > - https://docs.gitlab.com/ee/ci/jobs/job_control.html#common-if-clauses-for-rules
+
+#### ▼ `CI_PROJECT_DIR`
+
+GitLabの実行環境のルートディレクトリが割り当てられている。
+
+GitLabは、ルートディレクトリにGitLabリポジトリをクローンする。
 
 #### ▼ `GIT_SUBMODULE_STRATEGY`
 

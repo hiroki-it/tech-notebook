@@ -79,7 +79,7 @@ $ cat > /kaniko/.docker/config.json << EOF
 
 <br>
 
-## 03. Podの場合
+## 03. Pod上で実行する場合
 
 ### AWS ECR
 
@@ -114,7 +114,7 @@ spec:
 
 <br>
 
-## 04. GitLab
+## 04. GitLab上で実行する場合
 
 ### DockerHub
 
