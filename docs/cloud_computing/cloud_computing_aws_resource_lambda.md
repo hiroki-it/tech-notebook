@@ -333,3 +333,15 @@ Lambda@Edgeを実行するためには、最低限、以下の認可スコープ
 ```
 
 <br>
+
+## 03. Lambdaによるマイクロサービスアーキテクチャ
+
+Lambdaをマイクロサービス単位で稼働させる。
+
+ただ、Lambdaによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
+
+Kubernetes Cluster上でこれを稼働させることが推奨である。
+
+> - https://aws.amazon.com/jp/blogs/news/comparing-design-approaches-for-building-serverless-microservices/
+
+<br>

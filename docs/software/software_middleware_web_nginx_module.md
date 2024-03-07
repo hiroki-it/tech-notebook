@@ -13,7 +13,25 @@ description: モジュール＠Nginxの知見を記録しています。
 
 <br>
 
-## 01. gRPC
+## 01. モジュールの組み込み方
+
+### Docker
+
+```dockerfile
+FROM nginx:<バージョン>-alpine as builder
+
+...
+
+COPY --from=builder /usr/lib/nginx/modules/otel_ngx_module.so /usr/lib/nginx/modules/
+
+
+```
+
+> - https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile
+
+<br>
+
+## 02. gRPC
 
 ### gRPCパッケージ
 
@@ -24,6 +42,8 @@ nginxモジュールがgRPCを使用できるようにする。
 > - https://github.com/grpc/grpc
 
 #### ▼ ビルド
+
+パッケージをインポートする前に、ビルドする必要がある。
 
 ```bash
 $ git clone --shallow-submodules --depth 1 --recurse-submodules -b <バージョン> https://github.com/grpc/grpc
@@ -51,7 +71,7 @@ $ make install
 
 <br>
 
-## 02. OpenTelemetry
+## 03. OpenTelemetry
 
 ### opentelemetry-cppパッケージ
 
@@ -62,6 +82,8 @@ C++でNginxを計装できるようにする。
 > - https://github.com/open-telemetry/opentelemetry-cpp
 
 #### ▼ ビルド
+
+パッケージをインポートする前に、ビルドする必要がある。
 
 ```bash
 $ git clone --shallow-submodules --depth 1 --recurse-submodules -b <バージョン> https://github.com/open-telemetry/opentelemetry-cpp.git
@@ -104,6 +126,8 @@ gRPC Exporterを使用するために、gRPCパッケージが必要である。
 
 #### ▼ ビルド
 
+モジュールをインポートする前に、ビルドする必要がある。
+
 ```bash
 $ git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib.git
 $ cd opentelemetry-cpp-contrib/instrumentation/nginx
@@ -119,6 +143,12 @@ $ make -j2
 $ make install
 ```
 
+その後、`nginx.conf`ファイルでモジュールをインポートする。
+
+```nginx
+load_module /path/to/otel_ngx_module.so;
+```
+
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
 > - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
 
@@ -132,13 +162,22 @@ Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるように
 
 #### ▼ ビルド
 
+モジュールをインポートする前に、ビルドする必要がある。
+
 ```bash
 $ git clone https://github.com/nginxinc/nginx-otel.git
 $ cd nginx-otel
 $ mkdir build
 $ cd build
 $ cmake -DNGX_OTEL_NGINX_BUILD_DIR=/path/to/configured/nginx/objs ..
-$ make
+$ make -j2
+$ make install
+```
+
+その後、`nginx.conf`ファイルでモジュールをインポートする。
+
+```nginx
+load_module /path/to/ngx_otel_module.so;
 ```
 
 > - https://github.com/nginxinc/nginx-otel

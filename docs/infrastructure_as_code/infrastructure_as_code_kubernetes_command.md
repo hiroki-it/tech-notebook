@@ -1430,6 +1430,7 @@ $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 
 > - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
 > - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
+> - https://qiita.com/rururu_kenken/items/508ebef59e2f30d957dc
 
 <br>
 

@@ -142,15 +142,17 @@ ECSタスクは、必須コンテナ異常停止時、デプロイ、自動ス�
 
 <br>
 
-### マルチECSサービス
+### ECSによるマイクロサービスアーキテクチャ
 
-#### ▼ マルチECSサービスとは
+#### ▼ マルチECSサービス
 
-ECSクラスターが複数のECSサービスから構成される。
+ECSクラスターに複数のECSサービスを作成する。
 
-マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。
+ECSサービスをマイクロサービス単位で稼働させる。
 
-ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。
+ただ、ECSによるマイクロサービスアーキテクチャはアプリとインフラの責務を分離できないため、非推奨である。
+
+Kubernetes Cluster上でこれを稼働させることが推奨である。
 
 ![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png)
 
