@@ -21451,15 +21451,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#-dockerfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      --dockerfile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#-context" class="md-nav__link">
     <span class="md-ellipsis">
       --context
@@ -21472,6 +21463,24 @@
   <a href="#-destination" class="md-nav__link">
     <span class="md-ellipsis">
       --destination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      --dockerfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-no-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      --no-push
     </span>
   </a>
   
@@ -21629,16 +21638,6 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h2 id="03-kanikoexecutor">03. /kaniko/executorコマンド<a class="headerlink" href="#03-kanikoexecutor" title="Permanent link">&para;</a></h2>
-<h3 id="-dockerfile">--dockerfile<a class="headerlink" href="#-dockerfile" title="Permanent link">&para;</a></h3>
-<p>コンテナ内でビルドしたいDockerfileのパスを設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--dockerfile<span class="o">=</span>./docker/Dockerfile
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h3 id="-context">--context<a class="headerlink" href="#-context" title="Permanent link">&para;</a></h3>
 <p>指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--context<span class="o">=</span>.
@@ -21653,6 +21652,27 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <p>ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--destination<span class="o">=</span>****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
 </code></pre></div>
+<p><br></p>
+<h3 id="-dockerfile">--dockerfile<a class="headerlink" href="#-dockerfile" title="Permanent link">&para;</a></h3>
+<p>コンテナ内でビルドしたいDockerfileのパスを設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--dockerfile<span class="o">=</span>./docker/Dockerfile
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-no-push">--no-push<a class="headerlink" href="#-no-push" title="Permanent link">&para;</a></h3>
+<p>コンテナ内でビルドしたコンテナイメージをプッシュしない。</p>
+<p>ビルドのみを実行したい場合に使用する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--no-push
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---no-push">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---no-push</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04-pod">04. Pod上で実行する場合<a class="headerlink" href="#04-pod" title="Permanent link">&para;</a></h2>
 <h3 id="aws-ecr">AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h3>
