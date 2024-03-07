@@ -17,6 +17,12 @@ description: モジュール＠Nginxの知見を記録しています。
 
 ### grpcモジュール
 
+#### ▼ grpcモジュールとは
+
+NginxがgRPCを使えるようにする。
+
+> - https://github.com/grpc/grpc
+
 #### ▼ ビルド
 
 ```bash
@@ -48,6 +54,12 @@ $ make install
 
 ### opentelemetry-cppモジュール
 
+#### ▼ opentelemetry-cppモジュールとは
+
+記入中...
+
+> - https://github.com/open-telemetry/opentelemetry-cpp
+
 #### ▼ ビルド
 
 ```bash
@@ -77,6 +89,12 @@ $ make install
 <br>
 
 ### opentelemetry-cpp-contribモジュール
+
+#### ▼ opentelemetry-cpp-contribモジュールとは
+
+記入中...
+
+> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
 
 #### ▼ ビルド
 
