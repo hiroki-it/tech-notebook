@@ -2251,6 +2251,7 @@ class DogOrder
 そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。
 
 > - https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+> - https://codezine.jp/article/detail/10776
 
 <br>
 
@@ -2314,6 +2315,7 @@ class DogOrder
 これにより、ルートエンティティとDBテーブルを別々に設計できる。
 
 > - https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
+> - https://codezine.jp/article/detail/10776
 
 #### ▼ インターフェースリポジトリ
 

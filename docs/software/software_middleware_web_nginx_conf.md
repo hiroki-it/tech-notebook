@@ -63,12 +63,6 @@ include /etc/nginx/conf.d/*.conf;
 include  /usr/share/nginx/modules/*.conf;
 ```
 
-例えば、`mod-http-image-filter.conf`ファイルの内容は以下の通り。
-
-```nginx
-load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
-```
-
 <br>
 
 ### `/etc/nginx/mime.types`ファイル
@@ -182,6 +176,16 @@ error_log  logs/error.log;
 ```nginx
 include /etc/nginx/conf.d/*.conf;
 ```
+
+#### ▼ load_module
+
+あらかじめビルドしておいたモジュール (`so`ファイル) を読み込む。
+
+```nginx
+load_module "modules/<soファイル名>";
+```
+
+> - https://nginx.org/en/docs/ngx_core_module.html#load_module
 
 #### ▼ pid
 
