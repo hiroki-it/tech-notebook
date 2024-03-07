@@ -73,7 +73,10 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
+OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475
 
 <br>
 

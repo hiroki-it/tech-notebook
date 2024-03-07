@@ -392,7 +392,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
-	// OpenTelemetryコレクターでW3C形式からX-ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
+	// OpenTelemetryコレクターでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resourceWithAttributes),

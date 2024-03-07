@@ -54,11 +54,11 @@ EKSでDamonSetとして稼働させる。
 
 #### ▼ サンプリング
 
-| 項目                | 説明                                               |
-| ------------------- | -------------------------------------------------- |
-| Limits              | スパンの収集に関する上限値を設定する。             |
-| Matching Criteria   | スパンのキーに基づくフィルタリング条件を設定する。 |
-| Matching attributes | 記入中...                                          |
+| 項目                | 説明                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| Limits              | スパンの収集に関する上限値を設定する。                                                |
+| Matching Criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                              |
+| Matching attributes | AWS以外の文脈で付与されたラベル (例：OpenTelemetryのAttribute) の一致条件を設定する。 |
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
 
@@ -194,7 +194,7 @@ EKSでDamonSetとして稼働させる。
 
 <br>
 
-### フィルター
+### フィルター式
 
 #### ▼ デフォルト
 
@@ -269,10 +269,12 @@ Annotation.component = "<コンポーネント名>"
 各言語のSDKの関数でラベルを設定できる。
 
 ```go
+// Goの場合
 xray.AddAnnotation("component", value)
 ```
 
 ```python
+# Pythonの場合
 subsegment.put_annotation("component", value)
 ```
 
