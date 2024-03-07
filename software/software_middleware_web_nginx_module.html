@@ -2178,13 +2178,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-grpc" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. gRPC
+      01. モジュールの組み込み方
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. gRPC">
+    <nav class="md-nav" aria-label="01. モジュールの組み込み方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. gRPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. gRPC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2226,13 +2250,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-opentelemetry" class="md-nav__link">
+  <a href="#03-opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      02. OpenTelemetry
+      03. OpenTelemetry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. OpenTelemetry">
+    <nav class="md-nav" aria-label="03. OpenTelemetry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21597,13 +21621,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-grpc" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. gRPC
+      01. モジュールの組み込み方
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. gRPC">
+    <nav class="md-nav" aria-label="01. モジュールの組み込み方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. gRPC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. gRPC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21645,13 +21693,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-opentelemetry" class="md-nav__link">
+  <a href="#03-opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      02. OpenTelemetry
+      03. OpenTelemetry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. OpenTelemetry">
+    <nav class="md-nav" aria-label="03. OpenTelemetry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21785,7 +21833,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-grpc">01. gRPC<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. モジュールの組み込み方<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:&lt;バージョン&gt;-alpine</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder</span>
+
+...
+
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/usr/lib/nginx/modules/otel_ngx_module.so<span class="w"> </span>/usr/lib/nginx/modules/
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile">https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-grpc">02. gRPC<a class="headerlink" href="#02-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCパッケージ<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_1">▼ gRPCパッケージとは<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
 <p>nginxモジュールがgRPCを使用できるようにする。</p>
@@ -21795,6 +21857,7 @@
 </ul>
 </blockquote>
 <h4 id="_2">▼ ビルド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>パッケージをインポートする前に、ビルドする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--shallow-submodules<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>https://github.com/grpc/grpc
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>grpc
 $<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>cmake/build
@@ -21821,7 +21884,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-opentelemetry">02. OpenTelemetry<a class="headerlink" href="#02-opentelemetry" title="Permanent link">&para;</a></h2>
+<h2 id="03-opentelemetry">03. OpenTelemetry<a class="headerlink" href="#03-opentelemetry" title="Permanent link">&para;</a></h2>
 <h3 id="opentelemetry-cpp">opentelemetry-cppパッケージ<a class="headerlink" href="#opentelemetry-cpp" title="Permanent link">&para;</a></h3>
 <h4 id="opentelemetry-cpp_1">▼ opentelemetry-cppパッケージとは<a class="headerlink" href="#opentelemetry-cpp_1" title="Permanent link">&para;</a></h4>
 <p>C++でNginxを計装できるようにする。</p>
@@ -21831,6 +21894,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 </ul>
 </blockquote>
 <h4 id="_3">▼ ビルド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>パッケージをインポートする前に、ビルドする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--shallow-submodules<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--recurse-submodules<span class="w"> </span>-b<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>https://github.com/open-telemetry/opentelemetry-cpp.git
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>opentelemetry-cpp
 $<span class="w"> </span>mkdir<span class="w"> </span>build
@@ -21869,6 +21933,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 </ul>
 </blockquote>
 <h4 id="_4">▼ ビルド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>モジュールをインポートする前に、ビルドする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/open-telemetry/opentelemetry-cpp-contrib.git
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>opentelemetry-cpp-contrib/instrumentation/nginx
 $<span class="w"> </span>mkdir<span class="w"> </span>build
@@ -21882,6 +21947,9 @@ $<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span cl
 $<span class="w"> </span>make<span class="w"> </span>-j2
 $<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
+<p>その後、<code>nginx.conf</code>ファイルでモジュールをインポートする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/path/to/otel_ngx_module.so</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801</a></li>
@@ -21893,12 +21961,17 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <h4 id="ngx_otel_module_1">▼ ngx_otel_moduleモジュールとは<a class="headerlink" href="#ngx_otel_module_1" title="Permanent link">&para;</a></h4>
 <p>Nginxコミュニティ製で、NginxをOpenTelemetryで計装できるようにする。</p>
 <h4 id="_5">▼ ビルド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>モジュールをインポートする前に、ビルドする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nginx-otel
 $<span class="w"> </span>mkdir<span class="w"> </span>build
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 $<span class="w"> </span>cmake<span class="w"> </span>-DNGX_OTEL_NGINX_BUILD_DIR<span class="o">=</span>/path/to/configured/nginx/objs<span class="w"> </span>..
-$<span class="w"> </span>make
+$<span class="w"> </span>make<span class="w"> </span>-j2
+$<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>その後、<code>nginx.conf</code>ファイルでモジュールをインポートする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/path/to/ngx_otel_module.so</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
