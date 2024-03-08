@@ -579,13 +579,22 @@ data:
 
 ### cluster-<エンドポイントURL>とは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterのServiceAccountとapplication-controllerを紐付ける必要がある。
+ArgoCDのapplication-controllerがデプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterのServiceAccountとapplication-controllerを紐付ける必要がある。
 
 ArgoCDのapplication-controllerは、`cluster-<エンドポイントURL>`というSecretを介して、デプロイ先のServiceAccountと紐づく。
 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
+> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
+
+<br>
+
+### AWS EKSの場合
+
+AWS EKSの場合、
+
 **例**
 
-デプロイ先のClusterがEKSの場合は、以下のようなSecretが作成される。
+デプロイ先のClusterがAWS EKSの場合は、以下のようなSecretが作成される。
 
 ```yaml
 apiVersion: v1
@@ -602,6 +611,8 @@ data:
   config: |
     awsAuthConfig:
       clusterName: <デプロイ先のCluster名>
+      # IRSAでArgoCDのPodに紐づくIAMロール
+      roleARN: arn:aws:iam::<AWSアカウントID>:role/foo-role
     tlsClientConfig:
       insecure: "false"
       caData: <HTTPSに必要なSSL証明書>
@@ -609,29 +620,7 @@ data:
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  annotations:
-    managed-by: argocd.argoproj.io
-  labels:
-    argocd.argoproj.io/secret-type: cluster
-  name: cluster-<エンドポイントURL>
-  namespace: argocd
-type: Opaque
-data:
-  config: |
-    awsAuthConfig: <ServiceAccountのトークン>
-    tlsClientConfig:
-      insecure: "false"
-      caData: <HTTPSに必要なSSL証明書>
-  name: foo-cluster
-  server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
-```
-
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
-> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#eks
 
 <br>
 
