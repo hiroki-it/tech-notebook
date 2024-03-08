@@ -15,9 +15,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ## 01. アーキテクチャ概要
 
-### バックエンドのアーキテクチャの歴史
-
-#### ▼ マイクロサービスアーキテクチャを取り巻く環境
+### アーキテクチャの歴史
 
 ![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_history.png)
 
@@ -31,7 +29,9 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 > - https://tech-blog.rakus.co.jp/entry/20201218/architecture
 
-#### ▼ モジュール/マイクロサービスの粒度の比較
+<br>
+
+### 各アーキテクチャの粒度の比較
 
 ![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_deployment_comparison.png)
 
@@ -46,7 +46,26 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-### マイクロサービスアーキテクチャの特徴
+### プレゼンテーションドメイン分離
+
+モノリシックの段階では、フロントエンドとバックエンドが1つのアプリケーションで密結合になっている。
+
+フロントエンドとバックエンドを分離した段階では、フロントエンドとバックエンドが異なるアプリケーションとして分離される。
+
+マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションとAPIアグリゲーション層に分離される。
+
+![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
+
+> - https://cloud.google.com/architecture/devops/devops-tech-architecture
+> - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
+> - https://bliki-ja.github.io/PresentationDomainSeparation/
+> - https://tech.mti.co.jp/entry/2021/04/12/112833
+
+<br>
+
+## 01-02. マイクロサービスアーキテクチャ
+
+### 特徴
 
 #### ▼ ビジネスのスケーリングに強い
 
@@ -72,7 +91,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-### マイクロサービスアーキテクチャのフレームワーク
+### フレームワーク
 
 #### ▼ dapr
 
@@ -242,26 +261,7 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-## 04. API アグリゲーション層
-
-### プレゼンテーションドメイン分離
-
-![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
-
-アプリケーションには3つの段階がある。
-
-モノリスの段階では、フロントエンドとバックエンドが1つのアプリケーションで密結合になっている。
-
-フロントエンドとバックエンドを分離した段階では、フロントエンドとバックエンドが異なるアプリケーションとして分離される。
-
-マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションに分離される。
-
-> - https://cloud.google.com/architecture/devops/devops-tech-architecture
-> - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
-> - https://bliki-ja.github.io/PresentationDomainSeparation/
-> - https://tech.mti.co.jp/entry/2021/04/12/112833
-
-<br>
+## 04. APIアグリゲーション層
 
 ### API Gateway
 
@@ -296,11 +296,9 @@ API Gatewayの責務をどのように分割するかに応じて、分割パタ
 
 #### ▼ BFF：Backends For Frontends
 
-マイクロサービスにリクエストを送信するアプリケーションの種類 (Webアプリケーション、Mobileアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
+マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
 
-ただし、複数のクライアントをWebアプリとして開発することもできる。
-
-そのため、同じWebからのリクエストであっても、異なるAPI Gatewayを作成する場合がある。
+ただし、ドメインによっては同じクライアントアプリケーション (`toB`モバイルアプリケーション、`toC`モバイルアプリケーション) を異なるAPI Gatewayとして分割することもある。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
