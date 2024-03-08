@@ -276,13 +276,13 @@ data:
 > - https://www.karakaram.com/eks-system-masters-group/
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
-#### ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes RBACとの連携
+#### ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作
 
-プリンシパルIAMロールとアクセスエントリーを介して、KubernetesのRBACと連携することにより、`kubectl`クライアントの認可スコープを制御する。
+プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。
 
-Kubernetesリソースの認可スコープは、IAMポリシーで制御する。
+プリンシパルIAMロールに紐づくPodがAWS EKSにアクセスする時に、アクセスエントリーが動的にIAMポリシーを設定する。
 
-従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。
+プリンシパルIAMロールとアクセスエントリーを介して、`kubectl`クライアントの認可スコープを制御する。
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 > - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/

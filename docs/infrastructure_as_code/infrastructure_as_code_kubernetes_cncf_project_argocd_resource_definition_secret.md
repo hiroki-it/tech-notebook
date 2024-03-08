@@ -624,9 +624,11 @@ data:
 
 <br>
 
-### セットアップ
+## 06-02. セットアップ
 
-#### ▼ AWS EKS Clusterの場合
+### AWS EKS Clusterの場合
+
+#### ▼ 手順
 
 ArgoCDがClusterをポーリングするためには、ArgoCDにClusterの認証情報を登録する必要がある。
 
@@ -713,5 +715,15 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 > - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
+
+#### ▼ プリンシパルIAMロールとアクセスエントリー
+
+AWS EKSアクセスエントリーを使用する場合、`argocd cluster add`コマンドは不要になる。
+
+まず、argocd-serverとapplication-controllerのPodのServiceAccountにIRSA用のIAMプリンシパルロールを紐づける。
+
+プリンシパルIAMロールに紐づくPodがAWS EKSにアクセスする時に、アクセスエントリーが動的にIAMポリシーを設定する。
+
+> - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
 
 <br>
