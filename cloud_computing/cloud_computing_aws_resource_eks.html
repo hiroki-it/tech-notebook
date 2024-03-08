@@ -11078,9 +11078,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iamkubernetes-rbac" class="md-nav__link">
+  <a href="#iamkubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes RBACとの連携
+      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作
     </span>
   </a>
   
@@ -22826,9 +22826,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iamkubernetes-rbac" class="md-nav__link">
+  <a href="#iamkubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes RBACとの連携
+      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作
     </span>
   </a>
   
@@ -24200,10 +24200,10 @@
 <li><a href="https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88">https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88</a></li>
 </ul>
 </blockquote>
-<h4 id="iamkubernetes-rbac">▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes RBACとの連携<a class="headerlink" href="#iamkubernetes-rbac" title="Permanent link">&para;</a></h4>
-<p>プリンシパルIAMロールとアクセスエントリーを介して、KubernetesのRBACと連携することにより、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
-<p>Kubernetesリソースの認可スコープは、IAMポリシーで制御する。</p>
-<p>従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。</p>
+<h4 id="iamkubernetes-cluster">▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作<a class="headerlink" href="#iamkubernetes-cluster" title="Permanent link">&para;</a></h4>
+<p>プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。</p>
+<p>プリンシパルIAMロールに紐づくPodがAWS EKSにアクセスする時に、アクセスエントリーが動的にIAMポリシーを設定する。</p>
+<p>プリンシパルIAMロールとアクセスエントリーを介して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/">https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/</a></li>
