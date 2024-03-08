@@ -22785,13 +22785,15 @@
 </ul>
 </blockquote>
 <h4 id="bffbackends-for-frontends">▼ BFF：Backends For Frontends<a class="headerlink" href="#bffbackends-for-frontends" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。</p>
-<p>ただし、ドメインによっては同じクライアントアプリケーション (<code>toB</code>モバイルアプリケーション、<code>toC</code>モバイルアプリケーション) を異なるAPI Gatewayとして分割することもある。</p>
+<p>マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) を単位として、API Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。</p>
+<p>ただし、ドメインによっては同じクライアントアプリケーションの種類であっても、API Gatewayを分割することもある。</p>
+<p>例えば、送金ドメインであれば、クライアントアプリケーションには銀行ダイレクトアプリや銀行系決済サービスアプリがあり、これらが同じモバイルアプリケーションであっても、API Gatewayを分割する。</p>
 <p><img alt="apigateway_bff-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
 <li><a href="https://codezine.jp/article/detail/11305?p=4">https://codezine.jp/article/detail/11305?p=4</a></li>
+<li><a href="https://www.watch.impress.co.jp/docs/news/1339451.html">https://www.watch.impress.co.jp/docs/news/1339451.html</a></li>
 </ul>
 </blockquote>
 <h4 id="federated-gateway">▼ Federated Gateway<a class="headerlink" href="#federated-gateway" title="Permanent link">&para;</a></h4>
