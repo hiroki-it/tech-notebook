@@ -296,14 +296,17 @@ API Gatewayの責務をどのように分割するかに応じて、分割パタ
 
 #### ▼ BFF：Backends For Frontends
 
-マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
+マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) を単位として、API Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
 
-ただし、ドメインによっては同じクライアントアプリケーション (`toB`モバイルアプリケーション、`toC`モバイルアプリケーション) を異なるAPI Gatewayとして分割することもある。
+ただし、ドメインによっては同じクライアントアプリケーションの種類であっても、API Gatewayを分割することもある。
+
+例えば、送金ドメインであれば、クライアントアプリケーションには銀行ダイレクトアプリや銀行系決済サービスアプリがあり、これらが同じモバイルアプリケーションであっても、API Gatewayを分割する。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4
+> - https://www.watch.impress.co.jp/docs/news/1339451.html
 
 #### ▼ Federated Gateway
 
