@@ -22,3 +22,11 @@ description: Redshift＠AWSリソースの知見を記録しています。
 データベースよりも柔軟性の高い保存形式で処理済みのデータを管理できる。
 
 <br>
+
+### 高速処理
+
+Apache Sparkを使用して、大きなサイズのデータを高速に並列処理できる。
+
+> - https://aws.amazon.com/jp/blogs/news/new-amazon-redshift-integration-with-apache-spark/
+
+<br>

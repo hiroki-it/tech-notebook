@@ -91,6 +91,67 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
+### 分割例
+
+#### ▼ Eコマース (Googleのサンプル)
+
+`src`ディレクトリに各マイクロサービスのディレクトリを配置する。
+
+- カート
+- 商品検索とインデックス
+- 通貨の変換
+- クレジットカード
+- 送料と発送
+- 注文確認メール
+- 注文フロー
+- レコメンド
+- 広告
+- 合成監視
+
+![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)
+
+> - https://github.com/GoogleCloudPlatform/microservices-demo
+
+#### ▼ Eコマース (メルカリのサンプル)
+
+`services`ディレクトリに各マイクロサービスのディレクトリを配置する。
+
+- 認証
+- カタログ
+- 顧客
+- 商品
+
+![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)
+
+> - https://github.com/mercari/mercari-microservices-example
+
+#### ▼ Eコマース (Datadogのサンプル)
+
+- 広告
+- 割引
+
+> - https://github.com/DataDog/ecommerce-workshop
+
+#### ▼ Eコマース (Amazon)
+
+![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
+
+> - https://www.codekarle.com/system-design/Amazon-system-design.html
+
+#### ▼ SNS (Twitter)
+
+![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)
+
+> - https://www.codekarle.com/system-design/Twitter-system-design.html
+
+#### ▼ 地図 (GoogleMap)
+
+![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
+
+> - https://www.codekarle.com/system-design/Google_Maps-system-design.html
+
+<br>
+
 ### フレームワーク
 
 #### ▼ dapr
@@ -141,17 +202,6 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 <br>
 
 ### 分割パターン
-
-#### ▼ 分割例
-
-| ユースケース                   | 分割方法                   | マイクロサービスの種類                                                                                                                                                 | ディレクトリ構成規約                                                 | リンク                                                                                                                                                                                                 |
-| ------------------------------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Eコマース (Googleのサンプル)   | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | `src`ディレクトリに各マイクロサービスのディレクトリを配置する。      | ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)<br>https://github.com/GoogleCloudPlatform/microservices-demo                      |
-| Eコマース (メルカリのサンプル) | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                                                               | `services`ディレクトリに各マイクロサービスのディレクトリを配置する。 | ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)<br>https://github.com/mercari/mercari-microservices-example                     |
-| Eコマース (Datadpgのサンプル)  | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                                                                                       | ルートに各マイクロサービスのディレクトリを配置する。                 | ・https://github.com/DataDog/ecommerce-workshop                                                                                                                                                        |
-| Eコマース (Amazon)             | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)<br>https://www.codekarle.com/system-design/Amazon-system-design.html             |
-| SNS (Twitter)                  | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)<br>https://www.codekarle.com/system-design/Twitter-system-design.html           |
-| 地図 (GoogleMap)               | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)<br>https://www.codekarle.com/system-design/Google_Maps-system-design.html |
 
 #### ▼ サブドメイン単位/境界付けられたコンテキスト単位
 
