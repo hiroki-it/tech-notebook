@@ -401,9 +401,9 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-### API Gateway
+## 04-02. API Gatewayとは
 
-#### ▼ API Gatewayとは
+### API Gatewayとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
@@ -422,13 +422,21 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 ### 設計パターン
 
+#### ▼ API Gatewayの設計パターンとは
+
+API GatewayのAPI形式に応じて、分割パターンがある。
+
 #### ▼ RESTful-API
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+記入中...
 
 #### ▼ GraphQL-API
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html
+記入中...
+
+#### ▼ RPC-API
+
+記入中...
 
 <br>
 
@@ -462,7 +470,11 @@ Kubernetes内で管理できるメリットがある。
 
 <br>
 
-### 配置パターン
+### 分割パターン
+
+#### ▼ API Gatewayの分割パターンとは
+
+API Gatewayの責務をどのように分割するかに応じて、分割パターンがある。
 
 #### ▼ Public API
 
