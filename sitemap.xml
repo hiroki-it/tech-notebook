@@ -1926,6 +1926,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html</loc>
+         <lastmod>2024-03-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_network.html</loc>
          <lastmod>2024-03-08</lastmod>
          <changefreq>daily</changefreq>
