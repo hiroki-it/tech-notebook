@@ -1728,7 +1728,25 @@
           <li class="md-nav__item">
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リポジトリ単位 (ルートエンティティ単位)
+      ▼ ドメイン層と同じマイクロサービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
     </span>
   </a>
   
@@ -1755,7 +1773,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       プレゼンテーションドメイン分離
     </span>
@@ -1773,7 +1791,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       分割パターン
     </span>
@@ -1875,7 +1893,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -1885,7 +1903,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装
     </span>
@@ -1903,7 +1921,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用
     </span>
@@ -22188,7 +22206,25 @@
           <li class="md-nav__item">
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リポジトリ単位 (ルートエンティティ単位)
+      ▼ ドメイン層と同じマイクロサービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)
     </span>
   </a>
   
@@ -22215,7 +22251,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       プレゼンテーションドメイン分離
     </span>
@@ -22233,7 +22269,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       分割パターン
     </span>
@@ -22335,7 +22371,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -22345,7 +22381,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装
     </span>
@@ -22363,7 +22399,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ クラウドプロバイダーのマネージドサービスを使用
     </span>
@@ -22683,19 +22719,29 @@
 <p><br></p>
 <h2 id="03">03. リポジトリ層<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_22">分割パターン<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<h4 id="_23">▼ リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>リポジトリを単位として、マイクロサービスを分割する。</p>
-<p>DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、リポジトリは実際にはルートエンティティに対応している。</p>
-<p>そのため、ルートエンティティ単位で分割すると言い換えても良い。</p>
-<p>マイクロサービス数が多くなることがデメリット (経験済み)。</p>
+<h4 id="_23">▼ ドメイン層と同じマイクロサービス<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>ドメイン層と同じマイクロサービス内で実行する。</p>
+<p>最も一般的な分割パターンである。</p>
+<h4 id="_24">▼ ドメイン層とは異なるマイクロサービス + 占有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
+<p>また、占有リポジトリを単位としてマイクロサービスを分割する。</p>
+<p>ドメイン駆動設計では、DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行する。</p>
+<p>そのため、リポジトリは実際にはルートエンティティに対応しており、ルートエンティティ単位で分割すると言い換えても良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://codezine.jp/article/detail/10776">https://codezine.jp/article/detail/10776</a></li>
 </ul>
 </blockquote>
+<h4 id="_25">▼ ドメイン層とは異なるマイクロサービス + 共有リポジトリ単位 (ルートエンティティ単位)<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>ドメイン層とは異なるマイクロサービス内で実行する。</p>
+<p>また、共有リポジトリを単位としてマイクロサービスを分割する。</p>
+<p>ただ、境界付けられたコンテキストは他のコンテキストとは異なるルートエンティティを持つので、リポジトリも完全に独立しているはずである。</p>
+<p>そのため、異なる境界付けられたコンテキストのマイクロサービスが、同じリポジトリを共有することは起こらないはずである。</p>
+<p>逆に言うと、複数のマイクロサービスがリポジトリを共有している場合、それらのマイクロサービスは同じコンテキストに属しており、分割する必要がないということになる。</p>
+<p>これらのことから、この分割パターンはあまり良くない (出典は俺) 。</p>
 <p><br></p>
 <h2 id="04-api">04. API アグリゲーション層<a class="headerlink" href="#04-api" title="Permanent link">&para;</a></h2>
-<h3 id="_24">プレゼンテーションドメイン分離<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_26">プレゼンテーションドメイン分離<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p><img alt="presentation_domain_separation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png" /></p>
 <p>アプリケーションには3つの段階がある。</p>
 <p>モノリスの段階では、フロントエンドとバックエンドが1つのアプリケーションで密結合になっている。</p>
@@ -22727,7 +22773,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_25">分割パターン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h3 id="_27">分割パターン<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="api-gateway_1">▼ API Gatewayの分割パターンとは<a class="headerlink" href="#api-gateway_1" title="Permanent link">&para;</a></h4>
 <p>API Gatewayの責務をどのように分割するかに応じて、分割パターンがある。</p>
 <h4 id="public-api">▼ Public API<a class="headerlink" href="#public-api" title="Permanent link">&para;</a></h4>
@@ -22769,8 +22815,8 @@
 <h4 id="rpc-api">▼ RPC-API<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="_26">実装パターン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<h4 id="_27">▼ 自前で実装<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<h3 id="_28">実装パターン<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="_29">▼ 自前で実装<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>API Gatewayを自前 (例：フルスクラッチ、Nginx、など) で実装する。</p>
 <p>Kubernetes内で管理できるメリットがある。</p>
 <blockquote>
@@ -22786,7 +22832,7 @@
 <li><a href="https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/">https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/</a></li>
 </ul>
 </blockquote>
-<h4 id="_28">▼ クラウドプロバイダーのマネージドサービスを使用<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<h4 id="_30">▼ クラウドプロバイダーのマネージドサービスを使用<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPI Gatewayを使用する。</p>
 <p>クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。</p>
 <p>その場合、フロントエンドアプリケーションがAPI Gatewayに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。</p>
@@ -22816,7 +22862,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-09</span>
   </span>
 
     
