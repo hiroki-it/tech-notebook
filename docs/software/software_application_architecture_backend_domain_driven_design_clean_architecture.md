@@ -2252,6 +2252,7 @@ class DogOrder
 
 > - https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 > - https://codezine.jp/article/detail/10776
+> - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design#define-one-repository-per-aggregate
 
 <br>
 

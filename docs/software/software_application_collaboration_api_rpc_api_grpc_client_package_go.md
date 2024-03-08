@@ -17,10 +17,6 @@ description: Go＠クライアントパッケージの知見を記録してい�
 
 ### サーバー側
 
-#### ▼ プロトコルバッファー自動作成ツール
-
-記入中...
-
 #### ▼ gRPCサーバー
 
 リモートプロシージャーコールを受け付けるサーバーを定義する。
@@ -46,6 +42,17 @@ GoのgRPCサーバーをリモートプロシージャーコールする。
 <br>
 
 ### gRPCクライアントとgRPCサーバーの両方
+
+#### ▼ プロトコルバッファー自動作成ツール
+
+```bash
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
+
+> - https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09
+> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
 
 #### ▼ `proto`ファイル
 
@@ -459,18 +466,6 @@ func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamSe
 <br>
 
 ## 04. サーバー側
-
-### プロトコルバッファー自動作成ツール
-
-```bash
-$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-
-$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-```
-
-> - https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09
-
-<br>
 
 ### gRPCサーバー (インターセプターがない場合)
 

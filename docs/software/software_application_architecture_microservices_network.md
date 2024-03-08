@@ -121,3 +121,21 @@ MS # 15秒
 ```
 
 <br>
+
+## 03. 障害対策
+
+### ロードバランシング
+
+#### ▼ サーキットブレイカー
+
+アップストリーム側マイクロサービスに障害が発生した時に、ダウンストリーム側マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
+
+マイクロサービス間に配置され、他のマイクロサービスに連鎖的に起こる障害 (カスケード障害) を吸収する仕組みのこと。
+
+blast-radiusを最小限にできる。
+
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
+
+> - https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
+
+<br>

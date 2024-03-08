@@ -13,7 +13,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-## 01. イントロダクション
+## 01. アーキテクチャ概要
 
 ### バックエンドのアーキテクチャの歴史
 
@@ -81,171 +81,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-## 02. リポジトリや開発プロジェクトの粒度
-
-### リポジトリの分割
-
-#### ▼ リポジトリ分割のメリット
-
-リポジトリを分割することにより、以下のメリットがある。
-
-- 認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。
-
-ただし、バージョン管理システム (例：GitHub) によっては、リポジトリのディレクトリ単位で認可スコープを設定できるものがある。
-
-> - https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-> - https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f
-
-#### ▼ モノリポジトリ
-
-バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) 、を`1`個のリポジトリでディレクトリで分割して管理する。
-
-ただし、バックエンド/フロントエンド/IaCツールは異なるモノリポジトリとしても良い。
-
-Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されており、自前のバージョン管理システム (Piper/CitC) を使用している。
-
-その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter、など) でもモノリポを採用している。
-
-![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
-
-> - https://en.wikipedia.org/w/index.php?title=Monorepo
-> - https://www.fourtheorem.com/blog/monorepo
-> - https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html
-
-#### ▼ ポリリポジトリ
-
-バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) 、をそれぞれ異なるリポジトリで管理する。
-
-![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png)
-
-> - https://www.fourtheorem.com/blog/monorepo
-
-<br>
-
-### アプリケーションリポジトリ
-
-#### ▼ 開発環境
-
-アプリエンジニアとインフラエンジニアの責務を完全に分離する場合、アプリエンジニアはIaCツールの存在を知る必要がない。
-
-ただし便宜上、アプリエンジニアはDocker compose使用して開発すると良い。
-
-各マイクロサービスに`docker-compose.yml`ファイルを置き、基本的には他のマイクロサービスには依存せずに開発可能にする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。
-
-ただし、マイクロサービス間のネットワークを繋げないと、マイクロサービス間でパケットを送受信できない。そのため、Docker composeの`external`オプションを使用して、マイクロサービス間のネットワークを接続する。
-
-この時に、開発環境でサービスメッシュを使用している場合、マイクロサービス間の通信で名前解決しやすい。
-
-一方で、これを使用していない場合、開発環境のみでコンテナのホスト名を指定する。
-
-```yaml
-# モノリポジトリの場合
-backend_mono_repository/
-├── src/
-│   ├── foo/
-│   │   ├── docker-compose.yml
-│   │   ├── Dockerfile
-│   │   ...
-│   │
-│   ├── bar/
-│   └── baz/
-│
-```
-
-```yaml
-# モノリポジトリの場合
-frontend_mono_repository/
-├── src/
-│   ├── qux/
-│   │   ├── docker-compose.yml
-│   │   ├── Dockerfile
-│   │   ...
-│   │
-│   ├── quux/
-│   └── corge/
-│
-```
-
-#### ▼ エディタ
-
-多くのエディタでは、専用の設定ファイルがプロジェクトのルートディレクトリに置かれる。
-
-基本的には、他のマイクロサービスには依存せずに開発可能にする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。
-
-そこで、各マイクロサービスにエディタの設定ファイルを置くようにする。
-
-```yaml
-# バックエンドモノリポジトリの場合
-# JetBrains製品をエディタとする場合
-backend_mono_repository/
-├── src/
-│   ├── foo/
-│   │   ├── .idea/
-│   │   ...
-│   │
-│   ├── bar/
-│   └── baz/
-│
-```
-
-```yaml
-# フロントエンドモノリポジトリの場合
-# JetBrains製品をエディタとする場合
-frontend_mono_repository/
-├── src/
-│   ├── qux/
-│   │   ├── .idea/
-│   │   ...
-│   │
-│   ├── quux/
-│   └── corge/
-│
-```
-
-<br>
-
-### コンテナIaCツールリポジトリ
-
-#### ▼ 開発環境
-
-IaCツールにKubernetesを使用した場合を示す。
-
-開発環境でKubernetesを稼働させる場合、Skaffoldなどのコンテナイメージビルドツールを使用すると良い。
-
-この時、コンテナイメージのビルドのために、アプリケーションリポジトリにあるDockerfileを指定する必要がある。
-
-開発環境では同じ階層にリポジトリを置いておき、ビルドツールで相対パスを指定することにより、同階層のアプリケーションリポジトリを参照可能にする。
-
-```yaml
-project/
-├── backend_mono_repository
-├── frontend_mono_repository
-└── manifests_repository # コンテナのIaCツールを管理するリポジトリ
-    ├── skaffold.yaml # 相対パスを設定し、mono_repositoryを参照可能にする。
-    ├── argocd/
-    ├── kubernetes/
-    ├── istio/
-    ...
-```
-
-<br>
-
-### クラウドインフラIaCツールリポジトリ
-
-IaCツールにTerraformを使用した場合を示す。
-
-```yaml
-# クラウドインフラのIaCツールを管理するリポジトリ
-infrastructure_repository/
-├── modules/
-├── prd/
-├── stg/
-│
-```
-
-<br>
-
-## 03. 各マイクロサービスの粒度
+## 02. ドメイン層
 
 ### マイクロサービス
 
@@ -341,16 +177,6 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 > - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
 > - https://www.infoq.com/news/2017/12/entity-services-antipattern/
 
-#### ▼ ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)
-
-ドメイン層は境界付けられたコンテキスト単位で分割し、他のレイヤーは様々な単位で分割する。
-
-DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、インフラ層のリポジトリはルートエンティティ単位で分割する。
-
-マイクロサービス数が多くなることがデメリット (経験済み)。
-
-> - https://codezine.jp/article/detail/10776
-
 <br>
 
 ### 分割例
@@ -380,9 +206,23 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-## 04. プレゼンテーションドメイン分離
+## 03. リポジトリ層
 
-### プレゼンテーションドメイン分離とは
+### ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)
+
+ドメイン層は境界付けられたコンテキスト単位で分割し、他のレイヤーは様々な単位で分割する。
+
+DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、インフラ層のリポジトリはルートエンティティ単位で分割する。
+
+マイクロサービス数が多くなることがデメリット (経験済み)。
+
+> - https://codezine.jp/article/detail/10776
+
+<br>
+
+## 04. API アグリゲーション層
+
+### プレゼンテーションドメイン分離
 
 ![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
 
@@ -401,9 +241,7 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-## 04-02. API Gatewayとは
-
-### API Gatewayとは
+### API Gateway
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
@@ -504,23 +342,5 @@ BFFではアプリケーションの種類ごとにAPI　Gatewayを作成した�
 > - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
 > - https://tech.smartshopping.co.jp/backend-development-with-graphql
 > - https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32
-
-<br>
-
-## 05. マイクロサービスのアーキテクチャ特性を高める方法
-
-### 可用性の場合
-
-#### ▼ サーキットブレイカー
-
-マイクロサービス間に配置され、他のマイクロサービスに連鎖的に起こる障害 (カスケード障害) を吸収する仕組みのこと。
-
-blast-radiusを最小限にできる。
-
-アップストリーム側マイクロサービスに障害が発生した時に、ダウンストリーム側マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。
-
-![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
-
-> - https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
 
 <br>
