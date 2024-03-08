@@ -121,11 +121,21 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 <br>
 
-### マイクロサービスの分割手法
+### 分割パターン
 
-#### ▼ サブドメイン、境界付けられたコンテキストを単位とした分割
+#### ▼ 分割例
 
-サブドメインまたは境界付けられたコンテキストをマイクロサービスの粒度とする。
+| ユースケース     | 分割方法                   | マイクロサービスの種類                                                                                                                                                 | ディレクトリ構成規約                                                 | リンク                                                                                                                                                                                             |
+| ---------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Eコマース        | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | `src`ディレクトリに各マイクロサービスのディレクトリを配置する。      | ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)<br>https://github.com/GoogleCloudPlatform/microservices-demo                  |
+| Eコマース        | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                                                               | `services`ディレクトリに各マイクロサービスのディレクトリを配置する。 | ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)<br>https://github.com/mercari/mercari-microservices-example                 |
+| Eコマース        | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                                                                                       | ルートに各マイクロサービスのディレクトリを配置する。                 | ・https://github.com/DataDog/ecommerce-workshop                                                                                                                                                    |
+| SNS (Twitter)    | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)<br>https://www.codekarle.com/system-design/Twitter-system-design.html       |
+| 地図 (GoogleMap) | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)<br>https://www.codekarle.com/system-design/Twitter-system-design.html |
+
+#### ▼ サブドメイン単位/境界付けられたコンテキスト単位
+
+サブドメインまたは境界付けられたコンテキストを単位として、マイクロサービスを分割とする。
 
 | 現状のモノリスの分割段階                                                 | 境界付けられたコンテキスト | サブドメイン | 機能単位  |
 | ------------------------------------------------------------------------ | :------------------------: | :----------: | :-------: |
@@ -135,7 +145,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 > - https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F
 
-解決領域となる境界付けられたコンテキストがサブドメインの中に`1`個しか含まれていない場合は、境界付けられたコンテキストをマイクロサービスの粒度して考えることになる。
+解決領域となる境界付けられたコンテキストがサブドメインの中に`1`個しか含まれていない場合は、境界付けられたコンテキストでマイクロサービスを分割することになる。
 
 図にて、境界付けられたコンテキスト間で、『利用者』という単語に対する定義づけ/意味合いが異なっていることに留意する。
 
@@ -150,11 +160,11 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 > - https://www.amazon.co.jp/dp/4873119316/
 > - https://booth.pm/ja/items/1835632
 
-#### ▼ ルートエンティティを単位とした分割 (エンティティサービス)
+#### ▼ ルートエンティティ単位 (エンティティサービス)
 
 『エンティティサービス』ともいう。
 
-ドメイン層のルートエンティティをマイクロサービスの単位とする。
+ドメイン層のルートエンティティを単位として、マイクロサービスを分割する。
 
 この場合、境界付けられたコンテキストよりもマイクロサービスの粒度が小さい。
 
@@ -179,23 +189,11 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-### 分割例
-
-| ユースケース     | 分割方法                   | マイクロサービスの種類                                                                                                                                                 | ディレクトリ構成規約                                                 | リンク                                                                                                                                                                                             |
-| ---------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Eコマース        | 境界付けられたコンテキスト | ・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視 | `src`ディレクトリに各マイクロサービスのディレクトリを配置する。      | ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)<br>https://github.com/GoogleCloudPlatform/microservices-demo                  |
-| Eコマース        | 境界付けられたコンテキスト | ・認証<br>・カタログ<br>・顧客<br>・商品                                                                                                                               | `services`ディレクトリに各マイクロサービスのディレクトリを配置する。 | ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)<br>https://github.com/mercari/mercari-microservices-example                 |
-| Eコマース        | 境界付けられたコンテキスト | ・広告<br>・割引                                                                                                                                                       | ルートに各マイクロサービスのディレクトリを配置する。                 | ・https://github.com/DataDog/ecommerce-workshop                                                                                                                                                    |
-| SNS (Twitter)    | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)<br>https://www.codekarle.com/system-design/Twitter-system-design.html       |
-| 地図 (GoogleMap) | 境界付けられたコンテキスト | いっぱい                                                                                                                                                               | 実装方法は不明                                                       | ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)<br>https://www.codekarle.com/system-design/Twitter-system-design.html |
-
-<br>
-
-### 粒度のアンチパターン
+### 分割アンチパターン
 
 #### ▼ 分散モノリス
 
-複数のマイクロサービスをセットでデプロイしなければならず、マイクロサービス間のデプロイが独立していないような粒度のパターン。
+複数のマイクロサービスをセットでデプロイしなければならず、マイクロサービス間のデプロイが独立していないような分割パターン。
 
 例えば、マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果、複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある。
 
@@ -208,11 +206,15 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 ## 03. リポジトリ層
 
-### ドメイン層 (境界付けられたコンテキスト単位) + 他レイヤー (様々な単位)
+### 分割パターン
 
-ドメイン層は境界付けられたコンテキスト単位で分割し、他のレイヤーは様々な単位で分割する。
+#### ▼ リポジトリ単位 (ルートエンティティ単位)
 
-DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、インフラ層のリポジトリはルートエンティティ単位で分割する。
+リポジトリを単位として、マイクロサービスを分割する。
+
+DBレコードの書き込み/読み出しのトランザクションをルートエンティティ単位で実行するため、リポジトリは実際にはルートエンティティに対応している。
+
+そのため、ルートエンティティ単位で分割すると言い換えても良い。
 
 マイクロサービス数が多くなることがデメリット (経験済み)。
 
@@ -258,9 +260,46 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 <br>
 
-### 設計パターン
+### 分割パターン
 
-#### ▼ API Gatewayの設計パターンとは
+#### ▼ API Gatewayの分割パターンとは
+
+API Gatewayの責務をどのように分割するかに応じて、分割パターンがある。
+
+#### ▼ Public API
+
+マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを`1`個だけ作成する。
+
+![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
+
+> - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+
+#### ▼ BFF：Backends For Frontends
+
+マイクロサービスにリクエストを送信するアプリケーションの種類 (Webアプリケーション、Mobileアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
+
+ただし、複数のクライアントをWebアプリとして開発することもできる。
+
+そのため、同じWebからのリクエストであっても、異なるAPI Gatewayを作成する場合がある。
+
+![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
+
+> - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+> - https://codezine.jp/article/detail/11305?p=4
+
+#### ▼ Federated Gateway
+
+BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。
+
+> - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
+> - https://tech.smartshopping.co.jp/backend-development-with-graphql
+> - https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32
+
+<br>
+
+### API形式パターン
+
+#### ▼ API GatewayのAPI形式パターンとは
 
 API GatewayのAPI形式に応じて、分割パターンがある。
 
@@ -305,42 +344,5 @@ Kubernetes内で管理できるメリットがある。
 その場合、フロントエンドアプリケーションがAPI Gatewayに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 
 > - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
-
-<br>
-
-### 分割パターン
-
-#### ▼ API Gatewayの分割パターンとは
-
-API Gatewayの責務をどのように分割するかに応じて、分割パターンがある。
-
-#### ▼ Public API
-
-マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを`1`個だけ作成する。
-
-![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
-
-> - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
-
-#### ▼ BFF：Backends For Frontends
-
-マイクロサービスにリクエストを送信するアプリケーションの種類 (Webアプリケーション、Mobileアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
-
-ただし、複数のクライアントをWebアプリとして開発することもできる。
-
-そのため、同じWebからのリクエストであっても、異なるAPI Gatewayを作成する場合がある。
-
-![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
-
-> - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
-> - https://codezine.jp/article/detail/11305?p=4
-
-#### ▼ Federated Gateway
-
-BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。
-
-> - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
-> - https://tech.smartshopping.co.jp/backend-development-with-graphql
-> - https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32
 
 <br>
