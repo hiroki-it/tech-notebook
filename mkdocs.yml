@@ -277,7 +277,8 @@ nav:
           - ■ YAML:
               - YAML: language/language_data_description_language_yaml.md
           - ■ Protocol Buffer:
-                - Protocol Buffer: language/language_data_description_language_protocol_buffer.md
+              - Protocol Buffer: language/language_data_description_language_protocol_buffer.md
+              - コマンド: language/language_data_description_language_protocol_buffer_command.md
       - ■ PHP:
           - PHP: language/language_php.md
           - コマンド: language/language_php_command.md
