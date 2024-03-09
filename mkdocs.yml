@@ -623,13 +623,13 @@ nav:
               - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
       - ■ ハードウェアリソース管理アドオン:
-            - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.md
-            - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.md
-            - descheduler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.md
-            - metrics-server: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md
-            - ■ Karpenter:
-                  - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.md
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.md
+          - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.md
+          - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.md
+          - descheduler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.md
+          - metrics-server: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md
+          - ■ Karpenter:
+              - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.md
       - ■ ネットワークアドオン:
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
           - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
