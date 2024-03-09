@@ -539,7 +539,7 @@ func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamSe
 
 <br>
 
-## 04. サーバー側
+## 04. サーバー側の実装例
 
 ### gRPCサーバー (インターセプターがない場合)
 
@@ -724,7 +724,7 @@ func main() {
 
 <br>
 
-## 05. gRPCクライアント側
+## 05. gRPCクライアント側の実装例
 
 ### gRPCクライアントパッケージ
 
@@ -829,7 +829,7 @@ func main() {
 
 <br>
 
-## 06. gRPCサーバーとクライアントの両方
+## 06. gRPCサーバーとクライアントの両方の実装例
 
 ### `proto`ファイル
 

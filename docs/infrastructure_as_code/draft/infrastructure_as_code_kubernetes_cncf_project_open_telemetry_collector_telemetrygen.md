@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Telemetrygen＠OpenTelemetry
-description: Telemetrygen＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】Telemetrygen＠OpenTelemetryコレクター
+description: Telemetrygen＠OpenTelemetryコレクターの知見を記録しています。
 ---
 
-# Telemetrygen＠OpenTelemetry
+# Telemetrygen＠OpenTelemetryコレクター
 
 ## はじめに
 

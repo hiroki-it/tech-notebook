@@ -432,7 +432,7 @@ go 1.16
 注意点として、パッケージ名は、使用したいパッケージの`go.mod`ファイルを参照すること。
 
 ```go
-module github.com/hiroki-hasegawa/repository
+module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
 
@@ -476,7 +476,7 @@ go: added github.com/foo v0.0.0-<コミット日時のタイムスタンプ>-<�
 `go get`コマンドは、`go.mod`ファイルにインポート定義を追加する。
 
 ```go
-module github.com/hiroki-hasegawa/repository
+module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
 
@@ -511,26 +511,10 @@ $ go env -w GOPRIVATE=github.com/foo.git,github.com/bar.git,...
 
 #### ▼ ローカルマシンから
 
-ローカルマシンのみで使用する自前共有パッケージは、パブリックリポジトリ上での自身のリポジトリからインポートせずに、`replace`関数を使用してインポートする必要がある。
-
-自前共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
-
-パス実際、`unknown revision`のエラーで、バージョンを見つけられない。
-
-> - https://qiita.com/hnishi/items/a9217249d7832ed2c035
-
-```go
-module example.com/hiroki-it/repository
-
-go 1.16
-
-replace github.com/hiroki-hasegawa/foo-repository => /
-```
-
-また、ルートディレクトリのみでなく、各パッケージにも`go.mod`ファイルを配置する必要がある。
+ローカルマシンのみで使用する自前共有パッケージがあるとする。
 
 ```yaml
-repository/
+foo-repository/
 ├── cmd/
 │   └── hello.go
 │
@@ -542,14 +526,33 @@ repository/
 ```
 
 ```go
-module example.com/hiroki-it/foo-repository/local-pkg
+// go.modファイル
+module github.com/hiroki-hasegawa/foo-repository/local-pkg
 
 go 1.16
+```
+
+この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、`replace`関数を使用してインポートする必要がある。
+
+自前共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
+
+パス実際、`unknown revision`のエラーで、バージョンを見つけられない。
+
+> - https://qiita.com/hnishi/items/a9217249d7832ed2c035
+
+```go
+module github.com/hiroki-hasegawa/foo-repository
+
+go 1.16
+
+replace github.com/hiroki-hasegawa/foo-repository/local-pkg => /
 ```
 
 これらにより、ローカルマシンのパッケージをインポートできるようになる。
 
 ```go
+package main
+
 import "local.packages/local-pkg"
 
 func main() {
