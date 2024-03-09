@@ -1301,6 +1301,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_compiler_go.html</loc>
+         <lastmod>2024-03-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html</loc>
          <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
@@ -1522,11 +1527,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/language_type.html</loc>
-         <lastmod>2024-03-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_data_description_language_protocol_buffer_compiler_go.html</loc>
          <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
