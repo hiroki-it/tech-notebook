@@ -91,13 +91,14 @@ gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルか�
 このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。
 
 ```bash
-# foo.pb.goファイルを作成する。
-$ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
+# foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。
+$ protoc --go_out=. --go-grpc_out=. foo.proto
 
 # ワイルドカードで指定できる。
-$ protoc --proto_path=./*.proto --go_out=plugins=grpc:.
+$ protoc --go_out=. --go-grpc_out=. *.proto
 ```
 
+> - https://github.com/golang/protobuf/issues/1070#issuecomment-607465055
 > - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
 #### ▼ RPC-API仕様書
@@ -823,12 +824,12 @@ service FooService {
 
 `pb.go`ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
-```bash
-# foo.pb.goファイルを作成する。
-$ protoc --proto_path=./foo/foo.proto --go_out=plugins=grpc:foo
-```
+`proto`コマンドを実行し、以下のような`pb.go`ファイルをコンパイルできる。
 
-補足として、`pb.go`ファイルには、gRPCサーバーとして登録するための`Register<ファイル名>ServiceServer`関数が定義される。
+```bash
+# foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。
+$ protoc --go_out=. --go-grpc_out=. foo.proto
+```
 
 ```go
 // コメントアウトに元になった.protoファイルの情報が記載されている
@@ -847,6 +848,8 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 // 〜 中略 〜
 ```
+
+補足として、`pb.go`ファイルには、gRPCサーバーとして登録するための`Register<ファイル名>ServiceServer`関数が定義される。
 
 > - https://christina04.hatenablog.com/entry/protoc-usage
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96

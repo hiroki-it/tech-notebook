@@ -327,7 +327,7 @@ repository/
 │   │   │   └── bar/
 │   │   │       └── bar-client.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
 │   │   │   └── bar/
 │   │   │       └── bar-client.pb.js
 │   │   │
@@ -358,7 +358,7 @@ repository/
 │   │   │   └── baz/
 │   │   │       └── baz-client.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
 │   │   │   ├── bar/
 │   │   │   │   └── bar-server.pb.go
 │   │   │   │
@@ -397,7 +397,7 @@ repository/
 │   │   │   └── baz/
 │   │   │       └── baz-server.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
 │   │   │   └── baz/
 │   │   │       └── baz-server.pb.py
 │   │   │
@@ -475,7 +475,7 @@ repository/
 
 #### ▼ Protocol Bufferのリポジトリ
 
-Protocol Bufferのリポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
+Protocol Bufferのリポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`pb.*`ファイル、を同じリポジトリで管理する。
 
 ```yaml
 # Protocol Buffer
