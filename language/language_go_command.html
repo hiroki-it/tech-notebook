@@ -22809,7 +22809,7 @@ all<span class="w"> </span>modules<span class="w"> </span>verified
 <p><code>go mod tidy</code>コマンドによって<code>// indirect</code>コメントのついたパッケージが実装される。</p>
 <p>これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。</p>
 <p>注意点として、パッケージ名は、使用したいパッケージの<code>go.mod</code>ファイルを参照すること。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">repository</span>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 
@@ -22846,7 +22846,7 @@ go:<span class="w"> </span>downloading<span class="w"> </span>github.com/foo<spa
 go:<span class="w"> </span>added<span class="w"> </span>github.com/foo<span class="w"> </span>v0.0.0-&lt;コミット日時のタイムスタンプ&gt;-&lt;コミットID&gt;
 </code></pre></div>
 <p><code>go get</code>コマンドは、<code>go.mod</code>ファイルにインポート定義を追加する。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">repository</span>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 
@@ -22878,22 +22878,8 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 </ul>
 </blockquote>
 <h4 id="_6">▼ ローカルマシンから<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ローカルマシンのみで使用する自前共有パッケージは、パブリックリポジトリ上での自身のリポジトリからインポートせずに、<code>replace</code>関数を使用してインポートする必要がある。</p>
-<p>自前共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。</p>
-<p>パス実際、<code>unknown revision</code>のエラーで、バージョンを見つけられない。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/hnishi/items/a9217249d7832ed2c035">https://qiita.com/hnishi/items/a9217249d7832ed2c035</a></li>
-</ul>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">example</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">it</span><span class="o">/</span><span class="nx">repository</span>
-
-<span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
-
-<span class="nx">replace</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">/</span>
-</code></pre></div>
-<p>また、ルートディレクトリのみでなく、各パッケージにも<code>go.mod</code>ファイルを配置する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<p>ローカルマシンのみで使用する自前共有パッケージがあるとする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── cmd/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── hello.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
@@ -22903,12 +22889,29 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── go.mod</span><span class="w"> </span><span class="c1"># 各パッケージにgo.modを配置する。</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── module.go</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">example</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">it</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">local</span><span class="o">-</span><span class="nx">pkg</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// go.modファイル</span>
+<span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">local</span><span class="o">-</span><span class="nx">pkg</span>
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 </code></pre></div>
+<p>この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、<code>replace</code>関数を使用してインポートする必要がある。</p>
+<p>自前共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。</p>
+<p>パス実際、<code>unknown revision</code>のエラーで、バージョンを見つけられない。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hnishi/items/a9217249d7832ed2c035">https://qiita.com/hnishi/items/a9217249d7832ed2c035</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span>
+
+<span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
+
+<span class="nx">replace</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">local</span><span class="o">-</span><span class="nx">pkg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">/</span>
+</code></pre></div>
 <p>これらにより、ローカルマシンのパッケージをインポートできるようになる。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;local.packages/local-pkg&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;local.packages/local-pkg&quot;</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
@@ -22941,7 +22944,7 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-10</span>
   </span>
 
     
