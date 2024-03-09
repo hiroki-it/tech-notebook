@@ -217,7 +217,7 @@ worker_rlimit_nofile  8192;
 
 <br>
 
-## 03-02. http_core_module
+## 03-02. ngx_http_core_module
 
 ### ブロック
 
@@ -576,7 +576,7 @@ server {
 
 <br>
 
-## 03-03. http_index_module
+## 03-03. ngx_http_index_module
 
 ### ディレクティブ
 
@@ -594,7 +594,7 @@ index index.php;
 
 <br>
 
-## 03-04. http_headers_module
+## 03-04. ngx_http_headers_module
 
 ### ディレクティブ
 
@@ -613,7 +613,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 <br>
 
-## 03-05. http_upstream_module
+## 03-05. ngx_http_upstream_module
 
 ### ブロック
 
@@ -636,7 +636,7 @@ upstream foo_servers {
 
 <br>
 
-## 03-06. http_fast_cgi_module
+## 03-06. ngx_http_fast_cgi_module
 
 ### ディレクティブ
 
@@ -666,7 +666,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 <br>
 
-## 03-07. http_grpc_module
+## 03-07. ngx_http_grpc_module
 
 ### ディレクティブ
 
@@ -699,7 +699,7 @@ server {
 
 <br>
 
-## 03-08. http_proxy_module
+## 03-08. ngx_http_proxy_module
 
 ### ディレクティブ
 
@@ -717,7 +717,7 @@ proxy_pass http://127.0.0.1:80;
 
 <br>
 
-## 03-09. http_stub_status_module
+## 03-09. ngx_http_stub_status_module
 
 ### ディレクティブ
 

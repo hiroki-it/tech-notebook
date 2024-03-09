@@ -85,7 +85,7 @@ $ make install
 
 ## 03. OpenTelemetry
 
-### httpdモジュール
+### httpd
 
 OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
 
@@ -132,9 +132,9 @@ $ make install
 
 <br>
 
-### otel_ngx_moduleモジュール
+### otel_ngx_module
 
-#### ▼ otel_ngx_moduleモジュールとは
+#### ▼ otel_ngx_moduleとは
 
 OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
@@ -192,24 +192,24 @@ server {
 
 <br>
 
-### otel_webserverモジュール
+### otel_webserver_module
 
-#### ▼ otel_webserverモジュールとは
+#### ▼ otel_webserver_moduleとは
 
 ApacheまたはNginxをOpenTelemetryで計装できるようにする。
 
-otel_apache_moduleモジュールとngx_http_opentelemetry_moduleモジュールの両方を含んでいる。
+otel_apache_moduleとngx_http_opentelemetry_moduleの両方を含んでいる。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
 
-#### ▼ otel_apache_moduleモジュール
+#### ▼ otel_apache_module
 
 OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module
 > - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
 
-#### ▼ ngx_http_opentelemetry_moduleモジュール
+#### ▼ ngx_http_opentelemetry_module
 
 OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
@@ -217,9 +217,9 @@ OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTele
 
 <br>
 
-### ngx_otel_moduleモジュール
+### ngx_otel_module
 
-#### ▼ ngx_otel_moduleモジュールとは
+#### ▼ ngx_otel_moduleとは
 
 Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 

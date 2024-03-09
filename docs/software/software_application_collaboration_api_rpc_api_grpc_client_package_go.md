@@ -73,7 +73,7 @@ protoc-gen-go-grpc <バージョン>
 
 サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルを作成したくなったら、このコンテナを実行する。
 
-`docker-compose.yaml`ファイルは以下の通りである。
+`docker-compose.yml`ファイルは以下の通りである。
 
 ```yaml
 services:
