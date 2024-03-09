@@ -22863,7 +22863,7 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <h4 id="_3">▼ 上記ツールを持つ専用コンテナ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>各種ツールをGoアプリにダウンロードしても良いが、専用コンテナとして切り分けるとよい。</p>
 <p>サービス定義ファイル (<code>proto</code>ファイル) から<code>pb.go</code>ファイルを作成したくなったら、このコンテナを実行する。</p>
-<p><code>docker-compose.yaml</code>ファイルは以下の通りである。</p>
+<p><code>docker-compose.yml</code>ファイルは以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">grpc_compile</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_buffer_compiler</span>
