@@ -21941,8 +21941,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="require_unimplemented_servers">▼ require_unimplemented_servers<a class="headerlink" href="#require_unimplemented_servers" title="Permanent link">&para;</a></h4>
-<p><code>mustEmbedUnimplemented&lt;Service名&gt;Server</code>メソッドを自動作成するかどうかを設定する。</p>
-<p>(どういう場合に<code>true</code>で、どう言う場合に<code>false</code>にすればいいのか、わからない...)</p>
+<p><code>pb.go</code>ファイルに<code>mustEmbedUnimplemented&lt;Service名&gt;Server</code>メソッドを自動定義するかどうかを設定する。</p>
+<p>古い<code>github.com/golang/protobuf</code>パッケージから新しい<code>google.golang.org/protobuf</code>パッケージに移行する場合、これを<code>false</code>にする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-I<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--go_out<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
