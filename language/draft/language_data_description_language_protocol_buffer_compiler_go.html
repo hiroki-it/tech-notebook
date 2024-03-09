@@ -21421,13 +21421,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-protocol-buffergo" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 文法
+      01. Protocol BufferコンパイラーGoプラグインとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. 文法">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 文法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 文法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21471,7 +21480,17 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 文法<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01-protocol-buffergo">01. Protocol BufferコンパイラーGoプラグインとは<a class="headerlink" href="#01-protocol-buffergo" title="Permanent link">&para;</a></h2>
+<p>サービス定義ファイル (<code>proto</code>ファイル) から<code>pb.go</code>ファイルをコンパイルできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/protobuf/cmd/protoc-gen-go@latest
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://protobuf.dev/reference/go/go-generated/#invocation">https://protobuf.dev/reference/go/go-generated/#invocation</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="option">option<a class="headerlink" href="#option" title="Permanent link">&para;</a></h3>
 <p>サービス定義ファイル (<code>proto</code>ファイル) からコンパイルした<code>pb.go</code>ファイルの配置先を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">option</span><span class="w"> </span><span class="na">go_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo-repository/src/foo-service&quot;</span><span class="p">;</span>
