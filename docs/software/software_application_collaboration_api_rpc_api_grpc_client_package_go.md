@@ -92,10 +92,10 @@ gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルか�
 
 ```bash
 # foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。
-$ protoc --go_out=. --go-grpc_out=. foo.proto
+$ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 
 # ワイルドカードで指定できる。
-$ protoc --go_out=. --go-grpc_out=. *.proto
+$ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 ```
 
 > - https://github.com/golang/protobuf/issues/1070#issuecomment-607465055
@@ -106,7 +106,7 @@ $ protoc --go_out=. --go-grpc_out=. *.proto
 gRPCにおけるAPI仕様書である。仕様の実装である`proto`ファイルを使用して、RPC-API仕様書を作成できる。
 
 ```bash
-$ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
+$ protoc --doc_out=. --doc_opt=html,index.html *.proto
 ```
 
 <br>
@@ -828,7 +828,7 @@ service FooService {
 
 ```bash
 # foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。
-$ protoc --go_out=. --go-grpc_out=. foo.proto
+$ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 ```
 
 ```go

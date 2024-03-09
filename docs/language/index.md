@@ -19,6 +19,7 @@
   > * ##### [︎YAML](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html)
 * #### <u>Protocol Buffer</u>
   > * ##### [Protocol Buffer](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer.html)
+  > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_command.html)
 
 <br>
 
