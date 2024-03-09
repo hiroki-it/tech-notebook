@@ -21492,8 +21492,15 @@
 <p><br></p>
 <h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="option">option<a class="headerlink" href="#option" title="Permanent link">&para;</a></h3>
-<p>サービス定義ファイル (<code>proto</code>ファイル) からコンパイルした<code>pb.go</code>ファイルの配置先を設定する。</p>
+<p>サービス定義ファイル (<code>proto</code>ファイル) からコンパイルした<code>pb.go</code>ファイルの<code>package</code>名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">option</span><span class="w"> </span><span class="na">go_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo-repository/src/foo-service&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// pb.goファイル</span>
+<span class="kn">package</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">service</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>

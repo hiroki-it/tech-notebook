@@ -1889,9 +1889,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protocol-buffergrpc" class="md-nav__link">
+  <a href="#protocol-buffergo-grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Protocol BufferコンパイラーgRPCプラグイン
+      ▼ Protocol BufferコンパイラーGo-gRPCプラグイン
     </span>
   </a>
   
@@ -22134,9 +22134,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protocol-buffergrpc" class="md-nav__link">
+  <a href="#protocol-buffergo-grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Protocol BufferコンパイラーgRPCプラグイン
+      ▼ Protocol BufferコンパイラーGo-gRPCプラグイン
     </span>
   </a>
   
@@ -22770,7 +22770,7 @@ protoc-gen-go<span class="w"> </span>&lt;バージョン&gt;
 <li><a href="https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4">https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4</a></li>
 </ul>
 </blockquote>
-<h4 id="protocol-buffergrpc">▼ Protocol BufferコンパイラーgRPCプラグイン<a class="headerlink" href="#protocol-buffergrpc" title="Permanent link">&para;</a></h4>
+<h4 id="protocol-buffergo-grpc">▼ Protocol BufferコンパイラーGo-gRPCプラグイン<a class="headerlink" href="#protocol-buffergo-grpc" title="Permanent link">&para;</a></h4>
 <p>サービス定義ファイル (<code>proto</code>ファイル) からgRPC対応の<code>pb.go</code>ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
@@ -22794,7 +22794,7 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_buffer_compiler</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;protocol_buffer_compiler&quot;</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">protocol_buffer_compiler</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/</span>
 </code></pre></div>
@@ -22810,7 +22810,7 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/protocol_buffer_compiler.sh&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p><code>protocol_buffer_compiler</code>ファイルは以下の通りである。</p>
+<p><code>protocol_buffer_compiler.sh</code>ファイルは以下の通りである。</p>
 <p>バックアップも兼ねて、<code>pb.go</code>ファイルを作業日付ごとに作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
@@ -22981,8 +22981,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="_10">▼ 自前のインターセプター<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p>記入中...</p>
 <p><br></p>
 <h3 id="rpc_1">ストリーミングRPCの場合<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h3>
 <h5 id="_11">▼ 既製のインターセプター<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
@@ -23030,8 +23029,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="_12">▼ 自前のインターセプター<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p>記入中...</p>
 <p><br></p>
 <h2 id="03">03. サーバー側のインターセプター<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_13">サーバー側のインターセプターとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
