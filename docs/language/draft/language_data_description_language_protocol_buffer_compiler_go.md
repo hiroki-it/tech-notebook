@@ -29,10 +29,19 @@ $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
 ### option
 
-サービス定義ファイル (`proto`ファイル) からコンパイルした`pb.go`ファイルの配置先を設定する。
+サービス定義ファイル (`proto`ファイル) からコンパイルした`pb.go`ファイルの`package`名を設定する。
 
 ```protobuf
 option go_package = "github.com/hiroki-hasegawa/foo-repository/src/foo-service";
+```
+
+```go
+// pb.goファイル
+package github.com/hiroki-hasegawa/foo-repository/src/foo-service
+
+func foo()  {
+
+}
 ```
 
 > - https://protobuf.dev/reference/go/go-generated/#package

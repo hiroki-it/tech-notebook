@@ -51,7 +51,7 @@ protoc-gen-go <バージョン>
 > - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
 > - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
 
-#### ▼ Protocol BufferコンパイラーgRPCプラグイン
+#### ▼ Protocol BufferコンパイラーGo-gRPCプラグイン
 
 サービス定義ファイル (`proto`ファイル) からgRPC対応の`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
@@ -81,7 +81,7 @@ services:
     image: protocol_buffer_compiler
     build:
       context: .
-    container_name: "protocol_buffer_compiler"
+    container_name: protocol_buffer_compiler
     volumes:
       - .:/
 ```
@@ -101,7 +101,7 @@ COPY . /
 CMD ["/protocol_buffer_compiler.sh"]
 ```
 
-`protocol_buffer_compiler`ファイルは以下の通りである。
+`protocol_buffer_compiler.sh`ファイルは以下の通りである。
 
 バックアップも兼ねて、`pb.go`ファイルを作業日付ごとに作成する。
 
@@ -308,9 +308,7 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-```go
-
-```
+記入中...
 
 <br>
 
@@ -366,9 +364,7 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-```go
-
-```
+記入中...
 
 <br>
 

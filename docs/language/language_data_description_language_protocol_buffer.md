@@ -13,7 +13,7 @@ description: Protocol Buffer＠データ記述型言語の知見を記録して�
 
 <br>
 
-## 01. protobufとは
+## 01. Protocol Bufferとは
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
 
