@@ -17,9 +17,9 @@ description: JavaScript＠クライアントパッケージの知見を記録し
 
 ### サーバー側
 
-#### ▼ プロトコルバッファー自動作成ツール
+#### ▼ Protocol Buffer自動作成ツール
 
-npmリポジトリから、プロトコルバッファー自動作成ツールをインストールする。
+npmリポジトリから、Protocol Buffer自動作成ツールをインストールする。
 
 ```bash
 $ npm install grpc-tools

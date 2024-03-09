@@ -205,7 +205,7 @@ API_URL_BROWSER=https://example.com/api
 # APIのOAuthの情報
 OAUTH_CLIENT_ID=
 OAUTH_CLIENT_SECRET=
-# GoogleMapのURL
+# Google MapのURL
 GOOGLE_MAP_QUERY_URL=https://www.google.com/maps/search/?api=1&query=
 # ホームパス
 HOME_PATH=/

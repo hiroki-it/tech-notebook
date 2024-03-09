@@ -17,9 +17,9 @@ description: Ruby＠クライアントパッケージの知見を記録してい
 
 ### サーバー側
 
-#### ▼ プロトコルバッファー自動作成ツール
+#### ▼ Protocol Buffer自動作成ツール
 
-gemリポジトリから、プロトコルバッファー自動作成ツールをインストールする。
+gemリポジトリから、Protocol Buffer自動作成ツールをインストールする。
 
 ```bash
 $ gem install grpc-tools

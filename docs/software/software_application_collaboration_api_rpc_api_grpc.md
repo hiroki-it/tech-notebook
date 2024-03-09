@@ -17,7 +17,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 ### アーキテクチャ
 
-RPCフレームワークの一つで、プロトコルバッファーを使用してRPC (リモートプロシージャーコール) を実行する。
+RPCフレームワークの一つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。
 
 従来のHTTP/`1.1`ではなく、HTTP/`2.0` (例：gRPCなど) を使用する。
 
@@ -473,12 +473,12 @@ repository/
 > - https://lab.mo-t.com/blog/protocol-buffers
 > - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 
-#### ▼ プロトコルバッファーのリポジトリ
+#### ▼ Protocol Bufferのリポジトリ
 
-プロトコルバッファーのリポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
+Protocol Bufferのリポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
 
 ```yaml
-# プロトコルバッファー
+# Protocol Buffer
 repository/
 ├── proto/ # サービス定義ファイル (.protoファイル)
 │   ├── bar/

@@ -91,7 +91,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
-### 分割例
+### アーキテクチャ例
 
 #### ▼ Eコマース (Googleのサンプル)
 
@@ -144,7 +144,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 > - https://www.codekarle.com/system-design/Twitter-system-design.html
 
-#### ▼ 地図 (GoogleMap)
+#### ▼ 地図 (Google Map)
 
 ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
 
@@ -154,8 +154,9 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### フレームワーク
 
-#### ▼ dapr
+マイクロサービスアーキテクチャのフレームワークとして、Dapr、Axon、Eventuate、MicroProfile LRA、などがある。
 
+> - https://speakerdeck.com/polar3130/portable-microservices-with-dapr-and-kubernetes?slide=24
 > - https://www.publickey1.jp/blog/19/dapr.html
 > - https://github.com/dapr/dapr
 
