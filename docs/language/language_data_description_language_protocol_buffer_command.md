@@ -74,9 +74,9 @@ $ protoc \
 
 #### ▼ require_unimplemented_servers
 
-`mustEmbedUnimplemented<Service名>Server`メソッドを自動作成するかどうかを設定する。
+`pb.go`ファイルに`mustEmbedUnimplemented<Service名>Server`メソッドを自動定義するかどうかを設定する。
 
-(どういう場合に`true`で、どう言う場合に`false`にすればいいのか、わからない...)
+古い`github.com/golang/protobuf`パッケージから新しい`google.golang.org/protobuf`パッケージに移行する場合、これを`false`にする必要がある。
 
 ```bash
 $ protoc \

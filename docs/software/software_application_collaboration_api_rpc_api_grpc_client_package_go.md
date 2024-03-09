@@ -67,6 +67,54 @@ protoc-gen-go-grpc <バージョン>
 > - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
 > - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
 
+#### ▼ 上記ツールを持つ専用コンテナ
+
+各種ツールをGoアプリにダウンロードしても良いが、専用コンテナとして切り分けるとよい。
+
+`docker-compose.yaml`ファイルは以下の通りである。
+
+```yaml
+services:
+  grpc_compile:
+    image: protocol_buffer_compiler
+    build:
+      context: .
+    container_name: "protocol_buffer_compiler"
+    volumes:
+      - .:/
+```
+
+`Dockerfile`ファイルは以下の通りである。
+
+```dockerfile
+FROM golang:<Goアプリと同じバージョン>
+
+RUN apt update -y \
+  && apt install -y protobuf-compiler \
+  && export GO111MODULE=on \
+  && go install google.golang.org/protobuf/cmd/protoc-gen-go@<バージョン> \
+  && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@<バージョン>
+
+COPY . /
+CMD ["/protocol_buffer_compiler.sh"]
+```
+
+`protocol_buffer_compiler`ファイルは以下の通りである。
+
+```bash
+#!/bin/sh
+
+protoc \
+  -I=. \
+  --go_out=. \
+  --go_opt=paths=source_relative \
+  --go-grpc_out=. \
+  --go-grpc_opt=paths=source_relative,require_unimplemented_servers=false \
+  *.proto
+```
+
+> - https://zenn.dev/mitsugu/articles/0323811005f233
+
 <br>
 
 ### gRPCクライアントとgRPCサーバーの両方
