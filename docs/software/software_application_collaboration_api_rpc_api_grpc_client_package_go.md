@@ -15,33 +15,11 @@ description: Go＠クライアントパッケージの知見を記録してい�
 
 ## 01. セットアップ
 
-### gRPCクライアントとgRPCサーバーの両方
+### 各種ツール
 
-#### ▼ Protocol Buffer自動作成ツール
+#### ▼ Protocol Bufferコンパイラー
 
-```bash
-$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-
-$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-```
-
-> - https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09
-> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
-
-#### ▼ `proto`ファイル
-
-gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto`ファイル) を作成する。
-
-gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
-
-サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから`pb.*`ファイルを自動作成する。
-
-> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
-> - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
-
-#### ▼ `protoc`コマンド
-
-gRPCクライアントとgRPCサーバーの両方で、自動作成のために、`protoc`コマンドをインストールする。
+`proto`ファイルをコンパイルするために、Protocol Bufferコンパイラーをインストールする。
 
 マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの`protoc`コマンドを使用できるように、パッケージ管理ツールを使用した方がよい。
 
@@ -57,11 +35,58 @@ $ asdf install protoc
 > - https://maku.blog/p/37e6uck/
 > - https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile
 
-#### ▼ `pb.*`ファイル
+#### ▼ Protocol BufferコンパイラーGoプラグイン
 
-gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルから`pb.*`ファイルを自動作成する。
+サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
-`protoc`コマンドを使用して、`pb.*`ファイルを作成する。
+```bash
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+$ protoc-gen-go --version
+
+protoc-gen-go <バージョン>
+```
+
+> - https://pkg.go.dev/github.com/golang/protobuf/protoc-gen-go
+> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
+> - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
+
+#### ▼ Protocol BufferコンパイラーgRPCプラグイン
+
+サービス定義ファイル (`proto`ファイル) からgRPC対応の`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
+
+```bash
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+$ protoc-gen-go-grpc --version
+
+protoc-gen-go-grpc <バージョン>
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc#section-readme
+> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
+> - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
+
+<br>
+
+### gRPCクライアントとgRPCサーバーの両方
+
+#### ▼ サービス定義ファイル (`proto`ファイル)
+
+gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto`ファイル) を作成する。
+
+gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
+
+サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから`pb.go`ファイルをコンパイルする。
+
+> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+
+#### ▼ `pb.go`ファイル
+
+gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルから`pb.go`ファイルをコンパイルする。
+
+`protoc`コマンドを使用して、`pb.go`ファイルを作成する。
 
 このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。
 
@@ -501,7 +526,7 @@ func main() {
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer()
 
-	// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。
+	// pb.goファイルでコンパイルされた関数を使用して、goサーバーをgRPCサーバーとして登録する。
 	// goサーバーがリモートプロシージャーコールを受信できるようになる。
 	pb.RegisterFooServiceServer(grpcServer, &Server{})
 
@@ -767,7 +792,7 @@ syntax = "proto3";
 
 import "google/api/annotations.proto";
 
-// pb.goファイルで自動作成される時のパッケージ名
+// pb.goファイルでコンパイルされる時のパッケージ名
 package foo;
 
 // gRPCクライアント側からのリモートプロシージャーコール時に渡す引数を定義する。
@@ -794,7 +819,7 @@ service FooService {
 
 ### `pb.go`ファイル
 
-事前に用意した`proto`ファイルを使用して、`pb.go`ファイルを自動作成する。
+事前に用意した`proto`ファイルを使用して、`pb.go`ファイルをコンパイルする。
 
 `pb.go`ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
