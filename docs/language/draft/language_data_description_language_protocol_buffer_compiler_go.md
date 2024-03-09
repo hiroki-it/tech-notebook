@@ -13,7 +13,19 @@ description: Goプラグイン＠Protocol Bufferコンパイラーの知見を�
 
 <br>
 
-## 01. 文法
+## 01. Protocol BufferコンパイラーGoプラグインとは
+
+サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルできる。
+
+```bash
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+```
+
+> - https://protobuf.dev/reference/go/go-generated/#invocation
+
+<br>
+
+## 02. 文法
 
 ### option
 

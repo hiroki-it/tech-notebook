@@ -71,6 +71,8 @@ protoc-gen-go-grpc <バージョン>
 
 各種ツールをGoアプリにダウンロードしても良いが、専用コンテナとして切り分けるとよい。
 
+サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルを作成したくなったら、このコンテナを実行する。
+
 `docker-compose.yaml`ファイルは以下の通りである。
 
 ```yaml
@@ -101,14 +103,20 @@ CMD ["/protocol_buffer_compiler.sh"]
 
 `protocol_buffer_compiler`ファイルは以下の通りである。
 
+バックアップも兼ねて、`pb.go`ファイルを作業日付ごとに作成する。
+
 ```bash
 #!/bin/sh
 
+# 日付ごとにディレクトリを作成する
+DATE=`date '+%Y%m%d%H%M%S'`
+mkdir -p ${DATE}
+
 protoc \
-  -I=. \
-  --go_out=. \
+  -I=${DATE} \
+  --go_out=${DATE} \
   --go_opt=paths=source_relative \
-  --go-grpc_out=. \
+  --go-grpc_out=${DATE} \
   --go-grpc_opt=paths=source_relative,require_unimplemented_servers=false \
   *.proto
 ```
