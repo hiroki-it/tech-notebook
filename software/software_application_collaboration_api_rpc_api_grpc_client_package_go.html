@@ -5804,6 +5804,8 @@
       
         
       
+        
+      
     
     
       
@@ -5849,6 +5851,27 @@
   
   <span class="md-ellipsis">
     Protocol Buffer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_data_description_language_protocol_buffer_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
   </span>
   
 
@@ -22761,10 +22784,10 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <p><code>protoc</code>コマンドを使用して、<code>pb.go</code>ファイルを作成する。</p>
 <p>このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。</span>
-$<span class="w"> </span>protoc<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
+$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
 
 <span class="c1"># ワイルドカードで指定できる。</span>
-$<span class="w"> </span>protoc<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>*.proto
+$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>*.proto
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22774,7 +22797,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--go_out<span class="o">=
 </blockquote>
 <h4 id="rpc-api">▼ RPC-API仕様書<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
 <p>gRPCにおけるAPI仕様書である。仕様の実装である<code>proto</code>ファイルを使用して、RPC-API仕様書を作成できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>--doc_out<span class="o">=</span>./<span class="w"> </span>--doc_opt<span class="o">=</span>html,index.html<span class="w"> </span>./*.proto
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>--doc_out<span class="o">=</span>.<span class="w"> </span>--doc_opt<span class="o">=</span>html,index.html<span class="w"> </span>*.proto
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">サーバー側のみ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -23399,7 +23422,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--go_out<span class="o">=
 <p><code>pb.go</code>ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。</p>
 <p><code>proto</code>コマンドを実行し、以下のような<code>pb.go</code>ファイルをコンパイルできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。</span>
-$<span class="w"> </span>protoc<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
+$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// コメントアウトに元になった.protoファイルの情報が記載されている</span>
 <span class="c1">//</span>
