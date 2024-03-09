@@ -32,21 +32,33 @@ $ protoc -I=. --go_out=. foo.proto
 
 <br>
 
-### --`<プラグイン名>`\_opt
+## 02. プラグイン名\_opt
 
-#### ▼ --`<プラグイン名>`\_optとは
+### --プラグイン名\_optとは
 
 `proto`ファイルから`pb.*`ファイルをコンパイルする時のオプションを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 
+<br>
+
+### go_opt
+
 #### ▼ paths
 
---`<プラグイン名>`\_optオプションのパスが絶対パスか相対パスかを設定する。
+--プラグイン名\_optオプションのパスが絶対パスか相対パスかを設定する。
 
 ```bash
 $ protoc -I=. --go_out=. --go_opt=paths=source_relative foo.proto
 ```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
+
+<br>
+
+### go-grpc_opt
+
+#### ▼ paths
 
 ```bash
 $ protoc \
@@ -54,7 +66,7 @@ $ protoc \
     --go_out=. \
     --go_opt=paths=source_relative \
     --go-grpc_out=. \
-    --go-grpc_out=paths=source_relative \
+    --go-grpc_opt=paths=source_relative \
     foo.proto
 ```
 
@@ -67,7 +79,13 @@ $ protoc \
 (どういう場合に`true`で、どう言う場合に`false`にすればいいのか、わからない...)
 
 ```bash
-$ protoc -I=. --go_out=. --go_opt=require_unimplemented_servers=false foo.proto
+$ protoc \
+    -I=. \
+    --go_out=. \
+    --go_opt=paths=source_relative \
+    --go-grpc_out=. \
+    --go-grpc_opt=paths=source_relative,require_unimplemented_servers=false \
+    foo.proto
 ```
 
 > - https://github.com/grpc/grpc-go/blob/master/cmd/protoc-gen-go-grpc/README.md
@@ -75,15 +93,17 @@ $ protoc -I=. --go_out=. --go_opt=require_unimplemented_servers=false foo.proto
 
 <br>
 
-### --`<プラグイン名>`\_out
+## 03. --プラグイン名\_out
 
-#### ▼ --`<プラグイン名>`\_outとは
+### --プラグイン名\_outとは
 
 `pb.*`ファイルの出力先パスを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 
-#### ▼ --go_out
+<br>
+
+### --go_out
 
 `foo.proto`ファイルから、`foo.pb.go`ファイルをコンパイルする。
 
@@ -91,7 +111,9 @@ $ protoc -I=. --go_out=. --go_opt=require_unimplemented_servers=false foo.proto
 $ protoc -I=. --go_out=. foo.proto
 ```
 
-#### ▼ --go-grpc_out
+<br>
+
+### --go-grpc_out
 
 `foo.proto`ファイルから、gRPCに対応する`foo.pb.go`ファイルをコンパイルする。
 
@@ -99,7 +121,9 @@ $ protoc -I=. --go_out=. foo.proto
 $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 ```
 
-#### ▼ --java_out
+<br>
+
+### --java_out
 
 `foo.proto`ファイルから、`foo.pb.java`ファイルをコンパイルする。
 
@@ -107,7 +131,9 @@ $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 $ protoc -I=. --java_out=. foo.proto
 ```
 
-#### ▼ --php_out
+<br>
+
+### --php_out
 
 `foo.proto`ファイルから、`foo.pb.php`ファイルをコンパイルする。
 
@@ -115,7 +141,9 @@ $ protoc -I=. --java_out=. foo.proto
 $ protoc -I=. --php_out=. foo.proto
 ```
 
-#### ▼ --python_out
+<br>
+
+### --python_out
 
 `foo.proto`ファイルから、`foo.pb.py`ファイルをコンパイルする。
 
@@ -123,7 +151,9 @@ $ protoc -I=. --php_out=. foo.proto
 $ protoc -I=. --python_out=. foo.proto
 ```
 
-#### ▼ --ruby_out
+<br>
+
+### --ruby_out
 
 `foo.proto`ファイルから、`foo.pb.rb`ファイルをコンパイルする。
 
@@ -131,7 +161,9 @@ $ protoc -I=. --python_out=. foo.proto
 $ protoc -I=. --ruby_out=. foo.proto
 ```
 
-#### ▼ --rust_out
+<br>
+
+### --rust_out
 
 `foo.proto`ファイルから、`foo.pb.rs`ファイルをコンパイルする。
 
