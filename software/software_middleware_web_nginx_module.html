@@ -22549,8 +22549,8 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">opentelemetry_operation_name</span><span class="w"> </span><span class="nv">$request_uri</span>
-<span class="w">        </span><span class="s">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">opentelemetry_operation_name</span><span class="w"> </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22558,9 +22558,9 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <p>トレースコンテキスト仕様として、W3C Trace Contextを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">opentelemetry_propagate</span>
+<span class="w">    </span><span class="kn">opentelemetry_propagate</span><span class="p">;</span>
 
-<span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -22596,6 +22596,13 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <h2 id="ngx_otel_module">ngx_otel_module<a class="headerlink" href="#ngx_otel_module" title="Permanent link">&para;</a></h2>
 <h3 id="ngx_otel_module_1">ngx_otel_moduleとは<a class="headerlink" href="#ngx_otel_module_1" title="Permanent link">&para;</a></h3>
 <p>Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
+<p>執筆時点 (2024/03/10) では、セットアップの簡単さやパフォーマンスでOpenTelemetry製の<code>otel_ngx_module</code>に勝っているらしい。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/nginx-otel?tab=readme-ov-file">https://github.com/nginxinc/nginx-otel?tab=readme-ov-file</a></li>
+<li><a href="https://github.com/nginxinc/nginx-otel/issues/42">https://github.com/nginxinc/nginx-otel/issues/42</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_12">セットアップ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 未ビルドの場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
@@ -22664,7 +22671,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 </blockquote>
 <h4 id="otel_trace_context">▼ otel_trace_context<a class="headerlink" href="#otel_trace_context" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">otel_trace_context</span><span class="w"> </span><span class="s">inject</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">otel_trace_context</span><span class="w"> </span><span class="s">propagate</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22676,8 +22683,8 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">otel_span_name</span><span class="w"> </span><span class="nv">$request_uri</span>
-<span class="w">        </span><span class="s">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">otel_span_name</span><span class="w"> </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22721,7 +22728,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-11</span>
   </span>
 
     
