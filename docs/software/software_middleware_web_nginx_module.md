@@ -211,7 +211,7 @@ http {
 server {
 
     location / {
-        opentelemetry_operation_name $request_uri
+        opentelemetry_operation_name $request_uri;
         proxy_pass $scheme://$http_host$request_uri;
     }
 }
@@ -224,7 +224,7 @@ server {
 ```nginx
 server {
 
-    opentelemetry_propagate
+    opentelemetry_propagate;
 
     location / {
         proxy_pass $scheme://$http_host$request_uri;
@@ -268,6 +268,11 @@ OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTele
 ### ngx_otel_moduleとは
 
 Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
+
+執筆時点 (2024/03/10) では、セットアップの簡単さやパフォーマンスでOpenTelemetry製の`otel_ngx_module`に勝っているらしい。
+
+> - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file
+> - https://github.com/nginxinc/nginx-otel/issues/42
 
 <br>
 
@@ -350,7 +355,7 @@ http {
 
 ```nginx
 http {
-    otel_trace_context inject;
+    otel_trace_context propagate;
 }
 ```
 
@@ -362,7 +367,7 @@ http {
 http {
 
     location / {
-        otel_span_name $request_uri
+        otel_span_name $request_uri;
         proxy_pass $scheme://$http_host$request_uri;
     }
 }
