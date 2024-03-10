@@ -167,7 +167,7 @@ CloudFrontのドメインは、AWS Route53のDNSレコードとして登録す�
 
 ![cloudfront_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
-> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name=*all
+> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
 
 <br>
 
@@ -178,7 +178,7 @@ CloudFrontのドメインは、AWS Route53のDNSレコードとして登録す�
 地理的にクライアントから最も近い場所にあるキャッシュサーバーである。
 
 > - https://xtech.nikkei.com/it/atclncf/service/00040/101700001/
-> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name=*all
+> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
 
 #### ▼ 全エッジサーバーのIPアドレス
 

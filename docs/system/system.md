@@ -146,6 +146,10 @@ Go、Node.js、ではwebサーバーとappサーバーがいらない。
 
 クラウドの場合も、仮想環境が作成されるのみで、配置場所は同じである。
 
+各CDNが提供するDNS (例：Akamaiなら`<ドメイン名>.edgekey.net`、AWSなら`<自動発行されるランダム文字列>.cloudfront.net`) を、ドメインレジストリのレコードに登録する。
+
+このDNSからエッジサーバーのIPアドレスを正引きできる。
+
 - Akamai
 - AWS CloudFront
 - CDNetworks

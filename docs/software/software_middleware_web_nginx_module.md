@@ -43,17 +43,19 @@ COPY --from=builder /usr/lib/nginx/modules/otel_ngx_module.so /usr/lib/nginx/mod
 
 <br>
 
-## 02. gRPC
+## 02. gRPCパッケージ
 
-### gRPCパッケージ
-
-#### ▼ gRPCパッケージとは
+### gRPCパッケージとは
 
 nginxモジュールがgRPCを使用できるようにする。
 
 > - https://github.com/grpc/grpc
 
-#### ▼ ビルド
+<br>
+
+### セットアップ
+
+#### ▼ 未ビルドの場合
 
 パッケージをインポートする前に、ビルドする必要がある。
 
@@ -83,25 +85,19 @@ $ make install
 
 <br>
 
-## 03. OpenTelemetry
+## opentelemetry-cppパッケージ
 
-### httpd
-
-OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
-
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/httpd
-
-<br>
-
-### opentelemetry-cppパッケージ
-
-#### ▼ opentelemetry-cppパッケージとは
+### opentelemetry-cppパッケージとは
 
 C++でNginxを計装できるようにする。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp
 
-#### ▼ ビルド
+<br>
+
+### セットアップ
+
+#### ▼ 未ビルドの場合
 
 パッケージをインポートする前に、ビルドする必要がある。
 
@@ -132,9 +128,9 @@ $ make install
 
 <br>
 
-### otel_ngx_module
+## otel_ngx_module
 
-#### ▼ otel_ngx_moduleとは
+### otel_ngx_moduleとは
 
 OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
@@ -144,7 +140,11 @@ gRPC Exporterを使用するために、gRPCパッケージが必要である。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
 
-#### ▼ ビルド
+<br>
+
+### セットアップ
+
+#### ▼ 未ビルドの場合
 
 モジュールをインポートする前に、ビルドする必要がある。
 
@@ -192,9 +192,9 @@ server {
 
 <br>
 
-### otel_webserver_module
+## otel_webserver_module
 
-#### ▼ otel_webserver_moduleとは
+### otel_webserver_moduleとは
 
 ApacheまたはNginxをOpenTelemetryで計装できるようにする。
 
@@ -202,14 +202,18 @@ otel_apache_moduleとngx_http_opentelemetry_moduleの両方を含んでいる。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
 
-#### ▼ otel_apache_module
+<br>
+
+### otel_apache_module
 
 OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module
 > - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
 
-#### ▼ ngx_http_opentelemetry_module
+<br>
+
+### ngx_http_opentelemetry_module
 
 OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
@@ -217,13 +221,29 @@ OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTele
 
 <br>
 
-### ngx_otel_module
+## ngx_otel_module
 
-#### ▼ ngx_otel_moduleとは
+### ngx_otel_moduleとは
 
 Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 
-#### ▼ ビルド
+<br>
+
+### セットアップ
+
+#### ▼ ビルド済みの場合
+
+```bash
+$ apt install -y nginx-module-otel
+```
+
+```bash
+$ yum install -y nginx-module-otel
+```
+
+> - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
+
+#### ▼ 未ビルドの場合
 
 モジュールをインポートする前に、ビルドする必要がある。
 
