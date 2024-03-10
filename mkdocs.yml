@@ -110,12 +110,12 @@ markdown_extensions:
 
 # 外部プラグイン
 plugins:
-  #  - git-committers:
-  #      repository: hiroki-it/tech-notebook
-  #      branch: main
-  #      # トークンはレートリミット回避のためだけに使用し、スコープはない
-  #      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
-  #      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "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"]
+#  - git-committers:
+#      repository: hiroki-it/tech-notebook
+#      branch: main
+#      # トークンはレートリミット回避のためだけに使用し、スコープはない
+#      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
+#      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "<パブリックリポジトリの読み取り権限を持つトークン>"]
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
