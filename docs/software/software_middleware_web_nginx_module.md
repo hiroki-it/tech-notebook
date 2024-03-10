@@ -183,28 +183,54 @@ $ make install
 
 ```nginx
 load_module /path/to/otel_ngx_module.so;
-
-http {
-    # 設定ファイル
-    opentelemetry_config /conf/otel-nginx.toml;
-}
-
-server {
-    location / {
-        # トレースコンテキスト仕様として、W3C Trace Contextを設定する
-        opentelemetry_propagate
-
-        # スパン名を設定する
-        opentelemetry_operation_name $request_uri
-
-        proxy_pass http://127.0.0.1:8080;
-    }
-}
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
 > - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
 > - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E5%88%86%E6%95%A3%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+
+<br>
+
+### ディレクティブ
+
+#### ▼ opentelemetry_config
+
+モジュールの`toml`ファイルを設定する。
+
+```nginx
+http {
+    opentelemetry_config /conf/otel-nginx.toml;
+}
+```
+
+#### ▼ opentelemetry_operation_name
+
+スパン名を設定する。
+
+```nginx
+server {
+
+    location / {
+        opentelemetry_operation_name $request_uri
+        proxy_pass $scheme://$http_host$request_uri;
+    }
+}
+```
+
+#### ▼ opentelemetry_propagate
+
+トレースコンテキスト仕様として、W3C Trace Contextを設定する。
+
+```nginx
+server {
+
+    opentelemetry_propagate
+
+    location / {
+        proxy_pass $scheme://$http_host$request_uri;
+    }
+}
+```
 
 <br>
 
@@ -271,6 +297,8 @@ load_module /path/to/ngx_otel_module.so;
 
 #### ▼ ビルド済みの場合
 
+ビルド済みモジュールをインストールする。
+
 ```bash
 $ apt install -y nginx-module-otel
 ```
@@ -280,5 +308,80 @@ $ yum install -y nginx-module-otel
 ```
 
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
+
+<br>
+
+### ディレクティブ
+
+#### ▼ otel_exporter
+
+```nginx
+http {
+
+    otel_exporter {
+        endpoint localhost:4317;
+    }
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_exporter
+
+#### ▼ otel_service_name
+
+```nginx
+http {
+    otel_service_name foo-service;
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_service_name
+
+#### ▼ otel_trace
+
+```nginx
+http {
+    otel_trace on;
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_trace
+
+#### ▼ otel_trace_context
+
+```nginx
+http {
+    otel_trace_context inject;
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context
+
+#### ▼ otel_span_name
+
+```nginx
+http {
+
+    location / {
+        otel_span_name $request_uri
+        proxy_pass $scheme://$http_host$request_uri;
+    }
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name
+
+#### ▼ otel_span_attr
+
+```nginx
+http {
+
+    location / {
+        otel_span_attr env prd
+        proxy_pass $scheme://$http_host$request_uri;
+    }
+}
+```
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr
 
 <br>

@@ -77,7 +77,7 @@ server {
     # 動的ファイルであればwebサーバーにルーティング
     #-------------------------------------
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass $scheme://$http_host$request_uri;
     }
 }
 ```
@@ -113,7 +113,7 @@ http {
         access_log logs/access.log  main;
 
         location / {
-            proxy_pass http://127.0.0.2:8080/server;
+            proxy_pass $scheme://$http_host$request_uri;
             # X-REQUEST-IDヘッダーにトレースIDを設定し、リクエスト送信する
             proxy_set_header X-Request-ID $tmp;
         }

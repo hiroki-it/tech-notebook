@@ -713,6 +713,12 @@ HTTPプロトコルでインバウンド通信をルーティングする場合�
 proxy_pass http://127.0.0.1:80;
 ```
 
+受信したリクエストの情報をそのまま使ってプロキシする場合、変数を使用する。
+
+```nginx
+proxy_pass $scheme://$http_host$request_uri;
+```
+
 > - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
 <br>
