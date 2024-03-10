@@ -23686,6 +23686,9 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
 </code></pre></div>
+<p>受信したリクエストの情報をそのまま使ってプロキシする場合、変数を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass">https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass</a></li>
