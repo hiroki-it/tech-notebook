@@ -2361,6 +2361,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_web_apache_module.html</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/middleware/index.html</loc>
          <lastmod>2024-03-10</lastmod>
          <changefreq>daily</changefreq>
