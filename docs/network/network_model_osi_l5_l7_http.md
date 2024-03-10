@@ -235,7 +235,7 @@ Strict-Transport-Security: max-age=*****; includeSubDomains; preload
 X-Frame-Options: SAMEORIGIN
 # CloudFrontのキャッシュにヒットしたか否か
 X-Cache: Miss from cloudfront
-Via: 1.1 *****.cloudfront.net (CloudFront)
+Via: 1.1 <発行されたランダム文字列>.cloudfront.net (CloudFront)
 X-Amz-Cf-Pop: SEA19-C2
 X-Amz-Cf-Id: *****==
 # 言語のバージョン (※ php.ini にて、expose_php = Off と設定することにより非表示にできる)

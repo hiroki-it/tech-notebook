@@ -63,7 +63,7 @@ description: Route53＠AWSリソース
 | ---------------- | -------------- | ----------------------------------------------------------------------------------- |
 | DNS名            | ALB            | `<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com`                       |
 |                  | EC2            | `ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com` |
-| ドメイン名       | CloudFront     | `<ランダムな文字列>.cloudfront.net`                                                 |
+| ドメイン名       | CloudFront     | `<発行されたランダム文字列>.cloudfront.net`                                         |
 | エンドポイント名 | RDS (Aurora)   | `<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`              |
 |                  | RDS (非Aurora) | `<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`            |
 |                  | S3             | `<バケット名>.ap-northeast-1.amazonaws.com`                                         |

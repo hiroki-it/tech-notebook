@@ -54,7 +54,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Price Class         | 使用するエッジロケーションを設定する。                                                                                                | Asiaが含まれているものを選択。                                                                                                                                                                                                                            |
 | WAF                 | CloudFrontに紐付けるWAFを設定する。                                                                                                   |                                                                                                                                                                                                                                                           |
-| CNAME               | CloudFrontのデフォルトドメイン名 (`*****.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                                        | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                             |
+| CNAME               | CloudFrontのデフォルトドメイン名 (`<発行されたランダム文字列>.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                   | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                             |
 | SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                           | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                       |
 | Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
 | Default Root Object | オリジンのドキュメントルートを設定する。                                                                                              | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。     |
@@ -98,7 +98,7 @@ Host: foo.example.com
 User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
 Authorization: Bearer <Bearerトークン>
 X-Amz-Cf-Id: *****
-Via: 2.0 77c20654dd474081d033f27ad1b56e1e.cloudfront.net (CloudFront)
+Via: 2.0 <発行されたランダム文字列>.cloudfront.net (CloudFront)
 # 各Cookieの値 (二回目のリクエスト時に設定される)
 Cookie: sessionid=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
 # 送信元IPアドレス
@@ -149,7 +149,65 @@ CLoudFrontからオリジンに`Host`ヘッダーをルーティングしない�
 
 <br>
 
-## 03. キャッシュ
+## 03. CloudFrontの仕組み
+
+### Point Of Presence
+
+CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
+
+> - https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
+
+<br>
+
+### CloudFront DNS
+
+CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーのIPアドレスを返却する。
+
+CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
+
+![cloudfront_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
+
+> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name=*all
+
+<br>
+
+### エッジサーバー
+
+#### ▼ エッジサーバーとは
+
+地理的にクライアントから最も近い場所にあるキャッシュサーバーである。
+
+> - https://xtech.nikkei.com/it/atclncf/service/00040/101700001/
+> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name=*all
+
+#### ▼ 全エッジサーバーのIPアドレス
+
+CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。
+
+以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。
+
+```bash
+$ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
+    | jq ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
+```
+
+もしくは、以下のリンクを直接的に参考し、『`"service": "CLOUDFRONT"`』となっている部分を探す。
+
+> - https://ip-ranges.amazonaws.com/ip-ranges.json
+
+#### ▼ 使用中サーバーのIPアドレス
+
+CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。
+
+以下のコマンドで、エッジロケーションにある使用中サーバーのIPアドレスを確認できる。
+
+```bash
+$ nslookup <発行されたランダム文字列>.cloudfront.net
+```
+
+<br>
+
+## 04. キャッシュ
 
 ### オリジンリクエストの可否、キャッシュ作成の有無
 
@@ -302,45 +360,6 @@ TTL秒によるキャッシュの自動削除を待たずに、手動でキャ�
 全てのファイルのキャッシュを削除したい場合は『`/*`』、特定のファイルのキャッシュを削除したい場合は『`/<ファイルへのパス>`』、を設定する。
 
 CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまうため、作業後には必ずキャッシュを削除する。
-
-<br>
-
-## 04. エッジロケーションとエッジサーバー
-
-### Point Of Presence
-
-CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
-
-> - https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
-
-<br>
-
-### エッジロケーションにおける全エッジサーバーのIPアドレス
-
-CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。
-
-以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。
-
-```bash
-$ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
-    | jq ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
-```
-
-もしくは、以下のリンクを直接的に参考し、『`"service": "CLOUDFRONT"`』となっている部分を探す。
-
-> - https://ip-ranges.amazonaws.com/ip-ranges.json
-
-<br>
-
-### エッジロケーションの使用中サーバーのIPアドレス
-
-CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。
-
-以下のコマンドで、エッジロケーションにある使用中サーバーのIPアドレスを確認できる。
-
-```bash
-$ nslookup <割り当てられた文字列>.cloudfront.net
-```
 
 <br>
 
