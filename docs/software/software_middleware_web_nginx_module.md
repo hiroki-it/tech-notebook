@@ -13,9 +13,11 @@ description: モジュール＠Nginxの知見を記録しています。
 
 <br>
 
-## 01. モジュールの組み込み方
+## モジュールのセットアップ方法
 
 ### Docker
+
+#### ▼ 未ビルドモジュールの場合
 
 マルチステージビルドを使用して、モジュールのビルド用のステージと実際に使用するステージを分ける。
 
@@ -25,7 +27,7 @@ description: モジュール＠Nginxの知見を記録しています。
 # -----------------
 FROM nginx:<バージョン>-alpine as builder
 
-# ここでモジュールをビルドする
+# ここで未ビルドモジュールをビルドする
 
 # -----------------
 # mainステージ
@@ -41,9 +43,23 @@ COPY --from=builder /usr/lib/nginx/modules/otel_ngx_module.so /usr/lib/nginx/mod
 
 > - https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile
 
+#### ▼ ビルド済みモジュールの場合
+
+ビルド済みモジュールをインストール後、そのまま使用する。
+
+```dockerfile
+FROM nginx:<バージョン>-alpine
+
+# ビルド済みモジュールをインストールする
+
+
+...
+
+```
+
 <br>
 
-## 02. gRPCパッケージ
+## gRPCパッケージ
 
 ### gRPCパッケージとは
 
@@ -231,18 +247,6 @@ Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで
 
 ### セットアップ
 
-#### ▼ ビルド済みの場合
-
-```bash
-$ apt install -y nginx-module-otel
-```
-
-```bash
-$ yum install -y nginx-module-otel
-```
-
-> - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
-
 #### ▼ 未ビルドの場合
 
 モジュールをインポートする前に、ビルドする必要がある。
@@ -264,5 +268,17 @@ load_module /path/to/ngx_otel_module.so;
 ```
 
 > - https://github.com/nginxinc/nginx-otel
+
+#### ▼ ビルド済みの場合
+
+```bash
+$ apt install -y nginx-module-otel
+```
+
+```bash
+$ yum install -y nginx-module-otel
+```
+
+> - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
 
 <br>
