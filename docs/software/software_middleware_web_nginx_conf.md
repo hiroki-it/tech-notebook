@@ -190,7 +190,7 @@ load_module "modules/<soファイル名>";
 #### ▼ pid
 
 ```nginx
-pid  logs/nginx.pid;
+pid logs/nginx.pid;
 ```
 
 #### ▼ worker_connections
@@ -198,7 +198,7 @@ pid  logs/nginx.pid;
 workerプロセスが同時に処理できるコネクションの最大数を設定する。
 
 ```nginx
-worker_connections  1024;
+worker_connections 1024;
 ```
 
 > - https://nginx.org/en/docs/ngx_core_module.html#worker_connections
@@ -206,13 +206,13 @@ worker_connections  1024;
 #### ▼ worker_processes
 
 ```nginx
-worker_processes  5;
+worker_processes 5;
 ```
 
 #### ▼ worker_rlimit_nofile
 
 ```nginx
-worker_rlimit_nofile  8192;
+worker_rlimit_nofile 8192;
 ```
 
 <br>

@@ -381,7 +381,7 @@ http {
 http {
 
     location / {
-        otel_span_attr env prd
+        otel_span_attr env prd;
         proxy_pass $scheme://$http_host$request_uri;
     }
 }
