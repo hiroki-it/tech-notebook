@@ -451,6 +451,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html</loc>
+         <lastmod>2024-03-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html</loc>
          <lastmod>2024-03-11</lastmod>
          <changefreq>daily</changefreq>
@@ -477,11 +482,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_ci_dagger.html</loc>
-         <lastmod>2024-03-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/devops/draft/devops_platform_engineering.html</loc>
          <lastmod>2024-03-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
