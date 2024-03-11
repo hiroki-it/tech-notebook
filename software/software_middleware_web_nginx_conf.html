@@ -23403,6 +23403,24 @@
 <p>アスタリスクによるワイルドカード (<code>*</code>) に対応している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/conf.d/*.conf</span>;
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_core_module.html#include">https://nginx.org/en/docs/ngx_core_module.html#include</a></li>
+</ul>
+</blockquote>
+<p><code>include</code>ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。</p>
+<p>例えば、<code>load_module</code>ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の<code>include</code>ディレクティブで指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/conf.d/foo_module.conf</span>;
+
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># ここでload_moduleを実行する設定ファイルをincludeできない</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/69282289">https://stackoverflow.com/a/69282289</a></li>
+</ul>
+</blockquote>
 <h4 id="load_module">▼ load_module<a class="headerlink" href="#load_module" title="Permanent link">&para;</a></h4>
 <p>あらかじめビルドしておいたモジュール (<code>so</code>ファイル) を読み込む。</p>
 <p>デフォルトでは、モジュールは<code>modules</code>ディレクトリにある。</p>
@@ -23411,12 +23429,6 @@
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_core_module.html#load_module">https://nginx.org/en/docs/ngx_core_module.html#load_module</a></li>
-</ul>
-</blockquote>
-<p><code>load_module</code>ディレクティブは、<code>include</code>ディレクティブで読み込む<code>conf</code>ファイル内で実行しても良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://stackoverflow.com/a/69282289">https://stackoverflow.com/a/69282289</a></li>
 </ul>
 </blockquote>
 <h4 id="pid">▼ pid<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h4>
