@@ -24,3 +24,18 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 出典は要記入...
 
 <br>
+
+### Internal developer portals
+
+アプリケーションのテンプレートや共通パッケージを利用できるポータルサイトを提供する。
+
+また、これらのツールの利用状況も可視化できる。
+
+開発チームがアプリケーションを素早く作成できるようになる。
+
+- Port
+- Backstage
+
+> - https://github.com/backstage/backstage
+
+<br>

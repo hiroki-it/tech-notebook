@@ -182,7 +182,7 @@ $ make install
 その後、`nginx.conf`ファイルでモジュールや設定ファイルをインポートする。
 
 ```nginx
-load_module /path/to/otel_ngx_module.so;
+load_module modules/otel_ngx_module.so;
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
@@ -295,7 +295,7 @@ $ make install
 その後、`nginx.conf`ファイルでモジュールをインポートする。
 
 ```nginx
-load_module /path/to/ngx_otel_module.so;
+load_module modules/ngx_otel_module.so;
 ```
 
 > - https://github.com/nginxinc/nginx-otel

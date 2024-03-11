@@ -181,11 +181,17 @@ include /etc/nginx/conf.d/*.conf;
 
 あらかじめビルドしておいたモジュール (`so`ファイル) を読み込む。
 
+デフォルトでは、モジュールは`modules`ディレクトリにある。
+
 ```nginx
-load_module "modules/<soファイル名>";
+load_module modules/<soファイル名>;
 ```
 
 > - https://nginx.org/en/docs/ngx_core_module.html#load_module
+
+`load_module`ディレクティブは、`include`ディレクティブで読み込む`conf`ファイル内で実行しても良い。
+
+> - https://stackoverflow.com/a/69282289
 
 #### ▼ pid
 
@@ -666,7 +672,32 @@ fastcgi_pass 127.0.0.1:9000;
 
 <br>
 
-## 03-07. ngx_http_grpc_module
+## 03-07. ngx_http_rewrite_module
+
+### ディレクティブ
+
+#### ▼ if
+
+条件分岐を設定する。
+
+```nginx
+if ($request_uri = /) {
+    # foo変数にfooを設定する
+    set $foo foo;
+}
+
+if ($host ~* teambox.com) {
+    # bar変数にbarを設定する
+    set $bar bar;
+}
+```
+
+> - https://qiita.com/ukitazume/items/ab1c929783e87227e466
+> - https://gist.github.com/jrom/1760790
+
+<br>
+
+## 03-08. ngx_http_grpc_module
 
 ### ディレクティブ
 
@@ -699,7 +730,7 @@ server {
 
 <br>
 
-## 03-08. ngx_http_proxy_module
+## 03-09. ngx_http_proxy_module
 
 ### ディレクティブ
 
@@ -723,7 +754,7 @@ proxy_pass $scheme://$http_host$request_uri;
 
 <br>
 
-## 03-09. ngx_http_stub_status_module
+## 03-10. ngx_http_stub_status_module
 
 ### ディレクティブ
 
