@@ -93,6 +93,14 @@
 
 <br>
 
+### Kaniko
+
+* #### [Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko.html)
+* #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_conf.html)
+* #### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_command.html)
+
+<br>
+
 ### Kiali
 
 * #### [︎Kiali](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html)
