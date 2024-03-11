@@ -698,6 +698,10 @@ nav:
                   - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_secret.md
       - ■ Jaeger:
           - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.md
+      - ■ Kaniko:
+          - Kaniko: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko.md
+          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_conf.md
+          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_command.md
       - ■ Kiali:
           - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.md
           - ■ リソース定義:
