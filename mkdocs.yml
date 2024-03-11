@@ -110,12 +110,12 @@ markdown_extensions:
 
 # 外部プラグイン
 plugins:
-#  - git-committers:
-#      repository: hiroki-it/tech-notebook
-#      branch: main
-#      # トークンはレートリミット回避のためだけに使用し、スコープはない
-#      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
-#      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "<パブリックリポジトリの読み取り権限を持つトークン>"]
+  #  - git-committers:
+  #      repository: hiroki-it/tech-notebook
+  #      branch: main
+  #      # トークンはレートリミット回避のためだけに使用し、スコープはない
+  #      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
+  #      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "<パブリックリポジトリの読み取り権限を持つトークン>"]
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
@@ -729,6 +729,8 @@ nav:
           - ■ SREing:
               - SREing: devops/devops_sreing.md
               - アンチパターン: devops/devops_sreing_antipattern.md
+          - ■ Platform Engineering:
+              - Platform Engineering: devops/devops_platform_engineering.md
       - ■ 技術的要素:
           - ■ ドキュメンテーション:
               - ドキュメンテーション: devops/devops_documentation.md
