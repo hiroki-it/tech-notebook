@@ -40,7 +40,7 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 <br>
 
-## 02. Platform Engineeringの実践方法の種類
+## 02. Platform Engineeringの組織モデルの種類
 
 ### Centralized Provisioning (中央集権型)
 

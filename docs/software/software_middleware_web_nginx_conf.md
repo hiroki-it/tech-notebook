@@ -177,6 +177,22 @@ error_log  logs/error.log;
 include /etc/nginx/conf.d/*.conf;
 ```
 
+> - https://nginx.org/en/docs/ngx_core_module.html#include
+
+`include`ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。
+
+例えば、`load_module`ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の`include`ディレクティブで指定する必要がある。
+
+```nginx
+include /etc/nginx/conf.d/foo_module.conf;
+
+http {
+    # ここでload_moduleを実行する設定ファイルをincludeできない
+}
+```
+
+> - https://stackoverflow.com/a/69282289
+
 #### ▼ load_module
 
 あらかじめビルドしておいたモジュール (`so`ファイル) を読み込む。
@@ -188,10 +204,6 @@ load_module modules/<soファイル名>;
 ```
 
 > - https://nginx.org/en/docs/ngx_core_module.html#load_module
-
-`load_module`ディレクティブは、`include`ディレクティブで読み込む`conf`ファイル内で実行しても良い。
-
-> - https://stackoverflow.com/a/69282289
 
 #### ▼ pid
 

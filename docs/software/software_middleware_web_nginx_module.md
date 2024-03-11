@@ -314,6 +314,10 @@ $ yum install -y nginx-module-otel
 
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
 
+その他、alpineはMercurialからインストールすると良い。
+
+> - https://hg.nginx.org/pkg-oss/file/tip/alpine
+
 <br>
 
 ### ディレクティブ

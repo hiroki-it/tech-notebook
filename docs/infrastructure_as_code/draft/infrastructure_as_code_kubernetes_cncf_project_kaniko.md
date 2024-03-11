@@ -30,106 +30,7 @@ description: Kaniko＠CNCFの知見を記録しています。
 
 <br>
 
-## 02. `config.json`ファイル
-
-### `config.json`ファイルとは
-
-Kanikoのオプションを設定する。
-
-`/kaniko/.docker`ディレクトリに配置する。
-
-<br>
-
-### credHelpers
-
-#### ▼ credHelpersとは
-
-イメージレジストリごとに、認証ヘルパーがある。
-
-```yaml
-{
-  # 使用する認証ヘルパーを設定する
-  "credHelpers": {
-      # amazon-ecr-credential-helperに設定を渡す
-      "<AWSアカウントID (1つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
-      "<AWSアカウントID (2つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
-    },
-}
-```
-
-> - https://github.com/awslabs/amazon-ecr-credential-helper#configuration
-
-#### ▼ 機密情報の設定
-
-CIの実行コンテナでは、機密情報を動的に設定できるようにする。
-
-```bash
-$ aws ecr get-login-password --region ap-northeast-1 \
-    | docker login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
-
-$ cat > /kaniko/.docker/config.json << EOF
-  {
-    ...
-  }
-  EOF
-```
-
-> - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries
-> - https://int128.hatenablog.com/entry/2019/09/25/204930
-
-<br>
-
-## 03. /kaniko/executorコマンド
-
-### --context
-
-指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。
-
-```bash
-$ /kaniko/executor --context=.
-```
-
-> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#kaniko-build-contexts
-
-<br>
-
-### --destination
-
-ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する
-
-```bash
-$ /kaniko/executor --destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
-```
-
-<br>
-
-### --dockerfile
-
-コンテナ内でビルドしたいDockerfileのパスを設定する。
-
-```bash
-$ /kaniko/executor --dockerfile=./docker/Dockerfile
-```
-
-> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---dockerfile
-
-<br>
-
-### --no-push
-
-コンテナ内でビルドしたコンテナイメージをプッシュしない。
-
-ビルドのみを実行したい場合に使用する。
-
-```bash
-$ /kaniko/executor --no-push
-```
-
-> - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---no-push
-
-<br>
-
-## 04. Pod上で実行する場合
+## 02. Pod上で実行する場合
 
 ### AWS ECR
 
@@ -161,7 +62,7 @@ spec:
 
 <br>
 
-## 05. GitLab上で実行する場合
+## 03. GitLab上で実行する場合
 
 ### DockerHub
 
