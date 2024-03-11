@@ -22527,7 +22527,7 @@ $<span class="w"> </span>make<span class="w"> </span>-j2
 $<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>その後、<code>nginx.conf</code>ファイルでモジュールや設定ファイルをインポートする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/path/to/otel_ngx_module.so</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/otel_ngx_module.so</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22616,7 +22616,7 @@ $<span class="w"> </span>make<span class="w"> </span>-j2
 $<span class="w"> </span>make<span class="w"> </span>install
 </code></pre></div>
 <p>その後、<code>nginx.conf</code>ファイルでモジュールをインポートする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">/path/to/ngx_otel_module.so</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/ngx_otel_module.so</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
