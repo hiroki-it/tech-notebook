@@ -75,12 +75,11 @@ SREingには、継続的な改善によって、システムの信頼性を向�
 
 ## 03. SREingの実践方法の種類
 
-### プロダクトチーム内フルスタックSREer (Embedded SRE)
+### プロダクトチーム内フルスタックSREer型 (Embedded SRE)
 
 特定のプロダクトの信頼性を高めるために、アプリケーションチームと同じチームにSREerが参画し、フルスタック的にSREingする。
 
 > - https://x-tech5.co.jp/2022/02/21/204/
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
 
 <br>
 
@@ -106,36 +105,19 @@ SREerチームは、T字型のスキルを持った様々なエンジニア (例
 
 <br>
 
-### プラットフォームSREer
+### プラットフォームSREer型
 
 様々なプロダクトの信頼性を高めるために、SREerがアプリケーションチームやチーム内SREerを支援するインフラを開発する。
 
 > - https://hrmos.co/pages/moneyforward/jobs/040infra01
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
 
 <br>
 
-### Enabling SREer (CCoE)
+### Enabling SREer型 (CCoE)
 
 前者にSREのプラクティスを広める。
 
 > - https://hrmos.co/pages/moneyforward/jobs/040infra01
-
-<br>
-
-### Centralized Provisioning (中央集権型)
-
-記入中...
-
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
-
-<br>
-
-### Decentralized Provisioning (分散型)
-
-記入中...
-
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
 
 <br>
 

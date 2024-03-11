@@ -8,6 +8,8 @@
 * #### <u>SREing</u>
 > * ##### [︎SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html)
 > * ##### [︎アンチパターン](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html)
+* #### <u>Platform Engineering</u>
+> * ##### [Platform Engineering](https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html)
 
 <br>
 
