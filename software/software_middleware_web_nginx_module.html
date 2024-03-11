@@ -22819,21 +22819,22 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <li><a href="https://github.com/nginxinc/nginx-otel">https://github.com/nginxinc/nginx-otel</a></li>
 </ul>
 </blockquote>
+<p>その他、alpineはMercurialからインストールすると良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://hg.nginx.org/pkg-oss/file/tip/alpine">https://hg.nginx.org/pkg-oss/file/tip/alpine</a></li>
+</ul>
+</blockquote>
 <h4 id="_14">▼ ビルド済みの場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ビルド済みモジュールをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
 </code></pre></div>
+<p>または、Nginx (<code>1.25.3</code>) であればビルトインパッケージになっているため、ビルドが不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages">https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages</a></li>
-</ul>
-</blockquote>
-<p>その他、alpineはMercurialからインストールすると良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://hg.nginx.org/pkg-oss/file/tip/alpine">https://hg.nginx.org/pkg-oss/file/tip/alpine</a></li>
 </ul>
 </blockquote>
 <p><br></p>

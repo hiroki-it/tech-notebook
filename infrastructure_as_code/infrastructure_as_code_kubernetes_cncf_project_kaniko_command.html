@@ -21901,16 +21901,18 @@
 <h2 id="01-kanikoexecutor">01. /kaniko/executorコマンド<a class="headerlink" href="#01-kanikoexecutor" title="Permanent link">&para;</a></h2>
 <h3 id="-build-arg">--build-arg<a class="headerlink" href="#-build-arg" title="Permanent link">&para;</a></h3>
 <p>コンテナビルド時のオプションを設定する。</p>
-<p>オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに<code>null</code>を設定して対処する</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># nullを設定する</span>
+<p>オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに<code>NULL</code>を設定して対処する。</p>
+<p>また、<code>--build-arg</code>の値をオプションの一部のように解釈してしまうため、<code>=</code>でオプションと値を区別させる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># IFSに&quot;NULL&quot;を設定する</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
 
-$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--build-args<span class="w"> </span><span class="s2">&quot;FOO=foo1&quot;</span><span class="w"> </span>--build-args<span class="w"> </span><span class="s2">&quot;BAR=&#39;bar1 bar2 bar3&#39;&quot;</span>
+$<span class="w"> </span>/kaniko/executor<span class="w"> </span>--build-args<span class="o">=</span><span class="s2">&quot;FOO=foo&quot;</span><span class="w"> </span>--build-args<span class="o">=</span><span class="s2">&quot;BAR=&#39;bar1 bar2 bar3&#39;&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---build-arg">https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---build-arg</a></li>
 <li><a href="https://github.com/GoogleContainerTools/kaniko/issues/1803#issuecomment-1023264341">https://github.com/GoogleContainerTools/kaniko/issues/1803#issuecomment-1023264341</a></li>
+<li><a href="https://github.com/knative/build/issues/565">https://github.com/knative/build/issues/565</a></li>
 </ul>
 </blockquote>
 <h3 id="-context">--context<a class="headerlink" href="#-context" title="Permanent link">&para;</a></h3>
