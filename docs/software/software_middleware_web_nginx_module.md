@@ -300,6 +300,10 @@ load_module modules/ngx_otel_module.so;
 
 > - https://github.com/nginxinc/nginx-otel
 
+その他、alpineはMercurialからインストールすると良い。
+
+> - https://hg.nginx.org/pkg-oss/file/tip/alpine
+
 #### ▼ ビルド済みの場合
 
 ビルド済みモジュールをインストールする。
@@ -312,11 +316,9 @@ $ apt install -y nginx-module-otel
 $ yum install -y nginx-module-otel
 ```
 
+または、Nginx (`1.25.3`) であればビルトインパッケージになっているため、ビルドが不要である。
+
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
-
-その他、alpineはMercurialからインストールすると良い。
-
-> - https://hg.nginx.org/pkg-oss/file/tip/alpine
 
 <br>
 

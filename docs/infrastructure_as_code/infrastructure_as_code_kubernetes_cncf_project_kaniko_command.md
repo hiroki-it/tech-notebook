@@ -19,17 +19,20 @@ description: コマンド＠Kanikoの知見を記録しています。
 
 コンテナビルド時のオプションを設定する。
 
-オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに`null`を設定して対処する
+オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに`NULL`を設定して対処する。
+
+また、`--build-arg`の値をオプションの一部のように解釈してしまうため、`=`でオプションと値を区別させる。
 
 ```bash
-# nullを設定する
+# IFSに"NULL"を設定する
 $ export IFS=''
 
-$ /kaniko/executor --build-args "FOO=foo1" --build-args "BAR='bar1 bar2 bar3'"
+$ /kaniko/executor --build-args="FOO=foo" --build-args="BAR='bar1 bar2 bar3'"
 ```
 
 > - https://github.com/GoogleContainerTools/kaniko?tab=readme-ov-file#flag---build-arg
 > - https://github.com/GoogleContainerTools/kaniko/issues/1803#issuecomment-1023264341
+> - https://github.com/knative/build/issues/565
 
 ### --context
 
