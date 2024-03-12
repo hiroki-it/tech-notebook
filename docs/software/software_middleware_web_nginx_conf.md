@@ -181,13 +181,13 @@ include /etc/nginx/conf.d/*.conf;
 
 `include`ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。
 
-例えば、`load_module`ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の`include`ディレクティブで指定する必要がある。
+例えば、`http`ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の`include`ディレクティブで指定する必要がある。
 
 ```nginx
 include /etc/nginx/conf.d/foo_module.conf;
 
 http {
-    # ここでload_moduleを実行する設定ファイルをincludeできない
+    # ここでhttpを実行する設定ファイルをincludeできない
 }
 ```
 
@@ -195,7 +195,7 @@ http {
 
 #### ▼ load_module
 
-あらかじめビルドしておいたモジュール (`so`ファイル) を読み込む。
+Nginxでは、ビルド時にモジュール (`so`ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。
 
 デフォルトでは、モジュールは`modules`ディレクトリにある。
 
@@ -203,7 +203,27 @@ http {
 load_module modules/<soファイル名>;
 ```
 
+執筆時点 (2024/03/12) では、以下のモジュールを動的に読み込める。
+
+```bash
+$ ls /etc/nginx/modules
+
+ngx_http_geoip_module.so
+ngx_http_js_module-debug.so
+ngx_http_xslt_filter_module.so
+ngx_stream_js_module-debug.so
+ngx_http_image_filter_module-debug.so
+ngx_http_js_module.so
+ngx_stream_geoip_module-debug.so
+ngx_stream_js_module.so
+ngx_http_geoip_module-debug.so
+ngx_http_image_filter_module.so
+ngx_http_xslt_filter_module-debug.so
+ngx_stream_geoip_module.so
+```
+
 > - https://nginx.org/en/docs/ngx_core_module.html#load_module
+> - https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html
 
 #### ▼ pid
 

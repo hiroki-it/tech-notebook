@@ -369,6 +369,10 @@ http {
 
 #### ▼ otel_span_name
 
+スパン名を設定する。
+
+リクエストが発生するタイミングで設定すると良い。
+
 ```nginx
 http {
 
@@ -382,6 +386,8 @@ http {
 > - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name
 
 #### ▼ otel_span_attr
+
+スパンの属性を設定する。
 
 ```nginx
 http {
