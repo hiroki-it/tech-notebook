@@ -336,11 +336,14 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 #### ▼ Transit Gatewayとは
 
-『多対多』の関係で、『異なるVPC間』や『オンプレミス-VPC間』の双方向通信を可能にする。クラウドルーターとして働く。
+『多対多』の関係で、『異なるVPC間』や『VPCとDirect Connect間』の双方向通信を可能にする。クラウドルーターとして働く。
+
+Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、VPCとオンプレミスを接続することもできる。
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 
 > - https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html
+> - https://www.ashisuto.co.jp/db_blog/article/aws-transitgateway.html
 
 <br>
 
