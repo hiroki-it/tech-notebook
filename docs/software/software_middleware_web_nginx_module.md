@@ -290,6 +290,8 @@ Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで
 
 モジュールをインポートする前に、ビルドする必要がある。
 
+なお、gRPCのビルドは`30`分ほどかかるため、gRPCを含むビルド済みのモジュールをインストールした方が良い。
+
 ```bash
 $ git clone https://github.com/nginxinc/nginx-otel.git
 $ cd nginx-otel
@@ -319,22 +321,27 @@ load_module modules/ngx_otel_module.so;
 Nginx (`1.25.3`) であればビルトインパッケージになっているため、ビルドが不要である。
 
 ```bash
+# aptリポジトリから
 $ apt install -y nginx-module-otel
 ```
 
 ```bash
+# yumリポジトリから
 $ yum install -y nginx-module-otel
 ```
 
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
 > - https://nginx.org/packages/mainline/alpine/
 
-Alpineの場合は、以下の場所にパッケージがある。
+Alpineの場合は、執筆時点 (2024/03/13) でalpineリポジトリに`ngx_otel_module`がなく、Nginxのalpineリポジトリにパッケージがある。
 
-特定のバージョンを指定するために、`wget`コマンドで一度ファイルを取得し、`apk`コマンドでそのファイルからモジュールをインストールする。
+`apk`コマンドはそのまま使うと常に最新をインストールしてしまう。
+
+そこで、`wget`コマンドで一度ファイルを取得し、`apk`コマンドでそのファイルからモジュールをインストールする。
 
 ```bash
-$ wget https://nginx.org/packages/mainline/alpine/<バージョン>/main/x86_64/nginx-module-otel-*****.apk
+# nginxのalpineリポジトリから
+$ wget https://nginx.org/packages/mainline/alpine/<バージョン>/main/x86_64/nginx-module-otel-<リビジョン>.apk
 $ apk add --allow-untrusted nginx-module-otel-<バージョン>.apk
 ```
 

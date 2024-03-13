@@ -5,7 +5,29 @@ description: Linux系＠管理ユーティリティの知見を記録してい�
 
 # Linux系＠管理ユーティリティ
 
-## 01. brew
+## 01. apk
+
+### apkコマンド
+
+Alpineリポジトリのパッケージを管理する。
+
+常に最新をインストールする仕様になっている。
+
+もし、特定のバージョンをインストールしたい場合、以下の通りとする。
+
+```bash
+# wgetコマンドで一度ファイルを取得する
+$ wget <該当のバージョンのalpineパッケージ>.apk
+
+# 取得したファイルからパッケージをインストールする
+$ apk add --allow-untrusted <パッケージ名>.apk
+```
+
+> - https://uepon.hatenadiary.com/entry/2023/03/20/165648
+
+<br>
+
+## 02. brew
 
 ### brewとは
 
@@ -114,9 +136,7 @@ $ brew upgrade
 
 <br>
 
-## 02. asdf
-
-<br>
+## 03. asdf
 
 ### asdfとは
 
