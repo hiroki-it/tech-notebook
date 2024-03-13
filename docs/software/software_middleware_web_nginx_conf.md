@@ -200,26 +200,7 @@ Nginxでは、ビルド時にモジュール (`so`ファイル) をバイナリ�
 デフォルトでは、モジュールは`modules`ディレクトリにある。
 
 ```nginx
-load_module modules/<soファイル名>;
-```
-
-執筆時点 (2024/03/12) では、以下のモジュールを動的に読み込める。
-
-```bash
-$ ls /etc/nginx/modules
-
-ngx_http_geoip_module.so
-ngx_http_js_module-debug.so
-ngx_http_xslt_filter_module.so
-ngx_stream_js_module-debug.so
-ngx_http_image_filter_module-debug.so
-ngx_http_js_module.so
-ngx_stream_geoip_module-debug.so
-ngx_stream_js_module.so
-ngx_http_geoip_module-debug.so
-ngx_http_image_filter_module.so
-ngx_http_xslt_filter_module-debug.so
-ngx_stream_geoip_module.so
+load_module modules/<動的モジュール名>;
 ```
 
 > - https://nginx.org/en/docs/ngx_core_module.html#load_module

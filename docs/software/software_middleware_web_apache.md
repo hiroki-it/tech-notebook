@@ -19,15 +19,25 @@ description: Apache＠Web系ミドルウェアの知見を記録しています�
 
 Apacheは、Apacheコアとモジュールから構成される。
 
-モジュールには、静的/動的モジュールがある。
-
-静的モジュールはApacheをインストールした時点でApacheコアに組み込まれている。
-
-一方で、動的モジュールは`mod_so`を使用して拡張機能的に組み込め、また取り外しできる。
+![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apache_architecture.png)
 
 > - https://thinkit.co.jp/article/120/1
 
-![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apache_architecture.png)
+<br>
+
+### モジュール
+
+#### ▼ 静的モジュール
+
+静的モジュールは、ビルド後にApacheのバイナリに組み込む必要がある。
+
+必要不要かにかかわらず、Apacheと一緒に強制的に実行する必要がある。
+
+#### ▼ 動的モジュール
+
+動的モジュールは、ビルド後にApacheのバイナリに組み込む必要がない。
+
+必要な場合にのみインストールし、また実行すればよい。
 
 <br>
 

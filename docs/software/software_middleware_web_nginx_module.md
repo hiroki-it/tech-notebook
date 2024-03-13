@@ -13,9 +13,17 @@ description: モジュール＠Nginxの知見を記録しています。
 
 <br>
 
-## モジュールのセットアップ方法
+## モジュール (静的/動的) のセットアップ方法
 
-### Docker
+### ビルド
+
+Nginxでは、モジュールを事前にビルドし、バイナリに組み込む必要がある。
+
+ただ、すでにビルド済みで提供されている場合は、それをインストールすればよい。
+
+<br>
+
+### Dockerの場合
 
 #### ▼ 未ビルドモジュールの場合
 
@@ -179,7 +187,7 @@ $ make -j2
 $ make install
 ```
 
-その後、`nginx.conf`ファイルでモジュールや設定ファイルをインポートする。
+`otel_ngx_module`は動的モジュールであるため、`nginx.conf`ファイルでモジュールをインポートする必要がある。
 
 ```nginx
 load_module modules/otel_ngx_module.so;
@@ -292,7 +300,7 @@ $ make -j2
 $ make install
 ```
 
-その後、`nginx.conf`ファイルでモジュールをインポートする。
+`ngx_otel_module`は動的モジュールであるため、`nginx.conf`ファイルでモジュールをインポートする必要がある。
 
 ```nginx
 load_module modules/ngx_otel_module.so;
@@ -308,6 +316,8 @@ load_module modules/ngx_otel_module.so;
 
 ビルド済みモジュールをインストールする。
 
+Nginx (`1.25.3`) であればビルトインパッケージになっているため、ビルドが不要である。
+
 ```bash
 $ apt install -y nginx-module-otel
 ```
@@ -316,9 +326,20 @@ $ apt install -y nginx-module-otel
 $ yum install -y nginx-module-otel
 ```
 
-または、Nginx (`1.25.3`) であればビルトインパッケージになっているため、ビルドが不要である。
-
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
+> - https://nginx.org/packages/mainline/alpine/
+
+Alpineの場合は、以下の場所にパッケージがある。
+
+特定のバージョンを指定するために、`wget`コマンドで一度ファイルを取得し、`apk`コマンドでそのファイルからモジュールをインストールする。
+
+```bash
+$ wget https://nginx.org/packages/mainline/alpine/<バージョン>/main/x86_64/nginx-module-otel-*****.apk
+$ apk add --allow-untrusted nginx-module-otel-<バージョン>.apk
+```
+
+> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/302#issuecomment-1978230701
+> - https://uepon.hatenadiary.com/entry/2023/03/20/165648
 
 <br>
 

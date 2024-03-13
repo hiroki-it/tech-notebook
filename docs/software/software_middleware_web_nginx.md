@@ -34,6 +34,52 @@ Nginxの起動時に最初にマスタープロセスが実行され、Nginxに�
 
 <br>
 
+### モジュール
+
+#### ▼ 静的モジュール
+
+静的モジュールは、ビルド後にApacheのバイナリに組み込む必要がある。
+
+必要不要かにかかわらず、Nginxと一緒に強制的に実行する必要がある。
+
+#### ▼ 動的モジュール
+
+動的モジュールは、ビルド後にNginxのバイナリに組み込む必要がない。
+
+必要な場合にのみインストールし、また実行すればよい。
+
+動的モジュールは、`load_module`ディレクティブで読み込む。
+
+```nginx
+load_module modules/<動的モジュール名>.so;
+```
+
+執筆時点 (2024/03/12) では、以下の動的モジュールがあらかじめインストールされている。
+
+それ以外の動的モジュール (`nginx-module-otel`) はインストールする必要がある。
+
+```bash
+$ ls /etc/nginx/modules
+
+ngx_http_geoip_module.so
+ngx_http_js_module-debug.so
+ngx_http_xslt_filter_module.so
+ngx_stream_js_module-debug.so
+ngx_http_image_filter_module-debug.so
+ngx_http_js_module.so
+ngx_stream_geoip_module-debug.so
+ngx_stream_js_module.so
+ngx_http_geoip_module-debug.so
+ngx_http_image_filter_module.so
+ngx_http_xslt_filter_module-debug.so
+ngx_stream_geoip_module.so
+```
+
+> - https://nginx.org/en/linux_packages.html#dynmodules
+> - https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html
+
+<br>
+
 ## 02. ユースケース
 
 ### リバースプロキシのミドルウェアとして
