@@ -4972,6 +4972,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-e_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      -e
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5162,7 +5171,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_1" class="md-nav__link">
+  <a href="#-e_2" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -5171,7 +5180,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_2" class="md-nav__link">
+  <a href="#-e_3" class="md-nav__link">
     <span class="md-ellipsis">
       -E
     </span>
@@ -5838,7 +5847,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_3" class="md-nav__link">
+  <a href="#-e_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -e
     </span>
@@ -6113,7 +6122,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_4" class="md-nav__link">
+  <a href="#-e_5" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -6233,7 +6242,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_5" class="md-nav__link">
+  <a href="#-e_6" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -24488,6 +24497,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-e_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      -e
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24678,7 +24696,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_1" class="md-nav__link">
+  <a href="#-e_2" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -24687,7 +24705,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_2" class="md-nav__link">
+  <a href="#-e_3" class="md-nav__link">
     <span class="md-ellipsis">
       -E
     </span>
@@ -25354,7 +25372,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_3" class="md-nav__link">
+  <a href="#-e_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ -e
     </span>
@@ -25629,7 +25647,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_4" class="md-nav__link">
+  <a href="#-e_5" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -25749,7 +25767,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-e_5" class="md-nav__link">
+  <a href="#-e_6" class="md-nav__link">
     <span class="md-ellipsis">
       -e
     </span>
@@ -26828,6 +26846,25 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>$&l
 $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span>$<span class="s2">&lt;変数名&gt;&quot;</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="-e_1">-e<a class="headerlink" href="#-e_1" title="Permanent link">&para;</a></h3>
+<p>エスケープシーケンスを有効化する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 改行できるようになる</span>
+$<span class="w"> </span><span class="nv">VAR</span><span class="o">=</span>FOO<span class="se">\n</span>BAR
+
+<span class="c1"># バックスラッシュを使えるようになる</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$VAR</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">VAR</span><span class="o">=</span>FOO<span class="se">\\</span>BAR
+
+<span class="c1"># バックスラッシュを使えるようになる</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$VAR</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1705/26/news013.html">https://atmarkit.itmedia.co.jp/ait/articles/1705/26/news013.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="export">export<a class="headerlink" href="#export" title="Permanent link">&para;</a></h2>
 <h3 id="export_1">exportとは<a class="headerlink" href="#export_1" title="Permanent link">&para;</a></h3>
 <p>基本的な手順としては、シェル変数を設定し、これを環境変数に追加する。</p>
@@ -27002,12 +27039,12 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>bar<span class="w"> </span>-C<span class="w"> </span><span class="m">5</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="-e_1">-e<a class="headerlink" href="#-e_1" title="Permanent link">&para;</a></h3>
+<h3 id="-e_2">-e<a class="headerlink" href="#-e_2" title="Permanent link">&para;</a></h3>
 <p>標準出力に出力された文字列のうち、複数の文字列を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>bar<span class="w"> </span>-e<span class="w"> </span>baz
 </code></pre></div>
 <p><br></p>
-<h3 id="-e_2">-E<a class="headerlink" href="#-e_2" title="Permanent link">&para;</a></h3>
+<h3 id="-e_3">-E<a class="headerlink" href="#-e_3" title="Permanent link">&para;</a></h3>
 <p>標準出力に出力された文字列のうち、正規表現で文字列を取得する。</p>
 <p>ログの最初のタイムスタンプに基づいてログをフィルタリングしたい時に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^2023-01-01 12:00&quot;</span>
@@ -27550,7 +27587,7 @@ Connection<span class="w"> </span>to<span class="w"> </span><span class="m">127<
 <li><a href="https://www.karakaram.com/file-encryption-using-openssl/">https://www.karakaram.com/file-encryption-using-openssl/</a></li>
 </ul>
 </blockquote>
-<h4 id="-e_3">▼ -e<a class="headerlink" href="#-e_3" title="Permanent link">&para;</a></h4>
+<h4 id="-e_4">▼ -e<a class="headerlink" href="#-e_4" title="Permanent link">&para;</a></h4>
 <p>指定したアルゴリズムを使用して、文字列を暗号化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>opsnssl<span class="w"> </span>enc<span class="w"> </span>-aes-256-cbc<span class="w"> </span>-e<span class="w"> </span>-in<span class="w"> </span>plan.txt<span class="w"> </span>-out<span class="w"> </span>encrypted.txt
 </code></pre></div>
@@ -27746,7 +27783,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-n
 </code></pre></div>
 <p><br></p>
-<h3 id="-e_4">-e<a class="headerlink" href="#-e_4" title="Permanent link">&para;</a></h3>
+<h3 id="-e_5">-e<a class="headerlink" href="#-e_5" title="Permanent link">&para;</a></h3>
 <p>一連の処理の途中で<code>0</code>以外の終了ステータスが出力された場合、全ての処理を途中終了する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-e
 </code></pre></div>
@@ -27839,7 +27876,7 @@ $<span class="w"> </span>strace<span class="w"> </span>-c<span class="w"> </span
 <span class="m">100</span>.00<span class="w">    </span><span class="m">0</span>.062070<span class="w">                   </span><span class="m">584</span><span class="w">        </span><span class="m">12</span><span class="w"> </span>total
 </code></pre></div>
 <p><br></p>
-<h3 id="-e_5">-e<a class="headerlink" href="#-e_5" title="Permanent link">&para;</a></h3>
+<h3 id="-e_6">-e<a class="headerlink" href="#-e_6" title="Permanent link">&para;</a></h3>
 <p>トレースの内容をフィルタリングし、取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ネットワークに関する情報のみを取得する。</span>
 $<span class="w"> </span>strace<span class="w"> </span>-e<span class="w"> </span><span class="nv">trace</span><span class="o">=</span>network<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>https://www.google.com/
@@ -28092,7 +28129,7 @@ github.com<span class="w"> </span><span class="o">(</span>github.com<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-13</span>
   </span>
 
     
