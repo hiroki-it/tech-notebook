@@ -22825,6 +22825,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <h3 id="_13">セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 未ビルドの場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>モジュールをインポートする前に、ビルドする必要がある。</p>
+<p>なお、gRPCのビルドは<code>30</code>分ほどかかるため、gRPCを含むビルド済みのモジュールをインストールした方が良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nginx-otel
 $<span class="w"> </span>mkdir<span class="w"> </span>build
@@ -22850,9 +22851,11 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <h4 id="_15">▼ ビルド済みの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>ビルド済みモジュールをインストールする。</p>
 <p>Nginx (<code>1.25.3</code>) であればビルトインパッケージになっているため、ビルドが不要である。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
+<div class="highlight"><pre><span></span><code><span class="c1"># aptリポジトリから</span>
+$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
+<div class="highlight"><pre><span></span><code><span class="c1"># yumリポジトリから</span>
+$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22860,9 +22863,11 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <li><a href="https://nginx.org/packages/mainline/alpine/">https://nginx.org/packages/mainline/alpine/</a></li>
 </ul>
 </blockquote>
-<p>Alpineの場合は、以下の場所にパッケージがある。</p>
-<p>特定のバージョンを指定するために、<code>wget</code>コマンドで一度ファイルを取得し、<code>apk</code>コマンドでそのファイルからモジュールをインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>wget<span class="w"> </span>https://nginx.org/packages/mainline/alpine/&lt;バージョン&gt;/main/x86_64/nginx-module-otel-*****.apk
+<p>Alpineの場合は、執筆時点 (2024/03/13) でalpineリポジトリに<code>ngx_otel_module</code>がなく、Nginxのalpineリポジトリにパッケージがある。</p>
+<p><code>apk</code>コマンドはそのまま使うと常に最新をインストールしてしまう。</p>
+<p>そこで、<code>wget</code>コマンドで一度ファイルを取得し、<code>apk</code>コマンドでそのファイルからモジュールをインストールする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># nginxのalpineリポジトリから</span>
+$<span class="w"> </span>wget<span class="w"> </span>https://nginx.org/packages/mainline/alpine/&lt;バージョン&gt;/main/x86_64/nginx-module-otel-&lt;リビジョン&gt;.apk
 $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--allow-untrusted<span class="w"> </span>nginx-module-otel-&lt;バージョン&gt;.apk
 </code></pre></div>
 <blockquote>
