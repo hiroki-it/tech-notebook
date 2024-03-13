@@ -167,6 +167,45 @@ RUN pyenv install ${PYTHON_VERSION}
 
 <br>
 
+### スコープ
+
+#### ▼ FROMより前のARG
+
+`FROM`より前で使用した`ARGS`は、後続含めて`FROM`でしか使用できない。
+
+```dockerfile
+ARG PYTHON_VERSION="3.8.0"
+FROM python:${PYTHON_VERSION}
+
+# 変数の値を使えない
+RUN echo $PYTHON_VERSION
+
+# 変数の値を使える
+FROM python:${PYTHON_VERSION}
+```
+
+もし`FROM`内で使用する場合は、変数の再宣言が必要である。
+
+値の格納は不要である。
+
+```dockerfile
+ARG PYTHON_VERSION="3.8.0"
+FROM python:${PYTHON_VERSION}
+
+# 変数の再宣言
+ARG PYTHON_VERSION
+
+# 変数の値を使えない
+RUN echo $PYTHON_VERSION
+
+# 変数の値を使える
+FROM python:${PYTHON_VERSION}
+```
+
+> - https://docs.docker.com/reference/dockerfile/#understand-how-arg-and-from-interact
+
+<br>
+
 ## 04. CMD
 
 ### CMDとは

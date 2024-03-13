@@ -37,9 +37,11 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 ### ホットリロード
 
-Envoyは、通信を切断することなく、コントロールプレーンから取得した動的な設定を再読み込みできる。
+Envoyは、通信を切断することなく、コントロールプレーンから取得した動的な設定を自動的に再読み込みできる。
 
 ホットリロードでは、現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。
+
+ちなみに、ApacheやNginxはリロード機能を持つが、自動でリロードするホットリロードの機能はない。
 
 ![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
 

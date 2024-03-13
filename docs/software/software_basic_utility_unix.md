@@ -789,6 +789,29 @@ $ echo "$<変数名>"
 
 <br>
 
+### -e
+
+エスケープシーケンスを有効化する。
+
+```bash
+# 改行できるようになる
+$ VAR=FOO\nBAR
+
+# バックスラッシュを使えるようになる
+$ echo $VAR
+```
+
+```bash
+$ VAR=FOO\\BAR
+
+# バックスラッシュを使えるようになる
+$ echo $VAR
+```
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1705/26/news013.html
+
+<br>
+
 ## export
 
 ### exportとは
