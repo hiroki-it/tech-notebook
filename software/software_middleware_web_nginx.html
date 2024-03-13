@@ -2156,6 +2156,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      モジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 静的モジュール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 動的モジュール
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2172,7 +2205,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -2182,7 +2215,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 構成
     </span>
@@ -2214,7 +2247,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       フォワードプロキシのミドルウェアとして
     </span>
@@ -2224,7 +2257,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 構成
     </span>
@@ -21926,6 +21959,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      モジュール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モジュール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 静的モジュール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 動的モジュール
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -21942,7 +22008,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       リバースプロキシのミドルウェアとして
     </span>
@@ -21952,7 +22018,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 構成
     </span>
@@ -21984,7 +22050,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       フォワードプロキシのミドルウェアとして
     </span>
@@ -21994,7 +22060,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 構成
     </span>
@@ -22105,9 +22171,43 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_3">モジュール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 静的モジュール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>静的モジュールは、ビルド後にApacheのバイナリに組み込む必要がある。</p>
+<p>必要不要かにかかわらず、Nginxと一緒に強制的に実行する必要がある。</p>
+<h4 id="_5">▼ 動的モジュール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>動的モジュールは、ビルド後にNginxのバイナリに組み込む必要がない。</p>
+<p>必要な場合にのみインストールし、また実行すればよい。</p>
+<p>動的モジュールは、<code>load_module</code>ディレクティブで読み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/&lt;動的モジュール名&gt;.so</span><span class="p">;</span>
+</code></pre></div>
+<p>執筆時点 (2024/03/12) では、以下の動的モジュールがあらかじめインストールされている。</p>
+<p>それ以外の動的モジュール (<code>nginx-module-otel</code>) はインストールする必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/etc/nginx/modules
+
+ngx_http_geoip_module.so
+ngx_http_js_module-debug.so
+ngx_http_xslt_filter_module.so
+ngx_stream_js_module-debug.so
+ngx_http_image_filter_module-debug.so
+ngx_http_js_module.so
+ngx_stream_geoip_module-debug.so
+ngx_stream_js_module.so
+ngx_http_geoip_module-debug.so
+ngx_http_image_filter_module.so
+ngx_http_xslt_filter_module-debug.so
+ngx_stream_geoip_module.so
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/linux_packages.html#dynmodules">https://nginx.org/en/linux_packages.html#dynmodules</a></li>
+<li><a href="https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html">https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="_6">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 構成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Nginxを配置し、リクエストをwebサーバーにルーティングする。</p>
 <p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のwebサーバーにリクエストを送信できるようになる。</p>
 <h4 id="httphttps">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps" title="Permanent link">&para;</a></h4>
@@ -22250,8 +22350,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_5">フォワードプロキシのミドルウェアとして<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 構成<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_8">フォワードプロキシのミドルウェアとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 構成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>フォワードプロキシのミドルウェアとして使用できる。</p>
 <p>クライアントサイドにNginxを配置し、リクエストを外部ネットワークにルーティングする。</p>
 <h4 id="httphttps_1">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps_1" title="Permanent link">&para;</a></h4>
@@ -22430,7 +22530,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-13</span>
   </span>
 
     
