@@ -121,7 +121,8 @@ protoc \
   *.proto
 ```
 
-> - https://zenn.dev/mitsugu/articles/0323811005f233
+> - https://developers.freee.co.jp/entry/new-arch-protobuf-docker-image
+> - https://github.com/namely/docker-protoc
 
 <br>
 

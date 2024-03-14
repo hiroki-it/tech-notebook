@@ -80,7 +80,31 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 <br>
 
-## 02. マニフェスト
+## 02. デザインパターンの種類
+
+### エージェントパターン
+
+テレメトリーの送信元では、エージェント (OpenTelemetry Collector) が常駐し、テレメトリーを収集する。
+
+さらに、エージェントはテレメトリーを監視バックエンドに送信する。
+
+エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。
+
+> - https://opentelemetry.io/docs/collector/deployment/agent/
+
+### ゲートウェイパターン
+
+テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを介してテレメトリーを収集する。
+
+さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。
+
+ゲートウェイは、Deployment、などで実装する。
+
+> - https://opentelemetry.io/docs/collector/deployment/gateway/
+
+<br>
+
+## 03. マニフェスト
 
 ### ConfigMap
 
@@ -296,7 +320,7 @@ spec:
 
 <br>
 
-## 03. カスタムリソースを使用する場合
+## 04. カスタムリソースを使用する場合
 
 カスタムリソースを使用して、OpenTelemetryを定義することもできる。
 

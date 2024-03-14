@@ -80,30 +80,17 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ## 02. デザインパターンの種類
 
-### フォワーダーアグリゲーターパターン (ゲートウェイパターン)
-
-#### ▼ フォワーダーアグリゲーターパターンとは
-
-『ゲートウェイパターン』ともいう。
-
-フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
-
-フォワーダーのFluentBit/Fluentdは送信元で稼働し、アグリゲーターとしての別のFluentBit/Fluentdにログを送信する。
-
-アグリゲーターは、ログの監視バックエンドにログを送信する。
-
-![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
-
-> - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
-> - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
-
-<br>
-
 ### エージェントパターン
 
 #### ▼ エージェントパターンとは
 
-エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。
+エージェントパターンは、エージェントコンポーネントから構成される。
+
+ログの送信元では、エージェント(FluentBit/Fluentd) が常駐し、ログを収集する。
+
+さらに、エージェントはログを監視バックエンドに送信する。
+
+エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。
 
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
@@ -130,5 +117,24 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 > - https://codersociety.com/blog/articles/kubernetes-logging
 > - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
+
+<br>
+
+### フォワーダーアグリゲーターパターン
+
+#### ▼ フォワーダーアグリゲーターパターンとは
+
+フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
+
+ログの送信元では、フォワーダー (FluentBit/Fluentd) はL7ロードバランサーを介してログを収集する。
+
+さらに、フォワーダーは別のFluentBit/Fluentd (アグリゲーター) にログを送信する。
+
+アグリゲーターはログを集約し、監視バックエンドにログを送信する。
+
+![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
+
+> - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+> - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
 <br>
