@@ -621,6 +621,25 @@ spec:
 
 <br>
 
+## DaemonSet
+
+### .spec.replicas
+
+Deploymentと同じである。
+
+<br>
+
+### .spec.strategy
+
+### .spec.strategy (RollingUpdateの場合)
+
+Podで`.spec.containers[*].ports[*].hostPort`キーを使用する場合、`.spec.strategy.rollingUpdate.maxSurge`キーは`0` (デフォルト値) にしなければならない。
+
+> - https://qiita.com/yosshi_/items/ec042a801ef69fa44ef6#%E6%B3%A8%E6%84%8F%E7%82%B9hostport-%E3%81%AE%E5%88%A9%E7%94%A8
+> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-apps/1591-daemonset-surge#proposal
+
+<br>
+
 ## Deployment
 
 ### .spec.replicas

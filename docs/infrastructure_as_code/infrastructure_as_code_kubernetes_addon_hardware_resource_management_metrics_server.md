@@ -300,7 +300,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 #### ▼ デバッグ
 
-Deployment配下のPodで、`.spec.containers[]resources`キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。
+Deployment配下のPodで、`.spec.containers[*]resources`キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。
 
 一方でこれを取得できていない場合、設定が無いか、metrics-serverが正しく動作していない可能性がある。
 
