@@ -14296,6 +14296,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#daemonsetpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DaemonSet配下のPodへの通信
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23277,6 +23286,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#daemonsetpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DaemonSet配下のPodへの通信
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24698,6 +24716,18 @@
 <h4 id="pod">▼ Pod数の固定<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <p>DaemonSetは、Node内でPodを1つだけ維持管理する。</p>
 <p>そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。</p>
+<h4 id="daemonsetpod">▼ DaemonSet配下のPodへの通信<a class="headerlink" href="#daemonsetpod" title="Permanent link">&para;</a></h4>
+<ul>
+<li>NodePort Service</li>
+<li>ClusterIP Service</li>
+<li>PodでのhostPort</li>
+<li>など...</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
 <h4 id="deployment_1">▼ Deploymentとは<a class="headerlink" href="#deployment_1" title="Permanent link">&para;</a></h4>
@@ -25406,6 +25436,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a></li>
 <li><a href="https://www.mtioutput.com/entry/kube-proxy-iptable">https://www.mtioutput.com/entry/kube-proxy-iptable</a></li>
 <li><a href="https://www.amazon.co.jp/dp/B079TG2M5N/">https://www.amazon.co.jp/dp/B079TG2M5N/</a> (チャプター5)</li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods</a></li>
 </ul>
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>

@@ -17324,7 +17324,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ エージェントパターンの例
+      ▼ エージェントパターンの実装例
     </span>
   </a>
   
@@ -21966,7 +21966,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ エージェントパターンの例
+      ▼ エージェントパターンの実装例
     </span>
   </a>
   
@@ -22130,18 +22130,18 @@
 <p>エージェントパターンは、エージェントコンポーネントから構成される。</p>
 <p>ログの送信元では、エージェント(FluentBit/Fluentd) が常駐し、ログを収集する。</p>
 <p>さらに、エージェントはログを監視バックエンドに送信する。</p>
-<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。</p>
 <p><img alt="fluent-bit_fluentd_agent-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/">https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ エージェントパターンの例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ エージェントパターンの実装例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。</p>
 <ul>
-<li>KubernetesのDaemonSet配下のPodとして常駐させる。</li>
-<li>KubernetesのPod内のサイドカーとして配置する。</li>
 <li>FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。</li>
+<li>KubernetesのPod内のサイドカーとして配置する。</li>
+<li>KubernetesのDaemonSet配下のPodとして常駐させる。</li>
 </ul>
 <blockquote>
 <ul>

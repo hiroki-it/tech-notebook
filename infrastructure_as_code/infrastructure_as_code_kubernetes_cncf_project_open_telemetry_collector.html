@@ -18727,14 +18727,80 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="エージェントパターン">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ エージェントパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エージェントパターンの実装例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エージェントパターンのデメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
       ゲートウェイパターン
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ゲートウェイパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンの実装例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンのデメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22020,14 +22086,80 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="エージェントパターン">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ エージェントパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エージェントパターンの実装例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エージェントパターンのデメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
       ゲートウェイパターン
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="ゲートウェイパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンの実装例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ゲートウェイパターンのデメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22190,23 +22322,34 @@
 <p><br></p>
 <h2 id="02">02. デザインパターンの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">エージェントパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ エージェントパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>テレメトリーの送信元では、エージェント (OpenTelemetry Collector) が常駐し、テレメトリーを収集する。</p>
 <p>さらに、エージェントはテレメトリーを監視バックエンドに送信する。</p>
-<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/collector/deployment/agent/">https://opentelemetry.io/docs/collector/deployment/agent/</a></li>
 </ul>
 </blockquote>
-<h3 id="_4">ゲートウェイパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ エージェントパターンの実装例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装できる。</p>
+<h4 id="_6">▼ エージェントパターンのデメリット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>もしOpenTelemetryで分散トレースのみを採用しているとする。</p>
+<p>エージェントパターンであると、スパンを作らないPodがいるNodeにまでOpenTelemetry Collectorをスケジューリングしてしまう。</p>
+<p>スパンを作るPodがいるNodeのためだけにOpenTelemetry Collectorがいればよいため、エージェントパターンは不適である。</p>
+<p><br></p>
+<h3 id="_7">ゲートウェイパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ ゲートウェイパターンとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを介してテレメトリーを収集する。</p>
 <p>さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。</p>
-<p>ゲートウェイは、Deployment、などで実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/collector/deployment/gateway/">https://opentelemetry.io/docs/collector/deployment/gateway/</a></li>
 </ul>
 </blockquote>
+<h4 id="_9">▼ ゲートウェイパターンの実装例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>ゲートウェイは、Deployment、などで実装できる。</p>
+<h4 id="_10">▼ ゲートウェイパターンのデメリット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
 <h2 id="03">03. マニフェスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="configmap">ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
