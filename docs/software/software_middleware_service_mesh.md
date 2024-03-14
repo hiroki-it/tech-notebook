@@ -59,7 +59,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 サービスメッシュの概念が提唱される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:60%;">
 
 サービスメッシュの概念が提唱され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 

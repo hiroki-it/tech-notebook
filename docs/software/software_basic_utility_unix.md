@@ -759,13 +759,13 @@ $ du -h ./vendor/foo --max-depth=1
 
 指定したディレクトリ内の合計サイズ (KB) を取得する。
 
-> - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
-
 ```bash
 $ du -s ./
 
 12345678 ./
 ```
+
+> - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/s2-sysinfo-filesystems-du
 
 <br>
 
@@ -875,9 +875,6 @@ export PATH
 
 パーティションの一覧を取得する。
 
-> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
-> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
-
 ```bash
 $ fdisk -l
 
@@ -894,6 +891,9 @@ I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
 /dev/vda2    206848  4401151  4194304     2G Linux スワップ         D156FFCF-97DE-45EB-A6B0-21A9B876129A
 /dev/vda3   4401152 41943006 37541855  17.9G Linux ファイルシステム C7A19722-4C31-4646-8ED4-DD4D86EFBC50
 ```
+
+> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
+> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 
 <br>
 
@@ -997,13 +997,13 @@ Swap:             0           0           0
 
 メモリ使用率は、以下の計算式で算出できる。
 
-> - https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
-
 ```mathematica
 メモリ使用率 =
 ( ( Total - Free ) / Total * 100 ) =
 ((15387 - 12459) / 15387) * 100 = 19 %
 ```
+
+> - https://support.site24x7.com/portal/en/kb/articles/how-is-the-total-memory-utilization-calculated-for-a-linux-server-monitor
 
 <br>
 
@@ -1202,8 +1202,6 @@ Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケット�
 
 全てのChainのルールの一覧を取得する。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
-
 ```bash
 $ iptables -L
 
@@ -1234,11 +1232,11 @@ Chain名を指定することもできる。
 $ iptables -L <Chain名>
 ```
 
+> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+
 #### ▼ -S
 
 全てのChainのルールをコマンド形式で取得する。
-
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 ```bash
 $ iptables -S
@@ -1251,6 +1249,8 @@ $ iptables -S
 ...
 ```
 
+> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+
 <br>
 
 ### オプション
@@ -1259,41 +1259,41 @@ $ iptables -S
 
 Chain内の各ルールを番号付きで取得する。
 
-> - http://redcinfo-c.blogspot.com/2010/09/iptables.html
-
 ```bash
 $ iptables --line-number
 ```
+
+> - http://redcinfo-c.blogspot.com/2010/09/iptables.html
 
 #### ▼ -t (--table)
 
 指定したテーブル (`filter`、`nat`、`mangle`、`Raw`) を持つChainのみを取得する。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
-
 ```bash
 $ iptables -L -t nat
 ```
+
+> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 #### ▼ -n (--numeric)
 
 ChainのIPアドレスを名前解決せずに、IPアドレスのまま取得する。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
-
 ```bash
 $ iptables -L -n
 ```
+
+> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 #### ▼ -v
 
 Chain内のルールを詳しく取得する。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
-
 ```bash
 $ iptables -L -v
 ```
+
+> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
 
 <br>
 
@@ -1661,8 +1661,6 @@ $ nc <IPアドレス/ドメイン> <ポート番号>
 
 ログを出力しつつ、`nc`コマンドを実行する。
 
-> - https://qiita.com/chenglin/items/70f06e146db19de5a659
-
 ```bash
 $ nc -v <IPアドレス/ドメイン> <ポート番号>
 ```
@@ -1678,6 +1676,8 @@ nc: connect to 127.0.0.1 port 9000 (tcp) failed: Connection refused
 # 成功の場合
 Connection to 127.0.0.1 9000 port [tcp/*] succeeded!
 ```
+
+> - https://qiita.com/chenglin/items/70f06e146db19de5a659
 
 <br>
 

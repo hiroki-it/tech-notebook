@@ -267,6 +267,7 @@ func newSampler() sdktrace.Sampler {
 
 > - https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
 > - https://github.com/open-telemetry/opentelemetry-go/issues/3559
+> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 
 <br>
 
@@ -954,6 +955,14 @@ processors:
 <br>
 
 ### 環境変数
+
+#### ▼ 一覧
+
+OpenTelemetryの仕様では、あるべき環境変数が決まっている。
+
+ただ、言語によって開発状況が異なり、使えない環境変数がある。
+
+> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 
 #### ▼ 全体
 
