@@ -137,4 +137,8 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
+#### ▼ アグリゲーターパターンの実装例
+
+L7ロードバランサーはIngressコントローラー、アグリゲーターはDeployment、などで実装できる。
+
 <br>

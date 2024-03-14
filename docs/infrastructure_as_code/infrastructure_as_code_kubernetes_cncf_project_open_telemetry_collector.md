@@ -102,7 +102,7 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 エージェントパターンであると、スパンを作らないPodがいるNodeにまでOpenTelemetry Collectorをスケジューリングしてしまう。
 
-スパンを作るPodがいるNodeのためだけにOpenTelemetry Collectorがいればよいため、エージェントパターンは不適である。
+スパンを作るPodがいるNodeのためだけに、OpenTelemetry Collectorを配置すればよいため、エージェントパターンは不適である。
 
 <br>
 
@@ -118,7 +118,7 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 #### ▼ ゲートウェイパターンの実装例
 
-ゲートウェイは、Deployment、などで実装できる。
+L7ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeployment、などで実装できる。
 
 #### ▼ ゲートウェイパターンのデメリット
 
