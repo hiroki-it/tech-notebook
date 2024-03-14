@@ -25069,7 +25069,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <h4 id="pod_7">▼ Podを安全に削除する方法<a class="headerlink" href="#pod_7" title="Permanent link">&para;</a></h4>
 <p>Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
 <ul>
-<li>Workload (例：Deployment) が古いPodを切り離す。</li>
+<li>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) が古いPodを切り離す。</li>
 <li>Serviceとkube-proxyが古いPodの宛先情報を削除する。</li>
 <li>コンテナを停止する。</li>
 </ul>
@@ -25398,6 +25398,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
 <p>Serviceは、<code>L4</code>ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>kube-proxyが更新したNode上で稼働するiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。</p>
+<p>DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) でServiceを使用できる。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
 <p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png" /></p>
 <blockquote>
@@ -26371,7 +26372,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     

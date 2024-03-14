@@ -22264,7 +22264,7 @@
 <h1 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h1>
 <h2 id="_20">冗長化する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <hr />
-<p>Workload (例：Deployment、StatefulSet、など) でPodを冗長化する。</p>
+<p>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) でPodを冗長化する。</p>
 <p>N+1個にすると良い。</p>
 <h2 id="_21">水平スケーリングする<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <hr />
@@ -23123,7 +23123,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <tbody>
 <tr>
 <td>Podが全滅していないことを確認する。</td>
-<td>PDBの設定によってWorkload (例：Deployment) で起動しているアプリケーションのPodが全滅しないかを確認する。</td>
+<td>PDBの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) で起動しているアプリケーションのPodが全滅しないかを確認する。</td>
 </tr>
 <tr>
 <td>PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるので、PDBの設定した内容に沿ってPodが保護されるかを確認する。</td>
@@ -23135,11 +23135,11 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>Workloadのデプロイ戦略が正しく動作していることを確認する。</td>
-<td>Workload (例：Deployment) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
 </tr>
 <tr>
 <td>WorkloadがPodのレプリカ数を維持できることを確認する。</td>
-<td>Workload (例：Deployment) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。</td>
 </tr>
 <tr>
 <td>Podのスケーリングが正しく動作することを確認する。</td>
@@ -23388,7 +23388,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     
