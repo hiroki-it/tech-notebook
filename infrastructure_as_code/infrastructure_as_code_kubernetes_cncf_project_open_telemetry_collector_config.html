@@ -22876,9 +22876,17 @@
 <span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">protocols</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">grpc</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;PodのIPアドレス&gt;:4317</span>
+<span class="w">        </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Pod (自分) のIPアドレス&gt;:4317</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;PodのIPアドレス&gt;:4318</span>
+<span class="w">        </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Pod (自分) のIPアドレス&gt;:4318</span>
+</code></pre></div>
+<p>設定したエンドポイントに応じて、受信サーバーが起動する。</p>
+<div class="highlight"><pre><span></span><code>...
+
+<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:102<span class="w">    </span>Starting<span class="w"> </span>GRPC<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;receiver&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;otlp&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;Pod (自分) のIPアドレス&gt;:4317&quot;</span><span class="o">}</span>
+<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:152<span class="w">    </span>Starting<span class="w"> </span>HTTP<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;receiver&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;otlp&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;Pod (自分) のIPアドレス&gt;:4318&quot;</span><span class="o">}</span>
+
+...
 </code></pre></div>
 <blockquote>
 <ul>
