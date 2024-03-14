@@ -19,6 +19,10 @@ description: コマンド＠Kanikoの知見を記録しています。
 
 コンテナビルド時のオプションを設定する。
 
+```bash
+$ /kaniko/executor --build-args "FOO=foo"
+```
+
 オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに`NULL`を設定して対処する。
 
 また、`--build-arg`の値をオプションの一部のように解釈してしまうため、`=`でオプションと値を区別させる。
