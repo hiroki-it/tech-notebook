@@ -647,7 +647,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 この問題が起こった場合、以下のいずれかで解決する。
 
 - argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。
-- Workload (Deployment、DaemonSet、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
+- Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
 
 <br>
 

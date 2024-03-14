@@ -4467,7 +4467,7 @@ data:
 
 古いPodをNodeから退避させる時に、Nodeで退避できる古いPodの最大数を設定する。
 
-これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て退避してしまう問題が起こる。
+これを設定しないと、特定のWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) 配下のPodを全て退避してしまう問題が起こる。
 
 まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 

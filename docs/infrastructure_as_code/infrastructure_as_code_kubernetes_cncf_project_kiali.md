@@ -204,7 +204,7 @@ Virtual Service間の通信を表示する。
 
 #### ▼ Workloadグラフ
 
-Workload (例：Deployment、Statefulset、など) の通信を表示する。
+Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) の通信を表示する。
 
 <br>
 

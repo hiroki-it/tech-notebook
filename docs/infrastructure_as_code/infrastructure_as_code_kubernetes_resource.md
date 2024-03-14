@@ -354,7 +354,7 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 
 Podの終了プロセスが始まると、以下の一連のプロセスも開始する。
 
-- Workload (例：Deployment) が古いPodを切り離す。
+- Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) が古いPodを切り離す。
 - Serviceとkube-proxyが古いPodの宛先情報を削除する。
 - コンテナを停止する。
 
@@ -740,6 +740,8 @@ Node外から通信を受信し、Ingressに定義されたルールに応じて
 Serviceは、`L4`ロードバランサーとしてPodに通信をルーティングする。
 
 kube-proxyが更新したNode上で稼働するiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。
+
+DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) でServiceを使用できる。
 
 マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 

@@ -232,7 +232,7 @@ strategies:
 
 #### ▼ RemoveDuplicates
 
-Workload (例：Deployment、StatefulSet、Job) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。
+Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。
 
 該当するNodeがない場合、退避させない。
 
