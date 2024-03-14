@@ -176,7 +176,7 @@ func main() {
 
 #### ▼ Propagator
 
-標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetryコレクター) を、使用できるようになる。
+標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators
 
@@ -190,7 +190,7 @@ func main() {
 
 拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
 
-#### ▼ AWS Distro for OpenTelemetryコレクター
+#### ▼ AWS Distro for OpenTelemetry Collector
 
 > - https://github.com/aws/aws-xray-sdk-go
 > - https://github.com/aws-samples/aws-xray-sdk-go-sample
@@ -465,7 +465,7 @@ func main() {
 
 <br>
 
-### 宛先がOpenTelemetryコレクターの場合
+### 宛先がOpenTelemetry Collectorの場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -512,7 +512,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	conn, err := grpc.DialContext(
         ctx,
-        // OpenTelemetryコレクターの完全修飾ドメイン名
+        // OpenTelemetry Collectorの完全修飾ドメイン名
         "opentelemetry-collector.foo-namespace.svc.cluster.local:4317",
         grpc.WithTransportCredentials(insecure.NewCredentials()),
         grpc.WithBlock(),
@@ -522,7 +522,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create gRPC connection to collector: %w", err)
 	}
 
-	// Exporter (スパンの宛先) として、OpenTelemetryコレクターを設定する。
+	// Exporter (スパンの宛先) として、OpenTelemetry Collectorを設定する。
 	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
@@ -868,7 +868,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create resource: %w", err)
 	}
 
-	// AWS Distro for OpenTelemetryコレクターに接続する
+	// AWS Distro for OpenTelemetry Collectorに接続する
 	conn, err := grpc.DialContext(
 		ctx,
 		"sample-collector.sample.svc.cluster.local:4318",
@@ -880,7 +880,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create gRPC connection to collector: %w", err)
 	}
 
-	// Exporter (スパンの宛先) として、AWS Distro for OpenTelemetryコレクターを設定する。
+	// Exporter (スパンの宛先) として、AWS Distro for OpenTelemetry Collectorを設定する。
 	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),

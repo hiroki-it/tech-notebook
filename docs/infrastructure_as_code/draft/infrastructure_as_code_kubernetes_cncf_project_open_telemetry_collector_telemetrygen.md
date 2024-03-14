@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Telemetrygen＠OpenTelemetryコレクター
-description: Telemetrygen＠OpenTelemetryコレクターの知見を記録しています。
+title: 【IT技術の知見】Telemetrygen＠OpenTelemetry Collector
+description: Telemetrygen＠OpenTelemetry Collectorの知見を記録しています。
 ---
 
-# Telemetrygen＠OpenTelemetryコレクター
+# Telemetrygen＠OpenTelemetry Collector
 
 ## はじめに
 
@@ -15,9 +15,9 @@ description: Telemetrygen＠OpenTelemetryコレクターの知見を記録して
 
 ## 01. Telemetrygenとは
 
-ローカル環境で擬似的に分散トレースを作成し、OpenTelemetryコレクターがこれを正しく処理できるかを検証する。
+ローカル環境で擬似的に分散トレースを作成し、OpenTelemetry Collectorがこれを正しく処理できるかを検証する。
 
-別途、宛先のOpenTelemetryコレクターを起動し、ログを出力しておく。
+別途、宛先のOpenTelemetry Collectorを起動し、ログを出力しておく。
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
 

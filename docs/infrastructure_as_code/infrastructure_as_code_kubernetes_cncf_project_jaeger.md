@@ -17,7 +17,7 @@ description: Jaeger＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、otelクライアントパッケージの使用が推奨) 、jaegerエージェント、jaegerコレクター、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
+Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、otelクライアントパッケージの使用が推奨) 、jaegerエージェント、Jaeger Collector、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
 
@@ -49,13 +49,13 @@ jaegerエージェントは、Pod内でサイドカーとして常駐し、ア�
 
 <br>
 
-### jaegerコレクター
+### Jaeger Collector
 
-jaegerコレクターは、プッシュ型でjaegerエージェントからコンテキストを収集し、ローカルストレージに保存する。
+Jaeger Collectorは、プッシュ型でjaegerエージェントからコンテキストを収集し、ローカルストレージに保存する。
 
 Jaegerのダッシュボードは、このローカルストレージからスパンを取得し、分散トレースとして可視化する。
 
-もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカープロキシメッシュとJaegerの両方を採用する場合、jaegerエージェントの代わりに、サイドカーがjaegerコレクターにスパンを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカープロキシメッシュとJaegerの両方を採用する場合、jaegerエージェントの代わりに、サイドカーがJaeger Collectorにスパンを送信する責務を持つ。
 
 > - https://www.jaegertracing.io/docs/latest/architecture/#collector
 

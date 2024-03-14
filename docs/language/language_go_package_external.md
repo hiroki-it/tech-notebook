@@ -453,7 +453,7 @@ OTLP形式でテレメトリーを送信するExporterを提供する。
 
 これは、gRPCによるHTTPプロトコルで監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
 
-OpenTelemetryコレクターを使用している場合、ReceiverのgRPC用のエンドポイントに合わせる。
+OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
 
@@ -481,7 +481,7 @@ OTLP形式でテレメトリーを送信するExporterを提供する。
 
 これは、HTTPプロトコルで監視バックエンド (デフォルトでは`https://127.0.0.1:4318/v1/traces`) に送信する。
 
-OpenTelemetryコレクターを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。
+OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
 

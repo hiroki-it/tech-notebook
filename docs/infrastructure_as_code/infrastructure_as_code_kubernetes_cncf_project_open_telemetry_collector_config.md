@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設定ファイル＠OpenTelemetryコレクター
-description: 設定ファイル＠OpenTelemetryコレクターの知見を記録しています。
+title: 【IT技術の知見】設定ファイル＠OpenTelemetry Collector
+description: 設定ファイル＠OpenTelemetry Collectorの知見を記録しています。
 ---
 
-# 設定ファイル＠OpenTelemetryコレクター
+# 設定ファイル＠OpenTelemetry Collector
 
 ## はじめに
 
@@ -151,7 +151,7 @@ exporters:
 
 Exporterを設定する。
 
-OpenTelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。
+OpenTelemetry Collectorは、設定した監視バックエンドにテレメトリーを送信する。
 
 <br>
 
@@ -384,13 +384,13 @@ service:
 
 #### ▼ telemetryとは
 
-OpenTelemetryコレクター自体のテレメトリーの作成方法を設定する。
+OpenTelemetry Collector自体のテレメトリーの作成方法を設定する。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 
 #### ▼ logs
 
-OpenTelemetryコレクターのログの作成方法を設定する。
+OpenTelemetry Collectorのログの作成方法を設定する。
 
 ```yaml
 service:
@@ -413,7 +413,7 @@ service:
 
 #### ▼ metrics
 
-OpenTelemetryコレクターのメトリクスの作成方法を設定する。
+OpenTelemetry Collectorのメトリクスの作成方法を設定する。
 
 ```yaml
 service:

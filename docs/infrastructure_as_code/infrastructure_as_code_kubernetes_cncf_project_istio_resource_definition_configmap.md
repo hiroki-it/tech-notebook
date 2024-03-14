@@ -426,7 +426,7 @@ data:
       tracing:
         sampling: 100
         zipkin:
-          # パッケージが提供するコレクターの宛先を設定する。
+          # パッケージが提供する Collectorの宛先を設定する。
           address: "jaeger-collector.observability:9411"
 ```
 
@@ -579,7 +579,7 @@ spec:
 
 #### ▼ opentelemetry
 
-分散トレースの監視バックエンドとするOpenTelemetryコレクターの宛先情報を設定する。
+分散トレースの監視バックエンドとするOpenTelemetry Collectorの宛先情報を設定する。
 
 トレースコンテキストの仕様は選べず、強制的にW3C Trace Context仕様になる。
 
@@ -594,7 +594,7 @@ data:
     extensionProviders:
       - name: opentelemetry
         opentelemetry:
-          # OpenTelemetryコレクターを宛先として設定する
+          # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
           port: 4317
 ```

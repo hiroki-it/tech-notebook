@@ -392,7 +392,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
-	// OpenTelemetryコレクターでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
+	// OpenTelemetry CollectorでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resourceWithAttributes),
@@ -574,7 +574,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 ### Exporterとは
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetryコレクター、Google CloudTrace、OpenTelemetryコレクター、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google CloudTrace、OpenTelemetry Collector、など) を決める処理を持つ。
 
 <br>
 
@@ -590,13 +590,13 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 #### ▼ OTLP HTTP Exporter
 
-OpenTelemetryコレクターをスパンの宛先とし、HTTPでOpenTelemetryコレクター接続する。
+OpenTelemetry Collectorをスパンの宛先とし、HTTPでOpenTelemetry Collector接続する。
 
 例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
-OpenTelemetryコレクターをスパンの宛先とし、gRPCでOpenTelemetryコレクター接続する。
+OpenTelemetry Collectorをスパンの宛先とし、gRPCでOpenTelemetry Collector接続する。
 
 gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。
 
@@ -675,7 +675,7 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 
 	conn, err := grpc.DialContext(
 		ctx,
-		// gRPCでOpenTelemetryコレクターに接続する
+		// gRPCでOpenTelemetry Collectorに接続する
 		"opentelemetry-collector.backend.svc.cluster.local:4317",
 		// 通信は非TLSとする
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
@@ -716,11 +716,11 @@ ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に
 
 ### ID Generatorが不要な場合
 
-OpenTelemetryコレクターでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。
+OpenTelemetry CollectorでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。
 
-W3C Trace Context仕様でOpenTelemetryコレクターにスパンを送信しさえすれば、OpenTelemetryコレクターはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
+W3C Trace Context仕様でOpenTelemetry Collectorにスパンを送信しさえすれば、OpenTelemetry CollectorはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
 
-例えば、AWS製OpenTelemetryコレクターはW3C Trace Context仕様をX-Ray仕様に変換する。
+例えば、AWS製OpenTelemetry CollectorはW3C Trace Context仕様をX-Ray仕様に変換する。
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel
 
@@ -896,7 +896,7 @@ func NewTracerProvider() {
 | 方式       | 説明                                                                                                                                                                                                                         |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                          |
-| Tail-based | サーバー側 (OpenTelemetryコレクター) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+| Tail-based | サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
 > - https://christina04.hatenablog.com/entry/opentelemetry-sampling
 > - https://opentelemetry.io/docs/concepts/sampling/
@@ -921,9 +921,9 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
 > - https://opentelemetry.io/docs/concepts/sampling/#tail-sampling
 
-#### ▼ サーバー側 (OpenTelemetryコレクター) のサンプリング率
+#### ▼ サーバー側 (OpenTelemetry Collector) のサンプリング率
 
-Tail-based方式の場合、OpenTelemetryコレクターでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
+Tail-based方式の場合、OpenTelemetry Collectorでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
 
 ```yaml
 processors:

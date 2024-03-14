@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenTelemetryコレクター＠CNCF
-description: OpenTelemetryコレクター＠CNCFの知見を記録しています。
+title: 【IT技術の知見】OpenTelemetry Collector＠CNCF
+description: OpenTelemetry Collector＠CNCFの知見を記録しています。
 ---
 
-# OpenTelemetryコレクター＠CNCF
+# OpenTelemetry Collector＠CNCF
 
 ## はじめに
 
@@ -13,19 +13,19 @@ description: OpenTelemetryコレクター＠CNCFの知見を記録していま�
 
 <br>
 
-## 01. OpenTelemetryコレクターの仕組み
+## 01. OpenTelemetry Collectorの仕組み
 
 ### アーキテクチャ
 
 『テレメトリーコンシューマー』ともいう。
 
-OpenTelemetryコレクターは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。
+OpenTelemetry Collectorは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。
 
 otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
 
-テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetryコレクターを使用した方が良い。
+テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用した方が良い。
 
-もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetryコレクターにテレメトリーデータを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetry Collectorにテレメトリーデータを送信する責務を持つ。
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
@@ -61,7 +61,7 @@ OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) の�
 
 また、OpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する。
 
-非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetryコレクターのExporter) を使用する必要がある。
+非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetry CollectorのExporter) を使用する必要がある。
 
 HTTPSで送信する場合には、クライアント証明書が必要である。
 
