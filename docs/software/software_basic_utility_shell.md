@@ -23,9 +23,9 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 基本的には、いずれのシェルも同じ仕組みである。
 
-> - http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
-
 ![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell.png)
+
+> - http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
 
 <br>
 
@@ -189,17 +189,15 @@ $ echo $SHELL
 
 シェルでは、変数のスコープがプロセスの親子関係によって決まる。
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
-
 ![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_variable_scope.png)
+
+> - https://qiita.com/kure/items/f76d8242b97280a247a1
 
 #### ▼ シェル変数
 
 現在実行中のプロセスのみで有効な変数のこと。
 
 そのため、`source`コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義されたシェル変数を使用できない。
-
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -220,13 +218,13 @@ $ bash foo.sh
 FOO=$(echo "foo")
 ```
 
+> - https://qiita.com/kure/items/f76d8242b97280a247a1
+
 #### ▼ 環境変数
 
 現在実行中のプロセスと、その子プロセスでも有効な変数のこと。
 
 そのため、シェルスクリプトの実行コマンドに限らず使用できる。
-
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
 
 ```bash
 #!/bin/bash
@@ -242,6 +240,8 @@ $ bash foo.sh
 
 foo # 出力される
 ```
+
+> - https://qiita.com/kure/items/f76d8242b97280a247a1
 
 #### ▼ 置換してから出力する
 

@@ -554,3 +554,32 @@ tolerations:
 ```
 
 <br>
+
+### スキーマ (`values.schema.json`ファイル)
+
+`values.yaml`ファイルの各設定値で要求するデータ型を設定する。
+
+```yaml
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties":
+    {
+      "image":
+        {
+          "description": "Container Image",
+          "properties": {"repo": {"type": "string"}, "tag": {"type": "string"}},
+          "type": "object",
+        },
+      "name": {"description": "Service name", "type": "string"},
+      "port": {"description": "Port", "minimum": 0, "type": "integer"},
+      "protocol": {"type": "string"},
+    },
+  "required": ["protocol", "port"],
+  "title": "Values",
+  "type": "object",
+}
+```
+
+> - https://helm.sh/docs/topics/charts/#schema-files
+
+<br>
