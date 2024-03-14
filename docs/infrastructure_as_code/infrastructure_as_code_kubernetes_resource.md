@@ -72,6 +72,15 @@ DaemonSetは、Node内でPodを1つだけ維持管理する。
 
 そのため、例えばClusterネットワーク内に複数のNodeが存在していて、いずれかのNodeが停止したとしても、稼働中のNode内のPodを増やすことはない。
 
+#### ▼ DaemonSet配下のPodへの通信
+
+- NodePort Service
+- ClusterIP Service
+- PodでのhostPort
+- など...
+
+> - https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods
+
 <br>
 
 ### Deployment
@@ -750,6 +759,7 @@ DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWo
 > - https://kubernetes.io/docs/concepts/services-networking/service/
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
+> - https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods
 
 #### ▼ ClusterIP Service
 

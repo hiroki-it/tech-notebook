@@ -84,23 +84,45 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 ### エージェントパターン
 
+#### ▼ エージェントパターンとは
+
 テレメトリーの送信元では、エージェント (OpenTelemetry Collector) が常駐し、テレメトリーを収集する。
 
 さらに、エージェントはテレメトリーを監視バックエンドに送信する。
 
-エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。
-
 > - https://opentelemetry.io/docs/collector/deployment/agent/
 
+#### ▼ エージェントパターンの実装例
+
+エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装できる。
+
+#### ▼ エージェントパターンのデメリット
+
+もしOpenTelemetryで分散トレースのみを採用しているとする。
+
+エージェントパターンであると、スパンを作らないPodがいるNodeにまでOpenTelemetry Collectorをスケジューリングしてしまう。
+
+スパンを作るPodがいるNodeのためだけにOpenTelemetry Collectorがいればよいため、エージェントパターンは不適である。
+
+<br>
+
 ### ゲートウェイパターン
+
+#### ▼ ゲートウェイパターンとは
 
 テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを介してテレメトリーを収集する。
 
 さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。
 
-ゲートウェイは、Deployment、などで実装する。
-
 > - https://opentelemetry.io/docs/collector/deployment/gateway/
+
+#### ▼ ゲートウェイパターンの実装例
+
+ゲートウェイは、Deployment、などで実装できる。
+
+#### ▼ ゲートウェイパターンのデメリット
+
+記入中...
 
 <br>
 

@@ -90,17 +90,17 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 さらに、エージェントはログを監視バックエンドに送信する。
 
-エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。
-
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 
-#### ▼ エージェントパターンの例
+#### ▼ エージェントパターンの実装例
 
-- KubernetesのDaemonSet配下のPodとして常駐させる。
-- KubernetesのPod内のサイドカーとして配置する。
+エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装する。
+
 - FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。
+- KubernetesのPod内のサイドカーとして配置する。
+- KubernetesのDaemonSet配下のPodとして常駐させる。
 
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
