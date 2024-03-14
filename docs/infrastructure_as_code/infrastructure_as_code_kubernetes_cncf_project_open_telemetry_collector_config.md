@@ -335,9 +335,21 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: <PodのIPアドレス>:4317
+        endpoint: <Pod (自分) のIPアドレス>:4317
       http:
-        endpoint: <PodのIPアドレス>:4318
+        endpoint: <Pod (自分) のIPアドレス>:4318
+```
+
+設定したエンドポイントに応じて、受信サーバーが起動する。
+
+```bash
+...
+
+2024-03-14T03:06:00.860Z	info	otlpreceiver@v0.93.0/otlp.go:102	Starting GRPC server	{"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "<Pod (自分) のIPアドレス>:4317"}
+2024-03-14T03:06:00.860Z	info	otlpreceiver@v0.93.0/otlp.go:152	Starting HTTP server	{"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "<Pod (自分) のIPアドレス>:4318"}
+
+...
+
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md

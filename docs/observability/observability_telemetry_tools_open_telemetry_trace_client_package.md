@@ -116,6 +116,160 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 <br>
 
+### 分散トレースの無効化
+
+#### ▼ TracerProviderを実行しない
+
+一番単純な方法として、スパンを作成しない場合は、TracerProviderのセットアップをコールしないことである。
+
+以下のように条件分岐を実装する。
+
+```go
+package main
+
+import (
+	"os"
+)
+
+func main() {
+
+	...
+
+	traceEnabled := os.Getenv("TRACE_ENABLED")
+
+	// TRACE_ENABLEDが有効になっている場合に、分散トレースのスパンを作成する
+	if traceEnabled {
+        // TracerProviderに関する一連の処理
+	}
+
+	...
+
+}
+```
+
+マイクロサービスで使用するConfigMapにて、分散トレースの有効化を実行環境別に切り替えられるようにするとよい。
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: tes
+data:
+  # テスト環境では分散トレースを無効化する
+  TRACE_ENABLED: "false"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: stg
+data:
+  # ステージング環境では分散トレースを無効化する
+  TRACE_ENABLED: "true"
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: foo-app
+  env: prd
+data:
+  # 本番環境では分散トレースを無効化する
+  TRACE_ENABLED: "true"
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
+
+#### ▼ NoopTracerProviderを使用する
+
+TracerProviderのデフォルト値である。
+
+多くの言語で、TracerProviderのインターフェースの実装である。
+
+また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部のメソッド (`ForceFlush`関数) がある場合は使用できない。
+
+Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したので、アップグレード時はパッケージを変更する必要がある。
+
+```go
+type TracerProvider interface {
+	...
+}
+
+type noopTracerProvider struct{
+	embedded.TracerProvider
+}
+```
+
+> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/trace/noop.go#L35
+
+#### ▼ Samplerを無効化する
+
+Samplerを無効化すると、スパンの作成を無効化できる。
+
+```go
+package trace
+
+import (
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
+)
+
+// newTracerProvider TracerProviderを作成する
+func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
+
+	resourceWithAttributes := resource.NewWithAttributes(
+		semconv.SchemaURL,
+		semconv.ServiceNameKey.String("foo-service"),
+	)
+
+	sampler := newSampler()
+
+	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
+
+	// OpenTelemetry CollectorでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resourceWithAttributes),
+		sdktrace.WithSampler(sampler),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
+	)
+
+	return tracerProvider
+}
+
+// newSampler Samplerを作成する
+func newSampler() sdktrace.Sampler {
+
+	traceEnabled := os.Getenv("TRACE_ENABLED")
+
+	if traceEnabled {
+		// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
+		return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0)
+	}
+
+	return sdktrace.NeverSample()
+}
+
+```
+
+> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
+> - https://stackoverflow.com/a/75901212
+
+#### ▼ `OTEL_SDK_DISABLED`を有効化する
+
+`OTEL_SDK_DISABLED`を有効化すると、実装をそのままで分散トレースを無効化できる。
+
+ただし、言語 (例：Go) によってはサポートしていない場合がある。
+
+> - https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
+> - https://github.com/open-telemetry/opentelemetry-go/issues/3559
+
+<br>
+
 ## 01-02. スパンの作成
 
 ### スパンの構造
@@ -275,151 +429,6 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 コンシューマー (サブスクライバー) からのメッセージの送信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
-
-<br>
-
-### スパン作成の無効化
-
-#### ▼ TracerProviderをコールしない
-
-一番単純な方法として、スパンを作成しない場合は、TracerProviderのセットアップをコールしないことである。
-
-以下のように条件分岐を実装する。
-
-```go
-package main
-
-import (
-	"os"
-)
-
-func main() {
-
-	...
-
-	traceEnabled := os.Getenv("TRACE_ENABLED")
-
-	// TRACE_ENABLEDが有効になっている場合に、分散トレースのスパンを作成する
-	if traceEnabled {
-        // TracerProviderに関する一連の処理
-	}
-
-	...
-
-}
-```
-
-マイクロサービスで使用するConfigMapにて、分散トレースの有効化を実行環境別に切り替えられるようにするとよい。
-
-```yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: foo-app
-  env: tes
-data:
-  # テスト環境では分散トレースを無効化する
-  TRACE_ENABLED: "false"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: foo-app
-  env: stg
-data:
-  # ステージング環境では分散トレースを無効化する
-  TRACE_ENABLED: "true"
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: foo-app
-  env: prd
-data:
-  # 本番環境では分散トレースを無効化する
-  TRACE_ENABLED: "true"
-```
-
-> - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
-
-#### ▼ NoopTracerProvider
-
-TracerProviderのデフォルト値である。
-
-多くの言語で、TracerProviderのインターフェースの実装である。
-
-また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部のメソッド (`ForceFlush`関数) がある場合は使用できない。
-
-Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したので、アップグレード時はパッケージを変更する必要がある。
-
-```go
-type TracerProvider interface {
-	...
-}
-
-type noopTracerProvider struct{
-	embedded.TracerProvider
-}
-```
-
-> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/trace/noop.go#L35
-
-#### ▼ Samplerの無効化
-
-Samplerを無効化すると、スパンの作成を無効化できる。
-
-```go
-package trace
-
-import (
-	"go.opentelemetry.io/otel/sdk/resource"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
-)
-
-// newTracerProvider TracerProviderを作成する
-func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
-
-	resourceWithAttributes := resource.NewWithAttributes(
-		semconv.SchemaURL,
-		semconv.ServiceNameKey.String("foo-service"),
-	)
-
-	sampler := newSampler()
-
-	// BatchSpanProcessorで複数のスパンを圧縮し、送信サイズを小さくする
-	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
-
-	// OpenTelemetry CollectorでW3C形式からX-Ray形式にIDを変換できるため、ここではW3C形式でIDを作成する
-	tracerProvider := sdktrace.NewTracerProvider(
-		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resourceWithAttributes),
-		sdktrace.WithSampler(sampler),
-		sdktrace.WithSpanProcessor(batchSpanProcessor),
-	)
-
-	return tracerProvider
-}
-
-// newSampler Samplerを作成する
-func newSampler() sdktrace.Sampler {
-
-	traceEnabled := os.Getenv("TRACE_ENABLED")
-
-	if traceEnabled() {
-		// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
-		return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0)
-	}
-
-	return sdktrace.NeverSample()
-}
-
-```
-
-> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
-> - https://stackoverflow.com/a/75901212
 
 <br>
 
@@ -676,7 +685,7 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 	conn, err := grpc.DialContext(
 		ctx,
 		// gRPCでOpenTelemetry Collectorに接続する
-		"opentelemetry-collector.backend.svc.cluster.local:4317",
+		"foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317",
 		// 通信は非TLSとする
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		// コネクションを確立できるまで待機する

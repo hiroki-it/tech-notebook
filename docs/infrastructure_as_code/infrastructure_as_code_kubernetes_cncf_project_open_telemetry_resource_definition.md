@@ -54,7 +54,7 @@ metadata:
   name: foo-instrumentation
 spec:
   exporter:
-    endpoint: http://foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317
+    endpoint: foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317
 ```
 
 <br>

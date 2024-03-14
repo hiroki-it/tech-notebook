@@ -341,7 +341,7 @@ Alpineの場合は、執筆時点 (2024/03/13) でalpineリポジトリに`ngx_o
 
 ```bash
 # nginxのalpineリポジトリから
-$ wget https://nginx.org/packages/mainline/alpine/<バージョン>/main/x86_64/nginx-module-otel-<リビジョン>.apk
+$ wget -qO nginx-module-otel-<リビジョン>.apk https://nginx.org/packages/mainline/alpine/<バージョン>/main/x86_64/nginx-module-otel-<リビジョン>.apk
 $ apk add --allow-untrusted nginx-module-otel-<バージョン>.apk
 ```
 
@@ -354,11 +354,15 @@ $ apk add --allow-untrusted nginx-module-otel-<バージョン>.apk
 
 #### ▼ otel_exporter
 
+Exporterを設定する。
+
+執筆時点 (2024/03/14) 時点では、gRPC用のエンドポイントしかありません。
+
 ```nginx
 http {
 
     otel_exporter {
-        endpoint localhost:4317;
+        endpoint foo-opentelemetry-collector.foo-namespace.svc.cluster.local:4317;
     }
 }
 ```
@@ -379,7 +383,7 @@ http {
 
 ```nginx
 http {
-    otel_trace on;
+    otel_trace true;
 }
 ```
 
