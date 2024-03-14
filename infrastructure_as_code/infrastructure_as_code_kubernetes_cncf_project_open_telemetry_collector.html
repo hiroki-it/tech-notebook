@@ -22335,7 +22335,7 @@
 <h4 id="_6">▼ エージェントパターンのデメリット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>もしOpenTelemetryで分散トレースのみを採用しているとする。</p>
 <p>エージェントパターンであると、スパンを作らないPodがいるNodeにまでOpenTelemetry Collectorをスケジューリングしてしまう。</p>
-<p>スパンを作るPodがいるNodeのためだけにOpenTelemetry Collectorがいればよいため、エージェントパターンは不適である。</p>
+<p>スパンを作るPodがいるNodeのためだけに、OpenTelemetry Collectorを配置すればよいため、エージェントパターンは不適である。</p>
 <p><br></p>
 <h3 id="_7">ゲートウェイパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ ゲートウェイパターンとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -22347,7 +22347,7 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ ゲートウェイパターンの実装例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ゲートウェイは、Deployment、などで実装できる。</p>
+<p>L7ロードバランサーはIngressコントローラーや<code>istio-proxy</code>コンテナ、ゲートウェイはDeployment、などで実装できる。</p>
 <h4 id="_10">▼ ゲートウェイパターンのデメリット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
