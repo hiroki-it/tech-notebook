@@ -18555,7 +18555,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OpenTelemetryコレクター
+    ■ OpenTelemetry Collector
   </span>
   
 
@@ -18565,7 +18565,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_12_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_12_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ OpenTelemetryコレクター
+            ■ OpenTelemetry Collector
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -18580,7 +18580,7 @@
         
   
   <span class="md-ellipsis">
-    OpenTelemetryコレクター
+    OpenTelemetry Collector
   </span>
   
 
@@ -20978,9 +20978,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-distro-for-opentelemetry" class="md-nav__link">
+  <a href="#aws-distro-for-opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS Distro for OpenTelemetryコレクター
+      ▼ AWS Distro for OpenTelemetry Collector
     </span>
   </a>
   
@@ -21058,13 +21058,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opentelemetry" class="md-nav__link">
+  <a href="#opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がOpenTelemetryコレクターの場合
+      宛先がOpenTelemetry Collectorの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がOpenTelemetryコレクターの場合">
+    <nav class="md-nav" aria-label="宛先がOpenTelemetry Collectorの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22312,9 +22312,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-distro-for-opentelemetry" class="md-nav__link">
+  <a href="#aws-distro-for-opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS Distro for OpenTelemetryコレクター
+      ▼ AWS Distro for OpenTelemetry Collector
     </span>
   </a>
   
@@ -22392,13 +22392,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#opentelemetry" class="md-nav__link">
+  <a href="#opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      宛先がOpenTelemetryコレクターの場合
+      宛先がOpenTelemetry Collectorの場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="宛先がOpenTelemetryコレクターの場合">
+    <nav class="md-nav" aria-label="宛先がOpenTelemetry Collectorの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22825,7 +22825,7 @@
 </ul>
 </blockquote>
 <h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
-<p>標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetryコレクター) を、使用できるようになる。</p>
+<p>標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators">https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators</a></li>
@@ -22836,7 +22836,7 @@
 <h4 id="sdk_1">▼ 分散トレースSDK<a class="headerlink" href="#sdk_1" title="Permanent link">&para;</a></h4>
 <p>分散トレース収集ツールが、独自のパッケージを提供している場合がある。</p>
 <p>拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。</p>
-<h4 id="aws-distro-for-opentelemetry">▼ AWS Distro for OpenTelemetryコレクター<a class="headerlink" href="#aws-distro-for-opentelemetry" title="Permanent link">&para;</a></h4>
+<h4 id="aws-distro-for-opentelemetry-collector">▼ AWS Distro for OpenTelemetry Collector<a class="headerlink" href="#aws-distro-for-opentelemetry-collector" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/aws-xray-sdk-go">https://github.com/aws/aws-xray-sdk-go</a></li>
@@ -23105,7 +23105,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="opentelemetry">宛先がOpenTelemetryコレクターの場合<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h3>
+<h3 id="opentelemetry-collector">宛先がOpenTelemetry Collectorの場合<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
@@ -23146,7 +23146,7 @@
 
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// OpenTelemetryコレクターの完全修飾ドメイン名</span>
+<span class="w">        </span><span class="c1">// OpenTelemetry Collectorの完全修飾ドメイン名</span>
 <span class="w">        </span><span class="s">&quot;opentelemetry-collector.foo-namespace.svc.cluster.local:4317&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
@@ -23156,7 +23156,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create gRPC connection to collector: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、OpenTelemetryコレクターを設定する。</span>
+<span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、OpenTelemetry Collectorを設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
@@ -23494,7 +23494,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create resource: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// AWS Distro for OpenTelemetryコレクターに接続する</span>
+<span class="w">    </span><span class="c1">// AWS Distro for OpenTelemetry Collectorに接続する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;sample-collector.sample.svc.cluster.local:4318&quot;</span><span class="p">,</span>
@@ -23506,7 +23506,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create gRPC connection to collector: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、AWS Distro for OpenTelemetryコレクターを設定する。</span>
+<span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、AWS Distro for OpenTelemetry Collectorを設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
@@ -24323,7 +24323,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     

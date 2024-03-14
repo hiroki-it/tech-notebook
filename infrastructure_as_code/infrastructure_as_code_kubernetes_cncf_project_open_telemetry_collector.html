@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OpenTelemetryコレクター＠CNCFの知見を記録しています。">
+        <meta name="description" content="OpenTelemetry Collector＠CNCFの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】OpenTelemetryコレクター＠CNCF - 俺の技術ノート</title>
+        <title>【IT技術の知見】OpenTelemetry Collector＠CNCF - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#opentelemetrycncf" class="md-skip">
+        <a href="#opentelemetry-collectorcncf" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】OpenTelemetryコレクター＠CNCF
+              【IT技術の知見】OpenTelemetry Collector＠CNCF
             
           </span>
         </div>
@@ -18558,7 +18558,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OpenTelemetryコレクター
+    ■ OpenTelemetry Collector
   </span>
   
 
@@ -18568,7 +18568,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_12_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18_12_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ OpenTelemetryコレクター
+            ■ OpenTelemetry Collector
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -18592,7 +18592,7 @@
           
   
   <span class="md-ellipsis">
-    OpenTelemetryコレクター
+    OpenTelemetry Collector
   </span>
   
 
@@ -18603,7 +18603,7 @@
         
   
   <span class="md-ellipsis">
-    OpenTelemetryコレクター
+    OpenTelemetry Collector
   </span>
   
 
@@ -18636,13 +18636,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-opentelemetry" class="md-nav__link">
+  <a href="#01-opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      01. OpenTelemetryコレクターの仕組み
+      01. OpenTelemetry Collectorの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. OpenTelemetryコレクターの仕組み">
+    <nav class="md-nav" aria-label="01. OpenTelemetry Collectorの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21896,13 +21896,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-opentelemetry" class="md-nav__link">
+  <a href="#01-opentelemetry-collector" class="md-nav__link">
     <span class="md-ellipsis">
-      01. OpenTelemetryコレクターの仕組み
+      01. OpenTelemetry Collectorの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. OpenTelemetryコレクターの仕組み">
+    <nav class="md-nav" aria-label="01. OpenTelemetry Collectorの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22057,7 +22057,7 @@
   
 
 
-<h1 id="opentelemetrycncf">OpenTelemetryコレクター＠CNCF<a class="headerlink" href="#opentelemetrycncf" title="Permanent link">&para;</a></h1>
+<h1 id="opentelemetry-collectorcncf">OpenTelemetry Collector＠CNCF<a class="headerlink" href="#opentelemetry-collectorcncf" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22066,13 +22066,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-opentelemetry">01. OpenTelemetryコレクターの仕組み<a class="headerlink" href="#01-opentelemetry" title="Permanent link">&para;</a></h2>
+<h2 id="01-opentelemetry-collector">01. OpenTelemetry Collectorの仕組み<a class="headerlink" href="#01-opentelemetry-collector" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>『テレメトリーコンシューマー』ともいう。</p>
-<p>OpenTelemetryコレクターは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。</p>
+<p>OpenTelemetry Collectorは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。</p>
 <p>otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
-<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetryコレクターを使用した方が良い。</p>
-<p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetryコレクターにテレメトリーデータを送信する責務を持つ。</p>
+<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用した方が良い。</p>
+<p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetry Collectorにテレメトリーデータを送信する責務を持つ。</p>
 <p><img alt="open-telemetry_collector" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png" /></p>
 <blockquote>
 <ul>
@@ -22103,7 +22103,7 @@
 <h4 id="exporter_1">▼ Exporter<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h4>
 <p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。</p>
 <p>また、OpenTelemetryのスキーマ (<code>semconv</code>パッケージ) を介して、スパンのデータ構造を変換する。</p>
-<p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetryコレクターのExporter) を使用する必要がある。</p>
+<p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetry CollectorのExporter) を使用する必要がある。</p>
 <p>HTTPSで送信する場合には、クライアント証明書が必要である。</p>
 <blockquote>
 <ul>
@@ -22360,7 +22360,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     

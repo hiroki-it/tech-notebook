@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設定ファイル＠OpenTelemetryコレクターの知見を記録しています。">
+        <meta name="description" content="設定ファイル＠OpenTelemetry Collectorの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設定ファイル＠OpenTelemetryコレクター - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠OpenTelemetry Collector - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#opentelemetry" class="md-skip">
+        <a href="#opentelemetry-collector" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設定ファイル＠OpenTelemetryコレクター
+              【IT技術の知見】設定ファイル＠OpenTelemetry Collector
             
           </span>
         </div>
@@ -18558,7 +18558,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OpenTelemetryコレクター
+    ■ OpenTelemetry Collector
   </span>
   
 
@@ -18568,7 +18568,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_12_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18_12_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ OpenTelemetryコレクター
+            ■ OpenTelemetry Collector
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -18583,7 +18583,7 @@
         
   
   <span class="md-ellipsis">
-    OpenTelemetryコレクター
+    OpenTelemetry Collector
   </span>
   
 
@@ -22597,7 +22597,7 @@
   
 
 
-<h1 id="opentelemetry">設定ファイル＠OpenTelemetryコレクター<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
+<h1 id="opentelemetry-collector">設定ファイル＠OpenTelemetry Collector<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22728,7 +22728,7 @@
 <h2 id="02-exporters">02. exporters<a class="headerlink" href="#02-exporters" title="Permanent link">&para;</a></h2>
 <h3 id="exporters">exportersとは<a class="headerlink" href="#exporters" title="Permanent link">&para;</a></h3>
 <p>Exporterを設定する。</p>
-<p>OpenTelemetryコレクターは、設定した監視バックエンドにテレメトリーを送信する。</p>
+<p>OpenTelemetry Collectorは、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
 <h3 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
 <h4 id="debug_1">▼ debugとは<a class="headerlink" href="#debug_1" title="Permanent link">&para;</a></h4>
@@ -22919,14 +22919,14 @@
 <p><br></p>
 <h3 id="telemetry">telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
 <h4 id="telemetry_1">▼ telemetryとは<a class="headerlink" href="#telemetry_1" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryコレクター自体のテレメトリーの作成方法を設定する。</p>
+<p>OpenTelemetry Collector自体のテレメトリーの作成方法を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md</a></li>
 </ul>
 </blockquote>
 <h4 id="logs">▼ logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryコレクターのログの作成方法を設定する。</p>
+<p>OpenTelemetry Collectorのログの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">telemetry</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logs</span><span class="p">:</span>
@@ -22948,7 +22948,7 @@
 </ul>
 </blockquote>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryコレクターのメトリクスの作成方法を設定する。</p>
+<p>OpenTelemetry Collectorのメトリクスの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">telemetry</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metrics</span><span class="p">:</span>
@@ -22982,7 +22982,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     
