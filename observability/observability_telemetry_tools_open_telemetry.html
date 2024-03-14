@@ -20806,7 +20806,16 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 仕組み
+      ▼ インタプリタ言語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンパイル言語
     </span>
   </a>
   
@@ -20818,7 +20827,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       比較
     </span>
@@ -21867,7 +21876,16 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 仕組み
+      ▼ インタプリタ言語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンパイル言語
     </span>
   </a>
   
@@ -21879,7 +21897,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       比較
     </span>
@@ -21958,43 +21976,33 @@
 <h4 id="_3">▼ 自動計装とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryのTracerProviderをアプリの実行時に動的にセットアップする。</p>
 <p>ファイルの構造や環境変数名から、自動的に言語を検出してくれる。</p>
-<p>なお、実行時にコンパイルするような言語 (インタプリタ言語) だと、OpenTelemetryによる自動計装が難しい。</p>
-<p>一方で、実行前にコンパイルする言語 (コンパイル言語) だと、eBPFによる自動計装が適する。</p>
-<p>eBPFによる自動計装の方が、リクエスト処理のパフォーマンスが高くなる。</p>
-<p>一方で、自動計装だと手動計装より処理が増えるため、言語によっては起動パフォーマンスが悪くなることがある。</p>
+<p>自動計装だと手動計装より処理が増えるため、言語 (例：Java) によっては起動パフォーマンスが悪くなることがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/instrumentation/">https://opentelemetry.io/docs/instrumentation/</a></li>
-<li><a href="https://odigos.io/blog/ebpf-instrumentation-faster-than-manual">https://odigos.io/blog/ebpf-instrumentation-faster-than-manual</a></li>
+<li><a href="https://buildersbox.corp-sansan.com/entry/2023/05/15/110000">https://buildersbox.corp-sansan.com/entry/2023/05/15/110000</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>言語</th>
-<th>仕組み</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Node.js</td>
-<td>モンキーパッチを使用し、アプリケーションの起動時に計装を挿入する。</td>
-</tr>
-<tr>
-<td>Python</td>
-<td>モンキーパッチを使用し、アプリケーションの起動時に計装を挿入する。</td>
-</tr>
-</tbody>
-</table>
+<h4 id="_4">▼ インタプリタ言語<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>インタプリタ言語 (実行時にコンパイルする言語) の場合、実行時に動的にパッチを組み込むツール (例：モンキーパッチ) を使用する。</p>
+<p>実際、Node.jsやPythonでは、モンキーパッチで自動計装を実現している。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.ojisan.io/otel-node-sdk/">https://blog.ojisan.io/otel-node-sdk/</a></li>
 <li><a href="https://opentelemetry.io/docs/languages/python/automatic/example/">https://opentelemetry.io/docs/languages/python/automatic/example/</a></li>
 </ul>
 </blockquote>
+<h4 id="_5">▼ コンパイル言語<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>コンパイル言語 (実行前にコンパイルする言語) の場合、エージェント (例：Javaエージェント、eBPF、など) による自動計装が適する。</p>
+<p>eBPFによるコンパイル言語の自動計装の方が、手動計装よりもリクエスト処理のパフォーマンスが高くなる。</p>
+<p>実際、JavaではJavaエージェント、GoではeBPFで自動計装を実現している。</p>
+<blockquote>
+<ul>
+<li><a href="https://odigos.io/blog/ebpf-instrumentation-faster-than-manual">https://odigos.io/blog/ebpf-instrumentation-faster-than-manual</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_5">比較<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">比較<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>手動計装と自動計装には、それぞれメリット/デメリットがある。</p>
 <blockquote>
 <ul>
@@ -22035,7 +22043,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
   </span>
 
     
