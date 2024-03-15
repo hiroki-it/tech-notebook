@@ -1006,6 +1006,8 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: main
     path: ./manifests
     directory:
       recurse: "true"
@@ -1026,6 +1028,8 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: main
     path: ./manifests
 ```
 
@@ -1039,8 +1043,11 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
+    targetRevision: main
     path: ./charts
     helm:
+      releaseName: foo
       valueFiles:
         - ./values/foo-values.yaml
 ```
@@ -1083,6 +1090,7 @@ metadata:
     app.kubernetes.io/env: prd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
     targetRevision: main # 本番環境に対応するブランチ
 ```
 
@@ -1097,6 +1105,7 @@ metadata:
     app.kubernetes.io/env: stg
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
     targetRevision: develop # ステージング環境に対応するブランチ
 ```
 
@@ -1120,6 +1129,8 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+    targetRevision: main
     chart: <チャート名>
 ```
 
@@ -1152,6 +1163,9 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+    targetRevision: main
+    chart: <チャート名>
     helm:
       releaseName: foo
       values: |
@@ -1170,6 +1184,9 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+    targetRevision: main
+    chart: <チャート名>
     helm:
       releaseName: foo
       valueFiles:
@@ -1186,6 +1203,9 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+    targetRevision: main
+    chart: <チャート名>
     helm:
       releaseName: foo
       valueFiles:
@@ -1205,6 +1225,9 @@ metadata:
   namespace: argocd
 spec:
   source:
+    repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+    targetRevision: main
+    chart: <チャート名>
     helm:
       releaseName: foo
       valueFiles:

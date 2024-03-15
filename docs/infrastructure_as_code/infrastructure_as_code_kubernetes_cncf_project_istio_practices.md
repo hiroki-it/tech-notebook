@@ -155,8 +155,6 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  hosts:
-    - "*"
   exportTo:
     - "."
   http:
