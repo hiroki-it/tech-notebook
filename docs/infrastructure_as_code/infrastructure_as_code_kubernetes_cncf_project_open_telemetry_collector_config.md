@@ -326,19 +326,11 @@ OpenTelemetryのクライアントは、Receiverを指定し、テレメトリ�
 
 ### otlp
 
+#### ▼ otlpとは
+
 OTLP形式でテレメトリーを受信する。
 
 クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。
-
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-        endpoint: <Pod (自分) のIPアドレス>:4317
-      http:
-        endpoint: <Pod (自分) のIPアドレス>:4318
-```
 
 設定したエンドポイントに応じて、受信サーバーが起動する。
 
@@ -353,6 +345,32 @@ receivers:
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+
+#### ▼ http
+
+HTTPで受信する。
+
+テレメトリーごとにエンドポイント (`/v1/logs`、`/v1/metrics`、`/v1/traces`) が異なる。
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: <Pod (自分) のIPアドレス>:4318
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+
+#### ▼ grpc
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: <Pod (自分) のIPアドレス>:4317
+```
 
 <br>
 

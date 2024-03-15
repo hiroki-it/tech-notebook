@@ -33,6 +33,12 @@ description: メソッド@Goの知見を記録しています。
 
 > - https://one-sthead.hatenablog.com/entry/2021/01/19/191538
 
+#### ▼ `log`パッケージは使用できない
+
+仕様上、`init`関数内で`log`パッケージを使用できない。
+
+> - https://forum.golangbridge.org/t/why-does-initiating-a-logger-in-init-function-not-working-outside-the-init-func/23211/2
+
 <br>
 
 ### main関数
@@ -1241,14 +1247,8 @@ func init() {
 
 	// 環境変数名を指定して値を取得する
 	foo := getStringEnv(FooEnvKey, "foo")
-    // わかりやすいようにログに出力する
-    log.Printf("%v: %v", FooEnvKey, foo)
-
 	bar := getStringEnv(BarEnvKey, "bar")
-	log.Printf("%v: %v", BarEnvKey, bar)
-
 	baz := getFloatEnv(BazEnvKey, 1.0)
-	log.Printf("%v: %v", BazEnvKey, baz)
 }
 
 // ゲッター
