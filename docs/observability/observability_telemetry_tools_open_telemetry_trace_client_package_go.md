@@ -90,6 +90,8 @@ func main() {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
+	log.Print("Tracer provider initialization succeeded")
+
 	...
 }
 ```
@@ -280,6 +282,8 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}
 	}
+
+	log.Print("Tracer provider initialization succeeded")
 
 	return cleanUp, nil
 }
@@ -551,6 +555,8 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
         propagation.TraceContext{},
     )
+
+	log.Print("Tracer provider initialization succeeded")
 
 	return tracerProvider.Shutdown, nil
 }
@@ -913,6 +919,8 @@ func NewTracerProvider() (func(context.Context) error, error) {
         xray.Propagator{},
     )
 
+	log.Print("Tracer provider initialization succeeded")
+
 	return tracerProvider.Shutdown, nil
 }
 ```
@@ -1154,6 +1162,8 @@ func NewTracerProvider() (func(), error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
+	log.Print("Tracer provider initialization succeeded")
+
 	return func() {
 		err := tracerProvider.Shutdown(context.Background())
 		if err != nil {
@@ -1340,6 +1350,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 			    propagation.Baggage{},
 			),
 		)
+
+	log.Print("Tracer provider initialization succeeded")
 
 	return tracerProvider, nil
 }
