@@ -1241,8 +1241,14 @@ func init() {
 
 	// 環境変数名を指定して値を取得する
 	foo := getStringEnv(FooEnvKey, "foo")
+    // わかりやすいようにログに出力する
+    log.Printf("%v: %v", FooEnvKey, foo)
+
 	bar := getStringEnv(BarEnvKey, "bar")
+	log.Printf("%v: %v", BarEnvKey, bar)
+
 	baz := getFloatEnv(BazEnvKey, 1.0)
+	log.Printf("%v: %v", BazEnvKey, baz)
 }
 
 // ゲッター

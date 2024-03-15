@@ -231,6 +231,8 @@ import (
 
 func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
+	log.Print("Trace provider is initializing ...")
+
 	// Exporter (スパンの宛先) として、標準出力を設定する。
 	exporter := stdouttrace.New(
 		// 見やすくなるように出力前に整形する
