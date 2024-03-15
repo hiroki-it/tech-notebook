@@ -6918,6 +6918,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ logパッケージは使用できない
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23055,6 +23064,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ logパッケージは使用できない
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24328,6 +24346,13 @@
 <li><a href="https://one-sthead.hatenablog.com/entry/2021/01/19/191538">https://one-sthead.hatenablog.com/entry/2021/01/19/191538</a></li>
 </ul>
 </blockquote>
+<h4 id="log">▼ <code>log</code>パッケージは使用できない<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
+<p>仕様上、<code>init</code>関数内で<code>log</code>パッケージを使用できない。</p>
+<blockquote>
+<ul>
+<li><a href="https://forum.golangbridge.org/t/why-does-initiating-a-logger-in-init-function-not-working-outside-the-init-func/23211/2">https://forum.golangbridge.org/t/why-does-initiating-a-logger-in-init-function-not-working-outside-the-init-func/23211/2</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="main">main関数<a class="headerlink" href="#main" title="Permanent link">&para;</a></h3>
 <h4 id="main_1">▼ <code>main</code>関数とは<a class="headerlink" href="#main_1" title="Permanent link">&para;</a></h4>
@@ -25335,14 +25360,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="c1">// 環境変数名を指定して値を取得する</span>
 <span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// わかりやすいようにログに出力する</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span>
-
 <span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span>
-
 <span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getFloatEnv</span><span class="p">(</span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// ゲッター</span>
