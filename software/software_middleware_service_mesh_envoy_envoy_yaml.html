@@ -24065,6 +24065,7 @@
 <p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
 <p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーとは別にタイムアウトを管理する。</p>
 <p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
+<p>例えば、以下の図ではクライアント側で<code>25</code>秒のタイムアウト時間を設定したと仮定している。</p>
 <!-- prettier-ignore-start -->
 
 <pre class="mermaid"><code>sequenceDiagram
@@ -24083,15 +24084,15 @@
 
     envoy (client)-&gt;&gt;envoy (client): 全てのリクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
-    bar--&gt;&gt;envoy (server): grpc-timeout&lt;br&gt;残り25s
+    bar--&gt;&gt;envoy (server): 24.5s経過&lt;br&gt;grpc-timeout: 残り0.5s
 
-    envoy (server)--&gt;&gt;envoy (client): grpc-timeout&lt;br&gt;残り10s
+    envoy (server)--&gt;&gt;envoy (client): 0.25経過&lt;br&gt;grpc-timeout: 残り0.25s
 
-    envoy (client)--&gt;&gt;foo: grpc-timeout&lt;br&gt;残り5s</code></pre>
+    envoy (client)--&gt;&gt;foo: 0.25経過&lt;br&gt;grpc-timeout: 残0s</code></pre>
 <!-- prettier-ignore-end -->
 
-<p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
-<p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
+<p>上記図の状況で、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できないことがある。</p>
+<p>例えば、以下のようにgRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまうことがある。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
 <!-- prettier-ignore-start -->
 
@@ -24582,7 +24583,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-16</span>
   </span>
 
     
