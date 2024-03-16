@@ -290,9 +290,11 @@ data:
 
 #### ▼ tracing
 
-`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
+`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStep、など) で計装するかを設定する。
 
-アプリコンテナからスパン作成に関する責務をサイドカーに切り分け、各アプリコンテナに共通的に提供できる。
+ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
+
+ただし、これを使用するよりは`extensionProviders`キーを使用した方が良い
 
 `.mesh.defaultConfig.enableTracing`キーを有効化する必要がある。
 
@@ -311,6 +313,8 @@ data:
         zipkin:
           address: "jaeger-collector.observability:9411"
 ```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
 
 #### ▼ trustDomain
 
@@ -411,7 +415,7 @@ data:
 
 `istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
 
-これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Jaeger、Zipkin、など) で計装するかを設定する。
+これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Zipkin、Jaeger、など) で計装するかを設定する。
 
 ```yaml
 apiVersion: v1
@@ -514,9 +518,9 @@ HTTPで認可リクエストを送信する場合に、SSOのIDプロバイダ�
 
 #### ▼ datadog
 
-分散トレースの監視バックエンドとするDatadogの宛先情報を設定する。
+分散トレースのクライアントをdatadogパッケージで計装する。
 
-トレースコンテキストの仕様は選べず、強制的にDatadogコンテキスト仕様になる。
+Datadogでは、トレースコンテキスト仕様がdatadogコンテキストになる。
 
 ```yaml
 apiVersion: v1
@@ -579,9 +583,9 @@ spec:
 
 #### ▼ opentelemetry
 
-分散トレースの監視バックエンドとするOpenTelemetry Collectorの宛先情報を設定する。
+分散トレースのクライアントをOpenTelemetryで計装する。
 
-トレースコンテキストの仕様は選べず、強制的にW3C Trace Context仕様になる。
+OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Contextになる。
 
 ```yaml
 apiVersion: v1
@@ -651,6 +655,68 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
 > - https://istio.io/latest/docs/reference/config/telemetry/
+
+#### ▼ zipkin (jaeger)
+
+分散トレースのクライアントをzipkinパッケージで計装する。
+
+Zipkinでは、トレースコンテキスト仕様がB3コンテキストになる。
+
+JaegerはB3に対応しているため、Jaegerのクライアントとしても使用できる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: jaeger-tracing
+        jaeger:
+          # jaegerエージェントを宛先として設定する
+          service: jaeger-agent.foo-namespace.svc.cluster.local
+          port: 8126
+```
+
+ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  accessLogging:
+    - providers:
+        - name: envoy
+```
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  # Datadogにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        - name: jaeger
+      randomSamplingPercentage: 100
+```
 
 <br>
 
