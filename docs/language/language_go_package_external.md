@@ -432,6 +432,44 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 <br>
 
+### スパン作成に関する関数
+
+#### ▼ otelgrpc.WithInterceptorFilter
+
+```go
+package grpc
+
+func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return grpc_middleware.ChainUnaryServer(
+		grpc_recovery.UnaryServerInterceptor(),
+		otelgrpc.UnaryServerInterceptor(
+			otelgrpc.WithSpanOptions(trace.WithAttributes(
+				// デフォルトの属性を設定する
+				attribute.String("service", "<サービス名>"),
+			))
+		),
+	)
+}
+```
+
+#### ▼ otelgrpc.WithSpanOptions
+
+```go
+package grpc
+
+func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return grpc_middleware.ChainUnaryServer(
+		grpc_recovery.UnaryServerInterceptor(),
+		otelgrpc.UnaryServerInterceptor(
+			// ヘルスチェックパスではスパンを作成しない
+			otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+		),
+	)
+}
+```
+
+<br>
+
 ## otelhttp
 
 ### otelhttpとは
@@ -442,6 +480,84 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
+### スパン作成に関する関数
+
+#### ▼ WithSpanOptions
+
+```go
+package http
+
+func SetSpanHttpOption(next http.Handler) http.Handler {
+
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		opts := []otelhttp.Option{
+			// デフォルトの属性を設定する
+			otelhttp.WithSpanOptions(trace.WithAttributes(httpconv.ServerRequest("<サービス名>", r)...)),
+		}
+		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
+		wrapHandler.ServeHTTP(w, r)
+	}
+
+	return http.HandlerFunc(fn)
+}
+
+```
+
+#### ▼ WithSpanNameFormatter
+
+```go
+package http
+
+
+func SetSpanHttpOption(next http.Handler) http.Handler {
+
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		opts := []otelhttp.Option{
+			// デフォルトのスパン名を設定する
+			otelhttp.WithSpanNameFormatter(generateSpanName),
+		}
+		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
+		wrapHandler.ServeHTTP(w, r)
+	}
+
+	return http.HandlerFunc(fn)
+}
+
+func generateSpanName(_ string, r *http.Request) string {
+
+	// URLパスをスパン名とする
+	spanName := r.URL.Path
+	if spanName == "" {
+		spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
+	}
+
+	return spanName
+}
+
+```
+
+#### ▼ WithFilter
+
+```go
+package http
+
+func SetSpanHttpOption(next http.Handler) http.Handler {
+
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		opts := []otelhttp.Option{
+			// ヘルスチェックパスではスパンを作成しない
+			otelhttp.WithFilter(filters.All(filters.Not(filters.Path("ヘルスチェックパス")))),
+		}
+		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
+		wrapHandler.ServeHTTP(w, r)
+	}
+
+	return http.HandlerFunc(fn)
+}
+```
 
 <br>
 
