@@ -21770,8 +21770,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-cloudevents">01. CloudEventsとは<a class="headerlink" href="#01-cloudevents" title="Permanent link">&para;</a></h2>
-<p>メッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。</p>
-<p>異なる言語間でSDKの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。</p>
+<p>メッセージを発行する。</p>
+<p>また、発行したメッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。</p>
+<p>異なる言語間でメッセージの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/cloudevents/spec">https://github.com/cloudevents/spec</a></li>
@@ -21780,7 +21781,7 @@
 <p><br></p>
 <h2 id="02-go-sdk">02. Go SDK<a class="headerlink" href="#02-go-sdk" title="Permanent link">&para;</a></h2>
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ go get github.com/cloudevents/sdk-go/v2@v2.12.0
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/cloudevents/sdk-go/v2@v2.12.0
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">メッセージ送信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -21812,6 +21813,11 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent">https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_4">メッセージ受信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -21834,6 +21840,11 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent">https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
