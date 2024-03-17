@@ -15,12 +15,80 @@ description: CloudEvents＠CNCFの知見を記録しています。
 
 ## 01. CloudEventsとは
 
-イベントを発行し、またイベントを送受信する。
+メッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。
 
-異なる言語間で仕様が同じであるため、異なる言語に渡ってイベントを送受信できる。
-
-イベントの送受信先には、メッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) を使用する。
+異なる言語間でSDKの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。
 
 > - https://github.com/cloudevents/spec
+
+<br>
+
+## 02. Go SDK
+
+### セットアップ
+
+```
+$ go get github.com/cloudevents/sdk-go/v2@v2.12.0
+```
+
+<br>
+
+### メッセージ送信
+
+```go
+package main
+
+import cloudevents "github.com/cloudevents/sdk-go/v2"
+
+func main() {
+	c, err := cloudevents.NewClientHTTP()
+	if err != nil {
+		log.Fatalf("failed to create client, %v", err)
+	}
+
+	// Create an Event.
+	event :=  cloudevents.NewEvent()
+	event.SetSource("example/uri")
+	event.SetType("example.type")
+	event.SetData(cloudevents.ApplicationJSON, map[string]string{"hello": "world"})
+
+	// Set a target.
+	ctx := cloudevents.ContextWithTarget(context.Background(), "http://localhost:8080/")
+
+	// Send that Event.
+	if result := c.Send(ctx, event); cloudevents.IsUndelivered(result) {
+		log.Fatalf("failed to send, %v", result)
+	} else {
+		log.Printf("sent: %v", event)
+		log.Printf("result: %v", result)
+	}
+}
+```
+
+<br>
+
+### メッセージ受信
+
+```go
+package main
+
+import cloudevents "github.com/cloudevents/sdk-go/v2"
+
+func receive(event cloudevents.Event) {
+	// do something with event.
+    fmt.Printf("%s", event)
+}
+
+func main() {
+	// The default client is HTTP.
+	c, err := cloudevents.NewClientHTTP()
+	if err != nil {
+		log.Fatalf("failed to create client, %v", err)
+	}
+	if err = c.StartReceiver(context.Background(), receive); err != nil {
+		log.Fatalf("failed to start receiver: %v", err)
+	}
+}
+```
 
 <br>

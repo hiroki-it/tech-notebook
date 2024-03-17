@@ -329,9 +329,9 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 > - https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go/#distributed-tracing
 
-#### ▼ 下流のマイクロサービス
+#### ▼ アップストリーム側マイクロサービス
 
-下流のマイクロサービスでは、受信した通信からトレースコンテキストを取得する。
+アップストリーム側マイクロサービスでは、受信した通信からトレースコンテキストを取得する。
 
 また、子スパンを作成する。
 
