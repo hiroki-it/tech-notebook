@@ -21700,6 +21700,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02-go-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Go SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Go SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      セットアップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      メッセージ送信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      メッセージ受信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -21728,14 +21770,70 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-cloudevents">01. CloudEventsとは<a class="headerlink" href="#01-cloudevents" title="Permanent link">&para;</a></h2>
-<p>イベントを発行し、またイベントを送受信する。</p>
-<p>異なる言語間で仕様が同じであるため、異なる言語に渡ってイベントを送受信できる。</p>
-<p>イベントの送受信先には、メッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) を使用する。</p>
+<p>メッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。</p>
+<p>異なる言語間でSDKの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/cloudevents/spec">https://github.com/cloudevents/spec</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="02-go-sdk">02. Go SDK<a class="headerlink" href="#02-go-sdk" title="Permanent link">&para;</a></h2>
+<h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ go get github.com/cloudevents/sdk-go/v2@v2.12.0
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">メッセージ送信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nx">cloudevents</span><span class="w"> </span><span class="s">&quot;github.com/cloudevents/sdk-go/v2&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewClientHTTP</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to create client, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Create an Event.</span>
+<span class="w">    </span><span class="nx">event</span><span class="w"> </span><span class="o">:=</span><span class="w">  </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewEvent</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetSource</span><span class="p">(</span><span class="s">&quot;example/uri&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetType</span><span class="p">(</span><span class="s">&quot;example.type&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">SetData</span><span class="p">(</span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">ApplicationJSON</span><span class="p">,</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// Set a target.</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">ContextWithTarget</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;http://localhost:8080/&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Send that Event.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">);</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">IsUndelivered</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to send, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;sent: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;result: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">メッセージ受信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nx">cloudevents</span><span class="w"> </span><span class="s">&quot;github.com/cloudevents/sdk-go/v2&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">receive</span><span class="p">(</span><span class="nx">event</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do something with event.</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// The default client is HTTP.</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudevents</span><span class="p">.</span><span class="nx">NewClientHTTP</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to create client, %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">StartReceiver</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">receive</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to start receiver: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 
 
@@ -21757,7 +21855,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-18</span>
   </span>
 
     
