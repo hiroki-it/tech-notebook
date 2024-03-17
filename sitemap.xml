@@ -1206,6 +1206,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_cloudevents.html</loc>
+         <lastmod>2024-03-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_cluster_api_resoruce_definition.html</loc>
          <lastmod>2024-03-17</lastmod>
          <changefreq>daily</changefreq>
