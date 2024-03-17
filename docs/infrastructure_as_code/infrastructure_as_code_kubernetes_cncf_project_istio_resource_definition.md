@@ -1543,7 +1543,8 @@ spec:
   selector:
     matchLabels:
       name: app
-  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  # Envoyをアクセスログプロバイダーとして設定する
+  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy

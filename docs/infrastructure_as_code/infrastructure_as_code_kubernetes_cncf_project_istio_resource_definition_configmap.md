@@ -552,7 +552,8 @@ spec:
   selector:
     matchLabels:
       name: app
-  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  # Envoyをアクセスログプロバイダーとして設定する
+  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
@@ -600,6 +601,7 @@ data:
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
+          # gRPC用のエンドポイントを設定する
           port: 4317
 ```
 
@@ -617,7 +619,8 @@ spec:
   selector:
     matchLabels:
       name: app
-  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  # Envoyをアクセスログプロバイダーとして設定する
+  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
@@ -694,7 +697,8 @@ spec:
   selector:
     matchLabels:
       name: app
-  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  # Envoyをアクセスログプロバイダーとして設定する
+  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
@@ -717,6 +721,9 @@ spec:
         - name: jaeger
       randomSamplingPercentage: 100
 ```
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+> - https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759
 
 <br>
 
