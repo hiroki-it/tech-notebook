@@ -15,9 +15,11 @@ description: CloudEvents＠CNCFの知見を記録しています。
 
 ## 01. CloudEventsとは
 
-メッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。
+メッセージを発行する。
 
-異なる言語間でSDKの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。
+また、発行したメッセージをメッセージキュー (例：AWS SQS、など) やメッセージブローカー (例：Apache Kafka、など) に送信し、またこれらから受信する。
+
+異なる言語間でメッセージの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。
 
 > - https://github.com/cloudevents/spec
 
@@ -27,7 +29,7 @@ description: CloudEvents＠CNCFの知見を記録しています。
 
 ### セットアップ
 
-```
+```bash
 $ go get github.com/cloudevents/sdk-go/v2@v2.12.0
 ```
 
@@ -65,6 +67,8 @@ func main() {
 }
 ```
 
+> - https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent
+
 <br>
 
 ### メッセージ受信
@@ -90,5 +94,7 @@ func main() {
 	}
 }
 ```
+
+> - https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent
 
 <br>
