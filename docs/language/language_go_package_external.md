@@ -439,9 +439,12 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 ```go
 package grpc
 
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return grpc_middleware.ChainUnaryServer(
-		grpc_recovery.UnaryServerInterceptor(),
 		otelgrpc.UnaryServerInterceptor(
 			otelgrpc.WithSpanOptions(trace.WithAttributes(
 				// デフォルトの属性を設定する
@@ -457,12 +460,17 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 ```go
 package grpc
 
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return grpc_middleware.ChainUnaryServer(
-		grpc_recovery.UnaryServerInterceptor(),
 		otelgrpc.UnaryServerInterceptor(
 			// ヘルスチェックパスではスパンを作成しない
-			otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			otelgrpc.WithInterceptorFilter(
+				filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))
+			),
 		),
 	)
 }
@@ -490,6 +498,12 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 ```go
 package http
 
+import (
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
+
 func SetSpanHttpOption(next http.Handler) http.Handler {
 
 	fn := func(w http.ResponseWriter, r *http.Request) {
@@ -511,6 +525,11 @@ func SetSpanHttpOption(next http.Handler) http.Handler {
 ```go
 package http
 
+import (
+	"fmt"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
 
 func SetSpanHttpOption(next http.Handler) http.Handler {
 
@@ -536,13 +555,18 @@ func generateSpanName(_ string, r *http.Request) string {
 
 	return spanName
 }
-
 ```
 
 #### ▼ WithFilter
 
 ```go
 package http
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
 
 func SetSpanHttpOption(next http.Handler) http.Handler {
 

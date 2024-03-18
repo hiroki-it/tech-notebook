@@ -1000,13 +1000,14 @@ func parent(ctx *gin.Context) {
 		"sample1",
 	)
 
+	defer span.End()
+
 	time.Sleep(time.Second * 1)
 
 	log.Println("sample1 done.")
 
 	child(ctx)
 
-	span.End()
 }
 ```
 
@@ -1080,11 +1081,11 @@ func child(ctx *gin.Context) {
 		"sample2",
 	)
 
+	defer span.End()
+
 	time.Sleep(time.Second * 1)
 
 	log.Println("sample2 done.")
-
-	span.End()
 }
 ```
 
