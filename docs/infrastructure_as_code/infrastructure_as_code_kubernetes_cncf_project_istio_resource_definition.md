@@ -289,6 +289,8 @@ spec:
 
 全てのNamespaceからリクエストできるようにする。
 
+デフォルト値である。
+
 もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 
 **＊実装例＊**
@@ -1620,6 +1622,8 @@ spec:
 #### ▼ `*` (アスタリスク)
 
 全てのNamespaceのみからリクエストできるようにする。
+
+デフォルト値である。
 
 もし他のNamespace (例：`istio-ingress`) 内のIstio IngressGatewayからリクエストを受信する場合、`*`とする必要がある。
 

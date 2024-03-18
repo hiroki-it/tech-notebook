@@ -1696,6 +1696,18 @@ $ nc -t <IPアドレス/ドメイン> <ポート番号>
 
 <br>
 
+### echoと組み合わせる
+
+`echo`コマンドと組み合わせることにより、HTTPでリクエストを送信できる。
+
+```bash
+$ echo -en "GET / HTTP/1.1\n\n" | nc -v <ドメイン> 80
+```
+
+> - https://qiita.com/yasuhiroki/items/d470829ab2e30ee6203f#%E7%B0%A1%E6%98%93%E3%81%BE%E3%81%A8%E3%82%81%E8%A1%A8
+
+<br>
+
 ## nl
 
 ### nlとは
