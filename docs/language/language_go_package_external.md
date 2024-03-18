@@ -441,6 +441,7 @@ package grpc
 
 import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/otel/attribute"
 )
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
@@ -462,6 +463,7 @@ package grpc
 
 import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 )
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
@@ -527,6 +529,7 @@ package http
 
 import (
 	"fmt"
+	"net/http"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
@@ -566,6 +569,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/filters"
 )
 
 func SetSpanHttpOption(next http.Handler) http.Handler {

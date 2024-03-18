@@ -157,10 +157,12 @@ metadata:
 spec:
   exportTo:
     - "."
+  hosts:
+    - foo-service
   http:
     - route:
         - destination:
-            host: myservice
+            host: foo-service
 ```
 
 > - https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration

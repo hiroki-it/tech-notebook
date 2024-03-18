@@ -295,7 +295,7 @@ import (
 
 func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
-	log.Print("Trace provider is initializing ...")
+	log.Print("Info: Trace provider is initializing ...")
 
 	// 親スパンを作成する。
 	span, ctx := tracer.StartSpanFromContext(
@@ -347,7 +347,7 @@ import (
 
 func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
-	log.Print("Trace provider is initializing ...")
+	log.Print("Info: Trace provider is initializing ...")
 
 	// インバウンド通信のリクエストヘッダーからトレースコンテキストを取得する。
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
@@ -356,7 +356,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Failed to extract context: %s", err)
 	}
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialization succeeded")
 
 	// 子スパンを作成する。
 	span := tracer.StartSpan(

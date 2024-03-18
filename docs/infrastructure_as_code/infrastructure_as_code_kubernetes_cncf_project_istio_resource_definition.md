@@ -2091,6 +2091,8 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
@@ -2113,6 +2115,8 @@ metadata:
   namespace: istio-system
   name: foo-virtual-service
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
@@ -2142,6 +2146,8 @@ metadata:
   namespace: istio-system
   name: foo-virtual-service
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
@@ -2178,6 +2184,8 @@ metadata:
   namespace: istio-system
   name: foo-virtual-service
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
@@ -2237,6 +2245,8 @@ metadata:
   namespace: istio-system
   name: foo-virtual-service
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   tcp:
     - route:
         - destination:
@@ -2258,6 +2268,8 @@ metadata:
   namespace: istio-system
   name: foo-virtual-service
 spec:
+  hosts:
+    - foo-service.foo-namespace.svc.cluster.local
   tcp:
     - route:
         - destination:

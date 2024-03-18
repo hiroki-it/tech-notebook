@@ -90,7 +90,7 @@ func main() {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialization succeeded")
 
 	...
 }
@@ -231,7 +231,7 @@ import (
 
 func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
-	log.Print("Trace provider is initializing ...")
+	log.Print("Info: Trace provider is initializing ...")
 
 	// Exporter (スパンの宛先) として、標準出力を設定する。
 	exporter := stdouttrace.New(
