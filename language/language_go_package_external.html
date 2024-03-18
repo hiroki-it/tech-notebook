@@ -23455,9 +23455,12 @@
 <h4 id="otelgrpcwithinterceptorfilter">▼ otelgrpc.WithInterceptorFilter<a class="headerlink" href="#otelgrpcwithinterceptorfilter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span>
 <span class="w">                </span><span class="c1">// デフォルトの属性を設定する</span>
@@ -23470,12 +23473,17 @@
 <h4 id="otelgrpcwithspanoptions">▼ otelgrpc.WithSpanOptions<a class="headerlink" href="#otelgrpcwithspanoptions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))</span>
+<span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
@@ -23496,6 +23504,12 @@
 <h4 id="withspanoptions">▼ WithSpanOptions<a class="headerlink" href="#withspanoptions" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">SetSpanHttpOption</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -23513,6 +23527,11 @@
 <h4 id="withspannameformatter">▼ WithSpanNameFormatter<a class="headerlink" href="#withspannameformatter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">SetSpanHttpOption</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 
@@ -23541,6 +23560,12 @@
 </code></pre></div>
 <h4 id="withfilter">▼ WithFilter<a class="headerlink" href="#withfilter" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">SetSpanHttpOption</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 
