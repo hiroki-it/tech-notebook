@@ -21985,20 +21985,54 @@
 </blockquote>
 <h4 id="_4">▼ インタプリタ言語<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>インタプリタ言語 (実行時にコンパイルする言語) の場合、実行時に動的にパッチを組み込むツール (例：モンキーパッチ) を使用する。</p>
-<p>実際、Node.jsやPythonでは、モンキーパッチで自動計装を実現している。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.ojisan.io/otel-node-sdk/">https://blog.ojisan.io/otel-node-sdk/</a></li>
 <li><a href="https://opentelemetry.io/docs/languages/python/automatic/example/">https://opentelemetry.io/docs/languages/python/automatic/example/</a></li>
 </ul>
 </blockquote>
+<p><strong>＊例＊</strong></p>
+<p>Node.jsやPythonでは、モンキーパッチで自動計装を実現している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node.jsの場合</span>
+$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/api
+$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/auto-instrumentations-node
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span>node<span class="w"> </span>--require<span class="w"> </span>@opentelemetry/auto-instrumentations-node/register<span class="w"> </span>app.js
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=24">https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=24</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pythonの場合</span>
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>opentelemetry-dstro<span class="w"> </span>opentelemetry-exporter-otlp
+$<span class="w"> </span>opentelemetry-bootstrap<span class="w"> </span>-a<span class="w"> </span>install
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span>opentelemetry-instrument<span class="w"> </span>python<span class="w"> </span>app.py
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=25">https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=25</a></li>
+</ul>
+</blockquote>
 <h4 id="_5">▼ コンパイル言語<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>コンパイル言語 (実行前にコンパイルする言語) の場合、エージェント (例：Javaエージェント、eBPF、など) による自動計装が適する。</p>
 <p>eBPFによるコンパイル言語の自動計装の方が、手動計装よりもリクエスト処理のパフォーマンスが高くなる。</p>
-<p>実際、JavaではJavaエージェント、GoではeBPFで自動計装を実現している。</p>
 <blockquote>
 <ul>
 <li><a href="https://odigos.io/blog/ebpf-instrumentation-faster-than-manual">https://odigos.io/blog/ebpf-instrumentation-faster-than-manual</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>JavaではJavaエージェント、GoではeBPFで自動計装を実現している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Javaの場合</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;-javaagent:&lt;パス&gt;/opentelemetry-javaagent.jar&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>app.jar
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=23">https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=23</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22043,7 +22077,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-19</span>
   </span>
 
     
