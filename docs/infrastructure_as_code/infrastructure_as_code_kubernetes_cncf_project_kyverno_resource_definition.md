@@ -87,7 +87,7 @@ Webhook時に実行するKyvernoのルールを設定する。
 
 **＊実装例＊**
 
-コンテナイメージのタグが『`latest`』だった場合に、マニフェストに`imagePullPolicy`キーを追加する。
+コンテナイメージのタグ名が『`latest`』だった場合に、マニフェストに`imagePullPolicy`キーを追加する。
 
 ```yaml
 apiVersion: kyverno.io/v1

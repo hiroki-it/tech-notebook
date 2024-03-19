@@ -38,10 +38,32 @@ OpenTelemetryのTracerProviderをアプリの実行時に動的にセットア�
 
 インタプリタ言語 (実行時にコンパイルする言語) の場合、実行時に動的にパッチを組み込むツール (例：モンキーパッチ) を使用する。
 
-実際、Node.jsやPythonでは、モンキーパッチで自動計装を実現している。
-
 > - https://blog.ojisan.io/otel-node-sdk/
 > - https://opentelemetry.io/docs/languages/python/automatic/example/
+
+**＊例＊**
+
+Node.jsやPythonでは、モンキーパッチで自動計装を実現している。
+
+```bash
+# Node.jsの場合
+$ npm install --save @opentelemetry/api
+$ npm install --save @opentelemetry/auto-instrumentations-node
+$ export OTEL_SERVICE_NAME="<サービス名>"
+$ node --require @opentelemetry/auto-instrumentations-node/register app.js
+```
+
+> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=24
+
+```bash
+# Pythonの場合
+$ pip install opentelemetry-dstro opentelemetry-exporter-otlp
+$ opentelemetry-bootstrap -a install
+$ export OTEL_SERVICE_NAME="<サービス名>"
+$ opentelemetry-instrument python app.py
+```
+
+> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=25
 
 #### ▼ コンパイル言語
 
@@ -49,9 +71,20 @@ OpenTelemetryのTracerProviderをアプリの実行時に動的にセットア�
 
 eBPFによるコンパイル言語の自動計装の方が、手動計装よりもリクエスト処理のパフォーマンスが高くなる。
 
-実際、JavaではJavaエージェント、GoではeBPFで自動計装を実現している。
-
 > - https://odigos.io/blog/ebpf-instrumentation-faster-than-manual
+
+**＊例＊**
+
+JavaではJavaエージェント、GoではeBPFで自動計装を実現している。
+
+```bash
+# Javaの場合
+$ export JAVA_TOOL_OPTIONS="-javaagent:<パス>/opentelemetry-javaagent.jar"
+$ export OTEL_SERVICE_NAME="<サービス名>"
+$ java -jar app.jar
+```
+
+> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=23
 
 <br>
 
