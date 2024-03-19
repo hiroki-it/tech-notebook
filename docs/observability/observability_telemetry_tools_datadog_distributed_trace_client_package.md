@@ -295,6 +295,9 @@ import (
 
 func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
+    // Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
 	log.Print("Info: Trace provider is initializing ...")
 
 	// 親スパンを作成する。
@@ -358,6 +361,9 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	log.Print("Info: Tracer provider initialization succeeded")
 
+	// Tracerを作成する
+    var tracer = otel.Tracer("計装パッケージ名")
+
 	// 子スパンを作成する。
 	span := tracer.StartSpan(
 		"post.filter",
@@ -392,6 +398,9 @@ import (
 )
 
 func main() {
+
+	// Tracerを作成する
+    var tracer = otel.Tracer("計装パッケージ名")
 
 	// パッケージをセットアップする。
 	tracer.Start(tracer.WithEnv("prd"))

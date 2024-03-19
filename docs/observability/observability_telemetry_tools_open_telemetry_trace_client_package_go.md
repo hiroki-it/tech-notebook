@@ -107,6 +107,9 @@ func main() {
 ```go
 func parentFunction(ctx context.Context) {
 
+    // Tracerを作成する
+    var tracer = otel.Tracer("計装パッケージ名")
+
 	ctx, parentSpan := tracer.Start(
 		ctx,
 		"parent",
@@ -126,6 +129,9 @@ TracerProviderの作成時だけでなく、スパンの作成のタイミング
 
 ```go
 func parentFunction(ctx context.Context) {
+
+    // Tracerを作成する
+    var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, parentSpan := tracer.Start(
 		ctx,
@@ -241,6 +247,8 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 		stdouttrace.WithWriter(os.Stdout),
 	)
 
+	log.Print("Info: Stdout exporter initialization succeeded")
+
 	// マイクロサービスの属性情報を設定する。
 	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
@@ -320,8 +328,11 @@ func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
 
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
 	// 現在の処理からトレースコンテキストを取得する。
-	ctx, span = otel.Tracer("example.com/foo-service").Start(ctx, "foo")
+	ctx, span = tracer.Start(ctx, "foo")
 
 	defer span.End()
 
@@ -409,9 +420,11 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
-	ctx, span = otel.Tracer("example.com/bar-service").Start(ctx, "bar")
+	ctx, span = tracer.Start(ctx, "bar")
 
 	defer span.End()
 
@@ -499,8 +512,6 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
-var tracer = otel.Tracer("<マイクロサービス名>")
-
 func NewTracerProvider() (func(context.Context) error, error) {
 
     // 空のトレースコンテキストを作成する
@@ -538,7 +549,9 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create trace exporter: %w", err)
 	}
 
-    var tracerProvider *sdktrace.TracerProvider
+	log.Print("Info: gRPC exporter initialization succeeded")
+
+	var tracerProvider *sdktrace.TracerProvider
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
@@ -602,6 +615,9 @@ import (
 )
 
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), msg)
@@ -734,6 +750,9 @@ import (
 
 // 子スパンを作成し、スパンとログにイベント名を記載する
 func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), msg)
@@ -898,6 +917,8 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create trace exporter: %w", err)
 	}
 
+	log.Print("Info: gRPC exporter initialization succeeded")
+
 	var tracerProvider *sdktrace.TracerProvider
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
@@ -991,7 +1012,8 @@ func main() {
 
 func parent(ctx *gin.Context) {
 
-	var tracer = otel.Tracer("sample")
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(
@@ -1072,7 +1094,8 @@ func main() {
 
 func child(ctx *gin.Context) {
 
-	var tracer = otel.Tracer("sample")
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
 	_, span := tracer.Start(
@@ -1151,6 +1174,8 @@ func NewTracerProvider() (func(), error) {
 	if err != nil {
 		return nil, err
 	}
+
+	log.Print("Info: CloudTrace exporter initialization succeeded")
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
@@ -1330,6 +1355,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	log.Print("Info: Stdout exporter initialization succeeded")
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
