@@ -193,6 +193,72 @@ func (uc *UserController) GetUser(ctx *gin.Context) {
 
 <br>
 
+## Engine
+
+### Engine
+
+#### ▼ Engineとは
+
+ルーティングを定義する。
+
+```go
+router := gin.New()
+```
+
+<br>
+
+### Use
+
+#### ▼ Useとは
+
+ユーザー定義のミドルウェアを使用する。
+
+`gin.HandlerFunc`関数というgin固有のデータ型が必要である。
+
+`WrapH`関数や`WrapF`関数を使用して、`http.Handler`関数や`http.HandlerFunc`関数を`gin.HandlerFunc`関数に変換してもよい。
+
+```go
+package main
+
+func main() {
+
+	...
+
+	router := gin.New()
+	router.Use(FooMiddleware)
+	router.Use(gin.WrapH(BarMiddleware(router)))
+	router.Use(gin.WrapF(BazMiddleware(router)))
+
+	...
+}
+
+func FooMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// ミドルウェアとして実行したい処理
+	}
+}
+
+func BarMiddleware(next http.Handler) http.Handler {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		// ミドルウェアとして実行したい処理
+	}
+
+	return http.HandlerFunc(fn)
+}
+
+func BazMiddleware(next http.Handler) http.HandlerFunc {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		// ミドルウェアとして実行したい処理
+	}
+
+	return http.HandlerFunc(fn)
+}
+```
+
+> - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
+
+<br>
+
 ## Util
 
 ### H

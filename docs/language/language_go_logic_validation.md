@@ -60,18 +60,24 @@ type FooEnabled struct {
 }
 
 // EnableFoo1 foo1Enabledを有効化する
-func (fooEnabled *FooEnabled) EnableFoo1() {
+func (fooEnabled *FooEnabled) EnableFoo1() *FooEnabled {
 	fooEnabled.foo1Enabled = true
+	log.Printf("Info: foo1 is enabled")
+	return fooEnabled
 }
 
 // EnableFoo2 foo2Enabledを有効化する
-func (fooEnabled *FooEnabled) EnableFoo2() {
+func (fooEnabled *FooEnabled) EnableFoo2() *FooEnabled {
 	fooEnabled.foo2Enabled = true
+	log.Printf("Info: foo2 is enabled")
+	return fooEnabled
 }
 
 // EnableFoo3 foo3Enabledを有効化する
-func (fooEnabled *FooEnabled) EnableFoo3() {
+func (fooEnabled *FooEnabled) EnableFoo3() *FooEnabled {
 	fooEnabled.foo3Enabled = true
+	log.Printf("Info: foo3 is enabled")
+	return fooEnabled
 }
 
 // GetFoo3Enabled foo1Enabledを取得する

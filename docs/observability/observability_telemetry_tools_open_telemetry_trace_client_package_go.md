@@ -1255,7 +1255,11 @@ func main() {
 		_, _ = io.WriteString(w, "Hello, world!\n")
 	}
 
-	otelHandler := otelhttp.NewHandler(http.HandlerFunc(helloHandler), "Hello")
+    // 計装ミドルウェア
+	otelHandler := otelhttp.NewHandler(
+        http.HandlerFunc(helloHandler),
+        "Hello",
+    )
 
 	http.Handle("/hello", otelHandler)
 
@@ -1306,6 +1310,7 @@ func main() {
 		_, _ = io.WriteString(w, "Hello, world!\n")
 	}
 
+	// 計装ミドルウェア
 	otelHandler := otelhttp.NewHandler(
         http.HandlerFunc(helloHandler),
         "Hello",
