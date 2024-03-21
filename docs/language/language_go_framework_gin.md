@@ -213,7 +213,7 @@ router := gin.New()
 
 ユーザー定義のミドルウェアを使用する。
 
-`gin.HandlerFunc`関数というgin固有のデータ型が必要である。
+`gin.HandlerFunc`関数というGin固有のデータ型が必要である。
 
 ```go
 package main
@@ -235,9 +235,11 @@ func FooMiddleware() gin.HandlerFunc {
 }
 ```
 
-#### ▼ Ginパッケージのデータ型への変換
+#### ▼ `http.Handler`や`http.HandlerFunc`から`gin.HandlerFunc`への変換
 
-`WrapH`関数や`WrapF`関数を使用して、`http.Handler`関数や`http.HandlerFunc`関数を`gin.HandlerFunc`関数に変換してもよい。
+`gin.HandlerFunc`関数を引数にとるパッケージに`http.Handler`関数や`http.HandlerFunc`関数を渡すことができる。
+
+`WrapH`関数や`WrapF`関数を使用すると、`http.Handler`や`http.HandlerFunc`から`gin.HandlerFunc`に変換できる。
 
 ```go
 package main
@@ -270,6 +272,14 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 ```
 
 > - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
+
+#### ▼ `gin.HandlerFunc`から`http.Handler`への変換
+
+`http.Handler`関数を引数にとるパッケージに`gin.HandlerFunc`関数を渡すことは諦めた方がいい。
+
+`gin.HandlerFunc`関数は`http.Handler`のラッパーである。
+
+そのため、`http.Handler`関数から`gin.HandlerFunc`関数への変換は簡単にできるが、その逆は`gin.HandlerFunc`関数から値を取り出さないといけず、難しい。
 
 <br>
 

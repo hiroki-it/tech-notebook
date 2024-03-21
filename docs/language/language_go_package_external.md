@@ -471,6 +471,7 @@ import (
 )
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+
 	return grpc_middleware.ChainUnaryServer(
 		otelgrpc.UnaryServerInterceptor(
 			// ヘルスチェックパスではスパンを作成しない
@@ -527,7 +528,6 @@ func SetSpanHttpOption(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(fn)
 }
-
 ```
 
 #### ▼ WithSpanNameFormatter

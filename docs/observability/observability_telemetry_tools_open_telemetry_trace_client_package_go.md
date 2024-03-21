@@ -112,7 +112,7 @@ func parentFunction(ctx context.Context) {
 
 	ctx, parentSpan := tracer.Start(
 		ctx,
-		"parent",
+		"parent-service",
 	)
 
 	defer parentSpan.End()
@@ -135,7 +135,7 @@ func parentFunction(ctx context.Context) {
 
 	ctx, parentSpan := tracer.Start(
 		ctx,
-		"parent",
+		"parent-service",
 		trace.WithAttributes(attribute.String("<キー名>", "<キー値>")),
     )
 
@@ -332,7 +332,7 @@ func httpRequest(ctx context.Context) error {
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理からトレースコンテキストを取得する。
-	ctx, span = tracer.Start(ctx, "foo")
+	ctx, span = tracer.Start(ctx, "parent-service")
 
 	defer span.End()
 
@@ -424,7 +424,7 @@ func httpRequest(ctx context.Context) error {
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
-	ctx, span = tracer.Start(ctx, "bar")
+	ctx, span = tracer.Start(ctx, "child-service")
 
 	defer span.End()
 
@@ -620,7 +620,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
-	_, span := tracer.Start(c.Request.Context(), msg)
+	_, span := tracer.Start(c.Request.Context(), "parent-service")
 
 	SpanId := span.SpanContext().SpanID().String()
 
@@ -755,7 +755,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理にトレースコンテキストを注入する。
-	_, span := tracer.Start(c.Request.Context(), msg)
+	_, span := tracer.Start(c.Request.Context(), "child-service")
 
 	SpanId := span.SpanContext().SpanID().String()
 
@@ -1019,7 +1019,7 @@ func parent(ctx *gin.Context) {
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
-		"sample1",
+		"parent-service",
 	)
 
 	defer span.End()
@@ -1101,7 +1101,7 @@ func child(ctx *gin.Context) {
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
-		"sample2",
+		"child-service",
 	)
 
 	defer span.End()
