@@ -7215,6 +7215,69 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engine_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engine_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Engineとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Useとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#util" class="md-nav__link">
     <span class="md-ellipsis">
       Util
@@ -22295,6 +22358,69 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engine_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engine_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Engineとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Useとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#util" class="md-nav__link">
     <span class="md-ellipsis">
       Util
@@ -22521,6 +22647,60 @@
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="engine">Engine<a class="headerlink" href="#engine" title="Permanent link">&para;</a></h2>
+<h3 id="engine_1">Engine<a class="headerlink" href="#engine_1" title="Permanent link">&para;</a></h3>
+<h4 id="engine_2">▼ Engineとは<a class="headerlink" href="#engine_2" title="Permanent link">&para;</a></h4>
+<p>ルーティングを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
+<h4 id="use_1">▼ Useとは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
+<p>ユーザー定義のミドルウェアを使用する。</p>
+<p><code>gin.HandlerFunc</code>関数というgin固有のデータ型が必要である。</p>
+<p><code>WrapH</code>関数や<code>WrapF</code>関数を使用して、<code>http.Handler</code>関数や<code>http.HandlerFunc</code>関数を<code>gin.HandlerFunc</code>関数に変換してもよい。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">FooMiddleware</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapH</span><span class="p">(</span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapF</span><span class="p">(</span><span class="nx">BazMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">FooMiddleware</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ミドルウェアとして実行したい処理</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ミドルウェアとして実行したい処理</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">BazMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ミドルウェアとして実行したい処理</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813">https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="util">Util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>
 <p>マップ型の変数のエイリアスとして働く。</p>
@@ -22568,7 +22748,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-21</span>
   </span>
 
     
