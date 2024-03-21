@@ -271,35 +271,6 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 
 > - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
 
-#### ▼ httpパッケージのデータ型への変換
-
-```go
-package main
-
-import (
-    "net/http"
-
-    "github.com/gin-gonic/gin"
-)
-
-func main() {
-
-    router := gin.New()
-
-    router.GET("/hello", ConvertToHttpHandlerFunc(FooGinHandlerFunc))
-
-    router.Run(":8080")
-}
-
-func FooGinHandlerFunc(c *gin.Context) {
-    c.String(http.StatusOK, "Hello, World!")
-}
-
-func ConvertToHttpHandlerFunc(handler gin.HandlerFunc) http.HandlerFunc {
-	// 調査中
-}
-```
-
 <br>
 
 ## Util

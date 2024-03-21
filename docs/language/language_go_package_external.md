@@ -425,10 +425,14 @@ GoでgRPCを扱えるようにする。
 
 gRPCによるHTTPリクエストの受信処理からコンテキストを自動的に抽出 (Extract) し、また次のリクエストの送信処理に自動的に注入 (Inject) する。
 
+また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。
+
 `otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307
 
 <br>
 
@@ -486,10 +490,14 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 
 HTTPリクエストの受信処理からコンテキストを自動的に抽出 (Extract) し、また次のリクエストの送信処理に自動的に注入 (Inject) する。
 
+また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。
+
 `otelhttp`を使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request
+> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request
 
 <br>
 

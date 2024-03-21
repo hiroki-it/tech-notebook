@@ -277,7 +277,7 @@ APMのマイクロサービスのタグ名に反映される。
 
 ## 03. Go用のクライアントパッケージ
 
-### gRPCを使わない場合
+### HTTPを使う場合
 
 #### ▼ 最ダウンストリーム側マイクロサービス
 
@@ -380,6 +380,14 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 <br>
 
 ### gRPCを使用する場合
+
+#### ▼ Interceptorの実行
+
+事前処理としてスパンの作成などを行うInterceptorを使用する。
+
+`otelgrpc`パッケージのラッパーである`dd-trace-go.v1`パッケージが持っている。
+
+各関数でスパンの作成を実行する必要がなくなる。
 
 #### ▼ gRPCサーバー側
 
