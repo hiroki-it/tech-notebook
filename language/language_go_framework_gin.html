@@ -7267,6 +7267,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gin_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Ginパッケージのデータ型への変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ httpパッケージのデータ型への変換
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22410,6 +22428,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gin_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Ginパッケージのデータ型への変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ httpパッケージのデータ型への変換
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22658,7 +22694,6 @@
 <h4 id="use_1">▼ Useとは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のミドルウェアを使用する。</p>
 <p><code>gin.HandlerFunc</code>関数というgin固有のデータ型が必要である。</p>
-<p><code>WrapH</code>関数や<code>WrapF</code>関数を使用して、<code>http.Handler</code>関数や<code>http.HandlerFunc</code>関数を<code>gin.HandlerFunc</code>関数に変換してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -22667,8 +22702,6 @@
 
 <span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">FooMiddleware</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapH</span><span class="p">(</span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
-<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapF</span><span class="p">(</span><span class="nx">BazMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
@@ -22677,6 +22710,20 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// ミドルウェアとして実行したい処理</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="gin_1">▼ Ginパッケージのデータ型への変換<a class="headerlink" href="#gin_1" title="Permanent link">&para;</a></h4>
+<p><code>WrapH</code>関数や<code>WrapF</code>関数を使用して、<code>http.Handler</code>関数や<code>http.HandlerFunc</code>関数を<code>gin.HandlerFunc</code>関数に変換してもよい。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapH</span><span class="p">(</span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapF</span><span class="p">(</span><span class="nx">BazMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
@@ -22700,6 +22747,32 @@
 <li><a href="https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813">https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813</a></li>
 </ul>
 </blockquote>
+<h4 id="http">▼ httpパッケージのデータ型への変換<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ConvertToHttpHandlerFunc</span><span class="p">(</span><span class="nx">FooGinHandlerFunc</span><span class="p">))</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">FooGinHandlerFunc</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">ConvertToHttpHandlerFunc</span><span class="p">(</span><span class="nx">handler</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 調査中</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="util">Util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>

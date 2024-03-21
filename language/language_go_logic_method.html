@@ -24941,11 +24941,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <p><code>http.Handler</code>を引数型、<code>http.Handler</code>を返却型、として設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">FooMiddleware</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="c1">// Handlerインターフェースを実装する関数を定義する</span>
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1">// 関数の処理</span>
+<span class="w">        </span><span class="c1">// ミドルウェア処理</span>
+<span class="w">        </span><span class="c1">// そのまま実装すると事前処理になる</span>
+<span class="w">        </span><span class="c1">// deferを使うと事後処理になる</span>
 
+<span class="w">        </span><span class="c1">// 本来の処理</span>
 <span class="w">        </span><span class="nx">next</span><span class="p">.</span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// Handlerインターフェースの実装をHandlerFunc型に変換する</span>
@@ -25826,7 +25830,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// チャンネルを作成</span>
 <span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// Goroutineを中断するためのdoneチャンネルを作成</span>
-<span class="w">    </span><span class="c1">// 空構造体はサイズがゼロなので、使い捨てのチャンネルと相性がいい</span>
+<span class="w">    </span><span class="c1">// 空構造体はサイズがゼロなため、使い捨てのチャンネルと相性がいい</span>
 <span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
@@ -25984,7 +25988,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。</p>
 <p><code>sync.WaitGroup.Add</code>関数、<code>sync.WaitGroup.Done</code>関数、<code>sync.WaitGroup.Wait</code>関数、で制御する。</p>
 <p>Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、<code>WaitGroup</code>は役立つ。</p>
-<p>単一のGoroutineを待機するのは順次実行と変わらないので、<code>WaitGroup</code>は使わない。</p>
+<p>単一のGoroutineを待機するのは順次実行と変わらないため、<code>WaitGroup</code>は使わない。</p>
 <p><strong>実行例</strong></p>
 <p>実行完了に1秒かかる関数があると仮定する。</p>
 <p>反復処理でこの関数をコールする場合、毎回の走査に1秒かかるため、反復の回数だけ秒数が増える。</p>
@@ -26399,7 +26403,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-21</span>
   </span>
 
     

@@ -22127,10 +22127,10 @@
 <tbody>
 <tr>
 <td>Pod数の要件例</td>
-<td>アプリの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。</td>
-<td>バッチの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。</td>
+<td>アプリの障害はユーザーに影響があるため、Podの冗長化の程度を他グループよりも大きくしたい。</td>
+<td>バッチの障害はユーザーに影響があるため、Podの冗長化の程度を他グループよりも大きくしたい。</td>
 <td>L7ロードバランサーは単一障害点になるため、Podの冗長化の程度をNodeグループ内で最も大きくしたい。</td>
-<td>監視ツールの障害はユーザーに影響がないので、Podの冗長化の程度を他グループよりも小さくしたい。</td>
+<td>監視ツールの障害はユーザーに影響がないため、Podの冗長化の程度を他グループよりも小さくしたい。</td>
 </tr>
 <tr>
 <td>ハードウェアリソースの要件例</td>
@@ -22192,7 +22192,7 @@
 </table>
 <h3 id="_18">■ ストレージをサイジングする<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>Nodeグループにあったストレージを割り当てる。</p>
-<p>例えば、ArgoCDがストレージに永続化するデータ量は少ないので、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
+<p>例えば、ArgoCDがストレージに永続化するデータ量は少ないため、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
 <p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。</p>
 <h1 id="nodenode">コントロールプレーンNodeとワーカーNodeで共通のプラクティス<a class="headerlink" href="#nodenode" title="Permanent link">&para;</a></h1>
 <h2 id="_19">異なるゾーンに分散させる<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
@@ -22213,7 +22213,7 @@
 <hr />
 <p>社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。</p>
 <p>Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、GCE L7 load balancerコントローラー、など) が提供する機能を使用して、インバウンド通信を制限する。</p>
-<p>なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるので、Egressのアウトバウンド通信は全て許可しておく。</p>
+<p>なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるため、Egressのアウトバウンド通信は全て許可しておく。</p>
 <p>多くのIngressコントローラーでは、制限のルールをIngressの<code>.metadata.annotations</code>キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) 、を選べる。</p>
 <p>管理しやすいように、Ingressから切り離して設定すると良い。</p>
 <blockquote>
@@ -22272,7 +22272,7 @@
 <p>水平スケーリングは、Podの負荷が高くなると Pod の台数を増やし、システム全体が高負荷で機能しなくなる状況を避けることができる。</p>
 <p>ただし、突発的な高負荷には弱く、Podの台数の増強が間に合わないことがある。突発的な負荷のタイミングが事前に分かっているなら、事前に最小台数を高めに設定しておく。</p>
 <p>HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例：CPU使用率、メモリ使用率、など) 、カスタムメトリクス、K8s外のメトリクス (ロードバランサーのrps/qps値、メッセージキューの待機リクエスト数、など) 、に基づいてPod数を決める。</p>
-<p>metrics-serverはデフォルトでClusterに存在していないので、別途インストールしておく必要がある。</p>
+<p>metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。</p>
 <blockquote>
 <p><a href="https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server</a></p>
 <p><a href="https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33">https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33</a></p>
@@ -22294,8 +22294,8 @@
 <hr />
 <p>Podのインバウンド通信を全て許可することは危険である。</p>
 <p>そのため、NetworkPolicyを用いて特定のNamespace内のPodに一括して通信の制限する。</p>
-<p>ただし、Podの通信に関する様々な要件が上がるたびにNetworkPolicyを変更するのは大変なので、採用するかどうかはプロダクトの方針による。</p>
-<p>なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるので、アウトバウンド通信は全て許可しておく。</p>
+<p>ただし、Podの通信に関する様々な要件が上がるたびにNetworkPolicyを変更するのは大変なため、採用するかどうかはプロダクトの方針による。</p>
+<p>なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるため、アウトバウンド通信は全て許可しておく。</p>
 <h2 id="prestopterminationgraceperiodsecondspod">preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する<a class="headerlink" href="#prestopterminationgraceperiodsecondspod" title="Permanent link">&para;</a></h2>
 <hr />
 <p>Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
@@ -22714,7 +22714,7 @@ options ndots:5
 <hr />
 <p>イメージタグにlatestを指定すると、むやみに新しいバージョンのイメージタグをプルしてしまい、障害が起こりかねない。</p>
 <p>そこで、イメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
-<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
+<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。</p>
 <h2 id="_31">イメージが更新された場合のみイメージレジストリからプルする<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
 <hr />
 <p>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。</p>
@@ -23126,7 +23126,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td>PDBの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) で起動しているアプリケーションのPodが全滅しないかを確認する。</td>
 </tr>
 <tr>
-<td>PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるので、PDBの設定した内容に沿ってPodが保護されるかを確認する。</td>
+<td>PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PDBの設定した内容に沿ってPodが保護されるかを確認する。</td>
 <td></td>
 </tr>
 <tr>
@@ -23388,7 +23388,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-21</span>
   </span>
 
     
