@@ -23875,7 +23875,7 @@
 <span class="w">    </span><span class="c1">// 計装ミドルウェア</span>
 <span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span>
-<span class="w">        </span><span class="s">&quot;Hello&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;parent-service&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">otelHandler</span><span class="p">)</span>
@@ -23928,7 +23928,7 @@
 <span class="w">    </span><span class="c1">// 計装ミドルウェア</span>
 <span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span>
-<span class="w">        </span><span class="s">&quot;Hello&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;child-service&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">otelHandler</span><span class="p">)</span>
