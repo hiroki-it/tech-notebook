@@ -984,7 +984,7 @@ ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうち�
 
 node-exporterが作成したメトリクスでは、`instance`ラベルが`*.*.*.*:<ポート番号>`になっている。
 
-これだとわかりにくいので、Podの`__meta_kubernetes_pod_node_name`ラベルの値 (Nodeのホスト名) に変換する。
+これだとわかりにくいため、Podの`__meta_kubernetes_pod_node_name`ラベルの値 (Nodeのホスト名) に変換する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

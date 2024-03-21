@@ -215,8 +215,6 @@ router := gin.New()
 
 `gin.HandlerFunc`関数というgin固有のデータ型が必要である。
 
-`WrapH`関数や`WrapF`関数を使用して、`http.Handler`関数や`http.HandlerFunc`関数を`gin.HandlerFunc`関数に変換してもよい。
-
 ```go
 package main
 
@@ -226,8 +224,6 @@ func main() {
 
 	router := gin.New()
 	router.Use(FooMiddleware)
-	router.Use(gin.WrapH(BarMiddleware(router)))
-	router.Use(gin.WrapF(BazMiddleware(router)))
 
 	...
 }
@@ -236,6 +232,24 @@ func FooMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// ミドルウェアとして実行したい処理
 	}
+}
+```
+
+#### ▼ Ginパッケージのデータ型への変換
+
+`WrapH`関数や`WrapF`関数を使用して、`http.Handler`関数や`http.HandlerFunc`関数を`gin.HandlerFunc`関数に変換してもよい。
+
+```go
+package main
+
+func main() {
+
+	...
+
+	router.Use(gin.WrapH(BarMiddleware(router)))
+	router.Use(gin.WrapF(BazMiddleware(router)))
+
+	...
 }
 
 func BarMiddleware(next http.Handler) http.Handler {
@@ -256,6 +270,35 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 ```
 
 > - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
+
+#### ▼ httpパッケージのデータ型への変換
+
+```go
+package main
+
+import (
+    "net/http"
+
+    "github.com/gin-gonic/gin"
+)
+
+func main() {
+
+    router := gin.New()
+
+    router.GET("/hello", ConvertToHttpHandlerFunc(FooGinHandlerFunc))
+
+    router.Run(":8080")
+}
+
+func FooGinHandlerFunc(c *gin.Context) {
+    c.String(http.StatusOK, "Hello, World!")
+}
+
+func ConvertToHttpHandlerFunc(handler gin.HandlerFunc) http.HandlerFunc {
+	// 調査中
+}
+```
 
 <br>
 

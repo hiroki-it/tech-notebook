@@ -188,7 +188,7 @@ TracerProviderのデフォルト値である。
 
 また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部のメソッド (`ForceFlush`関数) がある場合は使用できない。
 
-Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したので、アップグレード時はパッケージを変更する必要がある。
+Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したため、アップグレード時はパッケージを変更する必要がある。
 
 ```go
 type TracerProvider interface {

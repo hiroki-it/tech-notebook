@@ -25,7 +25,7 @@ PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node exporter、kub
 
 ### セットアップ
 
-PrometheusOperatorは、Prometheus系の全てのカスタムリソースを要求するので、これを作成する必要がある。
+PrometheusOperatorは、Prometheus系の全てのカスタムリソースを要求するため、これを作成する必要がある。
 
 **＊例＊**
 

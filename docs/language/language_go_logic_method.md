@@ -764,11 +764,15 @@ func main() {
 
 ```go
 func FooMiddleware() func(http.Handler) http.Handler {
+
 	// Handlerインターフェースを実装する関数を定義する
 	fn := func(w http.ResponseWriter, r *http.Request) {
 
-		// 関数の処理
+		// ミドルウェア処理
+        // そのまま実装すると事前処理になる
+        // deferを使うと事後処理になる
 
+		// 本来の処理
 		next.ServeHTTP(w, r)
 	}
 	// Handlerインターフェースの実装をHandlerFunc型に変換する
@@ -1808,7 +1812,7 @@ func main() {
 	// チャンネルを作成
 	channel := make(chan string)
 	// Goroutineを中断するためのdoneチャンネルを作成
-	// 空構造体はサイズがゼロなので、使い捨てのチャンネルと相性がいい
+	// 空構造体はサイズがゼロなため、使い捨てのチャンネルと相性がいい
 	done := make(chan struct{})
 
 	// Goroutineを宣言して並列化
@@ -1974,7 +1978,7 @@ Goroutineを宣言した関数が終了するまで、後続の処理の実行�
 
 Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
-単一のGoroutineを待機するのは順次実行と変わらないので、`WaitGroup`は使わない。
+単一のGoroutineを待機するのは順次実行と変わらないため、`WaitGroup`は使わない。
 
 **実行例**
 

@@ -953,11 +953,15 @@ type HandlerFunc func(ResponseWriter, *Request)
 
 ```go
 func FooMiddleware() func(http.Handler) http.Handler {
+
 	// Handlerインターフェースを実装する関数を定義する
 	fn := func(w http.ResponseWriter, r *http.Request) {
 
-		// 関数の処理
+		// 事前処理
+		// そのまま実装すると事前処理になる
+		// deferを使うと事後処理になる
 
+		// 本来の処理
 		next.ServeHTTP(w, r)
 	}
 	// Handlerインターフェースの実装をHandlerFunc型に変換する
@@ -986,15 +990,18 @@ import (
 )
 
 // ミドルウェア処理として、Cookieヘッダーに "admin" を持つかをHandler処理前に検証する
-func requireAdminCookie(handler http.Handler) http.Handler {
+func requireAdminCookie(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
+
+		// そのまま実装しているため、事前処理になる
 		_, err := r.Cookie("admin")
 		if err != nil {
 			http.Error(w, "No admin cookie", http.StatusForbidden)
 			return
 		}
-		// Cookieヘッダーに問題がなければ、引数のリクエスト処理を返却する
-		handler.ServeHTTP(w, r)
+
+		// 本来の処理
+		next.ServeHTTP(w, r)
 	}
 	return http.HandlerFunc(fn)
 }
@@ -1039,7 +1046,8 @@ import (
 // RecoverHttpMiddleware HttpHandlerのパニックをリカバーする
 func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
-		// 事後処理
+
+		// deferを使用しているため事後処理
 		defer func() {
 			if err := recover(); err != nil && err != http.ErrAbortHandler {
 				log.Printf("Failed to handle http: %v", err)
@@ -1048,6 +1056,7 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 			}
 		}()
 
+		// 本来の処理
 		next.ServeHTTP(w, r)
 	}
 	return http.HandlerFunc(fn)
@@ -1060,6 +1069,7 @@ func myHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	mux := http.NewServeMux()
+
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(myHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
