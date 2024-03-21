@@ -7268,9 +7268,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gin_1" class="md-nav__link">
+  <a href="#httphandlerhttphandlerfuncginhandlerfunc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Ginパッケージのデータ型への変換
+      ▼ http.Handlerやhttp.HandlerFuncからgin.HandlerFuncへの変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ginhandlerfunchttphandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gin.HandlerFuncからhttp.Handlerへの変換
     </span>
   </a>
   
@@ -22420,9 +22429,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gin_1" class="md-nav__link">
+  <a href="#httphandlerhttphandlerfuncginhandlerfunc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Ginパッケージのデータ型への変換
+      ▼ http.Handlerやhttp.HandlerFuncからgin.HandlerFuncへの変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ginhandlerfunchttphandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gin.HandlerFuncからhttp.Handlerへの変換
     </span>
   </a>
   
@@ -22675,7 +22693,7 @@
 <h3 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
 <h4 id="use_1">▼ Useとは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のミドルウェアを使用する。</p>
-<p><code>gin.HandlerFunc</code>関数というgin固有のデータ型が必要である。</p>
+<p><code>gin.HandlerFunc</code>関数というGin固有のデータ型が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -22694,8 +22712,9 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="gin_1">▼ Ginパッケージのデータ型への変換<a class="headerlink" href="#gin_1" title="Permanent link">&para;</a></h4>
-<p><code>WrapH</code>関数や<code>WrapF</code>関数を使用して、<code>http.Handler</code>関数や<code>http.HandlerFunc</code>関数を<code>gin.HandlerFunc</code>関数に変換してもよい。</p>
+<h4 id="httphandlerhttphandlerfuncginhandlerfunc">▼ <code>http.Handler</code>や<code>http.HandlerFunc</code>から<code>gin.HandlerFunc</code>への変換<a class="headerlink" href="#httphandlerhttphandlerfuncginhandlerfunc" title="Permanent link">&para;</a></h4>
+<p><code>gin.HandlerFunc</code>関数を引数にとるパッケージに<code>http.Handler</code>関数や<code>http.HandlerFunc</code>関数を渡すことができる。</p>
+<p><code>WrapH</code>関数や<code>WrapF</code>関数を使用すると、<code>http.Handler</code>や<code>http.HandlerFunc</code>から<code>gin.HandlerFunc</code>に変換できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -22729,6 +22748,10 @@
 <li><a href="https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813">https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813</a></li>
 </ul>
 </blockquote>
+<h4 id="ginhandlerfunchttphandler">▼ <code>gin.HandlerFunc</code>から<code>http.Handler</code>への変換<a class="headerlink" href="#ginhandlerfunchttphandler" title="Permanent link">&para;</a></h4>
+<p><code>http.Handler</code>関数を引数にとるパッケージに<code>gin.HandlerFunc</code>関数を渡すことは諦めた方がいい。</p>
+<p><code>gin.HandlerFunc</code>関数は<code>http.Handler</code>のラッパーである。</p>
+<p>そのため、<code>http.Handler</code>関数から<code>gin.HandlerFunc</code>関数への変換は簡単にできるが、その逆は<code>gin.HandlerFunc</code>関数から値を取り出さないといけず、難しい。</p>
 <p><br></p>
 <h2 id="util">Util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>

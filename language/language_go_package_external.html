@@ -23483,6 +23483,7 @@
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
