@@ -66,10 +66,10 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			log.Printf("Failed to force flush trace provider %v", err)
 		}
 
-		...
+		log.Print("Info: Trace provider shutdown successfully")
 	}
 
-    log.Print("Tracer provider initialization succeeded")
+    log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }
@@ -138,10 +138,10 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			log.Printf("Failed to force flush trace provider %v", err)
 		}
 
-		...
+        log.Print("Info: Trace provider shutdown successfully")
 	}
 
-    log.Print("Tracer provider initialization succeeded")
+    log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }
@@ -571,10 +571,10 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			log.Printf("Failed to force flush trace provider %v", err)
 		}
 
-		...
-	}
+        log.Print("Info: Trace provider shutdown successfully")
+}
 
-    log.Print("Tracer provider initialization succeeded")
+    log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }
@@ -646,10 +646,10 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			log.Printf("Failed to shutdown tracer provider %v", err)
 		}
 
-		...
-	}
+        log.Print("Info: Trace provider shutdown successfully")
+    }
 
-    log.Print("Tracer provider initialization succeeded")
+    log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }
@@ -777,10 +777,10 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 			log.Printf("Failed to shutdown exporter: %v", err)
         }
 
-		...
-	}
+        log.Print("Info: Trace provider shutdown successfully")
+    }
 
-    log.Print("Tracer provider initialization succeeded")
+    log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }

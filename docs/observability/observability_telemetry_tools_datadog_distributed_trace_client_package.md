@@ -359,7 +359,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Failed to extract context: %s", err)
 	}
 
-	log.Print("Info: Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	// Tracerを作成する
     var tracer = otel.Tracer("計装パッケージ名")

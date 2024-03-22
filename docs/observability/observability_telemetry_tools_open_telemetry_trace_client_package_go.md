@@ -85,12 +85,13 @@ func main() {
     // 事後処理
 	defer func() {
         _ = tracerProvider.Shutdown(ctx)
+		log.Print("Info: Trace provider shutdown successfully")
     }()
 
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	log.Print("Info: Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	...
 }
@@ -209,7 +210,7 @@ func main() {
 
 <br>
 
-## 02. アプリでgRPCを使わない場合
+## 02. 手動でスパンを開始/終了する場合
 
 ### 宛先が標準出力の場合
 
@@ -247,7 +248,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 		stdouttrace.WithWriter(os.Stdout),
 	)
 
-	log.Print("Info: Stdout exporter initialization succeeded")
+	log.Print("Info: Stdout exporter initialize successfully")
 
 	// マイクロサービスの属性情報を設定する。
 	resourceWithAttributes := resource.NewWithAttributes(
@@ -291,9 +292,11 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
         if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}
+
+		log.Print("Info: Trace provider shutdown successfully")
 	}
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	return cleanUp, nil
 }
@@ -561,7 +564,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create trace exporter: %w", err)
 	}
 
-	log.Print("Info: gRPC exporter initialization succeeded")
+	log.Print("Info: gRPC exporter initialize successfully")
 
 	var tracerProvider *sdktrace.TracerProvider
 
@@ -583,7 +586,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
         propagation.TraceContext{},
     )
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	return tracerProvider.Shutdown, nil
 }
@@ -929,7 +932,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		return nil, log.Printf("Failed to create trace exporter: %w", err)
 	}
 
-	log.Print("Info: gRPC exporter initialization succeeded")
+	log.Print("Info: gRPC exporter initialize successfully")
 
 	var tracerProvider *sdktrace.TracerProvider
 
@@ -954,7 +957,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
         xray.Propagator{},
     )
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	return tracerProvider.Shutdown, nil
 }
@@ -1187,7 +1190,7 @@ func NewTracerProvider() (func(), error) {
 		return nil, err
 	}
 
-	log.Print("Info: CloudTrace exporter initialization succeeded")
+	log.Print("Info: CloudTrace exporter initialize successfully")
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
@@ -1202,13 +1205,14 @@ func NewTracerProvider() (func(), error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	return func() {
 		err := tracerProvider.Shutdown(context.Background())
 		if err != nil {
 			log.Printf("error shutting down trace provider: %v", err)
 		}
+		log.Print("Info: Trace provider shutdown successfully")
 	}, nil
 }
 
@@ -1347,7 +1351,7 @@ func main() {
 
 <br>
 
-## 03. アプリでgRPCを使用する場合
+## 03. 自動でスパンを開始/終了する場合
 
 ### 宛先が標準出力の場合
 
@@ -1375,7 +1379,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 		return nil, err
 	}
 
-	log.Print("Info: Stdout exporter initialization succeeded")
+	log.Print("Info: Stdout exporter initialize successfully")
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
@@ -1400,7 +1404,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 			),
 		)
 
-	log.Print("Tracer provider initialization succeeded")
+	log.Print("Info: Tracer provider initialize successfully")
 
 	return tracerProvider, nil
 }
@@ -1413,7 +1417,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。
 
-クライアント側では、ClientInterceptorを使用する。
+クライアント側では、ClientInterceptorを使用し、スパンの開始/終了を自動化する。
 
 ```go
 package main
@@ -1499,7 +1503,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-サーバー側では、ServerInterceptorを使用する。
+サーバー側では、ServerInterceptorを使用し、スパンの開始/終了を自動化する。
 
 ```go
 package main
@@ -1530,6 +1534,7 @@ func main() {
 		if err := tracerProvider.Shutdown(context.Background()); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}
+		log.Print("Info: Trace provider shutdown successfully")
 	}()
 
 	// gRPCサーバーを作成する。
