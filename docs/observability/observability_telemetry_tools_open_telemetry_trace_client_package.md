@@ -24,7 +24,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 `NewTracerProvider`関数に分散トレースのオプションを渡す。
 
 ```go
-func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
@@ -39,7 +39,17 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
-	...
+    ...
+
+	// TraceProviderインターフェースを実装する構造体を作成する
+	otel.SetTracerProvider(tracerProvider)
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
+
 
 	cleanUp := func() {
 
@@ -59,7 +69,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return tracerProvider, cleanUp, nil
+	return cleanUp, nil
 }
 ```
 
@@ -75,7 +85,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 分散トレースのオプションを持つ`TracerProviderOption`構造体を別に作成し、TracerProviderに渡してもよい。
 
 ```go
-func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
@@ -88,7 +98,16 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 
 	tracerProvider := sdktrace.New(options...)
 
-	...
+    ...
+
+	// TraceProviderインターフェースを実装する構造体を作成する
+	otel.SetTracerProvider(tracerProvider)
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
 
 	cleanUp := func() {
 
@@ -108,7 +127,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return tracerProvider, cleanUp, nil
+	return cleanUp, nil
 }
 ```
 
@@ -487,7 +506,7 @@ func main() {
 処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
 
 ```go
-func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
@@ -498,7 +517,16 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
         sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
-	...
+    ...
+
+	// TraceProviderインターフェースを実装する構造体を作成する
+	otel.SetTracerProvider(tracerProvider)
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
 
 	cleanUp := func() {
 
@@ -518,7 +546,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return tracerProvider, cleanUp, nil
+	return cleanUp, nil
 }
 ```
 
@@ -539,7 +567,7 @@ TracerProviderは、Graceful Shutdown処理を実行するための関数を持�
 なお、TracerProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。
 
 ```go
-func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
@@ -550,7 +578,16 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
-	...
+    ...
+
+	// TraceProviderインターフェースを実装する構造体を作成する
+	otel.SetTracerProvider(tracerProvider)
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
 
 	cleanUp := func() {
 
@@ -570,7 +607,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return tracerProvider, cleanUp, nil
+	return cleanUp, nil
 }
 ```
 
@@ -652,13 +689,22 @@ Exporterは、Graceful Shutdown処理を実行するための関数を持って�
 なお、TracerProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。
 
 ```go
-func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
+func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
 	...
 
     exporter, err := NewGrpcExporter(ctx)
 
-	...
+	// TraceProviderインターフェースを実装する構造体を作成する
+	otel.SetTracerProvider(tracerProvider)
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
+
+    ...
 
 	cleanUp := func() {
 
@@ -678,7 +724,7 @@ func NewTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), er
 		...
 	}
 
-	return tracerProvider, cleanUp, nil
+	return cleanUp, nil
 }
 
 func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
