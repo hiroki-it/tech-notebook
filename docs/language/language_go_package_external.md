@@ -394,18 +394,20 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 
 Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
 
-> - https://gorm.io/docs/update.html#Save-All-Fields
-
 ```go
 user := User{Id:111}
 
 db.First(&user)
 
 user.Name = "jinzhu 2"
+
 user.Age = 100
+
 db.Save(&user)
 // UPDATE users SET name='jinzhu 2', age=100, birthday='2016-01-01', updated_at = '2013-11-17 21:34:10' WHERE id=111;
 ```
+
+> - https://gorm.io/docs/update.html#Save-All-Fields
 
 <br>
 

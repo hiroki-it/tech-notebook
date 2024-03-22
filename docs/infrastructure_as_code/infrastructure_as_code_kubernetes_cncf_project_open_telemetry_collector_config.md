@@ -416,6 +416,7 @@ service:
 
 OpenTelemetry Collector自体のテレメトリーの作成方法を設定する。
 
+> - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 
 #### ▼ logs
@@ -432,14 +433,16 @@ service:
       # エラーログの出力先
       error_output_paths:
         - stderr
-      # ログレベル
-      level: DEBUG
+      # ログレベル (debug、info、warn、error)
+      level: debug
       # ログに追加するフィールド
       initial_fields:
         service: foo
 ```
 
+> - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
+> - https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505
 
 #### ▼ metrics
 
@@ -454,6 +457,7 @@ service:
       address: <PodのIPアドレス>:8888
 ```
 
+> - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 
 <br>
