@@ -48,7 +48,7 @@ Podのスケジューリングの可否を条件とする場合は、metrics-ser
 
 > - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler
 
-#### ▼ Kubernetes以外のメトリクスを条件するとする場合
+#### ▼ Kubernetes以外のメトリクスを条件すると仮定する場合
 
 Kubernetes以外のメトリクス (例：AWS CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-serverは不要である。
 

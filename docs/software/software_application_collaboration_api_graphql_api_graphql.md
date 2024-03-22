@@ -79,7 +79,7 @@ type User {
 
 **＊例＊**
 
-ここでは、前述のQuery処理のスキーマで定義した`GetUser`メソッドを使用するとする。
+ここでは、前述のQuery処理のスキーマで定義した`GetUser`メソッドを使用すると仮定する。
 
 ```graphql
 query GetUser {
@@ -150,7 +150,7 @@ input UserCreateInput {
 
 **＊例＊**
 
-ここでは、前述のMutation処理のスキーマで定義した`createUser`メソッドを使用するとする。
+ここでは、前述のMutation処理のスキーマで定義した`createUser`メソッドを使用すると仮定する。
 
 ```graphql
 mutation CreateUser {

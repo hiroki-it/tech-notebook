@@ -66,7 +66,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 
 OpenTelemetry Collectorのカスタムリソースを作成する。
 
-ここでは、スパンを送信するとする。
+ここでは、スパンを送信すると仮定する。
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1

@@ -202,7 +202,7 @@ import (
 )
 
 // 関数名を取得する
-// ここでは構造体がいないため、関数名を取得するとする
+// ここでは構造体がいないため、関数名を取得すると仮定する
 func GetCurrentFunctionName() string {
 
 	// 他に実行中ファイルや行数も取得できる
@@ -798,7 +798,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 多くのパッケージでは、パッケージの処理をGraceful Shutdownするように実装している。
 
-ここでは、`github.com/gorilla/mux`パッケージのサーバーを使用するとする。
+ここでは、`github.com/gorilla/mux`パッケージのサーバーを使用すると仮定する。
 
 ```go
 package main

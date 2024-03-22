@@ -80,7 +80,66 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 <br>
 
-## 02. デザインパターンの種類
+## 02. セットアップ
+
+### AWS側
+
+#### ▼ Terraformの公式モジュールの場合
+
+ここでは、X-Rayに接続すると仮定する。
+
+OpenTelemetry Collectorのセットアップのうち、AWS側で必要なものをまとめる。
+
+ここでは、Terraformの公式モジュールを使用する。
+
+```terraform
+module "iam_assumable_role_with_opentelemetry_collector" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # karpenterコントローラーのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-opentelemetry-collector"
+
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
+
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = aws_iam_policy.opentelemetry_collector.arn
+
+  # OpenTelemetry CollectorのPodのServiceAccount名
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:opentelemetry:opentelemetry-collector"
+  ]
+}
+
+resource "aws_iam_policy" "iam_assumable_role_with_oidc_opentelemetry_collector" {
+  name = "foo-opentelemetry-collector-policy"
+  policy = data.aws_iam_policy_document.opentelemetry_collector_policy.json
+}
+
+data "aws_iam_policy_document" "opentelemetry_collector_policy" {
+
+  # X-Rayにアクセスできるようにする
+  statement {
+    effect = "Allow"
+    actions = [
+      "xray:PutTraceSegments",
+      "xray:PutTelemetryRecords",
+      "xray:GetSamplingRules",
+      "xray:GetSamplingTargets",
+      "xray:GetSamplingStatisticSummaries",
+    ]
+  }
+}
+```
+
+<br>
+
+## 03. デザインパターンの種類
 
 ### エージェントパターン
 
@@ -126,7 +185,7 @@ L7ロードバランサーはIngressコントローラーや`istio-proxy`コン�
 
 <br>
 
-## 03. マニフェスト
+## 04. マニフェスト
 
 ### ConfigMap
 
@@ -342,7 +401,7 @@ spec:
 
 <br>
 
-## 04. カスタムリソースを使用する場合
+## 05. カスタムリソースを使用する場合
 
 カスタムリソースを使用して、OpenTelemetryを定義することもできる。
 
