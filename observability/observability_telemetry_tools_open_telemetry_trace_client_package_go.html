@@ -22941,6 +22941,16 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12</a></li>

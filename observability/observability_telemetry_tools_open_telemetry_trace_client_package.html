@@ -23346,7 +23346,19 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23402,7 +23414,19 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23800,7 +23824,19 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23856,7 +23892,19 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23946,6 +23994,8 @@
 <span class="w">        </span><span class="o">...</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
@@ -23970,6 +24020,16 @@
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
