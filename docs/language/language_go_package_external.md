@@ -438,29 +438,36 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 ### スパン作成に関する関数
 
-#### ▼ otelgrpc.WithInterceptorFilter
+#### ▼ UnaryClientInterceptor
+
+リクエストを単位としてスパンを自動的に開始/終了できる
 
 ```go
-package grpc
+package main
 
-import (
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"go.opentelemetry.io/otel/attribute"
-)
 
-func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
-	return grpc_middleware.ChainUnaryServer(
-		otelgrpc.UnaryServerInterceptor(
-			otelgrpc.WithSpanOptions(trace.WithAttributes(
-				// デフォルトの属性を設定する
-				attribute.String("service", "<サービス名>"),
-			))
+func main() {
+
+	ctx := context.Background()
+
+	...
+
+	conn, err := grpc.DialContext(ctx, address,
+		grpc.WithUnaryInterceptor(
+			grpc_middleware.ChainUnaryClient(
+				otelgrpc.UnaryClientInterceptor()
+			),
 		),
 	)
+
+	...
 }
+
 ```
 
-#### ▼ otelgrpc.WithSpanOptions
+#### ▼ WithInterceptorFilter
+
+サーバー側でスパンを作成しないリクエストを設定する。
 
 ```go
 package grpc
@@ -483,6 +490,36 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 }
 ```
 
+#### ▼ WithSpanOptions
+
+スパンに付与する属性を設定する。
+
+```go
+package grpc
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/otel/attribute"
+)
+
+func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+	return grpc_middleware.ChainUnaryServer(
+		otelgrpc.UnaryServerInterceptor(
+			otelgrpc.WithSpanOptions(trace.WithAttributes(
+				// デフォルトの属性を設定する
+				attribute.String("env", "<実行環境名>"),
+			))
+		),
+	)
+}
+```
+
+#### ▼ WithSpanNameFormatter (なし)
+
+gRPCにこのオプションはない。
+
+gRPCの場合、リモートプロシージャーコールなため、スパン名はメソッド名とするとよい。
+
 <br>
 
 ## otelhttp
@@ -504,7 +541,9 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 
 ### スパン作成に関する関数
 
-#### ▼ WithSpanOptions
+#### ▼ NewHandler
+
+ミドルウェア処理として、リクエストを単位としてスパンを自動的に開始/終了できる。
 
 ```go
 package http
@@ -515,22 +554,46 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
-func SetSpanHttpOption(next http.Handler) http.Handler {
+func HttpServerMiddleware(next http.Handler) http.Handler {
 
-	fn := func(w http.ResponseWriter, r *http.Request) {
-		opts := []otelhttp.Option{
-			// デフォルトの属性を設定する
-			otelhttp.WithSpanOptions(trace.WithAttributes(httpconv.ServerRequest("<サービス名>", r)...)),
-		}
-		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
-		wrapHandler.ServeHTTP(w, r)
-	}
+	return otelhttp.NewHandler(
+		next,
+        // Operation名
+		"foo-service",
+		// ヘルスチェックパスではスパンを作成しない
+		otelhttp.WithFilter(filters.All(filters.Not(filters.Path("<ヘルスチェックパス>")))),
+		instrumentation_middleware.SetSpanOptions(),
+		instrumentation_middleware.SetSpanNameFormatter(),
+	)
+}
+```
 
-	return http.HandlerFunc(fn)
+#### ▼ WithSpanOptions
+
+スパンに付与する属性を設定する。
+
+```go
+package http
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
+
+func SetSpanOptions() otelhttp.Option {
+
+	return otelhttp.WithSpanOptions(
+		attribute.String("env", "<実行環境名>"),
+	)
 }
 ```
 
 #### ▼ WithSpanNameFormatter
+
+スパン名を生成する関数を設定する。
+
+HTTPの場合、スパン名はURLにするとよい。
 
 ```go
 package http
@@ -542,33 +605,22 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
-func SetSpanHttpOption(next http.Handler) http.Handler {
+func SetSpanNameFormatter(next http.Handler) http.Handler {
 
-	fn := func(w http.ResponseWriter, r *http.Request) {
-		opts := []otelhttp.Option{
-			// デフォルトのスパン名を設定する
-			otelhttp.WithSpanNameFormatter(generateSpanName),
+	return otelhttp.WithSpanNameFormatter(func(operation string, r *http.Request) string {
+		// URLパスをスパン名とする
+		spanName := r.URL.Path
+		if spanName == "" {
+			spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
 		}
-		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
-		wrapHandler.ServeHTTP(w, r)
-	}
-
-	return http.HandlerFunc(fn)
-}
-
-func generateSpanName(_ string, r *http.Request) string {
-
-	// URLパスをスパン名とする
-	spanName := r.URL.Path
-	if spanName == "" {
-		spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
-	}
-
-	return spanName
+		return spanName
+	})
 }
 ```
 
 #### ▼ WithFilter
+
+サーバー側でスパンを作成しないリクエストを設定する。
 
 ```go
 package http
@@ -580,18 +632,11 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/filters"
 )
 
-func SetSpanHttpOption(next http.Handler) http.Handler {
+func WithFilter(next http.Handler) http.Handler {
 
-	fn := func(w http.ResponseWriter, r *http.Request) {
-		opts := []otelhttp.Option{
-			// ヘルスチェックパスではスパンを作成しない
-			otelhttp.WithFilter(filters.All(filters.Not(filters.Path("ヘルスチェックパス")))),
-		}
-		wrapHandler := otelhttp.NewHandler(next, "<サービス名>", opts...)
-		wrapHandler.ServeHTTP(w, r)
-	}
-
-	return http.HandlerFunc(fn)
+	return otelhttp.WithFilter(
+		filters.All(filters.Not(filters.Path("ヘルスチェックパス")))
+	)
 }
 ```
 

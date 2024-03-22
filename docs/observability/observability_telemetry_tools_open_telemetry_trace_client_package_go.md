@@ -1258,6 +1258,7 @@ func main() {
     // 計装ミドルウェア
 	otelHandler := otelhttp.NewHandler(
         http.HandlerFunc(helloHandler),
+        // Operation名
         "parent-service",
     )
 
@@ -1313,6 +1314,7 @@ func main() {
 	// 計装ミドルウェア
 	otelHandler := otelhttp.NewHandler(
         http.HandlerFunc(helloHandler),
+        // Operation名
         "child-service",
     )
 

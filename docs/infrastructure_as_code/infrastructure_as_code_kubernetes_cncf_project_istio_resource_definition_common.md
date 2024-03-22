@@ -99,7 +99,7 @@ metadata:
 
 ### annotationsとは
 
-Deploymentの`.spec.template`キーや、Podの`.metadata.``キーにて、`istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.``キーで定義しないように注意する。
+Deploymentの`.spec.template`キーや、Podの`.metadata.`キーにて、`istio-proxy`コンテナごとのオプション値を設定する。Deploymentの`.metadata.`キーで定義しないように注意する。
 
 > - https://istio.io/latest/docs/reference/config/annotations/
 
