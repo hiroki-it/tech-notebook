@@ -69,7 +69,21 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		...
 	}
 
+    log.Print("Tracer provider initialization succeeded")
+
 	return cleanUp, nil
+}
+```
+
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
 }
 ```
 
@@ -127,7 +141,21 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		...
 	}
 
+    log.Print("Tracer provider initialization succeeded")
+
 	return cleanUp, nil
+}
+```
+
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
 }
 ```
 
@@ -546,7 +574,21 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		...
 	}
 
+    log.Print("Tracer provider initialization succeeded")
+
 	return cleanUp, nil
+}
+```
+
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
 }
 ```
 
@@ -607,7 +649,21 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		...
 	}
 
+    log.Print("Tracer provider initialization succeeded")
+
 	return cleanUp, nil
+}
+```
+
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
 }
 ```
 
@@ -724,6 +780,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		...
 	}
 
+    log.Print("Tracer provider initialization succeeded")
+
 	return cleanUp, nil
 }
 
@@ -748,6 +806,18 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
 	)
+}
+```
+
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
 }
 ```
 

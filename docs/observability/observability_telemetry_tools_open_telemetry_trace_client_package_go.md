@@ -299,6 +299,18 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 }
 ```
 
+```go
+package main
+
+func main()  {
+
+    cleanUp, nil := InitTracerProvider()
+    defer cleanUp()
+
+    ...
+}
+```
+
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#getting
 
