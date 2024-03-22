@@ -21006,13 +21006,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-grpc" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. アプリでgRPCを使わない場合
+      02. 手動でスパンを開始/終了する場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. アプリでgRPCを使わない場合">
+    <nav class="md-nav" aria-label="02. 手動でスパンを開始/終了する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21198,13 +21198,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-grpc" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. アプリでgRPCを使用する場合
+      03. 自動でスパンを開始/終了する場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. アプリでgRPCを使用する場合">
+    <nav class="md-nav" aria-label="03. 自動でスパンを開始/終了する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22340,13 +22340,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-grpc" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. アプリでgRPCを使わない場合
+      02. 手動でスパンを開始/終了する場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. アプリでgRPCを使わない場合">
+    <nav class="md-nav" aria-label="02. 手動でスパンを開始/終了する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22532,13 +22532,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-grpc" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. アプリでgRPCを使用する場合
+      03. 自動でスパンを開始/終了する場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. アプリでgRPCを使用する場合">
+    <nav class="md-nav" aria-label="03. 自動でスパンを開始/終了する場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22737,12 +22737,13 @@
 <span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
@@ -22858,7 +22859,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-grpc">02. アプリでgRPCを使わない場合<a class="headerlink" href="#02-grpc" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. 手動でスパンを開始/終了する場合<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">宛先が標準出力の場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
@@ -22890,7 +22891,7 @@
 <span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
 <span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
@@ -22934,9 +22935,11 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -23193,7 +23196,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
@@ -23215,7 +23218,7 @@
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -23553,7 +23556,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
@@ -23578,7 +23581,7 @@
 <span class="w">        </span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -23802,7 +23805,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: CloudTrace exporter initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: CloudTrace exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
@@ -23817,13 +23820,14 @@
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;error shutting down trace provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
@@ -23961,7 +23965,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-grpc">03. アプリでgRPCを使用する場合<a class="headerlink" href="#03-grpc" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. 自動でスパンを開始/終了する場合<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_18">宛先が標準出力の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>gRPCを使わない場合と実装方法は同じである。</p>
@@ -23984,7 +23988,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
@@ -24009,7 +24013,7 @@
 <span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialization succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -24022,7 +24026,7 @@
 </blockquote>
 <h4 id="_20">▼ 親スパン作成 (クライアント側のみ)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアント側では、gRPCサーバーとのコネクションを作成する必要がある。</p>
-<p>クライアント側では、ClientInterceptorを使用する。</p>
+<p>クライアント側では、ClientInterceptorを使用し、スパンの開始/終了を自動化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24107,7 +24111,7 @@
 </ul>
 </blockquote>
 <h4 id="_21">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>サーバー側では、ServerInterceptorを使用する。</p>
+<p>サーバー側では、ServerInterceptorを使用し、スパンの開始/終了を自動化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24136,6 +24140,7 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">());</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
