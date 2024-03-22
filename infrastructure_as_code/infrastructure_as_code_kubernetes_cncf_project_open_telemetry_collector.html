@@ -18713,11 +18713,50 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. デザインパターンの種類
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. デザインパターンの種類">
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS側
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS側">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Terraformの公式モジュールの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. デザインパターンの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. デザインパターンの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -18810,13 +18849,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. マニフェスト
+      04. マニフェスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. マニフェスト">
+    <nav class="md-nav" aria-label="04. マニフェスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -18870,9 +18909,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. カスタムリソースを使用する場合
+      05. カスタムリソースを使用する場合
     </span>
   </a>
   
@@ -22072,11 +22111,50 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. デザインパターンの種類
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. デザインパターンの種類">
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS側
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS側">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Terraformの公式モジュールの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. デザインパターンの種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. デザインパターンの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22169,13 +22247,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. マニフェスト
+      04. マニフェスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. マニフェスト">
+    <nav class="md-nav" aria-label="04. マニフェスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22229,9 +22307,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. カスタムリソースを使用する場合
+      05. カスタムリソースを使用する場合
     </span>
   </a>
   
@@ -22320,7 +22398,57 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. デザインパターンの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h4 id="terraform">▼ Terraformの公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
+<p>ここでは、X-Rayに接続すると仮定する。</p>
+<p>OpenTelemetry Collectorのセットアップのうち、AWS側で必要なものをまとめる。</p>
+<p>ここでは、Terraformの公式モジュールを使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_opentelemetry_collector&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+
+<span class="c1">  # karpenterコントローラーのPodに紐付けるIAMロール</span>
+<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-opentelemetry-collector&quot;</span>
+
+<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
+<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.opentelemetry_collector.arn</span>
+
+<span class="c1">  # OpenTelemetry CollectorのPodのServiceAccount名</span>
+<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
+<span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;system:serviceaccount:opentelemetry:opentelemetry-collector&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_opentelemetry_collector&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-opentelemetry-collector-policy&quot;</span>
+<span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.opentelemetry_collector_policy.json</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;opentelemetry_collector_policy&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">  # X-Rayにアクセスできるようにする</span>
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;xray:PutTraceSegments&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;xray:PutTelemetryRecords&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;xray:GetSamplingRules&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;xray:GetSamplingTargets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;xray:GetSamplingStatisticSummaries&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. デザインパターンの種類<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_3">エージェントパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ エージェントパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>テレメトリーの送信元では、エージェント (OpenTelemetry Collector) が常駐し、テレメトリーを収集する。</p>
@@ -22351,7 +22479,7 @@
 <h4 id="_10">▼ ゲートウェイパターンのデメリット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="03">03. マニフェスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. マニフェスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="configmap">ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -22559,7 +22687,7 @@
 <h3 id="statefulset-statefulset">StatefulSet (StatefulSetモード)<a class="headerlink" href="#statefulset-statefulset" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="04">04. カスタムリソースを使用する場合<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. カスタムリソースを使用する場合<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>カスタムリソースを使用して、OpenTelemetryを定義することもできる。</p>
 <p>この場合、OpenTelemetry OperatorがInitContainerを介して、アプリコンテナにOpenTelemetryの実装を挿入する。</p>
 <blockquote>
@@ -22589,7 +22717,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-22</span>
   </span>
 
     
