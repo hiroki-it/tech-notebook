@@ -23470,20 +23470,22 @@
 </code></pre></div>
 <h4 id="_8">▼ 全カラム更新<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。</p>
-<blockquote>
-<ul>
-<li><a href="https://gorm.io/docs/update.html#Save-All-Fields">https://gorm.io/docs/update.html#Save-All-Fields</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
 <span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 
 <span class="nx">user</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;jinzhu 2&quot;</span>
+
 <span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span>
+
 <span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 <span class="c1">// UPDATE users SET name=&#39;jinzhu 2&#39;, age=100, birthday=&#39;2016-01-01&#39;, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/update.html#Save-All-Fields">https://gorm.io/docs/update.html#Save-All-Fields</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="grpc-go">grpc-go<a class="headerlink" href="#grpc-go" title="Permanent link">&para;</a></h2>
 <h3 id="grpc-go_1">grpc-goとは<a class="headerlink" href="#grpc-go_1" title="Permanent link">&para;</a></h3>
