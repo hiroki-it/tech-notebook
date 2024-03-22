@@ -140,6 +140,25 @@ MySQLの起動時の値を設定する。
 
 <br>
 
+### `/var/log/mysqld.log`ファイル
+
+#### ▼ `/var/log/mysqld.log`ファイルとは
+
+MySQLプロセスの実行ログを出力する。
+
+#### ▼ temporary password
+
+初期パスワードが出力されている。
+
+```bash
+$ less mysqld.log | grep "temporary password"
+```
+
+> - https://beyondjapan.com/blog/2020/07/mysql-password/
+> - https://insource-mkd.co.jp/staff-blog/10868/
+
+<br>
+
 ## 03. mysqldセクション
 
 ### mysqldセクション

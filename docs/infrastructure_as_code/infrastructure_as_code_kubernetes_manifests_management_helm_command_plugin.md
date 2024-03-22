@@ -251,18 +251,4 @@ sops:
 
 > - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
 
-#### ▼ view
-
-指定した`values`ファイルを復号化して取得する。
-
-```bash
-$ helm secrets view <暗号化されたvaluesファイル>
-
-db:
-  user: root
-  password: password
-```
-
-> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
-
 <br>
