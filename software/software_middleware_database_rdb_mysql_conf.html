@@ -3213,6 +3213,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#varlogmysqldlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      /var/log/mysqld.logファイル
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="/var/log/mysqld.logファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#varlogmysqldlog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ /var/log/mysqld.logファイルとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporary-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ temporary password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22517,6 +22550,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#varlogmysqldlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      /var/log/mysqld.logファイル
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="/var/log/mysqld.logファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#varlogmysqldlog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ /var/log/mysqld.logファイルとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporary-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ temporary password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23098,6 +23164,20 @@
 <span class="na">!includedir /etc/mysql/mysql.conf.d/</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="varlogmysqldlog"><code>/var/log/mysqld.log</code>ファイル<a class="headerlink" href="#varlogmysqldlog" title="Permanent link">&para;</a></h3>
+<h4 id="varlogmysqldlog_1">▼ <code>/var/log/mysqld.log</code>ファイルとは<a class="headerlink" href="#varlogmysqldlog_1" title="Permanent link">&para;</a></h4>
+<p>MySQLプロセスの実行ログを出力する。</p>
+<h4 id="temporary-password">▼ temporary password<a class="headerlink" href="#temporary-password" title="Permanent link">&para;</a></h4>
+<p>初期パスワードが出力されている。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>less<span class="w"> </span>mysqld.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;temporary password&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://beyondjapan.com/blog/2020/07/mysql-password/">https://beyondjapan.com/blog/2020/07/mysql-password/</a></li>
+<li><a href="https://insource-mkd.co.jp/staff-blog/10868/">https://insource-mkd.co.jp/staff-blog/10868/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="03-mysqld">03. mysqldセクション<a class="headerlink" href="#03-mysqld" title="Permanent link">&para;</a></h2>
 <h3 id="mysqld">mysqldセクション<a class="headerlink" href="#mysqld" title="Permanent link">&para;</a></h3>
 <p>mysqlサーバーの<code>mysqld</code>プロセスのプールを設定する。</p>
@@ -23276,7 +23356,7 @@ drwxr-x---<span class="w"> </span><span class="m">2</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-22</span>
   </span>
 
     
