@@ -559,7 +559,7 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return grpc_middleware.ChainUnaryServer(
 		// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
 		otelgrpc.UnaryServerInterceptor(
-			otelgrpc.WithSpanOptions(
+			otelgrpc.WithSpanOptions( 
                 // 属性を設定する
 				trace.WithAttributes(attribute.String("env", "<実行環境名>")),
 			)
@@ -644,13 +644,13 @@ import (
 func main() {
 
 	// HttpHandlerを作成する
-	next := func(w http.ResponseWriter, req *http.Request) {
+	fn := func(w http.ResponseWriter, r *http.Request) {
 		...
 	}
 
 	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
-	otelHandler := otelhttp.NewHandler(
-		next,
+	otelMiddleware := otelhttp.NewHandler(
+		fn, 
         // Operation名を設定する
 		"foo-service",
 	)
@@ -675,13 +675,13 @@ import (
 func main() {
 
 	// HttpHandlerを作成する
-	next := func(w http.ResponseWriter, req *http.Request) {
+	fn := func(w http.ResponseWriter, r *http.Request) {
 		...
 	}
 
 	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
-	otelHandler := otelhttp.NewHandler(
-		next,
+	otelMiddleware := otelhttp.NewHandler(
+		fn,
 		// Operation名を設定する
 		"foo-service",
 		otelhttp.WithFilter(filters.All(filters.Not(filters.Path("ヘルスチェックパス")))),

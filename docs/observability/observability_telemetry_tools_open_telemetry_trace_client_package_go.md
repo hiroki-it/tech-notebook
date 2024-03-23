@@ -1268,7 +1268,7 @@ func main() {
 
 	defer shutdown()
 
-	helloHandler := func(w http.ResponseWriter, r *http.Request) {
+	fn := func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
@@ -1276,13 +1276,13 @@ func main() {
 	}
 
     // 計装ミドルウェア
-	otelHandler := otelhttp.NewHandler(
-        http.HandlerFunc(helloHandler),
+	otelMiddleware := otelhttp.NewHandler(
+        http.HandlerFunc(fn), 
         // Operation名を設定する
         "parent-service",
     )
 
-	http.Handle("/hello", otelHandler)
+	http.Handle("/hello", otelMiddleware)
 
 	err = http.ListenAndServe(":7777", nil)
 
@@ -1324,7 +1324,7 @@ func main() {
 
 	defer shutdown()
 
-	helloHandler := func(w http.ResponseWriter, r *http.Request) {
+	fn := func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
@@ -1332,13 +1332,13 @@ func main() {
 	}
 
 	// 計装ミドルウェア
-	otelHandler := otelhttp.NewHandler(
-        http.HandlerFunc(helloHandler),
+	otelMiddleware := otelhttp.NewHandler(
+        http.HandlerFunc(fn), 
         // Operation名を設定する
         "child-service",
     )
 
-	http.Handle("/hello", otelHandler)
+	http.Handle("/hello", otelMiddleware)
 
 	err = http.ListenAndServe(":7777", nil)
 
