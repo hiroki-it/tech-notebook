@@ -220,8 +220,9 @@ func main() {
 	...
 
 	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		":7777",
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
 		grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
 	)
 
@@ -244,8 +245,9 @@ func main() {
 	...
 
     // gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		":7777",
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
 		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
@@ -285,8 +287,9 @@ func main() {
 	...
 
     // gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		":7777",
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
 		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
@@ -341,9 +344,10 @@ func main() {
 	...
 
     // gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		    ":7777",
-			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
+		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
     )
 
 	defer conn.Close()
@@ -757,8 +761,9 @@ import (
 func main() {
 
 	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-        ":9000",
+	conn, err := grpc.DialContext(
+        ctx
+        ":7777",
         grpc.WithInsecure(),
     )
 
@@ -814,8 +819,9 @@ func main() {
 	...
 
 	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		address,
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
 		// ストリーミングRPCの場合のインターセプター処理
 		grpc.WithChainStreamInterceptor(
 			myStreamClientInteceptor1,

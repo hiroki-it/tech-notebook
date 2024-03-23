@@ -71,6 +71,7 @@ import (
 )
 
 func main() {
+
 	ctx := context.Background()
 
 	exporter, err := newExporter(ctx)
@@ -92,6 +93,11 @@ func main() {
 	otel.SetTracerProvider(tracerProvider)
 
 	log.Print("Info: Tracer provider initialize successfully")
+
+	otel.SetTextMapPropagator(
+		// Composit Propagatorを設定する
+		autoprop.NewTextMapPropagator(),
+	)
 
 	...
 }
@@ -142,7 +148,7 @@ func parentFunction(ctx context.Context) {
 
 	defer parentSpan.End()
 
-	childFunction(ctx)
+    ...
 }
 ```
 
@@ -160,18 +166,8 @@ func childFunction(ctx context.Context) {
     )
 
 	defer childSpan.End()
-}
-
-func main() {
 
     ...
-
-	otel.SetTextMapPropagator(
-      // Composit Propagatorを設定する
-	  autoprop.NewTextMapPropagator(),
-    )
-
-   ...
 }
 ```
 
@@ -1273,7 +1269,6 @@ func main() {
 	defer shutdown()
 
 	helloHandler := func(w http.ResponseWriter, r *http.Request) {
-
 		ctx := r.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
@@ -1283,7 +1278,7 @@ func main() {
     // 計装ミドルウェア
 	otelHandler := otelhttp.NewHandler(
         http.HandlerFunc(helloHandler),
-        // Operation名
+        // Operation名を設定する
         "parent-service",
     )
 
@@ -1339,7 +1334,7 @@ func main() {
 	// 計装ミドルウェア
 	otelHandler := otelhttp.NewHandler(
         http.HandlerFunc(helloHandler),
-        // Operation名
+        // Operation名を設定する
         "child-service",
     )
 
@@ -1441,11 +1436,12 @@ import (
 func main() {
 
     // gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
-		    ":7777",
-            // クライアントのInterceptor
-			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+	conn, err := grpc.DialContext(
+		ctx,
+        ":7777",
+		// クライアントのInterceptor
+		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
     )
 
 	defer conn.Close()
@@ -1491,7 +1487,8 @@ func main() {
 	...
 
 	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
+	conn, err := grpc.DialContext(
+        ctx,
 		":7777",
 		// クライアント側を一括でセットアップする
 		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),

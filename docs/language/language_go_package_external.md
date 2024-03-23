@@ -435,7 +435,7 @@ GoでgRPCを扱えるようにする。
 
 デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
 
-また、`OTEL_PROPAGATORS`変数でPropagator名を指定していれば、上書きできる。
+また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名を指定していれば、上書きできる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
 
@@ -458,7 +458,7 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 <br>
 
-### スパン作成に関する関数
+### クライアント側
 
 #### ▼ UnaryClientInterceptor
 
@@ -467,17 +467,21 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 ```go
 package main
 
-
 func main() {
 
 	ctx := context.Background()
 
 	...
 
-	conn, err := grpc.DialContext(ctx, address,
+	conn, err := grpc.DialContext(
+		ctx,
+		":7777",
 		grpc.WithUnaryInterceptor(
 			grpc_middleware.ChainUnaryClient(
-				otelgrpc.UnaryClientInterceptor()
+				// UnaryClientInterceptorを設定する
+				otelgrpc.UnaryClientInterceptor(
+				    otelgrpc.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>"))),
+				),
 			),
 		),
 	)
@@ -487,9 +491,31 @@ func main() {
 
 ```
 
+<br>
+
+### サーバー側
+
 #### ▼ WithInterceptorFilter
 
 サーバー側でスパンを作成しないリクエストを設定する。
+
+```go
+package main
+
+func main()  {
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.DialContext(
+	    ctx,
+		":7777",
+		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+	)
+
+	defer conn.Close()
+}
+```
 
 ```go
 package grpc
@@ -512,6 +538,10 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 }
 ```
 
+<br>
+
+### 共通
+
 #### ▼ WithSpanOptions
 
 スパンに付与する属性を設定する。
@@ -525,13 +555,14 @@ import (
 )
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
+
 	return grpc_middleware.ChainUnaryServer(
 		otelgrpc.UnaryServerInterceptor(
-			otelgrpc.WithSpanOptions(trace.WithAttributes(
+			otelgrpc.WithSpanOptions(
 				// デフォルトの属性を設定する
-				attribute.String("env", "<実行環境名>"),
-			))
-		),
+				trace.WithAttributes(attribute.String("env", "<実行環境名>")),
+			)
+        )
 	)
 }
 ```
@@ -561,7 +592,7 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 
 <br>
 
-### スパン作成に関する関数
+### サーバー側
 
 #### ▼ NewHandler
 
@@ -580,15 +611,48 @@ func HttpServerMiddleware(next http.Handler) http.Handler {
 
 	return otelhttp.NewHandler(
 		next,
-        // Operation名
+        // Operation名を設定する
 		"foo-service",
 		// ヘルスチェックパスではスパンを作成しない
 		otelhttp.WithFilter(filters.All(filters.Not(filters.Path("<ヘルスチェックパス>")))),
-		instrumentation_middleware.SetSpanOptions(),
-		instrumentation_middleware.SetSpanNameFormatter(),
+		// スパンのデフォルトのオプションを設定する
+		otelhttp.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>")))
+	    // スパン名を設定する
+		otelhttp.WithSpanNameFormatter(func(operation string, r *http.Request) string {
+		    // URLパスをスパン名とする
+		    spanName := r.URL.Path
+		    if spanName == "" {
+    			spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
+	    	}
+	    	return spanName
+	    })
 	)
 }
 ```
+
+#### ▼ WithFilter
+
+サーバー側でスパンを作成しないリクエストを設定する。
+
+```go
+package http
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/filters"
+)
+
+func WithFilter(next http.Handler) http.Handler {
+
+	return otelhttp.WithFilter(
+		filters.All(filters.Not(filters.Path("ヘルスチェックパス")))
+	)
+}
+```
+
+### 共通
 
 #### ▼ WithSpanOptions
 
@@ -606,7 +670,7 @@ import (
 func SetSpanOptions() otelhttp.Option {
 
 	return otelhttp.WithSpanOptions(
-		attribute.String("env", "<実行環境名>"),
+		trace.WithAttributes(attribute.String("env", "<実行環境名>")),
 	)
 }
 ```
@@ -637,28 +701,6 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 		}
 		return spanName
 	})
-}
-```
-
-#### ▼ WithFilter
-
-サーバー側でスパンを作成しないリクエストを設定する。
-
-```go
-package http
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/filters"
-)
-
-func WithFilter(next http.Handler) http.Handler {
-
-	return otelhttp.WithFilter(
-		filters.All(filters.Not(filters.Path("ヘルスチェックパス")))
-	)
 }
 ```
 

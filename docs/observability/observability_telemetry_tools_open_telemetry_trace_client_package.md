@@ -294,12 +294,13 @@ func newSampler() sdktrace.Sampler {
 
 	traceEnabled := os.Getenv("TRACE_ENABLED")
 
-	if traceEnabled {
-		// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
-		return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0)
+	// TRACE_ENABLEDを無効化している場合
+	if !traceEnabled {
+		return sdktrace.NeverSample()
 	}
 
-	return sdktrace.NeverSample()
+	// Tail-based方式のサンプリングを採用し、クライアント側のサンプリング率は推奨値の100%とする
+	return sdktrace.ParentBased(sdktrace.TraceIDRatioBased(1.0))
 }
 
 ```
@@ -760,8 +761,6 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
         // Composit Propagatorを設定する
         autoprop.NewTextMapPropagator(),
     )
-
-    ...
 
 	cleanUp := func() {
 
