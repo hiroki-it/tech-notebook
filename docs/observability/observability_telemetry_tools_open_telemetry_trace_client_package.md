@@ -913,6 +913,14 @@ Carrierからトレースコンテキストを注入する操作を『注入 (In
 
 <br>
 
+### Composite Propagator
+
+複数のPropagatorを持ち、マイクロサービス上での要求に応じて、Propagatorを動的に切り替えられる。
+
+> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#composite-propagator
+
+<br>
+
 ### トレースコンテキスト仕様の種類
 
 #### ▼ OpenTelemetry

@@ -425,15 +425,19 @@ GoでgRPCを扱えるようにする。
 
 ### propagator/autopropとは
 
-Propagatorを`OTEL_PROPAGATORS`変数から設定できる。
-
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
 
 <br>
 
 ### NewTextMapPropagator
 
-Composite Propagatorを作成する。
+`ote/propagation`パッケージの`NewCompositeTextMapPropagator`のラッパーであり、Composite Propagatorを作成する。
+
+デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
+
+また、`OTEL_PROPAGATORS`変数でPropagator名を指定していれば、上書きできる。
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
 
 <br>
 
@@ -664,7 +668,7 @@ func WithFilter(next http.Handler) http.Handler {
 
 ### otlptracegrpcとは
 
-OTLP形式でテレメトリーを送信するExporterを提供する。
+OTLP形式でテレメトリーを送信するExporterを作成する。
 
 これは、gRPCによるHTTPプロトコルで監視バックエンド (デフォルトでは` https://127.0.0.1:4317`) に送信する。
 
@@ -674,11 +678,27 @@ OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエン
 
 <br>
 
+## otel/propagation
+
+### otel/propagationとは
+
+OpenTelemetryのPropagation
+
+<br>
+
+### NewCompositeTextMapPropagator
+
+渡された複数のPropagatorからなるComposite Propagatorを作成する。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator
+
+<br>
+
 ## otel/sdk
 
 ### otel/sdkとは
 
-OpenTelemetryのTracerProviderを提供する。
+OpenTelemetryのTracerProviderを作成する。
 
 <br>
 
@@ -686,7 +706,7 @@ OpenTelemetryのTracerProviderを提供する。
 
 ### otlptracehttpとは
 
-OTLP形式でテレメトリーを送信するExporterを提供する。
+OTLP形式でテレメトリーを送信するExporterを作成する。
 
 これは、HTTPプロトコルで監視バックエンド (デフォルトでは`https://127.0.0.1:4318/v1/traces`) に送信する。
 
@@ -700,7 +720,7 @@ OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエン
 
 ### testifyとは
 
-モック、スタブ、アサーションの関数を提供する。
+モック、スタブ、アサーションの関数を作成する。
 
 Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。
 
