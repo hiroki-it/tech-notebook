@@ -421,6 +421,22 @@ GoでgRPCを扱えるようにする。
 
 <br>
 
+## propagator/autoprop
+
+### propagator/autopropとは
+
+Propagatorを`OTEL_PROPAGATORS`変数から設定できる。
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
+
+<br>
+
+### NewTextMapPropagator
+
+Composite Propagatorを作成する。
+
+<br>
+
 ## otelgrpc
 
 ### otelgrpcとは
@@ -658,15 +674,9 @@ OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエン
 
 <br>
 
-## otel
+## otel/sdk
 
-### otelとは
-
-OpenTelemetryを提供する。
-
-<br>
-
-### otel/sdk
+### otel/sdkとは
 
 OpenTelemetryのTracerProviderを提供する。
 

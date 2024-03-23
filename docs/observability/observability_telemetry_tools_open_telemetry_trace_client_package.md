@@ -39,6 +39,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
+    tracerProvider := sdktrace.New(options...)
+
     ...
 
 	// TraceProviderインターフェースを実装する構造体を作成する
@@ -46,10 +48,9 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+        // Composit Propagatorを設定する
+        autoprop.NewTextMapPropagator(),
     )
-
 
 	cleanUp := func() {
 
@@ -119,8 +120,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+        // Composit Propagatorを設定する
+        autoprop.NewTextMapPropagator(),
     )
 
 	cleanUp := func() {
@@ -552,8 +553,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+        // Composit Propagatorを設定する
+        autoprop.NewTextMapPropagator(),
     )
 
 	cleanUp := func() {
@@ -627,8 +628,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+        // Composit Propagatorを設定する
+        autoprop.NewTextMapPropagator(),
     )
 
 	cleanUp := func() {
@@ -756,8 +757,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+        // Composit Propagatorを設定する
+        autoprop.NewTextMapPropagator(),
     )
 
     ...

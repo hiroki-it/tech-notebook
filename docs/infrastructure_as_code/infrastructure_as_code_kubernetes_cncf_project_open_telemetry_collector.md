@@ -137,6 +137,8 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 }
 ```
 
+> - https://aws-otel.github.io/docs/setup/permissions
+
 <br>
 
 ## 03. デザインパターンの種類

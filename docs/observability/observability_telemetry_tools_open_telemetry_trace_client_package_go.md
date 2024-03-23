@@ -164,7 +164,14 @@ func childFunction(ctx context.Context) {
 
 func main() {
 
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+    ...
+
+	otel.SetTextMapPropagator(
+      // Composit Propagatorを設定する
+	  autoprop.NewTextMapPropagator(),
+    )
+
+   ...
 }
 ```
 
@@ -229,6 +236,7 @@ import (
 	"os"
 	"time"
 
+	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/sdk/resource"
@@ -273,8 +281,8 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播するためPropagatorを設定する
-        propagation.TraceContext{},
+		// Composite Propagatorを設定する
+		autoprop.NewTextMapPropagator(),
     )
 
 	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
@@ -516,6 +524,7 @@ import (
 	"context"
 	"fmt"
 
+	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
@@ -582,8 +591,8 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
-        propagation.TraceContext{},
+		// Composite Propagatorを設定する
+		autoprop.NewTextMapPropagator(),
     )
 
 	log.Print("Info: Tracer provider initialize successfully")
@@ -1220,7 +1229,7 @@ func installPropagators() {
 
 	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-        // 複数のPropagatorを動的に選べるようにする
+        // Composite Propagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
 			// CloudTrace形式のトレースコンテキストを伝播できるPropagatorを設定する
 			gcppropagator.CloudTraceOneWayPropagator{},
@@ -1363,6 +1372,7 @@ gRPCを使わない場合と実装方法は同じである。
 package trace
 
 import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
 
@@ -1395,14 +1405,9 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// 複数のPropagatorを動的に選べるようにする
-		propagation.NewCompositeTextMapPropagator(
-			    // W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
-			    propagation.TraceContext{},
-			    // W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する
-			    propagation.Baggage{},
-			),
-		)
+		// Composite Propagatorを設定する
+		autoprop.NewTextMapPropagator(),
+	)
 
 	log.Print("Info: Tracer provider initialize successfully")
 
