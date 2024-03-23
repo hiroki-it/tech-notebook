@@ -22723,6 +22723,7 @@
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newExporter</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
@@ -22744,6 +22745,11 @@
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
+<span class="w">        </span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
@@ -22792,7 +22798,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">parentSpan</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">childFunction</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22810,18 +22816,8 @@
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">childSpan</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">      </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">      </span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">(),</span>
-<span class="w">    </span><span class="p">)</span>
-
-<span class="w">   </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23888,7 +23884,6 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">helloHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
 <span class="w">        </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;handling this...&quot;</span><span class="p">))</span>
@@ -23898,7 +23893,7 @@
 <span class="w">    </span><span class="c1">// 計装ミドルウェア</span>
 <span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span>
-<span class="w">        </span><span class="c1">// Operation名</span>
+<span class="w">        </span><span class="c1">// Operation名を設定する</span>
 <span class="w">        </span><span class="s">&quot;parent-service&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -23952,7 +23947,7 @@
 <span class="w">    </span><span class="c1">// 計装ミドルウェア</span>
 <span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span>
-<span class="w">        </span><span class="c1">// Operation名</span>
+<span class="w">        </span><span class="c1">// Operation名を設定する</span>
 <span class="w">        </span><span class="s">&quot;child-service&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -24048,11 +24043,12 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
-<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="c1">// クライアントのInterceptor</span>
-<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
-<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// クライアントのInterceptor</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
@@ -24098,7 +24094,8 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
-<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// クライアント側を一括でセットアップする</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewClientHandler</span><span class="p">()),</span>
