@@ -467,18 +467,27 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 ```go
 package main
 
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
+)
+
 func main() {
 
 	ctx := context.Background()
 
 	...
 
+	// gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
 		grpc.WithUnaryInterceptor(
 			grpc_middleware.ChainUnaryClient(
-				// UnaryClientInterceptorを設定する
+				// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
 				otelgrpc.UnaryClientInterceptor(
 				    otelgrpc.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>"))),
 				),
@@ -502,49 +511,40 @@ func main() {
 ```go
 package main
 
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
+)
+
 func main()  {
 
 	...
 
-	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.DialContext(
-	    ctx,
-		":7777",
-		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+    // gRPCサーバーを作成する
+	conn, err := grpc.NewServer(
+		grpc_middleware.ChainUnaryServer(
+			// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する
+			otelgrpc.UnaryServerInterceptor(
+				// ヘルスチェックパスではスパンを作成しない
+				otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			),
+		),
 	)
 
 	defer conn.Close()
 }
 ```
 
-```go
-package grpc
-
-import (
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
-)
-
-func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
-
-	return grpc_middleware.ChainUnaryServer(
-		otelgrpc.UnaryServerInterceptor(
-			// ヘルスチェックパスではスパンを作成しない
-			otelgrpc.WithInterceptorFilter(
-				filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))
-			),
-		),
-	)
-}
-```
-
 <br>
 
-### 共通
+### クライアント/サーバー共通
 
 #### ▼ WithSpanOptions
 
-スパンに付与する属性を設定する。
+スパンに付与するオプションを設定する。
 
 ```go
 package grpc
@@ -557,9 +557,10 @@ import (
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 
 	return grpc_middleware.ChainUnaryServer(
+		// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
 		otelgrpc.UnaryServerInterceptor(
 			otelgrpc.WithSpanOptions(
-				// デフォルトの属性を設定する
+                // 属性を設定する
 				trace.WithAttributes(attribute.String("env", "<実行環境名>")),
 			)
         )
@@ -567,7 +568,7 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 }
 ```
 
-#### ▼ WithSpanNameFormatter (なし)
+#### ▼ WithSpanNameFormatter (オプションなし)
 
 gRPCにこのオプションはない。
 
@@ -592,6 +593,39 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 
 <br>
 
+### クライアント側
+
+#### ▼ NewTransport
+
+リクエストを単位としてスパンを自動的に開始/終了できる
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
+
+func main() {
+
+	...
+
+	// HTTPサーバーとのコネクションを作成する
+	client := http.Client{
+	  Transport: otelhttp.NewTransport(http.DefaultTransport)
+	}
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport
+
+<br>
+
 ### サーバー側
 
 #### ▼ NewHandler
@@ -599,7 +633,7 @@ HTTPリクエストの受信処理からコンテキストを自動的に抽出 
 ミドルウェア処理として、リクエストを単位としてスパンを自動的に開始/終了できる。
 
 ```go
-package http
+package main
 
 import (
 	"net/http"
@@ -607,52 +641,57 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
-func HttpServerMiddleware(next http.Handler) http.Handler {
+func main() {
 
-	return otelhttp.NewHandler(
+	// HttpHandlerを作成する
+	next := func(w http.ResponseWriter, req *http.Request) {
+		...
+	}
+
+	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
+	otelHandler := otelhttp.NewHandler(
 		next,
         // Operation名を設定する
 		"foo-service",
-		// ヘルスチェックパスではスパンを作成しない
-		otelhttp.WithFilter(filters.All(filters.Not(filters.Path("<ヘルスチェックパス>")))),
-		// スパンのデフォルトのオプションを設定する
-		otelhttp.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>")))
-	    // スパン名を設定する
-		otelhttp.WithSpanNameFormatter(func(operation string, r *http.Request) string {
-		    // URLパスをスパン名とする
-		    spanName := r.URL.Path
-		    if spanName == "" {
-    			spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
-	    	}
-	    	return spanName
-	    })
 	)
 }
 ```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler
 
 #### ▼ WithFilter
 
 サーバー側でスパンを作成しないリクエストを設定する。
 
 ```go
-package http
+package main
 
 import (
 	"net/http"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp/filters"
 )
 
-func WithFilter(next http.Handler) http.Handler {
+func main() {
 
-	return otelhttp.WithFilter(
-		filters.All(filters.Not(filters.Path("ヘルスチェックパス")))
+	// HttpHandlerを作成する
+	next := func(w http.ResponseWriter, req *http.Request) {
+		...
+	}
+
+	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
+	otelHandler := otelhttp.NewHandler(
+		next,
+		// Operation名を設定する
+		"foo-service",
+		otelhttp.WithFilter(filters.All(filters.Not(filters.Path("ヘルスチェックパス")))),
 	)
 }
 ```
 
-### 共通
+<br>
+
+### クライアント/サーバー共通
 
 #### ▼ WithSpanOptions
 
@@ -674,6 +713,8 @@ func SetSpanOptions() otelhttp.Option {
 	)
 }
 ```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanOptions
 
 #### ▼ WithSpanNameFormatter
 
@@ -703,6 +744,8 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 	})
 }
 ```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanNameFormatter
 
 <br>
 
