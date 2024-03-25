@@ -36,6 +36,8 @@ otelクライアントパッケージからのテレメトリーデータを、R
 
 ### Receiver
 
+#### ▼ Receiverとは
+
 OTLP形式のテレメトリーを受信する。
 
 HTTPSで受信する場合には、SSL証明書が必要である。
@@ -47,7 +49,11 @@ HTTPSで受信する場合には、SSL証明書が必要である。
 
 ### Processor
 
+#### ▼ Processorとは
+
 テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。
+
+OpenTelemetryクライアントのProcessorと同じである。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md
 
@@ -55,11 +61,13 @@ HTTPSで受信する場合には、SSL証明書が必要である。
 
 ### Exporter
 
-#### ▼ Exporter
+#### ▼ Exporterとは
 
 OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
 
 また、OpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する。
+
+OpenTelemetryクライアントのExporterと同じである。
 
 非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetry CollectorのExporter) を使用する必要がある。
 
@@ -74,6 +82,10 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。
 
 OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。
+
+注意点として、トレースコンテキスト仕様は変換できず、そのまま転送してしまう。
+
+そのため、X-Rayの対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray仕様) ではない場合、スパンを送ったとしてもX-Ray上で分散トレースを作成できない。
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475
