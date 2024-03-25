@@ -18661,6 +18661,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Receiver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiver_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Receiverとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -18669,6 +18684,21 @@
       Processor
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Processor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Processorとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -18685,7 +18715,7 @@
           <li class="md-nav__item">
   <a href="#exporter_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Exporter
+      ▼ Exporterとは
     </span>
   </a>
   
@@ -22059,6 +22089,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Receiver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiver_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Receiverとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22067,6 +22112,21 @@
       Processor
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Processor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Processorとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22083,7 +22143,7 @@
           <li class="md-nav__item">
   <a href="#exporter_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Exporter
+      ▼ Exporterとは
     </span>
   </a>
   
@@ -22358,6 +22418,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="receiver">Receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h3>
+<h4 id="receiver_1">▼ Receiverとは<a class="headerlink" href="#receiver_1" title="Permanent link">&para;</a></h4>
 <p>OTLP形式のテレメトリーを受信する。</p>
 <p>HTTPSで受信する場合には、SSL証明書が必要である。</p>
 <blockquote>
@@ -22368,7 +22429,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="processor">Processor<a class="headerlink" href="#processor" title="Permanent link">&para;</a></h3>
+<h4 id="processor_1">▼ Processorとは<a class="headerlink" href="#processor_1" title="Permanent link">&para;</a></h4>
 <p>テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。</p>
+<p>OpenTelemetryクライアントのProcessorと同じである。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md</a></li>
@@ -22376,9 +22439,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="exporter">Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
-<h4 id="exporter_1">▼ Exporter<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h4>
+<h4 id="exporter_1">▼ Exporterとは<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h4>
 <p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。</p>
 <p>また、OpenTelemetryのスキーマ (<code>semconv</code>パッケージ) を介して、スパンのデータ構造を変換する。</p>
+<p>OpenTelemetryクライアントのExporterと同じである。</p>
 <p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetry CollectorのExporter) を使用する必要がある。</p>
 <p>HTTPSで送信する場合には、クライアント証明書が必要である。</p>
 <blockquote>
@@ -22391,6 +22455,8 @@
 <h4 id="aws-x-ray-exporter">▼ AWS X-Ray Exporter<a class="headerlink" href="#aws-x-ray-exporter" title="Permanent link">&para;</a></h4>
 <p>AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。</p>
 <p>OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。</p>
+<p>注意点として、トレースコンテキスト仕様は変換できず、そのまま転送してしまう。</p>
+<p>そのため、X-Rayの対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray仕様) ではない場合、スパンを送ったとしてもX-Ray上で分散トレースを作成できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246</a></li>
@@ -22722,7 +22788,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-25</span>
   </span>
 
     
