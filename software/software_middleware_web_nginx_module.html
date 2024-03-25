@@ -23006,8 +23006,9 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </ul>
 </blockquote>
 <h4 id="otel_trace">▼ otel_trace<a class="headerlink" href="#otel_trace" title="Permanent link">&para;</a></h4>
+<p>分散トレースを有効化するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="s">true</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23017,21 +23018,23 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </blockquote>
 <h4 id="otel_trace_context">▼ otel_trace_context<a class="headerlink" href="#otel_trace_context" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># 受信したリクエストにトレースコンテキストがない場合はInjectし、あればExtractする</span>
 <span class="w">    </span><span class="kn">otel_trace_context</span><span class="w"> </span><span class="s">propagate</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context">https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context</a></li>
+<li><a href="https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864">https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864</a></li>
 </ul>
 </blockquote>
 <h4 id="otel_span_name">▼ otel_span_name<a class="headerlink" href="#otel_span_name" title="Permanent link">&para;</a></h4>
 <p>スパン名を設定する。</p>
-<p>リクエストが発生するタイミングで設定すると良い。</p>
+<p>デフォルトでは、リクエストのLocation値がスパン名になる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">otel_span_name</span><span class="w"> </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">otel_span_name</span><span class="w"> </span><span class="s">foo</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -23039,6 +23042,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name">https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name</a></li>
+<li><a href="https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/">https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/</a></li>
 </ul>
 </blockquote>
 <h4 id="otel_span_attr">▼ otel_span_attr<a class="headerlink" href="#otel_span_attr" title="Permanent link">&para;</a></h4>
@@ -23046,7 +23050,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">otel_span_attr</span><span class="w"> </span><span class="s">env</span><span class="w"> </span><span class="s">prd</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">otel_span_attr</span><span class="w"> </span><span class="s">env</span><span class="w"> </span><span class="s">&lt;実行環境名&gt;</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$http_host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -23080,7 +23084,12 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </ul>
 </blockquote>
 <h4 id="otel_parent_sampled">▼ <code>$otel_parent_sampled</code><a class="headerlink" href="#otel_parent_sampled" title="Permanent link">&para;</a></h4>
-<p>受信したリクエストに親スパンが存在する場合、<code>true</code>になる。</p>
+<p>受信したリクエストに親スパンが存在する場合、<code>1</code>になる。</p>
+<p>Parent Basedなサンプリングを実行できる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="nv">$otel_parent_sampled</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
