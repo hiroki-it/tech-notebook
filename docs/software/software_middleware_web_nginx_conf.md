@@ -760,7 +760,7 @@ proxy_pass http://127.0.0.1:80;
 受信したリクエストの情報をそのまま使ってプロキシする場合、変数を使用する。
 
 ```nginx
-proxy_pass $scheme://$http_host$request_uri;
+proxy_pass $scheme://$host$request_uri;
 ```
 
 > - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
@@ -792,5 +792,29 @@ Reading: 0 Writing: 1 Waiting: 0
 
 > - https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
 > - https://qiita.com/stanabe/items/a208377100a4ba2ea907
+
+<br>
+
+## 04. 変数
+
+### `$request_uri`
+
+受信したリクエストのHTTPメソッドとURLが割り当てられている。
+
+```yaml
+GET http://_:80/foo
+```
+
+> - http://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_uri
+> - https://blog.utgw.net/entry/2020/03/12/121959
+
+<br>
+
+### `$uri`
+
+受信したリクエストのURLパスが割り当てられている。
+
+> - http://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri
+> - https://blog.utgw.net/entry/2020/03/12/121959
 
 <br>

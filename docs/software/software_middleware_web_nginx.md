@@ -123,7 +123,7 @@ server {
     # 動的ファイルであればwebサーバーにルーティング
     #-------------------------------------
     location / {
-        proxy_pass $scheme://$http_host$request_uri;
+        proxy_pass $scheme://$host$request_uri;
     }
 }
 ```
@@ -159,7 +159,7 @@ http {
         access_log logs/access.log  main;
 
         location / {
-            proxy_pass $scheme://$http_host$request_uri;
+            proxy_pass $scheme://$host$request_uri;
             # X-REQUEST-IDヘッダーにトレースIDを設定し、リクエスト送信する
             proxy_set_header X-Request-ID $tmp;
         }
@@ -292,7 +292,7 @@ http {
 
          # 受信したリクエストを外部ネットワークにルーティングする。
          location / {
-             proxy_pass $scheme://$http_host$request_uri;
+             proxy_pass $scheme://$host$request_uri;
              proxy_set_header Host $host;
              proxy_set_header X-Forwarded-Proto $scheme;
              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

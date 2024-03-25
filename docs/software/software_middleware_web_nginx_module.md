@@ -220,7 +220,7 @@ server {
 
     location / {
         opentelemetry_operation_name $request_uri;
-        proxy_pass $scheme://$http_host$request_uri;
+        proxy_pass $scheme://$host$request_uri;
     }
 }
 ```
@@ -235,7 +235,7 @@ server {
     opentelemetry_propagate;
 
     location / {
-        proxy_pass $scheme://$http_host$request_uri;
+        proxy_pass $scheme://$host$request_uri;
     }
 }
 ```
@@ -414,7 +414,7 @@ http {
 
     location / {
         otel_span_name foo;
-        proxy_pass $scheme://$http_host$request_uri;
+        proxy_pass $scheme://$host$request_uri;
     }
 }
 ```
@@ -431,7 +431,7 @@ http {
 
     location / {
         otel_span_attr env <実行環境名>;
-        proxy_pass $scheme://$http_host$request_uri;
+        proxy_pass $scheme://$host$request_uri;
     }
 }
 ```
