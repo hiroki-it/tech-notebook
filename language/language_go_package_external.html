@@ -23759,7 +23759,47 @@
 <h3 id="newtextmappropagator">NewTextMapPropagator<a class="headerlink" href="#newtextmappropagator" title="Permanent link">&para;</a></h3>
 <p><code>ote/propagation</code>パッケージの<code>NewCompositeTextMapPropagator</code>のラッパーであり、Composite Propagatorを作成する。</p>
 <p>デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。</p>
-<p>また、<code>OTEL_PROPAGATORS</code>変数 (<code>tracecontext</code>、<code>baggage</code>、<code>b3</code>、<code>b3multi</code>、<code>jaeger</code>、<code>xray</code>、<code>ottrace</code>、<code>none</code>) でPropagator名を指定していれば、上書きできる。</p>
+<p>また、<code>OTEL_PROPAGATORS</code>変数 (<code>tracecontext</code>、<code>baggage</code>、<code>b3</code>、<code>b3multi</code>、<code>jaeger</code>、<code>xray</code>、<code>ottrace</code>、<code>none</code>) でPropagator名をリスト形式 (<code>tracecontext,baggage,xray</code>) で指定していれば、上書きできる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// デフォルトでは、W3C Trace ContextとBaggageになる</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">())</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/propagators/aws/xray&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// Propagatorを追加する場合は、明示的に指定する</span>
+<span class="w">    </span><span class="c1">// 環境変数でも良い</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
+<span class="w">        </span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{},</span>
+<span class="w">    </span><span class="p">))</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator">https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator</a></li>
@@ -23864,7 +23904,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span><span class="w"> </span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span>
 <span class="w">                </span><span class="c1">// 属性を設定する</span>
 <span class="w">                </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)),</span>
 <span class="w">            </span><span class="p">)</span>
@@ -23907,7 +23947,7 @@
 
 <span class="w">    </span><span class="c1">// HTTPサーバーとのコネクションを作成する</span>
 <span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
-<span class="w">      </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewTransport</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">DefaultTransport</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewTransport</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">DefaultTransport</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -23917,6 +23957,7 @@
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport</a></li>
+<li><a href="https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request">https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23940,7 +23981,7 @@
 
 <span class="w">    </span><span class="c1">// サーバー側のミドルウェア処理としてNewHandlerを挿入する</span>
 <span class="w">    </span><span class="nx">otelMiddleware</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">fn</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">fn</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// Operation名を設定する</span>
 <span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
@@ -23949,6 +23990,7 @@
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler</a></li>
+<li><a href="https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request">https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request</a></li>
 </ul>
 </blockquote>
 <h4 id="withfilter">▼ WithFilter<a class="headerlink" href="#withfilter" title="Permanent link">&para;</a></h4>
@@ -24412,7 +24454,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-25</span>
   </span>
 
     
