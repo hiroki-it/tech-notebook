@@ -1277,7 +1277,7 @@ func main() {
 
     // 計装ミドルウェア
 	otelMiddleware := otelhttp.NewHandler(
-        http.HandlerFunc(fn), 
+        http.HandlerFunc(fn),
         // Operation名を設定する
         "parent-service",
     )
@@ -1333,7 +1333,7 @@ func main() {
 
 	// 計装ミドルウェア
 	otelMiddleware := otelhttp.NewHandler(
-        http.HandlerFunc(fn), 
+        http.HandlerFunc(fn),
         // Operation名を設定する
         "child-service",
     )

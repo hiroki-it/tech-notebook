@@ -435,7 +435,51 @@ GoでgRPCを扱えるようにする。
 
 デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
 
-また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名を指定していれば、上書きできる。
+また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名をリスト形式 (`tracecontext,baggage,xray`) で指定していれば、上書きできる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main()  {
+
+	...
+
+	// デフォルトでは、W3C Trace ContextとBaggageになる
+	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator())
+
+	...
+}
+```
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/propagators/aws/xray"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main()  {
+
+	...
+
+	// Propagatorを追加する場合は、明示的に指定する
+	// 環境変数でも良い
+	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator(
+		propagation.TraceContext{},
+		propagation.Baggage{},
+		xray.Propagator{},
+	))
+
+	...
+}
+```
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
 
@@ -559,7 +603,7 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 	return grpc_middleware.ChainUnaryServer(
 		// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
 		otelgrpc.UnaryServerInterceptor(
-			otelgrpc.WithSpanOptions( 
+			otelgrpc.WithSpanOptions(
                 // 属性を設定する
 				trace.WithAttributes(attribute.String("env", "<実行環境名>")),
 			)
@@ -614,7 +658,7 @@ func main() {
 
 	// HTTPサーバーとのコネクションを作成する
 	client := http.Client{
-	  Transport: otelhttp.NewTransport(http.DefaultTransport)
+	    Transport: otelhttp.NewTransport(http.DefaultTransport)
 	}
 
 	...
@@ -623,6 +667,7 @@ func main() {
 ```
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport
+> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request
 
 <br>
 
@@ -650,7 +695,7 @@ func main() {
 
 	// サーバー側のミドルウェア処理としてNewHandlerを挿入する
 	otelMiddleware := otelhttp.NewHandler(
-		fn, 
+		fn,
         // Operation名を設定する
 		"foo-service",
 	)
@@ -658,6 +703,7 @@ func main() {
 ```
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler
+> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request
 
 #### ▼ WithFilter
 
