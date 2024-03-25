@@ -171,6 +171,11 @@ exporters:
     verbosity: detailed
 ```
 
+```log
+2024-03-25T00:57:24.141Z	info	zapgrpc/zapgrpc.go:176	[core] [Server #1 ListenSocket #2] ListenSocket created	{"grpc_log": true}
+2024-03-25T03:22:08.220Z	debug	awsxrayexporter@v0.96.0/awsxray.go:57	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "awsxray", "type": "awsxray", "name": "awsxray", "#spans": 1}
+```
+
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md
 
 <br>

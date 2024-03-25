@@ -434,3 +434,31 @@ http {
 > - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr
 
 <br>
+
+### 変数
+
+#### ▼ `$otel_trace_id`
+
+トレースIDが割り当てられている。
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+
+#### ▼ `$otel_span_id`
+
+現在のスパンIDが割り当てられている。
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+
+#### ▼ `$otel_parent_id`
+
+親スパンのスパンIDが割り当てられている。
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+
+#### ▼ `$otel_parent_sampled`
+
+受信したリクエストに親スパンが存在する場合、`true`になる。
+
+> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+
+<br>
