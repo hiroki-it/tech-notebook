@@ -381,9 +381,11 @@ http {
 
 #### ▼ otel_trace
 
+分散トレースを有効化するかどうかを設定する。
+
 ```nginx
 http {
-    otel_trace true;
+    otel_trace on;
 }
 ```
 
@@ -393,29 +395,32 @@ http {
 
 ```nginx
 http {
+    # 受信したリクエストにトレースコンテキストがない場合はInjectし、あればExtractする
     otel_trace_context propagate;
 }
 ```
 
 > - https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context
+> - https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864
 
 #### ▼ otel_span_name
 
 スパン名を設定する。
 
-リクエストが発生するタイミングで設定すると良い。
+デフォルトでは、リクエストのLocation値がスパン名になる。
 
 ```nginx
 http {
 
     location / {
-        otel_span_name $request_uri;
+        otel_span_name foo;
         proxy_pass $scheme://$http_host$request_uri;
     }
 }
 ```
 
 > - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name
+> - https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/
 
 #### ▼ otel_span_attr
 
@@ -425,7 +430,7 @@ http {
 http {
 
     location / {
-        otel_span_attr env prd;
+        otel_span_attr env <実行環境名>;
         proxy_pass $scheme://$http_host$request_uri;
     }
 }
@@ -457,7 +462,15 @@ http {
 
 #### ▼ `$otel_parent_sampled`
 
-受信したリクエストに親スパンが存在する場合、`true`になる。
+受信したリクエストに親スパンが存在する場合、`1`になる。
+
+Parent Basedなサンプリングを実行できる。
+
+```nginx
+http {
+    otel_trace $otel_parent_sampled;
+}
+```
 
 > - https://nginx.org/en/docs/ngx_otel_module.html#variables
 
