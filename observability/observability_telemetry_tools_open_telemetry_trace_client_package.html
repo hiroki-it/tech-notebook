@@ -21283,9 +21283,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#id-generator_1" class="md-nav__link">
+  <a href="#x-ray" class="md-nav__link">
     <span class="md-ellipsis">
-      ID Generatorが不要な場合
+      X-Ray仕様
     </span>
   </a>
   
@@ -21434,7 +21434,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#x-ray" class="md-nav__link">
+  <a href="#x-ray_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ X-Ray
     </span>
@@ -22959,9 +22959,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#id-generator_1" class="md-nav__link">
+  <a href="#x-ray" class="md-nav__link">
     <span class="md-ellipsis">
-      ID Generatorが不要な場合
+      X-Ray仕様
     </span>
   </a>
   
@@ -23110,7 +23110,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#x-ray" class="md-nav__link">
+  <a href="#x-ray_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ X-Ray
     </span>
@@ -24104,7 +24104,7 @@
 <p><br></p>
 <h2 id="03-id-generator">03. ID Generator<a class="headerlink" href="#03-id-generator" title="Permanent link">&para;</a></h2>
 <h3 id="id-generator">ID Generatorとは<a class="headerlink" href="#id-generator" title="Permanent link">&para;</a></h3>
-<p>特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。</p>
+<p>特定の監視バックエンドの形式で、トレースIDやスパンIDを作成する。</p>
 <p>ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。</p>
 <p>もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のID Generatorを使用する必要がある。</p>
 <blockquote>
@@ -24113,13 +24113,25 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="id-generator_1">ID Generatorが不要な場合<a class="headerlink" href="#id-generator_1" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetry CollectorでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。</p>
-<p>W3C Trace Context仕様でOpenTelemetry Collectorにスパンを送信しさえすれば、OpenTelemetry CollectorはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。</p>
-<p>例えば、AWS製OpenTelemetry CollectorはW3C Trace Context仕様をX-Ray仕様に変換する。</p>
+<h3 id="x-ray">X-Ray仕様<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
+<p>X-Ray仕様のトレースIDやスパンIDを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">tp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdkTrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel">https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel</a></li>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws/xray">https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws/xray</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24186,7 +24198,7 @@
 <h4 id="opentelemetry">▼ OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetryが定めるトレースコンテキスト仕様である。</p>
 <p>例えばGoの場合、<code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</p>
-<h4 id="x-ray">▼ X-Ray<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>
+<h4 id="x-ray_1">▼ X-Ray<a class="headerlink" href="#x-ray_1" title="Permanent link">&para;</a></h4>
 <p>X-Rayが定めるトレースコンテキスト仕様である。</p>
 <p><br></p>
 <h3 id="_14">トレースコンテキスト仕様の設定<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
