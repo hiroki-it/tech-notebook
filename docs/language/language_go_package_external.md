@@ -825,6 +825,43 @@ OpenTelemetryのPropagation
 
 <br>
 
+### TextMapPropagator
+
+複数のPropagatorを持つ。
+
+`Fields`関数でPropagator名を取得できる。
+
+```go
+package main
+
+func main()  {
+
+	...
+
+	propagator := autoprop.NewTextMapPropagator()
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// Composit Propagatorを設定する
+		propagator
+	)
+
+	// TextMapPropagatorのFields関数でPropagator名を取得する
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
+
+	...
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#TextMapPropagator
+
+<br>
+
 ## otel/sdk
 
 ### otel/sdkとは

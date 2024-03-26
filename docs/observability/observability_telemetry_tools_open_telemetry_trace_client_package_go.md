@@ -94,10 +94,20 @@ func main() {
 
 	log.Print("Info: Tracer provider initialize successfully")
 
+	propagator := autoprop.NewTextMapPropagator()
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		autoprop.NewTextMapPropagator(),
+		propagator
 	)
+
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
 
 	...
 }
@@ -275,11 +285,20 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
+	propagator := autoprop.NewTextMapPropagator()
+
 	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Composite Propagatorを設定する
-		autoprop.NewTextMapPropagator(),
-    )
+		// Composit Propagatorを設定する
+		propagator
+	)
+
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
 
 	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。
 	cleanUp := func() {
@@ -585,11 +604,20 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
+	propagator := autoprop.NewTextMapPropagator()
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Composite Propagatorを設定する
-		autoprop.NewTextMapPropagator(),
-    )
+		// Composit Propagatorを設定する
+		propagator
+	)
+
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
 
 	log.Print("Info: Tracer provider initialize successfully")
 
@@ -956,11 +984,20 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
+	propagator := autoprop.NewTextMapPropagator()
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// X-Ray形式のトレースコンテキストを伝播できるPropagatorを設定する
-        xray.Propagator{},
-    )
+		// Composit Propagatorを設定する
+		propagator
+	)
+
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
 
 	log.Print("Info: Tracer provider initialize successfully")
 
@@ -1398,11 +1435,20 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
 
-	// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
+	propagator := autoprop.NewTextMapPropagator()
+
+	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Composite Propagatorを設定する
-		autoprop.NewTextMapPropagator(),
+		// Composit Propagatorを設定する
+		propagator
 	)
+
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
 
 	log.Print("Info: Tracer provider initialize successfully")
 
