@@ -165,15 +165,62 @@ OpenTelemetry Collectorは、設定した監視バックエンドにテレメト
 
 重要度レベルを設定する。
 
+通常レベルは`basic`である。
+
+```yaml
+exporters:
+  debug:
+    verbosity: basic
+```
+
+```log
+2024-03-26T04:41:52.163Z	info	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": <転送したスパン数>}
+```
+
+スパンを標準出力により詳細に出力したい場合、`detailed`とする。
+
 ```yaml
 exporters:
   debug:
     verbosity: detailed
 ```
 
-```log
-2024-03-25T00:57:24.141Z	info	zapgrpc/zapgrpc.go:176	[core] [Server #1 ListenSocket #2] ListenSocket created	{"grpc_log": true}
-2024-03-25T03:22:08.220Z	debug	awsxrayexporter@v0.96.0/awsxray.go:57	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "awsxray", "type": "awsxray", "name": "awsxray", "#spans": 1}
+```yaml
+# スパン一つあたりの内容
+2024-03-26T04:19:41.450Z	info	ResourceSpans #0
+Resource SchemaURL:
+Resource attributes:
+     -> service.name: Str(foo-service)
+ScopeSpans #0
+ScopeSpans SchemaURL:
+InstrumentationScope "<トレースパッケージ名>"
+Span #0
+    Trace ID       : *****
+    Parent ID      :
+    ID             : *****
+    Name           : "<スパン名>"
+    Kind           : Server
+    Start time     : 2024-03-26 04:19:41.041 +0000 UTC
+    End time       : 2024-03-26 04:19:41.085 +0000 UTC
+    Status code    : Unset
+    Status message :
+Attributes:
+     -> http.method: Str(GET)
+     -> http.target: Str("<スパン名>")
+     -> http.route: Str(/)
+     -> http.scheme: Str(http)
+     -> http.flavor: Str(1.1)
+     -> http.user_agent: Str(curl/7.79.1)
+     -> http.request_content_length: Int(0)
+     -> http.response_content_length: Int(905)
+     -> http.status_code: Int(200)
+     -> net.host.name: Str(_)
+     -> net.host.port: Int("<ポート番号>")
+     -> net.sock.peer.addr: Str(127.0.0.6)
+     -> net.sock.peer.port: Int("<ポート番号>")
+     -> env: Str("<実行環境名>")
+     -> service: Str("<サービス名>")
+	{"kind": "exporter", "data_type": "traces", "name": "debug"}
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md
@@ -448,6 +495,12 @@ service:
 > - https://opentelemetry.io/docs/collector/configuration/#telemetry
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 > - https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505
+
+ログレベルが`debug`の場合、例えば以下になる。
+
+```log
+2024-03-25T03:22:08.220Z	debug	awsxrayexporter@v0.96.0/awsxray.go:57	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "awsxray", "type": "awsxray", "name": "awsxray", "#spans": 1}
+```
 
 #### ▼ metrics
 
