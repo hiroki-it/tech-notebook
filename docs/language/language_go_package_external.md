@@ -558,10 +558,12 @@ func main()  {
 
     // gRPCサーバーを作成する
 	conn, err := grpc.NewServer(
-		// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する
+		// 単項RPCのサーバーインターセプターを設定する
 		grpc.ChainUnaryInterceptor(
-			// ヘルスチェックパスではスパンを作成しない
-			otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			otelgrpc.UnaryServerInterceptor(
+				// ヘルスチェックパスではスパンを作成しない
+			    otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			)
         ),
 	)
 

@@ -1586,11 +1586,11 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
+		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 		    otelgrpc.UnaryServerInterceptor(),
         ),
-		// ストリーミングRPCの場合のインターセプター処理
+		// ストリーミングRPCのサーバーインターセプター処理
 		grpc.ChainStreamInterceptor(
 			otelgrpc.StreamServerInterceptor(),
         ),

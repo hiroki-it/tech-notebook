@@ -417,11 +417,11 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
+		// 単項RPCのインターセプター処理
 		grpc.UnaryInterceptor(
 			grpctrace.UnaryServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
         ),
-		// ストリーミングRPCの場合のインターセプター処理
+		// ストリーミングRPCのインターセプター処理
 		grpc.StreamInterceptor(
 			grpctrace.StreamServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
         ),

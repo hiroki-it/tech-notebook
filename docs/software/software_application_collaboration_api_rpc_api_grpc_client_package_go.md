@@ -416,7 +416,7 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
+		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// リカバー処理
 	        grpc_recovery.UnaryServerInterceptor(...),
@@ -454,7 +454,7 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
+		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// ヘルスチェックへのリクエストを無視する
 	        grpc_recovery.UnaryServerInterceptor(otelgrpc.WithInterceptorFilter(filters.ServicePrefix("/grpc.health.v1.Health"))),
@@ -645,7 +645,7 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
+		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// 認証処理
 			grpc_selector.UnaryServerInterceptor(...),
@@ -658,7 +658,7 @@ func main() {
 			// リカバー処理
 	        grpc_recovery.UnaryServerInterceptor(...),
 		),
-		// ストリーミングRPCの場合のインターセプター処理
+		// ストリーミングRPCのサーバーインターセプター処理
 		grpc.ChainStreamInterceptor(
 			otelgrpc.StreamServerInterceptor(...),
 			recovery.StreamServerInterceptor(...),
@@ -822,7 +822,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
-		// ストリーミングRPCの場合のインターセプター処理
+		// ストリーミングRPCのインターセプター処理
 		grpc.WithChainStreamInterceptor(
 			myStreamClientInteceptor1,
 			myStreamClientInteceptor2,
