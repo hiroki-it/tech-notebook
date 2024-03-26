@@ -529,14 +529,8 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
-		grpc.WithUnaryInterceptor(
-			grpc_middleware.ChainUnaryClient(
-				// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
-				otelgrpc.UnaryClientInterceptor(
-				    otelgrpc.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>"))),
-				),
-			),
-		),
+		// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
+		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor(otelgrpc.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>"))))),
 	)
 
 	...
@@ -833,6 +827,11 @@ OpenTelemetryのPropagation
 
 ```go
 package main
+
+import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
+	"go.opentelemetry.io/otel/propagation"
+)
 
 func main()  {
 

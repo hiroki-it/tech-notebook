@@ -976,9 +976,6 @@ func NewTracerProvider() (func(context.Context) error, error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resourceWithAttributes),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
-		sdktrace.WithSpanProcessor(batchSpanProcessor),
-		// X-Ray形式の各種IDを新しく作成する
-		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
 	// TraceProviderインターフェースを実装する構造体を作成する
@@ -1480,6 +1477,8 @@ import (
 )
 
 func main() {
+
+    ...
 
     // gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.DialContext(

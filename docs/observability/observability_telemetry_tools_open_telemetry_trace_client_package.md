@@ -875,7 +875,7 @@ func main()  {
 
 ### ID Generatorとは
 
-特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
+特定の監視バックエンドの形式で、トレースIDやスパンIDを作成する。
 
 ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。
 
@@ -885,15 +885,27 @@ ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に
 
 <br>
 
-### ID Generatorが不要な場合
+### X-Ray仕様
 
-OpenTelemetry CollectorでExporterを使用する場合、クライアント側ではID Generatorを使用する必要はない。
+X-Ray仕様のトレースIDやスパンIDを作成する。
 
-W3C Trace Context仕様でOpenTelemetry Collectorにスパンを送信しさえすれば、OpenTelemetry CollectorはW3C Trace Context仕様からExporterの形式にIDを変換してくれる。
+```go
+package main
 
-例えば、AWS製OpenTelemetry CollectorはW3C Trace Context仕様をX-Ray仕様に変換する。
+func main()  {
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-instrumenting-your-app.html#xray-instrumenting-opentel
+	...
+
+	tp := sdkTrace.NewTracerProvider(
+		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
+	)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws/xray
 
 <br>
 

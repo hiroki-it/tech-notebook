@@ -470,19 +470,16 @@ import (
 
 func main() {
 
-	// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。
-	// 単項RPCの場合のインターセプター処理
-	unaryClientInterceptor := grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))
-	// 単項RPCの場合のインターセプター処理
-	streamClientInterceptor := grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))
+    ...
 
 	// gRPCサーバーとのコネクションを作成する
-	conn, err := grpc.Dial(
+	conn, err := grpc.DialContext(
+        ctx,
 		":9000",
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
-		grpc.WithUnaryInterceptor(unaryClientInterceptor),
-		grpc.WithStreamInterceptor(streamClientInterceptor),
+		grpc.WithUnaryInterceptor(grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))),
+		grpc.WithStreamInterceptor(grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))),
 	)
 
 	if err != nil {
