@@ -796,6 +796,56 @@ OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエン
 
 <br>
 
+## otel
+
+### Tracer
+
+#### ▼ Tracerとは
+
+スパンを作成するためのTracerを作成する。
+
+#### ▼ Start
+
+通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に`main`関数) で自動的にスパンを作成する。
+
+Tracerの`Start`関数を使用すると、これの子スパンを手動で作成することができ、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	// ここでOpenTelemetryのミドルウェアを使用すると仮定する
+	// main関数のスパンを自動的に作成する
+
+	...
+
+	// main関数の子スパンとして、foo関数のスパンを手動的に作成する
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+	)
+
+	defer span.End()
+}
+```
+
+<br>
+
 ## otel/propagation
 
 ### otel/propagationとは
