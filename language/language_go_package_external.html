@@ -23884,10 +23884,12 @@
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
+<span class="w">        </span><span class="c1">// 単項RPCのサーバーインターセプターを設定する</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
+<span class="w">                </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">            </span><span class="p">)</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 

@@ -24192,11 +24192,11 @@
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 単項RPCの場合のインターセプター処理</span>
+<span class="w">        </span><span class="c1">// 単項RPCのサーバーインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">),</span>
-<span class="w">        </span><span class="c1">// ストリーミングRPCの場合のインターセプター処理</span>
+<span class="w">        </span><span class="c1">// ストリーミングRPCのサーバーインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">),</span>
