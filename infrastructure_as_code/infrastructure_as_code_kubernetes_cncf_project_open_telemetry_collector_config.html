@@ -22801,12 +22801,53 @@
 <p>標準エラー出力にテレメトリーを出力する。</p>
 <h4 id="verbosity">▼ verbosity<a class="headerlink" href="#verbosity" title="Permanent link">&para;</a></h4>
 <p>重要度レベルを設定する。</p>
+<p>通常レベルは<code>basic</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basic</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2024-03-26T04:41:52.163Z    info    TracesExporter  {&quot;kind&quot;: &quot;exporter&quot;, &quot;data_type&quot;: &quot;traces&quot;, &quot;name&quot;: &quot;debug&quot;, &quot;resource spans&quot;: 1, &quot;spans&quot;: &lt;転送したスパン数&gt;}
+</code></pre></div>
+<p>スパンを標準出力により詳細に出力したい場合、<code>detailed</code>とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">detailed</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>2024-03-25T00:57:24.141Z    info    zapgrpc/zapgrpc.go:176  [core] [Server #1 ListenSocket #2] ListenSocket created {&quot;grpc_log&quot;: true}
-2024-03-25T03:22:08.220Z    debug   awsxrayexporter@v0.96.0/awsxray.go:57   TracesExporter  {&quot;kind&quot;: &quot;exporter&quot;, &quot;data_type&quot;: &quot;traces&quot;, &quot;name&quot;: &quot;awsxray&quot;, &quot;type&quot;: &quot;awsxray&quot;, &quot;name&quot;: &quot;awsxray&quot;, &quot;#spans&quot;: 1}
+<div class="highlight"><pre><span></span><code><span class="c1"># スパン一つあたりの内容</span>
+<span class="l l-Scalar l-Scalar-Plain">2024-03-26T04:19:41.450Z    info    ResourceSpans</span><span class="w"> </span><span class="c1">#0</span>
+<span class="nt">Resource SchemaURL</span><span class="p">:</span>
+<span class="nt">Resource attributes</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">-&gt; service.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(foo-service)</span>
+<span class="l l-Scalar l-Scalar-Plain">ScopeSpans</span><span class="w"> </span><span class="c1">#0</span>
+<span class="nt">ScopeSpans SchemaURL</span><span class="p">:</span>
+<span class="l l-Scalar l-Scalar-Plain">InstrumentationScope &quot;&lt;トレースパッケージ名&gt;&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">Span</span><span class="w"> </span><span class="c1">#0</span>
+<span class="w">    </span><span class="nt">Trace ID       </span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="w">    </span><span class="nt">Parent ID      </span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ID             </span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="w">    </span><span class="nt">Name           </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;スパン名&gt;&quot;</span>
+<span class="w">    </span><span class="nt">Kind           </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Server</span>
+<span class="w">    </span><span class="nt">Start time     </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.041 +0000 UTC</span>
+<span class="w">    </span><span class="nt">End time       </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2024-03-26 04:19:41.085 +0000 UTC</span>
+<span class="w">    </span><span class="nt">Status code    </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unset</span>
+<span class="w">    </span><span class="nt">Status message </span><span class="p">:</span>
+<span class="nt">Attributes</span><span class="p">:</span>
+<span class="w">     </span><span class="nt">-&gt; http.method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(GET)</span>
+<span class="w">     </span><span class="nt">-&gt; http.target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;スパン名&gt;&quot;)</span>
+<span class="w">     </span><span class="nt">-&gt; http.route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(/)</span>
+<span class="w">     </span><span class="nt">-&gt; http.scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(http)</span>
+<span class="w">     </span><span class="nt">-&gt; http.flavor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(1.1)</span>
+<span class="w">     </span><span class="nt">-&gt; http.user_agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(curl/7.79.1)</span>
+<span class="w">     </span><span class="nt">-&gt; http.request_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(0)</span>
+<span class="w">     </span><span class="nt">-&gt; http.response_content_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(905)</span>
+<span class="w">     </span><span class="nt">-&gt; http.status_code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(200)</span>
+<span class="w">     </span><span class="nt">-&gt; net.host.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(_)</span>
+<span class="w">     </span><span class="nt">-&gt; net.host.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
+<span class="w">     </span><span class="nt">-&gt; net.sock.peer.addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(127.0.0.6)</span>
+<span class="w">     </span><span class="nt">-&gt; net.sock.peer.port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int(&quot;&lt;ポート番号&gt;&quot;)</span>
+<span class="w">     </span><span class="nt">-&gt; env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;実行環境名&gt;&quot;)</span>
+<span class="w">     </span><span class="nt">-&gt; service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str(&quot;&lt;サービス名&gt;&quot;)</span>
+<span class="w w-Error">    </span><span class="p p-Indicator">{</span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;exporter&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;data_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;traces&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23041,6 +23082,9 @@
 <li><a href="https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505">https://github.com/open-telemetry/opentelemetry-operator/issues/873#issuecomment-1127612505</a></li>
 </ul>
 </blockquote>
+<p>ログレベルが<code>debug</code>の場合、例えば以下になる。</p>
+<div class="highlight"><pre><span></span><code>2024-03-25T03:22:08.220Z    debug   awsxrayexporter@v0.96.0/awsxray.go:57   TracesExporter  {&quot;kind&quot;: &quot;exporter&quot;, &quot;data_type&quot;: &quot;traces&quot;, &quot;name&quot;: &quot;awsxray&quot;, &quot;type&quot;: &quot;awsxray&quot;, &quot;name&quot;: &quot;awsxray&quot;, &quot;#spans&quot;: 1}
+</code></pre></div>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetry Collectorのメトリクスの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
@@ -23077,7 +23121,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-26</span>
   </span>
 
     
