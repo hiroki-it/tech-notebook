@@ -23847,8 +23847,6 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-
-<span class="w">    </span><span class="nx">grpc_middleware</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -23878,8 +23876,6 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-
-<span class="w">    </span><span class="nx">grpc_middleware</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -23888,12 +23884,10 @@
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
-<span class="w">            </span><span class="c1">// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
-<span class="w">                </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
-<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
-<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -23913,14 +23907,12 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc_middleware</span><span class="p">.</span><span class="nx">ChainUnaryServer</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
-<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span>
-<span class="w">                </span><span class="c1">// 属性を設定する</span>
-<span class="w">                </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)),</span>
-<span class="w">            </span><span class="p">)</span>
-<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span>
+<span class="w">            </span><span class="c1">// 属性を設定する</span>
+<span class="w">            </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>

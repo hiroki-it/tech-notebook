@@ -22591,14 +22591,12 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 単項RPCの場合のインターセプター処理</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="c1">// マイクロサービスの属性情報</span>
-<span class="w">            </span><span class="nx">grpctracer</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCの場合のインターセプター処理</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamInterceptor</span><span class="p">(</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="c1">// マイクロサービスの属性情報</span>
-<span class="w">            </span><span class="nx">grpctracer</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -22650,8 +22648,8 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">        </span><span class="s">&quot;:9000&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;bar-service&quot;</span><span class="p">))),</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;bar-service&quot;</span><span class="p">))),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">)),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryStreamInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">)),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
