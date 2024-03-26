@@ -515,8 +515,6 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 	"google.golang.org/grpc"
-
-	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 )
 
 func main() {
@@ -535,7 +533,6 @@ func main() {
 
 	...
 }
-
 ```
 
 <br>
@@ -553,8 +550,6 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 	"google.golang.org/grpc"
-
-	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 )
 
 func main()  {
@@ -563,13 +558,11 @@ func main()  {
 
     // gRPCサーバーを作成する
 	conn, err := grpc.NewServer(
-		grpc_middleware.ChainUnaryServer(
-			// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する
-			otelgrpc.UnaryServerInterceptor(
-				// ヘルスチェックパスではスパンを作成しない
-				otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
-			),
-		),
+		// サーバー側のミドルウェア処理としてUnaryServerInterceptorを挿入する
+		grpc.ChainUnaryInterceptor(
+			// ヘルスチェックパスではスパンを作成しない
+			otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+        ),
 	)
 
 	defer conn.Close()
@@ -594,14 +587,12 @@ import (
 
 func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 
-	return grpc_middleware.ChainUnaryServer(
-		// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
-		otelgrpc.UnaryServerInterceptor(
-			otelgrpc.WithSpanOptions(
-                // 属性を設定する
-				trace.WithAttributes(attribute.String("env", "<実行環境名>")),
-			)
-        )
+	// 共通のミドルウェア処理としてUnaryServerInterceptorを挿入する
+	return otelgrpc.UnaryServerInterceptor(
+		otelgrpc.WithSpanOptions(
+			// 属性を設定する
+			trace.WithAttributes(attribute.String("env", "<実行環境名>")),
+        ),
 	)
 }
 ```

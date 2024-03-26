@@ -1587,9 +1587,13 @@ func main() {
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
 		// 単項RPCの場合のインターセプター処理
-		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+		grpc.ChainUnaryInterceptor(
+		    otelgrpc.UnaryServerInterceptor(),
+        ),
 		// ストリーミングRPCの場合のインターセプター処理
-		grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
+		grpc.ChainStreamInterceptor(
+			otelgrpc.StreamServerInterceptor(),
+        ),
 	)
 
 	// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。

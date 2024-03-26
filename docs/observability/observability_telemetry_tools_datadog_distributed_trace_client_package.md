@@ -418,14 +418,12 @@ func main() {
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
 		// 単項RPCの場合のインターセプター処理
-		grpc.UnaryInterceptor(grpc.UnaryServerInterceptor(
-            // マイクロサービスの属性情報
-            grpctracer.WithServiceName("foo-service"),
+		grpc.UnaryInterceptor(
+			grpctrace.UnaryServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
         ),
 		// ストリーミングRPCの場合のインターセプター処理
-		grpc.StreamInterceptor(grpc.StreamServerInterceptor(
-			// マイクロサービスの属性情報
-            grpctracer.WithServiceName("foo-service"),
+		grpc.StreamInterceptor(
+			grpctrace.StreamServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
         ),
 	)
 
@@ -478,8 +476,8 @@ func main() {
 		":9000",
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
-		grpc.WithUnaryInterceptor(grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("bar-service"))),
-		grpc.WithStreamInterceptor(grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("bar-service"))),
+		grpc.WithUnaryInterceptor(grpctrace.UnaryClientInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
+		grpc.WithStreamInterceptor(grpctrace.UnaryStreamInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
 	)
 
 	if err != nil {
