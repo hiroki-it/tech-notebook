@@ -411,6 +411,14 @@ db.Save(&user)
 
 <br>
 
+## gorm/plugin/opentelemetry
+
+Gormで発行したSQLにスパンの情報を付与する。
+
+> - https://github.com/go-gorm/opentelemetry
+
+<br>
+
 ## grpc-go
 
 ### grpc-goとは
@@ -421,67 +429,37 @@ GoでgRPCを扱えるようにする。
 
 <br>
 
-## propagator/autoprop
+## otelgorm
 
-### propagator/autopropとは
-
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
-
-<br>
-
-### NewTextMapPropagator
-
-`ote/propagation`パッケージの`NewCompositeTextMapPropagator`のラッパーであり、Composite Propagatorを作成する。
-
-デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
-
-また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名をリスト形式 (`tracecontext,baggage,xray`) で指定していれば、上書きできる。
+Gormで発行したSQLにスパンの情報を付与する。
 
 ```go
-package main
+package db
 
 import (
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
+	"github.com/uptrace/opentelemetry-go-extra/otelgorm"
+	"gorm.io/gorm"
 )
 
-func main()  {
+func Db()  {
 
-	...
+	db, err := gorm.Open(mysql.Open("<DBのURL>"), &gorm.Config{})
 
-	// デフォルトでは、W3C Trace ContextとBaggageになる
-	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator())
+	if err != nil {
+		panic(err)
+	}
+
+	// ミドルウェアを設定する
+	if err := db.Use(otelgorm.NewPlugin()); err != nil {
+		panic(err)
+	}
 
 	...
 }
+
 ```
 
-```go
-package main
-
-import (
-	"go.opentelemetry.io/contrib/propagators/aws/xray"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func main()  {
-
-	...
-
-	// Propagatorを追加する場合は、明示的に指定する
-	// 環境変数でも良い
-	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator(
-		propagation.TraceContext{},
-		propagation.Baggage{},
-		xray.Propagator{},
-	))
-
-	...
-}
-```
-
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
+> - https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm
 
 <br>
 
@@ -923,6 +901,70 @@ OTLP形式でテレメトリーを送信するExporterを作成する。
 OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+
+<br>
+
+## propagator/autoprop
+
+### propagator/autopropとは
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
+
+<br>
+
+### NewTextMapPropagator
+
+`ote/propagation`パッケージの`NewCompositeTextMapPropagator`のラッパーであり、Composite Propagatorを作成する。
+
+デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
+
+また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名をリスト形式 (`tracecontext,baggage,xray`) で指定していれば、上書きできる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main()  {
+
+	...
+
+	// デフォルトでは、W3C Trace ContextとBaggageになる
+	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator())
+
+	...
+}
+```
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/propagators/aws/xray"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main()  {
+
+	...
+
+	// Propagatorを追加する場合は、明示的に指定する
+	// 環境変数でも良い
+	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator(
+		propagation.TraceContext{},
+		propagation.Baggage{},
+		xray.Propagator{},
+	))
+
+	...
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
 
 <br>
 
