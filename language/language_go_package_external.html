@@ -23589,11 +23589,6 @@
 <p><br></p>
 <h3 id="db">DBとの接続<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="mysql">▼ MySQLの場合<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://gorm.io/docs/connecting_to_the_database.html#MySQL">https://gorm.io/docs/connecting_to_the_database.html#MySQL</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewDB</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 接続情報。sprintfメソッドを使用すると、可読性が高い。</span>
@@ -23634,16 +23629,16 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/connecting_to_the_database.html#MySQL">https://gorm.io/docs/connecting_to_the_database.html#MySQL</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="gorm_2">Gormモデル<a class="headerlink" href="#gorm_2" title="Permanent link">&para;</a></h3>
 <h4 id="gorm_3">▼ Gormモデル埋め込み<a class="headerlink" href="#gorm_3" title="Permanent link">&para;</a></h4>
 <p>構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。</p>
 <p>構造体をマッピングしたテーブルに、<code>id</code>カラム、<code>created_at</code>カラム、<code>updated_at</code>カラム、<code>deleted_at</code>カラムが追加される。</p>
-<blockquote>
-<ul>
-<li><a href="https://gorm.io/docs/models.html#embedded_struct">https://gorm.io/docs/models.html#embedded_struct</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Model</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -23658,6 +23653,11 @@
 <span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span><span class="w"> </span><span class="s">`gorm:&quot;index&quot;`</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/models.html#embedded_struct">https://gorm.io/docs/models.html#embedded_struct</a></li>
+</ul>
+</blockquote>
 <h4 id="_2">▼ プライマリーキー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、<code>gorm:"primaryKey"</code>タグをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
