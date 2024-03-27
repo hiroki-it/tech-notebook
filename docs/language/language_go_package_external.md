@@ -117,8 +117,6 @@ Go製のORMである。
 
 #### ▼ MySQLの場合
 
-> - https://gorm.io/docs/connecting_to_the_database.html#MySQL
-
 ```go
 func NewDB() (*gorm.DB, error) {
 
@@ -161,6 +159,8 @@ func Close(db *gorm.DB) error {
 }
 ```
 
+> - https://gorm.io/docs/connecting_to_the_database.html#MySQL
+
 <br>
 
 ### Gormモデル
@@ -170,8 +170,6 @@ func Close(db *gorm.DB) error {
 構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
 
 構造体をマッピングしたテーブルに、`id`カラム、`created_at`カラム、`updated_at`カラム、`deleted_at`カラムが追加される。
-
-> - https://gorm.io/docs/models.html#embedded_struct
 
 ```go
 type User struct {
@@ -188,6 +186,8 @@ type User struct {
 	DeletedAt gorm.DeleteAt `gorm:"index"`
 }
 ```
+
+> - https://gorm.io/docs/models.html#embedded_struct
 
 #### ▼ プライマリーキー
 

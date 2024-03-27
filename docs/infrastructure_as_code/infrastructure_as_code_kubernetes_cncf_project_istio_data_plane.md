@@ -237,7 +237,7 @@ Istioでもこれに対応している。
 
 これにより、Podの作成時にInitContainerをインジェクションできるようになる。
 
-今まで、`preStop`キーや`postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動/終了タイミングを制御する必要があったが、InitContainerではそれが不要になる。
+今まで、`.spec.containers[*].lifecycle.preStop`キーや`.spec.containers[*].lifecycle.postStart`キーに自前のコマンドを定義して`istio-proxy`コンテナの起動/終了タイミングを制御する必要があったが、InitContainerではそれが不要になる。
 
 ```yaml
 apiVersion: v1
