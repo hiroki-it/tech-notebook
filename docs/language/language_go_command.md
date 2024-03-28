@@ -219,6 +219,44 @@ $ go test -v ./...
 $ go test -cover ./...
 ```
 
+#### ▼ -coverpkg
+
+パッケージを指定して、網羅率を解析する。
+
+デフォルトではテストコードがあるパッケージしか解析しないため、全てのパッケージを含めて解析するために`./...`を指定する。
+
+```bash
+$ go test -coverpkg=./... -coverprofile=coverage.txt ./...
+```
+
+> - https://www.getto.systems/entry/2020/08/09/190650
+
+#### ▼ -coverprofile
+
+網羅率を解析し、結果からカバレッジレポートを作成する。
+
+```bash
+$ go test -coverprofile=coverage.txt ./...
+```
+
+> - https://kiririmode.hatenablog.jp/entry/20210204/1612450799
+
+<br>
+
+### tool
+
+#### ▼ cover
+
+カバレッジレポートを使用して、特定のコンポーネントでのカバレッジを算出する。
+
+パッケージ単位、関数単位 (`-func`) 、全体、のカバレッジを指定できる。
+
+```bash
+$ go tool cover -func coverage.txt
+```
+
+> - https://gihyo.jp/article/2023/03/tukinami-go-05
+
 <br>
 
 ### version

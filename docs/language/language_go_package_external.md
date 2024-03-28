@@ -413,7 +413,7 @@ db.Save(&user)
 
 ## gorm/plugin/opentelemetry
 
-Gormで発行したSQLにスパンの情報を付与する。
+SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。
 
 > - https://github.com/go-gorm/opentelemetry
 
@@ -431,7 +431,7 @@ GoでgRPCを扱えるようにする。
 
 ## otelgorm
 
-Gormで発行したSQLにスパンの情報を付与する。
+SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。
 
 ```go
 package db
@@ -441,7 +441,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func Db()  {
+func NewDb()  {
 
 	db, err := gorm.Open(mysql.Open("<DBのURL>"), &gorm.Config{})
 
@@ -456,7 +456,6 @@ func Db()  {
 
 	...
 }
-
 ```
 
 > - https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm
@@ -901,6 +900,41 @@ OTLP形式でテレメトリーを送信するExporterを作成する。
 OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+
+<br>
+
+## sqlcommenter
+
+### sqlcommenterとは
+
+Gormで発行したSQLにスパンの情報をコメントアウトとして付与する。
+
+コメントアウトであるため、SQLの動作には影響がない。
+
+```go
+import (
+    "database/sql"
+
+    gosql "github.com/google/sqlcommenter/go/database/sql"
+    sqlcommentercore "github.com/google/sqlcommenter/go/core"
+    _ "github.com/lib/pq" // or any other database driver
+)
+
+var (
+  db *sql.DB
+  err error
+)
+
+db, err = gosql.Open(
+	"<driver>", "<connectionString>",
+	// SQLに付与するコメント
+	sqlcommentercore.CommenterOptions{
+		Config: sqlcommentercore.CommenterConfig{<flag>:bool}
+		Tags  : sqlcommentercore.StaticTags{<tag>: string}
+})
+```
+
+> - https://google.github.io/sqlcommenter/go/database_sql/
 
 <br>
 
