@@ -7806,6 +7806,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sqlcommenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlcommenter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sqlcommenter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlcommenter_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlcommenterとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#propagatorautoprop" class="md-nav__link">
     <span class="md-ellipsis">
       propagator/autoprop
@@ -23363,6 +23387,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sqlcommenter" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlcommenter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sqlcommenter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlcommenter_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlcommenterとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#propagatorautoprop" class="md-nav__link">
     <span class="md-ellipsis">
       propagator/autoprop
@@ -23890,7 +23938,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="gormpluginopentelemetry">gorm/plugin/opentelemetry<a class="headerlink" href="#gormpluginopentelemetry" title="Permanent link">&para;</a></h2>
-<p>Gormで発行したSQLにスパンの情報を付与する。</p>
+<p>SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/go-gorm/opentelemetry">https://github.com/go-gorm/opentelemetry</a></li>
@@ -23907,7 +23955,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="otelgorm">otelgorm<a class="headerlink" href="#otelgorm" title="Permanent link">&para;</a></h2>
-<p>Gormで発行したSQLにスパンの情報を付与する。</p>
+<p>SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23915,7 +23963,7 @@
 <span class="w">    </span><span class="s">&quot;gorm.io/gorm&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">Db</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewDb</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;&lt;DBのURL&gt;&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{})</span>
 
@@ -24306,6 +24354,37 @@
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="sqlcommenter">sqlcommenter<a class="headerlink" href="#sqlcommenter" title="Permanent link">&para;</a></h2>
+<h3 id="sqlcommenter_1">sqlcommenterとは<a class="headerlink" href="#sqlcommenter_1" title="Permanent link">&para;</a></h3>
+<p>Gormで発行したSQLにスパンの情報をコメントアウトとして付与する。</p>
+<p>コメントアウトであるため、SQLの動作には影響がない。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
+
+<span class="w">    </span><span class="nx">gosql</span><span class="w"> </span><span class="s">&quot;github.com/google/sqlcommenter/go/database/sql&quot;</span>
+<span class="w">    </span><span class="nx">sqlcommentercore</span><span class="w"> </span><span class="s">&quot;github.com/google/sqlcommenter/go/core&quot;</span>
+<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="s">&quot;github.com/lib/pq&quot;</span><span class="w"> </span><span class="c1">// or any other database driver</span>
+<span class="p">)</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">db</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">DB</span>
+<span class="w">  </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+<span class="p">)</span>
+
+<span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">gosql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;&lt;driver&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;connectionString&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// SQLに付与するコメント</span>
+<span class="w">    </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">CommenterOptions</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Config</span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">CommenterConfig</span><span class="p">{&lt;</span><span class="nx">flag</span><span class="p">&gt;:</span><span class="kt">bool</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">Tags</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">StaticTags</span><span class="p">{&lt;</span><span class="nx">tag</span><span class="p">&gt;:</span><span class="w"> </span><span class="kt">string</span><span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://google.github.io/sqlcommenter/go/database_sql/">https://google.github.io/sqlcommenter/go/database_sql/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24710,7 +24789,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-28</span>
   </span>
 
     
