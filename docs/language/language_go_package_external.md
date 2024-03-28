@@ -266,6 +266,40 @@ func (User) TableName() string {
 
 <br>
 
+### Hook
+
+#### ▼ Hookとは
+
+CRUDの関数の前後に設定した独自処理を実行できるようにする。
+
+#### ▼ 特定のCRUD関数の前後
+
+```go
+db.Callback().Create().Before("gorm:before_create").Register("custom_hook", "CRUD関数名")
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+#### ▼ 全てのCRUD関数の前後
+
+```go
+func (user *User) BeforeSave(tx *gorm.DB) (err error) {
+    user.LastUpdated = time.Now()
+    return nil
+}
+```
+
+```go
+func (user *User) AfterSave(tx *gorm.DB) (err error) {
+    log.Println("User successfully saved:", user.ID)
+    return nil
+}
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+<br>
+
 ### Create
 
 Gormモデルのフィールドに設定された値を元に、カラムを作成する。
