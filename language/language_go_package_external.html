@@ -7285,6 +7285,48 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hook_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Hookとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のCRUD関数の前後
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 全てのCRUD関数の前後
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -22866,6 +22908,48 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hook
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hook_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Hookとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のCRUD関数の前後
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 全てのCRUD関数の前後
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -23804,6 +23888,34 @@
 <blockquote>
 <ul>
 <li><a href="https://gorm.io/docs/conventions.html#TableName">https://gorm.io/docs/conventions.html#TableName</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="hook">Hook<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h3>
+<h4 id="hook_1">▼ Hookとは<a class="headerlink" href="#hook_1" title="Permanent link">&para;</a></h4>
+<p>CRUDの関数の前後に設定した独自処理を実行できるようにする。</p>
+<h4 id="crud">▼ 特定のCRUD関数の前後<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">&quot;gorm:before_create&quot;</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">&quot;custom_hook&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CRUD関数名&quot;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/">https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/</a></li>
+</ul>
+</blockquote>
+<h4 id="crud_1">▼ 全てのCRUD関数の前後<a class="headerlink" href="#crud_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">LastUpdated</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">AfterSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;User successfully saved:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/">https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
