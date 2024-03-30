@@ -7866,6 +7866,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sqlmock" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlmock
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sqlmock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ New
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23489,6 +23513,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sqlmock" class="md-nav__link">
+    <span class="md-ellipsis">
+      sqlmock
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sqlmock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ New
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23895,7 +23943,15 @@
 <h4 id="hook_1">▼ Hookとは<a class="headerlink" href="#hook_1" title="Permanent link">&para;</a></h4>
 <p>CRUDの関数の前後に設定した独自処理を実行できるようにする。</p>
 <h4 id="crud">▼ 特定のCRUD関数の前後<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">&quot;gorm:before_create&quot;</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">&quot;custom_hook&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CRUD関数名&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewDb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// Createの前</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">&quot;gorm:before_create&quot;</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">&quot;&lt;フック名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;CRUD関数名&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24169,6 +24225,11 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/328568">https://logmi.jp/tech/articles/328568</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_11">クライアント/サーバー共通<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="withspanoptions">▼ WithSpanOptions<a class="headerlink" href="#withspanoptions" title="Permanent link">&para;</a></h4>
@@ -24298,6 +24359,11 @@
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/328568">https://logmi.jp/tech/articles/328568</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_14">クライアント/サーバー共通<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="withspanoptions_1">▼ WithSpanOptions<a class="headerlink" href="#withspanoptions_1" title="Permanent link">&para;</a></h4>
@@ -24499,6 +24565,29 @@
 <li><a href="https://google.github.io/sqlcommenter/go/database_sql/">https://google.github.io/sqlcommenter/go/database_sql/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="sqlmock">sqlmock<a class="headerlink" href="#sqlmock" title="Permanent link">&para;</a></h3>
+<h4 id="new">▼ New<a class="headerlink" href="#new" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewDbMock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="nx">sqlmock</span><span class="p">.</span><span class="nx">Sqlmock</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">sqlDB</span><span class="p">,</span><span class="w"> </span><span class="nx">sqlMock</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sqlmock</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">NilError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// モックDBを作成する</span>
+<span class="w">    </span><span class="nx">mockDB</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Conn</span><span class="p">:</span><span class="w">                      </span><span class="nx">sqlDB</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">SkipInitializeWithVersion</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">mockDB</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">instrumentation_trace</span><span class="p">.</span><span class="nx">DbClientMiddleware</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">mockDB</span><span class="p">,</span><span class="w"> </span><span class="nx">sqlMock</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="propagatorautoprop">propagator/autoprop<a class="headerlink" href="#propagatorautoprop" title="Permanent link">&para;</a></h2>
 <h3 id="propagatorautoprop_1">propagator/autopropとは<a class="headerlink" href="#propagatorautoprop_1" title="Permanent link">&para;</a></h3>
@@ -24901,7 +24990,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-30</span>
   </span>
 
     
