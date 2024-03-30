@@ -275,7 +275,15 @@ CRUDの関数の前後に設定した独自処理を実行できるようにす�
 #### ▼ 特定のCRUD関数の前後
 
 ```go
-db.Callback().Create().Before("gorm:before_create").Register("custom_hook", "CRUD関数名")
+func NewDb() {
+
+	...
+
+	// Createの前
+	db.Callback().Create().Before("gorm:before_create").Register("<フック名>", "<CRUD関数名>")
+
+	...
+}
 ```
 
 > - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
@@ -582,6 +590,8 @@ func main()  {
 }
 ```
 
+> - https://logmi.jp/tech/articles/328568
+
 <br>
 
 ### クライアント/サーバー共通
@@ -732,6 +742,8 @@ func main() {
 	)
 }
 ```
+
+> - https://logmi.jp/tech/articles/328568
 
 <br>
 
@@ -969,6 +981,34 @@ db, err = gosql.Open(
 ```
 
 > - https://google.github.io/sqlcommenter/go/database_sql/
+
+<br>
+
+### sqlmock
+
+#### ▼ New
+
+```go
+func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
+
+	sqlDB, sqlMock, err := sqlmock.New()
+
+	assert.NilError(t, err)
+
+	// モックDBを作成する
+	mockDB, err := gorm.Open(
+		mysql.New(mysql.Config{
+			Conn:                      sqlDB,
+			SkipInitializeWithVersion: true,
+		}),
+		&gorm.Config{}
+    )
+
+	mockDB.Use(instrumentation_trace.DbClientMiddleware())
+
+	return mockDB, sqlMock, err
+}
+```
 
 <br>
 
