@@ -215,6 +215,8 @@ router := gin.New()
 
 `gin.HandlerFunc`関数というGin固有のデータ型が必要である。
 
+ミドルウェアは、`Use`した順番で実行する。
+
 ```go
 package main
 

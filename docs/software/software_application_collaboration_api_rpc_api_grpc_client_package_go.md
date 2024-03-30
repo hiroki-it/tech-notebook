@@ -261,7 +261,7 @@ func main() {
 
 ### 単項RPCの場合
 
-#### ▼ 既製のインターセプター
+#### ▼ 既製のインターセプター (`UnaryClientInterceptor`)
 
 gRPCでは、単項RPCを送信するクライアント側のミドルウェア処理は`UnaryClientInterceptor`という名前で定義されている。
 
@@ -318,7 +318,7 @@ func main() {
 
 ### ストリーミングRPCの場合
 
-##### ▼ 既製のインターセプター
+##### ▼ 既製のインターセプター (`StreamClientInterceptor`)
 
 gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`という名前にすることが定められている。
 
@@ -472,7 +472,7 @@ func main() {
 
 ### 単項RPCの場合
 
-#### ▼ 既製のインターセプター
+#### ▼ 既製のインターセプター (`UnaryServerInterceptor`)
 
 gRPCでは、単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`という名前にすることが定められている。
 
@@ -511,7 +511,7 @@ func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServ
 
 ### ストリーミングRPCの場合
 
-#### ▼ 既製のインターセプター
+#### ▼ 既製のインターセプター (`StreamServerInterceptor`)
 
 gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェア処理は`StreamServerInterceptor`という名前にすることが定められている。
 

@@ -523,9 +523,11 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 ### クライアント側
 
-#### ▼ UnaryClientInterceptor
+#### ▼ ClientInterceptor
 
-リクエストを単位としてスパンを自動的に開始/終了できる
+リクエストを単位としてスパンを自動的に開始/終了できる。
+
+また、トレースコンテキストをスパンに注入する。
 
 ```go
 package main
@@ -557,6 +559,12 @@ func main() {
 <br>
 
 ### サーバー側
+
+#### ▼ ServerInterceptor
+
+リクエストを単位としてスパンを自動的に開始/終了できる。
+
+また、トレースコンテキストをスパンから抽出する。
 
 #### ▼ WithInterceptorFilter
 
