@@ -527,7 +527,7 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 リクエストを単位としてスパンを自動的に開始/終了できる。
 
-また、トレースコンテキストをスパンに注入する。
+また、Propagatorを使用してトレースコンテキストをスパンに注入する。
 
 ```go
 package main
@@ -549,7 +549,9 @@ func main() {
 		ctx,
 		":7777",
 		// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor(otelgrpc.WithSpanOptions(trace.WithAttributes(attribute.String("env", "<実行環境名>"))))),
+		grpc.WithUnaryInterceptor(
+			otelgrpc.UnaryClientInterceptor()
+		),
 	)
 
 	...
@@ -564,7 +566,7 @@ func main() {
 
 リクエストを単位としてスパンを自動的に開始/終了できる。
 
-また、トレースコンテキストをスパンから抽出する。
+また、Propagatorを使用してトレースコンテキストをスパンから抽出する。
 
 #### ▼ WithInterceptorFilter
 
