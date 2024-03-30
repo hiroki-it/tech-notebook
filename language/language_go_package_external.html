@@ -7496,9 +7496,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#unaryclientinterceptor" class="md-nav__link">
+  <a href="#clientinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ UnaryClientInterceptor
+      ▼ ClientInterceptor
     </span>
   </a>
   
@@ -7518,6 +7518,15 @@
   
     <nav class="md-nav" aria-label="サーバー側">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serverinterceptor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ServerInterceptor
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#withinterceptorfilter" class="md-nav__link">
@@ -23143,9 +23152,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#unaryclientinterceptor" class="md-nav__link">
+  <a href="#clientinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ UnaryClientInterceptor
+      ▼ ClientInterceptor
     </span>
   </a>
   
@@ -23165,6 +23174,15 @@
   
     <nav class="md-nav" aria-label="サーバー側">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serverinterceptor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ServerInterceptor
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#withinterceptorfilter" class="md-nav__link">
@@ -24168,8 +24186,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_9">クライアント側<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="unaryclientinterceptor">▼ UnaryClientInterceptor<a class="headerlink" href="#unaryclientinterceptor" title="Permanent link">&para;</a></h4>
-<p>リクエストを単位としてスパンを自動的に開始/終了できる</p>
+<h4 id="clientinterceptor">▼ ClientInterceptor<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
+<p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
+<p>また、トレースコンテキストをスパンに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24197,6 +24216,9 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_10">サーバー側<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="serverinterceptor">▼ ServerInterceptor<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
+<p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
+<p>また、トレースコンテキストをスパンから抽出する。</p>
 <h4 id="withinterceptorfilter">▼ WithInterceptorFilter<a class="headerlink" href="#withinterceptorfilter" title="Permanent link">&para;</a></h4>
 <p>サーバー側でスパンを作成しないリクエストを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
