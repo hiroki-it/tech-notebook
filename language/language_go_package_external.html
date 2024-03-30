@@ -24188,7 +24188,7 @@
 <h3 id="_9">クライアント側<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="clientinterceptor">▼ ClientInterceptor<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
-<p>また、トレースコンテキストをスパンに注入する。</p>
+<p>また、Propagatorを使用してトレースコンテキストをスパンに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24208,7 +24208,9 @@
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">))))),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()</span>
+<span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -24218,7 +24220,7 @@
 <h3 id="_10">サーバー側<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="serverinterceptor">▼ ServerInterceptor<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
-<p>また、トレースコンテキストをスパンから抽出する。</p>
+<p>また、Propagatorを使用してトレースコンテキストをスパンから抽出する。</p>
 <h4 id="withinterceptorfilter">▼ WithInterceptorFilter<a class="headerlink" href="#withinterceptorfilter" title="Permanent link">&para;</a></h4>
 <p>サーバー側でスパンを作成しないリクエストを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
