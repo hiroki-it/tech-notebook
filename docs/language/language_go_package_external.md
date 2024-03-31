@@ -471,6 +471,120 @@ GoでgRPCを扱えるようにする。
 
 <br>
 
+### クライアント側
+
+#### ▼ DialContext
+
+既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	ctx := context.Background()
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.DialContext(
+		ctx,
+		":7777",
+	)
+
+	...
+}
+```
+
+#### ▼ WithBlock
+
+コネクションを確立できるまで待機する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	ctx := context.Background()
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.DialContext(
+		ctx,
+		":7777",
+		grpc.WithBlock()
+	)
+
+	...
+}
+```
+
+#### ▼ WithTransportCredentials
+
+gRPCサーバーへの通信をTLS化するかどうかを設定する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+)
+
+func main() {
+
+	ctx := context.Background()
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.DialContext(
+		ctx,
+		":7777",
+		grpc.WithTransportCredentials(insecure.NewCredentials())
+	)
+
+	...
+}
+```
+
+<br>
+
+### サーバー側
+
+#### ▼ NewServer
+
+既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーを作成する
+	server := grpc.NewServer()
+
+	...
+}
+```
+
+<br>
+
 ## otelgorm
 
 SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。
