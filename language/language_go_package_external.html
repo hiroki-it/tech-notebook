@@ -7498,7 +7498,16 @@
           <li class="md-nav__item">
   <a href="#clientinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClientInterceptor
+      ▼ ClientInterceptor系メソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newclienthandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewClientHandler
     </span>
   </a>
   
@@ -7522,7 +7531,16 @@
           <li class="md-nav__item">
   <a href="#serverinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ServerInterceptor
+      ▼ ServerInterceptor系メソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newserverhandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewServerHandler
     </span>
   </a>
   
@@ -23154,7 +23172,16 @@
           <li class="md-nav__item">
   <a href="#clientinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ClientInterceptor
+      ▼ ClientInterceptor系メソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newclienthandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewClientHandler
     </span>
   </a>
   
@@ -23178,7 +23205,16 @@
           <li class="md-nav__item">
   <a href="#serverinterceptor" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ServerInterceptor
+      ▼ ServerInterceptor系メソッド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newserverhandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewServerHandler
     </span>
   </a>
   
@@ -24175,7 +24211,7 @@
 <h3 id="otelgrpc_1">otelgrpcとは<a class="headerlink" href="#otelgrpc_1" title="Permanent link">&para;</a></h3>
 <p>gRPCによるHTTPリクエストの受信処理からコンテキストを自動的に抽出 (Extract) し、また次のリクエストの送信処理に自動的に注入 (Inject) する。</p>
 <p>また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。</p>
-<p><code>otelgrpc</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><code>otelgrpc</code>パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc</a></li>
@@ -24186,7 +24222,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_9">クライアント側<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="clientinterceptor">▼ ClientInterceptor<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
+<h4 id="clientinterceptor">▼ ClientInterceptor系メソッド<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
 <p>また、Propagatorを使用してトレースコンテキストをスパンに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -24216,11 +24252,65 @@
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
+<h4 id="newclienthandler">▼ NewClientHandler<a class="headerlink" href="#newclienthandler" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2024/03/31) でClientInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーとのコネクションを作成する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// クライアント側を一括でセットアップする</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewClientHandler</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="_10">サーバー側<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="serverinterceptor">▼ ServerInterceptor<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
+<h4 id="serverinterceptor">▼ ServerInterceptor系メソッド<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
 <p>また、Propagatorを使用してトレースコンテキストをスパンから抽出する。</p>
+<h4 id="newserverhandler">▼ NewServerHandler<a class="headerlink" href="#newserverhandler" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2024/03/31) でServerInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewServerHandler</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="withinterceptorfilter">▼ WithInterceptorFilter<a class="headerlink" href="#withinterceptorfilter" title="Permanent link">&para;</a></h4>
 <p>サーバー側でスパンを作成しないリクエストを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -25014,7 +25104,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-31</span>
   </span>
 
     
