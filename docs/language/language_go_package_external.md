@@ -512,7 +512,7 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。
 
-`otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
+`otelgrpc`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -523,7 +523,7 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 ### クライアント側
 
-#### ▼ ClientInterceptor
+#### ▼ ClientInterceptor系メソッド
 
 リクエストを単位としてスパンを自動的に開始/終了できる。
 
@@ -558,15 +558,77 @@ func main() {
 }
 ```
 
+#### ▼ NewClientHandler
+
+執筆時点 (2024/03/31) でClientInterceptor系メソッドが非推奨になっており、これの移行先である。
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーとのコネクションを作成する
+	conn, err := grpc.DialContext(
+        ctx,
+		":7777",
+		// クライアント側を一括でセットアップする
+		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
+	)
+
+	...
+
+}
+```
+
 <br>
 
 ### サーバー側
 
-#### ▼ ServerInterceptor
+#### ▼ ServerInterceptor系メソッド
 
 リクエストを単位としてスパンを自動的に開始/終了できる。
 
 また、Propagatorを使用してトレースコンテキストをスパンから抽出する。
+
+#### ▼ NewServerHandler
+
+執筆時点 (2024/03/31) でServerInterceptor系メソッドが非推奨になっており、これの移行先である。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+)
+
+func main()  {
+
+	...
+
+    // gRPCサーバーを作成する
+	conn, err := grpc.NewServer(
+		grpc.StatsHandler(otelgrpc.NewServerHandler(
+			    otelgrpc.WithFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			)
+		),
+	)
+
+	defer conn.Close()
+}
+```
 
 #### ▼ WithInterceptorFilter
 
