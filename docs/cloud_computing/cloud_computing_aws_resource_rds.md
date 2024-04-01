@@ -292,9 +292,9 @@ DBインスタンスとクラスターボリュームから構成されている
 
 <br>
 
-### グローバルクラスター
+## グローバルクラスター
 
-#### ▼ グローバルクラスターとは
+### グローバルクラスターとは
 
 ![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global.png)
 
@@ -304,7 +304,15 @@ DBインスタンスとクラスターボリュームから構成されている
 
 プライマリーインスタンスは、プライマリークラスターのみに存在している。
 
-メインリージョンで障害が起こった場合は、以下が起こる。
+<br>
+
+### 仕組み
+
+#### ▼ ウォームスタンバイ構成
+
+ウォームスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカがおり、DRリージョンにはリードレプリカのみがいる。
+
+メインリージョンで障害が起こった場合は、DRリージョンのリードレプリカがプライマリインスタンスに昇格する。
 
 `(1)`
 
@@ -330,14 +338,24 @@ DBインスタンスとクラスターボリュームから構成されている
 
      メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
-> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/
+> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2
 > - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
 
 注意点として、通常のAurora DBクラスターと比較して、機能が制限される。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations
 
-#### ▼ アップグレード
+#### ▼ コールドスタンバイ構成
+
+コールドスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカがおり、DRリージョンにはストレージのみがいる。
+
+つまり、DRリージョンにDBインスタンスがない。
+
+> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-4
+
+<br>
+
+### アップグレード
 
 グローバルクラスターでは、プライマリークラスターとセカンダリークラスターを同時にアップグレードできない。
 
@@ -347,7 +365,9 @@ DBインスタンスとクラスターボリュームから構成されている
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
 
-#### ▼ スナップショット
+<br>
+
+### スナップショット
 
 グローバルクラスターでは、リージョン間でデータをコピーしている。
 
@@ -357,7 +377,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 <br>
 
-## 02-04. DBインスタンス
+## 02-05. DBインスタンス
 
 ### DBインスタンスとは
 
@@ -388,7 +408,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 <br>
 
-## 02-05. アップグレード
+## 02-06. アップグレード
 
 ### ZDP (ゼロダウンタイムパッチ適用)
 
@@ -643,7 +663,7 @@ DBインスタンスごとにフェイルオーバーの優先度 (`0`～`15`) �
 
 <br>
 
-## 02-06. 負荷対策
+## 02-07. 負荷対策
 
 ### エンドポイントの使い分け
 
@@ -718,7 +738,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 02-07. イベント
+## 02-08. イベント
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
 
