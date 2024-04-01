@@ -25100,27 +25100,23 @@
 <h4 id="textmappropagator_2">▼ TextMapPropagatorとは<a class="headerlink" href="#textmappropagator_2" title="Permanent link">&para;</a></h4>
 <p>Propagatorを操作する。</p>
 <h4 id="extract">▼ Extract<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h4>
-<p>Carrierからトレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<p>リクエストの受信側で、Carrierからトレースコンテキストを抽出する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
-
-<span class="w">    </span><span class="nx">propagator</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Carrier内のトレースコンテキストを既存のコンテキストに注入する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span>
-<span class="w">        </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -25130,32 +25126,27 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86">https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86</a></li>
-<li><a href="https://zenn.dev/hkdord/articles/opentelemetry-sdk-deep-dive">https://zenn.dev/hkdord/articles/opentelemetry-sdk-deep-dive</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131</a></li>
 </ul>
 </blockquote>
 <h4 id="inject">▼ Inject<a class="headerlink" href="#inject" title="Permanent link">&para;</a></h4>
-<p>受信したトレースコンテキストをCarrierに注入する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<p>リクエストの送信側で、トレースコンテキストをCarrierに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
+<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
-
-<span class="w">    </span><span class="nx">propagator</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">()</span>
-
 <span class="w">    </span><span class="c1">// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
-<span class="w">        </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -25164,7 +25155,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86">https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114</a></li>
 <li><a href="https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html">https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html</a></li>
 </ul>
 </blockquote>
