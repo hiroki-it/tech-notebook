@@ -1216,29 +1216,25 @@ Propagatorを操作する。
 
 #### ▼ Extract
 
-Carrierからトレースコンテキストを抽出する。
+リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
 
 ```go
-package main
+package middleware
 
 import (
 	"net/http"
-	"go.opentelemetry.io/otel"
+
 	"go.opentelemetry.io/otel/propagation"
 )
 
-func main() {
+func httpServer(w http.ResponseWriter, req *http.Request) {
 
 	...
-
-	otel.SetTextMapPropagator(propagation.TraceContext{})
-
-	propagator := otel.GetTextMapPropagator()
 
 	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
 	ctx := propagator.Extract(
-		*http.Request.Context(),
-		propagation.HeaderCarrier(*http.Request.Header),
+		req.Context(),
+		propagation.HeaderCarrier(w.Header()),
 	)
 
 	...
@@ -1247,34 +1243,29 @@ func main() {
 ```
 
 > - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
-> - https://zenn.dev/hkdord/articles/opentelemetry-sdk-deep-dive
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
 
 #### ▼ Inject
 
-受信したトレースコンテキストをCarrierに注入する。
+リクエストの送信側で、トレースコンテキストをCarrierに注入する。
 
 ```go
-package main
+package middleware
 
 import (
 	"net/http"
-	"go.opentelemetry.io/otel"
+
 	"go.opentelemetry.io/otel/propagation"
 )
 
-func main() {
-
+func httpServer(w http.ResponseWriter, req *http.Request) {
 
 	...
 
-	otel.SetTextMapPropagator(propagation.TraceContext{})
-
-	propagator := otel.GetTextMapPropagator()
-
 	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
 	ctx := propagator.Inject(
-		*http.Request.Context(),
-		propagation.HeaderCarrier(*http.Request.Header),
+		req.Context(),
+		propagation.HeaderCarrier(w.Header()),
 	)
 
 	...
@@ -1282,7 +1273,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
 > - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
 
 <br>
