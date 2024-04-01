@@ -587,7 +587,9 @@ func main() {
 
 ## otelgorm
 
-SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。
+### NewPlugin
+
+SQLの実行前のミドルウェア処理として、SQLを属性に持つスパンを自動的に作成する。
 
 ```go
 package db
@@ -1195,6 +1197,93 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 	return mockDB, sqlMock, err
 }
 ```
+
+<br>
+
+## propagator
+
+### HeaderCarrier
+
+トレースコンテキストを保持する。
+
+<br>
+
+### TextMapPropagator
+
+#### ▼ TextMapPropagatorとは
+
+Propagatorを操作する。
+
+#### ▼ Extract
+
+Carrierからトレースコンテキストを抽出する。
+
+```go
+package main
+
+import (
+	"net/http"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main() {
+
+	...
+
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	propagator := otel.GetTextMapPropagator()
+
+	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
+	ctx := propagator.Extract(
+		*http.Request.Context(),
+		propagation.HeaderCarrier(*http.Request.Header),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
+> - https://zenn.dev/hkdord/articles/opentelemetry-sdk-deep-dive
+
+#### ▼ Inject
+
+受信したトレースコンテキストをCarrierに注入する。
+
+```go
+package main
+
+import (
+	"net/http"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main() {
+
+
+	...
+
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	propagator := otel.GetTextMapPropagator()
+
+	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
+	ctx := propagator.Inject(
+		*http.Request.Context(),
+		propagation.HeaderCarrier(*http.Request.Header),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
+> - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
 
 <br>
 

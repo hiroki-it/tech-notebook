@@ -925,6 +925,31 @@ HTTPクライアントまたはWebサーバを提供する。
 
 <br>
 
+### Request
+
+#### ▼ Context
+
+受信したリクエストからコンテキストを取得する。
+
+```go
+package main
+
+import (
+	"http"
+)
+
+func main()  {
+
+	...
+
+    ctx := *http.Request.Context()
+
+	...
+}
+```
+
+<br>
+
 ### Handler系
 
 #### ▼ Handler
