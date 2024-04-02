@@ -134,6 +134,8 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 
 ### IE記法
 
+#### ▼ IE記法とは
+
 ![er-diagram_ie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/er-diagram_ie.png)
 
 #### ▼ エンティティ、属性

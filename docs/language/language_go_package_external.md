@@ -1206,6 +1206,8 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 トレースコンテキストを保持する。
 
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
+
 <br>
 
 ### TextMapPropagator
@@ -1234,6 +1236,7 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
 	ctx := propagator.Extract(
 		req.Context(),
+		// HTTPヘッダーをHeaderCarrier型に変換する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -1265,6 +1268,7 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
 	ctx := propagator.Inject(
 		req.Context(),
+		// HTTPヘッダーをHeaderCarrier型に変換する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
