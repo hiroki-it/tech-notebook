@@ -1561,7 +1561,7 @@ ArgoCDのApplicationは、`1`個のClusterにしかマニフェストを送信�
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook
+  name: foo-application-set
   namespace: argocd
 spec:
   generators:

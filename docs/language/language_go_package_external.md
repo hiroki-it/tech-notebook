@@ -1235,8 +1235,9 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 
 	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
 	ctx := propagator.Extract(
+		// 抽出したいトレースコンテキストを設定する
 		req.Context(),
-		// HTTPヘッダーをHeaderCarrier型に変換する
+		// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -1247,6 +1248,7 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 
 > - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
 
 #### ▼ Inject
 
@@ -1267,8 +1269,9 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 
 	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
 	ctx := propagator.Inject(
+		// 注入したいトレースコンテキストを設定する
 		req.Context(),
-		// HTTPヘッダーをHeaderCarrier型に変換する
+		// 注入対象のCarrierを設定する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -1279,6 +1282,7 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
 > - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
 
 <br>
 
