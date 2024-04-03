@@ -43,29 +43,6 @@ description: Gin＠フレームワークの知見を記録しています。
 
 <br>
 
-#### ▼ Request
-
-受信したリクエストを情報を持つ。
-
-```go
-package server
-
-import (
-	"log"
-
-	"github.com/gin-gonic/gin"
-)
-
-func httpServer(ctx *gin.Context) {
-
-	val := ctx.Request.Header.Get("<キー名>")
-
-	log.Print(val)
-}
-```
-
-<br>
-
 ### Get
 
 #### ▼ 処理
@@ -160,6 +137,35 @@ func httpServer(ctx *gin.Context) {
 値が存在しない場合は、ランタイムエラーとなる。
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
+
+<br>
+
+### Request
+
+#### ▼ Requestとは
+
+受信したリクエストを情報を持つ。
+
+#### ▼ Header
+
+受信したリクエストのHTTPヘッダーを持つ。
+
+```go
+package server
+
+import (
+	"log"
+
+	"github.com/gin-gonic/gin"
+)
+
+func httpServer(ctx *gin.Context) {
+
+	val := ctx.Request.Header.Get("<キー名>")
+
+	log.Print(val)
+}
+```
 
 <br>
 
