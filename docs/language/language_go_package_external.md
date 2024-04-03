@@ -1268,7 +1268,7 @@ func httpServer(w http.ResponseWriter, req *http.Request) {
 	...
 
 	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
-	ctx := propagator.Inject(
+	propagator.Inject(
 		// 注入したいトレースコンテキストを設定する
 		req.Context(),
 		// 注入対象のCarrierを設定する
