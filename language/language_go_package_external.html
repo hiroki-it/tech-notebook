@@ -25120,8 +25120,9 @@
 
 <span class="w">    </span><span class="c1">// Carrier内のトレースコンテキストを既存のコンテキストに注入する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 抽出したいトレースコンテキストを設定する</span>
 <span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// HTTPヘッダーをHeaderCarrier型に変換する</span>
+<span class="w">        </span><span class="c1">// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -25133,6 +25134,7 @@
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86">https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131</a></li>
+<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
 </ul>
 </blockquote>
 <h4 id="inject">▼ Inject<a class="headerlink" href="#inject" title="Permanent link">&para;</a></h4>
@@ -25151,8 +25153,9 @@
 
 <span class="w">    </span><span class="c1">// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 注入したいトレースコンテキストを設定する</span>
 <span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// HTTPヘッダーをHeaderCarrier型に変換する</span>
+<span class="w">        </span><span class="c1">// 注入対象のCarrierを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -25164,6 +25167,7 @@
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114</a></li>
 <li><a href="https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html">https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html</a></li>
+<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25568,7 +25572,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-03</span>
   </span>
 
     
