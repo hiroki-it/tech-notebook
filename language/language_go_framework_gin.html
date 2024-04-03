@@ -7051,15 +7051,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Request
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -7151,6 +7142,39 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 処理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Requestとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Header
     </span>
   </a>
   
@@ -22221,15 +22245,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Request
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -22321,6 +22336,39 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 処理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Requestとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Header
     </span>
   </a>
   
@@ -22587,24 +22635,6 @@
 <h4 id="_4">▼ 処理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>クエリパラメーターからデータを取得し、構造体に紐付ける。</p>
 <p><br></p>
-<h4 id="request">▼ Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h4>
-<p>受信したリクエストを情報を持つ。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
 <h3 id="get">Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 処理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>同じリクエストにて<code>Set</code>関数でセットされたマップ型データから、インターフェース型で値を取得する。</p>
@@ -22681,6 +22711,27 @@
 <li><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet">https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
+<h4 id="request_1">▼ Requestとは<a class="headerlink" href="#request_1" title="Permanent link">&para;</a></h4>
+<p>受信したリクエストを情報を持つ。</p>
+<h4 id="header">▼ Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h4>
+<p>受信したリクエストのHTTPヘッダーを持つ。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="param">Param<a class="headerlink" href="#param" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 処理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
