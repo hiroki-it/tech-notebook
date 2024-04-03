@@ -159,11 +159,35 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func httpServer(ctx *gin.Context) {
+func getRequestHeader(ctx *gin.Context) string {
 
+	// HTTPヘッダーの特定の値を取得する
 	val := ctx.Request.Header.Get("<キー名>")
 
 	log.Print(val)
+
+	return val
+}
+```
+
+```go
+package server
+
+import (
+	"log"
+
+	"github.com/gin-gonic/gin"
+)
+
+func printRequestHeaderList(ctx *gin.Context) []string {
+
+	// HTTPヘッダーのリストを取得する
+	for k, vals := range c.Request.Header {
+		log.Printf("%s", k)
+		for _, v := range vals {
+			log.Printf("\t%s", v)
+		}
+	}
 }
 ```
 
