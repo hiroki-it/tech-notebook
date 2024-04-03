@@ -73,7 +73,7 @@ type Context interface {
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/definition
 
-#### ▼ タイムアウト時間
+#### ▼ Deadline
 
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
 
@@ -132,6 +132,29 @@ func main() {
 ```
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
+> - https://pkg.go.dev/context#Context
+
+#### ▼ Value
+
+コンテキストにキーバリューを設定する。
+
+```go
+package server
+
+import (
+	"context"
+	"log"
+)
+
+func httpServer(ctx context.Context) {
+
+	val, ok := ctx.Value("<キー名>").(string)
+
+	log.Println(val, ok)
+}
+```
+
+> - https://pkg.go.dev/context#Context
 
 <br>
 
@@ -159,8 +182,11 @@ import (
 )
 
 func fn1(ctx context.Context) {
+
 	log("start fn1")
+
 	defer log("done fn1")
+
 	for i := 1; i <= 4; i++ {
 		select {
         // cancel関数が実行された場合
@@ -174,8 +200,11 @@ func fn1(ctx context.Context) {
 }
 
 func fn2(ctx context.Context) {
+
 	log("start fn2")
+
 	defer log("done fn2")
+
 	for i := 1; i <= 4; i++ {
 		select {
 		// cancel関数が実行された場合

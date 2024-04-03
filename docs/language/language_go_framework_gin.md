@@ -43,6 +43,29 @@ description: Gin＠フレームワークの知見を記録しています。
 
 <br>
 
+#### ▼ Request
+
+受信したリクエストを情報を持つ。
+
+```go
+package server
+
+import (
+	"log"
+
+	"github.com/gin-gonic/gin"
+)
+
+func httpServer(ctx *gin.Context) {
+
+	val := ctx.Request.Header.Get("<キー名>")
+
+	log.Print(val)
+}
+```
+
+<br>
+
 ### Get
 
 #### ▼ 処理
@@ -76,24 +99,54 @@ JSON型データとして、レスポンスを返信する。
 マップ型データを渡す。
 
 ```go
-c.JSON(
-  200,
-  gin.H{id": 1,"name": "hiroki hasegawa"},
+package server
+
+import (
+	"log"
+
+	"github.com/gin-gonic/gin"
 )
+
+func httpServer(ctx *gin.Context) {
+
+	...
+
+	c.JSON(
+		200,
+		gin.H{id": 1,"name": "hiroki hasegawa"},
+		)
+
+	...
+}
 ```
 
 構造体型データを渡す。
 
 ```go
+package server
+
+import (
+	"log"
+
+	"github.com/gin-gonic/gin"
+)
+
 type Foo struct {
 	id int json:"id"
 	name string json:"name"
 }
 
-c.JSON(
-  200,
-  &Foo{id: 1, name: "hiroki hasegawa"},
-)
+func httpServer(ctx *gin.Context) {
+
+	...
+
+	ctx.JSON(
+		200,
+		&Foo{id: 1, name: "hiroki hasegawa"},
+    )
+
+	...
+}
 ```
 
 <br>
