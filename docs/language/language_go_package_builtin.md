@@ -134,9 +134,31 @@ func main() {
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
 > - https://pkg.go.dev/context#Context
 
+#### ▼ WithValue
+
+コンテキストに値を設定する。
+
+```go
+package server
+
+import (
+	"context"
+	"log"
+)
+
+func httpServer(ctx context.Context) {
+
+	ctx = ctx.WithValue(ctx, "<キー名>", "<値>")
+
+	...
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+
 #### ▼ Value
 
-コンテキストにキーバリューを設定する。
+コンテキストから値を取得する。
 
 ```go
 package server
@@ -154,7 +176,7 @@ func httpServer(ctx context.Context) {
 }
 ```
 
-> - https://pkg.go.dev/context#Context
+> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
 
 <br>
 
