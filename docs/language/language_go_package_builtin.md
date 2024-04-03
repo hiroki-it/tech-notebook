@@ -138,6 +138,8 @@ func main() {
 
 コンテキストに値を設定する。
 
+どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+
 ```go
 package server
 
@@ -155,10 +157,13 @@ func httpServer(ctx context.Context) {
 ```
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
 
 #### ▼ Value
 
 コンテキストから値を取得する。
+
+どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
 
 ```go
 package server
@@ -177,6 +182,7 @@ func httpServer(ctx context.Context) {
 ```
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
 
 <br>
 
@@ -308,9 +314,11 @@ func main() {
 
 #### ▼ リクエストスコープ
 
-セッションID、認証トークン、などを伝達できる。
+セッションID、認証トークン、トレースコンテキスト、などを伝達できる。
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/usage#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97%E3%81%AA%E5%80%A4%E3%81%AE%E5%85%B1%E6%9C%89(session%2C-auth)
+実際はどんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
 
 <br>
 
