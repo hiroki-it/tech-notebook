@@ -150,6 +150,8 @@ func httpServer(ctx *gin.Context) {
 
 受信したリクエストのHTTPヘッダーを持つ。
 
+**＊実装例＊**
+
 ```go
 package server
 
@@ -169,6 +171,10 @@ func getRequestHeader(ctx *gin.Context) string {
 	return val
 }
 ```
+
+> - https://yuji-ueda.hatenadiary.jp/entry/2019/10/13/104227
+
+**＊実装例＊**
 
 ```go
 package server
@@ -190,6 +196,8 @@ func printRequestHeaderList(ctx *gin.Context) []string {
 	}
 }
 ```
+
+> - https://gist.github.com/178inaba/a428496ebdc31edd16c84e78103d45ac
 
 <br>
 
