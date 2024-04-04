@@ -937,7 +937,7 @@ func main() {
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
 		"foo": "foo",
-		"bar": "bar"
+		"bar": "bar",
 	})
 
 	// メタデータをコンテキストに設定する
@@ -987,9 +987,95 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 #### ▼ サーバー側
 
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	// メタデータを作成する
+	headMd := metadata.New(map[string]string{
+		"foo": "foo",
+		"bar": "bar",
+	})
+
+	// メタデータをコンテキストに設定する
+	// すぐにメタデータを送信する
+	if err := grpc.SetHeader(ctx, headerMD); err != nil {
+		return nil, err
+	}
+
+	// メタデータをコンテキストに設定する
+	// あとでまとめて送信する
+	if err := grpc.SetTrailer(ctx, trailerMD); err != nil {
+		return nil, err
+	}
+
+	...
+
+}
+```
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	// メタデータを作成する
+	trailerMD := metadata.New(map[string]string{
+		"foo": "foo",
+		"bar": "bar",
+	})
+
+	// メタデータをコンテキストに設定する
+	stream.SetTrailer(trailerMD)
+
+	...
+
+}
+```
+
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8B%E3%82%89%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B
 
 #### ▼ クライアント側
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func main() {
+
+	var header, trailer metadata.MD
+
+	// コンテキストからメタデータを取得する
+	res, err := client.Hello(
+		ctx,
+		req,
+		grpc.Header(&header),
+		grpc.Trailer(&trailer)
+	)
+
+	if err != nil {
+		log.Print("取得に失敗しました")
+		return
+	}
+
+	log.Print(md)
+
+	...
+
+}
+```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B
 
