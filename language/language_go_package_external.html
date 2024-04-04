@@ -7860,6 +7860,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gettextmappropagator" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetTextMapPropagator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GetTextMapPropagator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettextmappropagator_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GetTextMapPropagatorとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Extract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inject" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Inject
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8036,24 +8078,6 @@
   <a href="#textmappropagator_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ TextMapPropagatorとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Extract
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inject" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Inject
     </span>
   </a>
   
@@ -23681,6 +23705,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gettextmappropagator" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetTextMapPropagator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GetTextMapPropagator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gettextmappropagator_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GetTextMapPropagatorとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Extract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inject" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Inject
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23857,24 +23923,6 @@
   <a href="#textmappropagator_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ TextMapPropagatorとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#extract" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Extract
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inject" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Inject
     </span>
   </a>
   
@@ -24512,7 +24560,7 @@
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -24537,7 +24585,7 @@
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">())</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -24634,13 +24682,35 @@
 <span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>内部的には、リクエストの送信直前のミドルウェア処理として、注入処理を実行している。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">inject</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">propagators</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">metadataSupplier</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">metadata</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">md</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74</a></li>
+</ul>
+</blockquote>
 <h4 id="newclienthandler">▼ NewClientHandler<a class="headerlink" href="#newclienthandler" title="Permanent link">&para;</a></h4>
 <p>執筆時点 (2024/03/31) でClientInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -24675,6 +24745,26 @@
 <h4 id="serverinterceptor">▼ ServerInterceptor系メソッド<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
 <p>また、Propagatorを使用してトレースコンテキストをスパンから抽出する。</p>
+<p>内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// コンテキストからメタデータを取得する</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">propagators</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">metadataSupplier</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">metadata</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">md</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98</a></li>
+</ul>
+</blockquote>
 <h4 id="newserverhandler">▼ NewServerHandler<a class="headerlink" href="#newserverhandler" title="Permanent link">&para;</a></h4>
 <p>執筆時点 (2024/03/31) でServerInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -24971,6 +25061,75 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
+<h3 id="gettextmappropagator">GetTextMapPropagator<a class="headerlink" href="#gettextmappropagator" title="Permanent link">&para;</a></h3>
+<h4 id="gettextmappropagator_1">▼ GetTextMapPropagatorとは<a class="headerlink" href="#gettextmappropagator_1" title="Permanent link">&para;</a></h4>
+<p>設定したPropagatorを取得する。</p>
+<h4 id="extract">▼ Extract<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h4>
+<p>リクエストの受信側で、Carrierからトレースコンテキストを抽出する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// Carrier内のトレースコンテキストを既存のコンテキストに注入する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 抽出したいトレースコンテキストを設定する</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86">https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131</a></li>
+<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
+</ul>
+</blockquote>
+<h4 id="inject">▼ Inject<a class="headerlink" href="#inject" title="Permanent link">&para;</a></h4>
+<p>リクエストの送信側で、トレースコンテキストをCarrierに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Inject</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 注入したいトレースコンテキストを設定する</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">// 注入対象のCarrierを設定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114</a></li>
+<li><a href="https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html">https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html</a></li>
+<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="otelpropagation">otel/propagation<a class="headerlink" href="#otelpropagation" title="Permanent link">&para;</a></h2>
 <h3 id="otelpropagation_1">otel/propagationとは<a class="headerlink" href="#otelpropagation_1" title="Permanent link">&para;</a></h3>
@@ -25103,73 +25262,7 @@
 <p><br></p>
 <h3 id="textmappropagator_1">TextMapPropagator<a class="headerlink" href="#textmappropagator_1" title="Permanent link">&para;</a></h3>
 <h4 id="textmappropagator_2">▼ TextMapPropagatorとは<a class="headerlink" href="#textmappropagator_2" title="Permanent link">&para;</a></h4>
-<p>Propagatorを操作する。</p>
-<h4 id="extract">▼ Extract<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h4>
-<p>リクエストの受信側で、Carrierからトレースコンテキストを抽出する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="c1">// Carrier内のトレースコンテキストを既存のコンテキストに注入する</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 抽出したいトレースコンテキストを設定する</span>
-<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する</span>
-<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
-<span class="w">    </span><span class="p">)</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86">https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86</a></li>
-<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131</a></li>
-<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
-</ul>
-</blockquote>
-<h4 id="inject">▼ Inject<a class="headerlink" href="#inject" title="Permanent link">&para;</a></h4>
-<p>リクエストの送信側で、トレースコンテキストをCarrierに注入する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="c1">// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する</span>
-<span class="w">    </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 注入したいトレースコンテキストを設定する</span>
-<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// 注入対象のCarrierを設定する</span>
-<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
-<span class="w">    </span><span class="p">)</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114</a></li>
-<li><a href="https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html">https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html</a></li>
-<li><a href="https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/">https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/</a></li>
-</ul>
-</blockquote>
+<p>Propagatorを複数持つ。</p>
 <p><br></p>
 <h2 id="propagatorautoprop">propagator/autoprop<a class="headerlink" href="#propagatorautoprop" title="Permanent link">&para;</a></h2>
 <h3 id="propagatorautoprop_1">propagator/autopropとは<a class="headerlink" href="#propagatorautoprop_1" title="Permanent link">&para;</a></h3>
