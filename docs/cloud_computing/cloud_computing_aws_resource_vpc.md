@@ -169,13 +169,14 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 #### ▼ Interface型
 
-プライベートリンクともいう。
+サービス名としては、『プライベートリンク』ともいう。
 
-プライベートIPアドレスを持つENIとして動作し、AWSリソースからリクエストを受信する。
+実体はプライベートIPアドレスを持つENIであり、ENIがAWSリソースからリクエストを受信する。
 
 もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、VPCの`enableDnsHostnames`オプションと`enableDnsSupport`オプションを有効化する必要がある。
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
+> - https://zenn.dev/momota/articles/b571b763575120
 
 **＊リソース例＊**
 
@@ -185,7 +186,7 @@ S3、DynamoDB以外の全てのリソース
 
 ルートテーブルにおける定義に従う。
 
-VPCエンドポイントとして動作し、AWSリソースからリクエストを受信する。
+実体はVPCエンドポイントであり、VPCエンドポイントがAWSリソースからリクエストを受信する。
 
 **＊リソース例＊**
 

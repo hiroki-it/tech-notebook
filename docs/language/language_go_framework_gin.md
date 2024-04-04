@@ -185,7 +185,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func printRequestHeaderList(ctx *gin.Context) []string {
+func printRequestHeaderList(ctx *gin.Context) {
 
 	// HTTPヘッダーのリストを取得する
 	for k, vals := range c.Request.Header {

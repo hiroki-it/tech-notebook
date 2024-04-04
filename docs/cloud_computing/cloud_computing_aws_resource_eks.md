@@ -27,7 +27,7 @@ description: EKS＠AWSリソースの知見を記録しています。
 
 #### ▼ コントロールプレーンの仕組み
 
-EKSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
+EKSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、接続をAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
 
 ![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png)
 
@@ -280,7 +280,7 @@ data:
 
 プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。
 
-プリンシパルIAMロールに紐づくPodがAWS EKSにアクセスする時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。
+プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。
 
 プリンシパルIAMロールとアクセスエントリーを介して、`kubectl`クライアントの認可スコープを制御する。
 
