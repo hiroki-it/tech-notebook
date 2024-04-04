@@ -91,6 +91,20 @@ package foo;
 
 <br>
 
+### service
+
+#### ▼ serviceとは
+
+メソッド (`rpc`) とそのグループ (`service`) を設定する。
+
+```protobuf
+service GreetingService {
+	rpc Hello (HelloRequest) returns (HelloResponse);
+}
+```
+
+<br>
+
 ### syntax
 
 Protocol Bufferコンパイラーのバージョンを設定する。

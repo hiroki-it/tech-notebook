@@ -728,15 +728,16 @@ EKS Clusterを作成すると、ENIも作成する。
 
 これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
 
-データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、Interface型VPCエンドポイントまたはNAT Gatewayが必要になる。
+データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型VPCエンドポイントまたはNAT Gatewayが必要になる。
 
-| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
-| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
-| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
-| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
-| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+| VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                            |
+| ------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。 |
+| CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                           |
+| ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                         |
+| S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                |
+| Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                              |
+| Secrets Manager           | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                 |
 
 > - https://dev.classmethod.jp/articles/eks_basic/
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
@@ -786,15 +787,16 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのリ
 
 ![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
 
-VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
-| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
-| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。              |
-| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
-| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
-| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+| VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                            |
+| ------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。 |
+| CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                           |
+| ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                         |
+| S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                |
+| Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                              |
+| Secrets Manager           | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                 |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 

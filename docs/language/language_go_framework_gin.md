@@ -41,7 +41,9 @@ type Context struct {
 
 #### ▼ 処理
 
-リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
+リクエストからデータを取得し、構造体に紐付ける。
+
+Content-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
@@ -51,7 +53,16 @@ type Context struct {
 
 #### ▼ 処理
 
-`Content-Type`ヘッダーのMIMEタイプが`application/json`であることが前提である。リクエストからJSON型データを取得し、構造体に紐付ける。
+`Content-Type`ヘッダーのMIMEタイプが`application/json`であることが前提である。
+
+リクエストからJSON型データを取得し、構造体に紐付ける。
+
+```go
+type User struct {
+    Id   int    `json:"id"   binding:"required"`
+    Name string `json:"name" binding:"required"`
+}
+```
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
@@ -112,8 +123,8 @@ func fooHandler(ctx *gin.Context) {
 
 	c.JSON(
 		200,
-		gin.H{id": 1,"name": "hiroki hasegawa"},
-		)
+		gin.H{id: 1,"name": "hiroki hasegawa"},
+	)
 
 	...
 }

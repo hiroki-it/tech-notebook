@@ -180,8 +180,10 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 #### ▼ W3C Trace Context
 
+W3C Trace Context仕様のトレースコンテキストは以下の通りである。
+
 ```yaml
-GET /my-service HTTP/1.1
+GET /foo-service HTTP/1.1
 ---
 Host: example.com
 # バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ
@@ -194,14 +196,17 @@ tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
 
 #### ▼ B3 (Zipkin)
 
+B3仕様のトレースコンテキストは以下の通りである。
+
 ```yaml
-GET /my-service HTTP/1.1
+GET /foo-service HTTP/1.1
 ---
 Host: example.com
-X-B3-TraceId: f102024f34f30692b676c13f47cbcf03
-X-B3-SpanId: e2695f90dfd76b09
-X-B3-Sampled: 1
+# トレースID、スパンID、サンプリングステート、親スパンID、をエンコードして運
+b3: 80f198ee56343ba864fe8b2a57d3eff7-e457b5a2e4d86bd1-1-05e3ac9a4f6e3b90
 ```
+
+> - https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header
 
 <br>
 
