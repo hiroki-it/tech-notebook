@@ -762,7 +762,7 @@ func main() {
 
 	// gRPCサーバーとのコネクションを作成する
 	conn, err := grpc.DialContext(
-        ctx
+        ctx,
         ":7777",
         grpc.WithInsecure(),
     )
@@ -917,7 +917,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 ## 07. メタデータ
 
-### クライアントからサーバーに送信する場合
+### クライアントからサーバーに単項RPCを送信する場合
 
 #### ▼ クライアント側
 
@@ -983,7 +983,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 <br>
 
-### サーバーからクライアントに送信する場合
+### サーバーからクライアントに単項RPCを送信する場合
 
 #### ▼ サーバー側
 
@@ -1003,39 +1003,14 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	})
 
 	// メタデータをヘッダーに設定する
-	// すぐにメタデータを送信する
 	if err := grpc.SetHeader(ctx, headerMD); err != nil {
 		return nil, err
 	}
 
 	// メタデータをトレーラーに設定する
-	// あとでまとめて送信する
 	if err := grpc.SetTrailer(ctx, trailerMD); err != nil {
 		return nil, err
 	}
-
-	...
-
-}
-```
-
-```go
-package main
-
-import (
-	"google.golang.org/grpc/metadata"
-)
-
-func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
-
-	// メタデータを作成する
-	trailerMD := metadata.New(map[string]string{
-		"foo": "foo",
-		"bar": "bar",
-	})
-
-	// メタデータをトレーラーに設定する
-	stream.SetTrailer(trailerMD)
 
 	...
 

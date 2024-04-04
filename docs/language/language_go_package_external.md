@@ -521,7 +521,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
-		grpc.WithBlock()
+		grpc.WithBlock(),
 	)
 
 	...
@@ -550,7 +550,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
 		":7777",
-		grpc.WithTransportCredentials(insecure.NewCredentials())
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 
 	...
@@ -666,13 +666,35 @@ func main() {
 		":7777",
 		// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
 		grpc.WithUnaryInterceptor(
-			otelgrpc.UnaryClientInterceptor()
+			otelgrpc.UnaryClientInterceptor(),
 		),
 	)
 
 	...
 }
 ```
+
+内部的には、リクエストの送信直前のミドルウェア処理として、注入処理を実行している。
+
+```go
+func inject(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
+
+    // メタデータをコンテキストに設定する
+    md, ok := metadata.FromOutgoingContext(ctx)
+
+	if !ok {
+		md = metadata.MD{}
+	}
+
+	propagators.Inject(ctx, &metadataSupplier{
+		metadata: &md,
+	})
+
+	return metadata.NewOutgoingContext(ctx, md)
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74
 
 #### ▼ NewClientHandler
 
@@ -716,6 +738,26 @@ func main() {
 リクエストを単位としてスパンを自動的に開始/終了できる。
 
 また、Propagatorを使用してトレースコンテキストをスパンから抽出する。
+
+内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。
+
+```go
+func extract(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
+
+	// コンテキストからメタデータを取得する
+	md, ok := metadata.FromIncomingContext(ctx)
+
+	if !ok {
+		md = metadata.MD{}
+	}
+
+	return propagators.Extract(ctx, &metadataSupplier{
+		metadata: &md,
+	})
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98
 
 #### ▼ NewServerHandler
 
@@ -1055,6 +1097,80 @@ func foo()  {
 }
 ```
 
+### GetTextMapPropagator
+
+#### ▼ GetTextMapPropagatorとは
+
+設定したPropagatorを取得する。
+
+#### ▼ Extract
+
+リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
+
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, req *http.Request) {
+
+	...
+
+	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
+	ctx := otel.GetTextMapPropagator().Extract(
+		// 抽出したいトレースコンテキストを設定する
+		req.Context(),
+		// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+
+#### ▼ Inject
+
+リクエストの送信側で、トレースコンテキストをCarrierに注入する。
+
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, req *http.Request) {
+
+	...
+
+	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
+	otel.GetTextMapPropagator().Inject(
+		// 注入したいトレースコンテキストを設定する
+		req.Context(),
+		// 注入対象のCarrierを設定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
+> - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+
 <br>
 
 ## otel/propagation
@@ -1214,75 +1330,7 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 #### ▼ TextMapPropagatorとは
 
-Propagatorを操作する。
-
-#### ▼ Extract
-
-リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
-
-```go
-package middleware
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(w http.ResponseWriter, req *http.Request) {
-
-	...
-
-	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
-	ctx := propagator.Extract(
-		// 抽出したいトレースコンテキストを設定する
-		req.Context(),
-		// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する
-		propagation.HeaderCarrier(w.Header()),
-	)
-
-	...
-
-}
-```
-
-> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
-
-#### ▼ Inject
-
-リクエストの送信側で、トレースコンテキストをCarrierに注入する。
-
-```go
-package middleware
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(w http.ResponseWriter, req *http.Request) {
-
-	...
-
-	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
-	propagator.Inject(
-		// 注入したいトレースコンテキストを設定する
-		req.Context(),
-		// 注入対象のCarrierを設定する
-		propagation.HeaderCarrier(w.Header()),
-	)
-
-	...
-
-}
-```
-
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
-> - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+Propagatorを複数持つ。
 
 <br>
 
