@@ -24972,7 +24972,7 @@
 <h4 id="vpc">▼ VPC外のコントロールプレーンへのリクエスト<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h4>
 <p>EKS Clusterを作成すると、ENIも作成する。</p>
 <p>これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。</p>
-<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、Interface型VPCエンドポイントまたはNAT Gatewayが必要になる。</p>
+<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型VPCエンドポイントまたはNAT Gatewayが必要になる。</p>
 <table>
 <thead>
 <tr>
@@ -24983,6 +24983,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>EKSコントロールプレーン</td>
+<td>(たぶん) Interface</td>
+<td>マネージド</td>
+<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。</td>
+</tr>
 <tr>
 <td>CloudWatchログ</td>
 <td>Interface</td>
@@ -25054,7 +25060,7 @@
 <li>ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
-<p>VPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
+<p>VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -25065,6 +25071,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>EKSコントロールプレーン</td>
+<td>(たぶん) Interface</td>
+<td>マネージド</td>
+<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。</td>
+</tr>
 <tr>
 <td>CloudWatchログ</td>
 <td>Interface</td>

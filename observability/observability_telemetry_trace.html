@@ -22560,7 +22560,8 @@
 </ul>
 </blockquote>
 <h4 id="w3c-trace-context">▼ W3C Trace Context<a class="headerlink" href="#w3c-trace-context" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<p>W3C Trace Context仕様のトレースコンテキストは以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
 <span class="c1"># バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ</span>
@@ -22574,13 +22575,18 @@
 </ul>
 </blockquote>
 <h4 id="b3-zipkin">▼ B3 (Zipkin)<a class="headerlink" href="#b3-zipkin" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<p>B3仕様のトレースコンテキストは以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
-<span class="nt">X-B3-TraceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f102024f34f30692b676c13f47cbcf03</span>
-<span class="nt">X-B3-SpanId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e2695f90dfd76b09</span>
-<span class="nt">X-B3-Sampled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="c1"># トレースID、スパンID、サンプリングステート、親スパンID、をエンコードして運</span>
+<span class="nt">b3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80f198ee56343ba864fe8b2a57d3eff7-e457b5a2e4d86bd1-1-05e3ac9a4f6e3b90</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header">https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="carrier">ツールごとのCarrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
 <h4 id="carrier_1">▼ Carrierとは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
@@ -22785,7 +22791,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-04</span>
   </span>
 
     
