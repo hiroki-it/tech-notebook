@@ -15,6 +15,28 @@ description: Gin＠フレームワークの知見を記録しています。
 
 ## Context
 
+### Contextとは
+
+```go
+type Context struct {
+	// Ginの使用するリクエストスコープの値を設定する
+	Request *http.Request
+
+	Writer  ResponseWriter
+
+	Params Params
+
+	// ユーザー定義のリクエストスコープの値を設定する
+	Keys map[string]any
+
+	Errors errorMsgs
+
+	Accepted []string
+}
+```
+
+> - https://pkg.go.dev/github.com/gin-gonic/gin#Context
+
 ### Bind
 
 #### ▼ 処理
@@ -84,7 +106,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func httpServer(ctx *gin.Context) {
+func fooHandler(ctx *gin.Context) {
 
 	...
 
@@ -113,7 +135,7 @@ type Foo struct {
 	name string json:"name"
 }
 
-func httpServer(ctx *gin.Context) {
+func fooHandler(ctx *gin.Context) {
 
 	...
 
@@ -164,7 +186,7 @@ import (
 func getRequestHeader(ctx *gin.Context) string {
 
 	// HTTPヘッダーの特定の値を取得する
-	val := ctx.Request.Header.Get("<キー名>")
+	val := ctx.Request.Header.Get("<ヘッダーのキー名>")
 
 	log.Print(val)
 

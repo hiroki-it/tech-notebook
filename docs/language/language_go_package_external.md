@@ -1229,7 +1229,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 )
 
-func httpServer(w http.ResponseWriter, req *http.Request) {
+func fooHandler(w http.ResponseWriter, req *http.Request) {
 
 	...
 
@@ -1263,7 +1263,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 )
 
-func httpServer(w http.ResponseWriter, req *http.Request) {
+func fooHandler(w http.ResponseWriter, req *http.Request) {
 
 	...
 

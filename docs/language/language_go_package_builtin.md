@@ -148,7 +148,9 @@ import (
 	"log"
 )
 
-func httpServer(ctx context.Context) {
+func fooHandler(ctx context.Context) {
+
+    ...
 
 	ctx = ctx.WithValue(ctx, "<キー名>", "<値>")
 
@@ -173,7 +175,7 @@ import (
 	"log"
 )
 
-func httpServer(ctx context.Context) {
+func fooHandler(ctx context.Context) {
 
 	val, ok := ctx.Value("<キー名>").(string)
 
@@ -318,7 +320,29 @@ func main() {
 
 実際はどんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
 
+そのため、多くのフレームワークではコンテキストをリクエストスコープの伝達に使用している。
+
+```go
+// Ginのコンテキスト
+type Context struct {
+	// Ginの使用するリクエストスコープの値を設定する
+	Request *http.Request
+
+	Writer  ResponseWriter
+
+	Params Params
+
+	// ユーザー定義のリクエストスコープの値を設定する
+	Keys map[string]any
+
+	Errors errorMsgs
+
+	Accepted []string
+}
+```
+
 > - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+> - https://pkg.go.dev/github.com/gin-gonic/gin#Context
 
 <br>
 
@@ -988,20 +1012,41 @@ HTTPクライアントまたはWebサーバを提供する。
 
 #### ▼ Context
 
-受信したリクエストからコンテキストを取得する。
+受信したリクエストを持つコンテキストを取得する。
 
 ```go
-package main
+package server
 
 import (
 	"http"
 )
 
-func main()  {
+func fooHandler(w http.ResponseWriter, r *http.Request)  {
 
 	...
 
-    ctx := *http.Request.Context()
+    ctx := r.Context()
+
+	...
+}
+```
+
+#### ▼ Header
+
+HTTPヘッダーを操作する。
+
+```go
+package server
+
+import (
+	"http"
+)
+
+func main(w http.ResponseWriter, r *http.Request)  {
+
+	...
+
+    ctx := r.Header.Get("<ヘッダーのキー名>")
 
 	...
 }
@@ -1090,7 +1135,7 @@ func requireAdminCookie(next http.Handler) http.Handler {
 	return http.HandlerFunc(fn)
 }
 
-func myHandler(w http.ResponseWriter, r *http.Request) {
+func fooHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
 	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
@@ -1098,7 +1143,7 @@ func myHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	mux := http.NewServeMux()
 	// Handler処理前にミドルウェア処理を実行する
-	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(handleAdmin)))
+	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		log.Print(err)
 	}
@@ -1146,7 +1191,7 @@ func RecoverHttpMiddleware() func(http.Handler) http.Handler {
 	return http.HandlerFunc(fn)
 }
 
-func myHandler(w http.ResponseWriter, r *http.Request) {
+func fooHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
 	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
@@ -1155,7 +1200,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// Handler処理前にミドルウェア処理を実行する
-	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(myHandler)))
+	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		log.Print(err)
 	}
@@ -1363,7 +1408,7 @@ import (
 	"net/http"
 )
 
-func myHandler(w http.ResponseWriter, r *http.Request) {
+func fooHandler(w http.ResponseWriter, r *http.Request) {
 	// HTMLをレスポンスとして返信する。
 	fmt.Fprintf(w, "<h1>Hello world!</h1>")
 }
@@ -1372,7 +1417,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// ルーティングと関数を設定する。
-	mux.HandleFunc("/", myHandler)
+	mux.HandleFunc("/", fooHandler)
 
 	// サーバを起動する。
 	err := http.ListenAndServe(":8080", mux)
@@ -1408,7 +1453,7 @@ func NewUser(id int, name string) *User {
 	}
 }
 
-func myHandler(w http.ResponseWriter, r *http.Request) {
+func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	user := NewUser(1, "Hiroki")
 
@@ -1427,7 +1472,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// ルーティングと関数を設定する。
-	mux.HandleFunc("/", myHandler)
+	mux.HandleFunc("/", fooHandler)
 
 	// サーバを起動する。
 	err := http.ListenAndServe(":8080", mux)
