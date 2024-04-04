@@ -176,9 +176,11 @@ service Chat {
 
 ## 03. HTTP/`1.1`とgRPCの違い
 
-### ヘッダーの構造
+### リクエストの構造
 
-#### ▼ リクエストヘッダー
+#### ▼ リクエストメタデータ
+
+gRPCでは、HTTP/`1.1`のリクエストヘッダーに相当する情報をメタデータに格納する。
 
 | ヘッダー名             | 説明                           |
 | ---------------------- | ------------------------------ |
@@ -193,10 +195,14 @@ service Chat {
 | ...                    |                                |
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
 
-#### ▼ レスポンスヘッダー
+#### ▼ レスポンスメタデータ
+
+gRPCでは、HTTP/`1.1`のレスポンスヘッダーに相当する情報をメタデータに格納する。
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
 
 <br>
 

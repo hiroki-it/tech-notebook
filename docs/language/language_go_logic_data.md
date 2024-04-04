@@ -1046,7 +1046,7 @@ func main() {
 	v, ok := m[1]
 
 	// エラーハンドリング
-	if ok != true {
+	if !ok {
 		fmt.Println("Value is not found.") // Value is not found.
 	}
 

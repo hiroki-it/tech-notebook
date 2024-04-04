@@ -914,3 +914,83 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 <br>
+
+## 07. メタデータ
+
+### クライアントからサーバーに送信する場合
+
+#### ▼ クライアント側
+
+クライアント側では、メタデータを設定する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func main() {
+
+	ctx := context.Background()
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"foo": "foo",
+		"bar": "bar"
+	})
+
+	// メタデータをコンテキストに設定する
+	ctx = metadata.NewOutgoingContext(ctx, md)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88--%3E-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%B8%E3%81%AE%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E5%8F%97%E4%BF%A1
+
+<br>
+
+#### ▼ サーバー側
+
+サーバー側では、メタデータを取得する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	// コンテキストからメタデータを取得する
+	md, ok := metadata.FromIncomingContext(ctx)
+
+	if !ok {
+		log.Print("取得に失敗しました")
+	}
+
+	log.Print(md)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B
+
+<br>
+
+### サーバーからクライアントに送信する場合
+
+#### ▼ サーバー側
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8B%E3%82%89%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B
+
+#### ▼ クライアント側
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B
+
+<br>
