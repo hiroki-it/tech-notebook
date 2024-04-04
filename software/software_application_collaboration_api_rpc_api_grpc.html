@@ -22624,11 +22624,11 @@
 <h2 id="03-http11grpc">03. HTTP/<code>1.1</code>とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_3">リクエストの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リクエストメタデータ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>gRPCでは、HTTP/<code>1.1</code>のリクエストヘッダーに相当する情報をメタデータに格納する。</p>
+<p>gRPCのリクエストでは、メタデータをヘッダーに格納する。</p>
 <table>
 <thead>
 <tr>
-<th>ヘッダー名</th>
+<th>メタデータのキー名</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -22675,14 +22675,16 @@
 <ul>
 <li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests</a></li>
 <li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata</a></li>
+<li><a href="https://soichisumi.net/2019/04/grpc-custom-error-response/">https://soichisumi.net/2019/04/grpc-custom-error-response/</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ レスポンスメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>gRPCでは、HTTP/<code>1.1</code>のレスポンスヘッダーに相当する情報をメタデータに格納する。</p>
+<p>gRPCのレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses</a></li>
 <li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata</a></li>
+<li><a href="https://soichisumi.net/2019/04/grpc-custom-error-response/">https://soichisumi.net/2019/04/grpc-custom-error-response/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
