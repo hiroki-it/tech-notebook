@@ -1002,13 +1002,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		"bar": "bar",
 	})
 
-	// メタデータをコンテキストに設定する
+	// メタデータをヘッダーに設定する
 	// すぐにメタデータを送信する
 	if err := grpc.SetHeader(ctx, headerMD); err != nil {
 		return nil, err
 	}
 
-	// メタデータをコンテキストに設定する
+	// メタデータをトレーラーに設定する
 	// あとでまとめて送信する
 	if err := grpc.SetTrailer(ctx, trailerMD); err != nil {
 		return nil, err
@@ -1034,7 +1034,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		"bar": "bar",
 	})
 
-	// メタデータをコンテキストに設定する
+	// メタデータをトレーラーに設定する
 	stream.SetTrailer(trailerMD)
 
 	...
@@ -1057,7 +1057,7 @@ func main() {
 
 	var header, trailer metadata.MD
 
-	// コンテキストからメタデータを取得する
+	// ヘッダーやトレーラーからメタデータを取得する
 	res, err := client.Hello(
 		ctx,
 		req,

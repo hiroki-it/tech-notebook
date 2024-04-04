@@ -180,9 +180,9 @@ service Chat {
 
 #### ▼ リクエストメタデータ
 
-gRPCでは、HTTP/`1.1`のリクエストヘッダーに相当する情報をメタデータに格納する。
+gRPCのリクエストでは、メタデータをヘッダーに格納する。
 
-| ヘッダー名             | 説明                           |
+| メタデータのキー名     | 説明                           |
 | ---------------------- | ------------------------------ |
 | `accept-encoding`      |                                |
 | `content-type`         |                                |
@@ -196,13 +196,15 @@ gRPCでは、HTTP/`1.1`のリクエストヘッダーに相当する情報をメ
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
+> - https://soichisumi.net/2019/04/grpc-custom-error-response/
 
 #### ▼ レスポンスメタデータ
 
-gRPCでは、HTTP/`1.1`のレスポンスヘッダーに相当する情報をメタデータに格納する。
+gRPCのレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
+> - https://soichisumi.net/2019/04/grpc-custom-error-response/
 
 <br>
 
