@@ -7447,6 +7447,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Header
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22782,6 +22791,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Header
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23164,7 +23182,9 @@
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;値&gt;&quot;</span><span class="p">)</span>
 
@@ -23187,7 +23207,7 @@
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
 
@@ -23324,9 +23344,28 @@
 <h4 id="_7">▼ リクエストスコープ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>セッションID、認証トークン、トレースコンテキスト、などを伝達できる。</p>
 <p>実際はどんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
+<p>そのため、多くのフレームワークではコンテキストをリクエストスコープの伝達に使用している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Ginのコンテキスト</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Ginの使用するリクエストスコープの値を設定する</span>
+<span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
+
+<span class="w">    </span><span class="nx">Writer</span><span class="w">  </span><span class="nx">ResponseWriter</span>
+
+<span class="w">    </span><span class="nx">Params</span><span class="w"> </span><span class="nx">Params</span>
+
+<span class="w">    </span><span class="c1">// ユーザー定義のリクエストスコープの値を設定する</span>
+<span class="w">    </span><span class="nx">Keys</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
+
+<span class="w">    </span><span class="nx">Errors</span><span class="w"> </span><span class="nx">errorMsgs</span>
+
+<span class="w">    </span><span class="nx">Accepted</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
+<li><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context">https://pkg.go.dev/github.com/gin-gonic/gin#Context</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23909,18 +23948,35 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <p><br></p>
 <h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
 <h4 id="context_2">▼ Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h4>
-<p>受信したリクエストからコンテキストを取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<p>受信したリクエストを持つコンテキストを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;http&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w">  </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="header">▼ Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h4>
+<p>HTTPヘッダーを操作する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;http&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;ヘッダーのキー名&gt;&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
@@ -23994,7 +24050,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// HTMLをレスポンスとして返信する。</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -24002,7 +24058,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
 <span class="w">    </span><span class="c1">// Handler処理前にミドルウェア処理を実行する</span>
-<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAdminCookie</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">handleAdmin</span><span class="p">)))</span>
+<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">requireAdminCookie</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fooHandler</span><span class="p">)))</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -24045,7 +24101,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// HTMLをレスポンスとして返信する。</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -24054,7 +24110,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Handler処理前にミドルウェア処理を実行する</span>
-<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">myHandler</span><span class="p">)))</span>
+<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">fooHandler</span><span class="p">)))</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -24234,7 +24290,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// HTMLをレスポンスとして返信する。</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;h1&gt;Hello world!&lt;/h1&gt;&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -24243,7 +24299,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// ルーティングと関数を設定する。</span>
-<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// サーバを起動する。</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">)</span>
@@ -24276,7 +24332,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">)</span>
 
@@ -24295,7 +24351,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// ルーティングと関数を設定する。</span>
-<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myHandler</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mux</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// サーバを起動する。</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">)</span>
@@ -24462,7 +24518,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-04</span>
   </span>
 
     

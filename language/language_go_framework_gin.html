@@ -6985,6 +6985,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#context_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contextとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bind" class="md-nav__link">
     <span class="md-ellipsis">
       Bind
@@ -22179,6 +22188,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#context_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contextとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bind" class="md-nav__link">
     <span class="md-ellipsis">
       Bind
@@ -22613,6 +22631,28 @@
 </blockquote>
 <p><br></p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<h3 id="context_1">Contextとは<a class="headerlink" href="#context_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Ginの使用するリクエストスコープの値を設定する</span>
+<span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
+
+<span class="w">    </span><span class="nx">Writer</span><span class="w">  </span><span class="nx">ResponseWriter</span>
+
+<span class="w">    </span><span class="nx">Params</span><span class="w"> </span><span class="nx">Params</span>
+
+<span class="w">    </span><span class="c1">// ユーザー定義のリクエストスコープの値を設定する</span>
+<span class="w">    </span><span class="nx">Keys</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
+
+<span class="w">    </span><span class="nx">Errors</span><span class="w"> </span><span class="nx">errorMsgs</span>
+
+<span class="w">    </span><span class="nx">Accepted</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context">https://pkg.go.dev/github.com/gin-gonic/gin#Context</a></li>
+</ul>
+</blockquote>
 <h3 id="bind">Bind<a class="headerlink" href="#bind" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 処理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>リクエストからデータを取得し、構造体に紐付ける。Cotent-TypeヘッダーのMIMEタイプに応じて、バインド関数をコールし分ける。</p>
@@ -22663,7 +22703,7 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -22689,7 +22729,7 @@
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">&quot;name&quot;</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">httpServer</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -22729,7 +22769,7 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">getRequestHeader</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HTTPヘッダーの特定の値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;ヘッダーのキー名&gt;&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
 
