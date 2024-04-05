@@ -145,17 +145,26 @@ package server
 
 import (
 	"context"
-	"log"
 )
 
 func fooHandler(ctx context.Context) {
 
     ...
 
-	ctx = ctx.WithValue(ctx, "<キー名>", "<値>")
+	// コンテキストキーのユーザー定義型を設定する
+	var foo contextKey
+
+	ctx = context.WithValue(ctx, foo, "<値>")
 
 	...
 }
+```
+
+キー名は、プリミティブ型以外を設定しないと、エラーになる。
+
+```bash
+# string型のキー名を設定した場合
+should not use built-in type string as key for value; define your own type to avoid collisions
 ```
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
@@ -177,9 +186,10 @@ import (
 
 func fooHandler(ctx context.Context) {
 
+    // キー名を指定して値を取得する
 	val, ok := ctx.Value("<キー名>").(string)
 
-	log.Println(val, ok)
+	log.Print("val: %v, ok: %v", val, ok)
 }
 ```
 

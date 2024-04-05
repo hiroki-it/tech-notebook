@@ -679,7 +679,6 @@ func main() {
 ```go
 func inject(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
 
-    // メタデータをコンテキストに設定する
     md, ok := metadata.FromOutgoingContext(ctx)
 
 	if !ok {
@@ -690,6 +689,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 		metadata: &md,
 	})
 
+	// メタデータをコンテキストに設定する
 	return metadata.NewOutgoingContext(ctx, md)
 }
 ```

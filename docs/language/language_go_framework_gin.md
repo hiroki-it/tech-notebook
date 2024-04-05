@@ -221,10 +221,10 @@ import (
 func printRequestHeaderList(ctx *gin.Context) {
 
 	// HTTPヘッダーのリストを取得する
-	for k, vals := range c.Request.Header {
-		log.Printf("%s", k)
+	for k, vals := range ctx.Request.Header {
+		log.Printf("%v", k)
 		for _, v := range vals {
-			log.Printf("\t%s", v)
+			log.Printf("%v", v)
 		}
 	}
 }
