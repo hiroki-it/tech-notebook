@@ -921,7 +921,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 #### ▼ FromIncomingContext
 
-受信したリクエストのコンテキストからメタデータを取得する。
+受信したgRPCリクエストのコンテキストからメタデータを取得する。
 
 ```go
 package main
@@ -972,7 +972,7 @@ func NewIncomingContext(ctx context.Context, md MD) context.Context {
 
 #### ▼ FromOutgoingContext
 
-送信するリクエストのコンテキストからメタデータを取得する。
+送信するgRPCリクエストのコンテキストからメタデータを取得する。
 
 ```go
 package main
@@ -1012,9 +1012,7 @@ func ValueFromIncomingContext(ctx context.Context, key string) []string {
 	...
 
 }
-```
 
-```go
 func NewOutgoingContext(ctx context.Context, md MD) context.Context {
 	return context.WithValue(ctx, mdOutgoingKey{}, rawMD{md: md})
 }
@@ -1232,7 +1230,7 @@ func main() {
 		ctx,
 		req,
 		grpc.Header(&header),
-		grpc.Trailer(&trailer)
+		grpc.Trailer(&trailer),
 	)
 
 	if err != nil {

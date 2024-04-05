@@ -977,6 +977,104 @@ Carrierからトレースコンテキストを注入する操作を『注入 (In
 
 <br>
 
+### 注入/抽出
+
+#### ▼ W3 Trace Contextの場合
+
+```go
+func (tc TraceContext) Inject(ctx context.Context, carrier TextMapCarrier) {
+
+	sc := trace.SpanContextFromContext(ctx)
+	if !sc.IsValid() {
+		return
+	}
+
+	if ts := sc.TraceState().String(); ts != "" {
+		carrier.Set(tracestateHeader, ts)
+	}
+
+	flags := sc.TraceFlags() & trace.FlagsSampled
+
+	// 仕様に沿ったトレースコンテキストを作成する
+	var sb strings.Builder
+	sb.Grow(2 + 32 + 16 + 2 + 3)
+	_, _ = sb.WriteString(versionPart)
+	traceID := sc.TraceID()
+	spanID := sc.SpanID()
+	flagByte := [1]byte{byte(flags)}
+	var buf [32]byte
+	for _, src := range [][]byte{traceID[:], spanID[:], flagByte[:]} {
+		_ = sb.WriteByte(delimiter[0])
+		n := hex.Encode(buf[:], src)
+		_, _ = sb.Write(buf[:n])
+	}
+
+	// Carrierにトレースコンテキストを設定する
+	carrier.Set(traceparentHeader, sb.String())
+}
+```
+
+```go
+func (tc TraceContext) Extract(ctx context.Context, carrier TextMapCarrier) context.Context {
+
+    // Carrierからトレースコンテキストを取得する
+    sc := tc.extract(carrier)
+	if !sc.IsValid() {
+		return ctx
+	}
+	return trace.ContextWithRemoteSpanContext(ctx, sc)
+}
+
+func (tc TraceContext) extract(carrier TextMapCarrier) trace.SpanContext {
+	h := carrier.Get(traceparentHeader)
+	if h == "" {
+		return trace.SpanContext{}
+	}
+
+	var ver [1]byte
+	if !extractPart(ver[:], &h, 2) {
+		return trace.SpanContext{}
+	}
+	version := int(ver[0])
+	if version > maxVersion {
+		return trace.SpanContext{}
+	}
+
+	var scc trace.SpanContextConfig
+	if !extractPart(scc.TraceID[:], &h, 32) {
+		return trace.SpanContext{}
+	}
+	if !extractPart(scc.SpanID[:], &h, 16) {
+		return trace.SpanContext{}
+	}
+
+	var opts [1]byte
+	if !extractPart(opts[:], &h, 2) {
+		return trace.SpanContext{}
+	}
+	if version == 0 && (h != "" || opts[0] > 2) {
+		return trace.SpanContext{}
+	}
+
+	scc.TraceFlags = trace.TraceFlags(opts[0]) & trace.FlagsSampled
+	scc.TraceState, _ = trace.ParseTraceState(carrier.Get(tracestateHeader))
+	scc.Remote = true
+
+	sc := trace.NewSpanContext(scc)
+	if !sc.IsValid() {
+		return trace.SpanContext{}
+	}
+
+	return sc
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/propagation/trace_context.go
+
+<br>
+
+## 05-02. トレースコンテキスト仕様
+
 ### トレースコンテキスト仕様の種類
 
 #### ▼ OpenTelemetry

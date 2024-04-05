@@ -1124,7 +1124,7 @@ func fooHandler(w http.ResponseWriter, req *http.Request) {
 	ctx := otel.GetTextMapPropagator().Extract(
 		// 抽出したいトレースコンテキストを設定する
 		req.Context(),
-		// HTTPヘッダーをHeaderCarrier型に変換し、注入箇所を指定する
+		// Carrierとして使用するHTTPヘッダーを設定する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -1158,7 +1158,7 @@ func fooHandler(w http.ResponseWriter, req *http.Request) {
 	otel.GetTextMapPropagator().Inject(
 		// 注入したいトレースコンテキストを設定する
 		req.Context(),
-		// 注入対象のCarrierを設定する
+		// Carrierとして使用するHTTPヘッダーを設定する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -1320,7 +1320,7 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 ### HeaderCarrier
 
-トレースコンテキストを保持する。
+HTTPヘッダーをCarrierとして使用できるようにする。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
 
