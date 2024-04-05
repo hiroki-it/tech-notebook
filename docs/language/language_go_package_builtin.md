@@ -147,18 +147,25 @@ import (
 	"context"
 )
 
+// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
+type contextKey string
+
+const (
+	Foo contextKey = "FOO"
+)
+
 func fooHandler(ctx context.Context) {
 
     ...
 
-	// コンテキストキーのユーザー定義型を設定する
-	var foo contextKey
-
-	ctx = context.WithValue(ctx, foo, "<値>")
+	ctx = context.WithValue(ctx, Foo, "<値>")
 
 	...
 }
 ```
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
 
 キー名は、プリミティブ型以外を設定しないと、エラーになる。
 
@@ -167,14 +174,15 @@ func fooHandler(ctx context.Context) {
 should not use built-in type string as key for value; define your own type to avoid collisions
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+> - https://qiita.com/behiron/items/aec3e1a848f789153d86
 
 #### ▼ Value
 
 コンテキストから値を取得する。
 
 どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+
+`WithValue`関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。
 
 ```go
 package server
@@ -184,10 +192,17 @@ import (
 	"log"
 )
 
+// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
+type contextKey string
+
+const (
+	Foo contextKey = "FOO"
+)
+
 func fooHandler(ctx context.Context) {
 
     // キー名を指定して値を取得する
-	val, ok := ctx.Value("<キー名>").(string)
+	val, ok := ctx.Value(Foo).(string)
 
 	log.Print("val: %v, ok: %v", val, ok)
 }
