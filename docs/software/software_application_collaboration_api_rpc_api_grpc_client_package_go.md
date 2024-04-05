@@ -948,7 +948,9 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext
 
-内部的には`mdIncomingKey`というコンテキストキー名を指定しており、リクエスト受信時以外は機能しないようになっている。
+内部的には`mdIncomingKey`というコンテキストキー名を指定している。
+
+このキー名は、`NewIncomingContext`関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -960,9 +962,13 @@ func ValueFromIncomingContext(ctx context.Context, key string) []string {
 	...
 
 }
+
+func NewIncomingContext(ctx context.Context, md MD) context.Context {
+	return context.WithValue(ctx, mdIncomingKey{}, md)
+}
 ```
 
-> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go#L222
+> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go
 
 #### ▼ FromOutgoingContext
 
@@ -992,7 +998,9 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext
 
-内部的には`mdIncomingKey`というコンテキストキー名を指定しており、リクエスト受信時以外は機能しないようになっている。
+内部的には`mdIncomingKey`というコンテキストキー名を指定している。
+
+このキー名は、`NewOutgoingContext`関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -1006,7 +1014,13 @@ func ValueFromIncomingContext(ctx context.Context, key string) []string {
 }
 ```
 
-> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go#L266
+```go
+func NewOutgoingContext(ctx context.Context, md MD) context.Context {
+	return context.WithValue(ctx, mdOutgoingKey{}, rawMD{md: md})
+}
+```
+
+> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go
 
 #### ▼ Get
 
