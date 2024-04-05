@@ -686,6 +686,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 	}
 
 	propagators.Inject(ctx, &metadataSupplier{
+        // メタデータをCarrierとして使用する
 		metadata: &md,
 	})
 
@@ -752,7 +753,8 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 	}
 
 	return propagators.Extract(ctx, &metadataSupplier{
-		metadata: &md,
+        // メタデータをCarrierとして使用する
+        metadata: &md,
 	})
 }
 ```
