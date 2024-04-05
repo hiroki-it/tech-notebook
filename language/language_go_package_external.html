@@ -25080,7 +25080,7 @@
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="c1">// Carrier内のトレースコンテキストを既存のコンテキストに注入する</span>
+<span class="w">    </span><span class="c1">// Carrierのトレースコンテキストを既存のコンテキストに注入する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 抽出したいトレースコンテキストを設定する</span>
 <span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
@@ -25161,7 +25161,7 @@
 
 <span class="w">    </span><span class="nx">propagator</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。</span>
+<span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagator</span>
