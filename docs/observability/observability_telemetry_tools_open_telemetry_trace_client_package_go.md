@@ -96,7 +96,7 @@ func main() {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -287,7 +287,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -435,7 +435,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
+Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -461,7 +461,7 @@ func httpRequest(ctx context.Context) error {
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
-	// 現在の処理にトレースコンテキストを注入する。
+	// Carrierにトレースコンテキストを注入する。
 	ctx, span = tracer.Start(ctx, "child-service")
 
 	defer span.End()
@@ -606,7 +606,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -667,7 +667,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
-	// 現在の処理にトレースコンテキストを注入する。
+	// Carrierにトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), "parent-service")
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -766,7 +766,7 @@ func checkSession() gin.HandlerFunc {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
+Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -802,7 +802,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
-	// 現在の処理にトレースコンテキストを注入する。
+	// Carrierにトレースコンテキストを注入する。
 	_, span := tracer.Start(c.Request.Context(), "child-service")
 
 	SpanId := span.SpanContext().SpanID().String()
@@ -983,7 +983,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -1069,7 +1069,7 @@ func parent(ctx *gin.Context) {
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
-	// 現在の処理にトレースコンテキストを注入する。
+	// Carrierにトレースコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
@@ -1094,7 +1094,7 @@ func parent(ctx *gin.Context) {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
+Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -1151,7 +1151,7 @@ func child(ctx *gin.Context) {
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
-	// 現在の処理にトレースコンテキストを注入する。
+	// Carrierにトレースコンテキストを注入する。
 	_, span := tracer.Start(
 		ctx.Request.Context(),
 		// サービス名
@@ -1330,7 +1330,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
+Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -1434,7 +1434,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator

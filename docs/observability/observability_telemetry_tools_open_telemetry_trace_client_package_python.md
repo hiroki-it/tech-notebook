@@ -124,7 +124,7 @@ def hello_world():
 
     ...
 
-    # 現在の処理にトレースコンテキストを注入する。
+    # Carrierにトレースコンテキストを注入する。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 
@@ -138,7 +138,7 @@ def hello_world():
 
 #### ▼ トレースコンテキスト注入と子スパン作成
 
-現在の処理にトレースコンテキストを注入し、また子スパンを作成する。
+Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
@@ -157,7 +157,7 @@ def hello_world():
 
     ...
 
-    # 現在の処理にトレースコンテキストを注入する。
+    # Carrierにトレースコンテキストを注入する。
     with tracer.start_as_current_span("do_work"):
         time.sleep(0.1)
 

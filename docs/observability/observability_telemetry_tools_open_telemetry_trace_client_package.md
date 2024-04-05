@@ -48,7 +48,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
         // Composit Propagatorを設定する
         propagator
@@ -129,7 +129,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
         // Composit Propagatorを設定する
         propagator
@@ -572,7 +572,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
         // Composit Propagatorを設定する
         propagator
@@ -656,7 +656,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
         // Composit Propagatorを設定する
         propagator
@@ -794,7 +794,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにトレースコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
         // Composit Propagatorを設定する
         propagator

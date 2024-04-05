@@ -395,7 +395,7 @@ http {
 
 ```nginx
 http {
-    # 受信したリクエストにトレースコンテキストがない場合はInjectし、あればExtractする
+    # 受信したCarrierにトレースコンテキストがない場合はInjectし、あればExtractする
     otel_trace_context propagate;
 }
 ```
