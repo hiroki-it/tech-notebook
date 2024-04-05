@@ -932,6 +932,8 @@ import (
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
+	...
+
 	// コンテキストからメタデータを取得する
 	md, ok := metadata.FromIncomingContext(ctx)
 
@@ -1029,13 +1031,13 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func main() {
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
 	...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"foo": "foo",
+		"FOO": "foo",
 		"BAR": "bar",
 	})
 
@@ -1062,13 +1064,13 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func main() {
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
 	...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"foo": "foo",
+		"FOO": "foo",
 		"BAR": "bar",
 	})
 
@@ -1079,7 +1081,9 @@ func main() {
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#New
 
-#### ▼ Set
+#### ▼ NewIncomingContext
+
+リクエスト受信用のコンテキストにメタデータを設定する
 
 ```go
 package main
@@ -1088,7 +1092,69 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func main() {
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"FOO": "foo",
+		"BAR": "bar",
+	})
+
+	// メタデータをコンテキストに設定する
+	ctx = metadata.NewIncomingContext(ctx, md)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext
+
+#### ▼ NewOutgoingContext
+
+リクエスト送信用のコンテキストにメタデータを設定する
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"FOO": "foo",
+		"BAR": "bar",
+	})
+
+	// メタデータをコンテキストに設定する
+	ctx = metadata.NewOutgoingContext(ctx, md)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext
+
+#### ▼ Set
+
+メタデータにキーを追加する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
 	...
 
@@ -1123,9 +1189,7 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func main() {
-
-	ctx := context.Background()
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1221,7 +1285,7 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func main() {
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
 	var header, trailer metadata.MD
 
