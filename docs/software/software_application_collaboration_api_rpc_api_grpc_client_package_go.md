@@ -917,6 +917,98 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 ## 07. メタデータ
 
+### メタデータの操作
+
+#### ▼ Get
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func main() {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"foo": "foo",
+		"BAR": "bar",
+	})
+
+	// メタデータから値を取得する
+	val = md.Get("foo")
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Get
+
+#### ▼ New
+
+メタデータを作成する。
+
+『`grpc-`』から始まるキー名はgRPCで予約されている。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func main() {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"foo": "foo",
+		"BAR": "bar",
+	})
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#New
+
+#### ▼ Set
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func main() {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"FOO": "foo",
+		"BAR": "bar",
+	})
+
+	// メタデータにキーを設定する
+	val = md.Set("BAZ", "baz")
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Set
+
+<br>
+
 ### クライアントからサーバーに単項RPCを送信する場合
 
 #### ▼ クライアント側
@@ -936,8 +1028,8 @@ func main() {
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"foo": "foo",
-		"bar": "bar",
+		"FOO": "foo",
+		"BAR": "bar",
 	})
 
 	// メタデータをコンテキストに設定する
@@ -998,8 +1090,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	headMd := metadata.New(map[string]string{
-		"foo": "foo",
-		"bar": "bar",
+		"FOO": "foo",
+		"BAR": "bar",
 	})
 
 	// メタデータをヘッダーに設定する

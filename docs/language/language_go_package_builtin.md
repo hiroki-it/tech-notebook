@@ -184,6 +184,8 @@ should not use built-in type string as key for value; define your own type to av
 
 `WithValue`関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。
 
+もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。
+
 ```go
 package server
 
