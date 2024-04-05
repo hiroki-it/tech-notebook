@@ -2522,6 +2522,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#newincomingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewIncomingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newoutgoingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewOutgoingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#set" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Set
@@ -23179,6 +23197,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#newincomingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewIncomingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newoutgoingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewOutgoingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#set" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Set
@@ -24082,6 +24118,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="o">...</span>
+
 <span class="w">    </span><span class="c1">// コンテキストからメタデータを取得する</span>
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
@@ -24176,13 +24214,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
@@ -24207,13 +24245,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
@@ -24226,14 +24264,75 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#New">https://pkg.go.dev/google.golang.org/grpc/metadata#New</a></li>
 </ul>
 </blockquote>
-<h4 id="set">▼ Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
+<h4 id="newincomingcontext">▼ NewIncomingContext<a class="headerlink" href="#newincomingcontext" title="Permanent link">&para;</a></h4>
+<p>リクエスト受信用のコンテキストにメタデータを設定する</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// メタデータを作成する</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext</a></li>
+</ul>
+</blockquote>
+<h4 id="newoutgoingcontext">▼ NewOutgoingContext<a class="headerlink" href="#newoutgoingcontext" title="Permanent link">&para;</a></h4>
+<p>リクエスト送信用のコンテキストにメタデータを設定する</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// メタデータを作成する</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext</a></li>
+</ul>
+</blockquote>
+<h4 id="set">▼ Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
+<p>メタデータにキーを追加する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -24265,9 +24364,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
@@ -24359,7 +24456,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">header</span><span class="p">,</span><span class="w"> </span><span class="nx">trailer</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span>
 
