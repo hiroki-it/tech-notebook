@@ -919,6 +919,95 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 ### メタデータの操作
 
+#### ▼ FromIncomingContext
+
+受信したリクエストのコンテキストからメタデータを取得する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	// コンテキストからメタデータを取得する
+	md, ok := metadata.FromIncomingContext(ctx)
+
+	if !ok {
+		md = metadata.MD{}
+	}
+
+	log.Print(md)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext
+
+内部的には`mdIncomingKey`というコンテキストキー名を指定しており、リクエスト受信時以外は機能しないようになっている。
+
+```go
+func ValueFromIncomingContext(ctx context.Context, key string) []string {
+
+	...
+
+	md, ok := ctx.Value(mdIncomingKey{}).(MD)
+
+	...
+
+}
+```
+
+> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go#L222
+
+#### ▼ FromOutgoingContext
+
+送信するリクエストのコンテキストからメタデータを取得する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// コンテキストからメタデータを取得する
+	md, ok := metadata.FromOutgoingContext(ctx)
+
+	if !ok {
+		md = metadata.MD{}
+	}
+
+	...
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext
+
+内部的には`mdIncomingKey`というコンテキストキー名を指定しており、リクエスト受信時以外は機能しないようになっている。
+
+```go
+func ValueFromIncomingContext(ctx context.Context, key string) []string {
+
+	...
+
+	md, ok := ctx.Value(mdIncomingKey{}).(MD)
+
+	...
+
+}
+```
+
+> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go#L266
+
 #### ▼ Get
 
 ```go
@@ -1061,7 +1150,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	md, ok := metadata.FromIncomingContext(ctx)
 
 	if !ok {
-		log.Print("取得に失敗しました")
+		md = metadata.MD{}
 	}
 
 	log.Print(md)
@@ -1133,8 +1222,7 @@ func main() {
 	)
 
 	if err != nil {
-		log.Print("取得に失敗しました")
-		return
+		md = metadata.MD{}
 	}
 
 	log.Print(md)
