@@ -1122,7 +1122,7 @@ func fooHandler(w http.ResponseWriter, req *http.Request) {
 
 	...
 
-	// Carrier内のトレースコンテキストを既存のコンテキストに注入する
+	// Carrierのトレースコンテキストを既存のコンテキストに注入する
 	ctx := otel.GetTextMapPropagator().Extract(
 		// 抽出したいトレースコンテキストを設定する
 		req.Context(),
@@ -1211,7 +1211,7 @@ func main()  {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator

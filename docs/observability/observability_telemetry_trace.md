@@ -214,11 +214,11 @@ b3: 80f198ee56343ba864fe8b2a57d3eff7-e457b5a2e4d86bd1-1-05e3ac9a4f6e3b90
 
 #### ▼ Carrierとは
 
-![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
-
 トレースコンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。
 
 伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、gRPCメタデータ、など) を『Carrier』という。
+
+![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
 #### ▼ 標準ヘッダー
 

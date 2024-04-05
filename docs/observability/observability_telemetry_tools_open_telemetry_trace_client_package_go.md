@@ -96,7 +96,7 @@ func main() {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -287,7 +287,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -606,7 +606,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -983,7 +983,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
@@ -1434,7 +1434,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 	propagator := autoprop.NewTextMapPropagator()
 
-	// ダウンストリーム側マイクロサービスのCarrierからトレースコンテキストを抽出し、アップストリーム側マイクロサービスのCarrierにトレースコンテキストを注入できるようにする。
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
 		propagator
