@@ -23181,21 +23181,21 @@
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="p">)</span>
 
+<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="c1">// コンテキストキーのユーザー定義型を設定する</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="nx">contextKey</span>
-
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;値&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;値&gt;&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>キー名は、プリミティブ型以外を設定しないと、エラーになる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># string型のキー名を設定した場合</span>
-should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>built-in<span class="w"> </span><span class="nb">type</span><span class="w"> </span>string<span class="w"> </span>as<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>value<span class="p">;</span><span class="w"> </span>define<span class="w"> </span>your<span class="w"> </span>own<span class="w"> </span><span class="nb">type</span><span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>collisions
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23203,9 +23203,19 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
 </ul>
 </blockquote>
+<p>キー名は、プリミティブ型以外を設定しないと、エラーになる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># string型のキー名を設定した場合</span>
+should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>built-in<span class="w"> </span><span class="nb">type</span><span class="w"> </span>string<span class="w"> </span>as<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>value<span class="p">;</span><span class="w"> </span>define<span class="w"> </span>your<span class="w"> </span>own<span class="w"> </span><span class="nb">type</span><span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>collisions
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/behiron/items/aec3e1a848f789153d86">https://qiita.com/behiron/items/aec3e1a848f789153d86</a></li>
+</ul>
+</blockquote>
 <h4 id="value">▼ Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
 <p>コンテキストから値を取得する。</p>
 <p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
+<p><code>WithValue</code>関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23213,10 +23223,17 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="p">)</span>
 
+<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// キー名を指定して値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="s">&quot;&lt;キー名&gt;&quot;</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">Foo</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;val: %v, ok: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
 <span class="p">}</span>
