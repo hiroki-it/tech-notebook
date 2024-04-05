@@ -23216,6 +23216,7 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <p>コンテキストから値を取得する。</p>
 <p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
 <p><code>WithValue</code>関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。</p>
+<p>もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
