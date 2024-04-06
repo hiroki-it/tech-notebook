@@ -151,7 +151,7 @@ import (
 type contextKey string
 
 const (
-	Foo contextKey = "FOO"
+	Foo contextKey = "Foo"
 )
 
 func fooHandler(ctx context.Context) {
@@ -198,7 +198,7 @@ import (
 type contextKey string
 
 const (
-	Foo contextKey = "FOO"
+	Foo contextKey = "Foo"
 )
 
 func fooHandler(ctx context.Context) {
@@ -323,8 +323,10 @@ import (
 
 func main() {
 
+	rootCtx := context.Background()
+
 	// 親コンテキストを作成する
-    parentCtx, parentCancel := context.WithCancel(context.Background())
+    parentCtx, parentCancel := context.WithCancel(rootCtx)
 
 	// 親コンテキストをパラメータとして、子コンテキストを作成する
     childCtx, _ := context.WithCancel(parentCtx)

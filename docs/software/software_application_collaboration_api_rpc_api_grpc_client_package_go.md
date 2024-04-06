@@ -919,6 +919,34 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 ### メタデータの操作
 
+#### ▼ AppendToOutgoingContext
+
+リクエスト送信用のコンテキストにメタデータとしてキーバリューを設定する。
+
+コンテキストにメタデータがすでにある場合は追加し、もしなければメタデータを新しく作成する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// メタデータをコンテキストに設定する
+	ctx = metadata.AppendToOutgoingContext(ctx, "Foo", "foo")
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#AppendToOutgoingContext
+> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
+
 #### ▼ FromIncomingContext
 
 受信したgRPCリクエストのコンテキストからメタデータを取得する。
@@ -1037,8 +1065,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータから値を取得する
@@ -1070,8 +1098,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	...
@@ -1083,7 +1111,9 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 #### ▼ NewIncomingContext
 
-リクエスト受信用のコンテキストにメタデータを設定する
+リクエスト受信用のコンテキストにメタデータを設定する。
+
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`メソッドを使用する。
 
 ```go
 package main
@@ -1098,8 +1128,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータをコンテキストに設定する
@@ -1111,10 +1141,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 ```
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext
+> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
 
 #### ▼ NewOutgoingContext
 
-リクエスト送信用のコンテキストにメタデータを設定する
+リクエスト送信用のコンテキストにメタデータを設定する。
+
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`メソッドを使用する。
 
 ```go
 package main
@@ -1129,8 +1162,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータをコンテキストに設定する
@@ -1142,6 +1175,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 ```
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext
+> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
 
 #### ▼ Set
 
@@ -1160,8 +1194,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータにキーを設定する
@@ -1193,8 +1227,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータをコンテキストに設定する
@@ -1255,8 +1289,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	// メタデータを作成する
 	headMd := metadata.New(map[string]string{
-		"FOO": "foo",
-		"BAR": "bar",
+		"Foo": "foo",
+		"Bar": "bar",
 	})
 
 	// メタデータをヘッダーに設定する

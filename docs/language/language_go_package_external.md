@@ -473,9 +473,25 @@ GoでgRPCを扱えるようにする。
 
 ### クライアント側
 
+#### ▼ Dial
+
+`DialContext`メソッドのラッパーであり、新しいコンテキストでgRPCサーバーとのコネクションを作成する。
+
+執筆時点 (2024/04/06) で`Dial`メソッドは非推奨であり、`NewClient`メソッドが推奨である。
+
+```go
+func Dial(target string, opts ...DialOption) (*ClientConn, error) {
+	return DialContext(context.Background(), target, opts...)
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc#Dial
+
 #### ▼ DialContext
 
 既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+
+執筆時点 (2024/04/06) で`DialContext`メソッドは非推奨であり、`NewClient`メソッドが推奨である。
 
 ```go
 package main
@@ -499,6 +515,12 @@ func main() {
 	...
 }
 ```
+
+> - https://pkg.go.dev/google.golang.org/grpc#DialContext
+
+#### ▼ NewClient
+
+> - https://pkg.go.dev/google.golang.org/grpc#NewClient
 
 #### ▼ WithBlock
 
@@ -645,6 +667,8 @@ gRPCによるHTTPリクエストの受信処理からコンテキストを自動
 
 また、Propagatorを使用してトレースコンテキストをスパンに注入する。
 
+執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、`NewClientHandler`メソッドが推奨である。
+
 ```go
 package main
 
@@ -702,7 +726,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 
 #### ▼ NewClientHandler
 
-執筆時点 (2024/03/31) でClientInterceptor系メソッドが非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨になっており、これの移行先である。
 
 ```go
 package main
@@ -745,6 +769,8 @@ func main() {
 
 内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。
 
+執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、`NewServerHandler`メソッドが推奨である。
+
 ```go
 func extract(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
 
@@ -769,7 +795,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 
 #### ▼ NewServerHandler
 
-執筆時点 (2024/03/31) でServerInterceptor系メソッドが非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨になっており、これの移行先である。
 
 ```go
 package main
