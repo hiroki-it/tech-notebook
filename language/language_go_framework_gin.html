@@ -7181,6 +7181,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#context_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#header" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Header
@@ -22384,6 +22393,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#context_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#header" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Header
@@ -22710,11 +22728,11 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">        </span><span class="mi">200</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
@@ -22736,11 +22754,11 @@
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">&quot;name&quot;</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">        </span><span class="mi">200</span><span class="p">,</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
@@ -22762,8 +22780,27 @@
 <h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
 <h4 id="request_1">▼ Requestとは<a class="headerlink" href="#request_1" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストを情報を持つ。</p>
+<h4 id="context_2">▼ Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h4>
+<p>受信したリクエストのコンテキストを取得する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">getRequestContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// コンテキストを取得する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ctx</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="header">▼ Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h4>
-<p>受信したリクエストのHTTPヘッダーを持つ。</p>
+<p>受信したリクエストのHTTPヘッダーを操作する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
@@ -22773,10 +22810,10 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">getRequestHeader</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">getRequestHeader</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HTTPヘッダーの特定の値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;ヘッダーのキー名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;ヘッダーのキー名&gt;&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
 
@@ -22797,10 +22834,10 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">printRequestHeaderList</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">printRequestHeaderList</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HTTPヘッダーのリストを取得する</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
@@ -22843,18 +22880,18 @@
 <span class="c1">// ConvertId パスパラメーターのidのデータ型を変換します。</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">ConvertId</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">))</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
 
-<span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Next</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Next</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22865,14 +22902,14 @@
 <span class="w">    </span><span class="nx">userInteractor</span><span class="w"> </span><span class="o">*</span><span class="nx">interactor</span><span class="p">.</span><span class="nx">UserInteractor</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">uc</span><span class="w"> </span><span class="o">*</span><span class="nx">UserController</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">uc</span><span class="w"> </span><span class="o">*</span><span class="nx">UserController</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// インターフェース型になってしまう。</span>
-<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">uc</span><span class="p">.</span><span class="nx">SendErrorJson</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">ginCtx</span><span class="p">,</span>
 <span class="w">            </span><span class="mi">400</span><span class="p">,</span>
 <span class="w">            </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Parameters are not found.&quot;</span><span class="p">},</span>
 <span class="w">        </span><span class="p">)</span>
@@ -22957,12 +22994,12 @@
 <p>マップ型の変数のエイリアスとして働く。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">H</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">  </span><span class="mi">200</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">  </span><span class="mi">400</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Fooエラーメッセージ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Barエラーメッセージ&quot;</span><span class="p">}},</span>
 <span class="p">)</span>
@@ -22999,7 +23036,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
   </span>
 
     
