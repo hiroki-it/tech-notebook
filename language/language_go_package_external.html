@@ -7463,9 +7463,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Dial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dialcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ DialContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewClient
     </span>
   </a>
   
@@ -23308,9 +23326,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Dial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dialcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ DialContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ NewClient
     </span>
   </a>
   
@@ -24519,8 +24555,21 @@
 </blockquote>
 <p><br></p>
 <h3 id="_9">クライアント側<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="dial">▼ Dial<a class="headerlink" href="#dial" title="Permanent link">&para;</a></h4>
+<p><code>DialContext</code>メソッドのラッパーであり、新しいコンテキストでgRPCサーバーとのコネクションを作成する。</p>
+<p>執筆時点 (2024/04/06) で<code>Dial</code>メソッドは非推奨であり、<code>NewClient</code>メソッドが推奨である。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Dial</span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">DialOption</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc#Dial">https://pkg.go.dev/google.golang.org/grpc#Dial</a></li>
+</ul>
+</blockquote>
 <h4 id="dialcontext">▼ DialContext<a class="headerlink" href="#dialcontext" title="Permanent link">&para;</a></h4>
 <p>既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。</p>
+<p>執筆時点 (2024/04/06) で<code>DialContext</code>メソッドは非推奨であり、<code>NewClient</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24542,6 +24591,17 @@
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc#DialContext">https://pkg.go.dev/google.golang.org/grpc#DialContext</a></li>
+</ul>
+</blockquote>
+<h4 id="newclient">▼ NewClient<a class="headerlink" href="#newclient" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc#NewClient">https://pkg.go.dev/google.golang.org/grpc#NewClient</a></li>
+</ul>
+</blockquote>
 <h4 id="withblock">▼ WithBlock<a class="headerlink" href="#withblock" title="Permanent link">&para;</a></h4>
 <p>コネクションを確立できるまで待機する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -24662,6 +24722,7 @@
 <h4 id="clientinterceptor">▼ ClientInterceptor系メソッド<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
 <p>また、Propagatorを使用してトレースコンテキストをスパンに注入する。</p>
+<p>執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、<code>NewClientHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24716,7 +24777,7 @@
 </ul>
 </blockquote>
 <h4 id="newclienthandler">▼ NewClientHandler<a class="headerlink" href="#newclienthandler" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2024/03/31) でClientInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
+<p>執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24750,6 +24811,7 @@
 <p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
 <p>また、Propagatorを使用してトレースコンテキストをスパンから抽出する。</p>
 <p>内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。</p>
+<p>執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、<code>NewServerHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// コンテキストからメタデータを取得する</span>
@@ -24774,7 +24836,7 @@
 </ul>
 </blockquote>
 <h4 id="newserverhandler">▼ NewServerHandler<a class="headerlink" href="#newserverhandler" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2024/03/31) でServerInterceptor系メソッドが非推奨になっており、これの移行先である。</p>
+<p>執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25673,7 +25735,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
   </span>
 
     

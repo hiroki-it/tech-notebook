@@ -2486,6 +2486,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#appendtooutgoingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AppendToOutgoingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fromincomingcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ FromIncomingContext
@@ -23161,6 +23170,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#appendtooutgoingcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AppendToOutgoingContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fromincomingcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ FromIncomingContext
@@ -24108,6 +24126,32 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p><br></p>
 <h2 id="07">07. メタデータ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_23">メタデータの操作<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="appendtooutgoingcontext">▼ AppendToOutgoingContext<a class="headerlink" href="#appendtooutgoingcontext" title="Permanent link">&para;</a></h4>
+<p>リクエスト送信用のコンテキストにメタデータとしてキーバリューを設定する。</p>
+<p>コンテキストにメタデータがすでにある場合は追加し、もしなければメタデータを新しく作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">AppendToOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#AppendToOutgoingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#AppendToOutgoingContext</a></li>
+<li><a href="https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side">https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side</a></li>
+</ul>
+</blockquote>
 <h4 id="fromincomingcontext">▼ FromIncomingContext<a class="headerlink" href="#fromincomingcontext" title="Permanent link">&para;</a></h4>
 <p>受信したgRPCリクエストのコンテキストからメタデータを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -24220,8 +24264,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータから値を取得する</span>
@@ -24251,8 +24295,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -24265,7 +24309,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="newincomingcontext">▼ NewIncomingContext<a class="headerlink" href="#newincomingcontext" title="Permanent link">&para;</a></h4>
-<p>リクエスト受信用のコンテキストにメタデータを設定する</p>
+<p>リクエスト受信用のコンテキストにメタデータを設定する。</p>
+<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は<code>AppendToOutgoingContext</code>メソッドを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24278,8 +24323,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
@@ -24292,10 +24337,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext</a></li>
+<li><a href="https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side">https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side</a></li>
 </ul>
 </blockquote>
 <h4 id="newoutgoingcontext">▼ NewOutgoingContext<a class="headerlink" href="#newoutgoingcontext" title="Permanent link">&para;</a></h4>
-<p>リクエスト送信用のコンテキストにメタデータを設定する</p>
+<p>リクエスト送信用のコンテキストにメタデータを設定する。</p>
+<p>コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は<code>AppendToOutgoingContext</code>メソッドを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24308,8 +24355,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
@@ -24322,6 +24369,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext">https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext</a></li>
+<li><a href="https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side">https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side</a></li>
 </ul>
 </blockquote>
 <h4 id="set">▼ Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
@@ -24338,8 +24386,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータにキーを設定する</span>
@@ -24368,8 +24416,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
@@ -24426,8 +24474,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">headMd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;FOO&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;BAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをヘッダーに設定する</span>
@@ -24504,7 +24552,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-06</span>
   </span>
 
     
