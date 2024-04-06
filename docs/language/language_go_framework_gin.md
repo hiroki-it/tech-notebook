@@ -117,11 +117,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func fooHandler(ctx *gin.Context) {
+func fooHandler(ginCtx *gin.Context) {
 
 	...
 
-	c.JSON(
+	ginCtx.JSON(
 		200,
 		gin.H{id: 1,"name": "hiroki hasegawa"},
 	)
@@ -146,11 +146,11 @@ type Foo struct {
 	name string json:"name"
 }
 
-func fooHandler(ctx *gin.Context) {
+func fooHandler(ginCtx *gin.Context) {
 
 	...
 
-	ctx.JSON(
+	ginCtx.JSON(
 		200,
 		&Foo{id: 1, name: "hiroki hasegawa"},
     )
@@ -179,9 +179,33 @@ func fooHandler(ctx *gin.Context) {
 
 受信したリクエストを情報を持つ。
 
+#### ▼ Context
+
+受信したリクエストのコンテキストを取得する。
+
+**＊実装例＊**
+
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func getRequestContext(ginCtx *gin.Context) context.Context {
+
+	// コンテキストを取得する
+	ctx := ginCtx.Request.Context()
+
+	return ctx
+}
+```
+
 #### ▼ Header
 
-受信したリクエストのHTTPヘッダーを持つ。
+受信したリクエストのHTTPヘッダーを操作する。
 
 **＊実装例＊**
 
@@ -194,10 +218,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getRequestHeader(ctx *gin.Context) string {
+func getRequestHeader(ginCtx *gin.Context) string {
 
 	// HTTPヘッダーの特定の値を取得する
-	val := ctx.Request.Header.Get("<ヘッダーのキー名>")
+	val := ginCtx.Request.Header.Get("<ヘッダーのキー名>")
 
 	log.Print(val)
 
@@ -218,10 +242,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func printRequestHeaderList(ctx *gin.Context) {
+func printRequestHeaderList(ginCtx *gin.Context) {
 
 	// HTTPヘッダーのリストを取得する
-	for k, vals := range ctx.Request.Header {
+	for k, vals := range ginCtx.Request.Header {
 		log.Printf("%v", k)
 		for _, v := range vals {
 			log.Printf("%v", v)
@@ -274,18 +298,18 @@ import (
 // ConvertId パスパラメーターのidのデータ型を変換します。
 func ConvertId() gin.HandlerFunc {
 
-	return func(ctx *gin.Context) {
+	return func(ginCtx *gin.Context) {
 
-		id, err := strconv.Atoi(ctx.Param("id"))
+		id, err := strconv.Atoi(ginCtx.Param("id"))
 
 		if err != nil {
-			_ = ctx.Error(err)
+			_ = ginCtx.Error(err)
 			return
 		}
 
-		ctx.Set("id", id)
+		ginCtx.Set("id", id)
 
-		ctx.Next()
+		ginCtx.Next()
 	}
 }
 
@@ -299,14 +323,14 @@ type UserController struct {
 	userInteractor *interactor.UserInteractor
 }
 
-func (uc *UserController) GetUser(ctx *gin.Context) {
+func (uc *UserController) GetUser(ginCtx *gin.Context) {
 
     // インターフェース型になってしまう。
-	userId, ok := ctx.Get("id")
+	userId, ok := ginCtx.Get("id")
 
 	if !ok {
 		uc.SendErrorJson(
-            ctx,
+            ginCtx,
             400,
             []string{"Parameters are not found."},
         )
@@ -420,14 +444,14 @@ type H map[string]interface{}
 ```
 
 ```go
-c.JSON(
+ginCtx.JSON(
   200,
   gin.H{"id": 1,"name": "hiroki hasegawa"},
 )
 ```
 
 ```go
-c.JSON(
+ginCtx.JSON(
   400,
   gin.H{"errors": []string{"Fooエラーメッセージ", "Barエラーメッセージ"}},
 )
