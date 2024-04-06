@@ -705,6 +705,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 
     md, ok := metadata.FromOutgoingContext(ctx)
 
+    // メタデータが設定されていなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}

@@ -1018,6 +1018,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// コンテキストからメタデータを取得する
 	md, ok := metadata.FromOutgoingContext(ctx)
 
+    // メタデータが設定されていなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}
@@ -1051,6 +1052,8 @@ func NewOutgoingContext(ctx context.Context, md MD) context.Context {
 > - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go
 
 #### ▼ Get
+
+送信または受信するgRPCリクエストのコンテキストからメタデータを取得する。
 
 ```go
 package main
@@ -1179,7 +1182,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 #### ▼ Set
 
-メタデータにキーを追加する。
+送信または受信するgRPCリクエストのコンテキストにメタデータを設定する。
 
 ```go
 package main
