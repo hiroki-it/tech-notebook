@@ -811,6 +811,36 @@ OpenTelemetryのTracerProviderを作成する。
 
 <br>
 
+### Middleware
+
+リクエスト受信時のミドルウェア処理として`otelgin`を設定する。
+
+```go
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+)
+
+func main() {
+
+	...
+
+	router := gin.New()
+
+	router.Use(otelgin.Middleware("foo-service"))
+
+	router.GET("/foo", fooHandler)
+
+	router.Run(":8080")
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin#Middleware
+
+<br>
+
 ## otelgorm
 
 ### otelgormとは
@@ -823,9 +853,11 @@ OpenTelemetryのTracerProviderを作成する。
 
 `otelgorm`を使用しない場合、これらを自前で実装する必要がある。
 
+<br>
+
 ### NewPlugin
 
-SQLの実行前のミドルウェア処理として、SQLを属性に持つスパンを自動的に作成する。
+クエリ送信時のミドルウェア処理として`otelgin`を設定する。
 
 ```go
 package db
@@ -1132,7 +1164,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 #### ▼ NewTransport
 
-リクエストを単位としてスパンを自動的に開始/終了できる
+リクエスト送信時のミドルウェア処理として`otelhttp`を設定する。
 
 ```go
 package main
@@ -1166,7 +1198,7 @@ func main() {
 
 #### ▼ NewHandler
 
-ミドルウェア処理として、リクエストを単位としてスパンを自動的に開始/終了できる。
+リクエスト受信時のミドルウェア処理として`otelhttp`を設定する。
 
 ```go
 package main
