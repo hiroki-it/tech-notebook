@@ -7716,6 +7716,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23612,6 +23621,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Middleware
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24909,14 +24927,43 @@
 <p>各メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。</p>
 <p><code>otelgin</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <p><br></p>
+<h3 id="middleware">Middleware<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h3>
+<p>リクエスト受信時のミドルウェア処理として<code>otelgin</code>を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">))</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin#Middleware">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin#Middleware</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="otelgorm">otelgorm<a class="headerlink" href="#otelgorm" title="Permanent link">&para;</a></h2>
 <h3 id="otelgorm_1">otelgormとは<a class="headerlink" href="#otelgorm_1" title="Permanent link">&para;</a></h3>
 <p>受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にSQLを含むコンテキストを自動的に注入 (Inject) する。</p>
 <p>また、事前のミドルウェア処理としてスパンを自動的に作成する。</p>
 <p>各永続化メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。</p>
 <p><code>otelgorm</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><br></p>
 <h3 id="newplugin">NewPlugin<a class="headerlink" href="#newplugin" title="Permanent link">&para;</a></h3>
-<p>SQLの実行前のミドルウェア処理として、SQLを属性に持つスパンを自動的に作成する。</p>
+<p>クエリ送信時のミドルウェア処理として<code>otelgin</code>を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25180,7 +25227,7 @@
 <p><br></p>
 <h3 id="_14">クライアント側<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="newtransport">▼ NewTransport<a class="headerlink" href="#newtransport" title="Permanent link">&para;</a></h4>
-<p>リクエストを単位としてスパンを自動的に開始/終了できる</p>
+<p>リクエスト送信時のミドルウェア処理として<code>otelhttp</code>を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25211,7 +25258,7 @@
 <p><br></p>
 <h3 id="_15">サーバー側<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="newhandler">▼ NewHandler<a class="headerlink" href="#newhandler" title="Permanent link">&para;</a></h4>
-<p>ミドルウェア処理として、リクエストを単位としてスパンを自動的に開始/終了できる。</p>
+<p>リクエスト受信時のミドルウェア処理として<code>otelhttp</code>を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
