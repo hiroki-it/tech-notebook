@@ -24908,6 +24908,9 @@
 <h3 id="headercarrier">HeaderCarrier<a class="headerlink" href="#headercarrier" title="Permanent link">&para;</a></h3>
 <p>HTTPヘッダーをCarrierとして使用できるようにする。</p>
 <p><code>TextMapCarrier</code>インターフェースの実装である。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">HeaderCarrier</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Header</span>
+</code></pre></div>
+<p><code>Header</code>関数を<code>HeaderCarrier</code>に変換することで、HTTPヘッダーをCarrierとして使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25102,6 +25105,10 @@
 <p>gRPCのメタデータをCarrierとして使用できるようにする。</p>
 <p><code>TextMapCarrier</code>インターフェースの実装である。</p>
 <p>プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">metadataSupplier</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">metadata</span><span class="w"> </span><span class="o">*</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18</a></li>
@@ -25110,8 +25117,8 @@
 <p><br></p>
 <h3 id="_11">クライアント側<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="clientinterceptor">▼ ClientInterceptor系メソッド<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
-<p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
-<p>また、Propagatorを使用してトレースコンテキストをスパンに注入する。</p>
+<p>gRPCリクエスト送信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
+<p>抽出時のメタデータは<code>mdOutgoingKey</code>キーで登録されており、ユーザー定義のメタデータは<code>mdOutgoingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、<code>NewClientHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25143,9 +25150,10 @@
 <p>内部的には、リクエストの送信直前のミドルウェア処理として、注入処理を実行している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">inject</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// コンテキストにメタデータがあれば取得する</span>
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// メタデータが設定されていなければ作成する</span>
+<span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -25199,15 +25207,15 @@
 <p><br></p>
 <h3 id="_12">サーバー側<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="serverinterceptor">▼ ServerInterceptor系メソッド<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
-<p>リクエストを単位としてスパンを自動的に開始/終了できる。</p>
-<p>また、Propagatorを使用してトレースコンテキストをスパンから抽出する。</p>
-<p>内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。</p>
+<p>gRPCリクエスト受信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
+<p>抽出時のメタデータは<code>mdIncomingKey</code>キーで登録されており、ユーザー定義のメタデータは<code>mdIncomingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、<code>NewServerHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// コンテキストからメタデータを取得する</span>
+<span class="w">    </span><span class="c1">// コンテキストにメタデータがあれば取得する</span>
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -25554,8 +25562,6 @@
 <p>Carrierのインターフェースである。</p>
 <p>様々な計装ツールのCarrierがこのインターフェースの実装になっている。</p>
 <p><code>otel/propagation</code>パッケージには、HTTPヘッダーをCarrierとして使用するための<code>TextMapCarrier</code>インターフェースの実装がある。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">HeaderCarrier</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Header</span>
-</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/behiron/items/cc02e77ed41103f4a195">https://qiita.com/behiron/items/cc02e77ed41103f4a195</a></li>
