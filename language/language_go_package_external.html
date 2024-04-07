@@ -7792,6 +7792,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#metadatasupplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      metadataSupplier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       クライアント側
@@ -23706,6 +23715,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#metadatasupplier" class="md-nav__link">
+    <span class="md-ellipsis">
+      metadataSupplier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       クライアント側
@@ -24889,7 +24907,7 @@
 <p><br></p>
 <h3 id="headercarrier">HeaderCarrier<a class="headerlink" href="#headercarrier" title="Permanent link">&para;</a></h3>
 <p>HTTPヘッダーをCarrierとして使用できるようにする。</p>
-<p>TextMapCarrierインターフェースの実装である。</p>
+<p><code>TextMapCarrier</code>インターフェースの実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25077,6 +25095,16 @@
 <li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="metadatasupplier">metadataSupplier<a class="headerlink" href="#metadatasupplier" title="Permanent link">&para;</a></h3>
+<p>gRPCのメタデータをCarrierとして使用できるようにする。</p>
+<p><code>TextMapCarrier</code>インターフェースの実装である。</p>
+<p>プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18</a></li>
 </ul>
 </blockquote>
 <p><br></p>
