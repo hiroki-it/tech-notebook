@@ -607,7 +607,221 @@ func main() {
 
 <br>
 
+## otel
+
+### Tracer
+
+#### ▼ Tracerとは
+
+スパンを作成するためのTracerを作成する。
+
+#### ▼ Start
+
+通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に`main`関数) で自動的にスパンを作成する。
+
+Tracerの`Start`関数を使用すると、これの子スパンを手動で作成することができ、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	// ここでOpenTelemetryのミドルウェアを使用すると仮定する
+	// main関数のスパンを自動的に作成する
+
+	...
+
+	// main関数の子スパンとして、foo関数のスパンを手動的に作成する
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+	)
+
+	defer span.End()
+}
+```
+
+### GetTextMapPropagator
+
+#### ▼ GetTextMapPropagatorとは
+
+設定したPropagatorを取得する。
+
+#### ▼ Extract
+
+リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
+
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, r *http.Request) {
+
+	...
+
+	// Carrierのトレースコンテキストを既存のコンテキストに注入する
+	ctx := otel.GetTextMapPropagator().Extract(
+		// 抽出したいトレースコンテキストを設定する
+		r.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
+> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+
+#### ▼ Inject
+
+リクエストの送信側で、トレースコンテキストをCarrierに注入する。
+
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, r *http.Request) {
+
+	...
+
+	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
+	otel.GetTextMapPropagator().Inject(
+		// 注入したいトレースコンテキストを設定する
+		r.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
+> - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
+> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+
+<br>
+
+## otel/propagation
+
+### otel/propagationとは
+
+OpenTelemetryのPropagation
+
+<br>
+
+### NewCompositeTextMapPropagator
+
+渡された複数のPropagatorからなるComposite Propagatorを作成する。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator
+
+<br>
+
+### TextMapPropagator
+
+複数のPropagatorを持つ。
+
+`Fields`関数でPropagator名を取得できる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func main()  {
+
+	...
+
+	propagator := autoprop.NewTextMapPropagator()
+
+	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		// Composit Propagatorを設定する
+		propagator
+	)
+
+	// TextMapPropagatorのFields関数でPropagator名を取得する
+	propagatorList := propagator.Fields()
+
+	sort.Strings(propagatorList)
+
+	// ログにpropagator名を出力しておく
+	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
+
+	...
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#TextMapPropagator
+
+<br>
+
+## otel/sdk
+
+### otel/sdkとは
+
+OpenTelemetryのTracerProviderを作成する。
+
+<br>
+
+## otelgin
+
+### otelginとは
+
+受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (`gin.Context`) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (`gin.Context`) を自動的に注入 (Inject) する。
+
+また、事前のミドルウェア処理としてスパンを自動的に作成する。
+
+各メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。
+
+`otelgin`を使用しない場合、これらを自前で実装する必要がある。
+
+<br>
+
 ## otelgorm
+
+### otelgormとは
+
+受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にSQLを含むコンテキストを自動的に注入 (Inject) する。
+
+また、事前のミドルウェア処理としてスパンを自動的に作成する。
+
+各永続化メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。
+
+`otelgorm`を使用しない場合、これらを自前で実装する必要がある。
 
 ### NewPlugin
 
@@ -646,11 +860,13 @@ func NewDb()  {
 
 ### otelgrpcとは
 
-gRPCによるHTTPリクエストの受信処理からコンテキストを自動的に抽出 (Extract) し、また次のリクエストの送信処理に自動的に注入 (Inject) する。
+受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。
+また、事前のミドルウェア処理としてスパンを自動的に作成する。
 
-`otelgrpc`パッケージを使用しない場合、これらを自前で実装する必要がある。
+各メソッドでスパンを作成する必要がなくなる。
+
+`otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -897,9 +1113,11 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 ### otelhttpとは
 
-HTTPリクエストの受信処理からコンテキストを自動的に抽出 (Extract) し、また次のリクエストの送信処理に自動的に注入 (Inject) する。
+受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンの作成などを実行してくれるため、各メソッドでスパンの作成を実行する必要がなくなる。
+また、事前のミドルウェア処理としてスパンを自動的に作成する。
+
+各メソッドでスパンを作成する必要がなくなる。
 
 `otelhttp`を使用しない場合、これらを自前で実装する必要がある。
 
@@ -1084,196 +1302,6 @@ OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエン
 
 <br>
 
-## otel
-
-### Tracer
-
-#### ▼ Tracerとは
-
-スパンを作成するためのTracerを作成する。
-
-#### ▼ Start
-
-通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に`main`関数) で自動的にスパンを作成する。
-
-Tracerの`Start`関数を使用すると、これの子スパンを手動で作成することができ、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
-
-```go
-package main
-
-import (
-	"go.opentelemetry.io/otel"
-)
-
-func main()  {
-
-	// ここでOpenTelemetryのミドルウェアを使用すると仮定する
-	// main関数のスパンを自動的に作成する
-
-	...
-
-	// main関数の子スパンとして、foo関数のスパンを手動的に作成する
-	foo()
-
-	...
-}
-
-func foo()  {
-
-	// Tracerを作成する
-	var tracer = otel.Tracer("計装パッケージ名")
-
-	ctx, span := tracer.Start(
-		ctx,
-		"foo",
-	)
-
-	defer span.End()
-}
-```
-
-### GetTextMapPropagator
-
-#### ▼ GetTextMapPropagatorとは
-
-設定したPropagatorを取得する。
-
-#### ▼ Extract
-
-リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
-
-```go
-package middleware
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(w http.ResponseWriter, req *http.Request) {
-
-	...
-
-	// Carrierのトレースコンテキストを既存のコンテキストに注入する
-	ctx := otel.GetTextMapPropagator().Extract(
-		// 抽出したいトレースコンテキストを設定する
-		req.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
-		propagation.HeaderCarrier(w.Header()),
-	)
-
-	...
-
-}
-```
-
-> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
-
-#### ▼ Inject
-
-リクエストの送信側で、トレースコンテキストをCarrierに注入する。
-
-```go
-package middleware
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(w http.ResponseWriter, req *http.Request) {
-
-	...
-
-	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
-	otel.GetTextMapPropagator().Inject(
-		// 注入したいトレースコンテキストを設定する
-		req.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
-		propagation.HeaderCarrier(w.Header()),
-	)
-
-	...
-
-}
-```
-
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
-> - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
-
-<br>
-
-## otel/propagation
-
-### otel/propagationとは
-
-OpenTelemetryのPropagation
-
-<br>
-
-### NewCompositeTextMapPropagator
-
-渡された複数のPropagatorからなるComposite Propagatorを作成する。
-
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator
-
-<br>
-
-### TextMapPropagator
-
-複数のPropagatorを持つ。
-
-`Fields`関数でPropagator名を取得できる。
-
-```go
-package main
-
-import (
-	"go.opentelemetry.io/contrib/propagators/autoprop"
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func main()  {
-
-	...
-
-	propagator := autoprop.NewTextMapPropagator()
-
-	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
-	otel.SetTextMapPropagator(
-		// Composit Propagatorを設定する
-		propagator
-	)
-
-	// TextMapPropagatorのFields関数でPropagator名を取得する
-	propagatorList := propagator.Fields()
-
-	sort.Strings(propagatorList)
-
-	// ログにpropagator名を出力しておく
-	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
-
-	...
-}
-```
-
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#TextMapPropagator
-
-<br>
-
-## otel/sdk
-
-### otel/sdkとは
-
-OpenTelemetryのTracerProviderを作成する。
-
-<br>
-
 ## otlptracehttp
 
 ### otlptracehttpとは
@@ -1366,12 +1394,12 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 )
 
-func fooHandler(w http.ResponseWriter, req *http.Request) {
+func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	...
 
 	ctx := otel.GetTextMapPropagator().Extract(
-		req.Context(),
+		r.Context(),
 		// Carrierとして使用するHTTPヘッダーを設定する
 		propagation.HeaderCarrier(w.Header()),
 	)

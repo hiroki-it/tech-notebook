@@ -1055,13 +1055,13 @@ func main() {
 		}
 	}()
 
-	r := gin.New()
+	router := gin.New()
 
-	r.Use(otelgin.Middleware("sample"))
+	router.Use(otelgin.Middleware("sample"))
 
-	r.GET("/sample", sample1)
+	router.GET("/sample", sample1)
 
-	r.Run(":8080")
+	router.Run(":8080")
 }
 
 func parent(ctx *gin.Context) {
@@ -1137,13 +1137,13 @@ func main() {
 		}
 	}()
 
-	r := gin.New()
+	router := gin.New()
 
-	r.Use(otelgin.Middleware("sample"))
+	router.Use(otelgin.Middleware("sample"))
 
-	r.GET("/sample", sample1)
+	router.GET("/sample", sample1)
 
-	r.Run(":8080")
+	router.Run(":8080")
 }
 
 func child(ctx *gin.Context) {

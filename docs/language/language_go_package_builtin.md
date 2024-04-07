@@ -1050,11 +1050,11 @@ import (
 	"http"
 )
 
-func fooHandler(w http.ResponseWriter, req *http.Request)  {
+func fooHandler(w http.ResponseWriter, r *http.Request)  {
 
 	...
 
-    ctx := req.Context()
+    ctx := r.Context()
 
 	...
 }
