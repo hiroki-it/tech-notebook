@@ -25325,11 +25325,56 @@
 <h2 id="propagator">propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h2>
 <h3 id="headercarrier">HeaderCarrier<a class="headerlink" href="#headercarrier" title="Permanent link">&para;</a></h3>
 <p>HTTPヘッダーをCarrierとして使用できるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">// Carrierとして使用するHTTPヘッダーを設定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier">https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier</a></li>
 </ul>
 </blockquote>
+<p>Ginでも同様にして、HTTPヘッダーを<code>HeaderCarrier</code>に渡す。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">// Carrierとして使用するHTTPヘッダーを設定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="textmappropagator_1">TextMapPropagator<a class="headerlink" href="#textmappropagator_1" title="Permanent link">&para;</a></h3>
 <h4 id="textmappropagator_2">▼ TextMapPropagatorとは<a class="headerlink" href="#textmappropagator_2" title="Permanent link">&para;</a></h4>
