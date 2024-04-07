@@ -2486,6 +2486,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Append
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#appendtooutgoingcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AppendToOutgoingContext
@@ -23170,6 +23179,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Append
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#appendtooutgoingcontext" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AppendToOutgoingContext
@@ -24126,6 +24144,37 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p><br></p>
 <h2 id="07">07. メタデータ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_23">メタデータの操作<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="append">▼ Append<a class="headerlink" href="#append" title="Permanent link">&para;</a></h4>
+<p>送信/受信するgRPCリクエストのコンテキストにメタデータを設定する。</p>
+<p>コンテキストにメタデータがすでにある場合は追加し、もしなければメタデータを新しく作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// メタデータを作成する</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// メタデータにキーを設定する</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s">&quot;Baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Append">https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Append</a></li>
+</ul>
+</blockquote>
 <h4 id="appendtooutgoingcontext">▼ AppendToOutgoingContext<a class="headerlink" href="#appendtooutgoingcontext" title="Permanent link">&para;</a></h4>
 <p>リクエスト送信用のコンテキストにメタデータとしてキーバリューを設定する。</p>
 <p>コンテキストにメタデータがすでにある場合は追加し、もしなければメタデータを新しく作成する。</p>
@@ -24253,7 +24302,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="get">▼ Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p>送信または受信するgRPCリクエストのコンテキストからメタデータを取得する。</p>
+<p>送信/受信するgRPCリクエストのコンテキストからメタデータを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24300,6 +24349,24 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>空のメタデータを作成する場合は、<code>MD</code>構造体から作成すると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// メタデータを作成する</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 
@@ -24375,7 +24442,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 </ul>
 </blockquote>
 <h4 id="set">▼ Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
-<p>送信または受信するgRPCリクエストのコンテキストにメタデータを設定する。</p>
+<p>送信/受信するgRPCリクエストのコンテキストにメタデータを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24393,7 +24460,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータにキーを設定する</span>
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">md</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;BAZ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 
