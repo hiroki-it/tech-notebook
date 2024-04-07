@@ -7071,6 +7071,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aws-lambda-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      aws-lambda-go
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aws-lambda-go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      aws-lambda-goとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#aws-sdk-go-v2" class="md-nav__link">
     <span class="md-ellipsis">
       aws-sdk-go-v2
@@ -7110,30 +7134,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws-lambda-go" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-lambda-go
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="aws-lambda-go">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-lambda-go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-lambda-goとは
-    </span>
-  </a>
   
 </li>
         
@@ -22994,6 +22994,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aws-lambda-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      aws-lambda-go
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="aws-lambda-go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-lambda-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      aws-lambda-goとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#aws-sdk-go-v2" class="md-nav__link">
     <span class="md-ellipsis">
       aws-sdk-go-v2
@@ -23033,30 +23057,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aws-lambda-go" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-lambda-go
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="aws-lambda-go">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-lambda-go_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-lambda-goとは
-    </span>
-  </a>
   
 </li>
         
@@ -24262,6 +24262,15 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="aws-lambda-go">aws-lambda-go<a class="headerlink" href="#aws-lambda-go" title="Permanent link">&para;</a></h2>
+<h3 id="aws-lambda-go_1">aws-lambda-goとは<a class="headerlink" href="#aws-lambda-go_1" title="Permanent link">&para;</a></h3>
+<p>以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html">https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="aws-sdk-go-v2">aws-sdk-go-v2<a class="headerlink" href="#aws-sdk-go-v2" title="Permanent link">&para;</a></h2>
 <h3 id="aws-sdk-go-v2_1">aws-sdk-go-v2とは<a class="headerlink" href="#aws-sdk-go-v2_1" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -24289,15 +24298,6 @@
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="aws-lambda-go">aws-lambda-go<a class="headerlink" href="#aws-lambda-go" title="Permanent link">&para;</a></h2>
-<h3 id="aws-lambda-go_1">aws-lambda-goとは<a class="headerlink" href="#aws-lambda-go_1" title="Permanent link">&para;</a></h3>
-<p>以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html">https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25118,7 +25118,8 @@
 <h3 id="_11">クライアント側<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="clientinterceptor">▼ ClientInterceptor系メソッド<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCリクエスト送信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
-<p>抽出時のメタデータは<code>mdOutgoingKey</code>キーで登録されており、ユーザー定義のメタデータは<code>mdOutgoingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
+<p>抽出時のメタデータは、<code>mdOutgoingKey</code>キーと<code>rawMD{md: &lt;メタデータ&gt;}</code>で登録される。</p>
+<p>そのため、ユーザー定義のメタデータは<code>mdOutgoingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、<code>NewClientHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -25208,7 +25209,8 @@
 <h3 id="_12">サーバー側<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="serverinterceptor">▼ ServerInterceptor系メソッド<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCリクエスト受信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
-<p>抽出時のメタデータは<code>mdIncomingKey</code>キーで登録されており、ユーザー定義のメタデータは<code>mdIncomingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
+<p>抽出時のメタデータは<code>mdIncomingKey</code>キーと<code>rawMD{md: &lt;メタデータ&gt;}</code>で登録される。</p>
+<p>そのため、ユーザー定義のメタデータは<code>mdIncomingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、<code>NewServerHandler</code>メソッドが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
