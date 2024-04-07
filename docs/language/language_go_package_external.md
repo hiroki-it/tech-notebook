@@ -743,7 +743,7 @@ OpenTelemetryのPropagation
 
 HTTPヘッダーをCarrierとして使用できるようにする。
 
-TextMapCarrierインターフェースの実装である。
+`TextMapCarrier`インターフェースの実装である。
 
 ```go
 package middleware
@@ -964,6 +964,18 @@ func NewDb()  {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307
+
+<br>
+
+### metadataSupplier
+
+gRPCのメタデータをCarrierとして使用できるようにする。
+
+`TextMapCarrier`インターフェースの実装である。
+
+プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18
 
 <br>
 
