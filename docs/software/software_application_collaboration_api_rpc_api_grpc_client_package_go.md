@@ -995,9 +995,10 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	...
 
-	// コンテキストからメタデータを取得する
+	// コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromIncomingContext(ctx)
 
+    // メタデータがなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}
@@ -1048,10 +1049,10 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	...
 
-	// コンテキストからメタデータを取得する
+	// コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromOutgoingContext(ctx)
 
-    // メタデータが設定されていなければ作成する
+	// メタデータがなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}
@@ -1313,9 +1314,10 @@ import (
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	// コンテキストからメタデータを取得する
+	// コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromIncomingContext(ctx)
 
+	// メタデータがなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}

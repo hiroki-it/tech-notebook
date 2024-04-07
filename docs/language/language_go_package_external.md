@@ -746,6 +746,12 @@ HTTPヘッダーをCarrierとして使用できるようにする。
 `TextMapCarrier`インターフェースの実装である。
 
 ```go
+type HeaderCarrier http.Header
+```
+
+`Header`関数を`HeaderCarrier`に変換することで、HTTPヘッダーをCarrierとして使用する。
+
+```go
 package middleware
 
 import (
@@ -975,6 +981,12 @@ gRPCのメタデータをCarrierとして使用できるようにする。
 
 プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。
 
+```go
+type metadataSupplier struct {
+	metadata *metadata.MD
+}
+```
+
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18
 
 <br>
@@ -983,9 +995,9 @@ gRPCのメタデータをCarrierとして使用できるようにする。
 
 #### ▼ ClientInterceptor系メソッド
 
-リクエストを単位としてスパンを自動的に開始/終了できる。
+gRPCリクエスト送信時のインターセプター処理として`otelgrpc`を設定する。
 
-また、Propagatorを使用してトレースコンテキストをスパンに注入する。
+抽出時のメタデータは`mdOutgoingKey`キーで登録されており、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
 
 執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、`NewClientHandler`メソッドが推奨である。
 
@@ -1023,9 +1035,10 @@ func main() {
 ```go
 func inject(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
 
+    // コンテキストにメタデータがあれば取得する
     md, ok := metadata.FromOutgoingContext(ctx)
 
-    // メタデータが設定されていなければ作成する
+    // メタデータがなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}
@@ -1084,20 +1097,19 @@ func main() {
 
 #### ▼ ServerInterceptor系メソッド
 
-リクエストを単位としてスパンを自動的に開始/終了できる。
+gRPCリクエスト受信時のインターセプター処理として`otelgrpc`を設定する。
 
-また、Propagatorを使用してトレースコンテキストをスパンから抽出する。
-
-内部的には、リクエストの受信直前のミドルウェア処理として、抽出処理を実行している。
+抽出時のメタデータは`mdIncomingKey`キーで登録されており、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
 
 執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、`NewServerHandler`メソッドが推奨である。
 
 ```go
 func extract(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
 
-	// コンテキストからメタデータを取得する
+    // コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromIncomingContext(ctx)
 
+    // メタデータがなければ作成する
 	if !ok {
 		md = metadata.MD{}
 	}
@@ -1492,10 +1504,6 @@ Carrierのインターフェースである。
 様々な計装ツールのCarrierがこのインターフェースの実装になっている。
 
 `otel/propagation`パッケージには、HTTPヘッダーをCarrierとして使用するための`TextMapCarrier`インターフェースの実装がある。
-
-```go
-type HeaderCarrier http.Header
-```
 
 > - https://qiita.com/behiron/items/cc02e77ed41103f4a195
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
