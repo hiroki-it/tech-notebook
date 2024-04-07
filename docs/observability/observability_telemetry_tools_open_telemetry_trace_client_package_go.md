@@ -662,22 +662,22 @@ import (
 	"go.uber.org/zap"
 )
 
-func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
-	_, span := tracer.Start(c.Request.Context(), "parent-service")
+	_, span := tracer.Start(ginCtx.Request.Context(), "parent-service")
 
 	SpanId := span.SpanContext().SpanID().String()
 
 	TraceId := span.SpanContext().TraceID().String()
 
 	span.SetAttributes(
-		attribute.Int("status", c.Writer.Status()),
-		attribute.String("method", c.Request.Method),
-		attribute.String("client_ip", c.ClientIP()),
+		attribute.Int("status", ginCtx.Writer.Status()),
+		attribute.String("method", ginCtx.Request.Method),
+		attribute.String("client_ip", ginCtx.ClientIP()),
 		attribute.String("message", msg),
 		attribute.String("span_id", SpanId),
 		attribute.String("trace_id", TraceId),
@@ -709,7 +709,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 }
 
 // ログイン画面を返却する
-func getLogin(c *gin.Context) {
+func getLogin(ginCtx *gin.Context) {
 
     // イベントごとに同階層スパンを作成する
 	defer LoggerAndCreateSpan(c, "ログイン画面取得").End()
@@ -743,7 +743,7 @@ func StartMainServer() {
 
 func checkSession() gin.HandlerFunc {
 
-    return func(c *gin.Context) {
+    return func(ginCtx *gin.Context) {
 
         ...
 
@@ -797,22 +797,22 @@ import (
 )
 
 // 子スパンを作成し、スパンとログにイベント名を記載する
-func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
+func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
-	_, span := tracer.Start(c.Request.Context(), "child-service")
+	_, span := tracer.Start(ginCtx.Request.Context(), "child-service")
 
 	SpanId := span.SpanContext().SpanID().String()
 
 	TraceId := span.SpanContext().TraceID().String()
 
 	span.SetAttributes(
-		attribute.Int("status", c.Writer.Status()),
-		attribute.String("method", c.Request.Method),
-		attribute.String("client_ip", c.ClientIP()),
+		attribute.Int("status", ginCtx.Writer.Status()),
+		attribute.String("method", ginCtx.Request.Method),
+		attribute.String("client_ip", ginCtx.ClientIP()),
 		attribute.String("message", msg),
 		attribute.String("span_id", SpanId),
 		attribute.String("trace_id", TraceId),
@@ -844,14 +844,14 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 }
 
 // ユーザーを作成する
-func createUser(c *gin.Context) {
+func createUser(ginCtx *gin.Context) {
 
 	utils.LoggerAndCreateSpan(c, "ユーザ登録").End()
 
 	var json signupRequest
 
-	if err := c.BindJSON(&json); err != nil {
-		c.JSON(
+	if err := ginCtx.BindJSON(&json); err != nil {
+		ginCtx.JSON(
             http.StatusBadRequest,
             gin.H{"error": err.Error()},
         )
@@ -864,7 +864,7 @@ func createUser(c *gin.Context) {
 
     if user.ID != 0 {
 
-		c.JSON(
+		ginCtx.JSON(
             http.StatusOK,
             gin.H{"error_code": "その Email はすでに存在しております"},
         )
@@ -880,7 +880,7 @@ func createUser(c *gin.Context) {
 			log.Println(err)
 		}
 
-		c.JSON(
+		ginCtx.JSON(
             http.StatusOK,
             gin.H{"Name":  json.Name,"Email": json.Email},
         )

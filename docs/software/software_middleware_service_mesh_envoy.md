@@ -182,7 +182,7 @@ package server
 
 ...
 
-func (h *HTTPGateway) ServeHTTP(r *http.Request) ([]byte, int, error) {
+func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 	p := path.Clean(r.URL.Path)
 
 	typeURL := ""
@@ -213,7 +213,7 @@ func (h *HTTPGateway) ServeHTTP(r *http.Request) ([]byte, int, error) {
 
 	...
 
-	res, err := h.Server.Fetch(r.Context(), out)
+	res, err := h.Server.Fetch(req.Context(), out)
 
 	...
 

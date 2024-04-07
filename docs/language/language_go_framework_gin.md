@@ -379,7 +379,7 @@ func main() {
 }
 
 func FooMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
+	return func(ginCtx *gin.Context) {
 		// ミドルウェアとして実行したい処理
 	}
 }

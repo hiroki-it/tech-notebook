@@ -293,7 +293,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
+func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 
     // Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
@@ -302,7 +302,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	// 親スパンを作成する。
 	span, ctx := tracer.StartSpanFromContext(
-		r.Context(),
+		req.Context(),
 		"post.process",
 	)
 

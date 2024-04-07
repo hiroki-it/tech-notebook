@@ -1357,7 +1357,57 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 HTTPヘッダーをCarrierとして使用できるようにする。
 
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, req *http.Request) {
+
+	...
+
+	ctx := otel.GetTextMapPropagator().Extract(
+		req.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
+
+Ginでも同様にして、HTTPヘッダーを`HeaderCarrier`に渡す。
+
+```go
+package middleware
+
+import (
+	"github.com/gin-gonic/gin"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+	ctx := otel.GetTextMapPropagator().Extract(
+		ginCtx.Request.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(ginCtx.Request.Header),
+	)
+
+	...
+
+}
+```
 
 <br>
 
