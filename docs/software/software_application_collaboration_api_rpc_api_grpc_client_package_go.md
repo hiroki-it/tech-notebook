@@ -919,6 +919,39 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 ### メタデータの操作
 
+#### ▼ Append
+
+送信/受信するgRPCリクエストのコンテキストにメタデータを設定する。
+
+コンテキストにメタデータがすでにある場合は追加し、もしなければメタデータを新しく作成する。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// メタデータを作成する
+	md := metadata.New(map[string]string{
+		"Foo": "foo",
+		"Bar": "bar",
+	})
+
+	// メタデータにキーを設定する
+	md.Append("Baz", "baz")
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Append
+
 #### ▼ AppendToOutgoingContext
 
 リクエスト送信用のコンテキストにメタデータとしてキーバリューを設定する。
@@ -1053,7 +1086,7 @@ func NewOutgoingContext(ctx context.Context, md MD) context.Context {
 
 #### ▼ Get
 
-送信または受信するgRPCリクエストのコンテキストからメタデータを取得する。
+送信/受信するgRPCリクエストのコンテキストからメタデータを取得する。
 
 ```go
 package main
@@ -1104,6 +1137,27 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		"Foo": "foo",
 		"Bar": "bar",
 	})
+
+	...
+
+}
+```
+
+空のメタデータを作成する場合は、`MD`構造体から作成すると良い。
+
+```go
+package main
+
+import (
+	"google.golang.org/grpc/metadata"
+)
+
+func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
+
+	...
+
+	// メタデータを作成する
+	md := new(metadata.MD)
 
 	...
 
@@ -1182,7 +1236,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 #### ▼ Set
 
-送信または受信するgRPCリクエストのコンテキストにメタデータを設定する。
+送信/受信するgRPCリクエストのコンテキストにメタデータを設定する。
 
 ```go
 package main
@@ -1202,7 +1256,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	})
 
 	// メタデータにキーを設定する
-	val = md.Set("BAZ", "baz")
+	md.Set("Baz", "baz")
 
 	...
 
