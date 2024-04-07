@@ -739,6 +739,66 @@ OpenTelemetryのPropagation
 
 <br>
 
+### HeaderCarrier
+
+HTTPヘッダーをCarrierとして使用できるようにする。
+
+TextMapCarrierインターフェースの実装である。
+
+```go
+package middleware
+
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(w http.ResponseWriter, r *http.Request) {
+
+	...
+
+	ctx := otel.GetTextMapPropagator().Extract(
+		r.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(w.Header()),
+	)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
+
+Ginでも同様にして、HTTPヘッダーを`HeaderCarrier`に渡す。
+
+```go
+package middleware
+
+import (
+	"github.com/gin-gonic/gin"
+
+	"go.opentelemetry.io/otel/propagation"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+	ctx := otel.GetTextMapPropagator().Extract(
+		ginCtx.Request.Context(),
+		// Carrierとして使用するHTTPヘッダーを設定する
+		propagation.HeaderCarrier(ginCtx.Request.Header),
+	)
+
+	...
+
+}
+```
+
+<br>
+
 ### NewCompositeTextMapPropagator
 
 渡された複数のPropagatorからなるComposite Propagatorを作成する。
@@ -1413,61 +1473,20 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 
 ## propagator
 
-### HeaderCarrier
+### TextMapCarrier
 
-HTTPヘッダーをCarrierとして使用できるようにする。
+Carrierのインターフェースである。
+
+様々な計装ツールのCarrierがこのインターフェースの実装になっている。
+
+`otel/propagation`パッケージには、HTTPヘッダーをCarrierとして使用するための`TextMapCarrier`インターフェースの実装がある。
 
 ```go
-package middleware
-
-import (
-	"net/http"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(w http.ResponseWriter, r *http.Request) {
-
-	...
-
-	ctx := otel.GetTextMapPropagator().Extract(
-		r.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
-		propagation.HeaderCarrier(w.Header()),
-	)
-
-	...
-
-}
+type HeaderCarrier http.Header
 ```
 
+> - https://qiita.com/behiron/items/cc02e77ed41103f4a195
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
-
-Ginでも同様にして、HTTPヘッダーを`HeaderCarrier`に渡す。
-
-```go
-package middleware
-
-import (
-	"github.com/gin-gonic/gin"
-
-	"go.opentelemetry.io/otel/propagation"
-)
-
-func fooHandler(ginCtx *gin.Context) {
-
-	...
-
-	ctx := otel.GetTextMapPropagator().Extract(
-		ginCtx.Request.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
-		propagation.HeaderCarrier(ginCtx.Request.Header),
-	)
-
-	...
-
-}
-```
 
 <br>
 
