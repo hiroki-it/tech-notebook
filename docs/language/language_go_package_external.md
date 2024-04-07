@@ -13,6 +13,16 @@ description: 外部パッケージ@Goの知見を記録しています。
 
 <br>
 
+## aws-lambda-go
+
+### aws-lambda-goとは
+
+以下のリンクを参考にせよ。
+
+> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html
+
+<br>
+
 ## aws-sdk-go-v2
 
 ### aws-sdk-go-v2とは
@@ -37,16 +47,6 @@ description: 外部パッケージ@Goの知見を記録しています。
 記入中...
 
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
-
-<br>
-
-## aws-lambda-go
-
-### aws-lambda-goとは
-
-以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html
 
 <br>
 
@@ -997,7 +997,9 @@ type metadataSupplier struct {
 
 gRPCリクエスト送信時のインターセプター処理として`otelgrpc`を設定する。
 
-抽出時のメタデータは`mdOutgoingKey`キーで登録されており、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
+抽出時のメタデータは、`mdOutgoingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
+
+そのため、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
 
 執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、`NewClientHandler`メソッドが推奨である。
 
@@ -1099,7 +1101,9 @@ func main() {
 
 gRPCリクエスト受信時のインターセプター処理として`otelgrpc`を設定する。
 
-抽出時のメタデータは`mdIncomingKey`キーで登録されており、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
+抽出時のメタデータは`mdIncomingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
+
+そのため、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
 
 執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、`NewServerHandler`メソッドが推奨である。
 
