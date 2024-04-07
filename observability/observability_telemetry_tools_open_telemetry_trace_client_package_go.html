@@ -23677,13 +23677,13 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">))</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sample1</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sample1</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">parent</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -23757,13 +23757,13 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">))</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sample1</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sample1</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">child</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
