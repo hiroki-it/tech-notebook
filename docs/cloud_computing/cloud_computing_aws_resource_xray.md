@@ -78,125 +78,6 @@ EKSでDamonSetとして稼働させる。
 
 <br>
 
-### セグメント
-
-#### ▼ セグメントとは
-
-スパンの情報を持つ。
-
-```yaml
-{
-  # スパンのトレースID
-  "trace_id": "1-581cf771-a006649127e371903a2de979",
-  # スパンのスパンID
-  "id": "70de5b6f19ff9a0a",
-  "name": "example.com",
-  "start_time": 1.478293361271E9,
-  "end_time": 1.478293361449E9,
-  "service": {...},
-  "user": {...},
-  "origin": {...},
-  "parent_id": {...},
-  "http": {...},
-  "aws": {...},
-  "error": {...},
-  "annotations": {...},
-  "metadata": {...},
-  "subsegments": {...},
-}
-```
-
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
-
-#### ▼ セグメントのスキーマ
-
-セグメントの構造やデータ型を定義したもの。
-
-```yaml
-{
-  # スキーマURL
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Segment document schema",
-  # スキーマのバージョン
-  "version": "1.0.0",
-  # 構造
-  "type": "object",
-  # データ型
-  "properties": {
-    "trace_id": {
-      "type": "string",
-      "minLength": 35,
-      "pattern": "\\d+-[A-Fa-f0-9]*-[A-Fa-f0-9]{24}"
-    }
-    ...
-  }
-}
-```
-
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
-
-#### ▼ `subsegments`キー
-
-記入中...
-
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
-
-#### ▼ `http`キー
-
-スパンのHTTPリクエストの情報を持つ。
-
-```yaml
-{
-  "http":
-    {
-      "request": {"method": "GET", "url": "https://names.example.com/"},
-      "response": {"content_length": -1, "status": 200},
-    },
-}
-```
-
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http
-
-#### ▼ `aws`キー
-
-スパンの作成元のAWSリソース情報を持つ。
-
-```yaml
-{
-  # AWSリソース情報
-  "aws": {
-      "elastic_beanstalk":
-        {
-          "version_label": "app-5a56-170119_190650-stage-170119_190650",
-          "deployment_id": 32,
-          "environment_name": "scorekeep",
-        },
-      "ec2":
-        {
-          "availability_zone": "us-west-2c",
-          "instance_id": "i-075ad396f12bc325a",
-          "ami_id": "*****",
-        },
-      "cloudwatch_logs":
-        [
-          {
-            "log_group": "my-cw-log-group",
-            "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
-          },
-        ],
-      # X-Rayのクライアントパッケージ情報
-      "xray":
-        {
-          "auto_instrumentation": false,
-          "sdk": "X-Ray for Java",
-          "sdk_version": "2.8.0",
-        },
-    },
-}
-```
-
-<br>
-
 ### フィルター式
 
 #### ▼ デフォルト
@@ -288,7 +169,156 @@ subsegment.put_annotation("component", value)
 
 <br>
 
-## 03. Lambdaの場合
+## 03. スパン
+
+### セグメント
+
+#### ▼ セグメントとは
+
+スパンに相当する。
+
+マイクロサービスの処理情報を持つ。
+
+```yaml
+{
+  # スパンのトレースID
+  "trace_id": "1-581cf771-a006649127e371903a2de979",
+  # スパンのスパンID
+  "id": "70de5b6f19ff9a0a",
+  "name": "example.com",
+  "start_time": 1.478293361271E9,
+  "end_time": 1.478293361449E9,
+  "service": {...},
+  "user": {...},
+  "origin": {...},
+  "parent_id": {...},
+  "http": {...},
+  "aws": {...},
+  "error": {...},
+  "annotations": {...},
+  "metadata": {...},
+  "subsegments": {...},
+}
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
+
+#### ▼ セグメントのスキーマ
+
+セグメントの構造やデータ型を定義したもの。
+
+```yaml
+{
+  # スキーマURL
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Segment document schema",
+  # スキーマのバージョン
+  "version": "1.0.0",
+  # 構造
+  "type": "object",
+  # データ型
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "minLength": 35,
+      "pattern": "\\d+-[A-Fa-f0-9]*-[A-Fa-f0-9]{24}"
+    }
+    ...
+  }
+}
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+
+<br>
+
+### セグメントの構造
+
+#### ▼ `id`
+
+セグメントIDを持つ。
+
+W3C Trace Context仕様のルートスパンのIDに相当する。
+
+#### ▼ `trace_id`キー
+
+セグメントとサブセグメントを紐づける。
+
+`<バージョン>-<ルートセグメントのタイプスタンプ>-<サブセグメントID>`からなる。
+
+例えば、`1-58406520-a006649127e371903a2de979`になる。
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+
+#### ▼ `parent_id`キー
+
+サブセグメントIDを持つ。
+
+W3C Trace Context仕様のスパンのIDに相当する。
+
+#### ▼ `subsegments`キー
+
+記入中...
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
+
+#### ▼ `http`キー
+
+スパンのHTTPリクエストの情報を持つ。
+
+```yaml
+{
+  "http":
+    {
+      "request": {"method": "GET", "url": "https://names.example.com/"},
+      "response": {"content_length": -1, "status": 200},
+    },
+}
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http
+
+#### ▼ `aws`キー
+
+スパンの作成元のAWSリソース情報を持つ。
+
+```yaml
+{
+  # AWSリソース情報
+  "aws": {
+      "elastic_beanstalk":
+        {
+          "version_label": "app-5a56-170119_190650-stage-170119_190650",
+          "deployment_id": 32,
+          "environment_name": "scorekeep",
+        },
+      "ec2":
+        {
+          "availability_zone": "us-west-2c",
+          "instance_id": "i-075ad396f12bc325a",
+          "ami_id": "*****",
+        },
+      "cloudwatch_logs":
+        [
+          {
+            "log_group": "my-cw-log-group",
+            "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
+          },
+        ],
+      # X-Rayのクライアントパッケージ情報
+      "xray":
+        {
+          "auto_instrumentation": false,
+          "sdk": "X-Ray for Java",
+          "sdk_version": "2.8.0",
+        },
+    },
+}
+```
+
+<br>
+
+## 04. Lambdaの場合
 
 ### 初期化
 
