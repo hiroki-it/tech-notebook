@@ -457,7 +457,7 @@ func main() {
 		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// ヘルスチェックへのリクエストを無視する
-	        grpc_recovery.UnaryServerInterceptor(otelgrpc.WithInterceptorFilter(filters.ServicePrefix("/grpc.health.v1.Health"))),
+	        grpc_recovery.UnaryServerInterceptor(otelgrpc.WithInterceptorFilter(filters.HealthCheck())),
 		),
 	)
 

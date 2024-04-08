@@ -1159,7 +1159,7 @@ func main()  {
     // gRPCサーバーを作成する
 	conn, err := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler(
-			    otelgrpc.WithFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			    otelgrpc.WithFilter(filters.Not(filters.HealthCheck()),
 			),
 		),
 	)
@@ -1191,7 +1191,7 @@ func main()  {
 		grpc.ChainUnaryInterceptor(
 			otelgrpc.UnaryServerInterceptor(
 				// ヘルスチェックパスではスパンを作成しない
-			    otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
+			    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
 			),
         ),
 	)
@@ -1201,6 +1201,44 @@ func main()  {
 ```
 
 > - https://logmi.jp/tech/articles/328568
+
+#### ▼ filters.Not
+
+スパンを作成しない条件を設定する。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+)
+
+func main()  {
+
+	...
+
+    // gRPCサーバーを作成する
+	conn, err := grpc.NewServer(
+		// 単項RPCのサーバーインターセプターを設定する
+		grpc.ChainUnaryInterceptor(
+			otelgrpc.UnaryServerInterceptor(
+				// ヘルスチェックパスではスパンを作成しない
+			    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
+				// 指定したgRPCサービスではスパンを作成しない
+				otelgrpc.WithInterceptorFilter(filters.Not(filters.ServiceName("<gRPCサービス名>"))),
+				// 指定したgRPCメソッドではスパンを作成しない
+				otelgrpc.WithInterceptorFilter(filters.Not(filters.MethodName("<gRPCメソッド名>"))),
+			),
+        ),
+	)
+
+	defer conn.Close()
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters#Not
 
 <br>
 
@@ -1507,8 +1545,6 @@ func NewDbMock(t *testing.T) (*gorm.DB, sqlmock.Sqlmock, error) {
 		}),
 		&gorm.Config{}
     )
-
-	mockDB.Use(instrumentation_trace.DbClientMiddleware())
 
 	return mockDB, sqlMock, err
 }
