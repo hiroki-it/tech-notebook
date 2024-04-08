@@ -354,14 +354,12 @@ func main() {
 ```go
 // Ginのコンテキスト
 type Context struct {
-	// Ginの使用するリクエストスコープの値を設定する
 	Request *http.Request
 
 	Writer  ResponseWriter
 
 	Params Params
 
-	// ユーザー定義のリクエストスコープの値を設定する
 	Keys map[string]any
 
 	Errors errorMsgs

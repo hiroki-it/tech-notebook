@@ -17,16 +17,16 @@ description: Gin＠フレームワークの知見を記録しています。
 
 ### Contextとは
 
+受信したリクエストの全てのコンテキスト (処理中のコンテキスト、) を持つ。
+
 ```go
 type Context struct {
-	// Ginの使用するリクエストスコープの値を設定する
 	Request *http.Request
 
 	Writer  ResponseWriter
 
 	Params Params
 
-	// ユーザー定義のリクエストスコープの値を設定する
 	Keys map[string]any
 
 	Errors errorMsgs
@@ -36,6 +36,51 @@ type Context struct {
 ```
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin#Context
+
+<br>
+
+### Request
+
+処理中のコンテキスト (例：デッドライン、キャンセル、など) を持つ。
+
+処理中のコンテキストは、`gin.Context.Request.Context`メソッドで取得できる。
+
+```go
+type Context struct {
+	Request *http.Request
+}
+```
+
+Ginの計装で必要なコンテキストも`gin.Context.Request.Context`である。
+
+```go
+func Middleware(service string, opts ...Option) gin.HandlerFunc {
+
+	...
+
+
+	return func(c *gin.Context) {
+
+		...
+
+		savedCtx := c.Request.Context()
+
+		...
+
+		ctx := cfg.Propagators.Extract(savedCtx, propagation.HeaderCarrier(c.Request.Header))
+
+		...
+
+        ctx, span := tracer.Start(ctx, spanName, opts...)
+
+		...
+	}
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go#L31-L95
+
+<br>
 
 ### Bind
 
