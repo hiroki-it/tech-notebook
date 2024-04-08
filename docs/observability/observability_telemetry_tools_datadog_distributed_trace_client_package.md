@@ -352,7 +352,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	log.Print("Info: Trace provider is initializing ...")
 
-	// インバウンド通信のリクエストヘッダーからトレースコンテキストを取得する。
+	// Carrierからトレースコンテキストを取得する。
 	tracectx, err := tracer.Extract(tracer.HTTPHeadersCarrier(r.Header))
 
 	if err != nil {

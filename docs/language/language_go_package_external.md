@@ -498,7 +498,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 
 #### ▼ DialContext
 
-既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+既存コンテキストを使用して、gRPCサーバーとのコネクションを作成する。
 
 執筆時点 (2024/04/06) で`DialContext`メソッドは非推奨であり、`NewClient`メソッドが推奨である。
 
@@ -594,7 +594,7 @@ func main() {
 
 #### ▼ NewServer
 
-既存のコンテキストを使用して、gRPCサーバーとのコネクションを作成する。
+既存コンテキストを使用して、gRPCサーバーとのコネクションを作成する。
 
 ```go
 package main
@@ -687,11 +687,11 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	...
 
-	// Carrierのトレースコンテキストを既存のコンテキストに注入する
+	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
-		// 抽出したいトレースコンテキストを設定する
+		// 抽出したトレースコンテキストの設定先とする既存コンテキストを設定する
 		r.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
+		// Carrierとして使用するHTTPヘッダーを設定し、トレースコンテキストを抽出する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -721,7 +721,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	...
 
-	// 既存のコンテキスト内のトレースコンテキストをCarrierに注入する
+	// 既存コンテキスト内のトレースコンテキストをCarrierに注入する
 	otel.GetTextMapPropagator().Inject(
 		// 注入したいトレースコンテキストを設定する
 		r.Context(),
@@ -773,9 +773,11 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	...
 
+	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
+	    // 抽出したトレースコンテキストの設定先とする既存コンテキストを設定する
 		r.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
+		// Carrierとして使用するHTTPヘッダーを設定し、トレースコンテキストを抽出する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -801,9 +803,11 @@ func fooHandler(ginCtx *gin.Context) {
 
 	...
 
+	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
+		// 抽出したトレースコンテキストの設定先とする既存コンテキストを設定する
 		ginCtx.Request.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
+		// Carrierとして使用するHTTPヘッダーを設定し、トレースコンテキストを抽出する
 		propagation.HeaderCarrier(ginCtx.Request.Header),
 	)
 
@@ -1128,6 +1132,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 	}
 
 	return propagators.Extract(
+    	// 抽出したトレースコンテキストの設定先とする既存コンテキストを設定する
 	    ctx,
         // Carrierとして使用するメタデータを設定する
         &metadataSupplier{
