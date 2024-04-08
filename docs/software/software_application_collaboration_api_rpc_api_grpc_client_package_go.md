@@ -1144,7 +1144,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-空のメタデータを作成する場合は、`MD`構造体から作成すると良い。
+空のメタデータを作成する場合は、`MD`構造体を初期化しても良い。
 
 ```go
 package main
@@ -1158,7 +1158,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	...
 
 	// メタデータを作成する
-	md := new(metadata.MD)
+	md := metadata.MD{}
 
 	...
 

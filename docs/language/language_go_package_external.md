@@ -461,6 +461,15 @@ SQLの発行時に、SQLを属性に持つスパンを自動的に作成する�
 
 <br>
 
+## grpc-gateway
+
+HTTPで受信したリクエストをgRPCに変換してプロキシする。
+
+> - https://github.com/grpc-ecosystem/grpc-gateway
+> - https://grpc-ecosystem.github.io/grpc-gateway/
+
+<br>
+
 ## grpc-go
 
 ### grpc-goとは
@@ -1151,7 +1160,7 @@ func main()  {
 	conn, err := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler(
 			    otelgrpc.WithFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
-			)
+			),
 		),
 	)
 
@@ -1183,7 +1192,7 @@ func main()  {
 			otelgrpc.UnaryServerInterceptor(
 				// ヘルスチェックパスではスパンを作成しない
 			    otelgrpc.WithInterceptorFilter(filters.Not(filters.ServicePrefix("<ヘルスチェックパス>"))),
-			)
+			),
         ),
 	)
 
@@ -1458,13 +1467,21 @@ var (
   err error
 )
 
-db, err = gosql.Open(
-	"<driver>", "<connectionString>",
-	// SQLに付与するコメント
-	sqlcommentercore.CommenterOptions{
-		Config: sqlcommentercore.CommenterConfig{<flag>:bool}
-		Tags  : sqlcommentercore.StaticTags{<tag>: string}
-})
+func NewDB(
+
+	...
+
+	db, err = gosql.Open("<driver>", "<connectionString>",
+		// SQLに付与するコメント
+		sqlcommentercore.CommenterOptions{
+		    Config: sqlcommentercore.CommenterConfig{<flag>:bool}
+		    Tags  : sqlcommentercore.StaticTags{<tag>: string}
+		}
+    )
+
+    ...
+
+)
 ```
 
 > - https://google.github.io/sqlcommenter/go/database_sql/
