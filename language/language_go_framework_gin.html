@@ -6994,6 +6994,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bind" class="md-nav__link">
     <span class="md-ellipsis">
       Bind
@@ -7162,7 +7171,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
+  <a href="#request_1" class="md-nav__link">
     <span class="md-ellipsis">
       Request
     </span>
@@ -7172,7 +7181,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#request_1" class="md-nav__link">
+  <a href="#request_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Requestとは
     </span>
@@ -22206,6 +22215,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bind" class="md-nav__link">
     <span class="md-ellipsis">
       Bind
@@ -22374,7 +22392,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#request" class="md-nav__link">
+  <a href="#request_1" class="md-nav__link">
     <span class="md-ellipsis">
       Request
     </span>
@@ -22384,7 +22402,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#request_1" class="md-nav__link">
+  <a href="#request_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Requestとは
     </span>
@@ -22650,15 +22668,14 @@
 <p><br></p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <h3 id="context_1">Contextとは<a class="headerlink" href="#context_1" title="Permanent link">&para;</a></h3>
+<p>受信したリクエストの全てのコンテキスト (処理中のコンテキスト、) を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Ginの使用するリクエストスコープの値を設定する</span>
 <span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
 
 <span class="w">    </span><span class="nx">Writer</span><span class="w">  </span><span class="nx">ResponseWriter</span>
 
 <span class="w">    </span><span class="nx">Params</span><span class="w"> </span><span class="nx">Params</span>
 
-<span class="w">    </span><span class="c1">// ユーザー定義のリクエストスコープの値を設定する</span>
 <span class="w">    </span><span class="nx">Keys</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
 
 <span class="w">    </span><span class="nx">Errors</span><span class="w"> </span><span class="nx">errorMsgs</span>
@@ -22671,6 +22688,44 @@
 <li><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context">https://pkg.go.dev/github.com/gin-gonic/gin#Context</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
+<p>処理中のコンテキスト (例：デッドライン、キャンセル、など) を持つ。</p>
+<p>処理中のコンテキストは、<code>gin.Context.Request.Context</code>メソッドで取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ginの計装で必要なコンテキストも<code>gin.Context.Request.Context</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Middleware</span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">        </span><span class="nx">savedCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
+
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Propagators</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span><span class="nx">savedCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">))</span>
+
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go#L31-L95">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go#L31-L95</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="bind">Bind<a class="headerlink" href="#bind" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 処理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>リクエストからデータを取得し、構造体に紐付ける。</p>
@@ -22777,8 +22832,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
-<h4 id="request_1">▼ Requestとは<a class="headerlink" href="#request_1" title="Permanent link">&para;</a></h4>
+<h3 id="request_1">Request<a class="headerlink" href="#request_1" title="Permanent link">&para;</a></h3>
+<h4 id="request_2">▼ Requestとは<a class="headerlink" href="#request_2" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストを情報を持つ。</p>
 <h4 id="context_2">▼ Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストのコンテキストを取得する。</p>
@@ -23036,7 +23091,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-08</span>
   </span>
 
     
