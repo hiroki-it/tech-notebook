@@ -7879,6 +7879,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#filtersnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ filters.Not
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23811,6 +23820,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#filtersnot" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ filters.Not
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25280,7 +25298,7 @@
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewServerHandler</span><span class="p">(</span>
-<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()),</span>
 <span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -25308,7 +25326,7 @@
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">                </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
-<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServicePrefix</span><span class="p">(</span><span class="s">&quot;&lt;ヘルスチェックパス&gt;&quot;</span><span class="p">))),</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">())),</span>
 <span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -25319,6 +25337,43 @@
 <blockquote>
 <ul>
 <li><a href="https://logmi.jp/tech/articles/328568">https://logmi.jp/tech/articles/328568</a></li>
+</ul>
+</blockquote>
+<h4 id="filtersnot">▼ filters.Not<a class="headerlink" href="#filtersnot" title="Permanent link">&para;</a></h4>
+<p>スパンを作成しない条件を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 単項RPCのサーバーインターセプターを設定する</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
+<span class="w">                </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">())),</span>
+<span class="w">                </span><span class="c1">// 指定したgRPCサービスではスパンを作成しない</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">&quot;&lt;gRPCサービス名&gt;&quot;</span><span class="p">))),</span>
+<span class="w">                </span><span class="c1">// 指定したgRPCメソッドではスパンを作成しない</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">MethodName</span><span class="p">(</span><span class="s">&quot;&lt;gRPCメソッド名&gt;&quot;</span><span class="p">))),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters#Not">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters#Not</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25587,8 +25642,6 @@
 <span class="w">        </span><span class="p">}),</span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">mockDB</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">instrumentation_trace</span><span class="p">.</span><span class="nx">DbClientMiddleware</span><span class="p">())</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">mockDB</span><span class="p">,</span><span class="w"> </span><span class="nx">sqlMock</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
