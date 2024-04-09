@@ -903,7 +903,7 @@ func fooHandler(ginCtx *gin.Context) {
 	ctx := trace.ContextWithSpanContext(
 		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
-		// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ
+		// GinコンテキストのSpanContextを取得する
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
@@ -956,7 +956,7 @@ func fooHandler(ginCtx *gin.Context) {
 	ctx := trace.ContextWithSpanContext(
 		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
-		// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ
+		// GinコンテキストのSpanContextを取得する
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
