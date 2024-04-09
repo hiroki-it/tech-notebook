@@ -879,6 +879,8 @@ OpenTelemetryのTracerProviderを作成する。
 
 ### otel/traceとは
 
+記入中...
+
 <br>
 
 ### ContextWithSpanContext

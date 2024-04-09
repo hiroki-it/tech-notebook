@@ -46,7 +46,8 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 		// 処理ごとに異なる属性はスパンの作成時に設定する
 		resource.NewWithAttributes(
 			semconv.SchemaURL,
-			semconv.ServiceName("ExampleService"),
+			semconv.ServiceName("<マイクロサービス名>"),
+			semconv.DeploymentEnvironment("<実行環境名>")
 		),
 	)
 
@@ -267,8 +268,8 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 	// マイクロサービスの属性情報を設定する。
 	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
-		semconv.ServiceNameKey.String("foo-service"),
-		semconv.ServiceVersionKey.String("1.0.0"),
+		semconv.ServiceName("foo-service"),
+		semconv.DeploymentEnvironment("<実行環境名>")
 	)
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
@@ -559,7 +560,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	resourceWithAttributes, err := resource.New(
 		ctx,
 		// マイクロサービスの属性情報を設定する。
-		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
+		resource.WithAttributes(semconv.ServiceName("<マイクロサービス名>")),
 	)
 
 	if err != nil {
@@ -936,7 +937,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	resourceWithAttributes, err := resource.New(
         ctx,
 		// マイクロサービスの属性情報を設定する。
-		resource.WithAttributes(semconv.ServiceNameKey.String("sample")),
+		resource.WithAttributes(semconv.ServiceName("sample")),
 	)
 
 	if err != nil {

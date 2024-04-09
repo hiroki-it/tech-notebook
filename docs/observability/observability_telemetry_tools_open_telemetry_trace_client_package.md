@@ -288,7 +288,8 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
-		semconv.ServiceNameKey.String("foo-service"),
+		semconv.ServiceName("foo-service"),
+		semconv.DeploymentEnvironment("<実行環境名>"),
 	)
 
 	sampler := newSampler()
@@ -1144,6 +1145,8 @@ func NewTracerProvider() {
 例えばGoであれば、`go.opentelemetry.io/otel/resource`パッケージからコールできる。
 
 有益な属性として、以下がある。
+
+分散トレースの監視バックエンド (例：X-Ray) 上では、キー名は`otel.resource.<属性名>`になる。
 
 ```yaml
 {
