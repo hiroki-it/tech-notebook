@@ -721,11 +721,10 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 	...
 
-	// 既存コンテキスト内のトレースコンテキストをCarrierに注入する
 	otel.GetTextMapPropagator().Inject(
-		// 注入したいトレースコンテキストを設定する
+		// トレースコンテキストを持つ既存コンテキストを設定する
 		r.Context(),
-		// Carrierとして使用するHTTPヘッダーを設定する
+		// Carrierとして使用するHTTPヘッダーを設定し、トレースコンテキストを注入する
 		propagation.HeaderCarrier(w.Header()),
 	)
 
@@ -873,6 +872,82 @@ func main()  {
 ### otel/sdkとは
 
 OpenTelemetryのTracerProviderを作成する。
+
+<br>
+
+## otel/trace
+
+### otel/traceとは
+
+<br>
+
+### ContextWithSpanContext
+
+`SpanContext`を既存コンテキストに設定する。
+
+コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext`のみを引き継ぐ場合に使える。
+
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+	ctx := trace.ContextWithSpanContext(
+		// 新しいコンテキストにSpanContextを引き継ぐ
+		context.Background(),
+		// GinのコンテキストからSpanContextだけを取得する
+		trace.SpanContextFromContext(ginCtx.Request.Context()),
+	)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext
+
+<br>
+
+### SpanContextFromContext
+
+既存コンテキストから`SpanContext`のみを取得する。
+
+コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext`のみを引き継ぐ場合に使える。
+
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+	ctx := trace.ContextWithSpanContext(
+		// 新しいコンテキストにSpanContextを引き継ぐ
+		context.Background(),
+		// GinのコンテキストからSpanContextだけを取得する
+		trace.SpanContextFromContext(ginCtx.Request.Context()),
+	)
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext
 
 <br>
 
@@ -1059,8 +1134,9 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 	}
 
 	propagators.Inject(
+	    // トレースコンテキストを持つ既存コンテキストを設定する
         ctx,
-     	// Carrierとして使用するメタデータを設定する
+		// Carrierとして使用するメタデータを設定し、トレースコンテキストを注入する
 	    &metadataSupplier{
 		    metadata: &md,
     	},

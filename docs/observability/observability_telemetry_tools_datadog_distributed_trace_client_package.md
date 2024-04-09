@@ -316,9 +316,10 @@ func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 
 	req = req.WithContext(ctx)
 
-	// アップストリーム側マイクロサービスにトレースコンテキストを伝播する。
 	err = tracer.Inject(
+		// トレースコンテキストを持つ既存コンテキストを設定する
 		span.Context(),
+		// Carrierとして使用するメタデータを設定し、トレースコンテキストを注入する
 		tracer.HTTPHeadersCarrier(req.Header),
 	)
 

@@ -67,7 +67,11 @@ func Middleware(service string, opts ...Option) gin.HandlerFunc {
 
 		...
 
-		ctx := cfg.Propagators.Extract(savedCtx, propagation.HeaderCarrier(c.Request.Header))
+		ctx := cfg.Propagators.Extract(
+            savedCtx,
+			// Carrierとして使用するHTTPヘッダーを設定し、トレースコンテキストを抽出する
+			propagation.HeaderCarrier(c.Request.Header)
+        )
 
 		...
 
