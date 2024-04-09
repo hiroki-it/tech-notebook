@@ -312,6 +312,8 @@ Processorを設定する
 
 テレメトリーに付与する属性を設定する。
 
+可読性が低くなるため、属性はアプリ側で実装した方が良い。
+
 ```yaml
 processors:
   attributes:

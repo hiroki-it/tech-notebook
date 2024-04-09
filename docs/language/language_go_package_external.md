@@ -940,6 +940,29 @@ type SpanContext struct {
 
 既存コンテキストから`SpanContext`のみを取得する。
 
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func fooHandler(ctx context.Context) {
+
+	...
+
+	spanCtx := trace.SpanContextFromContext(ctx)
+
+	log.Printf("TraceID: %v", spanCtx.TraceID())
+	log.Printf("SpanID: %v", spanCtx.SpanID())
+
+	...
+
+}
+```
+
 コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext`のみを引き継ぐ場合に使える。
 
 ```go
