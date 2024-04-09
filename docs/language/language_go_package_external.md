@@ -901,9 +901,9 @@ func fooHandler(ginCtx *gin.Context) {
 	...
 
 	ctx := trace.ContextWithSpanContext(
-		// 新しいコンテキストにSpanContextを引き継ぐ
+		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
-		// GinのコンテキストからSpanContextだけを取得する
+		// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
@@ -913,6 +913,24 @@ func fooHandler(ginCtx *gin.Context) {
 ```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext
+
+<br>
+
+### SpanContext
+
+トレースコンテキストがもつスパン情報の実体である。
+
+```go
+type SpanContext struct {
+	traceID    TraceID
+	spanID     SpanID
+	traceFlags TraceFlags
+	traceState TraceState
+	remote     bool
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContext
 
 <br>
 
@@ -936,9 +954,9 @@ func fooHandler(ginCtx *gin.Context) {
 	...
 
 	ctx := trace.ContextWithSpanContext(
-		// 新しいコンテキストにSpanContextを引き継ぐ
+		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
-		// GinのコンテキストからSpanContextだけを取得する
+		// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
