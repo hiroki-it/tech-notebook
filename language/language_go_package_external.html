@@ -7744,6 +7744,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spancontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpanContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spancontextfromcontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContextFromContext
@@ -23727,6 +23736,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spancontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpanContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spancontextfromcontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContextFromContext
@@ -25164,9 +25182,9 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 新しいコンテキストにSpanContextを引き継ぐ</span>
+<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// GinのコンテキストからSpanContextだけを取得する</span>
+<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -25177,6 +25195,22 @@
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext">https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="spancontext">SpanContext<a class="headerlink" href="#spancontext" title="Permanent link">&para;</a></h3>
+<p>トレースコンテキストがもつスパン情報の実体である。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">SpanContext</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">traceID</span><span class="w">    </span><span class="nx">TraceID</span>
+<span class="w">    </span><span class="nx">spanID</span><span class="w">     </span><span class="nx">SpanID</span>
+<span class="w">    </span><span class="nx">traceFlags</span><span class="w"> </span><span class="nx">TraceFlags</span>
+<span class="w">    </span><span class="nx">traceState</span><span class="w"> </span><span class="nx">TraceState</span>
+<span class="w">    </span><span class="nx">remote</span><span class="w">     </span><span class="kt">bool</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContext">https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContext</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25196,9 +25230,9 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 新しいコンテキストにSpanContextを引き継ぐ</span>
+<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// GinのコンテキストからSpanContextだけを取得する</span>
+<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
