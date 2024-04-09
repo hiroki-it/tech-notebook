@@ -25184,7 +25184,7 @@
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ</span>
+<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを取得する</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -25232,7 +25232,7 @@
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを新しいコンテキストに引き継ぐ</span>
+<span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを取得する</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
