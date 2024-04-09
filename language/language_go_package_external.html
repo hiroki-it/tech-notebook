@@ -25217,6 +25217,27 @@
 <p><br></p>
 <h3 id="spancontextfromcontext">SpanContextFromContext<a class="headerlink" href="#spancontextfromcontext" title="Permanent link">&para;</a></h3>
 <p>既存コンテキストから<code>SpanContext</code>のみを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">spanCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;TraceID: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;SpanID: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">SpanID</span><span class="p">())</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <p>コンテキストの持つデッドラインやキャンセルは不要で、<code>SpanContext</code>のみを引き継ぐ場合に使える。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
