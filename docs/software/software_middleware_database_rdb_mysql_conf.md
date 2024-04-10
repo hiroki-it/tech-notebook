@@ -73,6 +73,25 @@ $ mysql -u <ユーザー名> -p<パスワード> -h <DBホスト名> <DB名>
 
 ### パラメーター
 
+#### ▼ パラメーターの種類
+
+| 変数名               | 説明                                 |
+| -------------------- | ------------------------------------ |
+| `time_zone`          | クエリのタイムゾーンを設定する。     |
+| `max_execution_time` | クエリのタイムアウト時間を設定する。 |
+
+#### ▼ パラメーターの設定
+
+パラメーターは、全てのセッションに共通する『グローバルパラメーター』と個別のセッションのみの『セッションパラメーター』がある。
+
+```sql
+-- グローバルパラメーターの場合
+SET GLOBAL time_zone = "Asia/Tokyo";
+
+-- セッションパラメーターの場合
+SET time_zone = "Asia/Tokyo";
+```
+
 #### ▼ パラメーターの表示
 
 DBに登録されているグローバルパラメーターとセッションパラメーターを取得する。
@@ -85,16 +104,6 @@ SHOW GLOBAL VARIABLES;
 -- OSとDBのタイムゾーンに関するパラメーターを表示
 SHOW SESSION VARIABLES LIKE "%time_zone";
 SHOW GLOBAL VARIABLES LIKE "%time_zone";
-```
-
-#### ▼ パラメーターの設定
-
-```sql
--- グローバルパラメーターの場合
-SET GLOBAL time_zone = "Asia/Tokyo";
-
--- セッションパラメーターの場合
-SET time_zone = "Asia/Tokyo";
 ```
 
 <br>
