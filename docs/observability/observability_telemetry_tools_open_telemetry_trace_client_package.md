@@ -1140,6 +1140,8 @@ func NewTracerProvider() {
 
 ### Resourceの種類
 
+#### ▼ HTTP/gRPCリクエストの場合
+
 デフォルトで、様々な属性を持っている。
 
 例えばGoであれば、`go.opentelemetry.io/otel/resource`パッケージからコールできる。
@@ -1158,6 +1160,18 @@ func NewTracerProvider() {
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go
+
+#### ▼ DBクエリの場合
+
+デフォルトで、様々な属性を持っている。
+
+```yaml
+{
+  "db.rows_affected": "<処理したレコード数>"
+  "db.sql.table": "<テーブル名>",
+  ...
+}
+```
 
 <br>
 

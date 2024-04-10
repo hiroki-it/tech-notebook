@@ -668,7 +668,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-## 13. アーキテクチャ特性の担保
+## 12. アーキテクチャ特性の担保
 
 ### 可用性の場合
 
@@ -676,7 +676,7 @@ Sync後にKubernetesリソースの状態が変更されるような場合、Syn
 
 <br>
 
-## 14. アップグレード
+## 13. アップグレード
 
 ### ArgoCD自体のアップグレード
 
@@ -720,7 +720,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 <br>
 
-## 14-02. B/G式のアップグレード (AWS EKSの場合)
+## 13-02. B/G式のアップグレード (AWS EKSの場合)
 
 ### AWS Load Balancerコントローラーを採用している場合
 
@@ -745,7 +745,7 @@ AWS ALBのターゲットグループでB/G Clusterを切り替える方法。
 
 <br>
 
-## 15. Prometheusによる監視
+## 14. Prometheusによる監視
 
 ### メトリクスの種類
 
@@ -937,7 +937,7 @@ spec:
 
 <br>
 
-## 16. マルチテナント
+## 15. マルチテナント
 
 ### ArgoCDでテナント分割が必要な理由
 
@@ -985,12 +985,20 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 <br>
 
-## 17. アクセスを制御する
+## 16. アクセスを制御する
 
 ### ローカルマシン → (アクセス制御) → ArgoCD の部分
 
-```bash
-ローカルマシン → (アクセス制御) → ArgoCD → (アクセス制御) → Cluster
+```yaml
+ローカルマシン
+⬇︎
+(アクセス制御)
+⬇︎
+ArgoCD
+⬇︎
+(アクセス制御)
+⬇︎
+Cluster
 ```
 
 - ArgoCDの前段のALBにWAFを紐づけ、特定のIPアドレス以外を `403` (認可エラー) にする。
@@ -998,8 +1006,16 @@ ArgoCDのコンポーネント (特に、application-controller、argocd-server)
 
 ### ArgoCD → (アクセス制御) → Cluster の部分
 
-```bash
-ローカルマシン → (アクセス制御) → ArgoCD → (アクセス制御) → Cluster
+```yaml
+ローカルマシン
+⬇︎
+(アクセス制御)
+⬇︎
+ArgoCD
+⬇︎
+(アクセス制御)
+⬇︎
+Cluster
 ```
 
 - `policy.csv`ファイルでArgoCD上の認可スコープを定義し、 `403` (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。

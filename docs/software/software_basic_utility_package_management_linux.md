@@ -208,6 +208,22 @@ $ source ~/.bashrc
 
 <br>
 
+### current
+
+現在有効になっているバージョンを確認する。
+
+```bash
+$ asdf current
+
+golang          1.19.13         <使用中の.tool-versionsファイルのパス>
+helm            3.13.0          <使用中の.tool-versionsファイルのパス>
+helmfile        ______          <使用中の.tool-versionsファイルのパス>
+kubectl         1.24.0          <使用中の.tool-versionsファイルのパス>
+...
+```
+
+<br>
+
 ### global
 
 ホームディレクトリ (`~/`) に`.tool-version`ファイルを作成する。
