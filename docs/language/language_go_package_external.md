@@ -955,8 +955,14 @@ func fooHandler(ctx context.Context) {
 
 	spanCtx := trace.SpanContextFromContext(ctx)
 
-	log.Printf("TraceID: %v", spanCtx.TraceID())
-	log.Printf("SpanID: %v", spanCtx.SpanID())
+    // トレースIDを確認する
+	log.Printf("traceid: %v", spanCtx.TraceID())
+
+    // スパンIDを確認する
+	log.Printf("spanid: %v", spanCtx.SpanID())
+
+    // tracestate値を確認する
+	log.Printf("tracestate: %v", spanCtx.TraceState())
 
 	...
 
