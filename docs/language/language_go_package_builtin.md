@@ -158,6 +158,16 @@ should not use built-in type string as key for value; define your own type to av
 
 <br>
 
+### WithDeadline
+
+#### ▼ WithDeadlineとは
+
+コンテキストにタイムアウトの時刻を設定する。
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withdeadline%E9%96%A2%E6%95%B0
+
+<br>
+
 ### WithTimeout
 
 #### ▼ WithTimeoutとは
@@ -202,6 +212,7 @@ func main()  {
 ```
 
 > - https://pkg.go.dev/context#example-WithTimeout
+> - https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withtimeout%E9%96%A2%E6%95%B0
 
 **＊実装例＊**
 
