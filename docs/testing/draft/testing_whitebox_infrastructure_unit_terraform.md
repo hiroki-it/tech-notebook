@@ -81,7 +81,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 		TerraformDir: "../examples/terraform-aws-hello-world-example",
 	})
 
-    // 処理の最後に、terraform destroyコマンドを実行し、リソースを削除する。
+    // 処理の最後に、terraform apply -destroyコマンドを実行し、リソースを削除する。
 	defer terraform.Destroy(t, terraformOptions)
 
     // terraform initコマンドとterraform applyコマンドを実行する。

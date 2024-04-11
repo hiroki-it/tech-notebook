@@ -308,6 +308,46 @@ func (user *User) AfterSave(tx *gorm.DB) (err error) {
 
 <br>
 
+### Statement
+
+Gorm
+
+```go
+type Statement struct {
+	*DB
+	TableExpr            *clause.Expr
+	Table                string
+	Model                interface{}
+	Unscoped             bool
+	Dest                 interface{}
+	ReflectValue         reflect.Value
+	Clauses              map[string]clause.Clause
+	BuildClauses         []string
+	Distinct             bool
+	Selects              []string
+	Omits                []string
+	Joins                []join
+	Preloads             map[string][]interface{}
+	Settings             sync.Map
+	ConnPool             ConnPool
+	Schema               *schema.Schema
+	// SQLステートメントごとのコンテキスト
+	Context              context.Context
+	RaiseErrorOnNotFound bool
+	SkipHooks            bool
+	SQL                  strings.Builder
+	Vars                 []interface{}
+	CurDestIndex         int
+	attrs                []interface{}
+	assigns              []interface{}
+	scopes               []func(*DB) *DB
+}
+```
+
+> - https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49
+
+<br>
+
 ### Create
 
 Gormモデルのフィールドに設定された値を元に、カラムを作成する。
@@ -1006,9 +1046,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (`gin.Context`) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (`gin.Context`) を自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンを自動的に作成する。
+また、事前のミドルウェア処理としてスパンを自動的に作成する (事後のミドルウェア処理には`otelhttp`パッケージを使う) 。
 
-各メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。
+各メソッドで事前にスパンを作成する必要がなくなる。
 
 `otelgin`を使用しない場合、これらを自前で実装する必要がある。
 
@@ -1048,11 +1088,11 @@ func main() {
 
 ### otelgormとは
 
-受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にSQLを含むコンテキストを自動的に注入 (Inject) する。
+受信したリクエストのCarrier (HTTPヘッダー、gRPCメタデータ、など) からコンテキストを自動的に抽出 (Extract) する。
 
-また、事前のミドルウェア処理としてスパンを自動的に作成する。
+また、事前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを挿入する。
 
-各永続化メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。
+各永続化メソッドでスパンを作成したり、SQLステートメントを設定する必要がなくなる。
 
 `otelgorm`を使用しない場合、これらを自前で実装する必要がある。
 
@@ -1097,9 +1137,9 @@ func NewDb()  {
 
 受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンを自動的に作成する。
+また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
 
-各メソッドでスパンを作成する必要がなくなる。
+各メソッドで事前/事後にスパンを作成する必要がなくなる。
 
 `otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
 
@@ -1412,9 +1452,9 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。
 
-また、事前のミドルウェア処理としてスパンを自動的に作成する。
+また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
 
-各メソッドでスパンを作成する必要がなくなる。
+各メソッドで事前/事後にスパンを作成する必要がなくなる。
 
 `otelhttp`を使用しない場合、これらを自前で実装する必要がある。
 
