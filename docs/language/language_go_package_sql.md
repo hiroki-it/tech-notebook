@@ -13,7 +13,7 @@ description: SQLパッケージ@Goの知見を記録しています。
 
 <br>
 
-## gorm
+## 01. gorm
 
 ### gormとは
 
@@ -21,7 +21,7 @@ Go製のORMである。
 
 その他のORMについては、以下のリポジトリが参考になる。
 
-執筆時点 (2022/01/31) では、GormとBeegoが接戦している。
+執筆時点 (2022/01/31) では、gormとbeegoが接戦している。
 
 > - https://github.com/d-tsuji/awesome-go-orms
 
@@ -77,13 +77,13 @@ func Close(db *gorm.DB) error {
 
 <br>
 
-### Gormモデル
+### gormモデル
 
-#### ▼ Gormモデル埋め込み
+#### ▼ gormモデル埋め込み
 
-構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
+構造体にgormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
 
-構造体をマッピングしたテーブルに、`id`カラム、`created_at`カラム、`updated_at`カラム、`deleted_at`カラムが追加される。
+構造体をマッピングしたテーブルに、対応するカラム (`id`、`created_at`、`updated_at`、`deleted_at`) を持つレコードを作成する。
 
 ```go
 type User struct {
@@ -127,7 +127,7 @@ type User struct {
 
 構造体が、`gorm.DeleteAt`をデータ型とするフィールドを持っていると、その構造体を使用した`DELETE`処理では論理削除が実行される。
 
-Gormモデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDeleteを有効化できる。
+gormモデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDeleteを有効化できる。
 
 ```go
 type User struct {
@@ -158,7 +158,7 @@ db.Where("age = 20").Find(&user)
 
 #### ▼ `TableName`メソッド
 
-デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
+デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
 
 `TableName`メソッドにより、ユーザー定義のテーブル名をつけられる。
 
@@ -177,6 +177,38 @@ func (User) TableName() string {
 ```
 
 > - https://gorm.io/docs/conventions.html#TableName
+
+<br>
+
+## 01-02. CRUDに関するgormクエリ
+
+### Create
+
+#### ▼ Createとは
+
+gormモデルのフィールドに設定された値を元に、レコードを作成する。
+
+作成したレコードのプライマリーキーを、構造体から取得できる。
+
+```go
+user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
+
+result := db.Create(&user) // pass pointer of data to Create
+
+user.ID             // returns inserted data's primary key
+result.Error        // returns error
+result.RowsAffected // returns inserted records count
+```
+
+> - https://gorm.io/docs/create.html#Create-Record
+
+<br>
+
+### Exec
+
+#### ▼ Execとは
+
+SQLステートメントをそのまま実行する。
 
 <br>
 
@@ -222,11 +254,57 @@ func (user *User) AfterSave(tx *gorm.DB) (err error) {
 
 <br>
 
-### Statement
+### Read
 
-Gorm
+#### ▼ 全レコード取得
 
 ```go
+user := User{}
+
+// Get all records
+result := db.Find(&users)
+// SELECT * FROM users;
+
+result.RowsAffected // returns found records count, equals `len(users)`
+result.Error        // returns error
+```
+
+> - https://gorm.io/docs/query.html#Retrieving-all-objects
+
+#### ▼ 単一/複数レコード取得
+
+gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたレコードを取得する。
+
+```go
+user := User{}
+
+db.First(&user, 10)
+// SELECT * FROM users WHERE id = 10;
+
+db.First(&user, "10")
+// SELECT * FROM users WHERE id = 10;
+
+db.Find(&users, []int{1,2,3})
+// SELECT * FROM users WHERE id IN (1,2,3);
+```
+
+> - https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+
+<br>
+
+### Statement
+
+gormクエリに関する情報を持つ。
+
+```go
+type DB struct {
+	*Config
+	Error        error
+	RowsAffected int64
+	Statement    *Statement
+	clone        int
+}
+
 type Statement struct {
 	*DB
 	TableExpr            *clause.Expr
@@ -246,9 +324,11 @@ type Statement struct {
 	ConnPool             ConnPool
 	Schema               *schema.Schema
 	// SQLステートメントごとのコンテキスト
+	// SQLにタイムアウト値やキャンセル関数を設定できる
 	Context              context.Context
 	RaiseErrorOnNotFound bool
 	SkipHooks            bool
+	// SQLステートメント
 	SQL                  strings.Builder
 	Vars                 []interface{}
 	CurDestIndex         int
@@ -262,67 +342,13 @@ type Statement struct {
 
 <br>
 
-### Create
-
-Gormモデルのフィールドに設定された値を元に、カラムを作成する。
-
-作成したカラムのプライマリーキーを、構造体から取得できる。
-
-```go
-user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
-
-result := db.Create(&user) // pass pointer of data to Create
-
-user.ID             // returns inserted data's primary key
-result.Error        // returns error
-result.RowsAffected // returns inserted records count
-```
-
-> - https://gorm.io/docs/create.html#Create-Record
-
-<br>
-
-### Read
-
-#### ▼ 全カラム取得
-
-```go
-user := User{}
-
-// Get all records
-result := db.Find(&users)
-// SELECT * FROM users;
-
-result.RowsAffected // returns found records count, equals `len(users)`
-result.Error        // returns error
-```
-
-> - https://gorm.io/docs/query.html#Retrieving-all-objects
-
-#### ▼ 単一/複数カラム取得
-
-Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
-
-```go
-user := User{}
-
-db.First(&user, 10)
-// SELECT * FROM users WHERE id = 10;
-
-db.First(&user, "10")
-// SELECT * FROM users WHERE id = 10;
-
-db.Find(&users, []int{1,2,3})
-// SELECT * FROM users WHERE id IN (1,2,3);
-```
-
-> - https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
-
-<br>
-
 ### Update
 
-#### ▼ 単一カラム更新 (暗黙的)
+#### ▼ Updateとは
+
+gormモデルのフィールドに設定された値を元に、レコードを変更する。
+
+#### ▼ 単一レコード更新 (暗黙的)
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
@@ -344,13 +370,13 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
 ```
 
-#### ▼ 複数カラム更新 (暗黙的)
+#### ▼ 複数レコード更新 (暗黙的)
 
-Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
+gormモデルのフィールドを暗黙的に指定して、複数のレコード値を更新する。
 
 または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。
 
-Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたレコード値の更新はスキップされてしまう。
 
 > - https://gorm.io/docs/update.html#Updates-multiple-columns
 
@@ -366,9 +392,9 @@ db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "acti
 // UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
 ```
 
-#### ▼ 複数カラム更新 (明示的)
+#### ▼ 複数レコード更新 (明示的)
 
-Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
+gormモデルのフィールドを明示的に指定して、複数のレコード値を更新する。
 
 フィールド値がゼロ値であっても、スキップされない。
 
@@ -386,9 +412,9 @@ db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 // UPDATE users SET name='new_name', age=0 WHERE id=111;
 ```
 
-#### ▼ 全カラム更新
+#### ▼ 全レコード更新
 
-Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
+gormモデルのフィールドを暗黙的に全て指定して、全てのレコード値を強制的に更新する。
 
 ```go
 user := User{Id:111}

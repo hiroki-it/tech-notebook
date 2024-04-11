@@ -549,7 +549,7 @@ func fooHandler(ginCtx *gin.Context) {
 	...
 
 	ctx := trace.ContextWithSpanContext(
-		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
+		// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
 		// GinコンテキストのSpanContextを取得する
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
@@ -631,7 +631,7 @@ func fooHandler(ginCtx *gin.Context) {
 	...
 
 	ctx := trace.ContextWithSpanContext(
-		// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する
+		// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する
 		context.Background(),
 		// GinコンテキストのSpanContextを取得する
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
@@ -706,7 +706,7 @@ func (p *otelPlugin) before(spanName string) gormHookFunc {
 		if tx.DryRun && !p.includeDryRunSpans {
 			return
 		}
-		// 実行中のGormクエリからコンテキストを取得する
+		// 実行中のgormクエリからコンテキストを取得する
 		ctx := tx.Statement.Context
 		ctx = context.WithValue(ctx, parentCtxKey{}, ctx)
 		// スパンを作成する
@@ -1337,7 +1337,7 @@ OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエン
 
 ### sqlcommenterとは
 
-Gormで発行したSQLにスパンの情報をコメントアウトとして付与する。
+gormで発行したSQLにスパンの情報をコメントアウトとして付与する。
 
 コメントアウトであるため、SQLの動作には影響がない。
 
