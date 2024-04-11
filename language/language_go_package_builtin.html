@@ -7101,22 +7101,22 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="contextとは">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deadline" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Deadline
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#withtimeout" class="md-nav__link">
+  <a href="#context_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ WithTimeout
+      Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Value
     </span>
   </a>
   
@@ -7131,17 +7131,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#value" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Value
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#withtimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      WithTimeout
+    </span>
+  </a>
   
 </li>
         
@@ -7450,7 +7450,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#context_2" class="md-nav__link">
+  <a href="#context_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Context
     </span>
@@ -22475,22 +22475,22 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="contextとは">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deadline" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Deadline
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#withtimeout" class="md-nav__link">
+  <a href="#context_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ WithTimeout
+      Context
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Value
     </span>
   </a>
   
@@ -22505,17 +22505,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#value" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Value
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#withtimeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      WithTimeout
+    </span>
+  </a>
   
 </li>
         
@@ -22824,7 +22824,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#context_2" class="md-nav__link">
+  <a href="#context_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Context
     </span>
@@ -23154,9 +23154,120 @@
 <li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/definition">https://zenn.dev/hsaki/books/golang-context/viewer/definition</a></li>
 </ul>
 </blockquote>
-<h4 id="deadline">▼ Deadline<a class="headerlink" href="#deadline" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="context_2">Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h3>
+<h4 id="value">▼ Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
+<p>コンテキストから値を取得する。</p>
+<p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
+<p><code>WithValue</code>関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。</p>
+<p>もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// キー名を指定して値を取得する</span>
+<span class="w">    </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">Foo</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;val: %v, ok: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A">https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
+</ul>
+</blockquote>
+<h4 id="withvalue">▼ WithValue<a class="headerlink" href="#withvalue" title="Permanent link">&para;</a></h4>
+<p>コンテキストに値を設定する。</p>
+<p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;値&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A">https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
+</ul>
+</blockquote>
+<p>キー名は、プリミティブ型以外を設定しないと、エラーになる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># string型のキー名を設定した場合</span>
+should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>built-in<span class="w"> </span><span class="nb">type</span><span class="w"> </span>string<span class="w"> </span>as<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>value<span class="p">;</span><span class="w"> </span>define<span class="w"> </span>your<span class="w"> </span>own<span class="w"> </span><span class="nb">type</span><span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>collisions
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/behiron/items/aec3e1a848f789153d86">https://qiita.com/behiron/items/aec3e1a848f789153d86</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="withtimeout">WithTimeout<a class="headerlink" href="#withtimeout" title="Permanent link">&para;</a></h3>
 <p>コンテキストにタイムアウト時間を設定する。</p>
 <p>リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、<code>context deadline exceeded</code>のエラーを返却する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">// タイムアウト時間を設定する</span>
+<span class="w">        </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// タイムアウト時間経過後に処理を中断する</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">neverReady</span><span class="p">:</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Err</span><span class="p">())</span><span class="w"> </span><span class="c1">// prints &quot;context deadline exceeded&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/context#example-WithTimeout">https://pkg.go.dev/context#example-WithTimeout</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23212,106 +23323,6 @@
 <ul>
 <li><a href="https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B">https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B</a></li>
 <li><a href="https://pkg.go.dev/context#Context">https://pkg.go.dev/context#Context</a></li>
-</ul>
-</blockquote>
-<h4 id="withtimeout">▼ WithTimeout<a class="headerlink" href="#withtimeout" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
-<span class="w">    </span><span class="p">)</span>
-
-<span class="w">    </span><span class="c1">// タイムアウト時間経過後に処理を中断する</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
-
-<span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">neverReady</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ready&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Err</span><span class="p">())</span><span class="w"> </span><span class="c1">// prints &quot;context deadline exceeded&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://pkg.go.dev/context#example-WithTimeout">https://pkg.go.dev/context#example-WithTimeout</a></li>
-</ul>
-</blockquote>
-<h4 id="withvalue">▼ WithValue<a class="headerlink" href="#withvalue" title="Permanent link">&para;</a></h4>
-<p>コンテキストに値を設定する。</p>
-<p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;値&gt;&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="o">...</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A">https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A</a></li>
-<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
-</ul>
-</blockquote>
-<p>キー名は、プリミティブ型以外を設定しないと、エラーになる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># string型のキー名を設定した場合</span>
-should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>built-in<span class="w"> </span><span class="nb">type</span><span class="w"> </span>string<span class="w"> </span>as<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>value<span class="p">;</span><span class="w"> </span>define<span class="w"> </span>your<span class="w"> </span>own<span class="w"> </span><span class="nb">type</span><span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>collisions
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/behiron/items/aec3e1a848f789153d86">https://qiita.com/behiron/items/aec3e1a848f789153d86</a></li>
-</ul>
-</blockquote>
-<h4 id="value">▼ Value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
-<p>コンテキストから値を取得する。</p>
-<p>どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。</p>
-<p><code>WithValue</code>関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。</p>
-<p>もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="kt">string</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="nx">contextKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// キー名を指定して値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">Foo</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;val: %v, ok: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A">https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A</a></li>
-<li><a href="https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF">https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24041,7 +24052,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 </blockquote>
 <p><br></p>
 <h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
-<h4 id="context_2">▼ Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h4>
+<h4 id="context_3">▼ Context<a class="headerlink" href="#context_3" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストを持つコンテキストを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
