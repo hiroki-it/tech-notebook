@@ -52,7 +52,7 @@
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_php_package_management.html)
   > * ##### [︎SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html)
-  > * ##### [︎その他パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_others.html)
+  > * ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_utility.html)
 
 <br>
 
@@ -87,7 +87,8 @@
   > * ##### [Gin](https://hiroki-it.github.io/tech-notebook/language/language_go_framework_gin.html)
 * #### <u>パッケージ</u>
   > * ##### [ビルトインパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_builtin.html)
-  > * ##### [外部パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_external.html)
+  > * ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_sql.html)
+  > * ##### [ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_utility.html)
 
 <br>
 

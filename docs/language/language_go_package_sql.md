@@ -1,0 +1,408 @@
+---
+title: 【IT技術の知見】SQLパッケージ@Go
+description: SQLパッケージ@Goの知見を記録しています。
+---
+
+# SQLパッケージ@Go
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> - https://hiroki-it.github.io/tech-notebook/
+
+<br>
+
+## gorm
+
+### gormとは
+
+Go製のORMである。
+
+その他のORMについては、以下のリポジトリが参考になる。
+
+執筆時点 (2022/01/31) では、GormとBeegoが接戦している。
+
+> - https://github.com/d-tsuji/awesome-go-orms
+
+<br>
+
+### DBとの接続
+
+#### ▼ MySQLの場合
+
+```go
+func NewDB() (*gorm.DB, error) {
+
+    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_DATABASE"),
+	)
+
+    // DBに接続します。
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
+
+func Close(db *gorm.DB) error {
+
+	sqlDb, err := db.DB()
+
+	if err != nil {
+		return err
+	}
+
+    // DBとの接続を切断します。
+	err = sqlDb.Close()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+> - https://gorm.io/docs/connecting_to_the_database.html#MySQL
+
+<br>
+
+### Gormモデル
+
+#### ▼ Gormモデル埋め込み
+
+構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
+
+構造体をマッピングしたテーブルに、`id`カラム、`created_at`カラム、`updated_at`カラム、`deleted_at`カラムが追加される。
+
+```go
+type User struct {
+	gorm.Model
+	Name string
+}
+
+// 以下と同じ
+type User struct {
+	ID        uint `gorm:"primaryKey"`
+    Name      string
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeleteAt `gorm:"index"`
+}
+```
+
+> - https://gorm.io/docs/models.html#embedded_struct
+
+#### ▼ プライマリーキー
+
+『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、`gorm:"primaryKey"`タグをつける。
+
+```go
+type User struct {
+	ID   string // プライマリーキーとして使用される。
+	Name string
+}
+```
+
+```go
+type User struct {
+	UserID string `gorm:"primaryKey"` // プライマリーキーとして使用される。
+	Name   string
+}
+```
+
+> - https://gorm.io/docs/conventions.html#ID-as-Primary-Key
+
+#### ▼ SoftDelete
+
+構造体が、`gorm.DeleteAt`をデータ型とするフィールドを持っていると、その構造体を使用した`DELETE`処理では論理削除が実行される。
+
+Gormモデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDeleteを有効化できる。
+
+```go
+type User struct {
+	ID      int
+	Deleted gorm.DeletedAt
+	Name    string
+}
+```
+
+```go
+user := User{Id: 111}
+
+// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE id = 111;
+db.Delete(&user)
+
+// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE age = 20;
+db.Where("age = ?", 20).Delete(&User{})
+
+// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;
+db.Where("age = 20").Find(&user)
+```
+
+> - https://gorm.io/docs/delete.html#Soft-Delete
+
+<br>
+
+### DBマイグレーション
+
+#### ▼ `TableName`メソッド
+
+デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
+
+`TableName`メソッドにより、ユーザー定義のテーブル名をつけられる。
+
+```go
+// テーブル名はデフォルトでは『users』になる。
+type User struct {
+	ID      int
+	Deleted gorm.DeletedAt
+	Name    string
+}
+
+// テーブル名を『foo』になる。
+func (User) TableName() string {
+	return "foo"
+}
+```
+
+> - https://gorm.io/docs/conventions.html#TableName
+
+<br>
+
+### Hook
+
+#### ▼ Hookとは
+
+CRUDの関数の前後に設定した独自処理を実行できるようにする。
+
+#### ▼ 特定のCRUD関数の前後
+
+```go
+func NewDb() {
+
+	...
+
+	// Createの前
+	db.Callback().Create().Before("gorm:before_create").Register("<フック名>", "<CRUD関数名>")
+
+	...
+}
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+#### ▼ 全てのCRUD関数の前後
+
+```go
+func (user *User) BeforeSave(tx *gorm.DB) (err error) {
+    user.LastUpdated = time.Now()
+    return nil
+}
+```
+
+```go
+func (user *User) AfterSave(tx *gorm.DB) (err error) {
+    log.Println("User successfully saved:", user.ID)
+    return nil
+}
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+<br>
+
+### Statement
+
+Gorm
+
+```go
+type Statement struct {
+	*DB
+	TableExpr            *clause.Expr
+	Table                string
+	Model                interface{}
+	Unscoped             bool
+	Dest                 interface{}
+	ReflectValue         reflect.Value
+	Clauses              map[string]clause.Clause
+	BuildClauses         []string
+	Distinct             bool
+	Selects              []string
+	Omits                []string
+	Joins                []join
+	Preloads             map[string][]interface{}
+	Settings             sync.Map
+	ConnPool             ConnPool
+	Schema               *schema.Schema
+	// SQLステートメントごとのコンテキスト
+	Context              context.Context
+	RaiseErrorOnNotFound bool
+	SkipHooks            bool
+	SQL                  strings.Builder
+	Vars                 []interface{}
+	CurDestIndex         int
+	attrs                []interface{}
+	assigns              []interface{}
+	scopes               []func(*DB) *DB
+}
+```
+
+> - https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49
+
+<br>
+
+### Create
+
+Gormモデルのフィールドに設定された値を元に、カラムを作成する。
+
+作成したカラムのプライマリーキーを、構造体から取得できる。
+
+```go
+user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
+
+result := db.Create(&user) // pass pointer of data to Create
+
+user.ID             // returns inserted data's primary key
+result.Error        // returns error
+result.RowsAffected // returns inserted records count
+```
+
+> - https://gorm.io/docs/create.html#Create-Record
+
+<br>
+
+### Read
+
+#### ▼ 全カラム取得
+
+```go
+user := User{}
+
+// Get all records
+result := db.Find(&users)
+// SELECT * FROM users;
+
+result.RowsAffected // returns found records count, equals `len(users)`
+result.Error        // returns error
+```
+
+> - https://gorm.io/docs/query.html#Retrieving-all-objects
+
+#### ▼ 単一/複数カラム取得
+
+Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。
+
+```go
+user := User{}
+
+db.First(&user, 10)
+// SELECT * FROM users WHERE id = 10;
+
+db.First(&user, "10")
+// SELECT * FROM users WHERE id = 10;
+
+db.Find(&users, []int{1,2,3})
+// SELECT * FROM users WHERE id IN (1,2,3);
+```
+
+> - https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+
+<br>
+
+### Update
+
+#### ▼ 単一カラム更新 (暗黙的)
+
+フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
+
+> - https://gorm.io/docs/update.html#Update-single-column
+
+```go
+// Update with conditions
+db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;
+
+user := User{Id:111}
+
+// User's ID is `111`:
+db.Model(&user).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111;
+
+// Update with conditions and model value
+db.Model(&user).Where("active = ?", true).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
+```
+
+#### ▼ 複数カラム更新 (暗黙的)
+
+Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。
+
+または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。
+
+Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。
+
+> - https://gorm.io/docs/update.html#Updates-multiple-columns
+
+```go
+user := User{Id:111}
+
+// Update attributes with `struct`, will only update non-zero fields
+db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: "false"})
+// UPDATE users SET name='hello', age=18, updated_at = '2013-11-17 21:34:10' WHERE id = 111;
+
+// Update attributes with `map`
+db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": "false"})
+// UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
+```
+
+#### ▼ 複数カラム更新 (明示的)
+
+Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。
+
+フィールド値がゼロ値であっても、スキップされない。
+
+> - https://gorm.io/docs/update.html#Update-Selected-Fields
+
+```go
+user := User{Id:111}
+
+// Select with Struct (select zero value fields)
+db.Model(&user).Select("Name", "Age").Updates(User{Name: "new_name", Age: 0})
+// UPDATE users SET name='new_name', age=0 WHERE id=111;
+
+// Select all fields (select all fields include zero value fields)
+db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
+// UPDATE users SET name='new_name', age=0 WHERE id=111;
+```
+
+#### ▼ 全カラム更新
+
+Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。
+
+```go
+user := User{Id:111}
+
+db.First(&user)
+
+user.Name = "jinzhu 2"
+
+user.Age = 100
+
+db.Save(&user)
+// UPDATE users SET name='jinzhu 2', age=100, birthday='2016-01-01', updated_at = '2013-11-17 21:34:10' WHERE id=111;
+```
+
+> - https://gorm.io/docs/update.html#Save-All-Fields
+
+<br>
