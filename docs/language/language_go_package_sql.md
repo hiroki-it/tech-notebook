@@ -450,9 +450,17 @@ db.Save(&user)
 gormクエリにコンテキストを設定する。
 
 ```go
-ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
+ctx, cancel := context.WithTimeout(
+    context.Background(),
+    5 * time.Second,
+)
+
+// タイムアウト時間経過後に処理を中断する
+defer cancel()
 
 db.WithContext(ctx).Find(&users)
 ```
+
+> - https://gorm.io/docs/context.html#Context-Timeout
 
 <br>

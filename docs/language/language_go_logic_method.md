@@ -847,9 +847,12 @@ func main() {
 	<-ctx.Done()
 
 	// 割り込み処理の実行後から強制終了までの時間を設定する
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(
+        context.Background(),
+		5 * time.Second,
+    )
 
-    // タイムアウトの場合に処理を中断する
+	// タイムアウト時間経過後に処理を中断する
 	defer cancel()
 
 	// Graceful Shutdown処理を実行する
@@ -910,7 +913,7 @@ func main()
         5 * time.Second,
     )
 
-	// タイムアウトの場合に処理を中断する
+    // タイムアウト時間経過後に処理を中断する
     defer cancel()
 
 	shutdown.Invoke(ctx)
@@ -1805,8 +1808,9 @@ import (
 func main() {
 
 	// タイムアウト時間設定済みのコンテキストを作成する
-	ctx, cancel := context.WithCancel(
-        context.Background()
+	ctx, cancel := context.WithTimeout(
+        context.Background(),
+        5 * time.Second,
     )
 
 	// チャンネルを作成
@@ -1863,9 +1867,10 @@ import (
 func main() {
 
 	// タイムアウト時間設定済みのコンテキストを作成する
-	ctx, cancel := context.WithCancel(
-        context.Background()
-    )
+	ctx, cancel := context.WithTimeout(
+        context.Background(),
+		5 * time.Second,
+	)
 
 	// チャンネルを作成
 	channel := make(chan string)

@@ -75,6 +75,8 @@ type Context interface {
 
 #### ▼ Deadline
 
+コンテキストにタイムアウト時間を設定する。
+
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
 
 ```go
@@ -93,11 +95,11 @@ func main() {
 	// タイムアウト時間設定済みのコンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		// タイムアウト時間を1秒に設定する
-		1 * time.Second,
+		// タイムアウト時間を設定する
+		5 * time.Second,
 	)
 
-	// タイムアウトの場合に処理を中断する
+	// タイムアウト時間経過後に処理を中断する
 	defer cancel()
 
 	req, err := http.NewRequest("GET", "http://localhost:8080/example", nil)
@@ -133,6 +135,33 @@ func main() {
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
 > - https://pkg.go.dev/context#Context
+
+#### ▼ WithTimeout
+
+```go
+package main
+
+func main()  {
+
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		5 * time.Second,
+	)
+
+	// タイムアウト時間経過後に処理を中断する
+	defer cancel()
+
+	select {
+	case <-neverReady:
+		fmt.Println("ready")
+	case <-ctx.Done():
+		fmt.Println(ctx.Err()) // prints "context deadline exceeded"
+	}
+
+}
+```
+
+> - https://pkg.go.dev/context#example-WithTimeout
 
 #### ▼ WithValue
 
@@ -286,11 +315,11 @@ func main() {
 	// タイムアウト時間設定済みのコンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		// タイムアウト時間を2秒に設定する
-		2 * time.Second,
+		// タイムアウト時間を設定する
+		5 * time.Second,
 	)
 
-	// タイムアウトの場合に処理を中断する
+	// タイムアウト時間経過後に処理を中断する
 	defer cancel()
 
 	// タイムアウト時間をfn1に伝播する

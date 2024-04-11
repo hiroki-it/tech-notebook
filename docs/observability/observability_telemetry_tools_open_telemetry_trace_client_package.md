@@ -65,7 +65,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 		ctx, cancel := context.WithTimeout(
 			context.Background(),
-			5*time.Second
+            5 * time.Second,
         )
 
 		// タイムアウトの場合に処理を中断する
@@ -146,7 +146,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 		ctx, cancel := context.WithTimeout(
 			context.Background(),
-			5*time.Second
+			5 * time.Second
         )
 
 		// タイムアウトの場合に処理を中断する
@@ -590,7 +590,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 		ctx, cancel := context.WithTimeout(
 			context.Background(),
-			5*time.Second
+			5 * time.Second
         )
 
 		// タイムアウトの場合に処理を中断する
@@ -674,7 +674,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 		ctx, cancel := context.WithTimeout(
 			context.Background(),
-			5*time.Second
+			5 * time.Second
         )
 
 		// タイムアウトの場合に処理を中断する
@@ -812,7 +812,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 		ctx, cancel := context.WithTimeout(
 			context.Background(),
-			5*time.Second
+			5 * time.Second
         )
 
 		// タイムアウトの場合に処理を中断する

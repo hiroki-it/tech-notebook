@@ -310,7 +310,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
             5 * time.Second,
         )
 
-		// タイムアウトの場合に処理を中断する
+		// タイムアウト時間経過後に処理を中断する
         defer cancel()
 
         if err := tracerProvider.Shutdown(ctx); err != nil {
