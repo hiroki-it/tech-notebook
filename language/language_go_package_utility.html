@@ -24395,7 +24395,7 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
+<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
 <span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを取得する</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
@@ -24470,7 +24470,7 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル値を引き継ぎたくないため、新しくコンテキストを作成する</span>
+<span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
 <span class="w">        </span><span class="c1">// GinコンテキストのSpanContextを取得する</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
@@ -24531,7 +24531,7 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// 実行中のGormクエリからコンテキストを取得する</span>
+<span class="w">        </span><span class="c1">// 実行中のgormクエリからコンテキストを取得する</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCtxKey</span><span class="p">{},</span><span class="w"> </span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// スパンを作成する</span>
@@ -25095,7 +25095,7 @@
 <p><br></p>
 <h2 id="sqlcommenter">sqlcommenter<a class="headerlink" href="#sqlcommenter" title="Permanent link">&para;</a></h2>
 <h3 id="sqlcommenter_1">sqlcommenterとは<a class="headerlink" href="#sqlcommenter_1" title="Permanent link">&para;</a></h3>
-<p>Gormで発行したSQLにスパンの情報をコメントアウトとして付与する。</p>
+<p>gormで発行したSQLにスパンの情報をコメントアウトとして付与する。</p>
 <p>コメントアウトであるため、SQLの動作には影響がない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
