@@ -61,9 +61,9 @@ description: ログ収集＠Datadogの知見を記録しています。
 
 アプリケーションからログを収集し、Datadogに転送する。
 
-> - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
-
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
+
+> - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 <br>
 

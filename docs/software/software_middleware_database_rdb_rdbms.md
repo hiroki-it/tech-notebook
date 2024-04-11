@@ -130,6 +130,15 @@ TCP/IPプロトコルを使用する。
 
 > - https://en.wikipedia.org/wiki/Database_connection
 
+#### ▼ セッション
+
+ログインに成功したコネクションのこと。
+
+セッションを確立できると、クエリを実行できるようになる。
+
+> - https://stackoverflow.com/a/8800971/12771072
+> - https://dba.stackexchange.com/a/318063
+
 #### ▼ コネクションプロキシ
 
 アプリケーションとDBの間に、コネクションプールプロキシ (例：ProxySQL、PgBouncer、など) を配置する。
