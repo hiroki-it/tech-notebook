@@ -1050,13 +1050,13 @@ func fooHandler(ginCtx *gin.Context) {
 
 各メソッドで事前にスパンを作成する必要がなくなる。
 
-`otelgin`を使用しない場合、これらを自前で実装する必要がある。
+`otelgin`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 <br>
 
 ### Middleware
 
-リクエスト受信時のミドルウェア処理として`otelgin`を設定する。
+リクエスト受信時のミドルウェア処理として`otelgin`パッケージを設定する。
 
 ```go
 package main
@@ -1088,19 +1088,93 @@ func main() {
 
 ### otelgormとは
 
-受信したリクエストのCarrier (HTTPヘッダー、gRPCメタデータ、など) からコンテキストを自動的に抽出 (Extract) する。
-
-また、事前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを挿入する。
+クエリ実行前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを自動的に設定する。
 
 各永続化メソッドでスパンを作成したり、SQLステートメントを設定する必要がなくなる。
 
-`otelgorm`を使用しない場合、これらを自前で実装する必要がある。
+`otelgorm`パッケージを使用しない場合、これらを自前で実装する必要がある。
+
+```go
+func (p *otelPlugin) before(spanName string) gormHookFunc {
+	return func(tx *gorm.DB) {
+		if tx.DryRun && !p.includeDryRunSpans {
+			return
+		}
+		// 実行中のクエリからコンテキストを取得する
+		ctx := tx.Statement.Context
+		ctx = context.WithValue(ctx, parentCtxKey{}, ctx)
+		// スパンを作成する
+		ctx, _ = p.tracer.Start(ctx, spanName, trace.WithSpanKind(trace.SpanKindClient))
+		tx.Statement.Context = ctx
+	}
+}
+
+func (p *otelPlugin) after() gormHookFunc {
+	return func(tx *gorm.DB) {
+		if tx.DryRun && !p.includeDryRunSpans {
+			return
+		}
+		span := trace.SpanFromContext(tx.Statement.Context)
+		if !span.IsRecording() {
+			return
+		}
+		defer span.End()
+
+		attrs := make([]attribute.KeyValue, 0, len(p.attrs)+4)
+		attrs = append(attrs, p.attrs...)
+
+		if sys := dbSystem(tx); sys.Valid() {
+			attrs = append(attrs, sys)
+		}
+
+		vars := tx.Statement.Vars
+		if p.excludeQueryVars {
+			vars = make([]interface{}, len(tx.Statement.Vars))
+
+			for i := 0; i < len(vars); i++ {
+				vars[i] = "?"
+			}
+		}
+
+		// SQLステートメントを取得する
+		query := tx.Dialector.Explain(tx.Statement.SQL.String(), vars...)
+
+		// SQLステートメントをスパンの属性に設定する
+		attrs = append(attrs, semconv.DBStatementKey.String(p.formatQuery(query)))
+		if tx.Statement.Table != "" {
+			attrs = append(attrs, semconv.DBSQLTableKey.String(tx.Statement.Table))
+		}
+		if tx.Statement.RowsAffected != -1 {
+			attrs = append(attrs, dbRowsAffected.Int64(tx.Statement.RowsAffected))
+		}
+
+		span.SetAttributes(attrs...)
+		switch tx.Error {
+		case nil,
+			gorm.ErrRecordNotFound,
+			driver.ErrSkip,
+			io.EOF,
+			sql.ErrNoRows:
+		default:
+			span.RecordError(tx.Error)
+			span.SetStatus(codes.Error, tx.Error.Error())
+		}
+
+		switch parentCtx := tx.Statement.Context.Value(parentCtxKey{}).(type) {
+		case context.Context:
+			tx.Statement.Context = parentCtx
+		}
+	}
+}
+```
+
+> - https://github.com/uptrace/opentelemetry-go-extra/blob/v0.2.4/otelgorm/otelgorm.go#L101-L169
 
 <br>
 
 ### NewPlugin
 
-クエリ送信時のミドルウェア処理として`otelgin`を設定する。
+クエリ実行前のミドルウェア処理として`otelgin`パッケージを設定する。
 
 ```go
 package db
@@ -1141,7 +1215,7 @@ func NewDb()  {
 
 各メソッドで事前/事後にスパンを作成する必要がなくなる。
 
-`otelgrpc`を使用しない場合、これらを自前で実装する必要がある。
+`otelgrpc`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -1172,7 +1246,7 @@ type metadataSupplier struct {
 
 #### ▼ ClientInterceptor系メソッド
 
-gRPCリクエスト送信時のインターセプター処理として`otelgrpc`を設定する。
+gRPCリクエスト送信時のインターセプター処理として`otelgrpc`パッケージを設定する。
 
 抽出時のメタデータは、`mdOutgoingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
 
@@ -1277,7 +1351,7 @@ func main() {
 
 #### ▼ ServerInterceptor系メソッド
 
-gRPCリクエスト受信時のインターセプター処理として`otelgrpc`を設定する。
+gRPCリクエスト受信時のインターセプター処理として`otelgrpc`パッケージを設定する。
 
 抽出時のメタデータは`mdIncomingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
 
@@ -1456,7 +1530,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 各メソッドで事前/事後にスパンを作成する必要がなくなる。
 
-`otelhttp`を使用しない場合、これらを自前で実装する必要がある。
+`otelhttp`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -1469,7 +1543,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 #### ▼ NewTransport
 
-リクエスト送信時のミドルウェア処理として`otelhttp`を設定する。
+リクエスト送信時のミドルウェア処理として`otelhttp`パッケージを設定する。
 
 ```go
 package main
@@ -1503,7 +1577,7 @@ func main() {
 
 #### ▼ NewHandler
 
-リクエスト受信時のミドルウェア処理として`otelhttp`を設定する。
+リクエスト受信時のミドルウェア処理として`otelhttp`パッケージを設定する。
 
 ```go
 package main
