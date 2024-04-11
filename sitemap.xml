@@ -1361,7 +1361,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_package_external.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_package_sql.html</loc>
+         <lastmod>2024-04-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_go_package_utility.html</loc>
          <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1501,12 +1506,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_php_package_others.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html</loc>
          <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/language_php_package_utility.html</loc>
          <lastmod>2024-04-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
