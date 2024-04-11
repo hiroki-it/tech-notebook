@@ -558,10 +558,10 @@ func main() {
 	}
 
 	// Deploymentを操作するために、インフォーマーを作成する
-	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second * 30)
+	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, 30 * time.Second)
 
 	// Fooカスタムリソースを操作するために、インフォーマーを作成する
-	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second * 30)
+	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, 30 * time.Second)
 
 	// custom-controllerを作成する
 	controller := NewController(

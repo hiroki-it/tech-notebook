@@ -903,11 +903,11 @@ func main()
 
     shutdown.Add(func(ctx context.Context) {
         fmt.Println("start hook3")
-        time.Sleep(10 * time.Second)
+        time.Sleep(5 * time.Second)
         fmt.Println("end hook3")
     })
 
-    // タイムアウト時間設定済みのコンテキストを作成する
+    // タイムアウト時間を設定し、コンテキストを作成する
     ctx, cancel := context.WithTimeout(
         context.Background(),
         5 * time.Second,
@@ -1664,14 +1664,14 @@ import (
 func main() {
 
     // 6秒の待機後に、quitチャンネルにtrueを格納する
-	time.Sleep(time.Second * 6)
+	time.Sleep(6 * time.Second)
 	quit <- true
 
 	select {
 
 	// quitチャンネルへのtrueの格納を待機しつつ、Afterの完了も並列的に待機する
 	// 先に終了した方のcaseを実行する
-	case <-time.After(time.Second * 5):
+	case <-time.After(5 * time.Second):
 		fmt.Println("timeout")
 
 	case <-quit:
@@ -1807,7 +1807,7 @@ import (
 
 func main() {
 
-	// タイムアウト時間設定済みのコンテキストを作成する
+	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
         context.Background(),
         5 * time.Second,
@@ -1866,7 +1866,7 @@ import (
 
 func main() {
 
-	// タイムアウト時間設定済みのコンテキストを作成する
+	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
         context.Background(),
 		5 * time.Second,

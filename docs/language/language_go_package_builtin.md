@@ -160,9 +160,13 @@ should not use built-in type string as key for value; define your own type to av
 
 ### WithTimeout
 
+#### ▼ WithTimeoutとは
+
 コンテキストにタイムアウト時間を設定する。
 
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
+
+タイムアウト時間を設定しない場合、タイムアウトはせず、無限に待機する。
 
 **＊実装例＊**
 
@@ -177,6 +181,7 @@ import (
 
 func main()  {
 
+	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を設定する
@@ -200,6 +205,47 @@ func main()  {
 
 **＊実装例＊**
 
+タイムアウト時間がすでに設定された既存コンテキストを使用した場合、タイムアウト時間のみを上書きする。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func main()  {
+
+	// タイムアウト時間を設定し、コンテキストを作成する
+	ctx1, _ := context.WithTimeout(
+		context.Background(),
+		// タイムアウト時間を設定する
+		5 * time.Second,
+	)
+
+	ctx2, cancel := context.WithTimeout(
+		ctx1,
+		// タイムアウト時間を上書きする
+		10 * time.Second,
+	)
+
+	// タイムアウト時間経過後に処理を中断する
+	defer cancel()
+
+	select {
+	case <-neverReady:
+		fmt.Println("ready")
+	case <-ctx.Done():
+		fmt.Println(ctx2.Err()) // prints "context deadline exceeded"
+	}
+
+}
+```
+
+**＊実装例＊**
+
 ```go
 package main
 
@@ -213,7 +259,7 @@ import (
 
 func main() {
 
-	// タイムアウト時間設定済みのコンテキストを作成する
+	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を設定する
@@ -327,7 +373,7 @@ func main() {
 
     defer log("done main")
 
-	// タイムアウト時間設定済みのコンテキストを作成する
+	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を設定する

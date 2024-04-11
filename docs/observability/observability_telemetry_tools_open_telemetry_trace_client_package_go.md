@@ -414,7 +414,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := trace.InitTracerProvider(10 * time.Second)
+	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -504,7 +504,7 @@ func main() {
 
 	defer stop()
 
-	cleanUp, err := trace.InitTracerProvider(10 * time.Second)
+	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
 		panic(err)
@@ -1079,7 +1079,7 @@ func parent(ctx *gin.Context) {
 
 	defer span.End()
 
-	time.Sleep(time.Second * 1)
+	time.Sleep(1 * time.Second)
 
 	log.Println("sample1 done.")
 
@@ -1161,7 +1161,7 @@ func child(ctx *gin.Context) {
 
 	defer span.End()
 
-	time.Sleep(time.Second * 1)
+	time.Sleep(1 * time.Second)
 
 	log.Println("sample2 done.")
 }

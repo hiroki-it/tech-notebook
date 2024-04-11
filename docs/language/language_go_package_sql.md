@@ -450,6 +450,7 @@ db.Save(&user)
 gormクエリにコンテキストを設定する。
 
 ```go
+// タイムアウト時間を設定し、コンテキストを作成する
 ctx, cancel := context.WithTimeout(
     context.Background(),
     5 * time.Second,
@@ -462,5 +463,6 @@ db.WithContext(ctx).Find(&users)
 ```
 
 > - https://gorm.io/docs/context.html#Context-Timeout
+> - https://elahe-dstn.medium.com/query-timeout-a-gopher-perspective-3caa221566e0
 
 <br>
