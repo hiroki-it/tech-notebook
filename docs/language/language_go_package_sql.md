@@ -180,7 +180,7 @@ func (User) TableName() string {
 
 <br>
 
-## 01-02. CRUDに関するgormクエリ
+## 01-02. gormクエリ
 
 ### Create
 
@@ -193,11 +193,11 @@ gormモデルのフィールドに設定された値を元に、レコードを�
 ```go
 user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 
-result := db.Create(&user) // pass pointer of data to Create
+result := db.Create(&user)
 
-user.ID             // returns inserted data's primary key
-result.Error        // returns error
-result.RowsAffected // returns inserted records count
+user.ID
+result.Error
+result.RowsAffected
 ```
 
 > - https://gorm.io/docs/create.html#Create-Record
@@ -209,6 +209,18 @@ result.RowsAffected // returns inserted records count
 #### ▼ Execとは
 
 SQLステートメントをそのまま実行する。
+
+```go
+db.Exec("DROP TABLE users")
+db.Exec("UPDATE orders SET shipped_at = ? WHERE id IN ?", time.Now(), []int64{1, 2, 3})
+db.Exec("UPDATE users SET money = ? WHERE name = ?", gorm.Expr("money * ? + ?", 10000, 1), "jinzhu")
+```
+
+```go
+db.Exec(fmt.Sprintf("SET SESSION max_execution_time=%d;", 10))
+```
+
+> - https://gorm.io/docs/sql_builder.html
 
 <br>
 
@@ -256,17 +268,20 @@ func (user *User) AfterSave(tx *gorm.DB) (err error) {
 
 ### Read
 
+#### ▼ Readとは
+
+gormモデルに対応するレコードを読み出す。
+
 #### ▼ 全レコード取得
 
 ```go
 user := User{}
 
-// Get all records
-result := db.Find(&users)
 // SELECT * FROM users;
+result := db.Find(&users)
 
-result.RowsAffected // returns found records count, equals `len(users)`
-result.Error        // returns error
+result.RowsAffected
+result.Error
 ```
 
 > - https://gorm.io/docs/query.html#Retrieving-all-objects
@@ -278,14 +293,14 @@ gormモデルとプライマリーキーを指定して、プライマリーキ�
 ```go
 user := User{}
 
+// SELECT * FROM users WHERE id = 10;
 db.First(&user, 10)
-// SELECT * FROM users WHERE id = 10;
 
+// SELECT * FROM users WHERE id = 10;
 db.First(&user, "10")
-// SELECT * FROM users WHERE id = 10;
 
-db.Find(&users, []int{1,2,3})
 // SELECT * FROM users WHERE id IN (1,2,3);
+db.Find(&users, []int{1,2,3})
 ```
 
 > - https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
@@ -293,6 +308,8 @@ db.Find(&users, []int{1,2,3})
 <br>
 
 ### Statement
+
+#### ▼ Statementとは
 
 gormクエリに関する情報を持つ。
 
@@ -355,19 +372,16 @@ gormモデルのフィールドに設定された値を元に、レコードを�
 > - https://gorm.io/docs/update.html#Update-single-column
 
 ```go
-// Update with conditions
-db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;
+db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
 
 user := User{Id:111}
 
-// User's ID is `111`:
-db.Model(&user).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111;
+db.Model(&user).Update("name", "hello")
 
-// Update with conditions and model value
-db.Model(&user).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
+db.Model(&user).Where("active = ?", true).Update("name", "hello")
 ```
 
 #### ▼ 複数レコード更新 (暗黙的)
@@ -383,13 +397,11 @@ gormモデルを使用した場合、フィールド値がゼロ値であると�
 ```go
 user := User{Id:111}
 
-// Update attributes with `struct`, will only update non-zero fields
-db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: "false"})
 // UPDATE users SET name='hello', age=18, updated_at = '2013-11-17 21:34:10' WHERE id = 111;
+db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: "false"})
 
-// Update attributes with `map`
-db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": "false"})
 // UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
+db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": "false"})
 ```
 
 #### ▼ 複数レコード更新 (明示的)
@@ -403,13 +415,11 @@ gormモデルのフィールドを明示的に指定して、複数のレコー�
 ```go
 user := User{Id:111}
 
-// Select with Struct (select zero value fields)
+// UPDATE users SET name='new_name', age=0 WHERE id=111;
 db.Model(&user).Select("Name", "Age").Updates(User{Name: "new_name", Age: 0})
-// UPDATE users SET name='new_name', age=0 WHERE id=111;
 
-// Select all fields (select all fields include zero value fields)
-db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 // UPDATE users SET name='new_name', age=0 WHERE id=111;
+db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 ```
 
 #### ▼ 全レコード更新
@@ -425,10 +435,24 @@ user.Name = "jinzhu 2"
 
 user.Age = 100
 
-db.Save(&user)
 // UPDATE users SET name='jinzhu 2', age=100, birthday='2016-01-01', updated_at = '2013-11-17 21:34:10' WHERE id=111;
+db.Save(&user)
 ```
 
 > - https://gorm.io/docs/update.html#Save-All-Fields
+
+<br>
+
+### WithContext
+
+#### ▼ WithContextとは
+
+gormクエリにコンテキストを設定する。
+
+```go
+ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
+
+db.WithContext(ctx).Find(&users)
+```
 
 <br>
