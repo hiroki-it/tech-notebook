@@ -7187,13 +7187,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02-crudgorm" class="md-nav__link">
+  <a href="#01-02-gorm" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. CRUDに関するgormクエリ
+      01-02. gormクエリ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. CRUDに関するgormクエリ">
+    <nav class="md-nav" aria-label="01-02. gormクエリ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7297,6 +7297,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Readとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード取得
@@ -7325,6 +7334,21 @@
       Statement
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Statementとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -7378,6 +7402,30 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード更新
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      WithContext
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WithContext">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#withcontext_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ WithContextとは
     </span>
   </a>
   
@@ -22210,13 +22258,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02-crudgorm" class="md-nav__link">
+  <a href="#01-02-gorm" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. CRUDに関するgormクエリ
+      01-02. gormクエリ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. CRUDに関するgormクエリ">
+    <nav class="md-nav" aria-label="01-02. gormクエリ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22320,6 +22368,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Readとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード取得
@@ -22348,6 +22405,21 @@
       Statement
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Statementとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22401,6 +22473,30 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード更新
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      WithContext
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WithContext">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#withcontext_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ WithContextとは
     </span>
   </a>
   
@@ -22590,18 +22686,18 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-02-crudgorm">01-02. CRUDに関するgormクエリ<a class="headerlink" href="#01-02-crudgorm" title="Permanent link">&para;</a></h2>
+<h2 id="01-02-gorm">01-02. gormクエリ<a class="headerlink" href="#01-02-gorm" title="Permanent link">&para;</a></h2>
 <h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <h4 id="create_1">▼ Createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドに設定された値を元に、レコードを作成する。</p>
 <p>作成したレコードのプライマリーキーを、構造体から取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Birthday</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()}</span>
 
-<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="c1">// pass pointer of data to Create</span>
+<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 
-<span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="w">             </span><span class="c1">// returns inserted data&#39;s primary key</span>
-<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span><span class="w">        </span><span class="c1">// returns error</span>
-<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="c1">// returns inserted records count</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">ID</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22612,6 +22708,17 @@
 <h3 id="exec">Exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
 <h4 id="exec_1">▼ Execとは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
 <p>SQLステートメントをそのまま実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;DROP TABLE users&quot;</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;UPDATE orders SET shipped_at = ? WHERE id IN ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="kt">int64</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;UPDATE users SET money = ? WHERE name = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Expr</span><span class="p">(</span><span class="s">&quot;money * ? + ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;SET SESSION max_execution_time=%d;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/sql_builder.html">https://gorm.io/docs/sql_builder.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="hook">Hook<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h3>
 <h4 id="hook_1">▼ Hookとは<a class="headerlink" href="#hook_1" title="Permanent link">&para;</a></h4>
@@ -22650,15 +22757,16 @@
 </blockquote>
 <p><br></p>
 <h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
+<h4 id="read_1">▼ Readとは<a class="headerlink" href="#read_1" title="Permanent link">&para;</a></h4>
+<p>gormモデルに対応するレコードを読み出す。</p>
 <h4 id="_3">▼ 全レコード取得<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
 
-<span class="c1">// Get all records</span>
-<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
 <span class="c1">// SELECT * FROM users;</span>
+<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
 
-<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="c1">// returns found records count, equals `len(users)`</span>
-<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span><span class="w">        </span><span class="c1">// returns error</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22669,14 +22777,14 @@
 <p>gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたレコードを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
 
+<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
-<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
 
+<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p">)</span>
-<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
 
-<span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">})</span>
 <span class="c1">// SELECT * FROM users WHERE id IN (1,2,3);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">})</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -22685,6 +22793,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="statement">Statement<a class="headerlink" href="#statement" title="Permanent link">&para;</a></h3>
+<h4 id="statement_1">▼ Statementとは<a class="headerlink" href="#statement_1" title="Permanent link">&para;</a></h4>
 <p>gormクエリに関する情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">DB</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">*</span><span class="nx">Config</span>
@@ -22742,19 +22851,16 @@
 <li><a href="https://gorm.io/docs/update.html#Update-single-column">https://gorm.io/docs/update.html#Update-single-column</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1">// Update with conditions</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE active=true;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
-<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE active=true;</span>
 
 <span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// User&#39;s ID is `111`:</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 
-<span class="c1">// Update with conditions and model value</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 <span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111 AND active=true;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="_6">▼ 複数レコード更新 (暗黙的)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを暗黙的に指定して、複数のレコード値を更新する。</p>
@@ -22767,13 +22873,11 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// Update attributes with `struct`, will only update non-zero fields</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
 <span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id = 111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
 
-<span class="c1">// Update attributes with `map`</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
 <span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, active=false, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
 </code></pre></div>
 <h4 id="_7">▼ 複数レコード更新 (明示的)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを明示的に指定して、複数のレコード値を更新する。</p>
@@ -22785,13 +22889,11 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// Select with Struct (select zero value fields)</span>
+<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Age&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;new_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
-<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
 
-<span class="c1">// Select all fields (select all fields include zero value fields)</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
 <span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
 </code></pre></div>
 <h4 id="_8">▼ 全レコード更新<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを暗黙的に全て指定して、全てのレコード値を強制的に更新する。</p>
@@ -22803,14 +22905,22 @@
 
 <span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span>
 
-<span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 <span class="c1">// UPDATE users SET name=&#39;jinzhu 2&#39;, age=100, birthday=&#39;2016-01-01&#39;, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://gorm.io/docs/update.html#Save-All-Fields">https://gorm.io/docs/update.html#Save-All-Fields</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="withcontext">WithContext<a class="headerlink" href="#withcontext" title="Permanent link">&para;</a></h3>
+<h4 id="withcontext_1">▼ WithContextとは<a class="headerlink" href="#withcontext_1" title="Permanent link">&para;</a></h4>
+<p>gormクエリにコンテキストを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="mi">4</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
+</code></pre></div>
 <p><br></p>
 
 
