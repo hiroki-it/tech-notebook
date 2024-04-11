@@ -25335,10 +25335,10 @@
 <p>受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (<code>gin.Context</code>) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (<code>gin.Context</code>) を自動的に注入 (Inject) する。</p>
 <p>また、事前のミドルウェア処理としてスパンを自動的に作成する (事後のミドルウェア処理には<code>otelhttp</code>パッケージを使う) 。</p>
 <p>各メソッドで事前にスパンを作成する必要がなくなる。</p>
-<p><code>otelgin</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><code>otelgin</code>パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <p><br></p>
 <h3 id="middleware">Middleware<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h3>
-<p>リクエスト受信時のミドルウェア処理として<code>otelgin</code>を設定する。</p>
+<p>リクエスト受信時のミドルウェア処理として<code>otelgin</code>パッケージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25367,13 +25367,89 @@
 <p><br></p>
 <h2 id="otelgorm">otelgorm<a class="headerlink" href="#otelgorm" title="Permanent link">&para;</a></h2>
 <h3 id="otelgorm_1">otelgormとは<a class="headerlink" href="#otelgorm_1" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストのCarrier (HTTPヘッダー、gRPCメタデータ、など) からコンテキストを自動的に抽出 (Extract) する。</p>
-<p>また、事前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを挿入する。</p>
+<p>クエリ実行前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを自動的に設定する。</p>
 <p>各永続化メソッドでスパンを作成したり、SQLステートメントを設定する必要がなくなる。</p>
-<p><code>otelgorm</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><code>otelgorm</code>パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">otelPlugin</span><span class="p">)</span><span class="w"> </span><span class="nx">before</span><span class="p">(</span><span class="nx">spanName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">gormHookFunc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// 実行中のクエリからコンテキストを取得する</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCtxKey</span><span class="p">{},</span><span class="w"> </span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// スパンを作成する</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithSpanKind</span><span class="p">(</span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanKindClient</span><span class="p">))</span>
+<span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ctx</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">otelPlugin</span><span class="p">)</span><span class="w"> </span><span class="nx">after</span><span class="p">()</span><span class="w"> </span><span class="nx">gormHookFunc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">KeyValue</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">attrs</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">attrs</span><span class="o">...</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">sys</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">dbSystem</span><span class="p">(</span><span class="nx">tx</span><span class="p">);</span><span class="w"> </span><span class="nx">sys</span><span class="p">.</span><span class="nx">Valid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">sys</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Vars</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">excludeQueryVars</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">vars</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Vars</span><span class="p">))</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">vars</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">vars</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;?&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// SQLステートメントを取得する</span>
+<span class="w">        </span><span class="nx">query</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Dialector</span><span class="p">.</span><span class="nx">Explain</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">SQL</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="nx">vars</span><span class="o">...</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// SQLステートメントをスパンの属性に設定する</span>
+<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBStatementKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">formatQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)))</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBSQLTableKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="p">))</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">dbRowsAffected</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="p">))</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span><span class="nx">attrs</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">ErrRecordNotFound</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">driver</span><span class="p">.</span><span class="nx">ErrSkip</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">sql</span><span class="p">.</span><span class="nx">ErrNoRows</span><span class="p">:</span>
+<span class="w">        </span><span class="k">default</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">span</span><span class="p">.</span><span class="nx">RecordError</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Error</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetStatus</span><span class="p">(</span><span class="nx">codes</span><span class="p">.</span><span class="nx">Error</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Error</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">parentCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">parentCtxKey</span><span class="p">{}).(</span><span class="kd">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">parentCtx</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/uptrace/opentelemetry-go-extra/blob/v0.2.4/otelgorm/otelgorm.go#L101-L169">https://github.com/uptrace/opentelemetry-go-extra/blob/v0.2.4/otelgorm/otelgorm.go#L101-L169</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="newplugin">NewPlugin<a class="headerlink" href="#newplugin" title="Permanent link">&para;</a></h3>
-<p>クエリ送信時のミドルウェア処理として<code>otelgin</code>を設定する。</p>
+<p>クエリ実行前のミドルウェア処理として<code>otelgin</code>パッケージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25408,7 +25484,7 @@
 <p>受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。</p>
 <p>また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。</p>
 <p>各メソッドで事前/事後にスパンを作成する必要がなくなる。</p>
-<p><code>otelgrpc</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><code>otelgrpc</code>パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc</a></li>
@@ -25434,7 +25510,7 @@
 <p><br></p>
 <h3 id="_11">クライアント側<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="clientinterceptor">▼ ClientInterceptor系メソッド<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCリクエスト送信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
+<p>gRPCリクエスト送信時のインターセプター処理として<code>otelgrpc</code>パッケージを設定する。</p>
 <p>抽出時のメタデータは、<code>mdOutgoingKey</code>キーと<code>rawMD{md: &lt;メタデータ&gt;}</code>で登録される。</p>
 <p>そのため、ユーザー定義のメタデータは<code>mdOutgoingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、<code>NewClientHandler</code>メソッドが推奨である。</p>
@@ -25526,7 +25602,7 @@
 <p><br></p>
 <h3 id="_12">サーバー側<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="serverinterceptor">▼ ServerInterceptor系メソッド<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCリクエスト受信時のインターセプター処理として<code>otelgrpc</code>を設定する。</p>
+<p>gRPCリクエスト受信時のインターセプター処理として<code>otelgrpc</code>パッケージを設定する。</p>
 <p>抽出時のメタデータは<code>mdIncomingKey</code>キーと<code>rawMD{md: &lt;メタデータ&gt;}</code>で登録される。</p>
 <p>そのため、ユーザー定義のメタデータは<code>mdIncomingKey</code>キーで登録できるOutgoingContext系メソッドで設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、<code>NewServerHandler</code>メソッドが推奨である。</p>
@@ -25681,7 +25757,7 @@
 <p>受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。</p>
 <p>また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。</p>
 <p>各メソッドで事前/事後にスパンを作成する必要がなくなる。</p>
-<p><code>otelhttp</code>を使用しない場合、これらを自前で実装する必要がある。</p>
+<p><code>otelhttp</code>パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp">https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp</a></li>
@@ -25693,7 +25769,7 @@
 <p><br></p>
 <h3 id="_14">クライアント側<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="newtransport">▼ NewTransport<a class="headerlink" href="#newtransport" title="Permanent link">&para;</a></h4>
-<p>リクエスト送信時のミドルウェア処理として<code>otelhttp</code>を設定する。</p>
+<p>リクエスト送信時のミドルウェア処理として<code>otelhttp</code>パッケージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -25724,7 +25800,7 @@
 <p><br></p>
 <h3 id="_15">サーバー側<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="newhandler">▼ NewHandler<a class="headerlink" href="#newhandler" title="Permanent link">&para;</a></h4>
-<p>リクエスト受信時のミドルウェア処理として<code>otelhttp</code>を設定する。</p>
+<p>リクエスト受信時のミドルウェア処理として<code>otelhttp</code>パッケージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
