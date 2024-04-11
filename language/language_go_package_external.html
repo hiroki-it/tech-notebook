@@ -7327,6 +7327,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -23319,6 +23328,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -24665,6 +24683,44 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="statement">Statement<a class="headerlink" href="#statement" title="Permanent link">&para;</a></h3>
+<p>Gorm</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Statement</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">*</span><span class="nx">DB</span>
+<span class="w">    </span><span class="nx">TableExpr</span><span class="w">            </span><span class="o">*</span><span class="nx">clause</span><span class="p">.</span><span class="nx">Expr</span>
+<span class="w">    </span><span class="nx">Table</span><span class="w">                </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Model</span><span class="w">                </span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">Unscoped</span><span class="w">             </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nx">Dest</span><span class="w">                 </span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">ReflectValue</span><span class="w">         </span><span class="nx">reflect</span><span class="p">.</span><span class="nx">Value</span>
+<span class="w">    </span><span class="nx">Clauses</span><span class="w">              </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">clause</span><span class="p">.</span><span class="nx">Clause</span>
+<span class="w">    </span><span class="nx">BuildClauses</span><span class="w">         </span><span class="p">[]</span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Distinct</span><span class="w">             </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nx">Selects</span><span class="w">              </span><span class="p">[]</span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Omits</span><span class="w">                </span><span class="p">[]</span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Joins</span><span class="w">                </span><span class="p">[]</span><span class="nx">join</span>
+<span class="w">    </span><span class="nx">Preloads</span><span class="w">             </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">Settings</span><span class="w">             </span><span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+<span class="w">    </span><span class="nx">ConnPool</span><span class="w">             </span><span class="nx">ConnPool</span>
+<span class="w">    </span><span class="nx">Schema</span><span class="w">               </span><span class="o">*</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span>
+<span class="w">    </span><span class="c1">// SQLステートメントごとのコンテキスト</span>
+<span class="w">    </span><span class="nx">Context</span><span class="w">              </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span>
+<span class="w">    </span><span class="nx">RaiseErrorOnNotFound</span><span class="w"> </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nx">SkipHooks</span><span class="w">            </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nx">SQL</span><span class="w">                  </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Builder</span>
+<span class="w">    </span><span class="nx">Vars</span><span class="w">                 </span><span class="p">[]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">CurDestIndex</span><span class="w">         </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">attrs</span><span class="w">                </span><span class="p">[]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">assigns</span><span class="w">              </span><span class="p">[]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">scopes</span><span class="w">               </span><span class="p">[]</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">DB</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49">https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <p>Gormモデルのフィールドに設定された値を元に、カラムを作成する。</p>
 <p>作成したカラムのプライマリーキーを、構造体から取得できる。</p>
@@ -25277,8 +25333,8 @@
 <h2 id="otelgin">otelgin<a class="headerlink" href="#otelgin" title="Permanent link">&para;</a></h2>
 <h3 id="otelgin_1">otelginとは<a class="headerlink" href="#otelgin_1" title="Permanent link">&para;</a></h3>
 <p>受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (<code>gin.Context</code>) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (<code>gin.Context</code>) を自動的に注入 (Inject) する。</p>
-<p>また、事前のミドルウェア処理としてスパンを自動的に作成する。</p>
-<p>各メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。</p>
+<p>また、事前のミドルウェア処理としてスパンを自動的に作成する (事後のミドルウェア処理には<code>otelhttp</code>パッケージを使う) 。</p>
+<p>各メソッドで事前にスパンを作成する必要がなくなる。</p>
 <p><code>otelgin</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <p><br></p>
 <h3 id="middleware">Middleware<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h3>
@@ -25311,9 +25367,9 @@
 <p><br></p>
 <h2 id="otelgorm">otelgorm<a class="headerlink" href="#otelgorm" title="Permanent link">&para;</a></h2>
 <h3 id="otelgorm_1">otelgormとは<a class="headerlink" href="#otelgorm_1" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にSQLを含むコンテキストを自動的に注入 (Inject) する。</p>
-<p>また、事前のミドルウェア処理としてスパンを自動的に作成する。</p>
-<p>各永続化メソッドでスパンを作成したり、SQL情報を設定する必要がなくなる。</p>
+<p>受信したリクエストのCarrier (HTTPヘッダー、gRPCメタデータ、など) からコンテキストを自動的に抽出 (Extract) する。</p>
+<p>また、事前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメントを挿入する。</p>
+<p>各永続化メソッドでスパンを作成したり、SQLステートメントを設定する必要がなくなる。</p>
 <p><code>otelgorm</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <p><br></p>
 <h3 id="newplugin">NewPlugin<a class="headerlink" href="#newplugin" title="Permanent link">&para;</a></h3>
@@ -25350,8 +25406,8 @@
 <h2 id="otelgrpc">otelgrpc<a class="headerlink" href="#otelgrpc" title="Permanent link">&para;</a></h2>
 <h3 id="otelgrpc_1">otelgrpcとは<a class="headerlink" href="#otelgrpc_1" title="Permanent link">&para;</a></h3>
 <p>受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。</p>
-<p>また、事前のミドルウェア処理としてスパンを自動的に作成する。</p>
-<p>各メソッドでスパンを作成する必要がなくなる。</p>
+<p>また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。</p>
+<p>各メソッドで事前/事後にスパンを作成する必要がなくなる。</p>
 <p><code>otelgrpc</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
@@ -25623,8 +25679,8 @@
 <h2 id="otelhttp">otelhttp<a class="headerlink" href="#otelhttp" title="Permanent link">&para;</a></h2>
 <h3 id="otelhttp_1">otelhttpとは<a class="headerlink" href="#otelhttp_1" title="Permanent link">&para;</a></h3>
 <p>受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。</p>
-<p>また、事前のミドルウェア処理としてスパンを自動的に作成する。</p>
-<p>各メソッドでスパンを作成する必要がなくなる。</p>
+<p>また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。</p>
+<p>各メソッドで事前/事後にスパンを作成する必要がなくなる。</p>
 <p><code>otelhttp</code>を使用しない場合、これらを自前で実装する必要がある。</p>
 <blockquote>
 <ul>
@@ -26282,7 +26338,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
   </span>
 
     
