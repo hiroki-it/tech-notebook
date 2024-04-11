@@ -73,11 +73,132 @@ type Context interface {
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/definition
 
-#### ▼ Deadline
+<br>
+
+### Context
+
+#### ▼ Value
+
+コンテキストから値を取得する。
+
+どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+
+`WithValue`関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。
+
+もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。
+
+```go
+package server
+
+import (
+	"context"
+	"log"
+)
+
+// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
+type contextKey string
+
+const (
+	Foo contextKey = "Foo"
+)
+
+func fooHandler(ctx context.Context) {
+
+    // キー名を指定して値を取得する
+	val, ok := ctx.Value(Foo).(string)
+
+	log.Print("val: %v, ok: %v", val, ok)
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+
+#### ▼ WithValue
+
+コンテキストに値を設定する。
+
+どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+
+```go
+package server
+
+import (
+	"context"
+)
+
+// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
+type contextKey string
+
+const (
+	Foo contextKey = "Foo"
+)
+
+func fooHandler(ctx context.Context) {
+
+    ...
+
+	ctx = context.WithValue(ctx, Foo, "<値>")
+
+	...
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
+> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+
+キー名は、プリミティブ型以外を設定しないと、エラーになる。
+
+```bash
+# string型のキー名を設定した場合
+should not use built-in type string as key for value; define your own type to avoid collisions
+```
+
+> - https://qiita.com/behiron/items/aec3e1a848f789153d86
+
+<br>
+
+### WithTimeout
 
 コンテキストにタイムアウト時間を設定する。
 
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func main()  {
+
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		// タイムアウト時間を設定する
+		5 * time.Second,
+	)
+
+	// タイムアウト時間経過後に処理を中断する
+	defer cancel()
+
+	select {
+	case <-neverReady:
+		fmt.Println("ready")
+	case <-ctx.Done():
+		fmt.Println(ctx.Err()) // prints "context deadline exceeded"
+	}
+
+}
+```
+
+> - https://pkg.go.dev/context#example-WithTimeout
+
+**＊実装例＊**
 
 ```go
 package main
@@ -135,112 +256,6 @@ func main() {
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
 > - https://pkg.go.dev/context#Context
-
-#### ▼ WithTimeout
-
-```go
-package main
-
-func main()  {
-
-	ctx, cancel := context.WithTimeout(
-		context.Background(),
-		5 * time.Second,
-	)
-
-	// タイムアウト時間経過後に処理を中断する
-	defer cancel()
-
-	select {
-	case <-neverReady:
-		fmt.Println("ready")
-	case <-ctx.Done():
-		fmt.Println(ctx.Err()) // prints "context deadline exceeded"
-	}
-
-}
-```
-
-> - https://pkg.go.dev/context#example-WithTimeout
-
-#### ▼ WithValue
-
-コンテキストに値を設定する。
-
-どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
-
-```go
-package server
-
-import (
-	"context"
-)
-
-// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
-type contextKey string
-
-const (
-	Foo contextKey = "Foo"
-)
-
-func fooHandler(ctx context.Context) {
-
-    ...
-
-	ctx = context.WithValue(ctx, Foo, "<値>")
-
-	...
-}
-```
-
-> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
-
-キー名は、プリミティブ型以外を設定しないと、エラーになる。
-
-```bash
-# string型のキー名を設定した場合
-should not use built-in type string as key for value; define your own type to avoid collisions
-```
-
-> - https://qiita.com/behiron/items/aec3e1a848f789153d86
-
-#### ▼ Value
-
-コンテキストから値を取得する。
-
-どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
-
-`WithValue`関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。
-
-もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。
-
-```go
-package server
-
-import (
-	"context"
-	"log"
-)
-
-// コンテキストキー名はプリミティブ型ではなくユーザー定義型を使用する
-type contextKey string
-
-const (
-	Foo contextKey = "Foo"
-)
-
-func fooHandler(ctx context.Context) {
-
-    // キー名を指定して値を取得する
-	val, ok := ctx.Value(Foo).(string)
-
-	log.Print("val: %v, ok: %v", val, ok)
-}
-```
-
-> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
 
 <br>
 
