@@ -642,7 +642,7 @@ import _ "<パッケージ名>" // init関数のみを実行する
 
 #### ▼ Functional Options Pattern
 
-Functional Options Patternを使用して、デフォルト値を実現する。
+Functional Options Patternを使用して、引数のデフォルト値を実現する。
 
 このパターンでは、関数の引数に『デフォルト値を設定する関数』を渡す。
 
@@ -698,6 +698,104 @@ func main() {
 
 > - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
 > - https://blog.kazu69.net/2018/02/22/golang-functional-options/
+
+#### ▼ `append`関数によるマージ
+
+引数で渡せるスライス型パラメーターと、関数内部で設定されているデフォルトのスライス方パラメーターを`append`関数でマージする。
+
+パラメーターと`append`関数の返却値の両方のスライスを、アンパック (`...`) する必要がある。
+
+**＊実装例＊**
+
+```go
+package middleware
+
+import (
+	"fmt"
+	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel/trace"
+)
+
+func HttpServerMiddleware(next http.Handler, opts ...otelhttp.Option) http.Handler {
+
+	return otelhttp.NewHandler(
+		next,
+		"foo-service",
+		append(opts, []otelhttp.Option{
+			// デフォルト値
+			filterHealthCheck(),
+			WithSpanNameFormatter(),
+		}...)...,
+	)
+}
+
+// ヘルスチェックパスではスパンを作成しない
+func filterHealthCheck() otelhttp.Option {
+
+	return otelhttp.WithFilter(filters.All(filters.Not(filters.Path("/health"))))
+}
+
+// スパン名を作成する関数を設定する
+func WithSpanNameFormatter() otelhttp.Option {
+
+	return otelhttp.WithSpanNameFormatter(func(operation string, r *http.Request) string {
+		// URLパスをスパン名とする
+		spanName := r.URL.Path
+		if spanName == "" {
+			spanName = fmt.Sprintf("HTTP %s route not found", r.Method)
+		}
+		return spanName
+	})
+}
+```
+
+**＊実装例＊**
+
+```go
+package middleware
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+)
+
+// リクエストを単位としてスパンを自動的に開始/終了する
+func ChainUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
+	return grpc.ChainUnaryInterceptor(
+		grpc_recovery.UnaryServerInterceptor(),
+		otelgrpc.UnaryServerInterceptor(
+			append(opts, []otelgrpc.Option{
+				// デフォルト値
+				InterceptorFilterHealthCheck(),
+			}...)...,
+		),
+	)
+}
+
+// リクエストを単位としてスパンを自動的に開始/終了する
+func ChainStreamServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
+	return grpc.ChainStreamInterceptor(
+		grpc_recovery.StreamServerInterceptor(),
+		otelgrpc.StreamServerInterceptor(
+			append(opts, []otelgrpc.Option{
+				// デフォルト値
+				InterceptorFilterHealthCheck(),
+			}...)...,
+		),
+	)
+}
+
+// ヘルスチェックパスではスパンを作成しない
+func InterceptorFilterHealthCheck() otelgrpc.Option {
+
+	return otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck()))
+}
+```
 
 <br>
 
