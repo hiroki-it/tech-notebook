@@ -33,14 +33,16 @@ package main
 
 func Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 
-  body, err := ioutil.ReadAll(r.Body)
-  defer w.Body.Close()
-  if err != nil {
-	http.Error(w, err.Error(), 500)
-	return
-  }
+    body, err := ioutil.ReadAll(r.Body)
 
-  ...
+    defer w.Body.Close()
+
+    if err != nil {
+  	    http.Error(w, err.Error(), 500)
+        return
+    }
+
+    ...
 }
 ```
 

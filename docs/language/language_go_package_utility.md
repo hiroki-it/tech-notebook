@@ -564,6 +564,82 @@ func fooHandler(ginCtx *gin.Context) {
 
 <br>
 
+### RecordError
+
+エラーメッセージをスパンに設定する。
+
+ステータスは設定できない。
+
+```go
+package server
+
+import (
+	"context"
+	"net/http"
+
+	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel/codes"
+)
+
+func fooHandler(ctx context.Context) {
+
+	req, err := http.NewRequest(
+		"GET",
+		"https://example.com",
+		nil,
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		// エラーをスパンに設定する
+		trace.SpanFromContext(ctx).RecordError(err.Error())
+		return
+	}
+
+	...
+
+}
+```
+
+<br>
+
+### SetStatus
+
+ステータス (`Unset`、`OK`、`Error`) とエラーメッセージをスパンに設定する。
+
+```go
+package server
+
+import (
+	"context"
+	"net/http"
+
+	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel/codes"
+)
+
+func fooHandler(ctx context.Context) {
+
+	req, err := http.NewRequest(
+		"GET",
+		"https://example.com",
+		nil,
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		// ステータスとエラーをスパンに設定する
+		trace.SpanFromContext(ctx).SetStatus(codes.Error, err.Error())
+		return
+	}
+
+	...
+
+}
+```
+
+<br>
+
 ### SpanContext
 
 トレースコンテキストがもつスパン情報の実体である。
@@ -643,6 +719,12 @@ func fooHandler(ginCtx *gin.Context) {
 ```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext
+
+<br>
+
+### SpanFromContext
+
+既存コンテキストから`Span`を取得する。
 
 <br>
 
