@@ -7212,6 +7212,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ append関数によるマージ
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23390,6 +23399,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ append関数によるマージ
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24877,7 +24895,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h2 id="01-02">01-02. 関数の出入力<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_20">引数のデフォルト値<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="functional-options-pattern">▼ Functional Options Pattern<a class="headerlink" href="#functional-options-pattern" title="Permanent link">&para;</a></h4>
-<p>Functional Options Patternを使用して、デフォルト値を実現する。</p>
+<p>Functional Options Patternを使用して、引数のデフォルト値を実現する。</p>
 <p>このパターンでは、関数の引数に『デフォルト値を設定する関数』を渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -24933,6 +24951,95 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://blog.kazu69.net/2018/02/22/golang-functional-options/">https://blog.kazu69.net/2018/02/22/golang-functional-options/</a></li>
 </ul>
 </blockquote>
+<h4 id="append">▼ <code>append</code>関数によるマージ<a class="headerlink" href="#append" title="Permanent link">&para;</a></h4>
+<p>引数で渡せるスライス型パラメーターと、関数内部で設定されているデフォルトのスライス方パラメーターを<code>append</code>関数でマージする。</p>
+<p>パラメーターと<code>append</code>関数の返却値の両方のスライスを、アンパック (<code>...</code>) する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">HttpServerMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">next</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// デフォルト値</span>
+<span class="w">            </span><span class="nx">filterHealthCheck</span><span class="p">(),</span>
+<span class="w">            </span><span class="nx">WithSpanNameFormatter</span><span class="p">(),</span>
+<span class="w">        </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">filterHealthCheck</span><span class="p">()</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">All</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Path</span><span class="p">(</span><span class="s">&quot;/health&quot;</span><span class="p">))))</span>
+<span class="p">}</span>
+
+<span class="c1">// スパン名を作成する関数を設定する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">WithSpanNameFormatter</span><span class="p">()</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithSpanNameFormatter</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">operation</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// URLパスをスパン名とする</span>
+<span class="w">        </span><span class="nx">spanName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">spanName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">spanName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;HTTP %s route not found&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">spanName</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// リクエストを単位としてスパンを自動的に開始/終了する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// デフォルト値</span>
+<span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// リクエストを単位としてスパンを自動的に開始/終了する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainStreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// デフォルト値</span>
+<span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">()</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()))</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="_21">返却値<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ 複数の返却値<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
@@ -26458,7 +26565,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-12</span>
   </span>
 
     
