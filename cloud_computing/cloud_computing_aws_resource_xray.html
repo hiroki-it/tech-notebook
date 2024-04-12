@@ -22715,7 +22715,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p>W3C Trace Context仕様のルートスパンのIDに相当する。</p>
 <h4 id="trace_id">▼ <code>trace_id</code>キー<a class="headerlink" href="#trace_id" title="Permanent link">&para;</a></h4>
 <p>セグメントとサブセグメントを紐づける。</p>
-<p><code>&lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントID&gt;</code>からなる。</p>
+<p><code>&lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントごとのユニークID&gt;</code>からなる。</p>
 <p>例えば、<code>1-58406520-a006649127e371903a2de979</code>になる。</p>
 <blockquote>
 <ul>
@@ -22723,10 +22723,34 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="parent_id">▼ <code>parent_id</code>キー<a class="headerlink" href="#parent_id" title="Permanent link">&para;</a></h4>
-<p>サブセグメントIDを持つ。</p>
+<p>親のサブセグメントIDを持つ。</p>
 <p>W3C Trace Context仕様のスパンのIDに相当する。</p>
 <h4 id="subsegments">▼ <code>subsegments</code>キー<a class="headerlink" href="#subsegments" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>サグセグメントの情報を持つ。</p>
+<p>例えば、サブセグメントIDであれば<code>&lt;サブセグメントごとのユニークID&gt;</code>になる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;subsegments&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;53995c3f42cd8ad8&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;api.example.com&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1461096053.37769</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;end_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1461096053.40379</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;remote&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;http&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;request&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">              </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://api.example.com/health&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;POST&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;traced&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;response&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;content_length&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">861</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments">https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments</a></li>
@@ -22944,7 +22968,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-12</span>
   </span>
 
     
