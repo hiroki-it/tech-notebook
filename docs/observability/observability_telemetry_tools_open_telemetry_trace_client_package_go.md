@@ -315,6 +315,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 
         if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
+			return
 		}
 
 		log.Print("Info: Trace provider shutdown successfully")
@@ -732,6 +733,7 @@ func StartMainServer() {
     defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
+			return
 		}
     }()
 
@@ -1053,6 +1055,7 @@ func main() {
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
+			return
 		}
 	}()
 
@@ -1135,6 +1138,7 @@ func main() {
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Print("Failed to shutdown tracer provider: %w", err)
+			return
 		}
 	}()
 

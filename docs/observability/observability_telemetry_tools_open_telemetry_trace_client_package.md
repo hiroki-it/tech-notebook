@@ -74,6 +74,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// Span Processor内の処理中スパンをExporterに送信する
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
+			return
 		}
 
 		log.Print("Info: Trace provider shutdown successfully")
@@ -155,6 +156,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// Span Processor内の処理中スパンをExporterに送信する
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
+			return
 		}
 
         log.Print("Info: Trace provider shutdown successfully")
@@ -599,10 +601,11 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// Span Processor内の処理中スパンをExporterに送信する
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
+			return
 		}
 
         log.Print("Info: Trace provider shutdown successfully")
-}
+    }
 
     log.Print("Info: Tracer provider initialize successfully")
 
@@ -683,6 +686,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// Graceful Shutdown処理を実行する
 		if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider %v", err)
+			return
 		}
 
         log.Print("Info: Trace provider shutdown successfully")
@@ -821,6 +825,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// Graceful Shutdown処理を実行する
 		if err := exporter.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown exporter: %v", err)
+			return
         }
 
         log.Print("Info: Trace provider shutdown successfully")

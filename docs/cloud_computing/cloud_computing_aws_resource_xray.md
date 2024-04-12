@@ -244,7 +244,7 @@ W3C Trace Context仕様のルートスパンのIDに相当する。
 
 セグメントとサブセグメントを紐づける。
 
-`<バージョン>-<ルートセグメントのタイプスタンプ>-<サブセグメントID>`からなる。
+`<バージョン>-<ルートセグメントのタイプスタンプ>-<サブセグメントごとのユニークID>`からなる。
 
 例えば、`1-58406520-a006649127e371903a2de979`になる。
 
@@ -252,13 +252,40 @@ W3C Trace Context仕様のルートスパンのIDに相当する。
 
 #### ▼ `parent_id`キー
 
-サブセグメントIDを持つ。
+親のサブセグメントIDを持つ。
 
 W3C Trace Context仕様のスパンのIDに相当する。
 
 #### ▼ `subsegments`キー
 
-記入中...
+サグセグメントの情報を持つ。
+
+例えば、サブセグメントIDであれば`<サブセグメントごとのユニークID>`になる。
+
+```yaml
+{
+  "subsegments":
+    [
+      {
+        "id": "53995c3f42cd8ad8",
+        "name": "api.example.com",
+        "start_time": 1461096053.37769,
+        "end_time": 1461096053.40379,
+        "namespace": "remote",
+        "http":
+          {
+            "request":
+              {
+                "url": "https://api.example.com/health",
+                "method": "POST",
+                "traced": true,
+              },
+            "response": {"status": 200, "content_length": 861},
+          },
+      },
+    ],
+}
+```
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
 
