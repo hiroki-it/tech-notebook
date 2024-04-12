@@ -7518,6 +7518,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#recorderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      RecordError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spancontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContext
@@ -7530,6 +7548,15 @@
   <a href="#spancontextfromcontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContextFromContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanfromcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpanFromContext
     </span>
   </a>
   
@@ -23261,6 +23288,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#recorderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      RecordError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      SetStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spancontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContext
@@ -23273,6 +23318,15 @@
   <a href="#spancontextfromcontext" class="md-nav__link">
     <span class="md-ellipsis">
       SpanContextFromContext
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanfromcontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      SpanFromContext
     </span>
   </a>
   
@@ -24411,6 +24465,71 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="recorderror">RecordError<a class="headerlink" href="#recorderror" title="Permanent link">&para;</a></h3>
+<p>エラーメッセージをスパンに設定する。</p>
+<p>ステータスは設定できない。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// エラーをスパンに設定する</span>
+<span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">RecordError</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="setstatus">SetStatus<a class="headerlink" href="#setstatus" title="Permanent link">&para;</a></h3>
+<p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージをスパンに設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// ステータスとエラーをスパンに設定する</span>
+<span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">SetStatus</span><span class="p">(</span><span class="nx">codes</span><span class="p">.</span><span class="nx">Error</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="spancontext">SpanContext<a class="headerlink" href="#spancontext" title="Permanent link">&para;</a></h3>
 <p>トレースコンテキストがもつスパン情報の実体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">SpanContext</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -24485,6 +24604,9 @@
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext">https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="spanfromcontext">SpanFromContext<a class="headerlink" href="#spanfromcontext" title="Permanent link">&para;</a></h3>
+<p>既存コンテキストから<code>Span</code>を取得する。</p>
 <p><br></p>
 <h2 id="otelgin">otelgin<a class="headerlink" href="#otelgin" title="Permanent link">&para;</a></h2>
 <h3 id="otelgin_1">otelginとは<a class="headerlink" href="#otelgin_1" title="Permanent link">&para;</a></h3>
