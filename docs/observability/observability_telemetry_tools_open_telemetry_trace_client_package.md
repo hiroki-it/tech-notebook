@@ -445,7 +445,11 @@ func newSampler() sdktrace.Sampler {
 
 <br>
 
-### Span Status
+### Spanステータス
+
+#### ▼ Spanステータスとは
+
+Spanに紐づく処理の成否を表す。
 
 #### ▼ Unset
 
@@ -469,7 +473,11 @@ func newSampler() sdktrace.Sampler {
 
 <br>
 
-### Span Kind
+### Span種別
+
+#### ▼ Span種別とは
+
+スパンの作成場所の種類を表す。
 
 #### ▼ Internal
 
@@ -500,6 +508,17 @@ func newSampler() sdktrace.Sampler {
 コンシューマー (サブスクライバー) からのメッセージの送信処理に関する情報を持つ。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
+<br>
+
+### Spanイベント
+
+#### ▼ Spanイベントとは
+
+スパンの処理時間中の特定時点のイベントを表す。
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#events
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 <br>
 
