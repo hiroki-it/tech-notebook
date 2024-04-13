@@ -7518,6 +7518,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#isrecording" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsRecording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#recorderror" class="md-nav__link">
     <span class="md-ellipsis">
       RecordError
@@ -23288,6 +23297,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#isrecording" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsRecording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#recorderror" class="md-nav__link">
     <span class="md-ellipsis">
       RecordError
@@ -24465,8 +24483,43 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="isrecording">IsRecording<a class="headerlink" href="#isrecording" title="Permanent link">&para;</a></h3>
+<p>スパンを処理中の場合は<code>true</code>になる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Tracerを作成する</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// スパンを処理中の場合は true になる</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;recording span: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="recorderror">RecordError<a class="headerlink" href="#recorderror" title="Permanent link">&para;</a></h3>
-<p>エラーメッセージをスパンに設定する。</p>
+<p>エラーのイベントを発行する。</p>
+<p>内部的には、<code>AddEvent</code>関数に<code>exception</code>イベントを渡している。</p>
 <p>ステータスは設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
@@ -24502,6 +24555,11 @@
 
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L421-L443">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L421-L443</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="setstatus">SetStatus<a class="headerlink" href="#setstatus" title="Permanent link">&para;</a></h3>
 <p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージをスパンに設定する。</p>
@@ -24684,6 +24742,7 @@
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// スパンを処理していない場合は、処理を終える</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
