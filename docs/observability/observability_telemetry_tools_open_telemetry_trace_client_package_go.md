@@ -115,8 +115,8 @@ func main() {
 ```
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L27-L39
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/internal/global/state.go#L57-L70
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L27-L39
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L57-L70
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -432,7 +432,6 @@ func main() {
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
 > - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
@@ -520,7 +519,6 @@ func main() {
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans
-> - https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101
 
 <br>
 

@@ -564,9 +564,50 @@ func fooHandler(ginCtx *gin.Context) {
 
 <br>
 
+### IsRecording
+
+スパンを処理中の場合は`true`になる。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+	)
+
+	// スパンを処理中の場合は true になる
+	log.Printf("recording span: %v", span.IsRecording())
+
+	defer span.End()
+}
+```
+
+<br>
+
 ### RecordError
 
-エラーメッセージをスパンに設定する。
+エラーのイベントを発行する。
+
+内部的には、`AddEvent`関数に`exception`イベントを渡している。
 
 ステータスは設定できない。
 
@@ -605,6 +646,8 @@ func fooHandler(ctx context.Context) {
 
 }
 ```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L421-L443
 
 <br>
 
@@ -817,6 +860,7 @@ func (p *otelPlugin) after() gormHookFunc {
 			return
 		}
 		span := trace.SpanFromContext(tx.Statement.Context)
+        // スパンを処理していない場合は、処理を終える
 		if !span.IsRecording() {
 			return
 		}

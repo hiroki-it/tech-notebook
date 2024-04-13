@@ -180,7 +180,7 @@ func main()  {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.24.0/sdk/trace/provider.go#L37-L56
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.24.0/sdk/trace/provider.go#L37-L56
 
 <br>
 
@@ -270,7 +270,7 @@ type noopTracerProvider struct{
 
 > - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/trace/noop.go#L35
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/noop.go#L35
 
 #### ▼ Samplerを無効化する
 
@@ -765,7 +765,7 @@ Google CloudTraceをスパンの宛先とする。
 例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/CHANGELOG.md#0290---2022-04-11
 
 <br>
 
@@ -1075,7 +1075,7 @@ func (tc TraceContext) extract(carrier TextMapCarrier) trace.SpanContext {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/propagation/trace_context.go
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/propagation/trace_context.go
 
 <br>
 
@@ -1164,7 +1164,7 @@ func NewTracerProvider() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/main/semconv/v1.20.0/resource.go
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/resource.go
 
 #### ▼ DBクエリの場合
 
