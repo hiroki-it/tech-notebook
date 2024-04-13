@@ -583,6 +583,11 @@ import (
 
 func fooHandler(ctx context.Context) {
 
+	ctx, span := tracer.Start(
+		ctx,
+		"foo-service",
+	)
+
 	req, err := http.NewRequest(
 		"GET",
 		"https://example.com",
@@ -592,7 +597,7 @@ func fooHandler(ctx context.Context) {
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		// エラーをスパンに設定する
-		trace.SpanFromContext(ctx).RecordError(err.Error())
+		span.RecordError(err.Error())
 		return
 	}
 
@@ -620,6 +625,11 @@ import (
 
 func fooHandler(ctx context.Context) {
 
+	ctx, span := tracer.Start(
+		ctx,
+		"foo-service",
+	)
+
 	req, err := http.NewRequest(
 		"GET",
 		"https://example.com",
@@ -629,7 +639,7 @@ func fooHandler(ctx context.Context) {
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		// ステータスとエラーをスパンに設定する
-		trace.SpanFromContext(ctx).SetStatus(codes.Error, err.Error())
+		span.SetStatus(codes.Error, err.Error())
 		return
 	}
 
@@ -637,6 +647,8 @@ func fooHandler(ctx context.Context) {
 
 }
 ```
+
+> - https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status
 
 <br>
 
@@ -724,7 +736,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### SpanFromContext
 
-既存コンテキストから`Span`を取得する。
+`SpanContext`を持つ既存コンテキストからスパンを作成する。
+
+`SpanContext`を持たない場合、スパンを作成できない。
 
 <br>
 
