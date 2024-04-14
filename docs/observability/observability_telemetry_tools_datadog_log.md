@@ -269,7 +269,7 @@ export default browserLogsForSsgPlugin;
 
 ## 05. ログの識別子
 
-### attribute (属性)
+### 属性
 
 #### ▼ 予約済み属性
 
