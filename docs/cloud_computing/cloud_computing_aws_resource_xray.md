@@ -242,6 +242,28 @@ subsegment.put_annotation("component", value)
 
 <br>
 
+### テレメトリー間の連携
+
+#### ▼ CloudWatchログとの連携
+
+あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログにはX-Ray仕様のトレースIDを出力しておく必要がある。
+
+> - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
+
+X-Rayの画面では、分散トレースのトレースIDに応じて、以下のようなログクエリを自動発行する。
+
+これにより、分散トレースとログを紐づけられる。
+
+```sql
+fields @log, @timestamp, @message
+| filter @message like "<ログに付与したX-RayトレースID>"
+| sort @timestamp, @message desc
+```
+
+> - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E7%B5%90%E6%9E%9C
+
+<br>
+
 ## 03. スパン
 
 ### セグメント
