@@ -24502,8 +24502,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="isrecording">IsRecording<a class="headerlink" href="#isrecording" title="Permanent link">&para;</a></h3>
-<p>現在のメソッドのスパンがまだ終了していない場合は、終了時間が<code>0</code>になり<code>true</code>になる。</p>
-<p>現在のメソッドでスパンを作成していない場合は、上層のスパンの終了時刻があるため、<code>0</code>以外となり<code>false</code>になる。</p>
+<p>現在のメソッドのスパンを開始後であれば、<code>true</code>になる。</p>
+<p>現在のメソッドでスパンを開始していない場合は、<code>false</code>になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24544,7 +24544,8 @@
 <h3 id="recorderror">RecordError<a class="headerlink" href="#recorderror" title="Permanent link">&para;</a></h3>
 <p>エラーのイベントを現在のスパンに設定する。</p>
 <p>内部的には、<code>AddEvent</code>関数に<code>exception</code>イベントを渡している。</p>
-<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。</p>
+<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。</p>
+<p>ただし、イベントの記録はログでやるべきであり、分散トレースとエラーイベントのログを紐付けさえすれば、分散トレース側にエラーイベントの情報を持たせる必要がない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24591,7 +24592,7 @@
 <p><br></p>
 <h3 id="setstatus">SetStatus<a class="headerlink" href="#setstatus" title="Permanent link">&para;</a></h3>
 <p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージを現在のスパンに設定する。</p>
-<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。</p>
+<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
