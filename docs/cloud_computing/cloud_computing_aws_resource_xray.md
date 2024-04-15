@@ -384,9 +384,8 @@ W3C Trace Context仕様のスパンのIDに相当する。
 ```yaml
 {
   # 400系ステータスの場合
-  "error":
-    false
-    # 500系ステータスの場合,
+  "error": false,
+  # 500系ステータスの場合,
   "fault": true,
   # 429ステータスの場合
   "throttle": false,

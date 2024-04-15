@@ -269,6 +269,12 @@ gRPCでは、単項RPCを送信するクライアント側のミドルウェア�
 type UnaryClientInterceptor func(ctx context.Context, method string, req, reply interface{}, cc *ClientConn, invoker UnaryInvoker, opts ...CallOption) error
 ```
 
+このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+
+エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
+
 これをgRPCサーバーとのコネクション作成時に、`WithUnaryInterceptor`関数に渡す。
 
 ```go
@@ -325,6 +331,12 @@ gRPCでは、ストリーミングRPCを送信するクライアント側のミ�
 ```go
 type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
 ```
+
+このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+
+エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
 
 これをgRPCサーバーとのコネクション作成時に、`WithStreamInterceptor`関数に渡す。
 

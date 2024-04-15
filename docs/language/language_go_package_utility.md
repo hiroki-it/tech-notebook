@@ -566,9 +566,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-現在のメソッドのスパンがまだ終了していない場合は、終了時間が`0`になり`true`になる。
+現在のメソッドのスパンを開始後であれば、`true`になる。
 
-現在のメソッドでスパンを作成していない場合は、上層のスパンの終了時刻があるため、`0`以外となり`false`になる。
+現在のメソッドでスパンを開始していない場合は、`false`になる。
 
 ```go
 package main
@@ -613,7 +613,9 @@ func foo()  {
 
 内部的には、`AddEvent`関数に`exception`イベントを渡している。
 
-`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。
+`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。
+
+ただし、イベントの記録はログでやるべきであり、分散トレースとエラーイベントのログを紐付けさえすれば、分散トレース側にエラーイベントの情報を持たせる必要がない。
 
 ```go
 package server
@@ -663,7 +665,7 @@ func fooHandler(ctx context.Context) {
 
 ステータス (`Unset`、`OK`、`Error`) とエラーメッセージを現在のスパンに設定する。
 
-`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。
+`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。
 
 ```go
 package server
