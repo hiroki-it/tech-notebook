@@ -462,6 +462,8 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 #### ▼ 設定例
 
+ここでは、`aws.log.group.arns`属性を設定すると仮定する。
+
 ```go
 package trace
 
@@ -481,7 +483,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 		resource.NewWithAttributes(
 			semconv.SchemaURL,
 			// aws.log.group.arns属性を設定する
-    		semconv.AWSLogGroupNamesKey.StringSlice("ロググループ名"),
+    		semconv.AWSLogGroupNamesKey.String("ロググループ名"),
 		),
 	)
 
@@ -495,6 +497,8 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 	)
 }
 ```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.24.0/resource.go#L1866-L1871
 
 <br>
 

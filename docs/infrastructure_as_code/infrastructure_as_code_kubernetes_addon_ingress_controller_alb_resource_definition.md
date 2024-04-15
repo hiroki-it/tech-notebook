@@ -189,9 +189,35 @@ metadata:
 
 ### `alb.ingress.kubernetes.io/target-type`キー
 
+#### ▼ `alb.ingress.kubernetes.io/target-type`キーとは
+
 ルーティング先のターゲットタイプを設定する。
 
-Fargateの場合は、`ip`を設定する必要がある。
+#### ▼ instanceの場合
+
+instanceターゲットタイプを設定する。
+
+インスタンスターゲットタイプの場合、宛先Podの前段のServiceはNodePort Serviceとする。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/target-type: instance
+```
+
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+
+#### ▼ ipの場合
+
+IPターゲットタイプを設定する。
+
+IPターゲットタイプの場合、宛先Podの前段のServiceはClusterIP Serviceとする。
+
+AWS Fargateの場合は、`ip`を設定する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -201,6 +227,9 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/target-type: ip
 ```
+
+> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
 
 <br>
 

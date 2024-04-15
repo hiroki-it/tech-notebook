@@ -66,7 +66,7 @@ LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-manager�
 
 NodePort Serviceを使用しなければならない。
 
-AWS Load Balancerコントローラーを使用しない場合と、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。
+AWS Load Balancerコントローラーを使用しない場合は、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。
 
 AWS Load Balancerコントローラーを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancerコントローラーがプロビジョニングしてくれる。
 
@@ -509,6 +509,8 @@ webhooks:
 ### Service
 
 AWS Load Balancerコントローラーが作成された場合に、WebhookサーバーにWebhookを送信する。
+
+ここでは、ClusterIP Serviceを使用する。
 
 ```yaml
 apiVersion: v1
