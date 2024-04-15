@@ -15871,6 +15871,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="alb.ingress.kubernetes.io/target-typeキー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#albingresskubernetesiotarget-type_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ alb.ingress.kubernetes.io/target-typeキーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ instanceの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ipの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22070,6 +22103,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="alb.ingress.kubernetes.io/target-typeキー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#albingresskubernetesiotarget-type_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ alb.ingress.kubernetes.io/target-typeキーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ instanceの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ipの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22259,8 +22325,28 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="albingresskubernetesiotarget-type"><code>alb.ingress.kubernetes.io/target-type</code>キー<a class="headerlink" href="#albingresskubernetesiotarget-type" title="Permanent link">&para;</a></h3>
+<h4 id="albingresskubernetesiotarget-type_1">▼ <code>alb.ingress.kubernetes.io/target-type</code>キーとは<a class="headerlink" href="#albingresskubernetesiotarget-type_1" title="Permanent link">&para;</a></h4>
 <p>ルーティング先のターゲットタイプを設定する。</p>
-<p>Fargateの場合は、<code>ip</code>を設定する必要がある。</p>
+<h4 id="instance">▼ instanceの場合<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h4>
+<p>instanceターゲットタイプを設定する。</p>
+<p>インスタンスターゲットタイプの場合、宛先Podの前段のServiceはNodePort Serviceとする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alb-ingress</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/target-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instance</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing</a></li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html</a></li>
+</ul>
+</blockquote>
+<h4 id="ip">▼ ipの場合<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
+<p>IPターゲットタイプを設定する。</p>
+<p>IPターゲットタイプの場合、宛先Podの前段のServiceはClusterIP Serviceとする。</p>
+<p>AWS Fargateの場合は、<code>ip</code>を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -22268,6 +22354,12 @@
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">alb.ingress.kubernetes.io/target-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing</a></li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="albingresskubernetesiowaf-acl-id"><code>alb.ingress.kubernetes.io/waf-acl-id</code>キー<a class="headerlink" href="#albingresskubernetesiowaf-acl-id" title="Permanent link">&para;</a></h3>
 <p>LBに紐付けるAWS WAF v1のIDを設定する。ALBと同じリージョンで、AWS WAF v1を作成する必要がある。</p>
@@ -22327,7 +22419,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-15</span>
   </span>
 
     
