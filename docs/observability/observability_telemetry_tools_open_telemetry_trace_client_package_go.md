@@ -166,6 +166,8 @@ func parentFunction(ctx context.Context) {
 ```go
 func childFunction(ctx context.Context) {
 
+    tracer := otel.Tracer("<計装パッケージ名>")
+
 	ctx, childSpan := tracer.Start(
 		ctx,
 		"child",
@@ -454,6 +456,7 @@ import (
 func httpRequest(ctx context.Context) error {
 
 	var span trace.Span
+
 	// Tracerを作成する
 	var tracer = otel.Tracer("計装パッケージ名")
 

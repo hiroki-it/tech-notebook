@@ -626,6 +626,10 @@ import (
 
 func fooHandler(ctx context.Context) {
 
+    ...
+
+	tracer := otel.Tracer("<計装パッケージ名>")
+
 	ctx, span := tracer.Start(
 		ctx,
 		"foo-service",
@@ -669,6 +673,10 @@ import (
 )
 
 func fooHandler(ctx context.Context) {
+
+    ...
+
+	tracer := otel.Tracer("<計装パッケージ名>")
 
 	ctx, span := tracer.Start(
 		ctx,
@@ -798,6 +806,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 	...
 
+	tracer := otel.Tracer("<計装パッケージ名>")
 
 	ctx, _ := tracer.Start(
 		ctx,

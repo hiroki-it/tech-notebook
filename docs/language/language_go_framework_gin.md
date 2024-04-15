@@ -75,6 +75,7 @@ func Middleware(service string, opts ...Option) gin.HandlerFunc {
 
 		...
 
+        tracer := otel.Tracer("<計装パッケージ名>")
         ctx, span := tracer.Start(ctx, spanName, opts...)
 
 		...
