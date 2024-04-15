@@ -24484,7 +24484,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="isrecording">IsRecording<a class="headerlink" href="#isrecording" title="Permanent link">&para;</a></h3>
-<p>スパンを処理中の場合は<code>true</code>になる。</p>
+<p>現在のメソッドでスパンを作成した場合は<code>true</code>になる。</p>
+<p>現在のメソッドでスパンを作成していない場合は、<code>false</code>になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24516,11 +24517,15 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L167-L177">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L167-L177</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="recorderror">RecordError<a class="headerlink" href="#recorderror" title="Permanent link">&para;</a></h3>
-<p>エラーのイベントを発行する。</p>
+<p>エラーのイベントを現在のスパンに設定する。</p>
 <p>内部的には、<code>AddEvent</code>関数に<code>exception</code>イベントを渡している。</p>
-<p>ステータスは設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24562,7 +24567,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="setstatus">SetStatus<a class="headerlink" href="#setstatus" title="Permanent link">&para;</a></h3>
-<p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージをスパンに設定する。</p>
+<p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージを現在のスパンに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24679,8 +24684,39 @@
 </blockquote>
 <p><br></p>
 <h3 id="spanfromcontext">SpanFromContext<a class="headerlink" href="#spanfromcontext" title="Permanent link">&para;</a></h3>
-<p><code>SpanContext</code>を持つ既存コンテキストからスパンを作成する。</p>
-<p><code>SpanContext</code>を持たない場合、スパンを作成できない。</p>
+<p>スパンIDから既存コンテキストからスパンを取得する。</p>
+<p>現在のメソッドでスパンを作成していない場合は、スパンIDがないため、スパンを取得できない。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="otelgin">otelgin<a class="headerlink" href="#otelgin" title="Permanent link">&para;</a></h2>
 <h3 id="otelgin_1">otelginとは<a class="headerlink" href="#otelgin_1" title="Permanent link">&para;</a></h3>
@@ -25767,7 +25803,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-15</span>
   </span>
 
     

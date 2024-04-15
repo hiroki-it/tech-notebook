@@ -22327,7 +22327,7 @@
 <h3 id="albingresskubernetesiotarget-type"><code>alb.ingress.kubernetes.io/target-type</code>キー<a class="headerlink" href="#albingresskubernetesiotarget-type" title="Permanent link">&para;</a></h3>
 <h4 id="albingresskubernetesiotarget-type_1">▼ <code>alb.ingress.kubernetes.io/target-type</code>キーとは<a class="headerlink" href="#albingresskubernetesiotarget-type_1" title="Permanent link">&para;</a></h4>
 <p>ルーティング先のターゲットタイプを設定する。</p>
-<h4 id="instance">▼ instanceの場合<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h4>
+<h4 id="instance">▼ <code>instance</code>の場合<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h4>
 <p>instanceターゲットタイプを設定する。</p>
 <p>インスタンスターゲットタイプの場合、宛先Podの前段のServiceはNodePort Serviceとする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
@@ -22343,7 +22343,7 @@
 <li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html</a></li>
 </ul>
 </blockquote>
-<h4 id="ip">▼ ipの場合<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
+<h4 id="ip">▼ <code>ip</code>の場合<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
 <p>IPターゲットタイプを設定する。</p>
 <p>IPターゲットタイプの場合、宛先Podの前段のServiceはClusterIP Serviceとする。</p>
 <p>AWS Fargateの場合は、<code>ip</code>を設定する必要がある。</p>
