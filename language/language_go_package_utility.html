@@ -7571,6 +7571,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#start_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23350,6 +23359,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#start_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24484,8 +24502,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="isrecording">IsRecording<a class="headerlink" href="#isrecording" title="Permanent link">&para;</a></h3>
-<p>現在のメソッドでスパンを作成した場合は、記録中として<code>true</code>になる。</p>
-<p>現在のメソッドでスパンを作成していない場合は、<code>false</code>になる。</p>
+<p>現在のメソッドのスパンがまだ終了していない場合は、終了時間が<code>0</code>になり<code>true</code>になる。</p>
+<p>現在のメソッドでスパンを作成していない場合は、上層のスパンの終了時刻があるため、<code>0</code>以外となり<code>false</code>になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24533,7 +24551,7 @@
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
 <span class="p">)</span>
 
@@ -24580,7 +24598,7 @@
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
 <span class="p">)</span>
 
@@ -24728,6 +24746,38 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="start_1">Start<a class="headerlink" href="#start_1" title="Permanent link">&para;</a></h3>
+<p>新しいスパンIDでスパンを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/tracer.go#L24-L56">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/tracer.go#L24-L56</a></li>
 </ul>
 </blockquote>
 <p><br></p>
