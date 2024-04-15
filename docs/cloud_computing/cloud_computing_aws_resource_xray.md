@@ -254,7 +254,7 @@ fields @log, @timestamp, @message
 
 <br>
 
-### セグメントの構造
+### ID系
 
 #### ▼ `id`
 
@@ -277,6 +277,10 @@ W3C Trace Context仕様のルートスパンのIDに相当する。
 親のサブセグメントIDを持つ。
 
 W3C Trace Context仕様のスパンのIDに相当する。
+
+<br>
+
+### サブセグメント系
 
 #### ▼ `subsegments`キー
 
@@ -311,6 +315,10 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
 
+<br>
+
+### リクエスト系
+
 #### ▼ `http`キー
 
 スパンのHTTPリクエストの情報を持つ。
@@ -326,6 +334,10 @@ W3C Trace Context仕様のスパンのIDに相当する。
 ```
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http
+
+<br>
+
+### AWSリソース系
 
 #### ▼ `aws`キー
 
@@ -364,6 +376,24 @@ W3C Trace Context仕様のスパンのIDに相当する。
     },
 }
 ```
+
+<br>
+
+### エラー系
+
+```yaml
+{
+  # 400系ステータスの場合
+  "error":
+    false
+    # 500系ステータスの場合,
+  "fault": true,
+  # 429ステータスの場合
+  "throttle": false,
+}
+```
+
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-errors
 
 <br>
 
