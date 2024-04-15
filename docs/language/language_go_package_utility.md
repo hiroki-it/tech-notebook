@@ -566,9 +566,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-現在のメソッドでスパンを作成した場合は、記録中として`true`になる。
+現在のメソッドのスパンがまだ終了していない場合は、終了時間が`0`になり`true`になる。
 
-現在のメソッドでスパンを作成していない場合は、`false`になる。
+現在のメソッドでスパンを作成していない場合は、上層のスパンの終了時刻があるため、`0`以外となり`false`になる。
 
 ```go
 package main
@@ -622,7 +622,7 @@ import (
 	"context"
 	"net/http"
 
-	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
 )
 
@@ -672,7 +672,7 @@ import (
 	"context"
 	"net/http"
 
-	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
 )
 
@@ -830,6 +830,40 @@ func fooHandler(ginCtx *gin.Context) {
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45
+
+<br>
+
+### Start
+
+新しいスパンIDでスパンを作成する。
+
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+	tracer := otel.Tracer("<計装パッケージ名>")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo-service",
+	)
+
+	span.End()
+
+	...
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/tracer.go#L24-L56
 
 <br>
 
