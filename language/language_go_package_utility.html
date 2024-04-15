@@ -24484,7 +24484,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="isrecording">IsRecording<a class="headerlink" href="#isrecording" title="Permanent link">&para;</a></h3>
-<p>現在のメソッドでスパンを作成した場合は<code>true</code>になる。</p>
+<p>現在のメソッドでスパンを作成した場合は、記録中として<code>true</code>になる。</p>
 <p>現在のメソッドでスパンを作成していない場合は、<code>false</code>になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -24526,6 +24526,7 @@
 <h3 id="recorderror">RecordError<a class="headerlink" href="#recorderror" title="Permanent link">&para;</a></h3>
 <p>エラーのイベントを現在のスパンに設定する。</p>
 <p>内部的には、<code>AddEvent</code>関数に<code>exception</code>イベントを渡している。</p>
+<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24572,6 +24573,7 @@
 <p><br></p>
 <h3 id="setstatus">SetStatus<a class="headerlink" href="#setstatus" title="Permanent link">&para;</a></h3>
 <p>ステータス (<code>Unset</code>、<code>OK</code>、<code>Error</code>) とエラーメッセージを現在のスパンに設定する。</p>
+<p><code>IsRecording</code>関数が<code>false</code>の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24612,6 +24614,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L179-L199">https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L179-L199</a></li>
 <li><a href="https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status">https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status</a></li>
 </ul>
 </blockquote>
@@ -24634,6 +24637,7 @@
 <p><br></p>
 <h3 id="spancontextfromcontext">SpanContextFromContext<a class="headerlink" href="#spancontextfromcontext" title="Permanent link">&para;</a></h3>
 <p>既存コンテキストから<code>SpanContext</code>のみを取得する。</p>
+<p>現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24693,7 +24697,7 @@
 <p><br></p>
 <h3 id="spanfromcontext">SpanFromContext<a class="headerlink" href="#spanfromcontext" title="Permanent link">&para;</a></h3>
 <p>スパンIDから既存コンテキストからスパンを取得する。</p>
-<p>現在のメソッドでスパンを作成していない場合は、スパンIDがないため、スパンを取得できない。</p>
+<p>現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
