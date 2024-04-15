@@ -33,11 +33,6 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-var tracer trace.Tracer
-
-func newExporter(ctx context.Context)  {
-}
-
 func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
 
 	resourceWithAttirbute, err := resource.Merge(

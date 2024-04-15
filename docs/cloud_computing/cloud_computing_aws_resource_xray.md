@@ -78,79 +78,6 @@ EKSでDamonSetとして稼働させる。
 
 <br>
 
-### OpenTelemetryとX-Rayの対応関係
-
-#### ▼ OpenTelemetryとX-Ray
-
-| OpenTelemetry                                                                         | X-Ray                          | 値の例 |
-| ------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| Attributes                                                                            | `annotations/metadata`         |        |
-| SpanId                                                                                | `id`                           |        |
-| TraceId                                                                               | `trace_id`                     |        |
-| StartTime                                                                             | `start_time`                   |        |
-| EndTime                                                                               | `end_time`                     |        |
-| ParentSpanId                                                                          | `parent_id`                    |        |
-| Status.StatusCode                                                                     | `fault`、`error`、`throttle`   |        |
-| Event                                                                                 | `exception`                    |        |
-| Link                                                                                  | 執筆時点 (2024/04/14) で非対応 |        |
-| `enduser.id`                                                                          | `user`                         |        |
-| `cloud.provider`、`cloud.platform`                                                    | `origin`                       |        |
-| `rpc.system`、`aws.service`                                                           | `namespace`                    |        |
-| `peer.service`、`aws.service`、`db.service`、`service.name`、`span.kind`、`span name` | `name`                         |        |
-| `pdata.SpanKindServer`                                                                | `type`                         |        |
-
-#### ▼ HTTPリクエストのスパン属性
-
-| OpenTelemetry                                                                                                                                                              | X-Ray                          | 値の例 |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| `http.method`                                                                                                                                                              | `http.request.method`          |        |
-| `http.client_ip`                                                                                                                                                           | `http.request.client_ip`       |        |
-| `http.client_ip`                                                                                                                                                           | `http.request.x_forwarded_for` |        |
-| `http.user_agent`                                                                                                                                                          | `http.request.user_agent`      |        |
-| `http.status_code`                                                                                                                                                         | `http.response.status`         | `200`  |
-| `http.url`、`http.scheme`、`http.host`、`http.target`、`http.server_name`、`net.host.port`、` host.name`、`net.host.name`、`net.peer.name`、`net.peer.port`、`net.peer.ip` | `http.request.url`             |        |
-| `message.type`                                                                                                                                                             | `http.response.content_length` |        |
-
-#### ▼ クエリのスパン属性
-
-| OpenTelemetry                     | X-Ray                 | 値の例                           |
-| --------------------------------- | --------------------- | -------------------------------- |
-| `db.connection_string`、`db.name` | `sql.url`             |                                  |
-| `db.system`                       | `sql.database_type`   | `mysql`                          |
-| `db.user`                         | `sql.user`            |                                  |
-| `db.statement`                    | `sql.sanatized_query` | `SELECT foo_name FROM foo_table` |
-
-#### ▼ AWSのスパン属性
-
-| OpenTelemetry                 | X-Ray            | 値の例           |
-| ----------------------------- | ---------------- | ---------------- |
-| `cloud.account.id`            | `aws.account_id` | `123456789`      |
-| `aws.operation`、`rpc.method` | `aws.operation`  |                  |
-| `aws.region`                  | `aws.region`     | `ap-northeast-1` |
-| `aws.requestId`               | `aws.request_id` |                  |
-| `aws.queue.url`               | `aws.queue_url`  |                  |
-| `aws.table.name`              | `aws.table_name` |                  |
-
-#### ▼ SDKのスパンメタデータ
-
-| OpenTelemetry            | X-Ray                       | 値の例 |
-| ------------------------ | --------------------------- | ------ |
-| `telemetry.sdk.name`     | `xray.sdk`                  |        |
-| `telemetry.sdk.version`  | `xray.sdk_version`          |        |
-| `telemetry.auto.version` | `xray.auto_instrumentation` |        |
-
-#### ▼ AWSリソースのスパンメタデータ
-
-| OpenTelemetry         | X-Ray                       | 値の例          |
-| --------------------- | --------------------------- | --------------- |
-| `k8s.cluster.name`    | `eks.cluster_name`          | `foo-cluster`   |
-| `k8s.pod.name`        | `eks.pod`                   | `foo-pod`       |
-| `k8s.pod.uid`         | `eks.container_id`          | `foo-container` |
-| `aws.log.group.arns`  | `cloudwatch_logs.arn`       |                 |
-| `aws.log.group.names` | `cloudwatch_logs.log_group` |                 |
-
-<br>
-
 ### フィルター式
 
 #### ▼ デフォルト
@@ -250,7 +177,7 @@ subsegment.put_annotation("component", value)
 
 > - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
 
-X-Rayの画面では、分散トレースのトレースIDに応じて、以下のようなログクエリを自動発行する。
+X-Rayの画面では、分散トレースのトレースIDに応じて、以下のようなログクエリをロググループに自動発行する。
 
 これにより、分散トレースとログを紐づけられる。
 
@@ -440,7 +367,138 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 <br>
 
-## 04. Lambdaの場合
+## 04. OpenTelemetryとX-Rayの対応関係
+
+### OpenTelemetryとX-Ray
+
+#### ▼ 一覧
+
+| OpenTelemetry                                                                         | X-Ray                          | 値の例 |
+| ------------------------------------------------------------------------------------- | ------------------------------ | ------ |
+| Attributes                                                                            | `annotations/metadata`         |        |
+| SpanId                                                                                | `id`                           |        |
+| TraceId                                                                               | `trace_id`                     |        |
+| StartTime                                                                             | `start_time`                   |        |
+| EndTime                                                                               | `end_time`                     |        |
+| ParentSpanId                                                                          | `parent_id`                    |        |
+| Status.StatusCode                                                                     | `fault`、`error`、`throttle`   |        |
+| Event                                                                                 | `exception`                    |        |
+| Link                                                                                  | 執筆時点 (2024/04/14) で非対応 |        |
+| `enduser.id`                                                                          | `user`                         |        |
+| `cloud.provider`、`cloud.platform`                                                    | `origin`                       |        |
+| `rpc.system`、`aws.service`                                                           | `namespace`                    |        |
+| `peer.service`、`aws.service`、`db.service`、`service.name`、`span.kind`、`span name` | `name`                         |        |
+| `pdata.SpanKindServer`                                                                | `type`                         |        |
+
+<br>
+
+### HTTPリクエストのスパン属性
+
+#### ▼ 一覧
+
+| OpenTelemetry                                                                                                                                                              | X-Ray                          | 値の例 |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
+| `http.method`                                                                                                                                                              | `http.request.method`          |        |
+| `http.client_ip`                                                                                                                                                           | `http.request.client_ip`       |        |
+| `http.client_ip`                                                                                                                                                           | `http.request.x_forwarded_for` |        |
+| `http.user_agent`                                                                                                                                                          | `http.request.user_agent`      |        |
+| `http.status_code`                                                                                                                                                         | `http.response.status`         | `200`  |
+| `http.url`、`http.scheme`、`http.host`、`http.target`、`http.server_name`、`net.host.port`、` host.name`、`net.host.name`、`net.peer.name`、`net.peer.port`、`net.peer.ip` | `http.request.url`             |        |
+| `message.type`                                                                                                                                                             | `http.response.content_length` |        |
+
+<br>
+
+### クエリのスパン属性
+
+#### ▼ 一覧
+
+| OpenTelemetry                     | X-Ray                 | 値の例                           |
+| --------------------------------- | --------------------- | -------------------------------- |
+| `db.connection_string`、`db.name` | `sql.url`             |                                  |
+| `db.system`                       | `sql.database_type`   | `mysql`                          |
+| `db.user`                         | `sql.user`            |                                  |
+| `db.statement`                    | `sql.sanatized_query` | `SELECT foo_name FROM foo_table` |
+
+<br>
+
+### AWSのスパン属性
+
+#### ▼ 一覧
+
+| OpenTelemetry                 | X-Ray            | 値の例           |
+| ----------------------------- | ---------------- | ---------------- |
+| `cloud.account.id`            | `aws.account_id` | `123456789`      |
+| `aws.operation`、`rpc.method` | `aws.operation`  |                  |
+| `aws.region`                  | `aws.region`     | `ap-northeast-1` |
+| `aws.requestId`               | `aws.request_id` |                  |
+| `aws.queue.url`               | `aws.queue_url`  |                  |
+| `aws.table.name`              | `aws.table_name` |                  |
+
+<br>
+
+### SDKのスパンメタデータ
+
+#### ▼ 一覧
+
+| OpenTelemetry            | X-Ray                       | 値の例 |
+| ------------------------ | --------------------------- | ------ |
+| `telemetry.sdk.name`     | `xray.sdk`                  |        |
+| `telemetry.sdk.version`  | `xray.sdk_version`          |        |
+| `telemetry.auto.version` | `xray.auto_instrumentation` |        |
+
+<br>
+
+### AWSリソースのスパンメタデータ
+
+#### ▼ 一覧
+
+| OpenTelemetry         | X-Ray                       | 値の例          |
+| --------------------- | --------------------------- | --------------- |
+| `k8s.cluster.name`    | `eks.cluster_name`          | `foo-cluster`   |
+| `k8s.pod.name`        | `eks.pod`                   | `foo-pod`       |
+| `k8s.pod.uid`         | `eks.container_id`          | `foo-container` |
+| `aws.log.group.arns`  | `cloudwatch_logs.arn`       |                 |
+| `aws.log.group.names` | `cloudwatch_logs.log_group` |                 |
+
+#### ▼ 設定例
+
+```go
+package trace
+
+import (
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	"go.opentelemetry.io/otel/trace"
+)
+
+func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
+
+	resourceWithAttirbute, err := resource.Merge(
+		resource.Default(),
+		resource.NewWithAttributes(
+			semconv.SchemaURL,
+			// aws.log.group.arns属性を設定する
+    		semconv.AWSLogGroupNamesKey.StringSlice("ロググループ名"),
+		),
+	)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return sdktrace.New(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithResource(resourceWithAttirbutes),
+	)
+}
+```
+
+<br>
+
+## 05. Lambdaの場合
 
 ### 初期化
 
