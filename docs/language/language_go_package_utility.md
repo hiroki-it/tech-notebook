@@ -566,7 +566,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-現在のメソッドでスパンを作成した場合は`true`になる。
+現在のメソッドでスパンを作成した場合は、記録中として`true`になる。
 
 現在のメソッドでスパンを作成していない場合は、`false`になる。
 
@@ -612,6 +612,8 @@ func foo()  {
 エラーのイベントを現在のスパンに設定する。
 
 内部的には、`AddEvent`関数に`exception`イベントを渡している。
+
+`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。
 
 ```go
 package server
@@ -661,6 +663,8 @@ func fooHandler(ctx context.Context) {
 
 ステータス (`Unset`、`OK`、`Error`) とエラーメッセージを現在のスパンに設定する。
 
+`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを作成していない場合) は、使用できない。
+
 ```go
 package server
 
@@ -701,6 +705,7 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L179-L199
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status
 
 <br>
@@ -726,6 +731,8 @@ type SpanContext struct {
 ### SpanContextFromContext
 
 既存コンテキストから`SpanContext`のみを取得する。
+
+現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。
 
 ```go
 package server
@@ -791,7 +798,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 スパンIDから既存コンテキストからスパンを取得する。
 
-現在のメソッドでスパンを作成していない場合は、スパンIDがないため、スパンを取得できない。
+現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。
 
 ```go
 package server
