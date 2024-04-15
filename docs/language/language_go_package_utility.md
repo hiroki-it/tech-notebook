@@ -566,7 +566,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-スパンを処理中の場合は`true`になる。
+現在のメソッドでスパンを作成した場合は`true`になる。
+
+現在のメソッドでスパンを作成していない場合は、`false`になる。
 
 ```go
 package main
@@ -601,15 +603,15 @@ func foo()  {
 }
 ```
 
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L167-L177
+
 <br>
 
 ### RecordError
 
-エラーのイベントを発行する。
+エラーのイベントを現在のスパンに設定する。
 
 内部的には、`AddEvent`関数に`exception`イベントを渡している。
-
-ステータスは設定できない。
 
 ```go
 package server
@@ -653,7 +655,7 @@ func fooHandler(ctx context.Context) {
 
 ### SetStatus
 
-ステータス (`Unset`、`OK`、`Error`) とエラーメッセージをスパンに設定する。
+ステータス (`Unset`、`OK`、`Error`) とエラーメッセージを現在のスパンに設定する。
 
 ```go
 package server
@@ -779,9 +781,39 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### SpanFromContext
 
-`SpanContext`を持つ既存コンテキストからスパンを作成する。
+スパンIDから既存コンテキストからスパンを取得する。
 
-`SpanContext`を持たない場合、スパンを作成できない。
+現在のメソッドでスパンを作成していない場合は、スパンIDがないため、スパンを取得できない。
+
+```go
+package server
+
+import (
+	"context"
+
+	"github.com/gin-gonic/gin"
+)
+
+func fooHandler(ginCtx *gin.Context) {
+
+	...
+
+
+	ctx, _ := tracer.Start(
+		ctx,
+		"foo-service",
+	)
+
+	...
+
+	span := trace.SpanFromContext(ctx)
+
+	...
+
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45
 
 <br>
 

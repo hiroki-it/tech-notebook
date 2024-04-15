@@ -193,7 +193,7 @@ metadata:
 
 ルーティング先のターゲットタイプを設定する。
 
-#### ▼ instanceの場合
+#### ▼ `instance`の場合
 
 instanceターゲットタイプを設定する。
 
@@ -211,7 +211,7 @@ metadata:
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
 > - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
 
-#### ▼ ipの場合
+#### ▼ `ip`の場合
 
 IPターゲットタイプを設定する。
 
