@@ -22839,6 +22839,8 @@
 <h4 id="_4">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">childFunction</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">childSpan</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;child&quot;</span><span class="p">,</span>
@@ -23114,6 +23116,7 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">httpRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span>
+
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
 
