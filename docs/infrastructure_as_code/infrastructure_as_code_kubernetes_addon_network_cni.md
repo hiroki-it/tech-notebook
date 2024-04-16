@@ -32,6 +32,12 @@ CNIアドオンは、kubeletによるPodの起動時に有効化される。
 
 <br>
 
+### CNIとCRIの関係
+
+> - https://jimmysong.io/blog/cni-deep-dive/
+
+<br>
+
 ## 02. オーバーレイモード
 
 ### オーバーレイモードとは

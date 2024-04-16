@@ -25,6 +25,8 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 ## 01-02. 仕組み
 
+### アーキテクチャ
+
 プロデューサーはメッセージを送信し、SQSは自身にこれを格納する。
 
 その後、コンシューマーはSQSからメッセージを抽出し、後処理としてメッセージを削除する。
@@ -34,6 +36,14 @@ description: SQS＠AWSリソースの知見を記録しています。
 ![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQS.jpeg)
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
+
+<br>
+
+### プロトコル
+
+一部の`L7`プロトコル (例：HTTP) のみに対応しており、一般的なメッセージングプロトコル (例：AMQP、STOMP、MQTT、など) には対応していない。
+
+> - https://www.quora.com/Should-Amazon-SQS-have-support-for-AMQP
 
 <br>
 

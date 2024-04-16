@@ -18,3 +18,11 @@ description: RabbitMQ＠メッセージブローカー系ミドルウェアの�
 メッセージブローカーとして、メッセージをキューイングし、また加工した上でルーティングする。
 
 <br>
+
+## 02. プロトコル
+
+メッセージングプロトコル (例：AMQP、STOMP、MQTT、など) だけでなく、 一部の`L7`プロトコル (例：HTTP) にも対応している。
+
+> - https://www.rabbitmq.com/docs/protocols
+
+<br>
