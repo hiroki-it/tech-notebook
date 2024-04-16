@@ -2008,6 +2008,7 @@ import (
 
 func main() {
 
+	// Loggerを作成する
 	logger, _ := zap.NewProduction()
 	defer logger.Sync()
 
@@ -2017,6 +2018,32 @@ func main() {
 ```
 
 > - https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+#### ▼ With
+
+構造化ログにキーを追加する。
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	// Loggerを作成する
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	logger := logger.With("foo", "FOO")
+
+	...
+
+}
+```
+
+> - https://pkg.go.dev/go.uber.org/zap#Logger.With
 
 <br>
 
@@ -2039,10 +2066,11 @@ import (
 
 func main() {
 
+	// Loggerを作成する
 	logger, _ := zap.NewProduction()
 	defer logger.Sync()
 
-	// SugaredLoggerを作成する
+	// LoggerからSugaredLoggerを作成する
 	sugar := logger.Sugar()
 
 	sugar.Infow(
