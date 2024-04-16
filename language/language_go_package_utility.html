@@ -8229,6 +8229,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ With
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24089,6 +24098,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ With
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -26004,6 +26022,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// Loggerを作成する</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
 
@@ -26014,6 +26033,31 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></li>
+</ul>
+</blockquote>
+<h4 id="with">▼ With<a class="headerlink" href="#with" title="Permanent link">&para;</a></h4>
+<p>構造化ログにキーを追加する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Loggerを作成する</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/go.uber.org/zap#Logger.With">https://pkg.go.dev/go.uber.org/zap#Logger.With</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -26030,10 +26074,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// Loggerを作成する</span>
 <span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// SugaredLoggerを作成する</span>
+<span class="w">    </span><span class="c1">// LoggerからSugaredLoggerを作成する</span>
 <span class="w">    </span><span class="nx">sugar</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infow</span><span class="p">(</span>
