@@ -1964,6 +1964,7 @@ import (
 )
 
 func main() {
+
 	v := NewFoobarbazValidator()
 
 	// JSONを構造体にマッピングします。
@@ -1987,5 +1988,76 @@ func main() {
 	fmt.Println("データに問題はありません。")
 }
 ```
+
+<br>
+
+## zap
+
+### Logger
+
+#### ▼ Sync
+
+プロセスの終了時に、バッファーに保管されているログを全てフラッシュする。
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	...
+
+}
+```
+
+> - https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+<br>
+
+### SugaredLogger
+
+#### ▼ SugaredLoggerとは
+
+ZapのLoggerのラッパーである。
+
+#### ▼ `w`系
+
+構造化ログを作成する。
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	// SugaredLoggerを作成する
+	sugar := logger.Sugar()
+
+	sugar.Infow(
+		// ログメッセージ
+		"This is my first Log with Zap",
+		// 構造化データ
+		zap.Int("int num", 3),
+		zap.Time("Time", time.Now()),
+		zap.String("String", "Hello, Zap"),
+	)
+
+	sugar.Infof("Failed to fetch URL: %s", url)
+}
+```
+
+> - https://yuya-hirooka.hatenablog.com/entry/2022/02/20/135714
 
 <br>
