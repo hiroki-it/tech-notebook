@@ -21,7 +21,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 
 <br>
 
-### 種類
+### プリンシパルの種類
 
 - ユーザー
 - サービスアカウント
@@ -59,6 +59,8 @@ $ gcloud auth login
 ## 01-03. サービスアカウント
 
 ### サービスアカウントとは
+
+GoogleCloudリソース自体のアカウントである。
 
 サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。
 
@@ -153,7 +155,16 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 パーミッションのセットのこと。
 
+プリンシパルに紐づける。
+
+|                                    |                                            |
+| ---------------------------------- | ------------------------------------------ |
+| ビルトインロール                   | `roles/<GoogleCloudリソース名>.<識別名>`   |
+| プロジェクトレベルのカスタムロース | `projects/<プロジェクトID>/roles/<識別名>` |
+| 組織レベルのカスタムロール         | `organizations/<組織ID>/roles/<識別名>`    |
+
 > - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
+> - https://cloud.google.com/iam/docs/roles-overview?hl=ja#components
 
 <br>
 
@@ -167,9 +178,9 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 ### Workload Identityとは
 
-GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。
+GoogleCloud外リソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。
 
-従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外のリソースを持たせる仕組みであった。
+従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外リソースを持たせる仕組みであった。
 
 一方で、Workload Identityではサービスアカウントキーの代わりにトークンを使用する。
 
@@ -179,19 +190,35 @@ GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGo
 
 ### Workload Identityの仕組み
 
+#### ▼ アーキテクチャ
+
 1. GoogleCloudリソース外で認証を実行する。
 2. 認証が成功する。
 3. 認証情報をGoogleCloud STSに送信する。
 4. Workload Identityプールにて、認証情報を検証する。
 5. 検証が成功し、一時的なトークンを発行する。
-6. GoogleCloudリソース外のリソースにトークンを送信する。
-7. GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
+6. GoogleCloudリソース外リソースにトークンを送信する。
+7. GoogleCloudリソース外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
 8. GoogleCloudリソースのAPIにリクエストを送信できるようになる。
 
 ![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
 
 > - https://christina04.hatenablog.com/entry/workload-identity-federation
 > - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9
+
+#### ▼ Workload Identityプール
+
+GoogleCloud外リソースのグループを設定する。
+
+例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは`opentelemetry-collector`とする。
+
+#### ▼ プロバイダー
+
+個別のGoogleCloud外リソースを設定する。
+
+外部リソースの種類ごとに単位 (例：AWSであればAWSアカウントごと) が異なる。
+
+例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは`prd-opentelemetry-collector`とする。
 
 <br>
 
