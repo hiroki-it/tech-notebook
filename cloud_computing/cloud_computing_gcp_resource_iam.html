@@ -12099,7 +12099,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      種類
+      プリンシパルの種類
     </span>
   </a>
   
@@ -12333,6 +12333,39 @@
       Workload Identityの仕組み
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Workload Identityの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workload-identity_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Workload Identityプール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プロバイダー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22069,7 +22102,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      種類
+      プリンシパルの種類
     </span>
   </a>
   
@@ -22304,6 +22337,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Workload Identityの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workload-identity_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Workload Identityプール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プロバイダー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22351,7 +22417,7 @@
 <h3 id="_2">プリンシパルとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>ロールの紐付け対象のこと。</p>
 <p><br></p>
-<h3 id="_3">種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">プリンシパルの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>ユーザー</li>
 <li>サービスアカウント</li>
@@ -22379,6 +22445,7 @@
 <p><br></p>
 <h2 id="01-03">01-03. サービスアカウント<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">サービスアカウントとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>GoogleCloudリソース自体のアカウントである。</p>
 <p>サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。</p>
 <p><br></p>
 <h3 id="_9">認証情報<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -22451,9 +22518,33 @@
 <h2 id="03">03. ロール<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">ロールとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>パーミッションのセットのこと。</p>
+<p>プリンシパルに紐づける。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ビルトインロール</td>
+<td><code>roles/&lt;GoogleCloudリソース名&gt;.&lt;識別名&gt;</code></td>
+</tr>
+<tr>
+<td>プロジェクトレベルのカスタムロース</td>
+<td><code>projects/&lt;プロジェクトID&gt;/roles/&lt;識別名&gt;</code></td>
+</tr>
+<tr>
+<td>組織レベルのカスタムロール</td>
+<td><code>organizations/&lt;組織ID&gt;/roles/&lt;識別名&gt;</code></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html">https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html</a></li>
+<li><a href="https://cloud.google.com/iam/docs/roles-overview?hl=ja#components">https://cloud.google.com/iam/docs/roles-overview?hl=ja#components</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22466,8 +22557,8 @@
 <p><br></p>
 <h2 id="05-workload-identity">05. Workload Identity<a class="headerlink" href="#05-workload-identity" title="Permanent link">&para;</a></h2>
 <h3 id="workload-identity">Workload Identityとは<a class="headerlink" href="#workload-identity" title="Permanent link">&para;</a></h3>
-<p>GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。</p>
-<p>従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外のリソースを持たせる仕組みであった。</p>
+<p>GoogleCloud外リソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。</p>
+<p>従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外リソースを持たせる仕組みであった。</p>
 <p>一方で、Workload Identityではサービスアカウントキーの代わりにトークンを使用する。</p>
 <blockquote>
 <ul>
@@ -22476,14 +22567,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="workload-identity_1">Workload Identityの仕組み<a class="headerlink" href="#workload-identity_1" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ アーキテクチャ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <ol>
 <li>GoogleCloudリソース外で認証を実行する。</li>
 <li>認証が成功する。</li>
 <li>認証情報をGoogleCloud STSに送信する。</li>
 <li>Workload Identityプールにて、認証情報を検証する。</li>
 <li>検証が成功し、一時的なトークンを発行する。</li>
-<li>GoogleCloudリソース外のリソースにトークンを送信する。</li>
-<li>GoogleCloudリソース外のリソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。</li>
+<li>GoogleCloudリソース外リソースにトークンを送信する。</li>
+<li>GoogleCloudリソース外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。</li>
 <li>GoogleCloudリソースのAPIにリクエストを送信できるようになる。</li>
 </ol>
 <p><img alt="google-cloud_workload-identity" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png" /></p>
@@ -22493,6 +22585,13 @@
 <li><a href="https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9">https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9</a></li>
 </ul>
 </blockquote>
+<h4 id="workload-identity_2">▼ Workload Identityプール<a class="headerlink" href="#workload-identity_2" title="Permanent link">&para;</a></h4>
+<p>GoogleCloud外リソースのグループを設定する。</p>
+<p>例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは<code>opentelemetry-collector</code>とする。</p>
+<h4 id="_18">▼ プロバイダー<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>個別のGoogleCloud外リソースを設定する。</p>
+<p>外部リソースの種類ごとに単位 (例：AWSであればAWSアカウントごと) が異なる。</p>
+<p>例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは<code>prd-opentelemetry-collector</code>とする。</p>
 <p><br></p>
 <h3 id="google-cloudaws">Google CloudとAWSの連携の場合<a class="headerlink" href="#google-cloudaws" title="Permanent link">&para;</a></h3>
 <p>AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。</p>
