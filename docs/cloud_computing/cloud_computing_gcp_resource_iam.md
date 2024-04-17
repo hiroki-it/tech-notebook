@@ -169,6 +169,12 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。
 
+従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外のリソースを持たせる仕組みであった。
+
+一方で、Workload Identityではサービスアカウントキーの代わりにトークンを使用する。
+
+> - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation
+
 <br>
 
 ### Workload Identityの仕組み
@@ -186,5 +192,16 @@ GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGo
 
 > - https://christina04.hatenablog.com/entry/workload-identity-federation
 > - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9
+
+<br>
+
+### Google CloudとAWSの連携の場合
+
+AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。
+
+AWS IAMロールを経由して、サービスアカウントを使用できるようになる。
+
+> - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
+> - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
 
 <br>
