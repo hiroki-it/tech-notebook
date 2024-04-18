@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Google Cloudリソース＠Google Cloudリソース
-description: Google Cloudリソース＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Artifact Registry＠Google Cloudリソース
+description: Artifact Registry＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Google Cloudリソース＠Google Cloudリソース
+# Artifact Registry＠Google Cloudリソース
 
 ## はじめに
 
@@ -68,23 +68,5 @@ $ docker pull asia-northeast1-docker.pkg.dev/<プロジェクト名>/<コンテ�
 ```
 
 > - https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images#add-image
-
-<br>
-
-## 02. App Engine
-
-### セットアップ
-
-クラウドデプロイサーバーとして働く。
-
-<br>
-
-### RoleBinding
-
-#### ▼ 条件付きRoleBinding
-
-IAMユーザーに一時的にロールを付与する。
-
-> - https://cloud.google.com/iam/docs/conditions-overview#resources
 
 <br>
