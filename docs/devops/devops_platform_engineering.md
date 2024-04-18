@@ -25,13 +25,19 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 <br>
 
-### Internal developer portals
+## 02. 成功させる条件
+
+### Internal developer portals (Web portal)
 
 アプリケーションのテンプレートや共通パッケージを利用できるポータルサイトを提供する。
 
 また、これらのツールの利用状況も可視化できる。
 
 開発チームがアプリケーションを素早く作成できるようになる。
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+**＊例＊**
 
 - Port
 - Backstage
@@ -40,7 +46,71 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 <br>
 
-## 02. Platform Engineeringの組織モデルの種類
+### API
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### ゴールデンパス
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### 構築の自動化
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### リリースの自動化
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### 開発環境
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### 可観測性
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+### 他にもいっぱい...
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+
+<br>
+
+## 03. 計測
+
+### ユーザーの満足度や生産性
+
+生産性は、SPACEフレームワークなどで定義づけする。
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#how-to-measure-the-success-of-platforms
+
+<br>
+
+### 組織の効率性
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#how-to-measure-the-success-of-platforms
+
+<br>
+
+### リリースによるプロダクトの成長
+
+> - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#how-to-measure-the-success-of-platforms
+
+<br>
+
+## 04. 組織モデルの種類
 
 ### Centralized Provisioning (中央集権型)
 

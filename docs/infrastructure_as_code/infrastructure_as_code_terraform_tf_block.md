@@ -78,7 +78,7 @@ data "aws_ecs_task_definition" "this" {
 
 **＊実装例＊**
 
-例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
+AMIを検索した上で、AWSから特定のAMIを取得する。
 
 ```terraform
 # ---------------------------------------------

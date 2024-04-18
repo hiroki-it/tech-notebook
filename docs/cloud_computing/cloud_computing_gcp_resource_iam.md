@@ -220,6 +220,14 @@ GoogleCloud外リソースのグループを設定する。
 
 例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは`prd-opentelemetry-collector`とする。
 
+#### ▼ アクセス許可
+
+プロバイダーに応じた権限を設定する。
+
+例えば、プロバイダーがAWSであれば`aws_role`でIAMロールのARNを設定し、IAMロールにサービスアカウントを紐づけられる。
+
+> - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
+
 <br>
 
 ### Google CloudとAWSの連携の場合
