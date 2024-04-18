@@ -17574,7 +17574,7 @@
           <li class="md-nav__item">
   <a href="#projected" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ projected:
+      ▼ projected
     </span>
   </a>
   
@@ -29366,7 +29366,7 @@
           <li class="md-nav__item">
   <a href="#projected" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ projected:
+      ▼ projected
     </span>
   </a>
   
@@ -32950,9 +32950,15 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <h4 id="volumemounts">▼ volumeMounts<a class="headerlink" href="#volumemounts" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナのマウントポイントを設定する。</p>
+<p>パスは相対パスではなく絶対パスで指定する。</p>
 <p><code>.spec.volumes</code>キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。</p>
 <p>Node側のマウント元のディレクトリは、PersistentVolumeの<code>.spec.hostPath</code>キーで設定する。</p>
 <p>volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPersistentVolumeで設定された任意のマウントを実行できることに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/48749">https://github.com/kubernetes/kubernetes/issues/48749</a></li>
+</ul>
+</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -32966,6 +32972,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
+<span class="w">          </span><span class="c1"># 絶対パスにする</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
@@ -32977,6 +32984,26 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <li><a href="https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume">https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume</a></li>
 </ul>
 </blockquote>
+<p>Secretの名前を指定することもできる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
+<span class="w">          </span><span class="c1"># 絶対パスにする</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
+<span class="w">      </span><span class="nt">secret</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-secret</span>
+</code></pre></div>
 <h4 id="workingdir">▼ workingDir<a class="headerlink" href="#workingdir" title="Permanent link">&para;</a></h4>
 <p>コンテナの作業ディレクトリを設定する。</p>
 <p>ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義した方が良い。</p>
@@ -33272,6 +33299,12 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="speccontainersvolumemounts">.spec.containers[*].volumeMounts<a class="headerlink" href="#speccontainersvolumemounts" title="Permanent link">&para;</a></h3>
 <h4 id="volumemounts_1">▼ volumeMountsとは<a class="headerlink" href="#volumemounts_1" title="Permanent link">&para;</a></h4>
 <p>PodのVolume内のディレクトリをコンテナにマウントする。</p>
+<p>パスは相対パスではなく絶対パスで指定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/48749">https://github.com/kubernetes/kubernetes/issues/48749</a></li>
+</ul>
+</blockquote>
 <h4 id="subpath">▼ subPath<a class="headerlink" href="#subpath" title="Permanent link">&para;</a></h4>
 <p>PodのVolume内のサブディレクトリを指定し、マウント可能にする。</p>
 <p>これを指定しない場合。Volumeのルートディレクトリ配下をコンテナにマウントすることになる。</p>
@@ -34190,7 +34223,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-volume</span>
 </code></pre></div>
-<h4 id="projected">▼ projected:<a class="headerlink" href="#projected" title="Permanent link">&para;</a></h4>
+<h4 id="projected">▼ projected<a class="headerlink" href="#projected" title="Permanent link">&para;</a></h4>
 <p>複数のソース (Secret、downwardAPI、ConfigMap、ServiceAccountのToken) を同じVolume上のディレクトリに配置する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -35518,7 +35551,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
   </span>
 
     
