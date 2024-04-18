@@ -2894,11 +2894,15 @@ foo-pod   istio-proxy   5m           85Mi
 
 Pod内のコンテナのマウントポイントを設定する。
 
+パスは相対パスではなく絶対パスで指定する。
+
 `.spec.volumes`キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
 
 Node側のマウント元のディレクトリは、PersistentVolumeの`.spec.hostPath`キーで設定する。
 
 volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPersistentVolumeで設定された任意のマウントを実行できることに注意する。
+
+> - https://github.com/kubernetes/kubernetes/issues/48749
 
 **＊実装例＊**
 
@@ -2915,6 +2919,7 @@ spec:
         - containerPort: 8080
       volumeMounts:
         - name: app-volume
+          # 絶対パスにする
           mountPath: /go/src
   volumes:
     - name: app-volume
@@ -2923,6 +2928,29 @@ spec:
 ```
 
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
+
+Secretの名前を指定することもできる。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: app-volume
+          # 絶対パスにする
+          mountPath: /go/src
+  volumes:
+    - name: app-volume
+      secret:
+        secretName: app-secret
+```
 
 #### ▼ workingDir
 
@@ -3284,6 +3312,10 @@ Pod内の特定のコンテナに対して、認可スコープを設定する�
 #### ▼ volumeMountsとは
 
 PodのVolume内のディレクトリをコンテナにマウントする。
+
+パスは相対パスではなく絶対パスで指定する。
+
+> - https://github.com/kubernetes/kubernetes/issues/48749
 
 #### ▼ subPath
 
@@ -4335,7 +4367,7 @@ spec:
     - name: app-volume
 ```
 
-#### ▼ projected:
+#### ▼ projected
 
 複数のソース (Secret、downwardAPI、ConfigMap、ServiceAccountのToken) を同じVolume上のディレクトリに配置する。
 
