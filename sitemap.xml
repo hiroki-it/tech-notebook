@@ -321,17 +321,37 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_a.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_app_engine.html</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_b.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_artifact_registry.html</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_c.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_bigquery.html</loc>
+         <lastmod>2024-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_certificate_manager.html</loc>
+         <lastmod>2024-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_monitoring.html</loc>
+         <lastmod>2024-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_pubsub.html</loc>
+         <lastmod>2024-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_compute_engine.html</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -342,6 +362,11 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_private_service_connect.html</loc>
+         <lastmod>2024-04-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_project.html</loc>
          <lastmod>2024-04-18</lastmod>
          <changefreq>daily</changefreq>
     </url>

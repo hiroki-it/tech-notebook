@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Google Cloudリソース＠Google Cloudリソースの知見を記録しています。">
+        <meta name="description" content="Compute Engine＠Google Cloudリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_a.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_compute_engine.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Google Cloudリソース＠Google Cloudリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Compute Engine＠Google Cloudリソース - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#google-cloudgoogle-cloud" class="md-skip">
+        <a href="#compute-enginegoogle-cloud" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Google Cloudリソース＠Google Cloudリソース
+              【IT技術の知見】Compute Engine＠Google Cloudリソース
             
           </span>
         </div>
@@ -21715,32 +21715,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-artifact-registry" class="md-nav__link">
+  <a href="#01-compute-engine" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Artifact Registry
+      01. Compute Engine
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. Artifact Registry">
+    <nav class="md-nav" aria-label="01. Compute Engine">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#artifact-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Artifact Registryとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gcr" class="md-nav__link">
-    <span class="md-ellipsis">
-      GCR
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
@@ -21748,87 +21730,6 @@
       セットアップ
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      コンソール画面の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コンテナイメージの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-app-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. App Engine
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. App Engine">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rolebinding" class="md-nav__link">
-    <span class="md-ellipsis">
-      RoleBinding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RoleBinding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rolebinding_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 条件付きRoleBinding
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -21855,96 +21756,14 @@
   
 
 
-<h1 id="google-cloudgoogle-cloud">Google Cloudリソース＠Google Cloudリソース<a class="headerlink" href="#google-cloudgoogle-cloud" title="Permanent link">&para;</a></h1>
+<h1 id="compute-enginegoogle-cloud">Compute Engine＠Google Cloud<a class="headerlink" href="#compute-enginegoogle-cloud" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
-</ul>
-</blockquote>
+<p><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></p>
 <p><br></p>
-<h2 id="01-artifact-registry">01. Artifact Registry<a class="headerlink" href="#01-artifact-registry" title="Permanent link">&para;</a></h2>
-<h3 id="artifact-registry">Artifact Registryとは<a class="headerlink" href="#artifact-registry" title="Permanent link">&para;</a></h3>
-<p>様々なアーティファクト (例：コンテナイメージ、チャート、言語系パッケージ、OS系パッケージ、など) のレジストリとして働く。</p>
-<p>コンテナイメージレジストリであるGCRの後継である。</p>
-<blockquote>
-<ul>
-<li><a href="https://cloud.google.com/blog/ja/products/application-development/understanding-artifact-registry-vs-container-registry">https://cloud.google.com/blog/ja/products/application-development/understanding-artifact-registry-vs-container-registry</a></li>
-<li><a href="https://zenn.dev/cloud_ace/articles/6c401ce3b3bccc">https://zenn.dev/cloud_ace/articles/6c401ce3b3bccc</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="gcr">GCR<a class="headerlink" href="#gcr" title="Permanent link">&para;</a></h3>
-<p>パブリックレジストリとプライベートレジストリがある。</p>
-<blockquote>
-<ul>
-<li><a href="https://console.cloud.google.com/gcr/images/google-containers/GLOBAL">https://console.cloud.google.com/gcr/images/google-containers/GLOBAL</a></li>
-</ul>
-</blockquote>
-<p><br></p>
+<h2 id="01-compute-engine">01. Compute Engine<a class="headerlink" href="#01-compute-engine" title="Permanent link">&para;</a></h2>
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h3 id="_3">コンソール画面の場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>形式</td>
-<td>アーティファクト (例：コンテナイメージ、チャート、言語系パッケージ、OS系パッケージ、など) の種類を設定する。</td>
-</tr>
-<tr>
-<td>モード</td>
-<td></td>
-</tr>
-<tr>
-<td>ロケーションタイプ</td>
-<td>Artifact Registryを配置するリージョンを設定する。</td>
-</tr>
-<tr>
-<td>暗号化</td>
-<td>アーティファクトを暗号化する場合に、いずれの暗号鍵を使用するかを設定する。</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_4">セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ コンテナイメージの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>ビルドしたコンテナイメージをArtifact Registryにプッシュする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Artifact Registryにログインする。</span>
-$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>configure-docker<span class="w"> </span>asia-northeast1-docker.pkg.dev
-
-<span class="c1"># コンテナイメージにタグを付与する。</span>
-$<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </span>app:1.0.0<span class="w"> </span>asia-northeast1-docker.pkg.dev/&lt;プロジェクト名&gt;/&lt;コンテナイメージ名&gt;:1.0.0
-
-<span class="c1"># コンテナイメージをArtifact Registryにプッシュする。</span>
-$<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </span>asia-northeast1-docker.pkg.dev/&lt;プロジェクト名&gt;/&lt;コンテナイメージ名&gt;:1.0.0
-
-<span class="c1"># コンテナイメージをArtifact Registryからプルする。</span>
-$<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>asia-northeast1-docker.pkg.dev/&lt;プロジェクト名&gt;/&lt;コンテナイメージ名&gt;:1.0.0
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images#add-image">https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images#add-image</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-app-engine">02. App Engine<a class="headerlink" href="#02-app-engine" title="Permanent link">&para;</a></h2>
-<h3 id="_6">セットアップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>クラウドデプロイサーバーとして働く。</p>
-<p><br></p>
-<h3 id="rolebinding">RoleBinding<a class="headerlink" href="#rolebinding" title="Permanent link">&para;</a></h3>
-<h4 id="rolebinding_1">▼ 条件付きRoleBinding<a class="headerlink" href="#rolebinding_1" title="Permanent link">&para;</a></h4>
-<p>IAMユーザーに一時的にロールを付与する。</p>
-<blockquote>
-<ul>
-<li><a href="https://cloud.google.com/iam/docs/conditions-overview#resources">https://cloud.google.com/iam/docs/conditions-overview#resources</a></li>
-</ul>
-</blockquote>
+<p>クラウドwebサーバーとして働く。</p>
 <p><br></p>
 
 
@@ -21966,7 +21785,7 @@ $<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
   </span>
 
     
