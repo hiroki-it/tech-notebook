@@ -95,6 +95,7 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 生産性は、SPACEフレームワークなどで定義づけする。
 
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#how-to-measure-the-success-of-platforms
+> - https://dl.acm.org/doi/10.1145/3454122.3454124
 
 <br>
 

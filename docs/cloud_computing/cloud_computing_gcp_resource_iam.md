@@ -66,7 +66,9 @@ GoogleCloudリソース自体のアカウントである。
 
 <br>
 
-### 認証情報
+### サービスアカウントキー
+
+サービスアカウントの認証情報である。
 
 ```yaml
 {
@@ -109,25 +111,19 @@ $ gcloud info
 
 ### アプリケーションが使用する場合
 
-#### ▼ 自動認証
+#### ▼ ファイルパスを指定しない場合
 
-認証情報ファイルを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
+ファイルパスを指定しない場合、`$HOME/.config/gcloud/application_default_credentials.json`ファイルを読み込む。
+
+> - https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal
+
+#### ▼ ファイルパスの指定する場合
+
+認証情報ファイルのパスを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
-> - https://cloud.google.com/docs/authentication/production?hl=ja#automatically
-
-#### ▼ 手動認証
-
-認証情報のファイルパスを設定する。
-
-サービスアカウントとしてのリソースは、これを読み込み、サービスアカウントに紐づく。
-
-```bash
-$ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
-```
-
-> - https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable
+> - https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#GAC
 
 <br>
 
@@ -224,7 +220,7 @@ GoogleCloud外リソースのグループを設定する。
 
 プロバイダーに応じた権限を設定する。
 
-例えば、プロバイダーがAWSであれば`aws_role`でIAMロールのARNを設定し、IAMロールにサービスアカウントを紐づけられる。
+例えば、プロバイダーがAWSであれば`aws_role`でIAMロールの委譲用のARN (`arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>`) を設定し、IAMロールにサービスアカウントを紐づけられる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
 
@@ -234,9 +230,12 @@ GoogleCloud外リソースのグループを設定する。
 
 AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。
 
+このIAMロールは、通常のIAMロールだけでなく、IRSA用のIAMロールでもよい (設定は複雑になるが) 。
+
 AWS IAMロールを経由して、サービスアカウントを使用できるようになる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
 > - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
+> - https://www.softbank.jp/biz/blog/cloud-technology/articles/202206/eks-to-gcp/
 
 <br>
