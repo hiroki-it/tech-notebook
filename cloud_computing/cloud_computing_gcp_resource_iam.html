@@ -12189,7 +12189,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      認証情報
+      サービスアカウントキー
     </span>
   </a>
   
@@ -12217,7 +12217,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 自動認証
+      ▼ ファイルパスを指定しない場合
     </span>
   </a>
   
@@ -12226,7 +12226,7 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 手動認証
+      ▼ ファイルパスの指定する場合
     </span>
   </a>
   
@@ -22201,7 +22201,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      認証情報
+      サービスアカウントキー
     </span>
   </a>
   
@@ -22229,7 +22229,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 自動認証
+      ▼ ファイルパスを指定しない場合
     </span>
   </a>
   
@@ -22238,7 +22238,7 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 手動認証
+      ▼ ファイルパスの指定する場合
     </span>
   </a>
   
@@ -22466,7 +22466,8 @@
 <p>GoogleCloudリソース自体のアカウントである。</p>
 <p>サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。</p>
 <p><br></p>
-<h3 id="_9">認証情報<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_9">サービスアカウントキー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>サービスアカウントの認証情報である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service_account&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;project_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;プロジェクトID&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -22502,22 +22503,19 @@
 </blockquote>
 <p><br></p>
 <h3 id="_11">アプリケーションが使用する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="_12">▼ 自動認証<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>認証情報ファイルを<code>GOOGLE_APPLICATION_CREDENTIALS</code>変数に設定する。</p>
+<h4 id="_12">▼ ファイルパスを指定しない場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>ファイルパスを指定しない場合、<code>$HOME/.config/gcloud/application_default_credentials.json</code>ファイルを読み込む。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal">https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal</a></li>
+</ul>
+</blockquote>
+<h4 id="_13">▼ ファイルパスの指定する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>認証情報ファイルのパスを<code>GOOGLE_APPLICATION_CREDENTIALS</code>変数に設定する。</p>
 <p>サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。</p>
 <blockquote>
 <ul>
-<li><a href="https://cloud.google.com/docs/authentication/production?hl=ja#automatically">https://cloud.google.com/docs/authentication/production?hl=ja#automatically</a></li>
-</ul>
-</blockquote>
-<h4 id="_13">▼ 手動認証<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>認証情報のファイルパスを設定する。</p>
-<p>サービスアカウントとしてのリソースは、これを読み込み、サービスアカウントに紐づく。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span><span class="s2">&quot;&lt;認証情報ファイルパス&gt;&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable">https://cloud.google.com/docs/authentication/production?hl=ja#passing_variable</a></li>
+<li><a href="https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#GAC">https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#GAC</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22612,7 +22610,7 @@
 <p>例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは<code>prd-opentelemetry-collector</code>とする。</p>
 <h4 id="_19">▼ アクセス許可<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>プロバイダーに応じた権限を設定する。</p>
-<p>例えば、プロバイダーがAWSであれば<code>aws_role</code>でIAMロールのARNを設定し、IAMロールにサービスアカウントを紐づけられる。</p>
+<p>例えば、プロバイダーがAWSであれば<code>aws_role</code>でIAMロールの委譲用のARN (<code>arn:aws:sts:&lt;新しいアカウントID&gt;:assumed-role/&lt;IAMロール名&gt;</code>) を設定し、IAMロールにサービスアカウントを紐づけられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2">https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2</a></li>
@@ -22621,11 +22619,13 @@
 <p><br></p>
 <h3 id="google-cloudaws">Google CloudとAWSの連携の場合<a class="headerlink" href="#google-cloudaws" title="Permanent link">&para;</a></h3>
 <p>AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。</p>
+<p>このIAMロールは、通常のIAMロールだけでなく、IRSA用のIAMロールでもよい (設定は複雑になるが) 。</p>
 <p>AWS IAMロールを経由して、サービスアカウントを使用できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2">https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2</a></li>
 <li><a href="https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88">https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88</a></li>
+<li><a href="https://www.softbank.jp/biz/blog/cloud-technology/articles/202206/eks-to-gcp/">https://www.softbank.jp/biz/blog/cloud-technology/articles/202206/eks-to-gcp/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
