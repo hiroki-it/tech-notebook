@@ -186,8 +186,6 @@ func fooHandler(ginCtx *gin.Context) {
 package server
 
 import (
-	"log"
-
 	"github.com/gin-gonic/gin"
 )
 

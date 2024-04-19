@@ -99,12 +99,6 @@ func (fooEnabled *FooEnabled) GetFoo3Enabled() bool {
 ```go
 package main
 
-import (
-	"errors"
-	"log"
-	"os"
-)
-
 func main() {
 
 	fooEnabled := &FooEnabled{}
@@ -123,12 +117,6 @@ func main() {
 
 ```go
 package flags
-
-import (
-	"errors"
-	"log"
-	"os"
-)
 
 type FooEnabled struct {
 	foo1Enabled bool

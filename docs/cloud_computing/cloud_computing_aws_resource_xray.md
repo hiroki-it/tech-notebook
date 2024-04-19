@@ -528,7 +528,7 @@ import (
 
 func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
 
-	resourceWithAttirbute, err := resource.Merge(
+	resourceWithAttirbutes, err := resource.Merge(
 		resource.Default(),
 		resource.NewWithAttributes(
 			semconv.SchemaURL,

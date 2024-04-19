@@ -35,7 +35,7 @@ import (
 
 func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider {
 
-	resourceWithAttirbute, err := resource.Merge(
+	resourceWithAttirbutes, err := resource.Merge(
 		resource.Default(),
 		// アプリ内の全ての処理に共通する属性を設定する
 		// 処理ごとに異なる属性はスパンの作成時に設定する

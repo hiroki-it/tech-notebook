@@ -210,9 +210,9 @@ gRPCでは、ミドルウェア処理として、インターセプターをリ�
 package main
 
 import (
+	"google.golang.org/grpc"
 
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
-	"google.golang.org/grpc"
 )
 
 func main() {
@@ -501,7 +501,6 @@ package interceptor
 
 import (
 	"context"
-	"strings"
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
@@ -821,8 +820,6 @@ gRPCクライアントでは、リクエスト/レスポンスの送受信前の
 package main
 
 import (
-	"log"
-
 	"google.golang.org/grpc"
 )
 
