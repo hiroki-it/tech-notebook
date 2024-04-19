@@ -22931,6 +22931,7 @@
 <p><br></p>
 <h3 id="googlecloud">googlecloud<a class="headerlink" href="#googlecloud" title="Permanent link">&para;</a></h3>
 <p>Google Cloudリソース (例：CloudTrace、CloudLogging、CloudMonitoring) にテレメトリーを送信する。</p>
+<p>OpenTelemetry Collectorに認証情報を紐づけていたとしても、ここでプロジェクト名を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">googlecloud</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-project</span>
