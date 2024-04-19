@@ -269,6 +269,8 @@ Attributes:
 
 Google Cloudリソース (例：CloudTrace、CloudLogging、CloudMonitoring) にテレメトリーを送信する。
 
+OpenTelemetry Collectorに認証情報を紐づけていたとしても、ここでプロジェクト名を指定する必要がある。
+
 ```yaml
 exporters:
   googlecloud:

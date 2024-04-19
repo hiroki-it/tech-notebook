@@ -145,6 +145,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
       "xray:GetSamplingTargets",
       "xray:GetSamplingStatisticSummaries",
     ]
+    resources = ["*"]
   }
 }
 ```

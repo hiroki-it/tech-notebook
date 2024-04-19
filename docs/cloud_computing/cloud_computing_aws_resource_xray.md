@@ -167,6 +167,16 @@ subsegment.put_annotation("component", value)
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations
 
+#### ▼ メタデータ
+
+X-Rayではアノテーションでフィルタリングできるが、メタデータではできない。
+
+OpenTelemetryのスパンをAWS X-Rayに送信すると、X-Ray上でスパン属性はメタデータになる。
+
+そのため、OpenTelemetryの監視バックエンドをX-Rayにする場合、属性でフィルタリングできない。
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=22
+
 <br>
 
 ### テレメトリー間の連携

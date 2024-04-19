@@ -1439,7 +1439,7 @@ spec:
           baz: baz
     - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
       targetRevision: main
-      path: charts/foo-extra
+      path: foo-extra
       helm:
         releaseName: opentelemetry-collector
 ```
@@ -1471,7 +1471,7 @@ spec:
           baz: baz
     - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
       targetRevision: main
-      path: charts/foo-extra
+      path: foo-extra
       plugin:
         name: helm-secrets
         env:
@@ -1481,6 +1481,14 @@ spec:
             value: values.yaml
           - name: SECRETS
             value: secrets.yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  google_cloud_credentials.json: *****
 ```
 
 <br>
