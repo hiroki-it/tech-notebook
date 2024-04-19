@@ -266,7 +266,15 @@ func main() {
 gRPCでは、単項RPCを送信するクライアント側のミドルウェア処理は`UnaryClientInterceptor`という名前で定義されている。
 
 ```go
-type UnaryClientInterceptor func(ctx context.Context, method string, req, reply interface{}, cc *ClientConn, invoker UnaryInvoker, opts ...CallOption) error
+type UnaryClientInterceptor func(
+	ctx context.Context,
+	method string,
+	req,
+	reply interface{},
+	cc *ClientConn,
+	invoker UnaryInvoker,
+	opts ...CallOption
+    ) error
 ```
 
 このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
@@ -318,7 +326,30 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-記入中...
+```go
+package intercetor
+
+import (
+	"google.golang.org/grpc"
+)
+
+func UnaryClientInterceptor(
+	ctx context.Context,
+	method string,
+	req, reply interface{},
+	cc *grpc.ClientConn,
+	invoker grpc.UnaryInvoker,
+	callOpts ...grpc.CallOption,
+	) error {
+
+		// 事前処理
+
+		return err
+	}
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#%E8%87%AA%E4%BD%9Cunary-interceptor%E3%81%AE%E5%AE%9F%E8%A3%85
 
 <br>
 
@@ -329,7 +360,12 @@ func main() {
 gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`という名前にすることが定められている。
 
 ```go
-type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+type StreamServerInterceptor func(
+	srv interface{},
+	ss ServerStream,
+	info *StreamServerInfo,
+	handler StreamHandler
+    ) error
 ```
 
 このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
@@ -381,7 +417,26 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-記入中...
+```go
+package intercetor
+
+import (
+	"google.golang.org/grpc"
+)
+
+func StreamServerInterceptor(
+	srv interface{},
+	ss ServerStream,
+	info *StreamServerInfo,
+	handler StreamHandler
+	) error {
+
+		// 事前処理
+
+		return err
+	}
+}
+```
 
 <br>
 
@@ -489,7 +544,12 @@ func main() {
 gRPCでは、単項RPCを受信するサーバー側のミドルウェア処理は、`UnaryServerInterceptor`という名前にすることが定められている。
 
 ```go
-type UnaryServerInterceptor func(ctx context.Context, req interface{}, info *UnaryServerInfo, handler UnaryHandler) (resp interface{}, err error)
+type UnaryServerInterceptor func(
+	ctx context.Context,
+	req interface{},
+	info *UnaryServerInfo,
+	handler UnaryHandler
+    ) (resp interface{}, err error)
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
@@ -527,7 +587,12 @@ func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServ
 gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェア処理は`StreamServerInterceptor`という名前にすることが定められている。
 
 ```go
-type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+type StreamServerInterceptor func(
+	srv interface{},
+	ss ServerStream,
+	info *StreamServerInfo,
+	handler StreamHandler
+    ) error
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
@@ -538,9 +603,6 @@ type StreamServerInterceptor func(srv interface{}, ss ServerStream, info *Stream
 package interceptor
 
 import (
-	"context"
-	"strings"
-
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 )

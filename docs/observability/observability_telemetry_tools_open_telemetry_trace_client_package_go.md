@@ -1827,6 +1827,8 @@ func main() {
 
 分散トレースとログを紐づけるために、ログのフィールドに`trace_id`キーや`span_id`キーを追加する。
 
+監視バックエンドによっては、W3C Trace Context仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合はIDを事前に変換しておく。
+
 ```go
 package log
 
@@ -1841,7 +1843,7 @@ import (
 )
 
 // CreateLoggerWithTrace ロガーの初期化時にログにトレースコンテキストを設定する
-func CreateLoggerWithTrace(ctx context.Context) *zap.SugaredLogger {
+func CreateLoggerWithTrace(ctx context.Context, string traceType) *zap.SugaredLogger {
 
 	spanCtx := trace.SpanContextFromContext(ctx)
 
@@ -1857,7 +1859,7 @@ func CreateLoggerWithTrace(ctx context.Context) *zap.SugaredLogger {
 	defer logger.Sync()
 	slogger := logger.Sugar()
 
-	slogger = slogger.With("trace_id", formatTraceId(traceId, "cloudtrace"))
+	slogger = slogger.With("trace_id", formatTraceId(traceId, traceType))
 	slogger = slogger.With("span_id", spaceId)
 
 	return slogger
@@ -1882,3 +1884,5 @@ func formatTraceId(traceId trace.TraceID, traceType string) string {
 	return traceId.String()
 }
 ```
+
+<br>
