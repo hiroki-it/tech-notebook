@@ -21334,6 +21334,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. 分散トレースとログの紐付け
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -22665,6 +22674,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. 分散トレースとログの紐付け
+    </span>
+  </a>
   
 </li>
       
@@ -24370,6 +24388,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;flag&quot;</span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
 
 <span class="w">    </span><span class="c1">// ここではv1を使用しているが、v2が推奨である</span>
 <span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws&quot;</span>
@@ -24411,6 +24430,10 @@
 <span class="w">        </span><span class="nx">QueueName</span><span class="p">:</span><span class="w"> </span><span class="nx">queue</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to get queue url: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="nx">queueURL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">urlResult</span><span class="p">.</span><span class="nx">QueueUrl</span>
 
 <span class="w">    </span><span class="c1">// AWS SQSからメッセージを受信する</span>
@@ -24442,6 +24465,62 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="05">05. 分散トレースとログの紐付け<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<p>分散トレースとログを紐づけるために、ログのフィールドに<code>trace_id</code>キーや<code>span_id</code>キーを追加する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">log</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;encoding/hex&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;reflect&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// CreateLoggerWithTrace ロガーの初期化時にログにトレースコンテキストを設定する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">CreateLoggerWithTrace</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">zap</span><span class="p">.</span><span class="nx">SugaredLogger</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">spanCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">traceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">spaceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">SpanID</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to initialize logger: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">slogger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sugar</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">slogger</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">slogger</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span><span class="s">&quot;trace_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">formatTraceId</span><span class="p">(</span><span class="nx">traceId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cloudtrace&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">slogger</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">slogger</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span><span class="s">&quot;span_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spaceId</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">slogger</span>
+<span class="p">}</span>
+
+<span class="c1">// トレースタイプに応じて、トレースIDを整形する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">formatTraceId</span><span class="p">(</span><span class="nx">traceId</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">,</span><span class="w"> </span><span class="nx">traceType</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">traceId</span><span class="p">).</span><span class="nx">IsZero</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">traceType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;xray&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// X-RayのトレースIDの仕様に変換する</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;1-%s-%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hex</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">(</span><span class="nx">traceId</span><span class="p">[:</span><span class="mi">4</span><span class="p">]),</span><span class="w"> </span><span class="nx">hex</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">(</span><span class="nx">traceId</span><span class="p">[</span><span class="mi">4</span><span class="p">:]))</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;cloudtrace&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">// CloudTraceの場合は、トレースIDの仕様はそのままとする</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 
