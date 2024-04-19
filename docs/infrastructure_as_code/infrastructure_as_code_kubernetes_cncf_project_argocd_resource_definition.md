@@ -990,7 +990,7 @@ spec:
 
 ポーリング対象のマニフェストリポジトリのディレクトリ構造に関して設定する。
 
-また、リポジトリにチャートを配置しているがチャートリポジトリとして扱っていない場合、マニフェストリポジトリ内のローカルのチャートとして、ポーリングすることもできる。
+また、マニフェストリポジトリにチャートを配置している場合でも、チャートリポジトリと同様にチャートを扱える。
 
 | 設定項目  | 説明                                                                                                                                                                              |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1033,7 +1033,7 @@ spec:
     path: ./manifests
 ```
 
-マニフェストリポジトリ内のローカルのチャートもポーリングできる。
+マニフェストリポジトリにチャートをおいても、チャートリポジトリと同様にポーリングできる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1404,6 +1404,81 @@ metadata:
 spec:
   source:
     targetRevision: <バージョンタグ>
+```
+
+<br>
+
+### .spec.sources
+
+#### ▼ 公式チャート + ユーザー定義チャート
+
+単一のApplicationから、複数のチャートやマニフェストをデプロイする
+
+公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+      targetRevision: main
+      chart: <チャート名>
+      helm:
+        releaseName: foo
+        values: |
+          foo: foo
+          bar: bar
+          baz: baz
+    - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
+      targetRevision: main
+      path: charts/foo-extra
+      helm:
+        releaseName: opentelemetry-collector
+```
+
+#### ▼ 公式チャート + ユーザー定義チャート (プラグインを実行)
+
+単一のApplicationから、複数のチャートやマニフェストをデプロイする。
+
+公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。
+
+この時に、プラグイン (`helm secrets`) を使用することもできる。
+
+例えば、公式チャートで認証情報を使用したSecretが必要な場合に、`helm secrets`プラグインを使用した追加チャートを定義するとよい。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
+      targetRevision: main
+      chart: <チャート名>
+      helm:
+        releaseName: foo
+        values: |
+          foo: foo
+          bar: bar
+          baz: baz
+    - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
+      targetRevision: main
+      path: charts/foo-extra
+      plugin:
+        name: helm-secrets
+        env:
+          - name: NAME
+            value: foo
+          - name: VALUES
+            value: values.yaml
+          - name: SECRETS
+            value: secrets.yaml
 ```
 
 <br>
