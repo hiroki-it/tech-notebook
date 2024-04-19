@@ -614,7 +614,7 @@ variable "foo" {
 
 ```terraform
 variable "foo" {
-  description = << EOF
+  description = <<EOF
   説明文です。
 EOF
   type = string

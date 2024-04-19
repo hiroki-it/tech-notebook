@@ -165,7 +165,7 @@ STSのエンドポイントから一時的な認証情報が発行される。
 ```bash
 #!/bin/bash
 
-cat << EOF > assumed_user.sh
+cat <<EOF > assumed_user.sh
 export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")"
 export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")"
 export AWS_SESSION_TOKEN="$(echo "$aws_sts_credentials" | jq -r ".SessionToken")"
@@ -179,7 +179,7 @@ EOF
 ```bash
 #!/bin/bash
 
-aws configure --profile "${ENV}"-repository << EOF
+aws configure --profile "${ENV}"-repository <<EOF
 $(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")
 $(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")
 ap-northeast-1

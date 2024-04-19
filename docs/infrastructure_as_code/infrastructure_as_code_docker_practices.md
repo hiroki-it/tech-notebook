@@ -480,7 +480,7 @@ RUN yum -y install \
 #### ▼ ヒアドキュメントを使用する
 
 ```dockerfile
-RUN << EOF
+RUN <<EOF
   yum -y install httpd php php-mbstring php-pear
   rm -Rf /var/cache/dnf
 EOF

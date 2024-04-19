@@ -167,6 +167,25 @@ X-Rayにスパンを送信する。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
 
+#### ▼ index_all_attributes
+
+スパンの属性をAWS X-Rayのアノテーションに変換する。
+
+AWS X-Rayでは、アノテーションでフィルタリングできるが、メタデータではできない。
+
+OpenTelemetryのスパンをAWS X-Rayに送信すると、AWS X-Ray上で属性はメタデータになる。
+
+そこで、属性をフィルタリング可能なアノテーションに変換する
+
+```yaml
+exporters:
+  awsxray:
+    index_all_attributes: true
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=22
+
 #### ▼ no_verify_ssl
 
 X-Rayへの通信でTLSを有効化するか否かを設定する。

@@ -1255,7 +1255,7 @@ then
 fi
 
 mkdir -p /etc/systemd/logind.conf.d
-cat << EOF > /etc/systemd/logind.conf.d/50-max-delay.conf
+cat <<EOF > /etc/systemd/logind.conf.d/50-max-delay.conf
 [Login]
 InhibitDelayMaxSec=360
 EOF

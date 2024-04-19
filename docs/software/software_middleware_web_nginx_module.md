@@ -430,7 +430,7 @@ http {
 http {
 
     location / {
-        otel_span_attr env <実行環境名>;
+        otel_span_attr otel.resource.deployment.environment <実行環境名>;
         proxy_pass $scheme://$host$request_uri;
     }
 }

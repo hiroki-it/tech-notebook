@@ -1188,7 +1188,7 @@ source $BASH_ENV
 **＊実装例＊**
 
 ```bash
-cat << EOF > "export_envs.sh"
+cat <<EOF > "export_envs.sh"
 #!/bin/bash
 set -xeuo pipefail
 "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV

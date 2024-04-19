@@ -53,7 +53,7 @@ Terraformの`aws_eks_addon`でEKSアドオンをインストールし、OpenTele
 
 ```terraform
 # AWS EKSアドオンをインストールする。
-resource "aws_eks_addon" "aws_ebs_csi_driver" {
+resource "aws_eks_addon" "adot" {
 
   cluster_name                = data.aws_eks_cluster.cluster.name
   addon_name                  = "adot"
@@ -61,6 +61,20 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
   service_account_role_arn    = module.iam_assumable_role_open_telemetry_operator[0].iam_role_arn
   # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
+}
+
+# X-Ray
+resource "aws_xray_group" "environment" {
+
+  group_name        = "foo-prd"
+
+  filter_expression = <<EOF
+annotation.system = "foo" AND annotation.environment = "prd"
+EOF
+
+  insights_configuration {
+    insights_enabled = true
+  }
 }
 ```
 

@@ -46,7 +46,7 @@ echo "baz"
 ```bash
 #!/bin/bash
 
-cat << EOF > echo.sh
+cat <<EOF > echo.sh
 #!/bin/bash
 foo
 bar
@@ -93,7 +93,7 @@ echo bar
 ```bash
 #!/bin/bash
 
-cat << EOF > echo.sh
+cat <<EOF > echo.sh
 #!/bin/bash
 ${FOO}
 \${BAR}
@@ -119,7 +119,7 @@ echo ${BAR} # エスケープしたため、変数は展開しない
 FOO=foo
 BAR=bar
 
-cat << EOF > echo.sh
+cat <<EOF > echo.sh
 #!/bin/bash
 ${FOO}
 ${BAR}
