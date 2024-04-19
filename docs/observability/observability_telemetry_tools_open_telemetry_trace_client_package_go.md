@@ -1747,6 +1747,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 
 	// ここではv1を使用しているが、v2が推奨である
 	"github.com/aws/aws-sdk-go/aws"
@@ -1788,6 +1789,10 @@ func main() {
 		QueueName: queue,
 	})
 
+	if err != nil {
+		log.Printf("Failed to get queue url: %s", err)
+	}
+
 	queueURL := urlResult.QueueUrl
 
 	// AWS SQSからメッセージを受信する
@@ -1817,3 +1822,63 @@ func main() {
 > - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage
 
 <br>
+
+## 05. 分散トレースとログの紐付け
+
+分散トレースとログを紐づけるために、ログのフィールドに`trace_id`キーや`span_id`キーを追加する。
+
+```go
+package log
+
+import (
+	"context"
+	"encoding/hex"
+	"fmt"
+	"reflect"
+
+	"go.opentelemetry.io/otel/trace"
+	"go.uber.org/zap"
+)
+
+// CreateLoggerWithTrace ロガーの初期化時にログにトレースコンテキストを設定する
+func CreateLoggerWithTrace(ctx context.Context) *zap.SugaredLogger {
+
+	spanCtx := trace.SpanContextFromContext(ctx)
+
+	traceId := spanCtx.TraceID()
+	spaceId := spanCtx.SpanID()
+
+	logger, err := zap.NewProduction()
+
+	if err != nil {
+		log.Printf("Failed to initialize logger: %s", err)
+	}
+
+	defer logger.Sync()
+	slogger := logger.Sugar()
+
+	slogger = slogger.With("trace_id", formatTraceId(traceId, "cloudtrace"))
+	slogger = slogger.With("span_id", spaceId)
+
+	return slogger
+}
+
+// トレースタイプに応じて、トレースIDを整形する
+func formatTraceId(traceId trace.TraceID, traceType string) string {
+
+	if reflect.ValueOf(traceId).IsZero() {
+		return "unknown"
+	}
+
+	switch traceType {
+	case "xray":
+		// X-RayのトレースIDの仕様に変換する
+		return fmt.Sprintf("1-%s-%s", hex.EncodeToString(traceId[:4]), hex.EncodeToString(traceId[4:]))
+	case "cloudtrace":
+		// CloudTraceの場合は、トレースIDの仕様はそのままとする
+		return traceId.String()
+	}
+
+	return traceId.String()
+}
+```
