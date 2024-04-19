@@ -23698,7 +23698,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">(</span><span class="nx">exporter</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">SpanExporter</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">resourceWithAttirbute</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">Merge</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">resourceWithAttirbutes</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">Merge</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">Default</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">SchemaURL</span><span class="p">,</span>
