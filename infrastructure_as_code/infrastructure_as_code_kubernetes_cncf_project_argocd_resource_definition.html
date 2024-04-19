@@ -17566,14 +17566,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specsources" class="md-nav__link">
+  <a href="#specsources-multiple-sources" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.sources
+      .spec.sources (Multiple sources)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".spec.sources">
+    <nav class="md-nav" aria-label=".spec.sources (Multiple sources)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Multiple Sourcesとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
@@ -23543,14 +23552,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#specsources" class="md-nav__link">
+  <a href="#specsources-multiple-sources" class="md-nav__link">
     <span class="md-ellipsis">
-      .spec.sources
+      .spec.sources (Multiple sources)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label=".spec.sources">
+    <nav class="md-nav" aria-label=".spec.sources (Multiple sources)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Multiple Sourcesとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
@@ -25523,10 +25541,16 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="specsources">.spec.sources<a class="headerlink" href="#specsources" title="Permanent link">&para;</a></h3>
+<h3 id="specsources-multiple-sources">.spec.sources (Multiple sources)<a class="headerlink" href="#specsources-multiple-sources" title="Permanent link">&para;</a></h3>
+<h4 id="multiple-sources">▼ Multiple Sourcesとは<a class="headerlink" href="#multiple-sources" title="Permanent link">&para;</a></h4>
+<p>単一のApplicationから、複数のチャートやマニフェストをデプロイする。</p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/">https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/</a></li>
+</ul>
+</blockquote>
 <h4 id="_15">▼ 公式チャート + ユーザー定義チャート<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>単一のApplicationから、複数のチャートやマニフェストをデプロイする</p>
-<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。</p>
+<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする使用例である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25550,8 +25574,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">        </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
 </code></pre></div>
 <h4 id="_16">▼ 公式チャート + ユーザー定義チャート (プラグインを実行)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>単一のApplicationから、複数のチャートやマニフェストをデプロイする。</p>
-<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。</p>
+<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする使用例である。</p>
 <p>この時に、プラグイン (<code>helm secrets</code>) を使用することもできる。</p>
 <p>例えば、公式チャートで認証情報を使用したSecretが必要な場合に、<code>helm secrets</code>プラグインを使用した追加チャートを定義するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
