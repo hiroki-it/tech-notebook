@@ -202,7 +202,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 ```bash
 #!/bin/bash
 
-# credentialsファイルを参照するオプションが必要がある。
+# 認証情報ファイルを参照するオプションが必要がある。
 aws s3 ls --profile <プロファイル名> <tfstateファイルが管理されるバケット名>
 ```
 

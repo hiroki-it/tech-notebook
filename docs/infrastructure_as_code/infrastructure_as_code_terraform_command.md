@@ -218,7 +218,7 @@ $ terraform init \
     -backend-config="bucket=prd-foo-tfstate-bucket" \
     `# tfstateファイル名` \
     -backend-config="key=terraform.tfstate" \
-    `# credentialsファイルのプロファイル名` \
+    `# 認証情報ファイルのプロファイル名` \
     -backend-config="profile=bar" \
     -backend-config="encrypt=true"
 ```

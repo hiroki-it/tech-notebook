@@ -115,7 +115,7 @@ build:
 
 ### Google Container Registry
 
-Google Cloudのクレデンシャルファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+Google Cloudの認証情報ファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
 
 ```yaml
 build:

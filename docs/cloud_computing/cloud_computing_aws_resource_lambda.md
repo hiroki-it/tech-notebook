@@ -120,7 +120,7 @@ Lambdaは関数を実行する。
 
 > - https://github.com/aws/aws-lambda-runtime-interface-emulator>
 
-RIEであっても、稼働させるためにAWSの認証情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や`credentials`ファイルを使用して、Lambdaにこれらの値を出力する。
+RIEであっても、稼働させるためにAWSの認証情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や認証情報ファイルを使用して、Lambdaにこれらの値を出力する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env>
 

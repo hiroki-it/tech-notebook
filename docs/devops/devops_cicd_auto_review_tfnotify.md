@@ -58,7 +58,7 @@ terraform -chdir=./"${ENV}" plan \
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します。
+# 認証情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./"${ENV}" apply \

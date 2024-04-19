@@ -2929,6 +2929,8 @@ spec:
 
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
+**＊実装例＊**
+
 Secretの名前を指定することもできる。
 
 ```yaml
@@ -2950,6 +2952,42 @@ spec:
     - name: app-volume
       secret:
         secretName: app-secret
+```
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      # 認証情報ファイルをマウントする
+      volumeMounts:
+        - name: credentials-volume
+          # 絶対パスにする
+          mountPath: /credentials
+      env:
+        # Google Cloudの認証情報のパスを設定する
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /credentials/google_cloud_credentials.json
+  volumes:
+    - name: credentials-volume
+      secret:
+        secretName: app-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  google_cloud_credentials.json: *****
 ```
 
 #### ▼ workingDir

@@ -21,7 +21,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 認証情報を設定する。
 
-OSによって、`credentials`ファイルが配置される場所が異なる。
+OSによって、認証情報ファイルが配置される場所が異なる。
 
 ```bash
 $ aws configure
@@ -96,9 +96,9 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 認証情報を設定する。
 
-LinuxやUnixの場合は、`$HOME/.aws/<credentialsファイル名>`に配置される。
+LinuxやUnixの場合は、`$HOME/.aws/<認証情報ファイル名>`に配置される。
 
-また、Windowsの場合は、`%USERPROFILE%\.aws\<credentialsファイル名>`に配置される。
+また、Windowsの場合は、`%USERPROFILE%\.aws\<認証情報ファイル名>`に配置される。
 
 #### ▼ aws_access_key_id
 
@@ -423,7 +423,7 @@ $ aws ec2 describe-instances \
 
 リージョンを指定して、コマンドを実行する。
 
-`credentials`ファイルや環境変数を変更する手間が省ける。
+認証情報ファイルや環境変数を変更する手間が省ける。
 
 <br>
 
