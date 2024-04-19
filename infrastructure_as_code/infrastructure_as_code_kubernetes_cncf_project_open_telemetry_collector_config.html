@@ -18789,48 +18789,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
-    <span class="md-ellipsis">
-      debug
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="debug">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#debug_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ debugとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verbosity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ verbosity
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      logging
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#awsxray" class="md-nav__link">
     <span class="md-ellipsis">
       awsxray
@@ -18869,6 +18827,57 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      debug
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ debugとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbosity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ verbosity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#googlecloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      googlecloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      logging
+    </span>
+  </a>
   
 </li>
         
@@ -22331,48 +22340,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
-    <span class="md-ellipsis">
-      debug
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="debug">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#debug_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ debugとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verbosity" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ verbosity
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logging" class="md-nav__link">
-    <span class="md-ellipsis">
-      logging
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#awsxray" class="md-nav__link">
     <span class="md-ellipsis">
       awsxray
@@ -22411,6 +22378,57 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      debug
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ debugとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbosity" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ verbosity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#googlecloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      googlecloud
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      logging
+    </span>
+  </a>
   
 </li>
         
@@ -22819,6 +22837,39 @@
 <p>Exporterを設定する。</p>
 <p>OpenTelemetry Collectorは、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
+<h3 id="awsxray">awsxray<a class="headerlink" href="#awsxray" title="Permanent link">&para;</a></h3>
+<h4 id="awsxray_1">▼ awsxrayとは<a class="headerlink" href="#awsxray_1" title="Permanent link">&para;</a></h4>
+<p>X-Rayにスパンを送信する。</p>
+<p>ただし、OpenTelemetryにはAWS X-Ray exporterが含まれていない。</p>
+<p>そのため、AWS製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替えておく必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB</a></li>
+</ul>
+</blockquote>
+<h4 id="no_verify_ssl">▼ no_verify_ssl<a class="headerlink" href="#no_verify_ssl" title="Permanent link">&para;</a></h4>
+<p>X-Rayへの通信でTLSを有効化するか否かを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">no_verify_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
+</ul>
+</blockquote>
+<h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
+<p>X-Rayのあるリージョンを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="debug">debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
 <h4 id="debug_1">▼ debugとは<a class="headerlink" href="#debug_1" title="Permanent link">&para;</a></h4>
 <p>標準エラー出力にテレメトリーを出力する。</p>
@@ -22878,6 +22929,15 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="googlecloud">googlecloud<a class="headerlink" href="#googlecloud" title="Permanent link">&para;</a></h3>
+<p>Google Cloudリソース (例：CloudTrace、CloudLogging、CloudMonitoring) にテレメトリーを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">googlecloud</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-project</span>
+<span class="w">    </span><span class="nt">trace</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">use_insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="logging">logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
 <p>これは非推奨である。</p>
 <p>代わりに、<code>debug</code>を使用すること。</p>
@@ -22887,39 +22947,6 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/loggingexporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/loggingexporter/README.md</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="awsxray">awsxray<a class="headerlink" href="#awsxray" title="Permanent link">&para;</a></h3>
-<h4 id="awsxray_1">▼ awsxrayとは<a class="headerlink" href="#awsxray_1" title="Permanent link">&para;</a></h4>
-<p>X-Rayにテレメトリーを送信する。</p>
-<p>ただし、OpenTelemetryにはAWS X-Ray exporterが含まれていない。</p>
-<p>そのため、AWS製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替えておく必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB</a></li>
-</ul>
-</blockquote>
-<h4 id="no_verify_ssl">▼ no_verify_ssl<a class="headerlink" href="#no_verify_ssl" title="Permanent link">&para;</a></h4>
-<p>X-Rayへの通信でTLSを有効化するか否かを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">no_verify_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
-</ul>
-</blockquote>
-<h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
-<p>X-Rayのあるリージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23145,7 +23172,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-19</span>
   </span>
 
     

@@ -17566,6 +17566,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specsources" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.sources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公式チャート + ユーザー定義チャート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公式チャート + ユーザー定義チャート (プラグインを実行)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specdestination" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.destination
@@ -17809,7 +17842,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -23510,6 +23543,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specsources" class="md-nav__link">
+    <span class="md-ellipsis">
+      .spec.sources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公式チャート + ユーザー定義チャート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公式チャート + ユーザー定義チャート (プラグインを実行)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specdestination" class="md-nav__link">
     <span class="md-ellipsis">
       .spec.destination
@@ -23753,7 +23819,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -25053,7 +25119,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <h3 id="specsource_1">.spec.source (マニフェストリポジトリの場合)<a class="headerlink" href="#specsource_1" title="Permanent link">&para;</a></h3>
 <h4 id="directory">▼ directory<a class="headerlink" href="#directory" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のマニフェストリポジトリのディレクトリ構造に関して設定する。</p>
-<p>また、リポジトリにチャートを配置しているがチャートリポジトリとして扱っていない場合、マニフェストリポジトリ内のローカルのチャートとして、ポーリングすることもできる。</p>
+<p>また、マニフェストリポジトリにチャートを配置している場合でも、チャートリポジトリと同様にチャートを扱える。</p>
 <table>
 <thead>
 <tr>
@@ -25108,7 +25174,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./manifests</span>
 </code></pre></div>
-<p>マニフェストリポジトリ内のローカルのチャートもポーリングできる。</p>
+<p>マニフェストリポジトリにチャートをおいても、チャートリポジトリと同様にポーリングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25455,6 +25521,67 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">source</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specsources">.spec.sources<a class="headerlink" href="#specsources" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ 公式チャート + ユーザー定義チャート<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>単一のApplicationから、複数のチャートやマニフェストをデプロイする</p>
+<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-application</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
+<span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">      </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャート名&gt;</span>
+<span class="w">      </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">        </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">foo: foo</span>
+<span class="w">          </span><span class="no">bar: bar</span>
+<span class="w">          </span><span class="no">baz: baz</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/bar-repository.git</span>
+<span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">charts/foo-extra</span>
+<span class="w">      </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
+</code></pre></div>
+<h4 id="_16">▼ 公式チャート + ユーザー定義チャート (プラグインを実行)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>単一のApplicationから、複数のチャートやマニフェストをデプロイする。</p>
+<p>公式チャートに加えて、ユーザー定義のマニフェストを含むチャートをデプロイする場合に便利である。</p>
+<p>この時に、プラグイン (<code>helm secrets</code>) を使用することもできる。</p>
+<p>例えば、公式チャートで認証情報を使用したSecretが必要な場合に、<code>helm secrets</code>プラグインを使用した追加チャートを定義するとよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-application</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
+<span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">      </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャート名&gt;</span>
+<span class="w">      </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">        </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">foo: foo</span>
+<span class="w">          </span><span class="no">bar: bar</span>
+<span class="w">          </span><span class="no">baz: baz</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/bar-repository.git</span>
+<span class="w">      </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">charts/foo-extra</span>
+<span class="w">      </span><span class="nt">plugin</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-secrets</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAME</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALUES</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values.yaml</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SECRETS</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secrets.yaml</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specdestination">.spec.destination<a class="headerlink" href="#specdestination" title="Permanent link">&para;</a></h3>
@@ -25848,7 +25975,7 @@ spec:
 </code></pre></div>
 <p><br></p>
 <h2 id="05-argocd-notification">05. ArgoCD Notification<a class="headerlink" href="#05-argocd-notification" title="Permanent link">&para;</a></h2>
-<h3 id="_15">セットアップ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_17">セットアップ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/release-1.0/manifests/install.yaml
 </code></pre></div>
 <blockquote>
@@ -26234,7 +26361,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-19</span>
   </span>
 
     
