@@ -376,6 +376,14 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 
 	    // パラメーターに応じた処理を定義する
 
+
+		...
+
+		err := invoker(ctx, method, req, reply, cc, callOpts...)
+
+		...
+
+		return err
 	}
 }
 ```
@@ -391,12 +399,14 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェア処理は、`StreamClientInterceptor`という名前にすることが定められている。
 
 ```go
-type StreamServerInterceptor func(
-	srv interface{},
-	ss ServerStream,
-	info *StreamServerInfo,
-	handler StreamHandler
-    ) error
+type StreamClientInterceptor func(
+    ctx context.Context, 
+    desc *StreamDesc,
+    cc *ClientConn,
+    method string, 
+    streamer Streamer, 
+    opts ...CallOption,
+) (ClientStream, error)
 ```
 
 このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
@@ -457,12 +467,14 @@ import (
 	"google.golang.org/grpc"
 )
 
-func StreamServerInterceptor(
-	srv interface{},
-	ss ServerStream,
-	info *StreamServerInfo,
-	handler StreamHandler,
-	) error {
+func StreamClientInterceptor(
+    ctx context.Context, 
+    desc *StreamDesc,
+    cc *ClientConn,
+    method string, 
+    streamer Streamer, 
+    opts ...CallOption,
+	) (grpc.ClientStream, error) {
 
 	    // パラメーターに応じた処理を定義する
 
@@ -470,7 +482,7 @@ func StreamServerInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却するメソッドとする。
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor`型を返却するメソッドとする。
 
 ```go
 package intercetor
@@ -479,28 +491,38 @@ import (
 	"google.golang.org/grpc"
 )
 
-func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
+func StreamClientInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 
 	// オプションを使用してパラメーターを作成する
 
     return func(
-		srv interface{},
-		ss ServerStream,
-		info *StreamServerInfo,
-		handler StreamHandler,
-	) error {
+		ctx context.Context,
+		desc *StreamDesc,
+		cc *ClientConn,
+		method string,
+		streamer Streamer,
+		opts ...CallOption,
+	) (grpc.ClientStream, error) {
 
 		// パラメーターに応じた処理を定義する
+        
+        ...
 
-	}
+		s, err := streamer(ctx, desc, cc, method, callOpts...)
+        
+        ...
+
+		stream := wrapClientStream(ctx, s, desc, span, cfg)
+		return stream, nil
+    }
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#%E8%87%AA%E4%BD%9Cunary-interceptor%E3%81%AE%E5%AE%9F%E8%A3%85
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
 <br>
 
-<br>
+
 
 ## 03. サーバー側のインターセプター
 
@@ -667,6 +689,14 @@ func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
 
 		// パラメーターに応じた処理を定義する
 
+
+		...
+
+		err := invoker(ctx, method, req, reply, cc, callOpts...)
+
+		...
+
+		return err
 	}
 }
 ```
@@ -736,6 +766,15 @@ func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 	) error {
 
 		// パラメーターに応じた処理を定義する
+
+
+		...
+
+		err := handler(srv, wrapServerStream(ctx, ss, cfg))
+
+		...
+
+		return err
 
 	}
 }
