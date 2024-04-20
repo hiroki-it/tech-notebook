@@ -23665,9 +23665,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">callOpts</span><span class="w"> </span><span class="o">...</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1">// パラメーターに応じた処理を定義する</span>
+<span class="w">    </span><span class="c1">// リクエスト送信の事前処理</span>
 
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
+
+<span class="w">    </span><span class="c1">// リクエスト送信の事後処理</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryClientInterceptor</code>型を返却するメソッドとする。</p>
@@ -23693,7 +23697,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">        </span><span class="c1">// リクエスト送信の事前処理</span>
 
-<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// リクエスト送信処理</span>
+<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
 
 <span class="w">        </span><span class="c1">// リクエスト送信の事後処理</span>
 
@@ -23784,9 +23788,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1">// パラメーターに応じた処理を定義する</span>
+<span class="w">        </span><span class="c1">// 事前処理</span>
 
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
+
+<span class="w">        </span><span class="c1">// 事後処理</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wrapClientStream</span><span class="p">{</span><span class="nx">streamer</span><span class="p">},</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamClientInterceptor</code>型を返却するメソッドとする。</p>
@@ -23811,13 +23819,16 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">        </span><span class="c1">// 事前処理</span>
 
-<span class="w">        </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
+<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
 
 <span class="w">        </span><span class="c1">// 事後処理</span>
 
-<span class="w">        </span><span class="nx">stream</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">wrapClientStream</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">stream</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wrapClientStream</span><span class="p">{</span><span class="nx">streamer</span><span class="p">},</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">wrapClientStream</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -23938,8 +23949,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">handler</span><span class="w"> </span><span class="nx">UnaryHandler</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">resp</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// ここに自前の処理を定義する</span>
+<span class="w">    </span><span class="c1">// 事前処理</span>
 
+<span class="w">    </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">handler</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
+
+<span class="w">    </span><span class="c1">// 事後処理</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ユーザー定義のオプションを渡したい場合は、<code>grpc.UnaryServerInterceptor</code>型を返却するメソッドとする。</p>
@@ -24005,8 +24021,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">handler</span><span class="w"> </span><span class="nx">StreamHandler</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// ここに自前の処理を定義する</span>
+<span class="w">    </span><span class="c1">// 事前処理</span>
 
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">handler</span><span class="p">(</span><span class="nx">srv</span><span class="p">,</span><span class="w"> </span><span class="nx">wrapServerStream</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">ss</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="p">))</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
+
+<span class="w">    </span><span class="c1">// 事後処理</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamServerInterceptor</code>型を返却するメソッドとする。</p>
@@ -24035,7 +24056,6 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="c1">// 事後処理</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
