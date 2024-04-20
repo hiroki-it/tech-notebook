@@ -42,7 +42,8 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 		resource.NewWithAttributes(
 			semconv.SchemaURL,
 			semconv.ServiceName("<マイクロサービス名>"),
-			semconv.DeploymentEnvironment("<実行環境名>")
+			semconv.String("system.name", "<システム名>"),
+			semconv.String("environment", "<実行環境名>"),
 		),
 	)
 
@@ -265,8 +266,9 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 	// マイクロサービスの属性情報を設定する。
 	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
-		semconv.ServiceName("foo-service"),
-		semconv.DeploymentEnvironment("<実行環境名>")
+		semconv.ServiceName("<マイクロサービス名>"),
+		semconv.String("system.name", "<システム名>"),
+	    semconv.String("environment", "<実行環境名>"),
 	)
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
@@ -1283,9 +1285,7 @@ func installPropagators() {
 package main
 
 import (
-	"context"
 	"log"
-	"os"
 	"net/http"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
@@ -1339,9 +1339,7 @@ Carrierにトレースコンテキストを注入し、また子スパンを作�
 package main
 
 import (
-	"context"
 	"log"
-	"os"
 	"net/http"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"

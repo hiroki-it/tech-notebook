@@ -21,10 +21,7 @@ Prometheusからリクエストを受信できるように、メトリクス収�
 package main
 
 import (
-	"context"
-	"errors"
 	"net/http"
-	"time"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

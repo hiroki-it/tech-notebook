@@ -485,6 +485,10 @@ func StreamClientInterceptor(
 
 		return &wrapClientStream{streamer}, err
 }
+
+type wrapClientStream struct {
+	grpc.ClientStream
+}
 ```
 
 ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor`型を返却するメソッドとする。

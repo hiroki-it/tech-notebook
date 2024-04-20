@@ -290,8 +290,9 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 	resourceWithAttributes := resource.NewWithAttributes(
 		semconv.SchemaURL,
-		semconv.ServiceName("foo-service"),
-		semconv.DeploymentEnvironment("<実行環境名>"),
+		semconv.ServiceName("<マイクロサービス名>"),
+		semconv.String("system.name", "<システム名>"),
+		semconv.String("environment", "<実行環境名>"),
 	)
 
 	sampler := newSampler()
