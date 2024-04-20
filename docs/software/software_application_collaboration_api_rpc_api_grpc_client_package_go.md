@@ -374,14 +374,11 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 		callOpts ...grpc.CallOption,
 	) error {
 
-	    // パラメーターに応じた処理を定義する
+		// リクエスト送信の事前処理
 
+		err := invoker(ctx, method, req, reply, cc, callOpts...) // リクエスト送信処理
 
-		...
-
-		err := invoker(ctx, method, req, reply, cc, callOpts...)
-
-		...
+		// リクエスト送信の事後処理
 
 		return err
 	}
@@ -400,11 +397,11 @@ gRPCでは、ストリーミングRPCを送信するクライアント側のミ�
 
 ```go
 type StreamClientInterceptor func(
-    ctx context.Context, 
+    ctx context.Context,
     desc *StreamDesc,
     cc *ClientConn,
-    method string, 
-    streamer Streamer, 
+    method string,
+    streamer Streamer,
     opts ...CallOption,
 ) (ClientStream, error)
 ```
@@ -468,11 +465,11 @@ import (
 )
 
 func StreamClientInterceptor(
-    ctx context.Context, 
+    ctx context.Context,
     desc *StreamDesc,
     cc *ClientConn,
-    method string, 
-    streamer Streamer, 
+    method string,
+    streamer Streamer,
     opts ...CallOption,
 	) (grpc.ClientStream, error) {
 
@@ -504,13 +501,11 @@ func StreamClientInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 		opts ...CallOption,
 	) (grpc.ClientStream, error) {
 
-		// パラメーターに応じた処理を定義する
-        
-        ...
+		// 事前処理
 
-		s, err := streamer(ctx, desc, cc, method, callOpts...)
-        
-        ...
+		s, err := streamer(ctx, desc, cc, method, callOpts...) // ストリーミングRPC処理
+
+		// 事後処理
 
 		stream := wrapClientStream(ctx, s, desc, span, cfg)
 		return stream, nil
@@ -521,8 +516,6 @@ func StreamClientInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
 <br>
-
-
 
 ## 03. サーバー側のインターセプター
 
@@ -687,14 +680,11 @@ func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
 		handler grpc.UnaryHandler,
 		) (resp interface{}, err error) {
 
-		// パラメーターに応じた処理を定義する
+		// 事前処理
 
+		resp, err := handler(ctx, req) // 単項RPC処理
 
-		...
-
-		err := invoker(ctx, method, req, reply, cc, callOpts...)
-
-		...
+		// 事後処理
 
 		return err
 	}
@@ -765,14 +755,11 @@ func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 		handler StreamHandler,
 	) error {
 
-		// パラメーターに応じた処理を定義する
+        // 事前処理
 
+		err := handler(srv, wrapServerStream(ctx, ss, cfg)) // ストリーミングRPC処理
 
-		...
-
-		err := handler(srv, wrapServerStream(ctx, ss, cfg))
-
-		...
+		// 事後処理
 
 		return err
 
