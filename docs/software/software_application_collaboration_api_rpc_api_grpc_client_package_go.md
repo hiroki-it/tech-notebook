@@ -345,9 +345,13 @@ func UnaryClientInterceptor(
 	callOpts ...grpc.CallOption,
 	) error {
 
-	    // パラメーターに応じた処理を定義する
+	// リクエスト送信の事前処理
 
-	}
+	err := invoker(ctx, method, req, reply, cc, callOpts...) // 単項RPC処理
+
+	// リクエスト送信の事後処理
+
+	return err
 }
 ```
 
@@ -376,7 +380,7 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 
 		// リクエスト送信の事前処理
 
-		err := invoker(ctx, method, req, reply, cc, callOpts...) // リクエスト送信処理
+		err := invoker(ctx, method, req, reply, cc, callOpts...) // 単項RPC処理
 
 		// リクエスト送信の事後処理
 
@@ -473,9 +477,13 @@ func StreamClientInterceptor(
     opts ...CallOption,
 	) (grpc.ClientStream, error) {
 
-	    // パラメーターに応じた処理を定義する
+		// 事前処理
 
-	}
+		streamer, err := streamer(ctx, desc, cc, method, callOpts...) // ストリーミングRPC処理
+
+		// 事後処理
+
+		return &wrapClientStream{streamer}, err
 }
 ```
 
@@ -503,13 +511,16 @@ func StreamClientInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 
 		// 事前処理
 
-		s, err := streamer(ctx, desc, cc, method, callOpts...) // ストリーミングRPC処理
+		streamer, err := streamer(ctx, desc, cc, method, callOpts...) // ストリーミングRPC処理
 
 		// 事後処理
 
-		stream := wrapClientStream(ctx, s, desc, span, cfg)
-		return stream, nil
+		return &wrapClientStream{streamer}, err
     }
+}
+
+type wrapClientStream struct {
+	grpc.ClientStream
 }
 ```
 
@@ -652,8 +663,13 @@ func UnaryServerInterceptor(
 	handler UnaryHandler,
 	) (resp interface{}, err error) {
 
-	// ここに自前の処理を定義する
+	// 事前処理
 
+	resp, err := handler(ctx, req) // 単項RPC処理
+
+	// 事後処理
+
+	return err
 }
 ```
 
@@ -729,8 +745,13 @@ func StreamServerInterceptor(
 	handler StreamHandler,
 	) error {
 
-	// ここに自前の処理を定義する
+	// 事前処理
 
+	err := handler(srv, wrapServerStream(ctx, ss, cfg)) // ストリーミングRPC処理
+
+	// 事後処理
+
+	return err
 }
 ```
 
@@ -762,7 +783,6 @@ func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 		// 事後処理
 
 		return err
-
 	}
 }
 ```
