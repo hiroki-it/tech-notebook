@@ -23796,6 +23796,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wrapClientStream</span><span class="p">{</span><span class="nx">streamer</span><span class="p">},</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">wrapClientStream</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>ユーザー定義のオプションを渡したい場合は、<code>grpc.StreamClientInterceptor</code>型を返却するメソッドとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>

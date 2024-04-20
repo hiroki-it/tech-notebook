@@ -22737,7 +22737,8 @@
 <span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">SchemaURL</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">),</span>
-<span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DeploymentEnvironment</span><span class="p">(</span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;system.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;システム名&gt;&quot;</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;environment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -22949,8 +22950,9 @@
 <span class="w">    </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
 <span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">SchemaURL</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DeploymentEnvironment</span><span class="p">(</span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;system.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;システム名&gt;&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;environment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
@@ -23939,9 +23941,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
@@ -23993,9 +23993,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
