@@ -162,8 +162,6 @@ JSON型データとして、レスポンスを返信する。
 package server
 
 import (
-	"log"
-
 	"github.com/gin-gonic/gin"
 )
 

@@ -419,7 +419,6 @@ package main
 
 import (
     "context"
-    "log"
 )
 
 func main() {
@@ -599,7 +598,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 )
 
@@ -1623,7 +1621,6 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 )

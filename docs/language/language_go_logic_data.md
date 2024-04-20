@@ -209,7 +209,7 @@ type Person struct {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -485,7 +485,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -557,7 +557,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 )
 
@@ -617,7 +616,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -637,7 +636,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -655,7 +654,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -701,7 +700,7 @@ PHPにおけるポインタは、以下のリンクを参考にせよ。
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	x := "a"
@@ -729,7 +728,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -793,7 +792,7 @@ type slice struct {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -811,7 +810,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -829,7 +828,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	x := []byte("abc")
@@ -846,7 +845,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -869,7 +868,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	// 最後の要素の後にもカンマが必要である。
@@ -1243,7 +1242,7 @@ Insect does not implement Animal (missing Eat method)
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	var foo interface{}
@@ -1267,7 +1266,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	var foo, bar interface{}
@@ -1298,7 +1297,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	var foo, bar interface{}
@@ -1373,7 +1372,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 
@@ -1399,7 +1398,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	var foo interface{}

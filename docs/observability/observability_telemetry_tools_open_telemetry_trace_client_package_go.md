@@ -1520,10 +1520,6 @@ func (s *server) parent(ctx context.Context) {
 package main
 
 import (
-	"fmt"
-	"log"
-	"net"
-
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
@@ -1625,10 +1621,6 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"log"
-	"net"
-
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
