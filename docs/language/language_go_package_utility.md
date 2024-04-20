@@ -254,7 +254,7 @@ func main() {
 	...
 
 	// gRPCサーバーを作成する
-	server := grpc.NewServer()
+	grpcServer := grpc.NewServer()
 
 	...
 }
@@ -1231,14 +1231,14 @@ func main()  {
 	...
 
     // gRPCサーバーを作成する
-	conn, err := grpc.NewServer(
+	grpcServer := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler(
 			    otelgrpc.WithFilter(filters.Not(filters.HealthCheck()),
 			),
 		),
 	)
 
-	defer conn.Close()
+	defer grpcServer.Close()
 }
 ```
 
@@ -1260,7 +1260,7 @@ func main()  {
 	...
 
     // gRPCサーバーを作成する
-	conn, err := grpc.NewServer(
+	grpcServer := grpc.NewServer(
 		// 単項RPCのサーバーインターセプターを設定する
 		grpc.ChainUnaryInterceptor(
 			otelgrpc.UnaryServerInterceptor(
@@ -1270,7 +1270,7 @@ func main()  {
         ),
 	)
 
-	defer conn.Close()
+	defer grpcServer.Close()
 }
 ```
 
@@ -1294,7 +1294,7 @@ func main()  {
 	...
 
     // gRPCサーバーを作成する
-	conn, err := grpc.NewServer(
+	grpcServer := grpc.NewServer(
 		// 単項RPCのサーバーインターセプターを設定する
 		grpc.ChainUnaryInterceptor(
 			otelgrpc.UnaryServerInterceptor(
@@ -1308,7 +1308,7 @@ func main()  {
         ),
 	)
 
-	defer conn.Close()
+	defer grpcServer.Close()
 }
 ```
 

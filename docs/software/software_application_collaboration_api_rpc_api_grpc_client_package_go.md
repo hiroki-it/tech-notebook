@@ -326,6 +326,8 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
+メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+
 ```go
 package intercetor
 
@@ -336,15 +338,44 @@ import (
 func UnaryClientInterceptor(
 	ctx context.Context,
 	method string,
-	req, reply interface{},
+	req,
+    reply interface{},
 	cc *grpc.ClientConn,
 	invoker grpc.UnaryInvoker,
 	callOpts ...grpc.CallOption,
 	) error {
 
-		// 事前処理
+	    // パラメーターに応じた処理を定義する
 
-		return err
+	}
+}
+```
+
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryClientInterceptor`型を返却するメソッドとする。
+
+```go
+package intercetor
+
+import (
+	"google.golang.org/grpc"
+)
+
+func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
+
+	// オプションを使用してパラメーターを作成する
+
+    return func(
+		ctx context.Context,
+		method string,
+		req,
+		reply interface{},
+		cc *grpc.ClientConn,
+		invoker grpc.UnaryInvoker,
+		callOpts ...grpc.CallOption,
+	) error {
+
+	    // パラメーターに応じた処理を定義する
+
 	}
 }
 ```
@@ -417,6 +448,8 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
+メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+
 ```go
 package intercetor
 
@@ -428,15 +461,44 @@ func StreamServerInterceptor(
 	srv interface{},
 	ss ServerStream,
 	info *StreamServerInfo,
-	handler StreamHandler
+	handler StreamHandler,
 	) error {
 
-		// 事前処理
+	    // パラメーターに応じた処理を定義する
 
-		return err
 	}
 }
 ```
+
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却するメソッドとする。
+
+```go
+package intercetor
+
+import (
+	"google.golang.org/grpc"
+)
+
+func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
+
+	// オプションを使用してパラメーターを作成する
+
+    return func(
+		srv interface{},
+		ss ServerStream,
+		info *StreamServerInfo,
+		handler StreamHandler,
+	) error {
+
+		// パラメーターに応じた処理を定義する
+
+	}
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#%E8%87%AA%E4%BD%9Cunary-interceptor%E3%81%AE%E5%AE%9F%E8%A3%85
+
+<br>
 
 <br>
 
@@ -548,13 +610,15 @@ type UnaryServerInterceptor func(
 	ctx context.Context,
 	req interface{},
 	info *UnaryServerInfo,
-	handler UnaryHandler
+	handler UnaryHandler,
     ) (resp interface{}, err error)
 ```
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
 #### ▼ 自前のインターセプター
+
+メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
 
 ```go
 package interceptor
@@ -566,14 +630,43 @@ import (
 	"google.golang.org/grpc"
 )
 
-// OpenTelemetryUnaryServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なUnaryServerInterceptorを返却する
-func OpenTelemetryUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
-	delegate := otelgrpc.UnaryServerInterceptor(opts...)
-	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+func UnaryServerInterceptor(
+	ctx context.Context,
+	req interface{},
+	info *UnaryServerInfo,
+	handler UnaryHandler,
+	) (resp interface{}, err error) {
 
-		// ここに自前の処理を定義する
+	// ここに自前の処理を定義する
 
-		return delegate(ctx, req, info, handler)
+}
+```
+
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryServerInterceptor`型を返却するメソッドとする。
+
+```go
+package interceptor
+
+import (
+	"context"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+)
+
+func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
+
+	// オプションを使用してパラメーターを作成する
+
+	return func(
+		ctx context.Context,
+		req interface{},
+		info *grpc.UnaryServerInfo,
+		handler grpc.UnaryHandler,
+		) (resp interface{}, err error) {
+
+		// パラメーターに応じた処理を定義する
+
 	}
 }
 ```
@@ -591,13 +684,39 @@ type StreamServerInterceptor func(
 	srv interface{},
 	ss ServerStream,
 	info *StreamServerInfo,
-	handler StreamHandler
-    ) error
+	handler StreamHandler,
+	) error
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
 
 #### ▼ 自前のインターセプター
+
+メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+
+```go
+package interceptor
+
+import (
+	"context"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"google.golang.org/grpc"
+)
+
+func StreamServerInterceptor(
+	srv interface{},
+	ss ServerStream,
+	info *StreamServerInfo,
+	handler StreamHandler,
+	) error {
+
+	// ここに自前の処理を定義する
+
+}
+```
+
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却するメソッドとする。
 
 ```go
 package interceptor
@@ -607,14 +726,19 @@ import (
 	"google.golang.org/grpc"
 )
 
-// OpenTelemetryStreamServerInterceptor OpenTelemetryがgRPCアプリを計装するために必要なStreamServerInterceptorを返却する
-func OpenTelemetryStreamServerInterceptor(opts ...otelgrpc.Option) grpc.StreamServerInterceptor {
-	delegate := otelgrpc.StreamServerInterceptor(opts...)
-	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
+func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 
-		// ここに自前の処理を定義する
+	// オプションを使用してパラメーターを作成する
 
-		return delegate(srv, ss, info, handler)
+	return func(
+		srv interface{},
+		ss ServerStream,
+		info *StreamServerInfo,
+		handler StreamHandler,
+	) error {
+
+		// パラメーターに応じた処理を定義する
+
 	}
 }
 ```

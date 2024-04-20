@@ -292,7 +292,7 @@ main関数で即時関数を実行する。
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	result := func() string {
@@ -312,7 +312,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
 	// 仮引数を設定
