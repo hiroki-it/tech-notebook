@@ -63,7 +63,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 )
 
@@ -640,15 +639,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 package main
 
 import (
-    "context"
 	"log"
-	"net/http"
-	"os"
-	"os/signal"
-	"net/http"
-	"regexp"
-	"strconv"
-	"text/template"
 	"time"
 	"todobff/app/SessionInfo"
 	"todobff/config"
@@ -775,15 +766,7 @@ Carrierにトレースコンテキストを注入し、また子スパンを作�
 package main
 
 import (
-    "context"
 	"log"
-	"net/http"
-	"os"
-	"os/signal"
-	"net/http"
-	"regexp"
-	"strconv"
-	"text/template"
 	"time"
 	"todobff/app/SessionInfo"
 	"todobff/config"
@@ -905,11 +888,7 @@ package trace
 
 import (
 	"context"
-	"fmt"
 	"log"
-	"os"
-	"os/signal"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
@@ -1021,7 +1000,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -1105,7 +1083,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"os/signal"
@@ -1426,6 +1403,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 		// ExporterをTracerProviderに登録する
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
 	// TraceProviderインターフェースを実装する構造体を作成する
@@ -1465,9 +1443,6 @@ gRPCクライアント側では、gRPCサーバーとのコネクションを作
 package main
 
 import (
-	"log"
-	"net/http"
-
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 

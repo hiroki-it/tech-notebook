@@ -27,7 +27,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーを使用するAWSリソースが、ユーザーに代わって暗号化キーを管理する。
 
-暗号化キーを使用できるユーザーを設定できない。
+暗号化キーを使用できるユーザーをキーポリシーで設定できない。
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
@@ -39,7 +39,7 @@ description: KMS＠AWSリソースの知見を記録しています。
 
 ユーザーが暗号化キーを管理する。
 
-暗号化キーを使用できるユーザーを設定できる。
+暗号化キーを使用できるユーザーをキーポリシーで設定できる。
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
@@ -141,5 +141,17 @@ KMSのリクエスト制限を設定する。
 ![kms_key_rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
+
+<br>
+
+### キーポリシー
+
+KMSにポリシーを設定する。
+
+AWSマネージド型では設定できず、セルフマネージド型でのみ設定できる。
+
+KMSを使用できるユーザーやAWSリソースを制限できるようになる。
+
+> - https://zenn.dev/m_taiki/articles/77c9542649aca0#%E7%B5%90%E8%AB%96
 
 <br>
