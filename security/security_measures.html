@@ -10194,13 +10194,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#11-l7" class="md-nav__link">
     <span class="md-ellipsis">
-      11. 認証/認可情報の複雑化
+      11. 【L7】認証/認可情報の複雑化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11. 認証/認可情報の複雑化">
+    <nav class="md-nav" aria-label="11. 【L7】認証/認可情報の複雑化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22780,13 +22780,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#11-l7" class="md-nav__link">
     <span class="md-ellipsis">
-      11. 認証/認可情報の複雑化
+      11. 【L7】認証/認可情報の複雑化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11. 認証/認可情報の複雑化">
+    <nav class="md-nav" aria-label="11. 【L7】認証/認可情報の複雑化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23101,6 +23101,7 @@ public
 <h2 id="05-l7webweb-application-firewall">05. 【<code>L7</code>】Webアプリファイアウォール：Web Application Firewall<a class="headerlink" href="#05-l7webweb-application-firewall" title="Permanent link">&para;</a></h2>
 <h3 id="web">Webアプリファイアウォールとは<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。</p>
+<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を実施できてしまうことになる。</p>
 <p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
 <blockquote>
 <ul>
@@ -23240,12 +23241,6 @@ public
 <p>処理速度が速い。</p>
 <p>また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできる。</p>
 <p>そのため、SQLインジェクションの対策になる。</p>
-<p>プレースホルダーについては、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html">https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="09-l7corscross-origin-resource-sharing">09. 【<code>L7</code>】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)<a class="headerlink" href="#09-l7corscross-origin-resource-sharing" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORSとは<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
@@ -23417,7 +23412,7 @@ public
 <span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secure</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="11">11. 認証/認可情報の複雑化<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h2 id="11-l7">11. 【<code>L7</code>】認証/認可情報の複雑化<a class="headerlink" href="#11-l7" title="Permanent link">&para;</a></h2>
 <h3 id="_15">認証/認可情報の複雑化とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション) を防御する。</p>
 <p>認証/認可で必要になる情報を簡単に特定できないようにする。</p>
@@ -23466,7 +23461,7 @@ public
 <p><br></p>
 <h2 id="12-l7">12. 【<code>L7</code>】アプリケーションのリクエスト数制限<a class="headerlink" href="#12-l7" title="Permanent link">&para;</a></h2>
 <h3 id="_17">リクエスト数制限とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p><code>L3</code> (ネットワーク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。</p>
+<p><code>L7</code>に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。</p>
 <p><br></p>
 <h3 id="post">POSTリクエストのリクエスト制限<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
@@ -23498,7 +23493,7 @@ public
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-22</span>
   </span>
 
     
