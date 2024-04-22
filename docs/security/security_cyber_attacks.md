@@ -139,7 +139,7 @@ DBのクエリのパラメーターとなる入力に、不正な文字列を入
 
 #### ▼ 攻撃例
 
-アプリケーションの認証ロジックに以下のようなSQLがあるとする。
+例えば、アプリケーションの認証ロジックに以下のようなSQLがあるとする。
 
 ```sql
 SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
@@ -147,13 +147,13 @@ SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
 
 この時、ログインの入力フォームに以下を入力する。
 
-- ユーザー名：任意
+- ユーザー名：`foo`
 - パスワード： `aaa' or '1' ='1`
 
 これにより、以下のSQLを実行することになる。
 
 ```sql
-SELECT * from USER where USER_NAME = 'hoge' and PASSWORD = 'aaa' or '1' ='1'
+SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 ```
 
 このSQLは、`'1' ='1'`により`true`となり、処理に成功してしまう。
@@ -168,7 +168,13 @@ SELECT * from USER where USER_NAME = 'hoge' and PASSWORD = 'aaa' or '1' ='1'
 
 WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる手法。
 
+悪意のある第三者が正常なサイトに事前にスクリプトを埋め込み、これを実行してしまったユーザーの情報を盗む。
+
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
+
+#### ▼ 攻撃例
+
+> - https://www.tohoho-web.com/ex/xss.html
 
 <br>
 
