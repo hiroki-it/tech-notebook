@@ -18830,6 +18830,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="globalセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ globalセクションとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrape_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scrape_interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ evaluation_interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ external_labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -18908,7 +18950,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#global_1" class="md-nav__link">
+  <a href="#global_2" class="md-nav__link">
     <span class="md-ellipsis">
       globalセクション
     </span>
@@ -22031,6 +22073,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="globalセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ globalセクションとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrape_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ scrape_interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation_interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ evaluation_interval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ external_labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22109,7 +22193,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#global_1" class="md-nav__link">
+  <a href="#global_2" class="md-nav__link">
     <span class="md-ellipsis">
       globalセクション
     </span>
@@ -22245,21 +22329,30 @@
 </blockquote>
 <p><br></p>
 <h3 id="global">globalセクション<a class="headerlink" href="#global" title="Permanent link">&para;</a></h3>
+<h4 id="global_1">▼ globalセクションとは<a class="headerlink" href="#global_1" title="Permanent link">&para;</a></h4>
 <p>全てのメトリクス収集からアラートまでを共通で設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 収集間隔を設定する</span>
-<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-<span class="w">  </span><span class="c1"># アラート発火の条件とする間隔を設定する</span>
-<span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-<span class="w">  </span><span class="c1"># Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。</span>
-<span class="w">  </span><span class="nt">external_labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
-</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file">https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file</a></li>
 </ul>
 </blockquote>
+<h4 id="scrape_interval">▼ scrape_interval<a class="headerlink" href="#scrape_interval" title="Permanent link">&para;</a></h4>
+<p>収集間隔を設定する</p>
+<div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+</code></pre></div>
+<h4 id="evaluation_interval">▼ evaluation_interval<a class="headerlink" href="#evaluation_interval" title="Permanent link">&para;</a></h4>
+<p>アラート発火の条件とする間隔を設定する</p>
+<div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+</code></pre></div>
+<h4 id="external_labels">▼ external_labels<a class="headerlink" href="#external_labels" title="Permanent link">&para;</a></h4>
+<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">external_labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="alerting">alertingセクション<a class="headerlink" href="#alerting" title="Permanent link">&para;</a></h3>
 <p>使用するAlertmanagerを設定する。</p>
@@ -22416,7 +22509,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-alertmanager">02. Alertmanager<a class="headerlink" href="#02-alertmanager" title="Permanent link">&para;</a></h2>
-<h3 id="global_1">globalセクション<a class="headerlink" href="#global_1" title="Permanent link">&para;</a></h3>
+<h3 id="global_2">globalセクション<a class="headerlink" href="#global_2" title="Permanent link">&para;</a></h3>
 <p>全てのアラートを共通で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">slack_api_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hooks.slack.com/services/*****</span>
@@ -22514,7 +22607,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-22</span>
   </span>
 
     
