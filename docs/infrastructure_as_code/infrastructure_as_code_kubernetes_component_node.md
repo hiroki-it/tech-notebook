@@ -132,7 +132,7 @@ $ kube-proxy \
 
 #### ▼ CoreDNSと組み合わせたサービスディスカバリー
 
-kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール (iptables) や`L4`ロードバランサー (ipvs) に、EndpointSliceで管理するPodの宛先情報を追加/削除する。
+kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール (iptablesによる`L2`～`L4`の防御) や`L4`ロードバランサー (ipvs) に、EndpointSliceで管理するPodの宛先情報を追加/削除する。
 
 Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。
 

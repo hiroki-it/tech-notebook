@@ -68,6 +68,12 @@ global:
 
 ### alertingセクション
 
+#### ▼ alertingセクションとは
+
+アラートを設定する。
+
+#### ▼ alertmanagers
+
 使用するAlertmanagerを設定する。
 
 ```yaml
@@ -75,7 +81,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-            - alertmanager:9093
+            - <AlertmanagerのIPアドレス>:9093
 ```
 
 > - https://amateur-engineer-blog.com/alertmanager-docker-compose/

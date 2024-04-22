@@ -205,6 +205,8 @@ Windowsネットワークファイアウォールは、Windowsにおけるネッ
 
 `L7` (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。
 
+`L7`を防御できていない場合、より低いレイヤー (例：`L3`) を突破できれば (例：送信元IPアドレスの乗っ取り) 、`L7`のサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を実施できてしまうことになる。
+
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
 > - https://digital-jyoshisu.com/archives/468
@@ -345,10 +347,6 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできる。
 
 そのため、SQLインジェクションの対策になる。
-
-プレースホルダーについては、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html
 
 <br>
 
@@ -552,7 +550,7 @@ Set-Cookie: Secure
 
 <br>
 
-## 11. 認証/認可情報の複雑化
+## 11. 【`L7`】認証/認可情報の複雑化
 
 ### 認証/認可情報の複雑化とは
 
@@ -595,7 +593,7 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 
 ### リクエスト数制限とは
 
-`L3` (ネットワーク層) から`L4` (トランスポート層) までに対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。
+`L7`に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。
 
 <br>
 

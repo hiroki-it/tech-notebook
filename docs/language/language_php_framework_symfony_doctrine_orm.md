@@ -138,10 +138,6 @@ $queryBuilder->getConnection()
 
 また、パラメーターに誤ってSQLが渡されても、これを実行できなくなるため、SQLインジェクションの対策にもなる。
 
-SQLインジェクションについては、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
-
 **＊実装例＊**
 
 ```php

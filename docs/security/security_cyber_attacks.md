@@ -137,13 +137,36 @@ DBのクエリのパラメーターとなる入力に、不正な文字列を入
 
 ![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQLインジェクション.jpg)
 
+#### ▼ 攻撃例
+
+アプリケーションの認証ロジックに以下のようなSQLがあるとする。
+
+```sql
+SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
+```
+
+この時、ログインの入力フォームに以下を入力する。
+
+- ユーザー名：任意
+- パスワード： `aaa' or '1' ='1`
+
+これにより、以下のSQLを実行することになる。
+
+```sql
+SELECT * from USER where USER_NAME = 'hoge' and PASSWORD = 'aaa' or '1' ='1'
+```
+
+このSQLは、`'1' ='1'`により`true`となり、処理に成功してしまう。
+
+> - https://zenn.dev/mo_ri_regen/articles/sql-injection
+
 <br>
 
 ### XSS：Cross Site Scripting
 
 #### ▼ XSSとは
 
-WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる 。
+WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる手法。
 
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
 
