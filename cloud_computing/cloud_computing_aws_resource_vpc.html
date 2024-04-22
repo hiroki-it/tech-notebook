@@ -23052,7 +23052,8 @@
 <p><br></p>
 <h3 id="acl">ACLルール<a class="headerlink" href="#acl" title="Permanent link">&para;</a></h3>
 <p>ルールは上から順に適用される。</p>
-<p>例えば、インバウンドルールが以下だった場合、ルール100が最初に適用され、サブネットに対する、全IPアドレス (<code>0.0.0.0/0</code>) からのリクエストを許可していることになる。</p>
+<p>例えば、インバウンドルールが以下だったとする。</p>
+<p>ルール<code>100</code>が最初に適用され、サブネットへの全送信元IPアドレス (<code>0.0.0.0/0</code>) を許可していることになる。</p>
 <table>
 <thead>
 <tr>
@@ -23066,19 +23067,19 @@
 </thead>
 <tbody>
 <tr>
-<td>100</td>
-<td>すべての トラフィック</td>
+<td><code>100</code></td>
+<td>すべてのトラフィック</td>
 <td>すべて</td>
 <td>すべて</td>
-<td>0.0.0.0/0</td>
+<td><code>0.0.0.0/0</code></td>
 <td>ALLOW</td>
 </tr>
 <tr>
-<td>*</td>
-<td>すべての トラフィック</td>
+<td><code>*</code></td>
+<td>すべてのトラフィック</td>
 <td>すべて</td>
 <td>すべて</td>
-<td>0.0.0.0/0</td>
+<td><code>0.0.0.0/0</code></td>
 <td>DENY</td>
 </tr>
 </tbody>
