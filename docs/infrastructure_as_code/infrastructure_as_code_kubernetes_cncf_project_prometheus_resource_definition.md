@@ -546,6 +546,7 @@ metadata:
 spec:
   externalLabel:
     cluster: foo-cluster
+    env: prd
 ```
 
 <br>

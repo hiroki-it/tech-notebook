@@ -29,20 +29,40 @@ Prometheusを設定する。
 
 ### globalセクション
 
+#### ▼ globalセクションとは
+
 全てのメトリクス収集からアラートまでを共通で設定する。
+
+> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+
+#### ▼ scrape_interval
+
+収集間隔を設定する
 
 ```yaml
 global:
-  # 収集間隔を設定する
   scrape_interval: 15s
-  # アラート発火の条件とする間隔を設定する
-  evaluation_interval: 15s
-  # Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
-  external_labels:
-    cluster: foo-cluster
 ```
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+#### ▼ evaluation_interval
+
+アラート発火の条件とする間隔を設定する
+
+```yaml
+global:
+  evaluation_interval: 15s
+```
+
+#### ▼ external_labels
+
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
+
+```yaml
+global:
+  external_labels:
+    cluster: foo-cluster
+    env: prd
+```
 
 <br>
 
