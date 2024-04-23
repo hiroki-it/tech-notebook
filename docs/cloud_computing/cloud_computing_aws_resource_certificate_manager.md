@@ -132,22 +132,28 @@ AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対�
 
 #### ▼ Route53 ➡︎ ALB、NLB、の場合
 
-| パターン<br>(Route53には必ず配置)                                 | SSL終端<br>(HTTPSの最終地点) |
-| ----------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2                          | ALB                          |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS外のSSL証明書)       | EC2                          |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS外のSSL証明書) | Lightsail                    |
-| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2 (AWS外のSSL証明書)       | EC2                          |
+ALBでSSL終端とする場合、EC2にSSL証明書は不要である。
+
+EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。
+
+| パターン<br>(Route53には必ず配置)                                   | SSL終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------- | ---------------------------- |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2                            | ALB                          |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)       | EC2                          |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書) | Lightsail                    |
+| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)       | EC2                          |
+
+> - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
 
 #### ▼ Route53 ➡︎ LB コントローラー由来) の場合
 
-AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。
+AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。
 
-| パターン<br>(Route53には必ず配置)                                                  | SSL終端<br>(HTTPSの最終地点) |
-| ---------------------------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                   | ALB                          |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                    | Ingressコントローラー        |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS外のSSL証明書) | Pod                          |
+| パターン<br>(Route53には必ず配置)                                                    | SSL終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------------------------ | ---------------------------- |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                     | ALB                          |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                      | Ingressコントローラー        |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS以外のSSL証明書) | Pod                          |
 
 > - https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/
 > - https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/
@@ -168,10 +174,14 @@ CloudFrontに送信されたHTTPSリクエストをALBにルーティングす�
 
 #### ▼ Route53 ➡︎ EC2、Lightsail、の場合
 
+Route53でSSL終端とする場合、EC2にSSL証明書は不要である。
+
+EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。
+
 | パターン<br>(Route53には必ず配置)      | SSL終端<br>(HTTPSの最終地点) |
 | -------------------------------------- | ---------------------------- |
 |                                        |
-| Route53 ➡︎ EC2 (AWS外のSSL証明書)     | EC2                          |
+| Route53 ➡︎ EC2 (AWS以外のSSL証明書)   | EC2                          |
 | Route53 ➡︎ Lightsail (ACMのSSL証明書) | Lightsail                    |
 | Route53 ➡︎ Lightsail (ACMのSSL証明書) | Lightsail                    |
 

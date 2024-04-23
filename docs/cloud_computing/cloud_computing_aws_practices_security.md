@@ -220,7 +220,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 ### パケットペイロードの暗号化
 
-記入中...
+パケットペイロードの暗号化のために、Certificate ManagerやTransit Gatewayを使用する。
 
 > - https://qiita.com/omorim/items/72990ae3f65e79ffbe8f
 
@@ -228,6 +228,6 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 ### 保管データの暗号化
 
-記入中...
+保管データの暗号化のために、KMSやCloud HSMを使用する。
 
 <br>

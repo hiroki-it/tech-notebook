@@ -188,13 +188,13 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetes、など) からGoogl
 
 #### ▼ アーキテクチャ
 
-1. GoogleCloudリソース外で認証を実行する。
+1. GoogleCloud以外で認証を実行する。
 2. 認証が成功する。
 3. 認証情報をGoogleCloud STSに送信する。
 4. Workload Identityプールにて、認証情報を検証する。
 5. 検証が成功し、一時的なトークンを発行する。
-6. GoogleCloudリソース外リソースにトークンを送信する。
-7. GoogleCloudリソース外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
+6. GoogleCloud以外リソースにトークンを送信する。
+7. GoogleCloud以外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
 8. GoogleCloudリソースのAPIにリクエストを送信できるようになる。
 
 ![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
