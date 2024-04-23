@@ -22523,6 +22523,8 @@
 <p>SSL証明書の配置場所は、SSL終端をどこにするかで決める。</p>
 <p>AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対しては、外部のSSL証明書を手に入れて配置する。</p>
 <h4 id="route53-albnlb">▼ Route53 ➡︎ ALB、NLB、の場合<a class="headerlink" href="#route53-albnlb" title="Permanent link">&para;</a></h4>
+<p>ALBでSSL終端とする場合、EC2にSSL証明書は不要である。</p>
+<p>EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。</p>
 <table>
 <thead>
 <tr>
@@ -22536,21 +22538,26 @@
 <td>ALB</td>
 </tr>
 <tr>
-<td>Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS外のSSL証明書)</td>
+<td>Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)</td>
 <td>EC2</td>
 </tr>
 <tr>
-<td>Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS外のSSL証明書)</td>
+<td>Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)</td>
 <td>Lightsail</td>
 </tr>
 <tr>
-<td>Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2 (AWS外のSSL証明書)</td>
+<td>Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)</td>
 <td>EC2</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/alb-backend-https/#toc-1">https://dev.classmethod.jp/articles/alb-backend-https/#toc-1</a></li>
+</ul>
+</blockquote>
 <h4 id="route53-lb">▼ Route53 ➡︎ LB コントローラー由来) の場合<a class="headerlink" href="#route53-lb" title="Permanent link">&para;</a></h4>
-<p>AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。</p>
+<p>AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。</p>
 <table>
 <thead>
 <tr>
@@ -22568,7 +22575,7 @@
 <td>Ingressコントローラー</td>
 </tr>
 <tr>
-<td>Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS外のSSL証明書)</td>
+<td>Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS以外のSSL証明書)</td>
 <td>Pod</td>
 </tr>
 </tbody>
@@ -22606,6 +22613,8 @@
 </tbody>
 </table>
 <h4 id="route53-ec2lightsail">▼ Route53 ➡︎ EC2、Lightsail、の場合<a class="headerlink" href="#route53-ec2lightsail" title="Permanent link">&para;</a></h4>
+<p>Route53でSSL終端とする場合、EC2にSSL証明書は不要である。</p>
+<p>EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。</p>
 <table>
 <thead>
 <tr>
@@ -22619,7 +22628,7 @@
 <td></td>
 </tr>
 <tr>
-<td>Route53 ➡︎ EC2 (AWS外のSSL証明書)</td>
+<td>Route53 ➡︎ EC2 (AWS以外のSSL証明書)</td>
 <td>EC2</td>
 </tr>
 <tr>
@@ -22669,7 +22678,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     
