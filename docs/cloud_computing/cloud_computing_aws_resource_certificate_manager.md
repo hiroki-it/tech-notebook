@@ -120,7 +120,33 @@ SSL証明書は、PKIによる公開鍵検証に使用される。
 
 <br>
 
-### SSL証明書の配置場所パターン
+### SSL証明書の変更
+
+#### ▼ SSL証明書の確認
+
+Chromeを例に挙げると、SSL証明書はURLの鍵マークから確認できる。
+
+**＊例＊**
+
+CircleCIのサイトは、SSL証明書のためにACMを使用している。
+
+![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)
+
+#### ▼ ダウンタイム
+
+ALBではSSL証明書の変更でダウンタイムは発生しない。
+
+既存のセッションを維持しつつ、新しいSSL証明書が適用される。
+
+CloudFrontは謎...
+
+> - https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+
+<br>
+
+## 05-02. SSL証明書の配置場所パターン
+
+### EC2/ECS/EKSの前段
 
 #### ▼ SSL終端
 
@@ -139,16 +165,16 @@ AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対�
 
 #### ▼ Route53 ➡︎ ALB、NLB、の場合
 
-ALBでSSL終端とする場合、EC2にSSL証明書は不要である。
+ALBでSSL終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
 
-EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。
+EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(Route53には必ず配置)                                   | SSL終端<br>(HTTPSの最終地点) |
-| ------------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2                            | ALB                          |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)       | EC2                          |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書) | Lightsail                    |
-| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2 (AWS以外のSSL証明書)       | EC2                          |
+| パターン<br>(Route53には必ず配置)                                     | SSL終端<br>(HTTPSの最終地点) |
+| --------------------------------------------------------------------- | ---------------------------- |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                      | ALB                          |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)   | Lightsail                    |
+| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
 
 > - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
 
@@ -173,47 +199,35 @@ CloudFrontからALBにHTTPSリクエストを送信する場合、それぞれ�
 
 CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。
 
-| パターン<br>(Route53には必ず配置)                                       | SSL終端<br>(HTTPSの最終地点) |
-| ----------------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2 | ALB                          |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2                         | CloudFront                   |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                          | CloudFront                   |
+| パターン<br>(Route53には必ず配置)                                               | SSL終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------------------- | ---------------------------- |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2/ECS/EKS | ALB                          |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                         | CloudFront                   |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                                  | CloudFront                   |
 
-#### ▼ Route53 ➡︎ EC2、Lightsail、の場合
+#### ▼ Route53 ➡︎ EC2/ECS/EKS、Lightsail、の場合
 
-Route53でSSL終端とする場合、EC2にSSL証明書は不要である。
+Route53でSSL終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
 
-EC2でSSL終端とする場合、EC2にAWS以外で作成したSSL証明書を配置する。
+EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(Route53には必ず配置)      | SSL終端<br>(HTTPSの最終地点) |
-| -------------------------------------- | ---------------------------- |
-|                                        |
-| Route53 ➡︎ EC2 (AWS以外のSSL証明書)   | EC2                          |
-| Route53 ➡︎ Lightsail (ACMのSSL証明書) | Lightsail                    |
-| Route53 ➡︎ Lightsail (ACMのSSL証明書) | Lightsail                    |
+| パターン<br>(Route53には必ず配置)            | SSL終端<br>(HTTPSの最終地点) |
+| -------------------------------------------- | ---------------------------- |
+|                                              |
+| Route53 ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
+| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                    |
+| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                    |
 
 <br>
 
-### SSL証明書の変更
+### EC2/ECS/EKSの後段
 
-#### ▼ SSL証明書の確認
+#### ▼ Aurora
 
-Chromeを例に挙げると、SSL証明書はURLの鍵マークから確認できる。
+Aurora RDSにSSL証明書を紐づける。
 
-**＊例＊**
+EC2/ECS/EKSからAurora RDSへの通信データを暗号化できる。
 
-CircleCIのサイトは、SSL証明書のためにACMを使用している。
-
-![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)
-
-#### ▼ ダウンタイム
-
-ALBではSSL証明書の変更でダウンタイムは発生しない。
-
-既存のセッションを維持しつつ、新しいSSL証明書が適用される。
-
-CloudFrontは謎...
-
-> - https://aws.typepad.com/sajp/2014/04/elb-ssl.html
+> - https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 
 <br>
