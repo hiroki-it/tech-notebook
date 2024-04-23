@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="暗号化プロトコル＠パケットペイロードの暗号化技術の知見を記録しています。">
+        <meta name="description" content="暗号方式＠パケットペイロードの暗号化技術の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload_method.html">
       
       
-        <link rel="prev" href="security_measures_encryption_technology_encryption_method.html">
+        <link rel="prev" href="security_measures_encryption_technology_packet_payload.html">
       
       
-        <link rel="next" href="security_auth_authentication.html">
+        <link rel="next" href="security_measures_encryption_technology_packet_payload_protocol.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】暗号化プロトコル＠パケットペイロードの暗号化技術 - 俺の技術ノート</title>
+        <title>【IT技術の知見】暗号方式＠パケットペイロードの暗号化技術 - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】暗号化プロトコル＠パケットペイロードの暗号化技術
+              【IT技術の知見】暗号方式＠パケットペイロードの暗号化技術
             
           </span>
         </div>
@@ -9646,6 +9646,8 @@
       
         
       
+        
+      
     
     
       
@@ -9753,32 +9755,11 @@
   
   
     <li class="md-nav__item">
-      <a href="security_measures_encryption_technology.html" class="md-nav__link">
+      <a href="security_measures_encryption_technology_packet_payload.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     パケットペイロードの暗号化技術
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="security_measures_encryption_technology_encryption_method.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    暗号方式
   </span>
   
 
@@ -9808,18 +9789,18 @@
           
   
   <span class="md-ellipsis">
-    暗号化プロトコル
+    暗号方式
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="security_measures_encryption_technology_encryption_protocol.html" class="md-nav__link md-nav__link--active">
+      <a href="security_measures_encryption_technology_packet_payload_method.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    暗号化プロトコル
+    暗号方式
   </span>
   
 
@@ -9854,126 +9835,17 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 暗号化プロトコルの種類と扱われる階層
+      01. 暗号アルゴリズム
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 【アプリケーション層】メールデータの暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 【アプリケーション層】メールデータの暗号化技術">
+    <nav class="md-nav" aria-label="01. 暗号アルゴリズム">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smimesecure-mime" class="md-nav__link">
-    <span class="md-ellipsis">
-      S/MIME：Secure MIME
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="S/MIME：Secure MIME">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smine" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ S/MINEとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smime" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ S/MIMEにおけるデジタル証明書
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sshsecure-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH：Secure Shell
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH：Secure Shell">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSHとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSHポートフォワーディング (SSHポート転送)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scpsecure-copy-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      SCP：Secure Copy Protocol
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SCP：Secure Copy Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SCPとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ファイルを要求する側に必要なソフトウェア
+      暗号アルゴリズムとは
     </span>
   </a>
   
@@ -9982,211 +9854,68 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ファイルを送信する側に必要なソフトウェア
+      共通鍵暗号アルゴリズム
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftpssh-file-transfer-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      SFTP：SSH File Transfer Protocol
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SFTP：SSH File Transfer Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SFTPとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rdpremote-desktop-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)">
+    <nav class="md-nav" aria-label="共通鍵暗号アルゴリズム">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リモートデスクトップとは
+      ▼ 共通鍵暗号アルゴリズムとは
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desdata-encryption-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DES暗号：Data Encryption Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aesadvanced-encryption-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AES暗号：Advanced Encryption Standard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 他の暗号化プロトコルとの組み合わせ
+      公開鍵暗号アルゴリズム
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 【トランスポート層】ヘッダー情報の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. 【トランスポート層】ヘッダー情報の暗号化技術">
+    <nav class="md-nav" aria-label="公開鍵暗号アルゴリズム">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssltlssecure-sockets-layer-transport-layer-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSL/TLS：Secure Sockets Layer / Transport Layer Security
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSL/TLS：Secure Sockets Layer / Transport Layer Security">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssltls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSL/TLSとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tls-mtls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 相互TLS認証 (mTLS)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#l5l7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ L5〜L7のプロトコルの暗号化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. 【ネットワーク層】ヘッダー情報の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. 【ネットワーク層】ヘッダー情報の暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ipsecinternet-protocol-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      IPsec：Internet Protocol Security
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="IPsec：Internet Protocol Security">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ipsec" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ IPSecとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ipsec_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ IPsecによるパケットのカプセル化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vpnvirtual-private-network" class="md-nav__link">
-    <span class="md-ellipsis">
-      VPN：Virtual Private Network (仮想プライベートネットワーク)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VPN：Virtual Private Network (仮想プライベートネットワーク)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vpn" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ VPNとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ パケットペイロードの暗号化/復号化
+      ▼ 公開鍵暗号アルゴリズムとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#rsarivest-shamir-adleman-cryptosystem" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアント証明書
+      ▼ RSA暗号：Rivest-Shamir-Adleman cryptosystem
     </span>
   </a>
   
@@ -10194,6 +9923,105 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 暗号アルゴリズムに基づく暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 暗号アルゴリズムに基づく暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      暗号方式の種類一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      共通鍵暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="共通鍵暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 共通鍵暗号方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 共通鍵の再利用の可否
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      公開鍵暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公開鍵暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵暗号方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵の再利用の可否
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハイブリッド暗号方式
+    </span>
+  </a>
   
 </li>
         
@@ -10206,6 +10034,100 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_measures_encryption_technology_packet_payload_protocol.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    暗号化プロトコル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_3_3" id="__nav_12_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 保管データの暗号化技術
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 保管データの暗号化技術
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_measures_encryption_technology_storage.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    保管データの暗号化技術
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -22128,126 +22050,17 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. 暗号化プロトコルの種類と扱われる階層
+      01. 暗号アルゴリズム
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 【アプリケーション層】メールデータの暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 【アプリケーション層】メールデータの暗号化技術">
+    <nav class="md-nav" aria-label="01. 暗号アルゴリズム">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smimesecure-mime" class="md-nav__link">
-    <span class="md-ellipsis">
-      S/MIME：Secure MIME
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="S/MIME：Secure MIME">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smine" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ S/MINEとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smime" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ S/MIMEにおけるデジタル証明書
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sshsecure-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSH：Secure Shell
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH：Secure Shell">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSHとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSHポートフォワーディング (SSHポート転送)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scpsecure-copy-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      SCP：Secure Copy Protocol
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SCP：Secure Copy Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SCPとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ファイルを要求する側に必要なソフトウェア
+      暗号アルゴリズムとは
     </span>
   </a>
   
@@ -22256,211 +22069,68 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ファイルを送信する側に必要なソフトウェア
+      共通鍵暗号アルゴリズム
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftpssh-file-transfer-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      SFTP：SSH File Transfer Protocol
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SFTP：SSH File Transfer Protocol">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SFTPとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rdpremote-desktop-protocol" class="md-nav__link">
-    <span class="md-ellipsis">
-      RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)">
+    <nav class="md-nav" aria-label="共通鍵暗号アルゴリズム">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リモートデスクトップとは
+      ▼ 共通鍵暗号アルゴリズムとは
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desdata-encryption-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DES暗号：Data Encryption Standard
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aesadvanced-encryption-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AES暗号：Advanced Encryption Standard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 他の暗号化プロトコルとの組み合わせ
+      公開鍵暗号アルゴリズム
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. 【トランスポート層】ヘッダー情報の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. 【トランスポート層】ヘッダー情報の暗号化技術">
+    <nav class="md-nav" aria-label="公開鍵暗号アルゴリズム">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssltlssecure-sockets-layer-transport-layer-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSL/TLS：Secure Sockets Layer / Transport Layer Security
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSL/TLS：Secure Sockets Layer / Transport Layer Security">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssltls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSL/TLSとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tls-mtls" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 相互TLS認証 (mTLS)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#l5l7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ L5〜L7のプロトコルの暗号化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. 【ネットワーク層】ヘッダー情報の暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. 【ネットワーク層】ヘッダー情報の暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ipsecinternet-protocol-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      IPsec：Internet Protocol Security
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="IPsec：Internet Protocol Security">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ipsec" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ IPSecとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ipsec_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ IPsecによるパケットのカプセル化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vpnvirtual-private-network" class="md-nav__link">
-    <span class="md-ellipsis">
-      VPN：Virtual Private Network (仮想プライベートネットワーク)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VPN：Virtual Private Network (仮想プライベートネットワーク)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vpn" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ VPNとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ パケットペイロードの暗号化/復号化
+      ▼ 公開鍵暗号アルゴリズムとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#rsarivest-shamir-adleman-cryptosystem" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアント証明書
+      ▼ RSA暗号：Rivest-Shamir-Adleman cryptosystem
     </span>
   </a>
   
@@ -22468,6 +22138,105 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 暗号アルゴリズムに基づく暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 暗号アルゴリズムに基づく暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      暗号方式の種類一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      共通鍵暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="共通鍵暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 共通鍵暗号方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 共通鍵の再利用の可否
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      公開鍵暗号方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公開鍵暗号方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵暗号方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵の再利用の可否
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハイブリッド暗号方式
+    </span>
+  </a>
   
 </li>
         
@@ -22494,7 +22263,7 @@
   
 
 
-<h1 id="_1">暗号化プロトコル＠パケットペイロードの暗号化技術<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">暗号方式＠パケットペイロードの暗号化技術<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22503,266 +22272,117 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 暗号化プロトコルの種類と扱われる階層<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。</p>
-<p><img alt="encryption_protocol" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&amp;migi=km11-05.php">https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&amp;migi=km11-05.php</a></li>
-</ul>
-</blockquote>
+<h2 id="01">01. 暗号アルゴリズム<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">暗号アルゴリズムとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>パケットペイロードの暗号化技術のほとんどは、『共通鍵暗号方式』や『公開鍵暗号方式』によって実現される。</p>
+<p>それらの方式は、暗号アルゴリズムによって実装される。</p>
 <p><br></p>
-<h2 id="02">02. 【アプリケーション層】メールデータの暗号化技術<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="smimesecure-mime">S/MIME：Secure MIME<a class="headerlink" href="#smimesecure-mime" title="Permanent link">&para;</a></h3>
-<h4 id="smine">▼ S/MINEとは<a class="headerlink" href="#smine" title="Permanent link">&para;</a></h4>
-<p>暗号化ダイジェスト (デジタル署名) を含むデジタル証明書をメールに添付することによって、公開鍵の成りすましを防ぐセキュリティ技術。</p>
-<p><img alt="S_MIME" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png" /></p>
-<h4 id="smime">▼ S/MIMEにおけるデジタル証明書<a class="headerlink" href="#smime" title="Permanent link">&para;</a></h4>
-<p>デジタル証明書をS/MIMEに使用する場合、特にS/MIME証明書という。</p>
+<h3 id="_4">共通鍵暗号アルゴリズム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 共通鍵暗号アルゴリズムとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>共通鍵暗号方式を実装するためのアルゴリズムのこと。</p>
+<h4 id="desdata-encryption-standard">▼ DES暗号：Data Encryption Standard<a class="headerlink" href="#desdata-encryption-standard" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="aesadvanced-encryption-standard">▼ AES暗号：Advanced Encryption Standard<a class="headerlink" href="#aesadvanced-encryption-standard" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
-<h2 id="02-02">02-02. 【アプリケーション層】リモート通信/操作やファイル転送の暗号化技術<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="sshsecure-shell">SSH：Secure Shell<a class="headerlink" href="#sshsecure-shell" title="Permanent link">&para;</a></h3>
-<h4 id="ssh">▼ SSHとは<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
-<p><img alt="ssh_public-key-authentication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh_public-key-authentication.png" /></p>
-<p>公開鍵暗号方式に基づく暗号化プロトコル。</p>
-<p>公開鍵暗号方式と、公開鍵認証方式やパスワード認証方式の技術を使用して、インターネットを経由して、サーバーのリモート通信/操作を実行する。</p>
-<p>物理webサーバーであっても、webサーバーであっても、SSH公開鍵認証によるリモート通信/操作の仕組みは同じである。</p>
+<h3 id="_6">公開鍵暗号アルゴリズム<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 公開鍵暗号アルゴリズムとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>公開鍵暗号方式を実装するためのアルゴリズムのこと。</p>
+<h4 id="rsarivest-shamir-adleman-cryptosystem">▼ RSA暗号：Rivest-Shamir-Adleman cryptosystem<a class="headerlink" href="#rsarivest-shamir-adleman-cryptosystem" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="02">02. 暗号アルゴリズムに基づく暗号方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_8">暗号方式の種類一覧<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>要素</th>
-<th>Apache MINA/SSHDの場合</th>
-<th>OpenSSHの場合</th>
-<th>Puttyの場合</th>
-<th>TeraTermの場合</th>
+<th></th>
+<th style="text-align: center;">共通鍵暗号方式</th>
+<th style="text-align: center;">公開鍵暗号方式</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>送信元マシン内</td>
-<td>-</td>
-<td>OpenSSH</td>
-<td>Putty</td>
-<td>TeraTerm</td>
+<td>暗号アルゴリズム</td>
+<td style="text-align: center;">共通鍵暗号アルゴリズム</td>
+<td style="text-align: center;">公開鍵暗号アルゴリズム</td>
 </tr>
 <tr>
-<td>宛先マシン内</td>
-<td>Apache MINA/SSHD</td>
-<td>OpenSSH</td>
-<td>-</td>
-<td>-</td>
+<td>アルゴリズムの種類</td>
+<td style="text-align: center;">RC4、DES、3DES、AES</td>
+<td style="text-align: center;">RSA、ElGamal</td>
+</tr>
+<tr>
+<td>暗号化に要する時間</td>
+<td style="text-align: center;">より短い</td>
+<td style="text-align: center;">より長い</td>
+</tr>
+<tr>
+<td>作成される暗号鍵</td>
+<td style="text-align: center;">共通鍵</td>
+<td style="text-align: center;">秘密鍵、公開鍵</td>
+</tr>
+<tr>
+<td>鍵の配布方法</td>
+<td style="text-align: center;">メール (盗聴に気を付ける)</td>
+<td style="text-align: center;">メール、PKI</td>
+</tr>
+<tr>
+<td>鍵の再利用</td>
+<td style="text-align: center;">再利用は不要である</td>
+<td style="text-align: center;">再利用しても良い</td>
 </tr>
 </tbody>
 </table>
-<h4 id="ssh-ssh">▼ SSHポートフォワーディング (SSHポート転送)<a class="headerlink" href="#ssh-ssh" title="Permanent link">&para;</a></h4>
-<p>ローカルマシンと踏み台サーバーのSSH公開鍵認証と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。</p>
-<p><img alt="ssh-port-forward" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png" /></p>
-<p><strong>＊例＊</strong></p>
-<p>このリモートサーバーが、仮想環境の場合もあり、ホストと仮想環境の接続でもSSHポートフォワーディングを使用している。</p>
-<p>ホスト外部のパソコンから、ホスト上の仮想環境に接続したい場合、SSHポートフォワーディングを使用することによって、ホストを踏み台とした仮想環境への接続が行えるようになる。</p>
-<p><img alt="docker_port-forwarding" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_port-forwarding.png" /></p>
 <p><br></p>
-<h3 id="scpsecure-copy-protocol">SCP：Secure Copy Protocol<a class="headerlink" href="#scpsecure-copy-protocol" title="Permanent link">&para;</a></h3>
-<h4 id="scp">▼ SCPとは<a class="headerlink" href="#scp" title="Permanent link">&para;</a></h4>
-<p>SSHを介して、ファイル転送を実行する。</p>
-<p>SSHの能力をより拡張したプロトコルである。</p>
+<h3 id="_9">共通鍵暗号方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 共通鍵暗号方式とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>サーバーから受信者 (クライアント) にあらかじめ秘密鍵を渡しておく。</p>
+<p>鍵の受け渡しを工夫しないと、共通鍵が盗聴される可能性がある (<strong>鍵配送問題</strong>) 。</p>
+<p><strong>＊例＊</strong></p>
+<p>エクセルのファイルロック</p>
+<p><strong>長所</strong>：処理が速い</p>
+<p><strong>短所</strong>：鍵の配布が大変</p>
+<p><img alt="p437" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p437.png" /></p>
+<h4 id="_11">▼ 共通鍵の再利用の可否<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>各受信者 (クライアント) は、サーバーから、受信者ごとに作成された共通鍵をもらう。</p>
+<p>鍵の再利用をする必要はない。</p>
+<p><img alt="共通鍵の再利用" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/共通鍵の再利用.png" /></p>
+<p><br></p>
+<h3 id="_12">公開鍵暗号方式<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ 公開鍵暗号方式とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><img alt="公開鍵暗号方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/公開鍵暗号方式.png" /></p>
+<p>公開鍵暗号方式でも記載の通り、共通鍵暗号方式の鍵配送問題を解決すべく開発された。</p>
+<p>『RSA暗号』などによって実装される。</p>
+<p>受信者 (クライアント) の公開鍵で暗号化した場合、受信者の秘密鍵のみで復号可能。</p>
+<p>すなわち、第三者に復号 (解読) されることはないと判断可能。</p>
+<p><strong>＊サーバーが実行すること＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアントは、リモート通信先のサーバーにファイル送信を命令する。</p>
+<p>サーバーは、受信者 (クライアント) から公開鍵をもらう。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、Shellを使用してSCPプログラムを起動し、クライアントにファイルを送信する。</p>
+<p>公開鍵を使用して、情報を暗号化する。</p>
 </dd>
 </dl>
-<p><img alt="SCPの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png" /></p>
-<h4 id="_3">▼ ファイルを要求する側に必要なソフトウェア<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li>WinSCP</li>
-<li>Filezilla</li>
-</ul>
-<h4 id="_4">▼ ファイルを送信する側に必要なソフトウェア<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><strong>＊受信者 (クライアント) が実行すること＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>受信者 (クライアント) は、秘密鍵で情報を復号する。</p>
+</dd>
+</dl>
+<h4 id="_14">▼ 公開鍵の再利用の可否<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>各受信者 (クライアント) は、サーバーから、異なるサーバーで再利用される公開鍵をもらう。</p>
+<p>ただし、サーバーごとに異なる秘密鍵と公開鍵を使用しても良い。</p>
+<p><img alt="公開鍵の再利用" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/公開鍵の再利用.png" /></p>
 <p><br></p>
-<h3 id="sftpssh-file-transfer-protocol">SFTP：SSH File Transfer Protocol<a class="headerlink" href="#sftpssh-file-transfer-protocol" title="Permanent link">&para;</a></h3>
-<h4 id="sftp">▼ SFTPとは<a class="headerlink" href="#sftp" title="Permanent link">&para;</a></h4>
-<p>SSHを介して、ファイル転送を実行する。</p>
-<p>SSHとFTPを組み合わせたプロトコルではなく、SSHの能力をより拡張したものである。</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>Filezillaの場合</th>
-<th>WinSCPの場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>送信元マシン内</td>
-<td>Filezilla</td>
-<td>WinSCP</td>
-</tr>
-<tr>
-<td>宛先マシン内</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="rdpremote-desktop-protocol">RDP：Remote Desktop Protocol (リモートデスクトッププロトコル)<a class="headerlink" href="#rdpremote-desktop-protocol" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ リモートデスクトップとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><img alt="encryption_protocol_remote-desktop" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_remote-desktop.png" /></p>
-<p>ゲートウェイマシン上で稼働するリモートデスクトップツールを介して、異なるネットワーク内のアプリケーションと通信する。</p>
-<p>ローカルマシンとリモートにあるアプリケーション間でコピーアンドペーストができない場合がある。</p>
-<p>その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これを改めてコピーアンドペーストすると良い。</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>Chromeリモートデスクトップの場合</th>
-<th>Guacamoleの場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>送信元マシン内</td>
-<td>Chromeリモートデスクトップ</td>
-<td>-</td>
-</tr>
-<tr>
-<td>ゲートウェイマシン内</td>
-<td>-</td>
-<td>Guacamole (guardを含む)</td>
-</tr>
-<tr>
-<td>宛先マシン (サーバー、デスクトップPC) 内</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1">https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1</a></li>
-<li><a href="https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html">https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html</a></li>
-<li><a href="https://openstandia.jp/oss_info/guacamole/">https://openstandia.jp/oss_info/guacamole/</a></li>
-</ul>
-</blockquote>
-<h4 id="_6">▼ 他の暗号化プロトコルとの組み合わせ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体へのリクエストでも暗号化プロトコル (例：VPN) を使用した方がよい。</p>
-<p>例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。</p>
-<blockquote>
-<ul>
-<li><a href="https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2">https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. 【トランスポート層】ヘッダー情報の暗号化技術<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="ssltlssecure-sockets-layer-transport-layer-security">SSL/TLS：Secure Sockets Layer / Transport Layer Security<a class="headerlink" href="#ssltlssecure-sockets-layer-transport-layer-security" title="Permanent link">&para;</a></h3>
-<h4 id="ssltls">▼ SSL/TLSとは<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
-<p><img alt="encryption_protocol_ssh-tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png" /></p>
-<p>ハイブリッド暗号方式に基づく暗号化プロトコル。</p>
-<p>SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定する必要がある。</p>
-<p>トランスポート層で、パケットのヘッダー情報の暗号化を担う。</p>
-<h4 id="tls-mtls">▼ 相互TLS認証 (mTLS)<a class="headerlink" href="#tls-mtls" title="Permanent link">&para;</a></h4>
-<p>トランスポート層で、双方向のピア認証を実施する。</p>
-<p>通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。</p>
-<p>送信側がSSL証明書を持っていなければ、認証エラーになる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/horit0123/items/8eb45bfcef6b848971a4">https://qiita.com/horit0123/items/8eb45bfcef6b848971a4</a></li>
-<li><a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html">https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html</a></li>
-</ul>
-</blockquote>
-<h4 id="l5l7">▼ <code>L5</code>〜<code>L7</code>のプロトコルの暗号化<a class="headerlink" href="#l5l7" title="Permanent link">&para;</a></h4>
-<p><code>L5</code>〜<code>L7</code>のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を暗号化する。</p>
-<p>『<code>S</code>』 (例：SMTPS) や『<code>over TLS/SSL</code>』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。</p>
-<p>暗号化プロトコルを使用する場合、<code>L6</code>にて<code>L7</code>のパケットペイロードを暗号化/復号かする。</p>
-<p><strong>＊例＊</strong></p>
-<p>Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。</p>
-<p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
-<blockquote>
-<ul>
-<li><a href="https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/">https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04">04. 【ネットワーク層】ヘッダー情報の暗号化技術<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="ipsecinternet-protocol-security">IPsec：Internet Protocol Security<a class="headerlink" href="#ipsecinternet-protocol-security" title="Permanent link">&para;</a></h3>
-<h4 id="ipsec">▼ IPSecとは<a class="headerlink" href="#ipsec" title="Permanent link">&para;</a></h4>
-<p>共通鍵暗号方式に基づく暗号化プロトコル。</p>
-<p>ネットワーク層で、パケットのヘッダー情報の暗号化を担う。</p>
-<p>例えば、リモートワーク時に、自宅PCと会社のネットワークをVPN接続するために使用される。</p>
-<p>VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイクが会社のルーターを通過するため、送信元IPアドレスが会社のものにかわる。</p>
-<p>盗聴を防げる。</p>
-<p><img alt="IPsecによるインターネットVPN" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg" /></p>
-<h4 id="ipsec_1">▼ IPsecによるパケットのカプセル化<a class="headerlink" href="#ipsec_1" title="Permanent link">&para;</a></h4>
-<p><img alt="IPsecによるカプセル化" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるカプセル化.jpg" /></p>
-<p><br></p>
-<h3 id="vpnvirtual-private-network">VPN：Virtual Private Network (仮想プライベートネットワーク)<a class="headerlink" href="#vpnvirtual-private-network" title="Permanent link">&para;</a></h3>
-<h4 id="vpn">▼ VPNとは<a class="headerlink" href="#vpn" title="Permanent link">&para;</a></h4>
-<p><img alt="vpn_between_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png" /></p>
-<p>異なるネットワーク間で安全な通信を実行するための仕組み。</p>
-<p>異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。</p>
-<table>
-<thead>
-<tr>
-<th>要素</th>
-<th>Fortiの場合</th>
-<th>OpenVPNの場合</th>
-<th>Zscalerの場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>送信元マシン内</td>
-<td>FortiClient</td>
-<td>OpenVpnClient</td>
-<td>Zapp (クラウドZscalerのクライアントツール)</td>
-</tr>
-<tr>
-<td>中継VPNマシン内</td>
-<td>FortiGate</td>
-<td>OpenVpn</td>
-<td>SDPゲートウェイ (クラウドZscalerのVPNマシン)</td>
-</tr>
-<tr>
-<td>宛先マシン内</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="http://www.amazon.co.jp/dp/B0756SS7N3">www.amazon.co.jp/dp/B0756SS7N3</a></li>
-<li><a href="https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/">https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/</a></li>
-<li><a href="https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols">https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols</a></li>
-<li><a href="https://www.iim.co.jp/products/zscaler/zpa/">https://www.iim.co.jp/products/zscaler/zpa/</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ パケットペイロードの暗号化/復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>リクエスト時、SSL/TLSプロトコルによって通信は暗号化され、接続先のネットワーク内にあるVPNゲートウェイというプロキシサーバーで復号化される。</p>
-<p>反対にレスポンス時、VPNゲートウェイで再び暗号化され、クライアントに返信される。</p>
-<p>接続先のネットワーク内のサーバがリクエストを受信する時、リクエストのIPアドレスはVPNゲートウェイのものになっている。</p>
-<p><img alt="SSLによるインターネットVPN" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.n-study.com/internet-vpn/ssl-vpn-overview/">https://www.n-study.com/internet-vpn/ssl-vpn-overview/</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ クライアント証明書<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間CA認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。</p>
-<p>このクライアント証明書をVPNのクライアント側に設定する必要がある。</p>
-<p><img alt="vpn_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.nrapki.jp/client-certificate/telework/">https://www.nrapki.jp/client-certificate/telework/</a></li>
-<li><a href="https://help.zscaler.com/zia/about-ssl-inspection">https://help.zscaler.com/zia/about-ssl-inspection</a></li>
-</ul>
-</blockquote>
+<h3 id="_15">ハイブリッド暗号方式<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>共通鍵暗号方式と公開鍵暗号方式を組み合わせた暗号方式。</p>
+<p>両方の方式の長所と短所を補う。</p>
+<p><img alt="ハイブリッド暗号" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッド暗号.png" /></p>
 <p><br></p>
 
 
@@ -22784,7 +22404,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     
