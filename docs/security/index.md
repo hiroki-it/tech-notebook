@@ -21,7 +21,6 @@
 * #### <u>︎保管データの暗号化技術</u>
   > * ##### [︎保管データの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_storage.html)
 
-
 <br>
 
 ### 認証/認可
