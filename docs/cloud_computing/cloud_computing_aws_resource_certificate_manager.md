@@ -130,6 +130,13 @@ SSL証明書の配置場所は、SSL終端をどこにするかで決める。
 
 AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対しては、外部のSSL証明書を手に入れて配置する。
 
+トレードオフとして、パケットペイロードの暗号化処理は通信速度が低下させる。
+
+そのため、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワーク、など) の境界をSSL終端とすることが多い。
+
+> - https://serverfault.com/a/1126428
+> - https://www.reddit.com/r/aws/comments/aidrfn/comment/eenbc60/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
 #### ▼ Route53 ➡︎ ALB、NLB、の場合
 
 ALBでSSL終端とする場合、EC2にSSL証明書は不要である。

