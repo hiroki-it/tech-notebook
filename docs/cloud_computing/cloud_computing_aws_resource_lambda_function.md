@@ -696,7 +696,7 @@ exports.handler = (event, context, callback) => {
     {
       Bucket: "<バケット名>",
       Key: "<パスを含む保存先ファイル>",
-      Body: "<保存データ>",
+      Body: "<保管データ>",
     },
     (err, data) => {
       if (err) {

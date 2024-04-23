@@ -195,8 +195,6 @@ Windowsネットワークファイアウォールは、Windowsにおけるネッ
 
 `L3` (ネットワーク層) から`L7` (アプリケーション層) までに対するサイバー攻撃を防御する。
 
-> - https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html
-
 <br>
 
 ## 05. 【`L7`】Webアプリファイアウォール：Web Application Firewall
