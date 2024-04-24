@@ -102,9 +102,9 @@ SSL/TLSプロトコルを許可しており、対応できるバージョンが�
 
 | バージョン       | Policy-2016-08 | Policy-TLS-1-1 | Policy-TLS-1-2 |
 | ---------------- | :------------: | :------------: | :------------: |
-| Protocol-TLSv1   |       〇       |       ✕        |       ✕        |
-| Protocol-TLSv1.1 |       〇       |       〇       |       ✕        |
-| Protocol-TLSv1.2 |       〇       |       〇       |       〇       |
+| Protocol-TLSv1   |       ⭕️       |       ✕        |       ✕        |
+| Protocol-TLSv1.1 |       ⭕️       |       ⭕️       |       ✕        |
+| Protocol-TLSv1.2 |       ⭕️       |       ⭕️       |       ⭕️       |
 
 <br>
 
@@ -226,7 +226,7 @@ EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したS
 
 Aurora RDSにSSL証明書を紐づける。
 
-EC2/ECS/EKSからAurora RDSへの通信データを暗号化できる。
+EC2/ECS/EKSからAurora RDSへのパケットペイロードを暗号化できる。
 
 > - https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 

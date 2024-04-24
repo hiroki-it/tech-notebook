@@ -45,3 +45,22 @@ TransitGatewayが必要になるため、各VPC上にそのためのルートテ
 > - https://medium.com/@datapath_io/aws-direct-connect-vs-vpn-vs-direct-connect-gateway-97900cdf7d04
 
 <br>
+
+## 03. パケットペイロードの暗号化
+
+### IPSec
+
+AWS Site-to-Site VPNを採用した場合、 IPSecを使用してパケットペイロードを暗号化できる。
+
+> - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
+
+<br>
+
+### MACsec
+
+MACsecを有効化した場合、MACsecを使用してパケットペイロードを暗号化できる。
+
+> - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
+> - https://blog.serverworks.co.jp/everyday-aws-172
+
+<br>

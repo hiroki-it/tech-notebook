@@ -313,7 +313,7 @@ VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じC
 
 | アカウント  | VPCのあるリージョン | VPC内のCIDRブロック   | 接続の可否 |
 | ----------- | ------------------- | --------------------- | ---------- |
-| 同じ/異なる | 同じ/異なる         | 全て異なる            | **〇**     |
+| 同じ/異なる | 同じ/異なる         | 全て異なる            | ⭕️         |
 |             |                     | 同じものが1つでもある | ✕          |
 
 ![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png)
@@ -346,8 +346,6 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 『多対多』の関係で、『異なるVPC間』や『VPCとDirect Connect間』の双方向通信を可能にする。
 
-また、通信のパケットペイロードを暗号化する。
-
 クラウドルーターとして働く。
 
 Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、VPCとオンプレミスを接続することもできる。
@@ -356,6 +354,12 @@ Direct Connectがオンプレミスとの通信機能を持つため、Transit G
 
 > - https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html
 > - https://www.ashisuto.co.jp/db_blog/article/aws-transitgateway.html
+
+#### ▼ AWS間
+
+AWS間の通信の場合、パケットペイロードを自動的に暗号化する。
+
+> - https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html
 
 <br>
 

@@ -220,8 +220,13 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 ### パケットペイロードの暗号化
 
-パケットペイロードの暗号化のために、Certificate Manager (`L7`) やTransit Gateway (`L3`) を使用する。
+パケットペイロードの暗号化のために、Certificate Manager (`L7`) を使用する。
 
+リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKS、など) に紐づけられる。
+
+また、AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。
+
+> - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-in-transit
 > - https://qiita.com/omorim/items/72990ae3f65e79ffbe8f
 
 <br>
@@ -229,5 +234,9 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 ### 保管データの暗号化
 
 保管データの暗号化のために、KMSやCloud HSMを使用する。
+
+データを保管するAWSリソース (例：Aurora RDS、EBS、S3、Secret Manager、など) に紐づけられる。
+
+> - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-at-rest
 
 <br>
