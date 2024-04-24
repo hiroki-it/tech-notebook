@@ -798,7 +798,7 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 
 複数のノードからRead/Writeを行えるボリュームとしてマウントする。
 
-ConfigMapに保存するには大きすぎる設定ファイルや共通データなどを利用するアプリケーションで指定する。
+ConfigMapに保管するには大きすぎる設定ファイルや共通データなどを利用するアプリケーションで指定する。
 
 - 例 機械学習モデルのパラメータストア
 
@@ -830,7 +830,7 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 
 データベースやファイルストレージ用途などでPersistentVolumeClaim(PVC)を利用している場合、誤ったPVCの削除によるデータ損失を防ぐ必要がある。
 
-そのため重要なデータを保存するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
+そのため重要なデータを保管するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain)
 

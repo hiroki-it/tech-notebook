@@ -433,7 +433,7 @@ jobs:
   aws-code-deploy/deploy:
     name: code_deploy
     application-name: $SERVICE}
-    # appspecファイルを保存するバケット名
+    # appspecファイルを保管するバケット名
     bundle-bucket: "${SERVICE}-bucket"
     # appspecファイルのあるディレクトリ
     bundle-source: ./infra/aws_codedeploy

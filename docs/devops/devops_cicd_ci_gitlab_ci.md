@@ -640,7 +640,7 @@ bar_job:
   cache:
     # キャッシュの名前を設定する
     key: $CI_COMMIT_REF_SLUG
-    # キャッシュとして保存するディレクトリを設定する
+    # キャッシュとして保管するディレクトリを設定する
     paths:
       - ./node_module
 ```

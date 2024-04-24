@@ -1404,7 +1404,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 #### ▼ ローカルストレージ (非公開) の場合
 
-ファイルを`/storage/app`ディレクトリ配下に保存する。
+ファイルを`/storage/app`ディレクトリ配下に保管する。
 
 このファイルは非公開であり、リクエストによってアクセスできない。
 
@@ -1443,7 +1443,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してlocalディスクを指定する。
 
-`file.txt`ファイルを`storage/app/file.txt`として保存する。
+`file.txt`ファイルを`storage/app/file.txt`として保管する。
 
 ```php
 Storage::disk("local")->put("file.txt", "file.txt");
@@ -1457,7 +1457,7 @@ Storage::put("file.txt", "file.txt");
 
 #### ▼ ローカルストレージ (公開) の場合
 
-ファイルを`storage/app/public`ディレクトリ配下に保存する。
+ファイルを`storage/app/public`ディレクトリ配下に保管する。
 
 このファイルは公開であり、リクエストできる。
 
@@ -1491,7 +1491,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してpublicディスクを指定する。
 
-また、`file.txt`ファイルを`storage/app/public/file.txt`として保存する。
+また、`file.txt`ファイルを`storage/app/public/file.txt`として保管する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -1519,7 +1519,7 @@ use Storage;
 class FileSystemPublicController extends Controller
 {
     /**
-     * ファイルをpublicディスクに保存する
+     * ファイルをpublicディスクに保管する
      */
     public function putContentsInPublicDisk()
     {
@@ -1542,7 +1542,7 @@ class FileSystemPublicController extends Controller
 
 #### ▼ クラウドストレージの場合
 
-ファイルをS3バケット内のディレクトリ配下に保存する。
+ファイルをS3バケット内のディレクトリ配下に保管する。
 
 環境変数を`.env`ファイルに実装する必要がある。
 
@@ -1590,7 +1590,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してs3ディスクを指定する。
 
-また、`file.txt`ファイルをS3バケットのルートに`file.txt`として保存する。
+また、`file.txt`ファイルをS3バケットのルートに`file.txt`として保管する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -3827,7 +3827,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ DB通知内容の定義
 
-配列でDBに保存する内容を定義する。
+配列でDBに保管する内容を定義する。
 
 > - https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
@@ -4295,7 +4295,7 @@ Bladeを使用しない場合、セッション開始時のレスポンスの`Se
 
 #### ▼ HTTPクライアントツール側の対応
 
-PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
+PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保管するようなスクリプトを設定しておくと良い。
 
 ```javascript
 if (pm.request.method == "GET") {

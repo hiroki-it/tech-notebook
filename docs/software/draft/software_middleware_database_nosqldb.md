@@ -25,7 +25,7 @@ https://hiroki-it.github.io/tech-notebook/
 
 NoSQLは、データ同士が関係を持たないデータ格納形式である。
 
-RDBとは異なり、データをメインメモリに保存する。
+RDBとは異なり、データをメインメモリに保管する。
 
 #### ▼ NoSQLの種類
 

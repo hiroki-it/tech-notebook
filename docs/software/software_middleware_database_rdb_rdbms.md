@@ -166,7 +166,7 @@ TCP/IPプロトコルを使用する。
 
 ## 04. 性能指標
 
-### 時間当たりの平均トランザクション数 (TPS)
+### 秒当たりの平均トランザクション数 (TPS：Transaction Per Second)
 
 > - https://ja.theastrologypage.com/transactions-per-second
 

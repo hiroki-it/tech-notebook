@@ -66,13 +66,13 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 ### ローカルストレージ
 
-ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。
+ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保管する。
 
 <br>
 
 ### スクレイパー
 
-スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。
+スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保管する。
 
 kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`、など) を持ち、これがスクレイパーの収集対象になる。
 
