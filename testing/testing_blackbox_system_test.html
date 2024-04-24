@@ -23059,12 +23059,12 @@
 <h2 id="01">01. 総合テスト (システムテスト)<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">総合テストとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>既存機能/追加/変更を含む全てのコンポーネントを組み合わせ、全てのコンポーネント間の連携が正しく動作しているかを検証する。</p>
+<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://pm-rasinban.com/ut-it-st">https://pm-rasinban.com/ut-it-st</a></li>
 </ul>
 </blockquote>
-<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
 <p><br></p>
 <h3 id="_3">総合テストの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 機能テスト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -23105,12 +23105,6 @@
 </table>
 <h4 id="_5">▼ 非機能テスト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>システムが非機能的な品質を満たしているかを検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.qbook.jp/column/20180806_667.html">https://www.qbook.jp/column/20180806_667.html</a></li>
-<li><a href="https://thinkit.co.jp/article/17647">https://thinkit.co.jp/article/17647</a></li>
-</ul>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -23145,6 +23139,12 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://www.qbook.jp/column/20180806_667.html">https://www.qbook.jp/column/20180806_667.html</a></li>
+<li><a href="https://thinkit.co.jp/article/17647">https://thinkit.co.jp/article/17647</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_6">テスト結果の可視化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ テストレポート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -23275,7 +23275,7 @@
 <li>平均スループット</li>
 <li>平均レスポンスタイム</li>
 <li>平均ハードウェア使用率</li>
-<li>時間当たり平均トランザクション数 (TPS)</li>
+<li>時間当たり平均トランザクション数 (TPS：Transaction Per Second)</li>
 </ul>
 <blockquote>
 <ul>
@@ -23485,7 +23485,7 @@
 <tr>
 <th>スレッド数 (個)</th>
 <th>ループ数 (回)</th>
-<th>ランプアップ期間<code>(sec)</code></th>
+<th>ランプアップ期間 (秒)</th>
 </tr>
 </thead>
 <tbody>
@@ -23503,17 +23503,17 @@
 <p><br></p>
 <h3 id="_37">目標値の指標<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="rpo">▼ RPO (目標復旧時点)<a class="headerlink" href="#rpo" title="Permanent link">&para;</a></h4>
-<p>障害が発生した時に、どの時点までデータを復旧させるかの目標値のこと。</p>
-<p>もしRPOが<code>5</code>分だとすると、障害前の<code>5</code>分間で作成されたデータは復旧できないことは許容することになる。</p>
+<p>障害が発生した時に、どの時点まで遡ってデータを復旧させるかの目標値のこと。</p>
+<p>もしRPOが<code>5</code>分間だとすると、<code>5</code>分間のデータ欠損は復旧できず、これを許容することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/RPO.html">https://e-words.jp/w/RPO.html</a></li>
 </ul>
 </blockquote>
 <h4 id="rto">▼ RTO (目標復旧時間)<a class="headerlink" href="#rto" title="Permanent link">&para;</a></h4>
-<p>障害が発生した時に、どの時間までにデータを復旧させるかの目標値のこと。</p>
+<p>障害が発生した時に、障害後どの時間以内にデータを復旧させるかの目標値のこと。</p>
 <p>言い換えると、ダウンタイムの最大許容時間である。</p>
-<p>もしRTOが<code>1</code>時間だとすると、<code>1</code>時間は障害が起こったまま (ダウンタイム) になることを許容することになる。</p>
+<p>もしRTOが<code>1</code>時間だとすると、<code>1</code>時間は障害が起こったまま (ダウンタイム) になり、これを許容することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/RTO.html">https://e-words.jp/w/RTO.html</a></li>
@@ -23709,11 +23709,6 @@
 </ul>
 </blockquote>
 <h4 id="_44">▼ 手順<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hodagi/articles/3ce6ccdb00538c">https://zenn.dev/hodagi/articles/3ce6ccdb00538c</a></li>
-</ul>
-</blockquote>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -23732,6 +23727,11 @@
 <p>対照群と比較し、『障害は起こる』という仮説を反証する。</p>
 </dd>
 </dl>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/hodagi/articles/3ce6ccdb00538c">https://zenn.dev/hodagi/articles/3ce6ccdb00538c</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="08">08. ペネトレーションテスト<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <p>既知のサイバー攻撃を意図的に行い、システムの脆弱性を確認するテストのこと。</p>
