@@ -163,3 +163,11 @@ TCP/IPプロトコルを使用する。
 > - https://gihyo.jp/dev/serial/01/db-academy/000502
 
 <br>
+
+## 04. 性能指標
+
+### 時間当たりの平均トランザクション数 (TPS)
+
+> - https://ja.theastrologypage.com/transactions-per-second
+
+<br>

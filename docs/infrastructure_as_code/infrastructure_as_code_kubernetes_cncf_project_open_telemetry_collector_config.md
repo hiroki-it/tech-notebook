@@ -243,7 +243,7 @@ exporters:
 ```
 
 ```yaml
-# スパン一つあたりの内容
+# スパン一つ当たりの内容
 2024-03-26T04:19:41.450Z	info	ResourceSpans #0
 Resource SchemaURL:
 Resource attributes:

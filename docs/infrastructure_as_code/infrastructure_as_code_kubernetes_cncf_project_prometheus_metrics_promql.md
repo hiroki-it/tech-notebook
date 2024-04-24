@@ -122,7 +122,7 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間あたりの増加数) を算出する。
+rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を算出する。
 
 **＊例＊**
 
