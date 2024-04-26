@@ -11865,11 +11865,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-kmscloud-hsm" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. KMS、Cloud HSM
+      01. 保管と暗号化
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 保管と暗号化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      機密データ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      永続化データ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      アプリの作成するファイル
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -21882,11 +21915,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-kmscloud-hsm" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. KMS、Cloud HSM
+      01. 保管と暗号化
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 保管と暗号化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      機密データ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      永続化データ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      アプリの作成するファイル
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -21917,14 +21983,17 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-kmscloud-hsm">01. KMS、Cloud HSM<a class="headerlink" href="#01-kmscloud-hsm" title="Permanent link">&para;</a></h2>
-<p>保管データの暗号化のために、KMSやCloud HSMを使用する。</p>
-<p>データを保管するAWSリソース (例：Aurora RDS、EBS、S3、Secret Manager、など) に紐づけられる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-at-rest">https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-at-rest</a></li>
-</ul>
-</blockquote>
+<h2 id="01">01. 保管と暗号化<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">機密データ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>機密データの保管と暗号化のために、Secret ManagerとKMSを採用する。</p>
+<p>カスタマー管理型KMSを使用し、KMSを操作できるユーザーを制限しています。</p>
+<p><br></p>
+<h3 id="_3">永続化データ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>永続化データの暗号化のために、AuroraではKMSを採用する。</p>
+<p><br></p>
+<h3 id="_4">アプリの作成するファイル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>アプリの作成するファイル (CSV、EML) や圧縮フォルダ (ZIP) の暗号化のために、S3ではサーバーサイド暗号化を採用する。</p>
+<p>また、全てのS3バケットでパブリックアクセスを無効化する。</p>
 <p><br></p>
 
 
