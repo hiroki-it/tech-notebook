@@ -848,6 +848,46 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
+          # deploymentラベル値のプルダウン
+          {
+            "allValue": null,
+            # プルダウンが選ばれていない時のデフォルト値を設定する
+            "current": {
+                # デフォルトでは全てのラベル値を選択する
+                # multiラベルの場合は、配列とする
+                "selected": "true",
+                "text": ["All"],
+                "value": ["$__all"],
+              },
+            # データソースの指定時に、それを変数として取得する
+            "datasource": "$datasource",
+            "definition": "",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            "includeAll": "true",
+            "label": null,
+            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            "multi": "true",
+            "name": "service",
+            "options": [],
+            "query": {
+                # 指定したデータソースの時に、kube_deployment_status_conditionトリクスが各種ラベルを持っている必要がある。
+                "query": 'label_values(kube_deployment_status_condition{cluster=\"$cluster\", namespace=\"$namespace\"}, deployment)',
+                "refId": "Prometheus-pod-Variable-Query",
+              },
+            "refresh": 2,
+            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            "regex": "",
+            "skipUrlSync": "false",
+            "sort": 1,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": "false",
+          },
           # serviceラベル値のプルダウン
           {
             "allValue": null,
@@ -874,7 +914,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_service_infoメトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)',
+                "query": 'label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, serviec)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
@@ -933,7 +973,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "allValue": null,
             "current": {},
             "datasource": "$datasource",
-            # kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定する
+            # kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定しておく
             "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "hide": 0,
             # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する

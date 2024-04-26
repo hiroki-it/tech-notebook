@@ -344,10 +344,12 @@ spec:
           args:
             - --port=8080
             - --resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments
-            # Nodeのラベルをメトリクスに付与する。
-            # クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。            - --metric-labels-allowlist=nodes=[*]
-            # Nodeのアノテーションをメトリクスに付与する。
-            - --metric-annotations-allowlist=nodes=[*]
+            # 必要なKubernetesリソースのラベルをメトリクスに付与する。
+            # kube_node_labels、kube_deployment_labels、kube_pod_labels、で取得できる
+            # 例えば、クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。
+            - --metric-labels-allowlist=nodes=[*],deployments=[*],pods=[*]
+            # 必要なKubernetesリソースのアノテーションをメトリクスに付与する。
+            - --metric-annotations-allowlist=nodes=[*],deployments=[*],pods=[*]
           imagePullPolicy: IfNotPresent
           image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.9.2
           ports:
@@ -373,6 +375,8 @@ spec:
 ```
 
 > - https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm
+> - https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options
+> - https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751
 
 <br>
 
