@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】安全性＠AWS
-description: 安全性＠AWSの知見を記録しています。
+title: 【IT技術の知見】パケットペイロード安全性＠AWS
+description: パケットペイロード安全性＠AWSの知見を記録しています。
 ---
 
-# 安全性＠AWS
+# パケットペイロード安全性＠AWS
 
 ## はじめに
 
@@ -36,7 +36,7 @@ AWSリソースごとにセキュリティを考慮する。
 
 <br>
 
-## 01-02. `L2`の防御
+## 02. `L2`の防御
 
 ### `L2`の防御方法
 
@@ -71,7 +71,7 @@ RFC1918では、以下のCIDRブロックが推奨である。
 
 <br>
 
-### VPCの設計
+### VPCによる防御
 
 #### ▼ VPC全体のCIDRブロック
 
@@ -91,7 +91,7 @@ RFC1918では、以下のCIDRブロックが推奨である。
 
 <br>
 
-### サブネットの設計
+### サブネットによる防御
 
 #### ▼ サブネット分割のメリット
 
@@ -156,7 +156,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 <br>
 
-### ルートテーブルの設計
+### ルートテーブルによる防御
 
 ![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png)
 
@@ -197,7 +197,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 <br>
 
-## 01-03. `L3`の防御
+## 03. `L3`の防御
 
 ### `L3`の防御方法
 
@@ -215,7 +215,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 <br>
 
-### セキュリティグループ (インバウンド) の設計
+### セキュリティグループ (インバウンド) による防御
 
 #### ▼ アプリケーションEC2の場合
 
@@ -275,9 +275,19 @@ NLBはセキュリティグループに対応していない。
 
 そのため、NLBのルーティング先 (EC2、など) でファイアーウォールを設定する必要がある。
 
+#### ▼ VPCエンドポイント
+
+VPC内からVPC外への通信は、VPCエンドポイントで安全に通信する。
+
+例えば、EKS EC2 NodeからVPC外AWSリソースへの通信では、VPCエンドポイントを使用する。
+
+VPCエンドポイントのセキュリティグループでは、VPCのCIDRからのアウトバウンド通信のみを許可するとよい。
+
 <br>
 
-### セキュリティグループ (アウトバウンド) の設計
+<br>
+
+### セキュリティグループ (アウトバウンド) による防御
 
 #### ▼ ALBの場合
 
@@ -291,17 +301,19 @@ ALBからEC2にリクエストをルーティングする場合、特定のEC2�
 
 <br>
 
-## 01-04. `L7`の防御
+## 04. `L7`の防御
 
 ### `L7`の防御方法
 
-`L7`の攻撃は、WAFで防御する。
+`L7`の攻撃は、WAFやCertificate Managerで防御する。
 
 代わりに、アプリケーションの実装で防御しても良い。
 
 <br>
 
-### WAFルールの設計
+## 04-02. WAF
+
+### WAFルールによる防御
 
 #### ▼ ユーザーエージェント拒否
 
@@ -401,7 +413,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 <br>
 
-### WAFマネージドルールの設計
+### WAFマネージドルールによる防御
 
 #### ▼ マネージドルールの動作確認の必要性
 
@@ -424,9 +436,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 <br>
 
-## 03. 暗号化
-
-### パケットペイロードの暗号化
+## 04-03. Certificate Managerによる防御
 
 パケットペイロードの暗号化のために、Certificate Manager (`L7`) を使用する。
 
@@ -436,15 +446,5 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 > - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-in-transit
 > - https://qiita.com/omorim/items/72990ae3f65e79ffbe8f
-
-<br>
-
-### 保管データの暗号化
-
-保管データの暗号化のために、KMSやCloud HSMを使用する。
-
-データを保管するAWSリソース (例：Aurora RDS、EBS、S3、Secret Manager、など) に紐づけられる。
-
-> - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-at-rest
 
 <br>

@@ -17,6 +17,8 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 専用線方式のWANとして動作し、AWS側の単一のプライベートネットワーク (VPC) と、ユーザー側のプライベートネットワーク (例：オンプレミス) の間を接続する。
 
+専用線方式では、帯域を占有でき、ネットワーク間は安定した速度で通信できる。
+
 注意点として、DirectConnectは、それ専用の中継VPC内に作成する。
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)

@@ -63,7 +63,8 @@
 * #### <u>プラクティス集</u>
   > * ##### [︎運用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_operability.html)
   > * ##### [︎信頼性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_reliability.html)
-  > * ##### [︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security.html)
+  > * ##### [パケットペイロード︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_packet_payload.html)
+  > * ##### [ストレージ安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_storage.html)
   > * ##### [︎コスト最適化](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_cost_optimization.html)
 * #### [︎ツール](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_tools.html)
 
