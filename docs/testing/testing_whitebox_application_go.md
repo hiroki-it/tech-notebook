@@ -104,7 +104,7 @@ import (
 )
 
 /**
- * fooメソッドをテストします。
+ * fooメソッドをテストする
  */
 func TestFoo(t *testing.T) {
 

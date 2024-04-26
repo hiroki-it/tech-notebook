@@ -217,7 +217,7 @@ use PHPUnit\Framework\TestCase;
 class FooTest extends TestCase
 {
     /**
-     * findメソッドをテストします。
+     * findメソッドをテストする
 
 
      *
@@ -230,7 +230,7 @@ class FooTest extends TestCase
     }
 
     /**
-     * findメソッドを引数を用意します。
+     * findメソッドを引数を用意する
 
 
      *

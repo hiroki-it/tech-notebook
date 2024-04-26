@@ -1173,7 +1173,7 @@ set -xeuo pipefail
 echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
 echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
 
-# 環境変数を出力します。
+# 環境変数を出力する
 source $BASH_ENV
 ```
 
