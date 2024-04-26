@@ -12189,6 +12189,15 @@
           <li class="md-nav__item">
   <a href="#waf" class="md-nav__link">
     <span class="md-ellipsis">
+      WAF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waf_1" class="md-nav__link">
+    <span class="md-ellipsis">
       WAFルールによる防御
     </span>
   </a>
@@ -12247,7 +12256,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_1" class="md-nav__link">
+  <a href="#waf_2" class="md-nav__link">
     <span class="md-ellipsis">
       WAFマネージドルールによる防御
     </span>
@@ -22686,6 +22695,15 @@
           <li class="md-nav__item">
   <a href="#waf" class="md-nav__link">
     <span class="md-ellipsis">
+      WAF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waf_1" class="md-nav__link">
+    <span class="md-ellipsis">
       WAFルールによる防御
     </span>
   </a>
@@ -22744,7 +22762,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_1" class="md-nav__link">
+  <a href="#waf_2" class="md-nav__link">
     <span class="md-ellipsis">
       WAFマネージドルールによる防御
     </span>
@@ -22898,6 +22916,11 @@
 <p>例えば、システムのコンポーネントごとに異なるプライベートサブネット (アプリ、DB、外部オンプレシステムへのプロキシ) を設ける。</p>
 <p>これにより、いずれかのコンポーネントに侵入されても、他コンポーネントへの侵入を最小限に防げる。</p>
 <p>なお、パブリックサブネットにはEC2は置かない。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="cidr">推奨されるCIDRブロック<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
 <p><code>1</code>個のVPC内には複数のサブネットが入る。</p>
@@ -23152,6 +23175,11 @@
 <p>公開しないNodeグループでは、他のNodeグループのEC2からのみアクセスを許可する。</p>
 <p>これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる</p>
 <p>なお、ACLでも<code>L3</code>を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_9">セキュリティグループ (インバウンド) による防御<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="ec2">▼ アプリケーションEC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
@@ -23346,9 +23374,22 @@
 <h3 id="l7"><code>L7</code>の防御方法<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
 <p><code>L7</code>の攻撃は、WAFやCertificate Managerで防御する。</p>
 <p>代わりに、アプリケーションの実装で防御しても良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04-02-waf">04-02. WAF<a class="headerlink" href="#04-02-waf" title="Permanent link">&para;</a></h2>
-<h3 id="waf">WAFルールによる防御<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
+<h3 id="waf">WAF<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
+<p><code>L7</code>の攻撃を防御する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="waf_1">WAFルールによる防御<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ユーザーエージェント拒否<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>悪意のあるユーザーエージェントを拒否する。</p>
@@ -23612,7 +23653,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="waf_1">WAFマネージドルールによる防御<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
+<h3 id="waf_2">WAFマネージドルールによる防御<a class="headerlink" href="#waf_2" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ マネージドルールの動作確認の必要性<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>マネージドルールを導入する時は、事前にルールのカウントを使用することが推奨である。</p>
 <p>カウントで検知されたリクエストのほとんどが悪意のないものであれば、設定したマネージドルールの使用をやめる必要がある。</p>
@@ -23633,14 +23674,18 @@
 <p>また、AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-in-transit">https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-in-transit</a></li>
-<li><a href="https://qiita.com/omorim/items/72990ae3f65e79ffbe8f">https://qiita.com/omorim/items/72990ae3f65e79ffbe8f</a></li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="04-04-systems-manager">04-04. Systems Managerによる防御<a class="headerlink" href="#04-04-systems-manager" title="Permanent link">&para;</a></h2>
 <p>開発者がEC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。</p>
 <p>SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
