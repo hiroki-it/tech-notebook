@@ -40,7 +40,7 @@ AWSリソースごとにセキュリティを考慮する。
 
 ### `L2`の防御方法
 
-`L2`の攻撃は、VPCやプライベートサブネットで防御する。
+`L2`の攻撃をVPCやプライベートサブネットで防御する。
 
 例えば、システムのコンポーネントごとに異なるプライベートサブネット (アプリ、DB、外部オンプレシステムへのプロキシ) を設ける。
 
@@ -203,7 +203,17 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 ### `L3`の防御方法
 
-`L3`の攻撃は、セキュリティグループで防御する。
+`L3`の攻撃をセキュリティグループやTransit Gatewayで防御する。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+
+<br>
+
+## 03-02. セキュリティグループ
+
+### セキュリティグループによる防御
+
+`L3`の攻撃をセキュリティグループで防御する。
 
 例えば、EKSのNodeグループごとに異なるセキュリティグループを紐づけている。
 
@@ -214,10 +224,6 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる
 
 なお、ACLでも`L3`を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。
-
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
-
-<br>
 
 ### セキュリティグループ (インバウンド) による防御
 
@@ -289,8 +295,6 @@ VPCエンドポイントのセキュリティグループでは、VPCのCIDRか�
 
 <br>
 
-<br>
-
 ### セキュリティグループ (アウトバウンド) による防御
 
 #### ▼ ALBの場合
@@ -305,11 +309,19 @@ ALBからEC2にリクエストをルーティングする場合、特定のEC2�
 
 <br>
 
+## 03-03. Transit Gateway
+
+### Transit Gatewayによる防御
+
+AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。
+
+<br>
+
 ## 04. `L7`の防御
 
 ### `L7`の防御方法
 
-`L7`の攻撃は、WAFやCertificate Managerで防御する。
+`L7`の攻撃をWAFやCertificate Managerで防御する。
 
 代わりに、アプリケーションの実装で防御しても良い。
 
@@ -319,7 +331,7 @@ ALBからEC2にリクエストをルーティングする場合、特定のEC2�
 
 ## 04-02. WAF
 
-### WAF
+### WAFによる防御
 
 `L7`の攻撃を防御する。
 
@@ -450,19 +462,21 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 <br>
 
-## 04-03. Certificate Managerによる防御
+## 04-03. Certificate Manager
+
+### Certificate Managerによる防御
 
 パケットペイロードの暗号化のために、Certificate Manager (`L7`) を使用する。
 
 リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKS、など) に紐づけられる。
 
-また、AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。
-
 > - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
-## 04-04. Systems Managerによる防御
+## 04-04. Systems Manager
+
+### Systems Managerによる防御
 
 開発者がEC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。
 
