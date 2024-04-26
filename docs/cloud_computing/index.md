@@ -61,7 +61,7 @@
   > * ##### [WorkMail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_work_mail.html)
   > * ##### [X-Ray](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_xray.html)
 * #### <u>プラクティス集</u>
-  > * ##### [︎可用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_availability.html)
+  > * ##### [︎運用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_operability.html)
   > * ##### [︎信頼性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_reliability.html)
   > * ##### [︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security.html)
   > * ##### [︎コスト最適化](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_cost_optimization.html)
