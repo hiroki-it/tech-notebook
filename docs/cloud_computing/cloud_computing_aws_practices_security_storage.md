@@ -21,18 +21,24 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 カスタマー管理型KMSを使用し、KMSを操作できるユーザーを制限しています。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
+
 <br>
 
 ### 永続化データ
 
 永続化データの暗号化のために、AuroraではKMSを採用する。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
+
 <br>
 
 ### アプリの作成するファイル
 
-アプリの作成するファイル (CSV、EML) や圧縮フォルダ (ZIP) の暗号化のために、S3ではサーバーサイド暗号化を採用する。
+アプリの作成するファイル (`csv`ファイル、`eml`ファイル) や圧縮フォルダ (`zip`ファイル) の暗号化のために、S3ではサーバーサイド暗号化を採用する。
 
 また、全てのS3バケットでパブリックアクセスを無効化する。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
 
 <br>

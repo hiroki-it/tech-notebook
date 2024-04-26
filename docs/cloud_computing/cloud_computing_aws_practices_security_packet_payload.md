@@ -48,6 +48,8 @@ AWSリソースごとにセキュリティを考慮する。
 
 なお、パブリックサブネットにはEC2は置かない。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+
 <br>
 
 ### 推奨されるCIDRブロック
@@ -213,6 +215,8 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 なお、ACLでも`L3`を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+
 <br>
 
 ### セキュリティグループ (インバウンド) による防御
@@ -309,9 +313,19 @@ ALBからEC2にリクエストをルーティングする場合、特定のEC2�
 
 代わりに、アプリケーションの実装で防御しても良い。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+
 <br>
 
 ## 04-02. WAF
+
+### WAF
+
+`L7`の攻撃を防御する。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+
+<br>
 
 ### WAFルールによる防御
 
@@ -444,8 +458,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 また、AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。
 
-> - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-in-transit
-> - https://qiita.com/omorim/items/72990ae3f65e79ffbe8f
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -454,5 +467,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 開発者がEC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。
 
 SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>

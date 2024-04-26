@@ -21,9 +21,17 @@ description: 運用性＠AWSの知見を記録しています。
 
 例えば、BIツール (例：Redash) を採用し、SQLから取得したデータ (例：取引履歴) をメトリクスとしています。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
+
 <br>
 
 ### システム監視
+
+#### ▼ システム監視
+
+システムに関するメトリクスを監視する。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
 
 #### ▼ ユーザー定義の名前空間
 

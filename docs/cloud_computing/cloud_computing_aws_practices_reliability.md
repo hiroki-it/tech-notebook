@@ -19,6 +19,8 @@ description: 信頼性＠AWSの知見を記録しています。
 
 インシデント管理ツール (例：PagerDuty) を採用し、障害を担当者に迅速に通知する。
 
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/rel-failmgmt.html
+
 <br>
 
 ### 冗長化
@@ -80,6 +82,8 @@ Auto Scaling Groupでは、EC2のハードウェアリソース (CPU、メモリ
 『BCPリージョン』ともいう。
 
 メインリージョンで災害が起こった場合に、システムの障害にならないように、災害復旧用リージョンを用意しておく。
+
+> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/rel-failmgmt.html
 
 <br>
 
