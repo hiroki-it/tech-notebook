@@ -11743,11 +11743,11 @@
   
   
     <li class="md-nav__item">
-      <a href="cloud_computing_aws_practices_availability.html" class="md-nav__link">
+      <a href="cloud_computing_aws_practices_operability.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    可用性
+    運用性
   </span>
   
 
@@ -11842,17 +11842,200 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-web" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. webアプリケーションファイアウォール設計
+      01. ネットワークレイヤー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. webアプリケーションファイアウォール設計">
+    <nav class="md-nav" aria-label="01. ネットワークレイヤー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#osiaws" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI層とAWSリソースの対応関係
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. L2の防御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. L2の防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      L2の防御方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      推奨されるCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPCの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VPCの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpccidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ VPC全体のCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      サブネットの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="サブネットの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サブネット分割のメリット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 各サブネットのCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセスタイプ別の命名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンポーネントタイプ別の命名
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ルートテーブルの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートテーブルの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-03. L3の防御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. L3の防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      L3の防御方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       セキュリティグループ (インバウンド) の設計
     </span>
@@ -11930,7 +12113,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       セキュリティグループ (アウトバウンド) の設計
     </span>
@@ -11959,14 +12142,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-waf" class="md-nav__link">
+  <a href="#01-04-l7" class="md-nav__link">
     <span class="md-ellipsis">
-      02. クラウド型WAFの設計
+      01-04. L7の防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. クラウド型WAFの設計">
+    <nav class="md-nav" aria-label="01-04. L7の防御">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l7" class="md-nav__link">
+    <span class="md-ellipsis">
+      L7の防御方法
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#waf" class="md-nav__link">
@@ -11979,7 +12171,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ユーザーエージェント拒否
     </span>
@@ -11997,7 +12189,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 特定のパスを社内アクセスに限定
     </span>
@@ -12006,7 +12198,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 社内アクセスに限定
     </span>
@@ -12039,7 +12231,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドルールの動作確認の必要性
     </span>
@@ -12048,7 +12240,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブラウザを送信元とした場合
     </span>
@@ -12057,7 +12249,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 連携するアプリケーションを送信元とした場合
     </span>
@@ -12086,7 +12278,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       パケットペイロードの暗号化
     </span>
@@ -12095,7 +12287,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       保管データの暗号化
     </span>
@@ -22117,17 +22309,200 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-web" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. webアプリケーションファイアウォール設計
+      01. ネットワークレイヤー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. webアプリケーションファイアウォール設計">
+    <nav class="md-nav" aria-label="01. ネットワークレイヤー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#osiaws" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSI層とAWSリソースの対応関係
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-02. L2の防御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. L2の防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      L2の防御方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      推奨されるCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      VPCの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VPCの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpccidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ VPC全体のCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      サブネットの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="サブネットの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サブネット分割のメリット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cidr_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 各サブネットのCIDRブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アクセスタイプ別の命名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンポーネントタイプ別の命名
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ルートテーブルの設計
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートテーブルの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      01-03. L3の防御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. L3の防御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      L3の防御方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       セキュリティグループ (インバウンド) の設計
     </span>
@@ -22205,7 +22580,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       セキュリティグループ (アウトバウンド) の設計
     </span>
@@ -22234,14 +22609,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-waf" class="md-nav__link">
+  <a href="#01-04-l7" class="md-nav__link">
     <span class="md-ellipsis">
-      02. クラウド型WAFの設計
+      01-04. L7の防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. クラウド型WAFの設計">
+    <nav class="md-nav" aria-label="01-04. L7の防御">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l7" class="md-nav__link">
+    <span class="md-ellipsis">
+      L7の防御方法
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#waf" class="md-nav__link">
@@ -22254,7 +22638,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ユーザーエージェント拒否
     </span>
@@ -22272,7 +22656,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 特定のパスを社内アクセスに限定
     </span>
@@ -22281,7 +22665,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 社内アクセスに限定
     </span>
@@ -22314,7 +22698,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ マネージドルールの動作確認の必要性
     </span>
@@ -22323,7 +22707,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ブラウザを送信元とした場合
     </span>
@@ -22332,7 +22716,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 連携するアプリケーションを送信元とした場合
     </span>
@@ -22361,7 +22745,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       パケットペイロードの暗号化
     </span>
@@ -22370,7 +22754,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       保管データの暗号化
     </span>
@@ -22410,8 +22794,325 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-web">01. webアプリケーションファイアウォール設計<a class="headerlink" href="#01-web" title="Permanent link">&para;</a></h2>
-<h3 id="_2">セキュリティグループ (インバウンド) の設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="01">01. ネットワークレイヤー<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="osiaws">OSI層とAWSリソースの対応関係<a class="headerlink" href="#osiaws" title="Permanent link">&para;</a></h3>
+<p>OSI層とAWSリソースの対応関係を以下に示す。</p>
+<p>AWSリソースごとにセキュリティを考慮する。</p>
+<table>
+<thead>
+<tr>
+<th>OSI層</th>
+<th>OSI層の番号</th>
+<th>対応するAWSリソース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリケーション層</td>
+<td><code>L7</code></td>
+<td>ALB、EC2、RDS、Route53、S3</td>
+</tr>
+<tr>
+<td>プレゼンテーション層</td>
+<td><code>L6</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>セッション層</td>
+<td><code>L5</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>トランスポート層</td>
+<td><code>L4</code></td>
+<td>セキュリティグループ、NLB</td>
+</tr>
+<tr>
+<td>ネットワーク層</td>
+<td><code>L3</code></td>
+<td>Internet Gateway、NAT Gateway、Transit Gateway</td>
+</tr>
+<tr>
+<td>データリンク層</td>
+<td><code>L2</code></td>
+<td>VPC、サブネット</td>
+</tr>
+<tr>
+<td>物理層</td>
+<td><code>L1</code></td>
+<td>仮想化のため、意識しなくても良い。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html">https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html</a></li>
+<li><a href="https://aws.amazon.com/jp/elasticloadbalancing/features/">https://aws.amazon.com/jp/elasticloadbalancing/features/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02-l2">01-02. <code>L2</code>の防御<a class="headerlink" href="#01-02-l2" title="Permanent link">&para;</a></h2>
+<h3 id="l2"><code>L2</code>の防御方法<a class="headerlink" href="#l2" title="Permanent link">&para;</a></h3>
+<p><code>L2</code>の攻撃は、VPCやプライベートサブネットで防御する。</p>
+<p>例えば、システムのコンポーネントごとに異なるプライベートサブネット (アプリ、DB、外部オンプレシステムへのプロキシ) を設ける。</p>
+<p>これにより、いずれかのコンポーネントに侵入されても、他コンポーネントへの侵入を最小限に防げる。</p>
+<p>なお、パブリックサブネットにはEC2は置かない。</p>
+<p><br></p>
+<h3 id="cidr">推奨されるCIDRブロック<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
+<p><code>1</code>個のVPC内には複数のサブネットが入る。</p>
+<p>そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。</p>
+<p>また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、VPC内でIPアドレスが枯渇しないようにする。</p>
+<p>RFC1918では、以下のCIDRブロックが推奨である。</p>
+<table>
+<thead>
+<tr>
+<th>RFC1918推奨のCIDRブロック</th>
+<th>IPアドレス</th>
+<th>個数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.0.0.0/8</code></td>
+<td><code>10.0.0.0</code>～<code>10.255.255.255</code></td>
+<td><code>16777216</code></td>
+</tr>
+<tr>
+<td><code>172.16.0.0/12</code></td>
+<td><code>172.16.0.0</code>～<code>172.31.255.255</code></td>
+<td><code>1048576</code></td>
+</tr>
+<tr>
+<td><code>192.168.0.0/16</code></td>
+<td><code>192.168.0.0</code>～<code>192.168.255.255</code></td>
+<td><code>65536</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://note.com/takashi_sakurada/n/n502fb0299938">https://note.com/takashi_sakurada/n/n502fb0299938</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/aig/06network/privateip.html">https://atmarkit.itmedia.co.jp/aig/06network/privateip.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="vpc">VPCの設計<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h3>
+<h4 id="vpccidr">▼ VPC全体のCIDRブロック<a class="headerlink" href="#vpccidr" title="Permanent link">&para;</a></h4>
+<p>あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。</p>
+<p>この時、CIDRブロックと、これの開始IPアドレスと終了IPアドレスをメモしておくと良い。</p>
+<p>各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。</p>
+<p>拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。</p>
+<p>例えば、以前に開発したアプリケーションが<code>10.200.47.0</code>までを使用していた場合、<code>10.200.48.0</code>から使用を始める。</p>
+<p>また、VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>*.*.*.*/28</code>) であり、実際は<code>512</code>個 (<code>*.*.*.*/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_2">サブネットの設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ サブネット分割のメリット<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>サブネットを分割することにより、他のサブネットのネットワーク障害の影響を防いだり、サブネット間のアクセスを制限できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.dot-plus.com/cloud-service/aws/2611/">https://www.dot-plus.com/cloud-service/aws/2611/</a></li>
+</ul>
+</blockquote>
+<h4 id="cidr_1">▼ 各サブネットのCIDRブロック<a class="headerlink" href="#cidr_1" title="Permanent link">&para;</a></h4>
+<p>VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。</p>
+<p>この時、VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。</p>
+<p>例えば、VPCの最初のIPアドレスを<code>10.0.0.0</code>とした場合は、1つ目のパブリックサブネットのサブネットマスクは、<code>10.0.0.0</code>から始める。</p>
+<p>パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。</p>
+<p>例えば、VPCのサブネットマスクを<code>/16</code> としている場合は、各サブネットのサブネットマスクは<code>/24</code>とする。</p>
+<p>一方で、VPCを<code>/23</code>としている場合は、各サブネットは<code>/27</code>とする。</p>
+<p>また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、代わりとして、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。</p>
+<table>
+<thead>
+<tr>
+<th>AWSリソース</th>
+<th>最低限のIPアドレス数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALB</td>
+<td>ALB当たり<code>8</code>個</td>
+</tr>
+<tr>
+<td>AutoScaling</td>
+<td>自動水平スケーリング時のEC2最大数と同じ個数</td>
+</tr>
+<tr>
+<td>VPCエンドポイント</td>
+<td>VPCエンドポイント当たり、IPアドレス<code>1</code>個</td>
+</tr>
+<tr>
+<td>ECS、EKS</td>
+<td>Elastic Network Interface 数と同じ個数</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Elastic Network Interface 数と同じ個数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf">https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf</a></li>
+<li><a href="https://dev.classmethod.jp/articles/amazon-vpc-5-tips/">https://dev.classmethod.jp/articles/amazon-vpc-5-tips/</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ アクセスタイプ別の命名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>パブリックネットワークとの通信の遮断具合から名前をつける。</p>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>種類</th>
+<th>役割</th>
+<th>配置例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>publicサブネット</td>
+<td>パブリック</td>
+<td>非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのリクエストを待ち受ける。</td>
+<td>ALB、NAT Gateway</td>
+</tr>
+<tr>
+<td>protectedサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのリクエストのみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
+<td>EC2、Fargate</td>
+</tr>
+<tr>
+<td>privateサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのリクエストのみを待ち受ける。また、リクエストを送信しない。</td>
+<td>RDS、Redis</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="subnet_accsess-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://mihono-bourbon.com/aws-network-1/">https://mihono-bourbon.com/aws-network-1/</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ コンポーネントタイプ別の命名<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></p>
+<p>配置するコンポーネントの種類に関する名前をつける。</p>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>種類</th>
+<th>役割</th>
+<th>配置例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frontendサブネット</td>
+<td>パブリック</td>
+<td>非武装地帯として動作する。<code>L7</code>ロードバランサー、ルーター、踏み台サーバー、を配置する。</td>
+<td>ALB、NAT Gateway</td>
+</tr>
+<tr>
+<td>applicationサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。appサーバー、リバースプロキシサーバー、を配置する。</td>
+<td>EC2、Fargate</td>
+</tr>
+<tr>
+<td>datastoreサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。dbサーバーを配置する。</td>
+<td>RDS、Redis</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/create_nat_gateway/">https://dev.classmethod.jp/articles/create_nat_gateway/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">ルートテーブルの設計<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="route-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png" /></p>
+<h4 id="_7">▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット<code>3</code>にはルートテーブル<code>2</code>が紐付けられている。</p>
+<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>一方で、<code>0.0.0.0/0</code> (local以外の全IPアドレス) の範囲内にあれば、リクエストと見なし、Internet Gatewayを宛先に選択する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0.0.0.0/0</code></td>
+<td style="text-align: center;">Internet Gateway</td>
+</tr>
+</tbody>
+</table>
+<h4 id="vpc_1">▼ プライベートサブネットのリクエストをVPC内に閉じる場合<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット<code>2</code>にはルートテーブル1が紐付けられている。</p>
+<p>サブネット<code>2</code>内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>一方で、範囲外にあれば通信を破棄する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_8">▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットのCIDRブロックを設定する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/24</code> (サブネット<code>1</code>のCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://koejima.com/archives/1950/">https://koejima.com/archives/1950/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-03-l3">01-03. <code>L3</code>の防御<a class="headerlink" href="#01-03-l3" title="Permanent link">&para;</a></h2>
+<h3 id="l3"><code>L3</code>の防御方法<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h3>
+<p><code>L3</code>の攻撃は、セキュリティグループで防御する。</p>
+<p>例えば、EKSのNodeグループごとに異なるセキュリティグループを紐づけている。</p>
+<p>ネットワークに公開するNodeグループのセキュリティグループでは、特定の送信元IPアドレスからのアクセスのみを許可する。</p>
+<p>公開しないNodeグループでは、他のNodeグループのEC2からのみアクセスを許可する。</p>
+<p>これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる</p>
+<p>なお、ACLでも<code>L3</code>を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。</p>
+<p><br></p>
+<h3 id="_9">セキュリティグループ (インバウンド) の設計<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="ec2">▼ アプリケーションEC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
 <p>ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
@@ -22566,7 +23267,7 @@
 <p>NLBはセキュリティグループに対応していない。</p>
 <p>そのため、NLBのルーティング先 (EC2、など) でファイアーウォールを設定する必要がある。</p>
 <p><br></p>
-<h3 id="_3">セキュリティグループ (アウトバウンド) の設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_10">セキュリティグループ (アウトバウンド) の設計<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="alb_1">▼ ALBの場合<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
 <p>ALBからEC2にリクエストをルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。</p>
 <table>
@@ -22595,9 +23296,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-waf">02. クラウド型WAFの設計<a class="headerlink" href="#02-waf" title="Permanent link">&para;</a></h2>
+<h2 id="01-04-l7">01-04. <code>L7</code>の防御<a class="headerlink" href="#01-04-l7" title="Permanent link">&para;</a></h2>
+<h3 id="l7"><code>L7</code>の防御方法<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
+<p><code>L7</code>の攻撃は、WAFで防御する。</p>
+<p>代わりに、アプリケーションの実装で防御しても良い。</p>
+<p><br></p>
 <h3 id="waf">WAFルールの設計<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ ユーザーエージェント拒否<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ ユーザーエージェント拒否<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>悪意のあるユーザーエージェントを拒否する。</p>
 <p>ルール：<code>block-user-agents</code></p>
@@ -22683,7 +23388,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_5">▼ 特定のパスを社内アクセスに限定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 特定のパスを社内アクセスに限定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>アプリケーションでは、特定のURLパスにリクエストを送信できる送信元IPアドレスを社内だけに制限する。</p>
 <p><code>2</code>個のルールを作成する必要がある。</p>
@@ -22763,7 +23468,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="_6">▼ 社内アクセスに限定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_13">▼ 社内アクセスに限定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>アプリケーション全体にリクエストを送信できる送信元IPアドレスを、特定のIPアドレスだけに制限する。</p>
 <p>ルール：<code>allow-global-ip-addresses</code></p>
@@ -22861,10 +23566,10 @@
 </table>
 <p><br></p>
 <h3 id="waf_1">WAFマネージドルールの設計<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ マネージドルールの動作確認の必要性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ マネージドルールの動作確認の必要性<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>マネージドルールを導入する時は、事前にルールのカウントを使用することが推奨である。</p>
 <p>カウントで検知されたリクエストのほとんどが悪意のないものであれば、設定したマネージドルールの使用をやめる必要がある。</p>
-<h4 id="_8">▼ ブラウザを送信元とした場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ ブラウザを送信元とした場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>ブラウザを送信元とした場合、リクエストのヘッダーやボディはブラウザによって作成されるため、これに基づいた判断が必要である。</p>
 <ul>
 <li>ブラウザからのリクエスト自体が悪意判定されているか否か</li>
@@ -22872,11 +23577,11 @@
 <li>送信元の国名が『日本』であるのにも関わらず、悪意判定されているか否か</li>
 <li>サイトに送信された全リクエストのうち、カウントで検知されたリクエスト数が多すぎないか否か</li>
 </ul>
-<h4 id="_9">▼ 連携するアプリケーションを送信元とした場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_16">▼ 連携するアプリケーションを送信元とした場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>アプリケーションを送信元とした場合、リクエストのヘッダーやボディは連携するアプリケーションによって作成されるため、これに基づいた判断が必要である。</p>
 <p><br></p>
 <h2 id="03">03. 暗号化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_10">パケットペイロードの暗号化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_17">パケットペイロードの暗号化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>パケットペイロードの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
 <p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKS、など) に紐づけられる。</p>
 <p>また、AWSデータセンター間の通信で使用するTransit Gatewayであれば、パケットの物理レイヤーを暗号化できる。</p>
@@ -22887,7 +23592,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_11">保管データの暗号化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_18">保管データの暗号化<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>保管データの暗号化のために、KMSやCloud HSMを使用する。</p>
 <p>データを保管するAWSリソース (例：Aurora RDS、EBS、S3、Secret Manager、など) に紐づけられる。</p>
 <blockquote>
@@ -22916,7 +23621,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
   </span>
 
     

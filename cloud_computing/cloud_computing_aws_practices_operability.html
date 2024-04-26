@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="可用性＠AWSの知見を記録しています。">
+        <meta name="description" content="運用性＠AWSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_availability.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_operability.html">
       
       
         <link rel="prev" href="cloud_computing_aws_resource_xray.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】可用性＠AWS - 俺の技術ノート</title>
+        <title>【IT技術の知見】運用性＠AWS - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】可用性＠AWS
+              【IT技術の知見】運用性＠AWS
             
           </span>
         </div>
@@ -11756,18 +11756,18 @@
           
   
   <span class="md-ellipsis">
-    可用性
+    運用性
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="cloud_computing_aws_practices_availability.html" class="md-nav__link md-nav__link--active">
+      <a href="cloud_computing_aws_practices_operability.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    可用性
+    運用性
   </span>
   
 
@@ -11800,28 +11800,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-dr" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01. DRリージョン
+      02. 監視
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. DRリージョン">
+    <nav class="md-nav" aria-label="02. 監視">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dr-bcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      DRリージョン (BCPリージョン) とは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      バックアップリストア構成
+      ビジネス監視
     </span>
   </a>
   
@@ -11830,27 +11821,96 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      パイロットライト構成
+      システム監視
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="システム監視">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ウォームスタンバイ構成
+      ▼ ユーザー定義の名前空間
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#alb" class="md-nav__link">
     <span class="md-ellipsis">
-      マルチサイトアクティブ構成
+      ▼ ALB
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ API Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ECS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticache-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ElastiCache Redis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RDS (Aurora)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RDS (非Aurora)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ S3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -21910,28 +21970,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-dr" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      01. DRリージョン
+      02. 監視
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. DRリージョン">
+    <nav class="md-nav" aria-label="02. 監視">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dr-bcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      DRリージョン (BCPリージョン) とは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      バックアップリストア構成
+      ビジネス監視
     </span>
   </a>
   
@@ -21940,27 +21991,96 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      パイロットライト構成
+      システム監視
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="システム監視">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ウォームスタンバイ構成
+      ▼ ユーザー定義の名前空間
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#alb" class="md-nav__link">
     <span class="md-ellipsis">
-      マルチサイトアクティブ構成
+      ▼ ALB
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ API Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ EC2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ECS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticache-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ElastiCache Redis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RDS (Aurora)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RDS (非Aurora)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ S3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -21987,7 +22107,7 @@
   
 
 
-<h1 id="aws">可用性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
+<h1 id="aws">運用性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -21996,70 +22116,433 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-dr">01. DRリージョン<a class="headerlink" href="#01-dr" title="Permanent link">&para;</a></h2>
-<h3 id="dr-bcp">DRリージョン (BCPリージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
-<p>『BCPリージョン』ともいう。</p>
-<p>メインリージョンで障害が起こった場合に、システムの利用可能な時間をできるだけ長くできる (可用性を高められる) ように、災害復旧用リージョンを用意しておく。</p>
+<h2 id="02">02. 監視<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">ビジネス監視<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>ビジネス成果に関するメトリクスを監視する。</p>
+<p>例えば、BIツール (例：Redash) を採用し、SQLから取得したデータ (例：取引履歴) をメトリクスとしています。</p>
 <p><br></p>
-<h3 id="_2">バックアップリストア構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_backup-restore" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png" /></p>
-<p>DRリージョンにメインリージョンのAWSリソース (例：EBSボリューム、RDS) のスナップショットを定期的に作成しておく。</p>
-<p>メインリージョンで障害が起こった場合は、スナップショットを使用して、DRリージョンにAWSリソースを復元する。</p>
-<p>DRリージョンの準備が完了次第、リクエストをDRリージョンにルーティング可能にする。</p>
-<p>障害が起こってから対応することが多いため、RTOが長くなってしまう。</p>
-<p>RPOは最後のバックアップ時点である。</p>
-<p>一方で金銭的コストが低い。</p>
+<h3 id="_3">システム監視<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ユーザー定義の名前空間<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>名前空間ユーザー定義としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;任意のプレフィクス&gt;LogMetrics</code></td>
+<td>カウント</td>
+<td>ログステータスの検出数をデータポイントとする。メトリクスと検出ルールはフィルターパターンで作成できる。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="alb">▼ ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
+<p>名前空間をALBとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPCode_ELB_4XX_Count</code></td>
+<td>カウント</td>
+<td>ALBが原因で返信した<code>400</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HTTPCode_ELB_5XX_Count</code></td>
+<td>カウント</td>
+<td>ALBが原因で返信した<code>500</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HealthyHostCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内の正常なターゲットの数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>UnHealthyHostCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内の異常なターゲットの数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HTTPCode_TARGET_4XX_Count</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットが<code>400</code>ステータスコードを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HTTPCode_TARGET_5XX_Count</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットが<code>500</code>ステータスコードを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 :<code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>RejectedConnectionCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットから接続拒否された数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TargetConnectionErrorCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TargetTLSNegotiationErrorCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットへのHTTPSプロトコルでエラーが発生した数をデータポイントとする。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
-<li><a href="https://aws.amazon.com/jp/cdp/cdp-dr/">https://aws.amazon.com/jp/cdp/cdp-dr/</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_3">パイロットライト構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_pilot-light" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png" /></p>
-<p>DRリージョンに低スペックなDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでDB以外のインフラコンポーネント (例：アプリケーション部分など) を作成し、またDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、リクエストをDRリージョンにルーティング可能にする。</p>
-<p>障害が起こってから対応することが多いため、RTOがやや長くなってしまう。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で金銭的コストが低い。</p>
+<h4 id="api-gateway">▼ API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h4>
+<p>名前空間をAPI Gatewayとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IntegrationLatency</code></td>
+<td>マイクロ秒</td>
+<td>API Gatewayがリクエストをバックエンドにルーティングしてから、バックエンドからレスポンスを受信するまでの時間をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Latency</code></td>
+<td>マイクロ秒</td>
+<td>API Gatewayがクライアントからリクエストを受信してから、クライアントにこれを返信するまでの時間をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>4XXError</code></td>
+<td>カウント</td>
+<td><code>400</code>系ステータスコードの数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>5XXError</code></td>
+<td>カウント</td>
+<td><code>500</code>系ステータスコードの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_4">ウォームスタンバイ構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_warm-standby" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png" /></p>
-<p>DRリージョンにメインリージョンよりも低スペックなアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでアプリケーションとDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、リクエストをDRリージョンにルーティング可能にする。</p>
-<p>障害が起こった後、スペックを向上させ、またルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で、金銭的コストが高い。</p>
+<h4 id="ec2">▼ EC2<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<p>名前空間をEC2としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>EC2で使用されているCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+</tr>
+<tr>
+<td><code>MemoryUtilization</code></td>
+<td>%</td>
+<td>EC2で使用されているメモリ使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+</tr>
+<tr>
+<td><code>StatusCheckFailed_Instance</code></td>
+<td>カウント</td>
+<td>インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>StatusCheckFailed_System</code></td>
+<td>カウント</td>
+<td>インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_5">マルチサイトアクティブ構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_multi-site-active" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png" /></p>
-<p>DRリージョンにメインリージョンと同等なアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、リクエストをDRリージョンにルーティング可能にする。</p>
-<p>障害が起こった後、ルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で、金銭的コストが高い。</p>
+<p>似たメトリクスに<code>StatusCheckFailed_System</code>や<code>StatusCheckFailed_Instance</code>がある。</p>
+<p>これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。</p>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html">https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html</a></li>
 </ul>
 </blockquote>
+<h4 id="ecs">▼ ECS<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
+<p>名前空間をECSクラスターまたはECSサービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>ECSクラスターまたはサービスで使用されているCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MemoryUtilization</code></td>
+<td>%</td>
+<td>ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>RunningTaskCount</code></td>
+<td>カウント</td>
+<td>稼働中のECSタスク数をデータポイントとする。</td>
+<td></td>
+<td>ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="elasticache-redis">▼ ElastiCache Redis<a class="headerlink" href="#elasticache-redis" title="Permanent link">&para;</a></h4>
+<p>名前空間をRedisとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BytesUsedForCache</code></td>
+<td>バイト数</td>
+<td>Redisで使用されているメモリ使用サイズをデータポイントとする。</td>
+<td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 8</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>ノードのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Evictions</code></td>
+<td>カウント</td>
+<td>空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapUsage</code></td>
+<td>バイト数</td>
+<td>ストレージ上のスワップ領域の使用サイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 50</code>GB</td>
+<td>使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br><a href="https://zenn.dev/dehio3/scraps/710a9714ce9496">https://zenn.dev/dehio3/scraps/710a9714ce9496</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html</a></li>
+</ul>
+</blockquote>
+<h4 id="rds-aurora">▼ RDS (Aurora)<a class="headerlink" href="#rds-aurora" title="Permanent link">&para;</a></h4>
+<p>名前空間をRDS (Aurora) としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BlockedTransactions</code></td>
+<td>カウント</td>
+<td>秒当たりトランザクションの拒否の回数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>Aurora DBインスタンスのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DatabaseConnections</code></td>
+<td>カウント</td>
+<td>Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>クライアントがDBにリクエストしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>Deadlocks</code></td>
+<td>カウント</td>
+<td>秒当たりデッドロック平均数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EngineUptime</code></td>
+<td>秒</td>
+<td>インスタンスの起動時間をデータポイントとする。</td>
+<td></td>
+<td>ダウンタイムの最低発生時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>DMLLatency</code></td>
+<td>マイクロ秒</td>
+<td>Aurora DBインスタンスに対するDML系クエリの遅延秒数をデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FreeableMemory</code></td>
+<td>バイト数</td>
+<td>Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FreeLocalStorage</code></td>
+<td>バイト数</td>
+<td>Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 10</code>GB</td>
+<td>DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
+</tr>
+<tr>
+<td><code>LoginFailures</code></td>
+<td>カウント</td>
+<td>Aurora DBへのログインの失敗回数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html</a></li>
+</ul>
+</blockquote>
+<h4 id="rds-aurora_1">▼ RDS (非Aurora)<a class="headerlink" href="#rds-aurora_1" title="Permanent link">&para;</a></h4>
+<p>名前空間をRDS (非Aurora) としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>DBインスタンスのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DatabaseConnections</code></td>
+<td>カウント</td>
+<td>DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>クライアントがDBにリクエストしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>FreeableMemory</code></td>
+<td>バイト数</td>
+<td>DBインスタンスの使用できるメモリサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="s3">▼ S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h4>
+<p>名前空間をS3としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5xxErrors</code></td>
+<td>カウント</td>
+<td>S3バケットが原因で返信した<code>500</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 
 
@@ -22081,7 +22564,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-27</span>
   </span>
 
     
