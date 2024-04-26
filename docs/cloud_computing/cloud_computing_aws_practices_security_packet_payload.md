@@ -448,3 +448,11 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 > - https://qiita.com/omorim/items/72990ae3f65e79ffbe8f
 
 <br>
+
+## 04-04. Systems Managerによる防御
+
+開発者がEC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。
+
+SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。
+
+<br>

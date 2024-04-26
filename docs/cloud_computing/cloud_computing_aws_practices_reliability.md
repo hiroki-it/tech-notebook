@@ -13,7 +13,67 @@ description: 信頼性＠AWSの知見を記録しています。
 
 <br>
 
-## 01. 災害
+## 01. 障害の対策
+
+### インシデント管理
+
+インシデント管理ツール (例：PagerDuty) を採用し、障害を担当者に迅速に通知する。
+
+<br>
+
+### 冗長化
+
+#### ▼ マルチAZ
+
+マルチAZを採用する。
+
+それぞれのAZにEC2/ECSを冗長化する。
+
+特定のAZで障害が発生した場合、ALBを起点にして、インバウンド通信の向き先を正常なAZのEC2/ECSに切り替える。
+
+#### ▼ NAT Gateway
+
+NAT Gatewayを冗長化する。
+
+NAT GatewayをAZで冗長化し、特定のAZで障害が起こっても、他のAZのアウトバウンド通信に影響しないようにする。
+
+#### ▼ Auto Scaling Group
+
+Auto Scaling Groupを採用する。
+
+EC2で障害が発生した場合、ALBを起点にして、正常なEC2に切り替える。
+
+#### ▼ Managed Node Group
+
+Managed Node Groupを採用する。
+
+EKS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なEC2に切り替える。
+
+#### ▼ Aurora
+
+Auroraでフェイルオーバーを採用する。
+
+プライマリーインスタンスで障害が発生した場合、フェイルオーバーにより、リードレプリカがプライマリーインスタンスに昇格します。
+
+<br>
+
+### スケーリング
+
+#### ▼ Managed Node Group
+
+EKS EC2 Nodeのスケールアップには、Cluster Autoscaler、Managed Node Group、を採用する。
+
+Cluster AutoscalerとManaged Node Group、では、PodによるEC2 Nodeの負荷に応じてEC2 Nodeをスケーリングする。
+
+#### ▼ Auto Scaling Group
+
+EC2のスケールアップには、Auto Scaling Group、を採用する。
+
+Auto Scaling Groupでは、EC2のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。
+
+<br>
+
+## 02. 災害の対策
 
 ### DRリージョン (BCPリージョン) とは
 

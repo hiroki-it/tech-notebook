@@ -13,12 +13,26 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 <br>
 
-## 01. KMS、Cloud HSM
+## 01. 保管と暗号化
 
-保管データの暗号化のために、KMSやCloud HSMを使用する。
+### 機密データ
 
-データを保管するAWSリソース (例：Aurora RDS、EBS、S3、Secret Manager、など) に紐づけられる。
+機密データの保管と暗号化のために、Secret ManagerとKMSを採用する。
 
-> - https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/encryption-best-practices/general-encryption-best-practices.html#encryption-of-data-at-rest
+カスタマー管理型KMSを使用し、KMSを操作できるユーザーを制限しています。
+
+<br>
+
+### 永続化データ
+
+永続化データの暗号化のために、AuroraではKMSを採用する。
+
+<br>
+
+### アプリの作成するファイル
+
+アプリの作成するファイル (CSV、EML) や圧縮フォルダ (ZIP) の暗号化のために、S3ではサーバーサイド暗号化を採用する。
+
+また、全てのS3バケットでパブリックアクセスを無効化する。
 
 <br>
