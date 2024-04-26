@@ -496,7 +496,8 @@ nav:
           - ■ プラクティス集:
               - 運用性: cloud_computing/cloud_computing_aws_practices_operability.md
               - 信頼性: cloud_computing/cloud_computing_aws_practices_reliability.md
-              - 安全性: cloud_computing/cloud_computing_aws_practices_security.md
+              - パケットペイロード安全性: cloud_computing/cloud_computing_aws_practices_security_packet_payload.md
+              - ストレージ安全性: cloud_computing/cloud_computing_aws_practices_security_storage.md
               - コスト最適化: cloud_computing/cloud_computing_aws_practices_cost_optimization.md
           - ツール: cloud_computing/cloud_computing_aws_tools.md
       - ■ Google Cloud:
