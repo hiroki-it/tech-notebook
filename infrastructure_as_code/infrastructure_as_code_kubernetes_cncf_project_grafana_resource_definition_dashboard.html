@@ -23800,7 +23800,7 @@
 <h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
 <p>PromQLのラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。</p>
 <p>ラベル変数でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。</p>
-<p>例えば、<code>kube_pod_info</code>メトリクスをラベル参照のために使用する場合、これがプルダウンのラベルを持っていなければならない。</p>
+<p>例えば、<code>kube_pod_info</code>メトリクスをラベル参照のために使用する場合、<code>kube_pod_info</code>メトリクスがプルダウンのラベルを持っていなければならない。</p>
 <p>加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。</p>
 <p>例えば、<code>cluster</code>ラベル値でフィルタリングする場合、パネル上のPromQLでも<code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code>と定義しなければならない。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -23912,6 +23912,46 @@
 <span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。</span>
 <span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_pod_info{cluster=\&quot;$cluster\&quot;},</span><span class="nv"> </span><span class="s">namespace)&#39;</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-namespace-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># serviceラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトでは全てのラベル値を選択する</span>
+<span class="w">                </span><span class="c1"># multiラベルの場合は、配列とする</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;All&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;$__all&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数のラベル値を選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;service&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_service_infoメトリクスが各種ラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_service_info{cluster=\&quot;$cluster\&quot;,</span><span class="nv"> </span><span class="s">namespace=\&quot;$namespace\&quot;},</span><span class="nv"> </span><span class="s">pod)&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-pod-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
@@ -24141,7 +24181,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-26</span>
   </span>
 
     
