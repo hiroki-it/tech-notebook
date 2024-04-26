@@ -389,6 +389,7 @@ $ curl http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-m
 
 kube_node_info
 kube_pod_info
+kube_service_info
 
 ...
 ```
