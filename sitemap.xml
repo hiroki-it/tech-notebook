@@ -41,7 +41,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_packet_payload.html</loc>
+         <lastmod>2024-04-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security_storage.html</loc>
          <lastmod>2024-04-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
