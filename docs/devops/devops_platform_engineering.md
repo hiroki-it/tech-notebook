@@ -32,24 +32,30 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 開発チームに対して、サービスとして提供する。
 
 > - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
+> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
 
 #### ▼ 目的
 
 開発チームの体験と生産性向上を高めるためである。
 
 > - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
+> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
 
 #### ▼ 体制
 
-プラットフォームエンジニアリングチームは、技術領域を限定しない。
+プラットフォームエンジニアリングチームは他のチームから独立している。
+
+このチームでは、開発チームに提供する技術の領域を限定しない。
 
 > - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
+> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
 
 #### ▼ サービス形態
 
 社内にPaaS風のセルフサービスを提供する。
 
 > - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
+> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
 
 <br>
 
