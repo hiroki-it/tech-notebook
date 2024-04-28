@@ -25,13 +25,15 @@ description: 運用性＠AWSの知見を記録しています。
 
 > - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
 
-#### ▼ 開発生産性メトリクス
+#### ▼ DevOps成果
 
-以下のメトリクスをQuickSightで監視する。
+以下のメトリクスをDevOps成果の指標として、QuickSightで監視する。
 
-- コード変更量
-- MTTR
-- 故障率
+Code三兄弟のデータポイントを収集し、メトリクスとして分析している。
+
+- リポジトリ別コード変更量 (コミッター、コード変更数)
+- アプリケーション別のMTTR
+- 変更失敗率 (デプロイの失敗頻度)
 - CIの状態 (失敗、成功、実施頻度)
 - CDの状態 (失敗、成功、実施頻度)
 - CICD全体の状態 (失敗、成功、実施頻度)
