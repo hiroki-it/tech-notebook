@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】単体テスト＠PHPのテストツール
-description: 単体テスト＠PHPのテストツールの知見を記録しています。
+title: 【IT技術の知見】PHPUnit＠PHP単体テスト
+description: PHPUnit＠PHP単体テストの知見を記録しています。
 ---
 
-# 単体テスト＠PHPのテストツール
+# PHPUnit＠PHP単体テスト
 
 ## はじめに
 
@@ -13,17 +13,15 @@ description: 単体テスト＠PHPのテストツールの知見を記録して�
 
 <br>
 
-## 01. PHPUnit
-
-### PHPUnitとは
+## 01. PHPUnitとは
 
 単体テストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
 
 <br>
 
-### コマンド
+## 02. コマンド
 
-#### ▼ オプション無し
+### オプション無し
 
 全てのテストファイルを対象として、定義されたメソッドを実行する。
 
@@ -38,7 +36,9 @@ Time: 621 ms, Memory: 24.00 MB
 OK (3 tests, 3 assertions)
 ```
 
-#### ▼ --filter
+<br>
+
+### --filter
 
 特定のテストファイルを対象として、定義されたメソッドを実行する。
 
@@ -53,7 +53,9 @@ Time: 207 ms, Memory: 8.00 MB
 OK (1 tests, 1 assertions)
 ```
 
-#### ▼ --list-tests
+<br>
+
+### --list-tests
 
 テストファイルの一覧を取得する。
 
@@ -68,9 +70,9 @@ Available test(s):
 
 <br>
 
-### phpunit.xmlファイル
+## 03. phpunit.xmlファイル
 
-#### ▼ `phpunit.xml`ファイルとは
+### `phpunit.xml`ファイルとは
 
 PHPUnitの設定を実行する。
 
@@ -80,7 +82,9 @@ PHPUnitの設定を実行する。
 
 > - http://phpunit.readthedocs.io/ja/latest/configuration.html
 
-#### ▼ `testsuites`タグ
+<br>
+
+### `testsuites`タグ
 
 テストスイートを定義できる。
 
@@ -108,7 +112,9 @@ PHPUnitの設定を実行する。
 
 > - https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
-#### ▼ `php`タグ
+<br>
+
+### `php`タグ
 
 PHPUnitの実行前に設定する`ini_set`関数、`define`関数、グローバル変数、を定義できる。
 
@@ -147,9 +153,9 @@ Composerの実行時にメモリ不足にならないようにメモリを拡張
 
 <br>
 
-### アサーションメソッド
+## 04. アサーションメソッド
 
-#### ▼ アサーションメソッドとは
+### アサーションメソッドとは
 
 実測値と期待値を比較し、結果に応じて`SUCCESS`または`FAILURES`を返却する。
 
@@ -165,7 +171,9 @@ self::assertTrue()
 
 > - https://phpunit.readthedocs.io/ja/latest/assertions.html
 
-#### ▼ assertTrue
+<br>
+
+### assertTrue
 
 実際値が`true`か否かを検証する。
 
@@ -173,7 +181,9 @@ self::assertTrue()
 $this->assertTrue($response->isOk());
 ```
 
-#### ▼ assertEquals
+<br>
+
+### assertEquals
 
 『`==`』を使用して、期待値と実際値の整合性を検証する。
 
@@ -183,7 +193,9 @@ $this->assertTrue($response->isOk());
 $this->assertSame(200, $response->getStatusCode());
 ```
 
-#### ▼ assertSame
+<br>
+
+### assertSame
 
 『`===`』を使用して、期待値と実際値の整合性を検証する。
 
@@ -195,9 +207,9 @@ $this->assertSame(200, $response->getStatusCode());
 
 <br>
 
-### テストデータ
+## 05. テストデータ
 
-#### ▼ Data Provider
+### Data Provider
 
 テスト対象のメソッドの引数を事前に用意する。
 
@@ -248,9 +260,9 @@ class FooTest extends TestCase
 
 <br>
 
-### 事前処理と事後処理
+## 06. 事前処理と事後処理
 
-#### ▼ `setUp`メソッド
+### `setUp`メソッド
 
 事前処理として、全てのテスト関数の前にコールされるメソッドである。
 
@@ -310,7 +322,9 @@ class FooTest extends TestCase
 }
 ```
 
-#### ▼ `tearDown`メソッド
+<br>
+
+### `tearDown`メソッド
 
 事後処理として、全てのテスト関数の後にコールされるメソッドである。
 
@@ -343,9 +357,9 @@ class FooTest extends TestCase
 
 <br>
 
-### テストダブル
+## 07. テストダブル
 
-#### ▼ `createMock`メソッド
+### `createMock`メソッド
 
 クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。
 
@@ -390,7 +404,9 @@ class Foo
 }
 ```
 
-#### ▼ `method`メソッド
+<br>
+
+### `method`メソッド
 
 モックまたはスタブのメソッドに対して、処理の内容を定義する。
 
@@ -424,7 +440,7 @@ class FooTest extends TestCase
 
 <br>
 
-## 01-02. テストケース
+## 08. テストケース
 
 ### 単体テストの場合
 
@@ -829,97 +845,6 @@ class FooControllerTest extends TestCase
             ],
             $actual["errors"]
         );
-    }
-}
-```
-
-<br>
-
-## 02. Phake
-
-### Phakeとは
-
-単体テストに必要なテストダブルを提供する。
-
-> - https://github.com/mlively/Phake#phake
-
-<br>
-
-### テストダブル
-
-#### ▼ `mock`メソッド
-
-クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。
-
-以降の処理での用途によって、モックまたはスタブの呼び名が異なることに注意する。
-
-```php
-<?php
-
-// モックとして使用する擬似オブジェクトを作成する。
-$mock = Phake::mock(Foo::class);
-
-// スタブとして使用する擬似オブジェクトを作成する。
-$stub = Phake::mock(Foo::class);
-```
-
-#### ▼ `when`メソッド
-
-モックまたはスタブのメソッドに対して、処理の内容を定義する。
-
-また、特定の変数が渡された時に、特定の値を返却させられる。
-
-**＊実装例＊**
-
-スタブの`find`メソッドは、`1`が渡された時に、空配列を返却する。
-
-```php
-<?php
-
-// スタブとして使用する擬似オブジェクトを作成する。
-$stub = Phake::mock(Foo::class);
-
-// スタブのメソッドに処理内容を定義する。
-\Phake::when($stub)
-    ->find(1)
-    ->thenReturn([]);
-```
-
-#### ▼ `verify`メソッド
-
-上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックのメソッドが`n`回実行できたことを検証する。
-
-**＊実装例＊**
-
-```php
-<?php
-
-use PHPUnit\Framework\TestCase;
-
-class FooTest extends TestCase
-{
-   /**
-    * @test
-    */
-    public function testFoo_Bar_Baz()
-    {
-        // モックとして使用する擬似オブジェクトを作成する。
-        $mockFooRepository = Phake::mock(FooRepository::class);
-        $fooId = Phake::mock(FooId::class);
-
-        // モックのメソッドに処理内容を定義する。
-        \Phake::when($mockFooRepository)
-            ->find($fooId)
-            ->thenReturn(new User(1));
-
-        // 上層クラスに対して、下層クラスのモックのインジェクションを実行する
-        $foo = new Foo($mockFooRepository);
-
-        // 上層クラスの内部にある下層モックのfindメソッドをコールする
-        $foo->getUser($fooId)
-
-        // 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。
-        Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);
     }
 }
 ```
