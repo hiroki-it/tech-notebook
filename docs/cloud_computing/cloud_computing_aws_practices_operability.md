@@ -15,19 +15,35 @@ description: 運用性＠AWSの知見を記録しています。
 
 ## 02. 監視
 
-### ビジネス監視
+### ビジネス成果の監視
+
+#### ▼ ビジネス成果の監視とは
 
 ビジネス成果に関するメトリクスを監視する。
 
-例えば、BIツール (例：Redash) を採用し、DBから取得したデータ (例：取引履歴) をメトリクスとしています。
+例えば、BIツール (例：Redash) を採用し、DBから取得したデータ (例：取引履歴) をメトリクスとする。
 
 > - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
 
+#### ▼ 開発生産性メトリクス
+
+以下のメトリクスをQuickSightで監視する。
+
+- コード変更量
+- MTTR
+- 故障率
+- CIの状態 (失敗、成功、実施頻度)
+- CDの状態 (失敗、成功、実施頻度)
+- CICD全体の状態 (失敗、成功、実施頻度)
+
+> - https://docs.aws.amazon.com/ja_jp/solutions/latest/devops-monitoring-dashboard-on-aws/devops-metrics-list.html
+> - https://docs.aws.amazon.com/ja_jp/solutions/latest/devops-monitoring-dashboard-on-aws/amazon-quicksight-dashboards-visuals.html
+
 <br>
 
-### システム監視
+### システムの監視
 
-#### ▼ システム監視
+#### ▼ システムの監視とは
 
 システムに関するメトリクスを監視する。
 

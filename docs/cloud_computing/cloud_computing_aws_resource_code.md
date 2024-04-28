@@ -19,7 +19,7 @@ description: Code兄弟＠AWSリソースの知見を記録しています。
 
 #### ▼ CodePipeline
 
-CodeCommit、CodeBuild、CodeDeployを連携させて、AWSに対するCI/CDパイプラインを作成する。
+CodeCommit、CodeBuild、CodeDeploy、を連携させてAWSに対するCI/CDパイプラインを作成する。
 
 CodeCommitは、他のコード管理サービスで代用できる。
 
