@@ -357,10 +357,10 @@ nav:
               - ■ 単体テスト:
                   - PHPUnit: testing/testing_whitebox_application_php_unit_phpunit.md
                   - Phake: testing/testing_whitebox_application_php_unit_phake.md
-              - ■ 単体テスト:
-                  - testify: testing/testing_whitebox_application_go_unit_testify.md
           - ■ Goのテストツール:
               - Goのテストツール: testing/testing_whitebox_application_go.md
+              - ■ 単体テスト:
+                    - testify: testing/testing_whitebox_application_go_unit_testify.md
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
