@@ -54,6 +54,8 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 アプリ/インフラチームにPaaS風のセルフサービスを提供する。
 
+セルフサービスでは、利用者側が自律的にプラットフォームの機能を導入できる。
+
 > - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
 > - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
 

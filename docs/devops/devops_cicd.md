@@ -247,7 +247,7 @@ graph TD;
 
 DevOpsを実現する技術的要素の一つ。
 
-CIツール (例：GitHub Actions、CircleCI、など) を使用して、CIパイプラインとCDパイプラインの両方を実行する手法のこと。
+CIツール (例：GitHub Actions、CircleCI、GitLab CI、ArgoWorkflow、Tekton、など) を使用して、CIパイプラインとCDパイプラインの両方を実行する手法のこと。
 
 ![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
@@ -306,7 +306,7 @@ CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。
 
 DevOpsを実現する技術的要素の一つ。
 
-CIツール (例：GitHub Actions、CircleCI、など)を使用してCIパイプラインを、またはCDツール (例：ArgoCD、Flux、など) を使用してCDパイプラインを、実装する手法のこと。
+CIツール (例：GitHub Actions、CircleCI、GitLab CI、ArgoWorkflow、Tekton、など) を使用してCIパイプラインを、またはCDツール (例：ArgoCD、Flux、など) を使用してCDパイプラインを、実装する手法のこと。
 
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 

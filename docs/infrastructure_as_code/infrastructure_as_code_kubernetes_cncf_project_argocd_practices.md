@@ -508,7 +508,7 @@ ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けら�
 
 対象のソースコードの脆弱性ではなく、CDツールに関するそれに対処する。
 
-CDツール (例：ArgoCD、Flux) によっては、公式リポジトリで脆弱性診断を実施してくれている。
+CDツール (例：ArgoCD、Flux、など) によっては、公式リポジトリで脆弱性診断を実施してくれている。
 
 > - https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md

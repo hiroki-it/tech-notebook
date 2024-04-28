@@ -21,7 +21,7 @@ ArgoCD自体はArgoCD以外でデプロイする必要がある。
 
 GitOpsを採用できないため、CIOpsになる。
 
-本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。
+本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI、Takton、など) を使用して、ArgoCDをデプロイする。
 
 > - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 

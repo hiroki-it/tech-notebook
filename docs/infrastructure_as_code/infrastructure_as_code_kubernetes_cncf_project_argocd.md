@@ -131,9 +131,9 @@ ArgoCDは、argocd-server、repo-server、redis-server、dex-server、applicatio
 
 ### 拡張機能
 
-#### ▼ Argo Rolloutの場合
+#### ▼ ArgoRolloutの場合
 
-Argo Rolloutをダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。
+ArgoRolloutをダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。
 
 > - https://github.com/argoproj-labs/rollout-extension
 
