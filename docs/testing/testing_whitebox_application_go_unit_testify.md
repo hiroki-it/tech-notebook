@@ -89,7 +89,38 @@ func TestUser_UserName(t *testing.T) {
 
 #### ▼ AssertExpectations
 
-モックが正しく実行されたか否かを検証する。
+`On`メソッドや`Retuen`メソッドが正しく実行されたか否かを検証する。
+
+```go
+package test
+
+import (
+	mock "github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/assert"
+)
+
+type MockedUser struct {
+	mock.Mock
+}
+
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
+	return args.Int(0)
+}
+
+func Test_Mock(t *testing.T) {
+	testObj := new(MockedUser)
+	testObj.On("GetAge").Return(20)
+	assert.True(t, isAdult(testObj))
+	testObj.AssertExpectations(t)
+}
+```
+
+> - https://dev.classmethod.jp/articles/go-testify/#toc-5
+
+#### ▼ AssertNumberOfCalls
+
+モックがコールされた回数の期待値を設定する。
 
 <br>
 
