@@ -13,9 +13,7 @@ description: testify＠Go単体テストの知見を記録しています。
 
 <br>
 
-## testify
-
-### testifyとは
+## 01. testifyとは
 
 モック、スタブ、アサーションの関数を作成する。
 
@@ -23,15 +21,17 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 <br>
 
-### mock、assert
+## 02. mock
 
-#### ▼ モック化
+### Mock
 
-構造体をモック化する。
+#### ▼ Mockとは
 
-| よく使用するメソッド | 説明                                                                   |
-| -------------------- | ---------------------------------------------------------------------- |
-| なし                 | データとして、構造体に`Mock`を設定すれば、その構造体はモック化される。 |
+構造体のフィールドに`Mock`構造体を設定すれば、その構造体をモック化できる。
+
+| よく使用するメソッド | 説明 |
+| -------------------- | ---- |
+| なし                 |      |
 
 **＊実装例＊**
 
@@ -54,11 +54,19 @@ type MockedAwsClient struct {
 }
 ```
 
-| よく使用するメソッド      | 説明                                                                                                                         |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `Mock.Called`メソッド     | 関数の一部の処理をスタブ化する時に使用する。モックに渡した引数を一時的に保管する。                                           |
-| `Arguments.Get`メソッド   | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。ユーザー定義のデータ型を返却する処理を定義する。 |
-| `Arguments.Error`メソッド | 関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。エラーを返却する処理を定義する。                 |
+#### ▼ On
+
+モックに、引数として渡される期待値と返却値の期待値を定義する。
+
+#### ▼ AssertExpectations
+
+モックが正しく実行されたか否かを検証する。
+
+<br>
+
+### Called
+
+『メソッドをコールした』というイベントをモックに登録する。
 
 **＊実装例＊**
 
@@ -90,20 +98,85 @@ func (mock *MockedAmplifyAPI) GetBranch(
 }
 ```
 
-> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called
 
-#### ▼ アサーションメソッドによる検証
+<br>
 
-| よく使用するメソッド              | 説明                                                                                             |
-| --------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `Mock.On`メソッド                 | 関数の検証時に使用する。関数内部のスタブに、引数として渡される期待値と返却値の期待値を定義する。 |
-| `Mock.AssertExpectations`メソッド | 関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。                     |
-| `assert.Exactly`メソッド          | 関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。   |
+### Argument
 
-> - https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-> - https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+#### ▼ Get
 
-#### ▼ 事前処理と事後処理
+引数の順番をインデックス数で指定し、`Called`メソッドに登録された引数を取得する。
+
+**＊実装例＊**
+
+```go
+package amplify
+
+import (
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	mock.Mock
+}
+
+// モックが使用するGetBranch関数
+func (mock *MockedAmplifyAPI) GetBranch(
+	ctx context.Context,
+	params *aws_amplify.GetBranchInput,
+	optFns ...func(*aws_amplify.Options)
+	) (*aws_amplify.GetBranchOutput, error) {
+
+	arguments := mock.Called(ctx, params, optFns)
+
+
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+```
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Get
+
+#### ▼ Error
+
+引数の順番をインデックス数で指定し、`Called`メソッドのエラーを取得する。
+
+**＊実装例＊**
+
+```go
+package amplify
+
+import (
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	mock.Mock
+}
+
+// モックが使用するGetBranch関数
+func (mock *MockedAmplifyAPI) GetBranch(
+	ctx context.Context,
+	params *aws_amplify.GetBranchInput,
+	optFns ...func(*aws_amplify.Options)
+	) (*aws_amplify.GetBranchOutput, error) {
+
+	arguments := mock.Called(ctx, params, optFns)
+
+
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+```
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Error
+
+<br>
+
+## 03. assert
+
+### 事前処理と事後処理
 
 テスト関数を実行する直前に、事前処理を実行する。
 
@@ -186,5 +259,15 @@ func (suite *FooSuite) TestMethod() {
 ```
 
 > - https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
+
+<br>
+
+### アサーション
+
+#### ▼ Exactly
+
+期待値と実際値の整合性を検証する。
+
+値のみでなく、データ型も検証できる。
 
 <br>
