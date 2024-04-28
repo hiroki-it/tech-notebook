@@ -2516,6 +2516,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_unit_testify.html</loc>
+         <lastmod>2024-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html</loc>
          <lastmod>2024-04-28</lastmod>
          <changefreq>daily</changefreq>
@@ -2526,7 +2531,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phake.html</loc>
+         <lastmod>2024-04-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phpunit.html</loc>
          <lastmod>2024-04-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

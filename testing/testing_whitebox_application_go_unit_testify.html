@@ -6,16 +6,16 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="単体テスト＠PHPのテストツールの知見を記録しています。">
+        <meta name="description" content="testify＠Go単体テストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_unit_testify.html">
       
       
-        <link rel="prev" href="testing_whitebox_application_php_lint.html">
+        <link rel="prev" href="testing_whitebox_application_php_unit_phake.html">
       
       
         <link rel="next" href="testing_whitebox_application_go.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】単体テスト＠PHPのテストツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】testify＠Go単体テスト - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#testifygo" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】単体テスト＠PHPのテストツール
+              【IT技術の知見】testify＠Go単体テスト
             
           </span>
         </div>
@@ -7474,6 +7474,8 @@
       
         
       
+        
+      
     
     
       
@@ -7562,6 +7564,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -7579,7 +7585,7 @@
             
   
   <span class="md-ellipsis">
-    ■ アプリ
+    ■ PHPのテストツール
   </span>
   
 
@@ -7588,54 +7594,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ アプリ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ PHPのテストツール
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3_1">
             <span class="md-nav__icon md-icon"></span>
             ■ PHPのテストツール
           </label>
@@ -7687,6 +7645,146 @@
                 
   
   
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_3_3" id="__nav_9_2_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 単体テスト
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 単体テスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_php_unit_phpunit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHPUnit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_php_unit_phake.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phake
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_3_4" id="__nav_9_2_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 単体テスト
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 単体テスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
     
   
   
@@ -7703,18 +7801,18 @@
           
   
   <span class="md-ellipsis">
-    単体テスト
+    testify
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="testing_whitebox_application_php_unit.html" class="md-nav__link md-nav__link--active">
+      <a href="testing_whitebox_application_go_unit_testify.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    単体テスト
+    testify
   </span>
   
 
@@ -7747,404 +7845,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-phpunit" class="md-nav__link">
+  <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PHPUnit
+      testify
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. PHPUnit">
+    <nav class="md-nav" aria-label="testify">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpunit" class="md-nav__link">
+  <a href="#testify_1" class="md-nav__link">
     <span class="md-ellipsis">
-      PHPUnitとは
+      testifyとは
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#mockassert" class="md-nav__link">
+    <span class="md-ellipsis">
+      mock、assert
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mock、assert">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      コマンド
+      ▼ モック化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ オプション無し
+      ▼ アサーションメソッドによる検証
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ --filter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-list-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ --list-tests
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phpunitxml" class="md-nav__link">
-    <span class="md-ellipsis">
-      phpunit.xmlファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="phpunit.xmlファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpunitxml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpunit.xmlファイルとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testsuites" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ testsuitesタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpタグ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アサーションメソッド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="アサーションメソッド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アサーションメソッドとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#asserttrue" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertTrue
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assertequals" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertEquals
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assertsame" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertSame
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストデータ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストデータ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Data Provider
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      事前処理と事後処理
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="事前処理と事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ setUpメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#teardown" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tearDownメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストダブル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストダブル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#createmock" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ createMockメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ methodメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. テストケース
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. テストケース">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      単体テストの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="単体テストの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系テストの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 異常系テストの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      機能テストの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="機能テストの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ テストケース
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系GET
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系POST
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 異常系POST
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-phake" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Phake
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Phake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phake" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phakeとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストダブル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストダブル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mock" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ mockメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#when" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ whenメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ verifyメソッド
+      ▼ 事前処理と事後処理
     </span>
   </a>
   
@@ -8164,79 +7914,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3_2" id="__nav_9_2_3_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Goのテストツール
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Goのテストツール
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_application_go.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Goのテストツール
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -8288,7 +7965,7 @@
             
   
   <span class="md-ellipsis">
-    ■ インフラ
+    ■ Goのテストツール
   </span>
   
 
@@ -8297,6 +7974,79 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Goのテストツール
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_go.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Goのテストツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ インフラ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5">
             <span class="md-nav__icon md-icon"></span>
             ■ インフラ
           </label>
@@ -8335,10 +8085,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1" id="__nav_9_2_4_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1" id="__nav_9_2_5_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8349,8 +8099,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1">
             <span class="md-nav__icon md-icon"></span>
             ■ 静的解析
           </label>
@@ -8400,10 +8150,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1_2" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1_2" id="__nav_9_2_4_1_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1_2" id="__nav_9_2_5_1_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8414,8 +8164,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_2">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 文法の誤りテスト
           </label>
@@ -8473,10 +8223,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1_3" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1_3" id="__nav_9_2_4_1_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1_3" id="__nav_9_2_5_1_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8487,8 +8237,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_3">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_5_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1_3">
             <span class="md-nav__icon md-icon"></span>
             ■ コード規約違反テスト
           </label>
@@ -8546,10 +8296,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1_4" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1_4" id="__nav_9_2_4_1_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1_4" id="__nav_9_2_5_1_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8560,8 +8310,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_4">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_5_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1_4">
             <span class="md-nav__icon md-icon"></span>
             ■ ベストプラクティス違反テスト
           </label>
@@ -8621,10 +8371,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1_5" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1_5" id="__nav_9_2_4_1_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1_5" id="__nav_9_2_5_1_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8635,8 +8385,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_5">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_5_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1_5">
             <span class="md-nav__icon md-icon"></span>
             ■ バージョンテスト
           </label>
@@ -8719,10 +8469,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_4_1_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1_6" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_4_1_6" id="__nav_9_2_4_1_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5_1_6" id="__nav_9_2_5_1_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8733,8 +8483,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4_1_6">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_5_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5_1_6">
             <span class="md-nav__icon md-icon"></span>
             ■ 脆弱性診断
           </label>
@@ -8850,10 +8600,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_6" id="__nav_9_2_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8864,8 +8614,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_6">
             <span class="md-nav__icon md-icon"></span>
             ■ アプリ/インフラ両方
           </label>
@@ -8894,10 +8644,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_5_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_6_1" >
         
           
-          <label class="md-nav__link" for="__nav_9_2_5_1" id="__nav_9_2_5_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_6_1" id="__nav_9_2_6_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -8908,8 +8658,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_5_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_5_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ 脆弱性診断
           </label>
@@ -22385,404 +22135,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-phpunit" class="md-nav__link">
+  <a href="#testify" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PHPUnit
+      testify
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. PHPUnit">
+    <nav class="md-nav" aria-label="testify">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpunit" class="md-nav__link">
+  <a href="#testify_1" class="md-nav__link">
     <span class="md-ellipsis">
-      PHPUnitとは
+      testifyとは
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#mockassert" class="md-nav__link">
+    <span class="md-ellipsis">
+      mock、assert
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mock、assert">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      コマンド
+      ▼ モック化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ オプション無し
+      ▼ アサーションメソッドによる検証
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-filter" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ --filter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-list-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ --list-tests
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phpunitxml" class="md-nav__link">
-    <span class="md-ellipsis">
-      phpunit.xmlファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="phpunit.xmlファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpunitxml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpunit.xmlファイルとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testsuites" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ testsuitesタグ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpタグ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アサーションメソッド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="アサーションメソッド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アサーションメソッドとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#asserttrue" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertTrue
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assertequals" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertEquals
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#assertsame" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ assertSame
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストデータ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストデータ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Data Provider
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      事前処理と事後処理
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="事前処理と事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ setUpメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#teardown" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tearDownメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストダブル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストダブル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#createmock" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ createMockメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ methodメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      01-02. テストケース
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. テストケース">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      単体テストの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="単体テストの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系テストの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 異常系テストの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      機能テストの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="機能テストの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ テストケース
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系GET
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 正常系POST
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 異常系POST
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-phake" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Phake
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Phake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phake" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phakeとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      テストダブル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="テストダブル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mock" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ mockメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#when" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ whenメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ verifyメソッド
+      ▼ 事前処理と事後処理
     </span>
   </a>
   
@@ -22816,7 +22218,7 @@
   
 
 
-<h1 id="php">単体テスト＠PHPのテストツール<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h1 id="testifygo">testify＠Go単体テスト<a class="headerlink" href="#testifygo" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22825,836 +22227,236 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-phpunit">01. PHPUnit<a class="headerlink" href="#01-phpunit" title="Permanent link">&para;</a></h2>
-<h3 id="phpunit">PHPUnitとは<a class="headerlink" href="#phpunit" title="Permanent link">&para;</a></h3>
-<p>単体テストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。</p>
+<h2 id="testify">testify<a class="headerlink" href="#testify" title="Permanent link">&para;</a></h2>
+<h3 id="testify_1">testifyとは<a class="headerlink" href="#testify_1" title="Permanent link">&para;</a></h3>
+<p>モック、スタブ、アサーションの関数を作成する。</p>
+<p>Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。</p>
 <p><br></p>
-<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>全てのテストファイルを対象として、定義されたメソッドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit
-PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
-
-...<span class="w">                                                   </span><span class="m">3</span><span class="w"> </span>/<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
-
-Time:<span class="w"> </span><span class="m">621</span><span class="w"> </span>ms,<span class="w"> </span>Memory:<span class="w"> </span><span class="m">24</span>.00<span class="w"> </span>MB
-
-OK<span class="w"> </span><span class="o">(</span><span class="m">3</span><span class="w"> </span>tests,<span class="w"> </span><span class="m">3</span><span class="w"> </span>assertions<span class="o">)</span>
-</code></pre></div>
-<h4 id="-filter">▼ --filter<a class="headerlink" href="#-filter" title="Permanent link">&para;</a></h4>
-<p>特定のテストファイルを対象として、定義されたメソッドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit<span class="w"> </span>--filter<span class="w"> </span>Foo
-PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
-
-...<span class="w">                                                   </span><span class="m">1</span><span class="w"> </span>/<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
-
-Time:<span class="w"> </span><span class="m">207</span><span class="w"> </span>ms,<span class="w"> </span>Memory:<span class="w"> </span><span class="m">8</span>.00<span class="w"> </span>MB
-
-OK<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>tests,<span class="w"> </span><span class="m">1</span><span class="w"> </span>assertions<span class="o">)</span>
-</code></pre></div>
-<h4 id="-list-tests">▼ --list-tests<a class="headerlink" href="#-list-tests" title="Permanent link">&para;</a></h4>
-<p>テストファイルの一覧を取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit<span class="w"> </span>--list-tests
-PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
-
-Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)</span>:
-<span class="w"> </span>-<span class="w"> </span>Tests<span class="se">\U</span>nit<span class="se">\F</span>ooTest::testFooMethod
-<span class="w"> </span>-<span class="w"> </span>Tests<span class="se">\F</span>eature<span class="se">\F</span>ooTest::testFooMethod
-</code></pre></div>
-<p><br></p>
-<h3 id="phpunitxml">phpunit.xmlファイル<a class="headerlink" href="#phpunitxml" title="Permanent link">&para;</a></h3>
-<h4 id="phpunitxml_1">▼ <code>phpunit.xml</code>ファイルとは<a class="headerlink" href="#phpunitxml_1" title="Permanent link">&para;</a></h4>
-<p>PHPUnitの設定を実行する。</p>
-<p>デフォルトの設定では、あらかじめルートディレクトリに<code>tests</code>ディレクトリを配置し、これを<code>Units</code>ディレクトリまたは<code>Feature</code>ディレクトリに分割しておく。</p>
-<p>また、<code>Test</code>で終了するphpファイルを作成しておく必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="http://phpunit.readthedocs.io/ja/latest/configuration.html">http://phpunit.readthedocs.io/ja/latest/configuration.html</a></li>
-</ul>
-</blockquote>
-<h4 id="testsuites">▼ <code>testsuites</code>タグ<a class="headerlink" href="#testsuites" title="Permanent link">&para;</a></h4>
-<p>テストスイートを定義できる。</p>
-<p><code>testsuites</code>タグ内の<code>testsuites</code>タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;phpunit&gt;</span>
-
-...
-
-<span class="w">    </span><span class="nt">&lt;testsuites&gt;</span>
-<span class="w">        </span><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Unit&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">suffix=</span><span class="s">&quot;Test.php&quot;</span><span class="nt">&gt;</span>./tests/Unit<span class="nt">&lt;/directory&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/testsuite&gt;</span>
-
-<span class="w">        </span><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Feature&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">suffix=</span><span class="s">&quot;Test.php&quot;</span><span class="nt">&gt;</span>./tests/Feature<span class="nt">&lt;/directory&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/testsuite&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/testsuites&gt;</span>
-
-...
-
-<span class="nt">&lt;/phpunit&gt;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites">https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites</a></li>
-</ul>
-</blockquote>
-<h4 id="php_1">▼ <code>php</code>タグ<a class="headerlink" href="#php_1" title="Permanent link">&para;</a></h4>
-<p>PHPUnitの実行前に設定する<code>ini_set</code>関数、<code>define</code>関数、グローバル変数、を定義できる。</p>
-<p>タグ名との対応関係については、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini">https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini</a></li>
-</ul>
-</blockquote>
-<p><strong>＊実装例＊</strong></p>
-<p>Composerの実行時にメモリ不足にならないようにメモリを拡張する。</p>
-<p>また、テスト用のDBに通信できるよう、DBに関する環境変数を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;phpunit&gt;</span>
-
-...
-
-<span class="w">    </span><span class="nt">&lt;php&gt;</span>
-<span class="w">        </span><span class="cm">&lt;!-- &lt;グローバル変数名 name=&quot;キー名&quot; value=&quot;値&quot;/&gt; --&gt;</span>
-
-<span class="w">        </span><span class="cm">&lt;!-- Composerの実行時にメモリ不足にならないようにする --&gt;</span>
-<span class="w">        </span><span class="nt">&lt;ini</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;memory_limit&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;512M&quot;</span><span class="nt">/&gt;</span>
-
-<span class="w">        </span><span class="cm">&lt;!-- DBの接続情報 --&gt;</span>
-<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_CONNECTION&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;mysql&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_DATABASE&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_USERNAME&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_PASSWORD&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/php&gt;</span>
-
-...
-
-<span class="nt">&lt;/phpunit&gt;</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_4">アサーションメソッド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ アサーションメソッドとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>実測値と期待値を比較し、結果に応じて<code>SUCCESS</code>または<code>FAILURES</code>を返却する。</p>
-<p>非staticまたはstaticとしてコールできる。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue();</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">self::assertTrue()</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://phpunit.readthedocs.io/ja/latest/assertions.html">https://phpunit.readthedocs.io/ja/latest/assertions.html</a></li>
-</ul>
-</blockquote>
-<h4 id="asserttrue">▼ assertTrue<a class="headerlink" href="#asserttrue" title="Permanent link">&para;</a></h4>
-<p>実際値が<code>true</code>か否かを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue($response-&gt;isOk());</span>
-</code></pre></div>
-<h4 id="assertequals">▼ assertEquals<a class="headerlink" href="#assertequals" title="Permanent link">&para;</a></h4>
-<p>『<code>==</code>』を使用して、期待値と実際値の整合性を検証する。</p>
-<p>データ型を検証できないため、<code>assertSame</code>メソッドを使用する方が良い。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
-</code></pre></div>
-<h4 id="assertsame">▼ assertSame<a class="headerlink" href="#assertsame" title="Permanent link">&para;</a></h4>
-<p>『<code>===</code>』を使用して、期待値と実際値の整合性を検証する。</p>
-<p>値のみでなく、データ型も検証できる。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_6">テストデータ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="data-provider">▼ Data Provider<a class="headerlink" href="#data-provider" title="Permanent link">&para;</a></h4>
-<p>テスト対象のメソッドの引数を事前に用意する。</p>
-<p>メソッドのアノテーションで、<code>@test</code>と<code>@dataProvider データプロバイダ名</code>を宣言する。</p>
-<p>データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。</p>
-<blockquote>
-<ul>
-<li><a href="https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers">https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers</a></li>
-</ul>
-</blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * findメソッドをテストする</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @test</span>
-<span class="sd">     * @dataProvider methodDataProvider</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFind_Bar_Baz</span><span class="p">(</span><span class="nv">$paramA</span><span class="p">,</span> <span class="nv">$paramB</span><span class="p">,</span> <span class="nv">$paramC</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 何らかの処理</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * findメソッドを引数を用意する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @return array</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodDataProvider</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="c1">// 配列データは複数あっても良い、</span>
-            <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
-        <span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_7">事前処理と事後処理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="setup">▼ <code>setUp</code>メソッド<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h4>
-<p>事前処理として、全てのテスト関数の前にコールされるメソッドである。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>DIコンテナを事前に作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
-
-    <span class="c1">// 全てのテスト関数の前に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// DIコンテナにデータを格納する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>＊実装例＊</strong></p>
-<p>単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。</p>
-<p>そのため、これと同様に依存先のクラスのモックを事前に作成しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$foo</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 基本的には、一番最初に記述する。</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
-
-        <span class="c1">// 事前にモックを作成しておく。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Bar</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">)</span>
-
-        <span class="c1">// 何らかのテストコード</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="teardown">▼ <code>tearDown</code>メソッド<a class="headerlink" href="#teardown" title="Permanent link">&para;</a></h4>
-<p>事後処理として、全てのテスト関数の後にコールされるメソッドである。</p>
-<p>グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
-
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">];</span>
-    <span class="p">}</span>
-
-    <span class="c1">// 全てのテスト関数の後に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">tearDown</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// DIコンテナにnullを格納する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_8">テストダブル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="createmock">▼ <code>createMock</code>メソッド<a class="headerlink" href="#createmock" title="Permanent link">&para;</a></h4>
-<p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
-<p>以降の処理での用途によって、呼び名が異なることに注意する。</p>
-<p>補足として、PHPUnitの場合、モックのメソッドは<code>null</code>を返却する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
-        <span class="nv">$mock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-
-        <span class="c1">// null</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">Foo</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">    * @param  int</span>
-<span class="sd">    * @return array</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 参照する処理</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="method">▼ <code>method</code>メソッド<a class="headerlink" href="#method" title="Permanent link">&para;</a></h4>
-<p>モックまたはスタブのメソッドに対して、処理の内容を定義する。</p>
-<p>特定の変数が渡された時に、特定の値を返却させられる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
-        <span class="nv">$stub</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-
-        <span class="c1">// スタブのメソッドに処理内容を定義する。</span>
-        <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s2">&quot;find&quot;</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">willReturn</span><span class="p">([]);</span>
-
-        <span class="c1">// [] (空配列)</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="01-02">01-02. テストケース<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_9">単体テストの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
-<p>以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">CouldNotSendMessageException</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooNotification</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$httpClient</span><span class="p">;</span>
-
-    <span class="k">private</span> <span class="nv">$token</span><span class="p">;</span>
-
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span> <span class="o">=</span> <span class="nv">$httpClient</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span> <span class="o">=</span> <span class="nv">$token</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">FooMessage</span> <span class="nv">$fooMessage</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">&quot;API requests is required.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">channel_id</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">&quot;Channel ID is required.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
-
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-                <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
-                <span class="p">[</span>
-                    <span class="s2">&quot;headers&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s2">&quot;Authorization&quot;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
-                        <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
-                        <span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-                    <span class="p">],</span>
-                    <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span>  <span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">);</span>
-
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ClientException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
-
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
-            <span class="p">));</span>
-
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
-
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
-            <span class="p">));</span>
-
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">class</span> <span class="nc">FooMessage</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$channel_id</span><span class="p">;</span>
-
-    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel_id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">channel_id</span> <span class="o">=</span> <span class="nv">$channel_id</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="_10">▼ 正常系テストの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>メソッドのアノテーションで、<code>@test</code>を宣言する。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>リクエストにて、チャンネルとメッセージを送信した時に、レスポンスとして<code>TRUE</code>が返信されるかを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
-
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 検証対象外のクラスはモックとする。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_FooMessage_ReturnTrue</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
-            <span class="s2">&quot;xxxxxxx&quot;</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
-        <span class="p">);</span>
-
-        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;X-CHANNEL&quot;</span><span class="p">);</span>
-
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span>
-            <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">)</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
-<span class="c1"># OK</span>
-</code></pre></div>
-<h4 id="_11">▼ 異常系テストの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>メソッドのアノテーションで、<code>@test</code>と<code>@expectedException</code>を宣言する。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>リクエストにて、メッセージのみを送信しようとした時に、例外を発生させられるかを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
-
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 検証対象外のクラスはモックとする。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    * @expectedException</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_EmptyMessage_ExceptionThrown</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
-            <span class="s2">&quot;xxxxxxx&quot;</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
-        <span class="p">);</span>
-
-        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
-
-        <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
-<span class="c1"># OK</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_12">機能テストの場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
-<p>メソッドのアノテーションで、<code>@test</code>を宣言する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// アプリケーション自身のControllerクラスにリクエストを送信する処理。</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;query&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
-                <span class="p">]</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
-
-        <span class="c1">// レスポンスの実際値と期待値の整合性を検証する。</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="_13">▼ テストケース<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>外部Webサイトが正常であることを前提として、外部Webサービスとの連携が含まれていることに注意する。</p>
+<h3 id="mockassert">mock、assert<a class="headerlink" href="#mockassert" title="Permanent link">&para;</a></h3>
+<h4 id="_2">▼ モック化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>構造体をモック化する。</p>
 <table>
 <thead>
 <tr>
-<th>HTTPメソッド</th>
-<th>分類</th>
-<th>検証方法</th>
-<th>期待値 (<code>assert</code>メソッド)</th>
+<th>よく使用するメソッド</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>POST、PUT</td>
-<td>正常系</td>
-<td>リクエストのボディにて、必須パラメーターにデータを割り当てる。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>リクエストのボディにて、任意パラメーターにデータを割り当てない。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>リクエストのボディにて、空文字や<code>null</code>が許可されたパラメーターに、データを割り当てない。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td>異常系</td>
-<td>リクエストのボディにて、必須パラメーターにデータを割り当てない。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>リクエストのボディにて、空文字や<code>null</code>が許可されたパラメーターに、空文字や<code>null</code>を割り当てる。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>リクエストのボディにて、パラメーターのデータ型が誤っている。</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td>GET</td>
-<td>正常系</td>
-<td>リクエストにて、パラメーターにデータを割り当てる。</td>
-<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
-</tr>
-<tr>
-<td></td>
-<td>異常系</td>
-<td>リクエストのボディにて、パラメーターに参照禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>正常系</td>
-<td>リクエストのボディにて、パラメーターにデータを割り当てる。</td>
-<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・削除されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td></td>
-<td>異常系</td>
-<td>リクエストのボディにて、パラメーターに削除禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
-</tr>
-<tr>
-<td>認証/認可</td>
-<td>正常系</td>
-<td>リクエストのヘッダーにて、認証されているトークンを割り当てる。 (認証の成功)</td>
-<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
-</tr>
-<tr>
-<td></td>
-<td>異常系</td>
-<td>リクエストのヘッダーにて、認証されていないトークンを割り当てる。 (認証の失敗)</td>
-<td>Controllerが<code>401</code>ステータスを含むレスポンスを返信すること。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>リクエストのボディにて、パラメーターにリクエスト禁止のデータを割り当てる。 (認可の失敗)</td>
-<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
+<td>なし</td>
+<td>データとして、構造体に<code>Mock</code>を設定すれば、その構造体はモック化される。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="get">▼ 正常系GET<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信することを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<p>AWSクライアントをモック化する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetPage_GetRequest_Return200</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 外部サービスがクライアントの場合はモックを使用する。</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+<span class="cm">/**</span>
+<span class="cm"> * AWSクライアントをモック化します。</span>
 
-        <span class="c1">// GETリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;/xxx/yyy/&quot;</span>
-        <span class="p">);</span>
 
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
-
-        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
-    <span class="p">}</span>
+<span class="cm"> */</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedAwsClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="post">▼ 正常系POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
+<table>
+<thead>
+<tr>
+<th>よく使用するメソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.Called</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。モックに渡した引数を一時的に保管する。</td>
+</tr>
+<tr>
+<td><code>Arguments.Get</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。ユーザー定義のデータ型を返却する処理を定義する。</td>
+</tr>
+<tr>
+<td><code>Arguments.Error</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。エラーを返却する処理を定義する。</td>
+</tr>
+</tbody>
+</table>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<p>関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_GetRequest_Return200NormalMessage</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedAmplifyAPI</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
 
-        <span class="c1">// APIにPOSTリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;/xxx/yyy/&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;id&quot;</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
-            <span class="p">],</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;HTTP_X_API_Token&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bearer &lt;APIキー&gt;&quot;</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
+<span class="c1">// モックが使用するGetBranch関数</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// モックに渡した引数を一時的に保管する</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
-        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
-
-        <span class="c1">// レスポンスデータを抽出する。</span>
-        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
-
-        <span class="c1">// 更新されたデータのIDが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]);</span>
-
-        <span class="c1">// レスポンスされたメッセージが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;データを変更しました。&quot;</span>
-            <span class="p">],</span>
-            <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="post_1">▼ 異常系POST<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h4>
-<p>Controllerが<code>400</code>ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであること、を検証する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_EmptyMessage_Return400ErrorMessage</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
-
-        <span class="c1">// APIにPOSTリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;/xxx/yyy/&quot;</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;id&quot;</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span>
-            <span class="p">],</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;HTTP_X_API_Token&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bearer &lt;APIキー&gt;&quot;</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
-
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
-
-        <span class="c1">// 400ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
-
-        <span class="c1">// レスポンスデータのエラーを抽出する。</span>
-        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
-
-        <span class="c1">// レスポンスされたエラーメッセージが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s2">&quot;IDは必ず入力してください。&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;メッセージは必ず入力してください。&quot;</span>
-            <span class="p">],</span>
-            <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">]</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02-phake">02. Phake<a class="headerlink" href="#02-phake" title="Permanent link">&para;</a></h2>
-<h3 id="phake">Phakeとは<a class="headerlink" href="#phake" title="Permanent link">&para;</a></h3>
-<p>単体テストに必要なテストダブルを提供する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/mlively/Phake#phake">https://github.com/mlively/Phake#phake</a></li>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_14">テストダブル<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="mock">▼ <code>mock</code>メソッド<a class="headerlink" href="#mock" title="Permanent link">&para;</a></h4>
-<p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
-<p>以降の処理での用途によって、モックまたはスタブの呼び名が異なることに注意する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
-<span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-
-<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
-<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-</code></pre></div>
-<h4 id="when">▼ <code>when</code>メソッド<a class="headerlink" href="#when" title="Permanent link">&para;</a></h4>
-<p>モックまたはスタブのメソッドに対して、処理の内容を定義する。</p>
-<p>また、特定の変数が渡された時に、特定の値を返却させられる。</p>
+<h4 id="_3">▼ アサーションメソッドによる検証<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>よく使用するメソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.On</code>メソッド</td>
+<td>関数の検証時に使用する。関数内部のスタブに、引数として渡される期待値と返却値の期待値を定義する。</td>
+</tr>
+<tr>
+<td><code>Mock.AssertExpectations</code>メソッド</td>
+<td>関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。</td>
+</tr>
+<tr>
+<td><code>assert.Exactly</code>メソッド</td>
+<td>関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></li>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 事前処理と事後処理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>テスト関数を実行する直前に、事前処理を実行する。</p>
+<p>モックの作成のために使用すると良い。</p>
+<p>事前処理と事後処理については、以下のリンクを参考にせよ。</p>
+<table>
+<thead>
+<tr>
+<th>よく使用する関数</th>
+<th>実行タイミング</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetupSuite</code></td>
+<td>1</td>
+<td>テストスイート内の全てのテストの事前処理として、一回だけ実行する。</td>
+</tr>
+<tr>
+<td><code>SetupTest</code></td>
+<td>2</td>
+<td>テストスイート内の各テストの事前処理として、テストの度に事前に実行する。<code>BeforeTest</code>関数よりも前に実行されることに注意する。</td>
+</tr>
+<tr>
+<td><code>BeforeTest</code></td>
+<td>3</td>
+<td>テストスイート内の各テストの直前の事前処理として、テストの度に事前に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+</tr>
+<tr>
+<td><code>AfterTest</code></td>
+<td>4</td>
+<td>テストスイート内の各テストの直後の事後処理として、テストの度に事後に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+</tr>
+<tr>
+<td><code>TearDownTest</code></td>
+<td>5</td>
+<td>テストスイート内の各テストの事後処理として、テストの度に事後に実行する。<code>BeforeTest</code>関数よりも後に実行されることに注意する。</td>
+</tr>
+<tr>
+<td><code>TearDownSuite</code></td>
+<td>6</td>
+<td>テストスイート内の全てのテストの事後処理として、一回だけ実行する。</td>
+</tr>
+</tbody>
+</table>
 <p><strong>＊実装例＊</strong></p>
-<p>スタブの<code>find</code>メソッドは、<code>1</code>が渡された時に、空配列を返却する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<p>事前にモックを作成するために、<code>BeforeTest</code>関数を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
-<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
-<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;testing&quot;</span>
+<span class="p">)</span>
 
-<span class="c1">// スタブのメソッドに処理内容を定義する。</span>
-<span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$stub</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">([]);</span>
-</code></pre></div>
-<h4 id="verify">▼ <code>verify</code>メソッド<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h4>
-<p>上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックのメソッドが<code>n</code>回実行できたことを検証する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストのテストスイートを構成する。</span>
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Bar_Baz</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
-        <span class="nv">$mockFooRepository</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-        <span class="nv">$fooId</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooId</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="cm"> */</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooSuite</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Suite</span>
+<span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">*</span><span class="nx">FooMock</span>
+<span class="p">}</span>
 
-        <span class="c1">// モックのメソッドに処理内容を定義する。</span>
-        <span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストの直前の事前処理を実行する。</span>
 
-        <span class="c1">// 上層クラスに対して、下層クラスのモックのインジェクションを実行する</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">);</span>
 
-        <span class="c1">// 上層クラスの内部にある下層モックのfindメソッドをコールする</span>
-        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeTest</span><span class="p">(</span><span class="nx">suiteName</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">testName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-        <span class="c1">// 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。</span>
-        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">,</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">times</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="c1">// モックを作成する。</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooMock</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストのテストスイートを実行する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestFooSuite</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooSuite</span><span class="p">{})</span>
 <span class="p">}</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Methodメソッドが成功することを検証する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">TestMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">T</span><span class="p">().</span><span class="nx">Helper</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// 事前処理で作成したモックを使用する。</span>
+<span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span>
+
+<span class="w">    </span><span class="c1">// 以降にテスト処理</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66">https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
