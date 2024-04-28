@@ -23522,16 +23522,10 @@
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
 <span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
-
-<span class="w">  </span><span class="cm">/* dataオプション</span>
-<span class="cm">    ・Vueインスタンスのデータを保持する</span>
-<span class="cm">    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
-
-
-<span class="cm">    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// dataオプション</span>
+<span class="w">  </span><span class="c1">// Vueインスタンスのデータを保持する</span>
+<span class="w">  </span><span class="c1">// 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
+<span class="w">  </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。</span>
 <span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">isLoading</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
@@ -23543,10 +23537,9 @@
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="cm">/* methodオプション</span>
-<span class="cm">    ・Vueインスタンスのアクセサメソッドや状態変化メソッド</span>
-<span class="cm">    ・イベントハンドラ関数、dataオプションのセッターを定義</span>
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// methodオプション</span>
+<span class="w">  </span><span class="c1">// Vueインスタンスのアクセサメソッドや状態変化メソッド</span>
+<span class="w">  </span><span class="c1">// イベントハンドラ関数、dataオプションのセッターを定義</span>
 <span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// イベントハンドラ関数</span>
 <span class="w">    </span><span class="nx">changeQuery</span><span class="p">(</span><span class="nx">criteriaObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -23567,32 +23560,20 @@
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="nx">Staff</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
 
-<span class="w">          </span><span class="cm">/* done()</span>
-<span class="cm">                ajaxメソッドによって返却されたJSONが引数になる。</span>
-
-
-<span class="cm">                */</span>
+<span class="w">          </span><span class="c1">// done()</span>
+<span class="w">          </span><span class="c1">// ajaxメソッドによって返却されたJSONが引数になる。</span>
 <span class="w">          </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="cm">/*</span>
-<span class="cm">                    サーバーサイドからのJSONをデシリアライズ。</span>
-
-
-<span class="cm">                    dataオプションに設定。</span>
-
-
-<span class="cm">                    */</span>
+<span class="w">            </span><span class="c1">// サーバーサイドからのJSONをデシリアライズ。</span>
+<span class="w">            </span><span class="c1">// dataオプションに設定</span>
 <span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">staffData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">staffData</span><span class="p">,</span><span class="w"> </span><span class="nx">Staff</span><span class="p">.</span><span class="nx">deserializeStaff</span><span class="p">);</span>
 <span class="w">          </span><span class="p">})</span>
 <span class="w">      </span><span class="p">);</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="cm">/* watchオプション</span>
-<span class="cm">    ・Vueインスタンス内の値の変化を監視する関数を定義。</span>
-
-
-<span class="cm">    ・vue-routerも参考にせよ。</span>
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// watchオプション</span>
+<span class="w">  </span><span class="c1">// Vueインスタンス内の値の変化を監視する関数を定義。</span>
+<span class="w">  </span><span class="c1">// vue-routerも参考にせよ。</span>
 <span class="w">  </span><span class="nx">watch</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
 
 <span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応になるようにする。</span>
@@ -23637,11 +23618,8 @@
 
 <span class="w">  </span><span class="c1">// 親コンポーネント以降では、Vueインスタンスを作成しないようにする。</span>
 <span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="cm">/* propsオプション</span>
-<span class="cm">    ・親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">    </span><span class="c1">// propsオプション</span>
+<span class="w">    </span><span class="c1">// 親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
@@ -23654,14 +23632,9 @@
 <span class="w">      </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 
-<span class="w">    </span><span class="cm">/* dataオプション</span>
-<span class="cm">    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
-
-
-<span class="cm">    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">    </span><span class="c1">// dataオプション</span>
+<span class="w">    </span><span class="c1">// 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
+<span class="w">    </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。</span>
 <span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
@@ -24030,74 +24003,47 @@
 
 <span class="c1">// 外部ファイルが、このStoreインスタンスを読み込めるようにする。</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
-<span class="w">  </span><span class="cm">/* getters</span>
-<span class="cm">    ・データから状態を取得するメソッドをいくつか持つ</span>
-<span class="cm">    ・クラスベースオブジェクト指向のGetterメソッドに相当.</span>
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// getters</span>
+<span class="w">  </span><span class="c1">// データから状態を取得するメソッドをいくつか持つ</span>
+<span class="w">  </span><span class="c1">// クラスベースオブジェクト指向のGetterメソッドに相当</span>
 <span class="w">  </span><span class="nx">getters</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">staffData</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">staffData</span><span class="p">;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="cm">/* state</span>
-<span class="cm">    ・状態の変化を管理したいデータを持つ。</span>
-
-
-<span class="cm">    ・クラスベースオブジェクト指向のプロパティに相当。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// state</span>
+<span class="w">  </span><span class="c1">// 状態の変化を管理したいデータを持つ。</span>
+<span class="w">  </span><span class="c1">// クラスベースオブジェクト指向のプロパティに相当。</span>
 <span class="w">  </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。</span>
 <span class="w">    </span><span class="nx">staffData</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="cm">/* mutations</span>
-<span class="cm">    ・データの状態 (state) を変化させるメソッドを持つ。</span>
-
-
-<span class="cm">    ・クラスベースオブジェクト指向のSetterメソッドに相当。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// mutations</span>
+<span class="w">  </span><span class="c1">// データの状態 (state) を変化させるメソッドを持つ。</span>
+<span class="w">  </span><span class="c1">// クラスベースオブジェクト指向のSetterメソッドに相当。</span>
 <span class="w">  </span><span class="nx">mutations</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Vuexのstateを第一引数、外部からセットしたい値を第二引数</span>
 <span class="w">    </span><span class="nx">mutate</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">staffData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">exArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
-<span class="w">        </span><span class="cm">/*</span>
-<span class="cm">                ・矢印はアロー関数を表し、無名関数の即コールを省略できる。</span>
-
-
-<span class="cm">                ・引数で渡されたexArrayの要素を、stateのexArrayに格納する。</span>
-
-
-<span class="cm">                */</span>
+<span class="w">        </span><span class="c1">// 矢印はアロー関数を表し、無名関数の即コールを省略できる。</span>
+<span class="w">        </span><span class="c1">// 引数で渡されたexArrayの要素を、stateのexArrayに格納する。</span>
 <span class="w">        </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nx">state</span><span class="p">.</span><span class="nx">exArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
 <span class="w">        </span><span class="p">},</span>
 
-<span class="w">        </span><span class="cm">/* </span>
-<span class="cm">                ※アロー関数を使用しなければ、以下の様に記述できる。</span>
-
-
-<span class="cm">                function(element) { state.exArray.push(element); }</span>
-<span class="cm">                */</span>
+<span class="w">        </span><span class="c1">// アロー関数を使用しなければ、以下の様に記述できる。</span>
+<span class="w">        </span><span class="c1">// function(element) { state.exArray.push(element); }</span>
 <span class="w">      </span><span class="p">);</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 
-<span class="w">  </span><span class="cm">/* actions</span>
-<span class="cm">    ・mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。</span>
-
-
-<span class="cm">    ・contextオブジェクトからcommit機能を取り出す必要がある。</span>
-
-<span class="cm"> (※省略記法あり) </span>
-<span class="cm">    ・クラスベースオブジェクト指向のSetterメソッドに相当。</span>
-
-
-<span class="cm">    */</span>
+<span class="w">  </span><span class="c1">// actions</span>
+<span class="w">  </span><span class="c1">// mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。</span>
+<span class="w">  </span><span class="c1">// contextオブジェクトからcommit機能を取り出す必要がある。</span>
+<span class="w">  </span><span class="c1">// (※省略記法あり)</span>
+<span class="w">  </span><span class="c1">//  クラスベースオブジェクト指向のSetterメソッドに相当。</span>
 <span class="w">  </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 省略記法 (Argument destructuring)</span>
 <span class="w">    </span><span class="nx">mutate</span><span class="p">({</span><span class="nx">commit</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
@@ -24136,13 +24082,8 @@
 <span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)</span>
 <span class="w">    </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="cm">/* mapGettersヘルパー。</span>
-
-
-<span class="cm">      StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。</span>
-
-
-<span class="cm">      */</span>
+<span class="w">      </span><span class="c1">// mapGettersヘルパー</span>
+<span class="w">      </span><span class="c1">// StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。</span>
 <span class="w">      </span><span class="p">...</span><span class="nx">mapGetters</span><span class="p">([</span><span class="s2">&quot;x-Function&quot;</span><span class="p">]),</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -24454,7 +24395,7 @@ undefined
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
   </span>
 
     
