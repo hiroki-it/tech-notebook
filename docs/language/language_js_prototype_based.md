@@ -566,12 +566,9 @@ const object2 = {
 ```
 
 ```javascript
-/* コンストラクタ関数内のthisの場合
-コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
-
-
-ここでは、object1とobject2
-*/
+// コンストラクタ関数内のthisの場合
+// コンストラクタ関数内のthisは、自身がコールされたオブジェクトを指す。
+// ここでは、object1とobject2
 
 object1.printParam; // object1 param
 object2.printParam; // object2 param
@@ -612,17 +609,10 @@ const object2 = {
 ```
 
 ```javascript
-/* アロー関数内のthisの場合
-thisは、自身が宣言されたオブジェクトを指す。
-
-
-ここでは、一番外側のWindowオブジェクトであり、object1とobject2ではない。
-
-
-参照先は文脈によって変わらない。
-
-
-*/
+// アロー関数内のthisの場合
+// thisは、自身が宣言されたオブジェクトを指す。
+// ここでは、一番外側のWindowオブジェクトであり、object1とobject2ではない。
+// 参照先は文脈によって変わらない。
 
 object1.printParam; // global param
 object2.printParam; // global param

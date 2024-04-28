@@ -1772,11 +1772,7 @@ type MockedAmplifyAPI struct {
 	mock.Mock
 }
 
-/**
- * AmplifyのGetBranch関数の処理をスタブ化します。
-
-
- */
+// AmplifyのGetBranch関数の処理をスタブ化する
 func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
 	arguments := mock.Called(ctx, params, optFns)
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)

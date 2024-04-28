@@ -153,16 +153,10 @@ Vueコンストラクタ関数を使用して、インスタンス化するこ�
 var vm = new Vue({
   // Vueインスタンスを使用するdivタグを設定.
   el: "#app",
-
-  /* dataオプション
-    ・Vueインスタンスのデータを保持する
-    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
-
-
-    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。
-
-
-    */
+  // dataオプション
+  // Vueインスタンスのデータを保持する
+  // 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
+  // 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。
   data: function () {
     return {
       isLoading: "false",
@@ -174,10 +168,9 @@ var vm = new Vue({
     };
   },
 
-  /* methodオプション
-    ・Vueインスタンスのアクセサメソッドや状態変化メソッド
-    ・イベントハンドラ関数、dataオプションのセッターを定義
-    */
+  // methodオプション
+  // Vueインスタンスのアクセサメソッドや状態変化メソッド
+  // イベントハンドラ関数、dataオプションのセッターを定義
   method: {
     // イベントハンドラ関数
     changeQuery(criteriaObj) {
@@ -198,32 +191,20 @@ var vm = new Vue({
       return (
         Staff.find(query)
 
-          /* done()
-                ajaxメソッドによって返却されたJSONが引数になる。
-
-
-                */
+          // done()
+          // ajaxメソッドによって返却されたJSONが引数になる。
           .done((data) => {
-            /*
-                    サーバーサイドからのJSONをデシリアライズ。
-
-             
-                    dataオプションに設定。
-
-
-                    */
+            // サーバーサイドからのJSONをデシリアライズ。
+            // dataオプションに設定
             this.staffData = _.map(data.staffData, Staff.deserializeStaff);
           })
       );
     },
   },
 
-  /* watchオプション
-    ・Vueインスタンス内の値の変化を監視する関数を定義。
-
-
-    ・vue-routerも参考にせよ。
-    */
+  // watchオプション
+  // Vueインスタンス内の値の変化を監視する関数を定義。
+  // vue-routerも参考にせよ。
   watch: {},
 
   // テンプレートと親コンポーネントの対応になるようにする。
@@ -274,11 +255,8 @@ var vm = new Vue({
 
   // 親コンポーネント以降では、Vueインスタンスを作成しないようにする。
   module.exports = {
-    /* propsオプション
-    ・親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。
-
-
-    */
+    // propsオプション
+    // 親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。
     props: {
       criteria: {
         type: Object,
@@ -291,14 +269,9 @@ var vm = new Vue({
       },
     },
 
-    /* dataオプション
-    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
-
-
-    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。
-
-
-    */
+    // dataオプション
+    // 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。
+    // 異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。
     data: function () {
       return {
         a: "a",
@@ -743,74 +716,47 @@ const vuex = require("vuex");
 
 // 外部ファイルが、このStoreインスタンスを読み込めるようにする。
 module.exports = new Vuex.Store({
-  /* getters
-    ・データから状態を取得するメソッドをいくつか持つ
-    ・クラスベースオブジェクト指向のGetterメソッドに相当.
-    */
+  // getters
+  // データから状態を取得するメソッドをいくつか持つ
+  // クラスベースオブジェクト指向のGetterメソッドに相当
   getters: {
     staffData(state) {
       return state.staffData;
     },
   },
 
-  /* state
-    ・状態の変化を管理したいデータを持つ。
-
-
-    ・クラスベースオブジェクト指向のプロパティに相当。
-
-
-    */
+  // state
+  // 状態の変化を管理したいデータを持つ。
+  // クラスベースオブジェクト指向のプロパティに相当。
   state: {
     // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
     staffData: [],
   },
 
-  /* mutations
-    ・データの状態 (state) を変化させるメソッドを持つ。
-
-
-    ・クラスベースオブジェクト指向のSetterメソッドに相当。
-
-
-    */
+  // mutations
+  // データの状態 (state) を変化させるメソッドを持つ。
+  // クラスベースオブジェクト指向のSetterメソッドに相当。
   mutations: {
     // Vuexのstateを第一引数、外部からセットしたい値を第二引数
     mutate(state, staffData) {
       exArray.forEach(
-        /*
-                ・矢印はアロー関数を表し、無名関数の即コールを省略できる。
-
-
-                ・引数で渡されたexArrayの要素を、stateのexArrayに格納する。
-
-
-                */
+        // 矢印はアロー関数を表し、無名関数の即コールを省略できる。
+        // 引数で渡されたexArrayの要素を、stateのexArrayに格納する。
         (element) => {
           state.exArray.push(element);
         },
 
-        /* 
-                ※アロー関数を使用しなければ、以下の様に記述できる。
-
-
-                function(element) { state.exArray.push(element); }
-                */
+        // アロー関数を使用しなければ、以下の様に記述できる。
+        // function(element) { state.exArray.push(element); }
       );
     },
   },
 
-  /* actions
-    ・mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
-
-
-    ・contextオブジェクトからcommit機能を取り出す必要がある。
-
- (※省略記法あり) 
-    ・クラスベースオブジェクト指向のSetterメソッドに相当。
-
-
-    */
+  // actions
+  // mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
+  // contextオブジェクトからcommit機能を取り出す必要がある。
+  // (※省略記法あり)
+  //  クラスベースオブジェクト指向のSetterメソッドに相当。
   actions: {
     // 省略記法 (Argument destructuring)
     mutate({commit}) {
@@ -867,13 +813,8 @@ module.exports = new Vuex.Store({
   module.exports = {
     // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)
     computed: {
-      /* mapGettersヘルパー。
-
-
-      StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
-
-
-      */
+      // mapGettersヘルパー
+      // StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
       ...mapGetters(["x-Function"]),
     },
 
