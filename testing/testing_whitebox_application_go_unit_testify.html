@@ -22491,8 +22491,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * AWSクライアントをモック化します。</span>
-
-
 <span class="cm"> */</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedAwsClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
@@ -22512,6 +22510,7 @@
 
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">datastore</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22549,9 +22548,14 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">testObj</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する</span>
 <span class="w">    </span><span class="nx">testObj</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
 <span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">testObj</span><span class="p">))</span>
+
 <span class="w">    </span><span class="nx">testObj</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22748,8 +22752,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * 単体テストのテストスイートを構成する。</span>
-
-
 <span class="cm"> */</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">FooSuite</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Suite</span>
@@ -22758,8 +22760,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * 単体テストの直前の事前処理を実行する。</span>
-
-
 <span class="cm"> */</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeTest</span><span class="p">(</span><span class="nx">suiteName</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">testName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -22769,8 +22769,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * 単体テストのテストスイートを実行する。</span>
-
-
 <span class="cm"> */</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">TestFooSuite</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooSuite</span><span class="p">{})</span>
@@ -22784,8 +22782,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * Methodメソッドが成功することを検証する。</span>
-
-
 <span class="cm"> */</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">TestMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
