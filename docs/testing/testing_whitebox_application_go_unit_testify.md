@@ -58,6 +58,35 @@ type MockedAwsClient struct {
 
 モックに、引数として渡される期待値と返却値の期待値を定義する。
 
+```go
+package test
+
+import (
+	mock "github.com/stretchr/testify/mock"
+)
+
+func TestUser_UserName(t *testing.T) {
+
+    testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+
+    mockUser := new(datastore.MockUserInterface)
+
+    mockUser.On("Get", testUser.ID).Return(testUser, nil)
+
+    u := &User{
+        dt: mockUser,
+    }
+
+    got, err := u.UserName(testUser.ID)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+```
+
+> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C
+
 #### ▼ AssertExpectations
 
 モックが正しく実行されたか否かを検証する。
@@ -66,11 +95,32 @@ type MockedAwsClient struct {
 
 ### Called
 
+#### ▼ Called
+
 『メソッドをコールした』というイベントをモックに登録する。
 
 **＊実装例＊**
 
-関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。
+```go
+package test
+
+import (
+	mock "github.com/stretchr/testify/mock"
+)
+
+type MockUserInterface struct {
+	mock.Mock
+}
+
+func (_m *MockUserInterface) Get(id int) (*model.User, error) {
+	ret := _m.Called(id)
+	return ret.Get(0).(*model.User), ret.Error(1)
+}
+```
+
+> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%A2%E3%83%83%E3%82%AFstruct
+
+**＊実装例＊**
 
 ```go
 package amplify
