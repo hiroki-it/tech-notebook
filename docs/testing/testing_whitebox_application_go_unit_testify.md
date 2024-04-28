@@ -56,7 +56,7 @@ type MockedAwsClient struct {
 
 #### ▼ On
 
-モックに、引数として渡される期待値と返却値の期待値を定義する。
+モックに、引数として渡される期待値と返却値の期待値を設定する。
 
 ```go
 package test
@@ -95,7 +95,7 @@ func TestUser_UserName(t *testing.T) {
 
 ### Called
 
-#### ▼ Called
+#### ▼ Calledとは
 
 『メソッドをコールした』というイベントをモックに登録する。
 
@@ -154,9 +154,15 @@ func (mock *MockedAmplifyAPI) GetBranch(
 
 ### Argument
 
+#### ▼ Argumentとは
+
+モックに渡した引数を保持する。
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments
+
 #### ▼ Get
 
-引数の順番をインデックス数で指定し、`Called`メソッドに登録された引数を取得する。
+引数の順番をインデックス数で指定し、保持された引数を取得する。
 
 **＊実装例＊**
 
@@ -190,7 +196,9 @@ func (mock *MockedAmplifyAPI) GetBranch(
 
 #### ▼ Error
 
-引数の順番をインデックス数で指定し、`Called`メソッドのエラーを取得する。
+引数の順番をインデックス数で指定し、保持された引数を取得する。
+
+引数がなければ、エラーを返却する。
 
 **＊実装例＊**
 
