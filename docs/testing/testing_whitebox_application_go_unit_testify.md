@@ -42,8 +42,6 @@ import (
 
 /**
  * AWSクライアントをモック化します。
-
-
  */
 type MockedAwsClient struct {
 	mock.Mock
@@ -67,6 +65,7 @@ func TestUser_UserName(t *testing.T) {
 
     mockUser := new(datastore.MockUserInterface)
 
+    // 実行するメソッド名、引数の期待値、返却値の期待値、を設定する
     mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
     u := &User{
@@ -105,10 +104,15 @@ func (m *MockedUser) GetAge() int {
 }
 
 func Test_Mock(t *testing.T) {
+
 	testObj := new(MockedUser)
+
+	// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する
 	testObj.On("GetAge").Return(20)
-	assert.True(t, isAdult(testObj))
-	testObj.AssertExpectations(t)
+
+    assert.True(t, isAdult(testObj))
+
+    testObj.AssertExpectations(t)
 }
 ```
 
@@ -291,8 +295,6 @@ import (
 
 /**
  * 単体テストのテストスイートを構成する。
-
-
  */
 type FooSuite struct {
 	suite.Suite
@@ -301,8 +303,6 @@ type FooSuite struct {
 
 /**
  * 単体テストの直前の事前処理を実行する。
-
-
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
@@ -312,8 +312,6 @@ func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
 /**
  * 単体テストのテストスイートを実行する。
-
-
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})
@@ -329,8 +327,6 @@ import (
 
 /**
  * Methodメソッドが成功することを検証する。
-
-
  */
 func (suite *FooSuite) TestMethod() {
 

@@ -266,8 +266,6 @@ type Person struct {
 /**
  * 型のコンストラクタ
  * ※スコープはパッケージ内のみとする。
-
-
  */
 func newPerson(name string) *Person {
     // new関数を使用する。
