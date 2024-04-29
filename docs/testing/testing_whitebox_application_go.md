@@ -104,7 +104,7 @@ import (
 )
 
 /**
- * fooメソッドをテストする
+ * foo関数をテストする
  */
 func TestFoo(t *testing.T) {
 
@@ -140,7 +140,7 @@ func TestFoo(t *testing.T) {
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
 
-			// fooメソッドを実行し、実際値を作成する。
+			// foo関数を実行し、実際値を作成する。
 
 			// 期待値と実際値を比較する。
 			assert.JSONEq(t, tt.expected, actual)

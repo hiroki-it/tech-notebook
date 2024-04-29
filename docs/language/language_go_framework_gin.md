@@ -43,7 +43,7 @@ type Context struct {
 
 処理中のコンテキスト (例：デッドライン、キャンセル、など) を持つ。
 
-処理中のコンテキストは、`gin.Context.Request.Context`メソッドで取得できる。
+処理中のコンテキストは、`gin.Context.Request.Context`関数で取得できる。
 
 ```go
 type Context struct {

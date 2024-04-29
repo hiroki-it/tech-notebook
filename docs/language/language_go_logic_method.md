@@ -176,7 +176,7 @@ package main
 import "fmt"
 
 // 頭文字を大文字する
-func Foo(foo string) string {
+func Foo(foo string) {
 	fmt.Println(foo)
 }
 
@@ -191,7 +191,7 @@ func main() {
 
 これを使用して、現在実行中の関数名を取得する。
 
-構造体のメソッドで実行すれば、メソッド名を取得できる。
+構造体の関数で実行すれば、関数名を取得できる。
 
 ```go
 package main
@@ -340,7 +340,7 @@ Goは、言語としてオブジェクトという機能を持っていないが
 
 データ型や型リテラルなどを関数のレシーバとして渡すことによって、それに関数を紐付けられる。
 
-紐付け後、関数はメソッドと呼ばれるようになる。
+紐付け後、関数はメソッドとも呼ばれるようになる。
 
 メソッド名とフィールド名に同じ名前は使用できない。
 
@@ -418,7 +418,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	name string
@@ -469,7 +469,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -564,7 +564,7 @@ func main() {
 
 即時関数を`defer`関数化している。
 
-処理の最後にランタイムエラーが発生したとき、これを`recover`メソッドで吸収できる。
+処理の最後にランタイムエラーが発生したとき、これを`recover`関数で吸収できる。
 
 **＊実装例＊**
 
@@ -2242,7 +2242,7 @@ if err != nil {
 
 Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後に`error`インターフェースが返却されるようになっている。
 
-`error`インターフェースは暗黙的に`Error`メソッドをコールする。
+`error`インターフェースは暗黙的に`Error`関数をコールする。
 
 ```go
 type error interface {
@@ -2252,9 +2252,9 @@ type error interface {
 
 **＊実装例＊**
 
-osパッケージの`Open`メソッドから`error`インターフェースが返却される。
+osパッケージの`Open`関数から`error`インターフェースが返却される。
 
-`error`インターフェースは`Error`メソッドを自動的に実行し、標準エラー出力に出力する。
+`error`インターフェースは`Error`関数を自動的に実行し、標準エラー出力に出力する。
 
 ```go
 package main
@@ -2281,11 +2281,11 @@ func main() {
 
 #### ▼ `New`関数による自前エラー
 
-errorsパッケージの`New`メソッドにエラーを設定する。
+errorsパッケージの`New`関数にエラーを設定する。
 
 これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-`error`インターフェースは`Error`メソッドを自動的に実行する。
+`error`インターフェースは`Error`関数を自動的に実行する。
 
 **＊実装例＊**
 
@@ -2319,15 +2319,15 @@ func main() {
 
 > - https://golang.org/pkg/errors/#New
 
-#### ▼ `fmt.Errorf`メソッドによる自前エラー
+#### ▼ `fmt.Errorf`関数による自前エラー
 
-fmtパッケージの`Errorf`メソッドで自前エラーを作成できる。
+fmtパッケージの`Errorf`関数で自前エラーを作成できる。
 
 事前に定義したフォーマットを元にエラーを設定する。
 
 これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-`error`インターフェースは`Error`メソッドを自動的に実行する。
+`error`インターフェースは`Error`関数を自動的に実行する。
 
 **＊実装例＊**
 
@@ -2354,11 +2354,11 @@ func main() {
 
 #### ▼ 構造体による自前エラー
 
-構造体に`Error`メソッドを定義すると、この構造体に`error`インターフェースが自動的に委譲される。
+構造体に`Error`関数を定義すると、この構造体に`error`インターフェースが自動的に委譲される。
 
 これにより、ユーザー定義のエラーを保持する`error`インターフェースを定義できる。
 
-`error`インターフェースは`Error`メソッドを自動的に実行する。
+`error`インターフェースは`Error`関数を自動的に実行する。
 
 **＊実装例＊**
 
@@ -2385,7 +2385,7 @@ func main() {
 	if err != nil {
 		// 構造体に値を設定する。
 		myError := &Error{Message: "エラーが発生したため、処理を完了しました。"}
-		// 構造体をコールするのみで、Errorメソッドが実行される。
+		// 構造体をコールするのみで、Error関数が実行される。
 		log.Printf("%v", myError)
 		os.Exit(1)
 	}
@@ -2414,7 +2414,6 @@ xerrorsパッケージによって作成される`error`インターフェース
 package main
 
 import (
-	"fmt"
 	"golang.org/x/xerrors"
 	"log"
 	"os"
@@ -2439,13 +2438,12 @@ func main() {
 }
 ```
 
-#### ▼ `Errorf`メソッドによるトレース付与
+#### ▼ `Errorf`関数によるトレース付与
 
 ```go
 package main
 
 import (
-	"fmt"
 	"golang.org/x/xerrors"
 	"log"
 	"os"

@@ -34,7 +34,7 @@ Go製のORMである。
 ```go
 func NewDB() (*gorm.DB, error) {
 
-    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
+    // 接続情報。sprintf関数を使用すると、可読性が高い。
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("DB_USER"),
@@ -156,11 +156,11 @@ db.Where("age = 20").Find(&user)
 
 ### DBマイグレーション
 
-#### ▼ `TableName`メソッド
+#### ▼ `TableName`関数
 
 デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
 
-`TableName`メソッドにより、ユーザー定義のテーブル名をつけられる。
+`TableName`関数により、ユーザー定義のテーブル名をつけられる。
 
 ```go
 // テーブル名はデフォルトでは『users』になる。

@@ -230,7 +230,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -257,7 +257,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Person struct {
 	Name string
@@ -413,12 +413,12 @@ func NewMyName(firstName string, lastName string) *MyName {
 func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
-	// myName構造体は、Name構造体のメソッドをコールできる。
+	// myName構造体は、Name構造体の関数をコールできる。
 	log.Printf("%v", myName.fullName()) // "Hiroki Hasegawa"
 }
 ```
 
-もし、委譲する側と委譲される側に、同じ名前のメソッド/フィールドが存在する場合は、委譲された側のものが優先してコールされる。
+もし、委譲する側と委譲される側に、同じ名前の関数/フィールドが存在する場合は、委譲された側のものが優先してコールされる。
 
 ```go
 package main
@@ -454,7 +454,7 @@ func NewMyName(firstName string, lastName string) *MyName {
 	}
 }
 
-// 委譲する側と委譲される側で同じメソッド
+// 委譲する側と委譲される側で同じ関数
 func (n *MyName) fullName() string {
 	return fmt.Sprintf("%s", "委譲された構造体です")
 }
@@ -465,7 +465,7 @@ func (n *MyName) fullName() string {
 func main() {
 	myName := NewMyName("Hiroki", "Hasegawa")
 
-	// 同じメソッドがある場合、委譲された側が優先。
+	// 同じ関数がある場合、委譲された側が優先。
 	log.Printf("%v", myName.fullName()) // "委譲された構造体です"
 }
 ```
@@ -1091,14 +1091,14 @@ func main() {
 
 **＊実装例＊**
 
-InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に`Eat`メソッド、`Sleep`メソッド、`Mating`メソッド、の処理を委譲する。
+InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に`Eat`関数、`Sleep`関数、`Mating`関数、の処理を委譲する。
 
 ```go
 package main
 
 import "fmt"
 
-// インターフェースとそのメソッドを定義する。
+// インターフェースとその関数を定義する。
 type AnimalInterface interface {
 	Name() string
 	Eat() string
@@ -1145,7 +1145,7 @@ func main() {
 		return
 	}
 
-	// メソッドを実行する。
+	// 関数を実行する。
 	fmt.Println(insect.Name())
 	fmt.Println(insect.Eat())
 	fmt.Println(insect.Sleep())
@@ -1168,9 +1168,9 @@ func main() {
 
 ### アップキャストの可否を利用した検証
 
-もし、構造体に実装されたメソッドに不足があると、委譲が自動的に取り消される。
+もし、構造体に実装された関数に不足があると、委譲が自動的に取り消される。
 
-エラーは発生しないため、実装されたメソッドが十分であることを実装者が知らなければならない。
+エラーは発生しないため、実装された関数が十分であることを実装者が知らなければならない。
 
 アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。
 
@@ -1184,7 +1184,7 @@ import "fmt"
 // アップキャストの可否を使用して、構造体がインターフェースを満たしているを検証する。
 var _ AnimalInterface = &InsectImpl{} // もしくは (*InsectImpl)(nil)
 
-// インターフェースとそのメソッドを定義する。
+// インターフェースとその関数を定義する。
 type AnimalInterface interface {
 	Name() string
 	Eat() string
@@ -1214,13 +1214,13 @@ func main() {
 		return
 	}
 
-	// メソッドを実行する。
+	// 関数を実行する。
 	fmt.Println(insect.Name())
 }
 ```
 
 ```bash
-# Eatメソッドを紐付けていない場合
+# Eat関数を紐付けていない場合
 cannot use insect (type Insect) as type Animal in assignment:
 Insect does not implement Animal (missing Eat method)
 ```
@@ -1318,7 +1318,7 @@ func main() {
 
 Goには、標準搭載されているインターフェースがある。
 
-このインターフェースが強制するメソッドを実装した構造体を定義すると、自動的に委譲が行われる。
+このインターフェースが強制する関数を実装した構造体を定義すると、自動的に委譲が行われる。
 
 **＊例＊**
 
@@ -1332,7 +1332,7 @@ type error interface {
 
 ### stringインターフェース
 
-構造体に`String`メソッドを定義しておくと、Print系関数に構造体を渡した時に、これが実行される。
+構造体に`String`関数を定義しておくと、Print系関数に構造体を渡した時に、これが実行される。
 
 **＊実装例＊**
 
@@ -1344,7 +1344,7 @@ import "fmt"
 type Foo struct{}
 
 func (f *Foo) String() string {
-	return "Stringメソッドを実行しました。"
+	return "String関数を実行しました。"
 }
 
 func main() {

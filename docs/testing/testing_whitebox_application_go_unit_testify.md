@@ -56,8 +56,18 @@ type MockedAwsClient struct {
 package test
 
 import (
-	mock "github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/mock"
 )
+
+// MockUserInterface UserInterfaceのモック
+type MockUserInterface struct {
+	mock.Mock
+}
+
+func (_m *MockUserInterface) Get(id int) (*model.User, error) {
+	ret := _m.Called(id)
+	return ret.Get(0).(*model.User), ret.Error(1)
+}
 
 func TestUser_UserName(t *testing.T) {
 
@@ -65,7 +75,7 @@ func TestUser_UserName(t *testing.T) {
 
     mockUser := new(datastore.MockUserInterface)
 
-    // 実行するメソッド名、引数の期待値、返却値の期待値、を設定する
+    // 実行する関数名、引数の期待値、返却値の期待値、を設定する
     mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
     u := &User{
@@ -84,16 +94,17 @@ func TestUser_UserName(t *testing.T) {
 
 #### ▼ AssertExpectations
 
-`On`メソッドや`Retuen`メソッドが正しく実行されたか否かを検証する。
+`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
 
 ```go
 package test
 
 import (
-	mock "github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/assert"
 )
 
+// MockedUser Userのモック
 type MockedUser struct {
 	mock.Mock
 }
@@ -105,14 +116,14 @@ func (m *MockedUser) GetAge() int {
 
 func Test_Mock(t *testing.T) {
 
-	testObj := new(MockedUser)
+	mockUser := new(MockedUser)
 
-	// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する
-	testObj.On("GetAge").Return(20)
+	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	mockUser.On("GetAge").Return(20)
 
-    assert.True(t, isAdult(testObj))
+    assert.True(t, isAdult(mockUser))
 
-    testObj.AssertExpectations(t)
+	mockUser.AssertExpectations(t)
 }
 ```
 
@@ -120,7 +131,40 @@ func Test_Mock(t *testing.T) {
 
 #### ▼ AssertNumberOfCalls
 
-モックがコールされた回数の期待値を設定する。
+モック内の関数がコールされた回数を検証する。
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/assert"
+)
+
+// MockedUser Userのモック
+type MockedUser struct {
+	mock.Mock
+}
+
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
+	return args.Int(0)
+}
+
+func Test_Mock(t *testing.T) {
+
+	mockUser := new(MockedUser)
+
+	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	mockUser.On("GetAge").Return(20)
+
+    assert.True(t, isAdult(mockUser))
+
+	mockUser.AssertExpectations(t)
+	// GetAge関数をコールした回数を検証する
+	mockUser.AssertExpectations(t, "GetAge", 1)
+}
+```
 
 <br>
 
@@ -128,7 +172,7 @@ func Test_Mock(t *testing.T) {
 
 #### ▼ Calledとは
 
-『メソッドをコールした』というイベントをモックに登録する。
+『関数をコールした』というイベントをモックに登録する。
 
 **＊実装例＊**
 
@@ -157,8 +201,10 @@ func (_m *MockUserInterface) Get(id int) (*model.User, error) {
 package amplify
 
 import (
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"context"
 	"github.com/stretchr/testify/mock"
+
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
 type MockedAmplifyAPI struct {
@@ -201,8 +247,10 @@ func (mock *MockedAmplifyAPI) GetBranch(
 package amplify
 
 import (
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"context"
 	"github.com/stretchr/testify/mock"
+
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
 type MockedAmplifyAPI struct {
@@ -217,7 +265,6 @@ func (mock *MockedAmplifyAPI) GetBranch(
 	) (*aws_amplify.GetBranchOutput, error) {
 
 	arguments := mock.Called(ctx, params, optFns)
-
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
@@ -237,8 +284,10 @@ func (mock *MockedAmplifyAPI) GetBranch(
 package amplify
 
 import (
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"context"
 	"github.com/stretchr/testify/mock"
+
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
 type MockedAmplifyAPI struct {
@@ -291,6 +340,8 @@ package foo
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/suite"
 )
 
 /**
@@ -323,10 +374,11 @@ package foo
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 )
 
 /**
- * Methodメソッドが成功することを検証する。
+ * Method関数が成功することを検証する。
  */
 func (suite *FooSuite) TestMethod() {
 
@@ -340,6 +392,7 @@ func (suite *FooSuite) TestMethod() {
 ```
 
 > - https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
+> - https://pkg.go.dev/github.com/stretchr/testify/suite
 
 <br>
 

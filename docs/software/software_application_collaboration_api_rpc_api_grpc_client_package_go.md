@@ -277,7 +277,7 @@ type UnaryClientInterceptor func(
     ) error
 ```
 
-このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
@@ -326,7 +326,7 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+関数に定められた引数を定義すれば、インターセプターとして使用できる。
 
 ```go
 package intercetor
@@ -355,7 +355,7 @@ func UnaryClientInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.UnaryClientInterceptor`型を返却するメソッドとする。
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryClientInterceptor`型を返却する関数とする。
 
 ```go
 package intercetor
@@ -410,7 +410,7 @@ type StreamClientInterceptor func(
 ) (ClientStream, error)
 ```
 
-このメソッドは、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
@@ -459,7 +459,7 @@ func main() {
 
 #### ▼ 自前のインターセプター
 
-メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+関数に定められた引数を定義すれば、インターセプターとして使用できる。
 
 ```go
 package intercetor
@@ -491,7 +491,7 @@ type wrapClientStream struct {
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor`型を返却するメソッドとする。
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor`型を返却する関数とする。
 
 ```go
 package intercetor
@@ -648,7 +648,7 @@ type UnaryServerInterceptor func(
 
 #### ▼ 自前のインターセプター
 
-メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+関数に定められた引数を定義すれば、インターセプターとして使用できる。
 
 ```go
 package interceptor
@@ -677,7 +677,7 @@ func UnaryServerInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.UnaryServerInterceptor`型を返却するメソッドとする。
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryServerInterceptor`型を返却する関数とする。
 
 ```go
 package interceptor
@@ -732,7 +732,7 @@ type StreamServerInterceptor func(
 
 #### ▼ 自前のインターセプター
 
-メソッドに定められた引数を定義すれば、インターセプターとして使用できる。
+関数に定められた引数を定義すれば、インターセプターとして使用できる。
 
 ```go
 package interceptor
@@ -759,7 +759,7 @@ func StreamServerInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却するメソッドとする。
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却する関数とする。
 
 ```go
 package interceptor
@@ -1414,7 +1414,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト受信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`メソッドを使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`関数を使用する。
 
 ```go
 package main
@@ -1448,7 +1448,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト送信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`メソッドを使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`関数を使用する。
 
 ```go
 package main

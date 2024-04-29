@@ -130,9 +130,9 @@ GoでgRPCを扱えるようにする。
 
 #### ▼ Dial
 
-`DialContext`メソッドのラッパーであり、新しいコンテキストでgRPCサーバーとのコネクションを作成する。
+`DialContext`関数のラッパーであり、新しいコンテキストでgRPCサーバーとのコネクションを作成する。
 
-執筆時点 (2024/04/06) で`Dial`メソッドは非推奨であり、`NewClient`メソッドが推奨である。
+執筆時点 (2024/04/06) で`Dial`関数は非推奨であり、`NewClient`関数が推奨である。
 
 ```go
 func Dial(target string, opts ...DialOption) (*ClientConn, error) {
@@ -146,7 +146,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 
 既存コンテキストを使用して、gRPCサーバーとのコネクションを作成する。
 
-執筆時点 (2024/04/06) で`DialContext`メソッドは非推奨であり、`NewClient`メソッドが推奨である。
+執筆時点 (2024/04/06) で`DialContext`関数は非推奨であり、`NewClient`関数が推奨である。
 
 ```go
 package main
@@ -566,9 +566,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-現在のメソッドのスパンを開始後であれば、`true`になる。
+現在の関数のスパンを開始後であれば、`true`になる。
 
-現在のメソッドでスパンを開始していない場合は、`false`になる。
+現在の関数でスパンを開始していない場合は、`false`になる。
 
 ```go
 package main
@@ -613,7 +613,7 @@ func foo()  {
 
 内部的には、`AddEvent`関数に`exception`イベントを渡している。
 
-`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。
+`IsRecording`関数が`false`の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
 
 ただし、イベントの記録はログでやるべきであり、分散トレースとエラーイベントのログを紐付けさえすれば、分散トレース側にエラーイベントの情報を持たせる必要がない。
 
@@ -665,7 +665,7 @@ func fooHandler(ctx context.Context) {
 
 ステータス (`Unset`、`OK`、`Error`) とエラーメッセージを現在のスパンに設定する。
 
-`IsRecording`関数が`false`の場合 (現在のメソッドでスパンを開始していない場合) は、使用できない。
+`IsRecording`関数が`false`の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
 
 ```go
 package server
@@ -734,7 +734,7 @@ type SpanContext struct {
 
 既存コンテキストから`SpanContext`のみを取得する。
 
-現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。
+現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。
 
 ```go
 package server
@@ -800,7 +800,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 スパンIDから既存コンテキストからスパンを取得する。
 
-現在のメソッドでスパンを作成していない場合は、上の階層のスパンを取得できる。
+現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。
 
 ```go
 package server
@@ -877,7 +877,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 また、事前のミドルウェア処理としてスパンを自動的に作成する (事後のミドルウェア処理には`otelhttp`パッケージを使う) 。
 
-各メソッドで事前にスパンを作成する必要がなくなる。
+各関数で事前にスパンを作成する必要がなくなる。
 
 `otelgin`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
@@ -919,7 +919,7 @@ func main() {
 
 クエリ実行前のミドルウェア処理としてスパンを自動的に作成し、事後にはこのスパンにSQLステートメント (`gorm.Create`、`gorm.Query`、`gorm.Delete`、`gorm.Update`、`gorm.Row`、`gorm.Raw`) を自動的に設定する。
 
-各永続化メソッドでスパンを作成したり、SQLステートメントを設定する必要がなくなる。
+各永続化関数でスパンを作成したり、SQLステートメントを設定する必要がなくなる。
 
 `otelgorm`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
@@ -1043,7 +1043,7 @@ func NewDb()  {
 
 また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
 
-各メソッドで事前/事後にスパンを作成する必要がなくなる。
+各関数で事前/事後にスパンを作成する必要がなくなる。
 
 `otelgrpc`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
@@ -1074,15 +1074,15 @@ type metadataSupplier struct {
 
 ### クライアント側
 
-#### ▼ ClientInterceptor系メソッド
+#### ▼ ClientInterceptor系関数
 
 gRPCリクエスト送信時のインターセプター処理として`otelgrpc`パッケージを設定する。
 
 抽出時のメタデータは、`mdOutgoingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
 
-そのため、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
+そのため、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系関数で設定する必要がある。
 
-執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨であり、`NewClientHandler`メソッドが推奨である。
+執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、`NewClientHandler`関数が推奨である。
 
 ```go
 package main
@@ -1144,7 +1144,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 
 #### ▼ NewClientHandler
 
-執筆時点 (2024/03/31) でClientInterceptor系メソッドは非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨になっており、これの移行先である。
 
 ```go
 package main
@@ -1175,15 +1175,15 @@ func main() {
 
 ### サーバー側
 
-#### ▼ ServerInterceptor系メソッド
+#### ▼ ServerInterceptor系関数
 
 gRPCリクエスト受信時のインターセプター処理として`otelgrpc`パッケージを設定する。
 
 抽出時のメタデータは`mdIncomingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
 
-そのため、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系メソッドで設定する必要がある。
+そのため、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系関数で設定する必要がある。
 
-執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨であり、`NewServerHandler`メソッドが推奨である。
+執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、`NewServerHandler`関数が推奨である。
 
 ```go
 func extract(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
@@ -1211,7 +1211,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 
 #### ▼ NewServerHandler
 
-執筆時点 (2024/03/31) でServerInterceptor系メソッドは非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨になっており、これの移行先である。
 
 ```go
 package main
@@ -1298,8 +1298,8 @@ func main()  {
 			    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
 				// 指定したgRPCサービスではスパンを作成しない
 				otelgrpc.WithInterceptorFilter(filters.Not(filters.ServiceName("<gRPCサービス名>"))),
-				// 指定したgRPCメソッドではスパンを作成しない
-				otelgrpc.WithInterceptorFilter(filters.Not(filters.MethodName("<gRPCメソッド名>"))),
+				// 指定したgRPC関数ではスパンを作成しない
+				otelgrpc.WithInterceptorFilter(filters.Not(filters.MethodName("<gRPC関数名>"))),
 			),
         ),
 	)
@@ -1342,7 +1342,7 @@ func ChainUnaryServerInterceptor() grpc.UnaryServerInterceptor {
 
 gRPCにこのオプションはない。
 
-gRPCの場合、リモートプロシージャーコールなため、スパン名はメソッド名とするとよい。
+gRPCの場合、リモートプロシージャーコールなため、スパン名は関数名とするとよい。
 
 <br>
 
@@ -1354,7 +1354,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 また、事前/事後のミドルウェア処理としてスパンを自動的に作成する。
 
-各メソッドで事前/事後にスパンを作成する必要がなくなる。
+各関数で事前/事後にスパンを作成する必要がなくなる。
 
 `otelhttp`パッケージを使用しない場合、これらを自前で実装する必要がある。
 
