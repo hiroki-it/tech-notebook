@@ -24249,7 +24249,7 @@
 <h2 id="09">09. インターフェース<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="_31">委譲<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ 暗黙的に実装する<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
-<p>インターフェースを満たす関数を構造体に紐付けると、インターフェースを暗黙的に実装できる。</p>
+<p>インターフェースを満たす関数を構造体に紐付けると、インターフェースを暗黙的に実装した構造体を作成できる。</p>
 <p>構造体の委譲とは異なり、アップキャストを行える。</p>
 <p>つまり、委譲された構造体は委譲するインターフェースのデータ型にキャストでき、同じデータ型として扱える。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -24284,7 +24284,8 @@
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// インターフェースを満たす関数 (ここでいうName、Eat、Sleep) を構造体に紐付けると、インターフェースを暗黙的に実装できる</span>
+<span class="c1">// インターフェースを満たす関数 (ここでいうName、Eat、Sleep) を構造体に紐付ける</span>
+<span class="c1">// インターフェースを暗黙的に実装した構造体を作成できる</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">InsectImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">name</span>
 <span class="p">}</span>
@@ -24544,7 +24545,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-30</span>
   </span>
 
     
