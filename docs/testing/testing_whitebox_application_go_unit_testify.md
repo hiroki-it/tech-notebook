@@ -21,7 +21,15 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 <br>
 
-## 02. mock
+## 02. testifyの仕組み
+
+1. `mock`パッケージの`Mock`構造体に関数を設定する。
+2. `assert`パッケージでテストを実施する。
+3. `mock`パッケージの`Mock`構造体で`Assert*****`関数を実行し、結果を検証する。
+
+<br>
+
+## 03. mock
 
 ### Mock
 
@@ -92,85 +100,7 @@ func TestUser_UserName(t *testing.T) {
 
 > - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C
 
-#### ▼ AssertExpectations
-
-`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
-
-```go
-package test
-
-import (
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/assert"
-)
-
-// MockedUser Userのモック
-type MockedUser struct {
-	mock.Mock
-}
-
-func (m *MockedUser) GetAge() int {
-	args := m.Called()
-	return args.Int(0)
-}
-
-func Test_Mock(t *testing.T) {
-
-	mockUser := new(MockedUser)
-
-	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
-	mockUser.On("GetAge").Return(20)
-
-    assert.True(t, isAdult(mockUser))
-
-	mockUser.AssertExpectations(t)
-}
-```
-
-> - https://dev.classmethod.jp/articles/go-testify/#toc-5
-
-#### ▼ AssertNumberOfCalls
-
-モック内の関数がコールされた回数を検証する。
-
-```go
-package test
-
-import (
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/assert"
-)
-
-// MockedUser Userのモック
-type MockedUser struct {
-	mock.Mock
-}
-
-func (m *MockedUser) GetAge() int {
-	args := m.Called()
-	return args.Int(0)
-}
-
-func Test_Mock(t *testing.T) {
-
-	mockUser := new(MockedUser)
-
-	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
-	mockUser.On("GetAge").Return(20)
-
-    assert.True(t, isAdult(mockUser))
-
-	mockUser.AssertExpectations(t)
-	// GetAge関数をコールした回数を検証する
-	mockUser.AssertExpectations(t, "GetAge", 1)
-}
-```
-
-<br>
-
-### Called
-
-#### ▼ Calledとは
+#### ▼ Called
 
 『関数をコールした』というイベントをモックに登録する。
 
@@ -188,7 +118,9 @@ type MockUserInterface struct {
 }
 
 func (_m *MockUserInterface) Get(id int) (*model.User, error) {
+
 	ret := _m.Called(id)
+
 	return ret.Get(0).(*model.User), ret.Error(1)
 }
 ```
@@ -226,6 +158,84 @@ func (mock *MockedAmplifyAPI) GetBranch(
 ```
 
 > - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called
+
+#### ▼ AssertExpectations
+
+`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/assert"
+)
+
+// MockedUser Userのモック
+type MockedUser struct {
+	mock.Mock
+}
+
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
+	return args.Int(0)
+}
+
+func Test_Mock(t *testing.T) {
+
+	mockUser := new(MockedUser)
+
+	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	mockUser.On("GetAge").Return(20)
+
+	// テストを実施する
+    assert.True(t, isAdult(mockUser))
+
+	// 結果を検証する
+	mockUser.AssertExpectations(t)
+}
+```
+
+> - https://dev.classmethod.jp/articles/go-testify/#toc-5
+
+#### ▼ AssertNumberOfCalls
+
+モック内の関数がコールされた回数を検証する。
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/assert"
+)
+
+// MockedUser Userのモック
+type MockedUser struct {
+	mock.Mock
+}
+
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
+	return args.Int(0)
+}
+
+func Test_Mock(t *testing.T) {
+
+	mockUser := new(MockedUser)
+
+	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	mockUser.On("GetAge").Return(20)
+
+	// テストを実施する
+    assert.True(t, isAdult(mockUser))
+
+	// 結果を検証する
+	mockUser.AssertExpectations(t)
+	// GetAge関数をコールした回数を検証する
+	mockUser.AssertExpectations(t, "GetAge", 1)
+}
+```
 
 <br>
 
@@ -303,7 +313,6 @@ func (mock *MockedAmplifyAPI) GetBranch(
 
 	arguments := mock.Called(ctx, params, optFns)
 
-
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
 ```
@@ -312,7 +321,7 @@ func (mock *MockedAmplifyAPI) GetBranch(
 
 <br>
 
-## 03. assert
+## 04. assert
 
 ### 事前処理と事後処理
 

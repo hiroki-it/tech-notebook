@@ -351,7 +351,7 @@ integer型を値レシーバとして渡し、構造体に関数を紐付ける�
 ```go
 package main
 
-import "fmt"
+import "log"
 
 type Age int
 
@@ -373,7 +373,7 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import "log"
 
 // 構造体を定義
 type Person struct {
@@ -583,7 +583,7 @@ func main() {
 		err := recover()
 
 		if err != nil {
-			log.Printf("Failed to run application: %v" %v", err)
+			log.Printf("Failed to run application: %v", err)
 		}
 
 		fmt.Println("End")
