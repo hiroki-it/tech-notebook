@@ -22503,17 +22503,18 @@
 <p><br></p>
 <h2 id="02-testify">02. testifyの仕組み<a class="headerlink" href="#02-testify" title="Permanent link">&para;</a></h2>
 <ol>
-<li><code>mock</code>パッケージの<code>Mock</code>構造体に関数を設定する。</li>
-<li><code>assert</code>パッケージでテストを実施する。</li>
-<li><code>mock</code>パッケージの<code>Mock</code>構造体で<code>Assert*****</code>関数を実行し、結果を検証する。</li>
+<li><code>mock</code>パッケージのモック構造体に関数を設定する。</li>
+<li><code>On</code>関数や<code>Called</code>関数を使用し、モック構造体に仮の関数を定義する。</li>
+<li><code>mock</code>パッケージのモック構造体で<code>Assert*****</code>関数を実行し、期待値と実際値を比較する。</li>
+<li><code>assert</code>パッケージで検証関数を実行し、期待値と実際値を比較する。</li>
 </ol>
 <p><br></p>
 <h2 id="03-mock">03. mock<a class="headerlink" href="#03-mock" title="Permanent link">&para;</a></h2>
 <h3 id="mock">Mock<a class="headerlink" href="#mock" title="Permanent link">&para;</a></h3>
 <h4 id="mock_1">▼ Mockとは<a class="headerlink" href="#mock_1" title="Permanent link">&para;</a></h4>
-<p>構造体のフィールドに<code>Mock</code>構造体を設定すれば、その構造体をモック化できる。</p>
+<p>構造体のフィールドにモック構造体を設定すれば、その構造体をモック化できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>AWSクライアントをモック化する。</p>
+<p>AWSクライアントをモック構造体化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22521,23 +22522,22 @@
 <span class="p">)</span>
 
 <span class="cm">/**</span>
-<span class="cm"> * AWSクライアントをモック化します。</span>
+<span class="cm"> * AWSクライアントをモック構造体化します。</span>
 <span class="cm"> */</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedAwsClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="on">▼ On<a class="headerlink" href="#on" title="Permanent link">&para;</a></h4>
-<p><code>Called</code>関数を内部に持つ仮の関数に処理を設定する。</p>
+<p>モック構造体の仮の関数に処理を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
-<span class="c1">// UserInterface モック対象となるinterface</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">UserInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">UserInterface</span><span class="w"> </span><span class="c1">// モック対象</span>
+<span class="w">    </span><span class="nx">UserInterface</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -22557,11 +22557,12 @@
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// MockUserInterface UserInterfaceのモック</span>
+<span class="c1">// MockUserInterface UserInterfaceのモック構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockUserInterface</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
+<span class="c1">// モック構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// On関数で設定された値を受け取る</span>
@@ -22596,17 +22597,17 @@
 </ul>
 </blockquote>
 <h4 id="called">▼ Called<a class="headerlink" href="#called" title="Permanent link">&para;</a></h4>
+<p>モック構造体に仮の関数を紐づける場合に使用する。</p>
 <p><code>On</code>関数で設定された引数や返却値を取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
-<span class="c1">// UserInterface モック対象となるinterface</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">UserInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">UserInterface</span><span class="w"> </span><span class="c1">// モック対象</span>
+<span class="w">    </span><span class="nx">UserInterface</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -22630,6 +22631,7 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
+<span class="c1">// Mock構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// On関数で設定された値を受け取る</span>
@@ -22677,14 +22679,14 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="c1">// モックが使用するGetBranch関数</span>
+<span class="c1">// モック構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// モックに渡した引数を一時的に保管する</span>
+<span class="w">    </span><span class="c1">// On関数で設定された値を受け取る</span>
 <span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -22696,8 +22698,8 @@
 </ul>
 </blockquote>
 <h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
-<p><code>Mock</code>構造体の<code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
-<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージの<code>Mock</code>構造体である。</p>
+<p>モック構造体の<code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージのモック構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -22718,11 +22720,12 @@
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// MockedUser Userのモック</span>
+<span class="c1">// MockedUser Userのモック構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
+<span class="c1">// Mock構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// On関数で設定された値を受け取る</span>
@@ -22741,7 +22744,7 @@
 <span class="w">    </span><span class="c1">// テストを実施する</span>
 <span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 結果を検証する</span>
+<span class="w">    </span><span class="c1">// 期待値と実際値を比較する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22752,8 +22755,8 @@
 </ul>
 </blockquote>
 <h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
-<p>モック内の関数がコールされた回数を検証する。</p>
-<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージの<code>Mock</code>構造体である。</p>
+<p>モック構造体内の関数がコールされた回数を検証する。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージのモック構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">user</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -22774,11 +22777,12 @@
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// MockedUser Userのモック</span>
+<span class="c1">// MockedUser Userのモック構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
+<span class="c1">// Mock構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// On関数で設定された値を受け取る</span>
@@ -22797,7 +22801,7 @@
 <span class="w">    </span><span class="c1">// テストを実施する</span>
 <span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 結果を検証する</span>
+<span class="w">    </span><span class="c1">// 期待値と実際値を比較する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
 <span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
@@ -22809,7 +22813,7 @@
 <p><br></p>
 <h3 id="argument">Argument<a class="headerlink" href="#argument" title="Permanent link">&para;</a></h3>
 <h4 id="argument_1">▼ Argumentとは<a class="headerlink" href="#argument_1" title="Permanent link">&para;</a></h4>
-<p>モックに渡した引数を保持する。</p>
+<p>モック構造体に渡した引数を保持する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments">https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments</a></li>
@@ -22831,7 +22835,7 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="c1">// モックが使用するGetBranch関数</span>
+<span class="c1">// Mock構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
@@ -22866,7 +22870,7 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="c1">// モックが使用するGetBranch関数</span>
+<span class="c1">// Mock構造体に紐づける仮の関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
@@ -22888,7 +22892,7 @@
 <h2 id="04-assert">04. assert<a class="headerlink" href="#04-assert" title="Permanent link">&para;</a></h2>
 <h3 id="_2">事前処理と事後処理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>テスト関数を実行する直前に、事前処理を実行する。</p>
-<p>モックの作成のために使用すると良い。</p>
+<p>モック構造体の作成のために使用すると良い。</p>
 <p>事前処理と事後処理については、以下のリンクを参考にせよ。</p>
 <table>
 <thead>
@@ -22932,7 +22936,7 @@
 </tbody>
 </table>
 <p><strong>＊実装例＊</strong></p>
-<p>事前にモックを作成するために、<code>BeforeTest</code>関数を使用する。</p>
+<p>事前にモック構造体を作成するために、<code>BeforeTest</code>関数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22954,7 +22958,7 @@
 <span class="cm"> */</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeTest</span><span class="p">(</span><span class="nx">suiteName</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">testName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// モックを作成する。</span>
+<span class="w">    </span><span class="c1">// モック構造体を作成する。</span>
 <span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooMock</span><span class="p">{}</span>
 <span class="p">}</span>
 
@@ -22979,7 +22983,7 @@
 
 <span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">T</span><span class="p">().</span><span class="nx">Helper</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// 事前処理で作成したモックを使用する。</span>
+<span class="w">    </span><span class="c1">// 事前処理で作成したモック構造体を使用する。</span>
 <span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span>
 
 <span class="w">    </span><span class="c1">// 以降にテスト処理</span>
