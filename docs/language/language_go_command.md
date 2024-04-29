@@ -87,9 +87,7 @@ Goに関する環境変数を出力する。
 ```bash
 $ go env
 
-# go.modの有効化
 GO111MODULE="on"
-# コンパイラが実行されるCPUアーキテクチャ
 GOARCH="amd64"
 
 ...

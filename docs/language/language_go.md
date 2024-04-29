@@ -106,6 +106,10 @@ CMD ["/go/bin/cmd"]
 #### ▼ 一覧
 
 ```bash
+$ go env
+
+GO111MODULE="on"
+GOARCH="amd64"
 GOBIN=""
 GOCACHE="/root/.cache/go-build"
 GOENV="/root/.config/go/env"
@@ -136,7 +140,23 @@ CGO_CPPFLAGS=""
 CGO_CXXFLAGS="-g -O2"
 CGO_FFLAGS="-g -O2"
 CGO_LDFLAGS="-g -O2"
+PKG_CONFIG="pkg-config"
+GOGCCFLAGS="-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches"
 ```
+
+#### ▼ `CGO_ENABLED`変数
+
+c言語製のパッケージの有効化する。
+
+無効化しておかないと、`vet`コマンドが失敗する。
+
+#### ▼ `GO111MODULE`変数
+
+`go.mod`ファイルを有効化する。
+
+#### ▼ `GOARCH`変数
+
+コンパイラが実行されるCPUアーキテクチャを設定する。
 
 #### ▼ `GOBIN`変数
 
@@ -171,14 +191,6 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 複数のバージョンのGoを管理できるようになる。
 
 > - https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/
-
-#### ▼ `CGO_ENABLED`変数
-
-c言語製のパッケージの有効化する。
-
-無効化しておかないと、`vet`コマンドが失敗する。
-
-<br>
 
 ## 03. ディレクトリ構成規約
 
@@ -252,16 +264,14 @@ go-repository/
 - 安全に処理を終了するGraceful Shutdown処理 (例：`shutdown.go`)
 
 ```yaml
-$GOPATH/ # 例えば、『$HOME/go』とする。
-├── bin/
-└── <パッケージ名>/
-    ├── config.go
-    ├── version.go
-    ├── foo/
-    ├── bar/
-    ├── baz/
-    └── shutdown/
-        └── shutdown.go
+go-repository/
+├── config.go
+├── version.go
+├── foo/
+├── bar/
+├── baz/
+└── shutdown/
+└── shutdown.go
 ```
 
 <br>
