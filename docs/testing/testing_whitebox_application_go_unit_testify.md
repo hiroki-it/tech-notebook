@@ -161,7 +161,9 @@ func (mock *MockedAmplifyAPI) GetBranch(
 
 #### ▼ AssertExpectations
 
-`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
+`Mock`構造体の`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
+
+検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
 
 ```go
 package test
@@ -189,10 +191,11 @@ func Test_Mock(t *testing.T) {
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
-    assert.True(t, isAdult(mockUser))
+	result := isAdult(mockUser)
 
 	// 結果を検証する
 	mockUser.AssertExpectations(t)
+	assert.True(t, result)
 }
 ```
 
@@ -202,6 +205,8 @@ func Test_Mock(t *testing.T) {
 
 モック内の関数がコールされた回数を検証する。
 
+検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
+
 ```go
 package test
 
@@ -228,12 +233,12 @@ func Test_Mock(t *testing.T) {
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
-    assert.True(t, isAdult(mockUser))
+	result := isAdult(mockUser)
 
 	// 結果を検証する
 	mockUser.AssertExpectations(t)
-	// GetAge関数をコールした回数を検証する
-	mockUser.AssertExpectations(t, "GetAge", 1)
+	mockUser.AssertExpectations(t, "GetAge", 1)	// GetAge関数をコールした回数を検証する
+	assert.True(t, result)
 }
 ```
 
@@ -405,12 +410,33 @@ func (suite *FooSuite) TestMethod() {
 
 <br>
 
-### アサーション
+### 結果の検証
 
 #### ▼ Exactly
 
-期待値と実際値の整合性を検証する。
+期待値と実際値 (値、データ型) の整合性を検証する。
 
-値のみでなく、データ型も検証できる。
+ポインタのメモリアドレス値は一致していなくても良い。
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly
+> - https://bayashi.net/diary/2023/0426
+
+#### ▼ Equal
+
+期待値と実際値 (値) の整合性を検証する。
+
+ポインタのメモリアドレス値は一致していなくても良い。
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal
+> - https://bayashi.net/diary/2023/0426
+
+#### ▼ Same
+
+期待値と実際値 (メモリアドレス値) の整合性を検証する。
+
+ポインタのメモリアドレス値が同じであれば、結果的に値とデータ型も同じになる。
+
+> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same
+> - https://bayashi.net/diary/2023/0426
 
 <br>
