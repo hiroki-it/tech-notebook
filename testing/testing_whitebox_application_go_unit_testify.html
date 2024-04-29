@@ -22562,18 +22562,18 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">_m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ret</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">_m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">),</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">),</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">TestUser_UserName</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">testUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tom&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Gender</span><span class="p">:</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">Male</span><span class="p">,</span><span class="w"> </span><span class="nx">CreatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span><span class="w"> </span><span class="nx">UpdatedAt</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()}</span>
 
-<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">datastore</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="c1">// Get関数内部のCalled関数に、期待値 (ここでは引数と返却値) を設定する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22608,7 +22608,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">usr</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">dt</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">usr</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">usr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
@@ -22620,16 +22620,16 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">mock</span><span class="w"> </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockUserInterface</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22654,14 +22654,14 @@
 <span class="p">}</span>
 
 <span class="c1">// モックが使用するGetBranch関数</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// モックに渡した引数を一時的に保管する</span>
-<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22699,8 +22699,8 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="p">}</span>
 
@@ -22708,7 +22708,7 @@
 
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="c1">// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
@@ -22752,8 +22752,8 @@
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="p">}</span>
 
@@ -22761,7 +22761,7 @@
 
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="c1">// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
@@ -22802,13 +22802,13 @@
 <span class="p">}</span>
 
 <span class="c1">// モックが使用するGetBranch関数</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22836,13 +22836,13 @@
 <span class="p">}</span>
 
 <span class="c1">// モックが使用するGetBranch関数</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
