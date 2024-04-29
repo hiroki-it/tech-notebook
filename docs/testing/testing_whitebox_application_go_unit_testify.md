@@ -23,9 +23,10 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 ## 02. testifyの仕組み
 
-1. `mock`パッケージの`Mock`構造体に関数を設定する。
-2. `assert`パッケージでテストを実施する。
-3. `mock`パッケージの`Mock`構造体で`Assert*****`関数を実行し、結果を検証する。
+1. `mock`パッケージのモック構造体に関数を設定する。
+2. `On`関数や`Called`関数を使用し、モック構造体に仮の関数を定義する。
+3. `mock`パッケージのモック構造体で`Assert*****`関数を実行し、期待値と実際値を比較する。
+4. `assert`パッケージで検証関数を実行し、期待値と実際値を比較する。
 
 <br>
 
@@ -35,11 +36,11 @@ Goではオブジェクトの概念がないため、モックオブジェクト
 
 #### ▼ Mockとは
 
-構造体のフィールドに`Mock`構造体を設定すれば、その構造体をモック化できる。
+構造体のフィールドにモック構造体を設定すれば、その構造体をモック化できる。
 
 **＊実装例＊**
 
-AWSクライアントをモック化する。
+AWSクライアントをモック構造体化する。
 
 ```go
 package amplify
@@ -49,7 +50,7 @@ import (
 )
 
 /**
- * AWSクライアントをモック化します。
+ * AWSクライアントをモック構造体化します。
  */
 type MockedAwsClient struct {
 	mock.Mock
@@ -58,18 +59,17 @@ type MockedAwsClient struct {
 
 #### ▼ On
 
-`Called`関数を内部に持つ仮の関数に処理を設定する。
+モック構造体の仮の関数に処理を設定する。
 
 ```go
 package user
 
-// UserInterface モック対象となるinterface
 type UserInterface interface {
 	Get(id int) (*model.User, error)
 }
 
 type User struct {
-    UserInterface // モック対象
+    UserInterface
 }
 
 func (u *User) UserName(id int) (string, error) {
@@ -91,11 +91,12 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-// MockUserInterface UserInterfaceのモック
+// MockUserInterface UserInterfaceのモック構造体
 type MockUserInterface struct {
 	mock.Mock
 }
 
+// モック構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
 	// On関数で設定された値を受け取る
@@ -129,6 +130,8 @@ func TestUser_UserName(t *testing.T) {
 
 #### ▼ Called
 
+モック構造体に仮の関数を紐づける場合に使用する。
+
 `On`関数で設定された引数や返却値を取得する。
 
 **＊実装例＊**
@@ -136,13 +139,12 @@ func TestUser_UserName(t *testing.T) {
 ```go
 package user
 
-// UserInterface モック対象となるinterface
 type UserInterface interface {
 	Get(id int) (*model.User, error)
 }
 
 type User struct {
-	UserInterface // モック対象
+	UserInterface
 }
 
 func (u *User) UserName(id int) (string, error) {
@@ -168,6 +170,7 @@ type MockUserInterface struct {
 	mock.Mock
 }
 
+// Mock構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
 	// On関数で設定された値を受け取る
@@ -215,14 +218,14 @@ type MockedAmplifyAPI struct {
 	mock.Mock
 }
 
-// モックが使用するGetBranch関数
+// モック構造体に紐づける仮の関数
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	// モックに渡した引数を一時的に保管する
+	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
@@ -233,9 +236,9 @@ func (m *MockedAmplifyAPI) GetBranch(
 
 #### ▼ AssertExpectations
 
-`Mock`構造体の`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
+モック構造体の`On`関数や`Retuen`関数が正しく実行されたか否かを検証する。
 
-検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
+検証対象は、ユーザー定義箇所ではなく、`mock`パッケージのモック構造体である。
 
 ```go
 package user
@@ -260,11 +263,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// MockedUser Userのモック
+// MockedUser Userのモック構造体
 type MockedUser struct {
 	mock.Mock
 }
 
+// Mock構造体に紐づける仮の関数
 func (m *MockedUser) GetAge() int {
 
 	// On関数で設定された値を受け取る
@@ -283,7 +287,7 @@ func Test_Mock(t *testing.T) {
 	// テストを実施する
 	result := isAdult(mockUser)
 
-	// 結果を検証する
+	// 期待値と実際値を比較する
 	mockUser.AssertExpectations(t)
 	assert.True(t, result)
 }
@@ -293,9 +297,9 @@ func Test_Mock(t *testing.T) {
 
 #### ▼ AssertNumberOfCalls
 
-モック内の関数がコールされた回数を検証する。
+モック構造体内の関数がコールされた回数を検証する。
 
-検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
+検証対象は、ユーザー定義箇所ではなく、`mock`パッケージのモック構造体である。
 
 ```go
 package user
@@ -320,11 +324,12 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// MockedUser Userのモック
+// MockedUser Userのモック構造体
 type MockedUser struct {
 	mock.Mock
 }
 
+// Mock構造体に紐づける仮の関数
 func (m *MockedUser) GetAge() int {
 
 	// On関数で設定された値を受け取る
@@ -343,7 +348,7 @@ func Test_Mock(t *testing.T) {
 	// テストを実施する
 	result := isAdult(mockUser)
 
-	// 結果を検証する
+	// 期待値と実際値を比較する
 	mockUser.AssertExpectations(t)
 	mockUser.AssertExpectations(t, "GetAge", 1)	// GetAge関数をコールした回数を検証する
 	assert.True(t, result)
@@ -358,7 +363,7 @@ func Test_Mock(t *testing.T) {
 
 #### ▼ Argumentとは
 
-モックに渡した引数を保持する。
+モック構造体に渡した引数を保持する。
 
 > - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments
 
@@ -382,7 +387,7 @@ type MockedAmplifyAPI struct {
 	mock.Mock
 }
 
-// モックが使用するGetBranch関数
+// Mock構造体に紐づける仮の関数
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
@@ -420,7 +425,7 @@ type MockedAmplifyAPI struct {
 	mock.Mock
 }
 
-// モックが使用するGetBranch関数
+// Mock構造体に紐づける仮の関数
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
@@ -444,7 +449,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 
 テスト関数を実行する直前に、事前処理を実行する。
 
-モックの作成のために使用すると良い。
+モック構造体の作成のために使用すると良い。
 
 事前処理と事後処理については、以下のリンクを参考にせよ。
 
@@ -459,7 +464,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 
 **＊実装例＊**
 
-事前にモックを作成するために、`BeforeTest`関数を使用する。
+事前にモック構造体を作成するために、`BeforeTest`関数を使用する。
 
 ```go
 package foo
@@ -483,7 +488,7 @@ type FooSuite struct {
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
-	// モックを作成する。
+	// モック構造体を作成する。
 	suite.fooMock = &FooMock{}
 }
 
@@ -510,7 +515,7 @@ func (suite *FooSuite) TestMethod() {
 
 	suite.T().Helper()
 
-	// 事前処理で作成したモックを使用する。
+	// 事前処理で作成したモック構造体を使用する。
 	fooMock := suite.fooMock
 
 	// 以降にテスト処理
