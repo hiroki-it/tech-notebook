@@ -6871,6 +6871,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cgo_enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CGO_ENABLED変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go111module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GO111MODULE変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goarch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GOARCH変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#gobin" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GOBIN変数
@@ -6901,15 +6928,6 @@
   <a href="#goroot" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GOROOT変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cgo_enabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CGO_ENABLED変数
     </span>
   </a>
   
@@ -22641,6 +22659,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cgo_enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CGO_ENABLED変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go111module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GO111MODULE変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goarch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GOARCH変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#gobin" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GOBIN変数
@@ -22671,15 +22716,6 @@
   <a href="#goroot" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ GOROOT変数
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cgo_enabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CGO_ENABLED変数
     </span>
   </a>
   
@@ -23141,7 +23177,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_4">環境変数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 一覧<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nv">GOBIN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>env
+
+<span class="nv">GO111MODULE</span><span class="o">=</span><span class="s2">&quot;on&quot;</span>
+<span class="nv">GOARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
+<span class="nv">GOBIN</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 <span class="nv">GOCACHE</span><span class="o">=</span><span class="s2">&quot;/root/.cache/go-build&quot;</span>
 <span class="nv">GOENV</span><span class="o">=</span><span class="s2">&quot;/root/.config/go/env&quot;</span>
 <span class="nv">GOEXE</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
@@ -23171,7 +23211,16 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="nv">CGO_CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
 <span class="nv">CGO_FFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
 <span class="nv">CGO_LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -O2&quot;</span>
+<span class="nv">PKG_CONFIG</span><span class="o">=</span><span class="s2">&quot;pkg-config&quot;</span>
+<span class="nv">GOGCCFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches&quot;</span>
 </code></pre></div>
+<h4 id="cgo_enabled">▼ <code>CGO_ENABLED</code>変数<a class="headerlink" href="#cgo_enabled" title="Permanent link">&para;</a></h4>
+<p>c言語製のパッケージの有効化する。</p>
+<p>無効化しておかないと、<code>vet</code>コマンドが失敗する。</p>
+<h4 id="go111module">▼ <code>GO111MODULE</code>変数<a class="headerlink" href="#go111module" title="Permanent link">&para;</a></h4>
+<p><code>go.mod</code>ファイルを有効化する。</p>
+<h4 id="goarch">▼ <code>GOARCH</code>変数<a class="headerlink" href="#goarch" title="Permanent link">&para;</a></h4>
+<p>コンパイラが実行されるCPUアーキテクチャを設定する。</p>
 <h4 id="gobin">▼ <code>GOBIN</code>変数<a class="headerlink" href="#gobin" title="Permanent link">&para;</a></h4>
 <p><code>go install</code>コマンドによるアーティファクトを配置する場所を設定する。</p>
 <p>指定が場合、<code>$GOPATH/bin</code>になる。</p>
@@ -23196,10 +23245,6 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li><a href="https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/">https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/</a></li>
 </ul>
 </blockquote>
-<h4 id="cgo_enabled">▼ <code>CGO_ENABLED</code>変数<a class="headerlink" href="#cgo_enabled" title="Permanent link">&para;</a></h4>
-<p>c言語製のパッケージの有効化する。</p>
-<p>無効化しておかないと、<code>vet</code>コマンドが失敗する。</p>
-<p><br></p>
 <h2 id="03">03. ディレクトリ構成規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">アプリの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">go-repository/</span>
@@ -23259,16 +23304,14 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li>バージョンを取得するための処理 (例：<code>version.go</code>)</li>
 <li>安全に処理を終了するGraceful Shutdown処理 (例：<code>shutdown.go</code>)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$GOPATH/</span><span class="w"> </span><span class="c1"># 例えば、『$HOME/go』とする。</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bin/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── &lt;パッケージ名&gt;/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── config.go</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── version.go</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── baz/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── shutdown/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── shutdown.go</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">go-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── config.go</span>
+<span class="l l-Scalar l-Scalar-Plain">├── version.go</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── shutdown/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── shutdown.go</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. ファイルの要素<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
