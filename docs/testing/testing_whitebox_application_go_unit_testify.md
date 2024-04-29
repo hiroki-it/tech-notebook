@@ -102,6 +102,7 @@ func (m *MockUserInterface) Get(id int) (*model.User, error) {
 	// On関数で設定された値を受け取る
 	arguments := m.Called(id)
 
+	// 本物の関数を同じ返却値にする
 	return arguments.Get(0).(*model.User), ret.Error(1)
 }
 
@@ -176,6 +177,7 @@ func (m *MockUserInterface) Get(id int) (*model.User, error) {
 	// On関数で設定された値を受け取る
 	arguments := m.Called(id)
 
+	// 本物の関数を同じ返却値にする
 	return arguments.Get(0).(*model.User), arguments.Error(1)
 }
 
@@ -228,6 +230,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
+	// 本物の関数を同じ返却値にする
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
 ```
@@ -369,7 +372,74 @@ func Test_Mock(t *testing.T) {
 
 #### ▼ Get
 
-引数の順番をインデックス数で指定し、保持された引数を取得する。
+`On`関数の設定値をインデックス数で指定し、設定値を取得する。
+
+**＊実装例＊**
+
+```go
+package user
+
+type UserInterface interface {
+	Get(id int) (*model.User, error)
+}
+
+type User struct {
+	UserInterface
+}
+
+func (u *User) UserName(id int) (string, error) {
+
+	usr, err := u.Get(id)
+
+	if usr == nil || err != nil {
+		return "", err
+	}
+
+	return usr.Name, nil
+}
+```
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+type MockUserInterface struct {
+	mock.Mock
+}
+
+// Mock構造体に紐づける仮の関数
+func (m *MockUserInterface) Get(id int) (*model.User, error) {
+
+	// On関数で設定された値を受け取る
+	arguments := m.Called(id)
+
+	// 本物の関数を同じ返却値にする
+	return arguments.Get(0).(*model.User), arguments.Error(1)
+}
+
+func TestUser_UserName(t *testing.T) {
+
+	testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+
+	mockUser := new(user.MockUserInterface)
+
+	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	mockUser.On("Get", testUser.ID).Return(testUser, nil)
+
+	u := &User{
+		mockUser,
+	}
+
+	got, err := u.UserName(testUser.ID)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+```
 
 **＊実装例＊**
 
@@ -397,6 +467,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
+	// 本物の関数を同じ返却値にする
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
 ```
@@ -405,9 +476,74 @@ func (m *MockedAmplifyAPI) GetBranch(
 
 #### ▼ Error
 
-引数の順番をインデックス数で指定し、保持された引数を取得する。
+`On`関数の設定値をインデックス数で指定し、設定値を取得する。
 
-引数がなければ、エラーを返却する。
+**＊実装例＊**
+
+```go
+package user
+
+type UserInterface interface {
+	Get(id int) (*model.User, error)
+}
+
+type User struct {
+	UserInterface
+}
+
+func (u *User) UserName(id int) (string, error) {
+
+	usr, err := u.Get(id)
+
+	if usr == nil || err != nil {
+		return "", err
+	}
+
+	return usr.Name, nil
+}
+```
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+type MockUserInterface struct {
+	mock.Mock
+}
+
+// Mock構造体に紐づける仮の関数
+func (m *MockUserInterface) Get(id int) (*model.User, error) {
+
+	// On関数で設定された値を受け取る
+	arguments := m.Called(id)
+
+	// 本物の関数を同じ返却値にする
+	return arguments.Get(0).(*model.User), arguments.Error(1)
+}
+
+func TestUser_UserName(t *testing.T) {
+
+	testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+
+	mockUser := new(user.MockUserInterface)
+
+	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	mockUser.On("Get", testUser.ID).Return(testUser, nil)
+
+	u := &User{
+		mockUser,
+	}
+
+	got, err := u.UserName(testUser.ID)
+
+	if err != nil {
+		t.Error(err)
+	}
+}
+```
 
 **＊実装例＊**
 
@@ -435,6 +571,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
+	// 本物の関数を同じ返却値にする
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
 ```
