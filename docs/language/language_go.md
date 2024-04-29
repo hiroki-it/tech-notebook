@@ -105,13 +105,17 @@ CMD ["/go/bin/cmd"]
 
 ### アプリの場合
 
-#### ▼ `$GOPATH`
+#### ▼ `GOPATH`変数
+
+Goのファイルを管理するパスを設定する。
 
 パスは好みであるが、`$HOME/go`とすることが多い。
 
 ローカルマシンで仮想環境を使用せずにGoのアプリを直接的にビルドする場合、プロジェクトをGOPATH配下に配置しなければならない。
 
 ディレクトリ構成規約のベストプラクティスは以下のリンクを参考にせよ。
+
+なお`GOROOT`変数を使用すると、複数のバージョンのGoを管理できるようになる。
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
@@ -152,12 +156,15 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 > - https://github.com/golang-standards/project-layout
 > - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
+> - https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/
 
 #### ▼ `bin`
 
 ビルドされたアーティファクト (バイナリファイル) を配置するディレクトリ。
 
 バイナリファイル名を指定すると、処理を実行できる。
+
+`go install`コマンドは、`bin`ディレクトリ内にバイナリを保管する。
 
 #### ▼ `pkg`
 

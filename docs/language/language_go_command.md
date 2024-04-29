@@ -54,7 +54,7 @@ $ go build -o $HOME/go/bin
 $ go build -o $HOME/go/bin ./cmd
 ```
 
-補足として、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになってしまう。
+補足として、事前のインストールに失敗に、ビルド対象が存在していないと以下のようなエラーになってしまう。
 
 ```bash
 package foo is not in GOROOT (/usr/local/go/src/foo)
@@ -168,8 +168,28 @@ $ cd <バイナリのディレクトリ>
 $ go install
 ```
 
+バイナリは、パスが通っていないため、直接パスを指定して実行する必要がある。
+
+```bash
+$ ${GOPATH}/bin/foo-package --version
+```
+
 > - https://go.dev/doc/go-get-install-deprecation
 > - https://github.com/golang/go/issues/44840#issuecomment-1828537390
+
+#### ▼ 削除
+
+`go install`コマンドでインストールしたバイナリは、`rm`コマンドで直接削除する必要がある。
+
+```bash
+$ ls ${GOPATH}/bin
+
+foo-package
+
+$ rm ${GOPATH}/bin/foo-package
+```
+
+> - https://www.reddit.com/r/golang/comments/zfly1c/comment/izck1cl/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 <br>
 
