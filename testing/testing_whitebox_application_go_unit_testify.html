@@ -7927,13 +7927,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-mock" class="md-nav__link">
+  <a href="#02-testify" class="md-nav__link">
     <span class="md-ellipsis">
-      02. mock
+      02. testifyの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. mock">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-mock" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. mock
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. mock">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7965,6 +7974,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#called" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Called
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#assertexpectations" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AssertExpectations
@@ -7977,30 +7995,6 @@
   <a href="#assertnumberofcalls" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AssertNumberOfCalls
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#called" class="md-nav__link">
-    <span class="md-ellipsis">
-      Called
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Called">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#called_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Calledとは
     </span>
   </a>
   
@@ -8059,13 +8053,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-assert" class="md-nav__link">
+  <a href="#04-assert" class="md-nav__link">
     <span class="md-ellipsis">
-      03. assert
+      04. assert
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. assert">
+    <nav class="md-nav" aria-label="04. assert">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22267,13 +22261,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-mock" class="md-nav__link">
+  <a href="#02-testify" class="md-nav__link">
     <span class="md-ellipsis">
-      02. mock
+      02. testifyの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. mock">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-mock" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. mock
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. mock">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22305,6 +22308,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#called" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Called
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#assertexpectations" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AssertExpectations
@@ -22317,30 +22329,6 @@
   <a href="#assertnumberofcalls" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AssertNumberOfCalls
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#called" class="md-nav__link">
-    <span class="md-ellipsis">
-      Called
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Called">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#called_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Calledとは
     </span>
   </a>
   
@@ -22399,13 +22387,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-assert" class="md-nav__link">
+  <a href="#04-assert" class="md-nav__link">
     <span class="md-ellipsis">
-      03. assert
+      04. assert
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. assert">
+    <nav class="md-nav" aria-label="04. assert">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22477,7 +22465,14 @@
 <p>モック、スタブ、アサーションの関数を作成する。</p>
 <p>Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。</p>
 <p><br></p>
-<h2 id="02-mock">02. mock<a class="headerlink" href="#02-mock" title="Permanent link">&para;</a></h2>
+<h2 id="02-testify">02. testifyの仕組み<a class="headerlink" href="#02-testify" title="Permanent link">&para;</a></h2>
+<ol>
+<li><code>mock</code>パッケージの<code>Mock</code>構造体に関数を設定する。</li>
+<li><code>assert</code>パッケージでテストを実施する。</li>
+<li><code>mock</code>パッケージの<code>Mock</code>構造体で<code>Assert*****</code>関数を実行し、結果を検証する。</li>
+</ol>
+<p><br></p>
+<h2 id="03-mock">03. mock<a class="headerlink" href="#03-mock" title="Permanent link">&para;</a></h2>
 <h3 id="mock">Mock<a class="headerlink" href="#mock" title="Permanent link">&para;</a></h3>
 <h4 id="mock_1">▼ Mockとは<a class="headerlink" href="#mock_1" title="Permanent link">&para;</a></h4>
 <p>構造体のフィールドに<code>Mock</code>構造体を設定すれば、その構造体をモック化できる。</p>
@@ -22539,78 +22534,7 @@
 <li><a href="https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C">https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C</a></li>
 </ul>
 </blockquote>
-<h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
-<p><code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// MockedUser Userのモック</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
-
-<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
-
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://dev.classmethod.jp/articles/go-testify/#toc-5">https://dev.classmethod.jp/articles/go-testify/#toc-5</a></li>
-</ul>
-</blockquote>
-<h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
-<p>モック内の関数がコールされた回数を検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// MockedUser Userのモック</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
-
-<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
-
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="called">Called<a class="headerlink" href="#called" title="Permanent link">&para;</a></h3>
-<h4 id="called_1">▼ Calledとは<a class="headerlink" href="#called_1" title="Permanent link">&para;</a></h4>
+<h4 id="called">▼ Called<a class="headerlink" href="#called" title="Permanent link">&para;</a></h4>
 <p>『関数をコールした』というイベントをモックに登録する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
@@ -22624,7 +22548,9 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">_m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">ret</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">_m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">),</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22665,6 +22591,79 @@
 <li><a href="https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called">https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called</a></li>
 </ul>
 </blockquote>
+<h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
+<p><code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// MockedUser Userのモック</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// テストを実施する</span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">// 結果を検証する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/go-testify/#toc-5">https://dev.classmethod.jp/articles/go-testify/#toc-5</a></li>
+</ul>
+</blockquote>
+<h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
+<p>モック内の関数がコールされた回数を検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// MockedUser Userのモック</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// テストを実施する</span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">// 結果を検証する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="argument">Argument<a class="headerlink" href="#argument" title="Permanent link">&para;</a></h3>
 <h4 id="argument_1">▼ Argumentとは<a class="headerlink" href="#argument_1" title="Permanent link">&para;</a></h4>
@@ -22733,7 +22732,6 @@
 
 <span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
 
-
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -22743,7 +22741,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-assert">03. assert<a class="headerlink" href="#03-assert" title="Permanent link">&para;</a></h2>
+<h2 id="04-assert">04. assert<a class="headerlink" href="#04-assert" title="Permanent link">&para;</a></h2>
 <h3 id="_2">事前処理と事後処理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>テスト関数を実行する直前に、事前処理を実行する。</p>
 <p>モックの作成のために使用すると良い。</p>

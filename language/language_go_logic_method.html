@@ -24972,7 +24972,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>integer型を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="kt">int</span>
 
@@ -24990,7 +24990,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="c1">// 構造体を定義</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -25160,18 +25160,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">recover</span><span class="p">()</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to run application: %v&quot;</span><span class="w"> </span><span class="o">%</span><span class="nx">v</span><span class="s">&quot;, err)</span>
-<span class="s">        }</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to run application: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="s">        fmt.Println(&quot;</span><span class="nx">End</span><span class="s">&quot;)</span>
-<span class="s">    }()</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}()</span>
 
-<span class="s">    // ここで意図的に処理を停止させている。</span>
-<span class="s">    panic(&quot;</span><span class="nx">Runtime</span><span class="w"> </span><span class="kt">error</span><span class="s">&quot;)</span>
-<span class="s">}</span>
+<span class="w">    </span><span class="c1">// ここで意図的に処理を停止させている。</span>
+<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Runtime error&quot;</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span class="s">// Start</span>
-<span class="s">// Recover: &quot;</span><span class="nx">Runtime</span><span class="w"> </span><span class="kt">error</span><span class="err">&quot;</span>
+<span class="c1">// Start</span>
+<span class="c1">// Recover: &quot;Runtime error&quot;</span>
 <span class="c1">// End</span>
 </code></pre></div>
 <blockquote>
