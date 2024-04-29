@@ -58,77 +58,7 @@ type MockedAwsClient struct {
 
 #### ▼ On
 
-モックに、引数として渡される期待値と返却値の期待値を設定する。
-
-```go
-package user
-
-// UserInterface モック対象となるinterface
-type UserInterface interface {
-	Get(id int) (*model.User, error)
-}
-
-type User struct {
-    UserInterface // モック対象
-}
-
-func (u *User) UserName(id int) (string, error) {
-
-    usr, err := u.dt.Get(id)
-
-	if usr == nil || err != nil {
-        return "", err
-    }
-
-	return usr.Name, nil
-}
-```
-
-```go
-package test
-
-import (
-	"github.com/stretchr/testify/mock"
-)
-
-// MockUserInterface UserInterfaceのモック
-type MockUserInterface struct {
-	mock.Mock
-}
-
-func (m *MockUserInterface) Get(id int) (*model.User, error) {
-	arguments := m.Called(id)
-	return arguments.Get(0).(*model.User), ret.Error(1)
-}
-
-func TestUser_UserName(t *testing.T) {
-
-    testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
-
-    mockUser := new(user.MockUserInterface)
-
-	// Get関数内部のCalled関数に、期待値 (ここでは引数と返却値) を設定する
-    mockUser.On("Get", testUser.ID).Return(testUser, nil)
-
-    u := &User{
-        dt: mockUser,
-    }
-
-    got, err := u.UserName(testUser.ID)
-
-    if err != nil {
-        t.Error(err)
-    }
-}
-```
-
-> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C
-
-#### ▼ Called
-
-『関数をコールした』というイベントをモックに登録する。
-
-**＊実装例＊**
+`Called`関数を内部に持つ仮の関数に処理を設定する。
 
 ```go
 package user
@@ -161,15 +91,109 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
+// MockUserInterface UserInterfaceのモック
 type MockUserInterface struct {
 	mock.Mock
 }
 
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
+	// On関数で設定された値を受け取る
+	arguments := m.Called(id)
+
+	return arguments.Get(0).(*model.User), ret.Error(1)
+}
+
+func TestUser_UserName(t *testing.T) {
+
+    testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+
+    mockUser := new(user.MockUserInterface)
+
+	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+    mockUser.On("Get", testUser.ID).Return(testUser, nil)
+
+    u := &User{
+        mockUser,
+    }
+
+    got, err := u.UserName(testUser.ID)
+
+    if err != nil {
+        t.Error(err)
+    }
+}
+```
+
+> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C
+
+#### ▼ Called
+
+`On`関数で設定された引数や返却値を取得する。
+
+**＊実装例＊**
+
+```go
+package user
+
+// UserInterface モック対象となるinterface
+type UserInterface interface {
+	Get(id int) (*model.User, error)
+}
+
+type User struct {
+	UserInterface // モック対象
+}
+
+func (u *User) UserName(id int) (string, error) {
+
+	usr, err := u.Get(id)
+
+	if usr == nil || err != nil {
+		return "", err
+	}
+
+	return usr.Name, nil
+}
+```
+
+```go
+package test
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+type MockUserInterface struct {
+	mock.Mock
+}
+
+func (m *MockUserInterface) Get(id int) (*model.User, error) {
+
+	// On関数で設定された値を受け取る
 	arguments := m.Called(id)
 
 	return arguments.Get(0).(*model.User), arguments.Error(1)
+}
+
+func TestUser_UserName(t *testing.T) {
+
+	testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
+
+	mockUser := new(user.MockUserInterface)
+
+	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	mockUser.On("Get", testUser.ID).Return(testUser, nil)
+
+	u := &User{
+		mockUser,
+	}
+
+	got, err := u.UserName(testUser.ID)
+
+	if err != nil {
+		t.Error(err)
+	}
 }
 ```
 
@@ -242,7 +266,10 @@ type MockedUser struct {
 }
 
 func (m *MockedUser) GetAge() int {
+
+	// On関数で設定された値を受け取る
 	args := m.Called()
+
 	return args.Int(0)
 }
 
@@ -250,7 +277,7 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する
+	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -299,7 +326,10 @@ type MockedUser struct {
 }
 
 func (m *MockedUser) GetAge() int {
+
+	// On関数で設定された値を受け取る
 	args := m.Called()
+
 	return args.Int(0)
 }
 
@@ -307,7 +337,7 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する
+	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -359,6 +389,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
+	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
@@ -396,6 +427,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
+	// On関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
