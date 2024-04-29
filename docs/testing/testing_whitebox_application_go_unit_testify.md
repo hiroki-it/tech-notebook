@@ -61,6 +61,30 @@ type MockedAwsClient struct {
 モックに、引数として渡される期待値と返却値の期待値を設定する。
 
 ```go
+package user
+
+// UserInterface モック対象となるinterface
+type UserInterface interface {
+	Get(id int) (*model.User, error)
+}
+
+type User struct {
+    UserInterface // モック対象
+}
+
+func (u *User) UserName(id int) (string, error) {
+
+    usr, err := u.dt.Get(id)
+
+	if usr == nil || err != nil {
+        return "", err
+    }
+
+	return usr.Name, nil
+}
+```
+
+```go
 package test
 
 import (
@@ -107,6 +131,30 @@ func TestUser_UserName(t *testing.T) {
 **＊実装例＊**
 
 ```go
+package user
+
+// UserInterface モック対象となるinterface
+type UserInterface interface {
+	Get(id int) (*model.User, error)
+}
+
+type User struct {
+    UserInterface // モック対象
+}
+
+func (u *User) UserName(id int) (string, error) {
+
+    usr, err := u.dt.Get(id)
+
+	if usr == nil || err != nil {
+        return "", err
+    }
+
+	return usr.Name, nil
+}
+```
+
+```go
 package test
 
 import (
@@ -117,11 +165,11 @@ type MockUserInterface struct {
 	mock.Mock
 }
 
-func (_m *MockUserInterface) Get(id int) (*model.User, error) {
+func (mock *MockUserInterface) Get(id int) (*model.User, error) {
 
-	ret := _m.Called(id)
+	arguments := mock.Called(id)
 
-	return ret.Get(0).(*model.User), ret.Error(1)
+	return arguments.Get(0).(*model.User), arguments.Error(1)
 }
 ```
 
@@ -166,6 +214,21 @@ func (mock *MockedAmplifyAPI) GetBranch(
 検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
 
 ```go
+package user
+
+type user interface {
+	GetAge() int
+}
+
+func isAdult(u user) bool {
+
+	age := u.GetAge()
+
+	return age >= 20
+}
+```
+
+```go
 package test
 
 import (
@@ -178,8 +241,8 @@ type MockedUser struct {
 	mock.Mock
 }
 
-func (m *MockedUser) GetAge() int {
-	args := m.Called()
+func (mock *MockedUser) GetAge() int {
+	args := mock.Called()
 	return args.Int(0)
 }
 
@@ -208,6 +271,21 @@ func Test_Mock(t *testing.T) {
 検証対象は、ユーザー定義箇所ではなく、`mock`パッケージの`Mock`構造体である。
 
 ```go
+package user
+
+type user interface {
+	GetAge() int
+}
+
+func isAdult(u user) bool {
+
+	age := u.GetAge()
+
+	return age >= 20
+}
+```
+
+```go
 package test
 
 import (
@@ -220,8 +298,8 @@ type MockedUser struct {
 	mock.Mock
 }
 
-func (m *MockedUser) GetAge() int {
-	args := m.Called()
+func (mock *MockedUser) GetAge() int {
+	args := mock.Called()
 	return args.Int(0)
 }
 
@@ -241,6 +319,8 @@ func Test_Mock(t *testing.T) {
 	assert.True(t, result)
 }
 ```
+
+> https://dev.classmethod.jp/articles/go-testify/#toc-5
 
 <br>
 
