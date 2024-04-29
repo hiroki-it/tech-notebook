@@ -96,18 +96,18 @@ type MockUserInterface struct {
 	mock.Mock
 }
 
-func (_m *MockUserInterface) Get(id int) (*model.User, error) {
-	ret := _m.Called(id)
-	return ret.Get(0).(*model.User), ret.Error(1)
+func (m *MockUserInterface) Get(id int) (*model.User, error) {
+	arguments := m.Called(id)
+	return arguments.Get(0).(*model.User), ret.Error(1)
 }
 
 func TestUser_UserName(t *testing.T) {
 
     testUser := &model.User{ID: 1, Name: "Tom", Gender: model.Male, CreatedAt: time.Now(), UpdatedAt: time.Now()}
 
-    mockUser := new(datastore.MockUserInterface)
+    mockUser := new(user.MockUserInterface)
 
-    // 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	// Get関数内部のCalled関数に、期待値 (ここでは引数と返却値) を設定する
     mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
     u := &User{
@@ -144,7 +144,7 @@ type User struct {
 
 func (u *User) UserName(id int) (string, error) {
 
-    usr, err := u.dt.Get(id)
+    usr, err := u.Get(id)
 
 	if usr == nil || err != nil {
         return "", err
@@ -158,16 +158,16 @@ func (u *User) UserName(id int) (string, error) {
 package test
 
 import (
-	mock "github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/mock"
 )
 
 type MockUserInterface struct {
 	mock.Mock
 }
 
-func (mock *MockUserInterface) Get(id int) (*model.User, error) {
+func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
-	arguments := mock.Called(id)
+	arguments := m.Called(id)
 
 	return arguments.Get(0).(*model.User), arguments.Error(1)
 }
@@ -192,14 +192,14 @@ type MockedAmplifyAPI struct {
 }
 
 // モックが使用するGetBranch関数
-func (mock *MockedAmplifyAPI) GetBranch(
+func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
 	// モックに渡した引数を一時的に保管する
-	arguments := mock.Called(ctx, params, optFns)
+	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
@@ -241,8 +241,8 @@ type MockedUser struct {
 	mock.Mock
 }
 
-func (mock *MockedUser) GetAge() int {
-	args := mock.Called()
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
 	return args.Int(0)
 }
 
@@ -250,7 +250,7 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -298,8 +298,8 @@ type MockedUser struct {
 	mock.Mock
 }
 
-func (mock *MockedUser) GetAge() int {
-	args := mock.Called()
+func (m *MockedUser) GetAge() int {
+	args := m.Called()
 	return args.Int(0)
 }
 
@@ -307,7 +307,7 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// 実行する関数名、引数の期待値、返却値の期待値、を設定する
+	// GetAge関数内部のCalled関数に、期待値 (ここでは返却値) を設定する
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -353,13 +353,13 @@ type MockedAmplifyAPI struct {
 }
 
 // モックが使用するGetBranch関数
-func (mock *MockedAmplifyAPI) GetBranch(
+func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	arguments := mock.Called(ctx, params, optFns)
+	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
@@ -390,13 +390,13 @@ type MockedAmplifyAPI struct {
 }
 
 // モックが使用するGetBranch関数
-func (mock *MockedAmplifyAPI) GetBranch(
+func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	arguments := mock.Called(ctx, params, optFns)
+	arguments := m.Called(ctx, params, optFns)
 
 	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
 }
