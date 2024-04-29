@@ -8074,17 +8074,35 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アサーション
+      結果の検証
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アサーション">
+    <nav class="md-nav" aria-label="結果の検証">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#exactly" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Exactly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Equal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#same" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Same
     </span>
   </a>
   
@@ -22408,17 +22426,35 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アサーション
+      結果の検証
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アサーション">
+    <nav class="md-nav" aria-label="結果の検証">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#exactly" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Exactly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Equal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#same" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Same
     </span>
   </a>
   
@@ -22592,7 +22628,8 @@
 </ul>
 </blockquote>
 <h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
-<p><code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
+<p><code>Mock</code>構造体の<code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージの<code>Mock</code>構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22618,10 +22655,11 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
-<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 結果を検証する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22631,6 +22669,7 @@
 </blockquote>
 <h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
 <p>モック内の関数がコールされた回数を検証する。</p>
+<p>検証対象は、ユーザー定義箇所ではなく、<code>mock</code>パッケージの<code>Mock</code>構造体である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22656,12 +22695,12 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
-<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 結果を検証する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
-<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -22848,10 +22887,34 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">アサーション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">結果の検証<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="exactly">▼ Exactly<a class="headerlink" href="#exactly" title="Permanent link">&para;</a></h4>
-<p>期待値と実際値の整合性を検証する。</p>
-<p>値のみでなく、データ型も検証できる。</p>
+<p>期待値と実際値 (値、データ型) の整合性を検証する。</p>
+<p>ポインタのメモリアドレス値は一致していなくても良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly">https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly</a></li>
+<li><a href="https://bayashi.net/diary/2023/0426">https://bayashi.net/diary/2023/0426</a></li>
+</ul>
+</blockquote>
+<h4 id="equal">▼ Equal<a class="headerlink" href="#equal" title="Permanent link">&para;</a></h4>
+<p>期待値と実際値 (値) の整合性を検証する。</p>
+<p>ポインタのメモリアドレス値は一致していなくても良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal">https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal</a></li>
+<li><a href="https://bayashi.net/diary/2023/0426">https://bayashi.net/diary/2023/0426</a></li>
+</ul>
+</blockquote>
+<h4 id="same">▼ Same<a class="headerlink" href="#same" title="Permanent link">&para;</a></h4>
+<p>期待値と実際値 (メモリアドレス値) の整合性を検証する。</p>
+<p>ポインタのメモリアドレス値が同じであれば、結果的に値とデータ型も同じになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same">https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same</a></li>
+<li><a href="https://bayashi.net/diary/2023/0426">https://bayashi.net/diary/2023/0426</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
