@@ -91,41 +91,9 @@ $ go env
 GO111MODULE="on"
 # コンパイラが実行されるCPUアーキテクチャ
 GOARCH="amd64"
-# installコマンドによるアーティファクトを配置するディレクトリ (指定無しの場合、$GOPATH/bin)
-GOBIN=""
-GOCACHE="/root/.cache/go-build"
-GOENV="/root/.config/go/env"
-GOEXE=""
-GOFLAGS=""
-GOHOSTARCH="amd64"
-# コンパイラが実行されるOS
-GOHOSTOS="linux"
-GOINSECURE=""
-GOMODCACHE="/go/pkg/mod"
-GONOPROXY=""
-GONOSUMDB=""
-GOOS="linux"
-# コードが配置されるディレクトリ
-GOPATH="/go"
-GOPRIVATE=""
-GOPROXY="https://proxy.golang.org,direct"
-# Go本体を配置するディレクトリ
-GOROOT="/usr/local/go"
-GOSUMDB="sum.golang.org"
-GOTMPDIR=""
-GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
-GCCGO="gccgo"
-AR="ar"
-CC="gcc"
-CXX="g++"
-# c言語製のパッケージの有効化。無効化しないと、vetコマンドが失敗する。
-CGO_ENABLED="0"
-GOMOD="/go/src/go.mod"
-CGO_CFLAGS="-g -O2"
-CGO_CPPFLAGS=""
-CGO_CXXFLAGS="-g -O2"
-CGO_FFLAGS="-g -O2"
-CGO_LDFLAGS="-g -O2"
+
+...
+
 PKG_CONFIG="pkg-config"
 GOGCCFLAGS="-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches"
 ```

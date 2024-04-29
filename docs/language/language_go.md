@@ -101,9 +101,52 @@ CMD ["/go/bin/cmd"]
 
 <br>
 
-## 03. ディレクトリ構成規約
+### 環境変数
 
-### アプリの場合
+#### ▼ 一覧
+
+```bash
+GOBIN=""
+GOCACHE="/root/.cache/go-build"
+GOENV="/root/.config/go/env"
+GOEXE=""
+GOFLAGS=""
+GOHOSTARCH="amd64"
+GOHOSTOS="linux"
+GOINSECURE=""
+GOMODCACHE="/go/pkg/mod"
+GONOPROXY=""
+GONOSUMDB=""
+GOOS="linux"
+GOPATH="/go"
+GOPRIVATE=""
+GOPROXY="https://proxy.golang.org,direct"
+GOROOT="/usr/local/go"
+GOSUMDB="sum.golang.org"
+GOTMPDIR=""
+GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+GCCGO="gccgo"
+AR="ar"
+CC="gcc"
+CXX="g++"
+CGO_ENABLED="0"
+GOMOD="/go/src/go.mod"
+CGO_CFLAGS="-g -O2"
+CGO_CPPFLAGS=""
+CGO_CXXFLAGS="-g -O2"
+CGO_FFLAGS="-g -O2"
+CGO_LDFLAGS="-g -O2"
+```
+
+#### ▼ `GOBIN`変数
+
+`go install`コマンドによるアーティファクトを配置する場所を設定する。
+
+指定が場合、`$GOPATH/bin`になる。
+
+#### ▼ `GOHOSTOS`変数
+
+コンパイラが実行されるOSを設定する。
 
 #### ▼ `GOPATH`変数
 
@@ -111,52 +154,74 @@ Goのファイルを管理するパスを設定する。
 
 パスは好みであるが、`$HOME/go`とすることが多い。
 
-ローカルマシンで仮想環境を使用せずにGoのアプリを直接的にビルドする場合、プロジェクトをGOPATH配下に配置しなければならない。
-
-ディレクトリ構成規約のベストプラクティスは以下のリンクを参考にせよ。
-
-なお`GOROOT`変数を使用すると、複数のバージョンのGoを管理できるようになる。
+ローカルマシンで仮想環境を使用せずにGoのアプリを直接的にビルドする場合、プロジェクトを`GOPATH配下に配置しなければならない。
 
 ```yaml
 $GOPATH/ # 例えば、『$HOME/go』とする。
 ├── bin/
-├── pkg/
-└── src/
-    ├── build/ # Dockerfileを配置するディレクトリ
-    ├── cmd/ # main.goファイルや、サブmainパッケージを配置するディレクトリ
-    │   ├── main.go
-    │   └── foo/
-    │       └── foo.go
-    │
-    ├── configs/
-    │   └── envrc.template
-    │
-    ├── docs/ # ドキュメントを配置する
-    │   ├── BUG.md
-    │   ├── ROUTING.md
-    │   └── TODO.md
-    │
-    ├── internal/ # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
-    │   └── pkg/
-    │
-    ├── pkg/ # cmdディレクトリ内でインポートする自前goパッケージを配置するディレクトリ
-    │   └── public/
-    │       └── add.go
-    │
-    ├── scripts/
-    │   └── Makefile
-    │
-    ├── test/
-    │   └── test.go
-    │
-    └── web/ # 画像、CSS、を配置する。
-        ├── static
-        └── template
+└── pkg/
+    └── mod/
+        └── github
+            ├── foo-package@v1.0/
+            └── foo-package@v2.0/
+```
+
+#### ▼ `GOROOT`変数
+
+複数のバージョンのGoを管理できるようになる。
+
+> - https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/
+
+#### ▼ `CGO_ENABLED`変数
+
+c言語製のパッケージの有効化する。
+
+無効化しておかないと、`vet`コマンドが失敗する。
+
+<br>
+
+## 03. ディレクトリ構成規約
+
+### アプリの場合
+
+```yaml
+go-repository/
+├── api/ # API仕様書、プロトコルバッファー
+├── build/ # Dockerfileを配置するディレクトリ
+├── cmd/ # main.goファイルや、サブmainパッケージを配置するディレクトリ
+│   ├── main.go
+│   └── foo/
+│       └── foo.go
+│
+├── configs/
+│   └── envrc.template
+│
+├── docs/ # ドキュメントを配置する
+│   ├── BUG.md
+│   ├── ROUTING.md
+│   └── TODO.md
+│
+├── init/ # プロセスマネージャー (systemd、supervisord、など)
+│
+├── internal/ # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
+│   └── pkg/
+│
+├── pkg/ # cmdディレクトリ内でインポートする自前goパッケージを配置するディレクトリ
+│   └── public/
+│       └── add.go
+│
+├── scripts/
+│   └── Makefile
+│
+├── test/
+│   └── test.go
+│
+└── web/ # 画像、CSS、を配置する。
+    ├── static
+    └── template
 ```
 
 > - https://github.com/golang-standards/project-layout
-> - https://nekonenene.hatenablog.com/entry/2019/02/12/021610
-> - https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/
 
 #### ▼ `bin`
 
