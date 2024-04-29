@@ -7977,7 +7977,7 @@
           <li class="md-nav__item">
   <a href="#fmterrorf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ fmt.Errorfメソッドによる自前エラー
+      ▼ fmt.Errorf関数による自前エラー
     </span>
   </a>
   
@@ -8028,7 +8028,7 @@
           <li class="md-nav__item">
   <a href="#errorf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Errorfメソッドによるトレース付与
+      ▼ Errorf関数によるトレース付与
     </span>
   </a>
   
@@ -24467,7 +24467,7 @@
           <li class="md-nav__item">
   <a href="#fmterrorf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ fmt.Errorfメソッドによる自前エラー
+      ▼ fmt.Errorf関数による自前エラー
     </span>
   </a>
   
@@ -24518,7 +24518,7 @@
           <li class="md-nav__item">
   <a href="#errorf" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Errorfメソッドによるトレース付与
+      ▼ Errorf関数によるトレース付与
     </span>
   </a>
   
@@ -24829,7 +24829,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
 
 <span class="c1">// 頭文字を大文字する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
 <span class="p">}</span>
 
@@ -24840,7 +24840,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="_6">▼ 関数名の取得<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><code>runtime.Caller(1)</code>から、ランタイムの情報を取得できる。</p>
 <p>これを使用して、現在実行中の関数名を取得する。</p>
-<p>構造体のメソッドで実行すれば、メソッド名を取得できる。</p>
+<p>構造体の関数で実行すれば、関数名を取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24966,7 +24966,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>Goは、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。</p>
 <h4 id="_13">▼ レシーバによる紐付け<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>データ型や型リテラルなどを関数のレシーバとして渡すことによって、それに関数を紐付けられる。</p>
-<p>紐付け後、関数はメソッドと呼ばれるようになる。</p>
+<p>紐付け後、関数はメソッドとも呼ばれるようになる。</p>
 <p>メソッド名とフィールド名に同じ名前は使用できない。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>integer型を値レシーバとして渡し、構造体に関数を紐付ける。</p>
@@ -25026,7 +25026,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
@@ -25067,7 +25067,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -25144,7 +25144,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="_17">▼ リカバリー処理<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><code>recover</code>関数を実行すると、panicになったその処理のみを終了し、他の並行処理を実行し続けられる。</p>
 <p>即時関数を<code>defer</code>関数化している。</p>
-<p>処理の最後にランタイムエラーが発生したとき、これを<code>recover</code>メソッドで吸収できる。</p>
+<p>処理の最後にランタイムエラーが発生したとき、これを<code>recover</code>関数で吸収できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -26584,14 +26584,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h3 id="error">errorインターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
 <h4 id="_53">▼ 標準エラー<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
 <p>Goでは複数の値を返却できるため、多くの関数ではデフォルトで、最後に<code>error</code>インターフェースが返却されるようになっている。</p>
-<p><code>error</code>インターフェースは暗黙的に<code>Error</code>メソッドをコールする。</p>
+<p><code>error</code>インターフェースは暗黙的に<code>Error</code>関数をコールする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>osパッケージの<code>Open</code>メソッドから<code>error</code>インターフェースが返却される。</p>
-<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行し、標準エラー出力に出力する。</p>
+<p>osパッケージの<code>Open</code>関数から<code>error</code>インターフェースが返却される。</p>
+<p><code>error</code>インターフェースは<code>Error</code>関数を自動的に実行し、標準エラー出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -26614,9 +26614,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="new">▼ <code>New</code>関数による自前エラー<a class="headerlink" href="#new" title="Permanent link">&para;</a></h4>
-<p>errorsパッケージの<code>New</code>メソッドにエラーを設定する。</p>
+<p>errorsパッケージの<code>New</code>関数にエラーを設定する。</p>
 <p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
-<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
+<p><code>error</code>インターフェースは<code>Error</code>関数を自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -26649,11 +26649,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://golang.org/pkg/errors/#New">https://golang.org/pkg/errors/#New</a></li>
 </ul>
 </blockquote>
-<h4 id="fmterrorf">▼ <code>fmt.Errorf</code>メソッドによる自前エラー<a class="headerlink" href="#fmterrorf" title="Permanent link">&para;</a></h4>
-<p>fmtパッケージの<code>Errorf</code>メソッドで自前エラーを作成できる。</p>
+<h4 id="fmterrorf">▼ <code>fmt.Errorf</code>関数による自前エラー<a class="headerlink" href="#fmterrorf" title="Permanent link">&para;</a></h4>
+<p>fmtパッケージの<code>Errorf</code>関数で自前エラーを作成できる。</p>
 <p>事前に定義したフォーマットを元にエラーを設定する。</p>
 <p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
-<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
+<p><code>error</code>インターフェースは<code>Error</code>関数を自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -26675,9 +26675,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_54">▼ 構造体による自前エラー<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
-<p>構造体に<code>Error</code>メソッドを定義すると、この構造体に<code>error</code>インターフェースが自動的に委譲される。</p>
+<p>構造体に<code>Error</code>関数を定義すると、この構造体に<code>error</code>インターフェースが自動的に委譲される。</p>
 <p>これにより、ユーザー定義のエラーを保持する<code>error</code>インターフェースを定義できる。</p>
-<p><code>error</code>インターフェースは<code>Error</code>メソッドを自動的に実行する。</p>
+<p><code>error</code>インターフェースは<code>Error</code>関数を自動的に実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -26701,7 +26701,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 構造体に値を設定する。</span>
 <span class="w">        </span><span class="nx">myError</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Error</span><span class="p">{</span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;エラーが発生したため、処理を完了しました。&quot;</span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// 構造体をコールするのみで、Errorメソッドが実行される。</span>
+<span class="w">        </span><span class="c1">// 構造体をコールするのみで、Error関数が実行される。</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myError</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -26724,7 +26724,6 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
 <span class="w">    </span><span class="s">&quot;golang.org/x/xerrors&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
@@ -26748,11 +26747,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="errorf">▼ <code>Errorf</code>メソッドによるトレース付与<a class="headerlink" href="#errorf" title="Permanent link">&para;</a></h4>
+<h4 id="errorf">▼ <code>Errorf</code>関数によるトレース付与<a class="headerlink" href="#errorf" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
 <span class="w">    </span><span class="s">&quot;golang.org/x/xerrors&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
@@ -26905,7 +26903,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
   </span>
 
     

@@ -7170,7 +7170,7 @@
           <li class="md-nav__item">
   <a href="#tablename" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ TableNameメソッド
+      ▼ TableName関数
     </span>
   </a>
   
@@ -22535,7 +22535,7 @@
           <li class="md-nav__item">
   <a href="#tablename" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ TableNameメソッド
+      ▼ TableName関数
     </span>
   </a>
   
@@ -22848,7 +22848,7 @@
 <h4 id="mysql">▼ MySQLの場合<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewDB</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// 接続情報。sprintfメソッドを使用すると、可読性が高い。</span>
+<span class="w">    </span><span class="c1">// 接続情報。sprintf関数を使用すると、可読性が高い。</span>
 <span class="w">    </span><span class="nx">dsn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span>
 <span class="w">        </span><span class="s">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_USER&quot;</span><span class="p">),</span>
@@ -22959,9 +22959,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="db_1">DBマイグレーション<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
-<h4 id="tablename">▼ <code>TableName</code>メソッド<a class="headerlink" href="#tablename" title="Permanent link">&para;</a></h4>
+<h4 id="tablename">▼ <code>TableName</code>関数<a class="headerlink" href="#tablename" title="Permanent link">&para;</a></h4>
 <p>デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。</p>
-<p><code>TableName</code>メソッドにより、ユーザー定義のテーブル名をつけられる。</p>
+<p><code>TableName</code>関数により、ユーザー定義のテーブル名をつけられる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// テーブル名はデフォルトでは『users』になる。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ID</span><span class="w">      </span><span class="kt">int</span>
@@ -23249,7 +23249,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
   </span>
 
     

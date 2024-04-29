@@ -23533,7 +23533,7 @@
 <p>2つ目に、タグ無しリテラル表記がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -23554,7 +23554,7 @@
 <p>ポインタ型の構造体を返却する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -23693,11 +23693,11 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hasegawa&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// myName構造体は、Name構造体のメソッドをコールできる。</span>
+<span class="w">    </span><span class="c1">// myName構造体は、Name構造体の関数をコールできる。</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Hiroki Hasegawa&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>もし、委譲する側と委譲される側に、同じ名前のメソッド/フィールドが存在する場合は、委譲された側のものが優先してコールされる。</p>
+<p>もし、委譲する側と委譲される側に、同じ名前の関数/フィールドが存在する場合は、委譲された側のものが優先してコールされる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -23731,7 +23731,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// 委譲する側と委譲される側で同じメソッド</span>
+<span class="c1">// 委譲する側と委譲される側で同じ関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">MyName</span><span class="p">)</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;委譲された構造体です&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -23742,7 +23742,7 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hasegawa&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 同じメソッドがある場合、委譲された側が優先。</span>
+<span class="w">    </span><span class="c1">// 同じ関数がある場合、委譲された側が優先。</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;委譲された構造体です&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -24253,12 +24253,12 @@
 <p>構造体の委譲とは異なり、アップキャストを行える。</p>
 <p>つまり、委譲された構造体は委譲するインターフェースのデータ型にキャストでき、同じデータ型として扱える。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に<code>Eat</code>メソッド、<code>Sleep</code>メソッド、<code>Mating</code>メソッド、の処理を委譲する。</p>
+<p>InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に<code>Eat</code>関数、<code>Sleep</code>関数、<code>Mating</code>関数、の処理を委譲する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
 
-<span class="c1">// インターフェースとそのメソッドを定義する。</span>
+<span class="c1">// インターフェースとその関数を定義する。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Eat</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
@@ -24305,7 +24305,7 @@
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// メソッドを実行する。</span>
+<span class="w">    </span><span class="c1">// 関数を実行する。</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">insect</span><span class="p">.</span><span class="nx">Name</span><span class="p">())</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">insect</span><span class="p">.</span><span class="nx">Eat</span><span class="p">())</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">insect</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">())</span>
@@ -24331,8 +24331,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_35">アップキャストの可否を利用した検証<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>もし、構造体に実装されたメソッドに不足があると、委譲が自動的に取り消される。</p>
-<p>エラーは発生しないため、実装されたメソッドが十分であることを実装者が知らなければならない。</p>
+<p>もし、構造体に実装された関数に不足があると、委譲が自動的に取り消される。</p>
+<p>エラーは発生しないため、実装された関数が十分であることを実装者が知らなければならない。</p>
 <p>アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。</p>
 <blockquote>
 <ul>
@@ -24346,7 +24346,7 @@
 <span class="c1">// アップキャストの可否を使用して、構造体がインターフェースを満たしているを検証する。</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">InsectImpl</span><span class="p">{}</span><span class="w"> </span><span class="c1">// もしくは (*InsectImpl)(nil)</span>
 
-<span class="c1">// インターフェースとそのメソッドを定義する。</span>
+<span class="c1">// インターフェースとその関数を定義する。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Eat</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
@@ -24376,11 +24376,11 @@
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// メソッドを実行する。</span>
+<span class="w">    </span><span class="c1">// 関数を実行する。</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">insect</span><span class="p">.</span><span class="nx">Name</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Eatメソッドを紐付けていない場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Eat関数を紐付けていない場合</span>
 cannot<span class="w"> </span>use<span class="w"> </span>insect<span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>Insect<span class="o">)</span><span class="w"> </span>as<span class="w"> </span><span class="nb">type</span><span class="w"> </span>Animal<span class="w"> </span><span class="k">in</span><span class="w"> </span>assignment:
 Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>implement<span class="w"> </span>Animal<span class="w"> </span><span class="o">(</span>missing<span class="w"> </span>Eat<span class="w"> </span>method<span class="o">)</span>
 </code></pre></div>
@@ -24460,7 +24460,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><br></p>
 <h3 id="error">errorインターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
 <p>Goには、標準搭載されているインターフェースがある。</p>
-<p>このインターフェースが強制するメソッドを実装した構造体を定義すると、自動的に委譲が行われる。</p>
+<p>このインターフェースが強制する関数を実装した構造体を定義すると、自動的に委譲が行われる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
@@ -24468,7 +24468,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="string">stringインターフェース<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
-<p>構造体に<code>String</code>メソッドを定義しておくと、Print系関数に構造体を渡した時に、これが実行される。</p>
+<p>構造体に<code>String</code>関数を定義しておくと、Print系関数に構造体を渡した時に、これが実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -24477,7 +24477,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="nx">String</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Stringメソッドを実行しました。&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;String関数を実行しました。&quot;</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>

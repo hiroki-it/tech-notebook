@@ -22501,8 +22501,18 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">mock</span><span class="w"> </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
 <span class="p">)</span>
+
+<span class="c1">// MockUserInterface UserInterfaceのモック</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockUserInterface</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">_m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockUserInterface</span><span class="p">)</span><span class="w"> </span><span class="nx">Get</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ret</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">_m</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">User</span><span class="p">),</span><span class="w"> </span><span class="nx">ret</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">TestUser_UserName</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -22510,7 +22520,7 @@
 
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">datastore</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22530,14 +22540,15 @@
 </ul>
 </blockquote>
 <h4 id="assertexpectations">▼ AssertExpectations<a class="headerlink" href="#assertexpectations" title="Permanent link">&para;</a></h4>
-<p><code>On</code>メソッドや<code>Retuen</code>メソッドが正しく実行されたか否かを検証する。</p>
+<p><code>On</code>関数や<code>Retuen</code>関数が正しく実行されたか否かを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">mock</span><span class="w"> </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
 <span class="p">)</span>
 
+<span class="c1">// MockedUser Userのモック</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
 <span class="p">}</span>
@@ -22549,14 +22560,14 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">testObj</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 実行するメソッド名、引数の期待値、返却値の期待値、を設定する</span>
-<span class="w">    </span><span class="nx">testObj</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">testObj</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
 
-<span class="w">    </span><span class="nx">testObj</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -22565,11 +22576,42 @@
 </ul>
 </blockquote>
 <h4 id="assertnumberofcalls">▼ AssertNumberOfCalls<a class="headerlink" href="#assertnumberofcalls" title="Permanent link">&para;</a></h4>
-<p>モックがコールされた回数の期待値を設定する。</p>
+<p>モック内の関数がコールされた回数を検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// MockedUser Userのモック</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedUser</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedUser</span><span class="p">)</span><span class="w"> </span><span class="nx">GetAge</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Called</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">args</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Test_Mock</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 実行する関数名、引数の期待値、返却値の期待値、を設定する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">True</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">isAdult</span><span class="p">(</span><span class="nx">mockUser</span><span class="p">))</span>
+
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// GetAge関数をコールした回数を検証する</span>
+<span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">AssertExpectations</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GetAge&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="called">Called<a class="headerlink" href="#called" title="Permanent link">&para;</a></h3>
 <h4 id="called_1">▼ Calledとは<a class="headerlink" href="#called_1" title="Permanent link">&para;</a></h4>
-<p>『メソッドをコールした』というイベントをモックに登録する。</p>
+<p>『関数をコールした』というイベントをモックに登録する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
@@ -22595,8 +22637,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+
+<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedAmplifyAPI</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -22636,8 +22680,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+
+<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedAmplifyAPI</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -22652,7 +22698,6 @@
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
-
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
@@ -22669,8 +22714,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+
+<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">MockedAmplifyAPI</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -22748,6 +22795,8 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/suite&quot;</span>
 <span class="p">)</span>
 
 <span class="cm">/**</span>
@@ -22778,10 +22827,11 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/suite&quot;</span>
 <span class="p">)</span>
 
 <span class="cm">/**</span>
-<span class="cm"> * Methodメソッドが成功することを検証する。</span>
+<span class="cm"> * Method関数が成功することを検証する。</span>
 <span class="cm"> */</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">TestMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
@@ -22796,6 +22846,7 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66">https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66</a></li>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/suite">https://pkg.go.dev/github.com/stretchr/testify/suite</a></li>
 </ul>
 </blockquote>
 <p><br></p>
