@@ -6909,6 +6909,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 削除
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -7086,7 +7095,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       大前提
     </span>
@@ -7270,7 +7279,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ パブリックリポジトリから (リリース済み)
     </span>
@@ -7279,7 +7288,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ パブリックリポジトリから (開発中)
     </span>
@@ -7288,7 +7297,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ プライベートリポジトリから
     </span>
@@ -7297,7 +7306,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルマシンから
     </span>
@@ -22736,6 +22745,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 削除
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22913,7 +22931,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       大前提
     </span>
@@ -23097,7 +23115,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ パブリックリポジトリから (リリース済み)
     </span>
@@ -23106,7 +23124,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ パブリックリポジトリから (開発中)
     </span>
@@ -23115,7 +23133,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ プライベートリポジトリから
     </span>
@@ -23124,7 +23142,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ローカルマシンから
     </span>
@@ -23216,7 +23234,7 @@ $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>
 <span class="c1"># $HOME/go/binディレクトリにcmdアーティファクトを作成する。</span>
 $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span><span class="nv">$HOME</span>/go/bin<span class="w"> </span>./cmd
 </code></pre></div>
-<p>補足として、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになってしまう。</p>
+<p>補足として、事前のインストールに失敗に、ビルド対象が存在していないと以下のようなエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>package<span class="w"> </span>foo<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>GOROOT<span class="w"> </span><span class="o">(</span>/usr/local/go/src/foo<span class="o">)</span>
 </code></pre></div>
 <p><br></p>
@@ -23296,10 +23314,26 @@ $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>ti
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;バイナリのディレクトリ&gt;
 $<span class="w"> </span>go<span class="w"> </span>install
 </code></pre></div>
+<p>バイナリは、パスが通っていないため、直接パスを指定して実行する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/bin/foo-package<span class="w"> </span>--version
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://go.dev/doc/go-get-install-deprecation">https://go.dev/doc/go-get-install-deprecation</a></li>
 <li><a href="https://github.com/golang/go/issues/44840#issuecomment-1828537390">https://github.com/golang/go/issues/44840#issuecomment-1828537390</a></li>
+</ul>
+</blockquote>
+<h4 id="_2">▼ 削除<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><code>go install</code>コマンドでインストールしたバイナリは、<code>rm</code>コマンドで直接削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span><span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/bin
+
+foo-package
+
+$<span class="w"> </span>rm<span class="w"> </span><span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/bin/foo-package
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.reddit.com/r/golang/comments/zfly1c/comment/izck1cl/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/golang/comments/zfly1c/comment/izck1cl/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23380,7 +23414,7 @@ $<span class="w"> </span>go<span class="w"> </span>install
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. パッケージ管理系<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_2">大前提<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">大前提<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>Goでは、思想的にパッケージのバージョンを固定して運用せず、常に新しいバージョンを強制的に利用させるような仕組みがある。</p>
 <p><br></p>
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
@@ -23507,7 +23541,7 @@ all<span class="w"> </span>modules<span class="w"> </span>verified
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 </code></pre></div>
-<h4 id="_3">▼ パブリックリポジトリから (リリース済み)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ パブリックリポジトリから (リリース済み)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>パッケージ名とバージョンタグを使用して、パブリックリポジトリからリリース済みのパッケージをインポートする。</p>
 <p><code>go mod tidy</code>コマンドによって<code>// indirect</code>コメントのついたパッケージが実装される。</p>
 <p>これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。</p>
@@ -23540,7 +23574,7 @@ all<span class="w"> </span>modules<span class="w"> </span>verified
 <li><a href="https://developer.so-tech.co.jp/entry/2022/08/16/110108">https://developer.so-tech.co.jp/entry/2022/08/16/110108</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ パブリックリポジトリから (開発中)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ パブリックリポジトリから (開発中)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>コミットIDやバージョンタグを使用して、パブリックリポジトリから開発中のパッケージをインポートする。</p>
 <p>この場合、<code>go get</code>コマンドで特定のコミットIDやバージョンタグを指定し、モジュールをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo@&lt;コミットID&gt;
@@ -23562,7 +23596,7 @@ go:<span class="w"> </span>added<span class="w"> </span>github.com/foo<span clas
 <li><a href="https://stackoverflow.com/a/53682399">https://stackoverflow.com/a/53682399</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ プライベートリポジトリから<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ プライベートリポジトリから<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、プライベートリポジトリのパッケージをインポートできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>github.com/foo@&lt;コミットID/バージョンタグ&gt;
 
@@ -23580,7 +23614,7 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 <li><a href="https://kawaken.dev/posts/20220426_goprivate/">https://kawaken.dev/posts/20220426_goprivate/</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ ローカルマシンから<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ ローカルマシンから<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>ローカルマシンのみで使用する自前共有パッケージがあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── cmd/</span>
