@@ -22896,11 +22896,28 @@
 </blockquote>
 <h4 id="w3c-trace-context">▼ W3C Trace Context<a class="headerlink" href="#w3c-trace-context" title="Permanent link">&para;</a></h4>
 <p>W3C Trace Context仕様のIDは以下の通りである。</p>
-<ul>
-<li>trace-id (<code>32</code>進数)</li>
-<li>parent-id (<code>16</code>進数)</li>
-<li>trace-flags (<code>2</code>進数)</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trace-id</td>
+<td><code>32</code>進数</td>
+</tr>
+<tr>
+<td>parent-id</td>
+<td><code>16</code>進数</td>
+</tr>
+<tr>
+<td>trace-flags</td>
+<td><code>2</code>進数</td>
+</tr>
+</tbody>
+</table>
 <p>これらの値によってトレースコンテキストが決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
@@ -22917,12 +22934,32 @@
 </blockquote>
 <h4 id="b3-zipkin">▼ B3 (Zipkin)<a class="headerlink" href="#b3-zipkin" title="Permanent link">&para;</a></h4>
 <p>B3仕様のIDは以下の通りである。</p>
-<ul>
-<li>trace-id (<code>16</code>、<code>32</code>進数)</li>
-<li>span-id (<code>16</code>進数)</li>
-<li>parent-span-id (<code>16</code>進数)</li>
-<li>sampling-state (サンプリング無効なら<code>0</code>、有効なら<code>1</code>)</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trace-id</td>
+<td><code>16</code>、<code>32</code>進数</td>
+</tr>
+<tr>
+<td>span-id</td>
+<td><code>16</code>進数</td>
+</tr>
+<tr>
+<td>parent-span-id</td>
+<td><code>16</code>進数</td>
+</tr>
+<tr>
+<td>sampling-state</td>
+<td>サンプリング無効なら<code>0</code>、有効なら<code>1</code></td>
+</tr>
+</tbody>
+</table>
 <p>これらの値によってトレースコンテキストが決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
@@ -22936,8 +22973,27 @@
 </ul>
 </blockquote>
 <h4 id="x-ray">▼ X-Ray<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>
-<p><code>&lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントごとのユニークID&gt;</code>からなる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">trace_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1-58406520-a006649127e371903a2de979</span>
+<p>X-Ray仕様のIDは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trace-id</td>
+<td>version (<code>1</code>) + タイムスタンプ (<code>16</code>進数) + ユニークID (<code>16</code>進数)</td>
+</tr>
+<tr>
+<td>span-id</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># &lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントごとのユニークID&gt;</span>
+<span class="nt">trace_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1-58406520-a006649127e371903a2de979</span>
 </code></pre></div>
 <blockquote>
 <ul>
