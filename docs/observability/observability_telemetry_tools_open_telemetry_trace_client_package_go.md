@@ -1160,13 +1160,9 @@ func child(ctx *gin.Context) {
 ```go
 func getXrayTraceID(span trace.Span) string {
 
-	xrayTraceID := span.SpanContext().TraceID().String()
+	traceId := span.SpanContext().TraceID().String()
 
-	return fmt.Sprintf(
-		"1-%s-%s",
-		xrayTraceID[0:8],
-		xrayTraceID[8:]
-	)
+	return fmt.Sprintf("1-%s-%s", traceId[0:8], traceId[8:])
 }
 ```
 
@@ -1840,7 +1836,7 @@ func formatTraceId(traceId trace.TraceID, traceType string) string {
 	switch traceType {
 	case "xray":
 		// X-RayのトレースIDの仕様に変換する
-		return fmt.Sprintf("1-%s-%s", hex.EncodeToString(traceId[:4]), hex.EncodeToString(traceId[4:]))
+		return fmt.Sprintf("1-%s-%s", traceId[0:8], traceId[8:])
 	case "cloudtrace":
 		// CloudTraceの場合は、トレースIDの仕様はそのままとする
 		return traceId.String()
@@ -1849,5 +1845,8 @@ func formatTraceId(traceId trace.TraceID, traceType string) string {
 	return traceId.String()
 }
 ```
+
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160
+> - https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs
 
 <br>

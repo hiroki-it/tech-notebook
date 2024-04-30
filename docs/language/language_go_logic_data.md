@@ -929,10 +929,11 @@ func main() {
 }
 ```
 
+> - https://kamuycikap.hatenablog.com/entry/2022/12/21/173411
+
 #### ▼ `[<数値>:<数値>]`
 
 sliceで、指定したインデックスの範囲 (以上、未満) の値を参照する。
-
 
 ```go
 package main
