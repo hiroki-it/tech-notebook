@@ -1805,7 +1805,7 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 	if err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Field() {
-			// フィールドごとにマップ形式でバリデーションメッセージを構成します。
+			// フィールドごとにmapでバリデーションメッセージを構成します。
 			case "foo":
 				errorMessages["foo"] = v.stringValidation(err)
 				errorMessages["foo"] = v.requiredValidation(err)
@@ -1859,7 +1859,7 @@ func main() {
 	errorMessages := v.Validate()
 
 	if len(errorMessages) > 0 {
-		// マップをJSONに変換します。
+		// mapをJSONに変換します。
 		byteJson, _ := json.Marshal(errorMessages)
 		log.Printf("%v", byteJson)
 	}

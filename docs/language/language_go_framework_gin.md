@@ -130,7 +130,7 @@ type User struct {
 
 #### ▼ 処理
 
-同じリクエストにて`Set`関数でセットされたマップ型データから、インターフェース型で値を取得する。
+同じリクエストにて`Set`関数でセットされたmap型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、第二返却値で`false`を返却する。
 
@@ -156,7 +156,7 @@ JSON型データとして、レスポンスを返信する。
 
 **＊実装例＊**
 
-マップ型データを渡す。
+map型データを渡す。
 
 ```go
 package server
@@ -211,7 +211,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 #### ▼ 処理
 
-同じリクエストにて`Set`関数でセットされたマップ型データから、インターフェース型で値を取得する。
+同じリクエストにて`Set`関数でセットされたmap型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、ランタイムエラーとなる。
 
@@ -318,7 +318,7 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 #### ▼ 処理
 
-当該のリクエストで利用できるマップ型データに、値を保存する。
+当該のリクエストで利用できるmap型データに、値を保存する。
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
 
@@ -483,7 +483,7 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 
 ### H
 
-マップ型の変数のエイリアスとして働く。
+map型の変数のエイリアスとして働く。
 
 ```go
 type H map[string]interface{}

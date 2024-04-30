@@ -51,8 +51,8 @@ description: データ@Goの知見を記録しています。
 | データ型 | 表記 | ゼロ値                    |
 | -------- | ---- | ------------------------- |
 | ポインタ | `*`  | `nil`                     |
-| スライス | `[]` | `nil` (要素数、サイズ：0) |
-| マップ   |      | `nil`                     |
+| slice    | `[]` | `nil` (要素数、サイズ：0) |
+| map      |      | `nil`                     |
 | チャネル |      | `nil`                     |
 
 <br>
@@ -760,9 +760,9 @@ func main() {
 
 <br>
 
-## 07. スライス
+## 07. slice
 
-### スライスとは
+### sliceとは
 
 参照先の配列に対するポインタ、長さ、サイズを持つデータ型である。
 
@@ -787,6 +787,8 @@ type slice struct {
 
 宣言と代入を同時に実行する。
 
+インターフェース型を使用してもよい。
+
 ```go
 package main
 
@@ -794,6 +796,7 @@ import "log"
 
 func main() {
 
+	// var y []string = []interface{"Hiroki", "Gopher"} でもよい
 	var y []string = []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", y) // [Hiroki Gopher]
@@ -812,6 +815,7 @@ import "log"
 
 func main() {
 
+	// []interface{"Hiroki", "Gopher"} でもよい
 	x := []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", x) // [Hiroki Gopher]
@@ -829,6 +833,8 @@ package main
 import "log"
 
 func main() {
+
+	// []byte{"abc"} でもよい
 	x := []byte("abc")
 
 	log.Printf("%v", x) // [97 98 99]
@@ -836,7 +842,7 @@ func main() {
 }
 ```
 
-構造体のスライスの宣言と代入を同時に実行する。
+構造体のsliceの宣言と代入を同時に実行する。
 
 また、型推論を実行する。
 
@@ -850,6 +856,8 @@ type Person struct {
 }
 
 func main() {
+
+	// []Person{{ Name: "Hiroki" }} でもよい
 	person := []Person{{ Name: "Hiroki" }}
 
 	log.Printf("%v", person) // [{Name:Hiroki}]
@@ -861,7 +869,7 @@ func main() {
 
 ### 配列の値の参照
 
-全てのスライスが共通の配列を参照しているため、例えば、`xb`変数しか上書きしていないのにも関わらず、他のスライスにもその上書きが反映される。
+全てのsliceが共通の配列を参照しているため、例えば、`xb`変数しか上書きしていないのにも関わらず、他のsliceにもその上書きが反映される。
 
 ```go
 package main
@@ -881,10 +889,10 @@ func main() {
 	xb := x[2:5]
 	log.Printf("%v", xb) // []string{"う", "え", "お"}
 
-	// xbスライスの0番目 ("う") を上書きする。
+	// xbsliceの0番目 ("う") を上書きする。
 	xb[0] = "Hiroki"
 
-	// xbしか上書きしていないが、他のスライスにも反映される。
+	// xbしか上書きしていないが、他のsliceにも反映される。
 	log.Printf("%v", xa) // []string{"あ", "い", "Hiroki"}
 	log.Printf("%v", xb) // []string{"Hiroki", "え", "お"}
 	log.Printf("%v", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
@@ -895,9 +903,9 @@ func main() {
 
 ### 要素の追加
 
-#### ▼ スライスに値を追加する
+#### ▼ sliceに値を追加する
 
-渡されたスライスで、後ろから要素を追加する。
+渡されたsliceで、後ろから要素を追加する。
 
 ```go
 package main
@@ -914,11 +922,11 @@ func main() {
 }
 ```
 
-#### ▼ スライスにスライスを追加する
+#### ▼ sliceにsliceを追加する
 
-渡されたスライスで、後ろから要素を追加する。
+渡されたsliceで、後ろから要素を追加する。
 
-スライスをアンパック (`...`) する必要がある。
+sliceをアンパック (`...`) する必要がある。
 
 ```go
 package main
@@ -939,9 +947,9 @@ func main() {
 
 <br>
 
-## 08. マップ
+## 08. map
 
-### 単一のプリミティブ型を値に持つマップ
+### 単一のプリミティブ型を値に持つmap
 
 #### ▼ `文字列:任意の値`
 
@@ -955,7 +963,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『文字列:任意の値』のマップ
+	// 『文字列:任意の値』のmap
 	m := map[string]interface{}{
 		"foo": "FOO",
 		"bar": 1,
@@ -968,7 +976,7 @@ func main() {
 
 #### ▼ `インデックス番号:文字列`
 
-マップの定義と代入を同時に実行する。
+mapの定義と代入を同時に実行する。
 
 ```go
 package main
@@ -976,7 +984,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『数値:文字列』のマップ
+	// 『数値:文字列』のmap
 	m := map[int]string{
 		0: "Hiroki",
 		1: "Hiroko",
@@ -995,7 +1003,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『数値:文字列』のマップ
+	// 『数値:文字列』のmap
 	m := map[int]string{}
 
 	m[0] = "Hiroki"
@@ -1007,7 +1015,7 @@ func main() {
 
 ```
 
-または、`make`関数を使用してマップを作成もできる。
+または、`make`関数を使用してmapを作成もできる。
 
 ```go
 package main
@@ -1015,7 +1023,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『数値:文字列』のマップ
+	// 『数値:文字列』のmap
 	m := make(map[int]string)
 
 	m[0] = "Hiroki"
@@ -1028,7 +1036,7 @@ func main() {
 
 <br>
 
-### スライス型を値に持つマップ
+### slice型を値に持つmap
 
 ```go
 package main
@@ -1036,7 +1044,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『文字列:スライス』のマップ
+	// 『文字列:slice』のmap
 	m := map[string][]string{
 		"errors": {
 			0: "エラーメッセージ0",
@@ -1051,9 +1059,9 @@ func main() {
 
 <br>
 
-### 複数のデータ型を持つマップ
+### 複数のデータ型を持つmap
 
-マップ型データの値をインターフェース型とすることにより、複数のデータ型を表現できる。
+map型データの値をインターフェース型とすることにより、複数のデータ型を表現できる。
 
 ```go
 package main
@@ -1061,7 +1069,7 @@ package main
 import "fmt"
 
 func main() {
-	// 『文字列:複数のプリミティブ型』のマップ
+	// 『文字列:複数のプリミティブ型』のmap
 	m := map[string]interface{}{
 		"id":   1,
 		"name": "Hiroki Hasegawa",
@@ -1074,7 +1082,7 @@ func main() {
 
 <br>
 
-### マップ値の抽出
+### map値の抽出
 
 ```go
 package main
