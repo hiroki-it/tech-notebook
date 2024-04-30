@@ -480,9 +480,77 @@ Spanに紐づく処理の成否を表す。
 
 スパンの作成場所の種類を表す。
 
+#### ▼ Unspecified
+
+種類がないことを表す。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(0),
+	)
+
+	defer span.End()
+}
+```
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+
 #### ▼ Internal
 
 アプリケーションの内部処理に関する情報を持つ。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(1),
+	)
+
+	defer span.End()
+}
+```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
@@ -490,11 +558,73 @@ Spanに紐づく処理の成否を表す。
 
 クライアントからのリクエストの受信処理に関する情報を持つ。
 
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(2),
+	)
+
+	defer span.End()
+}
+```
+
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Client
 
 サーバーへのリクエストの送信処理に関する情報を持つ。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(3),
+	)
+
+	defer span.End()
+}
+```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
@@ -502,11 +632,73 @@ Spanに紐づく処理の成否を表す。
 
 パブリッシャー (プロデューサー) からのメッセージの受信処理に関する情報を持つ。
 
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(4),
+	)
+
+	defer span.End()
+}
+```
+
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
 #### ▼ Consumer
 
 コンシューマー (サブスクライバー) からのメッセージの送信処理に関する情報を持つ。
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+)
+
+func main()  {
+
+	...
+
+	foo()
+
+	...
+}
+
+func foo()  {
+
+	// Tracerを作成する
+	var tracer = otel.Tracer("計装パッケージ名")
+
+	ctx, span := tracer.Start(
+		ctx,
+		"foo",
+		trace.WithSpanKind(5),
+	)
+
+	defer span.End()
+}
+```
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
 
