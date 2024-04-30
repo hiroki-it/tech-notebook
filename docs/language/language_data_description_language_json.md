@@ -25,6 +25,18 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 ## 02. 文法
 
+### キー名
+
+JSONのキー名はキャメルケースにする。
+
+```yaml
+{"propertyName": "propertyValue"}
+```
+
+> - https://google.github.io/styleguide/jsoncstyleguide.xml?showone=Property_Name_Format#Property_Name_Format
+
+<br>
+
 ### 配列
 
 ```yaml
