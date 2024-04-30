@@ -209,7 +209,7 @@ metadata:
 ```
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 #### ▼ `ip`の場合
 
@@ -229,7 +229,7 @@ metadata:
 ```
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/alb-ingress.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
 <br>
 

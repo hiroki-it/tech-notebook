@@ -23,7 +23,7 @@ description: 運用性＠AWSの知見を記録しています。
 
 例えば、BIツール (例：Redash) を採用し、DBから取得したデータ (例：取引履歴) をメトリクスとする。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html
 
 #### ▼ DevOps成果
 
@@ -38,8 +38,8 @@ Code三兄弟のデータポイントを収集し、メトリクスとして分�
 - CDの状態 (失敗、成功、実施頻度)
 - CICD全体の状態 (失敗、成功、実施頻度)
 
-> - https://docs.aws.amazon.com/ja_jp/solutions/latest/devops-monitoring-dashboard-on-aws/devops-metrics-list.html
-> - https://docs.aws.amazon.com/ja_jp/solutions/latest/devops-monitoring-dashboard-on-aws/amazon-quicksight-dashboards-visuals.html
+> - https://docs.aws.amazon.com/solutions/latest/devops-monitoring-dashboard-on-aws/devops-metrics-list.html
+> - https://docs.aws.amazon.com/solutions/latest/devops-monitoring-dashboard-on-aws/amazon-quicksight-dashboards-visuals.html
 
 <br>
 
@@ -49,7 +49,7 @@ Code三兄弟のデータポイントを収集し、メトリクスとして分�
 
 システムに関するメトリクスを監視する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/oe-operate.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html
 
 #### ▼ ユーザー定義の名前空間
 

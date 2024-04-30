@@ -21,7 +21,7 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 カスタマー管理型KMSを使用し、KMSを操作できるユーザーを制限しています。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 
 <br>
 
@@ -29,7 +29,7 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 永続化データの暗号化のために、AuroraではKMSを採用する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 
 <br>
 
@@ -39,7 +39,7 @@ description: ストレージ安全性＠AWSの知見を記録しています。
 
 また、全てのS3バケットでパブリックアクセスを無効化する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-dataprot.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 
 <br>
 

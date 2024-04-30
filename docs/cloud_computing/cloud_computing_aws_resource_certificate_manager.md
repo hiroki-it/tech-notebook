@@ -228,6 +228,6 @@ Aurora RDSにSSL証明書を紐づける。
 
 EC2/ECS/EKSからAurora RDSへのパケットペイロードを暗号化できる。
 
-> - https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 
 <br>

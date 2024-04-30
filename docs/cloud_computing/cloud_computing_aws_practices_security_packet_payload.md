@@ -48,7 +48,7 @@ AWSリソースごとにセキュリティを考慮する。
 
 なお、パブリックサブネットにはEC2は置かない。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -205,7 +205,7 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 `L3`の攻撃をセキュリティグループやTransit Gatewayで防御する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -325,7 +325,7 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 代わりに、アプリケーションの実装で防御しても良い。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -335,7 +335,7 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 `L7`の攻撃を防御する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -472,7 +472,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワーク、など) の境界をSSL終端とすることが多い。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
 
@@ -484,6 +484,6 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。
 
-> - https://docs.aws.amazon.com/ja_jp/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
 
 <br>
