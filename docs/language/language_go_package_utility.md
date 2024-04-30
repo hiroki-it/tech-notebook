@@ -1901,7 +1901,7 @@ func main() {
 
 #### ▼ With
 
-構造化ログにキーを追加する。
+以降の構造化ログにキーを追加する。
 
 ```go
 package main
@@ -1916,7 +1916,39 @@ func main() {
 	logger, _ := zap.NewProduction()
 	defer logger.Sync()
 
-	logger := logger.With("foo", "FOO")
+	// キーバリューの対応が明確
+	logger := logger.With(
+		zap.String("foo", "FOO"),
+		zap.String("bar", "BAR"),
+	)
+
+	logger.Info("Failed to fetch URL")
+
+	...
+
+}
+```
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	// Loggerを作成する
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	// キーバリューの対応が曖昧
+	logger := logger.With(
+		"foo", "FOO",
+		"foo", "BAR",
+	)
+
+	logger.Info("Failed to fetch URL")
 
 	...
 
@@ -1967,5 +1999,63 @@ func main() {
 ```
 
 > - https://yuya-hirooka.hatenablog.com/entry/2022/02/20/135714
+
+#### ▼ With
+
+以降の構造化ログにキーを追加する。
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	// Loggerを作成する
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	// LoggerからSugaredLoggerを作成する
+	sugar := logger.Sugar()
+
+	sugar.With(
+		// キーバリューの対応が明確
+		zap.String("foo", "FOO"),
+		zap.String("bar", "BAR"),
+	)
+
+	sugar.Infof("Failed to fetch URL: %s", url)
+}
+```
+
+```go
+package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+
+	// Loggerを作成する
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	// LoggerからSugaredLoggerを作成する
+	sugar := logger.Sugar()
+
+	sugar.With(
+		// キーバリューの対応が曖昧
+		"foo", "FOO",
+		"bar", "BAZ",
+	)
+
+	sugar.Infof("Failed to fetch URL: %s", url)
+}
+```
+
+> - https://pkg.go.dev/go.uber.org/zap#SugaredLogger.With
 
 <br>

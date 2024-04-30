@@ -796,7 +796,7 @@ import "log"
 
 func main() {
 
-	// var y []string = []interface{"Hiroki", "Gopher"} でもよい
+	// var y []string = []interface{}{"Hiroki", "Gopher"} でもよい
 	var y []string = []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", y) // [Hiroki Gopher]
@@ -815,7 +815,7 @@ import "log"
 
 func main() {
 
-	// []interface{"Hiroki", "Gopher"} でもよい
+	// x := []interface{}{"Hiroki", "Gopher"} でもよい
 	x := []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", x) // [Hiroki Gopher]
