@@ -24216,10 +24216,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// 特定の要素を参照する</span>
-<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
+<span class="w">    </span><span class="c1">// 4番の要素を参照する</span>
+<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;お&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -24231,10 +24232,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// 2番目以降を参照する</span>
-<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
+<span class="w">    </span><span class="c1">// 1番目以降を参照する</span>
+<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;い&quot;, &quot;う&quot;, &quot;え&quot;, &quot;お&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -24246,26 +24248,29 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// 2番目までを参照する</span>
-<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
+<span class="w">    </span><span class="c1">// 1番目までを参照する</span>
+<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;あ&quot;, &quot;い&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_26">▼ <code>[&lt;数値&gt;:&lt;数値&gt;]</code><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>sliceで、指定したインデックスの範囲の値を参照する。</p>
+<p>後の番号は除くそれより前の番号になることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// 2番目から4番目までを参照する</span>
-<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;い&quot;, &quot;う&quot;, &quot;え&quot;}</span>
+<span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
+<span class="w">    </span><span class="c1">// 1番目から3番目を除いた番号 (2番目) までを参照する</span>
+<span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;い&quot;, &quot;う&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
