@@ -800,7 +800,7 @@ func main() {
 	var y []string = []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", y) // [Hiroki Gopher]
-	log.Printf("%v", y) // []string{"Hiroki", "Gopher"}
+	log.Printf("%v", y) // [Hiroki", "Gopher"}
 }
 ```
 
@@ -819,7 +819,7 @@ func main() {
 	x := []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", x) // [Hiroki Gopher]
-	log.Printf("%v", x) // []string{"Hiroki", "Gopher"}
+	log.Printf("%v", x) // [Hiroki", "Gopher"}
 }
 ```
 
@@ -885,13 +885,13 @@ func main() {
 	// 要素番号は0から始まることに注意する
 	// 4番の要素を参照する
 	xb := x[4]
-	log.Printf("%v", x) // []string{"お"}
+	log.Printf("%v", x) // [お]
 }
 ```
 
 #### ▼ `[<数値>:]`
 
-sliceで、指定したインデックス以降の値を参照する。
+sliceで、指定したインデックス以上の値を参照する。
 
 ```go
 package main
@@ -903,15 +903,15 @@ func main() {
 	x := []string{"あ", "い", "う", "え", "お"}
 
 	// 要素番号は0から始まることに注意する
-	// 1番目以降を参照する
+	// 1番目以上を参照する
 	xb := x[1:]
-	log.Printf("%v", xb) // []string{"い", "う", "え", "お"}
+	log.Printf("%v", xb) // [い, う, え, お]
 }
 ```
 
 #### ▼ `[:<数値>]`
 
-sliceで、指定したインデックスまでの値を参照する。
+sliceで、指定したインデックス未満の値を参照する。
 
 ```go
 package main
@@ -923,17 +923,16 @@ func main() {
 	x := []string{"あ", "い", "う", "え", "お"}
 
 	// 要素番号は0から始まることに注意する
-	// 1番目までを参照する
+	// 1番目未満を参照する
 	xb := x[:1]
-	log.Printf("%v", xb) // []string{"あ", "い"}
+	log.Printf("%v", xb) // [あ]
 }
 ```
 
 #### ▼ `[<数値>:<数値>]`
 
-sliceで、指定したインデックスの範囲の値を参照する。
+sliceで、指定したインデックスの範囲 (以上、未満) の値を参照する。
 
-後の番号は除くそれより前の番号になることに注意する。
 
 ```go
 package main
@@ -945,11 +944,13 @@ func main() {
 	x := []string{"あ", "い", "う", "え", "お"}
 
 	// 要素番号は0から始まることに注意する
-	// 1番目から3番目を除いた番号 (2番目) までを参照する
+	// 1番目から3番目未満 (2番目) までを参照する
 	xb := x[1:3]
-	log.Printf("%v", xb) // []string{"い", "う"}
+	log.Printf("%v", xb) // [い, う]
 }
 ```
+
+> - https://kamuycikap.hatenablog.com/entry/2022/12/21/173411
 
 <br>
 
