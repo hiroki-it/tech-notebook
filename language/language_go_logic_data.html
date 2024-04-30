@@ -24154,7 +24154,7 @@
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>文字列の宣言と代入を同時に実行する。</p>
@@ -24169,7 +24169,7 @@
 <span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>バイト文字列の宣言と代入を同時に実行する。</p>
@@ -24221,11 +24221,11 @@
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
 <span class="w">    </span><span class="c1">// 4番の要素を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;お&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [お]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_24">▼ <code>[&lt;数値&gt;:]</code><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックス以降の値を参照する。</p>
+<p>sliceで、指定したインデックス以上の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -24235,13 +24235,13 @@
 <span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
-<span class="w">    </span><span class="c1">// 1番目以降を参照する</span>
+<span class="w">    </span><span class="c1">// 1番目以上を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;い&quot;, &quot;う&quot;, &quot;え&quot;, &quot;お&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う, え, お]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_25">▼ <code>[:&lt;数値&gt;]</code><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックスまでの値を参照する。</p>
+<p>sliceで、指定したインデックス未満の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -24251,14 +24251,13 @@
 <span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
-<span class="w">    </span><span class="c1">// 1番目までを参照する</span>
+<span class="w">    </span><span class="c1">// 1番目未満を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;あ&quot;, &quot;い&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [あ]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_26">▼ <code>[&lt;数値&gt;:&lt;数値&gt;]</code><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックスの範囲の値を参照する。</p>
-<p>後の番号は除くそれより前の番号になることに注意する。</p>
+<p>sliceで、指定したインデックスの範囲 (以上、未満) の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -24268,11 +24267,16 @@
 <span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
-<span class="w">    </span><span class="c1">// 1番目から3番目を除いた番号 (2番目) までを参照する</span>
+<span class="w">    </span><span class="c1">// 1番目から3番目未満 (2番目) までを参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;い&quot;, &quot;う&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う]</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kamuycikap.hatenablog.com/entry/2022/12/21/173411">https://kamuycikap.hatenablog.com/entry/2022/12/21/173411</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_27">要素の追加<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="slice_1">▼ sliceに値を追加する<a class="headerlink" href="#slice_1" title="Permanent link">&para;</a></h4>
