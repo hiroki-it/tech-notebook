@@ -21026,6 +21026,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#x-ray" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ X-Ray
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22550,6 +22559,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#x-ray" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ X-Ray
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22877,7 +22895,13 @@
 </ul>
 </blockquote>
 <h4 id="w3c-trace-context">▼ W3C Trace Context<a class="headerlink" href="#w3c-trace-context" title="Permanent link">&para;</a></h4>
-<p>W3C Trace Context仕様のトレースコンテキストは以下の通りである。</p>
+<p>W3C Trace Context仕様のIDは以下の通りである。</p>
+<ul>
+<li>trace-id (<code>32</code>進数)</li>
+<li>parent-id (<code>16</code>進数)</li>
+<li>trace-flags (<code>2</code>進数)</li>
+</ul>
+<p>これらの値によってトレースコンテキストが決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
@@ -22892,7 +22916,14 @@
 </ul>
 </blockquote>
 <h4 id="b3-zipkin">▼ B3 (Zipkin)<a class="headerlink" href="#b3-zipkin" title="Permanent link">&para;</a></h4>
-<p>B3仕様のトレースコンテキストは以下の通りである。</p>
+<p>B3仕様のIDは以下の通りである。</p>
+<ul>
+<li>trace-id (<code>16</code>、<code>32</code>進数)</li>
+<li>span-id (<code>16</code>進数)</li>
+<li>parent-span-id (<code>16</code>進数)</li>
+<li>sampling-state (サンプリング無効なら<code>0</code>、有効なら<code>1</code>)</li>
+</ul>
+<p>これらの値によってトレースコンテキストが決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo-service HTTP/1.1</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
@@ -22902,6 +22933,15 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header">https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header</a></li>
+</ul>
+</blockquote>
+<h4 id="x-ray">▼ X-Ray<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>
+<p><code>&lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントごとのユニークID&gt;</code>からなる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">trace_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1-58406520-a006649127e371903a2de979</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids">https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23108,7 +23148,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-01</span>
   </span>
 
     
