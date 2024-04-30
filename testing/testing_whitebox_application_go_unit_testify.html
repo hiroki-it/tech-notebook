@@ -22579,6 +22579,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGet関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22649,6 +22650,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGet関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22742,6 +22744,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGetAge関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
@@ -22799,6 +22802,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">MockedUser</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGetAge関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;GetAge&quot;</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// テストを実施する</span>
@@ -22874,6 +22878,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGet関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
@@ -22973,6 +22978,7 @@
 <span class="w">    </span><span class="nx">mockUser</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">MockUserInterface</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する</span>
+<span class="w">    </span><span class="c1">// 引数と返却値のデータ型は、仮のGet関数と一致させる</span>
 <span class="w">    </span><span class="nx">mockUser</span><span class="p">.</span><span class="nx">On</span><span class="p">(</span><span class="s">&quot;Get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">testUser</span><span class="p">.</span><span class="nx">ID</span><span class="p">).</span><span class="nx">Return</span><span class="p">(</span><span class="nx">testUser</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
