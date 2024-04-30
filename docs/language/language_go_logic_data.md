@@ -943,6 +943,31 @@ func main() {
 
 ### 単一のプリミティブ型を値に持つマップ
 
+#### ▼ `文字列:任意の値`
+
+インターフェース型により、任意の型とする。
+
+インターフェースのエイリアスである`any`型でもよい。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 『文字列:任意の値』のマップ
+	m := map[string]interface{}{
+		"foo": "FOO",
+		"bar": 1,
+		"baz": true,
+	}
+
+	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
+}
+```
+
+#### ▼ `インデックス番号:文字列`
+
 マップの定義と代入を同時に実行する。
 
 ```go
