@@ -113,6 +113,7 @@ func TestUser_UserName(t *testing.T) {
     mockUser := new(user.MockUserInterface)
 
 	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet関数と一致させる
     mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
     u := &User{
@@ -188,6 +189,7 @@ func TestUser_UserName(t *testing.T) {
 	mockUser := new(user.MockUserInterface)
 
 	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{
@@ -285,6 +287,7 @@ func Test_Mock(t *testing.T) {
 	mockUser := new(MockedUser)
 
 	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGetAge関数と一致させる
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -346,6 +349,7 @@ func Test_Mock(t *testing.T) {
 	mockUser := new(MockedUser)
 
 	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGetAge関数と一致させる
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -429,6 +433,7 @@ func TestUser_UserName(t *testing.T) {
 	mockUser := new(user.MockUserInterface)
 
 	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{
@@ -537,6 +542,7 @@ func TestUser_UserName(t *testing.T) {
 	mockUser := new(user.MockUserInterface)
 
 	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{

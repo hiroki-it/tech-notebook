@@ -369,8 +369,6 @@ gormモデルのフィールドに設定された値を元に、レコードを�
 
 フィールドとは無関係に、渡された値を元にUPDATE分を実行する。
 
-> - https://gorm.io/docs/update.html#Update-single-column
-
 ```go
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;
 db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
@@ -384,6 +382,8 @@ db.Model(&user).Update("name", "hello")
 db.Model(&user).Where("active = ?", true).Update("name", "hello")
 ```
 
+> - https://gorm.io/docs/update.html#Update-single-column
+
 #### ▼ 複数レコード更新 (暗黙的)
 
 gormモデルのフィールドを暗黙的に指定して、複数のレコード値を更新する。
@@ -391,8 +391,6 @@ gormモデルのフィールドを暗黙的に指定して、複数のレコー�
 または、フィールドとは無関係に、mapを元にUPDATE文を実行する。
 
 gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたレコード値の更新はスキップされてしまう。
-
-> - https://gorm.io/docs/update.html#Updates-multiple-columns
 
 ```go
 user := User{Id:111}
@@ -404,13 +402,13 @@ db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: "false"})
 db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": "false"})
 ```
 
+> - https://gorm.io/docs/update.html#Updates-multiple-columns
+
 #### ▼ 複数レコード更新 (明示的)
 
 gormモデルのフィールドを明示的に指定して、複数のレコード値を更新する。
 
 フィールド値がゼロ値であっても、スキップされない。
-
-> - https://gorm.io/docs/update.html#Update-Selected-Fields
 
 ```go
 user := User{Id:111}
@@ -421,6 +419,8 @@ db.Model(&user).Select("Name", "Age").Updates(User{Name: "new_name", Age: 0})
 // UPDATE users SET name='new_name', age=0 WHERE id=111;
 db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 ```
+
+> - https://gorm.io/docs/update.html#Update-Selected-Fields
 
 #### ▼ 全レコード更新
 
