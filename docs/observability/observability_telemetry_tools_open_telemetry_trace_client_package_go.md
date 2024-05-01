@@ -1827,13 +1827,9 @@ func CreateLoggerWithTrace(ctx context.Context, string traceType) *zap.SugaredLo
 }
 
 // トレースタイプに応じて、トレースIDを整形する
-func formatTraceId(traceId trace.TraceID, traceType string) string {
+func formatTraceId(ctx context.Context, traceIdType string) string {
 
-	traceId = traceId.String()
-
-	if reflect.ValueOf(traceId).IsZero() {
-		return "unknown"
-	}
+	traceId := trace.SpanContextFromContext(ctx).TraceID().String()
 
 	switch traceType {
 	case "xray":
@@ -1841,10 +1837,10 @@ func formatTraceId(traceId trace.TraceID, traceType string) string {
 		return fmt.Sprintf("1-%s-%s", traceId[0:8], traceId[8:])
 	case "cloudtrace":
 		// CloudTraceの場合は、トレースIDの仕様はそのままとする
-		return traceId.String()
+		return traceId
 	}
 
-	return traceId.String()
+	return traceId
 }
 ```
 

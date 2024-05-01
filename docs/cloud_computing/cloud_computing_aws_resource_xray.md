@@ -417,6 +417,29 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 <br>
 
+### SQL
+
+マイクロサービスが実行したSQLの情報を持つ。
+
+```yaml
+{
+  "sql":
+    {
+      "url": "jdbc:postgresql://aawijb5u25wdoy.cpamxznpdoq8.us-west-2.rds.amazonaws.com:5432/ebdb",
+      "preparation": "statement",
+      "database_type": "PostgreSQL",
+      "database_version": "9.5.4",
+      "driver_version": "PostgreSQL 9.4.1211.jre7",
+      "user": "dbuser",
+      "sanitized_query": "SELECT  *  FROM  customers  WHERE  customer_id=?;",
+    },
+}
+```
+
+> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-sql
+
+<br>
+
 ## 05. OpenTelemetryとX-Rayの対応関係
 
 ### OpenTelemetryとX-Ray
