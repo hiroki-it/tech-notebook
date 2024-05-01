@@ -7190,6 +7190,81 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#godocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      godocs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="godocs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#godocs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      godocs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      -http
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gomarkdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gomarkdoc
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gomarkdoc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      {{.Dir}}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      -e
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      -o
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#go-callvis" class="md-nav__link">
     <span class="md-ellipsis">
       go-callvis
@@ -23371,6 +23446,81 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#godocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      godocs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="godocs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#godocs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      godocs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      -http
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gomarkdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gomarkdoc
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gomarkdoc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      {{.Dir}}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      -e
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      -o
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#go-callvis" class="md-nav__link">
     <span class="md-ellipsis">
       go-callvis
@@ -24576,6 +24726,52 @@
 <li><a href="https://github.com/go-chi/chi">https://github.com/go-chi/chi</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="godocs">godocs<a class="headerlink" href="#godocs" title="Permanent link">&para;</a></h2>
+<h3 id="godocs_1">godocs<a class="headerlink" href="#godocs_1" title="Permanent link">&para;</a></h3>
+<p><code>GOROOT</code>変数配下のパッケージのドキュメントを自動的に作成する。</p>
+<p>似たものとして、ターミナル上にドキュメントを表示する<code>go doc</code>コマンドがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/">https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-http">-http<a class="headerlink" href="#-http" title="Permanent link">&para;</a></h3>
+<p>ポート番号を設定する。</p>
+<p>デフォルトは<code>6060</code>番である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>godoc<span class="w"> </span>-http<span class="o">=</span>:8080
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/golang.org/x/tools/cmd/godoc">https://pkg.go.dev/golang.org/x/tools/cmd/godoc</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="gomarkdoc">gomarkdoc<a class="headerlink" href="#gomarkdoc" title="Permanent link">&para;</a></h2>
+<h3 id="dir"><code>{{.Dir}}</code><a class="headerlink" href="#dir" title="Permanent link">&para;</a></h3>
+<p>ディレクトリ名を再帰的に出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>-o<span class="w"> </span><span class="o">{{</span>.Dir<span class="o">}}</span>/README.md<span class="w"> </span>./...
+</code></pre></div>
+<p><br></p>
+<h3 id="-e">-e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h3>
+<p>埋め込みタグの箇所にドキュメントを出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>-o<span class="w"> </span>README.md<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ここに自分のドキュメント
+
+&lt;!-- gomarkdoc:embed:start --&gt;
+
+ここに自動生成のドキュメント
+
+&lt;!-- gomarkdoc:embed:end --&gt;
+
+ここに自分のドキュメント
+</code></pre></div>
+<p><br></p>
+<h3 id="-o">-o<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>gomarkdoc<span class="w"> </span>-o<span class="w"> </span>README.md<span class="w"> </span>.
+</code></pre></div>
 <p><br></p>
 <h2 id="go-callvis">go-callvis<a class="headerlink" href="#go-callvis" title="Permanent link">&para;</a></h2>
 <h3 id="go-callvis_1">go-callvisとは<a class="headerlink" href="#go-callvis_1" title="Permanent link">&para;</a></h3>

@@ -24761,6 +24761,8 @@
 <span class="c1">// トレースタイプに応じて、トレースIDを整形する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">formatTraceId</span><span class="p">(</span><span class="nx">traceId</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">,</span><span class="w"> </span><span class="nx">traceType</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="nx">traceId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">traceId</span><span class="p">).</span><span class="nx">IsZero</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
 <span class="w">    </span><span class="p">}</span>
