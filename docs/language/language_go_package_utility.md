@@ -116,9 +116,31 @@ $ godoc -http=:8080
 
 ディレクトリ名を再帰的に出力する。
 
+`./...`を指定すれば、再帰的にドキュメントを作成できる。
+
 ```bash
-$ gomarkdoc -o {{.Dir}}/README.md ./...
+$ gomarkdoc ./... -o {{.Dir}}/doc.md
 ```
+
+<br>
+
+### --config
+
+設定ファイルを指定して、`gomarkdoc`コマンドを実行する。
+
+```yaml
+# .gomarkdoc.ymlファイル
+output: "{{.Dir}}/doc.md" # ダブルクオーテーションで囲わないとエラーになる
+repository:
+  defaultBranch: main
+  url: https://github.com/hiroki-hasegawa/foo-repository.git
+```
+
+```bash
+$ gomarkdoc . --config .gomarkdoc.yml
+```
+
+> - https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options
 
 <br>
 
@@ -127,7 +149,7 @@ $ gomarkdoc -o {{.Dir}}/README.md ./...
 埋め込みタグの箇所にドキュメントを出力する。
 
 ```bash
-$ gomarkdoc -o README.md -e .
+$ gomarkdoc . -o doc.md -e
 ```
 
 ```markdown
@@ -146,9 +168,26 @@ $ gomarkdoc -o README.md -e .
 
 ### -o
 
+出力先のファイル名を指定する。
+
 ```bash
-gomarkdoc -o README.md .
+$ gomarkdoc . -o doc.md
 ```
+
+<br>
+
+### --repository
+
+ドキュメントにリポジトリ内パッケージのファイルへのリンクを添付する。
+
+```bash
+$  gomarkdoc . \
+     -o doc.md \
+     --repository.default-branch main \
+     --repository.url https://github.com/hiroki-hasegawa/foo-repository.git
+```
+
+> - https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options
 
 <br>
 
@@ -160,15 +199,25 @@ Goのコールグラフを作成する。
 
 ブラウザ上で確認できる。
 
-`main.go`ファイルのパスを指定する必要がある。
+`main`関数のあるファイルパスを指定する必要がある。
 
 ```bash
-# main.goファイルのあるディレクトリ
+# main関数のあるファイル
 $ cd app
 
 $ go-callvis .
 ```
 
+もし`main`関数がないと、エラーになる。
+
+```bash
+$ go-callvis .
+
+# main関数がない
+no main packages
+```
+
+> - https://github.com/ondrajz/go-callvis/issues/7#issuecomment-280853441
 > - https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9
 
 <br>
