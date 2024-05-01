@@ -7242,6 +7242,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      --config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-e" class="md-nav__link">
     <span class="md-ellipsis">
       -e
@@ -7254,6 +7263,15 @@
   <a href="#-o" class="md-nav__link">
     <span class="md-ellipsis">
       -o
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      --repository
     </span>
   </a>
   
@@ -23498,6 +23516,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      --config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-e" class="md-nav__link">
     <span class="md-ellipsis">
       -e
@@ -23510,6 +23537,15 @@
   <a href="#-o" class="md-nav__link">
     <span class="md-ellipsis">
       -o
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      --repository
     </span>
   </a>
   
@@ -24751,12 +24787,29 @@
 <h2 id="gomarkdoc">gomarkdoc<a class="headerlink" href="#gomarkdoc" title="Permanent link">&para;</a></h2>
 <h3 id="dir"><code>{{.Dir}}</code><a class="headerlink" href="#dir" title="Permanent link">&para;</a></h3>
 <p>ディレクトリ名を再帰的に出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>-o<span class="w"> </span><span class="o">{{</span>.Dir<span class="o">}}</span>/README.md<span class="w"> </span>./...
+<p><code>./...</code>を指定すれば、再帰的にドキュメントを作成できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>./...<span class="w"> </span>-o<span class="w"> </span><span class="o">{{</span>.Dir<span class="o">}}</span>/doc.md
 </code></pre></div>
+<p><br></p>
+<h3 id="-config">--config<a class="headerlink" href="#-config" title="Permanent link">&para;</a></h3>
+<p>設定ファイルを指定して、<code>gomarkdoc</code>コマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .gomarkdoc.ymlファイル</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{.Dir}}/doc.md&quot;</span><span class="w"> </span><span class="c1"># ダブルクオーテーションで囲わないとエラーになる</span>
+<span class="nt">repository</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">defaultBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>.gomarkdoc.yml
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options">https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="-e">-e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h3>
 <p>埋め込みタグの箇所にドキュメントを出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>-o<span class="w"> </span>README.md<span class="w"> </span>-e<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>.<span class="w"> </span>-o<span class="w"> </span>doc.md<span class="w"> </span>-e
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>ここに自分のドキュメント
 
@@ -24770,21 +24823,42 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="-o">-o<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>gomarkdoc<span class="w"> </span>-o<span class="w"> </span>README.md<span class="w"> </span>.
+<p>出力先のファイル名を指定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gomarkdoc<span class="w"> </span>.<span class="w"> </span>-o<span class="w"> </span>doc.md
 </code></pre></div>
+<p><br></p>
+<h3 id="-repository">--repository<a class="headerlink" href="#-repository" title="Permanent link">&para;</a></h3>
+<p>ドキュメントにリポジトリ内パッケージのファイルへのリンクを添付する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w">  </span>gomarkdoc<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-o<span class="w"> </span>doc.md<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--repository.default-branch<span class="w"> </span>main<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--repository.url<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository.git
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options">https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="go-callvis">go-callvis<a class="headerlink" href="#go-callvis" title="Permanent link">&para;</a></h2>
 <h3 id="go-callvis_1">go-callvisとは<a class="headerlink" href="#go-callvis_1" title="Permanent link">&para;</a></h3>
 <p>Goのコールグラフを作成する。</p>
 <p>ブラウザ上で確認できる。</p>
-<p><code>main.go</code>ファイルのパスを指定する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># main.goファイルのあるディレクトリ</span>
+<p><code>main</code>関数のあるファイルパスを指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># main関数のあるファイル</span>
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>app
 
 $<span class="w"> </span>go-callvis<span class="w"> </span>.
 </code></pre></div>
+<p>もし<code>main</code>関数がないと、エラーになる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go-callvis<span class="w"> </span>.
+
+<span class="c1"># main関数がない</span>
+no<span class="w"> </span>main<span class="w"> </span>packages
+</code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/ondrajz/go-callvis/issues/7#issuecomment-280853441">https://github.com/ondrajz/go-callvis/issues/7#issuecomment-280853441</a></li>
 <li><a href="https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9">https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9</a></li>
 </ul>
 </blockquote>
