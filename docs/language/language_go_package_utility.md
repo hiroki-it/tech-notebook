@@ -84,6 +84,74 @@ func main() {
 
 <br>
 
+## godocs
+
+### godocs
+
+`GOROOT`変数配下のパッケージのドキュメントを自動的に作成する。
+
+似たものとして、ターミナル上にドキュメントを表示する`go doc`コマンドがある。
+
+> - https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/
+
+<br>
+
+### -http
+
+ポート番号を設定する。
+
+デフォルトは`6060`番である。
+
+```bash
+$ godoc -http=:8080
+```
+
+> - https://pkg.go.dev/golang.org/x/tools/cmd/godoc
+
+<br>
+
+## gomarkdoc
+
+### `{{.Dir}}`
+
+ディレクトリ名を再帰的に出力する。
+
+```bash
+$ gomarkdoc -o {{.Dir}}/README.md ./...
+```
+
+<br>
+
+### -e
+
+埋め込みタグの箇所にドキュメントを出力する。
+
+```bash
+$ gomarkdoc -o README.md -e .
+```
+
+```markdown
+ここに自分のドキュメント
+
+<!-- gomarkdoc:embed:start -->
+
+ここに自動生成のドキュメント
+
+<!-- gomarkdoc:embed:end -->
+
+ここに自分のドキュメント
+```
+
+<br>
+
+### -o
+
+```bash
+gomarkdoc -o README.md .
+```
+
+<br>
+
 ## go-callvis
 
 ### go-callvisとは

@@ -1829,6 +1829,8 @@ func CreateLoggerWithTrace(ctx context.Context, string traceType) *zap.SugaredLo
 // トレースタイプに応じて、トレースIDを整形する
 func formatTraceId(traceId trace.TraceID, traceType string) string {
 
+	traceId = traceId.String()
+
 	if reflect.ValueOf(traceId).IsZero() {
 		return "unknown"
 	}
