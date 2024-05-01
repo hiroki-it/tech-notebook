@@ -24759,13 +24759,9 @@
 <span class="p">}</span>
 
 <span class="c1">// トレースタイプに応じて、トレースIDを整形する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">formatTraceId</span><span class="p">(</span><span class="nx">traceId</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">,</span><span class="w"> </span><span class="nx">traceType</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">formatTraceId</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">traceIdType</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">traceId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">reflect</span><span class="p">.</span><span class="nx">ValueOf</span><span class="p">(</span><span class="nx">traceId</span><span class="p">).</span><span class="nx">IsZero</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">traceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">).</span><span class="nx">TraceID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">traceType</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;xray&quot;</span><span class="p">:</span>
@@ -24773,10 +24769,10 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;1-%s-%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">traceId</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span><span class="w"> </span><span class="nx">traceId</span><span class="p">[</span><span class="mi">8</span><span class="p">:])</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;cloudtrace&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="c1">// CloudTraceの場合は、トレースIDの仕様はそのままとする</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceId</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
