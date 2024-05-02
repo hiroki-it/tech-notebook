@@ -436,40 +436,6 @@ func main() {
 
 <br>
 
-## hex
-
-### hexとは
-
-値を`16`進数にエンコード/デコードする。
-
-<br>
-
-### EncodeToString
-
-値を`16`進数にエンコードする。
-
-```go
-package main
-
-import (
-	"encoding/hex"
-	"fmt"
-)
-
-func main() {
-
-	// Helloを16進数にエンコードする
-	encodedStr := hex.EncodeToString([]byte("Hello"))
-
-	// 48656c6c6f
-	fmt.Printf("%s\n", encodedStr)
-}
-```
-
-> - https://pkg.go.dev/encoding/hex#EncodeToString
-
-<br>
-
 ## otel
 
 ### Tracer
