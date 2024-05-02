@@ -86,7 +86,7 @@ resource "aws_xray_group" "environment" {
   group_name        = "foo-prd"
 
   filter_expression = <<EOF
-annotation.system = "foo" AND annotation.environment = "prd"
+annotation.otel_resource_system_name = "foo" AND annotation.otel_resource_environment = "prd"
 EOF
 
   insights_configuration {
@@ -103,6 +103,8 @@ EOF
 
 #### ▼ デフォルト
 
+**＊実行例＊**
+
 ```bash
 http.url = "http://example.com/foo"
 ```
@@ -110,6 +112,8 @@ http.url = "http://example.com/foo"
 #### ▼ 時間
 
 レスポンス時間でフィルタリングする。
+
+**＊実行例＊**
 
 ```bash
 # レスポンス時間が5秒以上のスパン
@@ -127,6 +131,8 @@ responsetime >= 5 AND responsetime <= 10
 
 HTTPヘッダー値でフィルタリングする。
 
+**＊実行例＊**
+
 ```bash
 http.status != 200
 ```
@@ -141,11 +147,15 @@ http.useragent = "ELB-HealthChecker/2.0"
 
 AWSリソース名でフィルタリングする。
 
+**＊実行例＊**
+
 ```bash
 service("<AWSリソース名>")
 ```
 
 タイプを指定することで、異なるタイプの同名のAWSリソースを区別できる。
+
+**＊実行例＊**
 
 ```bash
 service(id(name: "<AWSリソース名>", type: "AWS::EC2::Instance"))
@@ -157,6 +167,8 @@ service(id(name: "<AWSリソース名>", type: "AWS::EC2::Instance"))
 
 送信元と宛先のAWSリソース名でフィルタリングする。
 
+**＊実行例＊**
+
 ```bash
 edge("<送信元AWSリソース名>", "<宛先AWSリソース名>")
 ```
@@ -167,8 +179,12 @@ edge("<送信元AWSリソース名>", "<宛先AWSリソース名>")
 
 ユーザー定義のラベルでフィルタリングする。
 
+**＊実行例＊**
+
+アノテーションの値でリクエストをスパンをフィルタリングする。
+
 ```bash
-Annotation.component = "<コンポーネント名>"
+annotation.otel_resource_component = "<コンポーネント名>"
 ```
 
 各言語のSDKの関数でラベルを設定できる。

@@ -69,7 +69,7 @@ resource "aws_xray_group" "environment" {
   group_name        = "foo-prd"
 
   filter_expression = <<EOF
-annotation.system = "foo" AND annotation.environment = "prd"
+annotation.otel_resource_system_name = "foo" AND annotation.otel_resource_environment = "prd"
 EOF
 
   insights_configuration {
