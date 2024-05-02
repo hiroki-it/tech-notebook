@@ -86,7 +86,7 @@ resource "aws_xray_group" "environment" {
   group_name        = "foo-prd"
 
   filter_expression = <<EOF
-annotation.otel_resource_system_name = "foo" AND annotation.otel_resource_environment = "prd"
+(annotation.otel_resource_system_name = "foo") AND (annotation.otel_resource_environment = "prd")
 EOF
 
   insights_configuration {
@@ -111,7 +111,7 @@ http.url = "http://example.com/foo"
 
 #### ▼ 時間
 
-レスポンス時間でフィルタリングする。
+レスポンス時間でトレースIDをフィルタリングする。
 
 **＊実行例＊**
 
@@ -129,7 +129,7 @@ responsetime >= 5 AND responsetime <= 10
 
 #### ▼ HTTPヘッダー
 
-HTTPヘッダー値でフィルタリングする。
+HTTPヘッダー値でトレースIDをフィルタリングする。
 
 **＊実行例＊**
 
@@ -145,7 +145,7 @@ http.useragent = "ELB-HealthChecker/2.0"
 
 #### ▼ AWSリソース
 
-AWSリソース名でフィルタリングする。
+AWSリソース名でトレースIDをフィルタリングする。
 
 **＊実行例＊**
 
@@ -165,7 +165,7 @@ service(id(name: "<AWSリソース名>", type: "AWS::EC2::Instance"))
 
 #### ▼ 送信元/宛先のAWSリソース
 
-送信元と宛先のAWSリソース名でフィルタリングする。
+送信元と宛先のAWSリソース名でトレースIDをフィルタリングする。
 
 **＊実行例＊**
 
@@ -177,11 +177,11 @@ edge("<送信元AWSリソース名>", "<宛先AWSリソース名>")
 
 #### ▼ アノテーション
 
-ユーザー定義のラベルでフィルタリングする。
+ユーザー定義のラベルでトレースIDをフィルタリングする。
 
 **＊実行例＊**
 
-アノテーションの値でリクエストをスパンをフィルタリングする。
+アノテーション値でトレースIDをフィルタリングする。
 
 ```bash
 annotation.otel_resource_component = "<コンポーネント名>"
