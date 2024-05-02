@@ -22276,7 +22276,7 @@
 <span class="w">  </span><span class="na">group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-prd&quot;</span>
 
 <span class="w">  </span><span class="na">filter_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
-<span class="sh">annotation.otel_resource_system_name = &quot;foo&quot; AND annotation.otel_resource_environment = &quot;prd&quot;</span>
+<span class="sh">(annotation.otel_resource_system_name = &quot;foo&quot;) AND (annotation.otel_resource_environment = &quot;prd&quot;)</span>
 <span class="dl">EOF</span>
 
 <span class="w">  </span><span class="nb">insights_configuration</span><span class="w"> </span><span class="p">{</span>

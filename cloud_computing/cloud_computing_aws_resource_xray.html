@@ -23442,7 +23442,7 @@
 <span class="w">  </span><span class="na">group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-prd&quot;</span>
 
 <span class="w">  </span><span class="na">filter_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
-<span class="sh">annotation.otel_resource_system_name = &quot;foo&quot; AND annotation.otel_resource_environment = &quot;prd&quot;</span>
+<span class="sh">(annotation.otel_resource_system_name = &quot;foo&quot;) AND (annotation.otel_resource_environment = &quot;prd&quot;)</span>
 <span class="dl">EOF</span>
 
 <span class="w">  </span><span class="nb">insights_configuration</span><span class="w"> </span><span class="p">{</span>
@@ -23458,7 +23458,7 @@
 <div class="highlight"><pre><span></span><code>http.url<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://example.com/foo&quot;</span>
 </code></pre></div>
 <h4 id="_10">▼ 時間<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>レスポンス時間でフィルタリングする。</p>
+<p>レスポンス時間でトレースIDをフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス時間が5秒以上のスパン</span>
 responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w"> </span><span class="m">5</span>
@@ -23472,7 +23472,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="http">▼ HTTPヘッダー<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTPヘッダー値でフィルタリングする。</p>
+<p>HTTPヘッダー値でトレースIDをフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>http.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">200</span>
 </code></pre></div>
@@ -23484,7 +23484,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="aws">▼ AWSリソース<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>AWSリソース名でフィルタリングする。</p>
+<p>AWSリソース名でトレースIDをフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>service<span class="o">(</span><span class="s2">&quot;&lt;AWSリソース名&gt;&quot;</span><span class="o">)</span>
 </code></pre></div>
@@ -23498,7 +23498,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="aws_1">▼ 送信元/宛先のAWSリソース<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
-<p>送信元と宛先のAWSリソース名でフィルタリングする。</p>
+<p>送信元と宛先のAWSリソース名でトレースIDをフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>edge<span class="o">(</span><span class="s2">&quot;&lt;送信元AWSリソース名&gt;&quot;</span>,<span class="w"> </span><span class="s2">&quot;&lt;宛先AWSリソース名&gt;&quot;</span><span class="o">)</span>
 </code></pre></div>
@@ -23508,9 +23508,9 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="_11">▼ アノテーション<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>ユーザー定義のラベルでフィルタリングする。</p>
+<p>ユーザー定義のラベルでトレースIDをフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
-<p>アノテーションの値でリクエストをスパンをフィルタリングする。</p>
+<p>アノテーション値でトレースIDをフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code>annotation.otel_resource_component<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;コンポーネント名&gt;&quot;</span>
 </code></pre></div>
 <p>各言語のSDKの関数でラベルを設定できる。</p>
