@@ -25,7 +25,7 @@ Helmのチャートリポジトリ上のチャートバージョンと、Cluster
 
 <br>
 
-## `nova.yaml`ファイル
+## 02. `nova.yaml`ファイル
 
 ### desired-versions
 
@@ -52,7 +52,7 @@ $ nova find --config nova.yaml
 
 <br>
 
-## 03. コマンド
+## 04. コマンド
 
 ### find
 
