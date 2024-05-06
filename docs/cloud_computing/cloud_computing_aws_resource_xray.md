@@ -57,7 +57,7 @@ EKSでDamonSetとして稼働させる。
 | 項目                | 説明                                                                                  |
 | ------------------- | ------------------------------------------------------------------------------------- |
 | Limits              | スパンの収集に関する上限値を設定する。                                                |
-| Matching Criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                              |
+| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                              |
 | Matching attributes | AWS以外の文脈で付与されたラベル (例：OpenTelemetryのAttribute) の一致条件を設定する。 |
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
