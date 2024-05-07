@@ -23617,7 +23617,7 @@
 <p>もし、<code>1</code>台当たり<code>60</code>%未満の負荷になるようにすると、『<code>60</code>% × <code>3</code> = <code>180</code>%』になる。</p>
 <p>これであれば、1台停止したとしても、<code>180</code>% &gt; <code>200</code>%であるため、システム全体として稼働し続けられる。</p>
 <p>同様にして、通常時<code>4</code>台であれば<code>70</code>%未満の負荷になるようにするとちょうどいい。</p>
-<p>また、通常時``</p>
+<p>また、通常時<code>2</code>台であれば、<code>40</code>%未満の負荷になるようにするとちょうどいい。</p>
 <blockquote>
 <ul>
 <li><a href="https://it-trend.jp/words/availability">https://it-trend.jp/words/availability</a></li>
@@ -23645,10 +23645,10 @@
 <h2 id="02-02">02-02. 冗長化システムの種類<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_12">デュアルシステム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ デュアルシステムとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><img alt="dual-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png" /></p>
 <p>複数の稼働中インスタンスを配置する冗長化方法のこと。</p>
 <p>平常時はいずれかの稼働中インスタンスのロードバランシングする。</p>
 <p>いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。</p>
+<p><img alt="dual-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.fe-siken.com/kakomon/29_aki/q13.html">https://www.fe-siken.com/kakomon/29_aki/q13.html</a></li>
@@ -23983,7 +23983,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-07</span>
   </span>
 
     

@@ -22912,7 +22912,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// リテラル表記</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 
 <span class="w">  </span><span class="nx">alertValue</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -22952,7 +22952,7 @@
 <p>補足として、オブジェクトのプロパティ値として作成された関数を、メソッドと呼ぶ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Object</span><span class="p">({</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 
 <span class="w">  </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -22974,7 +22974,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 関数宣言</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// プロパティ値として宣言した関数を、メソッドという。</span>
@@ -22992,7 +22992,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// 関数式</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -23006,7 +23006,7 @@
 
 <span class="c1">// アロー関数による関数式の省略記法</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -23104,7 +23104,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 大元となるオブジェクトは個別ファイルで管理しておくのがベター。</span>
 <span class="c1">// コンストラクタ関数の関数式による宣言。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -23121,7 +23121,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 継承元のオブジェクトのファイルを読み込むことも忘れずに。</span>
 <span class="c1">// prototypeプロパティの継承先のオブジェクトを宣言。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">subValue</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -23146,7 +23146,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 継承元のオブジェクトのファイルを読み込むことも忘れずに。</span>
 <span class="c1">// prototypeプロパティの継承先のオブジェクトを宣言。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">setSubValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">subValue</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -23189,7 +23189,7 @@
 <p>メソッド内の<code>this</code>は、fooオブジェクトを指す。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 慣習的にアンダーバーでprivateを表す。</span>
+<span class="w">  </span><span class="c1">// 慣習的にアンダースコアでprivateを表す。</span>
 <span class="w">  </span><span class="nx">_property</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
 
 <span class="w">  </span><span class="nx">setValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -23292,7 +23292,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-07</span>
   </span>
 
     
