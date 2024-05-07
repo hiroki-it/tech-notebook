@@ -448,6 +448,16 @@ http {
 
 トレースIDが割り当てられている。
 
+ログにトレースIDを埋め込む場合に使用できる。
+
+```nginx
+http {
+    log_format  main  escape=json '{'
+    '"TraceId": "$otel_trace_id",'
+    '}';
+}
+```
+
 > - https://nginx.org/en/docs/ngx_otel_module.html#variables
 
 #### ▼ `$otel_span_id`
