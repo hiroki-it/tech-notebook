@@ -249,6 +249,7 @@ fields @log, @timestamp, @message
   "end_time": 1.478293361449E9,
   "service": {...},
   "user": {...},
+  # アプリケーションを実行しているAWSリソースの種類 (例：EC2、ECS、Elastic Beanstalk)
   "origin": {...},
   "parent_id": {...},
   "http": {...},

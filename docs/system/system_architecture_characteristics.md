@@ -98,7 +98,7 @@ IPAが公開している非機能要件の種類を参考にするとよい。
 
 同様にして、通常時`4`台であれば`70`%未満の負荷になるようにするとちょうどいい。
 
-また、通常時``
+また、通常時`2`台であれば、`40`%未満の負荷になるようにするとちょうどいい。
 
 > - https://it-trend.jp/words/availability
 
@@ -128,13 +128,13 @@ IPAが公開している非機能要件の種類を参考にするとよい。
 
 #### ▼ デュアルシステムとは
 
-![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png)
-
 複数の稼働中インスタンスを配置する冗長化方法のこと。
 
 平常時はいずれかの稼働中インスタンスのロードバランシングする。
 
 いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。
+
+![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png)
 
 > - https://www.fe-siken.com/kakomon/29_aki/q13.html
 

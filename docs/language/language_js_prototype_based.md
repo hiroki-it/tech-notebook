@@ -158,7 +158,7 @@ console.log(
 ```javascript
 // リテラル表記
 const foo = {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property: 0,
 
   alertValue: (value) => {
@@ -213,7 +213,7 @@ const foo = {
 
 ```javascript
 const foo = new Object({
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property: 0,
 
   setValue(value) {
@@ -245,7 +245,7 @@ const Foo = new Function();
 ```javascript
 // 関数宣言
 function Foo() {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
   // プロパティ値として宣言した関数を、メソッドという。
@@ -265,7 +265,7 @@ const Foo = new Foo();
 ```javascript
 // 関数式
 const Foo = (value) => {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
   this.setValue = (value) => {
@@ -279,7 +279,7 @@ const Foo = (value) => {
 
 // アロー関数による関数式の省略記法
 const Foo = (value) => {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
   this.setValue = (value) => {
@@ -410,7 +410,7 @@ foo.getValue();
 // 大元となるオブジェクトは個別ファイルで管理しておくのがベター。
 // コンストラクタ関数の関数式による宣言。
 const Foo = (value) => {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
   this.setValue = (value) => {
@@ -431,7 +431,7 @@ const Foo = (value) => {
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
 // prototypeプロパティの継承先のオブジェクトを宣言。
 const SubFoo = (subValue) => {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   this.subProperty = subValue;
 
   this.setSubValue = (subValue) => {
@@ -460,7 +460,7 @@ console.log(result);
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
 // prototypeプロパティの継承先のオブジェクトを宣言。
 const SubFoo = () => {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property = 0;
 
   this.setSubValue = (subValue) => {
@@ -514,7 +514,7 @@ console.log(result);
 
 ```javascript
 const foo = {
-  // 慣習的にアンダーバーでprivateを表す。
+  // 慣習的にアンダースコアでprivateを表す。
   _property: 0,
 
   setValue(value) {
