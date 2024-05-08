@@ -24320,10 +24320,11 @@
 <span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">default_type</span><span class="w">       </span><span class="s">application/octet-stream</span><span class="p">;</span>
 <span class="w">    </span><span class="c1"># ログのフォーマット</span>
-<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">&quot;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request&quot;</span><span class="w"> </span><span class="s">&quot;</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">&quot;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;</span><span class="w"> </span><span class="s">&quot;</span>
 <span class="w">                             </span><span class="s">&quot;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&quot;</span>
 <span class="w">                             </span><span class="s">&quot;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="s">/var/log/nginx/access.log</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="s">/dev/stdout</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">error_log</span><span class="w">          </span><span class="s">/dev/stderr</span><span class="w">  </span><span class="s">warn</span><span class="p">;</span>
 <span class="w">    </span><span class="c1"># sendfileシステムコールを使用するか否か</span>
 <span class="w">    </span><span class="kn">sendfile</span><span class="w">           </span><span class="no">on</span><span class="p">;</span>
 <span class="w">    </span><span class="c1"># ヘッダーとファイルをまとめてレスポンスするか否か</span>
@@ -24339,9 +24340,28 @@
 <span class="w">    </span><span class="err">}</span>
 <span class="err">}</span>
 </code></pre></div>
+<p>構造化ログの場合は、以下の通りとする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;remote-addr&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;remote-user&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_user&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;request-uri&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;status&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$status&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;body-bytes-sent&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$body_bytes_sent&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;http-referer&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;http-user-agent&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_user_agent&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;http-x-forwarded-for&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;&#39;</span>
+<span class="w">    </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="s">/dev/stdout</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">error_log</span><span class="w">          </span><span class="s">/dev/stderr</span><span class="w">  </span><span class="s">warn</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#http">https://nginx.org/en/docs/http/ngx_http_core_module.html#http</a></li>
+<li><a href="https://839.hateblo.jp/entry/2019/12/20/090000">https://839.hateblo.jp/entry/2019/12/20/090000</a></li>
 </ul>
 </blockquote>
 <h4 id="location">▼ location<a class="headerlink" href="#location" title="Permanent link">&para;</a></h4>
@@ -24922,8 +24942,8 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <p>トレースIDが割り当てられている。</p>
 <p>ログにトレースIDを埋め込む場合に使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
-<span class="w">    </span><span class="s">&#39;&quot;TraceId&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$otel_trace_id&quot;,&#39;</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w"> </span><span class="s">main</span><span class="w"> </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;TraceId&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$otel_trace_id&quot;&#39;</span>
 <span class="w">    </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -25000,7 +25020,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-08</span>
   </span>
 
     
