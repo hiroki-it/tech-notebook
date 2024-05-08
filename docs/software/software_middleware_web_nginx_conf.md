@@ -286,18 +286,20 @@ http {
 
 構造化ログの場合は、以下の通りとする。
 
+ここでは、JSONの設計規則に則って、キー名をローワーキャメルケースにしている。
+
 ```nginx
 http {
 
     log_format         main  escape=json '{'
-    '"remote-addr": "$remote_addr",'
-    '"remote-user": "$remote_user",'
-    '"request-uri": "$request_uri",'
+    '"remoteAddr": "$remote_addr",'
+    '"remoteUser": "$remote_user",'
+    '"requestUri": "$request_uri",'
     '"status": "$status",'
-    '"body-bytes-sent": "$body_bytes_sent",'
-    '"http-referer": "$http_referer",'
-    '"http-user-agent": "$http_user_agent",'
-    '"http-x-forwarded-for": "$http_x_forwarded_for"'
+    '"bodyBytesSent": "$body_bytes_sent",'
+    '"httpReferer": "$http_referer",'
+    '"httpUserAgent": "$http_user_agent",'
+    '"httpXForwarded-for": "$http_x_forwarded_for"'
     '}';
 
     access_log         /dev/stdout  main;
@@ -323,6 +325,8 @@ http {
 }
 ```
 
+正規表現を使用して、
+
 ```nginx
 http {
 
@@ -332,6 +336,10 @@ http {
         # それ以外の場合は0とする
         default        0;
     }
+
+    log_format         main  escape=json '{'
+    '"trace-id": "$xray_trace_id"'
+    '}';
 }
 ```
 
