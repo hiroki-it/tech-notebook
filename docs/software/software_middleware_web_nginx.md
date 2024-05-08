@@ -140,7 +140,7 @@ server {
 # クライアント側
 http {
     # $_request_id
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request_uri" '
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for" "$_request_id"';
 
@@ -171,7 +171,7 @@ http {
 # サーバー側
 http {
     # $_request_id を参照する
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request_uri" '
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for" "$_request_id"';
 

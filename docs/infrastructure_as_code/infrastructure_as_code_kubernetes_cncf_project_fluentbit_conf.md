@@ -792,8 +792,6 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 デフォルト値である。
 
-> - https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
-
 ```bash
 [SERVICE]
     flush         1
@@ -805,11 +803,11 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
     storage.type  memory
 ```
 
+> - https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+
 **＊実装例＊**
 
 ファイル上でバッファリングを実行する。
-
-> - https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
 ```bash
 [SERVICE]
@@ -836,6 +834,8 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 -rw-------.  1 root root    4096  9月 13 20:45 *-*.*.flb
 ...
 ```
+
+> - https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
 
 <br>
 

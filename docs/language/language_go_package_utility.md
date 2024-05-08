@@ -1107,6 +1107,7 @@ func (p *otelPlugin) before(spanName string) gormHookFunc {
 		ctx := tx.Statement.Context
 		ctx = context.WithValue(ctx, parentCtxKey{}, ctx)
 		// スパンを作成する
+		// スパン名は、gorm.Create、gorm.Query、gorm.Delete、gorm.Update、などになる
 		ctx, _ = p.tracer.Start(ctx, spanName, trace.WithSpanKind(trace.SpanKindClient))
 		tx.Statement.Context = ctx
 	}

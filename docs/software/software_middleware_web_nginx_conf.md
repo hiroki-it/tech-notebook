@@ -252,10 +252,11 @@ http {
     include            /etc/nginx/mime.types;
     default_type       application/octet-stream;
     # ログのフォーマット
-    log_format         main  "$remote_addr - $remote_user [$time_local] "$request" "
+    log_format         main  "$remote_addr - $remote_user [$time_local] "$request_uri" "
                              "$status $body_bytes_sent "$http_referer" "
                              ""$http_user_agent" "$http_x_forwarded_for"";
-    access_log         /var/log/nginx/access.log  main;
+    access_log         /dev/stdout  main;
+    error_log          /dev/stderr  warn;
     # sendfileシステムコールを使用するか否か
     sendfile           on;
     # ヘッダーとファイルをまとめてレスポンスするか否か
@@ -272,7 +273,29 @@ http {
 }
 ```
 
+構造化ログの場合は、以下の通りとする。
+
+```nginx
+http {
+
+    log_format         main  escape=json '{'
+    '"remote-addr": "$remote_addr",'
+    '"remote-user": "$remote_user",'
+    '"request-uri": "$request_uri",'
+    '"status": "$status",'
+    '"body-bytes-sent": "$body_bytes_sent",'
+    '"http-referer": "$http_referer",'
+    '"http-user-agent": "$http_user_agent",'
+    '"http-x-forwarded-for": "$http_x_forwarded_for"'
+    '}';
+
+    access_log         /dev/stdout  main;
+    error_log          /dev/stderr  warn;
+}
+```
+
 > - https://nginx.org/en/docs/http/ngx_http_core_module.html#http
+> - https://839.hateblo.jp/entry/2019/12/20/090000
 
 #### ▼ location
 
@@ -974,8 +997,8 @@ http {
 
 ```nginx
 http {
-    log_format  main  escape=json '{'
-    '"TraceId": "$otel_trace_id",'
+    log_format main escape=json '{'
+    '"TraceId": "$otel_trace_id"'
     '}';
 }
 ```
