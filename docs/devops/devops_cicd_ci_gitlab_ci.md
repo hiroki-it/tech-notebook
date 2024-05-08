@@ -545,9 +545,9 @@ foo_job:
 
 GitLabでは、同じJob間ではファイルを自動で継承できるが、異なるJob間ではこれを継承できない。
 
-異なるステージ間でファイルを継承する。
+異なるJob間でファイルを継承する。
 
-異なるステージでは、継承ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。
+なお、継承ファイルを使用したい後続のJobでは、ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。
 
 ```yaml
 # ビルドステージ
@@ -572,12 +572,13 @@ bar_job:
 > - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
 > - https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts
 > - https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/
+> - https://dev.classmethod.jp/articles/gitlab-runner-ci-cd-2/#toc-3
 
 #### ▼ artifactsを使用できない場合
 
-`needs`でJob間に依存関係を定義している場合、デフォルトでは`artifacts`を使用しても、異なるステージ間でファイルを継承できない。
+`needs`でJob間に依存関係を定義している場合、`artifacts`を使用しても、`needs`で指定しているJob以外のファイルを継承できない。
 
-`needs`で指定したJobの`artifacts`しか使用できない。
+`needs`で指定したJobの`artifacts`のみを継承できる。
 
 ```yaml
 stages:
