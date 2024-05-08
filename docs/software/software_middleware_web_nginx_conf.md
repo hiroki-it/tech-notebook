@@ -238,9 +238,9 @@ worker_rlimit_nofile 8192;
 
 ## 03-02. ngx_http_core_module
 
-### ブロック
+### httpブロック
 
-#### ▼ http
+#### ▼ httpブロック
 
 全てのHTTPプロトコルのインバウンド通信に共通する処理を設定する。
 
@@ -251,12 +251,7 @@ http {
     # MIMEタイプを設定
     include            /etc/nginx/mime.types;
     default_type       application/octet-stream;
-    # ログのフォーマット
-    log_format         main  "$remote_addr - $remote_user [$time_local] "$request_uri" "
-                             "$status $body_bytes_sent "$http_referer" "
-                             ""$http_user_agent" "$http_x_forwarded_for"";
-    access_log         /dev/stdout  main;
-    error_log          /dev/stderr  warn;
+
     # sendfileシステムコールを使用するか否か
     sendfile           on;
     # ヘッダーとファイルをまとめてレスポンスするか否か
@@ -270,6 +265,22 @@ http {
     server {
         ...
     }
+}
+```
+
+#### ▼ log_format
+
+非構造化ログの場合は、以下の通りとする。
+
+```nginx
+http {
+
+    log_format         main  "$remote_addr - $remote_user [$time_local] "$request_uri" "
+    "$status $body_bytes_sent "$http_referer" "
+    ""$http_user_agent" "$http_x_forwarded_for"";
+
+    access_log         /dev/stdout  main;
+    error_log          /dev/stderr  warn;
 }
 ```
 
@@ -297,7 +308,38 @@ http {
 > - https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 > - https://839.hateblo.jp/entry/2019/12/20/090000
 
-#### ▼ location
+#### ▼ map
+
+指定した変数の値を、別の変数の値によって切り替える。
+
+```nginx
+http {
+
+    map $foo $bar {
+        foo1 bar1
+        foo2 bar2
+        foo3 bar3
+    }
+}
+```
+
+```nginx
+http {
+
+    map $otel_trace_id $xray_trace_id {
+        # W3C Trace Context仕様の場合、前半8文字と9文字目以降の文字を抽出して、X-Ray仕様に変換する
+        "~(^.{8})(.*)" 1-$1-$2;
+        # それ以外の場合は0とする
+        default        0;
+    }
+}
+```
+
+> - https://qiita.com/cubicdaiya/items/d938f3354f424830630b#map%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96
+
+<br>
+
+### locationブロック
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
@@ -345,7 +387,9 @@ location / {
 
 > - https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
-#### ▼ server
+<br>
+
+### serverブロック
 
 特定のルーティング先に関する処理を設定する。
 
@@ -373,12 +417,6 @@ server {
 ```
 
 > - https://nginx.org/en/docs/http/ngx_http_core_module.html#server
-
-#### ▼ リダイレクトとリライトの違い
-
-以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
 
 <br>
 
