@@ -23995,8 +23995,8 @@
 <h3 id="artifacts">artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
 <h4 id="artifacts_1">▼ artifactsとは<a class="headerlink" href="#artifacts_1" title="Permanent link">&para;</a></h4>
 <p>GitLabでは、同じJob間ではファイルを自動で継承できるが、異なるJob間ではこれを継承できない。</p>
-<p>異なるステージ間でファイルを継承する。</p>
-<p>異なるステージでは、継承ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。</p>
+<p>異なるJob間でファイルを継承する。</p>
+<p>なお、継承ファイルを使用したい後続のJobでは、ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ビルドステージ</span>
 <span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -24020,11 +24020,12 @@
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html">https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html</a></li>
 <li><a href="https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts">https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts</a></li>
 <li><a href="https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/">https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/gitlab-runner-ci-cd-2/#toc-3">https://dev.classmethod.jp/articles/gitlab-runner-ci-cd-2/#toc-3</a></li>
 </ul>
 </blockquote>
 <h4 id="artifacts_2">▼ artifactsを使用できない場合<a class="headerlink" href="#artifacts_2" title="Permanent link">&para;</a></h4>
-<p><code>needs</code>でJob間に依存関係を定義している場合、デフォルトでは<code>artifacts</code>を使用しても、異なるステージ間でファイルを継承できない。</p>
-<p><code>needs</code>で指定したJobの<code>artifacts</code>しか使用できない。</p>
+<p><code>needs</code>でJob間に依存関係を定義している場合、<code>artifacts</code>を使用しても、<code>needs</code>で指定しているJob以外のファイルを継承できない。</p>
+<p><code>needs</code>で指定したJobの<code>artifacts</code>のみを継承できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -24576,7 +24577,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-08</span>
   </span>
 
     
