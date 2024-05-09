@@ -147,7 +147,7 @@ DBのクエリのパラメーターとなる入力に、不正な文字列を入
 
 #### ▼ 攻撃例
 
-例えば、アプリケーションの認証ロジックに以下のようなSQLがあるとする。
+例えば、アプリの認証ロジックに以下のようなSQLがあるとする。
 
 ```sql
 SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
