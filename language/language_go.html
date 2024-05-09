@@ -23149,9 +23149,9 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="c"># go mod tidyの実行を忘れると、次回のコンテナイメージのビルド時に、goのビルドに失敗 (missing go.sum entry for module providing package) するようになってしまう。</span>
 <span class="c"># @see https://stackoverflow.com/a/67203642</span>
 <span class="k">RUN</span><span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="sb">`</span><span class="c1"># リクエストを受信する場合、アプリケーションを実行後にコンテナがすぐ終了しないよう、起動前にフレームワークをインストールしておく。` \</span>
-<span class="w">  </span><span class="sb">`</span><span class="c1"># これにより、アプリケーションの実行でインバウンド通信の受信が開始される。` \</span>
-<span class="w">  </span><span class="sb">`</span><span class="c1"># Goでリクエストを受信しないアプリケーションであれば、パッケージのインストールはコンテナ起動後に実行しても良い。` \</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># リクエストを受信する場合、アプリを実行後にコンテナがすぐ終了しないよう、起動前にフレームワークをインストールしておく。` \</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># これにより、アプリの実行でインバウンド通信の受信が開始される。` \</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># Goでリクエストを受信しないアプリであれば、パッケージのインストールはコンテナ起動後に実行しても良い。` \</span>
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>download<span class="w"> </span>-x<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="sb">`</span><span class="c1"># ビルドのアーティファクトを/go/binに配置する。` \</span>
 <span class="w">  </span><span class="sb">`</span><span class="c1"># netパッケージは標準で動的リンクのため、静的リンクを明示的に指定する必要がある。` \</span>
@@ -23415,7 +23415,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_14">レシーバ名<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>構造体名の頭一文字または頭二文字を取って命名する。</p>
-<p>アプリケーション内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取ると良い。</p>
+<p>アプリ内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取ると良い。</p>
 <p>また、修飾語と組み合わせて構成される構造体名の場合、被修飾語の頭二文字を取る。</p>
 <p>オブジェクト指向で使われる『<code>this</code>』『<code>self</code>』</p>
 <p><strong>＊例＊</strong></p>
@@ -23524,7 +23524,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-09</span>
   </span>
 
     

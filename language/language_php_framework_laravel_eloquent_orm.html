@@ -23454,7 +23454,7 @@
 <h3 id="active-record">Active Recordパターンとは<a class="headerlink" href="#active-record" title="Permanent link">&para;</a></h3>
 <p>テーブルとモデルが一対一の関係になるデザインパターンのこと。</p>
 <p>加えて、テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される。</p>
-<p>ビジネスロジックが複雑でないアプリケーションの開発に適している。</p>
+<p>ビジネスロジックが複雑でないアプリの開発に適している。</p>
 <p><img alt="ActiveRecord" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ActiveRecord.png" /></p>
 <p><br></p>
 <h3 id="_2">メリット/デメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -23469,8 +23469,8 @@
 <tbody>
 <tr>
 <td>保守性</td>
-<td>テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。</td>
-<td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、全てのカラムから取得するため、アプリケーションに余分な負荷がかかる。</td>
+<td>テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリの開発に適している。</td>
+<td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、全てのカラムから取得するため、アプリに余分な負荷がかかる。</td>
 </tr>
 <tr>
 <td>拡張性</td>
@@ -24584,8 +24584,8 @@
 <p><br></p>
 <h2 id="04-laravel">04. Laravelへのリポジトリパターン導入<a class="headerlink" href="#04-laravel" title="Permanent link">&para;</a></h2>
 <h3 id="_17">背景<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。</p>
-<p>ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。</p>
+<p>LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリに適している。</p>
+<p>ただし、ビジネスロジックが複雑なアプリに対しても、Laravelを使用したい場面がある。</p>
 <p>その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。</p>
 <p>リポジトリパターンについては、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -24957,7 +24957,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-09</span>
   </span>
 
     
