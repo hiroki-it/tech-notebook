@@ -308,7 +308,7 @@ W3C Trace Context仕様のルートスパンのIDに相当する。
 
 例えば、`1-58406520-a006649127e371903a2de979`になる。
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
 
 #### ▼ `parent_id`キー
 
