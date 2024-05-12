@@ -1455,7 +1455,7 @@ spec:
 
 外部Ingressに応じたパラメーターを設定する。
 
-代わりとして、IngressClassParamsを使用しても良い。
+代わりに、IngressClassParamsを使用しても良い。
 
 #### ▼ AWS ALBの場合
 

@@ -50,7 +50,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 各マイクロサービスは、セッションデータに基づいてユーザーを認証する。
 
-`1`個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるストレージを`1`個だけ配置する。
+`1`個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるストレージ (例：Infinispan、Redis、など) を`1`個だけ配置する。
 
 耐障害性のあるセッションストレージが必要になるというデメリットがある。
 
@@ -58,6 +58,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
+> - https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi
 
 <br>
 

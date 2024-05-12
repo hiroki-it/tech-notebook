@@ -64,14 +64,14 @@ Vagrantfile自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーの種類
 
-| プロビジョナー名 | ユースケース                                                                              | 補足                                                       |
-| ---------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                                   | ・https://www.vagrantup.com/docs/provisioning/shell        |
-| Ansible          | Vagrantfileでプロビジョニングを実行する代わりとして、Ansibleを使用する。                  | ・https://www.vagrantup.com/docs/provisioning/ansible      |
-| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりとして、CFEngineを使用する。                 | ・https://www.vagrantup.com/docs/provisioning/cfengine     |
-| Chef             | Vagrantfileでプロビジョニングを実行する代わりとして、Chefを使用する。                     | ・https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker           | Vagrantfileでプロビジョニングを実行する代わりとして、Dockerfile (に似た記述) を使用する。 | ・https://www.vagrantup.com/docs/provisioning/docker       |
-| Puppet           | Vagrantfileでプロビジョニングを実行する代わりとして、Puppetを使用する。                   | ・https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| プロビジョナー名 | ユースケース                                                                          | 補足                                                       |
+| ---------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                               | ・https://www.vagrantup.com/docs/provisioning/shell        |
+| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに、Ansibleを使用する。                  | ・https://www.vagrantup.com/docs/provisioning/ansible      |
+| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに、CFEngineを使用する。                 | ・https://www.vagrantup.com/docs/provisioning/cfengine     |
+| Chef             | Vagrantfileでプロビジョニングを実行する代わりに、Chefを使用する。                     | ・https://www.vagrantup.com/docs/provisioning/chef_common  |
+| Docker           | Vagrantfileでプロビジョニングを実行する代わりに、Dockerfile (に似た記述) を使用する。 | ・https://www.vagrantup.com/docs/provisioning/docker       |
+| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに、Puppetを使用する。                   | ・https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 

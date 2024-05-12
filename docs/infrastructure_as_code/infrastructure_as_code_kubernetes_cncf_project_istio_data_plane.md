@@ -278,7 +278,7 @@ spec:
 
 `istio-init`コンテナの代替案として、istio-cniアドオンが提供されている。
 
-もしistio-cniアドオンを使用する場合は、`istio-init`コンテナが不要になる代わりとして、`istio-validation`コンテナが必要になる。
+もしistio-cniアドオンを使用する場合は、`istio-init`コンテナが不要になる代わりに、`istio-validation`コンテナが必要になる。
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin

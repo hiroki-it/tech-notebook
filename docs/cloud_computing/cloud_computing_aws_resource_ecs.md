@@ -245,7 +245,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 > - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
 
-代わりとして、VPCエンドポイントを配置する。
+代わりに、VPCエンドポイントを配置する。
 
 より低額でデータプレーンがVPC外のAWSリソースのリクエストできるようになる。
 

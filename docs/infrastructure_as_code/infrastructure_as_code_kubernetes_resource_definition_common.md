@@ -109,7 +109,7 @@ Kubernetesリソースに関する情報を設定する。
 
 現在、非推奨である。
 
-代わりとして、`.spec.ingressClassname`キーを指定する。
+代わりに、`.spec.ingressClassname`キーを指定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

@@ -245,7 +245,7 @@ listen = /var/run/php-fpm/php-fpm.sock
 
 コメントアウトが推奨である。
 
-代わりとして、`listen.owner`と`listen.group`を設定する。
+代わりに、`listen.owner`と`listen.group`を設定する。
 
 ```ini
 [www]

@@ -1287,7 +1287,7 @@ $ helm template . --include-crds | kubectl apply -f -
 
 一方で、Helmリリース履歴が存在しない。
 
-Helmリリースの履歴の代わりとして、`argocd app history`コマンドで確認できる。
+Helmリリースの履歴の代わりに、`argocd app history`コマンドで確認できる。
 
 ```bash
 $ argocd app history <Application名>

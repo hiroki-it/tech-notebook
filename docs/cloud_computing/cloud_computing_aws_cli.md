@@ -352,7 +352,7 @@ AWSリソースのAPI側でフィルタリングし、実際に取得するデ�
 
 AWSリソースごとに専用のオプションがある。
 
-代わりとして、`jq`コマンドの`select`関数を使用しても良い。
+代わりに、`jq`コマンドの`select`関数を使用しても良い。
 
 > - https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
@@ -385,7 +385,7 @@ ACM、など
 
 コマンド実行側でフィルタリングし、取得するキーや値を制御できる。
 
-代わりとして、`jq`コマンドのパスを使用しても良い。
+代わりに、`jq`コマンドのパスを使用しても良い。
 
 #### ▼ --query
 

@@ -185,7 +185,7 @@ log_routerという名前以外を設定できないことに注意する。
 | `config-file-value`                            | `options`キーにて、ログルーティングを設定できるが、それらは`fluent-bit.conf`ファイルにも設定できるため、ルーティングの設定はできるだけ`fluent-bit.conf`ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは、ログ監視バックエンド (Datadogなど) にルーティングする。                                                                                                                          |
 | `enable-ecs-log-metadata` (デフォルトで有効化) | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_false.png)<br>- https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | `environment`、`secrets`                       | コンテナ内の`fluent-bit.conf`ファイルに変数をアウトプットできるように、コンテナの環境変数に値を設定する。                                                                                                                                                                                                                                                                                                                                                         |
-| `options`                                      | FluentBitの設定ファイルでOUTPUTセクションを定義する代わりとして、`options`キーからも設定できる。                                                                                                                                                                                                                                                                                                                                                                  |
+| `options`                                      | FluentBitの設定ファイルでOUTPUTセクションを定義する代わりに、`options`キーからも設定できる。                                                                                                                                                                                                                                                                                                                                                                      |
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
@@ -339,7 +339,7 @@ AWSやDatadogにルーティングするための設定が必要である。
 }
 ```
 
-ファイルで設定する代わりとして、`options`キーでOUTPUTセクションを設定もできる。
+ファイルで設定する代わりに、`options`キーでOUTPUTセクションを設定もできる。
 
 ```yaml
 "logConfiguration": {

@@ -263,7 +263,7 @@ URLやメールアドレスのドメイン名とIPアドレスを相互変換す
 
 しかし、グローバルIPアドレスは数字の羅列であるため、人間には覚えにくい。
 
-そこで、グローバルIPアドレスの代わりとして、完全修飾ドメイン名をURLの一部として使用する。
+そこで、グローバルIPアドレスの代わりに、完全修飾ドメイン名をURLの一部として使用する。
 
 > - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
 > - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
