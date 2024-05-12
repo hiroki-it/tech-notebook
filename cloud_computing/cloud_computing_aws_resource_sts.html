@@ -22731,7 +22731,7 @@
 <p><br></p>
 <h3 id="2">2. ロールを引き受けた認証情報をリクエスト<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <p>信頼されたエンティティから、STSのエンドポイント (<code>https://sts.amazonaws.com</code>) に対して、ロールの紐付けをリクエストする。</p>
-<p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code>オプションの代わりとして、<code>--web-identity-token</code>オプションを使用する。</p>
+<p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code>オプションの代わりに、<code>--web-identity-token</code>オプションを使用する。</p>
 <p>このオプションに、発行されたJWTを設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -22819,7 +22819,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <h3 id="4">4. 認証情報を取得<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <p>レスポンスされたデータから認証情報を抽出する。</p>
 <p>この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。</p>
-<p>代わりとして、<code>~/.aws/cli/cache</code>ディレクトリ配下の<code>.json</code>ファイルから取得しても良い。</p>
+<p>代わりに、<code>~/.aws/cli/cache</code>ディレクトリ配下の<code>.json</code>ファイルから取得しても良い。</p>
 <p>認証情報を環境変数として出力し、使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -22831,7 +22831,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; assumed_user.sh</spa
 <span class="s">export AWS_DEFAULT_REGION=&quot;ap-northeast-1&quot;</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<p>環境変数に登録する代わりとして、AWSの認証情報ファイルを作成しても良い。</p>
+<p>環境変数に登録する代わりに、AWSの認証情報ファイルを作成しても良い。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>-repository<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
@@ -23112,7 +23112,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
   </span>
 
     

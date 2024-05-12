@@ -28011,7 +28011,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <h4 id="render">▼ <code>render</code>メソッド<a class="headerlink" href="#render" title="Permanent link">&para;</a></h4>
 <p>Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。</p>
 <p>異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。</p>
-<p>代わりとして、各コントローラーに<code>try-catch</code>と異常系レスポンスの返信処理を実装する。</p>
+<p>代わりに、各コントローラーに<code>try-catch</code>と異常系レスポンスの返信処理を実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cpoint-lab.co.jp/article/201905/9841/">https://cpoint-lab.co.jp/article/201905/9841/</a></li>
@@ -28345,7 +28345,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <h3 id="db_1">DBファサード<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
 <h4 id="db_2">▼ DBファサードとは<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
 <p>DBの操作処理を提供する。</p>
-<p>Eloquentの代わりとして、DBファサードを使用しても良い。</p>
+<p>Eloquentの代わりに、DBファサードを使用しても良い。</p>
 <p>Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。</p>
 <h4 id="transaction">▼ <code>transaction</code>メソッド<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
 <p>一連のトランザクション処理を実行する。</p>
@@ -28781,7 +28781,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <h3 id="validator">Validatorファサード<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h3>
 <h4 id="validator_1">▼ Validatorファサードとは<a class="headerlink" href="#validator_1" title="Permanent link">&para;</a></h4>
 <p>バリデーション処理を提供する。</p>
-<p>FormRequestクラスの<code>validated</code>メソッドや<code>validate</code>メソッドの代わりとして、Validatorファサードを使用しても良い。</p>
+<p>FormRequestクラスの<code>validated</code>メソッドや<code>validate</code>メソッドの代わりに、Validatorファサードを使用しても良い。</p>
 <h4 id="validatorfails">▼ Validatorクラス、<code>fails</code>メソッド<a class="headerlink" href="#validatorfails" title="Permanent link">&para;</a></h4>
 <p>Validateファサードの<code>make</code>メソッドを使用して、ルールを定義する。</p>
 <p>この時、第一引数で、バリデーションを実行するリクエストデータを渡す。</p>
@@ -29321,7 +29321,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <h4 id="_31">▼ ルール定義 &amp; バリデーション自動実行<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p>Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。</p>
 <p>そのため、コントローラーの中ではバリデーションを実行する必要はない。</p>
-<p>代わりとして、ルールをFormRequestクラスの<code>rule</code>メソッドに定義する必要がある。</p>
+<p>代わりに、ルールをFormRequestクラスの<code>rule</code>メソッドに定義する必要がある。</p>
 <p>FormRequestクラスの<code>validated</code>メソッドを使用して、バリデーション済みのデータを取得できる。</p>
 <p>バリデーションでエラーが発生した場合、Handlerクラスの<code>invalid</code>メソッドがコールされ、元のWebページにリダイレクトされる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -29961,7 +29961,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>代わりとして、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。</p>
+<p>代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -32203,7 +32203,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
   </span>
 
     
