@@ -15,7 +15,12 @@ description: Keycloak＠CNCFの知見を記録しています。
 
 ## 01. Keycloakとは
 
-認証認可処理を実行する。
+アプリケーションに代わって、認証認可処理を実行する。
+
+認証認可に関するAPIを公開し、認証時のアカウントのCRUDや、認可時のアカウントに対する権限スコープ付与、を実行できる。
+
+> - https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html
+> - https://blog.linkode.co.jp/entry/2023/08/23/000000
 
 <br>
 

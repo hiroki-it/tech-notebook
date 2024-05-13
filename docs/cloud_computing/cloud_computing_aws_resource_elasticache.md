@@ -56,11 +56,11 @@ RedisとMemcachedがある。
 
 #### ▼ Redisクラスターとは
 
-![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
-
 複数のRedisノードを持つRedisシャードから構成されている。
 
 `1`個のリクエストを処理するグループ単位である。
+
+![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
 
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
@@ -123,7 +123,14 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。
 
+DB側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DBからクエリキャッシュ機能を切り分けたElastiCacheが必要になる。
+
 ![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png)
+
+> - https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/
+> - https://yakst.com/ja/posts/4612
+
+#### ▼ 仕組み
 
 `(1)`
 
