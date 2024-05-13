@@ -367,7 +367,7 @@ func (a *ADSC) Run() error {
 
 > - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446
 
-`handleRecv`メソッド内で、Envoyの各処理コンポーネントを整理し、最後に`XDSUpdates`チャンネルに値を送信している。
+`handleRecv`メソッド内で、Envoyの各処理コンポーネントを整理し、最後に`XDSUpdates`チャネルに値を送信している。
 
 ```go
 func (a *ADSC) handleRecv() {
@@ -420,7 +420,7 @@ func (a *ADSC) handleRecv() {
         ...
 
         select {
-        // XDSUpdatesチャンネルに値を送信する。
+        // XDSUpdatesチャネルに値を送信する。
         // 最終的に、Envoyに設定する。
         case a.XDSUpdates <- msg:
         default:

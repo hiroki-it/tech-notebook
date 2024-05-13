@@ -1097,7 +1097,7 @@ func Invoke(ctx context.Context) error {
         }(i)
     }
 
-	// Goroutineを中断するためのdoneチャンネルを作成
+	// Goroutineを中断するためのdoneチャネルを作成
 	done := make(chan struct{})
 
 	// Goroutineを宣言して並列化
@@ -1800,13 +1800,13 @@ import (
 
 func main() {
 
-    // 6秒の待機後に、quitチャンネルにtrueを格納する
+    // 6秒の待機後に、quitチャネルにtrueを格納する
 	time.Sleep(6 * time.Second)
 	quit <- true
 
 	select {
 
-	// quitチャンネルへのtrueの格納を待機しつつ、Afterの完了も並列的に待機する
+	// quitチャネルへのtrueの格納を待機しつつ、Afterの完了も並列的に待機する
 	// 先に終了した方のcaseを実行する
 	case <-time.After(5 * time.Second):
 		fmt.Println("timeout")
@@ -1891,7 +1891,7 @@ func foo() string {
 
 ## 06-02. Goroutineと合わせて使用する処理
 
-### channel (チャンネル)
+### channel (チャネル)
 
 #### ▼ channelとは
 
@@ -1908,17 +1908,17 @@ import "fmt"
 
 func main() {
 
-	// チャンネルを作成
+	// チャネルを作成
 	channel := make(chan string)
 
 	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
-		// チャンネルに値を送信する。
+		// チャネルに値を送信する。
 		channel <- "ping"
 	}()
 
-	// チャンネルから値を受信する。
+	// チャネルから値を受信する。
 	value := <-channel
 
 	fmt.Println(value)
@@ -1929,9 +1929,9 @@ func main() {
 
 #### ▼ Goroutine中断方法１ (done channel、close)
 
-Goroutineを中断するための`done`チャンネルを作成し、これを`close`関数で中断する。
+Goroutineを中断するための`done`チャネルを作成し、これを`close`関数で中断する。
 
-`done`チャンネルは使い捨てのため、サイズがゼロの空構造体として定義するよとい。
+`done`チャネルは使い捨てのため、サイズがゼロの空構造体として定義するよとい。
 
 ```go
 package main
@@ -1943,16 +1943,16 @@ import (
 
 func main() {
 
-	// チャンネルを作成
+	// チャネルを作成
 	channel := make(chan string)
-	// Goroutineを中断するためのdoneチャンネルを作成
-	// 空構造体はサイズがゼロなため、使い捨てのチャンネルと相性がいい
+	// Goroutineを中断するためのdoneチャネルを作成
+	// 空構造体はサイズがゼロなため、使い捨てのチャネルと相性がいい
 	done := make(chan struct{})
 
 	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
-		// チャンネルに値を送信する。
+		// チャネルに値を送信する。
 		channel <- "ping"
 		// Goroutineを中断する
 		close(done)
@@ -1961,7 +1961,7 @@ func main() {
 	for {
 		select {
 
-		// チャンネルから値を受信した場合
+		// チャネルから値を受信した場合
 		case value := <-channel:
 			fmt.Println(value)
 
@@ -2002,13 +2002,13 @@ func main() {
 		5 * time.Second,
 	)
 
-	// チャンネルを作成
+	// チャネルを作成
 	channel := make(chan string)
 
 	// Goroutineを宣言して並列化
 	go func() {
 		// 時間のかかる処理
-		// チャンネルに値を送信する。
+		// チャネルに値を送信する。
 		channel <- "ping"
 		// Goroutineを中断する
 		cancel()
@@ -2017,7 +2017,7 @@ func main() {
 	for {
 		select {
 
-		// チャンネルから値を受信した場合
+		// チャネルから値を受信した場合
 		case value := <-channel:
 			fmt.Println(value)
 
@@ -2036,7 +2036,7 @@ func main() {
 
 #### ▼ select
 
-チャンネルに対する格納を非同期で待機する。
+チャネルに対する格納を非同期で待機する。
 
 ```go
 package main
@@ -2048,7 +2048,7 @@ import (
 
 func main() {
 
-	// チャンネルを作成する。
+	// チャネルを作成する。
     channel1 := make(chan string)
 	channel2 := make(chan string)
 

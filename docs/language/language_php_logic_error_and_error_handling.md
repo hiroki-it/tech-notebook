@@ -150,7 +150,7 @@ function foo(string $foo) {
 
 また、開発者にとって詳しく理解できるように、コンストラクタの引数にメッセージを渡す。
 
-(例)
+**＊例＊**
 
 - InvalidArgumentException
 
