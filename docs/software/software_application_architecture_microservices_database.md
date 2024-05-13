@@ -67,7 +67,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 #### ▼ ローカルトランザクションとは
 
-`1`個のトランザクション処理によって、`1`個のマイクロサービスのDBを操作する。
+`1`個のトランザクション処理によって、`1`個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。
 
 推奨される。
 
@@ -78,6 +78,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。
 
 > - https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
+> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
 #### ▼ ローカルトランザクションの種類
 
@@ -140,7 +141,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-### オーケストレーション
+### オーケストレーションSagaパターン
 
 #### ▼ オーケストレーションとは
 
@@ -154,6 +155,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
+> - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://news.mynavi.jp/itsearch/article/devsoft/1598
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
@@ -177,7 +179,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 <br>
 
-### Choreography (コレオグラフィ)
+### Choreography (コレオグラフィ) Sagaパターン
 
 #### ▼ コレオグラフィとは
 
@@ -187,6 +189,7 @@ Sagaパターンにて、各マイクロサービスでアップストリーム�
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 
+> - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 > - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
 > - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
