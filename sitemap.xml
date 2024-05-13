@@ -346,6 +346,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_function.html</loc>
+         <lastmod>2024-05-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/cloud_computing/draft/cloud_computing_gcp_resource_cloud_load_balancer.html</loc>
          <lastmod>2024-05-13</lastmod>
          <changefreq>daily</changefreq>
