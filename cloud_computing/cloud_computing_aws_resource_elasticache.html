@@ -11442,6 +11442,15 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ クエリキャッシュの操作
     </span>
   </a>
@@ -11454,7 +11463,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       障害対策
     </span>
@@ -11488,7 +11497,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ダウンタイムの発生条件
     </span>
@@ -11502,7 +11511,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       計画的なダウンタイム
     </span>
@@ -11512,7 +11521,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 計画的なダウンタイムとは
     </span>
@@ -11521,7 +11530,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ バックアップとインポートによるダウンタイムの最小化
     </span>
@@ -22571,6 +22580,15 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ クエリキャッシュの操作
     </span>
   </a>
@@ -22583,7 +22601,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       障害対策
     </span>
@@ -22617,7 +22635,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ダウンタイムの発生条件
     </span>
@@ -22631,7 +22649,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       計画的なダウンタイム
     </span>
@@ -22641,7 +22659,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 計画的なダウンタイムとは
     </span>
@@ -22650,7 +22668,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ バックアップとインポートによるダウンタイムの最小化
     </span>
@@ -22780,9 +22798,9 @@
 <p><br></p>
 <h3 id="redis">Redisクラスター<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
 <h4 id="redis_1">▼ Redisクラスターとは<a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h4>
-<p><img alt="redis-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png" /></p>
 <p>複数のRedisノードを持つRedisシャードから構成されている。</p>
 <p><code>1</code>個のリクエストを処理するグループ単位である。</p>
+<p><img alt="redis-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html</a></li>
@@ -22826,7 +22844,15 @@
 <h3 id="_7">クエリキャッシュ管理機能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ クエリキャッシュ管理機能とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。</p>
+<p>DB側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DBからクエリキャッシュ機能を切り分けたElastiCacheが必要になる。</p>
 <p><img alt="クエリCache管理機能_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/">https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/</a></li>
+<li><a href="https://yakst.com/ja/posts/4612">https://yakst.com/ja/posts/4612</a></li>
+</ul>
+</blockquote>
+<h4 id="_9">▼ 仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -22896,7 +22922,7 @@
 <span class="o">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;9&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;Ignatius&quot;</span><span class="o">}</span>
 <span class="o">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;10&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;jonny&quot;</span><span class="o">}</span>
 </code></pre></div>
-<h4 id="_9">▼ クエリキャッシュの操作<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ クエリキャッシュの操作<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Redis接続コマンド</span>
 $<span class="w"> </span>/usr/local/sbin/redis-stable/src/redis-cli<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span><span class="se">\</span>
@@ -22916,7 +22942,7 @@ redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span><span class="
 redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
 </code></pre></div>
 <p><br></p>
-<h3 id="_10">障害対策<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">障害対策<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="redis_6">▼ Redisのフェイルオーバー<a class="headerlink" href="#redis_6" title="Permanent link">&para;</a></h4>
 <p>プライマリーノードで障害が起こった場合に、リードレプリカノードをプライマリーノードに自動的に昇格する。</p>
 <table>
@@ -22939,7 +22965,7 @@ redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
 </table>
 <p><br></p>
 <h3 id="redis_7">Redisクラスターのダウンタイム<a class="headerlink" href="#redis_7" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ ダウンタイムの発生条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ ダウンタイムの発生条件<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -22957,11 +22983,11 @@ redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_12">計画的なダウンタイム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 計画的なダウンタイムとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h3 id="_13">計画的なダウンタイム<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 計画的なダウンタイムとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>Redisクラスターでは、設定値 (例：エンジンバージョン) のアップグレード時に、Redisノードの再起動が必要である。</p>
 <p>サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
-<h4 id="_14">▼ バックアップとインポートによるダウンタイムの最小化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ バックアップとインポートによるダウンタイムの最小化<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>以下の手順で、ダウンタイムを最小限にしてアップグレードできる。</p>
 <dl>
 <dt><code>(1)</code></dt>
