@@ -23180,7 +23180,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446">https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446</a></li>
 </ul>
 </blockquote>
-<p><code>handleRecv</code>メソッド内で、Envoyの各処理コンポーネントを整理し、最後に<code>XDSUpdates</code>チャンネルに値を送信している。</p>
+<p><code>handleRecv</code>メソッド内で、Envoyの各処理コンポーネントを整理し、最後に<code>XDSUpdates</code>チャネルに値を送信している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">ADSC</span><span class="p">)</span><span class="w"> </span><span class="nx">handleRecv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="p">{</span>
@@ -23231,7 +23231,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="w">        </span><span class="o">...</span>
 
 <span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// XDSUpdatesチャンネルに値を送信する。</span>
+<span class="w">        </span><span class="c1">// XDSUpdatesチャネルに値を送信する。</span>
 <span class="w">        </span><span class="c1">// 最終的に、Envoyに設定する。</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">XDSUpdates</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">msg</span><span class="p">:</span>
 <span class="w">        </span><span class="k">default</span><span class="p">:</span>

@@ -22258,7 +22258,7 @@
 <h3 id="aws">依存先AWSリソース別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <p>依存先の多いAWSリソースに関して、依存先のAWSリソース別にローカルモジュールを分割する。</p>
 <p>依存先AWSリソース別の分割方法は、Terraformの公式リモートモジュールに一番多い構成である。</p>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -22294,7 +22294,7 @@
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
 </code></pre></div>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
@@ -22332,7 +22332,7 @@
 <h3 id="_2">リソース別<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>最上層は、AWSリソースで分割する。</p>
 <p>またスクリプトを使用するAWSリソース（例：Lambda）では、そのソースコードをモジュール下で管理する。</p>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -22343,7 +22343,7 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function_src/</span><span class="w"> </span><span class="c1"># とある関数のソースコード</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
@@ -22356,7 +22356,7 @@
 <h3 id="_3">リージョン別<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>AWSリソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。</p>
 <p>例えば、ACMは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。</p>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -22365,7 +22365,7 @@
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
 </code></pre></div>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
@@ -22376,7 +22376,7 @@
 <h3 id="_4">実行環境別<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>環境ごとに差分が大きいAWSリソースに関して、実行環境別にローカルモジュールを分割する。</p>
 <p>なおcountで条件分岐しても良い</p>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -22397,7 +22397,7 @@
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
 </code></pre></div>
-<p>(例)</p>
+<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
