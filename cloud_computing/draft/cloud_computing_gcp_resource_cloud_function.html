@@ -22034,6 +22034,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Terraformの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 世代数v1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 世代数v2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -22090,8 +22114,10 @@
 </table>
 <p><br></p>
 <h3 id="terraform">Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;function&quot;</span><span class="w"> </span><span class="p">{</span>
+<h4 id="v1">▼ 世代数v1<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
 
+<span class="c1">  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる</span>
 <span class="w">  </span><span class="na">source</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-google-modules/event-function/google&quot;</span>
 
 <span class="w">  </span><span class="na">version</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -22143,6 +22169,43 @@
 
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;google_client_config&quot;</span><span class="w"> </span><span class="nv">&quot;current&quot;</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/terraform-google-modules/terraform-google-event-function">https://github.com/terraform-google-modules/terraform-google-event-function</a></li>
+</ul>
+</blockquote>
+<h4 id="v2">▼ 世代数v2<a class="headerlink" href="#v2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;foo-function&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv2になる</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GoogleCloudPlatform/cloud-functions/google&quot;</span>
+
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 0.4&quot;</span>
+
+<span class="c1">  # Required variables</span>
+
+<span class="w">  </span><span class="na">function_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;FUNCTION_NAME&gt;&quot;</span>
+
+<span class="w">  </span><span class="na">project_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;PROJECT_ID&gt;&quot;</span>
+
+<span class="w">  </span><span class="na">location</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;LOCATION&gt;&quot;</span>
+
+<span class="w">  </span><span class="na">runtime</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;RUNTIME&gt;&quot;</span>
+
+<span class="w">  </span><span class="na">entrypoint</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ENTRYPOINT&gt;&quot;</span>
+
+<span class="w">  </span><span class="nb">storage_source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;BUCKET_NAME&gt;&quot;</span>
+<span class="w">    </span><span class="na">object</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ARCHIVE_PATH&gt;&quot;</span>
+<span class="w">    </span><span class="na">generation</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;GCS_GENERATION&gt;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions">https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
