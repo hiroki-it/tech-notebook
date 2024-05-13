@@ -148,7 +148,7 @@ aws-repository/
     ├── acm/ # ACM
     ├── alb/ # ALB
     ├── lambda/ # Lambda
-    │   ├── foo_function/ # とある関数
+    │   ├── foo_function_src/ # とある関数のソースコード
     ...
 ```
 
@@ -161,7 +161,7 @@ aws-remote-repository/
 ├── acm/ # ACM
 ├── alb/ # ALB
 ├── lambda/ # Lambda
-│   ├── foo_function/ # とある関数
+│   ├── foo_function_src/ # とある関数のソースコード
     ...
 ```
 

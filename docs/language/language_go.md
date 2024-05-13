@@ -192,6 +192,79 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 > - https://tech.librastudio.co.jp/entry/index.php/2018/02/20/post-1792/
 
+<br>
+
+### アップグレード
+
+#### ▼ GitHubリポジトリ
+
+`(1)`
+
+: 新しいバイナルをインストールする。
+
+```bash
+$ go install golang.org/dl/go<新しいバージョン>@latest
+
+$ go<新しいバージョン> download
+```
+
+`(2)`
+
+: 新しいバージョンに切り替える。
+
+```bash
+# GOROOTの場所を見つける
+$ go<新しいバージョン> env GOROOT
+
+/home/hiroki-hasegawa/sdk/go1.22.1
+
+$ export GOROOT=$(go1.22.1 env GOROOT)
+$ export PATH=$GOROOT/bin:$PATH
+$ source ~/.zshrc
+```
+
+`(3)`
+
+: パッケージをアップグレードする。
+
+```bash
+$ go mod tidy -go=<新しいバージョン>
+```
+
+`(4)`
+
+: 古いバージョンのGoバイナリをアンインストールする。
+
+```bash
+$ rm -rf /usr/local/go
+```
+
+> - https://zenn.dev/wasuwa/articles/3d2e65516b760e
+> - https://qiita.com/snyt45/items/2425a849db8947001587
+
+#### ▼ PPAリポジトリから
+
+`(1)`
+
+: PPAリポジトリを登録する。
+
+```bash
+$ add-apt-repository ppa:longsleep/golang-backports
+```
+
+`(2)`
+
+: 新しいバイナルをインストールする。
+
+```bash
+$ apt update
+$ apt install golang-go
+```
+
+> - https://zenn.dev/tamagram/articles/fd744d10e2e680
+
+<br>
+
 ## 03. ディレクトリ構成規約
 
 ### アプリの場合
