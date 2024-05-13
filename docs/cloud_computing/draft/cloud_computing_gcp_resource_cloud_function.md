@@ -27,9 +27,12 @@ https://hiroki-it.github.io/tech-notebook/
 
 ### Terraformの場合
 
-```terraform
-module "function" {
+#### ▼ 世代数v1
 
+```terraform
+module "foo-function" {
+
+  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv1になる
   source     = "terraform-google-modules/event-function/google"
 
   version    = "<バージョン>"
@@ -81,5 +84,39 @@ resource "google_pubsub_topic" "foo" {
 
 data "google_client_config" "current" {}
 ```
+
+> - https://github.com/terraform-google-modules/terraform-google-event-function
+
+#### ▼ 世代数v2
+
+```terraform
+module "foo-function" {
+
+  // Cloud Functionには世代数 (v1、v2) があり、本モジュールではv2になる
+  source  = "GoogleCloudPlatform/cloud-functions/google"
+
+  version = "~> 0.4"
+
+  # Required variables
+
+  function_name  = "<FUNCTION_NAME>"
+
+  project_id     = "<PROJECT_ID>"
+
+  location       = "<LOCATION>"
+
+  runtime        = "<RUNTIME>"
+
+  entrypoint     = "<ENTRYPOINT>"
+
+  storage_source = {
+    bucket      = "<BUCKET_NAME>"
+    object      = "<ARCHIVE_PATH>"
+    generation  = "<GCS_GENERATION>"
+  }
+}
+```
+
+> - https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions
 
 <br>
