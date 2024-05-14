@@ -22990,9 +22990,10 @@
 <p><br></p>
 <h3 id="_9">処理フェーズパターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="tcc">▼ TCCパターン<a class="headerlink" href="#tcc" title="Permanent link">&para;</a></h4>
-<p>トランザクションを、処理フェーズ (Try、Confirm、Cancel) に分けて実施する方法。</p>
-<p>Tryフェーズでは、排他制御を実施する。</p>
-<p>Confirmフェーズでは、トランザクションのコミット</p>
+<p>ローカルトランザクションを、処理フェーズ (Try、Confirm、Cancel) に分けて実施する方法。</p>
+<p>Tryフェーズでは、ローカルトランザクションを開始する。</p>
+<p>Confirmフェーズでは、ローカルトランザクションをコミットする。</p>
+<p>Cancelフェーズでは、以前のフェーズで問題が合った場合に、ロールバックを実施する。</p>
 <p><br></p>
 <h2 id="02-03-saga">02-03. オーケストレーションベースのSagaパターン<a class="headerlink" href="#02-03-saga" title="Permanent link">&para;</a></h2>
 <h3 id="_10">オーケストレーションとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>

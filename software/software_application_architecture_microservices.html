@@ -1827,9 +1827,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIアグリゲーション層とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-02. API Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      API Gateway
+      API Gatewayとは
     </span>
   </a>
   
@@ -1887,7 +1911,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
       API形式パターン
     </span>
@@ -1981,6 +2005,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. APIアグリゲーター
+    </span>
+  </a>
   
 </li>
       
@@ -22961,9 +22994,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      APIアグリゲーション層とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-02. API Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      API Gateway
+      API Gatewayとは
     </span>
   </a>
   
@@ -23021,7 +23078,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
       API形式パターン
     </span>
@@ -23115,6 +23172,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. APIアグリゲーター
+    </span>
+  </a>
   
 </li>
       
@@ -23476,11 +23542,15 @@
 <p>これらのことから、この分割パターンはあまり良くない (出典は俺) 。</p>
 <p><br></p>
 <h2 id="04-api">04. APIアグリゲーション層<a class="headerlink" href="#04-api" title="Permanent link">&para;</a></h2>
-<h3 id="api-gateway">API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
+<h3 id="api">APIアグリゲーション層とは<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p>全てのAPIまたは複数のAPIのセットとして機能する。</p>
+<p><br></p>
+<h2 id="04-02-api-gateway">04-02. API Gateway<a class="headerlink" href="#04-02-api-gateway" title="Permanent link">&para;</a></h2>
+<h3 id="api-gateway">API Gatewayとは<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
 <p><img alt="microservices_api-gateway-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png" /></p>
 <p>クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。</p>
 <ul>
-<li>受信した通信を適切なマイクロサービスのAPIにルーティング</li>
+<li>全てのAPIのセットとして機能し、受信した通信を適切なマイクロサービスのAPIにルーティング</li>
 <li>認証</li>
 <li>トレースIDの付与</li>
 <li>キャッシュの作成</li>
@@ -23528,7 +23598,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="api">API形式パターン<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h3 id="api_1">API形式パターン<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
 <h4 id="api-gatewayapi">▼ API GatewayのAPI形式パターンとは<a class="headerlink" href="#api-gatewayapi" title="Permanent link">&para;</a></h4>
 <p>API GatewayのAPI形式に応じて、分割パターンがある。</p>
 <h4 id="restful-api">▼ RESTful-API<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h4>
@@ -23565,6 +23635,14 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="04-03-api">04-03. APIアグリゲーター<a class="headerlink" href="#04-03-api" title="Permanent link">&para;</a></h2>
+<p>システム内部で、一部のAPIのセットとして機能し、受信した通信をマイクロサービスのAPIセットにルーティングする。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/68074337">https://stackoverflow.com/a/68074337</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -23585,7 +23663,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-14</span>
   </span>
 
     
