@@ -9,7 +9,7 @@ description: Cloud Function＠Google Cloudリソースの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -20,7 +20,7 @@ https://hiroki-it.github.io/tech-notebook/
 | 項目               | 説明                                                     |
 | ------------------ | -------------------------------------------------------- |
 | トリガー           | Cloud Functionを発火させる方法を設定する。               |
-| ランタイム         |                                                          |
+| ランタイム         | CloudFunctionで実行するアプリのランタイムを設定する。    |
 | エントリーポイント | Cloud Functionのエントリーポイントとする関数を設定する。 |
 
 <br>

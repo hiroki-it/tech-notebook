@@ -189,6 +189,10 @@ Gateway                          networking.istio.io/v1alpha3           n/a     
 VirtualService                   networking.istio.io/v1beta1            n/a             n/a          n/a                                    n/a             istio
 ```
 
+Istioの主要カスタムリソースで`v1`がリリース (2024/05/14) されたので、`v1beta1`が非推奨になる日も近い...。
+
+> - https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds
+
 <br>
 
 ### -t
