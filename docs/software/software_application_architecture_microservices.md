@@ -315,13 +315,21 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 ## 04. APIアグリゲーション層
 
-### API Gateway
+### APIアグリゲーション層とは
+
+全てのAPIまたは複数のAPIのセットとして機能する。
+
+<br>
+
+## 04-02. API Gateway
+
+### API Gatewayとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
 クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
 
-- 受信した通信を適切なマイクロサービスのAPIにルーティング
+- 全てのAPIのセットとして機能し、受信した通信を適切なマイクロサービスのAPIにルーティング
 - 認証
 - トレースIDの付与
 - キャッシュの作成
@@ -420,5 +428,13 @@ Kubernetes内で管理できるメリットがある。
 その場合、フロントエンドアプリケーションがAPI Gatewayに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 
 > - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
+
+<br>
+
+## 04-03. APIアグリゲーター
+
+システム内部で、一部のAPIのセットとして機能し、受信した通信をマイクロサービスのAPIセットにルーティングする。
+
+> - https://stackoverflow.com/a/68074337
 
 <br>
