@@ -22956,7 +22956,7 @@
 <h3 id="_10">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ メッセージブローカーを使わない場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。</p>
-<p>この場合、オーケストレーターは現在のドメインモデルの状態をDBやログで管理する。</p>
+<p>この場合、オーケストレーターは現在の自身の状態 (ステート) をDBやログで管理する。</p>
 <p>管理している現在の状態に応じて、次の処理を決める。</p>
 <blockquote>
 <ul>
