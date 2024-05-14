@@ -1710,7 +1710,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージングキューを使わない場合
+      ▼ メッセージブローカーを使わない場合
     </span>
   </a>
   
@@ -1719,7 +1719,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージングキューを使う場合
+      ▼ メッセージブローカーを使う場合
     </span>
   </a>
   
@@ -22655,7 +22655,7 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージングキューを使わない場合
+      ▼ メッセージブローカーを使わない場合
     </span>
   </a>
   
@@ -22664,7 +22664,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージングキューを使う場合
+      ▼ メッセージブローカーを使う場合
     </span>
   </a>
   
@@ -22897,7 +22897,6 @@
 <h4 id="_5">▼ ローカルトランザクションとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><code>1</code>個のトランザクション処理によって、<code>1</code>個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
 <p>推奨される。</p>
-<p>ダウンストリーム側マイクロサービスでのトランザクションを、イベントととして、アップストリーム側に伝える。</p>
 <p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。</p>
 <p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
 <blockquote>
@@ -22955,25 +22954,27 @@
 </blockquote>
 <p><br></p>
 <h3 id="_10">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ メッセージングキューを使わない場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>オーケストレーターは、現在のイベントをDBやログで管理する。</p>
-<p>管理している現在のイベントの状態に応じて、次のイベントを実行する。</p>
+<h4 id="_11">▼ メッセージブローカーを使わない場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。</p>
+<p>この場合、オーケストレーターは現在のドメインモデルの状態をDBやログで管理する。</p>
+<p>管理している現在の状態に応じて、次の処理を決める。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
-<li><a href="https://developer.ibm.com/articles/use-saga-to-solve-distributed-transaction-management-problems-in-a-microservices-architecture/">https://developer.ibm.com/articles/use-saga-to-solve-distributed-transaction-management-problems-in-a-microservices-architecture/</a></li>
+<li><a href="https://www.baeldung.com/cs/saga-pattern-microservices">https://www.baeldung.com/cs/saga-pattern-microservices</a></li>
+<li><a href="https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079">https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079</a></li>
 </ul>
 </blockquote>
-<h4 id="_12">▼ メッセージングキューを使う場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>オーケストレーターがイベントのパブリッシュとサブスクライブの責務を持つ。</p>
-<p>オーケストレーターは、メッセージングキューに対してパブリッシュとサブスクライブを実行する。</p>
-<p>サブスクライブしたイベントに応じて、次のイベントをパブリッシュする。</p>
+<h4 id="_12">▼ メッセージブローカーを使う場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
+<p>オーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
+<p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>
 <p><img alt="orchestration_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.12-technology.com/2021/08/dbsaga.html">https://www.12-technology.com/2021/08/dbsaga.html</a></li>
 <li><a href="https://qiita.com/somen440/items/a6c323695627235128e9">https://qiita.com/somen440/items/a6c323695627235128e9</a></li>
-<li><a href="https://www.12-technology.com/2021/08/dbsaga.html">https://www.12-technology.com/2021/08/dbsaga.html</a></li>
+<li><a href="https://techblog.raksul.com/entry/2022/09/22/095433">https://techblog.raksul.com/entry/2022/09/22/095433</a></li>
 </ul>
 </blockquote>
 <p><br></p>
