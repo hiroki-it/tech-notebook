@@ -1823,6 +1823,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. TCCパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCCパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -22777,6 +22792,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. TCCパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCCパターンとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -22945,7 +22975,7 @@
 <p><br></p>
 <h2 id="02-02-saga">02-02. Sagaパターン<a class="headerlink" href="#02-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga">Sagaパターンとは<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスのローカルトランザクションを連続的に実行する。</p>
+<p>各マイクロサービスに永続化とロールバックに関するAPIを実装し、ローカルトランザクションを連続的に実行する。</p>
 <p>ダウンストリーム側マイクロサービスのローカルトランザクションの完了をイベントとして、アップストリーム側マイクロサービスのDB処理を連続的にコールしていく。</p>
 <p>ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。</p>
 <p>補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。</p>
@@ -23045,7 +23075,8 @@
 <p><img alt="saga-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png" /></p>
 <p><br></p>
 <h2 id="03-tcc">03. TCCパターン<a class="headerlink" href="#03-tcc" title="Permanent link">&para;</a></h2>
-<p>マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行するAPIを実装し、APIを順に実行する。</p>
+<h3 id="tcc">TCCパターンとは<a class="headerlink" href="#tcc" title="Permanent link">&para;</a></h3>
+<p>各マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行するAPIを実装し、APIを順に実行する。</p>
 <p>Tryフェーズでは、ローカルトランザクションを開始する。</p>
 <p>Confirmフェーズでは、ローカルトランザクションをコミットする。</p>
 <p>Cancelフェーズでは、以前のフェーズで問題が合った場合に、ロールバックを実施する。</p>
@@ -23053,6 +23084,7 @@
 <ul>
 <li><a href="https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/">https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/</a></li>
 <li><a href="https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m">https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m</a></li>
+<li><a href="https://www.oracle.com/a/otn/docs/jp-dev-days-microservices.pdf#page=9">https://www.oracle.com/a/otn/docs/jp-dev-days-microservices.pdf#page=9</a></li>
 </ul>
 </blockquote>
 <p><br></p>
