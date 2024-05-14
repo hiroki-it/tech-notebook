@@ -34,6 +34,16 @@ Nginxの起動時に最初にマスタープロセスが実行され、Nginxに�
 
 <br>
 
+### Redix Treeアルゴリズム
+
+Nginxは、リクエストのIPアドレスを照合して、リクエストを許可/拒否する。
+
+この時、Redix Treeアルゴリズムに基づいて、IPアドレスを高速で照合している。
+
+> - https://csatlas.com/c-radix-tree-nginx/
+
+<br>
+
 ### モジュール
 
 #### ▼ 静的モジュール

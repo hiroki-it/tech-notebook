@@ -80,9 +80,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 > - https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
-#### ▼ ローカルトランザクションの種類
+#### ▼ ローカルトランザクションの実行方式の種類
 
-デザインパターンとして、Sagaパターン、TCCパターン、などがある。
+ローカルトランザクションベースのトランザクションパターンとして、Sagaパターン、TCCパターン、などがある。
 
 > - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
 
@@ -102,15 +102,11 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-## 02-02. ローカルトランザクションの種類
+## 02-02. Sagaパターン
 
-### Sagaパターン
+### Sagaパターンとは
 
-#### ▼ Sagaパターンとは
-
-![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
-
-複数のローカルトランザクションを非同期通信で連続的に実行する。
+各マイクロサービスのローカルトランザクションを連続的に実行する。
 
 ダウンストリーム側マイクロサービスのローカルトランザクションの完了をイベントとして、アップストリーム側マイクロサービスのDB処理を連続的にコールしていく。
 
@@ -123,25 +119,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 > - https://qiita.com/nk2/items/d9e9a220190549107282
 > - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
 
-#### ▼ 補償トランザクション
-
-ローカルトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。
-
-**＊例＊**
-
-受注に関するトランザクションが異なるマイクロサービスにまたがる例。
-
-![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png)
-
-補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。
-
-![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
-
-> - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
-
 <br>
 
-### オーケストレーションSagaパターン
+### オーケストレーションベースのSagaパターン
 
 #### ▼ オーケストレーションとは
 
@@ -161,7 +141,11 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
 > - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
-#### ▼ ローカルトランザクションの連携方式
+#### ▼ メッセージキューを使わない場合
+
+記入中...
+
+#### ▼ メッセージキューを使う場合
 
 マイクロサービス間のローカルトランザクションの連携方式として、メッセージキューを使用する。
 
@@ -177,9 +161,27 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 > - https://qiita.com/somen440/items/a6c323695627235128e9
 > - https://www.12-technology.com/2021/08/dbsaga.html
 
+#### ▼ 補償トランザクションによるロールバック
+
+ローカルトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。
+
+**＊例＊**
+
+受注に関するトランザクションが異なるマイクロサービスにまたがる例。
+
+![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png)
+
+補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。
+
+![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
+
+> - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+
 <br>
 
-### Choreography (コレオグラフィ) Sagaパターン
+<br>
+
+### Choreography (コレオグラフィ) ベースのSagaパターン
 
 #### ▼ コレオグラフィとは
 
@@ -202,7 +204,11 @@ Sagaパターンにて、各マイクロサービスでアップストリーム�
 
 > - https://github.com/fedeoliv/microservices-transactions
 
-#### ▼ ローカルトランザクションの連携方式
+#### ▼ メッセージキューを使わない場合
+
+記入中...
+
+#### ▼ メッセージキューを使う場合
 
 マイクロサービス間のローカルトランザクションの連携方式として、メッセージキューを使用する。
 
@@ -215,6 +221,14 @@ Sagaパターンにて、各マイクロサービスでアップストリーム�
 ![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
 
 > - https://www.12-technology.com/2021/08/dbsaga.html
+
+![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
+
+<br>
+
+## 02-03. TCCパターン
+
+Tryフェーズ、Confirmフェーズ、Cancelフェーズ
 
 <br>
 
