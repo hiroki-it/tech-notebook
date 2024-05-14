@@ -17,7 +17,12 @@ description: SNS＠AWSリソースの知見を記録しています。
 
 クラウドパブリッシュ/サブスクライブシステムとして働く。
 
+送受信が多対多のパブリッシュ/サブスクライブパターンである。
+
 メッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
+
+> - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
+> - https://tech.asoview.co.jp/entry/2022/04/06/102637
 
 <br>
 

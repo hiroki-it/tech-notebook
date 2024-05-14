@@ -17,9 +17,14 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 クラウドメッセージキューとして働く。
 
+送受信が一対一のプロデューサー/コンシューマーパターンである。
+
 メッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
 
 パブリッシュ/サブスクライブシステム (例：AWS SNS) とは異なりメッセージをキューイングできるが、メッセージをルーティングできない。
+
+> - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
+> - https://tech.asoview.co.jp/entry/2022/04/06/102637
 
 <br>
 
