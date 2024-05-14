@@ -121,20 +121,6 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-### 処理フェーズパターン
-
-#### ▼ TCCパターン
-
-ローカルトランザクションを、処理フェーズ (Try、Confirm、Cancel) に分けて実施する方法。
-
-Tryフェーズでは、ローカルトランザクションを開始する。
-
-Confirmフェーズでは、ローカルトランザクションをコミットする。
-
-Cancelフェーズでは、以前のフェーズで問題が合った場合に、ロールバックを実施する。
-
-<br>
-
 ## 02-03. オーケストレーションベースのSagaパターン
 
 ### オーケストレーションとは
@@ -250,7 +236,22 @@ Sagaパターンにて、各マイクロサービスでアップストリーム�
 
 <br>
 
-## 03. オブジェクトモデリング方式
+## 03. TCCパターン
+
+マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行するAPIを実装し、APIを順に実行する。
+
+Tryフェーズでは、ローカルトランザクションを開始する。
+
+Confirmフェーズでは、ローカルトランザクションをコミットする。
+
+Cancelフェーズでは、以前のフェーズで問題が合った場合に、ロールバックを実施する。
+
+> - https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/
+> - https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m
+
+<br>
+
+## 04. オブジェクトモデリング方式
 
 ### イベントソーシング
 
