@@ -22963,6 +22963,7 @@
 <li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
 <li><a href="https://www.baeldung.com/cs/saga-pattern-microservices">https://www.baeldung.com/cs/saga-pattern-microservices</a></li>
 <li><a href="https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079">https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079</a></li>
+<li><a href="https://blog.knoldus.com/distributed-transactions-and-saga-patterns/">https://blog.knoldus.com/distributed-transactions-and-saga-patterns/</a></li>
 </ul>
 </blockquote>
 <h4 id="_12">▼ メッセージブローカーを使う場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -22974,13 +22975,13 @@
 <ul>
 <li><a href="https://www.12-technology.com/2021/08/dbsaga.html">https://www.12-technology.com/2021/08/dbsaga.html</a></li>
 <li><a href="https://qiita.com/somen440/items/a6c323695627235128e9">https://qiita.com/somen440/items/a6c323695627235128e9</a></li>
-<li><a href="https://techblog.raksul.com/entry/2022/09/22/095433">https://techblog.raksul.com/entry/2022/09/22/095433</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="_13">補償トランザクション<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 補償トランザクションとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ローカルトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
+<p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。</p>
 <p>各マイクロサービスで実装したロールバック処理のAPIを逆順でコールする。</p>
 <p><strong>＊例＊</strong></p>
 <p>受注に関するトランザクションが異なるマイクロサービスにまたがる例。</p>
