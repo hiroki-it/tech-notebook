@@ -2486,6 +2486,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software_development_methodology/draft/software_development_oss_contribute.html</loc>
+         <lastmod>2024-05-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/system/index.html</loc>
          <lastmod>2024-05-15</lastmod>
          <changefreq>daily</changefreq>
