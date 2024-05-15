@@ -148,6 +148,7 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 > - https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748
 > - https://www.baeldung.com/cs/saga-pattern-microservices
 > - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
+> - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
 
 #### ▼ メッセージブローカーを使う場合
 
@@ -161,7 +162,6 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 
 > - https://www.12-technology.com/2021/08/dbsaga.html
 > - https://qiita.com/somen440/items/a6c323695627235128e9
-> - https://techblog.raksul.com/entry/2022/09/22/095433
 
 <br>
 
@@ -170,6 +170,8 @@ Sagaパターンにて、一連のローカルトランザクションの実行�
 #### ▼ 補償トランザクションとは
 
 ローカルトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。
+
+マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。
 
 各マイクロサービスで実装したロールバック処理のAPIを逆順でコールする。
 

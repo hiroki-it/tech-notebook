@@ -334,9 +334,9 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 
 <br>
 
-### App-Of-Appsパターン
+### App Of Appsパターン
 
-#### ▼ App-Of-Appsパターンとは
+#### ▼ App Of Appsパターンとは
 
 親Applicationで子Applicationをグループ化したように構成する。
 

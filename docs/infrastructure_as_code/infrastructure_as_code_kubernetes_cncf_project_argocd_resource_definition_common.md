@@ -33,7 +33,7 @@ custom-controller (application-controller) が設定してくれるため、開�
 
 | キー                          | 値の例            | 説明                                                                                                                                                                                       |
 | ----------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `argocd.argoproj.io/instance` | `foo-application` | ArgoCDのApplication名を設定する。もしKubernetesリソースに設定すれば親Applicationが自動的に紐付き、Applicationに設定さればApp-of-Appsでの親Applicationが紐づく。なお、CRDには設定されない。 |
+| `argocd.argoproj.io/instance` | `foo-application` | ArgoCDのApplication名を設定する。もしKubernetesリソースに設定すれば親Applicationが自動的に紐付き、Applicationに設定さればApp of Appsでの親Applicationが紐づく。なお、CRDには設定されない。 |
 
 <br>
 
