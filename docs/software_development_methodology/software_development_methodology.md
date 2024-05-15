@@ -103,17 +103,6 @@ Visual Basicなどの開発支援ツールを使用して、短期間で設計�
 
 ## 02. その他
 
-### OSSコントリビュート
-
-OSSによっては、`help wanted`や`good first issue`といったラベルづけをしてくれている。
-
-OSSコントリビュートに入門しやすくなっている。
-
-> - https://clotributor.dev/
-> - https://www.kubernetes.dev/docs/guide/help-wanted/
-
-<br>
-
 ### CASEツール：Computer Aided Software Enginnering
 
 #### ▼ CASEツールとは
