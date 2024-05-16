@@ -135,3 +135,30 @@ $ git push https://github.com/hiroki-it/kubernetes/kubernetes.git feature/add_fo
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 
 <br>
+
+### CLA
+
+プルリクエストをレビューしてもらうにあたり、コミッターとリポジトリの間でライセンス契約が必要である。
+
+ライセンス契約後、プルリクエストで`/easycla`というコメントを送信する。
+
+> - https://www.kubernetes.dev/docs/guide/pull-requests/#the-pull-request-submit-process
+> - https://github.com/kubernetes/community/blob/master/CLA.md
+
+<br>
+
+### 動作確認
+
+開発環境で動作確認のために`make`コマンドを実行する。
+
+```bash
+$ make verify
+
+$ make test
+
+$ make test-integration
+```
+
+> - https://www.kubernetes.dev/docs/guide/pull-requests/#run-local-verifications
+
+<br>
