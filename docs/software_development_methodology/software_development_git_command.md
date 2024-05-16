@@ -1022,7 +1022,14 @@ $ git reset --hard origin/<ブランチ名>
 
 作業中のローカルブランチで、ブランチの派生元を変更する。
 
+例えば、作業ブランチで基点ブランチのコミットを取り込みたい場合に使用する。
+
 リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。
+
+処理結果が`git merge`コマンドと似ているが、`git rebase`コマンドはマージコミットを作らず、ない。
+
+> - https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC
+> - https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
 
 <br>
 
