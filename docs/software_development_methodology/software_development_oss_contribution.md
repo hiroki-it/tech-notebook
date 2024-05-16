@@ -53,17 +53,15 @@ kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:73:3: un
 
 <br>
 
-### 開発フロー
+### コントリビューションの流れ
 
-#### 開発フローとは
+#### 1. 公式リポジトリからフォークリポジトリを作る
+
+公式リポジトリのフォークリポジトリを作る。
 
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-#### 1. Kubernetesリポジトリ公式からフォークを作る
-
-Kubernetesリポジトリ公式のフォークを作る。
-
-#### 2. 開発環境にフォークをクローンする
+#### 2. 開発環境にフォークリポジトリをクローンする
 
 開発環境にフォークリポジトリをクローンする。
 
@@ -71,20 +69,27 @@ Kubernetesリポジトリ公式のフォークを作る。
 $ git clone https://github.com/hiroki-it/kubernetes/kubernetes.git
 ```
 
-#### 3. 公式から差分を取り込む
+> - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-Kubernetesリポジトリ公式からフォークリポジトリに差分を取り込む必要がある。
+#### 3. 公式リポジトリをアップストリームリポジトリとして登録する
 
-まず、リモートリポジトリをKubernetesリポジトリ公式に設定する。
+リモートリポジトリとしてのフォークリポジトリとは別に、公式リポジトリをアップストリームに登録する。
 
 ```bash
 $ git remote add upstream https://github.com/kubernetes/kubernetes.git
 
-# Kubernetesリポジトリ公式にはプッシュしないようにする
+$ git config --local --list
+
+remote.upstream.url=https://github.com/kubernetes/kubernetes.git
+remote.upstream.fetch=+refs/heads/*:refs/remotes/upstream/*
+
+# 公式リポジトリにはプッシュしないようにする
 $ git remote set-url --push upstream no_push
 ```
 
-作業ブランチが基点ブランチのコミットを取り込む。
+#### 4. 公式リポジトリから差分を取り込む
+
+公式リポジトリ基点ブランチからフォークリポジトリに差分を取り込む。
 
 この時、マージコミットを作らないようにするに、`git rebase`コマンドを使用する。
 
@@ -96,7 +101,10 @@ $ git checkout master
 $ git rebase upstream/master
 ```
 
-#### 4. 変更をコミットする
+> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - https://qiita.com/xtetsuji/items/555a1ef19ed21ee42873
+
+#### 5. 変更をコミットする
 
 ブランチを作成し、変更をコミットする。
 
@@ -108,16 +116,22 @@ $ git checkout -b feature/add_foo
 $ git commit
 ```
 
-#### 5. フォークにコミットをプッシュする
+> - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-自身のフォークにコミットをプッシュする。
+#### 6. フォークリポジトリにコミットをプッシュする
+
+自身のフォークリポジトリにコミットをプッシュする。
 
 ```bash
 $ git push https://github.com/hiroki-it/kubernetes/kubernetes.git feature/add_foo
 ```
 
-#### 6. プルリクエストを作る
+> - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-フォークリポジトリ上の作業ブランチからKubernetesリポジトリ公式に対してプルリクエストを作る。
+#### 7. プルリクエストを作る
+
+フォークリポジトリ上の作業ブランチから公式リポジトリに対してプルリクエストを作る。
+
+> - https://www.kubernetes.dev/docs/guide/github-workflow/
 
 <br>
