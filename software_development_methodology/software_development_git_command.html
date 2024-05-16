@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_command.html">
       
       
-        <link rel="prev" href="software_development_project_management.html">
+        <link rel="prev" href="software_development_oss_contribution.html">
       
       
         <link rel="next" href="software_development_git_github.html">
@@ -21718,6 +21718,8 @@
       
         
       
+        
+      
     
     
       
@@ -21829,6 +21831,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="software_development_oss_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSSコントリビューション
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -21848,10 +21871,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_22_5" id="__nav_22_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_22_6" id="__nav_22_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -21862,8 +21885,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_22_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_22_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_22_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_22_6">
             <span class="md-nav__icon md-icon"></span>
             ■ バージョン管理
           </label>
@@ -21894,10 +21917,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_6_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_22_5_1" id="__nav_22_5_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_22_6_1" id="__nav_22_6_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -21908,8 +21931,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_22_5_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_22_5_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_22_6_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_22_6_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Git
           </label>
@@ -24548,7 +24571,15 @@ To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
 <h2 id="rebase">rebase<a class="headerlink" href="#rebase" title="Permanent link">&para;</a></h2>
 <h3 id="rebase_1">rebaseとは (注意点あり)<a class="headerlink" href="#rebase_1" title="Permanent link">&para;</a></h3>
 <p>作業中のローカルブランチで、ブランチの派生元を変更する。</p>
+<p>例えば、作業ブランチで基点ブランチのコミットを取り込みたい場合に使用する。</p>
 <p>リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。</p>
+<p>処理結果が<code>git merge</code>コマンドと似ているが、<code>git rebase</code>コマンドはマージコミットを作らず、ない。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC">https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC</a></li>
+<li><a href="https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="-interactive-id">--interactive &lt;コミットID&gt;<a class="headerlink" href="#-interactive-id" title="Permanent link">&para;</a></h3>
 <p>派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを実行する。</p>
@@ -24837,7 +24868,7 @@ $<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-16</span>
   </span>
 
     
