@@ -66,18 +66,30 @@ kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:73:3: un
 開発環境にフォークリポジトリをクローンする。
 
 ```bash
-$ git clone https://github.com/hiroki-it/kubernetes/kubernetes.git
+$ git clone --depth 1 git@github.com:hiroki-it/kubernetes.git
 ```
 
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-#### 3. 公式リポジトリをアップストリームリポジトリとして登録する
+#### 3. ユーザー名とメールを登録する
+
+```bash
+$ git config --local user.name "hiroki-it"
+
+$ git config --local user.email "hasegawafeedshop@gmail.com"
+
+# 確認する
+$ git config --local --list
+```
+
+#### 4. 公式リポジトリをアップストリームリポジトリとして登録する
 
 リモートリポジトリとしてのフォークリポジトリとは別に、公式リポジトリをアップストリームに登録する。
 
 ```bash
 $ git remote add upstream https://github.com/kubernetes/kubernetes.git
 
+# 確認する
 $ git config --local --list
 
 remote.upstream.url=https://github.com/kubernetes/kubernetes.git
@@ -87,7 +99,7 @@ remote.upstream.fetch=+refs/heads/*:refs/remotes/upstream/*
 $ git remote set-url --push upstream no_push
 ```
 
-#### 4. 公式リポジトリから差分を取り込む
+#### 5. 公式リポジトリから差分を取り込む
 
 公式リポジトリ基点ブランチからフォークリポジトリに差分を取り込む。
 
@@ -104,7 +116,7 @@ $ git rebase upstream/master
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 > - https://qiita.com/xtetsuji/items/555a1ef19ed21ee42873
 
-#### 5. 変更をコミットする
+#### 6. 変更をコミットする
 
 ブランチを作成し、変更をコミットする。
 
@@ -118,7 +130,7 @@ $ git commit
 
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-#### 6. フォークリポジトリにコミットをプッシュする
+#### 7. フォークリポジトリにコミットをプッシュする
 
 自身のフォークリポジトリにコミットをプッシュする。
 
@@ -128,7 +140,7 @@ $ git push https://github.com/hiroki-it/kubernetes/kubernetes.git feature/add_fo
 
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
 
-#### 7. プルリクエストを作る
+#### 8. プルリクエストを作る
 
 フォークリポジトリ上の作業ブランチから公式リポジトリに対してプルリクエストを作る。
 
