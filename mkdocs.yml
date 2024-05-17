@@ -509,7 +509,7 @@ nav:
               - ■ Anthos:
                   - Anthos: cloud_computing/cloud_computing_gcp_resource_anthos.md
                   - アップグレード: cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.md
-              - CloudLogging: cloud_computing/cloud_computing_gcp_resource_cloudlogging.md
+              - CloudLogging: cloud_computing/cloud_computing_gcp_resource_cloud_logging.md
               - IAM: cloud_computing/cloud_computing_gcp_resource_iam.md
 
   - 📦 仮想化:
