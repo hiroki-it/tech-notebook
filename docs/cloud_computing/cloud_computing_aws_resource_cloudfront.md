@@ -165,7 +165,7 @@ CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.ne
 
 CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
 
-![cloudfront_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
+![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
 > - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
 

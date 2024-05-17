@@ -13,7 +13,15 @@ https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. Cloud Pub/Sub
+## 01. Cloud Pub/Subとは
+
+![google_cloud_pub_sub](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_pub_sub.png)
+
+> - https://cloud.google.com/pubsub/docs/pubsub-basics?hl=ja
+
+<br>
+
+## 02. セットアップ
 
 ### コンソール画面からのセットアップ
 

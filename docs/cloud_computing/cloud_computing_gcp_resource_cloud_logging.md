@@ -3,7 +3,7 @@ title: 【IT技術の知見】CloudLogging＠Google Cloudリソース
 description: CloudLogging＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCloudLogging＠Google Cloudリソース
+# CloudLogging＠Google Cloudリソース
 
 ## はじめに
 

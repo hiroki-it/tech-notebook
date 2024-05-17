@@ -305,7 +305,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ gcplogs
 
-標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
+標準出力/標準エラー出力に出力されたログを、Google CloudLoggingのAPIに転送する。
 
 ```yaml
 {

@@ -30,7 +30,7 @@ description: Keycloak＠CNCFの知見を記録しています。
 
 Keycloakは、認証処理サービス、Infinispan、RDBMS、といったコンポーネントから構成されている。
 
-![keycloak_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
+![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
 
 > - https://blog.palark.com/ha-keycloak-infinispan-kubernetes/
 
