@@ -9,7 +9,7 @@ description: Googleページスピードインサイト＠テレメトリー収�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
@@ -17,4 +17,6 @@ https://hiroki-it.github.io/tech-notebook/
 
 本サイトのとあるページを計測してみた。
 
-https://pagespeed.web.dev/report?url=https%3A%2F%2Fhiroki-it.github.io%2Ftech-notebook%2Fsoftware%2Fsoftware.html
+> - https://pagespeed.web.dev/report?url=https%3A%2F%2Fhiroki-it.github.io%2Ftech-notebook%2Fsoftware%2Fsoftware.html
+
+<br>

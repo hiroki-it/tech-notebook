@@ -9,18 +9,42 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-https://hiroki-it.github.io/tech-notebook/
+> - https://hiroki-it.github.io/tech-notebook/
 
 <br>
 
-## 01. Load Balancer
+## 01. Load Balancerとは
 
-### 種類
-
-- ALB (外部、内部)
-- NLB (プロキシ、パススルー)
+記入中...
 
 <br>
+
+## 02. 種類
+
+### `L7`ロードバランサー
+
+- 外部HTTPS負荷分散プロキシー
+- 内部HTTPS負荷分散プロキシー
+
+![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
+
+> - https://www.topgate.co.jp/blog/google-service/20716
+
+<br>
+
+### `L4`ロードバランサー
+
+- TCP/SSLプロキシ負荷分散プロキシー
+- TCP/UDPネットワーク負荷分散パススルー
+- 内部TCP/UDP負荷分散パススルー
+
+![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
+
+> - https://www.topgate.co.jp/blog/google-service/20716
+
+<br>
+
+## 03. セットアップ
 
 ### 追加ヘッダー
 
