@@ -12187,7 +12187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing_gcp_resource_cloudlogging.html" class="md-nav__link">
+      <a href="../cloud_computing_gcp_resource_cloud_logging.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22034,11 +22034,20 @@
         <li class="md-nav__item">
   <a href="#01-cloud-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Cloud Monitoring
+      01. Cloud Monitoringとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. Cloud Monitoring">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22047,6 +22056,39 @@
       コンソール画面からのセットアップ
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      アラート
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アラート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メトリクスフィルター
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22078,7 +22120,15 @@
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></p>
 <p><br></p>
-<h2 id="01-cloud-monitoring">01. Cloud Monitoring<a class="headerlink" href="#01-cloud-monitoring" title="Permanent link">&para;</a></h2>
+<h2 id="01-cloud-monitoring">01. Cloud Monitoringとは<a class="headerlink" href="#01-cloud-monitoring" title="Permanent link">&para;</a></h2>
+<p><img alt="google_cloud_monitoring" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_monitoring.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://xebia.com/blog/how-to-manage-cloud-build-notifications/">https://xebia.com/blog/how-to-manage-cloud-build-notifications/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面からのセットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -22090,10 +22140,26 @@
 <tbody>
 <tr>
 <td>アラート</td>
-<td>ログのメトリクスをポリシーに基づいて再集計し、条件に合致した場合にアラートを作成する。</td>
+<td>任意のメトリクスをポリシーに基づいて再集計し、条件に合致した場合にアラートを作成する。</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="_3">アラート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ アラートとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ポリシー (例：閾値、メトリクス再集計、など) 、通知チャンネル、を作成できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja">https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja</a></li>
+<li><a href="https://cloud.google.com/monitoring/support/notification-options?hl=ja">https://cloud.google.com/monitoring/support/notification-options?hl=ja</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ メトリクスフィルター<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。</p>
+<p>このデータポイントを集計し、このアラートをトリガーするメトリクスとして使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Cloud Functionの正常性をデータポイント化する</span>
+resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cloud_function&quot;</span><span class="w"> </span>AND<span class="w"> </span>metric.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cloudfunctions.googleapis.com/function/execution_count&quot;</span><span class="w"> </span>AND<span class="w"> </span>metric.labels.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span>
+</code></pre></div>
 <p><br></p>
 
 
@@ -22115,7 +22181,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-17</span>
   </span>
 
     
