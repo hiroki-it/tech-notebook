@@ -1006,7 +1006,7 @@ func main() {
 > - https://zenn.dev/pyotarou/articles/87d43169e0abe0
 > - https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/
 
-#### ▼ 自前で実装する
+#### ▼ 自前で実装する場合
 
 たとえ、ランタイムエラーのように処理が強制的に途中終了しても、全ての関数の最後に実行される。
 

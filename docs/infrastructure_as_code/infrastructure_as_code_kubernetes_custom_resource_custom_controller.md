@@ -135,13 +135,13 @@ kube-controller-managerは、Nodeにあるcustom-controllerを反復的に実行
 
 ## 04. セットアップ
 
-### 既にあるものを使用する
+### 実装パターン
+
+#### ▼ OSSを使用する場合
 
 > - https://github.com/mercari/certificate-expiry-monitor-controller
 
-<br>
-
-### 自前で実装する
+#### ▼ 自前で実装する場合
 
 custom-controllerを自前で実装する。
 

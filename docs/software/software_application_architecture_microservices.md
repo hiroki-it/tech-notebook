@@ -403,7 +403,7 @@ API GatewayのAPI形式に応じて、分割パターンがある。
 
 ### 実装パターン
 
-#### ▼ 自前で実装する
+#### ▼ 自前で実装する場合
 
 API Gatewayを自前 (例：フルスクラッチ、Nginx、など) で実装する。
 
@@ -411,7 +411,7 @@ Kubernetes内で管理できるメリットがある。
 
 > - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 
-#### ▼ OSSを使用する
+#### ▼ OSSを使用する場合
 
 API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、など) を使用する。
 
@@ -419,7 +419,7 @@ Kubernetes内で管理できるメリットがある。
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
-#### ▼ クラウドプロバイダーのマネージドサービスを使用する
+#### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
 クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPI Gateway (例：AWS API Gateway、Google API Gateway) を使用する。
 
