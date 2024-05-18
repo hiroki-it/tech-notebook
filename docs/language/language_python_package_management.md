@@ -25,9 +25,23 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 要件とするパッケージのバージョンを指定する。
 
-```
+```bash
 flask==2.0.2
 ```
+
+<br>
+
+### `pip.conf`ファイル
+
+`pip`コマンドのオプションを設定する。
+
+```ini
+[global]
+break-system-packages = true
+timeout = 60
+```
+
+> - https://pip.pypa.io/en/stable/topics/configuration/
 
 <br>
 
