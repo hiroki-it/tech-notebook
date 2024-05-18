@@ -220,7 +220,7 @@ Node上にエージェントを配置し、これを介してマイクロサー�
 
 #### ▼ 実装方法
 
-- NetflixのEureka
+- Netflix Eureka
 
 > - https://github.com/Netflix/eureka
 

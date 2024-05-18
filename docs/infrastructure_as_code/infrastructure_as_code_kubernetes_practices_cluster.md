@@ -89,7 +89,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 #### ▼ 自動アップグレードを採用できるのであれば採用する
 
-一連のコマンドを自動化できるツール (例：AWS StepFunction、Fablic、など) を使用して、アップグレードの実行から動作確認を自動化する。
+一連のコマンドを自動化できるツール (例：AWS Step Function、Fablic、など) を使用して、アップグレードの実行から動作確認を自動化する。
 
 > - https://www.slideshare.net/techblogyahoo/yahoo-japaniaaskubernetes-yjtc#17
 

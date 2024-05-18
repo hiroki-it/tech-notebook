@@ -83,7 +83,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ▼ レスポンス構造
 
-以下がレスポンスされれば、API GatewayがStepFunctionsをコールできたことになる。
+以下がレスポンスされれば、API GatewayがStep Functionsをコールできたことになる。
 
 ```yaml
 {
