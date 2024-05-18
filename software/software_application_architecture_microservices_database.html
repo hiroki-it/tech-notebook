@@ -1940,6 +1940,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#04-04-saga" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-04. 並列パイプラインベースのSagaパターン
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#05-tcc" class="md-nav__link">
     <span class="md-ellipsis">
       05. TCCパターン
@@ -23055,6 +23064,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#04-04-saga" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-04. 並列パイプラインベースのSagaパターン
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#05-tcc" class="md-nav__link">
     <span class="md-ellipsis">
       05. TCCパターン
@@ -23254,8 +23272,7 @@
 <h3 id="db_4">マイクロサービス別DBの場合<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>二相コミットパターン</li>
-<li>Sagaパターン (オーケストレーションベース、コレグラフィベース)</li>
-<li>並列パイプラインパターン</li>
+<li>Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース)</li>
 </ul>
 <blockquote>
 <ul>
@@ -23266,7 +23283,7 @@
 <h2 id="04">04. 二相コミット<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">実装パターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="oss">▼ OSSを使用する場合<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
-<p>二相コミットのOSS (Narayana、など) を使用する。</p>
+<p>二相コミットのOSSはなさそう。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
@@ -23288,9 +23305,7 @@
 <h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
 <p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
-<p><code>1</code>個のリクエストが送信された時に、オーケストレーションプログラムは各マイクロサービスをコールしながら処理の結果を繋いでいく。</p>
-<p>マイクロサービスアーキテクチャのみでなく、サービス指向アーキテクチャでも使用される。</p>
-<p>オーケストレーションが推奨である。</p>
+<p>各マイクロサービス間の通信方式をリクエストリプライ方式にする必要がある。</p>
 <p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
 <blockquote>
 <ul>
@@ -23367,8 +23382,8 @@
 <p><br></p>
 <h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_2">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
-<p>Sagaパターンにて、各マイクロサービスでアップストリーム側マイクロサービスに連携する責務を持たせ、ローカルトランザクションを連続的に実行する。</p>
-<p><code>1</code>個のリクエストが送信された時に、マイクロサービスからマイクロサービスに処理が繋がっていく。</p>
+<p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
+<p>各マイクロサービス間の通信方式をイベント駆動方式にする必要がある。</p>
 <p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
 <blockquote>
 <ul>
@@ -23390,6 +23405,7 @@
 </ul>
 </blockquote>
 <h4 id="oss_2">▼ OSSを使用する場合<a class="headerlink" href="#oss_2" title="Permanent link">&para;</a></h4>
+<p>コレオグラフィのOSS (例：Debezium、Maxwell、など) を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
@@ -23406,6 +23422,15 @@
 </ul>
 </blockquote>
 <p><img alt="saga-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png" /></p>
+<p><br></p>
+<h2 id="04-04-saga">04-04. 並列パイプラインベースのSagaパターン<a class="headerlink" href="#04-04-saga" title="Permanent link">&para;</a></h2>
+<p>オーケストレーションベースとコレオグラフィベースのパターンを組み合わせる。</p>
+<p>イベント駆動のマイクロサービスを連続的にコールするルーターサービスを配置する。</p>
+<blockquote>
+<ul>
+<li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared#">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared#</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="05-tcc">05. TCCパターン<a class="headerlink" href="#05-tcc" title="Permanent link">&para;</a></h2>
 <h3 id="tcc">TCCパターンとは<a class="headerlink" href="#tcc" title="Permanent link">&para;</a></h3>
