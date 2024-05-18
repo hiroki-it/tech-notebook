@@ -288,7 +288,7 @@ Attributes:
 
 ### googlecloud
 
-Google Cloudリソース (例：CloudTrace、CloudLogging、CloudMonitoring) にテレメトリーを送信する。
+Google Cloudリソース (例：Cloud Trace、Cloud Logging、Cloud Monitoring) にテレメトリーを送信する。
 
 OpenTelemetry Collectorに認証情報を紐づけていたとしても、ここでプロジェクト名を指定する必要がある。
 

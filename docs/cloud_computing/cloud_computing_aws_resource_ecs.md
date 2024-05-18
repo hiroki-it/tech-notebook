@@ -527,7 +527,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 
 ### サイドカー
 
-マイクロサービスのコンテナからログを収集する場合に、AWS以外 (Google CloudLogging) に送信するのであればサイドカーパターンでログルーター (EC2ならFluentBit、FargateならFireLens) を採用しないといけない。
+マイクロサービスのコンテナからログを収集する場合に、AWS以外 (Google Cloud Logging) に送信するのであればサイドカーパターンでログルーター (EC2ならFluentBit、FargateならFireLens) を採用しないといけない。
 
 ECSサービスを増えるたびにサイドカーの横展開していく。
 

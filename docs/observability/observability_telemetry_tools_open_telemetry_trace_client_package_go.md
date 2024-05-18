@@ -215,7 +215,7 @@ func childFunction(ctx context.Context) {
 > - https://github.com/aws/aws-xray-sdk-go
 > - https://github.com/aws-samples/aws-xray-sdk-go-sample
 
-#### ▼ Google CloudTrace
+#### ▼ Google Cloud Trace
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go
 
@@ -1171,7 +1171,7 @@ func getXrayTraceID(span trace.Span) string {
 
 <br>
 
-### 宛先がGoogle CloudTraceの場合
+### 宛先がGoogle Cloud Traceの場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -1198,14 +1198,14 @@ func NewTracerProvider() (func(), error) {
 
 	projectID := os.Getenv("PROJECT_ID")
 
-	// CloudTraceを宛先に設定する。
+	// Cloud Traceを宛先に設定する。
 	exporter, err := cloudtrace.New(cloudtrace.WithProjectID(projectID))
 
 	if err != nil {
 		return nil, err
 	}
 
-	log.Print("Info: CloudTrace exporter initialize successfully")
+	log.Print("Info: Cloud Trace exporter initialize successfully")
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
@@ -1237,8 +1237,8 @@ func installPropagators() {
 	otel.SetTextMapPropagator(
         // Composite Propagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
-			// CloudTrace形式のトレースコンテキストを伝播できるPropagatorを設定する
-			gcppropagator.CloudTraceOneWayPropagator{},
+			// Cloud Trace形式のトレースコンテキストを伝播できるPropagatorを設定する
+			gcppropagator.Cloud TraceOneWayPropagator{},
 			// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			propagation.TraceContext{},
 			// W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する
@@ -1836,7 +1836,7 @@ func formatTraceId(ctx context.Context, traceIdType string) string {
 		// X-RayのトレースIDの仕様に変換する
 		return fmt.Sprintf("1-%s-%s", traceId[0:8], traceId[8:])
 	case "cloudtrace":
-		// CloudTraceの場合は、トレースIDの仕様はそのままとする
+		// Cloud Traceの場合は、トレースIDの仕様はそのままとする
 		return traceId
 	}
 

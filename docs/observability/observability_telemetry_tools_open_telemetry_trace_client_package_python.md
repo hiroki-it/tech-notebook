@@ -35,7 +35,7 @@ description: Python＠クライアントパッケージの知見を記録して�
 
 ## 02. アプリでgRPCを使わない場合
 
-### 宛先がGoogle CloudTraceの場合
+### 宛先がGoogle Cloud Traceの場合
 
 #### ▼ パッケージの初期化
 
@@ -68,7 +68,7 @@ resource = Resource.create({
 
 tracer_provider = TracerProvider()
 
-# Exporter (スパンの宛先) として、Google CloudTraceを設定する。
+# Exporter (スパンの宛先) として、Google Cloud Traceを設定する。
 cloud_trace_exporter = CloudTraceSpanExporter()
 
 tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))

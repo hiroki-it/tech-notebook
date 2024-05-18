@@ -603,11 +603,11 @@ bar-project-***    bar-project   *****
 
 ## 03. Google Cloudリソース別のプラクティス
 
-### CloudLogging
+### Cloud Logging
 
 #### ▼ read
 
-CloudLoggingからログを読み出す。
+Cloud Loggingからログを読み出す。
 
 ```bash
 $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1

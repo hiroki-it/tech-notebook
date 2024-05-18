@@ -880,7 +880,7 @@ Outputs
   plot                    Generate data file for GNU Plot
   slack                   Send events to a Slack channel
   splunk                  Send events to Splunk HTTP Event Collector
-  stackdriver             Send events to Google Stackdriver Logging # 現在は、Google CloudLoggingに改名
+  stackdriver             Send events to Google Stackdriver Logging # 現在は、Google Cloud Loggingに改名
   stdout                  Prints events to STDOUT
   syslog                  Syslog
   tcp                     TCP Output
@@ -1090,13 +1090,13 @@ newRelicプラグインがプリインストールされているベースイメ
 
 #### ▼ stackdriverプラグインとは
 
-ログをCloudLoggingにルーティングする。
+ログをCloud Loggingにルーティングする。
 
 #### ▼ セットアップ
 
 FluentBitはデフォルトでstackdriverプラグインを持つ。
 
-つまり、特に追加のセットアップなくCloudLoggingにログをルーティングできる。
+つまり、特に追加のセットアップなくCloud Loggingにログをルーティングできる。
 
 ```bash
 [OUTPUT]

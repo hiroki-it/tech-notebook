@@ -70,7 +70,7 @@ JSON型で表すが、拡張子が`json`であるというわけでないこと�
 例えば、ログ監視バックエンドでこのログをクエリしさえすれば、リクエストの経路がわかる。
 
 ```bash
-# CloudLoggingでログをクエリする
+# Cloud Loggingでログをクエリする
 jsonPayload.traceId="<トレースID>"
 ```
 

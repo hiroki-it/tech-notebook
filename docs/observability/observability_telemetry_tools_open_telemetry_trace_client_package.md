@@ -932,7 +932,7 @@ func main()  {
 
 ### Exporterとは
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google CloudTrace、OpenTelemetry Collector、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collector、など) を決める処理を持つ。
 
 <br>
 
@@ -970,9 +970,9 @@ Jaegerをスパンの宛先とする。
 
 AWS X-Rayをスパンの宛先とする。
 
-#### ▼ Google CloudTrace Exporter
+#### ▼ Google Cloud Trace Exporter
 
-Google CloudTraceをスパンの宛先とする。
+Google Cloud Traceをスパンの宛先とする。
 
 例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
 

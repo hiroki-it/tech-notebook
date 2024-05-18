@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudLogging＠Google Cloudリソース
-description: CloudLogging＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Cloud Logging＠Google Cloudリソース
+description: Cloud Logging＠Google Cloudリソースの知見を記録しています。
 ---
 
-# CloudLogging＠Google Cloudリソース
+# Cloud Logging＠Google Cloudリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: CloudLogging＠Google Cloudリソースの知見を記録してい�
 
 <br>
 
-## 01. CloudLoggingとは
+## 01. Cloud Loggingとは
 
 記入中...
 
@@ -25,7 +25,7 @@ description: CloudLogging＠Google Cloudリソースの知見を記録してい�
 
 ログを収集/保管できる。
 
-CloudLoggingでログを処理するためのAPI (`logging.googleapis.com`) を公開している。
+Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を公開している。
 
 | 項目                   | 説明                                                                                                                                       |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -55,7 +55,7 @@ CloudLoggingでログを処理するためのAPI (`logging.googleapis.com`) を�
 
 #### ▼ ログシンク
 
-ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、) にログイベントを送信する。
+ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring、など) にログイベントを送信する。
 
 ![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png)
 
@@ -78,10 +78,10 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 #### ▼ 種類
 
-| フィールド                   | 説明                                                                                                                                                                                                                                                                                        | 例  |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| `severity`                   | ログの重要度レベルを持つ。                                                                                                                                                                                                                                                                  |     |
-| `jsonPayload`、`textPayload` | `message`キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は`message`キーは省略される場合がある)。CloudLoggingは、ログの構造を自動的に認識する。ログが`jsonPayload`キーの場合、 `message`キー配下のログは構造化ログである。一方で`textPayload`キーの場合、非構造化ログである。 |
+| フィールド                   | 説明                                                                                                                                                                                                                                                                                         | 例  |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| `severity`                   | ログの重要度レベルを持つ。                                                                                                                                                                                                                                                                   |     |
+| `jsonPayload`、`textPayload` | `message`キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は`message`キーは省略される場合がある)。Cloud Loggingは、ログの構造を自動的に認識する。ログが`jsonPayload`キーの場合、 `message`キー配下のログは構造化ログである。一方で`textPayload`キーの場合、非構造化ログである。 |
 
 **＊例＊**
 
