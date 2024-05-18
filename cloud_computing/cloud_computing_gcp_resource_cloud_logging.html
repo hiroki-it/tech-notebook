@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="CloudLogging＠Google Cloudリソースの知見を記録しています。">
+        <meta name="description" content="Cloud Logging＠Google Cloudリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】CloudLogging＠Google Cloudリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Cloud Logging＠Google Cloudリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloudlogginggoogle-cloud" class="md-skip">
+        <a href="#cloud-logginggoogle-cloud" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】CloudLogging＠Google Cloudリソース
+              【IT技術の知見】Cloud Logging＠Google Cloudリソース
             
           </span>
         </div>
@@ -12253,9 +12253,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-cloudlogging" class="md-nav__link">
+  <a href="#01-cloud-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CloudLoggingとは
+      01. Cloud Loggingとは
     </span>
   </a>
   
@@ -22347,9 +22347,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-cloudlogging" class="md-nav__link">
+  <a href="#01-cloud-logging" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CloudLoggingとは
+      01. Cloud Loggingとは
     </span>
   </a>
   
@@ -22619,7 +22619,7 @@
   
 
 
-<h1 id="cloudlogginggoogle-cloud">CloudLogging＠Google Cloudリソース<a class="headerlink" href="#cloudlogginggoogle-cloud" title="Permanent link">&para;</a></h1>
+<h1 id="cloud-logginggoogle-cloud">Cloud Logging＠Google Cloudリソース<a class="headerlink" href="#cloud-logginggoogle-cloud" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22628,13 +22628,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-cloudlogging">01. CloudLoggingとは<a class="headerlink" href="#01-cloudlogging" title="Permanent link">&para;</a></h2>
+<h2 id="01-cloud-logging">01. Cloud Loggingとは<a class="headerlink" href="#01-cloud-logging" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>ログを収集/保管できる。</p>
-<p>CloudLoggingでログを処理するためのAPI (<code>logging.googleapis.com</code>) を公開している。</p>
+<p>Cloud Loggingでログを処理するためのAPI (<code>logging.googleapis.com</code>) を公開している。</p>
 <table>
 <thead>
 <tr>
@@ -22676,7 +22676,7 @@
 <p><br></p>
 <h3 id="_6">ログルーター<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ログシンク<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、) にログイベントを送信する。</p>
+<p>ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring、など) にログイベントを送信する。</p>
 <p><img alt="google_cloud_logging" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png" /></p>
 <blockquote>
 <ul>
@@ -22708,7 +22708,7 @@
 </tr>
 <tr>
 <td><code>jsonPayload</code>、<code>textPayload</code></td>
-<td><code>message</code>キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は<code>message</code>キーは省略される場合がある)。CloudLoggingは、ログの構造を自動的に認識する。ログが<code>jsonPayload</code>キーの場合、 <code>message</code>キー配下のログは構造化ログである。一方で<code>textPayload</code>キーの場合、非構造化ログである。</td>
+<td><code>message</code>キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は<code>message</code>キーは省略される場合がある)。Cloud Loggingは、ログの構造を自動的に認識する。ログが<code>jsonPayload</code>キーの場合、 <code>message</code>キー配下のログは構造化ログである。一方で<code>textPayload</code>キーの場合、非構造化ログである。</td>
 <td></td>
 </tr>
 </tbody>
@@ -22866,7 +22866,7 @@ jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">&quot;Passt
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-18</span>
   </span>
 
     
