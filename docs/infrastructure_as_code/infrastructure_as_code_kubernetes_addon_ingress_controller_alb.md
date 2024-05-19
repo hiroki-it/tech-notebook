@@ -21,7 +21,7 @@ AWS Load Balancerコントローラーは、aws-load-balancer-controller、Targe
 
 aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。
 
-その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐付ける。
+その後、TargetGroupBindingの設定値を経由して、ALBのターゲットグループとIngressを紐付ける。
 
 これらにより、Cluster外からのリクエストをPodにルーティングできるようにする。
 
@@ -290,7 +290,7 @@ AWS Load Balancerコントローラーのセットアップのうち、Kubernete
 
      この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐付ける。
 
-     IRSAの仕組みにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
+     IRSAの仕組みにより、ServiceAccountを経由してPodとAWS IAMロールが紐づく。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
@@ -425,7 +425,7 @@ spec:
 
 Webhookの宛先のServiceを決定する。
 
-Serviceを介して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。
+Serviceを経由して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。
 
 このwebhookサーバーがAdmissionResponseを作成し、これをkube-apiserverに返信する。
 

@@ -174,7 +174,7 @@ spec:
 
 waypoint-proxyのEnvoyの`L7`処理で
 
-1. inbound_CONNECT_terminate Listener：HBORNを介したリクエストを受信する
+1. inbound_CONNECT_terminate Listener：HBORNを経由したリクエストを受信する
 2. Internal Inbound VIP Cluster：Inbound VIP Listenerにルーティングする
 3. Inbound VIP Listener：VirtualServiceのルーティングポリシーを適用する
 4. Inbound VIP Cluster：Inbound Pod Listenerにロードバランシングする

@@ -68,7 +68,7 @@ description: Lambda＠AWSリソース
 
 Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境から構成されている。
 
-関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。
+関数は実行環境に存在し、ランタイムAPIを経由して、Lambdaによって実行される。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle>
 
@@ -88,9 +88,9 @@ Lambdaが発火する。
 
 Lambdaは関数を実行する。
 
-実行環境側のランタイムは、APIを介してLambdaから関数に引数を渡す。
+実行環境側のランタイムは、APIを経由してLambdaから関数に引数を渡す。
 
-また関数の実行後に、APIを介して返却値をLambdaに渡す。
+また関数の実行後に、APIを経由して返却値をLambdaに渡す。
 
 #### ▼ Shutdownフェーズ
 

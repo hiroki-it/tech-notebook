@@ -415,7 +415,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 `(3)`
 
-: しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。
+: しばらくすると、kube-controllerは、kube-apiserverを経由してetcdにwatchイベントを送信する。
 
     kube-controllerは、etcdとNode上のKubernetesリソースの間に差分があることを検知する。さらに、kube-schedulerにPodのスケジューリングをコールする。
 
@@ -429,7 +429,7 @@ kube-apiserverは、クライアントからKubernetesリソースの作成/更�
 
 `(6)`
 
-: しばらくすると、kube-controllerは、kube-apiserverを介してetcdにwatchイベントを送信する。
+: しばらくすると、kube-controllerは、kube-apiserverを経由してetcdにwatchイベントを送信する。
 
     kube-controllerは、バインディング情報が永続化されたことを検知する。さらに、etcdのバインディング情報に基づいて、特定のNode上のkubeletにPodの作成をコールする。
 
@@ -527,7 +527,7 @@ $ kube-controller-manager \
 
 #### ▼ kube-controllerとは
 
-kube-controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+kube-controllerは、kube-apiserverを経由して、etcdにwatchイベントを送信している。
 
 Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
 

@@ -65,7 +65,7 @@ OpenTelemetryクライアントのProcessorと同じである。
 
 OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
 
-また、OpenTelemetryのスキーマ (`semconv`パッケージ) を介して、スパンのデータ構造を変換する。
+また、OpenTelemetryのスキーマ (`semconv`パッケージ) を経由して、スパンのデータ構造を変換する。
 
 OpenTelemetryクライアントのExporterと同じである。
 
@@ -184,7 +184,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンとは
 
-テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを介してテレメトリーを収集する。
+テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを経由してテレメトリーを収集する。
 
 さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。
 
@@ -420,7 +420,7 @@ spec:
 
 カスタムリソースを使用して、OpenTelemetryを定義することもできる。
 
-この場合、OpenTelemetry OperatorがInitContainerを介して、アプリコンテナにOpenTelemetryの実装を挿入する。
+この場合、OpenTelemetry OperatorがInitContainerを経由して、アプリコンテナにOpenTelemetryの実装を挿入する。
 
 > - https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377
 > - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52

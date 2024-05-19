@@ -207,7 +207,7 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 
 プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
-repo-serverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
+repo-serverは、VolumeのUnixドメインソケットを経由して、`cmp-server`コンテナのプラグインの実行をコールする。
 
 ArgoCD公式ではサイドカーのベースイメージが用意されていない。
 
@@ -474,7 +474,7 @@ spec:
       volumeMounts:
         # Helmのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/helm
-          # Podの共有Volumeを介して、コンテナ内でHelmを使用する。
+          # Podの共有Volumeを経由して、コンテナ内でHelmを使用する。
           name: custom-tools
 
       ...
@@ -563,14 +563,14 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: argocd-cmp-cm
           subPath: helmfile.yaml
-        # Podの共有Volumeを介して、コンテナ内でHelmfileを使用する。
+        # Podの共有Volumeを経由して、コンテナ内でHelmfileを使用する。
         - mountPath: /usr/local/bin
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
         - mountPath: /helm-working-dir
           name: helmfile-working-dir
-        # Podの共有Volumeを介して、コンテナ内でhelmプラグインを使用する。
+        # Podの共有Volumeを経由して、コンテナ内でhelmプラグインを使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -773,7 +773,7 @@ spec:
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
-        # Podの共有Volumeを介して、コンテナ内でhelm-secretsを使用する。
+        # Podの共有Volumeを経由して、コンテナ内でhelm-secretsを使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -1087,7 +1087,7 @@ spec:
       volumeMounts:
         # Kustomizeのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/kustomize
-          # Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。
+          # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
           name: custom-tools
           subPath: kustomize
 
@@ -1205,7 +1205,7 @@ spec:
         - name: XDG_CONFIG_HOME
           value: /.config
       volumeMounts:
-        # Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。
+        # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
         - name: custom-tools
           # Kustomizeのバイナリファイルを置くパスを指定する。
           # ArgoCDにデフォルトでインストールされたKustomizeを上書きする

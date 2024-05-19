@@ -104,11 +104,11 @@ Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実�
 
 #### ▼ cluster-operator
 
-cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。
+cluster-operatorは、kube-apiserverを経由して、etcdにwatchイベントを送信している。
 
-Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
+Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
 
-Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。
+Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを経由してAnthos GKE Cluster上のkubeletをコールすることになる。
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 
@@ -150,7 +150,7 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、Google CloudのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを経由してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
@@ -168,7 +168,7 @@ Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる�
 
 マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
-Google CloudのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
@@ -181,7 +181,7 @@ Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる�
 
 スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、Google CloudのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
 Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
@@ -236,7 +236,7 @@ Google Cloud環境上にAnthos GKE Clusterを作成する。
 
 ### on-クラウドプロバイダーの仕組み
 
-Google CloudのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
 
 ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKS、など) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 

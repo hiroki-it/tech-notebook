@@ -409,7 +409,7 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 `(7)`
 
-: 待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに`SIGTERM`シグナルを送信する。
+: 待機処理が終了したため、kubeletは、コンテナランタイムを経由して、Pod内のコンテナに`SIGTERM`シグナルを送信する。
 
      これにより、コンテナの停止処理が開始する。
 
@@ -451,7 +451,7 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 `(3)`
 
-: kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリを読み込む。Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
+: kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリを読み込む。Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
@@ -765,7 +765,7 @@ DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWo
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
 
-`L4`ロードバランサーとして、Serviceに対する通信を、Cluster-IPを介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、Cluster-IPを経由してPodにルーティングする。
 
 Cluster-IPはServiceの`.spec.clusterIP`キーで指定しない限りランダムで決まり、Podの`/etc/resolv.conf `ファイルに記載されている。
 
@@ -809,7 +809,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
 
-`L4`ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を経由してPodにルーティングする。
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。
 
@@ -840,7 +840,7 @@ Pod
 
 ただし、NodePort Serviceは内部的にCluster-IPを使っている。
 
-そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。
+そのため、Ingressを作成するとNodePort ServiceのCluster-IPを経由してPodにルーティングする。
 
 この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめた方が良い。
 
@@ -870,7 +870,7 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
 
-`L4`ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを経由してPodにルーティングする。
 
 External-IPはNode外から宛先IPアドレスとして指定できる。
 
@@ -1274,7 +1274,7 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 
 外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
 
-StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。
+StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。
 
 また、外部ストレージを使用する場合には、CSIドライバーも必要である。
 

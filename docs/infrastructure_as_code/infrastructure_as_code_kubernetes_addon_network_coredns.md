@@ -273,7 +273,7 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 : 両方のポート番号が一致しているかを確認する。
 
-#### ▼ Serviceを介したアウトバウンド通信の送信
+#### ▼ Serviceを経由したアウトバウンド通信の送信
 
 Serviceを介して、宛先のPodにHTTPSリクエストを送信する。
 

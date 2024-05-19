@@ -95,7 +95,7 @@ GET http://127.0.0.1:8080
 
 Unixで使用されるソケットのこと。
 
-ソケットファイルを介して、同じOS上のプロセス間でパケットを送受信する。
+ソケットファイルを経由して、同じOS上のプロセス間でパケットを送受信する。
 
 ![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
@@ -125,7 +125,7 @@ unix://./etc/foo.sock
 
 同じOS上のプロセス間でメッセージを仲介する。
 
-異なるOS間のメッセージを仲介する時は、ミドルウェアとしてのメッセージキューを使用する。
+異なるOS間のメッセージを仲介する時は、ミドルウェアとしてのメッセージキューを経由する。
 
 > - https://en.wikipedia.org/wiki/Message_queue
 

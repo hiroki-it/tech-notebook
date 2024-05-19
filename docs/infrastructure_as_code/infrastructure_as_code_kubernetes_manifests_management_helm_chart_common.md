@@ -58,7 +58,7 @@ $ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-namespace-
 $ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-name-
 ```
 
-補足として、ArgoCDを介してHelmを使用する場合、内部的には`kubectl apply`コマンドと同様の処理を実行しているため、この`meta.helm.sh`キーはない。
+補足として、ArgoCDを経由してHelmを使用する場合、内部的には`kubectl apply`コマンドと同様の処理を実行しているため、この`meta.helm.sh`キーはない。
 
 #### ▼ 種類
 
