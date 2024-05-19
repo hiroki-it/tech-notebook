@@ -164,9 +164,15 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 #### ▼ 自前で実装する場合
 
+ステートマシンとしてモデリングすることになる。
+
+オーケストレーターは、現在の進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBやログに都度記録する。
+
 **＊実装例＊**
 
 オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。
+
+オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。
 
 オーケストレーターサービスは、Orderサービス (`T1`) 、Inventryサービス (`T2`) 、Paymentサービス (`T3`) 、のローカルトランザクションを連続して実行する。
 
@@ -175,16 +181,21 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 ![saga-pattern_orchestrator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png)
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation
+> - https://dzone.com/articles/modelling-saga-as-a-state-machine
 
 #### ▼ OSSを使用する場合
 
 オーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。
+
+ステートマシンとしてモデリングすることになる。
 
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
 クラウドプロバイダー (例：AWS、Google Cloud) が提供するオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。
+
+ステートマシンとしてモデリングすることになる。
 
 <br>
 
@@ -193,8 +204,6 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 #### ▼ メッセージブローカーを使わない場合
 
 メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。
-
-この場合、オーケストレーターは現在の進捗度 (いずれのローカルトランザクションを実行し終えたか) をDBやログに都度記録する。
 
 現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。
 
