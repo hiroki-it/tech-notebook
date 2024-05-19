@@ -1824,7 +1824,7 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを使用しない場合
+      ▼ メッセージブローカーを介さない場合
     </span>
   </a>
   
@@ -1833,7 +1833,7 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを使用する場合
+      ▼ メッセージブローカーを介す場合
     </span>
   </a>
   
@@ -22987,7 +22987,7 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを使用しない場合
+      ▼ メッセージブローカーを介さない場合
     </span>
   </a>
   
@@ -22996,7 +22996,7 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを使用する場合
+      ▼ メッセージブローカーを介す場合
     </span>
   </a>
   
@@ -23424,9 +23424,9 @@
 <p>ステートマシンとしてモデリングすることになる。</p>
 <p><br></p>
 <h3 id="_13">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<h4 id="_14">▼ メッセージブローカーを使用しない場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ メッセージブローカーを介さない場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。</p>
-<p>メッセージブローカーを使用するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。</p>
+<p>メッセージブローカーを経由するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。</p>
 <p>現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
 <blockquote>
 <ul>
@@ -23437,7 +23437,7 @@
 <li><a href="https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams">https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams</a></li>
 </ul>
 </blockquote>
-<h4 id="_15">▼ メッセージブローカーを使用する場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ メッセージブローカーを介す場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
 <p>オーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
 <p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>

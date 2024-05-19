@@ -23348,7 +23348,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 </code></pre></div>
 <h4 id="_6">▼ サイドカーを配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プラグインを実行するサイドカー (<code>cmp-server</code>コンテナ) を配置する。</p>
-<p>repo-serverは、VolumeのUnixドメインソケットを介して、<code>cmp-server</code>コンテナのプラグインの実行をコールする。</p>
+<p>repo-serverは、VolumeのUnixドメインソケットを経由して、<code>cmp-server</code>コンテナのプラグインの実行をコールする。</p>
 <p>ArgoCD公式ではサイドカーのベースイメージが用意されていない。</p>
 <p>サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) とするかを選ぶことができ、いくつかのツール (
 例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。</p>
@@ -23620,7 +23620,7 @@ Flags:
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Helmのバイナリファイルを置くパスを指定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/helm</span>
-<span class="w">          </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でHelmを使用する。</span>
+<span class="w">          </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でHelmを使用する。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -23695,14 +23695,14 @@ Flags:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/argocd/cmp-server/config/plugin.yaml</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmp-cm</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile.yaml</span>
-<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でHelmfileを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でHelmfileを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile-working-dir</span>
-<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でhelmプラグインを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でhelmプラグインを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 
@@ -23893,7 +23893,7 @@ Flags:
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
-<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でhelm-secretsを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でhelm-secretsを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 
@@ -24168,7 +24168,7 @@ Flags:
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Kustomizeのバイナリファイルを置くパスを指定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
-<span class="w">          </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。</span>
+<span class="w">          </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
 
@@ -24266,7 +24266,7 @@ Flags:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XDG_CONFIG_HOME</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/.config</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="c1"># Kustomizeのバイナリファイルを置くパスを指定する。</span>
 <span class="w">          </span><span class="c1"># ArgoCDにデフォルトでインストールされたKustomizeを上書きする</span>
@@ -24503,7 +24503,7 @@ Flags:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     

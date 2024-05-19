@@ -11388,7 +11388,7 @@
           <li class="md-nav__item">
   <a href="#aws-auth-configmap-kubernetes-rbac" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ aws-auth (ConfigMap) を介したKubernetes RBACとの連携
+      ▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携
     </span>
   </a>
   
@@ -11397,7 +11397,7 @@
           <li class="md-nav__item">
   <a href="#iamkubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作
+      ▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
     </span>
   </a>
   
@@ -23476,7 +23476,7 @@
           <li class="md-nav__item">
   <a href="#aws-auth-configmap-kubernetes-rbac" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ aws-auth (ConfigMap) を介したKubernetes RBACとの連携
+      ▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携
     </span>
   </a>
   
@@ -23485,7 +23485,7 @@
           <li class="md-nav__item">
   <a href="#iamkubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作
+      ▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作
     </span>
   </a>
   
@@ -24791,9 +24791,9 @@
 <p>コントロールプレーンNodeは、ユーザーの管理外のVPCに所属している。</p>
 <p><br></p>
 <h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
-<h4 id="aws-auth-configmap-kubernetes-rbac">▼ aws-auth (ConfigMap) を介したKubernetes RBACとの連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h4>
+<h4 id="aws-auth-configmap-kubernetes-rbac">▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h4>
 <p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png" /></p>
-<p>ConfigMapを介して、KubernetesのRBACと連携することにより、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
+<p>ConfigMapを経由して、KubernetesのRBACと連携することにより、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
 <p>Kubernetesリソースの認可スコープは、IRSAで制御する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -24844,7 +24844,7 @@
 <dt><code>(6)</code></dt>
 <dd>
 <p>あとは、Kubernetesの標準の認可の仕組みである。</p>
-<p>kube-apiserverは、UserAccount / ServiceAccount / Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを介して取得する。</p>
+<p>kube-apiserverは、UserAccount / ServiceAccount / Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。</p>
 <p>IAMユーザーは、Kubernetesリソースを操作できる。</p>
 </dd>
 </dl>
@@ -24857,10 +24857,10 @@
 <li><a href="https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88">https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88</a></li>
 </ul>
 </blockquote>
-<h4 id="iamkubernetes-cluster">▼ プリンシパルIAMロールとアクセスエントリーを介したKubernetes Clusterの操作<a class="headerlink" href="#iamkubernetes-cluster" title="Permanent link">&para;</a></h4>
+<h4 id="iamkubernetes-cluster">▼ プリンシパルIAMロールとアクセスエントリーを経由したKubernetes Clusterの操作<a class="headerlink" href="#iamkubernetes-cluster" title="Permanent link">&para;</a></h4>
 <p>プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。</p>
 <p>プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。</p>
-<p>プリンシパルIAMロールとアクセスエントリーを介して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
+<p>プリンシパルIAMロールとアクセスエントリーを経由して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/">https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/</a></li>
@@ -25374,7 +25374,7 @@
 <h3 id="node_4">コントロールプレーンとワーカーNodeのネットワーク<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンはVPC外にあり、ワーカーNodeはVPC内にある。</p>
 <p><code>kubectl</code>コマンドやワーカーNodeからのリクエストのエンドポイントとしてNLBが配置されている。</p>
-<p>このNLBを介して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
+<p>このNLBを経由して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
 <p>VPC外からNLBへの<code>443</code>番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
 <p><img alt="eks_control-plane_worker_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png" /></p>
 <blockquote>
@@ -25386,7 +25386,7 @@
 <h3 id="_18">クラスターエンドポイントのリクエスト制限<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パブリックのみの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。</p>
-<p>プライベートサブネット内にワーカーNodeがある場合、NAT Gatewayを介して、kube-apiserverにリクエストを送信することになる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access">https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access</a></li>
@@ -25396,8 +25396,8 @@
 <p>パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。</p>
 <p>プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。</p>
 <ul>
-<li>NAT Gatewayを介して、NAT Gatewayを介して、パブリック制限を通過する</li>
-<li>ENI (Interface型のVPCエンドポイント) を介して、プライベート制限を通過する</li>
+<li>NAT Gatewayを経由して、NAT Gatewayを経由して、パブリック制限を通過する</li>
+<li>ENI (Interface型のVPCエンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
 <p>VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDB、など) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
@@ -25456,7 +25456,7 @@
 </blockquote>
 <h4 id="_21">▼ プライベートのみの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
-<p>プライベートサブネット内にワーカーNodeがある場合、VPCエンドポイントを介して、kube-apiserverにリクエストを送信することになる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、VPCエンドポイントを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。</p>
 <table>
 <thead>
@@ -26246,7 +26246,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <h3 id="_34">アップグレードとは<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <p>EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。</p>
 <p>AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。</p>
-<p>執筆時点 (2022/01/28) では、AWSのAPIを介して<code>updateConfig</code>値を設定すれば、アップグレード時のサージ数を設定できる。</p>
+<p>執筆時点 (2022/01/28) では、AWSのAPIを経由して<code>updateConfig</code>値を設定すれば、アップグレード時のサージ数を設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html</a></li>
@@ -26336,7 +26336,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     

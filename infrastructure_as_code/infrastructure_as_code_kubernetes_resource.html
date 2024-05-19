@@ -25478,7 +25478,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>待機処理が終了したため、kubeletは、コンテナランタイムを介して、Pod内のコンテナに<code>SIGTERM</code>シグナルを送信する。</p>
+<p>待機処理が終了したため、kubeletは、コンテナランタイムを経由して、Pod内のコンテナに<code>SIGTERM</code>シグナルを送信する。</p>
 <p>これにより、コンテナの停止処理が開始する。</p>
 </dd>
 <dt><code>(8)</code></dt>
@@ -25536,7 +25536,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>kubeletはリクエストを受信し、Nodeの<code>/var/log</code>ディレクトリを読み込む。Nodeの<code>/var/log/pods/&lt;Namespace名&gt;_&lt;Pod名&gt;_&lt;UID&gt;/container/&lt;数字&gt;.log</code>ファイルは、Pod内のコンテナの<code>/var/lib/docker/container/&lt;ID&gt;/&lt;ID&gt;-json.log</code>ファイルへのシンボリックリンクになっているため、kubeletを介して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き<code>/var/log/pods</code>ディレクトリ配下に保管されている。</p>
+<p>kubeletはリクエストを受信し、Nodeの<code>/var/log</code>ディレクトリを読み込む。Nodeの<code>/var/log/pods/&lt;Namespace名&gt;_&lt;Pod名&gt;_&lt;UID&gt;/container/&lt;数字&gt;.log</code>ファイルは、Pod内のコンテナの<code>/var/lib/docker/container/&lt;ID&gt;/&lt;ID&gt;-json.log</code>ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き<code>/var/log/pods</code>ディレクトリ配下に保管されている。</p>
 </dd>
 </dl>
 <p><img alt="kubernetes_pod_logging" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png" /></p>
@@ -25781,7 +25781,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、Cluster-IPを介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、Cluster-IPを経由してPodにルーティングする。</p>
 <p>Cluster-IPはServiceの<code>.spec.clusterIP</code>キーで指定しない限りランダムで決まり、Podの<code>/etc/resolv.conf</code>ファイルに記載されている。</p>
 <p>Pod内に複数のコンテナがある場合、各コンテナに同じ内容の<code>/etc/resolv.conf</code>ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -25815,7 +25815,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を経由してPodにルーティングする。</p>
 <p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
@@ -25838,7 +25838,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>ただし、NodePort Serviceは内部的にCluster-IPを使っている。</p>
-<p>そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。</p>
+<p>そのため、Ingressを作成するとNodePort ServiceのCluster-IPを経由してPodにルーティングする。</p>
 <p>この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめた方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
@@ -25861,7 +25861,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="loadbalancer-service">▼ LoadBalancer Service<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを経由してPodにルーティングする。</p>
 <p>External-IPはNode外から宛先IPアドレスとして指定できる。</p>
 <p>そのため、通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -26291,7 +26291,7 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 </blockquote>
 <h4 id="volume">▼ 外部サービスのVolume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h4>
 <p>外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。</p>
-<p>StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。</p>
+<p>StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。</p>
 <p>また、外部ストレージを使用する場合には、CSIドライバーも必要である。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p><br></p>
@@ -26743,7 +26743,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     

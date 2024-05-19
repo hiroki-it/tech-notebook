@@ -23030,7 +23030,7 @@
 <p>コンソール画面のLambdaに相当する。</p>
 <h4 id="_5">▼ 関数の実行環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境から構成されている。</p>
-<p>関数は実行環境に存在し、ランタイムAPIを介して、Lambdaによって実行される。</p>
+<p>関数は実行環境に存在し、ランタイムAPIを経由して、Lambdaによって実行される。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle">https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle</a>&gt;</li>
@@ -23048,8 +23048,8 @@
 <p>実行環境が作成され、関数を実行するための準備が行われる。</p>
 <h4 id="invoke">▼ Invokeフェーズ<a class="headerlink" href="#invoke" title="Permanent link">&para;</a></h4>
 <p>Lambdaは関数を実行する。</p>
-<p>実行環境側のランタイムは、APIを介してLambdaから関数に引数を渡す。</p>
-<p>また関数の実行後に、APIを介して返却値をLambdaに渡す。</p>
+<p>実行環境側のランタイムは、APIを経由してLambdaから関数に引数を渡す。</p>
+<p>また関数の実行後に、APIを経由して返却値をLambdaに渡す。</p>
 <h4 id="shutdown">▼ Shutdownフェーズ<a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h4>
 <p>一定期間、Invokeフェーズにおける関数実行が行われなかった場合、Lambdaはランタイムを完了し、実行環境を削除する。</p>
 <p><br></p>
@@ -23285,7 +23285,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     

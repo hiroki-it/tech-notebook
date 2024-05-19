@@ -22602,7 +22602,7 @@
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>AWS Load Balancerコントローラーは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。</p>
 <p>aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。</p>
-<p>その後、TargetGroupBindingの設定値を介して、ALBのターゲットグループとIngressを紐付ける。</p>
+<p>その後、TargetGroupBindingの設定値を経由して、ALBのターゲットグループとIngressを紐付ける。</p>
 <p>これらにより、Cluster外からのリクエストをPodにルーティングできるようにする。</p>
 <p><img alt="aws_load_balancer_controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png" /></p>
 <blockquote>
@@ -22846,7 +22846,7 @@ kube-system<span class="w">     </span>foo-aws-load-balancer-controller<span cla
 <dd>
 <p>指定したリージョンにAWS Load Balancerコントローラーをデプロイする。</p>
 <p>この時、事前にマニフェストや<code>eksclt create iamserviceaccount</code>コマンドで作成したServiceAcountをALBに紐付ける。</p>
-<p>IRSAの仕組みにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。</p>
+<p>IRSAの仕組みにより、ServiceAccountを経由してPodとAWS IAMロールが紐づく。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://aws.github.io/eks-charts
@@ -22972,7 +22972,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <p><br></p>
 <h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h3>
 <p>Webhookの宛先のServiceを決定する。</p>
-<p>Serviceを介して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。</p>
+<p>Serviceを経由して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookを送信する。</p>
 <p>このwebhookサーバーがAdmissionResponseを作成し、これをkube-apiserverに返信する。</p>
 <p>AdmissionResponseに応じて、kube-apiserverはマニフェストを変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
@@ -23119,7 +23119,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     

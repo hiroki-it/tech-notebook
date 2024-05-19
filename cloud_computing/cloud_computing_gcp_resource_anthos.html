@@ -23111,9 +23111,9 @@
 </ul>
 </blockquote>
 <h4 id="cluster-operator">▼ cluster-operator<a class="headerlink" href="#cluster-operator" title="Permanent link">&para;</a></h4>
-<p>cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。</p>
-<p>Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。</p>
-<p>Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。</p>
+<p>cluster-operatorは、kube-apiserverを経由して、etcdにwatchイベントを送信している。</p>
+<p>Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。</p>
+<p>Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを経由してAnthos GKE Cluster上のkubeletをコールすることになる。</p>
 <p>またkube-controller-managerはcluster-operatorを反復的に実行する。</p>
 <p>これにより、Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
 <blockquote>
@@ -23150,7 +23150,7 @@
 <h2 id="02-on-">02. on-オンプレミス<a class="headerlink" href="#02-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-">on-オンプレミスの仕組み<a class="headerlink" href="#on-" title="Permanent link">&para;</a></h3>
 <p>on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、Google CloudのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。</p>
+<p>ワークステーションにて、Google CloudのAPIを経由してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。</p>
 <p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_on-premises_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png" /></p>
 <blockquote>
@@ -23163,7 +23163,7 @@
 <h3 id="on-_1">on-ベアメタルの仕組み<a class="headerlink" href="#on-_1" title="Permanent link">&para;</a></h3>
 <h4 id="cluster_1">▼ マルチClusterタイプ<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
 <p>マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
-<p>Google CloudのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
+<p>Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
 <p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_bare-metal_multi-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png" /></p>
 <blockquote>
@@ -23174,7 +23174,7 @@
 </blockquote>
 <h4 id="cluster_2">▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
 <p>スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、Google CloudのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
+<p>ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
 <p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_bare-metal_standalone-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png" /></p>
 <blockquote>
@@ -23207,7 +23207,7 @@
 <p><br></p>
 <h2 id="02-04-on-">02-04. on-クラウドプロバイダー<a class="headerlink" href="#02-04-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-_2">on-クラウドプロバイダーの仕組み<a class="headerlink" href="#on-_2" title="Permanent link">&para;</a></h3>
-<p>Google CloudのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。</p>
+<p>Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。</p>
 <p>ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKS、など) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。</p>
 <p><img alt="anthos_on_cloud-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png" /></p>
 <p><br></p>
@@ -23258,7 +23258,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     
