@@ -15,7 +15,7 @@ description: Knative＠CNCFの知見を記録しています。
 
 ## 01. Knativeとは
 
-Knativeを使わない場合、イベント駆動関数の公開に必要なKubernetesリソース (例：Deployment、Service、Pod、など) をユーザーが作成し、関数を公開する。
+Knativeを使用しない場合、イベント駆動関数の公開に必要なKubernetesリソース (例：Deployment、Service、Pod、など) をユーザーが作成し、関数を公開する。
 
 一方で、Knativeであれば、イベント駆動関数の公開に必要なKubernetesリソースをフレームワークとして作成し、簡単にPodを公開できる。
 

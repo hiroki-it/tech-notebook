@@ -729,7 +729,7 @@ Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっ
 
 ServiceEntryには、Istio EgressGatewayが必須ではない。
 
-ただし、Istio EgressGatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう
+ただし、Istio EgressGatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう
 
 そのため、システムの安全性が低くなります。
 

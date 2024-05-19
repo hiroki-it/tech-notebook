@@ -379,7 +379,7 @@ Cronの処理結果を監視する。
 
 `curl`コマンドの代わりとしてRunitorを使用すると、標準出力/標準エラー出力の内容を人間がわかりやすいように整形してくれる。
 
-Runitorを使わない場合、Cronの標準出力/標準エラー出力の内容をそのままhealthchecks.ioに送信することになる。
+Runitorを使用しない場合、Cronの標準出力/標準エラー出力の内容をそのままhealthchecks.ioに送信することになる。
 
 ```bash
 # Runitorを介して、Cronの実行結果をHealthchecks.

@@ -909,7 +909,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 		// ミドルウェア処理
         // そのまま実装すると事前処理になる
-        // deferを使うと事後処理になる
+        // deferを使用すると事後処理になる
 
 		// 本来の処理
 		next.ServeHTTP(w, r)
@@ -2113,7 +2113,7 @@ Goroutineを宣言した関数が終了するまで、後続の処理の実行�
 
 Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
-単一のGoroutineを待機するのは順次実行と変わらないため、`WaitGroup`は使わない。
+単一のGoroutineを待機するのは順次実行と変わらないため、`WaitGroup`は使用しない。
 
 **実行例**
 

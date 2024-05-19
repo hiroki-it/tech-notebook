@@ -109,7 +109,7 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 ![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png)
 
-#### ▼ ElastiCacheを使わない場合
+#### ▼ ElastiCacheを使用しない場合
 
 アプリが特にコンテナの場合にアプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナがセッションデータを他のコンテナに引き継げずに、スケールイン/スケールアウトしてしまう。
 

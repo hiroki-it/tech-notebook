@@ -1248,7 +1248,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 		// 事前処理
 		// そのまま実装すると事前処理になる
-		// deferを使うと事後処理になる
+		// deferを使用すると事後処理になる
 
 		// 本来の処理
 		next.ServeHTTP(w, r)

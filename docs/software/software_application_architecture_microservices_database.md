@@ -166,7 +166,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ステートマシンとしてモデリングすることになる。
 
-オーケストレーターは、現在の進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBやログに都度記録する。
+オーケストレーターは、現在の進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBや実行ログに都度記録する。
 
 **＊実装例＊**
 
@@ -201,9 +201,11 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ### イベントのパブリッシュとサブスクライブの方式
 
-#### ▼ メッセージブローカーを使わない場合
+#### ▼ メッセージブローカーを使用しない場合
 
 メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。
+
+メッセージブローカーを使用するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。
 
 現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。
 
@@ -211,8 +213,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 > - https://www.baeldung.com/cs/saga-pattern-microservices
 > - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
 > - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
+> - https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams
 
-#### ▼ メッセージブローカーを使う場合
+#### ▼ メッセージブローカーを使用する場合
 
 メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。
 
@@ -288,7 +291,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-### イベントのパブリッシュとサブスクライブの責務
+### イベントのパブリッシュとサブスクライブの方式
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
 

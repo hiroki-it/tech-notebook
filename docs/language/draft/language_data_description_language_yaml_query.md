@@ -29,7 +29,7 @@ $ sudo chmod +x /usr/local/bin/yq
 
 ## 01-02. オプション
 
-### 例で使うYAML
+### 例で使用するYAML
 
 以降で使用するYAMLデータを以下の通りとする。
 

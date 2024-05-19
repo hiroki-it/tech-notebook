@@ -29,7 +29,7 @@ CI/CDパイプラインのステップをステージと呼ぶ。
 
 build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。
 
-ただし、Skaffoldは基本的には開発環境でしか使わないため、ユースケースが限定的なステージもある。
+ただし、Skaffoldは基本的には開発環境でしか使用しないため、ユースケースが限定的なステージもある。
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline.png)
 
@@ -127,7 +127,7 @@ build:
 
 ビルドしたコンテナイメージをリポジトリにプッシュするか否かを設定する。
 
-Skaffoldは基本的には開発環境でしか使わないため、これは無効化しておいた方が良い。
+Skaffoldは基本的には開発環境でしか使用しないため、これは無効化しておいた方が良い。
 
 ```yaml
 build:
