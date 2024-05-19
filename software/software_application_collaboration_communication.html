@@ -1654,7 +1654,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非同期通信とは
+      ▼ 非同期通信
     </span>
   </a>
   
@@ -1668,6 +1668,39 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
+      仲介コンポーネントで見た種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="仲介コンポーネントで見た種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ポイントツーポイントの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メッセージブローカーを経由する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
       通信方向で見た種類
     </span>
   </a>
@@ -1676,7 +1709,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 一方向
     </span>
@@ -1685,7 +1718,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 双方向
     </span>
@@ -1732,7 +1765,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       実装方法の種類
     </span>
@@ -22411,7 +22444,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非同期通信とは
+      ▼ 非同期通信
     </span>
   </a>
   
@@ -22425,6 +22458,39 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
+      仲介コンポーネントで見た種類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="仲介コンポーネントで見た種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ポイントツーポイントの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ メッセージブローカーを経由する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
       通信方向で見た種類
     </span>
   </a>
@@ -22433,7 +22499,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 一方向
     </span>
@@ -22442,7 +22508,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 双方向
     </span>
@@ -22489,7 +22555,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       実装方法の種類
     </span>
@@ -22698,17 +22764,37 @@
 <h3 id="_3">処理タイミングで見た種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 同期通信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>同期処理の一種である。</p>
-<h4 id="_5">▼ 非同期通信とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 非同期通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>非同期処理の一種である。</p>
-<p>そのため、リクエストの完了 (レスポンス) を待たずに後続の処理が開始する。</p>
+<p>そのため、リクエスト処理の完了 (レスポンス) を待たずに後続の処理が開始する。</p>
 <p>後続の全処理が非同期通信と無関係であれば、そのままで問題は起こらない。</p>
 <p>しかし、後続の処理に非同期通信の結果を使用するものが含まれている場合、この処理だけは非同期通信の後に実行されるように定義する必要がある。</p>
 <p><br></p>
-<h3 id="_6">通信方向で見た種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 一方向<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_6">仲介コンポーネントで見た種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ ポイントツーポイントの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>アプリ間で直接的に通信する。</p>
+<p>送信側のアプリはリクエスト送信し、受信側のアプリは同期的にリクエストを受信する。</p>
+<p>送信側のアプリは、受信側のアプリの障害を受けてしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>送信側のアプリはメッセージブローカーにリクエストを送信する。</p>
+<p>受信側のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。</p>
+<p>送信側のアプリは、受信側のアプリの障害を受けない。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_9">通信方向で見た種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 一方向<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>クライアントからサーバーにリクエストを送信する。</p>
 <p>サーバーからクライアントにリクエストを送信することはない。</p>
-<h4 id="_8">▼ 双方向<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ 双方向<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>クライアントとサーバー間が双方向でリクエストを送信し合う。</p>
 <ul>
 <li>gRPCの双方向ストリーミングRPC</li>
@@ -22774,7 +22860,7 @@
 </dd>
 </dl>
 <p><br></p>
-<h3 id="_9">実装方法の種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_12">実装方法の種類<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>歴史的に、Ajaxを実装するための方法がいくつかある。</p>
 <h4 id="xhr">▼ xhrオブジェクト<a class="headerlink" href="#xhr" title="Permanent link">&para;</a></h4>
 <p>JavaScriptのビルトインオブジェクトである。</p>
