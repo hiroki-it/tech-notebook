@@ -23397,18 +23397,23 @@
 <p><br></p>
 <h3 id="_10">実装パターン<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 自前で実装する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ステートマシンとしてモデリングすることになる。</p>
+<p>オーケストレーターは、現在の進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBやログに都度記録する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
+<p>オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
 <p>オーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
 <p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
 <p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation">https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation</a></li>
+<li><a href="https://dzone.com/articles/modelling-saga-as-a-state-machine">https://dzone.com/articles/modelling-saga-as-a-state-machine</a></li>
 </ul>
 </blockquote>
 <h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
 <p>オーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。</p>
+<p>ステートマシンとしてモデリングすることになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
@@ -23416,11 +23421,11 @@
 </blockquote>
 <h4 id="_12">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。</p>
+<p>ステートマシンとしてモデリングすることになる。</p>
 <p><br></p>
 <h3 id="_13">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ メッセージブローカーを使わない場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使わずにオーケストレーションベースのSagaパターンを実装する。</p>
-<p>この場合、オーケストレーターは現在の進捗度 (いずれのローカルトランザクションを実行し終えたか) をDBやログに都度記録する。</p>
 <p>現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
 <blockquote>
 <ul>
