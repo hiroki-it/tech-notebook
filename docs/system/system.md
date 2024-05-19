@@ -27,7 +27,7 @@ description: システムの知見を記録しています。
 
 ### 構成要素の関係性
 
-ユーザーの操作による命令が、ソフトウェアを介して、ハードウェアに伝わるまで、を以下に示す。
+ユーザーの操作による命令が、ソフトウェアを経由して、ハードウェアに伝わるまで、を以下に示す。
 
 ![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソフトウェアとハードウェア.png)
 

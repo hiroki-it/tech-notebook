@@ -27,12 +27,6 @@ description: ネットワーク＠マイクロサービスアーキテクチャ�
 
 また、マイクロサービス間で直接的にリクエストを送受信することになる。
 
-> - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
-
-#### ▼ メッセージブローカーを経由しない場合
-
-メッセージブローカーを経由せずに、直接的にマイクロサービス間で通信する。
-
 使用することのできる通信プロトコルは以下の通りである。
 
 | プロコトル   | 説明                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -40,9 +34,24 @@ description: ネットワーク＠マイクロサービスアーキテクチャ�
 | 従来のTCP/IP | 従来のTCP/IPプロトコルを使用する。                                                                                                                                                                                                                                                                                                                                                                           |
 | gRPC         | HTTP/`1.1`に代わるHTTP/`2.0` (例：gRPCなど) を使用する。HTTPプロトコルであると、通信相手のマイクロサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーのメソッドが実行される。一方でgRPCであると、通信相手のマイクロサービスのメソッドを直接的に実行できる。そのため、HTTPよりもマイクロサービスの連携に適している。<br>・https://techdozo.dev/grpc-for-microservices-communication/ |
 
+> - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
+
+#### ▼ ポイントツーポイントの場合
+
+マイクロサービス間で直接的に通信する。
+
+メッセージブローカーを経由するよりも、各マイクロサービスの結合度が高まってしまうが、マイクロサービスの実装が簡単になる。
+
+> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
+
 #### ▼ メッセージブローカーを経由する場合
 
+メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由してマイクロサービス間で通信する。
+
+ポイントツーポイントの場合よりも、各マイクロサービスの結合度が低くなるが、マイクロサービスの実装が難しくなる。
+
 > - https://jackynote.medium.com/message-brokers-pros-cons-and-their-crucial-role-in-microservice-3dc6c0df2e53
+> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
 
 <br>
 
@@ -59,9 +68,13 @@ description: ネットワーク＠マイクロサービスアーキテクチャ�
 > - https://en.wikipedia.org/wiki/Message_queue
 > - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
 
+#### ▼ ポイントツーポイントの場合
+
+このパターンは存在しない。
+
 #### ▼ メッセージブローカーを経由する場合
 
-イベント駆動方式では、メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を介してマイクロサービス間で通信する。
+メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由してマイクロサービス間で通信する。
 
 メッセージブローカーにより、マイクロサービスの通信の方向が一方向になるように制限できる。
 

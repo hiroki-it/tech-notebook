@@ -365,7 +365,7 @@ AWS間の通信の場合、パケットペイロードを自動的に暗号化�
 
 ### VPC Lattice
 
-異なるVPCのネットワークをVPC Latticeサービスネットワークを介して接続する。
+異なるVPCのネットワークをVPC Latticeサービスネットワークを経由して接続する。
 
 ![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 

@@ -17,19 +17,19 @@ description: リソース＠Istioの知見を記録しています。
 
 ### 一覧表
 
-|                                                                | リスナー |         ルート         | クラスター | エンドポイント |
-| -------------------------------------------------------------- | :------: | :--------------------: | :--------: | :------------: |
-| Kubernetes Service                                             |    ✅    |           ✅           |     ✅     |                |
-| Kubernetes Endpoints                                           |          |                        |            |       ✅       |
-| Istio Gateway                                                  |    ✅    |                        |            |                |
-| Istio VirtualService                                           |    ✅    | ✅<br>(HTTPの場合のみ) |            |                |
-| Istio DestinationRule                                          |          |                        |     ✅     |       ✅       |
-| Istio ServiceEntry                                             |          |                        |     ✅     |       ✅       |
-| Istio PeerAuthentication                                       |    ✅    |                        |     ✅     |                |
-| Istio RequestAuthentication                                    |    ✅    |                        |            |                |
-| Istio AuthorizationPolicies                                    |    ✅    |                        |            |                |
-| Istio EnvoyFilter<br>(Envoyのフィルターを介して各設定値に影響) |    ✅    |           ✅           |     ✅     |       ✅       |
-| Istio Sidecar                                                  |    ✅    |           ✅           |     ✅     |       ✅       |
+|                                                                  | リスナー |         ルート         | クラスター | エンドポイント |
+| ---------------------------------------------------------------- | :------: | :--------------------: | :--------: | :------------: |
+| Kubernetes Service                                               |    ✅    |           ✅           |     ✅     |                |
+| Kubernetes Endpoints                                             |          |                        |            |       ✅       |
+| Istio Gateway                                                    |    ✅    |                        |            |                |
+| Istio VirtualService                                             |    ✅    | ✅<br>(HTTPの場合のみ) |            |                |
+| Istio DestinationRule                                            |          |                        |     ✅     |       ✅       |
+| Istio ServiceEntry                                               |          |                        |     ✅     |       ✅       |
+| Istio PeerAuthentication                                         |    ✅    |                        |     ✅     |                |
+| Istio RequestAuthentication                                      |    ✅    |                        |            |                |
+| Istio AuthorizationPolicies                                      |    ✅    |                        |            |                |
+| Istio EnvoyFilter<br>(Envoyのフィルターを経由して各設定値に影響) |    ✅    |           ✅           |     ✅     |       ✅       |
+| Istio Sidecar                                                    |    ✅    |           ✅           |     ✅     |       ✅       |
 
 > - https://www.slideshare.net/AspenMesh/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down#19
 > - https://youtu.be/XAKY24b7XjQ?t=1131
