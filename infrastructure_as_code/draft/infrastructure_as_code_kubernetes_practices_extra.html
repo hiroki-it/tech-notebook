@@ -22238,7 +22238,7 @@
 |
 | 採用可能なオーケストレーター
 (2023/10時点) | kubeadm | AWS EKS、Google GKE | AWS EKS、Google GKE | AWS EKS、Google GKE |
-| 金銭コスト | 既存のNodeをそのまま使う。
+| 金銭コスト | 既存のNodeをそのまま使用する。
 そのため、既存のコストと変わらない。
 | 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。</p>
 <p>そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。 | 新Nodeグループを作成することでNodeが二倍になる。</p>
@@ -22533,7 +22533,7 @@
 <h3 id="_18">■ ストレージをサイジングする<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>Nodeグループにあったストレージを割り当てる。</p>
 <p>例えば、ArgoCDがストレージに永続化するデータ量は少ないため、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
-<p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。</p>
+<p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使用するにしても数日分は保管することになる)。</p>
 <h1 id="nodenode">コントロールプレーンNodeとワーカーNodeで共通のプラクティス<a class="headerlink" href="#nodenode" title="Permanent link">&para;</a></h1>
 <h2 id="_19">異なるゾーンに分散させる<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <hr />
@@ -22544,9 +22544,9 @@
 <ul>
 <li>OSは適切なの、くらいな表現になる</li>
 <li>CPUアーキテクチャ</li>
-<li>armが安いからarm使う</li>
-<li>マルチプラットフォームビルドを避けれるなら避けたいのでamdを使う、など</li>
-<li>ベースイメージにarm製が少ないから理由がなければamd使う</li>
+<li>armが安いからarm使用する</li>
+<li>マルチプラットフォームビルドを避けれるなら避けたいのでamdを使用する、など</li>
+<li>ベースイメージにarm製が少ないから理由がなければamd使用する</li>
 </ul>
 <h1 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h1>
 <h2 id="ingress_1">Ingressインバウンド通信を制限する<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h2>
@@ -22620,7 +22620,7 @@
 <h2 id="_22">ロードバランシングする<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
 <hr />
 <h3 id="l7">L7のプロトコルの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの上流にIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使わないIstio Ingress Gateway) を置く。</p>
+<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの上流にIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。</p>
 <p>L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/</a></p>
@@ -23082,7 +23082,7 @@ options ndots:5
 <p><a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d</a></p>
 <p><a href="https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05">https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05</a></p>
 </blockquote>
-<h2 id="initcontainer">InitContainerを適切に使う<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h2>
+<h2 id="initcontainer">InitContainerを適切に使用する<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h2>
 <hr />
 <h3 id="initcontainerpod">■ InitContainerで他のPodのコンテナの起動を待機する<a class="headerlink" href="#initcontainerpod" title="Permanent link">&para;</a></h3>
 <p>…</p>
@@ -23728,7 +23728,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
   </span>
 
     
