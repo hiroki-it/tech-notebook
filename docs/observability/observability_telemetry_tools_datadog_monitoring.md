@@ -109,11 +109,10 @@ description: 監視＠Datadogの知見を記録しています。
 
 タイトルに変数を出力できる。
 
-```html
+```yaml
 <!-- タグ変数を出力する -->
 
-【{{ log.attributes.service }}】{{ log.attributes.env
-}}環境でエラーを検知しました。
+【{{ log.attributes.service }}】{{log.attributes.env}}環境でエラーを検知しました。
 ```
 
 #### ▼ 本文

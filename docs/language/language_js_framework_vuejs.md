@@ -99,14 +99,8 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを使用�
 
     <!--
     ・親コンポーネントタグを記述。
-
-
     ・dataオプションの値をpropsに渡すように設定。
-
-
     ・イベントとイベントハンドラ関数を対応づける。
-
-
     -->
     <v-foo-component-1
         :criteria="criteria"
@@ -236,8 +230,6 @@ var vm = new Vue({
   <!-- 
   ・子コンポーネントタグを記述 
   ・下方のdataオプションの値をpropsに渡すように設定。
-
-
   -->
   <v-foo-component-4 :aaa="a" :bbb="b"></v-foo-component-4>
 

@@ -112,8 +112,7 @@ JavaScriptファイルを直接的に組み込む。
 外部JavaScriptファイルを組み込む。
 
 ```html
-<script src="sample.js"></sc
-    ript>
+<script src="sample.js"></script>
 ```
 
 CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web上からリソースを取得もできる。

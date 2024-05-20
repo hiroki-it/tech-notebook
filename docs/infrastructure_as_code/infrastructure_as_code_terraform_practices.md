@@ -1016,13 +1016,34 @@ $ terraform-docs markdown . --output-file=README.md
 
 `TF_DOCS`タグで囲われた場所のみを自動的に追記/更新してくれる。
 
-```html
+```markdown
 # foo-terraformリポジトリ
 
 <!-- BEGIN_TF_DOCS -->
 
-## Requirements ... ## Providers ... ## Modules ... ## Resources ... ## Inputs
-... ## Outputs ...
+## Requirements
+
+...
+
+## Providers
+
+...
+
+## Modules
+
+...
+
+## Resources
+
+...
+
+## Inputs
+
+...
+
+## Outputs
+
+...
 
 <!-- END_TF_DOCS -->
 ```
