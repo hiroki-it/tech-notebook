@@ -26,7 +26,7 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 ## 02. セットアップ
 
 ```bash
-$ go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
+$ go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@HEAD
 ```
 
 <br>

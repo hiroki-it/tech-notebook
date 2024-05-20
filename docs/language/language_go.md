@@ -200,10 +200,10 @@ $GOPATH/ # 例えば、『$HOME/go』とする。
 
 `(1)`
 
-: 新しいバイナルをインストールする。
+: 最新のバイナルをインストールする。
 
 ```bash
-$ go install golang.org/dl/go<新しいバージョン>@latest
+$ go install golang.org/dl/go<新しいバージョン>@HEAD
 
 $ go<新しいバージョン> download
 ```

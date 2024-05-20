@@ -20,7 +20,7 @@ description: Goプラグイン＠Protocol Bufferコンパイラーの知見を�
 サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルできる。
 
 ```bash
-$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 ```
 
 > - https://protobuf.dev/reference/go/go-generated/#invocation

@@ -40,7 +40,7 @@ $ asdf install protoc
 サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
 ```bash
-$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 $ protoc-gen-go --version
 
@@ -56,7 +56,7 @@ protoc-gen-go <バージョン>
 サービス定義ファイル (`proto`ファイル) からgRPC対応の`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
 ```bash
-$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@HEAD
 
 $ protoc-gen-go-grpc --version
 

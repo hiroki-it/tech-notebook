@@ -35,7 +35,7 @@ OSSコントリビューションに入門しやすくなっている。
 : インストールする。
 
 ```bash
-$ go install sigs.k8s.io/logtools/logcheck@latest
+$ go install sigs.k8s.io/logtools/logcheck@HEAD
 ```
 
 `(2)`

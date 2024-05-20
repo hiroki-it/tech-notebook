@@ -145,7 +145,17 @@ $ ${GOPATH}/bin/foo-package --version
 > - https://go.dev/doc/go-get-install-deprecation
 > - https://github.com/golang/go/issues/44840#issuecomment-1828537390
 
-#### ▼ 削除
+#### ▼ 最新バージョンの指定
+
+`HEAD`を指定すると、最新のコミットIDを指定できる。
+
+```bash
+$ go install <パッケージ名>@HEAD
+```
+
+> - https://zenn.dev/podhmo/articles/f7d6b5ccc389b5ecef02
+
+#### ▼ バイナリのアンインストール
 
 `go install`コマンドでインストールしたバイナリは、`rm`コマンドで直接削除する必要がある。
 
