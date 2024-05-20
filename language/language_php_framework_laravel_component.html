@@ -27549,16 +27549,11 @@
 <li><a href="https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A">https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>DB_HOST_PRIMARY=&lt;プライマリーインスタンスのエンドポイント&gt;
-DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
+<div class="highlight"><pre><span></span><code><span class="nv">DB_HOST_PRIMARY</span><span class="o">=</span>&lt;プライマリーインスタンスのエンドポイント&gt;
+<span class="nv">DB_HOST_READ</span><span class="o">=</span>&lt;リードレプリカのエンドポイント&gt;
 </code></pre></div>
 <p>注意点として、<code>sticky</code>キーを有効化しておくと良い。</p>
 <p>プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。</p>
-<blockquote>
-<ul>
-<li><a href="https://imanengineer.net/laravel-how-to-configure-master-slave-db/">https://imanengineer.net/laravel-how-to-configure-master-slave-db/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -27597,6 +27592,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">],</span>
 <span class="p">];</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://imanengineer.net/laravel-how-to-configure-master-slave-db/">https://imanengineer.net/laravel-how-to-configure-master-slave-db/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ クエリキャッシュ管理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -27613,11 +27613,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>ビジネスの出来事がモデリングされたイベントオブジェクトとして動作する。</p>
 <h4 id="_10">▼ 構成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/events.html#defining-events">https://readouble.com/laravel/8.x/ja/events.html#defining-events</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -27646,14 +27641,14 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 
 <span class="nx">event</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserCreatedEvent</span><span class="p">(</span><span class="nv">$user</span><span class="p">));</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/events.html#defining-events">https://readouble.com/laravel/8.x/ja/events.html#defining-events</a></li>
+</ul>
+</blockquote>
 <h4 id="eloquentcrud">▼ EloquentモデルのCRUDイベント<a class="headerlink" href="#eloquentcrud" title="Permanent link">&para;</a></h4>
 <p>Eloquentモデルでは、DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる。</p>
 <p>紐付けるために、プロパティで定義するか、あるいは各タイミングで実行される無名関数でイベントを発生させる必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html#events">https://readouble.com/laravel/8.x/ja/eloquent.html#events</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>プロパティにて、<code>CREATE</code>処理と<code>DELETE</code>処理に独自イベントクラスに紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -27678,6 +27673,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html#events">https://readouble.com/laravel/8.x/ja/eloquent.html#events</a></li>
+</ul>
+</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>無名関数にて、<code>CREATE</code>処理に独自イベントクラスに紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -27953,11 +27953,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。</p>
 <p>エラーが複数行にまたがるため、CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。</p>
 <p>補足として、ログの詳細度は<code>APP_DEBUG</code>環境変数で制御できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/errors.html#configuration">https://readouble.com/laravel/8.x/ja/errors.html#configuration</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-09-00<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>local.ERROR:<span class="w"> </span>*****<span class="w"> </span><span class="o">(</span>エラーメッセージ<span class="o">)</span>
 <span class="o">[</span>stacktrace<span class="o">]</span>
 <span class="c1">#0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection-&gt;runQueryCallback(&#39;insert into `us...&#39;, Array, Object(Closure))</span>
@@ -27998,15 +27993,15 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <span class="c1">#66 {main}</span>
 <span class="s2">&quot;}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/errors.html#configuration">https://readouble.com/laravel/8.x/ja/errors.html#configuration</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_16">ロギング<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="report">▼ <code>report</code>メソッド<a class="headerlink" href="#report" title="Permanent link">&para;</a></h4>
 <p>Laravel内部でキャッチされた例外を基に、ロギングを実行する。</p>
-<blockquote>
-<ul>
-<li><a href="https://cpoint-lab.co.jp/article/201905/9841/">https://cpoint-lab.co.jp/article/201905/9841/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Exceptions</span><span class="p">;</span>
@@ -28029,17 +28024,17 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cpoint-lab.co.jp/article/201905/9841/">https://cpoint-lab.co.jp/article/201905/9841/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_17">異常系レスポンスの返信<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="render">▼ <code>render</code>メソッド<a class="headerlink" href="#render" title="Permanent link">&para;</a></h4>
 <p>Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。</p>
 <p>異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。</p>
 <p>代わりに、各コントローラーに<code>try-catch</code>と異常系レスポンスの返信処理を実装する。</p>
-<blockquote>
-<ul>
-<li><a href="https://cpoint-lab.co.jp/article/201905/9841/">https://cpoint-lab.co.jp/article/201905/9841/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Exceptions</span><span class="p">;</span>
@@ -28057,6 +28052,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cpoint-lab.co.jp/article/201905/9841/">https://cpoint-lab.co.jp/article/201905/9841/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="08-facade">08. Facade<a class="headerlink" href="#08-facade" title="Permanent link">&para;</a></h2>
 <h3 id="facade">Facade<a class="headerlink" href="#facade" title="Permanent link">&para;</a></h3>
@@ -28377,11 +28377,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>加えて<code>transaction</code>メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。</p>
 <p>補足として、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。</p>
 <p>参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。</p>
-<blockquote>
-<ul>
-<li><a href="https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5">https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -28431,6 +28426,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5">https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5</a></li>
+</ul>
+</blockquote>
 <h4 id="begintransactioncommitrollback">▼ <code>beginTransaction</code>メソッド、<code>commit</code>メソッド、<code>rollback</code>メソッド、<a class="headerlink" href="#begintransactioncommitrollback" title="Permanent link">&para;</a></h4>
 <p>トランザクション処理の各操作を分割して実行する。</p>
 <p>基本的には、<code>transaction</code>メソッドを使用してトランザクション処理を実行すれば良い。</p>
@@ -28501,7 +28501,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>webサーバーではヘルスチェックエンドポイントを設けず、appサーバー側にヘルスエンドポイント (例：<code>/healthcheck</code>) を設ける。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">webサーバー</span><span class="w"> </span><span class="c1">#</span>
+<span class="l l-Scalar l-Scalar-Plain">webサーバー</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">appサーバー</span><span class="w"> </span><span class="c1"># /healthcheckで、00を返却する</span>
@@ -28720,7 +28720,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <div class="highlight"><pre><span></span><code><span class="x">Storage::disk(&quot;s3&quot;)-&gt;put(&quot;file.txt&quot;, &quot;file.txt&quot;);</span>
 </code></pre></div>
 <p>ただし、環境変数を使用して、<code>filesytems.php</code>ファイルでデフォルトディスクを<code>s3</code>に変更すると、<code>put</code>メソッドを直接的に使用できる。</p>
-<div class="highlight"><pre><span></span><code><span class="x">FILESYSTEM_DRIVER=s3</span>
+<div class="highlight"><pre><span></span><code><span class="nv">FILESYSTEM_DRIVER</span><span class="o">=</span>s3
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="x">Storage::put(&quot;file.txt&quot;, &quot;file.txt&quot;);</span>
 </code></pre></div>
@@ -29267,12 +29267,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p><code>validated</code>メソッドと間違わないように注意する。</p>
 <p>ルールに反すると、1つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code>ファイルから対応するエラーメッセージを自動的に選択する。</p>
 <p>バリデーションでエラーが発生した場合、Handlerクラスの<code>invalid</code>メソッドがコールされ、元のWebページにリダイレクトされる。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests">https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests</a></li>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -29341,6 +29335,12 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests">https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate</a></li>
+</ul>
+</blockquote>
 <h4 id="_31">▼ ルール定義 &amp; バリデーション自動実行<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p>Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。</p>
 <p>そのため、コントローラーの中ではバリデーションを実行する必要はない。</p>
@@ -29423,11 +29423,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>バリデーションルールの組み合わせによって、<code>validation.php</code>ファイルから自動的にメッセージが選択される。</p>
 <p>例えばルールとして最大値を設定した場合は、データ型に合わせてメッセージが選択される。</p>
 <p>日本語翻訳<code>validation.php</code>ファイルについては、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/validation-php.html">https://readouble.com/laravel/8.x/ja/validation-php.html</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -29470,6 +29465,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 
 <span class="p">];</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/validation-php.html">https://readouble.com/laravel/8.x/ja/validation-php.html</a></li>
+</ul>
+</blockquote>
 <h4 id="_36">▼ 画面上でのエラーメッセージ出力<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>バリデーションでエラーがあった場合、Handlerクラスの<code>invalid</code>メソッドがコールされ、MessageBagクラスがViewに渡される。</p>
 <p>選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。</p>
@@ -29560,11 +29560,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 </code></pre></div>
 <h4 id="in">▼ <code>in</code>メソッド<a class="headerlink" href="#in" title="Permanent link">&para;</a></h4>
 <p>決められた複数の値に合致する値であるか否かを検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in">https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Requests</span><span class="p">;</span>
@@ -29589,16 +29584,16 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in">https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in</a></li>
+</ul>
+</blockquote>
 <h4 id="_37">▼ 自前ルール/メッセージ<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p>自前ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、<code>rule</code>メソッドの中でインスタンスを作成する。</p>
 <p>自前Ruleクラスでは、<code>passes</code>メソッドでルールを定義する。</p>
 <p>また、<code>messages</code>メソッドでバリデーションメッセージを定義する。</p>
 <p><code>validation.php</code>ファイルでメッセージを定義し、これを参照しても良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://laravel.com/docs/8.x/validation#custom-validation-rules">https://laravel.com/docs/8.x/validation#custom-validation-rules</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -29656,6 +29651,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/docs/8.x/validation#custom-validation-rules">https://laravel.com/docs/8.x/validation#custom-validation-rules</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_38">セッション<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <h4 id="_39">▼ セッション変数の取得<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
@@ -29891,11 +29891,6 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <h3 id="_43">リクエストパラメーターの取得<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
 <h4 id="_44">▼ クエリパラメーター/メッセージボディ<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p>クエリパラメーターとメッセージボディの両方を取得する。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input">https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -29926,13 +29921,13 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_45">▼ クエリパラメーター<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
-<p>クエリパラメーターを取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input">https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input</a></li>
 </ul>
 </blockquote>
+<h4 id="_45">▼ クエリパラメーター<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>クエリパラメーターを取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -29953,15 +29948,13 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_46">▼ パスパラメータ<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
-<p>パスパラメーターを取得する。</p>
 <blockquote>
 <ul>
-<li><a href="https://technote.space/posts/wpdb-laravel-get-url-parameter/">https://technote.space/posts/wpdb-laravel-get-url-parameter/</a></li>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route</a></li>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter">https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input">https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input</a></li>
 </ul>
 </blockquote>
+<h4 id="_46">▼ パスパラメータ<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>パスパラメーターを取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -30004,14 +29997,16 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://technote.space/posts/wpdb-laravel-get-url-parameter/">https://technote.space/posts/wpdb-laravel-get-url-parameter/</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter">https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_47">バリデーション<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
 <p>Requestではなく、FormRequestを使用した方がバリデーションがおすすめである。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/">https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="x">namespace App\Http\Controllers;</span>
 
 <span class="x">use Illuminate\Http\Request;</span>
@@ -30030,6 +30025,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/">https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="11-logging">11. Logging<a class="headerlink" href="#11-logging" title="Permanent link">&para;</a></h2>
 <h3 id="_48">ログの出力先<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
@@ -30041,7 +30041,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <li><a href="https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers">https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>LOG_CHANNEL=&lt;オプション名&gt;
+<div class="highlight"><pre><span></span><code><span class="nv">LOG_CHANNEL</span><span class="o">=</span>&lt;オプション名&gt;
 </code></pre></div>
 <p>注意点として、<code>storage</code>ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たない。</p>
 <p>そのため、リクエストできるようにする必要がある。</p>
@@ -30426,11 +30426,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>自動増分ありのinteger型カラムを作成する。</p>
 <p>プライマリーキーとするIDカラムのために使用する。</p>
 <p>自動増分のカラムは<code>1</code>個のテーブルに1つしか定義できず、他のIDカラムは<code>unsignedBigInteger</code>メソッドを使用して定義する。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements">https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
@@ -30442,14 +30437,14 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 
 <span class="x">});</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements">https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements</a></li>
+</ul>
+</blockquote>
 <h4 id="unsignedbiginteger">▼ <code>unsignedBigInteger</code>メソッド<a class="headerlink" href="#unsignedbiginteger" title="Permanent link">&para;</a></h4>
 <p>自動増分なしのinteger型カラムを作成する。</p>
 <p>プライマリーキーではないIDカラムのために使用する。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger">https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
 <span class="x">    ...</span>
@@ -30461,6 +30456,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 
 <span class="x">});</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger">https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger</a></li>
+</ul>
+</blockquote>
 <h4 id="string">▼ <code>string</code>メソッド<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
 <p>VARCHAR型カラムを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -30603,11 +30603,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 @endcomponent
 </code></pre></div>
 <h4 id="sms">▼ SMS通知内容の定義<a class="headerlink" href="#sms" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications">https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Notifications</span><span class="p">;</span>
@@ -30645,6 +30640,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications">https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications</a></li>
+</ul>
+</blockquote>
 <h4 id="slack">▼ Slack通知内容の定義<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -30653,11 +30653,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </blockquote>
 <h4 id="db_3">▼ DB通知内容の定義<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h4>
 <p>配列でDBに保管する内容を定義する。</p>
-<blockquote>
-<ul>
-<li><a href="https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications">https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Notifications</span><span class="p">;</span>
@@ -30694,6 +30689,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications">https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_56">受信チャンネル (通知方法)<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
 <h4 id="channel">▼ Channel<a class="headerlink" href="#channel" title="Permanent link">&para;</a></h4>
@@ -30769,11 +30769,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>通知対象となるモデルを定義する。</p>
 <p>Notifiableトレイトを継承する。</p>
 <p>これにより、<code>notify</code>メソッドを使用できるようになる。</p>
-<blockquote>
-<ul>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html">https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App</span><span class="p">;</span>
@@ -30786,17 +30781,22 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="k">use</span> <span class="nx">Notifiable</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html">https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html</a></li>
+</ul>
+</blockquote>
 <p>通知先のクラスから<code>notify</code>メソッドをコールし、任意のNotificationクラスを渡す。</p>
 <p>これにより、通知処理が実行される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">(</span><span class="k">new</span> <span class="nx">FooNotification</span><span class="p">());</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify">https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-
-<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">(</span><span class="k">new</span> <span class="nx">FooNotification</span><span class="p">());</span>
-</code></pre></div>
 <h4 id="notification_1">▼ Notificationファサード<a class="headerlink" href="#notification_1" title="Permanent link">&para;</a></h4>
 <p>通知対象となるモデルを定義する。</p>
 <p>Notifiableトレイトを継承する。</p>
@@ -30819,12 +30819,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <h4 id="_58">▼ オンデマンド通知<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
 <p>オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model">https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model</a></li>
-<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications">https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nx">Notification</span><span class="o">::</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;mail&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">email_address</span><span class="p">)</span>
@@ -30832,6 +30826,12 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
             <span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;slack&#39;</span><span class="p">,</span> <span class="nv">$slackMessage</span><span class="o">-&gt;</span><span class="na">usl</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">notify</span><span class="p">(</span><span class="k">new</span> <span class="nx">FooMotification</span><span class="p">());</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model">https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications">https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="14-resource">14. Resource<a class="headerlink" href="#14-resource" title="Permanent link">&para;</a></h2>
 <h3 id="_59">レスポンスデータ作成前のデータ型変換<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h3>
@@ -31019,13 +31019,13 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="_63">▼ アプリケーション側の対応<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h4>
 <p>セッション開始時にCSRFトークンが作成される。</p>
 <p>Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/profile&quot;</span><span class="p">&gt;</span>@csrf ...<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html">https://readouble.com/laravel/8.x/ja/csrf.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/profile&quot;</span><span class="p">&gt;</span>@csrf ...<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-</code></pre></div>
 <p>Bladeを使用しない場合、セッション開始時のレスポンスの<code>Set-Cookie</code>にCSRFトークンが割り当てられるため、これを取り出して<code>X-CSRF-TOKEN</code>ヘッダーや<code>X-XSRF-TOKEN</code>ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。</p>
 <blockquote>
 <ul>
@@ -32226,7 +32226,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-20</span>
   </span>
 
     
