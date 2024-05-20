@@ -296,7 +296,7 @@ return [
 
 > - https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
-```
+```bash
 DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
 DB_HOST_READ=<リードレプリカのエンドポイント>
 ```
@@ -304,8 +304,6 @@ DB_HOST_READ=<リードレプリカのエンドポイント>
 注意点として、`sticky`キーを有効化しておくと良い。
 
 プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
-
-> - https://imanengineer.net/laravel-how-to-configure-master-slave-db/
 
 ```php
 <?php
@@ -347,6 +345,8 @@ return [
 ];
 ```
 
+> - https://imanengineer.net/laravel-how-to-configure-master-slave-db/
+
 <br>
 
 ### Redis
@@ -375,8 +375,6 @@ REDIS_PORT=<Redisのポート>
 #### ▼ 構成
 
 イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
-
-> - https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
 **＊実装例＊**
 
@@ -412,13 +410,13 @@ final class UserCreatedEvent
 event(new UserCreatedEvent($user));
 ```
 
+> - https://readouble.com/laravel/8.x/ja/events.html#defining-events
+
 #### ▼ EloquentモデルのCRUDイベント
 
 Eloquentモデルでは、DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる。
 
 紐付けるために、プロパティで定義するか、あるいは各タイミングで実行される無名関数でイベントを発生させる必要がある。
-
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
@@ -447,6 +445,8 @@ class User extends Authenticatable
     ];
 }
 ```
+
+> - https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
@@ -774,8 +774,6 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 
 補足として、ログの詳細度は`APP_DEBUG`環境変数で制御できる。
 
-> - https://readouble.com/laravel/8.x/ja/errors.html#configuration
-
 ```bash
 [2021-09-00 00:00:00] local.ERROR: ***** (エラーメッセージ)
 [stacktrace]
@@ -818,6 +816,8 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 "}
 ```
 
+> - https://readouble.com/laravel/8.x/ja/errors.html#configuration
+
 <br>
 
 ### ロギング
@@ -825,8 +825,6 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 #### ▼ `report`メソッド
 
 Laravel内部でキャッチされた例外を基に、ロギングを実行する。
-
-> - https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -852,6 +850,8 @@ class Handler extends ExceptionHandler
 }
 ```
 
+> - https://cpoint-lab.co.jp/article/201905/9841/
+
 <br>
 
 ### 異常系レスポンスの返信
@@ -863,8 +863,6 @@ Laravel内部でキャッチされた例外を基に、異常系レスポンス�
 異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。
 
 代わりに、各コントローラーに`try-catch`と異常系レスポンスの返信処理を実装する。
-
-> - https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -884,6 +882,8 @@ class Handler extends ExceptionHandler
     ...
 }
 ```
+
+> - https://cpoint-lab.co.jp/article/201905/9841/
 
 <br>
 
@@ -1068,8 +1068,6 @@ Active Recordのロジックを持たないため、Repositoryパターンのロ
 
 参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
-> - https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
-
 **＊実装例＊**
 
 ```php
@@ -1122,6 +1120,8 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 
 ```
+
+> - https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
 #### ▼ `beginTransaction`メソッド、`commit`メソッド、`rollback`メソッド、
 
@@ -1211,7 +1211,7 @@ webサーバーではヘルスチェックエンドポイントを設けず、ap
 ```yaml
 ⬇⬆︎︎
 ⬇⬆︎︎
-webサーバー #
+webサーバー
 ⬇⬆︎︎
 ⬇⬆︎︎
 appサーバー # /healthcheckで、00を返却する
@@ -1499,7 +1499,7 @@ Storage::disk("s3")->put("file.txt", "file.txt");
 
 ただし、環境変数を使用して、`filesytems.php`ファイルでデフォルトディスクを`s3`に変更すると、`put`メソッドを直接的に使用できる。
 
-```php
+```bash
 FILESYSTEM_DRIVER=s3
 ```
 
@@ -2185,9 +2185,6 @@ class DatabaseSeeder extends Seeder
 
 バリデーションでエラーが発生した場合、Handlerクラスの`invalid`メソッドがコールされ、元のWebページにリダイレクトされる。
 
-> - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
-> - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
-
 **＊実装例＊**
 
 ```php
@@ -2262,6 +2259,9 @@ class FooController extends Controller
     }
 }
 ```
+
+> - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
+> - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
 
 #### ▼ ルール定義 & バリデーション自動実行
 
@@ -2370,8 +2370,6 @@ Routeファサードの`pattern`メソッドまたは`where`メソッドで定�
 
 日本語翻訳`validation.php`ファイルについては、以下のリンクを参考にせよ。
 
-> - https://readouble.com/laravel/8.x/ja/validation-php.html
-
 ```php
 <?php
 
@@ -2418,6 +2416,8 @@ return [
 
 ];
 ```
+
+> - https://readouble.com/laravel/8.x/ja/validation-php.html
 
 #### ▼ 画面上でのエラーメッセージ出力
 
@@ -2519,8 +2519,6 @@ class FooRequest extends FormRequest
 
 決められた複数の値に合致する値であるか否かを検証する。
 
-> - https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
-
 ```php
 <?php
 
@@ -2547,6 +2545,8 @@ class FooRequest extends FormRequest
 }
 ```
 
+> - https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
+
 #### ▼ 自前ルール/メッセージ
 
 自前ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、`rule`メソッドの中でインスタンスを作成する。
@@ -2556,8 +2556,6 @@ class FooRequest extends FormRequest
 また、`messages`メソッドでバリデーションメッセージを定義する。
 
 `validation.php`ファイルでメッセージを定義し、これを参照しても良い。
-
-> - https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 **＊実装例＊**
 
@@ -2620,6 +2618,8 @@ class FooRequest extends FormRequest
     }
 }
 ```
+
+> - https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 <br>
 
@@ -2912,8 +2912,6 @@ class Kernel extends HttpKernel
 
 クエリパラメーターとメッセージボディの両方を取得する。
 
-> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
-
 **＊実装例＊**
 
 ```php
@@ -2947,11 +2945,11 @@ class FooController extends Controller
 }
 ```
 
+> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
 #### ▼ クエリパラメーター
 
 クエリパラメーターを取得する。
-
-> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -2976,13 +2974,11 @@ class FooController extends Controller
 }
 ```
 
+> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
 #### ▼ パスパラメータ
 
 パスパラメーターを取得する。
-
-> - https://technote.space/posts/wpdb-laravel-get-url-parameter/
-> - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
-> - https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
 
 **＊実装例＊**
 
@@ -3033,13 +3029,15 @@ class FooController extends Controller
 }
 ```
 
+> - https://technote.space/posts/wpdb-laravel-get-url-parameter/
+> - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
+> - https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
+
 <br>
 
 ### バリデーション
 
 Requestではなく、FormRequestを使用した方がバリデーションがおすすめである。
-
-> - https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
 
 ```php
 namespace App\Http\Controllers;
@@ -3061,6 +3059,8 @@ class FooController extends Controller
 }
 ```
 
+> - https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
+
 <br>
 
 ## 11. Logging
@@ -3075,7 +3075,7 @@ class FooController extends Controller
 
 > - https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
 
-```
+```bash
 LOG_CHANNEL=<オプション名>
 ```
 
@@ -3570,8 +3570,6 @@ $ php artisan migrate
 
 自動増分のカラムは`1`個のテーブルに1つしか定義できず、他のIDカラムは`unsignedBigInteger`メソッドを使用して定義する。
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
-
 **＊実装例＊**
 
 ```php
@@ -3586,13 +3584,13 @@ Schema::create("foos", function (Blueprint $table) {
 });
 ```
 
+> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
+
 #### ▼ `unsignedBigInteger`メソッド
 
 自動増分なしのinteger型カラムを作成する。
 
 プライマリーキーではないIDカラムのために使用する。
-
-> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
 ```php
 Schema::create("foos", function (Blueprint $table) {
@@ -3606,6 +3604,8 @@ Schema::create("foos", function (Blueprint $table) {
 
 });
 ```
+
+> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
 
 #### ▼ `string`メソッド
 
@@ -3780,8 +3780,6 @@ class TfaTokenNotification extends Notification
 
 #### ▼ SMS通知内容の定義
 
-> - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
-
 ```php
 <?php
 
@@ -3821,6 +3819,8 @@ class TfaTokenNotification extends Notification
 }
 ```
 
+> - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+
 #### ▼ Slack通知内容の定義
 
 > - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
@@ -3828,8 +3828,6 @@ class TfaTokenNotification extends Notification
 #### ▼ DB通知内容の定義
 
 配列でDBに保管する内容を定義する。
-
-> - https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
 ```php
 <?php
@@ -3868,6 +3866,8 @@ class TfaTokenNotification extends Notification
     }
 }
 ```
+
+> - https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
 
 <br>
 
@@ -3962,8 +3962,6 @@ Notifiableトレイトを継承する。
 
 これにより、`notify`メソッドを使用できるようになる。
 
-> - https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
-
 ```php
 <?php
 
@@ -3978,17 +3976,19 @@ class User extends Authenticatable
 }
 ```
 
+> - https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
+
 通知先のクラスから`notify`メソッドをコールし、任意のNotificationクラスを渡す。
 
 これにより、通知処理が実行される。
-
-> - https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
 ```php
 <?php
 
 $user->notify(new FooNotification());
 ```
+
+> - https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
 #### ▼ Notificationファサード
 
@@ -4022,9 +4022,6 @@ Notification::send($users, new FooNotification());
 
 オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
 
-> - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
-> - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
-
 ```php
 <?php
 
@@ -4033,6 +4030,9 @@ Notification::route('mail', $user->email_address)
             ->route('slack', $slackMessage->usl)
             ->notify(new FooMotification());
 ```
+
+> - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
+> - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
 
 <br>
 
@@ -4281,11 +4281,11 @@ class UserController extends Controller
 
 Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
-> - https://readouble.com/laravel/8.x/ja/csrf.html
-
 ```html
 <form method="POST" action="/profile">@csrf ...</form>
 ```
+
+> - https://readouble.com/laravel/8.x/ja/csrf.html
 
 Bladeを使用しない場合、セッション開始時のレスポンスの`Set-Cookie`にCSRFトークンが割り当てられるため、これを取り出して`X-CSRF-TOKEN`ヘッダーや`X-XSRF-TOKEN`ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
 
