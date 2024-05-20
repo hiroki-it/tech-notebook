@@ -23208,15 +23208,15 @@
 <h4 id="_8">▼ 内容<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>内容は『背景』と『対応方針』さえ伝われば、文言自体はそのリポジトリのルールに合わせる。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code># 背景
+<div class="highlight"><pre><span></span><code><span class="gh"># 背景</span>
 
-<span class="cm">&lt;!-- Issue作成の理由になった要望やバグを記載する --&gt;</span>
-<span class="cm">&lt;!-- 関連するIssueやプルリクエストがあればリンクを共有する --&gt;</span>
+&lt;!-- Issue作成の理由になった要望やバグを記載する --&gt;
+&lt;!-- 関連するIssueやプルリクエストがあればリンクを共有する --&gt;
 
-# 対応方針
+<span class="gh"># 対応方針</span>
 
-<span class="cm">&lt;!-- どのような方法で対応する予定なのかを箇条書きで記載する --&gt;</span>
-<span class="cm">&lt;!-- 方法に関するドキュメントや技術記事があればリンクを共有する --&gt;</span>
+&lt;!-- どのような方法で対応する予定なのかを箇条書きで記載する --&gt;
+&lt;!-- 方法に関するドキュメントや技術記事があればリンクを共有する --&gt;
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. プルリクエスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -23249,18 +23249,18 @@
 <p>内容は『対応内容』と『レビューしてほしいところ』さえ伝われば、文言自体はそのリポジトリのルールに合わせる。</p>
 <p>もし、レビュー期限や動作確認手順を知らせる必要があれば『レビュー期限』『確認手順』の項目を設ける。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code># リリース予定日
+<div class="highlight"><pre><span></span><code><span class="gh"># リリース予定日</span>
 
-<span class="cm">&lt;!-- リリース予定日を記載する --&gt;</span>
+&lt;!-- リリース予定日を記載する --&gt;
 
-# 対応内容
+<span class="gh"># 対応内容</span>
 
-<span class="cm">&lt;!-- どのように対応したのか箇条書きで記載する --&gt;</span>
-<span class="cm">&lt;!-- 関連するIssueやプルリクエストがあればリンクを共有する --&gt;</span>
+&lt;!-- どのように対応したのか箇条書きで記載する --&gt;
+&lt;!-- 関連するIssueやプルリクエストがあればリンクを共有する --&gt;
 
-# レビューしていただきたいところ
+<span class="gh"># レビューしていただきたいところ</span>
 
-<span class="cm">&lt;!-- 対応内容の中で適切か否かが不安なものを記載する --&gt;</span>
+&lt;!-- 対応内容の中で適切か否かが不安なものを記載する --&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="_17">コミットの粒度<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
@@ -23420,8 +23420,22 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <p>『新規追加』『変更』『修正』ごとに、プルリクエスト番号をリスト化する。</p>
 <p><code>3</code>個のどれに当てはまるかは、プルリクエストがどういった対応なのかで判断する。</p>
 <p>最低限リリース内容さえわかればよいので、厳密に分類できなくとも問題ない。</p>
-<div class="highlight"><pre><span></span><code># リリース内容 ## 新規追加 - プルリクエスト番号 ## 変更 - プルリクエスト番号 -
-プルリクエスト番号 ## 修正 - プルリクエスト番号
+<div class="highlight"><pre><span></span><code><span class="gh"># リリース内容</span>
+
+<span class="gu">## 新規追加</span>
+
+<span class="k">-</span><span class="w"> </span>プルリクエスト番号
+
+<span class="gu">## 変更</span>
+
+<span class="k">-</span><span class="w"> </span>プルリクエスト番号
+<span class="k">-</span><span class="w"> </span>...
+
+プルリクエスト番号
+
+<span class="gu">## 修正</span>
+
+<span class="k">-</span><span class="w"> </span>プルリクエスト番号
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. コンフリクトの解決<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -23553,7 +23567,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-20</span>
   </span>
 
     
