@@ -23408,6 +23408,28 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <p><img alt="github_release-note" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_release-note.png" /></p>
 <h4 id="_27">▼ タグ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>『<code>release/v&lt;セマンティックバージョニング&gt;</code>』とする。タグの付与先対象とするブランチは、『<code>Taget: main</code>』を選択する。</p>
+<table>
+<thead>
+<tr>
+<th><code>X.Y.Z</code></th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メジャー (<code>X</code>)</td>
+<td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がない。ユーザーは、既存の実装を変更しないと既存機能と新機能を利用できない。</td>
+</tr>
+<tr>
+<td>マイナー (<code>Y</code>)</td>
+<td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がある。ユーザーは、実装を追加するだけで新機能を利用でき、また実装を変更せずに既存機能を利用できる。</td>
+</tr>
+<tr>
+<td>パッチ (<code>Z</code>)</td>
+<td>機能のバグ修正である。後方のバージョンと互換性がある。ユーザーは、実装はそのままで既存機能を利用できる。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://semver.org/lang/ja/">https://semver.org/lang/ja/</a></li>
