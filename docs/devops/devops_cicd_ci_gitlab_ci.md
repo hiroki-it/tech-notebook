@@ -42,6 +42,26 @@ GitLab CIの`gitlab-ci.yml`ファイルで定義されたパイプラインを�
 
 <br>
 
+### リリースノート
+
+#### ▼ パイプラインバッジ
+
+```markdown
+![pipeline](https://gitlab.com/foo-project/foo-repository/badges/main/pipeline.svg)
+```
+
+> - https://docs.gitlab.com/ee/user/project/badges.html#pipeline-status-badges
+
+#### ▼ バージョンタグバッジ
+
+```markdown
+![release](https://gitlab.com/foo-project/foo-repository/badges/-/badges/release.svg)
+```
+
+> - https://docs.gitlab.com/ee/user/project/badges.html#latest-release-badges
+
+<br>
+
 ## 02. セットアップ
 
 ### インストール
