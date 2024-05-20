@@ -1306,7 +1306,7 @@ readOnlyRootFilesystem |
 
 ### ■ `pods/exec`や`pods/attach`を設定しない
 
-RoleやClusterRoleに設定できる`pods/exec`や`pods/attach` といった権限は、Pod内のコンテナに接続するために使用する。
+RoleやClusterRoleに設定できる`pods/exec`や`pods/attach`といった権限は、Pod内のコンテナに接続するために使用する。
 
 コンテナへの接続を許可してしまうと、コンテナ内から悪意のある人がサイバー攻撃を実施したり、あるいは悪意がない人が本来不必要な作業を実施するかもしれない。
 

@@ -177,7 +177,7 @@ const foo = {
 
 #### ▼ 省略形
 
-リテラル表記で、`methodA(): fucntion{}` とするところを、`methodA() {}`と記述できる。
+リテラル表記で、`methodA(): fucntion{}`とするところを、`methodA() {}`と記述できる。
 
 ```javascript
 // リテラル表記

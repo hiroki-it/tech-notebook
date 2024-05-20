@@ -52,7 +52,7 @@ GitLab CIの`gitlab-ci.yml`ファイルで定義されたパイプラインを�
 
 > - https://docs.gitlab.com/ee/user/project/badges.html#pipeline-status-badges
 
-#### ▼ バージョンタグバッジ
+#### ▼ 最新バージョンタグバッジ
 
 ```markdown
 ![release](https://gitlab.com/foo-project/foo-repository/badges/-/badges/release.svg)
