@@ -2516,6 +2516,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_microservices_test.html</loc>
+         <lastmod>2024-05-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html</loc>
          <lastmod>2024-05-21</lastmod>
          <changefreq>daily</changefreq>
