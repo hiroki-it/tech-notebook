@@ -27,6 +27,14 @@
 
 <br>
 
+### ArgoRollouts
+
+* #### [ArgoRollouts](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.html)
+
+* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts_resource_definition.html)
+
+<br>
+
 ### ArgoWorkflow
 
 * #### [ArgoWorkflow](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.html)
