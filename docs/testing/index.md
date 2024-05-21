@@ -8,7 +8,7 @@
 
 * #### [︎ホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox.html)
 
-* #### [︎マイクロサービスのテスト](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_microservices_test.html)
+* #### [︎マイクロサービスのホワイトボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_microservices_test.html)
 
 * #### <u>︎PHPのテストツール</u>
 > * ##### [︎PHPのテストツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
@@ -44,6 +44,8 @@
 ### ブラックボックステスト
 
 * #### [︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox.html)
+
+* #### [︎マイクロサービスのブラックボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_microservices_test.html)
 
 * #### <u>総合テスト</u>
 > * ##### [︎総合テスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html)
