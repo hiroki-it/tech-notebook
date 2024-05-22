@@ -13,7 +13,9 @@ description: OSSコントリビューション＠開発手法の知見を記録�
 
 <br>
 
-## 01. Issueの見つけ方
+## 01. OSSコントリビューションのコツ
+
+### Issueから見つける
 
 OSSによっては、`help wanted`や`good first issue`といったラベルづけをしてくれている。
 
@@ -24,11 +26,27 @@ OSSコントリビューションに入門しやすくなっている。
 
 <br>
 
+### ツール
+
+OSSコントリビューションするためのツールに関するバグを修正する。
+
+> - https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=28
+
+<br>
+
+### Deprecated
+
+エディタでWarningがでる箇所を修正する。
+
+> - https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=22
+
+<br>
+
 ## 02. Kubernetes
 
 ### ツール
 
-正しいロギング処理を実装できているかを静的解析する。
+ロギング処理で正しい処理を実装できているかを静的解析する。
 
 `(1)`
 
@@ -40,13 +58,23 @@ $ go install sigs.k8s.io/logtools/logcheck@HEAD
 
 `(2)`
 
-: 実行する。
+: 構造化ロギングのチェックを実行する。
 
 ```bash
 $ $GOPATH/bin/logcheck -check-structured ./...
 
 kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: unstructured logging function "Infof" should not be used
-kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:73:3: unstructured logging function "Infof" should not be used
+```
+
+`(3)`
+
+: コンテキストロギングのチェックを実行する。
+
+```bash
+$ $GOPATH/bin/logcheck -check-contextual ./...
+
+kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "InfoS" should not be used, convert to contextual logging
+kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "V" should not be used, convert to contextual logging
 ```
 
 > - https://github.com/kubernetes-sigs/logtools/tree/main/logcheck
@@ -111,6 +139,12 @@ $ git fetch upstream
 $ git checkout master
 
 $ git rebase upstream/master
+```
+
+あるいは、GitHubの画面操作でSyncを実行し、ローカルの`master`ブランチを強制的に更新しても良い。
+
+```bash
+$ git reset --hard origin/master
 ```
 
 > - https://www.kubernetes.dev/docs/guide/github-workflow/
