@@ -174,7 +174,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。
 
-オーケストレーターサービスは、Orderサービス (`T1`) 、Inventryサービス (`T2`) 、Paymentサービス (`T3`) 、のローカルトランザクションを連続して実行する。
+オーケストレーターサービスは、Orderサービス (`T1`) 、Inventoryサービス (`T2`) 、Paymentサービス (`T3`) 、のローカルトランザクションを連続して実行する。
 
 例えば、Paymentサービスのローカルトランザクション (`T3`) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (`C1`、`C2`) を実行する。
 
@@ -182,6 +182,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation
 > - https://dzone.com/articles/modelling-saga-as-a-state-machine
+> - https://www.baeldung.com/cs/saga-pattern-microservices
+> - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
+> - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
 
 #### ▼ OSSを使用する場合
 
@@ -210,9 +213,6 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。
 
 > - https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748
-> - https://www.baeldung.com/cs/saga-pattern-microservices
-> - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
-> - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
 > - https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams
 
 #### ▼ メッセージキューを経由する場合

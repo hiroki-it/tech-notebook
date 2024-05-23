@@ -28,7 +28,7 @@ description: Keycloak＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-Keycloakは、認証処理サービス、Infinispan、RDBMS、といったコンポーネントから構成されている。
+Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。
 
 ![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
 

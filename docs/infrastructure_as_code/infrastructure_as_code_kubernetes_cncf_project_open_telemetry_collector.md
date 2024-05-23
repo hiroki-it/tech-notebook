@@ -45,6 +45,13 @@ HTTPSで受信する場合には、SSL証明書が必要である。
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
 
+#### ▼ Prometheus Receiver
+
+Prometheusにリクエストを送信し、Prometheusの持つメトリクスを取得する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver
+> - https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8
+
 <br>
 
 ### Processor
@@ -79,7 +86,7 @@ HTTPSで送信する場合には、クライアント証明書が必要である
 
 #### ▼ AWS X-Ray Exporter
 
-AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。
+スパンをAWS X-Rayのセグメントに変換し、AWS X-Rayを宛先とする。
 
 OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。
 
@@ -89,6 +96,16 @@ OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetry�
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475
+
+#### ▼ AWS CloudWatch EMF Exporter
+
+OpenTelemetry Collectorの持つ任意のメトリクスを埋め込みメトリクスフォーマットに変換し、またCloudWatchログを宛先とする。
+
+CloudWatchメトリクスは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスを作成する。
+
+> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter
+> - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
+> - https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8
 
 <br>
 

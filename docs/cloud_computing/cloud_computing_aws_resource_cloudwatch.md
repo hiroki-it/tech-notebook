@@ -89,6 +89,33 @@ Lambdaの性能に関するメトリクスのデータポイントを収集す�
 
 <br>
 
+### 埋め込みメトリクスフォーマット
+
+CloudWatchログ上で構造化ログのログイベントを自動的に集計し、CloudWatchメトリクス上でカスタムメトリクスを生成してくれる。
+
+CloudWatchログに送る構造化ログには、`metrics`オブジェクトを定義する必要がある。
+
+```yaml
+# 構造化ログ
+{
+  "message": "hello world"
+  # metricsオブジェクト
+  "metrics": [
+    {
+      "namespace": "MyApp"
+      "name": "NumRequests"
+      "unit": "Count"
+      "value": 155
+    }
+  ]
+}
+```
+
+> - https://dev.classmethod.jp/articles/cloudwatch-logs-embedded-metrics/
+> - https://medium.com/@christopheradamson253/monitor-custom-metrics-using-cloudwatch-embedded-metric-format-b1107abd0b9a
+
+<br>
+
 ## 02. CloudWatchログ
 
 ### CloudWatchログとは

@@ -198,6 +198,7 @@ package main
 
 import (
     "fmt"
+    "log"
     "runtime"
 )
 
@@ -210,12 +211,14 @@ func GetCurrentFunctionName() string {
 	pc, _, _, ok := runtime.Caller(1)
 
 	if !ok {
+		log.Print("Failed to get function name")
 		return "unknown"
 	}
 
 	fn := runtime.FuncForPC(pc)
 
 	if fn == nil {
+		log.Print("Failed to get function name")
 		return "unknown"
 	}
 
