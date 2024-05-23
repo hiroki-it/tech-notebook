@@ -21,6 +21,34 @@ description: Argo Workflows＠CNCFの知見を記録しています。
 
 <br>
 
+### Argo Workflows Archive
+
+ワークフローの処理の状況を保存する。
+
+RDBMSとして、PostgreSQLとMySQLを使用できる。
+
+`phase`カラムや`progress`カラムを永続化できる。
+
+```go
+type archivedWorkflowMetadata struct {
+    ClusterName string             `db:"clustername"`
+    InstanceID  string             `db:"instanceid"`
+    UID         string             `db:"uid"`
+    Name        string             `db:"name"`
+    Namespace   string             `db:"namespace"`
+    Phase       wfv1.WorkflowPhase `db:"phase"`
+    StartedAt   time.Time          `db:"startedat"`
+    FinishedAt  time.Time          `db:"finishedat"`
+    Labels      string             `db:"labels,omitempty"`
+    Annotations string             `db:"annotations,omitempty"`
+    Progress    string             `db:"progress,omitempty"`
+}
+```
+
+> - https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37
+
+<br>
+
 ## 02. workflow-controller
 
 ### workflow-controllerとは
