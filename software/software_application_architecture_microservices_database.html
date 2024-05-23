@@ -1899,6 +1899,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1929,7 +1938,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -1939,7 +1948,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -1962,7 +1971,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       イベントのパブリッシュとサブスクライブの方式
     </span>
@@ -1995,7 +2004,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -2058,7 +2067,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       イベントソーシング
     </span>
@@ -2068,7 +2077,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントソーシングとは
     </span>
@@ -2082,7 +2091,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ステートソーシング
     </span>
@@ -2092,7 +2101,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ステートソーシングとは
     </span>
@@ -23219,6 +23228,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23249,7 +23267,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23259,7 +23277,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -23282,7 +23300,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       イベントのパブリッシュとサブスクライブの方式
     </span>
@@ -23315,7 +23333,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23378,7 +23396,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       イベントソーシング
     </span>
@@ -23388,7 +23406,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントソーシングとは
     </span>
@@ -23402,7 +23420,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ステートソーシング
     </span>
@@ -23412,7 +23430,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ステートソーシングとは
     </span>
@@ -23661,6 +23679,140 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ 例<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>この例では、Sagaをステートマシンとして実装している。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/jsonmap&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">SagaState</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">          </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">UUID</span>
+<span class="w">    </span><span class="nx">Version</span><span class="w">     </span><span class="kt">int8</span>
+<span class="w">    </span><span class="nx">Type</span><span class="w">        </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">Payload</span><span class="w">     </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span>
+<span class="w">    </span><span class="nx">CurrentStep</span><span class="w"> </span><span class="nx">SagaStep</span>
+<span class="w">    </span><span class="nx">StepStatus</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span>
+<span class="w">    </span><span class="nx">SagaStatus</span><span class="w">  </span><span class="nx">SagaStatus</span>
+<span class="p">}</span>
+
+<span class="c1">// Repository</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Repository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">Update</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ss</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">QueryByID</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">Tx</span><span class="p">,</span><span class="w"> </span><span class="nx">ID</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">SagaState</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewSaga</span><span class="p">(</span><span class="nx">sagaType</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ステートマシン</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">SagaState</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">          </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">Version</span><span class="p">:</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">        </span><span class="nx">sagaType</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Payload</span><span class="p">:</span><span class="w">     </span><span class="nx">payload</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">CurrentStep</span><span class="p">:</span><span class="w"> </span><span class="nx">currentStep</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">StepStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">{</span><span class="nb">string</span><span class="p">(</span><span class="nx">currentStep</span><span class="p">):</span><span class="w"> </span><span class="nx">SagaStepStatusStarted</span><span class="p">},</span>
+<span class="w">        </span><span class="nx">SagaStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">SagaStatusStarted</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// NextSagaStatus evaluate current SagaStepStatuses and set SagaStatus</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="nx">NextSagaStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ss</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">StepStatus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ss</span><span class="p">[</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusCompleted</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusStarted</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusCompensating</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborted</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborting</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// IncrementVersion</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="nx">IncrementVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">Version</span><span class="o">++</span>
+<span class="p">}</span>
+
+<span class="c1">// SagaStatus represents the saga status based on steps status</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStatus</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="c1">// SagaStatus type</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">SagaStatusStarted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStatusAborting</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTING&quot;</span>
+<span class="w">    </span><span class="nx">SagaStatusAborted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStatusCompleted</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPLETED&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// SagaStepStatus represent current saga step status</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStepStatus</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="c1">// SagaStepStatus type</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">SagaStepStatusStarted</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStepStatusFailed</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStepStatusSucceeded</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SUCCEEDED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStepStatusCompensating</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATING&quot;</span>
+<span class="w">    </span><span class="nx">SagaStepStatusCompensated</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATED&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// SagaStep define saga service step in order to follow</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="c1">// NextSagaStep find saga next step from provided steps and current saga step</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// PrevSagaStep find saga previous step from provided steps and current saga step</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">PrevSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go">https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go</a></li>
+</ul>
+</blockquote>
+<h4 id="_21">▼ 例<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>この例では、Goの<code>defer</code>関数で補償トランザクションを定義している。</p>
 <p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
 <p>その後、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
@@ -23738,7 +23890,7 @@
 <li><a href="https://github.com/temporalio/samples-go/blob/main/saga/workflow.go">https://github.com/temporalio/samples-go/blob/main/saga/workflow.go</a></li>
 </ul>
 </blockquote>
-<h4 id="_21">▼ 例<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<h4 id="_22">▼ 例<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>この例では、Goのsliceでローカルトランザクション関数と補償トランザクション関数を管理している。</p>
 <p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -23821,6 +23973,7 @@
 <blockquote>
 <ul>
 <li><a href="https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5">https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5</a></li>
+<li><a href="https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85">https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23838,8 +23991,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_22">実装パターン<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<h4 id="_23">▼ 自前で実装する場合<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<h3 id="_23">実装パターン<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ 自前で実装する場合<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリポジトリを参考にせよ。</p>
 <p><img alt="choreography_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png" /></p>
@@ -23856,7 +24009,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_24">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_25">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。</p>
 <p>各マイクロサービスをイベント駆動方式で実装する必要がある。</p>
 <p><img alt="choreography_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png" /></p>
@@ -23877,7 +24030,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_25">実装パターン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h3 id="_26">実装パターン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
 <p>並列パイプラインのOSS (例：Apache Camel、など) を使用する。</p>
 <blockquote>
@@ -23901,8 +24054,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="06">06. オブジェクトモデリング方式<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_26">イベントソーシング<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<h4 id="_27">▼ イベントソーシングとは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<h3 id="_27">イベントソーシング<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="_28">▼ イベントソーシングとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>ビジネスの出来事をモデリングし、データとして永続化する。</p>
 <p>現在の状態を取得する場合は、初期のデータに全ての出来事を適用する。</p>
 <p>CQRSと相性が良い。</p>
@@ -23913,8 +24066,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_28">ステートソーシング<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<h4 id="_29">▼ ステートソーシングとは<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<h3 id="_29">ステートソーシング<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h4 id="_30">▼ ステートソーシングとは<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>ビジネスの現在の状態をモデリングし、データとして永続化する。</p>
 <p>過去の状態は上書きされる。</p>
 <blockquote>
