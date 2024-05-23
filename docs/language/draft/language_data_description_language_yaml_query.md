@@ -42,7 +42,7 @@ baz:
   - quux: QUUX
 ```
 
-注意点として、`yq`コマンドはGoテンプレートに対応していない。
+注意点として、`yq`コマンドはGoテンプレートをサポートしていない。
 
 > - https://github.com/mikefarah/yq/issues/636
 

@@ -231,7 +231,7 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 
 Kubernetesの`v1.28`では、InitContainerでサイドカーを作成できるようになった。
 
-Istioでもこれに対応している。
+Istioでもこれをサポートしている。
 
 `istio-proxy`コンテナのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。
 

@@ -695,7 +695,7 @@ ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの
 
 このテストでは、CI上に特定のバージョンのKubernetes Clusterを作成し、またこのClusterに対してArgoCDの稼働や各種処理 (マニフェストデプロイ) を実行する。
 
-例えば、ArgoCDの`v2.7.3`は、K3Sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
+例えば、ArgoCDの`v2.7.3`は、K3Sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/ci-build.yaml#L359-L462
 > - https://github.com/argoproj/argo-cd/tree/master/test/e2e

@@ -29,7 +29,7 @@ tfnotifyをより強化したtfcmtというツールがある。
 
 > - https://github.com/suzuki-shunsuke/tfcmt
 
-tfnotifyもtfcmtもGitHubのAPIにしか対応しておらず、GitLabの場合はtfcmt-gitlabを使用すると良い。
+tfnotifyもtfcmtもGitHubのAPIにしかサポートしておらず、GitLabの場合はtfcmt-gitlabを使用すると良い。
 
 > - https://github.com/hirosassa/tfcmt-gitlab
 

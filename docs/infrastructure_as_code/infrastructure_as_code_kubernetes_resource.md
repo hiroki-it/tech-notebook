@@ -1256,7 +1256,7 @@ Nodeのストレージ上にVolumeを作成し、これをコンテナにバイ�
 
 機能としては、Volumeの一種であるHostPathと同じである。
 
-マルチNodeには対応していないため、本番環境では非推奨である。
+マルチNodeはサポートしていないため、本番環境では非推奨である。
 
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
 > - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
@@ -1265,7 +1265,7 @@ Nodeのストレージ上にVolumeを作成し、これをコンテナにバイ�
 
 Node上にVolumeを作成し、これをコンテナにバインドマウントする。
 
-マルチNodeに対応している (明言されているわけではく、HostPathとの明確な違いがよくわからない) 。
+マルチNodeをサポートしている (明言されているわけではく、HostPathとの明確な違いがよくわからない) 。
 
 > - https://kubernetes.io/docs/concepts/storage/volumes/#local
 > - https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local

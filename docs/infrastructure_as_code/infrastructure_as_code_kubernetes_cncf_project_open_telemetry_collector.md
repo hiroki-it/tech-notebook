@@ -203,7 +203,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンとは
 
-テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを経由してテレメトリーを収集する。
+テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) は`L7`ロードバランサーを経由してテレメトリーを収集する。
 
 さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。
 
@@ -211,7 +211,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンの実装例
 
-L7ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeployment、などで実装できる。
+`L7`ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeployment、などで実装できる。
 
 #### ▼ ゲートウェイパターンのデメリット
 
@@ -443,5 +443,31 @@ spec:
 
 > - https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377
 > - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52
+
+<br>
+
+## 06. CNCFのメトリクスをクラウドプロバイダーに対応させる
+
+### AWS
+
+#### ▼ 仕組み
+
+以下の仕組みで、PrometheusのメトリクスをCloudWatch Container Insightsで監視できるようにする。
+
+1. Prometheusは、メトリクスを収集する。
+2. OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusをスクレイピングする。
+3. OpenTelemetry Collectorは、AWS CloudWatch EMF Exporterを使用して、Prometheusメトリクスを埋め込みメトリクスフォーマットを持つログに変換する。
+4. OpenTelemetry Collectorは、CloudWatchログのロググループ (`/aws/containerinsights/<Cluster名>/performance`) にログを送信する。
+5. CloudWatchログは、埋め込みメトリクスフォーマットを受信する。
+6. CloudWatch Container Insightsは埋め込みメトリクスフォーマットを認識し、カスタムメトリクスを作成する。これは、Prometheusメトリクスにほぼ対応している。
+
+> - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama[…]aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
+> - https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c[…]tch-container-insights-for-eks-ec2
+
+#### ▼ サポートしているPrometheusメトリクス
+
+全てのPrometheusメトリクスにサポートしているわけでない。
+
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html
 
 <br>

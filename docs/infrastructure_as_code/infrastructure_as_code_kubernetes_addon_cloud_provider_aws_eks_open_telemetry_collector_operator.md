@@ -39,7 +39,7 @@ OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenT
 
 AWSによるHelmチャートを使用する場合、KubernetesリソースでOpenTelemetry Collectorを作成することになる。
 
-執筆時点 (2024/01/22) では、Helmチャートがメトリクス収集の設定にしか対応していない。
+執筆時点 (2024/01/22) では、Helmチャートがメトリクス収集の設定にしかサポートしていない。
 
 > - https://github.com/aws-observability/aws-otel-helm-charts
 

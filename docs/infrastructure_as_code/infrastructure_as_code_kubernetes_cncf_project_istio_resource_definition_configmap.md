@@ -665,7 +665,7 @@ spec:
 
 Zipkinでは、トレースコンテキスト仕様がB3コンテキストになる。
 
-JaegerはB3に対応しているため、Jaegerのクライアントとしても使用できる。
+JaegerはB3をサポートしているため、Jaegerのクライアントとしても使用できる。
 
 ```yaml
 apiVersion: v1

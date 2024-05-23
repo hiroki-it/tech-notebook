@@ -326,7 +326,7 @@ Helmは、CRDを含むチャートのインストールはサポートしてい�
 
 : kube-apiserverにCRDのマニフェストを送信し、新バージョンのCRDを更新する。
 
-     Helmは、CRDの更新に対応していない (作成には対応している) .
+     Helmは、CRDの更新をサポートしていない (作成はサポートしている) .
 
      そのため、`kubectl`コマンドを使用してこれを更新する。
 
@@ -354,7 +354,7 @@ Error: unable to build kubernetes objects from release manifest: [unable to reco
 
 : 旧バージョンのCRDを削除する。
 
-     Helmは、CRDの削除に対応していないため、`kubectl delete`コマンドを使用する。
+     Helmは、CRDの削除をサポートしていないため、`kubectl delete`コマンドを使用する。
 
 ```bash
 $ kubectl delete -f <旧バージョンのCRDのマニフェストのURL>

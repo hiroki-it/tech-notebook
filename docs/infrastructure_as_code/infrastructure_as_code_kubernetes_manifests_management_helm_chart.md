@@ -79,7 +79,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 Helmのバージョンを設定する。
 
-`.apiVersion`キーの`v1`はHelmの`v2`に対応しており、`v2`は`v3`に対応している。
+`.apiVersion`キーの`v1`はHelmの`v2`に対応しており、`v2`は`v3`をサポートしている。
 
 ```yaml
 apiVersion: v2
