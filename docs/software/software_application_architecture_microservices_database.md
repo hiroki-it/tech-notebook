@@ -328,8 +328,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 }
 ```
 
-https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
-> - 
+> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+
 
 <br>
 
