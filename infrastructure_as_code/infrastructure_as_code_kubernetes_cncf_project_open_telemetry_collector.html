@@ -19111,6 +19111,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prometheus-receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Prometheus Receiver
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -19163,6 +19172,15 @@
   <a href="#aws-x-ray-exporter" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AWS X-Ray Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS CloudWatch EMF Exporter
     </span>
   </a>
   
@@ -22562,6 +22580,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prometheus-receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Prometheus Receiver
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22614,6 +22641,15 @@
   <a href="#aws-x-ray-exporter" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ AWS X-Ray Exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ AWS CloudWatch EMF Exporter
     </span>
   </a>
   
@@ -22888,6 +22924,14 @@
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration</a></li>
 </ul>
 </blockquote>
+<h4 id="prometheus-receiver">▼ Prometheus Receiver<a class="headerlink" href="#prometheus-receiver" title="Permanent link">&para;</a></h4>
+<p>Prometheusにリクエストを送信し、Prometheusの持つメトリクスを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver</a></li>
+<li><a href="https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8">https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="processor">Processor<a class="headerlink" href="#processor" title="Permanent link">&para;</a></h3>
 <h4 id="processor_1">▼ Processorとは<a class="headerlink" href="#processor_1" title="Permanent link">&para;</a></h4>
@@ -22914,7 +22958,7 @@
 </ul>
 </blockquote>
 <h4 id="aws-x-ray-exporter">▼ AWS X-Ray Exporter<a class="headerlink" href="#aws-x-ray-exporter" title="Permanent link">&para;</a></h4>
-<p>AWS X-Rayを宛先とし、またスパンをAWS X-Rayのセグメントに変換する。</p>
+<p>スパンをAWS X-Rayのセグメントに変換し、AWS X-Rayを宛先とする。</p>
 <p>OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。</p>
 <p>注意点として、トレースIDやスパンIDのトレースコンテキスト仕様は変換できず、そのまま転送してしまう。</p>
 <p>そのため、X-Rayの対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray仕様) ではない場合、スパンを送ったとしてもX-Ray上で分散トレースを作成できない。</p>
@@ -22922,6 +22966,16 @@
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475</a></li>
+</ul>
+</blockquote>
+<h4 id="aws-cloudwatch-emf-exporter">▼ AWS CloudWatch EMF Exporter<a class="headerlink" href="#aws-cloudwatch-emf-exporter" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetry Collectorの持つ任意のメトリクスを埋め込みメトリクスフォーマットに変換し、またCloudWatchログを宛先とする。</p>
+<p>CloudWatchメトリクスは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter</a></li>
+<li><a href="https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/">https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/</a></li>
+<li><a href="https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8">https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23250,7 +23304,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-23</span>
   </span>
 
     

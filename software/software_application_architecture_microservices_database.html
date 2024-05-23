@@ -23541,13 +23541,16 @@
 <p><strong>＊実装例＊</strong></p>
 <p>オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
 <p>オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
-<p>オーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
+<p>オーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
 <p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
 <p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation">https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation</a></li>
 <li><a href="https://dzone.com/articles/modelling-saga-as-a-state-machine">https://dzone.com/articles/modelling-saga-as-a-state-machine</a></li>
+<li><a href="https://www.baeldung.com/cs/saga-pattern-microservices">https://www.baeldung.com/cs/saga-pattern-microservices</a></li>
+<li><a href="https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079">https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079</a></li>
+<li><a href="https://blog.knoldus.com/distributed-transactions-and-saga-patterns/">https://blog.knoldus.com/distributed-transactions-and-saga-patterns/</a></li>
 </ul>
 </blockquote>
 <h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
@@ -23570,9 +23573,6 @@
 <blockquote>
 <ul>
 <li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
-<li><a href="https://www.baeldung.com/cs/saga-pattern-microservices">https://www.baeldung.com/cs/saga-pattern-microservices</a></li>
-<li><a href="https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079">https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079</a></li>
-<li><a href="https://blog.knoldus.com/distributed-transactions-and-saga-patterns/">https://blog.knoldus.com/distributed-transactions-and-saga-patterns/</a></li>
 <li><a href="https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams">https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams</a></li>
 </ul>
 </blockquote>
@@ -23725,7 +23725,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-23</span>
   </span>
 
     
