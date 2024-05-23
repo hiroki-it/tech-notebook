@@ -361,7 +361,7 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 **＊例＊**
 
-社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、ArgoWorkflow、Tekton、など) が社内サービスにリクエストを送信できるようにする。
+社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tekton、など) が社内サービスにリクエストを送信できるようにする。
 
 ルール：`allow-request-including-access-token`
 

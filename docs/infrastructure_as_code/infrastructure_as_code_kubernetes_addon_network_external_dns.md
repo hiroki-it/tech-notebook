@@ -101,7 +101,7 @@ spec:
         # DNSレコード追加のために検知するKubernetesリソースを設定する
         - --source=service
         - --source=ingress
-        # DNSゾーン (例：AWS Route53のホストゾーン) を設定する
+        # DNSレコード追加対象のDNSゾーン (例：AWS Route53のホストゾーン) を設定する
         - --domain-filter=example.com
         # Ingressからルールを削除した場合に、対応するAWSリソース (AWS ALBリスナールール、AWS Route53 DNSレコード) も削除する
         - --policy=sync
@@ -278,8 +278,6 @@ resource "aws_route53_record" "foo" {
   ttl     = 30
   records = aws_route53_zone.foo.name_servers
 }
-
-
 ```
 
 <br>

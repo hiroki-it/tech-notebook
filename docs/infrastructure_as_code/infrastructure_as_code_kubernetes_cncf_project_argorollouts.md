@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ArgoRollouts＠CNCF
-description: ArgoRollouts＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Argo Rollouts＠CNCF
+description: Argo Rollouts＠CNCFの知見を記録しています。
 ---
 
-# ArgoRollouts＠CNCF
+# Argo Rollouts＠CNCF
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ArgoRollouts＠CNCFの知見を記録しています。
 
 <br>
 
-## 01. ArgoRolloutsの仕組み
+## 01. Argo Rolloutsの仕組み
 
 ### アーキテクチャ
 
@@ -25,15 +25,15 @@ argo-rollouts-controller、ダッシュボード、から構成される。
 
 ### argo-rollouts-controller
 
-ArgoRolloutsのカスタムリソースのReconciliationを実行する。
+Argo RolloutsのカスタムリソースのReconciliationを実行する。
 
 <br>
 
 ### ArgoCDのダッシュボードの拡張
 
-ArgoRolloutsとArgoCDは異なるCluster上に独立して存在できる。
+Argo RolloutsとArgoCDは異なるCluster上に独立して存在できる。
 
-ArgoCDのダッシュボードを拡張すると、ArgoCDからArgoRolloutsを操作できるようになる。
+ArgoCDのダッシュボードを拡張すると、ArgoCDからArgo Rolloutsを操作できるようになる。
 
 > - https://argo-rollouts.readthedocs.io/en/latest/FAQ/#how-does-argo-rollouts-integrate-with-argo-cd
 > - https://github.com/argoproj-labs/rollout-extension

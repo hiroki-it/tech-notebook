@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ArgoWorkflow＠CNCF
-description: ArgoWorkflow＠CNCFの知見を記録しています。
+title: 【IT技術の知見】c＠CNCF
+description: Argo Workflows＠CNCFの知見を記録しています。
 ---
 
-# ArgoWorkflow＠CNCF
+# Argo Workflows＠CNCF
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ArgoWorkflow＠CNCFの知見を記録しています。
 
 <br>
 
-## 01. ArgoWorkflowの仕組み
+## 01. Argo Workflowsの仕組み
 
 ### アーキテクチャ
 
@@ -42,7 +42,7 @@ application-controllerを分離されている理由は、ArgoCD Workflowのマ�
 
 ### CIパイプライン
 
-ArgoWorkflow上でコンテナをビルドし、イメージレジストリにプッシュする。
+Argo Workflows上でコンテナをビルドし、イメージレジストリにプッシュする。
 
 > - https://zenn.dev/tnoyama/articles/d3358cc82f6173#gitops%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%E3%81%A8
 > - https://www.reddit.com/r/kubernetes/comments/18683bz/why_use_argo_workflows_over_github_actions/

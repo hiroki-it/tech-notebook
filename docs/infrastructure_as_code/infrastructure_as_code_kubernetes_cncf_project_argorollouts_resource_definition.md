@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】リソース定義＠ArgoRollouts
-description: リソース定義＠ArgoRolloutsの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Argo Rollouts
+description: リソース定義＠Argo Rolloutsの知見を記録しています。
 ---
 
-# リソース定義＠ArgoRollouts
+# リソース定義＠Argo Rollouts
 
 ## はじめに
 

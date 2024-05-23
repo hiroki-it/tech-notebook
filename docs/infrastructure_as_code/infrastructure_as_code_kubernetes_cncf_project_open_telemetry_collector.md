@@ -463,6 +463,7 @@ spec:
 
 > - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama[…]aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
 > - https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c[…]tch-container-insights-for-eks-ec2
+> - https://aws-otel.github.io/docs/getting-started/cloudwatch-metrics
 
 #### ▼ サポートしているPrometheusメトリクス
 
