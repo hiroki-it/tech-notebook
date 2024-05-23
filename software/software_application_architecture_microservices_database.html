@@ -1890,6 +1890,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1920,7 +1929,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -1930,7 +1939,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -1953,7 +1962,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       イベントのパブリッシュとサブスクライブの方式
     </span>
@@ -1986,7 +1995,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -2049,7 +2058,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       イベントソーシング
     </span>
@@ -2059,7 +2068,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントソーシングとは
     </span>
@@ -2073,7 +2082,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ステートソーシング
     </span>
@@ -2083,7 +2092,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ステートソーシングとは
     </span>
@@ -23201,6 +23210,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23231,7 +23249,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23241,7 +23259,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -23264,7 +23282,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       イベントのパブリッシュとサブスクライブの方式
     </span>
@@ -23297,7 +23315,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23360,7 +23378,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       イベントソーシング
     </span>
@@ -23370,7 +23388,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イベントソーシングとは
     </span>
@@ -23384,7 +23402,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ステートソーシング
     </span>
@@ -23394,7 +23412,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ステートソーシングとは
     </span>
@@ -23642,6 +23660,8 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ 例<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>この例では、Goの<code>defer</code>関数で補償トランザクションを定義している。</p>
+<p>ローカルトランザクションで失敗した場合は、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23715,6 +23735,91 @@
 <li><a href="https://github.com/temporalio/samples-go/blob/main/saga/workflow.go">https://github.com/temporalio/samples-go/blob/main/saga/workflow.go</a></li>
 </ul>
 </blockquote>
+<h4 id="_21">▼ 例<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>この例では、Goのsliceでローカルトランザクション関数と補償トランザクション関数を管理している。</p>
+<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;errors&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// Define a type to represent a local transaction</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
+
+<span class="c1">// Define a type to represent a compensating action</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
+
+<span class="c1">// Define a type to represent a saga step</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Transaction</span><span class="w"> </span><span class="nx">LocalTransaction</span>
+<span class="w">    </span><span class="nx">Compensate</span><span class="w">  </span><span class="nx">CompensatingAction</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a type to represent a saga</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Saga</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a function to execute a saga</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Saga</span><span class="p">)</span><span class="w"> </span><span class="nx">Execute</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ローカルトランザクションを順番に実行する</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">step</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 失敗した場合は、補償トランザクションを逆順で実行する</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Compensate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;failed to compensate for step %d: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a function to perform a local transaction</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Perform the transfer of funds</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// Define a function to perform a compensating action</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">reverseTransfer</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Reverse the transfer of funds</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Define a saga consisting of two local transactions and their compensating actions</span>
+<span class="w">    </span><span class="nx">saga</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Saga</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Steps</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Execute the saga</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">Execute</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga succeeded&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5">https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_2">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
@@ -23730,8 +23835,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_21">実装パターン<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<h4 id="_22">▼ 自前で実装する場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h3 id="_22">実装パターン<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="_23">▼ 自前で実装する場合<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリポジトリを参考にせよ。</p>
 <p><img alt="choreography_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png" /></p>
@@ -23748,7 +23853,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_23">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h3 id="_24">イベントのパブリッシュとサブスクライブの方式<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。</p>
 <p>各マイクロサービスをイベント駆動方式で実装する必要がある。</p>
 <p><img alt="choreography_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png" /></p>
@@ -23769,7 +23874,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_24">実装パターン<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_25">実装パターン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
 <p>並列パイプラインのOSS (例：Apache Camel、など) を使用する。</p>
 <blockquote>
@@ -23793,8 +23898,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="06">06. オブジェクトモデリング方式<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_25">イベントソーシング<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="_26">▼ イベントソーシングとは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<h3 id="_26">イベントソーシング<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<h4 id="_27">▼ イベントソーシングとは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>ビジネスの出来事をモデリングし、データとして永続化する。</p>
 <p>現在の状態を取得する場合は、初期のデータに全ての出来事を適用する。</p>
 <p>CQRSと相性が良い。</p>
@@ -23805,8 +23910,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_27">ステートソーシング<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<h4 id="_28">▼ ステートソーシングとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<h3 id="_28">ステートソーシング<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="_29">▼ ステートソーシングとは<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>ビジネスの現在の状態をモデリングし、データとして永続化する。</p>
 <p>過去の状態は上書きされる。</p>
 <blockquote>
