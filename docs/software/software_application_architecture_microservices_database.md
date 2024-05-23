@@ -258,6 +258,10 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 #### ▼ 例
 
+この例では、Goの`defer`関数で補償トランザクションを定義している。
+
+ローカルトランザクションで失敗した場合は、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
+
 ```go
 package saga
 
@@ -330,6 +334,93 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 > - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
 
+#### ▼ 例
+
+この例では、Goのsliceでローカルトランザクション関数と補償トランザクション関数を管理している。
+
+スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
+
+```go
+package main
+
+import (
+    "fmt"
+    "errors"
+)
+
+// Define a type to represent a local transaction
+type LocalTransaction func() error
+
+// Define a type to represent a compensating action
+type CompensatingAction func() error
+
+// Define a type to represent a saga step
+type SagaStep struct {
+    Transaction LocalTransaction
+    Compensate  CompensatingAction
+}
+
+// Define a type to represent a saga
+type Saga struct {
+    Steps []SagaStep
+}
+
+// Define a function to execute a saga
+func (s *Saga) Execute() error {
+	
+    for _, step := range s.Steps {
+		// ローカルトランザクションを順番に実行する
+        if err := step.Transaction(); err != nil {
+            // 失敗した場合は、補償トランザクションを逆順で実行する
+            for i := len(s.Steps) - 1; i >= 0; i-- {
+                if err := s.Steps[i].Compensate(); err != nil {
+                    return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
+                }
+            }
+            return err
+        }
+    }
+    return nil
+}
+
+// Define a function to perform a local transaction
+func transferFunds() error {
+    // Perform the transfer of funds
+    return nil
+}
+
+// Define a function to perform a compensating action
+func reverseTransfer() error {
+    // Reverse the transfer of funds
+    return nil
+}
+
+func main() {
+    // Define a saga consisting of two local transactions and their compensating actions
+    saga := Saga{
+        Steps: []SagaStep{
+            SagaStep{
+                Transaction: transferFunds,
+                Compensate:  reverseTransfer,
+            },
+            SagaStep{
+                Transaction: transferFunds,
+                Compensate:  reverseTransfer,
+            },
+        },
+    }
+
+    // Execute the saga
+    if err := saga.Execute(); err != nil {
+        fmt.Println("saga failed:", err)
+    } else {
+        fmt.Println("saga succeeded")
+    }
+}
+```
+
+
+> - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
 
 <br>
 
