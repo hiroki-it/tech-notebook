@@ -673,11 +673,11 @@ nav:
               - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_configmap.md
               - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_secret.md
               - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_job.md
-      - ■ ArgoRollouts:
-            - ArgoRollouts: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.md
+      - ■ Argo Rollouts:
+            - Argo Rollouts: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.md
             - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts_resource_definition.md
-      - ■ ArgoWorkflow:
-          - ArgoWorkflow: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.md
+      - ■ Argo Workflows:
+          - Argo Workflows: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.md
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow_resource_definition.md
       - ■ CertManager:
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.md
