@@ -23648,11 +23648,12 @@
 <h4 id="_18">▼ 補償トランザクションとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>ローカルトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
 <p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。</p>
-<p>各マイクロサービスで実装したロールバック処理のAPIを逆順でコールする。</p>
+<p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合に、まずそのマイクロサービスは自身のトランザクションをロールバックする。</p>
+<p>その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。</p>
 <h4 id="_19">▼ 例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>受注に関するトランザクションが異なるマイクロサービスにまたがる例。</p>
 <p><img alt="saga-pattern_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png" /></p>
-<p>補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。</p>
+<p>補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のトランザクションを実行する。</p>
 <p><img alt="saga-pattern_compensating_transaction_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png" /></p>
 <blockquote>
 <ul>
@@ -23661,7 +23662,8 @@
 </blockquote>
 <h4 id="_20">▼ 例<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>この例では、Goの<code>defer</code>関数で補償トランザクションを定義している。</p>
-<p>ローカルトランザクションで失敗した場合は、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
+<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
+<p>その後、それまでにコールされた<code>defer</code>関数を実行し補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23702,7 +23704,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -23720,7 +23723,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
