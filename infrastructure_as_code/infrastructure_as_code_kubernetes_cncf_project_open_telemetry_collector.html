@@ -19169,18 +19169,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-x-ray-exporter" class="md-nav__link">
+  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS X-Ray Exporter
+      ▼ AWS CloudWatch EMF Exporter
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
+  <a href="#aws-x-ray-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS CloudWatch EMF Exporter
+      ▼ AWS X-Ray Exporter
     </span>
   </a>
   
@@ -22638,18 +22638,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-x-ray-exporter" class="md-nav__link">
+  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS X-Ray Exporter
+      ▼ AWS CloudWatch EMF Exporter
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-cloudwatch-emf-exporter" class="md-nav__link">
+  <a href="#aws-x-ray-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS CloudWatch EMF Exporter
+      ▼ AWS X-Ray Exporter
     </span>
   </a>
   
@@ -22925,7 +22925,7 @@
 </ul>
 </blockquote>
 <h4 id="prometheus-receiver">▼ Prometheus Receiver<a class="headerlink" href="#prometheus-receiver" title="Permanent link">&para;</a></h4>
-<p>Prometheusにリクエストを送信し、Prometheusの持つメトリクスを取得する。</p>
+<p>Prometheusにリクエストを送信し、Prometheusの持つメトリクスを収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver</a></li>
@@ -22957,6 +22957,17 @@
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration">https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration</a></li>
 </ul>
 </blockquote>
+<h4 id="aws-cloudwatch-emf-exporter">▼ AWS CloudWatch EMF Exporter<a class="headerlink" href="#aws-cloudwatch-emf-exporter" title="Permanent link">&para;</a></h4>
+<p>OpenTelemetry Collectorの持つ任意のメトリクス (例：別に収集したPrometheusメトリクス) を埋め込みメトリクスフォーマットに変換し、またCloudWatchログを宛先とする。</p>
+<p>CloudWatchメトリクスは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスを作成する。</p>
+<p>例えば、AWS CloudWatchがデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換した上で、カスタムメトリクスとして表示し直すことができる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter</a></li>
+<li><a href="https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/">https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/</a></li>
+<li><a href="https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8">https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8</a></li>
+</ul>
+</blockquote>
 <h4 id="aws-x-ray-exporter">▼ AWS X-Ray Exporter<a class="headerlink" href="#aws-x-ray-exporter" title="Permanent link">&para;</a></h4>
 <p>スパンをAWS X-Rayのセグメントに変換し、AWS X-Rayを宛先とする。</p>
 <p>OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。</p>
@@ -22966,16 +22977,6 @@
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475</a></li>
-</ul>
-</blockquote>
-<h4 id="aws-cloudwatch-emf-exporter">▼ AWS CloudWatch EMF Exporter<a class="headerlink" href="#aws-cloudwatch-emf-exporter" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorの持つ任意のメトリクスを埋め込みメトリクスフォーマットに変換し、またCloudWatchログを宛先とする。</p>
-<p>CloudWatchメトリクスは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスを作成する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter</a></li>
-<li><a href="https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/">https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/</a></li>
-<li><a href="https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8">https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8</a></li>
 </ul>
 </blockquote>
 <p><br></p>
