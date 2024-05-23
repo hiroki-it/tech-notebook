@@ -244,7 +244,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 各マイクロサービスで実装したロールバック処理のAPIを逆順でコールする。
 
-**＊例＊**
+#### ▼ 例
 
 受注に関するトランザクションが異なるマイクロサービスにまたがる例。
 
@@ -255,6 +255,81 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 ![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
 
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+
+#### ▼ 例
+
+```go
+package saga
+
+import (
+	"time"
+
+	"go.uber.org/multierr"
+
+	"go.temporal.io/sdk/temporal"
+	"go.temporal.io/sdk/workflow"
+)
+
+func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err error) {
+	retryPolicy := &temporal.RetryPolicy{
+		InitialInterval:    time.Second,
+		BackoffCoefficient: 2.0,
+		MaximumInterval:    time.Minute,
+		MaximumAttempts:    3,
+	}
+
+	options := workflow.ActivityOptions{
+		// Timeout options specify when to automatically timeout Activity functions.
+		StartToCloseTimeout: time.Minute,
+		// Optionally provide a customized RetryPolicy.
+		// Temporal retries failures by default, this is just an example.
+		RetryPolicy: retryPolicy,
+	}
+
+	ctx = workflow.WithActivityOptions(ctx, options)
+
+	err = workflow.ExecuteActivity(ctx, Withdraw, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, WithdrawCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+	}()
+
+	// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, DepositCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+
+		// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart
+		// workflow.Sleep(ctx, 10*time.Second)
+	}()
+
+	// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+> - 
 
 <br>
 
