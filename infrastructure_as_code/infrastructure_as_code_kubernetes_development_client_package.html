@@ -22410,7 +22410,7 @@
 <h3 id="client-gokube-apiserver">client-goパッケージとkube-apiserverのバージョン整合性<a class="headerlink" href="#client-gokube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="client-gokube-apiserver_1">▼ client-goパッケージとkube-apiserverの間<a class="headerlink" href="#client-gokube-apiserver_1" title="Permanent link">&para;</a></h4>
 <p><code>kubectl</code>コマンドとkube-apiserverのバージョンの整合性と同様にして、client-goパッケージにもkube-apiserverのバージョンと整合性がある。</p>
-<p>例えば、client-goパッケージの<code>0.20.4</code>は、kube-apiserverの<code>v1.20.4</code>に対応している。</p>
+<p>例えば、client-goパッケージの<code>0.20.4</code>は、kube-apiserverの<code>v1.20.4</code>をサポートしている。</p>
 <div class="highlight"><pre><span></span><code>We recommend using the v0.x.y tags for Kubernetes releases &gt;= v1.17.0 and kubernetes-1.x.y tags for Kubernetes releases &lt; v1.17.0.
 </code></pre></div>
 <p>kube-apiserverとクライアント側のバージョン差は、前方/後方の<code>1</code>個のマイナーバージョン以内に収めることが推奨されており、client-goパッケージにもこのポリシーが適用される。</p>
@@ -22424,7 +22424,7 @@
 <h4 id="client-go_1">▼ client-goパッケージとマニフェストの間<a class="headerlink" href="#client-go_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesのマニフェストには<code>.apiVersion</code>キーが定義されている。</p>
 <p>kube-apiserverのバージョンに応じて、公式リポジトリが用意するマニフェストにて、<code>.apiVersion</code>キーが<code>v1</code>から<code>v2</code>になることがある。</p>
-<p>この場合、client-goパッケージがこの<code>.apiVersion</code>キーに対応していないと、kube-apiserverにそのマニフェストを送信できない。</p>
+<p>この場合、client-goパッケージがこの<code>.apiVersion</code>キーをサポートしていないと、kube-apiserverにそのマニフェストを送信できない。</p>
 <p>反対に、マニフェストですでに廃止済みの<code>.apiVersion</code>キーが指定されていて、client-goパッケージでもこれが廃止されていても、同様のことが起こる。</p>
 <p>そのため、client-goパッケージを定期的にアップグレードする必要がある。</p>
 <blockquote>
@@ -22440,8 +22440,8 @@
 </ul>
 </blockquote>
 <p>このことから、ArgoCDは<code>2.3.0</code>がKubernetesの<code>1.23.1</code>で稼働できることがわかる。</p>
-<p>なお、デプロイ先のClusterとしていずれのバージョンに対応しているかは、<code>gitops-engine</code>パッケージを確認する必要がある。</p>
-<p>Kubernetesの<code>1.23.1</code>が対応しているAPIグループのバージョンから、マニフェストで使用できる<code>.apiVersion</code>がわかる。</p>
+<p>なお、デプロイ先のClusterとしていずれのバージョンをサポートしているかは、<code>gitops-engine</code>パッケージを確認する必要がある。</p>
+<p>Kubernetesの<code>1.23.1</code>がサポートしているAPIグループのバージョンから、マニフェストで使用できる<code>.apiVersion</code>がわかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-</a></li>
@@ -22468,7 +22468,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-23</span>
   </span>
 
     

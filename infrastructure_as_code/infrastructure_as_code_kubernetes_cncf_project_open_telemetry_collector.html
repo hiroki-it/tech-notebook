@@ -19403,6 +19403,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#06-cncf" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. CNCFのメトリクスをクラウドプロバイダーに対応させる
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CNCFのメトリクスをクラウドプロバイダーに対応させる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サポートしているPrometheusメトリクス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -22872,6 +22920,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#06-cncf" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. CNCFのメトリクスをクラウドプロバイダーに対応させる
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CNCFのメトリクスをクラウドプロバイダーに対応させる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サポートしているPrometheusメトリクス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23055,7 +23151,7 @@
 <p><br></p>
 <h3 id="_7">ゲートウェイパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ ゲートウェイパターンとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) はL7ロードバランサーを経由してテレメトリーを収集する。</p>
+<p>テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) は<code>L7</code>ロードバランサーを経由してテレメトリーを収集する。</p>
 <p>さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。</p>
 <blockquote>
 <ul>
@@ -23063,7 +23159,7 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ ゲートウェイパターンの実装例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>L7ロードバランサーはIngressコントローラーや<code>istio-proxy</code>コンテナ、ゲートウェイはDeployment、などで実装できる。</p>
+<p><code>L7</code>ロードバランサーはIngressコントローラーや<code>istio-proxy</code>コンテナ、ゲートウェイはDeployment、などで実装できる。</p>
 <h4 id="_10">▼ ゲートウェイパターンのデメリット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
@@ -23282,6 +23378,32 @@
 <ul>
 <li><a href="https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377">https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52">https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-cncf">06. CNCFのメトリクスをクラウドプロバイダーに対応させる<a class="headerlink" href="#06-cncf" title="Permanent link">&para;</a></h2>
+<h3 id="aws_1">AWS<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ 仕組み<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>以下の仕組みで、PrometheusのメトリクスをCloudWatch Container Insightsで監視できるようにする。</p>
+<ol>
+<li>Prometheusは、メトリクスを収集する。</li>
+<li>OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusをスクレイピングする。</li>
+<li>OpenTelemetry Collectorは、AWS CloudWatch EMF Exporterを使用して、Prometheusメトリクスを埋め込みメトリクスフォーマットを持つログに変換する。</li>
+<li>OpenTelemetry Collectorは、CloudWatchログのロググループ (<code>/aws/containerinsights/&lt;Cluster名&gt;/performance</code>) にログを送信する。</li>
+<li>CloudWatchログは、埋め込みメトリクスフォーマットを受信する。</li>
+<li>CloudWatch Container Insightsは埋め込みメトリクスフォーマットを認識し、カスタムメトリクスを作成する。これは、Prometheusメトリクスにほぼ対応している。</li>
+</ol>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama">https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama</a>[…]aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/</li>
+<li><a href="https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c">https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c</a>[…]tch-container-insights-for-eks-ec2</li>
+</ul>
+</blockquote>
+<h4 id="prometheus">▼ サポートしているPrometheusメトリクス<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
+<p>全てのPrometheusメトリクスにサポートしているわけでない。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
