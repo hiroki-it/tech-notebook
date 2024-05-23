@@ -23682,10 +23682,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Timeout options specify when to automatically timeout Activity functions.</span>
 <span class="w">        </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
-<span class="w">        </span><span class="c1">// Optionally provide a customized RetryPolicy.</span>
-<span class="w">        </span><span class="c1">// Temporal retries failures by default, this is just an example.</span>
 <span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w"> </span><span class="nx">retryPolicy</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -23704,7 +23701,8 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="c1">// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクション</span>
+<span class="w">    </span><span class="c1">// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -23721,7 +23719,8 @@
 <span class="w">        </span><span class="c1">// workflow.Sleep(ctx, 10*time.Second)</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="c1">// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクション</span>
+<span class="w">    </span><span class="c1">// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
