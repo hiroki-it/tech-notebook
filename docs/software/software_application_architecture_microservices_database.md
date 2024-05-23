@@ -242,7 +242,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合に、処理に失敗したマイクロサービスだけでロールバックし、それ以前のマイクロサービスではロールバックが起こらない問題がある。
 
-各マイクロサービスで実装したロールバック処理のAPIを逆順でコールする。
+いずれかのマイクロサービスのローカルトランザクションが失敗した場合に、まずそのマイクロサービスは自身のトランザクションをロールバックする。
+
+その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。
 
 #### ▼ 例
 
@@ -250,7 +252,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png)
 
-補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。
+補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のトランザクションを実行する。
 
 ![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
 
@@ -260,7 +262,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 この例では、Goの`defer`関数で補償トランザクションを定義している。
 
-ローカルトランザクションで失敗した場合は、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
+ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
+
+その後、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
 
 ```go
 package saga
@@ -303,7 +307,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 	}()
 
 	// ローカルトランザクション
-	// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
 	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
@@ -321,7 +326,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 	}()
 
 	// ローカルトランザクション
-	// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
 	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
