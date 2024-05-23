@@ -283,10 +283,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 	}
 
 	options := workflow.ActivityOptions{
-		// Timeout options specify when to automatically timeout Activity functions.
 		StartToCloseTimeout: time.Minute,
-		// Optionally provide a customized RetryPolicy.
-		// Temporal retries failures by default, this is just an example.
 		RetryPolicy: retryPolicy,
 	}
 
@@ -305,7 +302,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 		}
 	}()
 
-	// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// ローカルトランザクション
+	// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
 	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
@@ -322,7 +320,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 		// workflow.Sleep(ctx, 10*time.Second)
 	}()
 
-	// このローカルトランザクションで失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// ローカルトランザクション
+	// 失敗した場合は、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
 	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
