@@ -17529,6 +17529,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#argo-workflows-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argo Workflows Archive
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22303,6 +22312,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#argo-workflows-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Argo Workflows Archive
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22386,6 +22404,30 @@
 <h2 id="01-argo-workflows">01. Argo Workflowsの仕組み<a class="headerlink" href="#01-argo-workflows" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
+<p><br></p>
+<h3 id="argo-workflows-archive">Argo Workflows Archive<a class="headerlink" href="#argo-workflows-archive" title="Permanent link">&para;</a></h3>
+<p>ワークフローの処理の状況を保存する。</p>
+<p>RDBMSとして、PostgreSQLとMySQLを使用できる。</p>
+<p><code>phase</code>カラムや<code>progress</code>カラムを永続化できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">archivedWorkflowMetadata</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ClusterName</span><span class="w"> </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;clustername&quot;`</span>
+<span class="w">    </span><span class="nx">InstanceID</span><span class="w">  </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;instanceid&quot;`</span>
+<span class="w">    </span><span class="nx">UID</span><span class="w">         </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;uid&quot;`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">        </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;name&quot;`</span>
+<span class="w">    </span><span class="nx">Namespace</span><span class="w">   </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;namespace&quot;`</span>
+<span class="w">    </span><span class="nx">Phase</span><span class="w">       </span><span class="nx">wfv1</span><span class="p">.</span><span class="nx">WorkflowPhase</span><span class="w"> </span><span class="s">`db:&quot;phase&quot;`</span>
+<span class="w">    </span><span class="nx">StartedAt</span><span class="w">   </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w">          </span><span class="s">`db:&quot;startedat&quot;`</span>
+<span class="w">    </span><span class="nx">FinishedAt</span><span class="w">  </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w">          </span><span class="s">`db:&quot;finishedat&quot;`</span>
+<span class="w">    </span><span class="nx">Labels</span><span class="w">      </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;labels,omitempty&quot;`</span>
+<span class="w">    </span><span class="nx">Annotations</span><span class="w"> </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;annotations,omitempty&quot;`</span>
+<span class="w">    </span><span class="nx">Progress</span><span class="w">    </span><span class="kt">string</span><span class="w">             </span><span class="s">`db:&quot;progress,omitempty&quot;`</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37">https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-workflow-controller">02. workflow-controller<a class="headerlink" href="#02-workflow-controller" title="Permanent link">&para;</a></h2>
 <h3 id="workflow-controller">workflow-controllerとは<a class="headerlink" href="#workflow-controller" title="Permanent link">&para;</a></h3>
