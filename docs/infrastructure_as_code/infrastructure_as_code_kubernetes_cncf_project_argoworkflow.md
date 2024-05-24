@@ -46,6 +46,7 @@ type archivedWorkflowMetadata struct {
 ```
 
 > - https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37
+> - https://pages.awscloud.com/rs/112-TZM-766/images/20230928_34th_ISV_DiveDeepSeminar_freee.pdf#page=11
 
 <br>
 
