@@ -142,15 +142,12 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 
-#### ▼ サイドカーサービスメッシュ
+<br>
 
-サイドカーサービスメッシュを使用し、JWTパターンを実装する。
+### マイクロサービス実装パターン
 
-サイドカーは認可サービスにリクエストを送信し、認可サービスは認可スコープに応じてboolean型値を返却する。
+認可処理を各マイクロサービスに実装する。
 
-![micro-authentication_type_jwt_service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt_service-mesh.png)
-
-> - https://thinkit.co.jp/article/22484
-> - https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/
+認可処理はドメインと結びつきが強いので、マイクロサービス側に実装すると拡張性が高くなる。
 
 <br>
