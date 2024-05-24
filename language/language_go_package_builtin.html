@@ -7578,14 +7578,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#middleware" class="md-nav__link">
     <span class="md-ellipsis">
-      ミドルウェア処理
+      Middleware
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ミドルウェア処理">
+    <nav class="md-nav" aria-label="Middleware">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ミドルウェア処理とは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
@@ -23462,14 +23471,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#middleware" class="md-nav__link">
     <span class="md-ellipsis">
-      ミドルウェア処理
+      Middleware
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ミドルウェア処理">
+    <nav class="md-nav" aria-label="Middleware">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ミドルウェア処理とは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
@@ -24145,7 +24163,7 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="p">}</span>
 </code></pre></div>
 <p>この時、構造体のフィールドはパブリックにする必要がある。</p>
-<p>しかし、<code>MarshalJSON</code>関数を構造体に定義すると、<code>Marshal</code>関数の代わりにこれがコールされるようになる。</p>
+<p>しかし、<code>MarshalJSON</code>関数を構造体に定義すると、<code>Marshal</code>関数の代わりにこれがコールするようになる。</p>
 <p>構造体にゲッターを用意して、<code>MarshalJSON</code>関数でパブリックな構造体を作成すると、プライベートな構造体に対しても<code>Marshal</code>関数を使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -24785,7 +24803,16 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">ミドルウェア処理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="middleware">Middleware<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ ミドルウェア処理とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。</p>
+<p><img alt="design-pattern_middleware" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.ritolab.com/posts/69">https://www.ritolab.com/posts/69</a></li>
+<li><a href="https://www.c-sharpcorner.com/article/asp-net-core-middleware/">https://www.c-sharpcorner.com/article/asp-net-core-middleware/</a></li>
+</ul>
+</blockquote>
 <h4 id="_10">▼ 認証系<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>HTMLをレスポンスとして返信するサーバ (<code>http://127.0.0.1:8080</code>) を起動する。</p>
@@ -25280,7 +25307,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-24</span>
   </span>
 
     

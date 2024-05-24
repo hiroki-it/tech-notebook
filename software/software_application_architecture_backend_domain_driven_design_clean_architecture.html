@@ -2417,7 +2417,7 @@
           <li class="md-nav__item">
   <a href="#_87" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ミドルウェアとは
+      ▼ ミドルウェア処理とは
     </span>
   </a>
   
@@ -24707,7 +24707,7 @@
           <li class="md-nav__item">
   <a href="#_87" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ミドルウェアとは
+      ▼ ミドルウェア処理とは
     </span>
   </a>
   
@@ -26749,7 +26749,7 @@
 <p>そのため、値オブジェクトにプロパティ値を返却するだけのゲッターが量産され、ファイルの見通しが悪くなってしまう。</p>
 <p>そこで、例えばPHPでは、マジックメソッドの<code>__get</code>メソッドを使用して、ゲッターの実装を省略できる。</p>
 <p>全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った<code>__get</code>メソッドを定義しておく。</p>
-<p>すると、マジックメソッドのオーバーライド機能により、自身で定義した<code>__get</code>メソッドが代わりにコールされるようになり、ゲッターを定義する必要がなくなる。</p>
+<p>すると、マジックメソッドのオーバーライド機能により、自身で定義した<code>__get</code>メソッドが代わりにコールするようになり、ゲッターを定義する必要がなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -27521,10 +27521,14 @@
 <p>コントローラーにリクエストをルーティングする。</p>
 <p><br></p>
 <h3 id="_86">ミドルウェア<a class="headerlink" href="#_86" title="Permanent link">&para;</a></h3>
-<h4 id="_87">▼ ミドルウェアとは<a class="headerlink" href="#_87" title="Permanent link">&para;</a></h4>
-<p>ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある。</p>
-<p>最近のフレームワークでも搭載されている。</p>
-<p><img alt="Laravelのミドルウェア" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png" /></p>
+<h4 id="_87">▼ ミドルウェア処理とは<a class="headerlink" href="#_87" title="Permanent link">&para;</a></h4>
+<p>コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。</p>
+<p><img alt="design-pattern_middleware" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ktanoooo/items/a746a96b12489ae56553">https://qiita.com/ktanoooo/items/a746a96b12489ae56553</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_88">イベントリスナー (イベントハンドラー)<a class="headerlink" href="#_88" title="Permanent link">&para;</a></h3>
 <h4 id="_89">▼ イベントリスナーとは<a class="headerlink" href="#_89" title="Permanent link">&para;</a></h4>
@@ -27630,7 +27634,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-24</span>
   </span>
 
     
