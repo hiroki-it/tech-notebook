@@ -479,7 +479,7 @@ class User extends Model
 
 #### ▼ Listenerとは
 
-イベントが発生した時に、これに紐付いてコールされるオブジェクトのこと。
+イベントが発生した時に、これに紐付いてコールするオブジェクトのこと。
 
 #### ▼ 構成
 
@@ -512,7 +512,7 @@ final class UserCreatedEventListener
 }
 ```
 
-任意の場所でイベントを発行すると、リスナーが自動的にコールされる。
+任意の場所でイベントを発行すると、リスナーが自動的にコールする。
 
 ```php
 <?php
@@ -647,7 +647,7 @@ class UpdatedModelEvent
 }
 ```
 
-Model更新イベントが発火してコールされるリスナーを定義する。
+Model更新イベントが発火してコールするリスナーを定義する。
 
 `create_by`カラムまたは`updated_by`カラムを指定した更新者名に更新可能にする。
 
@@ -2699,17 +2699,20 @@ public function authorize()
 
 ## 10-03. HTTP｜Middleware
 
-### Middlewareの仕組み
+### Middleware
 
-#### ▼ Middlewareの種類
+#### ▼ ミドルウェア処理とは
 
-ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある
+コントローラーの処理前に実行するBeforeMiddleと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
 
-![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
-#### ▼ BeforeMiddleware
+> - https://www.ritolab.com/posts/69
+> - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
 
-ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。
+#### ▼ BeforeMiddlewareware
+
+コントローラーの処理前に実行する処理を設定できる。
 
 一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。
 
@@ -2742,7 +2745,7 @@ class FooBeforeMiddleware
 
 #### ▼ AfterMiddleware
 
-コントローラーメソッドのレスポンスの実行後 (テンプレートのレンダリングを含む) に実行する処理を設定できる。
+コントローラーとビューの処理後に実行する処理を設定できる。
 
 あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。
 
@@ -3299,7 +3302,7 @@ return [
 
 #### ▼ `up`メソッド、`down`メソッド
 
-コマンドによるDBマイグレーション時にコールされる。
+コマンドによるDBマイグレーション時にコールする。
 
 `up`メソッドでテーブル、カラム、インデックスのCREATEを実行する。
 

@@ -520,7 +520,7 @@ func main() {
 
 この時、構造体のフィールドはパブリックにする必要がある。
 
-しかし、`MarshalJSON`関数を構造体に定義すると、`Marshal`関数の代わりにこれがコールされるようになる。
+しかし、`MarshalJSON`関数を構造体に定義すると、`Marshal`関数の代わりにこれがコールするようになる。
 
 構造体にゲッターを用意して、`MarshalJSON`関数でパブリックな構造体を作成すると、プライベートな構造体に対しても`Marshal`関数を使用できるようになる。
 
@@ -1262,7 +1262,16 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 <br>
 
-### ミドルウェア処理
+### Middleware
+
+#### ▼ ミドルウェア処理とは
+
+コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
+
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
+
+> - https://www.ritolab.com/posts/69
+> - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
 
 #### ▼ 認証系
 

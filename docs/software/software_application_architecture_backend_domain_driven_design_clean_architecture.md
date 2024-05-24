@@ -1907,7 +1907,7 @@ $test02 = new Test02("新しいデータ02の値");
 
 全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った`__get`メソッドを定義しておく。
 
-すると、マジックメソッドのオーバーライド機能により、自身で定義した`__get`メソッドが代わりにコールされるようになり、ゲッターを定義する必要がなくなる。
+すると、マジックメソッドのオーバーライド機能により、自身で定義した`__get`メソッドが代わりにコールするようになり、ゲッターを定義する必要がなくなる。
 
 ```php
 <?php
@@ -2673,13 +2673,13 @@ class DogComboFactory
 
 ### ミドルウェア
 
-#### ▼ ミドルウェアとは
+#### ▼ ミドルウェア処理とは
 
-ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある。
+コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
 
-最近のフレームワークでも搭載されている。
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
 
-![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
+> - https://qiita.com/ktanoooo/items/a746a96b12489ae56553
 
 <br>
 

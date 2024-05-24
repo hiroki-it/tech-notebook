@@ -507,7 +507,7 @@ type Saga struct {
 
 // Define a function to execute a saga
 func (s *Saga) Execute() error {
-	
+
     for _, step := range s.Steps {
 		// ローカルトランザクションを順番に実行する
         if err := step.Transaction(); err != nil {
@@ -558,7 +558,6 @@ func main() {
     }
 }
 ```
-
 
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
 > - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
