@@ -1535,17 +1535,17 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      中央集権パターン
+      セッションパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="中央集権パターン">
+    <nav class="md-nav" aria-label="セッションパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中央集権パターンとは
+      ▼ セッションパターンとは
     </span>
   </a>
   
@@ -1554,7 +1554,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中央集権パターンの仕組み
+      ▼ セッションパターンの仕組み
     </span>
   </a>
   
@@ -22495,17 +22495,17 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      中央集権パターン
+      セッションパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="中央集権パターン">
+    <nav class="md-nav" aria-label="セッションパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中央集権パターンとは
+      ▼ セッションパターンとは
     </span>
   </a>
   
@@ -22514,7 +22514,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中央集権パターンの仕組み
+      ▼ セッションパターンの仕組み
     </span>
   </a>
   
@@ -22715,15 +22715,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">中央集権パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 中央集権パターンとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h3 id="_4">セッションパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ セッションパターンとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>サーバー側に、セッションデータを作成する認証サービス (例：自前、Keycloak、など) を<code>1</code>個だけ配置し、認証処理を実行する。</p>
 <p>この認証サービスは、セッションデータを保管するためのストレージを持つ。</p>
-<h4 id="_6">▼ 中央集権パターンの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ セッションパターンの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスは、セッションデータに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるストレージ (例：Infinispan、Redis、など) を<code>1</code>個だけ配置する。</p>
-<p>耐障害性のあるセッションストレージが必要になるというデメリットがある。</p>
-<p><img alt="micro-authentication_type_centralization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_centralization.png" /></p>
+<p>セッションベースの認証情報伝播とコンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。</p>
+<p>そのため、セッションストレージが必要になるというデメリットがある。</p>
+<p><img alt="micro-authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_session.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://please-sleep.cou929.nu/microservices-auth-design.html">https://please-sleep.cou929.nu/microservices-auth-design.html</a></li>
@@ -22739,6 +22740,7 @@
 <h4 id="jwt_2">▼ JWTパターンの仕組み<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスは、JWTに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保存させる。</p>
+<p>トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
 <p>クライアント側に保存されたJWTの失効が難しいというデメリットがある。</p>
 <p><img alt="micro-authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt.png" /></p>
 <blockquote>
@@ -22758,6 +22760,7 @@
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込む。</p>
 <p>クライアント側にはJWTと対になるOpaqueトークンを保存する。</p>
 <p>また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。</p>
+<p>トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
 <p><img alt="micro-authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_opaque-token.png" /></p>
 <blockquote>
 <ul>
@@ -22810,7 +22813,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-24</span>
   </span>
 
     

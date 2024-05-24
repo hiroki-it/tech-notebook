@@ -10324,11 +10324,44 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 複数の認証の組み合わせ
+      03. 認証情報の運び方の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 複数の認証の組み合わせ">
+    <nav class="md-nav" aria-label="03. 認証情報の運び方の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      セッションベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      トークンベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. 複数の認証の組み合わせ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 複数の認証の組み合わせ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -10342,7 +10375,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二段階認証とは
     </span>
@@ -10366,7 +10399,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二要素認証とは
     </span>
@@ -10390,7 +10423,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 多要素認証とは
     </span>
@@ -22584,11 +22617,44 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 複数の認証の組み合わせ
+      03. 認証情報の運び方の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 複数の認証の組み合わせ">
+    <nav class="md-nav" aria-label="03. 認証情報の運び方の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      セッションベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      トークンベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. 複数の認証の組み合わせ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 複数の認証の組み合わせ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22602,7 +22668,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二段階認証とは
     </span>
@@ -22626,7 +22692,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 二要素認証とは
     </span>
@@ -22650,7 +22716,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 多要素認証とは
     </span>
@@ -22813,7 +22879,7 @@
 <p><br></p>
 <h3 id="api">APIキー認証<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ APIキー認証とは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。</p>
+<p>事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。</p>
 <h4 id="_3">▼ 照合情報の送信方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>自前ヘッダーとして、<code>x-api-key</code>ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
@@ -22823,7 +22889,7 @@
 <p><br></p>
 <h3 id="pat">PAT：パーソナルアクセストークンによる認証<a class="headerlink" href="#pat" title="Permanent link">&para;</a></h3>
 <h4 id="pat_1">▼ PATによる認証<a class="headerlink" href="#pat_1" title="Permanent link">&para;</a></h4>
-<p>クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する。</p>
+<p>クライアントがパーソナルアクセストークン (個人用アクセストークン) の付与をリクエストし、認証フェーズは行わずに認可フェーズのみでユーザーを照合する。</p>
 <p><code>Authorization</code>ヘッダーにPATを割りあてて、リクエストを送信する。</p>
 <p>作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
@@ -22852,9 +22918,31 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. 複数の認証の組み合わせ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. 認証情報の運び方の種類<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_4">セッションベース<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>セッションデータで認証情報を伝播する。</p>
+<p>システムの各コンポーネントがセッションデータを持つ必要がある。</p>
+<p>作成と削除が頻繁に起こるコンテナでは、セッションデータが消失する可能性があるため、セッションベースとコンテナの相性は悪い。</p>
+<p>いずれかのコンポーネントでセッションデータが消失しても復元できるように、セッションストレージを使用する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">トークンベース<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>トークンで認証情報を伝播する。</p>
+<p>システムの各コンポーネントはトークンを持つ必要がない。</p>
+<p>作成と削除が頻繁に起こるコンテナでは、トークンの消失を考慮する必要がなく、トークンベースとコンテナの相性は良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. 複数の認証の組み合わせ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="tsvtwo-step-verification">TSV：Two Step Verification (二段階認証)<a class="headerlink" href="#tsvtwo-step-verification" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 二段階認証とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 二段階認証とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><code>2</code>個の認証方法を設定し、クライアントを照合する。</p>
 <table>
 <thead>
@@ -22894,7 +22982,7 @@
 </table>
 <p><br></p>
 <h3 id="tfatwo-factor-authorization">TFA：Two Factor Authorization (二要素認証)<a class="headerlink" href="#tfatwo-factor-authorization" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 二要素認証とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 二要素認証とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>二段階認証のうちで特に、認証時に異なる要素の方法を使用して、段階的にクライアントを照合すること方法のこと。</p>
 <table>
 <thead>
@@ -22941,7 +23029,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="mfamultiple-factor-authorization">MFA：Multiple Factor Authorization (多要素認証)<a class="headerlink" href="#mfamultiple-factor-authorization" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 多要素認証とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 多要素認証とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 
@@ -22964,7 +23052,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-24</span>
   </span>
 
     
