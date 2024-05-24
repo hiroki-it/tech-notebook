@@ -44,23 +44,25 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 <br>
 
-### 中央集権パターン
+### セッションパターン
 
-#### ▼ 中央集権パターンとは
+#### ▼ セッションパターンとは
 
 サーバー側に、セッションデータを作成する認証サービス (例：自前、Keycloak、など) を`1`個だけ配置し、認証処理を実行する。
 
 この認証サービスは、セッションデータを保管するためのストレージを持つ。
 
-#### ▼ 中央集権パターンの仕組み
+#### ▼ セッションパターンの仕組み
 
 各マイクロサービスは、セッションデータに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるストレージ (例：Infinispan、Redis、など) を`1`個だけ配置する。
 
-耐障害性のあるセッションストレージが必要になるというデメリットがある。
+セッションベースの認証情報伝播とコンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。
 
-![micro-authentication_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_centralization.png)
+そのため、セッションストレージが必要になるというデメリットがある。
+
+![micro-authentication_type_session](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_session.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -81,6 +83,8 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 各マイクロサービスは、JWTに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保存させる。
+
+トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。
 
 クライアント側に保存されたJWTの失効が難しいというデメリットがある。
 
@@ -110,6 +114,8 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 クライアント側にはJWTと対になるOpaqueトークンを保存する。
 
 また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
+
+トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。
 
 ![micro-authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_opaque-token.png)
 

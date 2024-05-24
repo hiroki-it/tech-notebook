@@ -932,7 +932,9 @@ class CheckDuplicateFooService
 
 ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。
 
-ドメインサービスではなく、アプリケーションサービスとして定義しても良い。
+認可処理はドメインと結びつきが強いので、ドメイン層に実装する。
+
+あるいはドメインサービスではなく、アプリケーションサービスとして定義しても良い。
 
 > - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
 > - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac

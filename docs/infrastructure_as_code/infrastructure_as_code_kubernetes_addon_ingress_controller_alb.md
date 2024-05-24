@@ -99,7 +99,7 @@ AWS Load Balancerコントローラーは、サブネットを自動的に検出
 
 Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのパブリックサブネットに設定する。
 
-一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
+一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) をプライベートサブネットに設定する。
 
 またパブリックサブネットまたはプライベートサブネットのいずれであっても`kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は`shared`、単一のAWS EKS Clusterの場合は`owned`とする) を設定する。
 
