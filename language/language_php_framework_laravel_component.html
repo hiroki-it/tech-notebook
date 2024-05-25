@@ -27948,7 +27948,7 @@
     <span class="p">}</span>
 
     <span class="sd">/**</span>
-<span class="sd">     * イベントを発火させずにModelを保存します。</span>
+<span class="sd">     * イベントを発火させずにModelを保管します。</span>
 
 
 <span class="sd">     *</span>
@@ -27959,7 +27959,7 @@
         <span class="c1">// 無限ループを防ぐために、save実行時にイベントが発火しないようにする。</span>
         <span class="k">return</span> <span class="k">static</span><span class="o">::</span><span class="na">withoutEvents</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// プロパティの変更を保存。</span>
+            <span class="c1">// プロパティの変更を保管。</span>
             <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
         <span class="p">});</span>
     <span class="p">}</span>
@@ -28882,17 +28882,17 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">putContentsInPublicDisk</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="c1">// 保存先をpublicに設定する。</span>
+        <span class="c1">// 保管先をpublicに設定する。</span>
         <span class="nv">$disk</span> <span class="o">=</span> <span class="nx">Storage</span><span class="o">::</span><span class="na">disk</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">);</span>
 
-        <span class="c1">// 保存先のファイルを読み込む</span>
+        <span class="c1">// 保管先のファイルを読み込む</span>
         <span class="nv">$file_path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/public/foo.jpg&quot;</span>
         <span class="nv">$contents</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">);</span>
 
-        <span class="c1">// 保存先パス (ディレクトリ+ファイル名)</span>
+        <span class="c1">// 保管先パス (ディレクトリ+ファイル名)</span>
         <span class="nv">$saved_file_path</span> <span class="o">=</span> <span class="s2">&quot;/images/foo.jpg&quot;</span><span class="p">;</span>
 
-        <span class="c1">// foo.jpgを『/images/foo.jpg』に保存</span>
+        <span class="c1">// foo.jpgを『/images/foo.jpg』に保管</span>
         <span class="c1">// ルートディレクトリは『/storage/app/public』</span>
         <span class="nv">$disk</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nv">$saved_file_path</span><span class="p">,</span> <span class="nv">$contents</span><span class="p">);</span>
     <span class="p">}</span>
@@ -28965,7 +28965,7 @@
 <span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
-<span class="sd">     * 新しいブログポストの保存</span>
+<span class="sd">     * 新しいブログポストの保管</span>
 <span class="sd">     *</span>
 <span class="sd">     * @param Request $request</span>
 <span class="sd">     */</span>
@@ -29003,7 +29003,7 @@
 <span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
-<span class="sd">     * 新しいブログポストの保存</span>
+<span class="sd">     * 新しいブログポストの保管</span>
 <span class="sd">     *</span>
 <span class="sd">     * @param Request $request</span>
 <span class="sd">     */</span>
@@ -30695,7 +30695,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toArray</span><span class="p">(</span><span class="nv">$notifiable</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// DBへの保存方法を返却します。</span>
+        <span class="c1">// DBへの保管方法を返却します。</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -30832,7 +30832,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toArray</span><span class="p">(</span><span class="nv">$notifiable</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// notificationsテーブルのdataカラムに、JSONで保存されます。</span>
+        <span class="c1">// notificationsテーブルのdataカラムに、JSONで保管されます。</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="s2">&quot;tfa_token&quot;</span> <span class="o">=&gt;</span> <span class="nv">$notifiable</span><span class="o">-&gt;</span><span class="na">tfaToken</span><span class="p">(),</span>
         <span class="p">];</span>
@@ -31316,8 +31316,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * Seederを実行します。</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * @return void</span>
 <span class="sd">     */</span>
@@ -31331,15 +31329,13 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
-<span class="sd">     * CSVを読み込んでDBにデータを保存します。</span>
-
-
+<span class="sd">     * CSVを読み込んでDBにデータを保管します。</span>
 <span class="sd">     */</span>
     <span class="k">private</span> <span class="k">function</span> <span class="nf">importCsv</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tables</span> <span class="k">as</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// S3に保存してあるCSVファイルを読み込む。</span>
+            <span class="c1">// S3に保管してあるCSVファイルを読み込む。</span>
             <span class="nv">$csv</span> <span class="o">=</span> <span class="nx">\Storage</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">migrations</span><span class="o">/</span><span class="nx">csv</span><span class="o">/</span> <span class="o">.</span> <span class="nv">$table</span> <span class="o">.</span> <span class="s1">&#39;.csv&#39;</span><span class="p">);</span>
 
             <span class="c1">// 一時CSVファイルに書き込む。</span>
@@ -31370,8 +31366,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * Seederを実行します。</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * @return void</span>
 <span class="sd">     */</span>
@@ -31472,8 +31466,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 通常のバインディングとして、自身にバインドする。</span>
-
-
 <span class="sd">     * 第二引数は、クロージャー、もしくはクラス名前空間</span>
 <span class="sd">     *</span>
 <span class="sd">     * @param  string  $abstract</span>
@@ -31485,8 +31477,6 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 
     <span class="sd">/**</span>
 <span class="sd">     * singletonとして、自身にバインドする。</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * @param  string  $abstract</span>
 <span class="sd">     * @param  \Closure|string|null  $concrete</span>
@@ -32376,7 +32366,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
   </span>
 
     
