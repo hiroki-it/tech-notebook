@@ -163,7 +163,7 @@ nav:
           - 認証/認可: software/software_application_architecture_microservices_auth.md
           - DB: software/software_application_architecture_microservices_database.md
           - ネットワーク: software/software_application_architecture_microservices_network.md
-          - 開発: software/software_application_architecture_microservices_development.md
+          - 開発手法: software/software_application_architecture_microservices_development.md
       - ■ アプリケーション間連携:
           - アプリケーション間通信: software/software_application_collaboration_communication.md
           - ■ RESTful-API:
