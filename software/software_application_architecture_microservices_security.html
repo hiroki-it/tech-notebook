@@ -1562,6 +1562,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="相互TLS認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サイドカーサービスメッシュ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1575,7 +1590,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サイドカーサービスメッシュ
     </span>
@@ -22318,6 +22333,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="相互TLS認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サイドカーサービスメッシュ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -22331,7 +22361,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ サイドカーサービスメッシュ
     </span>
@@ -22396,11 +22426,12 @@
 <p><br></p>
 <h2 id="01">01. 通信の認証/認可<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="tls">相互TLS認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<h4 id="_3">▼ サイドカーサービスメッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービス間通信の相互TLS認証にて、サイドカーサービスメッシュを採用する。</p>
 <p><br></p>
 <h3 id="jwtbearer">JWTによるBearer認証<a class="headerlink" href="#jwtbearer" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ サイドカーサービスメッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>サイドカーサービスメッシュを使用し、JWTパターンを実装する。</p>
+<h4 id="_4">▼ サイドカーサービスメッシュ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービス間通信のJWTによるBearer認証にて、サイドカーサービスメッシュを採用する。</p>
 <p>サイドカーはリクエストからJWTを取得し、通信の認証/認可を実施する。</p>
 <p>送信元のマイクロサービスを認証し、認証されていないマイクロサービスであればリクエストを拒否する。</p>
 <p>また、送信元のマイクロサービスの認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。</p>
@@ -22413,7 +22444,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. パケットペイロードの暗号化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>各マイクロサービス間通信にて、SSL/TLSによる暗号化を採用する。</p>
 <p><br></p>
 <h2 id="03">03. 保管データの暗号化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
