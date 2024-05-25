@@ -46,7 +46,7 @@
 
 * #### [ネットワーク](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_network.html)
 
-* #### [開発](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html)
+* #### [開発手法](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_development.html)
 
 <br>
 
