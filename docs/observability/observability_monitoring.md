@@ -68,15 +68,15 @@ description: 監視＠可観測性の知見を記録しています。
 > - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
 > - https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb
 
-#### ▼ データの可視化
-
-分析したデータを監視バックエンドとして収集し、目視できるように可視化する。
-
 #### ▼ データの分析
 
 保管したデータ (ログ、メトリクス) を再集計し、新しいデータ (例：意味付けされた新しいメトリクス、ビジネス指標) として扱う。
 
 注意点として、アラートのための再集計は、これに含まれない。
+
+#### ▼ データの可視化
+
+分析したデータを監視バックエンドとして収集し、目視できるように可視化する。
 
 #### ▼ レポートの作成
 

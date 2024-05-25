@@ -410,6 +410,7 @@ API Gatewayを自前 (例：フルスクラッチ、Nginx、など) で実装す
 Kubernetes内で管理できるメリットがある。
 
 > - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
+> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
 
 #### ▼ OSSを使用する場合
 
@@ -418,6 +419,7 @@ API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、など) を使�
 Kubernetes内で管理できるメリットがある。
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
@@ -428,6 +430,7 @@ Kubernetes内で管理できるメリットがある。
 その場合、フロントエンドアプリケーションがAPI Gatewayに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 
 > - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
+> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
 
 <br>
 
