@@ -491,7 +491,7 @@ $_SESSION["セッション名"] = "値";
 
 <br>
 
-### セッションデータの保存場所
+### セッションデータの保管場所
 
 #### ▼ サーバーファイル
 
@@ -499,18 +499,18 @@ $_SESSION["セッション名"] = "値";
 
 **実装例**
 
-PHPの場合、セッションデータの保存場所は`/etc/php.ini`ファイルで定義できる。
+PHPの場合、セッションデータの保管場所は`/etc/php.ini`ファイルで定義できる。
 
 ```ini
 # /etc/php.iniファイル
 
 ## ファイル形式
 session.save_handler = files
-## 保存場所
+## 保管場所
 session.save_path = "/tmp"
 ```
 
-PHP-FPMを採用している場合は、`/etc/php.ini`ファイルではなく、`/etc/php-fpm.d/www.conf`ファイルで保存場所を設定する必要がある。
+PHP-FPMを採用している場合は、`/etc/php.ini`ファイルではなく、`/etc/php-fpm.d/www.conf`ファイルで保管場所を設定する必要がある。
 
 ```bash
 # /etc/php-fpm.d/www.confファイル

@@ -2480,7 +2480,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 
 ...
 
-保存完了 [44368/44368]
+保管完了 [44368/44368]
 ```
 
 > - https://prograshi.com/general/command/curl-o-and-wget-qo/
@@ -2489,7 +2489,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 
 ### -O
 
-保存先のファイル名を設定する。
+保管先のファイル名を設定する。
 
 ```bash
 $ wget -O foo.gz http://www.example.com/

@@ -659,7 +659,7 @@ const postMessageToSlack = (message) => {
 
 **＊実装例＊**
 
-API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。
+API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。
 
 LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`AWSLambdaExecute`』が紐付けられたロールをLambdaに紐付けしておく必要がある。
 
@@ -695,7 +695,7 @@ exports.handler = (event, context, callback) => {
   s3.putObject(
     {
       Bucket: "<バケット名>",
-      Key: "<パスを含む保存先ファイル>",
+      Key: "<パスを含む保管先ファイル>",
       Body: "<保管データ>",
     },
     (err, data) => {

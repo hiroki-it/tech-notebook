@@ -91,9 +91,9 @@ AWSリソースを操作するために使用する。
 
 **＊実装例＊**
 
-CloudFrontに保存されているキャッシュを削除する。
+CloudFrontに保管されているキャッシュを削除する。
 
-フロントエンドをデプロイしたとしても、CloudFrontに保存されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
+フロントエンドをデプロイしたとしても、CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
 
 そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
 
@@ -437,7 +437,7 @@ jobs:
     bundle-bucket: "${SERVICE}-bucket"
     # appspecファイルのあるディレクトリ
     bundle-source: ./infra/aws_codedeploy
-    # appspecファイルをzipファイルで保存
+    # appspecファイルをzipファイルで保管
     bundle-type: zip
     # zipファイル名
     bundle-key: foo-bundle

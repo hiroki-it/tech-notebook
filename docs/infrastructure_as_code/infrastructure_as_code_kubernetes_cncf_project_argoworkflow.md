@@ -23,7 +23,7 @@ description: Argo Workflows＠CNCFの知見を記録しています。
 
 ### Argo Workflows Archive
 
-ワークフローの処理の状況を保存する。
+ワークフローの処理の状況を保管する。
 
 RDBMSとして、PostgreSQLとMySQLを使用できる。
 

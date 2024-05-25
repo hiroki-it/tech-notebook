@@ -172,7 +172,7 @@ VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動す
 ├── data/
 │   ├── big/ # メトリクスが保管されている。
 │   ├── flock.lock
-│   └── small/ # キャッシュとして保存される。時々、bigディレクトリにマージされる。
+│   └── small/ # キャッシュとして保管される。時々、bigディレクトリにマージされる。
 │
 ├── flock.lock/
 ├── indexdb/ # 全文検索処理の高速化のためのインデックス

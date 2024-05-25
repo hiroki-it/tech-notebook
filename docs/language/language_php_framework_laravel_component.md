@@ -605,7 +605,7 @@ trait UpdatedModelTrait
     }
 
     /**
-     * イベントを発火させずにModelを保存します。
+     * イベントを発火させずにModelを保管します。
 
 
      *
@@ -616,7 +616,7 @@ trait UpdatedModelTrait
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
         return static::withoutEvents(function () use ($options) {
 
-            // プロパティの変更を保存。
+            // プロパティの変更を保管。
             return $this->save($options);
         });
     }
@@ -1523,17 +1523,17 @@ class FileSystemPublicController extends Controller
      */
     public function putContentsInPublicDisk()
     {
-        // 保存先をpublicに設定する。
+        // 保管先をpublicに設定する。
         $disk = Storage::disk("public");
 
-        // 保存先のファイルを読み込む
+        // 保管先のファイルを読み込む
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
-        // 保存先パス (ディレクトリ+ファイル名)
+        // 保管先パス (ディレクトリ+ファイル名)
         $saved_file_path = "/images/foo.jpg";
 
-        // foo.jpgを『/images/foo.jpg』に保存
+        // foo.jpgを『/images/foo.jpg』に保管
         // ルートディレクトリは『/storage/app/public』
         $disk->put($saved_file_path, $contents);
     }
@@ -1639,7 +1639,7 @@ use Illuminate\Support\Facades\Validator;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保存
+     * 新しいブログポストの保管
      *
      * @param Request $request
      */
@@ -1682,7 +1682,7 @@ use Illuminate\Support\Facades\Validator;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保存
+     * 新しいブログポストの保管
      *
      * @param Request $request
      */
@@ -3719,7 +3719,7 @@ class TfaTokenNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        // DBへの保存方法を返却します。
+        // DBへの保管方法を返却します。
     }
 }
 ```
@@ -3862,7 +3862,7 @@ class TfaTokenNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        // notificationsテーブルのdataカラムに、JSONで保存されます。
+        // notificationsテーブルのdataカラムに、JSONで保管されます。
         return [
             "tfa_token" => $notifiable->tfaToken(),
         ];
@@ -4447,8 +4447,6 @@ class ProductsSeeder extends Seeder
 {
     /**
      * Seederを実行します。
-
-
      *
      * @return void
      */
@@ -4462,15 +4460,13 @@ class ProductsSeeder extends Seeder
     }
 
     /**
-     * CSVを読み込んでDBにデータを保存します。
-
-
+     * CSVを読み込んでDBにデータを保管します。
      */
     private function importCsv(): void
     {
         foreach ($this->tables as $table) {
 
-            // S3に保存してあるCSVファイルを読み込む。
+            // S3に保管してあるCSVファイルを読み込む。
             $csv = \Storage::get(migrations/csv/ . $table . '.csv');
 
             // 一時CSVファイルに書き込む。
@@ -4506,8 +4502,6 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seederを実行します。
-
-
      *
      * @return void
      */
@@ -4602,8 +4596,6 @@ interface Container extends ContainerInterface
 {
     /**
      * 通常のバインディングとして、自身にバインドする。
-
-
      * 第二引数は、クロージャー、もしくはクラス名前空間
      *
      * @param  string  $abstract
@@ -4615,8 +4607,6 @@ interface Container extends ContainerInterface
 
     /**
      * singletonとして、自身にバインドする。
-
-
      *
      * @param  string  $abstract
      * @param  \Closure|string|null  $concrete

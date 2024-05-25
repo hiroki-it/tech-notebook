@@ -774,7 +774,7 @@ networks:
 
 #### ▼ NFSストレージ
 
-NFSプラグインを使用することにより、永続化データを`/var/lib/docker/volumes`ディレクトリではなく、NFSストレージに保存する。
+NFSプラグインを使用することにより、永続化データを`/var/lib/docker/volumes`ディレクトリではなく、NFSストレージに保管する。
 
 **＊実装例＊**
 
@@ -793,7 +793,7 @@ services:
 
 volumes:
   example:
-    driver_opts: # NFSプラグインを使用して、NFSストレージに保存。
+    driver_opts: # NFSプラグインを使用して、NFSストレージに保管。
       type: "nfs"
       o: "addr=10.40.0.199,nolock,soft,rw"
       device: ":/nfs/example"

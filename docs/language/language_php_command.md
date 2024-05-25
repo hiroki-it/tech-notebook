@@ -132,7 +132,7 @@ $ php -r 'phpinfo();'
 # phpinfoメソッドの実行結果から、特定の設定のみを取り出す。
 $ php -r 'phpinfo();' | grep php.ini
 
-# phpinfoメソッドの実行結果をテキストファイルに保存
+# phpinfoメソッドの実行結果をテキストファイルに保管
 $ php -r 'phpinfo();' > phpinfo.txt
 
 # 複数行のコードを実行する場合

@@ -640,7 +640,7 @@ commands:
 
   save_vendor:
     steps:
-      # 最新のvendorを保存。
+      # 最新のvendorを保管。
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:

@@ -421,7 +421,7 @@ spec:
 
 #### ▼ storage
 
-APIグループのバージョンをetcdのストレージに保存しても良いどうかを設定する。
+APIグループのバージョンをetcdのストレージに保管しても良いどうかを設定する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

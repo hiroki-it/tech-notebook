@@ -43,7 +43,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 ### バッファーの構造
 
-バッファーは、ステージ、キュー、といったコンポーネントから構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保存される。
+バッファーは、ステージ、キュー、といったコンポーネントから構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保管される。
 
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
