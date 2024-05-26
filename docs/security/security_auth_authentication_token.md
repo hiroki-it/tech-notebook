@@ -60,7 +60,7 @@ JWTは以下のサイトから取得できる。
 
 > - https://jwt.io/
 
-JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。
+例えばJavaScriptであれば、以下のような処理を実行し、JWTを作成する。
 
 ```javascript
 // <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
@@ -71,6 +71,8 @@ const token =
   "." +
   base64urlEncoding(signature);
 ```
+
+> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0
 
 #### ▼ ヘッダーのJSON型データの作成
 
@@ -84,6 +86,8 @@ const header = {
   alg: "HS256", // 署名のための暗号アルゴリズム
 };
 ```
+
+> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80
 
 #### ▼ ペイロードのJSON型データの作成
 
@@ -111,6 +115,7 @@ const payload = {
 };
 ```
 
+> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
 > - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
 
 #### ▼ 署名のJSON型データの作成
