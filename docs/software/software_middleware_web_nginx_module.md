@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】モジュール＠Nginx
-description: モジュール＠Nginxの知見を記録しています。
+title: 【IT技術の知見】外部モジュール＠Nginx
+description: 外部モジュール＠Nginxの知見を記録しています。
 ---
 
-# モジュール＠Nginx
+# 外部モジュール＠Nginx
 
 ## はじめに
 
@@ -262,6 +262,17 @@ OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTel
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module
 > - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
+
+<br>
+
+## ngx_http_auth_jwt_module
+
+JWTを自動作成し、認可サーバーの認可エンドポイントに送信する。
+
+有料版のNginxでしか使えない。
+
+> - https://medium.com/@sergey.dudik/nginx-and-keycloak-a-perfect-pair-for-gateway-security-41a801e741f9
+> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
 
 <br>
 

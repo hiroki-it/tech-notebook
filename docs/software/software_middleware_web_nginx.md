@@ -454,8 +454,6 @@ Keycloakと連携し、NginxではなくKeycloak側で認証処理を実施す�
 
 Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントに認可リクエストを送信する。
 
-なお、JWTを自動作成して送信する`ngx_http_auth_jwt_module`モジュールは、有料Nginxでしか使えない。
-
 ```nginx
 user  nginx;
 worker_processes  1;
@@ -499,7 +497,5 @@ http {
 ```
 
 > - https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf
-> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
-> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
 
 <br>
