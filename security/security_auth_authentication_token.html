@@ -22614,7 +22614,7 @@
 <li><a href="https://jwt.io/">https://jwt.io/</a></li>
 </ul>
 </blockquote>
-<p>JWTの作成時に、例えばJavaScriptであれば、以下のような処理が実行されている。</p>
+<p>例えばJavaScriptであれば、以下のような処理を実行し、JWTを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// &lt;ヘッダーエンコード値&gt;.&lt;ペイロードエンコード値&gt;.&lt;署名エンコード値&gt;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
@@ -22623,6 +22623,11 @@
 <span class="w">  </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">signature</span><span class="p">);</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0</a></li>
+</ul>
+</blockquote>
 <h4 id="json">▼ ヘッダーのJSON型データの作成<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
 <p>ヘッダーは以下のJSON型データで定義される。</p>
 <p>署名のための暗号アルゴリズムは、『<code>HS256</code>』『<code>RS256</code>』『<code>ES256</code>』『<code>none</code>』から選択できる。</p>
@@ -22631,6 +22636,11 @@
 <span class="w">  </span><span class="nx">alg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;HS256&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 署名のための暗号アルゴリズム</span>
 <span class="p">};</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80">https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80</a></li>
+</ul>
+</blockquote>
 <h4 id="json_1">▼ ペイロードのJSON型データの作成<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h4>
 <p>ペイロードは以下のJSON型データで定義される。</p>
 <p>ペイロードには、実際に送信したいJSONを設定する。</p>
@@ -22687,6 +22697,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89">https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89</a></li>
 <li><a href="https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0">https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0</a></li>
 </ul>
 </blockquote>
@@ -22786,7 +22797,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
   </span>
 
     
