@@ -22341,53 +22341,7 @@
 <p><br></p>
 <h3 id="_3">ユースケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 認証マイクロサービスとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>認証マイクロサービスとして、認証/認可処理を実施する。</p>
-<p>Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントに認可リクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">user</span><span class="w">  </span><span class="s">nginx</span><span class="p">;</span>
-<span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="k">events</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">1024</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">http</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">include</span><span class="w">       </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">default_type</span><span class="w">  </span><span class="s">text/html</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span>
-
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">http://keycloak:8080/</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Host</span><span class="w">   </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Server</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Port</span><span class="w">   </span><span class="nv">$server_port</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Proto</span><span class="w">  </span><span class="nv">$scheme</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/auth/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1"># 認可エンドポイントに認可リクエストを送信する</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">http://keycloak:8080/keycloak/auth/</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Host</span><span class="w">   </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Server</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Port</span><span class="w">   </span><span class="nv">$server_port</span><span class="p">;</span>
-<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Proto</span><span class="w">  </span><span class="nv">$scheme</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf">https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf</a></li>
-</ul>
-</blockquote>
+<p>記入中...</p>
 <p><br></p>
 
 
