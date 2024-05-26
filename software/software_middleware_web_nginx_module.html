@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="モジュール＠Nginxの知見を記録しています。">
+        <meta name="description" content="外部モジュール＠Nginxの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】モジュール＠Nginx - 俺の技術ノート</title>
+        <title>【IT技術の知見】外部モジュール＠Nginx - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】モジュール＠Nginx
+              【IT技術の知見】外部モジュール＠Nginx
             
           </span>
         </div>
@@ -2180,7 +2180,7 @@
           
   
   <span class="md-ellipsis">
-    モジュール
+    外部モジュール
   </span>
   
 
@@ -2191,7 +2191,7 @@
         
   
   <span class="md-ellipsis">
-    モジュール
+    外部モジュール
   </span>
   
 
@@ -2493,6 +2493,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngx_http_auth_jwt_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_http_auth_jwt_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_http_auth_jwt_module">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ngx_http_opentelemetry_module" class="md-nav__link">
@@ -22791,6 +22806,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngx_http_auth_jwt_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_http_auth_jwt_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ngx_http_auth_jwt_module">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#ngx_http_opentelemetry_module" class="md-nav__link">
     <span class="md-ellipsis">
@@ -22823,7 +22853,7 @@
   
 
 
-<h1 id="nginx">モジュール＠Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
+<h1 id="nginx">外部モジュール＠Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23036,6 +23066,16 @@ $<span class="w"> </span>make<span class="w"> </span>install
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="ngx_http_auth_jwt_module">ngx_http_auth_jwt_module<a class="headerlink" href="#ngx_http_auth_jwt_module" title="Permanent link">&para;</a></h2>
+<p>JWTを自動作成し、認可サーバーの認可エンドポイントに送信する。</p>
+<p>有料版のNginxでしか使えない。</p>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@sergey.dudik/nginx-and-keycloak-a-perfect-pair-for-gateway-security-41a801e741f9">https://medium.com/@sergey.dudik/nginx-and-keycloak-a-perfect-pair-for-gateway-security-41a801e741f9</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html">https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="ngx_http_opentelemetry_module">ngx_http_opentelemetry_module<a class="headerlink" href="#ngx_http_opentelemetry_module" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
 <blockquote>
@@ -23064,7 +23104,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-27</span>
   </span>
 
     
