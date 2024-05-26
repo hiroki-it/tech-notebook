@@ -56,7 +56,9 @@ Keycloakは、認証処理サービス、Infinispan、アカウント管理用�
 
 ここでは、JWTによる認証を採用する。
 
-まずAPI GatewayとしてのNginxは、Keycloakにリクエストを送信する。
+まずKeycloakクライアントとしてのNginxは、Keycloakにリクエストを送信する。
+
+Nginxは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを`base64`方式によってエンコードし、ドットでつなぐことで、JWTを作成する。
 
 ```nginx
 user  nginx;
@@ -86,6 +88,7 @@ http {
 
 
         location /keycloak/auth/ {
+            # 認可エンドポイントに認可リクエストを送信する
             proxy_pass          http://keycloak:8080/keycloak/auth/;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
@@ -100,9 +103,6 @@ http {
 ```
 
 > - https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf
-
-Nginxは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを`base64`方式によってエンコードし、ドットでつなぐことで、JWTを作成する。
-
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0
 > - https://qiita.com/t-mogi/items/2728586959f16849443f#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E5%81%B4%E3%81%A7%E3%81%AE%E5%AF%BE%E5%BF%9C
 
