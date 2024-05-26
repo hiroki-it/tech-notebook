@@ -67,52 +67,6 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 
 #### ▼ 認証マイクロサービスとして
 
-認証マイクロサービスとして、認証/認可処理を実施する。
-
-Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントに認可リクエストを送信する。
-
-```nginx
-user  nginx;
-worker_processes  1;
-
-events {
-    worker_connections  1024;
-}
-
-http {
-    include       /etc/nginx/mime.types;
-    default_type  text/html;
-
-    server {
-        listen 8080;
-
-        location /keycloak/ {
-            proxy_pass          http://keycloak:8080/;
-            proxy_set_header    Host               $host;
-            proxy_set_header    X-Real-IP          $remote_addr;
-            proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
-            proxy_set_header    X-Forwarded-Host   $host;
-            proxy_set_header    X-Forwarded-Server $host;
-            proxy_set_header    X-Forwarded-Port   $server_port;
-            proxy_set_header    X-Forwarded-Proto  $scheme;
-        }
-
-
-        location /keycloak/auth/ {
-            # 認可エンドポイントに認可リクエストを送信する
-            proxy_pass          http://keycloak:8080/keycloak/auth/;
-            proxy_set_header    Host               $host;
-            proxy_set_header    X-Real-IP          $remote_addr;
-            proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
-            proxy_set_header    X-Forwarded-Host   $host;
-            proxy_set_header    X-Forwarded-Server $host;
-            proxy_set_header    X-Forwarded-Port   $server_port;
-            proxy_set_header    X-Forwarded-Proto  $scheme;
-        }
-    }
-}
-```
-
-> - https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf
+記入中...
 
 <br>

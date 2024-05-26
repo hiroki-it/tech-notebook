@@ -412,6 +412,8 @@ stream {
 
 ### API Gatewayとして
 
+#### ▼ API Gatewayに必要な機能
+
 NginxをAPI Gatewayとして使用する。
 
 API Gatewayのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。
@@ -421,6 +423,8 @@ API Gatewayのため、リバースプロキシやロードバランサーとは
 - トレースIDの付与
 - キャッシュの作成
 - リクエスト制限
+
+#### ▼ ルーティング
 
 **＊実装例＊**
 
@@ -443,5 +447,59 @@ server {
 
 > - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
+
+#### ▼ 認証
+
+Keycloakと連携し、NginxではなくKeycloak側で認証処理を実施する。
+
+Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントに認可リクエストを送信する。
+
+なお、JWTを自動作成して送信する`ngx_http_auth_jwt_module`モジュールは、有料Nginxでしか使えない。
+
+```nginx
+user  nginx;
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  text/html;
+
+    server {
+        listen 8080;
+
+        location /keycloak/ {
+            proxy_pass          http://keycloak:8080/;
+            proxy_set_header    Host               $host;
+            proxy_set_header    X-Real-IP          $remote_addr;
+            proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
+            proxy_set_header    X-Forwarded-Host   $host;
+            proxy_set_header    X-Forwarded-Server $host;
+            proxy_set_header    X-Forwarded-Port   $server_port;
+            proxy_set_header    X-Forwarded-Proto  $scheme;
+        }
+
+
+        location /keycloak/auth/ {
+            # 認可エンドポイントに認可リクエストを送信する
+            proxy_pass          http://keycloak:8080/keycloak/auth/;
+            proxy_set_header    Host               $host;
+            proxy_set_header    X-Real-IP          $remote_addr;
+            proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
+            proxy_set_header    X-Forwarded-Host   $host;
+            proxy_set_header    X-Forwarded-Server $host;
+            proxy_set_header    X-Forwarded-Port   $server_port;
+            proxy_set_header    X-Forwarded-Proto  $scheme;
+        }
+    }
+}
+```
+
+> - https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf
+> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
+> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
 
 <br>
