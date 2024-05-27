@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kong＠CNCFの知見を記録しています。">
+        <meta name="description" content="リソース定義＠Kong Ingressの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_kong_resource_definition.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_kong_ingress_resource_definition.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Kong＠CNCF - 俺の技術ノート</title>
+        <title>【IT技術の知見】リソース定義＠Kong Ingress - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kongcncf" class="md-skip">
+        <a href="#kong-ingress" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Kong＠CNCF
+              【IT技術の知見】リソース定義＠Kong Ingress
             
           </span>
         </div>
@@ -22256,28 +22256,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ labels.
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#global" class="md-nav__link">
     <span class="md-ellipsis">
-      global
+      ▼ global
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="global">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#grpc-gateway" class="md-nav__link">
@@ -22352,7 +22337,7 @@
   
 
 
-<h1 id="kongcncf">Kong＠CNCF<a class="headerlink" href="#kongcncf" title="Permanent link">&para;</a></h1>
+<h1 id="kong-ingress">リソース定義＠Kong Ingress<a class="headerlink" href="#kong-ingress" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22367,13 +22352,13 @@
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
 
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>cert-manager
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>kong-ingress
 
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kong<span class="w"> </span>-n<span class="w"> </span>bff<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/ingress<span class="w"> </span>-n<span class="w"> </span>kong-ingress<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/Kong/charts/tree/main/charts/kong">https://github.com/Kong/charts/tree/main/charts/kong</a></li>
+<li><a href="https://github.com/Kong/charts/blob/main/charts/ingress/README.md">https://github.com/Kong/charts/blob/main/charts/ingress/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22424,8 +22409,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="metadatalabels">metadata.labels<a class="headerlink" href="#metadatalabels" title="Permanent link">&para;</a></h3>
-<h4 id="labels">▼ labels.<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
-<h3 id="global">global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h3>
+<h4 id="global">▼ global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h4>
 <p>ClusterスコープでKongPluginを有効化する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
