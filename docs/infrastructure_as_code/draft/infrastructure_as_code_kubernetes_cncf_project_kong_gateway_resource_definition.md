@@ -13,9 +13,19 @@ description: Kong Gateway＠CNCFの知見を記録しています。
 
 <br>
 
-## Kong KongPlugin
+## KongPlugin
 
-### grpc-gateway
+### KongPluginとは
+
+Kong Gatewayを拡張する。
+
+> - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin
+
+<br>
+
+### config
+
+#### ▼ grpc-gatewayプラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -29,11 +39,10 @@ config:
 plugin: grpc-gateway
 ```
 
+> - https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
-<br>
-
-### jwt
+#### ▼ jwtプラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -48,6 +57,7 @@ config:
 plugin: jwt
 ```
 
+> - https://docs.konghq.com/hub/kong-inc/jwt/configuration/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
 <br>
