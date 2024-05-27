@@ -683,3 +683,13 @@ CQRSと相性が良い。
 > - http://masuda220.jugem.jp/?eid=435
 
 <br>
+
+## 07. クエリパターン
+
+### API Composition
+
+複数のマイクロサービスにまたがるread処理がある場合に、結果を結合してレスポンスする。
+
+> - https://crishantha.medium.com/microservices-patterns-api-composition-pattern-27040cae5bd3
+
+<br>
