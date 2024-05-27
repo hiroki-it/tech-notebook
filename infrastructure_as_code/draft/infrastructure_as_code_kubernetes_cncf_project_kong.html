@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kong Gateway＠CNCFの知見を記録しています。">
+        <meta name="description" content="Kong＠CNCFの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_kong_gateway_resource_definition.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_kong.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Kong Gateway＠CNCF - 俺の技術ノート</title>
+        <title>【IT技術の知見】Kong＠CNCF - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kong-gatewaycncf" class="md-skip">
+        <a href="#kongcncf" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Kong Gateway＠CNCF
+              【IT技術の知見】Kong＠CNCF
             
           </span>
         </div>
@@ -22176,47 +22176,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kongplugin" class="md-nav__link">
+  <a href="#01-kongingress" class="md-nav__link">
     <span class="md-ellipsis">
-      KongPlugin
+      01. KongIngress
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="KongPlugin">
+    <nav class="md-nav" aria-label="01. KongIngress">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kongplugin_1" class="md-nav__link">
+  <a href="#kongingress" class="md-nav__link">
     <span class="md-ellipsis">
-      KongPluginとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config" class="md-nav__link">
-    <span class="md-ellipsis">
-      config
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#grpc-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ grpc-gatewayプラグインの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ jwtプラグインの場合
+      KongIngressとは
     </span>
   </a>
   
@@ -22224,6 +22196,25 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-kongplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. KongPlugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. KongPlugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kongplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      KongPluginとは
+    </span>
+  </a>
   
 </li>
         
@@ -22250,7 +22241,7 @@
   
 
 
-<h1 id="kong-gatewaycncf">Kong Gateway＠CNCF<a class="headerlink" href="#kong-gatewaycncf" title="Permanent link">&para;</a></h1>
+<h1 id="kongcncf">Kong＠CNCF<a class="headerlink" href="#kongcncf" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22259,49 +22250,21 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="kongplugin">KongPlugin<a class="headerlink" href="#kongplugin" title="Permanent link">&para;</a></h2>
-<h3 id="kongplugin_1">KongPluginとは<a class="headerlink" href="#kongplugin_1" title="Permanent link">&para;</a></h3>
-<p>Kong Gatewayを拡張する。</p>
+<h2 id="01-kongingress">01. KongIngress<a class="headerlink" href="#01-kongingress" title="Permanent link">&para;</a></h2>
+<h3 id="kongingress">KongIngressとは<a class="headerlink" href="#kongingress" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin">https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin</a></li>
+<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongingress">https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongingress</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
-<h4 id="grpc-gateway">▼ grpc-gatewayプラグインの場合<a class="headerlink" href="#grpc-gateway" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc-gateway-plugin</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">global</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="nt">config</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/kong/protobufs/joke.proto</span>
-<span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc-gateway</span>
-</code></pre></div>
+<h2 id="02-kongplugin">02. KongPlugin<a class="headerlink" href="#02-kongplugin" title="Permanent link">&para;</a></h2>
+<h3 id="kongplugin">KongPluginとは<a class="headerlink" href="#kongplugin" title="Permanent link">&para;</a></h3>
+<p>Kong Ingressを拡張する。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/">https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/</a></li>
-<li><a href="https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c">https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c</a></li>
-</ul>
-</blockquote>
-<h4 id="jwt">▼ jwtプラグインの場合<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jwt-plugin</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">global</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="nt">config</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">secret_is_base64</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">run_on_preflight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jwt</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.konghq.com/hub/kong-inc/jwt/configuration/">https://docs.konghq.com/hub/kong-inc/jwt/configuration/</a></li>
-<li><a href="https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c">https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c</a></li>
+<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongplugin">https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongplugin</a></li>
 </ul>
 </blockquote>
 <p><br></p>
