@@ -115,7 +115,12 @@ config:
 plugin: grpc-gateway
 ```
 
-> - https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/
+```bash
+# KongIngressに紐づくServiceにアノテーションを設定する
+$ kubectl annotate service <サービス名> konghq.com/plugins=grpc-gateway-plugin
+```
+
+> - https://docs.konghq.com/hub/kong-inc/grpc-gateway/how-to/basic-example/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
 #### ▼ jwtプラグインの場合
@@ -131,10 +136,57 @@ config:
 plugin: jwt
 ```
 
-> - https://docs.konghq.com/hub/kong-inc/jwt/configuration/
+```bash
+# KongIngressに紐づくServiceにアノテーションを設定する
+$ kubectl annotate service <サービス名> konghq.com/plugins=jwt-plugin
+```
+
+> - https://docs.konghq.com/hub/kong-inc/jwt/how-to/basic-example/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
-#### ▼ rate-limiting
+#### ▼ key-authプラグインの場合
+
+```yaml
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: key-auth-plugin
+config:
+  key_names:
+    - apikey
+plugin: key-auth
+```
+
+```bash
+# KongIngressに紐づくServiceにアノテーションを設定する
+$ kubectl annotate service <サービス名> konghq.com/plugins=key-auth-plugin
+```
+
+> - https://docs.konghq.com/hub/kong-inc/key-auth/how-to/basic-example/
+> - https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%81%95%E3%81%A3%E3%81%8D%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E8%AA%8D%E8%A8%BC%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B
+
+#### ▼ opentelemetryプラグインの場合
+
+```yaml
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: opentelemetry-plugin
+config:
+  endpoint: http://opentelemetry.collector:4318/v1/traces
+  headers:
+    X-Auth-Token: secret-token
+plugin: opentelemetry
+```
+
+```bash
+# KongIngressに紐づくServiceにアノテーションを設定する
+$ kubectl annotate service <サービス名> konghq.com/plugins=opentelemetry-plugin
+```
+
+> - https://docs.konghq.com/hub/kong-inc/opentelemetry/how-to/basic-example/
+
+#### ▼ rate-limitingプラグイン
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -149,6 +201,12 @@ config:
 plugin: rate-limiting
 ```
 
+```bash
+# KongIngressに紐づくServiceにアノテーションを設定する
+$ kubectl annotate service <サービス名> konghq.com/plugins=rate-limiting-plugin
+```
+
+> - https://docs.konghq.com/hub/kong-inc/rate-limiting/how-to/basic-example/
 > - https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90
 
 <br>
