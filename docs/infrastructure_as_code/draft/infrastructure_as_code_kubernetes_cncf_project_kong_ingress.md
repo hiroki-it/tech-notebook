@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kong＠CNCF
-description: Kong＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Kong Ingress＠CNCF
+description: Kong Ingress＠CNCFの知見を記録しています。
 ---
 
-# Kong＠CNCF
+# Kong Ingress＠CNCF
 
 ## はじめに
 
@@ -27,7 +27,7 @@ description: Kong＠CNCFの知見を記録しています。
 
 ### KongPluginとは
 
-Kong Ingressを拡張する。
+KongIngressを拡張する。
 
 > - https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongplugin
 

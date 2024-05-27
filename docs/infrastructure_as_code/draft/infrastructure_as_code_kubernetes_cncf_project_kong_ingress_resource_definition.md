@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kong＠CNCF
-description: Kong＠CNCFの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Kong Ingress
+description: リソース定義＠Kong Ingressの知見を記録しています。
 ---
 
-# Kong＠CNCF
+# リソース定義＠Kong Ingress
 
 ## はじめに
 
@@ -22,12 +22,12 @@ $ helm repo add <チャートリポジトリ名> https://charts.konghq.com
 
 $ helm repo update
 
-$ kubectl create namespace cert-manager
+$ kubectl create namespace kong-ingress
 
-$ helm install <Helmリリース名> <チャートリポジトリ名>/kong -n bff --version <バージョンタグ>
+$ helm install <Helmリリース名> <チャートリポジトリ名>/ingress -n kong-ingress --version <バージョンタグ>
 ```
 
-> - https://github.com/Kong/charts/tree/main/charts/kong
+> - https://github.com/Kong/charts/blob/main/charts/ingress/README.md
 
 <br>
 
@@ -85,9 +85,7 @@ KongIngressのプラグイン名を指定する。
 
 ### metadata.labels
 
-#### ▼ labels.
-
-### global
+#### ▼ global
 
 ClusterスコープでKongPluginを有効化する。
 
