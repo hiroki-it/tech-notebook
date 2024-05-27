@@ -102,7 +102,7 @@ Nginxを配置し、リクエストをwebサーバーにルーティングする
 
 #### ▼ HTTP/HTTPSプロトコルの場合
 
-Nginxは、HTTP/HTTPS通信をルーティングする。
+Nginxは、HTTP/HTTPSリクエストをルーティングする。
 
 また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。
 
@@ -264,7 +264,7 @@ server {
 
 #### ▼ gRPCの場合
 
-Nginxは、HTTP/HTTPS通信をgRPCとしてルーティングする。
+Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。
 
 ```nginx
 server {
@@ -285,15 +285,24 @@ server {
         root /var/www/html;
     }
 
+    # HTTPSリクエストをマッチングする
+    location / {
+        grpc_set_header Content-Type application/grpc;
+        # gRPCサーバーにルーティングする
+        grpc_pass grpc://localhost:50051;
+    }
+
+    # gRPCリクエストをマッチングする
     location /hello.HelloService/Hello {
         grpc_set_header Content-Type application/grpc;
         # gRPCサーバーにルーティングする
-        grpc_pass host.docker.internal:5000;
+        grpc_pass grpc://localhost:50052;
         include common/cors.conf;
     }
 }
 ```
 
+> - https://www.nginx.co.jp/blog/nginx-1-13-10-grpc/
 > - https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89
 
 <br>
