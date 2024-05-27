@@ -75,31 +75,7 @@ spec:
 
 ## 05. KongPlugin
 
-### plugin
-
-KongIngressのプラグイン名を指定する。
-
-> - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin
-
-<br>
-
-### metadata.labels
-
-#### ▼ global
-
-ClusterスコープでKongPluginを有効化する。
-
-```yaml
-apiVersion: configuration.konghq.com/v1
-kind: KongPlugin
-metadata:
-  labels:
-    global: "true"
-```
-
-> - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1
-
-<br>
+### config
 
 #### ▼ grpc-gatewayプラグインの場合
 
@@ -206,5 +182,31 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=rate-limiting-pl
 
 > - https://docs.konghq.com/hub/kong-inc/rate-limiting/how-to/basic-example/
 > - https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90
+
+<br>
+
+### metadata.labels
+
+#### ▼ global
+
+ClusterスコープでKongPluginを有効化する。
+
+```yaml
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  labels:
+    global: "true"
+```
+
+> - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1
+
+<br>
+
+### plugin
+
+KongIngressのプラグイン名を指定する。
+
+> - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin
 
 <br>

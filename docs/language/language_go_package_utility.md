@@ -283,10 +283,59 @@ SQLの発行時に、SQLを属性に持つスパンを自動的に作成する�
 
 ## grpc-gateway
 
+### grpc-gatewayとは
+
 HTTPで受信したリクエストをgRPCに変換してプロキシする。
 
 > - https://github.com/grpc-ecosystem/grpc-gateway
 > - https://grpc-ecosystem.github.io/grpc-gateway/
+
+<br>
+
+### 設定
+
+#### ▼ 独自HTTPヘッダーを保持する
+
+grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せずに破棄してしまう。
+
+特定の条件の時に`true`を返却する`match`関数を定義し、これを`runtime.WithIncomingHeaderMatcher`関数に渡す。
+
+```go
+package main
+
+import (
+	"http"
+	"log"
+	"runtime"
+	"strings"
+)
+
+func main() {
+
+	...
+
+	mux := runtime.NewServeMux(
+		runtime.WithIncomingHeaderMatcher(matcher),
+		runtime.WithForwardResponseOption(filter),
+	)
+
+	...
+
+	if err := http.ListenAndServe(":8080", mux); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func matcher(key string) (string, bool) {
+    if strings.HasPrefix(strings.ToLower(key), "x-") {
+        return key, true
+    }
+    return "", false
+}
+```
+
+> - https://note.com/dd_techblog/n/nd902b7ef8088
+> - https://yuki-toida.hatenablog.com/entry/2018/10/21/210000
 
 <br>
 
