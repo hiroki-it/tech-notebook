@@ -102,7 +102,7 @@ Nginxを配置し、リクエストをwebサーバーにルーティングする
 
 #### ▼ HTTP/HTTPSプロトコルの場合
 
-Nginxは、インバウンド通信をappサーバーにルーティングする。
+Nginxは、HTTP/HTTPS通信をルーティングする。
 
 また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。
 
@@ -261,6 +261,40 @@ server {
     }
 }
 ```
+
+#### ▼ gRPCの場合
+
+Nginxは、HTTP/HTTPS通信をgRPCとしてルーティングする。
+
+```nginx
+server {
+
+    listen 8080 ssl http2;
+    server_name host.docker.internal;
+
+    ssl_certificate /ssl/localhost+1.pem;
+    ssl_certificate_key /ssl/localhost+1-key.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    access_log /dev/stdout;
+    error_log /dev/stderr debug;
+
+
+    location ~ \.(html|js)$ {
+        root /var/www/html;
+    }
+
+    location /hello.HelloService/Hello {
+        grpc_set_header Content-Type application/grpc;
+        # gRPCサーバーにルーティングする
+        grpc_pass host.docker.internal:5000;
+        include common/cors.conf;
+    }
+}
+```
+
+> - https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89
 
 <br>
 
@@ -447,6 +481,7 @@ server {
 
 > - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
+> - https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx
 
 #### ▼ 認証
 

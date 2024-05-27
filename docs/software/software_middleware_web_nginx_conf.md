@@ -809,6 +809,7 @@ server {
 ```
 
 > - https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass
+> - https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89
 
 <br>
 
