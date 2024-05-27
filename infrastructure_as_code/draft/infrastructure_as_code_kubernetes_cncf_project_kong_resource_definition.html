@@ -22298,9 +22298,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#key-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ key-authプラグインの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ opentelemetryプラグインの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rate-limiting" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ rate-limiting
+      ▼ rate-limitingプラグイン
     </span>
   </a>
   
@@ -22430,9 +22448,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/kong/protobufs/joke.proto</span>
 <span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc-gateway</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KongIngressに紐づくServiceにアノテーションを設定する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>service<span class="w"> </span>&lt;サービス名&gt;<span class="w"> </span>konghq.com/plugins<span class="o">=</span>grpc-gateway-plugin
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/">https://docs.konghq.com/hub/kong-inc/grpc-gateway/configuration/</a></li>
+<li><a href="https://docs.konghq.com/hub/kong-inc/grpc-gateway/how-to/basic-example/">https://docs.konghq.com/hub/kong-inc/grpc-gateway/how-to/basic-example/</a></li>
 <li><a href="https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c">https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c</a></li>
 </ul>
 </blockquote>
@@ -22446,13 +22467,54 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">run_on_preflight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jwt</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KongIngressに紐づくServiceにアノテーションを設定する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>service<span class="w"> </span>&lt;サービス名&gt;<span class="w"> </span>konghq.com/plugins<span class="o">=</span>jwt-plugin
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.konghq.com/hub/kong-inc/jwt/configuration/">https://docs.konghq.com/hub/kong-inc/jwt/configuration/</a></li>
+<li><a href="https://docs.konghq.com/hub/kong-inc/jwt/how-to/basic-example/">https://docs.konghq.com/hub/kong-inc/jwt/how-to/basic-example/</a></li>
 <li><a href="https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c">https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c</a></li>
 </ul>
 </blockquote>
-<h4 id="rate-limiting">▼ rate-limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h4>
+<h4 id="key-auth">▼ key-authプラグインの場合<a class="headerlink" href="#key-auth" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key-auth-plugin</span>
+<span class="nt">config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">key_names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apikey</span>
+<span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key-auth</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KongIngressに紐づくServiceにアノテーションを設定する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>service<span class="w"> </span>&lt;サービス名&gt;<span class="w"> </span>konghq.com/plugins<span class="o">=</span>key-auth-plugin
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.konghq.com/hub/kong-inc/key-auth/how-to/basic-example/">https://docs.konghq.com/hub/kong-inc/key-auth/how-to/basic-example/</a></li>
+<li><a href="https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%81%95%E3%81%A3%E3%81%8D%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E8%AA%8D%E8%A8%BC%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B">https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%81%95%E3%81%A3%E3%81%8D%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E8%AA%8D%E8%A8%BC%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B</a></li>
+</ul>
+</blockquote>
+<h4 id="opentelemetry">▼ opentelemetryプラグインの場合<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-plugin</span>
+<span class="nt">config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://opentelemetry.collector:4318/v1/traces</span>
+<span class="w">  </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">X-Auth-Token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret-token</span>
+<span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KongIngressに紐づくServiceにアノテーションを設定する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>service<span class="w"> </span>&lt;サービス名&gt;<span class="w"> </span>konghq.com/plugins<span class="o">=</span>opentelemetry-plugin
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.konghq.com/hub/kong-inc/opentelemetry/how-to/basic-example/">https://docs.konghq.com/hub/kong-inc/opentelemetry/how-to/basic-example/</a></li>
+</ul>
+</blockquote>
+<h4 id="rate-limiting">▼ rate-limitingプラグイン<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -22464,8 +22526,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
 <span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rate-limiting</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KongIngressに紐づくServiceにアノテーションを設定する</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>service<span class="w"> </span>&lt;サービス名&gt;<span class="w"> </span>konghq.com/plugins<span class="o">=</span>rate-limiting-plugin
+</code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://docs.konghq.com/hub/kong-inc/rate-limiting/how-to/basic-example/">https://docs.konghq.com/hub/kong-inc/rate-limiting/how-to/basic-example/</a></li>
 <li><a href="https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90">https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90%E3%81%AE%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90</a></li>
 </ul>
 </blockquote>
