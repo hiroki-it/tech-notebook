@@ -22237,32 +22237,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
+  <a href="#config" class="md-nav__link">
     <span class="md-ellipsis">
-      plugin
+      config
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metadatalabels" class="md-nav__link">
-    <span class="md-ellipsis">
-      metadata.labels
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="metadata.labels">
+    <nav class="md-nav" aria-label="config">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ global
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#grpc-gateway" class="md-nav__link">
@@ -22311,6 +22293,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadatalabels" class="md-nav__link">
+    <span class="md-ellipsis">
+      metadata.labels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="metadata.labels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ global
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugin
+    </span>
+  </a>
   
 </li>
         
@@ -22400,29 +22415,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>記入中...</p>
 <p><br></p>
 <h2 id="05-kongplugin">05. KongPlugin<a class="headerlink" href="#05-kongplugin" title="Permanent link">&para;</a></h2>
-<h3 id="plugin">plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
-<p>KongIngressのプラグイン名を指定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin">https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="metadatalabels">metadata.labels<a class="headerlink" href="#metadatalabels" title="Permanent link">&para;</a></h3>
-<h4 id="global">▼ global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h4>
-<p>ClusterスコープでKongPluginを有効化する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">global</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1">https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1</a></li>
-</ul>
-</blockquote>
-<p><br></p>
+<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
 <h4 id="grpc-gateway">▼ grpc-gatewayプラグインの場合<a class="headerlink" href="#grpc-gateway" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
@@ -22520,6 +22513,29 @@ $<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w">
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="metadatalabels">metadata.labels<a class="headerlink" href="#metadatalabels" title="Permanent link">&para;</a></h3>
+<h4 id="global">▼ global<a class="headerlink" href="#global" title="Permanent link">&para;</a></h4>
+<p>ClusterスコープでKongPluginを有効化する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configuration.konghq.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KongPlugin</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">global</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1">https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#configurationkonghqcomv1</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="plugin">plugin<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
+<p>KongIngressのプラグイン名を指定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin">https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -22540,7 +22556,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w">
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-28</span>
   </span>
 
     
