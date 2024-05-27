@@ -22806,7 +22806,7 @@ ngx_stream_geoip_module.so
 <p>Nginxを配置し、リクエストをwebサーバーにルーティングする。</p>
 <p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のwebサーバーにリクエストを送信できるようになる。</p>
 <h4 id="httphttps">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps" title="Permanent link">&para;</a></h4>
-<p>Nginxは、HTTP/HTTPS通信をルーティングする。</p>
+<p>Nginxは、HTTP/HTTPSリクエストをルーティングする。</p>
 <p>また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。</p>
 <p>以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保管されたキャッシュを取得し、レスポンスとして返信する。</p>
 <p><img alt="リバースプロキシサーバーとしてのNginx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png" /></p>
@@ -22945,7 +22945,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="grpc">▼ gRPCの場合<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<p>Nginxは、HTTP/HTTPS通信をgRPCとしてルーティングする。</p>
+<p>Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
@@ -22964,16 +22964,25 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/html</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1"># HTTPSリクエストをマッチングする</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># gRPCサーバーにルーティングする</span>
+<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50051</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1"># gRPCリクエストをマッチングする</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/hello.HelloService/Hello</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
 <span class="w">        </span><span class="c1"># gRPCサーバーにルーティングする</span>
-<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="n">host.docker.internal</span><span class="p">:</span><span class="mi">5000</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50052</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">common/cors.conf</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://www.nginx.co.jp/blog/nginx-1-13-10-grpc/">https://www.nginx.co.jp/blog/nginx-1-13-10-grpc/</a></li>
 <li><a href="https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89">https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89</a></li>
 </ul>
 </blockquote>
