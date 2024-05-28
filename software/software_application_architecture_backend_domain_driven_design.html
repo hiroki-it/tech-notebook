@@ -1409,6 +1409,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ECサイトの例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22768,6 +22777,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ECサイトの例
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23059,7 +23077,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ドメインエキスパートの部署や業務フローの立ち位置によっては、同じ『単語』や『動詞』であっても、意味合い/定義づけが異なる場合がある。この時、それぞれを異なる名前からなるユビキタス言語として定義づける。</p>
+<p>ドメインエキスパートの部署や業務フローの立ち位置によっては、同じ『名詞』や『動詞』であっても、意味合い/定義づけが異なる場合がある。この時、それぞれを異なる名前からなるユビキタス言語として定義づける。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -23196,18 +23214,20 @@
 <p><br></p>
 <h3 id="_12">ユビキタス言語<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ユビキタス言語とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>同じ境界付けられたコンテキスト内で<code>1</code>個の意味合い/定義付けを持った『単語』や『動詞』のこと。</p>
-<p>ドメインエキスパート間で、特定の『単語』や『動詞』の意味合い/定義づけが異なる場合、これを異なる名前からなるユビキタス言語として定義づける。</p>
+<p>同じ境界付けられたコンテキスト内で<code>1</code>個の意味合い/定義付けを持った『名詞』や『動詞』のこと。</p>
+<p>ドメインエキスパート間で、特定の『名詞』や『動詞』の意味合い/定義づけが異なる場合、これを異なる名前からなるユビキタス言語として定義づける。</p>
 <p><img alt="domain-model" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63">https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63</a></li>
 </ul>
 </blockquote>
+<h4 id="ec">▼ ECサイトの例<a class="headerlink" href="#ec" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
 <h3 id="_14">境界付けられたコンテキスト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 境界付けられたコンテキストとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>ドメインエキスパートの業務フローの立ち位置が異なれば、同じ『単語』や『動詞』であっても、異なる意味合い/定義づけのユビキタス言語が使用される。</p>
+<p>ドメインエキスパートの業務フローの立ち位置が異なれば、同じ『名詞』や『動詞』であっても、異なる意味合い/定義づけのユビキタス言語が使用される。</p>
 <p>異なるユビキタス言語を元にして、境界付けられたコンテキストを設定する。</p>
 <p>この時、ユビキタス言語は、他の境界付けられたコンテキストでは通じないものであればあるほど良い。</p>
 <p>境界付けられたコンテキストそれぞれのユビキタス言語に合わせて、異なる名前でモデリングしていく。</p>
@@ -23216,7 +23236,7 @@
 <p><strong>＊例＊</strong></p>
 <p>本を販売するECサイトの例。</p>
 <p>コアドメインとサブドメインに基づいたユビキタス言語と境界付けられたコンテキストを以下に示す。</p>
-<p>バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という単語に対する意味合い/定義づけが異なる。</p>
+<p>バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という名詞に対する意味合い/定義づけが異なる。</p>
 <p>そのため、それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき、モデル名/データ名はそれぞれのユビキタス言語に合わせた名前になる。</p>
 <p>例えば、マーケの境界付けられたコンテキストでは、モデル名はCouponとなり、割引期間データを保持する必要があるが、仕入部や在庫部ではこのデータは不要である。</p>
 <p>一方、ISBNは全ての境界付けられたコンテキストのモデルに必要なデータである。</p>
@@ -23627,7 +23647,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-29</span>
   </span>
 
     
