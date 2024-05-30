@@ -244,7 +244,68 @@ jobs:
 
 <br>
 
-## 05. runs
+## 05. on
+
+### workflow_call
+
+再利用可能なワークフローを定義する。
+
+```yaml
+# pre-foo-template.ymlファイル
+name: pre foo template
+
+on:
+  workflow_call: {}
+
+jobs:
+  pre-foo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          # 何らかの処理
+```
+
+```yaml
+# post-foo-template.ymlファイル
+name: post foo template
+
+on:
+  workflow_call: {}
+
+jobs:
+  post-foo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          # 何らかの処理
+```
+
+定義したワークフローは他リポジトリからコールできる。
+
+```yaml
+jobs:
+  # テンプレートワークフローのJobを実行する
+  calling-pre-foo-template:
+    # テンプレートワークフローリポジトリの設定ファイルを読み込む
+    uses: <オーナー>/<GitHubリポジトリ>/.github/workflows/pre-foo-templateyml@main
+
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          # 何らかの処理
+
+  # テンプレートワークフローのJobを実行する
+  calling-post-foo-template:
+    # テンプレートワークフローリポジトリの設定ファイルを読み込む
+    uses: <オーナー>/<GitHubリポジトリ>/.github/workflows/post-foo-templateyml@main
+```
+
+> - https://zenn.dev/dzeyelid/articles/fc4bd999fbccd8#github-actions-%E3%81%A7%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%82%8B%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%A7%E3%81%8D%E3%82%8B
+
+<br>
+
+## 06. runs
 
 ### composite
 
@@ -360,7 +421,7 @@ runs:
 
 <br>
 
-## 06. 環境変数
+## 07. 環境変数
 
 ### Workflowレベル
 
@@ -463,7 +524,7 @@ jobs:
 
 <br>
 
-## 06-02. Secret変数
+## 07-02. Secret変数
 
 ### Secret変数とは
 
@@ -625,7 +686,7 @@ jobs:
 
 <br>
 
-## 07. Actions
+## 08. Actions
 
 ### actionsパッケージ
 
@@ -672,7 +733,7 @@ jobs:
 
 <br>
 
-## 08. Workflowコマンド
+## 09. Workflowコマンド
 
 ### add-mask
 
