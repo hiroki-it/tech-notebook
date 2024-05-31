@@ -29,6 +29,8 @@ description: Terratest＠単体テストの知見を記録しています。
 
 ### 単体テスト
 
+AWSリソースを単体コンポーネントと捉えて、単体テストを実施する。
+
 - `terraform test`コマンド
 - Terratest
 - Goss
@@ -58,7 +60,7 @@ description: Terratest＠単体テストの知見を記録しています。
 
 #### ▼ 正常系テストの場合
 
-EC2の動作が正しいかを検証する。
+EC2を単体と取れらえて、動作が正しいかを検証する。
 
 ```go
 package test
@@ -74,6 +76,7 @@ import (
 )
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
+
     // テストを並列的に実行する。
 	t.Parallel()
 

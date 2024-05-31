@@ -650,8 +650,6 @@ class ColorType
 
     /**
      * 『self::定数名』で、定義の値へアクセスします。
-
-
      */
     private $set = [
         self::RED  => ["name" => "レッド"],
@@ -741,8 +739,6 @@ class SexType
 
     /**
      * 値を返却します。
-
-
      */
     public function value(): int
     {
@@ -2433,8 +2429,6 @@ class DogToyRepository
 {
     /**
      * ドメインモデルを作成します。
-
-
      */
     public function create(DogToy $dogToy): DogToy
     {
@@ -2472,8 +2466,6 @@ class DogToyRepository
 {
     /**
      * ドメインモデルを更新します。
-
-
      */
     public function update(DogToy $dogToy): DogToy
     {
@@ -2512,8 +2504,6 @@ class DogToyRepository
 {
     /**
      * ドメインモデルを削除します。
-
-
      */
     public function delete(ToyId $toyId): bool
     {
@@ -2609,8 +2599,6 @@ class DogToyRepository
 
     /**
      * ドメインモデルに変換します。
-
-
      */
     private function toDogToy(array $entity): DogToy
     {
@@ -2653,8 +2641,6 @@ class DogComboFactory
 {
     /**
      * 新たな集約を作成します。
-
-
      */
     public static function createDogCombo($data): DogItem
     {

@@ -59,6 +59,14 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 > - https://microservices.io/patterns/data/database-per-service.html
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
+#### ▼ 境界付けられたコンテキスト分割とも相性がいい
+
+マイクロサービスを境界付けられたコンテキスト単位で分割した場合に、マイクロサービスごとに異なる集約エンティティを持つため、永続化のデータ単位を分割できる。
+
+これにより、各マイクロサービスが異なるデータベースを持っていても、トランザクションは異なるはずである。
+
+> - https://www.amazon.co.jp/dp/1098100131
+
 <br>
 
 ## 02. マイクロサービス別DBパターンの場合
