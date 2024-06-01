@@ -19,14 +19,14 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 #### ▼ auth_request
 
-Nginxのアップストリームに認証プロキシやIDプロバイダーがある場合に、これにリダイレクトするためのパスを設定する。
+Nginxが認証プロキシやIDプロバイダーにリクエストを送信する場合に、これのパスを設定する。
 
 ```nginx
 http {
 
     location / {
 
-        # OAuth2 Proxyにリダイレクトする場合は、/oauth2/authである
+        # NginxがOAuth2 Proxyにリダイレクトする場合は、/oauth2/authである
         auth_request /oauth2/auth;
 
         ...

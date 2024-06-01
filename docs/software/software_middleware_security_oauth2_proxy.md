@@ -57,7 +57,7 @@ metadata:
   annotations:
     # 認可リクエストの宛先のIDプロバイダーを設定する
     nginx.ingress.kubernetes.io/auth-signin: http://$host/oauth2/start?rd=$escaped_request_uri
-    # 認可レスポンスで指定してもらうURLを設定する
+    # NginxがOAuth2 Proxyにリクエストを送信する時のURLを設定する
     nginx.ingress.kubernetes.io/auth-url: http://$host/oauth2/auth
     nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
   name: nginx-ingress

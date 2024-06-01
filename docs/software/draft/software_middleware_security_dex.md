@@ -33,6 +33,7 @@ connectors:
     id: keycloak
     name: keycloak
     config:
+      # 認可エンドポイント
       issuer: https://<Keycloakのドメイン>/auth/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>
       clientSecret: *****

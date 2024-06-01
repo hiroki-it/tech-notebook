@@ -514,7 +514,7 @@ http {
         listen 8080;
 
         location /keycloak/ {
-            proxy_pass          http://keycloak:8080/;
+            proxy_pass          https://<Keycloakのドメイン>/;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
             proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
@@ -527,7 +527,7 @@ http {
 
         location /keycloak/auth/ {
             # 認可エンドポイントに認可リクエストを送信する
-            proxy_pass          http://keycloak:8080/keycloak/auth/;
+            proxy_pass          https://<Keycloakのドメイン>/auth/realms/<realm名>;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
             proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;

@@ -57,10 +57,24 @@ https_address = ":443"
 
 <br>
 
+### oidc_issuer_url
+
+OIDCのIDプロバイダーの認可エンドポイントを設定する。
+
+```bash
+oidc_issuer_url="https://<Keycloakのドメイン>/auth/realms/<realm名>"
+```
+
+<br>
+
 ### provider
 
 ```bash
 provider = "github"
+```
+
+```bash
+provider = "oidc"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
@@ -93,6 +107,10 @@ reverse_proxy = true
 
 ## upstreams
 
+OAuth2 ProxyのアップストリームのWebサーバーのURLを設定する。
+
+注意点として、IDプロバイダーのURLではない。
+
 ```bash
 upstreams = [
   "http://127.0.0.1/"
@@ -100,6 +118,6 @@ upstreams = [
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#upstreams-configuration
+> - https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/local-environment/oauth2-proxy-keycloak.cfg
 
 <br>
