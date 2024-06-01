@@ -22973,7 +22973,7 @@
 </code></pre></div>
 <p>この時、<code>helm secrets</code>コマンドで<code>secrets</code>ファイルを指定すると、復号化した上で<code>.Values</code>に出力してくれる。</p>
 <p>ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (<code>sops</code>キーの値) に合わせた方が良い。</p>
-<p>結果的に、base64方式でエンコードされ、マニフェストが作成される。</p>
+<p>結果的に、base64方式でエンコードされ、マニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml
 
 apiVersion:<span class="w"> </span>v1
@@ -23050,7 +23050,7 @@ sops:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     

@@ -7183,6 +7183,15 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ データベースへのマッピング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ プライマリーキー
     </span>
   </a>
@@ -7352,7 +7361,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード取得
     </span>
@@ -7361,7 +7370,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 単一/複数レコード取得
     </span>
@@ -7418,7 +7427,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 単一レコード更新 (暗黙的)
     </span>
@@ -7427,7 +7436,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数レコード更新 (暗黙的)
     </span>
@@ -7436,7 +7445,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数レコード更新 (明示的)
     </span>
@@ -7445,7 +7454,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード更新
     </span>
@@ -22692,6 +22701,15 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ データベースへのマッピング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ プライマリーキー
     </span>
   </a>
@@ -22861,7 +22879,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード取得
     </span>
@@ -22870,7 +22888,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 単一/複数レコード取得
     </span>
@@ -22927,7 +22945,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 単一レコード更新 (暗黙的)
     </span>
@@ -22936,7 +22954,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数レコード更新 (暗黙的)
     </span>
@@ -22945,7 +22963,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 複数レコード更新 (明示的)
     </span>
@@ -22954,7 +22972,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 全レコード更新
     </span>
@@ -23084,9 +23102,10 @@
 <p><br></p>
 <h3 id="gorm_1">gormモデル<a class="headerlink" href="#gorm_1" title="Permanent link">&para;</a></h3>
 <h4 id="gorm_2">▼ gormモデル埋め込み<a class="headerlink" href="#gorm_2" title="Permanent link">&para;</a></h4>
-<p>構造体にgormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。</p>
+<p>構造体にgormモデルを埋め込むと、IDやタイムスタンプレコードをフィールドとして追加する。</p>
 <p>構造体をマッピングしたテーブルに、対応するカラム (<code>id</code>、<code>created_at</code>、<code>updated_at</code>、<code>deleted_at</code>) を持つレコードを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// gormモデルを埋め込む</span>
 <span class="w">    </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Model</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
@@ -23105,8 +23124,31 @@
 <li><a href="https://gorm.io/docs/models.html#embedded_struct">https://gorm.io/docs/models.html#embedded_struct</a></li>
 </ul>
 </blockquote>
-<h4 id="_2">▼ プライマリーキー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、<code>gorm:"primaryKey"</code>タグをつける。</p>
+<h4 id="_2">▼ データベースへのマッピング<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>Gormは、構造体をデータベースに自動的にマッピングする。</p>
+<p>明示的に設定しない限り、スネークケースに変換して自動的にマッピングする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// usersテーブルにマッピング</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// テーブルの主キーにマッピング</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">uint</span>
+<span class="w">    </span><span class="c1">// nameカラムにマッピング</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">      </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// created_atカラムにマッピング</span>
+<span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="w">    </span><span class="c1">// updated_atカラムにマッピング</span>
+<span class="w">    </span><span class="nx">UpdatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="w">    </span><span class="c1">// deleted_atカラムにマッピング</span>
+<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/models.html#Conventions">https://gorm.io/docs/models.html#Conventions</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ プライマリーキー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。</p>
+<p>もし、他の名前のフィールドをIDとして使用したい場合は、<code>gorm:"primaryKey"</code>タグをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ID</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="c1">// プライマリーキーとして使用される。</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -23150,7 +23192,7 @@
 <p><br></p>
 <h3 id="db_1">DBマイグレーション<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
 <h4 id="tablename">▼ <code>TableName</code>関数<a class="headerlink" href="#tablename" title="Permanent link">&para;</a></h4>
-<p>デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。</p>
+<p>デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルを作成する。</p>
 <p><code>TableName</code>関数により、ユーザー定義のテーブル名をつけられる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// テーブル名はデフォルトでは『users』になる。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -23243,7 +23285,7 @@
 <h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <h4 id="read_1">▼ Readとは<a class="headerlink" href="#read_1" title="Permanent link">&para;</a></h4>
 <p>gormモデルに対応するレコードを読み出す。</p>
-<h4 id="_3">▼ 全レコード取得<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 全レコード取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
 
 <span class="c1">// SELECT * FROM users;</span>
@@ -23257,7 +23299,7 @@
 <li><a href="https://gorm.io/docs/query.html#Retrieving-all-objects">https://gorm.io/docs/query.html#Retrieving-all-objects</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 単一/複数レコード取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 単一/複数レコード取得<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたレコードを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
 
@@ -23328,7 +23370,7 @@
 <h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ Updateとは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドに設定された値を元に、レコードを変更する。</p>
-<h4 id="_5">▼ 単一レコード更新 (暗黙的)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 単一レコード更新 (暗黙的)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>フィールドとは無関係に、渡された値を元にUPDATE分を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE active=true;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
@@ -23346,7 +23388,7 @@
 <li><a href="https://gorm.io/docs/update.html#Update-single-column">https://gorm.io/docs/update.html#Update-single-column</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ 複数レコード更新 (暗黙的)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 複数レコード更新 (暗黙的)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを暗黙的に指定して、複数のレコード値を更新する。</p>
 <p>または、フィールドとは無関係に、mapを元にUPDATE文を実行する。</p>
 <p>gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたレコード値の更新はスキップされてしまう。</p>
@@ -23363,7 +23405,7 @@
 <li><a href="https://gorm.io/docs/update.html#Updates-multiple-columns">https://gorm.io/docs/update.html#Updates-multiple-columns</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ 複数レコード更新 (明示的)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 複数レコード更新 (明示的)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを明示的に指定して、複数のレコード値を更新する。</p>
 <p>フィールド値がゼロ値であっても、スキップされない。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
@@ -23379,7 +23421,7 @@
 <li><a href="https://gorm.io/docs/update.html#Update-Selected-Fields">https://gorm.io/docs/update.html#Update-Selected-Fields</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ 全レコード更新<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 全レコード更新<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>gormモデルのフィールドを暗黙的に全て指定して、全てのレコード値を強制的に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
@@ -23439,7 +23481,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     

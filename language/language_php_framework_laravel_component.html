@@ -27484,7 +27484,7 @@
 <tr>
 <td>14</td>
 <td>View</td>
-<td><code>blade.php</code>ファイルを基に静的ファイルが作成される。</td>
+<td><code>blade.php</code>ファイルを基に静的ファイルを作成する。</td>
 </tr>
 <tr>
 <td>15</td>
@@ -31190,7 +31190,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="16-security">16. Security<a class="headerlink" href="#16-security" title="Permanent link">&para;</a></h2>
 <h3 id="csrf">CSRF対策<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h3>
 <h4 id="_64">▼ アプリケーション側の対応<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h4>
-<p>セッション開始時にCSRFトークンが作成される。</p>
+<p>セッション開始時にCSRFトークンを作成する。</p>
 <p>Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/profile&quot;</span><span class="p">&gt;</span>@csrf ...<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -31513,7 +31513,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="_66">▼ 単一のクラスをバインド/リゾルブ<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h4>
 <p>AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。</p>
 <p>これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。</p>
-<p>Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスが作成されるため、以下の実装を実行する必要はない。</p>
+<p>Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスを作成するため、以下の実装を実行する必要はない。</p>
 <p>ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。</p>
 <blockquote>
 <ul>
@@ -32389,7 +32389,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     
