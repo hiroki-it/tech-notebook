@@ -76,6 +76,9 @@
 * #### <u>Falco</u>
   > * ##### [Falco](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html)
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html)
+* #### <u>OAuth2 Proxy</u>
+  > * ##### [OAuth2 Proxy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html)
 
 <br>
 

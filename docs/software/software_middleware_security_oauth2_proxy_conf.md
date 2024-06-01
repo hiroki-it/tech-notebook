@@ -21,6 +21,8 @@ description: 設定ファイル＠OAuth2 Proxyの知見を記録しています�
 client_id = "<クライアントID>"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+
 <br>
 
 ### client_secret
@@ -28,6 +30,8 @@ client_id = "<クライアントID>"
 ```bash
 client_secret = "<クライアントシークレット>"
 ```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
 
 <br>
 
@@ -39,6 +43,8 @@ client_secret = "<クライアントシークレット>"
 http_address = "127.0.0.1:4180"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+
 <br>
 
 ### https_address
@@ -47,6 +53,8 @@ http_address = "127.0.0.1:4180"
 https_address = ":443"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+
 <br>
 
 ### provider
@@ -54,6 +62,8 @@ https_address = ":443"
 ```bash
 provider = "github"
 ```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
 
 <br>
 
@@ -65,6 +75,8 @@ provider = "github"
 redirect_url = "https://example.com/api/callback"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+
 <br>
 
 ## upstreams
@@ -74,5 +86,8 @@ upstreams = [
   "http://127.0.0.1/"
 ]
 ```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#upstreams-configuration
 
 <br>
