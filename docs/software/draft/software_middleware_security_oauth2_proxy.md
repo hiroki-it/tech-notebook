@@ -19,6 +19,8 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイダーの認可エンドポイントに、認可リクエストを送信する。
 
+OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) の認可リクエストを作成できる。
+
 また、一連の処理の後に認可レスポンスを受信する。
 
 ![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
