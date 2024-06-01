@@ -21,7 +21,7 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 認可リクエストの宛先のパスを設定する。
 
-なお、有料版の`ngx_http_auth_jwt_module`モジュールであれば、Nginxから認可サーバーにJWTを直接的に送信できる。
+なお、有料版の`ngx_http_auth_jwt_module`モジュールであれば、認可サーバーにJWT取得のための認可リクエストを直接的に送信できる。
 
 ```nginx
 http {

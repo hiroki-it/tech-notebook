@@ -267,7 +267,7 @@ OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTel
 
 ## 06. ngx_http_auth_jwt_module
 
-JWTを自動作成し、認可サーバーの認可エンドポイントに送信する。
+JWT取得のための認可リクエストを認可サーバーに送信する。
 
 有料版のNginxでしか使えない。
 
@@ -276,7 +276,7 @@ JWTを自動作成し、認可サーバーの認可エンドポイントに送�
 
 <br>
 
-### ngx_http_opentelemetry_module
+## 07. ngx_http_opentelemetry_module
 
 OpenTelemetryコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。
 

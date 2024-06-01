@@ -80,6 +80,7 @@ OIDCでは、OAuthとは異なり、アクセストークンではなくIDトー
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
 > - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+> - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3
 
 <br>
 

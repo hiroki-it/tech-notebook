@@ -28,6 +28,17 @@ Bear認証やOAuthのトークンとして使用できる。
 
 <br>
 
+### JWT仕様のトークンの種類
+
+JWT仕様のトークンには以下の種類がある。
+
+- JWT仕様のアクセストークン
+- IDトークン (必ずJWT仕様)
+
+> - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5
+
+<br>
+
 ### 認証での利用
 
 #### ▼ Form認証の場合

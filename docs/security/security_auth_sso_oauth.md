@@ -53,6 +53,7 @@ OAuthでは、OIDCとは異なり、IDトークンではなくアクセストー
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
 > - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+> - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2
 
 <br>
 
@@ -224,6 +225,8 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 <br>
 
 ## 04. 付与タイプ
+
+### 付与タイプの種類
 
 認可サーバーによるOAuthのアクセストークンの付与方法には種類がある。
 
