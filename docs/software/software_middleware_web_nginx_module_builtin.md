@@ -19,7 +19,9 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 #### ▼ auth_request
 
-認可リクエストの宛先のパスを設定する。
+認可リクエストのURLのパスを設定する。
+
+Nginxは、認可レスポンスのステータスコードが`200`であれば認証成功、`401`または`403`であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。
 
 なお、有料版の`ngx_http_auth_jwt_module`モジュールであれば、認可サーバーにJWT取得のための認可リクエストを直接的に送信できる。
 
@@ -38,7 +40,8 @@ http {
     }
 
     location = /oauth2/auth {
-        # OAuth2 Proxyのドメイン名を設定する
+        # 認可サーバーのドメイン名を設定する
+        # ここでは、Nginxと認可サーバーの間にOAuth2 Proxyを配置している
         proxy_pass              https://<ドメイン名>:4180;
         proxy_pass_request_body off;
         proxy_set_header        Host $http_host;
@@ -49,7 +52,7 @@ http {
 
 > - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
 > - https://tech.jxpress.net/entry/2018/08/23/104123
-> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
+> - https://techlife.cookpad.com/entry/2015/10/16/080000
 
 <br>
 
