@@ -81,7 +81,7 @@ redirect_url = "https://example.com/oauth2/callback"
 
 ## reverse_proxy
 
-OAuth2 Proxyの前段に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
+OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
 ```bash
 reverse_proxy = true

@@ -142,7 +142,7 @@ webhooks:
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # Webhookの前段にあるServiceの情報を登録する。
+    # WebhookのダウンストリームにあるServiceの情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン番号>
@@ -210,7 +210,7 @@ webhooks:
         scope: "*"
     # webhookサーバーの情報を登録する。
     clientConfig:
-      # webhookサーバーの前段にあるServiceを登録する。
+      # webhookサーバーのダウンストリームにあるServiceを登録する。
       service:
         namespace: istio-system
         name: istiod-<リビジョン番号>

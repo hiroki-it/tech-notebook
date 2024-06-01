@@ -19,18 +19,23 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 #### ▼ auth_request
 
+Nginxのアップストリームに認証プロキシやIDプロバイダーがある場合に、これにリダイレクトするためのパスを設定する。
+
 ```nginx
 http {
 
     location / {
 
+        # OAuth2 Proxyにリダイレクトする場合は、/oauth2/authである
         auth_request /oauth2/auth;
 
         ...
 
     }
 
+    # OAuth2 Proxyへのリダイレクト時の処理を設定する
     location = /oauth2/auth {
+        # OAuth2 Proxyのエンドポイントを設定する
         proxy_pass              http://127.0.0.1:4180;
         proxy_pass_request_body off;
         proxy_set_header        Content-Length "";
