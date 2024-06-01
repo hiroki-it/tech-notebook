@@ -23886,17 +23886,21 @@
 <h2 id="01-ngx_http_auth_request_module">01. ngx_http_auth_request_module<a class="headerlink" href="#01-ngx_http_auth_request_module" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ディレクティブ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="auth_request">▼ auth_request<a class="headerlink" href="#auth_request" title="Permanent link">&para;</a></h4>
+<p>Nginxのアップストリームに認証プロキシやIDプロバイダーがある場合に、これにリダイレクトするためのパスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">        </span><span class="c1"># OAuth2 Proxyにリダイレクトする場合は、/oauth2/authである</span>
 <span class="w">        </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">...</span>
 
 <span class="w">    </span><span class="err">}</span>
 
+<span class="w">    </span><span class="c1"># OAuth2 Proxyへのリダイレクト時の処理を設定する</span>
 <span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># OAuth2 Proxyのエンドポイントを設定する</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">http://127.0.0.1:4180</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Content-Length</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
