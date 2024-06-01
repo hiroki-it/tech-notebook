@@ -22530,7 +22530,7 @@
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># 認可リクエストの宛先のIDプロバイダーを設定する</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-signin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://$host/oauth2/start?rd=$escaped_request_uri</span>
-<span class="w">    </span><span class="c1"># 認可レスポンスで指定してもらうURLを設定する</span>
+<span class="w">    </span><span class="c1"># NginxがOAuth2 Proxyにリクエストを送信する時のURLを設定する</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://$host/oauth2/auth</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/proxy-buffer-size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512k</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>

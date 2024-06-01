@@ -23288,7 +23288,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">http://keycloak:8080/</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">https://&lt;Keycloakのドメイン&gt;/</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
@@ -23301,7 +23301,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/auth/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1"># 認可エンドポイントに認可リクエストを送信する</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">http://keycloak:8080/keycloak/auth/</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">https://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
