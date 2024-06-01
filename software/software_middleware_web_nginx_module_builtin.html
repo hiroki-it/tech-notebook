@@ -23886,7 +23886,8 @@
 <h2 id="01-ngx_http_auth_request_module">01. ngx_http_auth_request_module<a class="headerlink" href="#01-ngx_http_auth_request_module" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ディレクティブ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="auth_request">▼ auth_request<a class="headerlink" href="#auth_request" title="Permanent link">&para;</a></h4>
-<p>認可リクエストの宛先のパスを設定する。</p>
+<p>認可リクエストのURLのパスを設定する。</p>
+<p>Nginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
 <p>なお、有料版の<code>ngx_http_auth_jwt_module</code>モジュールであれば、認可サーバーにJWT取得のための認可リクエストを直接的に送信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
@@ -23902,7 +23903,8 @@
 <span class="w">    </span><span class="err">}</span>
 
 <span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1"># OAuth2 Proxyのドメイン名を設定する</span>
+<span class="w">        </span><span class="c1"># 認可サーバーのドメイン名を設定する</span>
+<span class="w">        </span><span class="c1"># ここでは、Nginxと認可サーバーの間にOAuth2 Proxyを配置している</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">https://&lt;ドメイン名&gt;:4180</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
@@ -23914,7 +23916,7 @@
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
 <li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html">https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html</a></li>
+<li><a href="https://techlife.cookpad.com/entry/2015/10/16/080000">https://techlife.cookpad.com/entry/2015/10/16/080000</a></li>
 </ul>
 </blockquote>
 <p><br></p>

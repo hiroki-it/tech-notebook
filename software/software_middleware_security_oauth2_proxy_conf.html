@@ -22689,7 +22689,8 @@
 <p>OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">reverse_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<p>OAuth2 Proxyは、認証状況に応じて、Nginxに<code>202</code>または<code>401</code>ステータスコードを返却する。</p>
+<p>OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、Nginxにプロキシする。</p>
+<p>Nginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
