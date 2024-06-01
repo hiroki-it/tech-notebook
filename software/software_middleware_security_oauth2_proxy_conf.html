@@ -3998,16 +3998,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#redirect" class="md-nav__link">
-    <span class="md-ellipsis">
-      redirect
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="redirect">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#redirect_url" class="md-nav__link">
     <span class="md-ellipsis">
       redirect_url
@@ -4015,9 +4005,13 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#reverse_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse_proxy
+    </span>
+  </a>
   
 </li>
       
@@ -22540,16 +22534,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#redirect" class="md-nav__link">
-    <span class="md-ellipsis">
-      redirect
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="redirect">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#redirect_url" class="md-nav__link">
     <span class="md-ellipsis">
       redirect_url
@@ -22557,9 +22541,13 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#reverse_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse_proxy
+    </span>
+  </a>
   
 </li>
       
@@ -22646,13 +22634,22 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="redirect">redirect<a class="headerlink" href="#redirect" title="Permanent link">&para;</a></h2>
-<h3 id="redirect_url">redirect_url<a class="headerlink" href="#redirect_url" title="Permanent link">&para;</a></h3>
+<h2 id="redirect_url">redirect_url<a class="headerlink" href="#redirect_url" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nv">redirect_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/api/callback&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="reverse_proxy">reverse_proxy<a class="headerlink" href="#reverse_proxy" title="Permanent link">&para;</a></h2>
+<p>OAuth2 Proxyの前段に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">reverse_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
 </ul>
 </blockquote>
 <p><br></p>
