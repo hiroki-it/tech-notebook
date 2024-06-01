@@ -662,7 +662,7 @@ jobs:
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png)
 
-CircleCIでは、jobごとに異なる仮想環境が作成されるため、他の`jobs`キーで使用された一時ファイルを再利用したい場合、これを使用する。
+CircleCIでは、jobごとに異なる仮想環境を作成するため、他の`jobs`キーで使用された一時ファイルを再利用したい場合、これを使用する。
 
 **＊実装例＊**
 

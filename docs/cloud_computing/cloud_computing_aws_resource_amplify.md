@@ -139,7 +139,7 @@ Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。
 
 SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静的ホスティングが実行される。
 
-SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、LambdaやCogniteが作成される。
+SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、LambdaやCogniteを作成する。
 
 ```yaml
 version: 1

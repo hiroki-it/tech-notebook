@@ -963,7 +963,7 @@ $ istioctl install --set revision=1-11-0
 
 `(4)`
 
-: すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationが作成される。
+: すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationを作成する。
 
      その他、新しいIstiodコントロールプレーンも作成される。
 

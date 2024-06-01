@@ -13,7 +13,7 @@ description: ユーティリティモジュール＠Nginxの知見を記録し�
 
 <br>
 
-## モジュール (静的/動的) のセットアップ方法
+## 01. モジュール (静的/動的) のセットアップ方法
 
 ### ビルド
 
@@ -67,7 +67,7 @@ FROM nginx:<バージョン>-alpine
 
 <br>
 
-## gRPCパッケージ
+## 02. gRPCパッケージ
 
 ### gRPCパッケージとは
 
@@ -109,7 +109,7 @@ $ make install
 
 <br>
 
-## opentelemetry-cppパッケージ
+## 03. opentelemetry-cppパッケージ
 
 ### opentelemetry-cppパッケージとは
 
@@ -152,7 +152,7 @@ $ make install
 
 <br>
 
-## otel_ngx_module
+## 04. otel_ngx_module
 
 ### otel_ngx_moduleとは
 
@@ -244,7 +244,7 @@ server {
 
 <br>
 
-## otel_webserver_module
+## 05. otel_webserver_module
 
 ### otel_webserver_moduleとは
 
@@ -265,7 +265,7 @@ OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTel
 
 <br>
 
-## ngx_http_auth_jwt_module
+## 06. ngx_http_auth_jwt_module
 
 JWTを自動作成し、認可サーバーの認可エンドポイントに送信する。
 

@@ -187,7 +187,7 @@ data:
 
 ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (`sops`キーの値) に合わせた方が良い。
 
-結果的に、base64方式でエンコードされ、マニフェストが作成される。
+結果的に、base64方式でエンコードされ、マニフェストを作成する。
 
 ```bash
 $ helm secrets template . -f foo-values.yaml -f foo-secrets.yaml

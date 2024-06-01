@@ -81,12 +81,13 @@ func Close(db *gorm.DB) error {
 
 #### ▼ gormモデル埋め込み
 
-構造体にgormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。
+構造体にgormモデルを埋め込むと、IDやタイムスタンプレコードをフィールドとして追加する。
 
 構造体をマッピングしたテーブルに、対応するカラム (`id`、`created_at`、`updated_at`、`deleted_at`) を持つレコードを作成する。
 
 ```go
 type User struct {
+	// gormモデルを埋め込む
 	gorm.Model
 	Name string
 }
@@ -103,9 +104,35 @@ type User struct {
 
 > - https://gorm.io/docs/models.html#embedded_struct
 
+#### ▼ データベースへのマッピング
+
+Gormは、構造体をデータベースに自動的にマッピングする。
+
+明示的に設定しない限り、スネークケースに変換して自動的にマッピングする。
+
+```go
+// usersテーブルにマッピング
+type User struct {
+	// テーブルの主キーにマッピング
+	ID        uint
+	// nameカラムにマッピング
+    Name      string
+	// created_atカラムにマッピング
+	CreatedAt time.Time
+	// updated_atカラムにマッピング
+	UpdatedAt time.Time
+	// deleted_atカラムにマッピング
+	DeletedAt gorm.DeleteAt
+}
+```
+
+> - https://gorm.io/docs/models.html#Conventions
+
 #### ▼ プライマリーキー
 
-『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、`gorm:"primaryKey"`タグをつける。
+『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。
+
+もし、他の名前のフィールドをIDとして使用したい場合は、`gorm:"primaryKey"`タグをつける。
 
 ```go
 type User struct {
@@ -158,7 +185,7 @@ db.Where("age = 20").Find(&user)
 
 #### ▼ `TableName`関数
 
-デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。
+デフォルトではgormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルを作成する。
 
 `TableName`関数により、ユーザー定義のテーブル名をつけられる。
 

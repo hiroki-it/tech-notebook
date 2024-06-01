@@ -69,7 +69,7 @@ Helmの `v3`では、3方向の戦略的マージパッチを採用している�
 
 helmクライアントは、リポジトリからインストールしたチャートアーカイブ (`.tgz`形式ファイル) に基づいて、現在のコンテキストで指定されているClusterのkube-apiserverにリクエストを送信する。
 
-これにより、Kubernetes上にKubernetesリソースが作成される。
+これにより、Kubernetes上にKubernetesリソースを作成する。
 
 <br>
 

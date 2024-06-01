@@ -302,7 +302,7 @@ class StaffParser {
 
     // ID
     if (criteria.id) {
-      // JSONが作成される。
+      // JSONを作成する。
       json.id = _.trim(criteria.id);
     }
 

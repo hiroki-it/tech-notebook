@@ -36,7 +36,7 @@ description: 認証/認可＠Laravelの知見を記録しています。
 | 11  | Resource                                                | DBから取得したコレクション型データを配列型データに変換する。                                                          |
 | 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                            |
 | 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                         |
-| 14  | View                                                    | `blade.php`ファイルを基に静的ファイルが作成される。                                                                   |
+| 14  | View                                                    | `blade.php`ファイルを基に静的ファイルを作成する。                                                                     |
 | 15  | レスポンスを返信する。                                  |                                                                                                                       |
 
 > - https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
@@ -4280,7 +4280,7 @@ class UserController extends Controller
 
 #### ▼ アプリケーション側の対応
 
-セッション開始時にCSRFトークンが作成される。
+セッション開始時にCSRFトークンを作成する。
 
 Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
@@ -4626,7 +4626,7 @@ AppSeriveProviderにて、ServiceContainerにクラスをバインドするこ�
 
 これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
 
-Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスが作成されるため、以下の実装を実行する必要はない。
+Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスを作成するため、以下の実装を実行する必要はない。
 
 ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
