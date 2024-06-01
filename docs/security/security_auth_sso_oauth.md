@@ -50,10 +50,13 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 OAuthでは、OIDCとは異なり、IDトークンではなくアクセストークンを使用する。
 
+OAuthには脆弱性があるが、OIDCであればこれに対処できる。
+
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
 > - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 > - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2
+> - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
 
 <br>
 
