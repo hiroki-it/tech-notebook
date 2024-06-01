@@ -19,7 +19,7 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 #### ▼ auth_request
 
-認証情報を取得するためのリクエスト先のパスを設定する。
+認可リクエストの宛先のパスを設定する。
 
 なお、有料版の`ngx_http_auth_jwt_module`モジュールであれば、Nginxから認可サーバーにJWTを直接的に送信できる。
 
@@ -29,7 +29,8 @@ http {
     # 認証が必要なパス
     location / {
 
-        # リダイレクトの送信先とするOAuth2 Proxyのエンドポイントを設定する
+        # 認可リクエストの宛先とするパスを設定する
+        # ここでは、認可リクエストをOAuth2 Proxyに送信する
         auth_request /oauth2/auth;
 
         ...

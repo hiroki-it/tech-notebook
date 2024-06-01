@@ -34,19 +34,19 @@ OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) の認可リク�
 
 ### クライアントからのリクエストの場合
 
-クライアントは、OAuth2 Proxyにリクエストを送信し、認証を実施する。
+クライアントは、OAuth2 Proxyにリクエスト (認可リクエストではない) を送信し、認証を実施する。
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/
 
 <br>
 
-### リバースプロキシからのリクエストの場合
+### リバースプロキシからの認可リクエストの場合
 
 ![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
 
 リバースプロキシ (例：Nginx、など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
 
-未認証のリクエストの場合、リバースプロキシはリクエストをOAuth2 Proxyに転送する。
+ユーザーが未認証の場合、リバースプロキシは認可リクエストをOAuth2 Proxyに転送する。
 
 OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloak、など) の認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
 
@@ -55,9 +55,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    # OAuth2 Proxyへのリクエスト処理を発火させるURLを設定する
+    # OAuth2 Proxyへの認可リクエスト送信処理を発火させるURLを設定する
     nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
-    # リダイレクトの送信先とするOAuth2 Proxyのエンドポイントを設定する
+    # 認可リクエストの宛先とするOAuth2 Proxyの認可エンドポイントを設定する
     nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth
     nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
   name: nginx-ingress
