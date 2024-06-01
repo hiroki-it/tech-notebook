@@ -3947,7 +3947,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      リバースプロキシからのリクエストの場合
+      リバースプロキシからの認可リクエストの場合
     </span>
   </a>
   
@@ -22459,7 +22459,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      リバースプロキシからのリクエストの場合
+      リバースプロキシからの認可リクエストの場合
     </span>
   </a>
   
@@ -22512,25 +22512,25 @@
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">クライアントからのリクエストの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>クライアントは、OAuth2 Proxyにリクエストを送信し、認証を実施する。</p>
+<p>クライアントは、OAuth2 Proxyにリクエスト (認可リクエストではない) を送信し、認証を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/">https://oauth2-proxy.github.io/oauth2-proxy/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">リバースプロキシからのリクエストの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">リバースプロキシからの認可リクエストの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p><img alt="oauth2-proxy_kubernetes_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png" /></p>
 <p>リバースプロキシ (例：Nginx、など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。</p>
-<p>未認証のリクエストの場合、リバースプロキシはリクエストをOAuth2 Proxyに転送する。</p>
+<p>ユーザーが未認証の場合、リバースプロキシは認可リクエストをOAuth2 Proxyに転送する。</p>
 <p>OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloak、など) の認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># OAuth2 Proxyへのリクエスト処理を発火させるURLを設定する</span>
+<span class="w">    </span><span class="c1"># OAuth2 Proxyへの認可リクエスト送信処理を発火させるURLを設定する</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-signin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/sign_in</span>
-<span class="w">    </span><span class="c1"># リダイレクトの送信先とするOAuth2 Proxyのエンドポイントを設定する</span>
+<span class="w">    </span><span class="c1"># 認可リクエストの宛先とするOAuth2 Proxyの認可エンドポイントを設定する</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/auth</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/proxy-buffer-size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512k</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
