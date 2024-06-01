@@ -13,7 +13,39 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 <br>
 
-## 01. ngx_http_core_module
+## 01. ngx_http_auth_request_module
+
+### ディレクティブ
+
+#### ▼ auth_request
+
+```nginx
+http {
+
+    location / {
+
+        auth_request /oauth2/auth;
+
+        ...
+
+    }
+
+    location = /oauth2/auth {
+        proxy_pass              http://127.0.0.1:4180;
+        proxy_pass_request_body off;
+        proxy_set_header        Content-Length "";
+        proxy_set_header        X-Original-URI $request_uri;
+    }
+
+}
+```
+
+> - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
+
+<br>
+
+## 02. ngx_http_core_module
 
 ### httpブロック
 
@@ -445,7 +477,7 @@ server {
 
 <br>
 
-## 02. ngx_http_index_module
+## 03. ngx_http_index_module
 
 ### ディレクティブ
 
@@ -463,7 +495,7 @@ index index.php;
 
 <br>
 
-## 03. ngx_http_headers_module
+## 04. ngx_http_headers_module
 
 ### ディレクティブ
 
@@ -482,7 +514,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 <br>
 
-## 04. ngx_http_upstream_module
+## 05. ngx_http_upstream_module
 
 ### ブロック
 
@@ -505,7 +537,7 @@ upstream foo_servers {
 
 <br>
 
-## 05. ngx_http_fast_cgi_module
+## 06. ngx_http_fast_cgi_module
 
 ### ディレクティブ
 
@@ -535,7 +567,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 <br>
 
-## 06. ngx_http_rewrite_module
+## 07. ngx_http_rewrite_module
 
 ### ディレクティブ
 
@@ -560,7 +592,7 @@ if ($host ~* teambox.com) {
 
 <br>
 
-## 07. ngx_http_grpc_module
+## 08. ngx_http_grpc_module
 
 ### ディレクティブ
 
@@ -594,7 +626,7 @@ server {
 
 <br>
 
-## 08. ngx_http_proxy_module
+## 09. ngx_http_proxy_module
 
 ### ディレクティブ
 
@@ -618,7 +650,7 @@ proxy_pass $scheme://$host$request_uri;
 
 <br>
 
-## 09. ngx_http_stub_status_module
+## 10. ngx_http_stub_status_module
 
 ### ディレクティブ
 
@@ -646,7 +678,7 @@ Reading: 0 Writing: 1 Waiting: 0
 
 <br>
 
-## 10. ngx_otel_module
+## 11. ngx_otel_module
 
 ### ngx_otel_moduleとは
 

@@ -262,7 +262,7 @@ server {
 }
 ```
 
-#### ▼ gRPCの場合
+#### ▼ gRPCプロトコルの場合
 
 Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。
 

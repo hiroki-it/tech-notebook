@@ -69,8 +69,10 @@ provider = "github"
 
 ## redirect_url
 
+コールバックURL (IDプロバイダーからの認可レスポンスのリダイレクト先URL) を設定する。
+
 ```bash
-redirect_url = "https://example.com/api/callback"
+redirect_url = "https://example.com/oauth2/callback"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
