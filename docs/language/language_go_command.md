@@ -149,6 +149,8 @@ $ ${GOPATH}/bin/foo-package --version
 
 `HEAD`を指定すると、最新のコミットIDを指定できる。
 
+複数のブランチがある場合は、時系列的に最新のコミットIDである。
+
 ```bash
 $ go install <パッケージ名>@HEAD
 ```

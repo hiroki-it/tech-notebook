@@ -16,7 +16,8 @@
   > * ##### [︎Nginx](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx.html)
   > * ##### [︎nginx.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_conf.html)
   > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_command.html)
-  > * ##### [外部モジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module.html)
+  > * ##### [ビルトインモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html)
+  > * ##### [ユーティリティモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_utility.html)
 * #### <u>Apache</u>
   > * ##### [︎Apache](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache.html)
   > * ##### [︎apache.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_conf.html)

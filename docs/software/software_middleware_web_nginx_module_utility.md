@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】外部モジュール＠Nginx
-description: 外部モジュール＠Nginxの知見を記録しています。
+title: 【IT技術の知見】ユーティリティモジュール＠Nginx
+description: ユーティリティモジュール＠Nginxの知見を記録しています。
 ---
 
-# 外部モジュール＠Nginx
+# ユーティリティモジュール＠Nginx
 
 ## はじめに
 
