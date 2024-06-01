@@ -30,15 +30,23 @@ OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイ
 
 ## 02. ユースケース
 
-### Kubernetesの場合
+### クライアントからのリクエストの場合
+
+クライアントは、OAuth2 Proxyにリクエストを送信し、認証を実施する。
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/
+
+<br>
+
+### リバースプロキシからのリクエストの場合
 
 ![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
 
-Ingressコントローラーは、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
+リバースプロキシ (例：Nginx、など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
 
-未認証のリクエストの場合、IngressコントローラーはリクエストをOAuth2 Proxyに転送する。
+未認証のリクエストの場合、リバースプロキシはリクエストをOAuth2 Proxyに転送する。
 
-OAuth2 Proxyは、指定されたIDプロバイダーの認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
+OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloak、など) の認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -67,6 +75,7 @@ spec:
             pathType: Prefix
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 
 <br>

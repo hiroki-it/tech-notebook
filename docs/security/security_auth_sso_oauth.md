@@ -33,7 +33,7 @@ OAuthは認可フェーズのみで構成されているため、間違っても
 | ------------------ | -------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | クライアントアプリ | 認証     | 連携元アカウントを提供するアプリのこと。         | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを経由したリダイレクトによって実装することに注意する。                                                                                                                                   |
 | リソースオーナー   | 認証     | クライアントアプリを使用しているユーザーである。 |                                                                                                                                                                                                                                                                                                                         |
-| 認可サーバー       | 認可     | アクセストークンを発行するサーバーのことoauth))  | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
+| 認可サーバー       | 認可     | アクセストークンを発行するサーバーのこと。       | 認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | リソースサーバー   | 認可     | 連携先アカウントを提供するサーバーのこと。       |                                                                                                                                                                                                                                                                                                                         |
 
 > - https://ssaits.jp/promapedia/technology/oauth.html
@@ -43,6 +43,18 @@ OAuthは認可フェーズのみで構成されているため、間違っても
 ### OAuthの種類
 
 OAuthには、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。
+
+<br>
+
+### OIDCとの違い
+
+OAuthでは、OIDCとは異なり、IDトークンではなくアクセストークンを使用する。
+
+![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
+
+> - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+
+<br>
 
 <br>
 
@@ -213,15 +225,15 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 ## 04. 付与タイプ
 
-認可サーバーによるOAuthのトークンの付与方法には種類がある。
+認可サーバーによるOAuthのアクセストークンの付与方法には種類がある。
 
-| 付与タイプ名             | 説明                                                                                                                                                                                                                            | 使用例                                                                                                                                                |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization Code Grant | アプリケーションが他のAPIに接続する場合に使用する。推奨である。<br>https://oauth.net/2/grant-types/authorization-code/                                                                                                          | 他のSNSアプリとのアカウント連携                                                                                                                       |
-| Client Credentials Grant | 推奨である。<br>https://oauth.net/2/grant-types/client-credentials/                                                                                                                                                             |                                                                                                                                                       |
-| Device Code              | 推奨である。<br>https://oauth.net/2/grant-types/device-code/                                                                                                                                                                    |                                                                                                                                                       |
-| Implicit Grant           | 非推奨である。<br>https://oauth.net/2/grant-types/implicit/                                                                                                                                                                     |                                                                                                                                                       |
-| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨である。<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+| 付与タイプ名             | 説明                                                                                                                                                                                                                                    | 使用例                                                                                                                                                |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Authorization Code Grant | アプリケーションが他のAPIに接続する場合に使用する。推奨である。<br>https://oauth.net/2/grant-types/authorization-code/                                                                                                                  | 他のSNSアプリとのアカウント連携                                                                                                                       |
+| Client Credentials Grant | 推奨である。<br>https://oauth.net/2/grant-types/client-credentials/                                                                                                                                                                     |                                                                                                                                                       |
+| Device Code              | 推奨である。<br>https://oauth.net/2/grant-types/device-code/                                                                                                                                                                            |                                                                                                                                                       |
+| Implicit Grant           | 非推奨である。<br>https://oauth.net/2/grant-types/implicit/                                                                                                                                                                             |                                                                                                                                                       |
+| Password Grant           | ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
 > - https://oauth.net/2/grant-types/
 
