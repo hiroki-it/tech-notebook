@@ -10492,6 +10492,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      OIDCとの違い
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22427,6 +22436,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      OIDCとの違い
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22600,7 +22618,7 @@
 <tr>
 <td>認可サーバー</td>
 <td>認可</td>
-<td>アクセストークンを発行するサーバーのことoauth))</td>
+<td>アクセストークンを発行するサーバーのこと。</td>
 <td>認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br><a href="https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844">https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844</a></td>
 </tr>
 <tr>
@@ -22619,6 +22637,16 @@
 <p><br></p>
 <h3 id="oauth_1">OAuthの種類<a class="headerlink" href="#oauth_1" title="Permanent link">&para;</a></h3>
 <p>OAuthには、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。</p>
+<p><br></p>
+<h3 id="oidc">OIDCとの違い<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
+<p>OAuthでは、OIDCとは異なり、IDトークンではなくアクセストークンを使用する。</p>
+<p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe">https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <p><br></p>
 <h2 id="02">02. 認可コードフロー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">認可コードフローの仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -22870,7 +22898,7 @@
 <p>注意点として、認可サーバーによって発行されたBearerトークンは、<code>Authorization</code>ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。</p>
 <p><br></p>
 <h2 id="04">04. 付与タイプ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<p>認可サーバーによるOAuthのトークンの付与方法には種類がある。</p>
+<p>認可サーバーによるOAuthのアクセストークンの付与方法には種類がある。</p>
 <table>
 <thead>
 <tr>
@@ -22902,7 +22930,7 @@
 </tr>
 <tr>
 <td>Password Grant</td>
-<td>ユーザー名とパスワードを照合し、トークンを付与する。非推奨である。<br>・<a href="https://oauth.net/2/grant-types/password/">https://oauth.net/2/grant-types/password/</a><br>・<a href="https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant">https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant</a></td>
+<td>ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・<a href="https://oauth.net/2/grant-types/password/">https://oauth.net/2/grant-types/password/</a><br>・<a href="https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant">https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant</a></td>
 <td>LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br><a href="https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens">https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens</a></td>
 </tr>
 </tbody>
@@ -22933,7 +22961,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     

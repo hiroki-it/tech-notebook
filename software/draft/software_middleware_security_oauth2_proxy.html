@@ -22233,9 +22233,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kubernetes" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetesの場合
+      クライアントからのリクエストの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      リバースプロキシからのリクエストの場合
     </span>
   </a>
   
@@ -22286,11 +22295,19 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="kubernetes">Kubernetesの場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
+<h3 id="_3">クライアントからのリクエストの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>クライアントは、OAuth2 Proxyにリクエストを送信し、認証を実施する。</p>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/">https://oauth2-proxy.github.io/oauth2-proxy/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">リバースプロキシからのリクエストの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p><img alt="oauth2-proxy_kubernetes_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png" /></p>
-<p>Ingressコントローラーは、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。</p>
-<p>未認証のリクエストの場合、IngressコントローラーはリクエストをOAuth2 Proxyに転送する。</p>
-<p>OAuth2 Proxyは、指定されたIDプロバイダーの認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。</p>
+<p>リバースプロキシ (例：Nginx、など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。</p>
+<p>未認証のリクエストの場合、リバースプロキシはリクエストをOAuth2 Proxyに転送する。</p>
+<p>OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloak、など) の認可エンドポイントに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -22318,6 +22335,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/">https://oauth2-proxy.github.io/oauth2-proxy/</a></li>
 <li><a href="https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a">https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a</a></li>
 </ul>
 </blockquote>
@@ -22342,7 +22360,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     
