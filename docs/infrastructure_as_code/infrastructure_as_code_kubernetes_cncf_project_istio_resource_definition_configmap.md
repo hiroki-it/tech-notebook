@@ -455,7 +455,7 @@ AuthorizationPolicyによる認可の実施に、認可フェーズを外部のI
 
 **＊実装例＊**
 
-oauth2-proxyのPodに紐づくServiceを識別できるようにする。
+OAuth2 ProxyのPodに紐づくServiceを識別できるようにする。
 
 ```yaml
 apiVersion: v1
