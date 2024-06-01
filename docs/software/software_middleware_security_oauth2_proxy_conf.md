@@ -13,7 +13,7 @@ description: 設定ファイル＠OAuth2 Proxyの知見を記録しています�
 
 <br>
 
-## client
+## 01. client
 
 ### client_id
 
@@ -35,7 +35,7 @@ client_secret = "<クライアントシークレット>"
 
 <br>
 
-## http
+## 02. http
 
 ### http_address
 
@@ -62,6 +62,7 @@ https_address = ":443"
 OIDCのIDプロバイダーの認可エンドポイントを設定する。
 
 ```bash
+# Keycloakの認可エンドポイントを設定する場合
 oidc_issuer_url="https://<Keycloakのドメイン>/auth/realms/<realm名>"
 ```
 
@@ -81,7 +82,7 @@ provider = "oidc"
 
 <br>
 
-## redirect_url
+## 03. redirect_url
 
 コールバックURL (IDプロバイダーからの認可レスポンスのリダイレクト先URL) を設定する。
 
@@ -93,7 +94,7 @@ redirect_url = "https://example.com/oauth2/callback"
 
 <br>
 
-## reverse_proxy
+## 04. reverse_proxy
 
 OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
@@ -105,7 +106,7 @@ reverse_proxy = true
 
 <br>
 
-## upstreams
+## 05. upstreams
 
 OAuth2 ProxyのアップストリームのWebサーバーのURLを設定する。
 

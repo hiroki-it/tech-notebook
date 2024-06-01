@@ -19,34 +19,33 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 #### ▼ auth_request
 
-Nginxが認証プロキシやIDプロバイダーにリクエストを送信する場合に、これのパスを設定する。
+認証情報を取得するためのリクエスト先のパスを設定する。
 
 ```nginx
 http {
 
+    # 認証が必要なパス
     location / {
 
-        # NginxがOAuth2 Proxyにリダイレクトする場合は、/oauth2/authである
+        # OAuth2 Proxyから認証情報を取得する場合は、/oauth2/authを設定する
         auth_request /oauth2/auth;
 
         ...
 
     }
 
-    # OAuth2 Proxyへのリダイレクト時の処理を設定する
     location = /oauth2/auth {
         # OAuth2 Proxyのエンドポイントを設定する
         proxy_pass              http://127.0.0.1:4180;
         proxy_pass_request_body off;
-        proxy_set_header        Content-Length "";
-        proxy_set_header        X-Original-URI $request_uri;
+        proxy_set_header        Host $http_host;
     }
 
 }
 ```
 
 > - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
+> - https://tech.jxpress.net/entry/2018/08/23/104123
 
 <br>
 
@@ -105,7 +104,7 @@ http {
 ```nginx
 http {
 
-    log_format         main  escape=json '{'
+    log_format         main         escape=json '{'
     '"remoteAddr": "$remote_addr",'
     '"remoteUser": "$remote_user",'
     '"requestUri": "$request_uri",'
