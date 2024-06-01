@@ -22653,24 +22653,45 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc</a></li>
 </ul>
 </blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、IDプロバイダーがAWS Cognitoの場合</span>
+<span class="nv">oidc_issuer_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://cognito-idp.ap-northeast-1.amazonaws.com/&lt;ユーザープールID&gt;&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90">https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="provider">provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、任意のIDプロバイダーの場合</span>
 <span class="nv">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;oidc&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect</a></li>
+</ul>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、IDプロバイダーがGitHubの場合</span>
 <span class="nv">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;github&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github</a></li>
+</ul>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、IDプロバイダーがKeycloakの場合</span>
 <span class="nv">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;keycloak&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak</a></li>
+</ul>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、IDプロバイダーがKeycloakの場合</span>
 <span class="nv">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;keycloak-oidc&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect</a></li>
-<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github</a></li>
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc</a></li>
 </ul>
 </blockquote>
