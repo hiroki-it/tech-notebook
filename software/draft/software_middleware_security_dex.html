@@ -22199,21 +22199,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-oidc" class="md-nav__link">
+  <a href="#01-dex" class="md-nav__link">
     <span class="md-ellipsis">
-      01. OIDC
+      01. Dexとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. OIDC">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 認証方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 認証方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      OIDC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OIDC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#keycloak" class="md-nav__link">
     <span class="md-ellipsis">
-      Keycloakの場合
+      ▼ Keycloakの場合
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -22249,8 +22273,17 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-oidc">01. OIDC<a class="headerlink" href="#01-oidc" title="Permanent link">&para;</a></h2>
-<h3 id="keycloak">Keycloakの場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h3>
+<h2 id="01-dex">01. Dexとは<a class="headerlink" href="#01-dex" title="Permanent link">&para;</a></h2>
+<p>SSOのIDプロバイダーまたは認証プロキシーとして機能する。</p>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@sct10876/keycloak-vs-dex-71f7fab29919">https://medium.com/@sct10876/keycloak-vs-dex-71f7fab29919</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 認証方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
+<h4 id="keycloak">▼ Keycloakの場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">connectors</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc</span>
 <span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keycloak</span>
@@ -22292,7 +22325,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     
