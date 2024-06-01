@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="パケットペイロードの暗号化技術＠セキュリティの知見を記録しています。">
+        <meta name="description" content="ビルトインモジュール＠Nginxの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html">
       
       
-        <link rel="prev" href="security_measures.html">
+        <link rel="prev" href="software_middleware_web_nginx_command.html">
       
       
-        <link rel="next" href="security_measures_encryption_technology_packet_payload_method.html">
+        <link rel="next" href="software_middleware_web_nginx_module_utility.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】パケットペイロードの暗号化技術＠セキュリティ - 俺の技術ノート</title>
+        <title>【IT技術の知見】ビルトインモジュール＠Nginx - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#nginx" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】パケットペイロードの暗号化技術＠セキュリティ
+              【IT技術の知見】ビルトインモジュール＠Nginx
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+        <a href="application/index.html" class="md-tabs__link">
           
   
     
@@ -294,11 +294,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="middleware/index.html" class="md-tabs__link">
           
   
     
@@ -318,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="basic/index.html" class="md-tabs__link">
           
   
     
@@ -414,13 +416,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
           
   
     
@@ -866,7 +866,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -899,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software.html" class="md-nav__link">
+      <a href="software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -920,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_practices.html" class="md-nav__link">
+      <a href="software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -981,7 +981,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/application/index.html" class="md-nav__link ">
+            <a href="application/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1014,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1133,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1154,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1204,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1225,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_cqrs.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_cqrs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1319,7 +1319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_auth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1444,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_database.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_database.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1465,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_network.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1486,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_security.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_security.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1507,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_development.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1586,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_communication.html" class="md-nav__link">
+      <a href="software_application_collaboration_communication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1653,7 +1653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_restful.html" class="md-nav__link">
+      <a href="software_application_collaboration_api_restful.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1674,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_restful_api_specification.html" class="md-nav__link">
+      <a href="software_application_collaboration_api_restful_api_specification.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1749,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_rpc_api_grpc.html" class="md-nav__link">
+      <a href="software_application_collaboration_api_rpc_api_grpc.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1814,7 +1814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
+      <a href="software_application_collaboration_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1895,7 +1895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_collaboration_api_graphql_api_graphql.html" class="md-nav__link">
+      <a href="software_application_collaboration_api_graphql_api_graphql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1936,6 +1936,8 @@
       
   
   
+    
+  
   
   
     
@@ -1958,21 +1960,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/middleware/index.html" class="md-nav__link ">
+            <a href="middleware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1983,13 +1986,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -2002,8 +2005,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2017,13 +2022,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2037,7 +2040,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Web系
@@ -2048,8 +2051,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2069,13 +2074,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
@@ -2089,7 +2092,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Nginx
@@ -2103,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2124,7 +2127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2145,7 +2148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_command.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2163,10 +2166,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_builtin.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ビルトインモジュール
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_middleware_web_nginx_module_builtin.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2175,6 +2198,748 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-ngx_http_core_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. ngx_http_core_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ngx_http_core_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      httpブロック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="httpブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ httpブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log_format" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ log_format
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#location" class="md-nav__link">
+    <span class="md-ellipsis">
+      locationブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    <span class="md-ellipsis">
+      serverブロック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ default_type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listen" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ listen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sendfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ sendfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ server_name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ssl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl_certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ssl_certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl_certificate_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ssl_certificate_key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl_client_certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ssl_client_certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_nopush" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tcp_nopush
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ try_files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ヘルスチェックの受信
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘルスチェックの受信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ nginxによるレスポンス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリケーションによるレスポンス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-ngx_http_index_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. ngx_http_index_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ngx_http_index_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ index
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ngx_http_headers_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ngx_http_headers_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ngx_http_headers_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ add_header
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-ngx_http_upstream_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ngx_http_upstream_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ngx_http_upstream_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブロック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ upstream
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-ngx_http_fast_cgi_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. ngx_http_fast_cgi_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ngx_http_fast_cgi_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastcgi_params" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ fastcgi_params
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fastcgi_pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ fastcgi_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ngx_http_rewrite_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. ngx_http_rewrite_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. ngx_http_rewrite_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ if
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-ngx_http_grpc_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. ngx_http_grpc_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. ngx_http_grpc_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ grpc_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ngx_http_proxy_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. ngx_http_proxy_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. ngx_http_proxy_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy_pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ proxy_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-ngx_http_stub_status_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      09. ngx_http_stub_status_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="09. ngx_http_stub_status_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stub_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ stub_status
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. ngx_otel_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. ngx_otel_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_otel_moduleとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 未ビルドの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド済みの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_exporter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_service_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_service_name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_trace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_trace_context" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_trace_context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_span_name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_attr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_span_attr
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_trace_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_trace_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_span_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_parent_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_parent_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_parent_sampled" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_parent_sampled
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2187,7 +2952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_utility.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_module_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2264,7 +3029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache.html" class="md-nav__link">
+      <a href="software_middleware_web_apache.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2285,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2306,7 +3071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_command.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2481,7 +3246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2502,7 +3267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2629,7 +3394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2650,7 +3415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2731,7 +3496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2912,7 +3677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2933,7 +3698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2954,7 +3719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3031,7 +3796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3052,7 +3817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3121,7 +3886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3142,7 +3907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3163,7 +3928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3246,7 +4011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3267,7 +4032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3350,7 +4115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3417,7 +4182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3438,7 +4203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3565,7 +4330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3586,7 +4351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3677,7 +4442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_linux.html" class="md-nav__link">
+      <a href="software_middleware_security_linux.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3744,7 +4509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco.html" class="md-nav__link">
+      <a href="software_middleware_security_falco.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3765,7 +4530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_falco_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3850,7 +4615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3871,7 +4636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_responsibility.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_responsibility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3944,7 +4709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3965,7 +4730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3986,7 +4751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4007,7 +4772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4028,7 +4793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4101,7 +4866,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/basic/index.html" class="md-nav__link ">
+            <a href="basic/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4188,7 +4953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4209,7 +4974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_process_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_process_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4230,7 +4995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_memory_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_memory_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4251,7 +5016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_storage_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_storage_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4272,7 +5037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_io_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_io_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4293,7 +5058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_job_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_job_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4376,7 +5141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility.html" class="md-nav__link">
+      <a href="software_basic_utility.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4397,7 +5162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_unix.html" class="md-nav__link">
+      <a href="software_basic_utility_unix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4418,7 +5183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_shell.html" class="md-nav__link">
+      <a href="software_basic_utility_shell.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4439,7 +5204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_script.html" class="md-nav__link">
+      <a href="software_basic_utility_script.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4510,7 +5275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_memory.html" class="md-nav__link">
+      <a href="software_basic_utility_package_memory.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4531,7 +5296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_network.html" class="md-nav__link">
+      <a href="software_basic_utility_package_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4552,7 +5317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_security.html" class="md-nav__link">
+      <a href="software_basic_utility_package_security.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4573,7 +5338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_storage.html" class="md-nav__link">
+      <a href="software_basic_utility_package_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4652,7 +5417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4673,7 +5438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_linux.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_linux.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4694,7 +5459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_redhat.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_redhat.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4715,7 +5480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_debian.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_debian.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4798,7 +5563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor.html" class="md-nav__link">
+      <a href="software_basic_language_processor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4819,7 +5584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
+      <a href="software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9641,8 +10406,6 @@
       
   
   
-    
-  
   
   
     
@@ -9661,22 +10424,21 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../security/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -9687,13 +10449,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="">
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             🔐 セキュリティ
@@ -9755,7 +10517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_cyber_attacks.html" class="md-nav__link">
+      <a href="../security/security_cyber_attacks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9776,7 +10538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_cyber_attacks_malware.html" class="md-nav__link">
+      <a href="../security/security_cyber_attacks_malware.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9802,10 +10564,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -9821,11 +10581,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_3" >
         
           
           <label class="md-nav__link" for="__nav_12_3" id="__nav_12_3_label" tabindex="0">
@@ -9839,7 +10601,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3">
             <span class="md-nav__icon md-icon"></span>
             ■ 対策
@@ -9853,7 +10615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_measures.html" class="md-nav__link">
+      <a href="../security/security_measures.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9871,10 +10633,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -9890,11 +10650,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_3_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12_3_2" >
         
           
           <label class="md-nav__link" for="__nav_12_3_2" id="__nav_12_3_2_label" tabindex="0">
@@ -9908,7 +10670,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_2">
             <span class="md-nav__icon md-icon"></span>
             ■ パケットペイロードの暗号化技術
@@ -9919,30 +10681,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    パケットペイロードの暗号化技術
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="security_measures_encryption_technology_packet_payload.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../security/security_measures_encryption_technology_packet_payload.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9951,469 +10693,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-l7" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. L7のパケットペイロードを暗号化する目的
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. L7のパケットペイロードを暗号化する目的">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      盗聴 (パケットペイロードの盗み取り) を防ぐため
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      改竄 (パケットペイロードの書き換え) を防ぐため
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      成りすましを防ぐため
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 暗号ダイジェスト (デジタル署名) について
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 暗号ダイジェスト (デジタル署名) について">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      暗号ダイジェスト (デジタル署名) を使用した暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="暗号ダイジェスト (デジタル署名) を使用した暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) のメリット
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) のデメリット
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      暗号ダイジェスト (デジタル署名) と公開鍵暗号方式を使用した暗号化技術
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ハッシュ関数によるハッシュ化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. ドメイン認証
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. ドメイン認証">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      公開鍵基盤
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="公開鍵基盤">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 公開鍵基盤とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 公開鍵基盤の仕組み
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      認証局
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="認証局">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 認証局とは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 中間認証局をルート認証局で署名する理由
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      03-02. 証明書
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03-02. 証明書">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      証明書の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="証明書の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ca" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルート証明書 (CA証明書、トラストアンカー)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ca_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 中間CA証明書
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リーフ証明書
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSL証明書
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 証明書バンドル
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ クライアント証明書
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssl_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSL証明書と秘密鍵の配置場所
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSL証明書と秘密鍵の配置場所">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ミドルウェアの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OSの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssl_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      自己署名SSL証明書の作成
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="自己署名SSL証明書の作成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssl_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SSL証明書の作成に必要なもの
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 作成手順
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 一括管理
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. その他のセキュリティ技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. その他のセキュリティ技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      メール受信におけるセキュリティ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メール受信におけるセキュリティ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#op25b-outbound-port-25-blocking" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OP25B (Outbound Port 25 Blocking)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spf-sender-policy-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SPF (Sender Policy Framework)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      パスワードの保管方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      生体認証
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web-beacon" class="md-nav__link">
-    <span class="md-ellipsis">
-      Web beacon
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -10426,7 +10705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_measures_encryption_technology_packet_payload_method.html" class="md-nav__link">
+      <a href="../security/security_measures_encryption_technology_packet_payload_method.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10447,7 +10726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_measures_encryption_technology_packet_payload_protocol.html" class="md-nav__link">
+      <a href="../security/security_measures_encryption_technology_packet_payload_protocol.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10520,7 +10799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_measures_encryption_technology_storage.html" class="md-nav__link">
+      <a href="../security/security_measures_encryption_technology_storage.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10653,7 +10932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authentication.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10674,7 +10953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authentication_http.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_http.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10695,7 +10974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authentication_token.html" class="md-nav__link">
+      <a href="../security/security_auth_authentication_token.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10770,7 +11049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authorization.html" class="md-nav__link">
+      <a href="../security/security_auth_authorization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10791,7 +11070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authorization_open_policy_agent.html" class="md-nav__link">
+      <a href="../security/security_auth_authorization_open_policy_agent.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10870,7 +11149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_sso.html" class="md-nav__link">
+      <a href="../security/security_auth_sso.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10891,7 +11170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_sso_oauth.html" class="md-nav__link">
+      <a href="../security/security_auth_sso_oauth.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10912,7 +11191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_sso_saml.html" class="md-nav__link">
+      <a href="../security/security_auth_sso_saml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10933,7 +11212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_sso_oidc.html" class="md-nav__link">
+      <a href="../security/security_auth_sso_oidc.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22682,7 +22961,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -22691,89 +22970,47 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-l7" class="md-nav__link">
+  <a href="#01-ngx_http_core_module" class="md-nav__link">
     <span class="md-ellipsis">
-      01. L7のパケットペイロードを暗号化する目的
+      01. ngx_http_core_module
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. L7のパケットペイロードを暗号化する目的">
+    <nav class="md-nav" aria-label="01. ngx_http_core_module">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      盗聴 (パケットペイロードの盗み取り) を防ぐため
+      httpブロック
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      改竄 (パケットペイロードの書き換え) を防ぐため
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      成りすましを防ぐため
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. 暗号ダイジェスト (デジタル署名) について
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 暗号ダイジェスト (デジタル署名) について">
+    <nav class="md-nav" aria-label="httpブロック">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#http_1" class="md-nav__link">
     <span class="md-ellipsis">
-      暗号ダイジェスト (デジタル署名) を使用した暗号化技術
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="暗号ダイジェスト (デジタル署名) を使用した暗号化技術">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) とは
+      ▼ httpブロック
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#log_format" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) のメリット
+      ▼ log_format
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#map" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 暗号ダイジェスト (デジタル署名) のデメリット
+      ▼ map
     </span>
   </a>
   
@@ -22785,151 +23022,64 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#location" class="md-nav__link">
     <span class="md-ellipsis">
-      暗号ダイジェスト (デジタル署名) と公開鍵暗号方式を使用した暗号化技術
+      locationブロック
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#server" class="md-nav__link">
     <span class="md-ellipsis">
-      ハッシュ関数によるハッシュ化
+      serverブロック
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ドメイン認証
+      ディレクティブ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ドメイン認証">
+    <nav class="md-nav" aria-label="ディレクティブ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#default_type" class="md-nav__link">
     <span class="md-ellipsis">
-      公開鍵基盤
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="公開鍵基盤">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 公開鍵基盤とは
+      ▼ default_type
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#listen" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 公開鍵基盤の仕組み
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      認証局
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="認証局">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 認証局とは
+      ▼ listen
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#sendfile" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中間認証局をルート認証局で署名する理由
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-02" class="md-nav__link">
-    <span class="md-ellipsis">
-      03-02. 証明書
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03-02. 証明書">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      証明書の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="証明書の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ca" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ルート証明書 (CA証明書、トラストアンカー)
+      ▼ sendfile
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ca_1" class="md-nav__link">
+  <a href="#server_name" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 中間CA証明書
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ リーフ証明書
+      ▼ server_name
     </span>
   </a>
   
@@ -22938,58 +23088,52 @@
           <li class="md-nav__item">
   <a href="#ssl" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SSL証明書
+      ▼ ssl
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#ssl_certificate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 証明書バンドル
+      ▼ ssl_certificate
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#ssl_certificate_key" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアント証明書
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssl_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSL証明書と秘密鍵の配置場所
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSL証明書と秘密鍵の配置場所">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ミドルウェアの場合
+      ▼ ssl_certificate_key
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#os" class="md-nav__link">
+  <a href="#ssl_client_certificate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OSの場合
+      ▼ ssl_client_certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_nopush" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tcp_nopush
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try_files" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ try_files
     </span>
   </a>
   
@@ -23001,37 +23145,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ssl_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      自己署名SSL証明書の作成
+      ヘルスチェックの受信
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="自己署名SSL証明書の作成">
+    <nav class="md-nav" aria-label="ヘルスチェックの受信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssl_3" class="md-nav__link">
+  <a href="#nginx_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SSL証明書の作成に必要なもの
+      ▼ nginxによるレスポンス
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 作成手順
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 一括管理
+      ▼ アプリケーションによるレスポンス
     </span>
   </a>
   
@@ -23048,38 +23183,368 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#02-ngx_http_index_module" class="md-nav__link">
     <span class="md-ellipsis">
-      04. その他のセキュリティ技術
+      02. ngx_http_index_module
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. その他のセキュリティ技術">
+    <nav class="md-nav" aria-label="02. ngx_http_index_module">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      メール受信におけるセキュリティ
+      ディレクティブ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="メール受信におけるセキュリティ">
+    <nav class="md-nav" aria-label="ディレクティブ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#op25b-outbound-port-25-blocking" class="md-nav__link">
+  <a href="#index" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OP25B (Outbound Port 25 Blocking)
+      ▼ index
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ngx_http_headers_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ngx_http_headers_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ngx_http_headers_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_header" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ add_header
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-ngx_http_upstream_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ngx_http_upstream_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ngx_http_upstream_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブロック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ upstream
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-ngx_http_fast_cgi_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. ngx_http_fast_cgi_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ngx_http_fast_cgi_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastcgi_params" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ fastcgi_params
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#spf-sender-policy-framework" class="md-nav__link">
+  <a href="#fastcgi_pass" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SPF (Sender Policy Framework)
+      ▼ fastcgi_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ngx_http_rewrite_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. ngx_http_rewrite_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. ngx_http_rewrite_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ if
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-ngx_http_grpc_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      07. ngx_http_grpc_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. ngx_http_grpc_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ grpc_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ngx_http_proxy_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      08. ngx_http_proxy_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. ngx_http_proxy_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy_pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ proxy_pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-ngx_http_stub_status_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      09. ngx_http_stub_status_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="09. ngx_http_stub_status_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stub_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ stub_status
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. ngx_otel_module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. ngx_otel_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngx_otel_module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ngx_otel_moduleとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 未ビルドの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ビルド済みの場合
     </span>
   </a>
   
@@ -23091,29 +23556,122 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      パスワードの保管方法
+      ディレクティブ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_exporter
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#otel_service_name" class="md-nav__link">
     <span class="md-ellipsis">
-      生体認証
+      ▼ otel_service_name
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#web-beacon" class="md-nav__link">
+  <a href="#otel_trace" class="md-nav__link">
     <span class="md-ellipsis">
-      Web beacon
+      ▼ otel_trace
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_trace_context" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_trace_context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_span_name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_attr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ otel_span_attr
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_trace_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_trace_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_span_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_span_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_parent_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_parent_id
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel_parent_sampled" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ $otel_parent_sampled
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23140,8 +23698,8 @@
   
 
 
-<h1 id="_1">パケットペイロードの暗号化技術＠セキュリティ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="nginx">ビルトインモジュール＠Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23149,501 +23707,713 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-l7">01. <code>L7</code>のパケットペイロードを暗号化する目的<a class="headerlink" href="#01-l7" title="Permanent link">&para;</a></h2>
-<h3 id="_3">盗聴 (パケットペイロードの盗み取り) を防ぐため<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>『共通鍵暗号方式』や『公開鍵暗号方式』によって実現される。</p>
-<p>暗号アルゴリズムに基づく暗号方式を使用してパケットペイロードを暗号化することによって、パケットペイロードの盗聴を防ぐ。</p>
-<p><img alt="盗聴_改竄_成りすまし" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_1.png" /></p>
-<p><br></p>
-<h3 id="_4">改竄 (パケットペイロードの書き換え) を防ぐため<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>『デジタル署名』や『ハッシュ関数』によって実現される。</p>
-<p>相手に送ったパケットペイロードと相手が受け取ったパケットペイロードが同じか否かを確認することによって、パケットペイロードの改竄を防ぐ。</p>
-<p><img alt="盗聴_改竄_成りすまし" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_2.png" /></p>
-<p><br></p>
-<h3 id="_5">成りすましを防ぐため<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>『デジタル署名』によって実現される。</p>
-<p>正しい相手であることを証明することによって、成りすましを防ぐ。</p>
-<p><img alt="盗聴_改竄_成りすまし" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png" /></p>
-<p><br></p>
-<h2 id="02">02. 暗号ダイジェスト (デジタル署名) について<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_6">暗号ダイジェスト (デジタル署名) を使用した暗号化技術<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 暗号ダイジェスト (デジタル署名) とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>『公開鍵暗号方式とは逆の仕組み (※つまり、公開鍵暗号方式ではない) 』と『ハッシュ関数』を利用した暗号化。</p>
-<p>『成りすまし』と『改竄』を防げる。</p>
-<p><img alt="デジタル署名" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名.png" /></p>
-<p><strong>＊サーバーが実行すること＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>サーバーは、受信者 (クライアント) にあらかじめ公開鍵を配布しておく。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>平文をハッシュ化し、ダイジェストにする。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>ダイジェストを秘密鍵で暗号化し、暗号ダイジェスト (デジタル署名) を作成する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>『平文』、『暗号ダイジェスト (デジタル署名) 』を送信する。</p>
-</dd>
-</dl>
-<p><strong>＊受信者 (クライアント) が実行すること＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>受信者 (クライアント) は、『平文』と『暗号ダイジェスト (デジタル署名) 』を受信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>平文をハッシュ化し、ダイジェストにする。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>上記<code>2</code>個のダイジェストが同一なら、『成りすまし』と『改竄』が行われていないと判断</p>
-</dd>
-</dl>
-<h4 id="_8">▼ 暗号ダイジェスト (デジタル署名) のメリット<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>改竄を防げる</p>
-</dd>
-</dl>
-<p>サーバーから送られた『平文』と『暗号ダイジェスト』のどちらかが、通信の途中で改竄された場合、これらのダイジェストが同じになることは確率的にありえない。</p>
-<p>したがって、確かに改竄されていないと判断可能。</p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>成りすましを防げる</p>
-</dd>
-</dl>
-<p>特定の秘密鍵を持つのは、特定のサーバーだけ。</p>
-<p>したがって、確かにサーバーによって暗号化されたものだと判断可能。</p>
-<h4 id="_9">▼ 暗号ダイジェスト (デジタル署名) のデメリット<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><strong>★★公開鍵の成りすましを防げない★★</strong></p>
-<p>二者間だけのやり取りでは、あらかじめ受信者に渡される公開鍵が偽の送信者のものであっても、確かめる術がない。</p>
-<p>これを保障する仕組みに、PKI (公開鍵基盤) がある。</p>
-<p><br></p>
-<h3 id="_10">暗号ダイジェスト (デジタル署名) と公開鍵暗号方式を使用した暗号化技術<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>『成りすまし』と『改竄』を防げるデジタル署名に、『盗聴』を防げる公開鍵暗号方式を組み込んだ暗号化技術。</p>
-<p><img alt="デジタル署名と暗号化" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名と暗号化.png" /></p>
-<p><br></p>
-<h3 id="_11">ハッシュ関数によるハッシュ化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>何かのパケットペイロードを入力すると、規則性のない一定の桁数の値を出力する演算手法。</p>
-<p><img alt="ハッシュ関数" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png" /></p>
-<p><br></p>
-<h2 id="03">03. ドメイン認証<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_12">公開鍵基盤<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 公開鍵基盤とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>公開鍵検証を使用して、秘密鍵とデジタル証明書はドメインの正当性 (偽のサイトではないこと) を担保する仕組みのこと。</p>
-<p>デジタル署名に使用した秘密鍵に対応する公開鍵は、成りすました人物による偽の公開鍵の可能性がある。</p>
-<p>第三者機関の認証局によって、公開鍵を検証するインフラのことを、公開鍵基盤という。</p>
-<h4 id="_14">▼ 公開鍵基盤の仕組み<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p><img alt="ssl-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.gif" /></p>
-<p><strong>＊サーバーが実行すること＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>サーバーは、公開鍵と秘密鍵を作り、認証局に公開鍵とデジタル署名を提出する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>認証局から、暗号ダイジェスト (デジタル署名) を含むデジタル証明書 (S/MIME証明書、SSL証明書) を発行してもらう。デジタル証明書が、公開鍵の本人証明になる。デジタル証明書は、S/MIMEで使用する場合には、『S/MIME証明書』、SSL/TLSで使用する場合には、『SSL証明書』という。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>受信者 (クライアント) にメール、暗号ダイジェスト (デジタル署名) を含むデジタル証明書を送信する。</p>
-</dd>
-</dl>
-<p><strong>＊受信者 (クライアント) が実行すること＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>受信者 (クライアント) は、暗号ダイジェスト (デジタル署名) を含むデジタル証明書 (S/MIME証明書、SSL証明書) を受信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>認証局からもらった公開鍵を使用して、デジタル証明書の暗号ダイジェスト (デジタル署名) 部分を復号し、ハッシュ値が同じなら、認証局そのものが成りすましでないと判断する。</p>
-</dd>
-</dl>
-<p><br></p>
-<h3 id="_15">認証局<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ 認証局とは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>自前の中間認証局あるいはクラウドプロバイダーが中間認証局を利用し、デジタル証明書を認証する。</p>
-<p><strong>＊例＊</strong></p>
-<table>
-<thead>
-<tr>
-<th>方法の種類</th>
-<th>中間認証局名</th>
-<th>ルート認証局名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>自前</td>
-<td>Vault</td>
-<td>記入中...</td>
-</tr>
-<tr>
-<td>AWS</td>
-<td>AWS Trust Services</td>
-<td>Starfield社</td>
-</tr>
-<tr>
-<td>Google Cloud</td>
-<td>Google Cloud Trust Services</td>
-<td>記入中...</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54">https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54</a></li>
-</ul>
-</blockquote>
-<h4 id="_17">▼ 中間認証局をルート認証局で署名する理由<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>デジタル証明書 (S/MIME証明書、SSL証明書) を発行する中間認証局そのものが、成りすましの可能性がある。</p>
-<p>そこで、認証局をランク付けし、ルート認証局が下位ランクの認証局に権限を与えることにより、下位の認証局の信頼性を持たせている。</p>
-<p>注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましの可能性は非常に低い。</p>
-<p><img alt="認証局自体の成りすまし防止" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://zeropasoakita.livedoor.blog/archives/20294837.html">https://zeropasoakita.livedoor.blog/archives/20294837.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-02">03-02. 証明書<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
-<h3 id="_18">証明書の種類<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<h4 id="ca">▼ ルート証明書 (CA証明書、トラストアンカー)<a class="headerlink" href="#ca" title="Permanent link">&para;</a></h4>
-<p>『CA証明書』『トラストアンカー』ともいう。</p>
-<p>ルート認証局が、自身の信頼性を担保するために発行する証明書のこと。</p>
-<p>ルート認証局は、ブラウザの開発会社の厳しい監査を受けているため、ルート証明書を使用して自分で自分を証明できる。</p>
-<p>ルート証明書は、各種OSでインストールできる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Ubuntuの場合</span>
-<span class="c1"># https://ubuntu.com/server/docs/security-trust-store</span>
-$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ca-certificates
+<h2 id="01-ngx_http_core_module">01. ngx_http_core_module<a class="headerlink" href="#01-ngx_http_core_module" title="Permanent link">&para;</a></h2>
+<h3 id="http">httpブロック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
+<h4 id="http_1">▼ httpブロック<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
+<p>全てのHTTPプロトコルのインバウンド通信に共通する処理を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># Nginxのバージョンを表示するか否か</span>
+<span class="w">    </span><span class="kn">server_tokens</span><span class="w">      </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># MIMEタイプを設定</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default_type</span><span class="w">       </span><span class="s">application/octet-stream</span><span class="p">;</span>
 
-<span class="c1"># Redhatの場合</span>
-<span class="c1"># https://jermsmit.com/install-a-ca-certificate-on-red-hat-enterprise-linux/</span>
-$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ca-certificates
+<span class="w">    </span><span class="c1"># sendfileシステムコールを使用するか否か</span>
+<span class="w">    </span><span class="kn">sendfile</span><span class="w">           </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># ヘッダーとファイルをまとめてレスポンスするか否か</span>
+<span class="w">    </span><span class="kn">tcp_nopush</span><span class="w">         </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># KeepAliveを維持する時間</span>
+<span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">  </span><span class="mi">65</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">default_type</span><span class="w">       </span><span class="s">application/octet-stream</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">            </span><span class="s">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">...</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html">https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html</a></li>
-<li><a href="https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate">https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate</a></li>
-<li><a href="https://www.nic.ad.jp/ja/newsletter/No69/0800.html">https://www.nic.ad.jp/ja/newsletter/No69/0800.html</a></li>
-</ul>
-</blockquote>
-<h4 id="ca_1">▼ 中間CA証明書<a class="headerlink" href="#ca_1" title="Permanent link">&para;</a></h4>
-<p>中間認証局がルート認証局に自身を証明するために発行する証明書のこと。</p>
-<p>ルート認証局が中間認証局の中間CA証明書に署名することにより、中間認証局は自身の信頼性を担保する。</p>
-<p>もしルート認証局に署名されていない中間認証局でSSL証明書を署名すると、『このWebサイトで提示されたセキュリティ証明書は、信頼された証明機関から発行されたものではありません』といったような警告文が出る。</p>
-<blockquote>
-<ul>
-<li><a href="https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html">https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html</a></li>
-</ul>
-</blockquote>
-<h4 id="_19">▼ リーフ証明書<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://itkq.jp/blog/2020/06/20/x509-chain/">https://itkq.jp/blog/2020/06/20/x509-chain/</a></li>
-</ul>
-</blockquote>
-<h4 id="ssl">▼ SSL証明書<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
-<p>デジタル証明書をSSLに使用する場合、特にSSL証明書という。</p>
-<p>Webサイトのドメインの購入者が、対になる秘密鍵と組み合わせることにより、ドメインの所有者であることを証明する。</p>
-<p>ただし、ドメインの購入者は自分で自分を証明できないため、代わりにルート認証局がこれを担保する。</p>
-<p>中間CA証明書を使用してSSL証明書を証明する場合、SSL証明書の内容と中間CA証明書と連結する。</p>
-<p>より下位の証明書から順番に連結していく。</p>
-<div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="l l-Scalar l-Scalar-Plain">-----BEGIN CERTIFICATE-----</span>
-<span class="l l-Scalar l-Scalar-Plain">SSL証明書の内容</span>
-<span class="l l-Scalar l-Scalar-Plain">-----END CERTIFICATE-----</span>
-<span class="l l-Scalar l-Scalar-Plain">-----BEGIN CERTIFICATE-----</span>
-<span class="l l-Scalar l-Scalar-Plain">最下位の中間CA証明書の内容</span>
-<span class="l l-Scalar l-Scalar-Plain">-----END CERTIFICATE-----</span>
-<span class="l l-Scalar l-Scalar-Plain">-----BEGIN CERTIFICATE-----</span>
-<span class="l l-Scalar l-Scalar-Plain">より上位の中間CA証明書の内容</span>
-<span class="l l-Scalar l-Scalar-Plain">-----END CERTIFICATE-----</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.mtioutput.com/entry/2019/01/02/090000">https://www.mtioutput.com/entry/2019/01/02/090000</a></li>
-<li><a href="https://portal.kitcloud.net/documents/1356">https://portal.kitcloud.net/documents/1356</a></li>
-<li><a href="https://diary.bis5.net/2013/12/10/450.html">https://diary.bis5.net/2013/12/10/450.html</a></li>
-</ul>
-</blockquote>
-<h4 id="_20">▼ 証明書バンドル<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。</p>
-<p>ルート認証局と中間認証局のSSL証明書がセットになったファイルを証明書バンドルという。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/">https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/</a></li>
-</ul>
-</blockquote>
-<h4 id="_21">▼ クライアント証明書<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>クライアント側に配置する証明書である。</p>
-<p>必須ではないが、SSL証明書のみを使用する場合よりも安全性が高くなる。</p>
-<p>対になる秘密鍵もクライアント側に配置することになるため、クライアント側にはクライアント証明書と秘密鍵の両方を配置することになる。</p>
-<p><br></p>
-<h3 id="ssl_1">SSL証明書と秘密鍵の配置場所<a class="headerlink" href="#ssl_1" title="Permanent link">&para;</a></h3>
-<h4 id="_22">▼ ミドルウェアの場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>ミドルウェアごとに、デフォルトのディレクトリが異なる。</p>
-<p>例えばNginxならば、<code>/etc/nginx/ssl</code>ディレクトリ配下にSSL証明書 (<code>.crt</code>) と<code>/etc/ssl/private</code>ディレクトリ配下に秘密鍵 (<code>.key</code>) の両方を配置する。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/">https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/</a></li>
-<li><a href="https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213">https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213</a></li>
-</ul>
-</blockquote>
-<h4 id="os">▼ OSの場合<a class="headerlink" href="#os" title="Permanent link">&para;</a></h4>
-<p>OSごとに、デフォルトのディレクトリが異なる。</p>
-<p>例えばUbuntuならば、<code>/etc/ssl/certs</code>ディレクトリ配下にSSL証明書 (<code>.crt</code>) を、<code>/etc/ssl/private</code>ディレクトリ配下に秘密鍵 (<code>.key</code>) を配置する。</p>
-<blockquote>
-<ul>
-<li><a href="https://ubuntu.com/server/docs/security-certificates">https://ubuntu.com/server/docs/security-certificates</a></li>
-<li><a href="https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F">https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="ssl_2">自己署名SSL証明書の作成<a class="headerlink" href="#ssl_2" title="Permanent link">&para;</a></h3>
-<h4 id="ssl_3">▼ SSL証明書の作成に必要なもの<a class="headerlink" href="#ssl_3" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>ファイル</th>
-<th>説明</th>
-<th>拡張子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>秘密鍵</td>
-<td>SSL証明書と対になる秘密鍵として動作する。</td>
-<td><code>pem</code>、<code>.key</code>、<code>.txt</code></td>
-</tr>
-<tr>
-<td>証明書署名要求</td>
-<td>秘密鍵から作成され、公開鍵であるSSL証明書を作成するために使用する。</td>
-<td><code>.csr</code>、<code>.txt</code></td>
-</tr>
-<tr>
-<td>SSL証明書</td>
-<td>秘密鍵と対になる公開鍵として動作する。</td>
-<td><code>pem</code>、<code>.crt</code>、<code>.cert</code>、<code>.ca</code>、<code>.txt</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.ssl-concier.com/news/topics/164">https://www.ssl-concier.com/news/topics/164</a></li>
-<li><a href="https://install-memo.hatenadiary.org/entry/20110906/1315291837">https://install-memo.hatenadiary.org/entry/20110906/1315291837</a></li>
-<li><a href="https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B">https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B</a></li>
-</ul>
-</blockquote>
-<h4 id="_23">▼ 作成手順<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドで、秘密鍵、証明書署名要求、SSL証明書、を作成できる。</p>
-<p>この時の認証局は『自分』である。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>SSL証明書の有効期限が切れてしまい、HTTPSリクエストを送信できなくなってしまったとする。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://foo.example.com<span class="w"> </span>-v
+<h4 id="log_format">▼ log_format<a class="headerlink" href="#log_format" title="Permanent link">&para;</a></h4>
+<p>非構造化ログの場合は、以下の通りとする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-*<span class="w">   </span>Trying<span class="w"> </span>*.*.*.*...
-*<span class="w"> </span>TCP_NODELAY<span class="w"> </span><span class="nb">set</span>
-*<span class="w"> </span>Connected<span class="w"> </span>to<span class="w"> </span>foo.example.com<span class="w"> </span><span class="o">(</span>*.*.*.*<span class="o">)</span><span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="o">(</span><span class="c1">#0)</span>
-*<span class="w"> </span>ALPN,<span class="w"> </span>offering<span class="w"> </span>h2
-*<span class="w"> </span>ALPN,<span class="w"> </span>offering<span class="w"> </span>http/1.1
-*<span class="w"> </span>Cipher<span class="w"> </span>selection:<span class="w"> </span>ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
-*<span class="w"> </span>successfully<span class="w"> </span><span class="nb">set</span><span class="w"> </span>certificate<span class="w"> </span>verify<span class="w"> </span>locations:
-*<span class="w">   </span>CAfile:<span class="w"> </span>/etc/pki/tls/certs/ca-bundle.crt
-<span class="w">  </span>CApath:<span class="w"> </span>none
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>header,<span class="w"> </span>Certificate<span class="w"> </span>Status<span class="w"> </span><span class="o">(</span><span class="m">22</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Client<span class="w"> </span>hello<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Server<span class="w"> </span>hello<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Certificate<span class="w"> </span><span class="o">(</span><span class="m">11</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>alert,<span class="w"> </span>certificate<span class="w"> </span>expired<span class="w"> </span><span class="o">(</span><span class="m">557</span><span class="o">)</span>:
-*<span class="w"> </span>SSL<span class="w"> </span>certificate<span class="w"> </span>problem:<span class="w"> </span>certificate<span class="w"> </span>has<span class="w"> </span>expired
-*<span class="w"> </span>Closing<span class="w"> </span>connection<span class="w"> </span><span class="m">0</span>
-curl:<span class="w"> </span><span class="o">(</span><span class="m">60</span><span class="o">)</span><span class="w"> </span>SSL<span class="w"> </span>certificate<span class="w"> </span>problem:<span class="w"> </span>certificate<span class="w"> </span>has<span class="w"> </span>expired
-More<span class="w"> </span>details<span class="w"> </span>here:<span class="w"> </span>https://curl.haxx.se/docs/sslcerts.html
+<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">&quot;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;</span><span class="w"> </span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&quot;</span>
+<span class="w">    </span><span class="s">&quot;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;&quot;</span><span class="p">;</span>
 
-curl<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>verify<span class="w"> </span>the<span class="w"> </span>legitimacy<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>and<span class="w"> </span>therefore<span class="w"> </span>could<span class="w"> </span>not
-establish<span class="w"> </span>a<span class="w"> </span>secure<span class="w"> </span>connection<span class="w"> </span>to<span class="w"> </span>it.<span class="w"> </span>To<span class="w"> </span>learn<span class="w"> </span>more<span class="w"> </span>about<span class="w"> </span>this<span class="w"> </span>situation<span class="w"> </span>and
-how<span class="w"> </span>to<span class="w"> </span>fix<span class="w"> </span>it,<span class="w"> </span>please<span class="w"> </span>visit<span class="w"> </span>the<span class="w"> </span>web<span class="w"> </span>page<span class="w"> </span>mentioned<span class="w"> </span>above.
-</code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>秘密鍵 (<code>.key</code>ファイル) を作成する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>genrsa<span class="w"> </span><span class="m">2048</span><span class="w"> </span>-keyout<span class="w"> </span>server.key
-
-Generating<span class="w"> </span>RSA<span class="w"> </span>private<span class="w"> </span>key,<span class="w"> </span><span class="m">2048</span><span class="w"> </span>bit<span class="w"> </span>long<span class="w"> </span>modulus
-.............................................+++
-.....................................................................+++
-e<span class="w"> </span>is<span class="w"> </span><span class="m">65537</span><span class="w"> </span><span class="o">(</span>0x10001<span class="o">)</span>
-</code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>秘密鍵から、証明書署名要求 (<code>.csr</code>ファイル) を作成する。</p>
-<p>対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.csr
-
-Country<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>letter<span class="w"> </span>code<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:
-State<span class="w"> </span>or<span class="w"> </span>Province<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>full<span class="w"> </span>name<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:
-Locality<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>eg,<span class="w"> </span>city<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:
-Organization<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>eg,<span class="w"> </span>company<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:
-Organizational<span class="w"> </span>Unit<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>eg,<span class="w"> </span>section<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:
-Common<span class="w"> </span>Name<span class="w"> </span><span class="o">(</span>eg,<span class="w"> </span>fully<span class="w"> </span>qualified<span class="w"> </span>host<span class="w"> </span>name<span class="o">)</span><span class="w"> </span><span class="o">[]</span>:&lt;完全修飾ドメイン名&gt;<span class="w"> </span><span class="c1"># これのみ入力する。</span>
-Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</span>:
-</code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
-<p>中間認証局を『自分』として、秘密鍵と証明書署名要求に基づいて、SSL証明書 (<code>.crt</code>ファイル) を作成する。</p>
-<p>有効期限は<code>10</code>年 (<code>3650</code>日) とする。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-req<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-sha256<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-signkey<span class="w"> </span>server.key<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-in<span class="w"> </span>server.csr<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-out<span class="w"> </span>server.crt
-</code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
-<p>秘密鍵 (<code>.key</code>ファイル) 、SSL証明書 (<code>.crt</code>ファイル) 、を該当の箇所に設定する。</p>
-<p>例えば、Nginxの設定ファイルなら、以下の通りとなる。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
-<span class="c1"># HTTPリクエスト</span>
-<span class="c1">#-------------------------------------</span>
-<span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1"># 443番ポートで待ち受けるようにし、SSL証明書を使用する。</span>
-<span class="w">    </span><span class="c1"># listen 80;</span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1"># Hostヘッダー</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">foo.example.com</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1"># SSL証明書を設定する。</span>
-<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">     </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
-<span class="w">    </span><span class="c1"># 秘密鍵を設定する。</span>
-<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="s">/dev/stdout</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">error_log</span><span class="w">          </span><span class="s">/dev/stderr</span><span class="w">  </span><span class="s">warn</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
-<p>SSL証明書の開始日と失効日が新しくなっており、HTTPSプロと凍ることがわかる。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://foo.example.com<span class="w"> </span>-v
-*<span class="w">   </span>Trying<span class="w"> </span>*.*.*.*...
-*<span class="w"> </span>TCP_NODELAY<span class="w"> </span><span class="nb">set</span>
-*<span class="w"> </span>Connected<span class="w"> </span>to<span class="w"> </span>foo.example.com<span class="w"> </span><span class="o">(</span>*.*.*.*<span class="o">)</span><span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="o">(</span><span class="c1">#0)</span>
-*<span class="w"> </span>ALPN,<span class="w"> </span>offering<span class="w"> </span>h2
-*<span class="w"> </span>ALPN,<span class="w"> </span>offering<span class="w"> </span>http/1.1
-*<span class="w"> </span>Cipher<span class="w"> </span>selection:<span class="w"> </span>ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
-*<span class="w"> </span>successfully<span class="w"> </span><span class="nb">set</span><span class="w"> </span>certificate<span class="w"> </span>verify<span class="w"> </span>locations:
-*<span class="w">   </span>CAfile:<span class="w"> </span>/etc/pki/tls/certs/ca-bundle.crt
-<span class="w">  </span>CApath:<span class="w"> </span>none
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>header,<span class="w"> </span>Certificate<span class="w"> </span>Status<span class="w"> </span><span class="o">(</span><span class="m">22</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Client<span class="w"> </span>hello<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Server<span class="w"> </span>hello<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Certificate<span class="w"> </span><span class="o">(</span><span class="m">11</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Server<span class="w"> </span>key<span class="w"> </span>exchange<span class="w"> </span><span class="o">(</span><span class="m">12</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Server<span class="w"> </span>finished<span class="w"> </span><span class="o">(</span><span class="m">14</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Client<span class="w"> </span>key<span class="w"> </span>exchange<span class="w"> </span><span class="o">(</span><span class="m">16</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>change<span class="w"> </span>cipher,<span class="w"> </span>Change<span class="w"> </span>cipher<span class="w"> </span>spec<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>OUT<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Finished<span class="w"> </span><span class="o">(</span><span class="m">20</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>change<span class="w"> </span>cipher,<span class="w"> </span>Change<span class="w"> </span>cipher<span class="w"> </span>spec<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span>:
-*<span class="w"> </span>TLSv1.2<span class="w"> </span><span class="o">(</span>IN<span class="o">)</span>,<span class="w"> </span>TLS<span class="w"> </span>handshake,<span class="w"> </span>Finished<span class="w"> </span><span class="o">(</span><span class="m">20</span><span class="o">)</span>:
-*<span class="w"> </span>SSL<span class="w"> </span>connection<span class="w"> </span>using<span class="w"> </span>TLSv1.2<span class="w"> </span>/<span class="w"> </span>*-*-*-*-*
-*<span class="w"> </span>ALPN,<span class="w"> </span>server<span class="w"> </span>accepted<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>h2
-*<span class="w"> </span>Server<span class="w"> </span>certificate:
-*<span class="w">  </span>subject:<span class="w"> </span><span class="nv">C</span><span class="o">=</span>JP<span class="p">;</span><span class="w"> </span><span class="nv">ST</span><span class="o">=</span>Tokyo<span class="p">;</span><span class="w"> </span><span class="nv">L</span><span class="o">=</span>***<span class="p">;</span><span class="w"> </span><span class="nv">O</span><span class="o">=</span>***<span class="p">;</span><span class="w"> </span><span class="nv">CN</span><span class="o">=</span>*.example.com
-*<span class="w">  </span>start<span class="w"> </span>date:<span class="w"> </span>Dec<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">02</span>:08:29<span class="w"> </span><span class="m">2022</span><span class="w"> </span>GMT<span class="w"> </span><span class="c1"># SSL証明書の開始日</span>
-*<span class="w">  </span>expire<span class="w"> </span>date:<span class="w"> </span>Jan<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">02</span>:08:28<span class="w"> </span><span class="m">2024</span><span class="w"> </span>GMT<span class="w"> </span><span class="c1"># SSL証明書の失効日</span>
-*<span class="w">  </span>subjectAltName:<span class="w"> </span>host<span class="w"> </span><span class="s2">&quot;foo.example.com&quot;</span><span class="w"> </span>matched<span class="w"> </span>cert<span class="err">&#39;</span>s<span class="w"> </span><span class="s2">&quot;*.example.com&quot;</span>
-*<span class="w">  </span>issuer:<span class="w"> </span><span class="nv">C</span><span class="o">=</span>BE<span class="p">;</span><span class="w"> </span><span class="nv">O</span><span class="o">=</span>*<span class="w"> </span>nv-sa<span class="p">;</span><span class="w"> </span><span class="nv">CN</span><span class="o">=</span>*<span class="w"> </span>RSA<span class="w"> </span>OV<span class="w"> </span>SSL<span class="w"> </span>CA<span class="w"> </span><span class="m">2018</span>
-*<span class="w">  </span>SSL<span class="w"> </span>certificate<span class="w"> </span>verify<span class="w"> </span>ok.
-*<span class="w"> </span>Using<span class="w"> </span>HTTP2,<span class="w"> </span>server<span class="w"> </span>supports<span class="w"> </span>multi-use
-*<span class="w"> </span>Connection<span class="w"> </span>state<span class="w"> </span>changed<span class="w"> </span><span class="o">(</span>HTTP/2<span class="w"> </span>confirmed<span class="o">)</span>
-*<span class="w"> </span>Copying<span class="w"> </span>HTTP/2<span class="w"> </span>data<span class="w"> </span><span class="k">in</span><span class="w"> </span>stream<span class="w"> </span>buffer<span class="w"> </span>to<span class="w"> </span>connection<span class="w"> </span>buffer<span class="w"> </span>after<span class="w"> </span>upgrade:<span class="w"> </span><span class="nv">len</span><span class="o">=</span><span class="m">0</span>
-*<span class="w"> </span>Using<span class="w"> </span>Stream<span class="w"> </span>ID:<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>easy<span class="w"> </span>handle<span class="w"> </span>*****<span class="o">)</span>
-&gt;<span class="w"> </span>GET<span class="w"> </span>/v1/health<span class="w"> </span>HTTP/2
-&gt;<span class="w"> </span>Host:<span class="w"> </span>foo.example.com
-&gt;<span class="w"> </span>User-Agent:<span class="w"> </span>curl/7.61.1
-&gt;<span class="w"> </span>Accept:<span class="w"> </span>*/*
-&gt;
-*<span class="w"> </span>Connection<span class="w"> </span>state<span class="w"> </span>changed<span class="w"> </span><span class="o">(</span><span class="nv">MAX_CONCURRENT_STREAMS</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2147483647</span><span class="o">)</span>!
-&lt;<span class="w"> </span>HTTP/2<span class="w"> </span><span class="m">200</span>
-&lt;<span class="w"> </span>content-type:<span class="w"> </span>application/json<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>utf-8
-&lt;<span class="w"> </span>date:<span class="w"> </span>Thu,<span class="w"> </span><span class="m">12</span><span class="w"> </span>Jan<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">02</span>:07:12<span class="w"> </span>GMT
-&lt;<span class="w"> </span>content-length:<span class="w"> </span><span class="m">2</span>
-&lt;<span class="w"> </span>server:<span class="w"> </span>nginx
-&lt;
-*<span class="w"> </span>Connection<span class="w"> </span><span class="c1">#0 to host foo.example.com left intact</span>
+<p>構造化ログの場合は、以下の通りとする。</p>
+<p>ここでは、JSONの設計規則に則って、キー名をローワーキャメルケースにしている。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;remoteAddr&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;remoteUser&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_user&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;requestUri&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;status&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$status&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;bodyBytesSent&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$body_bytes_sent&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;httpReferer&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;httpUserAgent&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_user_agent&quot;,&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;httpXForwarded-for&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;&#39;</span>
+<span class="w">    </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">access_log</span><span class="w">         </span><span class="s">/dev/stdout</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">error_log</span><span class="w">          </span><span class="s">/dev/stderr</span><span class="w">  </span><span class="s">warn</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.karakaram.com/creating-self-signed-certificate/">https://www.karakaram.com/creating-self-signed-certificate/</a></li>
-<li><a href="https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd">https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd</a></li>
-<li><a href="https://weblabo.oscasierra.net/openssl-gencert-1/">https://weblabo.oscasierra.net/openssl-gencert-1/</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#http">https://nginx.org/en/docs/http/ngx_http_core_module.html#http</a></li>
+<li><a href="https://839.hateblo.jp/entry/2019/12/20/090000">https://839.hateblo.jp/entry/2019/12/20/090000</a></li>
 </ul>
 </blockquote>
-<h4 id="_24">▼ 一括管理<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p><code>openssl</code>コマンド以外にも、SSL証明書を作成できるツールがある。</p>
-<p>各ツールで追加機能がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa
+<h4 id="map">▼ map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h4>
+<p>指定した変数の値を、別の変数の値によって切り替える。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">map</span><span class="w"> </span><span class="nv">$foo</span><span class="w"> </span><span class="nv">$bar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">foo1</span><span class="w"> </span><span class="s">bar1</span>
+<span class="w">        </span><span class="s">foo2</span><span class="w"> </span><span class="s">bar2</span>
+<span class="w">        </span><span class="s">foo3</span><span class="w"> </span><span class="s">bar3</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="err">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># SSL証明書の作成のほかにキーストアを操作できる</span>
-$<span class="w"> </span>keytool<span class="w"> </span>-import<span class="w"> </span>-alias<span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>-file<span class="w"> </span>&lt;秘密鍵&gt;.pem<span class="w"> </span>-keystore<span class="w"> </span>&lt;公開鍵の作成先のディレクトリ&gt;
+<p><strong>＊実行例＊</strong></p>
+<p>正規表現を使用して、W3C Trace Context仕様のトレースIDをX-Ray仕様に変換する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">log_format</span><span class="w"> </span><span class="s">main</span><span class="w"> </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;trace-id&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$xray_trace_id&quot;&#39;</span>
+<span class="w">    </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">map</span><span class="w"> </span><span class="nv">$otel_trace_id</span><span class="w"> </span><span class="nv">$xray_trace_id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># W3C Trace Context仕様の場合、前半8文字と9文字目以降の文字を抽出して、X-Ray仕様に変換する</span>
+<span class="w">        </span><span class="c1"># @see https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments</span>
+<span class="w">        </span><span class="kn">&quot;~(^.{8})(.*)&quot;</span><span class="w"> </span><span class="mi">1</span><span class="s">-</span><span class="nv">$1-$2</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># それ以外の場合は0とする</span>
+<span class="w">        </span><span class="kn">default</span><span class="w">        </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://superuser.com/questions/1535116/generating-privatepublic-keypair-for-ssh-difference-between-ssh-keygen-and-ope">https://superuser.com/questions/1535116/generating-privatepublic-keypair-for-ssh-difference-between-ssh-keygen-and-ope</a></li>
-<li><a href="https://security.stackexchange.com/a/98290">https://security.stackexchange.com/a/98290</a></li>
+<li><a href="https://qiita.com/cubicdaiya/items/d938f3354f424830630b#map%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96">https://qiita.com/cubicdaiya/items/d938f3354f424830630b#map%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. その他のセキュリティ技術<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_25">メール受信におけるセキュリティ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="op25b-outbound-port-25-blocking">▼ OP25B (Outbound Port 25 Blocking)<a class="headerlink" href="#op25b-outbound-port-25-blocking" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="spf-sender-policy-framework">▼ SPF (Sender Policy Framework)<a class="headerlink" href="#spf-sender-policy-framework" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<h3 id="location">locationブロック<a class="headerlink" href="#location" title="Permanent link">&para;</a></h3>
+<p>特定のパスのインバウンド通信に関する処理を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>各設定の優先順位に沿った以下の順番で実装した方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. ドキュメントルートを指定したインバウンド通信の場合</span>
+<span class="k">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1"># 2. 『/images/』で始まるインバウンド通信の場合</span>
+<span class="k">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/images/</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1"># 3と4. 末尾が、『gif、jpg、jpegの形式』 のインバウンド通信の場合</span>
+<span class="c1"># バックスラッシュでドットをエスケープし、任意の文字列ではなく『ドット文字』として識別できるようにする。</span>
+<span class="k">location</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">\.(gif|jpg|jpeg)</span>$<span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1"># 5-1. 『/docs/』で始まる全てのインバウンド通信の場合</span>
+<span class="k">location</span><span class="w"> </span><span class="s">/docs/</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1"># 5-2. 『/』で始まる全てのインバウンド通信の場合</span>
+<span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>ルートの一致条件は、以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">優先順位</th>
+<th style="text-align: center;">prefix</th>
+<th>ルートの一致条件</th>
+<th>ルート例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>=</code></td>
+<td>指定したルートに一致する場合。</td>
+<td><code>https://example.com/</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>^~</code></td>
+<td>指定したルートで始まる場合。</td>
+<td><code>https://example.com/images/foo.gif</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><code>~</code></td>
+<td>正規表現 (大文字・小文字を区別する) 。</td>
+<td><code>https://example.com/images/FOO.jpg</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><code>~*</code></td>
+<td>正規表現 (大文字・小文字を区別しない) 。</td>
+<td><code>https://example.com/images/foo.jpg</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">なし</td>
+<td>指定したルートで始まる場合。</td>
+<td>・<code>https://example.com/foo.html</code> <br>・<code>https://example.com/docs/foo.html</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_26">パスワードの保管方法<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<p>平文で保管しておくと、流出した時に勝手に使用されてしまうため、ハッシュ値で保管する必要がある。</p>
-<p><img alt="ハッシュ値で保管" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ値で保管.png" /></p>
+<h3 id="server">serverブロック<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
+<p>特定のルーティング先に関する処理を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># 80番ポートで受信</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w">      </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># Hostヘッダー値</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">root</span><span class="w">        </span><span class="s">/var/www/foo</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">index</span><span class="w">       </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php$</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">fastcgi_pass</span><span class="w">  </span><span class="s">unix:/run/php-fpm/www.sock</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">include</span><span class="w">       </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server">https://nginx.org/en/docs/http/ngx_http_core_module.html#server</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_27">生体認証<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><img alt="生体認証-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-1.png" /></p>
-<p><img alt="生体認証-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/生体認証-2.png" /></p>
+<h3 id="_2">ディレクティブ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="default_type">▼ default_type<a class="headerlink" href="#default_type" title="Permanent link">&para;</a></h4>
+<p><code>Content-Type</code>ヘッダー値が<code>mime.types</code>ファイルにないMIME typeであった場合に適用するMIME typeを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>任意のMIME type (指定なし) のインバウンド通信を処理する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type">https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type</a></li>
+</ul>
+</blockquote>
+<h4 id="listen">▼ listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h4>
+<p>インバウンド通信を待ち受けるポート番号を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>インバウンド通信を<code>80</code>番ポートで受信する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+</code></pre></div>
+<p>インバウンド通信を<code>443</code>番ポートで受信する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen">https://nginx.org/en/docs/http/ngx_http_core_module.html#listen</a></li>
+</ul>
+</blockquote>
+<h4 id="sendfile">▼ sendfile<a class="headerlink" href="#sendfile" title="Permanent link">&para;</a></h4>
+<p>クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。</p>
+<p>ファイル返信処理をOS内で実行するため、処理が速くなる。</p>
+<p>使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を実行する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile">https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile</a></li>
+</ul>
+</blockquote>
+<h4 id="server_name">▼ server_name<a class="headerlink" href="#server_name" title="Permanent link">&para;</a></h4>
+<p>受信する通信の<code>Host</code>ヘッダー値を設定する。</p>
+<p>補足として<code>Host</code>ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
+<div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+</code></pre></div>
+<p>パブリックIPアドレスを直接的に記述しても良い。</p>
+<div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="mi">192</span><span class="s">.168.0.0</span><span class="p">;</span>
+</code></pre></div>
+<p>注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の<code>Host</code>ヘッダー値は常に<code>127.0.0.1</code> (<code>127.0.0.1</code>) であるため、<code>127.0.0.1</code>を設定できる。</p>
+<p><code>127.0.0.1</code>としても良いが、<code>127.0.0.1</code>のIPアドレスが<code>127.0.0.1</code>でない場合も考慮して、<code>127.0.0.1</code>とした方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name">https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name</a></li>
+</ul>
+</blockquote>
+<h4 id="ssl">▼ ssl<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
+<p>HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl">https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl</a></li>
+</ul>
+</blockquote>
+<h4 id="ssl_certificate">▼ ssl_certificate<a class="headerlink" href="#ssl_certificate" title="Permanent link">&para;</a></h4>
+<p>HTTPSプロトコルを受信する場合、SSL証明書のパスを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="ssl_certificate_key">▼ ssl_certificate_key<a class="headerlink" href="#ssl_certificate_key" title="Permanent link">&para;</a></h4>
+<p>HTTPSプロトコルを受信する場合、SSL証明書と対になる秘密鍵へのパスを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="ssl_client_certificate">▼ ssl_client_certificate<a class="headerlink" href="#ssl_client_certificate" title="Permanent link">&para;</a></h4>
+<p>HTTPSプロトコルを受信する場合、クライアント証明書のパスを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">ssl_client_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/client.crt</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="tcp_nopush">▼ tcp_nopush<a class="headerlink" href="#tcp_nopush" title="Permanent link">&para;</a></h4>
+<p>上述のLinuxの<code>sendfile</code>システムコールを使用する場合に適用できる。</p>
+<p>クライアントへのレスポンス時、ヘッダーとファイルを<code>1</code>個のパケットにまとめて返信するか否かを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">tcp_nopush</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="try_files">▼ try_files<a class="headerlink" href="#try_files" title="Permanent link">&para;</a></h4>
+<p>指定されたパスのファイルを順に探してアクセスする。</p>
+<p>また、最後のパラメーターで内部リダイレクトする。</p>
+<p>最後のパラメーターでは、異なるパスまたはステータスコードを指定できる。</p>
+<p>もし、nginxとアプリケーションを異なる仮想環境で稼働させている場合、<code>try_files</code>ディレクティブがファイル探索の対象とする場所は、あくまでnginxの稼働する仮想環境内になることに注意する。</p>
+<p>内部リダイレクトによって、nginx内でリクエストが再処理される。</p>
+<p>異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックで改めて処理される。</p>
+<p>内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="s">uri</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="p">=</span><span class="s">code</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># 1. 『/foo.html』のパスで、ファイルをレスポンス</span>
+<span class="w">    </span><span class="c1"># 2. 『/foo.html/』のパスで、ファイルをレスポンス</span>
+<span class="w">    </span><span class="c1"># 3. 『/index.php?query_string』のパスで内部リダイレクト</span>
+<span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.php?query_string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># 内部リダイレクト後は、『/index.php?foo=bar』のため、以下で処理される。</span>
+<span class="k">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php$</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># php-fpmにルーティングされる。</span>
+<span class="w">    </span><span class="kn">fastcgi_pass</span><span class="w">  </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">include</span><span class="w">       </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="web-beacon">Web beacon<a class="headerlink" href="#web-beacon" title="Permanent link">&para;</a></h3>
-<p>webページに、サーバーに対してHTTPリクエストを送信するプログラムを配置し、送信されたリクエストを集計するアクセス解析方法。</p>
-<p>例えば、1x1の小さなGif『画像』などを配置する。</p>
+<h3 id="_3">ヘルスチェックの受信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="nginx_1">▼ nginxによるレスポンス<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h4>
+<p>webサーバーのみヘルスチェックを受信する。</p>
+<p>ヘルスチェック用の<code>server</code>ブロックで、<code>gif</code>ファイルを含むレスポンスを返信するように<code>location</code>ブロックを定義する。</p>
+<p>Nginxでアクセスログを出力する必要はないため、<code>location</code>ブロックでは<code>access_log</code>を無効化する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">root</span><span class="w">           </span><span class="s">/var/www/foo</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">index</span><span class="w">          </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/healthcheck</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">empty_gif</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_4">▼ アプリケーションによるレスポンス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>webサーバーとアプリケーションの両方でヘルスチェックを受信する。</p>
+<p>アプリケーション側に<code>200</code>ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の<code>server</code>ブロックでwebサーバーにルーティングするように<code>location</code>ブロックを定義する。</p>
+<p>Nginxでアクセスログを出力する必要はないため、<code>location</code>ブロックでは<code>access_log</code>を無効化する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">root</span><span class="w">           </span><span class="s">/var/www/foo</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">index</span><span class="w">          </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/healthcheck</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-ngx_http_index_module">02. ngx_http_index_module<a class="headerlink" href="#02-ngx_http_index_module" title="Permanent link">&para;</a></h2>
+<h3 id="_5">ディレクティブ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="index">▼ index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
+<p>リクエストのURLがトレイリングスラッシュで終了する全ての場合、指定されたファイルをURLの末尾に追加する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="s">index.php</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_index_module.html">https://nginx.org/en/docs/http/ngx_http_index_module.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-ngx_http_headers_module">03. ngx_http_headers_module<a class="headerlink" href="#03-ngx_http_headers_module" title="Permanent link">&para;</a></h2>
+<h3 id="_6">ディレクティブ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="add_header">▼ add_header<a class="headerlink" href="#add_header" title="Permanent link">&para;</a></h4>
+<p>レスポンス時に付与するレスポンスヘッダーを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Referrer-Policyヘッダーに値を設定する</span>
+<span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">&quot;no-referrer-when-downgrade&quot;</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header">https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-ngx_http_upstream_module">04. ngx_http_upstream_module<a class="headerlink" href="#04-ngx_http_upstream_module" title="Permanent link">&para;</a></h2>
+<h3 id="_7">ブロック<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="upstream">▼ upstream<a class="headerlink" href="#upstream" title="Permanent link">&para;</a></h4>
+<p>インバウンド通信のルーティング先をグループ化する。</p>
+<p>デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">81</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-ngx_http_fast_cgi_module">05. ngx_http_fast_cgi_module<a class="headerlink" href="#05-ngx_http_fast_cgi_module" title="Permanent link">&para;</a></h2>
+<h3 id="_8">ディレクティブ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="fastcgi_params">▼ fastcgi_params<a class="headerlink" href="#fastcgi_params" title="Permanent link">&para;</a></h4>
+<p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param</a></li>
+</ul>
+</blockquote>
+<h4 id="fastcgi_pass">▼ fastcgi_pass<a class="headerlink" href="#fastcgi_pass" title="Permanent link">&para;</a></h4>
+<p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">fastcgi_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-ngx_http_rewrite_module">06. ngx_http_rewrite_module<a class="headerlink" href="#06-ngx_http_rewrite_module" title="Permanent link">&para;</a></h2>
+<h3 id="_9">ディレクティブ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="if">▼ if<a class="headerlink" href="#if" title="Permanent link">&para;</a></h4>
+<p>条件分岐を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$request_uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># foo変数にfooを設定する</span>
+<span class="w">    </span><span class="kn">set</span><span class="w"> </span><span class="nv">$foo</span><span class="w"> </span><span class="s">foo</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$host</span><span class="w"> </span><span class="p">~</span><span class="sr">*</span><span class="w"> </span><span class="s">teambox.com)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># bar変数にbarを設定する</span>
+<span class="w">    </span><span class="kn">set</span><span class="w"> </span><span class="nv">$bar</span><span class="w"> </span><span class="s">bar</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ukitazume/items/ab1c929783e87227e466">https://qiita.com/ukitazume/items/ab1c929783e87227e466</a></li>
+<li><a href="https://gist.github.com/jrom/1760790">https://gist.github.com/jrom/1760790</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07-ngx_http_grpc_module">07. ngx_http_grpc_module<a class="headerlink" href="#07-ngx_http_grpc_module" title="Permanent link">&para;</a></h2>
+<h3 id="_10">ディレクティブ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_pass">▼ grpc_pass<a class="headerlink" href="#grpc_pass" title="Permanent link">&para;</a></h4>
+<p>gRPCによるHTTPリクエストの宛先を設定する。</p>
+<p>HTTP/<code>2.0</code> (例：gRPCなど) を有効化する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">grpc_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># HTTP/2を有効化する</span>
+<span class="w">    </span><span class="kn">http2</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass">https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass</a></li>
+<li><a href="https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89">https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-ngx_http_proxy_module">08. ngx_http_proxy_module<a class="headerlink" href="#08-ngx_http_proxy_module" title="Permanent link">&para;</a></h2>
+<h3 id="_11">ディレクティブ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="proxy_pass">▼ proxy_pass<a class="headerlink" href="#proxy_pass" title="Permanent link">&para;</a></h4>
+<p>HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
+</code></pre></div>
+<p>受信したリクエストの情報をそのまま使ってプロキシする場合、変数を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$host$request_uri</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass">https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="09-ngx_http_stub_status_module">09. ngx_http_stub_status_module<a class="headerlink" href="#09-ngx_http_stub_status_module" title="Permanent link">&para;</a></h2>
+<h3 id="_12">ディレクティブ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="stub_status">▼ stub_status<a class="headerlink" href="#stub_status" title="Permanent link">&para;</a></h4>
+<p>特定のパスにリクエストを送信することで、メトリクスを取得できるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/metrics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">stub_status</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>localhost/metrics
+
+Active<span class="w"> </span>connections:<span class="w"> </span><span class="m">1</span>
+server<span class="w"> </span>accepts<span class="w"> </span>handled<span class="w"> </span>requests
+<span class="w"> </span><span class="m">93370</span><span class="w"> </span><span class="m">93370</span><span class="w"> </span><span class="m">74159</span>
+Reading:<span class="w"> </span><span class="m">0</span><span class="w"> </span>Writing:<span class="w"> </span><span class="m">1</span><span class="w"> </span>Waiting:<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html">https://nginx.org/en/docs/http/ngx_http_stub_status_module.html</a></li>
+<li><a href="https://qiita.com/stanabe/items/a208377100a4ba2ea907">https://qiita.com/stanabe/items/a208377100a4ba2ea907</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="10-ngx_otel_module">10. ngx_otel_module<a class="headerlink" href="#10-ngx_otel_module" title="Permanent link">&para;</a></h2>
+<h3 id="ngx_otel_module">ngx_otel_moduleとは<a class="headerlink" href="#ngx_otel_module" title="Permanent link">&para;</a></h3>
+<p>Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
+<p>執筆時点 (2024/03/10) では、セットアップの簡単さやパフォーマンスでOpenTelemetry製の<code>otel_ngx_module</code>に勝っているらしい。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/nginx-otel?tab=readme-ov-file">https://github.com/nginxinc/nginx-otel?tab=readme-ov-file</a></li>
+<li><a href="https://github.com/nginxinc/nginx-otel/issues/42">https://github.com/nginxinc/nginx-otel/issues/42</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_13">セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 未ビルドの場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>モジュールをインポートする前に、ビルドする必要がある。</p>
+<p>なお、gRPCのビルドは<code>30</code>分ほどかかるため、gRPCを含むビルド済みのモジュールをインストールした方が良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nginx-otel
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>-DNGX_OTEL_NGINX_BUILD_DIR<span class="o">=</span>/path/to/configured/nginx/objs
+$<span class="w"> </span>make<span class="w"> </span>-j2
+$<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p><code>ngx_otel_module</code>は動的モジュールであるため、<code>nginx.conf</code>ファイルでモジュールをインポートする必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/ngx_otel_module.so</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/nginx-otel">https://github.com/nginxinc/nginx-otel</a></li>
+</ul>
+</blockquote>
+<p>その他、alpineはMercurialからインストールすると良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://hg.nginx.org/pkg-oss/file/tip/alpine">https://hg.nginx.org/pkg-oss/file/tip/alpine</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ ビルド済みの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>ビルド済みモジュールをインストールする。</p>
+<p>Nginx (<code>1.25.3</code>) であればビルトインパッケージになっているため、ビルドが不要である。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># aptリポジトリから</span>
+$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># yumリポジトリから</span>
+$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx-module-otel
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages">https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages</a></li>
+<li><a href="https://nginx.org/packages/mainline/alpine/">https://nginx.org/packages/mainline/alpine/</a></li>
+</ul>
+</blockquote>
+<p>Alpineの場合は、執筆時点 (2024/03/13) でalpineリポジトリに<code>ngx_otel_module</code>がなく、Nginxのalpineリポジトリにパッケージがある。</p>
+<p><code>apk</code>コマンドはそのまま使用すると常に最新をインストールしてしまう。</p>
+<p>そこで、<code>wget</code>コマンドで一度ファイルを取得し、<code>apk</code>コマンドでそのファイルからモジュールをインストールする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># nginxのalpineリポジトリから</span>
+$<span class="w"> </span>wget<span class="w"> </span>-qO<span class="w"> </span>nginx-module-otel-&lt;リビジョン&gt;.apk<span class="w"> </span>https://nginx.org/packages/mainline/alpine/&lt;バージョン&gt;/main/x86_64/nginx-module-otel-&lt;リビジョン&gt;.apk
+$<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--allow-untrusted<span class="w"> </span>nginx-module-otel-&lt;バージョン&gt;.apk
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/302#issuecomment-1978230701">https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/302#issuecomment-1978230701</a></li>
+<li><a href="https://uepon.hatenadiary.com/entry/2023/03/20/165648">https://uepon.hatenadiary.com/entry/2023/03/20/165648</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_16">ディレクティブ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="otel_exporter">▼ otel_exporter<a class="headerlink" href="#otel_exporter" title="Permanent link">&para;</a></h4>
+<p>Exporterを設定する。</p>
+<p>執筆時点 (2024/03/14) 時点では、gRPC用のエンドポイントしかありません。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">otel_exporter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">endpoint</span><span class="w"> </span><span class="n">foo-opentelemetry-collector.foo-namespace.svc.cluster.local</span><span class="p">:</span><span class="mi">4317</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_exporter">https://nginx.org/en/docs/ngx_otel_module.html#otel_exporter</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_service_name">▼ otel_service_name<a class="headerlink" href="#otel_service_name" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">otel_service_name</span><span class="w"> </span><span class="s">foo-service</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_service_name">https://nginx.org/en/docs/ngx_otel_module.html#otel_service_name</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_trace">▼ otel_trace<a class="headerlink" href="#otel_trace" title="Permanent link">&para;</a></h4>
+<p>分散トレースを有効化するかどうかを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_trace">https://nginx.org/en/docs/ngx_otel_module.html#otel_trace</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_trace_context">▼ otel_trace_context<a class="headerlink" href="#otel_trace_context" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># 受信したCarrierにトレースコンテキストがない場合はInjectし、あればExtractする</span>
+<span class="w">    </span><span class="kn">otel_trace_context</span><span class="w"> </span><span class="s">propagate</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context">https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context</a></li>
+<li><a href="https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864">https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_span_name">▼ otel_span_name<a class="headerlink" href="#otel_span_name" title="Permanent link">&para;</a></h4>
+<p>スパン名を設定する。</p>
+<p>デフォルトでは、リクエストのLocation値がスパン名になる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">otel_span_name</span><span class="w"> </span><span class="s">foo</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$host$request_uri</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name">https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name</a></li>
+<li><a href="https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/">https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_span_attr">▼ otel_span_attr<a class="headerlink" href="#otel_span_attr" title="Permanent link">&para;</a></h4>
+<p>スパンの属性を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">otel_span_attr</span><span class="w"> </span><span class="s">otel.resource.deployment.environment</span><span class="w"> </span><span class="s">&lt;実行環境名&gt;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$host$request_uri</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr">https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_17">変数<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="otel_trace_id">▼ <code>$otel_trace_id</code><a class="headerlink" href="#otel_trace_id" title="Permanent link">&para;</a></h4>
+<p>トレースIDが割り当てられている。</p>
+<p>ログにトレースIDを埋め込む場合に使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w"> </span><span class="s">main</span><span class="w"> </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="s">&#39;&quot;TraceId&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$otel_trace_id&quot;&#39;</span>
+<span class="w">    </span><span class="s">&#39;</span><span class="err">}</span><span class="s">&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_span_id">▼ <code>$otel_span_id</code><a class="headerlink" href="#otel_span_id" title="Permanent link">&para;</a></h4>
+<p>現在のスパンIDが割り当てられている。</p>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_parent_id">▼ <code>$otel_parent_id</code><a class="headerlink" href="#otel_parent_id" title="Permanent link">&para;</a></h4>
+<p>親スパンのスパンIDが割り当てられている。</p>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
+</ul>
+</blockquote>
+<h4 id="otel_parent_sampled">▼ <code>$otel_parent_sampled</code><a class="headerlink" href="#otel_parent_sampled" title="Permanent link">&para;</a></h4>
+<p>受信したリクエストに親スパンが存在する場合、<code>1</code>になる。</p>
+<p>Parent Basedなサンプリングを実行できる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="nv">$otel_parent_sampled</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -23665,7 +24435,7 @@ $<span class="w"> </span>keytool<span class="w"> </span>-import<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-01</span>
   </span>
 
     
