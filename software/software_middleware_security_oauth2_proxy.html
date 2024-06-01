@@ -3904,11 +3904,20 @@
         <li class="md-nav__item">
   <a href="#01-oauth2-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. OAuth2 Proxyの仕組み
+      01. OAuth2 Proxyとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. OAuth2 Proxyの仕組み">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-oauth2-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. OAuth2 Proxyの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. OAuth2 Proxyの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3926,13 +3935,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ユースケース
+      03. ユースケース
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ユースケース">
+    <nav class="md-nav" aria-label="03. ユースケース">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22416,11 +22425,20 @@
         <li class="md-nav__item">
   <a href="#01-oauth2-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. OAuth2 Proxyの仕組み
+      01. OAuth2 Proxyとは
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. OAuth2 Proxyの仕組み">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-oauth2-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. OAuth2 Proxyの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. OAuth2 Proxyの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22438,13 +22456,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ユースケース
+      03. ユースケース
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ユースケース">
+    <nav class="md-nav" aria-label="03. ユースケース">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22497,11 +22515,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-oauth2-proxy">01. OAuth2 Proxyの仕組み<a class="headerlink" href="#01-oauth2-proxy" title="Permanent link">&para;</a></h2>
+<h2 id="01-oauth2-proxy">01. OAuth2 Proxyとは<a class="headerlink" href="#01-oauth2-proxy" title="Permanent link">&para;</a></h2>
+<p>OAuth2 Proxyは、ダウンストリームからの認可リクエストをIDプロバイダーにプロキシする。</p>
+<p>OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) の認可リクエストをプロキシできる。</p>
+<p><br></p>
+<h2 id="02-oauth2-proxy">02. OAuth2 Proxyの仕組み<a class="headerlink" href="#02-oauth2-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイダーの認可エンドポイントに、認可リクエストを送信する。</p>
-<p>OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) の認可リクエストを作成できる。</p>
-<p>また、一連の処理の後に認可レスポンスを受信する。</p>
 <p><img alt="oauth2-proxy_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -22510,7 +22529,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. ユースケース<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_3">クライアントからのリクエストの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>クライアントは、OAuth2 Proxyにリクエスト (認可リクエストではない) を送信し、認証を実施する。</p>
 <blockquote>
