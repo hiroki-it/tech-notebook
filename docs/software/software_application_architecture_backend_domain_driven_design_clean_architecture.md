@@ -746,8 +746,6 @@ class SexType
     }
     /**
      * 名前を返却します。
-
-
      */
     public function name()
     {
@@ -961,8 +959,6 @@ class AuthorizeFooService
 
     /**
      * 更新処理を実行できるかを検証します。
-
-
      *
      * @param FooId  $fooId
      * @param UserId $userId
@@ -1024,8 +1020,6 @@ class FooSpecification
 {
     /**
      * ビジネスルールを判定します。
-
-
      * @param Entity $entity
      * @return bool
      */
@@ -1072,8 +1066,6 @@ class FooCriteria
 
     /**
      * 検索条件のオブジェクトを作成します。
-
-
      *
      * @param array $array
      * @return $this
@@ -1286,8 +1278,6 @@ class DogToy extends Entity
 
     /**
      * 犬用おもちゃ名 (色) を返却します。
-
-
      *
      * @return string
      */
@@ -1577,8 +1567,6 @@ class RequiredTime extends ValueObject
 {
     /**
      * 判定値、歩行速度の目安、車速度の目安、を定数で定義する。
-
-
      */
     const JUDGMENT_MINUTE = 21;
     const WALKING_SPEED_PER_MINUTE = 80;
@@ -1924,8 +1912,6 @@ trait イミュータブルTrait
 {
     /**
      * ゲッターが定義されていなくとも、プロパティにアクセスできるようにします。
-
-
      *
      * @param string $name
      * @return mixed
@@ -2216,8 +2202,6 @@ class DogOrder
 
     /**
      * 犬用おもちゃを返却します。
-
-
      *
      * @return DogToy
      */

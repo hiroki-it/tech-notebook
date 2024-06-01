@@ -330,16 +330,18 @@ http {
 ```nginx
 http {
 
+    log_format main escape=json '{'
+    '"trace-id": "$xray_trace_id"'
+    '}';
+
     map $otel_trace_id $xray_trace_id {
         # W3C Trace Context仕様の場合、前半8文字と9文字目以降の文字を抽出して、X-Ray仕様に変換する
+        # @see https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
         "~(^.{8})(.*)" 1-$1-$2;
         # それ以外の場合は0とする
         default        0;
     }
 
-    log_format         main  escape=json '{'
-    '"trace-id": "$xray_trace_id"'
-    '}';
 }
 ```
 
