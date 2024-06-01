@@ -21,13 +21,15 @@ description: ビルトインモジュール＠Nginxの知見を記録してい�
 
 認証情報を取得するためのリクエスト先のパスを設定する。
 
+なお、有料版の`ngx_http_auth_jwt_module`モジュールであれば、Nginxから認可サーバーにJWTを直接的に送信できる。
+
 ```nginx
 http {
 
     # 認証が必要なパス
     location / {
 
-        # OAuth2 Proxyから認証情報を取得する場合は、/oauth2/authを設定する
+        # リダイレクトの送信先とするOAuth2 Proxyのエンドポイントを設定する
         auth_request /oauth2/auth;
 
         ...
@@ -35,8 +37,8 @@ http {
     }
 
     location = /oauth2/auth {
-        # OAuth2 Proxyのエンドポイントを設定する
-        proxy_pass              http://127.0.0.1:4180;
+        # OAuth2 Proxyのドメイン名を設定する
+        proxy_pass              http://<ドメイン名>:4180;
         proxy_pass_request_body off;
         proxy_set_header        Host $http_host;
     }
@@ -46,6 +48,7 @@ http {
 
 > - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
 > - https://tech.jxpress.net/entry/2018/08/23/104123
+> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
 
 <br>
 

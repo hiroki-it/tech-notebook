@@ -62,23 +62,39 @@ https_address = ":443"
 OIDCのIDプロバイダーの認可エンドポイントを設定する。
 
 ```bash
-# Keycloakの認可エンドポイントを設定する場合
+# 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
 oidc_issuer_url="https://<Keycloakのドメイン>/auth/realms/<realm名>"
 ```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
 
 <br>
 
 ### provider
 
 ```bash
+# 認証方法がOIDCで、任意のIDプロバイダーの場合
+provider = "oidc"
+```
+
+```bash
+# 認証方法が任意で、IDプロバイダーがGitHubの場合
 provider = "github"
 ```
 
 ```bash
-provider = "oidc"
+# 認証方法が任意で、IDプロバイダーがKeycloakの場合
+provider = "keycloak"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+```bash
+# 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
+provider = "keycloak-oidc"
+```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
 
 <br>
 

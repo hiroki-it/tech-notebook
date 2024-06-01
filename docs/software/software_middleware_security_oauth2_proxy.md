@@ -55,10 +55,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    # 認可リクエストの宛先のIDプロバイダーを設定する
-    nginx.ingress.kubernetes.io/auth-signin: http://$host/oauth2/start?rd=$escaped_request_uri
-    # NginxがOAuth2 Proxyにリクエストを送信する時のURLを設定する
-    nginx.ingress.kubernetes.io/auth-url: http://$host/oauth2/auth
+    # OAuth2 Proxyへのリクエスト処理を発火させるURLを設定する
+    nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
+    # リダイレクトの送信先とするOAuth2 Proxyのエンドポイントを設定する
+    nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth
     nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
   name: nginx-ingress
   namespace: ingress

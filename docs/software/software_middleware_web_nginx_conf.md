@@ -246,7 +246,7 @@ worker_rlimit_nofile 8192;
 GET http://_:80/foo
 ```
 
-> - http://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_uri
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_uri
 > - https://blog.utgw.net/entry/2020/03/12/121959
 
 <br>
@@ -255,7 +255,7 @@ GET http://_:80/foo
 
 受信したリクエストのURLパスが割り当てられている。
 
-> - http://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri
 > - https://blog.utgw.net/entry/2020/03/12/121959
 
 <br>

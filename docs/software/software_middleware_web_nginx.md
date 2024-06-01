@@ -417,7 +417,7 @@ server {
 }
 ```
 
-> - http://nginx.org/en/docs/http/load_balancing.html
+> - https://nginx.org/en/docs/http/load_balancing.html
 > - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
 
 #### ▼ `L4`ロードバランサーの場合
