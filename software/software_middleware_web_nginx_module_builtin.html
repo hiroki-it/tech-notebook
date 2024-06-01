@@ -23903,7 +23903,7 @@
 
 <span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1"># OAuth2 Proxyのドメイン名を設定する</span>
-<span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">http://&lt;ドメイン名&gt;:4180</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">https://&lt;ドメイン名&gt;:4180</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>

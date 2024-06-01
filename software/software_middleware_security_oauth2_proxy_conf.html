@@ -22689,9 +22689,34 @@
 <p>OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">reverse_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
+<p>OAuth2 Proxyは、認証状況に応じて、Nginxに<code>202</code>または<code>401</code>ステータスコードを返却する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1"># 認証が必要なパス</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1"># 認可リクエストの宛先とするパスを設定する</span>
+<span class="w">        </span><span class="c1"># ここでは、認可リクエストをOAuth2 Proxyに送信する</span>
+<span class="w">        </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">...</span>
+
+<span class="w">    </span><span class="err">}</span>
+
+<span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># OAuth2 Proxyのドメイン名を設定する</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">https://&lt;ドメイン名&gt;:4180</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
+<li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
 </ul>
 </blockquote>
 <p><br></p>
