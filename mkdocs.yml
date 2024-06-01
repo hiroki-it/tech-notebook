@@ -230,6 +230,9 @@ nav:
           - ■ Falco:
               - Falco: software/software_middleware_security_falco.md
               - 設定ファイル: software/software_middleware_security_falco_conf.md
+          - ■ OAuth2 Proxy:
+                - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
+                - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ サービスメッシュ系:
           - サービスメッシュ: software/software_middleware_service_mesh.md
           - サービスメッシュの担う責務: software/software_middleware_service_mesh_responsibility.md
