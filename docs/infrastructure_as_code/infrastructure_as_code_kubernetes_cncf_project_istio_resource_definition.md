@@ -141,7 +141,7 @@ spec:
 
 **＊実装例＊**
 
-ここでは、oauth2-proxyをIDプロバイダーとして使用する。
+ここでは、OAuth2 ProxyをIDプロバイダーとして使用する。
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -159,7 +159,7 @@ spec:
             paths: ["/login"]
 ```
 
-oauth2-proxyのPodに紐づくServiceを識別できるようにする。
+OAuth2 ProxyのPodに紐づくServiceを識別できるようにする。
 
 ```yaml
 apiVersion: v1

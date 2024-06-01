@@ -67,15 +67,25 @@ provider = "github"
 
 <br>
 
-## redirect
-
-### redirect_url
+## redirect_url
 
 ```bash
 redirect_url = "https://example.com/api/callback"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
+
+<br>
+
+## reverse_proxy
+
+OAuth2 Proxyの前段に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
+
+```bash
+reverse_proxy = true
+```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
 
 <br>
 

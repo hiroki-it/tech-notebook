@@ -89,7 +89,7 @@ Kubernetesでは、Serviceは単一のバージョンのPodとしか通信でき
 | 責務                | Kubernetes<br>(サービスメッシュ採用せず)                                          |              Istio               | Linkerd | Consul | AWS App Mesh |
 | ------------------- | --------------------------------------------------------------------------------- | :------------------------------: | :-----: | :----: | :----------: |
 | 相互TLS認証         | 相互TLS認証ツール<br>(例：Spiffe)                                                 | `⭕️`<br>(Spiffeへ置き換えできる) |  `⭕️`   |  `⭕️`  |     `⭕️`     |
-| JWTによるBearer認証 | アプリで実装、OAuthプロキシ (例：oauth2-proxy、など) やSSOプロキシ(例：dex、など) |               `⭕️`               |    ×    |  `⭕️`  |      ×       |
+| JWTによるBearer認証 | アプリで実装、OAuthプロキシ (例：OAuth2 Proxy、など) やSSOプロキシ(例：Dex、など) |               `⭕️`               |    ×    |  `⭕️`  |      ×       |
 
 > - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
 

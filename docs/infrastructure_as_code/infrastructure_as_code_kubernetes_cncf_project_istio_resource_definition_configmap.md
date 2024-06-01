@@ -466,7 +466,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: oauth2-proxy
+      - name: OAuth2 Proxy
         envoyExtAuthzHttp:
           service: oauth2-proxy.auth.svc.cluster.local
           port: 80
@@ -477,7 +477,7 @@ data:
 
 AuthorizationPolicyで、認可フェーズの委譲先のIDプロバイダーを設定できるようになる。
 
-ここでは、oauth2-proxyをIDプロバイダーとして使用する。
+ここでは、OAuth2 ProxyをIDプロバイダーとして使用する。
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
