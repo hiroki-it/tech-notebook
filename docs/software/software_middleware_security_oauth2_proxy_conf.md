@@ -118,7 +118,35 @@ OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例
 reverse_proxy = true
 ```
 
+OAuth2 Proxyは、認証状況に応じて、Nginxに`202`または`401`ステータスコードを返却する。
+
+```nginx
+http {
+
+    # 認証が必要なパス
+    location / {
+
+        # 認可リクエストの宛先とするパスを設定する
+        # ここでは、認可リクエストをOAuth2 Proxyに送信する
+        auth_request /oauth2/auth;
+
+        ...
+
+    }
+
+    location = /oauth2/auth {
+        # OAuth2 Proxyのドメイン名を設定する
+        proxy_pass              https://<ドメイン名>:4180;
+        proxy_pass_request_body off;
+        proxy_set_header        Host $http_host;
+    }
+
+}
+```
+
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
+> - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
+> - https://tech.jxpress.net/entry/2018/08/23/104123
 
 <br>
 

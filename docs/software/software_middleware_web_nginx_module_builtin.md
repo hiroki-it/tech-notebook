@@ -39,7 +39,7 @@ http {
 
     location = /oauth2/auth {
         # OAuth2 Proxyのドメイン名を設定する
-        proxy_pass              http://<ドメイン名>:4180;
+        proxy_pass              https://<ドメイン名>:4180;
         proxy_pass_request_body off;
         proxy_set_header        Host $http_host;
     }
