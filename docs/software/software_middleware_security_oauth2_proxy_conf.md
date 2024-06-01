@@ -68,6 +68,13 @@ oidc_issuer_url="https://<Keycloakのドメイン>/auth/realms/<realm名>"
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
 
+```bash
+# 認証方法がOIDCで、IDプロバイダーがAWS Cognitoの場合
+oidc_issuer_url = "https://cognito-idp.ap-northeast-1.amazonaws.com/<ユーザープールID>"
+```
+
+> - https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90
+
 <br>
 
 ### provider
@@ -77,23 +84,27 @@ oidc_issuer_url="https://<Keycloakのドメイン>/auth/realms/<realm名>"
 provider = "oidc"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect
+
 ```bash
 # 認証方法が任意で、IDプロバイダーがGitHubの場合
 provider = "github"
 ```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github
 
 ```bash
 # 認証方法が任意で、IDプロバイダーがKeycloakの場合
 provider = "keycloak"
 ```
 
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak
+
 ```bash
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
 provider = "keycloak-oidc"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
 
 <br>
