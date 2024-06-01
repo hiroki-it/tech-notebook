@@ -2306,6 +2306,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html</loc>
+         <lastmod>2024-06-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html</loc>
+         <lastmod>2024-06-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html</loc>
          <lastmod>2024-06-01</lastmod>
          <changefreq>daily</changefreq>
@@ -2462,16 +2472,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_dex.html</loc>
-         <lastmod>2024-06-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_oauth2_proxy.html</loc>
-         <lastmod>2024-06-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_oauth2_proxy_conf.html</loc>
          <lastmod>2024-06-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
