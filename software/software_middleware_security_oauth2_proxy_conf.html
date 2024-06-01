@@ -3923,13 +3923,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
+  <a href="#01-client" class="md-nav__link">
     <span class="md-ellipsis">
-      client
+      01. client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="client">
+    <nav class="md-nav" aria-label="01. client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3956,13 +3956,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
+  <a href="#02-http" class="md-nav__link">
     <span class="md-ellipsis">
-      http
+      02. http
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="http">
+    <nav class="md-nav" aria-label="02. http">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4007,27 +4007,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#redirect_url" class="md-nav__link">
+  <a href="#03-redirect_url" class="md-nav__link">
     <span class="md-ellipsis">
-      redirect_url
+      03. redirect_url
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse_proxy" class="md-nav__link">
+  <a href="#04-reverse_proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      reverse_proxy
+      04. reverse_proxy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upstreams" class="md-nav__link">
+  <a href="#05-upstreams" class="md-nav__link">
     <span class="md-ellipsis">
-      upstreams
+      05. upstreams
     </span>
   </a>
   
@@ -22468,13 +22468,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
+  <a href="#01-client" class="md-nav__link">
     <span class="md-ellipsis">
-      client
+      01. client
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="client">
+    <nav class="md-nav" aria-label="01. client">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22501,13 +22501,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
+  <a href="#02-http" class="md-nav__link">
     <span class="md-ellipsis">
-      http
+      02. http
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="http">
+    <nav class="md-nav" aria-label="02. http">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22552,27 +22552,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#redirect_url" class="md-nav__link">
+  <a href="#03-redirect_url" class="md-nav__link">
     <span class="md-ellipsis">
-      redirect_url
+      03. redirect_url
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reverse_proxy" class="md-nav__link">
+  <a href="#04-reverse_proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      reverse_proxy
+      04. reverse_proxy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upstreams" class="md-nav__link">
+  <a href="#05-upstreams" class="md-nav__link">
     <span class="md-ellipsis">
-      upstreams
+      05. upstreams
     </span>
   </a>
   
@@ -22605,7 +22605,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="client">client<a class="headerlink" href="#client" title="Permanent link">&para;</a></h2>
+<h2 id="01-client">01. client<a class="headerlink" href="#01-client" title="Permanent link">&para;</a></h2>
 <h3 id="client_id">client_id<a class="headerlink" href="#client_id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nv">client_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;クライアントID&gt;&quot;</span>
 </code></pre></div>
@@ -22624,7 +22624,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="http">http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
+<h2 id="02-http">02. http<a class="headerlink" href="#02-http" title="Permanent link">&para;</a></h2>
 <h3 id="http_address">http_address<a class="headerlink" href="#http_address" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nv">http_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:4180&quot;</span>
 </code></pre></div>
@@ -22645,7 +22645,8 @@
 <p><br></p>
 <h3 id="oidc_issuer_url">oidc_issuer_url<a class="headerlink" href="#oidc_issuer_url" title="Permanent link">&para;</a></h3>
 <p>OIDCのIDプロバイダーの認可エンドポイントを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nv">oidc_issuer_url</span><span class="o">=</span><span class="s2">&quot;https://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Keycloakの認可エンドポイントを設定する場合</span>
+<span class="nv">oidc_issuer_url</span><span class="o">=</span><span class="s2">&quot;https://&lt;Keycloakのドメイン&gt;/auth/realms/&lt;realm名&gt;&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="provider">provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
@@ -22659,7 +22660,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="redirect_url">redirect_url<a class="headerlink" href="#redirect_url" title="Permanent link">&para;</a></h2>
+<h2 id="03-redirect_url">03. redirect_url<a class="headerlink" href="#03-redirect_url" title="Permanent link">&para;</a></h2>
 <p>コールバックURL (IDプロバイダーからの認可レスポンスのリダイレクト先URL) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">redirect_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/oauth2/callback&quot;</span>
 </code></pre></div>
@@ -22669,7 +22670,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="reverse_proxy">reverse_proxy<a class="headerlink" href="#reverse_proxy" title="Permanent link">&para;</a></h2>
+<h2 id="04-reverse_proxy">04. reverse_proxy<a class="headerlink" href="#04-reverse_proxy" title="Permanent link">&para;</a></h2>
 <p>OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">reverse_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
@@ -22679,7 +22680,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="upstreams">upstreams<a class="headerlink" href="#upstreams" title="Permanent link">&para;</a></h2>
+<h2 id="05-upstreams">05. upstreams<a class="headerlink" href="#05-upstreams" title="Permanent link">&para;</a></h2>
 <p>OAuth2 ProxyのアップストリームのWebサーバーのURLを設定する。</p>
 <p>注意点として、IDプロバイダーのURLではない。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">upstreams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>

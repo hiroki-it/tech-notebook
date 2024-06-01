@@ -23886,25 +23886,24 @@
 <h2 id="01-ngx_http_auth_request_module">01. ngx_http_auth_request_module<a class="headerlink" href="#01-ngx_http_auth_request_module" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ディレクティブ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="auth_request">▼ auth_request<a class="headerlink" href="#auth_request" title="Permanent link">&para;</a></h4>
-<p>Nginxが認証プロキシやIDプロバイダーにリクエストを送信する場合に、これのパスを設定する。</p>
+<p>認証情報を取得するためのリクエスト先のパスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1"># 認証が必要なパス</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1"># NginxがOAuth2 Proxyにリダイレクトする場合は、/oauth2/authである</span>
+<span class="w">        </span><span class="c1"># OAuth2 Proxyから認証情報を取得する場合は、/oauth2/authを設定する</span>
 <span class="w">        </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">...</span>
 
 <span class="w">    </span><span class="err">}</span>
 
-<span class="w">    </span><span class="c1"># OAuth2 Proxyへのリダイレクト時の処理を設定する</span>
 <span class="w">    </span><span class="s">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1"># OAuth2 Proxyのエンドポイントを設定する</span>
 <span class="w">        </span><span class="kn">proxy_pass</span><span class="w">              </span><span class="s">http://127.0.0.1:4180</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Content-Length</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">X-Original-URI</span><span class="w"> </span><span class="nv">$request_uri</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">        </span><span class="s">Host</span><span class="w"> </span><span class="nv">$http_host</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="p">}</span>
@@ -23912,7 +23911,7 @@
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
-<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
+<li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23958,7 +23957,7 @@
 <p>ここでは、JSONの設計規則に則って、キー名をローワーキャメルケースにしている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">  </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">         </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
 <span class="w">    </span><span class="s">&#39;&quot;remoteAddr&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_addr&quot;,&#39;</span>
 <span class="w">    </span><span class="s">&#39;&quot;remoteUser&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$remote_user&quot;,&#39;</span>
 <span class="w">    </span><span class="s">&#39;&quot;requestUri&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;,&#39;</span>
