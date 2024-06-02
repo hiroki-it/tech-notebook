@@ -432,12 +432,13 @@ nav:
               - パケットペイロードの暗号化技術: security/security_measures_encryption_technology_packet_payload.md
               - 暗号方式: security/security_measures_encryption_technology_packet_payload_method.md
               - 暗号化プロトコル: security/security_measures_encryption_technology_packet_payload_protocol.md
-          - ■ 保管データの暗号化技術:
-              - 保管データの暗号化技術: security/security_measures_encryption_technology_storage.md
+          - ■ 保存データの暗号化技術:
+              - 保存データの暗号化技術: security/security_measures_encryption_technology_storage.md
       - ■ 認証/認可:
           - ■ 認証:
               - 認証: security/security_auth_authentication.md
               - HTTP認証: security/security_auth_authentication_http.md
+              - Form認証: security/security_auth_authentication_form.md
               - トークン: security/security_auth_authentication_token.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
