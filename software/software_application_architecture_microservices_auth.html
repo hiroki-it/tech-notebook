@@ -22890,7 +22890,7 @@
 <p>各マイクロサービスは、セッションデータに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保管できるストレージ (例：Infinispan、Redis、など) を<code>1</code>個だけ配置する。</p>
 <p>セッションベースの認証情報伝播とコンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。</p>
-<p>そのため、セッションストレージが必要になるというデメリットがある。</p>
+<p>そのため、SessionStorageが必要になるというデメリットがある。</p>
 <p><img alt="micro-authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_session.png" /></p>
 <blockquote>
 <ul>

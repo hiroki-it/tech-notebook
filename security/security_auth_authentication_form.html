@@ -10445,9 +10445,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie_1" class="md-nav__link">
+  <a href="#sessionstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      運搬方法がCookieの場合
+      SessionStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localstorage" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ローカルマシンのディレクトリ
     </span>
   </a>
   
@@ -22546,9 +22564,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cookie_1" class="md-nav__link">
+  <a href="#sessionstorage" class="md-nav__link">
     <span class="md-ellipsis">
-      運搬方法がCookieの場合
+      SessionStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localstorage" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalStorage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ローカルマシンのディレクトリ
     </span>
   </a>
   
@@ -22689,12 +22725,34 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. 認証情報の保管<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="cookie_1">運搬方法がCookieの場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
-<p>初回認証以降に、認証の成功状態を維持する必要がある。</p>
-<p><code>Cookie</code>ヘッダーで認証情報を運搬した場合、ブラウザは、クライアントに有効期限に応じた間だけ保持できる。</p>
-<p>またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。</p>
+<h3 id="sessionstorage">SessionStorage<a class="headerlink" href="#sessionstorage" title="Permanent link">&para;</a></h3>
+<p><code>Cookie</code>ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、<code>Cookie</code>ヘッダーの値をブラウザのLocalStorageに保管する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/simsim/articles/3f3e043dd750e8">https://zenn.dev/simsim/articles/3f3e043dd750e8</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="localstorage">LocalStorage<a class="headerlink" href="#localstorage" title="Permanent link">&para;</a></h3>
+<p><code>Cookie</code>ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、<code>Cookie</code>ヘッダーの値をブラウザのLocalStorageに保管する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/simsim/articles/3f3e043dd750e8">https://zenn.dev/simsim/articles/3f3e043dd750e8</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">ローカルマシンのディレクトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><code>Cookie</code>ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、<code>Cookie</code>ヘッダーの値をローカルマシンのディレクトリに保管する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/simsim/articles/3f3e043dd750e8">https://zenn.dev/simsim/articles/3f3e043dd750e8</a></li>
+</ul>
+</blockquote>
 <p><strong>＊例＊</strong></p>
-<p>Chromeの場合は、Cookieストレージ (MacOSであれば<code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code>にある) に保持する。</p>
+<p>ローカルマシンがMacOSであれば、Chromeは<code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code>ディレクトリに<code>Cookie</code>ヘッダーの値を保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>

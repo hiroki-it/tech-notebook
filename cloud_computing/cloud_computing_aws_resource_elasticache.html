@@ -23130,7 +23130,7 @@
 <h3 id="redis_2">Redisシャード<a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
 <h4 id="redis_3">▼ Redisシャードとは<a class="headerlink" href="#redis_3" title="Permanent link">&para;</a></h4>
 <p>Redisノードのグループであり、処理の実行単位でもある。</p>
-<p>同じデータを保持するグループ単位であり、プライマリーノードとレプリカノードが含まれる。</p>
+<p>同じデータを保管するグループ単位であり、プライマリーノードとレプリカノードが含まれる。</p>
 <p>同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。</p>
 <p>一方で、AuroraのDBクラスターはこれに相当する概念である。</p>
 <blockquote>
@@ -23141,7 +23141,7 @@
 <p><br></p>
 <h3 id="redis_4">Redisノード<a class="headerlink" href="#redis_4" title="Permanent link">&para;</a></h3>
 <h4 id="redis_5">▼ Redisノードとは<a class="headerlink" href="#redis_5" title="Permanent link">&para;</a></h4>
-<p>セッションやクエリキャッシュを保持するインスタンスのこと。</p>
+<p>セッションやクエリキャッシュを保管するインスタンスのこと。</p>
 <p><br></p>
 <h3 id="_5">セッション管理機能<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ セッション管理機能とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -23150,7 +23150,7 @@
 <p><img alt="ElastiCacheのセッション管理機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png" /></p>
 <h4 id="elasticache">▼ ElastiCacheを使用しない場合<a class="headerlink" href="#elasticache" title="Permanent link">&para;</a></h4>
 <p>アプリが特にコンテナの場合にアプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナがセッションデータを他のコンテナに引き継げずに、スケールイン/スケールアウトしてしまう。</p>
-<p>一方で、ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、既存のセッションデータをログイン状態を保持できるようになる。</p>
+<p>一方で、ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、既存のセッションデータをログイン状態を保管できるようになる。</p>
 <p><br></p>
 <h3 id="_7">クエリキャッシュ管理機能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ クエリキャッシュ管理機能とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
