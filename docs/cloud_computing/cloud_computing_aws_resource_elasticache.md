@@ -142,7 +142,7 @@ SELECT * FROM users;
 
 `(2)`
 
-: 始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、キャッシュが無いことがアプリケーションに返却する。
+: 始めて実行されたSQLの場合、RedisはSQLをキーとして保管し、キャッシュが無いことがアプリケーションに返却する。
 
 `(3)`
 
@@ -157,7 +157,7 @@ SELECT * FROM users;
 : アプリケーションはRedisにデータを登録する。
 
 ```bash
-# ElastiCacheには、SQLの実行結果がまだ保存されていない
+# ElastiCacheには、SQLの実行結果がまだ保管されていない
 
 *** no cache ***
 {"id"=>"1", "name"=>"alice"}
@@ -187,7 +187,7 @@ SELECT * FROM users;
 : Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。
 
 ```bash
-# ElastiCacheには、SQLの実行結果が既に保存されている
+# ElastiCacheには、SQLの実行結果が既に保管されている
 
 *** cache hit ***
 {"id"=>"1", "name"=>"alice"}

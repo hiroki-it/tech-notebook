@@ -18,8 +18,8 @@
   > * ##### [︎パケットペイロードの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload.html)
   > * ##### [︎暗号方式](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload_method.html)
   > * ##### [︎暗号化プロトコル](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload_protocol.html)
-* #### <u>︎保存データの暗号化技術</u>
-  > * ##### [︎保存データの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_storage.html)
+* #### <u>︎保管データの暗号化技術</u>
+  > * ##### [︎保管データの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_storage.html)
 
 <br>
 

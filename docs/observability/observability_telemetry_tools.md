@@ -33,7 +33,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 |                             ⬇︎                              |                     ⬇︎                     |             ⬇︎             |                       ⬇︎                       |                                   ⬇︎                                    |               ⬇︎               |            ⬇︎             |
 | メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) |       ✅<br>(cloudwatchエージェント)        | ✅<br>(datadogエージェント) |  ✅<br>(Istiodコントロールプレーンによる収集)   |               ✅<br>(Istiodコントロールプレーンによる収集)               | ✅<br>(OpenTelemetry Collector) |      ✅<br>(Exporter)      |
 |                             ⬇︎                              |                     ⬇︎                     |             ⬇︎             |                       ⬇︎                       |                                   ⬇︎                                    |               ⬇︎               |            ⬇︎             |
-|             ビルトインローカルストレージへの保存             |      ✅<br>(AWS CloudWatchメトリクス)       |             ✅              |                        -                        |                                    -                                     |                -                |             -              |
+|             ビルトインローカルストレージへの保管             |      ✅<br>(AWS CloudWatchメトリクス)       |             ✅              |                        -                        |                                    -                                     |                -                |             -              |
 |                             ⬇︎                              |                     ⬇︎                     |             ⬇︎             |                       ⬇︎                       |                                   ⬇︎                                    |               ⬇︎               |            ⬇︎             |
 |                 監視バックエンドとして可視化                 |      ✅<br>(AWS CloudWatchメトリクス)       |             ✅              |                        -                        | ✅<br>(Istiodコントロールプレーンを経由したprometheusサーバーによる収集) |                -                | ✅<br>(prometheusサーバー) |
 |                             分析                             |      ✅<br>(AWS CloudWatchメトリクス)       |             ✅              |                        -                        |                                    -                                     |                -                |             -              |
@@ -53,7 +53,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                                          |            ⬇︎             |         ⬇︎         |                            ⬇︎                            |        ⬇︎         |
 | メトリクスのデータポイントを収集<br>(プル型またはプッシュ型) | AWS CloudWatchエージェント | datadogエージェント |  Exporter<br>+ <br>Istiodコントロールプレーンによる収集   |      Exporter      |
 | ⬇︎                                                          |            ⬇︎             |         ⬇︎         |                            ⬇︎                            |        ⬇︎         |
-| ビルトインローカルストレージへの保存                         |  AWS CloudWatchメトリクス  |       Datadog       |                             -                             |         -          |
+| ビルトインローカルストレージへの保管                         |  AWS CloudWatchメトリクス  |       Datadog       |                             -                             |         -          |
 | ⬇︎                                                          |            ⬇︎             |         ⬇︎         |                            ⬇︎                            |        ⬇︎         |
 | 監視バックエンドとして可視化                                 |  AWS CloudWatchメトリクス  |       Datadog       |                    prometheusサーバー                     | prometheusサーバー |
 | 分析                                                         |  AWS CloudWatchメトリクス  |       Datadog       |                             -                             |         -          |
@@ -80,7 +80,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                              |                       ⬇︎                        |       ⬇︎        |         ⬇︎          |       ⬇︎        |                 ⬇︎                 |                       ⬇︎                        |               ⬇︎               |
 | ログの収集<br>(いずれもプッシュ型による送信方式) |          ✅<br>(cloudwatchエージェント)          | ✅<br>(Logstach) |          ✅          | ✅<br>(Promtail) |                  -                  | ✅<br>(EnvoyからOpenTelemetry Collectorへの送信) | ✅<br>(OpenTelemetry Collector) |
 | ⬇︎                                              |                       ⬇︎                        |       ⬇︎        |         ⬇︎          |       ⬇︎        |                 ⬇︎                 |                       ⬇︎                        |               ⬇︎               |
-| ビルトインローカルストレージへの保存             |            ✅<br>(AWS CloudWatchログ)            |        -         |          -           |  ✅<br>(BoltDB)  |                  -                  |                        -                         |                -                |
+| ビルトインローカルストレージへの保管             |            ✅<br>(AWS CloudWatchログ)            |        -         |          -           |  ✅<br>(BoltDB)  |                  -                  |                        -                         |                -                |
 | ⬇︎                                              |                       ⬇︎                        |       ⬇︎        |         ⬇︎          |       ⬇︎        |                 ⬇︎                 |                        -                         |               ⬇︎               |
 | 監視バックエンドとして可視化                     |            ✅<br>(AWS CloudWatchログ)            |        ✅        |          -           |        -         |                  -                  |                        -                         |                -                |
 | 分析                                             | ✅<br>(AWS CloudWatchメトリクスのログメトリクス) |        ✅        |          -           |        -         |                  -                  |                        -                         |                -                |
@@ -102,7 +102,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                              |             ⬇︎              |         ⬇︎          |                           ⬇︎                           |        ⬇︎         |
 | ログの収集<br>(いずれもプッシュ型による送信方式) |     Fluentd<br>Fluentbit     | Fluentd<br>Fluentbit | Fluentd<br>Fluentbit<br>(OpenTelemetry Collectorでも可) |      Promtail      |
 | ⬇︎                                              |             ⬇︎              |         ⬇︎          |                           ⬇︎                           |        ⬇︎         |
-| ビルトインローカルストレージへの保存             |      AWS CloudWatchログ      |       Datadog        |                      Grafana Loki                       |    Grafana Loki    |
+| ビルトインローカルストレージへの保管             |      AWS CloudWatchログ      |       Datadog        |                      Grafana Loki                       |    Grafana Loki    |
 | ⬇︎                                              |             ⬇︎              |         ⬇︎          |                           ⬇︎                           |        ⬇︎         |
 | 監視バックエンドとして可視化                     |      AWS CloudWatchログ      |       Datadog        |                         Grafana                         |      Grafana       |
 | 分析                                             | AWS CloudWatchログインサイト |       Datadog        |                         Grafana                         |      Grafana       |
@@ -129,7 +129,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                                      |                 ⬇︎                 |                  ⬇︎                  |      ⬇︎      |               ⬇︎               |                             ⬇︎                             |               ⬇︎                |                ⬇︎                 |           ⬇︎            |
 | 分散トレースの収集<br>(いずれもプッシュ型による送信方式) |      ✅<br>(x-rayエージェント)      |      ✅<br>(datadogエージェント)      |       -       |                -                |          ✅<br>(EnvoyからJaeger Collectorへの送信)          |     ✅<br>(Jaeger Collector)     |  ✅<br>(OpenTelemetry Collector)   | ✅<br>(zipkin Collector) |
 | ⬇︎                                                      |                 ⬇︎                 |                  ⬇︎                  |      ⬇︎      |               ⬇︎               |                             ⬇︎                             |               ⬇︎                |                ⬇︎                 |           ⬇︎            |
-| ビルトインローカルストレージへの保存                     |                 ✅                  |                  ✅                   |       -       |                -                | ✅<br>(JaegerのビルトインのApache Cassandra、Elasticsearch) | ✅<br>(Cassandra、Elasticsearch) |                 -                  |            -             |
+| ビルトインローカルストレージへの保管                     |                 ✅                  |                  ✅                   |       -       |                -                | ✅<br>(JaegerのビルトインのApache Cassandra、Elasticsearch) | ✅<br>(Cassandra、Elasticsearch) |                 -                  |            -             |
 | ⬇︎                                                      |                 ⬇︎                 |                  ⬇︎                  |      ⬇︎      |               ⬇︎               |                             ⬇︎                             |               ⬇︎                |                ⬇︎                 |           ⬇︎            |
 | 監視バックエンドとして可視化                             |                 ✅                  |                  ✅                   |      ✅       |                -                |                             ✅                              |                ✅                |                 -                  |            ✅            |
 | 分析                                                     |                 ✅                  |                  ✅                   |      ✅       |                -                |                             ✅                              |                ✅                |                 -                  |            ✅            |
@@ -151,7 +151,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 | ⬇︎                                                      |          ⬇︎           |                         ⬇︎                         |              ⬇︎               |
 | 分散トレースの収集<br>(いずれもプッシュ型による送信方式) |  datadogエージェント   |          EnvoyからJaeger Collectorへの送信          | OpenTelemtry Collectorへの送信 |
 | ⬇︎                                                      |          ⬇︎           |                         ⬇︎                         |              ⬇︎               |
-| ビルトインローカルストレージへの保存                     |        Datadog         | JaegerのビルトインのApache Cassandra、Elasticsearch |               -                |
+| ビルトインローカルストレージへの保管                     |        Datadog         | JaegerのビルトインのApache Cassandra、Elasticsearch |               -                |
 | ⬇︎                                                      |          ⬇︎           |                         ⬇︎                         |              ⬇︎               |
 | 監視バックエンドとして可視化                             |        Datadog         |                       Jaeger                        |         Grafana Tempo          |
 | 分析                                                     |        Datadog         |                       Jaeger                        |         Grafana Tempo          |
@@ -167,12 +167,12 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 トレースIDとスパンIDを付与したログ、スパンメトリクス、分散トレース、の間を紐付けられる。
 
-各種ツールで、テレメトリーを保存しておく場所 (データソース) に制限がある。
+各種ツールで、テレメトリーを保管しておく場所 (データソース) に制限がある。
 
 | アクション                         |                     AWS CloudWatch                      |            Datadog            |                 Grafana                  |
 | ---------------------------------- | :-----------------------------------------------------: | :---------------------------: | :--------------------------------------: |
-| ログと分散トレース間の紐付け       |        ✅<br>(ログはAWS CloudWatchログに要保存)         | ✅<br>(ログはDatadogに要保存) | ✅<br>(ログの保存ツールの種類に制限あり) |
-| メトリクスと分散トレース間の紐付け | ✅<br>(一部の言語のx-rayクライアントパッケージのみ対応) | ✅<br>(ログはDatadogに要保存) | ✅<br>(ログの保存ツールの種類に制限あり) |
+| ログと分散トレース間の紐付け       |        ✅<br>(ログはAWS CloudWatchログに要保管)         | ✅<br>(ログはDatadogに要保管) | ✅<br>(ログの保管ツールの種類に制限あり) |
+| メトリクスと分散トレース間の紐付け | ✅<br>(一部の言語のx-rayクライアントパッケージのみ対応) | ✅<br>(ログはDatadogに要保管) | ✅<br>(ログの保管ツールの種類に制限あり) |
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04

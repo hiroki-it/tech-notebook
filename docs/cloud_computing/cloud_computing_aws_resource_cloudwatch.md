@@ -500,7 +500,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
           "InstanceId": "${aws:InstanceId}",
           "InstanceType": "${aws:InstanceType}",
         },
-      # メモリ上のバッファーの保存時間
+      # メモリ上のバッファーの保管時間
       "force_flush_interval": 60,
       # 収集対象のカスタムメトリクスの一覧 (collectdパッケージまたはStatsDパッケージを使用する場合)
       "metrics_collected": {
@@ -545,7 +545,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
   "agent": {"run_as_user": "cwagent"},
   # ログ
   "logs": {
-      # メモリ上のバッファーの保存時間
+      # メモリ上のバッファーの保管時間
       "force_flush_interval": 60,
       "logs_collected": {"files": {
               # 収集対象のログの一覧

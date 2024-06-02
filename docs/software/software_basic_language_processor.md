@@ -35,7 +35,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 コードをバイナリ形式のコードに翻訳した後、CPU上で命令が実行される。
 
-命令の結果はメモリに保存される。
+命令の結果はメモリに保管される。
 
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiler_language.png)
 
@@ -125,7 +125,7 @@ exeファイルとなる。
 
 コードをバイナリ形式のコードに１行ずつ変換し、その都度、CPU上で命令が実行される。
 
-命令の結果はメモリに保存される。
+命令の結果はメモリに保管される。
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
 

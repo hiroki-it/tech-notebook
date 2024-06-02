@@ -92,7 +92,7 @@ module "eks" {
   # CloudWatchログに送信するログの種類
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler",]
 
-  # ログの保存期間
+  # ログの保管期間
   cluster_log_retention_in_days = 365
 
   # セキュリティグループを作成するか否か

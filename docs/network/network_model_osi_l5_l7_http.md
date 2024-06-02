@@ -419,7 +419,7 @@ setcookie(
 
 `(3)`
 
-: ブラウザは、そのCookie情報を保存する。
+: ブラウザは、そのCookie情報を保管する。
 
 `(4)`
 
@@ -491,26 +491,26 @@ $_SESSION["セッション名"] = "値";
 
 <br>
 
-### セッションデータの保存場所
+### セッションデータの保管場所
 
 #### ▼ サーバーファイル
 
-サーバーにて、ファイル形式で保存する。
+サーバーにて、ファイル形式で保管する。
 
 **実装例**
 
-PHPの場合、セッションデータの保存場所は`/etc/php.ini`ファイルで定義できる。
+PHPの場合、セッションデータの保管場所は`/etc/php.ini`ファイルで定義できる。
 
 ```ini
 # /etc/php.iniファイル
 
 ## ファイル形式
 session.save_handler = files
-## 保存場所
+## 保管場所
 session.save_path = "/tmp"
 ```
 
-PHP-FPMを採用している場合は、`/etc/php.ini`ファイルではなく、`/etc/php-fpm.d/www.conf`ファイルで保存場所を設定する必要がある。
+PHP-FPMを採用している場合は、`/etc/php.ini`ファイルではなく、`/etc/php-fpm.d/www.conf`ファイルで保管場所を設定する必要がある。
 
 ```bash
 # /etc/php-fpm.d/www.confファイル
@@ -527,13 +527,13 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 
 #### ▼ サーバーメモリ
 
-サーバーにて、メモリ上で保存する。
+サーバーにて、メモリ上で保管する。
 
 > - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
 
 #### ▼ ストレージ
 
-セッションストレージ (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保存する。
+セッションストレージ (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保管する。
 
 > - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
 
@@ -582,7 +582,7 @@ session.gc_divisor = 1
 
 `(3)`
 
-: ブラウザは、そのセッションIDを保存する。
+: ブラウザは、そのセッションIDを保管する。
 
 `(4)`
 

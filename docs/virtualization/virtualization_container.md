@@ -82,7 +82,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 #### ▼ イメージレイヤーのキャッシュ
 
-コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保存する。
+コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
 
 > - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 > - https://stackoverflow.com/a/75905173
