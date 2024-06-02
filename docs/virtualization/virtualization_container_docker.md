@@ -46,7 +46,7 @@ namespaceでは、カーネルを分離できるため、カーネルの要素 (
 
 ![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png)
 
-イメージレイヤーの実体は、`/var/lib/docker/overlay2`ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。
+イメージレイヤーの実体は、`/var/lib/docker/overlay2`ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。
 
 Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。
 

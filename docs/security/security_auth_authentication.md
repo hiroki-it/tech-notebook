@@ -25,118 +25,15 @@ description: 認証＠認証/認可の知見を記録しています。
 
 ### HTTP認証
 
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
 > - https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html
 
 <br>
 
-### Form認証 (Cookieベースの認証)
+### Form認証
 
-#### ▼ Form認証とは
-
-認証時に、`Cookie`ヘッダー値を使用する認証スキームのこと。
-
-『Cookieベースの認証』ともいう。
-
-ステートフル化を行うため、HTTP認証には所属していない。
-
-認証情報の一時的な保管は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。
-
-`Cookie`ヘッダーによる送受信では、CSRFの危険性がある。
-
-> - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
-> - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
-
-#### ▼ セッションIDを使用したForm認証の場合
-
-`(1)`
-
-: セッションIDを`Cookie`ヘッダーに割り当て、リクエストを送信する。
-
-`(2)`
-
-: 最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保管する。
-
-```yaml
-POST https://example.com/users
----
-# ボディ
-{"email_address": "foo@gmail.com", "password": "foo"}
-```
-
-`(3)`
-
-: 次回の認証時に、再びユーザーが認証情報を送信する。
-
-```yaml
-POST https://example.com/foo-form
----
-# ボディ
-{"email_address": "foo@gmail.com", "password": "foo"}
-```
-
-`(4)`
-
-: サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
-
-```yaml
-# セッションデータ
-{ sessionid: ***** }
-```
-
-`(5)`
-
-: レスポンスの`Set-Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
-
-```yaml
-200 OK
----
-Set-Cookie: sessionid=<セッションID>
-```
-
-`(6)`
-
-: サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保管する。
-
-     加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
-
-     サーバーは、保管されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
-
-     これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
-
-```yaml
-POST https://example.com/foo-form
----
-cookie: sessionid=<セッションID>
-```
-
-`(7)`
-
-: 認証解除時、サーバーでセッションデータを削除する。
-
-> - https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
-
-#### ▼ トークンを使用したForm認証の場合
-
-トークン (例：アクセストークン、IDトークン、など) を`Cookie`ヘッダーに割り当て、リクエストを送信する。
-
-この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
-
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
-
-> - https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
-
-#### ▼ `Cookie`ヘッダー値のクライアント保持
-
-再利用のため、`Cookie`ヘッダーに割り当てるための値 (セッションID、トークン) は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。
-
-またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。
-
-Chromeの場合は、Cookieストレージに保持される。
-
-確認方法については、以下のリンクを参考にせよ。
-
-> - https://developer.chrome.com/docs/devtools/storage/cookies/
-> - https://qiita.com/cobachan/items/05fa537a4ffcb189d001
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
+> - https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_form.html
 
 <br>
 
@@ -145,6 +42,8 @@ Chromeの場合は、Cookieストレージに保持される。
 #### ▼ APIキー認証とは
 
 事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。
+
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
 
 #### ▼ 照合情報の送信方法
 
@@ -179,6 +78,7 @@ authorization: <パーソナルアクセストークン>
 | GitHub     | パーソナルアクセストークン | HTTPSプロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPSプロトコルを使用する場面として、アプリケーションの拡張機能のGitHub連携、リポジトリのパッケージ化、などがある。<br>- https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 > - https://www.contentful.com/help/personal-access-tokens/
+> - https://architecting.hateblo.jp/entry/2020/03/27/033758
 
 <br>
 

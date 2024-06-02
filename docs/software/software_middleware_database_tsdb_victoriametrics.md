@@ -21,7 +21,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ロードバランサー、vm-select、vm-storage、vm-insert、といったコンポーネントから構成されている。
 
-リモートストレージとして、Prometheusで収集したデータポイントを保管する。
+リモートストレージとして、Prometheusで収集したデータポイントを保存する。
 
 エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。
 
@@ -43,7 +43,7 @@ vm-agent、vm-storage、vm-alert、といったコンポーネントから構成
 
 また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
 
-vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。
+vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保存する。
 
 vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
 
@@ -153,9 +153,9 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 
 #### ▼ vm-storageとは
 
-データをファイルシステムに保管する。
+データをファイルシステムに保存する。
 
-保管時にデータを圧縮している。
+保存時にデータを圧縮している。
 
 公式での情報は見つからなかったが、圧縮率は約`10%`らしい。
 
@@ -170,9 +170,9 @@ VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動す
 ```yaml
 /var/lib/victoriametrics/
 ├── data/
-│   ├── big/ # メトリクスが保管されている。
+│   ├── big/ # メトリクスが保存されている。
 │   ├── flock.lock
-│   └── small/ # キャッシュとして保管される。時々、bigディレクトリにマージされる。
+│   └── small/ # キャッシュとして保存される。時々、bigディレクトリにマージされる。
 │
 ├── flock.lock/
 ├── indexdb/ # 全文検索処理の高速化のためのインデックス
@@ -191,7 +191,7 @@ $ du -hs /var/lib/victoriametrics/data
 
 #### ▼ ReadOnlyモード
 
-vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
+vm-storageは、サイズいっぱいまでデータが保存されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
 
 ReadOnlyモードにより、vm-storageの空きサイズが`minFreeDiskSpaceBytes`オプション値を超えると、書き込みできなくなるような仕様になっている。
 
@@ -199,7 +199,7 @@ ReadOnlyモードにより、vm-storageの空きサイズが`minFreeDiskSpaceByt
 
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
-#### ▼ 保管期間
+#### ▼ 保存期間
 
 vm-storageは、一定期間だけ経過したメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリ、の配下など) を削除する。
 
@@ -209,7 +209,7 @@ VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retenti
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
+vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保存日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
 
 また、`20`%の空きサイズを考慮するために、増加量を`1.2`倍する必要がある。
 
@@ -237,7 +237,7 @@ vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日
 
 これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
 
-もし、データの保管日数が`10`日分という非機能的な品質であれば、vm-storageは常に過去`10`日分のデータを保管している必要がある。
+もし、データの保存日数が`10`日分という非機能的な品質であれば、vm-storageは常に過去`10`日分のデータを保存している必要がある。
 
 そのため、以下の数式で`10`日分のサイズを算出できる。
 
@@ -248,7 +248,7 @@ vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日
 ```
 
 ```mathematica
-(10日分を保管するために必要なサイズ)
+(10日分を保存するために必要なサイズ)
 = 2365 × 1.2 × 10
 = 28380 (MB/10日)
 ```
@@ -291,7 +291,7 @@ RestartSec=1
 ExecStart=/usr/bin/victoria-metrics-prod \
             `# マウント先のディレクトリ` \
             -storageDataPath=/var/lib/victoriametrics \
-            `# 保管期間` \
+            `# 保存期間` \
             -retentionPeriod 10d \
             `# Grafanaからのリクエストを待ち受けるポート番号` \
             -graphiteListenAddr :2003

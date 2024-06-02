@@ -379,11 +379,11 @@ PHPの`ini`ファイルで設定されたbool値以外のオプションを上�
 
 #### ▼ php_value[session.save_handler]
 
-セッションの保管形式を設定する。
+セッションの保存形式を設定する。
 
-デフォルト値は`files`形式でサーバー内に保管する。
+デフォルト値は`files`形式でサーバー内に保存する。
 
-`redis`レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保管するように設定もできる。
+`redis`レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保存するように設定もできる。
 
 > - https://zapanet.info/blog/item/3364
 
@@ -394,9 +394,9 @@ php_value[session.save_handler] = redis
 
 #### ▼ php_value[session.save_path]
 
-セッションの保管場所のディレクトリを設定する。
+セッションの保存場所のディレクトリを設定する。
 
-保管形式に`redis`を設定した場合には、Redisのエンドポイントを設定できる。
+保存形式に`redis`を設定した場合には、Redisのエンドポイントを設定できる。
 
 デフォルト値は`/var/lib/php/session`ディレクトリである。
 

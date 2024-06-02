@@ -131,7 +131,7 @@ $ cat settings.json
 
 ### ボリューム、マウントポイントとは
 
-dockerエリア (`/var/lib/docker/volumes`ディレクトリ) に保管される永続データをボリュームという。
+dockerエリア (`/var/lib/docker/volumes`ディレクトリ) に保存される永続データをボリュームという。
 
 また、デバイスファイルに紐づくディレクトリ (`/var/lib/docker/volumes/<ボリューム名>/_data`) をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
 

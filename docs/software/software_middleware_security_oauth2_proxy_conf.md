@@ -125,13 +125,15 @@ redirect_url = "https://example.com/oauth2/callback"
 
 OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
+OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。
+
 ```bash
 reverse_proxy = true
 ```
 
-OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、Nginxにプロキシする。
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
 
-Nginxは、認可レスポンスのステータスコードが`200`であれば認証成功、`401`または`403`であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。
+例えばNginxは、認可レスポンスのステータスコードが`200`であれば認証成功、`401`または`403`であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。
 
 ```nginx
 http {
@@ -157,9 +159,9 @@ http {
 }
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
 > - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
 > - https://tech.jxpress.net/entry/2018/08/23/104123
+> - https://techlife.cookpad.com/entry/2015/10/16/080000
 
 <br>
 

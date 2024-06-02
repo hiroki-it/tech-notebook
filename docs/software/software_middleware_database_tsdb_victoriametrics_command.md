@@ -116,9 +116,9 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 ### -storageDataPath
 
-メトリクスを保管するディレクトリを設定する。
+メトリクスを保存するディレクトリを設定する。
 
-設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
+設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保存する。
 
 **＊例＊**
 
@@ -132,7 +132,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 ### -retentionPeriod
 
-メトリクスの保管期間を設定する。
+メトリクスの保存期間を設定する。
 
 `h(ours)`、`d(ays)`、`w(eeks)`、`y(ears)`、単位なし (`month`) で期間の単位を指定できる。
 

@@ -67,13 +67,13 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 <br>
 
-### 保管場所
+### 保存場所
 
 #### ▼ インメモリDB
 
-メモリ (例：DRAMなどの物理メモリ、仮想メモリ) 上にデータを保管するDBを、ストレージ上に保管することと比較して、インメモリDBという。
+メモリ (例：DRAMなどの物理メモリ、仮想メモリ) 上にデータを保存するDBを、ストレージ上に保存することと比較して、インメモリDBという。
 
-インメモリDBを採用する場合は、データ保管とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
+インメモリDBを採用する場合は、データ保存とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
 
 > - https://e-words.jp/w/%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%A2%E3%83%AA.html
 > - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
@@ -81,7 +81,7 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 #### ▼ オンディスクDB
 
-ストレージ (例：HDD、SSD) 上にデータを保管するDBを、メモリ上に保管することと比較して、オンディスクDBという。
+ストレージ (例：HDD、SSD) 上にデータを保存するDBを、メモリ上に保存することと比較して、オンディスクDBという。
 
 > - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
 > - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
@@ -94,7 +94,7 @@ RDMS (例：MySQL、PostgreSQL、など) によって、対応するDBエンジ�
 
 データ同士がテーブル状に関係を持つデータ格納形式で構成されるのこと。
 
-NoSQLとは異なり、データはストレージに保管する。
+NoSQLとは異なり、データはストレージに保存する。
 
 <br>
 

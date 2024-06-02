@@ -21,7 +21,7 @@ HTTPプロトコルの中で認証を行う認証スキームのこと。
 
 認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。
 
-認証情報の一時的な保管は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
+認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
 
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 > - https://architecting.hateblo.jp/entry/2020/03/27/130535
@@ -83,7 +83,7 @@ authorization: Basic bG9naW46cGFzc3dvcmQ=
 
 : サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。
 
-     また、認証情報をブラウザのWebストレージに保管する。
+     また、認証情報をブラウザのWebストレージに保存する。
 
 ```yaml
 200 OK
@@ -288,13 +288,13 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 ### `Authorization`ヘッダーのトークンのクライアント保持
 
-不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
+不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保存できない。
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージでも保持できる。
 
 Chromeでは、ローカルストレージあるいはセッションストレージに保持される。
 
-ローカルストレージはセッションストレージと比べて保管期間が長いため、XSSの危険性がより高い。
+ローカルストレージはセッションストレージと比べて保存期間が長いため、XSSの危険性がより高い。
 
 これらの場所の確認方法については、以下のリンクを参考にせよ
 

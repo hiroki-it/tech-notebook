@@ -605,7 +605,7 @@ trait UpdatedModelTrait
     }
 
     /**
-     * イベントを発火させずにModelを保管します。
+     * イベントを発火させずにModelを保存します。
 
 
      *
@@ -616,7 +616,7 @@ trait UpdatedModelTrait
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
         return static::withoutEvents(function () use ($options) {
 
-            // プロパティの変更を保管。
+            // プロパティの変更を保存。
             return $this->save($options);
         });
     }
@@ -1404,7 +1404,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 #### ▼ ローカルストレージ (非公開) の場合
 
-ファイルを`/storage/app`ディレクトリ配下に保管する。
+ファイルを`/storage/app`ディレクトリ配下に保存する。
 
 このファイルは非公開であり、リクエストによってアクセスできない。
 
@@ -1443,7 +1443,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してlocalディスクを指定する。
 
-`file.txt`ファイルを`storage/app/file.txt`として保管する。
+`file.txt`ファイルを`storage/app/file.txt`として保存する。
 
 ```php
 Storage::disk("local")->put("file.txt", "file.txt");
@@ -1457,7 +1457,7 @@ Storage::put("file.txt", "file.txt");
 
 #### ▼ ローカルストレージ (公開) の場合
 
-ファイルを`storage/app/public`ディレクトリ配下に保管する。
+ファイルを`storage/app/public`ディレクトリ配下に保存する。
 
 このファイルは公開であり、リクエストできる。
 
@@ -1491,7 +1491,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してpublicディスクを指定する。
 
-また、`file.txt`ファイルを`storage/app/public/file.txt`として保管する。
+また、`file.txt`ファイルを`storage/app/public/file.txt`として保存する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -1519,21 +1519,21 @@ use Storage;
 class FileSystemPublicController extends Controller
 {
     /**
-     * ファイルをpublicディスクに保管する
+     * ファイルをpublicディスクに保存する
      */
     public function putContentsInPublicDisk()
     {
-        // 保管先をpublicに設定する。
+        // 保存先をpublicに設定する。
         $disk = Storage::disk("public");
 
-        // 保管先のファイルを読み込む
+        // 保存先のファイルを読み込む
         $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
-        // 保管先パス (ディレクトリ+ファイル名)
+        // 保存先パス (ディレクトリ+ファイル名)
         $saved_file_path = "/images/foo.jpg";
 
-        // foo.jpgを『/images/foo.jpg』に保管
+        // foo.jpgを『/images/foo.jpg』に保存
         // ルートディレクトリは『/storage/app/public』
         $disk->put($saved_file_path, $contents);
     }
@@ -1542,7 +1542,7 @@ class FileSystemPublicController extends Controller
 
 #### ▼ クラウドストレージの場合
 
-ファイルをS3バケット内のディレクトリ配下に保管する。
+ファイルをS3バケット内のディレクトリ配下に保存する。
 
 環境変数を`.env`ファイルに実装する必要がある。
 
@@ -1590,7 +1590,7 @@ return [
 
 Storageファサードの`disk`メソッドを使用してs3ディスクを指定する。
 
-また、`file.txt`ファイルをS3バケットのルートに`file.txt`として保管する。
+また、`file.txt`ファイルをS3バケットのルートに`file.txt`として保存する。
 
 ```php
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -1639,7 +1639,7 @@ use Illuminate\Support\Facades\Validator;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保管
+     * 新しいブログポストの保存
      *
      * @param Request $request
      */
@@ -1682,7 +1682,7 @@ use Illuminate\Support\Facades\Validator;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保管
+     * 新しいブログポストの保存
      *
      * @param Request $request
      */
@@ -3719,7 +3719,7 @@ class TfaTokenNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        // DBへの保管方法を返却します。
+        // DBへの保存方法を返却します。
     }
 }
 ```
@@ -3830,7 +3830,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ DB通知内容の定義
 
-配列でDBに保管する内容を定義する。
+配列でDBに保存する内容を定義する。
 
 ```php
 <?php
@@ -3862,7 +3862,7 @@ class TfaTokenNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        // notificationsテーブルのdataカラムに、JSONで保管されます。
+        // notificationsテーブルのdataカラムに、JSONで保存されます。
         return [
             "tfa_token" => $notifiable->tfaToken(),
         ];
@@ -4298,7 +4298,7 @@ Bladeを使用しない場合、セッション開始時のレスポンスの`Se
 
 #### ▼ HTTPクライアントツール側の対応
 
-PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保管するようなスクリプトを設定しておくと良い。
+PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
 
 ```javascript
 if (pm.request.method == "GET") {
@@ -4460,13 +4460,13 @@ class ProductsSeeder extends Seeder
     }
 
     /**
-     * CSVを読み込んでDBにデータを保管します。
+     * CSVを読み込んでDBにデータを保存します。
      */
     private function importCsv(): void
     {
         foreach ($this->tables as $table) {
 
-            // S3に保管してあるCSVファイルを読み込む。
+            // S3に保存してあるCSVファイルを読み込む。
             $csv = \Storage::get(migrations/csv/ . $table . '.csv');
 
             // 一時CSVファイルに書き込む。

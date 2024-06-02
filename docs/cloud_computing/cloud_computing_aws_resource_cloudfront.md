@@ -44,7 +44,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。     |      |
 | ErrorPage                | 指定したオリジンから、指定したファイルを含むレスポンスを返信する。 |      |
 | Restriction              |                                                                    |      |
-| Invalidation             | CloudFrontに保管されているキャッシュを削除できる。                 |      |
+| Invalidation             | CloudFrontに保存されているキャッシュを削除できる。                 |      |
 
 > - https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
 
@@ -80,8 +80,8 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | Origin and Origin Group        | Behaviorを実行するオリジンを設定する。                                         |                                                                                                                                                                                                                                                                                                                     |
 | Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・`HTTP and HTTPS`：両方受信し、そのままルーティング<br>・`Redirect HTTP to HTTPS`：両方受信し、HTTPSプロトコルでルーティング<br>・`HTTPS Only`：HTTPSのみ受信し、HTTPSプロトコルでルーティング                                                                                                                     |
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                 |
-| Object Caching                 | CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。               | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                  |
-| TTL                            | CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
+| Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。               | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                  |
+| TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
 | Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
 | Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                    |
 | Compress Objects Automatically | レスポンス時に`.gzip`ファイルとして圧縮するか否かを設定                        | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                             |
@@ -244,7 +244,7 @@ Cookieとクエリストリングと比べて、同じ設定でもキャッシ�
 
 Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。
 
-リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保管されたキャッシュがヒットしない。
+リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保存されたキャッシュがヒットしない。
 
 CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。
 
