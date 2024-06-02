@@ -18,7 +18,7 @@
         <link rel="prev" href="security_auth_authentication_http.html">
       
       
-        <link rel="next" href="security_auth_authentication_token.html">
+        <link rel="next" href="security_auth_authentication_jwt.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -10492,7 +10492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="security_auth_authentication_token.html" class="md-nav__link">
+      <a href="security_auth_authentication_jwt.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22748,8 +22748,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="cookie_1">ローカルマシンのディレクトリ (<code>Cookie</code>ディレクトリ)<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
-<p>トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
-<p>ブラウザは、ローカルマシンのディレクトリ (<code>Cookie</code>ディレクトリ)にトークンを保管する。</p>
+<p>トークン (例：アクセストークン、IDトークン、など) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、ローカルマシンのディレクトリ (<code>Cookie</code>ディレクトリ) にトークンを保管する。</p>
 <p>ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。</p>
 <p><strong>＊例＊</strong></p>
 <p>ローカルマシンがMacOSであれば、Chromeは<code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code>ディレクトリに<code>Cookie</code>ヘッダーの値を保管する。</p>

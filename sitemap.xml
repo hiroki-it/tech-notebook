@@ -1906,7 +1906,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_token.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_jwt.html</loc>
          <lastmod>2024-06-02</lastmod>
          <changefreq>daily</changefreq>
     </url>

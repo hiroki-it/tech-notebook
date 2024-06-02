@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="トークン＠認証の知見を記録しています。">
+        <meta name="description" content="JWT＠認証の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_token.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_jwt.html">
       
       
         <link rel="prev" href="security_auth_authentication_form.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】トークン＠認証 - 俺の技術ノート</title>
+        <title>【IT技術の知見】JWT＠認証 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#jwt" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】トークン＠認証
+              【IT技術の知見】JWT＠認証
             
           </span>
         </div>
@@ -10353,7 +10353,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="security_auth_authentication_token.html" class="md-nav__link md-nav__link--active">
+      <a href="security_auth_authentication_jwt.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -10381,7 +10381,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -10400,7 +10400,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt" class="md-nav__link">
+  <a href="#jwt_1" class="md-nav__link">
     <span class="md-ellipsis">
       JWTとは
     </span>
@@ -10409,37 +10409,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jwt_1" class="md-nav__link">
+  <a href="#jwt_2" class="md-nav__link">
     <span class="md-ellipsis">
       JWT仕様のトークンの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      認証での利用
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="認証での利用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Form認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bearer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Bearer認証の場合
     </span>
   </a>
   
@@ -10449,9 +10421,61 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. JWTの運搬方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. JWTの運搬方法">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_2" class="md-nav__link">
+  <a href="#form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form認証の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bearer認証の場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. JWTの作成
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. JWTの作成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT作成の全体像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt_4" class="md-nav__link">
     <span class="md-ellipsis">
       JWTの作成
     </span>
@@ -10461,60 +10485,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ JWT作成の全体像
+      ▼ ヘッダーの場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ヘッダーのJSON型データの作成
+      ▼ ペイロードの場合
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ペイロードのJSON型データの作成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 署名のJSON型データの作成
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jwt_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      JWTのクライアント保持
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWTのクライアント保持">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保持方法と安全度の比較
+      ▼ 署名の場合
     </span>
   </a>
   
@@ -10531,27 +10522,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-fernet-token" class="md-nav__link">
+  <a href="#04-jwt" class="md-nav__link">
     <span class="md-ellipsis">
-      02. fernet token
+      04. JWTの保持方法と安全度の比較
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-branca-token" class="md-nav__link">
+  <a href="#05-jwt" class="md-nav__link">
     <span class="md-ellipsis">
-      03. branca-token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-paseto" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. PASETO
+      05. JWTの代替
     </span>
   </a>
   
@@ -22539,7 +22521,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -22558,7 +22540,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt" class="md-nav__link">
+  <a href="#jwt_1" class="md-nav__link">
     <span class="md-ellipsis">
       JWTとは
     </span>
@@ -22567,37 +22549,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jwt_1" class="md-nav__link">
+  <a href="#jwt_2" class="md-nav__link">
     <span class="md-ellipsis">
       JWT仕様のトークンの種類
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      認証での利用
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="認証での利用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Form認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bearer" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Bearer認証の場合
     </span>
   </a>
   
@@ -22607,9 +22561,61 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. JWTの運搬方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. JWTの運搬方法">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_2" class="md-nav__link">
+  <a href="#form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Form認証の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bearer認証の場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. JWTの作成
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. JWTの作成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT作成の全体像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt_4" class="md-nav__link">
     <span class="md-ellipsis">
       JWTの作成
     </span>
@@ -22619,60 +22625,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ JWT作成の全体像
+      ▼ ヘッダーの場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ヘッダーのJSON型データの作成
+      ▼ ペイロードの場合
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#json_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ペイロードのJSON型データの作成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 署名のJSON型データの作成
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jwt_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      JWTのクライアント保持
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWTのクライアント保持">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保持方法と安全度の比較
+      ▼ 署名の場合
     </span>
   </a>
   
@@ -22689,27 +22662,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-fernet-token" class="md-nav__link">
+  <a href="#04-jwt" class="md-nav__link">
     <span class="md-ellipsis">
-      02. fernet token
+      04. JWTの保持方法と安全度の比較
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-branca-token" class="md-nav__link">
+  <a href="#05-jwt" class="md-nav__link">
     <span class="md-ellipsis">
-      03. branca-token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-paseto" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. PASETO
+      05. JWTの代替
     </span>
   </a>
   
@@ -22733,8 +22697,8 @@
   
 
 
-<h1 id="_1">トークン＠認証<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="jwt">JWT＠認証<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -22743,7 +22707,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-jwtjson-web-token">01. JWT：JSON Web Token<a class="headerlink" href="#01-jwtjson-web-token" title="Permanent link">&para;</a></h2>
-<h3 id="jwt">JWTとは<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
+<h3 id="jwt_1">JWTとは<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
 <p>『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを<code>base64</code>方式によってエンコードし、ドットでつないだトークン。</p>
 <p>Bear認証やOAuthのトークンとして使用できる。</p>
 <p>ランダムな文字列をこれら認証のトークンとするより、JWTを使用した方がより安全である。</p>
@@ -22754,7 +22718,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="jwt_1">JWT仕様のトークンの種類<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
+<h3 id="jwt_2">JWT仕様のトークンの種類<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h3>
 <p>JWT仕様のトークンには以下の種類がある。</p>
 <ul>
 <li>JWT仕様のアクセストークン</li>
@@ -22766,22 +22730,23 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">認証での利用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="form">▼ Form認証の場合<a class="headerlink" href="#form" title="Permanent link">&para;</a></h4>
+<h2 id="02-jwt">02. JWTの運搬方法<a class="headerlink" href="#02-jwt" title="Permanent link">&para;</a></h2>
+<h3 id="form">Form認証の場合<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p>トークンを<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
-<h4 id="bearer">▼ Bearer認証の場合<a class="headerlink" href="#bearer" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="bearer">Bearer認証の場合<a class="headerlink" href="#bearer" title="Permanent link">&para;</a></h3>
 <p>トークンを<code>authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="jwt_2">JWTの作成<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h3>
-<h4 id="jwt_3">▼ JWT作成の全体像<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h4>
+<h2 id="03-jwt">03. JWTの作成<a class="headerlink" href="#03-jwt" title="Permanent link">&para;</a></h2>
+<h3 id="jwt_3">JWT作成の全体像<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
 <p>JWTは以下のサイトから取得できる。</p>
 <blockquote>
 <ul>
@@ -22802,7 +22767,9 @@
 <li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0</a></li>
 </ul>
 </blockquote>
-<h4 id="json">▼ ヘッダーのJSON型データの作成<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="jwt_4">JWTの作成<a class="headerlink" href="#jwt_4" title="Permanent link">&para;</a></h3>
+<h4 id="_2">▼ ヘッダーの場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>ヘッダーは以下のJSON型データで定義される。</p>
 <p>署名のための暗号アルゴリズムは、『<code>HS256</code>』『<code>RS256</code>』『<code>ES256</code>』『<code>none</code>』から選択できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -22815,7 +22782,7 @@
 <li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80">https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80</a></li>
 </ul>
 </blockquote>
-<h4 id="json_1">▼ ペイロードのJSON型データの作成<a class="headerlink" href="#json_1" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ ペイロードの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ペイロードは以下のJSON型データで定義される。</p>
 <p>ペイロードには、実際に送信したいJSONを設定する。</p>
 <p>必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。</p>
@@ -22875,7 +22842,7 @@
 <li><a href="https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0">https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0</a></li>
 </ul>
 </blockquote>
-<h4 id="json_2">▼ 署名のJSON型データの作成<a class="headerlink" href="#json_2" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 署名の場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>例えばJavaScriptであれば、以下のような処理が実行されている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HMACSHA256</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
@@ -22883,8 +22850,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="jwt_4">JWTのクライアント保持<a class="headerlink" href="#jwt_4" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 保持方法と安全度の比較<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="04-jwt">04. JWTの保持方法と安全度の比較<a class="headerlink" href="#04-jwt" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -22928,29 +22894,18 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-fernet-token">02. fernet token<a class="headerlink" href="#02-fernet-token" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
-<blockquote>
+<h2 id="05-jwt">05. JWTの代替<a class="headerlink" href="#05-jwt" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token">https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token</a></li>
+<li>fernet token</li>
+<li>branca-token</li>
+<li>PASETO</li>
 </ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-branca-token">03. branca-token<a class="headerlink" href="#03-branca-token" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token">https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-paseto">04. PASETO<a class="headerlink" href="#04-paseto" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto">https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 
 
 
