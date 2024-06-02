@@ -41,6 +41,20 @@ JWT仕様のトークンには以下の種類がある。
 
 ## 02. JWTの運搬方法
 
+### HTTP認証の場合
+
+#### ▼ Bearer認証
+
+トークンを`authorization`ヘッダーに割り当て、リクエストを送信する。
+
+```yaml
+POST https://example.com/foo
+---
+authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
+```
+
+<br>
+
 ### Form認証の場合
 
 トークンを`Cookie`ヘッダーに割り当て、リクエストを送信する。
@@ -49,18 +63,6 @@ JWT仕様のトークンには以下の種類がある。
 POST https://example.com/foo
 ---
 cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
-```
-
-<br>
-
-### Bearer認証の場合
-
-トークンを`authorization`ヘッダーに割り当て、リクエストを送信する。
-
-```yaml
-POST https://example.com/foo
----
-authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
 <br>
