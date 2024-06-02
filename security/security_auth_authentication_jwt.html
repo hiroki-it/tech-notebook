@@ -10346,7 +10346,7 @@
           
   
   <span class="md-ellipsis">
-    トークン
+    JWT
   </span>
   
 
@@ -10357,7 +10357,7 @@
         
   
   <span class="md-ellipsis">
-    トークン
+    JWT
   </span>
   
 
@@ -10433,18 +10433,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      Form認証の場合
+      HTTP認証の場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP認証の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bearer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Bearer認証
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#bearer" class="md-nav__link">
+  <a href="#form" class="md-nav__link">
     <span class="md-ellipsis">
-      Bearer認証の場合
+      Form認証の場合
     </span>
   </a>
   
@@ -22573,18 +22588,33 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#form" class="md-nav__link">
+  <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      Form認証の場合
+      HTTP認証の場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP認証の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bearer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Bearer認証
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#bearer" class="md-nav__link">
+  <a href="#form" class="md-nav__link">
     <span class="md-ellipsis">
-      Bearer認証の場合
+      Form認証の場合
     </span>
   </a>
   
@@ -22731,18 +22761,19 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-jwt">02. JWTの運搬方法<a class="headerlink" href="#02-jwt" title="Permanent link">&para;</a></h2>
+<h3 id="http">HTTP認証の場合<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
+<h4 id="bearer">▼ Bearer認証<a class="headerlink" href="#bearer" title="Permanent link">&para;</a></h4>
+<p>トークンを<code>authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
+<span class="nn">---</span>
+<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="form">Form認証の場合<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p>トークンを<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="bearer">Bearer認証の場合<a class="headerlink" href="#bearer" title="Permanent link">&para;</a></h3>
-<p>トークンを<code>authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
-<span class="nn">---</span>
-<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-jwt">03. JWTの作成<a class="headerlink" href="#03-jwt" title="Permanent link">&para;</a></h2>
