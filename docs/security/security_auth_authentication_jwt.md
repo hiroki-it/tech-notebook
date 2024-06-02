@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】トークン＠認証
-description: トークン＠認証の知見を記録しています。
+title: 【IT技術の知見】JWT＠認証
+description: JWT＠認証の知見を記録しています。
 ---
 
-# トークン＠認証
+# JWT＠認証
 
 ## はじめに
 
@@ -39,9 +39,9 @@ JWT仕様のトークンには以下の種類がある。
 
 <br>
 
-### 認証での利用
+## 02. JWTの運搬方法
 
-#### ▼ Form認証の場合
+### Form認証の場合
 
 トークンを`Cookie`ヘッダーに割り当て、リクエストを送信する。
 
@@ -51,7 +51,9 @@ POST https://example.com/foo
 cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
-#### ▼ Bearer認証の場合
+<br>
+
+### Bearer認証の場合
 
 トークンを`authorization`ヘッダーに割り当て、リクエストを送信する。
 
@@ -63,9 +65,9 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 <br>
 
-### JWTの作成
+## 03. JWTの作成
 
-#### ▼ JWT作成の全体像
+### JWT作成の全体像
 
 JWTは以下のサイトから取得できる。
 
@@ -85,7 +87,11 @@ const token =
 
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0
 
-#### ▼ ヘッダーのJSON型データの作成
+<br>
+
+### JWTの作成
+
+#### ▼ ヘッダーの場合
 
 ヘッダーは以下のJSON型データで定義される。
 
@@ -100,7 +106,7 @@ const header = {
 
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80
 
-#### ▼ ペイロードのJSON型データの作成
+#### ▼ ペイロードの場合
 
 ペイロードは以下のJSON型データで定義される。
 
@@ -129,7 +135,7 @@ const payload = {
 > - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
 > - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
 
-#### ▼ 署名のJSON型データの作成
+#### ▼ 署名の場合
 
 例えばJavaScriptであれば、以下のような処理が実行されている。
 
@@ -142,9 +148,7 @@ const signature = HMACSHA256(
 
 <br>
 
-### JWTのクライアント保持
-
-#### ▼ 保持方法と安全度の比較
+## 04. JWTの保持方法と安全度の比較
 
 | クライアント保持方法                                           | 組み合わせ             | おすすめ度 | コメント                                                            |
 | -------------------------------------------------------------- | ---------------------- | :--------: | ------------------------------------------------------------------- |
@@ -158,24 +162,12 @@ const signature = HMACSHA256(
 
 <br>
 
-## 02. fernet token
+## 05. JWTの代替
 
-記入中...
-
-> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#fernet-token
-
-<br>
-
-## 03. branca-token
-
-記入中...
-
-> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#branca-token
-
-<br>
-
-## 04. PASETO
-
-記入中...
+- fernet token
+- branca-token
+- PASETO
 
 > - https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto
+
+<br>

@@ -29,7 +29,7 @@
   > * ##### [︎認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication.html)
   > * ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
   > * ##### [︎Form認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_form.html)
-  > * ##### [︎トークン](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_token.html)
+  > * ##### [JWT](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_jwt.html)
 
 * #### <u>認可</u>
   > * ##### [︎認可](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization.html)
