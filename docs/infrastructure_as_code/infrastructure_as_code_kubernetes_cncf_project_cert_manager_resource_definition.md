@@ -48,7 +48,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 #### ▼ secretNameとは
 
-SSL証明書、SSL証明書と対になる秘密鍵、を保持するSecretの名前を設定する。
+SSL証明書、SSL証明書とペアになる秘密鍵、を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -289,7 +289,7 @@ spec:
 
 #### ▼ privateKeySecretRef
 
-SSL証明書、SSL証明書と対になる秘密鍵、を保持するSecretの名前を設定する。
+SSL証明書、SSL証明書とペアになる秘密鍵、を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -348,7 +348,7 @@ spec:
 
 #### ▼ secretName
 
-SSL証明書、SSL証明書と対になる秘密鍵、を保持するSecretの名前を設定する。
+SSL証明書、SSL証明書とペアになる秘密鍵、を保持するSecretの名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1

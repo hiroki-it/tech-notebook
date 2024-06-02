@@ -4919,7 +4919,7 @@ data:
   # SSL証明書
   foo.crt: |
     MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
-  # SSL証明書と対になる秘密鍵
+  # SSL証明書とペアになる秘密鍵
   foo.key: |
     MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
 ```

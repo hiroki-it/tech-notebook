@@ -151,7 +151,7 @@ $ etcd \
     --data-dir=/var/lib/etcd \
     --initial-advertise-peer-urls=https://*.*.*.*:2380 \
     --initial-cluster=foo-node=https://*.*.*.*:2380 \
-    `# SSL証明書と対になる秘密鍵` \
+    `# SSL証明書とペアになる秘密鍵` \
     --key-file=/etc/kubernetes/pki/etcd/server.key \
     --listen-client-urls=https://127.0.0.1:2379,https://*.*.*.*:2379 \
     --listen-metrics-urls=http://127.0.0.1:2381 \
@@ -234,7 +234,7 @@ $ kube-apiserver \
     --etcd-cafile=/etc/kubernetes/pki/etcd/ca.crt \
     `# etcdにHTTPSリクエストを送信するためのクライアント証明書` \
     --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt \
-    `# クライアント証明書と対になる秘密鍵` \
+    `# クライアント証明書とペアになる秘密鍵` \
     --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key \
     `# etcdの宛先情報` \
     --etcd-servers=https://127.0.0.1:2379 \
@@ -242,13 +242,13 @@ $ kube-apiserver \
     --kubelet-certificate-authority=/etc/kubernetes/pki/ca.crt \
     `# kubeletにHTTPSリクエストを送信するためのクライアント証明書` \
     --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt \
-    `# クライアント証明書と対になる秘密鍵` \
+    `# クライアント証明書とペアになる秘密鍵` \
     --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key \
     --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname \
     --profiling=false \
     `# front-proxyにHTTPSリクエストを送信するためのクライアント証明書` \
     --proxy-client-cert-file=/etc/kubernetes/pki/front-proxy-client.crt \
-    `# クライアント証明書と対になる秘密鍵` \
+    `# クライアント証明書とペアになる秘密鍵` \
     --proxy-client-key-file=/etc/kubernetes/pki/front-proxy-client.key \
     --requestheader-allowed-names=front-proxy-client \
     --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
@@ -257,7 +257,7 @@ $ kube-apiserver \
     --requestheader-username-headers=X-User \
     --secure-port=6444 \
     --service-account-issuer=https://kubernetes.default.svc.cluster.local \
-    `# 他のKubernetesリソースが持つServiceAccountの秘密鍵と対になる公開鍵` \
+    `# 他のKubernetesリソースが持つServiceAccountの秘密鍵とペアになる公開鍵` \
     --service-account-key-file=/etc/kubernetes/pki/sa.pub \
     --service-account-max-token-expiration=48h \
     --service-account-signing-key-file=/etc/kubernetes/pki/sa.key \
@@ -513,7 +513,7 @@ $ kube-controller-manager \
     `# ルート認証局のルート証明書` \
     --root-ca-file=/etc/kubernetes/pki/ca.crt \
     `# kube-apiserverの認証/認可を通過するために必要なServiceAccountの秘密鍵` \
-    `# kube-apiserverには、これと対になる公開鍵が割り当てられている。` \
+    `# kube-apiserverには、これとペアになる公開鍵が割り当てられている。` \
     --service-account-private-key-file=/etc/kubernetes/pki/sa.key \
     --service-cluster-ip-range=*.*.*.*/* \
     --terminated-pod-gc-threshold=1000 \
