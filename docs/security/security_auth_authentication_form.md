@@ -125,31 +125,37 @@ cookie: sessionid=<セッションID>
 
 ### SessionStorage
 
-`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
+セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
-ブラウザは、`Cookie`ヘッダーの値をブラウザのLocalStorageに保管する。
+ブラウザは、SessionStorageにセッションIDを保管する。
+
+ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。
 
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - https://magazine.techacademy.jp/magazine/32870
 
 <br>
 
 ### LocalStorage
 
-`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
+トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
-ブラウザは、`Cookie`ヘッダーの値をブラウザのLocalStorageに保管する。
+ブラウザは、LocalStorageにトークンを保管する。
+
+ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。
 
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - https://magazine.techacademy.jp/magazine/32870
 
 <br>
 
-### ローカルマシンのディレクトリ
+### ローカルマシンのディレクトリ (`Cookie`ディレクトリ)
 
-`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
+トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
-ブラウザは、`Cookie`ヘッダーの値をローカルマシンのディレクトリに保管する。
+ブラウザは、ローカルマシンのディレクトリ (`Cookie`ディレクトリ)にトークンを保管する。
 
-> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。
 
 **＊例＊**
 
