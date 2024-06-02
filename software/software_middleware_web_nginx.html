@@ -10405,7 +10405,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保管データの暗号化技術
+    ■ 保存データの暗号化技術
   </span>
   
 
@@ -10415,7 +10415,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保管データの暗号化技術
+            ■ 保存データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -10430,7 +10430,7 @@
         
   
   <span class="md-ellipsis">
-    保管データの暗号化技術
+    保存データの暗号化技術
   </span>
   
 
@@ -10519,6 +10519,8 @@
       
         
       
+        
+      
     
     
       
@@ -10585,6 +10587,27 @@
   
   <span class="md-ellipsis">
     HTTP認証
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/security_auth_authentication_form.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Form認証
   </span>
   
 
@@ -22869,8 +22892,8 @@
 <p>Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、といったコンポーネントから構成される。</p>
 <p>Nginxの起動時に最初にマスタープロセスが実行され、Nginxに設定を適用する。</p>
 <p>また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。</p>
-<p>ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保管し、加えて一方で保管されたキャッシュを取得する。</p>
-<p>キャッシュマネージャは、保管されたキャッシュの有効期限を管理する。</p>
+<p>ワーカープロセスは、キャッシュローダーを使用して、静的ファイルのキャッシュをメモリ上のプロキシキャッシュストレージに保存し、加えて一方で保存されたキャッシュを取得する。</p>
+<p>キャッシュマネージャは、保存されたキャッシュの有効期限を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.codetd.com/en/article/12312272">https://www.codetd.com/en/article/12312272</a></li>
@@ -22928,8 +22951,8 @@ ngx_stream_geoip_module.so
 <p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のwebサーバーにリクエストを送信できるようになる。</p>
 <h4 id="httphttps">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps" title="Permanent link">&para;</a></h4>
 <p>Nginxは、HTTP/HTTPSリクエストをルーティングする。</p>
-<p>また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。</p>
-<p>以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保管されたキャッシュを取得し、レスポンスとして返信する。</p>
+<p>また、appサーバーからのレスポンスのデータが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保存する。</p>
+<p>以降に同じ静的ファイルに関するインバウンド通信があった場合、Nginxはappサーバーにルーティングせずに、保存されたキャッシュを取得し、レスポンスとして返信する。</p>
 <p><img alt="リバースプロキシサーバーとしてのNginx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>

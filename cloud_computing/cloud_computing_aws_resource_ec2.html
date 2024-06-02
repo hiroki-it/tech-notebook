@@ -10111,7 +10111,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保管データの暗号化技術
+    ■ 保存データの暗号化技術
   </span>
   
 
@@ -10121,7 +10121,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保管データの暗号化技術
+            ■ 保存データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -10136,7 +10136,7 @@
         
   
   <span class="md-ellipsis">
-    保管データの暗号化技術
+    保存データの暗号化技術
   </span>
   
 
@@ -10225,6 +10225,8 @@
       
         
       
+        
+      
     
     
       
@@ -10291,6 +10293,27 @@
   
   <span class="md-ellipsis">
     HTTP認証
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/security_auth_authentication_form.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Form認証
   </span>
   
 
@@ -24433,8 +24456,8 @@
 <p>EC2では、ブロックデバイスにルートデバイスボリュームが紐づいている。</p>
 <p>複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐付けることもできる。</p>
 <p>加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。</p>
-<p>つまりEC2が作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。</p>
-<p>また反対に、マウント先ディレクトリ内に保管されたファイルは、ルートデバイスボリューム内に保管される。</p>
+<p>つまりEC2が作成されると、ボリューム内に保存されたファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。</p>
+<p>また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保存される。</p>
 <p>複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。</p>
 <blockquote>
 <ul>
@@ -24445,7 +24468,7 @@
 <h4 id="ebs">▼ EBSボリューム<a class="headerlink" href="#ebs" title="Permanent link">&para;</a></h4>
 <p><img alt="ec2_ebs-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png" /></p>
 <p>名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
-<p>EBSで保管されているルートデバイスボリュームで、推奨の方法である。</p>
+<p>EBSで保存されているルートデバイスボリュームで、推奨の方法である。</p>
 <p>インスタンスストアボリュームとは異なり、コンピューティングとして動作するEC2と、ストレージとして動作するルートデバイスボリュームが分離されている。</p>
 <p>そのため、EC2が誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。</p>
 <p>また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。</p>
@@ -24459,7 +24482,7 @@
 <h4 id="_11">▼ インスタンスストアボリューム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><img alt="ec2_instance-store-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png" /></p>
 <p>名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
-<p>インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。</p>
+<p>インスタンスストアで保存されているルートデバイスボリュームで、非推奨の方法である。</p>
 <p>EBSボリュームとは異なり、コンピューティングとして動作するEC2内にルートデバイスボリュームが存在している。</p>
 <p>そのため、インスタンスストアボリュームは、EC2を削除すると一緒に削除されてしまう。</p>
 <blockquote>
@@ -25222,7 +25245,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
   </span>
 
     

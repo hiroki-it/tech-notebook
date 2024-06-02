@@ -10114,7 +10114,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保管データの暗号化技術
+    ■ 保存データの暗号化技術
   </span>
   
 
@@ -10124,7 +10124,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保管データの暗号化技術
+            ■ 保存データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -10139,7 +10139,7 @@
         
   
   <span class="md-ellipsis">
-    保管データの暗号化技術
+    保存データの暗号化技術
   </span>
   
 
@@ -10223,6 +10223,8 @@
   
     
     
+      
+        
       
         
       
@@ -10353,53 +10355,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#form-cookie" class="md-nav__link">
-    <span class="md-ellipsis">
-      Form認証 (Cookieベースの認証)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Form認証 (Cookieベースの認証)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#form" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Form認証とは
+      Form認証
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#idform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セッションIDを使用したForm認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#form_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ トークンを使用したForm認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cookie" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Cookieヘッダー値のクライアント保持
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -10645,6 +10605,27 @@
   
   <span class="md-ellipsis">
     HTTP認証
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security_auth_authentication_form.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Form認証
   </span>
   
 
@@ -22685,53 +22666,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#form-cookie" class="md-nav__link">
-    <span class="md-ellipsis">
-      Form認証 (Cookieベースの認証)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Form認証 (Cookieベースの認証)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#form" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Form認証とは
+      Form認証
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#idform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ セッションIDを使用したForm認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#form_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ トークンを使用したForm認証の場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cookie" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Cookieヘッダー値のクライアント保持
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -22991,117 +22930,27 @@
 <h3 id="http">HTTP認証<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
+<li><a href="https://architecting.hateblo.jp/entry/2020/03/27/033758">https://architecting.hateblo.jp/entry/2020/03/27/033758</a></li>
 <li><a href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html">https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="form-cookie">Form認証 (Cookieベースの認証)<a class="headerlink" href="#form-cookie" title="Permanent link">&para;</a></h3>
-<h4 id="form">▼ Form認証とは<a class="headerlink" href="#form" title="Permanent link">&para;</a></h4>
-<p>認証時に、<code>Cookie</code>ヘッダー値を使用する認証スキームのこと。</p>
-<p>『Cookieベースの認証』ともいう。</p>
-<p>ステートフル化を行うため、HTTP認証には所属していない。</p>
-<p>認証情報の一時的な保管は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。</p>
-<p><code>Cookie</code>ヘッダーによる送受信では、CSRFの危険性がある。</p>
+<h3 id="form">Form認証<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
-<li><a href="https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf">https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf</a></li>
-<li><a href="https://auth0.com/docs/sessions/cookies#cookie-based-authentication">https://auth0.com/docs/sessions/cookies#cookie-based-authentication</a></li>
-</ul>
-</blockquote>
-<h4 id="idform">▼ セッションIDを使用したForm認証の場合<a class="headerlink" href="#idform" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>セッションIDを<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保管する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users</span>
-<span class="nn">---</span>
-<span class="c1"># ボディ</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;email_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">}</span>
-</code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>次回の認証時に、再びユーザーが認証情報を送信する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
-<span class="nn">---</span>
-<span class="c1"># ボディ</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;email_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo@gmail.com&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">}</span>
-</code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
-<p>サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># セッションデータ</span>
-<span class="p p-Indicator">{</span><span class="nt"> sessionid</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span><span class="w"> </span><span class="p p-Indicator">}</span>
-</code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
-<p>レスポンスの<code>Set-Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
-<span class="nn">---</span>
-<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;</span>
-</code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
-<p>サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保管する。</p>
-<p>加えて次回のログイン時、クライアントは、リクエストの<code>Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
-<p>サーバーは、保管されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。</p>
-<p>これにより、改めて認証情報を送信せずに、素早くログインできるようになる。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
-<span class="nn">---</span>
-<span class="nt">cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;</span>
-</code></pre></div>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
-<p>認証解除時、サーバーでセッションデータを削除する。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html">https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html</a></li>
-</ul>
-</blockquote>
-<h4 id="form_1">▼ トークンを使用したForm認証の場合<a class="headerlink" href="#form_1" title="Permanent link">&para;</a></h4>
-<p>トークン (例：アクセストークン、IDトークン、など) を<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
-<p>この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。</p>
-<p><img alt="JWT" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82">https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82</a></li>
-</ul>
-</blockquote>
-<h4 id="cookie">▼ <code>Cookie</code>ヘッダー値のクライアント保持<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
-<p>再利用のため、<code>Cookie</code>ヘッダーに割り当てるための値 (セッションID、トークン) は、ブラウザを通して、ローカルマシンに有効期限に応じた間だけ保持できる。</p>
-<p>またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。</p>
-<p>Chromeの場合は、Cookieストレージに保持される。</p>
-<p>確認方法については、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.chrome.com/docs/devtools/storage/cookies/">https://developer.chrome.com/docs/devtools/storage/cookies/</a></li>
-<li><a href="https://qiita.com/cobachan/items/05fa537a4ffcb189d001">https://qiita.com/cobachan/items/05fa537a4ffcb189d001</a></li>
+<li><a href="https://architecting.hateblo.jp/entry/2020/03/27/033758">https://architecting.hateblo.jp/entry/2020/03/27/033758</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_form.html">https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_form.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="api">APIキー認証<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ APIキー認証とは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
 <p>事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://architecting.hateblo.jp/entry/2020/03/27/033758">https://architecting.hateblo.jp/entry/2020/03/27/033758</a></li>
+</ul>
+</blockquote>
 <h4 id="_3">▼ 照合情報の送信方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>自前ヘッダーとして、<code>x-api-key</code>ヘッダーを定義する。これにAPIキーを割り当て、リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
@@ -23137,6 +22986,7 @@
 <blockquote>
 <ul>
 <li><a href="https://www.contentful.com/help/personal-access-tokens/">https://www.contentful.com/help/personal-access-tokens/</a></li>
+<li><a href="https://architecting.hateblo.jp/entry/2020/03/27/033758">https://architecting.hateblo.jp/entry/2020/03/27/033758</a></li>
 </ul>
 </blockquote>
 <p><br></p>

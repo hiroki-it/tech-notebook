@@ -10276,7 +10276,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保管データの暗号化技術
+    ■ 保存データの暗号化技術
   </span>
   
 
@@ -10286,7 +10286,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保管データの暗号化技術
+            ■ 保存データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -10301,7 +10301,7 @@
         
   
   <span class="md-ellipsis">
-    保管データの暗号化技術
+    保存データの暗号化技術
   </span>
   
 
@@ -10390,6 +10390,8 @@
       
         
       
+        
+      
     
     
       
@@ -10456,6 +10458,27 @@
   
   <span class="md-ellipsis">
     HTTP認証
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/security_auth_authentication_form.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Form認証
   </span>
   
 
@@ -22708,10 +22731,15 @@
 <p><br></p>
 <h2 id="04-reverse_proxy">04. reverse_proxy<a class="headerlink" href="#04-reverse_proxy" title="Permanent link">&para;</a></h2>
 <p>OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
+<p>OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">reverse_proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 </code></pre></div>
-<p>OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、Nginxにプロキシする。</p>
-<p>Nginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
+<blockquote>
+<ul>
+<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
+</ul>
+</blockquote>
+<p>例えばNginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
@@ -22736,9 +22764,9 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
 <li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
+<li><a href="https://techlife.cookpad.com/entry/2015/10/16/080000">https://techlife.cookpad.com/entry/2015/10/16/080000</a></li>
 </ul>
 </blockquote>
 <p><br></p>

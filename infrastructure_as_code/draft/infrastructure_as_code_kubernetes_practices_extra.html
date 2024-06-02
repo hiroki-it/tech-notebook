@@ -10105,7 +10105,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保管データの暗号化技術
+    ■ 保存データの暗号化技術
   </span>
   
 
@@ -10115,7 +10115,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保管データの暗号化技術
+            ■ 保存データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -10130,7 +10130,7 @@
         
   
   <span class="md-ellipsis">
-    保管データの暗号化技術
+    保存データの暗号化技術
   </span>
   
 
@@ -10219,6 +10219,8 @@
       
         
       
+        
+      
     
     
       
@@ -10285,6 +10287,27 @@
   
   <span class="md-ellipsis">
     HTTP認証
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/security_auth_authentication_form.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Form認証
   </span>
   
 
@@ -22798,7 +22821,7 @@
 <h3 id="_18">■ ストレージをサイジングする<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>Nodeグループにあったストレージを割り当てる。</p>
 <p>例えば、ArgoCDがストレージに永続化するデータ量は少ないため、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
-<p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使用するにしても数日分は保管することになる)。</p>
+<p>一方で、PrometheusはメトリクスをNodeのストレージに保存する (外部TSDBを使用するにしても数日分は保存することになる)。</p>
 <h1 id="nodenode">コントロールプレーンNodeとワーカーNodeで共通のプラクティス<a class="headerlink" href="#nodenode" title="Permanent link">&para;</a></h1>
 <h2 id="_19">異なるゾーンに分散させる<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <hr />
@@ -23025,21 +23048,21 @@
 <h2 id="_25">適切なストレージの種類を選ぶ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <hr />
 <h3 id="generic-ephemeral-volumes">■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する<a class="headerlink" href="#generic-ephemeral-volumes" title="Permanent link">&para;</a></h3>
-<p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。</p>
-<p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データ、など) に役立つ。</p>
+<p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保存できる。</p>
+<p>大量の一時データを保存したい場合 (例：画像処理中間データ、音声処理中間データ、など) に役立つ。</p>
 <p>一時的なストレージのため、Podの作成時にストレージを払い出し、Podが停止するとストレージは削除される。</p>
 <p>EmptyDir Volumeとは異なり、NodeのストレージがVolumeの容量を制限しない。</p>
-<p>そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がEmptyDirよりも多い。</p>
+<p>そのため、外部ストレージの容量次第では、一時的に保存できるデータ量がEmptyDirよりも多い。</p>
 <p>一方で、外部ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes">https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes</a></p>
 <p><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></p>
 </blockquote>
 <h3 id="emptydir-volume">■ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する<a class="headerlink" href="#emptydir-volume" title="Permanent link">&para;</a></h3>
-<p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保管できる。</p>
-<p>少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリング、など) に役立つ。</p>
+<p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保存できる。</p>
+<p>少量の一時データを保存したい場合 (例：キャッシュの保存、バッファリング、など) に役立つ。</p>
 <p>Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容量を制限する。</p>
-<p>そのため、Nodeのストレージ次第では、一時的に保管できるデータ量がEphemeral Volumesよりも少ない。</p>
+<p>そのため、Nodeのストレージ次第では、一時的に保存できるデータ量がEphemeral Volumesよりも少ない。</p>
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
 <blockquote>
 <p><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></p>
@@ -23054,13 +23077,13 @@
 <h3 id="persistentvolumeclaim">■ 永続的ストレージを必要とする場合はPersistentVolume(Claim)を使用する<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <p>PersistentVolume(Claim)を使用することで特定のストレージ製品のボリュームにPodのデータを永続化することができる。</p>
 <p>使用できるストレージ製品はクラスターのインストールされたボリュームプラグイン(≒ CSI Driver)と実行環境に依存しており、そのプラグインを使用するStorageClass</p>
-<p>して、PodのデータをNodeのストレージに永続的に保管できる。</p>
+<p>して、PodのデータをNodeのストレージに永続的に保存できる。</p>
 <p>StorageClassによる外部ストレージとは異なり、NodeのストレージがVolumeの容量を制限する。</p>
-<p>そのため、Nodeのストレージ次第では、永続的に保管できるデータ量がPersistentVolumeよりも少ない。</p>
+<p>そのため、Nodeのストレージ次第では、永続的に保存できるデータ量がPersistentVolumeよりも少ない。</p>
 <h3 id="storageclass">■ 大規模な永続的ストレージを必要とする場合はStorageClassによる外部ストレージを使用する<a class="headerlink" href="#storageclass" title="Permanent link">&para;</a></h3>
-<p>StorageClassによるK8s外部のストレージ (例：AWS EBS) を使用して、Podのデータを外部ストレージに永続的に保管できる。</p>
+<p>StorageClassによるK8s外部のストレージ (例：AWS EBS) を使用して、Podのデータを外部ストレージに永続的に保存できる。</p>
 <p>PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制限しない。</p>
-<p>そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。</p>
+<p>そのため、外部ストレージの容量次第では、一時的に保存できるデータ量がPersistentVolumeよりも多い。</p>
 <blockquote>
 <p><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></p>
 </blockquote>
@@ -23083,7 +23106,7 @@
 </ul>
 <h3 id="nodepodreadspecaccessmodereadonlymany">■ 複数Node/Pod間でReadのみを許可するアプリケーションには<code>.spec.accessMode=ReadOnlyMany</code>を割り当てる<a class="headerlink" href="#nodepodreadspecaccessmodereadonlymany" title="Permanent link">&para;</a></h3>
 <p>複数のノードからRead/Writeを行えるボリュームとしてマウントする。</p>
-<p>ConfigMapに保管するには大きすぎる設定ファイルや共通データなどを利用するアプリケーションで指定する。</p>
+<p>ConfigMapに保存するには大きすぎる設定ファイルや共通データなどを利用するアプリケーションで指定する。</p>
 <ul>
 <li>例 機械学習モデルのパラメータストア</li>
 </ul>
@@ -23105,7 +23128,7 @@
 </blockquote>
 <h3 id="pvcretain">■ 重要なデータを含むPVCはRetainを指定する<a class="headerlink" href="#pvcretain" title="Permanent link">&para;</a></h3>
 <p>データベースやファイルストレージ用途などでPersistentVolumeClaim(PVC)を利用している場合、誤ったPVCの削除によるデータ損失を防ぐ必要がある。</p>
-<p>そのため重要なデータを保管するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
+<p>そのため重要なデータを保存するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></p>
 <p><a href="https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention">https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention</a></p>
@@ -23867,7 +23890,7 @@ as a Service | ツール固有
 <hr />
 <h3 id="_50">■ ログを選ぶ<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <p>監視したいログを決める。</p>
-<p>むやみやたらにログを収集すると、保管が大変なため、必要最低限のログにする。</p>
+<p>むやみやたらにログを収集すると、保存が大変なため、必要最低限のログにする。</p>
 <ul>
 <li>コントロールプレーンNode</li>
 <li>Podのアクセスログ/実行ログ</li>
@@ -23920,7 +23943,7 @@ as a Service | ツール固有
 </tr>
 </tbody>
 </table>
-<p>Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保管する。
+<p>Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保存する。
 FluentdやFluentBitを使用して、Node上のログを監視バックエンドに送信する。 | ログ収集ツールをPod内のサイドカーで動かす。
 ログ収集ツールが提供するドライバーを使用して、Pod内のアプリコンテナからログ収集コンテナにログを渡す。
 Pod内のログ収集コンテナから監視バックエンドにログを直接送信する。 |
@@ -23928,9 +23951,9 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
 <h3 id="_54">■ メトリクスを収集する<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
 <p>監視したいメトリクスを収集する。</p>
 <p>ここにメトリクス収集の設計パターンを書く…</p>
-<h2 id="_55">収集したログ/メトリクスを保管する<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h2>
+<h2 id="_55">収集したログ/メトリクスを保存する<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h2>
 <hr />
-<p>収集したログ/メトリクスをストレージに保管する。</p>
+<p>収集したログ/メトリクスをストレージに保存する。</p>
 <table>
 <thead>
 <tr>
@@ -23949,11 +23972,11 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
 </tr>
 <tr>
 <td>バックアップしないログ</td>
-<td>全てのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくと良い。</td>
+<td>全てのログを保存するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくと良い。</td>
 </tr>
 <tr>
-<td>バックアップの保管期間 (リテンション)</td>
-<td>ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：3ヶ月) を決めておくと良い。</td>
+<td>バックアップの保存期間 (リテンション)</td>
+<td>ログファイルのメトリクスのバックアップを実施し、また保存期間ポリシー (例：3ヶ月) を決めておくと良い。</td>
 </tr>
 <tr>
 <td>ローテーション</td>
