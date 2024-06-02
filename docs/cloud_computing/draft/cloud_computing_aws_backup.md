@@ -47,9 +47,9 @@
 > - https://docs.aws.amazon.com/cli/latest/reference/backup/index.html
 > - https://dev.classmethod.jp/articles/aws_backup_bycli/
 
-## AWS Backupの保持期間
+## AWS Backupの保管期間
 
-最大35日前まで保持でき、また復元できる。
+最大35日前まで保管でき、また復元できる。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupRetention
 

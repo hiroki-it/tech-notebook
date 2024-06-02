@@ -123,17 +123,37 @@ cookie: sessionid=<セッションID>
 
 ## 03. 認証情報の保管
 
-### 運搬方法がCookieの場合
+### SessionStorage
 
-初回認証以降に、認証の成功状態を維持する必要がある。
+`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
 
-`Cookie`ヘッダーで認証情報を運搬した場合、ブラウザは、クライアントに有効期限に応じた間だけ保持できる。
+ブラウザは、`Cookie`ヘッダーの値をブラウザのLocalStorageに保管する。
 
-またはブラウザの設定によって、ブラウザのWebストレージでも保持できる。
+> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+
+<br>
+
+### LocalStorage
+
+`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
+
+ブラウザは、`Cookie`ヘッダーの値をブラウザのLocalStorageに保管する。
+
+> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+
+<br>
+
+### ローカルマシンのディレクトリ
+
+`Cookie`ヘッダーで認証情報を運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
+
+ブラウザは、`Cookie`ヘッダーの値をローカルマシンのディレクトリに保管する。
+
+> - https://zenn.dev/simsim/articles/3f3e043dd750e8
 
 **＊例＊**
 
-Chromeの場合は、Cookieストレージ (MacOSであれば`/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies`にある) に保持する。
+ローカルマシンがMacOSであれば、Chromeは`/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies`ディレクトリに`Cookie`ヘッダーの値を保管する。
 
 > - https://developer.chrome.com/docs/devtools/storage/cookies/
 > - https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B

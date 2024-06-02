@@ -175,7 +175,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 クライアントのブラウザの使用するメモリ上で、レスポンスされた静的コンテンツのキャッシュを作成する。
 
-Chromeの場合は、CacheStorageに保持される。
+Chromeの場合は、CacheStorageに保管される。
 
 ![client_side_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client_side_cache.png)
 

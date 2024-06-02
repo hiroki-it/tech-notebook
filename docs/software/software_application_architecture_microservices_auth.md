@@ -60,7 +60,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 セッションベースの認証情報伝播とコンテナの相性が悪く、各マイクロサービスがセッションデータを持つ必要がある。
 
-そのため、セッションストレージが必要になるというデメリットがある。
+そのため、SessionStorageが必要になるというデメリットがある。
 
 ![micro-authentication_type_session](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_session.png)
 

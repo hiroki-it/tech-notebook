@@ -533,7 +533,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 
 #### ▼ ストレージ
 
-セッションストレージ (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保管する。
+SessionStorage (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保管する。
 
 > - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
 
