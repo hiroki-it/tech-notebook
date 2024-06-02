@@ -10541,6 +10541,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorizationヘッダーによる運搬
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       クエリストリングによる運搬
@@ -22951,6 +22960,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorizationヘッダーによる運搬
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       クエリストリングによる運搬
@@ -23305,6 +23323,22 @@
 <blockquote>
 <ul>
 <li><a href="https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82">https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="authorization"><code>Authorization</code>ヘッダーによる運搬<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
+<p><code>Authorization</code>ヘッダーでトークンを運ぶ。</p>
+<p>なお不便ではあるが、<code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保管できない。</p>
+<p>その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる。</p>
+<p>Chromeでは、LocalStorageあるいはSessionStorageに保管される。</p>
+<p>LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。</p>
+<p>これらの場所の確認方法については、以下のリンクを参考にせよ</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.chrome.com/docs/devtools/storage/localstorage/">https://developer.chrome.com/docs/devtools/storage/localstorage/</a></li>
+<li><a href="https://developer.chrome.com/docs/devtools/storage/sessionstorage/">https://developer.chrome.com/docs/devtools/storage/sessionstorage/</a></li>
+<li><a href="https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage">https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage</a></li>
+<li><a href="https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a">https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a</a></li>
 </ul>
 </blockquote>
 <p><br></p>

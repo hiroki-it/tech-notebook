@@ -10468,15 +10468,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Authorizationヘッダーのトークンのクライアント保管
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -22635,15 +22626,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Authorizationヘッダーのトークンのクライアント保管
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -22931,20 +22913,6 @@
 <span class="nn">---</span>
 <span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer error=&quot;insufficient_scope&quot;</span>
 </code></pre></div>
-<p><br></p>
-<h3 id="authorization"><code>Authorization</code>ヘッダーのトークンのクライアント保管<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
-<p>不便ではあるが、<code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保管できない。</p>
-<p>その代わり、ブラウザの設定によって、ブラウザのWebストレージでも保管できる。</p>
-<p>Chromeでは、LocalStorageあるいはSessionStorageに保管される。</p>
-<p>LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。</p>
-<p>これらの場所の確認方法については、以下のリンクを参考にせよ</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.chrome.com/docs/devtools/storage/localstorage/">https://developer.chrome.com/docs/devtools/storage/localstorage/</a></li>
-<li><a href="https://developer.chrome.com/docs/devtools/storage/sessionstorage/">https://developer.chrome.com/docs/devtools/storage/sessionstorage/</a></li>
-<li><a href="https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage">https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
