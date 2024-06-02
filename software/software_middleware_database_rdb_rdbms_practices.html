@@ -23052,8 +23052,8 @@
 <h2 id="02">02. 性能設計<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="db">DBインデックスの作成<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="db_1">▼ DBインデックスとは<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
-<p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保存しておいたもの。</p>
-<p>DBインデックスとして保存されたカラムから特定のレコードを直接的に取得できる。</p>
+<p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保管しておいたもの。</p>
+<p>DBインデックスとして保管されたカラムから特定のレコードを直接的に取得できる。</p>
 <p>そのため、SQLの実行時間がカラム数に依存しなくなる。</p>
 <p>DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
 <blockquote>
@@ -23074,7 +23074,7 @@
 <h4 id="db_4">▼ 複合DBインデックス<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h4>
 <p>複数のカラムを基準にして、テーブルを並び替えたDBインデックスのこと。</p>
 <p>対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない (一意の値の多い) カラムが検出される。</p>
-<p>そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。</p>
+<p>そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保管される。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
@@ -23130,7 +23130,7 @@
 </tr>
 </tbody>
 </table>
-<p>各カラムで値の異なるレコード数が計測され、<code>name</code>カラムは<code>address</code>カラムよりも一意のレコードが多いため、<code>name</code>カラムの昇順 (アルファベット順) に並び替えられ、DBインデックスとして保存される。</p>
+<p>各カラムで値の異なるレコード数が計測され、<code>name</code>カラムは<code>address</code>カラムよりも一意のレコードが多いため、<code>name</code>カラムの昇順 (アルファベット順) に並び替えられ、DBインデックスとして保管される。</p>
 <table>
 <thead>
 <tr>

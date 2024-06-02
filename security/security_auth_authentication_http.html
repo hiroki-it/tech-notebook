@@ -22680,7 +22680,7 @@
 <p>HTTPプロトコルの中で認証を行う認証スキームのこと。</p>
 <p>リクエストの<code>authorization</code>ヘッダーとレスポンスの<code>WWW-Authenticate</code>ヘッダーで認証スキームを指定する。</p>
 <p>認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。</p>
-<p>認証情報の一時的な保存は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。</p>
+<p>認証情報の一時的な保管は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml">https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml</a></li>
@@ -22751,7 +22751,7 @@
 <dt><code>(4)</code></dt>
 <dd>
 <p>サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後のWebページを返信する。</p>
-<p>また、認証情報をブラウザのWebストレージに保存する。</p>
+<p>また、認証情報をブラウザのWebストレージに保管する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
@@ -22933,10 +22933,10 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="authorization"><code>Authorization</code>ヘッダーのトークンのクライアント保持<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
-<p>不便ではあるが、<code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保存できない。</p>
+<p>不便ではあるが、<code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保管できない。</p>
 <p>その代わり、ブラウザの設定によって、ブラウザのWebストレージでも保持できる。</p>
 <p>Chromeでは、ローカルストレージあるいはセッションストレージに保持される。</p>
-<p>ローカルストレージはセッションストレージと比べて保存期間が長いため、XSSの危険性がより高い。</p>
+<p>ローカルストレージはセッションストレージと比べて保管期間が長いため、XSSの危険性がより高い。</p>
 <p>これらの場所の確認方法については、以下のリンクを参考にせよ</p>
 <blockquote>
 <ul>

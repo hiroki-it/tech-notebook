@@ -10437,11 +10437,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 認証情報の保存
+      03. 認証情報の保管
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 認証情報の保存">
+    <nav class="md-nav" aria-label="03. 認証情報の保管">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22538,11 +22538,11 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. 認証情報の保存
+      03. 認証情報の保管
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. 認証情報の保存">
+    <nav class="md-nav" aria-label="03. 認証情報の保管">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22590,7 +22590,7 @@
 <p>認証時に、<code>Cookie</code>ヘッダー値を使用する認証スキームのこと。</p>
 <p>『Cookieベースの認証』ともいう。</p>
 <p>ステートフル化を行うため、HTTP認証には所属していない。</p>
-<p>認証情報の一時的な保存は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。</p>
+<p>認証情報の一時的な保管は、サーバーのセッションデータで行うため、認証解除 (ログアウト) をサーバー側で制御できる。</p>
 <p><code>Cookie</code>ヘッダーによる送受信では、CSRFの危険性がある。</p>
 <blockquote>
 <ul>
@@ -22609,7 +22609,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保存する。</p>
+<p>最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保管する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users</span>
@@ -22650,9 +22650,9 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。</p>
+<p>サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保管する。</p>
 <p>加えて次回のログイン時、クライアントは、リクエストの<code>Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
-<p>サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。</p>
+<p>サーバーは、保管されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。</p>
 <p>これにより、改めて認証情報を送信せずに、素早くログインできるようになる。</p>
 </dd>
 </dl>
@@ -22688,7 +22688,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. 認証情報の保存<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. 認証情報の保管<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="cookie_1">運搬方法がCookieの場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h3>
 <p>初回認証以降に、認証の成功状態を維持する必要がある。</p>
 <p><code>Cookie</code>ヘッダーで認証情報を運搬した場合、ブラウザは、クライアントに有効期限に応じた間だけ保持できる。</p>

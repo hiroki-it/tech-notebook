@@ -23288,7 +23288,7 @@
 </tr>
 <tr>
 <td>Invalidation</td>
-<td>CloudFrontに保存されているキャッシュを削除できる。</td>
+<td>CloudFrontに保管されているキャッシュを削除できる。</td>
 <td></td>
 </tr>
 </tbody>
@@ -23424,12 +23424,12 @@
 </tr>
 <tr>
 <td>Object Caching</td>
-<td>CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。</td>
+<td>CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。</td>
 <td>・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。</td>
 </tr>
 <tr>
 <td>TTL</td>
-<td>CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。</td>
+<td>CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。</td>
 <td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
 </tr>
 <tr>
@@ -23592,7 +23592,7 @@
 </blockquote>
 <h4 id="cookie">▼ Cookieに基づくキャッシュ作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
 <p>Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。</p>
-<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保存されたキャッシュがヒットしない。</p>
+<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保管されたキャッシュがヒットしない。</p>
 <p>CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。</p>
 <p>例えば、GoogleAnalyticsのキー名 (<code>_ga</code>) の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。</p>
 <p>そのため、ユーザーを一意に判定することが難しくなってしまう。</p>

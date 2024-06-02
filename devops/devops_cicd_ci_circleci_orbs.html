@@ -23054,8 +23054,8 @@
 <p>aws-cliコマンドのインストールと、Credentials情報の設定を実行する。</p>
 <p>AWSリソースを操作するために使用する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>CloudFrontに保存されているキャッシュを削除する。</p>
-<p>フロントエンドをデプロイしたとしても、CloudFrontに保存されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。</p>
+<p>CloudFrontに保管されているキャッシュを削除する。</p>
+<p>フロントエンドをデプロイしたとしても、CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。</p>
 <p>そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -23377,11 +23377,11 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">  </span><span class="nt">aws-code-deploy/deploy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code_deploy</span>
 <span class="w">    </span><span class="nt">application-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SERVICE}</span>
-<span class="w">    </span><span class="c1"># appspecファイルを保存するバケット名</span>
+<span class="w">    </span><span class="c1"># appspecファイルを保管するバケット名</span>
 <span class="w">    </span><span class="nt">bundle-bucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-bucket&quot;</span>
 <span class="w">    </span><span class="c1"># appspecファイルのあるディレクトリ</span>
 <span class="w">    </span><span class="nt">bundle-source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/aws_codedeploy</span>
-<span class="w">    </span><span class="c1"># appspecファイルをzipファイルで保存</span>
+<span class="w">    </span><span class="c1"># appspecファイルをzipファイルで保管</span>
 <span class="w">    </span><span class="nt">bundle-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip</span>
 <span class="w">    </span><span class="c1"># zipファイル名</span>
 <span class="w">    </span><span class="nt">bundle-key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-bundle</span>

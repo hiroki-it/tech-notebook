@@ -23813,7 +23813,7 @@
 <p><br></p>
 <h3 id="api-gateway-lambda-s3">API Gateway ➡︎ Lambda ➡︎ S3<a class="headerlink" href="#api-gateway-lambda-s3" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<p>API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保存する。</p>
+<p>API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。</p>
 <p>LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>AWSLambdaExecute</code>』が紐付けられたロールをLambdaに紐付けしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
@@ -23846,8 +23846,8 @@
 <span class="w">  </span><span class="nx">s3</span><span class="p">.</span><span class="nx">putObject</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">Bucket</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;バケット名&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">Key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;パスを含む保存先ファイル&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;保存データ&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">Key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;パスを含む保管先ファイル&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;保管データ&gt;&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>

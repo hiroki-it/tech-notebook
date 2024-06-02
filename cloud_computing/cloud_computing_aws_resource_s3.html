@@ -11869,7 +11869,7 @@
           <li class="md-nav__item">
   <a href="#alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBのアクセスログの保存を許可
+      ▼ ALBのアクセスログの保管を許可
     </span>
   </a>
   
@@ -11887,7 +11887,7 @@
           <li class="md-nav__item">
   <a href="#cloudfront_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CloudFrontのアクセスログの保存を許可
+      ▼ CloudFrontのアクセスログの保管を許可
     </span>
   </a>
   
@@ -22663,7 +22663,7 @@
           <li class="md-nav__item">
   <a href="#alb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ALBのアクセスログの保存を許可
+      ▼ ALBのアクセスログの保管を許可
     </span>
   </a>
   
@@ -22681,7 +22681,7 @@
           <li class="md-nav__item">
   <a href="#cloudfront_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CloudFrontのアクセスログの保存を許可
+      ▼ CloudFrontのアクセスログの保管を許可
     </span>
   </a>
   
@@ -22851,7 +22851,7 @@
 </tr>
 <tr>
 <td>デフォルト暗号化</td>
-<td>S3バケットに保存するファイルの暗号化方法を設定する。</td>
+<td>S3バケットに保管するファイルの暗号化方法を設定する。</td>
 <td>オススメはサーバーサイド暗号化であり、S3バケットにファイルをアップロードするタイミングでこれを暗号化する。また一方で、ダウンロード時にファイルを復号化する。<br>・<a href="https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e">https://zenn.dev/amarelo_n24/articles/3d252c27cfb98e</a></td>
 </tr>
 <tr>
@@ -22963,8 +22963,8 @@
 <h3 id="_7">バケットポリシーの例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="s3arn">▼ S3のARNについて<a class="headerlink" href="#s3arn" title="Permanent link">&para;</a></h4>
 <p>ポリシーでは、S3のARでは、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』のように、最後にバックスラッシュアスタリスクが必要。</p>
-<h4 id="alb">▼ ALBのアクセスログの保存を許可<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保存したい場合、バケットポリシーを設定する必要がある。</p>
+<h4 id="alb">▼ ALBのアクセスログの保管を許可<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
+<p>パブリックアクセスが無効化されたS3に対して、ALBへのアクセスログを保管したい場合、バケットポリシーを設定する必要がある。</p>
 <p>バケットポリシーには、ALBからS3へのログ書き込み認可スコープを実装する。『<code>"AWS": "arn:aws:iam::582318560864:root"</code>』では、<code>582318560864</code>はALBアカウントIDと呼ばれ、リージョンごとに値が決まっている。</p>
 <p>これは、東京リージョンのアカウントIDである。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -23012,8 +23012,8 @@
 <li><a href="https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/">https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/</a></li>
 </ul>
 </blockquote>
-<h4 id="cloudfront_1">▼ CloudFrontのアクセスログの保存を許可<a class="headerlink" href="#cloudfront_1" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2020/10/08) では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保存できない。</p>
+<h4 id="cloudfront_1">▼ CloudFrontのアクセスログの保管を許可<a class="headerlink" href="#cloudfront_1" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2020/10/08) では、パブリックアクセスが無効化されたS3に対して、CloudFrontへのアクセスログを保管できない。</p>
 <p>よって、危険ではあるが、パブリックアクセスを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ポリシーは不要</span>
 </code></pre></div>

@@ -23542,16 +23542,16 @@
 <p><br></p>
 <h3 id="set">Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 処理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>当該のリクエストで利用できるmap型データに、値を保存する。</p>
+<p>当該のリクエストで利用できるmap型データに、値を保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set">https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ 注意点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>データ型を変換した値を<code>Set</code>関数で保存しないようにすることによりある。</p>
+<p>データ型を変換した値を<code>Set</code>関数で保管しないようにすることによりある。</p>
 <p><code>Set</code>関数後に<code>Get</code>関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。</p>
-<p>そのため、例えば、タイプID型として値を保存したとしても、<code>Get</code>関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう。</p>
+<p>そのため、例えば、タイプID型として値を保管したとしても、<code>Get</code>関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middlewares</span>
 

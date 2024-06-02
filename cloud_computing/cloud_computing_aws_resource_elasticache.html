@@ -23175,7 +23175,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、キャッシュが無いことがアプリケーションに返却する。</p>
+<p>始めて実行されたSQLの場合、RedisはSQLをキーとして保管し、キャッシュが無いことがアプリケーションに返却する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -23190,7 +23190,7 @@
 <p>アプリケーションはRedisにデータを登録する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># ElastiCacheには、SQLの実行結果がまだ保存されていない</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ElastiCacheには、SQLの実行結果がまだ保管されていない</span>
 
 ***<span class="w"> </span>no<span class="w"> </span>cache<span class="w"> </span>***
 <span class="o">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;1&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;alice&quot;</span><span class="o">}</span>
@@ -23219,7 +23219,7 @@
 <p>Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># ElastiCacheには、SQLの実行結果が既に保存されている</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ElastiCacheには、SQLの実行結果が既に保管されている</span>
 
 ***<span class="w"> </span>cache<span class="w"> </span>hit<span class="w"> </span>***
 <span class="o">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;1&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;alice&quot;</span><span class="o">}</span>

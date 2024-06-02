@@ -9862,11 +9862,11 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      セッションデータの保存場所
+      セッションデータの保管場所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セッションデータの保存場所">
+    <nav class="md-nav" aria-label="セッションデータの保管場所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23256,11 +23256,11 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      セッションデータの保存場所
+      セッションデータの保管場所
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セッションデータの保存場所">
+    <nav class="md-nav" aria-label="セッションデータの保管場所">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23885,7 +23885,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ブラウザは、そのCookie情報を保存する。</p>
+<p>ブラウザは、そのCookie情報を保管する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -23933,19 +23933,19 @@
 <span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&quot;セッション名&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;値&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_13">セッションデータの保存場所<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_13">セッションデータの保管場所<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ サーバーファイル<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>サーバーにて、ファイル形式で保存する。</p>
+<p>サーバーにて、ファイル形式で保管する。</p>
 <p><strong>実装例</strong></p>
-<p>PHPの場合、セッションデータの保存場所は<code>/etc/php.ini</code>ファイルで定義できる。</p>
+<p>PHPの場合、セッションデータの保管場所は<code>/etc/php.ini</code>ファイルで定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/php.iniファイル</span>
 
 <span class="c1">## ファイル形式</span>
 <span class="na">session.save_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">files</span>
-<span class="c1">## 保存場所</span>
+<span class="c1">## 保管場所</span>
 <span class="na">session.save_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/tmp&quot;</span>
 </code></pre></div>
-<p>PHP-FPMを採用している場合は、<code>/etc/php.ini</code>ファイルではなく、<code>/etc/php-fpm.d/www.conf</code>ファイルで保存場所を設定する必要がある。</p>
+<p>PHP-FPMを採用している場合は、<code>/etc/php.ini</code>ファイルではなく、<code>/etc/php-fpm.d/www.conf</code>ファイルで保管場所を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/php-fpm.d/www.confファイル</span>
 
 <span class="c1">## Redis形式</span>
@@ -23961,14 +23961,14 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </ul>
 </blockquote>
 <h4 id="_15">▼ サーバーメモリ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>サーバーにて、メモリ上で保存する。</p>
+<p>サーバーにて、メモリ上で保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.frevo-works.co.jp/entry/2019/09/24/112603">https://blog.frevo-works.co.jp/entry/2019/09/24/112603</a></li>
 </ul>
 </blockquote>
 <h4 id="_16">▼ ストレージ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>セッションストレージ (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保存する。</p>
+<p>セッションストレージ (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.frevo-works.co.jp/entry/2019/09/24/112603">https://blog.frevo-works.co.jp/entry/2019/09/24/112603</a></li>
@@ -24008,7 +24008,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ブラウザは、そのセッションIDを保存する。</p>
+<p>ブラウザは、そのセッションIDを保管する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>

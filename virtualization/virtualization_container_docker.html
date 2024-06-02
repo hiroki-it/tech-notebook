@@ -23217,7 +23217,7 @@
 <p>各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。</p>
 <h4 id="_4">▼ イメージレイヤー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="イメージレイヤーからなるコンテナイメージのビルド" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png" /></p>
-<p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code>ディレクトリ配下にハッシュ値の名前からなるファイルとして保存されている。</p>
+<p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code>ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。</p>
 <p>Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。</p>
 <p>1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w"> </span>foo-container<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;{{json .GraphDriver.Data}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.

@@ -3685,7 +3685,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保存期間
+      ▼ 保管期間
     </span>
   </a>
   
@@ -22870,7 +22870,7 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 保存期間
+      ▼ 保管期間
     </span>
   </a>
   
@@ -22974,7 +22974,7 @@
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ リモートストレージとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ロードバランサー、vm-select、vm-storage、vm-insert、といったコンポーネントから構成されている。</p>
-<p>リモートストレージとして、Prometheusで収集したデータポイントを保存する。</p>
+<p>リモートストレージとして、Prometheusで収集したデータポイントを保管する。</p>
 <p>エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。</p>
 <p>また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。</p>
 <p>補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。</p>
@@ -22990,7 +22990,7 @@
 <h4 id="_4">▼ メトリクス監視バックエンドとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>vm-agent、vm-storage、vm-alert、といったコンポーネントから構成されている。</p>
 <p>また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。</p>
-<p>vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保存する。</p>
+<p>vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。</p>
 <p>vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。</p>
 <p>VictoriaMetricsをメトリクス監視バックエンドとして使用する場合はPrometheusは不要になる。</p>
 <p>各コンポーネントがメモリを使用するため、</p>
@@ -23081,8 +23081,8 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <p><br></p>
 <h3 id="vm-storage">vm-storage<a class="headerlink" href="#vm-storage" title="Permanent link">&para;</a></h3>
 <h4 id="vm-storage_1">▼ vm-storageとは<a class="headerlink" href="#vm-storage_1" title="Permanent link">&para;</a></h4>
-<p>データをファイルシステムに保存する。</p>
-<p>保存時にデータを圧縮している。</p>
+<p>データをファイルシステムに保管する。</p>
+<p>保管時にデータを圧縮している。</p>
 <p>公式での情報は見つからなかったが、圧縮率は約<code>10%</code>らしい。</p>
 <blockquote>
 <ul>
@@ -23094,9 +23094,9 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <p>これにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/var/lib/victoriametrics/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── data/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── big/</span><span class="w"> </span><span class="c1"># メトリクスが保存されている。</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── big/</span><span class="w"> </span><span class="c1"># メトリクスが保管されている。</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── flock.lock</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── small/</span><span class="w"> </span><span class="c1"># キャッシュとして保存される。時々、bigディレクトリにマージされる。</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── small/</span><span class="w"> </span><span class="c1"># キャッシュとして保管される。時々、bigディレクトリにマージされる。</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── flock.lock/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── indexdb/</span><span class="w"> </span><span class="c1"># 全文検索処理の高速化のためのインデックス</span>
@@ -23110,7 +23110,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 100G<span class="w"> </span>/var/lib/victoria-metrics/data
 </code></pre></div>
 <h4 id="readonly">▼ ReadOnlyモード<a class="headerlink" href="#readonly" title="Permanent link">&para;</a></h4>
-<p>vm-storageは、サイズいっぱいまでデータが保存されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。</p>
+<p>vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。</p>
 <p>ReadOnlyモードにより、vm-storageの空きサイズが<code>minFreeDiskSpaceBytes</code>オプション値を超えると、書き込みできなくなるような仕様になっている。</p>
 <p>これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。</p>
 <blockquote>
@@ -23118,7 +23118,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <li><a href="https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269">https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269</a></li>
 </ul>
 </blockquote>
-<h4 id="_12">▼ 保存期間<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 保管期間<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>vm-storageは、一定期間だけ経過したメトリクスファイル (主に、<code>data</code>ディレクトリ、<code>indexdb</code>ディレクトリ、の配下など) を削除する。</p>
 <p>VictoriaMetricsの起動時に、<code>victoria-metrics-prod</code>コマンドの<code>-retentionPeriod</code>オプションで指定できる。</p>
 <blockquote>
@@ -23127,7 +23127,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 </ul>
 </blockquote>
 <h4 id="_13">▼ ストレージの必要サイズの見積もり<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>vm-storageの<code>/var/lib/victoriametrics</code>ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保存日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。</p>
+<p>vm-storageの<code>/var/lib/victoriametrics</code>ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。</p>
 <p>また、<code>20</code>%の空きサイズを考慮するために、増加量を<code>1.2</code>倍する必要がある。</p>
 <blockquote>
 <ul>
@@ -23194,13 +23194,13 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 </table>
 <p>増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。</p>
 <p>これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。</p>
-<p>もし、データの保存日数が<code>10</code>日分という非機能的な品質であれば、vm-storageは常に過去<code>10</code>日分のデータを保存している必要がある。</p>
+<p>もし、データの保管日数が<code>10</code>日分という非機能的な品質であれば、vm-storageは常に過去<code>10</code>日分のデータを保管している必要がある。</p>
 <p>そのため、以下の数式で<code>10</code>日分のサイズを算出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">増加量の合計</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">12900</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">10535</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">2365</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="o">/</span><span class="err">日</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">10</span><span class="err">日分を保存するために必要なサイズ</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">10</span><span class="err">日分を保管するために必要なサイズ</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">2365</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mf">1.2</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">10</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">28380</span><span class="w"> </span><span class="p">(</span><span class="n">MB</span><span class="o">/</span><span class="mi">10</span><span class="err">日</span><span class="p">)</span>
 </code></pre></div>
@@ -23234,7 +23234,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/victoria-metrics-prod </span>\
 <span class="w">            </span><span class="s">`# マウント先のディレクトリ` </span>\
 <span class="w">            </span><span class="s">-storageDataPath=/var/lib/victoriametrics </span>\
-<span class="w">            </span><span class="s">`# 保存期間` </span>\
+<span class="w">            </span><span class="s">`# 保管期間` </span>\
 <span class="w">            </span><span class="s">-retentionPeriod 10d </span>\
 <span class="w">            </span><span class="s">`# Grafanaからのリクエストを待ち受けるポート番号` </span>\
 <span class="w">            </span><span class="s">-graphiteListenAddr :2003</span>
