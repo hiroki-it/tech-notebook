@@ -213,6 +213,27 @@ cookie: sessionid=<セッションID>
 
 <br>
 
+### `Authorization`ヘッダーによる運搬
+
+`Authorization`ヘッダーでトークンを運ぶ。
+
+なお不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
+
+その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる。
+
+Chromeでは、LocalStorageあるいはSessionStorageに保管される。
+
+LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
+
+これらの場所の確認方法については、以下のリンクを参考にせよ
+
+> - https://developer.chrome.com/docs/devtools/storage/localstorage/
+> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+> - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
+> - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
+
+<br>
+
 ### クエリストリングによる運搬
 
 > - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf

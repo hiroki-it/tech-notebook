@@ -285,21 +285,3 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
 <br>
-
-### `Authorization`ヘッダーのトークンのクライアント保管
-
-不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
-
-その代わり、ブラウザの設定によって、ブラウザのWebストレージでも保管できる。
-
-Chromeでは、LocalStorageあるいはSessionStorageに保管される。
-
-LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
-
-これらの場所の確認方法については、以下のリンクを参考にせよ
-
-> - https://developer.chrome.com/docs/devtools/storage/localstorage/
-> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
-> - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
-
-<br>
