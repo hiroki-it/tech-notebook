@@ -22925,7 +22925,7 @@
 <h4 id="opaque_2">▼ Opaqueトークンパターンの仕組み<a class="headerlink" href="#opaque_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスは、JWTとOpaqueトークンに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込む。</p>
-<p>クライアント側にはJWTと対になるOpaqueトークンを保管する。</p>
+<p>クライアント側にはJWTとペアになるOpaqueトークンを保管する。</p>
 <p>また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。</p>
 <p>トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
 <p><img alt="micro-authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_opaque-token.png" /></p>
