@@ -88,7 +88,7 @@ authorization: <パーソナルアクセストークン>
 
 #### ▼ セッションベースの伝播とは
 
-セッションデータで認証情報を伝播する認証方法 (例：セッションIDを使用したForm認証、など) である。
+セッションデータで認証情報を伝播する認証方法 (例：Form認証、など) である。
 
 システムの各コンポーネントがセッションデータを持つ必要がある。
 
@@ -106,7 +106,7 @@ authorization: <パーソナルアクセストークン>
 
 #### ▼ トークンベースの伝播とは
 
-トークン (例：アクセストークン、IDトークン、など) で認証情報を伝播する認証方法 (例：トークンを使用したForm認証、APIキー認証、PAT、OIDC、など) である。
+トークン (例：アクセストークン、IDトークン、など) で認証情報を伝播する認証方法 (例：APIキー認証、PAT、OIDC、など) である。
 
 システムの各コンポーネントはトークンを持つ必要がない。
 
@@ -128,7 +128,143 @@ authorization: <パーソナルアクセストークン>
 
 <br>
 
-## 04. 複数の認証の組み合わせ
+## 04. 認証情報の運搬方法の種類
+
+### `Cookie`ヘッダーによる運搬
+
+#### ▼ セッションIDで認証情報を伝播する場合
+
+`(1)`
+
+: セッションIDを`Cookie`ヘッダーに割り当て、リクエストを送信する。
+
+`(2)`
+
+: 最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をDBに保管する。
+
+```yaml
+POST https://example.com/users
+---
+# ボディ
+{"email_address": "foo@gmail.com", "password": "foo"}
+```
+
+`(3)`
+
+: 次回の認証時に、再びユーザーが認証情報を送信する。
+
+```yaml
+POST https://example.com/foo-form
+---
+# ボディ
+{"email_address": "foo@gmail.com", "password": "foo"}
+```
+
+`(4)`
+
+: サーバーは、DBの認証情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションデータに書き込む。
+
+```yaml
+# セッションデータ
+{ sessionid: ***** }
+```
+
+`(5)`
+
+: レスポンスの`Set-Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
+
+```yaml
+200 OK
+---
+Set-Cookie: sessionid=<セッションID>
+```
+
+`(6)`
+
+: サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保管する。
+
+     加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
+
+     サーバーは、保管されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
+
+     これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
+
+```yaml
+POST https://example.com/foo-form
+---
+cookie: sessionid=<セッションID>
+```
+
+`(7)`
+
+: 認証解除時、サーバーでセッションデータを削除する。
+
+> - https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
+
+#### ▼ トークンで認証情報を伝播する場合
+
+トークン (例：アクセストークン、IDトークン、など) を`Cookie`ヘッダーに割り当て、リクエストを送信する。
+
+この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
+
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
+
+> - https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+
+<br>
+
+### クエリストリングによる運搬
+
+> - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
+
+<br>
+
+## 05. 認証情報の保管の種類
+
+### SessionStorage
+
+セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
+
+ブラウザは、SessionStorageにセッションIDを保管する。
+
+ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。
+
+> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - https://magazine.techacademy.jp/magazine/32870
+
+<br>
+
+### LocalStorage
+
+トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
+
+ブラウザは、LocalStorageにトークンを保管する。
+
+ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。
+
+> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - https://magazine.techacademy.jp/magazine/32870
+
+<br>
+
+### ローカルマシンのディレクトリ (`Cookie`ディレクトリ)
+
+トークン (例：アクセストークン、IDトークン、など) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
+
+ブラウザは、ローカルマシンのディレクトリ (`Cookie`ディレクトリ) にトークンを保管する。
+
+ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。
+
+**＊例＊**
+
+ローカルマシンがMacOSであれば、Chromeは`/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies`ディレクトリに`Cookie`ヘッダーの値を保管する。
+
+> - https://developer.chrome.com/docs/devtools/storage/cookies/
+> - https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
+
+<br>
+
+## 06. 複数の認証の組み合わせ
 
 ### TSV：Two Step Verification (二段階認証)
 
