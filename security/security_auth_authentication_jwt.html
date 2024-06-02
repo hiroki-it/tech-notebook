@@ -22965,11 +22965,11 @@
 <h4 id="_4">▼ 初回認証時<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ここでは、Form認証でJWTによるトークンベース伝播を採用する。</p>
 <ol>
-<li>ユーザーは、ログインフォームにユーザーIDとパスワードを入力する (Form認証)</li>
-<li>アプリケーションは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する</li>
-<li>認証が成功すれば、アプリケーションは秘密鍵を使用してJWTを作成する</li>
-<li>アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する</li>
-<li>ブラウザは、JWTをLocalStorageやローカルマシン (<code>Cookie</code>ディレクトリ) に保管する</li>
+<li>ユーザーは、ログインフォームにユーザーIDとパスワードを入力する。 (Form認証)</li>
+<li>アプリケーションは、フォームの入力情報を含むリクエストを受信する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
+<li>認証が成功すれば、アプリケーションは秘密鍵を使用してJWTを作成する。</li>
+<li>アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する。</li>
+<li>ブラウザは、JWTをLocalStorageやローカルマシン (<code>Cookie</code>ディレクトリ) に保管する。</li>
 </ol>
 <blockquote>
 <ul>
@@ -22979,9 +22979,9 @@
 <h4 id="_5">▼ 次回認証時<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。</p>
 <ol>
-<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する</li>
-<li>アプリケーションは、秘密鍵を使用して、JWTが有効か否かを検証する</li>
-<li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する</li>
+<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する。</li>
+<li>アプリケーションは、秘密鍵を使用して、JWTが有効か否かを検証する。</li>
+<li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する。</li>
 </ol>
 <blockquote>
 <ul>
@@ -22995,11 +22995,11 @@
 <h4 id="_8">▼ 初回認証時<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>例えば、SSOはJWTの署名が公開鍵方式である。</p>
 <ol>
-<li>ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する</li>
-<li>IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する</li>
-<li>認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する</li>
-<li>IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する</li>
-<li>ブラウザは、JWTをLocalStorageやローカルマシン (<code>Cookie</code>ディレクトリ) に保管する</li>
+<li>ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する。</li>
+<li>IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
+<li>認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する。</li>
+<li>IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。</li>
+<li>ブラウザは、JWTをLocalStorageやローカルマシン (<code>Cookie</code>ディレクトリ) に保管する。</li>
 </ol>
 <blockquote>
 <ul>
@@ -23008,10 +23008,10 @@
 </blockquote>
 <h4 id="_9">▼ 次回認証時<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <ol>
-<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する</li>
-<li>アプリケーションは、IDプロバイダーに公開鍵をリクエストする</li>
-<li>IDプロバイダーは、アプリケーションに公開鍵をレスポンスする</li>
-<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する</li>
+<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する。</li>
+<li>アプリケーションは、IDプロバイダーに公開鍵をリクエストする。</li>
+<li>IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。</li>
+<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。</li>
 <li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する</li>
 </ol>
 <blockquote>
@@ -23028,6 +23028,11 @@
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/33281233">https://stackoverflow.com/a/33281233</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="form">Form認証の場合<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p>トークンを<code>Cookie</code>ヘッダーに割り当て、リクエストを送信する。</p>
