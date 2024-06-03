@@ -22329,14 +22329,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#02-connectors" class="md-nav__link">
     <span class="md-ellipsis">
-      02. 認証方法
+      02. connectors
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 認証方法">
+    <nav class="md-nav" aria-label="02. connectors">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      connectorsとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-id-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple ID Provider
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#oidc" class="md-nav__link">
@@ -22364,6 +22382,42 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. grpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-issuer" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. issuer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. storage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      06. web
+    </span>
+  </a>
   
 </li>
       
@@ -22395,14 +22449,39 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-dex">01. Dexとは<a class="headerlink" href="#01-dex" title="Permanent link">&para;</a></h2>
-<p>SSO (例：OAuth、SAML、OIDC、など) のIDプロバイダー、または認証処理として認可リクエストを送信する。</p>
+<p>SSO (例：OAuth、SAML、OIDC、など) のIDプロバイダーに認可リクエストを送信する。</p>
 <blockquote>
 <ul>
+<li><a href="https://dexidp.io/docs/">https://dexidp.io/docs/</a></li>
 <li><a href="https://medium.com/@sct10876/keycloak-vs-dex-71f7fab29919">https://medium.com/@sct10876/keycloak-vs-dex-71f7fab29919</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. 認証方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02-connectors">02. connectors<a class="headerlink" href="#02-connectors" title="Permanent link">&para;</a></h2>
+<h3 id="connectors">connectorsとは<a class="headerlink" href="#connectors" title="Permanent link">&para;</a></h3>
+<p>認可リクエストの宛先を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://dexidp.io/docs/connectors/">https://dexidp.io/docs/connectors/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="multiple-id-provider">Multiple ID Provider<a class="headerlink" href="#multiple-id-provider" title="Permanent link">&para;</a></h3>
+<p>複数のプロバイダーを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">connectors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hiyosi/items/4baa612a219dc0a87575#multiple-idp-provider">https://qiita.com/hiyosi/items/4baa612a219dc0a87575#multiple-idp-provider</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
 <h4 id="keycloak">▼ Keycloakの場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">connectors</span><span class="p">:</span>
@@ -22427,6 +22506,27 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="03-grpc">03. grpc<a class="headerlink" href="#03-grpc" title="Permanent link">&para;</a></h2>
+<p>gRPCサーバーのエンドポイントを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">grpc</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">addr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:5557</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-issuer">04. issuer<a class="headerlink" href="#04-issuer" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://127.0.0.1:5556/dex</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05-storage">05. storage<a class="headerlink" href="#05-storage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">storage</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-web">06. web<a class="headerlink" href="#06-web" title="Permanent link">&para;</a></h2>
+<p>HTTPサーバーのエンドポイントを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">web</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:5556</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -22447,7 +22547,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-03</span>
   </span>
 
     
