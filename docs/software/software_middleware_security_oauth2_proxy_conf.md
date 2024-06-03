@@ -17,6 +17,8 @@ description: 設定ファイル＠OAuth2 Proxyの知見を記録しています�
 
 ### clientID
 
+IDプロバイダーで発行したクライアントIDを設定する。
+
 ```yaml
 providers:
   - clientID: "<クライアントID>"
@@ -28,6 +30,8 @@ providers:
 
 ### clientSecret
 
+IDプロバイダーで発行したクライアントシークレットを設定する。
+
 ```yaml
 providers:
   - clientSecret: "<クライアントシークレット>"
@@ -37,14 +41,17 @@ providers:
 
 <br>
 
-### oidc_issuer_url
+### oidcConfig
+
+#### ▼ issuerURL
 
 OIDCのIDプロバイダーの認可エンドポイントを設定する。
 
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
 providers:
-  - issuerURL: "https://<Keycloakのドメイン>/auth/realms/<realm名>"
+  - oidcConfig:
+      issuerURL: "https://<Keycloakのドメイン>/auth/realms/<realm名>"
 ```
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
@@ -56,6 +63,22 @@ providers:
 ```
 
 > - https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90
+
+#### ▼ emailClaim
+
+記入中...
+
+#### ▼ groupsClaim
+
+記入中...
+
+#### ▼ insecureSkipNonce
+
+記入中...
+
+#### ▼ userIDClaim
+
+記入中...
 
 <br>
 
@@ -95,7 +118,13 @@ providers:
 
 <br>
 
-## 02. server
+## 02. injectRequestHeaders
+
+記入中...
+
+<br>
+
+## 03. server
 
 ### BindAddress
 
@@ -178,18 +207,22 @@ http {
 
 <br>
 
-## 06. upstreams
+## 06. upstreamConfig
+
+### upstreams
+
+#### ▼ uri
 
 OAuth2 ProxyのアップストリームのWebサーバーのURLを設定する。
 
 注意点として、IDプロバイダーのURLではない。
 
 ```yaml
-upstreams:
-  - uri: "http://127.0.0.1/"
+upstreamConfig:
+  upstreams:
+    - uri: "http://127.0.0.1/"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
-> - https://github.com/oauth2-proxy/oauth2-proxy/blob/master/contrib/local-environment/oauth2-proxy-keycloak.cfg
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#upstream
 
 <br>
