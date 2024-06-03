@@ -223,12 +223,7 @@ cookie: sessionid=<セッションID>
 
 Chromeでは、LocalStorageあるいはSessionStorageに保管される。
 
-LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
-
-これらの場所の確認方法については、以下のリンクを参考にせよ
-
-> - https://developer.chrome.com/docs/devtools/storage/localstorage/
-> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+> - https://zenn.dev/aoisensi/scraps/a869e8095581ae
 > - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
 > - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
 
@@ -250,6 +245,7 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。
 
+> - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
 
@@ -263,6 +259,9 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 ブラウザを閉じても、ブラウザはLocalStorageのトークンを破棄せず、認証の成功状態を維持できる。
 
+LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
+
+> - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
 
