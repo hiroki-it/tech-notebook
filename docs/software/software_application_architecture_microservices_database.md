@@ -613,7 +613,7 @@ func main() {
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
 
-各マイクロサービスをイベント駆動方式で実装する必要がある。
+各マイクロサービスのイベントストーミングモデリングで実装する必要がある。
 
 ![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
 
