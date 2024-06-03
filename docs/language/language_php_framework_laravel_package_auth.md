@@ -977,6 +977,8 @@ $ php artisan passport:client --personal
 
 : 作成したユーザーに、クライアントIDを付与する。
 
+    IDプロバイダーでクライアントIDを事前に発行しておく。
+
 ```php
 /**
  * 全認証/認可の登録
@@ -989,7 +991,7 @@ public function boot()
 
     Passport::routes();
 
-    Passport::personalAccessClientId("client-id");
+    Passport::personalAccessClientId("<クライアントID>");
 }
 ```
 
@@ -1003,11 +1005,13 @@ public function boot()
 $user = User::find(1);
 
 // スコープ無しのトークンを作成する
-$token = $user->createToken("Token Name")->accessToken;
+$token = $user->createToken("<任意のトークン文字列>")->accessToken;
 
 // スコープ付きのトークンを作成する
-$token = $user->createToken("My Token", ["place-orders"])->accessToken;
+$token = $user->createToken("<任意のトークン文字列>", ["place-orders"])->accessToken;
 ```
+
+> - https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens
 
 <br>
 
