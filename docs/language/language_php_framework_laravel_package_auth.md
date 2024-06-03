@@ -937,7 +937,7 @@ class CreateUsersTable extends Migration
 
             $table->bigIncrements("user_id")->comment("ユーザーID");
             $table->string("name")->comment("ユーザー名");
-            $table->string("api_token")->unique()->comment("APIトークン");
+            $table->string("api_token")->unique()->comment("APIキー");
 
             // MigrationMacroServiceProviderのメソッドを使用する。
             $table->systemColumns();
@@ -1037,7 +1037,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-### APIトークン認証
+### APIキー認証
 
 フロントエンド (外部のアプリケーションを含む) は任意とし、APIのみを実装する場合、使用が適している。
 

@@ -43,7 +43,10 @@ description: 認証＠認証/認可の知見を記録しています。
 
 事前にAPIキーとなる文字列を配布し、認証フェーズは行わずに認可フェーズのみでユーザーを照合する認証スキームのこと。
 
+信頼されたクライアントに発行することが前提のため、トークンよりも有効期限が長い。
+
 > - https://architecting.hateblo.jp/entry/2020/03/27/033758
+> - https://www.gomomento.com/blog/api-keys-vs-tokens-whats-the-difference
 
 #### ▼ 照合情報の送信方法
 
