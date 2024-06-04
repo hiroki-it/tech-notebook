@@ -118,9 +118,9 @@ READ処理を実行するオブジェクトのこと。
 
 <br>
 
-## 02. CQRSとイベントストーミング式モデリング
+## 02. CQRSとイベントソーシング式モデリング
 
-イベントストーミング式モデリングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
+イベントソーシング式モデリングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
 
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/

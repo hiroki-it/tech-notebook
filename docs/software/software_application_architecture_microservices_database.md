@@ -198,7 +198,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 オーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。
 
-ステートマシンとしてモデリングすることになる。
+Sagaサービスのドメインモデリングにステートソーシング方式を採用する必要がある。
 
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 
@@ -605,6 +605,8 @@ func main() {
 
 コレオグラフィのOSS (例：Debezium、Maxwell、など) を使用する。
 
+Sagaサービスのドメインモデリングにイベントソーシング方式を採用する必要がある。
+
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 
 <br>
@@ -612,8 +614,6 @@ func main() {
 ### イベントのパブリッシュとサブスクライブの方式
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
-
-各マイクロサービスのイベントストーミングモデリングで実装する必要がある。
 
 ![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
 
@@ -665,9 +665,9 @@ Cancelフェーズでは、以前のフェーズで問題が合った場合に�
 
 ## 06. オブジェクトモデリング方式
 
-### イベントソーシング
+### イベントソーシング方式
 
-#### ▼ イベントソーシングとは
+#### ▼ イベントソーシング方式とは
 
 ビジネスの出来事をモデリングし、データとして永続化する。
 
@@ -680,9 +680,9 @@ CQRSと相性が良い。
 
 <br>
 
-### ステートソーシング
+### ステートソーシング方式
 
-#### ▼ ステートソーシングとは
+#### ▼ ステートソーシング方式とは
 
 ビジネスの現在の状態をモデリングし、データとして永続化する。
 
