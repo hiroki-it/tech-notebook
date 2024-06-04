@@ -22783,7 +22783,7 @@
 <h4 id="_4">▼ リクエストリプライ方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="service_request_reply" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_reply.png" /></p>
 <p>マイクロサービス間で相互通信を実行する。</p>
-<p>ドメインモデリングは、従来の方式になる。</p>
+<p>ドメインモデリングは、ステートソーシング方式になる。</p>
 <p>送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を実行することになる。</p>
 <p>また、マイクロサービス間で直接的にリクエストを送受信することになる。</p>
 <p>使用することのできる通信プロトコルは以下の通りである。</p>
@@ -22836,7 +22836,7 @@
 <h4 id="_8">▼ イベント駆動方式とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><img alt="service_event_driven" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png" /></p>
 <p>マイクロサービスからマイクロサービスに一方通行で通信する。</p>
-<p>ドメインモデリングは、イベントストーミング方式になる。</p>
+<p>ドメインモデリングは、イベントソーシング方式になる。</p>
 <p>送信側と受信側で通信処理が独立して実行されるため、メッセージキューやメッセージブローカーを経由した非同期通信を実行することになる。</p>
 <blockquote>
 <ul>
