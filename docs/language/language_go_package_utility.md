@@ -1328,7 +1328,7 @@ func main() {
 		ctx,
 		":7777",
 		// クライアント側のミドルウェア処理としてUnaryClientInterceptorを挿入する
-		grpc.WithUnaryInterceptor(
+		grpc.WithChainUnaryInterceptor(
 			otelgrpc.UnaryClientInterceptor(),
 		),
 	)

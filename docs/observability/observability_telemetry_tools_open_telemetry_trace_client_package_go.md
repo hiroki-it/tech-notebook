@@ -1455,8 +1455,8 @@ func main() {
 		ctx,
         ":7777",
 		// クライアントのInterceptor
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+		grpc.WithChainUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		grpc.WithChainStreamInterceptor(otelgrpc.StreamClientInterceptor()),
     )
 
 	defer conn.Close()

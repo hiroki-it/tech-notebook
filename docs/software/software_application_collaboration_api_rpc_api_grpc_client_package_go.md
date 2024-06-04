@@ -223,7 +223,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
-		grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
+		grpc.WithChainUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
 	)
 
 	...
@@ -248,7 +248,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		grpc.WithChainUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
 	...
@@ -283,7 +283,7 @@ type UnaryClientInterceptor func(
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
 
-これをgRPCサーバーとのコネクション作成時に、`WithUnaryInterceptor`関数に渡す。
+これをgRPCサーバーとのコネクション作成時に、`WithChainUnaryInterceptor`関数に渡す。
 
 ```go
 package main
@@ -304,7 +304,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		grpc.WithChainUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
 	defer conn.Close()
@@ -416,7 +416,7 @@ type StreamClientInterceptor func(
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
 
-これをgRPCサーバーとのコネクション作成時に、`WithStreamInterceptor`関数に渡す。
+これをgRPCサーバーとのコネクション作成時に、`WithChainStreamInterceptor`関数に渡す。
 
 ```go
 package main
@@ -437,7 +437,7 @@ func main() {
 	conn, err := grpc.DialContext(
 		ctx,
         ":7777",
-		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+		grpc.WithChainStreamInterceptor(otelgrpc.StreamClientInterceptor()),
     )
 
 	defer conn.Close()

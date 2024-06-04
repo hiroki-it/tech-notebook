@@ -477,8 +477,8 @@ func main() {
 		":9000",
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
-		grpc.WithUnaryInterceptor(grpctrace.UnaryClientInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
-		grpc.WithStreamInterceptor(grpctrace.UnaryStreamInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
+		grpc.WithChainUnaryInterceptor(grpctrace.UnaryClientInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
+		grpc.WithChainStreamInterceptor(grpctrace.UnaryStreamInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
 	)
 
 	if err != nil {

@@ -17,7 +17,9 @@ description: Argo Workflows＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-記入中...
+ワークフローエンジンである。
+
+workflow-controller、DB、から構成される。
 
 <br>
 

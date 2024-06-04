@@ -15,7 +15,7 @@ description: Step Functions＠AWSリソースの知見を記録しています�
 
 ## 01. Step Functionsとは
 
-AWSサービスを組み合わせて、イベント駆動型アプリケーションを作成できる。
+AWSサービスを組み合わせて、ワークフローエンジンを作成できる。
 
 <br>
 
