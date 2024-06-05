@@ -40,13 +40,28 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 ステータスコードは`504`である。
 
-送信元Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。
+送信元 (アップストリーム) への通信エラーである。
 
-アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
+送信元Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、宛先にリクエストを送信できなかったことを表している。
+
+アウトバウンド通信またはインバウンド通信の違いで、いずれが原因かが異なる。
+
+#### ▼ アウトバウンド通信の場合
+
+アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムである。
+
+送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
 
 ![envoy_upstream-request-timeout_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
 
-インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスであり、送信元Envoyからマイクロサービスへのリクエストがタイムアウトになっている。
+> - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
+
+#### ▼ インバウンド通信の場合
+
+インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスである。
+
+送信元Envoyからマイクロサービスへのリクエストがタイムアウトになっている。
 
 ![envoy_upstream-request-timeout_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
@@ -72,13 +87,25 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 ステータスコードは`504`である。
 
-送信元Envoyから宛先にはリクエストを送信できている。
+送信元Envoyから宛先 (アップストリーム) への通信エラーである。
 
 しかし、宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。
 
-アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、サーバー側Envoyや外部システムからのレスポンスがタイムアウトになっている。
+アウトバウンド通信またはインバウンド通信の違いで、いずれが原因かが異なる。
 
-インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスであり、マイクロサービスからのレスポンスがタイムアウトになっている。
+#### ▼ アウトバウンド通信の場合
+
+アウトバウンド通信の場合、送信元Envoyの宛先は他のEnvoyや外部システムがである。
+
+他のEnvoyや外部システムからのレスポンスがタイムアウトになっている。
+
+> - https://github.com/envoyproxy/envoy/issues/13068
+
+#### ▼ インバウンド通信の場合
+
+インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスである。
+
+マイクロサービスからのレスポンスがタイムアウトになっている。
 
 > - https://github.com/envoyproxy/envoy/issues/13068
 
@@ -86,11 +113,25 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 以下が原因である可能性がある。
 
-- 宛先Envoyがハードウェアリソース不足や高負荷状態にあり、処理し切れなかった
+- 宛先Envoy (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった
 - タイムアウト時間が短すぎる
 - ネットワークに問題がある。
 - 処理に時間がかかりすぎている。
 
 これらを解決する。
+
+<br>
+
+### `downstream_remote_disconnect`を解決する
+
+#### ▼ `downstream_remote_disconnect`とは
+
+ステータスコードは`504`である。
+
+送信元Envoy (ダウンストリーム) から宛先への通信エラーである。
+
+#### ▼ アウトバウンド通信の場合
+
+#### ▼ インバウンド通信の場合
 
 <br>
