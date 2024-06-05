@@ -665,64 +665,7 @@ Cancelフェーズでは、以前のフェーズで問題が合った場合に�
 
 <br>
 
-## 06. オブジェクトモデリング方式
-
-### イベントソーシング方式
-
-#### ▼ イベントソーシング方式とは
-
-ビジネスの出来事をモデリングし、データとして永続化する。
-
-現在の状態を取得する場合は、初期のデータに全ての出来事を適用する。
-
-CQRSと相性が良い。
-
-> - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
-> - https://martinfowler.com/articles/201701-event-driven.html
-
-#### ▼ モデリングフレームワーク
-
-- イベントストーミング
-
-#### ▼ テーブル構造
-
-特定のドメインモデルの変更履歴を全てDBに永続化していく。
-
-| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                  |
-| ---- | ------------- | ------------------- | ----------------- | --------------------------------------------- |
-| 1    | OrderCreated  | Order               | 1                 | OrderCreatedオブジェクトをJSONに変換したやつ  |
-| 2    | OrderUpdated  | Order               | 1                 | OrderUpdatedオブジェクトをJSONに変換したやつ  |
-| 3    | OrderCreated  | Order               | 2                 | OrderCreatedオブジェクトをJSONに変換したやつ  |
-| 4    | OrderCanceled | Order               | 1                 | OrderCanceledオブジェクトをJSONに変換したやつ |
-| 5    | OrderCreated  | Order               | 3                 | OrderCreatedオブジェクトをJSONに変換したやつ  |
-
-`event_entity_id`カラムを使えば、特定のドメインモデル (`event_entity`カラム) の履歴を追跡できる。
-
-リクエストリプライのためのドメインモデリングはドメインモデルの最新の状態に着目する。
-
-そのため、CRUDを実行すると、DBにはドメインモデルの最新の状態しか残らない。
-
-一方で、イベント駆動のためのドメインモデリングだあると、ドメインモデルの履歴がちゃんと残る。
-
-そのため、Gitの感覚で参照/更新/復元できる
-
-> - https://youtu.be/Jtcp9ry8ZcE?t=1066
-
-<br>
-
-### ステートソーシング方式
-
-#### ▼ ステートソーシング方式とは
-
-ビジネスの現在の状態をモデリングし、データとして永続化する。
-
-過去の状態は上書きされる。
-
-> - http://masuda220.jugem.jp/?eid=435
-
-<br>
-
-## 07. クエリパターン
+## 06. クエリパターン
 
 ### API Composition
 
