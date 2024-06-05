@@ -158,7 +158,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 一連のローカルトランザクションの実行をまとめて制御する責務を持ったオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。
 
-各マイクロサービス間の通信方式をリクエストリプライ方式にする必要がある。
+各マイクロサービス間の通信方式は、リクエストリプライ方式またはイベント駆動方式のどちらでもよい。
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
@@ -580,7 +580,7 @@ func main() {
 
 マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。
 
-各マイクロサービス間の通信方式をイベント駆動方式にする必要がある。
+各マイクロサービス間の通信方式は、イベント駆動方式にする必要がある。
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 
