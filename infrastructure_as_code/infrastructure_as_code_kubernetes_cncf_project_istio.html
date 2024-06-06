@@ -24625,8 +24625,8 @@
 <h4 id="istiod-discovery">▼ Istiodコントロールプレーン (<code>discovery</code>コンテナ) をルート認証局として使用する場合<a class="headerlink" href="#istiod-discovery" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、<code>discovery</code>コンテナがルート認証局として働く。</p>
 <p><code>discovery</code>コンテナは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成し、ルート認証局としてこれを証明する。</p>
-<p>秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。</p>
-<p><code>istio-ca-root-cert</code>というConfigMapを<code>istio-proxy</code>コンテナにマウントし、SSL証明書に紐づける。</p>
+<p>この秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。</p>
+<p>秘密鍵を持つ<code>istio-ca-root-cert</code> (ConfigMap) を<code>istio-proxy</code>コンテナにマウントし、秘密鍵とペアになるSSL証明書に紐づける。</p>
 <p>KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。</p>
 <blockquote>
 <ul>

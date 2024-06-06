@@ -23568,7 +23568,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_23">▼ 作成手順<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドで、秘密鍵、証明書署名要求、SSL証明書、を作成できる。</p>
+<p>以下のコマンドで、秘密鍵 (後にSSL証明書とペアになる) 、証明書署名要求、SSL証明書、を作成できる。</p>
 <p>この時の認証局は『自分』である。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -23617,7 +23617,7 @@ e<span class="w"> </span>is<span class="w"> </span><span class="m">65537</span><
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>秘密鍵から、証明書署名要求 (<code>.csr</code>ファイル) を作成する。</p>
+<p>秘密鍵 (<code>.key</code>ファイル) から、証明書署名要求 (<code>.csr</code>ファイル) を作成する。</p>
 <p>対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。</p>
 </dd>
 </dl>
@@ -23649,7 +23649,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>秘密鍵 (<code>.key</code>ファイル) 、SSL証明書 (<code>.crt</code>ファイル) 、を該当の箇所に設定する。</p>
+<p>SSL証明書 (<code>.crt</code>ファイル) 、SSL証明書とペアになる秘密鍵 (<code>.key</code>ファイル) 、を該当の箇所に設定する。</p>
 <p>例えば、Nginxの設定ファイルなら、以下の通りとなる。</p>
 </dd>
 </dl>

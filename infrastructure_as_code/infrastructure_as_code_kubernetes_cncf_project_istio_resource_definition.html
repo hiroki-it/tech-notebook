@@ -26326,7 +26326,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 <h4 id="tlscacertificates">▼ tls.caCertificates<a class="headerlink" href="#tlscacertificates" title="Permanent link">&para;</a></h4>
-<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書のペアとなるCA証明書が必要である。</p>
+<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書のペアになるCA証明書が必要である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -26415,7 +26415,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="tlsservercertificate">▼ tls.serverCertificate<a class="headerlink" href="#tlsservercertificate" title="Permanent link">&para;</a></h4>
 <p>SSL証明書のファイルを設定する。</p>
-<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書のペアとなるSSL証明書が必要である。</p>
+<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書のペアになるSSL証明書が必要である。</p>
 <p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
