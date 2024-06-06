@@ -23,7 +23,7 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 
 ### istio-ca-root-certとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたルート証明書を設定する。
+Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書を設定する。
 
 <br>
 
@@ -31,7 +31,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) による中間�
 
 #### ▼ root-cert.pemとは
 
-ルート証明書を設定する。
+CA証明書を設定する。
 
 ```yaml
 kind: ConfigMap
@@ -120,7 +120,7 @@ data:
 
 #### ▼ caCertificatesとは
 
-ルート認証局のルート証明書や、中間認証局名を設定する。
+ルート認証局のCA証明書や、中間認証局名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -134,7 +134,7 @@ data:
       proxyMetadata:
         ISTIO_META_CERT_SIGNER: istio-system
     caCertificates:
-        # ルート認証局のルート証明書 
+        # ルート認証局のCA証明書 
       - pem: |
           Ci0tLS0tQk...
         # 中間認証局名

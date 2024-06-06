@@ -173,6 +173,19 @@ SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定�
 > - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 > - https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html
 
+#### ▼ SNI (SSL/TLSの拡張)
+
+受信側のサーバーに複数のSSL証明書を配置できるようになる。
+
+従来のSSL/TLSでは、受信側のサーバーに単一のSSL証明書しか配置できなかった。
+
+仮想ホストを使用してサーバーに複数のドメインを設定していても、SSL証明書は一つになってしまう。
+
+各ドメインを異なるユーザーが使用するようなシステム (例：レンタルサーバー) では、ユーザーのドメインごとにSSL/TLSを分離できない。
+
+> - https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html
+> - https://qiita.com/ikm82/items/d48298d21ab46d102a67#sni%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7
+
 #### ▼ `L5`〜`L7`のプロトコルの暗号化
 
 `L5`〜`L7`のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を暗号化する。

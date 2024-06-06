@@ -25,7 +25,7 @@ Istioの各種コンポーネントの機密な変数やファイルを管理す
 
 Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合に、中間CA証明書を設定する。
 
-ルート認証局から発行されたルート証明書は、istio-ca-root-cert (ConfigMap) に設定する。
+ルート認証局から発行されたCA証明書は、istio-ca-root-cert (ConfigMap) に設定する。
 
 ```yaml
 apiVersion: v1
