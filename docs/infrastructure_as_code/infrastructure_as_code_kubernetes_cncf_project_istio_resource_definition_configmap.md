@@ -31,7 +31,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) による中間�
 
 #### ▼ root-cert.pemとは
 
-CA証明書を設定する。
+CA証明書 (ルート証明書) を設定する。
 
 ```yaml
 kind: ConfigMap

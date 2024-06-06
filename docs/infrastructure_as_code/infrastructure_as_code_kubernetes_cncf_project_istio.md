@@ -447,27 +447,28 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 ### SSL証明書の自動更新
 
-#### ▼ Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合
+#### ▼ Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する場合
 
-デフォルトでは、`discovery`コンテナが中間認証局として働く。
+デフォルトでは、`discovery`コンテナがルート認証局として働く。
 
-ルート認証局を使用して、`discovery`コンテナの中間CA証明書を署名しておく必要がある。
+`discovery`コンテナは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成し、ルート認証局としてこれを証明する。
 
-`discovery`コンテナは、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
+秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。
+
+`istio-ca-root-cert`というConfigMapを`istio-proxy`コンテナにマウントし、SSL証明書に紐づける。
 
 KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
 
+> - https://istio.io/latest/docs/concepts/security/#pki
 > - https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes_istio.html
 > - https://jimmysong.io/en/blog/istio-certificates-management/#process-for-istios-built-in-ca-to-issue-a-certificate
+> - https://istio.io/latest/docs/concepts/security/#pki
 
-#### ▼ 外部の中間認証局を使用する場合
+#### ▼ 外部ツールをルート認証局として使用する場合
 
-Istiodコントロールプレーン (`discovery`コンテナ) を使用する代わりに、外部の中間認証局 (例：cert-manager、自前のcustom-controller) を使用する
+Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する代わりに、外部の認証局 (例：AWS CertManager、cert-manager、自前のcustom-controller、など) を使用する
 
-ルート認証局を使用して、外部中間認証局の中間CA証明書を署名しておく必要がある。
-
-外部中間認証局は、秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
+外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
 
 KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
 

@@ -388,7 +388,7 @@ EKSをSSOのIDプロバイダーとして使用することにより、IAMの認
 
 : SSOのIDプロバイダーのタイプは、OIDCとする。
 
-     『EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間CA認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
+     『EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのSSL証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`)』を使用して、OIDCプロバイダーを作成する。
 
 ```terraform
 data "tls_certificate" "this" {

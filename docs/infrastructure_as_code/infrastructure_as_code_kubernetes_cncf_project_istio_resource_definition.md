@@ -599,7 +599,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: DISABLE # HTTPプロトコル
+      mode: DISABLE # 非TLS
 ```
 
 ```yaml
@@ -611,16 +611,63 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: ISTIO_MUTUAL # 相互TLS認証
+      mode: SIMPLE # TLS
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: MUTUAL # 自己管理下の相互TLS認証
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL # Istio管理下の相互TLS認証
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
-#### ▼ tls.certificate系
+#### ▼ tls.clientCertificate
 
-相互TLSの場合に、使用するSSL証明書を設定する。
+自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
 
-設定しない場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てる。
+Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
+
+Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: MUTUAL
+      privateKey: /etc/certs/client_private_key.pem
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+
+#### ▼ tls.clientCertificate
+
+自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
+
+Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
 
 Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
 
@@ -635,7 +682,28 @@ spec:
     tls:
       mode: MUTUAL
       clientCertificate: /etc/certs/myclientcert.pem
-      privateKey: /etc/certs/client_private_key.pem
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+
+#### ▼ tls.clientCertificate
+
+自己管理下の相互TLS (`MUTUAL`) の場合に、使用するSSL証明書を設定する。
+
+Istio管理下の相互TLS (`ISTIO_MUTUAL`) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。
+
+Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: MUTUAL
       caCertificates: /etc/certs/rootcacerts.pem
 ```
 
@@ -1221,7 +1289,7 @@ metadata:
 spec:
   servers:
     - tls:
-        caCertificates: ca.crt
+        caCertificates: root-cert.pem
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
