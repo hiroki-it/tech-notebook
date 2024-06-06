@@ -29,6 +29,18 @@ description: コマンド@Gitの知見を記録しています。
 
 <br>
 
+### branch -M
+
+現在のブランチを新しい名前に変更する。
+
+```bash
+$ git branch -M main
+```
+
+> - https://qiita.com/obonno3/items/f44bb730facc29a3b7d5
+
+<br>
+
 ## clone
 
 ### 認証
