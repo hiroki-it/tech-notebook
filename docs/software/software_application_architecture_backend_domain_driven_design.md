@@ -596,11 +596,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 <br>
 
-### イベントソーシング
-
-#### ▼ イベントソーシングとは
-
-ドメインの行動の結果に着目したモデリング手法のこと。
+### イベントソーシング方式
 
 #### ▼ イベントソーシング方式とは
 
@@ -628,6 +624,7 @@ CQRSと相性が良い。
 | 3    | OrderCreated  | Order               | 2                 | OrderCreatedオブジェクトをJSONに変換したもの  |
 | 4    | OrderCanceled | Order               | 1                 | OrderCanceledオブジェクトをJSONに変換したもの |
 | 5    | OrderCreated  | Order               | 3                 | OrderCreatedオブジェクトをJSONに変換したもの  |
+| ...  | ...           | ...                 | ...               | ...                                           |
 
 `event_entity_id`カラムを使えば、特定のドメインモデル (`event_entity`カラム) の状態の履歴を追跡できる。
 
