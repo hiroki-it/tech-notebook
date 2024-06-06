@@ -445,32 +445,28 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 <br>
 
-### SSL証明書の自動更新
+### クライアント証明書 / SSL証明書発行
 
 #### ▼ Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する場合
 
 デフォルトでは、`discovery`コンテナがルート認証局として働く。
 
-`discovery`コンテナは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成し、ルート認証局としてこれを証明する。
+クライアント証明書 / SSL証明書を提供しつつ、これを定期的に自動更新する。
 
-この秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。
-
-秘密鍵を持つ`istio-ca-root-cert` (ConfigMap) を`istio-proxy`コンテナにマウントし、秘密鍵とペアになるSSL証明書に紐づける。
-
-KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
+1. Istiodは、`istio-ca-secret` (Secret) を使用して、ルート認証局 (CA認証局) であることをオレオレで証明する。
+2. Istiodは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、pilot-agentプロセスは秘密鍵と証明書署名要求を自動で作成してくれる。
+3. `istio-proxy`コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を`istio-proxy`コンテナに配布する。
+4. 秘密鍵を持つ`istio-ca-root-cert` (ConfigMap) を`istio-proxy`コンテナにマウントし、秘密鍵とペアになるクライアント証明書 / SSL証明書に紐づける。
+5. `istio-proxy`コンテナ間で相互TLS認証できるようになる。
 
 > - https://istio.io/latest/docs/concepts/security/#pki
-> - https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
-> - https://jimmysong.io/en/blog/istio-certificates-management/#process-for-istios-built-in-ca-to-issue-a-certificate
-> - https://istio.io/latest/docs/concepts/security/#pki
+> - https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario
 
 #### ▼ 外部ツールをルート認証局として使用する場合
 
-Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する代わりに、外部の認証局 (例：AWS CertManager、cert-manager、自前のcustom-controller、など) を使用する
+Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vault、など) に委譲できる。
 
-外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。
-
-KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
+外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。
 
 > - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
 > - https://istio.io/latest/docs/ops/integrations/certmanager/
