@@ -18863,11 +18863,11 @@
           <li class="md-nav__item">
   <a href="#ssl" class="md-nav__link">
     <span class="md-ellipsis">
-      SSL証明書の自動更新
+      クライアント証明書 / SSL証明書発行
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SSL証明書の自動更新">
+    <nav class="md-nav" aria-label="クライアント証明書 / SSL証明書発行">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23769,11 +23769,11 @@
           <li class="md-nav__item">
   <a href="#ssl" class="md-nav__link">
     <span class="md-ellipsis">
-      SSL証明書の自動更新
+      クライアント証明書 / SSL証明書発行
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SSL証明書の自動更新">
+    <nav class="md-nav" aria-label="クライアント証明書 / SSL証明書発行">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24621,25 +24621,26 @@
 <p>アウトバウンド時、<code>istio-proxy</code>コンテナは宛先にHTTPSリクエストを送信する。</p>
 <p>この時、実際はタイムアウトであっても、<code>TLS handshake timeout</code>というエラーなってしまう。</p>
 <p><br></p>
-<h3 id="ssl">SSL証明書の自動更新<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h3>
+<h3 id="ssl">クライアント証明書 / SSL証明書発行<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h3>
 <h4 id="istiod-discovery">▼ Istiodコントロールプレーン (<code>discovery</code>コンテナ) をルート認証局として使用する場合<a class="headerlink" href="#istiod-discovery" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、<code>discovery</code>コンテナがルート認証局として働く。</p>
-<p><code>discovery</code>コンテナは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成し、ルート認証局としてこれを証明する。</p>
-<p>この秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。</p>
-<p>秘密鍵を持つ<code>istio-ca-root-cert</code> (ConfigMap) を<code>istio-proxy</code>コンテナにマウントし、秘密鍵とペアになるSSL証明書に紐づける。</p>
-<p>KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。</p>
+<p>クライアント証明書 / SSL証明書を提供しつつ、これを定期的に自動更新する。</p>
+<ol>
+<li>Istiodは、<code>istio-ca-secret</code> (Secret) を使用して、ルート認証局 (CA認証局) であることをオレオレで証明する。</li>
+<li>Istiodは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、pilot-agentプロセスは秘密鍵と証明書署名要求を自動で作成してくれる。</li>
+<li><code>istio-proxy</code>コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を<code>istio-proxy</code>コンテナに配布する。</li>
+<li>秘密鍵を持つ<code>istio-ca-root-cert</code> (ConfigMap) を<code>istio-proxy</code>コンテナにマウントし、秘密鍵とペアになるクライアント証明書 / SSL証明書に紐づける。</li>
+<li><code>istio-proxy</code>コンテナ間で相互TLS認証できるようになる。</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#pki">https://istio.io/latest/docs/concepts/security/#pki</a></li>
-<li><a href="https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/">https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/</a></li>
-<li><a href="https://jimmysong.io/en/blog/istio-certificates-management/#process-for-istios-built-in-ca-to-issue-a-certificate">https://jimmysong.io/en/blog/istio-certificates-management/#process-for-istios-built-in-ca-to-issue-a-certificate</a></li>
-<li><a href="https://istio.io/latest/docs/concepts/security/#pki">https://istio.io/latest/docs/concepts/security/#pki</a></li>
+<li><a href="https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario">https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario</a></li>
 </ul>
 </blockquote>
 <h4 id="_28">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) をルート認証局として使用する代わりに、外部の認証局 (例：AWS CertManager、cert-manager、自前のcustom-controller、など) を使用する</p>
-<p>外部のルート認証局は、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成する。</p>
-<p>KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vault、など) に委譲できる。</p>
+<p>外部のルート認証局は、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/">https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/</a></li>
