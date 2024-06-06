@@ -10361,6 +10361,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#sni-ssltls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SNI (SSL/TLSの拡張)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#l5l7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ L5〜L7のプロトコルの暗号化
@@ -22973,6 +22982,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#sni-ssltls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SNI (SSL/TLSの拡張)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#l5l7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ L5〜L7のプロトコルの暗号化
@@ -23280,6 +23298,17 @@
 <li><a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html">https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html</a></li>
 </ul>
 </blockquote>
+<h4 id="sni-ssltls">▼ SNI (SSL/TLSの拡張)<a class="headerlink" href="#sni-ssltls" title="Permanent link">&para;</a></h4>
+<p>受信側のサーバーに複数のSSL証明書を配置できるようになる。</p>
+<p>従来のSSL/TLSでは、受信側のサーバーに単一のSSL証明書しか配置できなかった。</p>
+<p>仮想ホストを使用してサーバーに複数のドメインを設定していても、SSL証明書は一つになってしまう。</p>
+<p>各ドメインを異なるユーザーが使用するようなシステム (例：レンタルサーバー) では、ユーザーのドメインごとにSSL/TLSを分離できない。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html">https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html</a></li>
+<li><a href="https://qiita.com/ikm82/items/d48298d21ab46d102a67#sni%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7">https://qiita.com/ikm82/items/d48298d21ab46d102a67#sni%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7</a></li>
+</ul>
+</blockquote>
 <h4 id="l5l7">▼ <code>L5</code>〜<code>L7</code>のプロトコルの暗号化<a class="headerlink" href="#l5l7" title="Permanent link">&para;</a></h4>
 <p><code>L5</code>〜<code>L7</code>のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を暗号化する。</p>
 <p>『<code>S</code>』 (例：SMTPS) や『<code>over TLS/SSL</code>』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。</p>
@@ -23389,7 +23418,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
   </span>
 
     

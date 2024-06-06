@@ -23791,11 +23791,11 @@
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-certとは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたルート証明書を設定する。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) による中間認証局を使用する場合に、ルート認証局から発行されたCA証明書を設定する。</p>
 <p><br></p>
 <h3 id="root-certpem">root-cert.pem<a class="headerlink" href="#root-certpem" title="Permanent link">&para;</a></h3>
 <h4 id="root-certpem_1">▼ root-cert.pemとは<a class="headerlink" href="#root-certpem_1" title="Permanent link">&para;</a></h4>
-<p>ルート証明書を設定する。</p>
+<p>CA証明書を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -23867,7 +23867,7 @@
 <p><br></p>
 <h3 id="cacertificates">caCertificates<a class="headerlink" href="#cacertificates" title="Permanent link">&para;</a></h3>
 <h4 id="cacertificates_1">▼ caCertificatesとは<a class="headerlink" href="#cacertificates_1" title="Permanent link">&para;</a></h4>
-<p>ルート認証局のルート証明書や、中間認証局名を設定する。</p>
+<p>ルート認証局のCA証明書や、中間認証局名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -23879,7 +23879,7 @@
 <span class="w">      </span><span class="no">proxyMetadata:</span>
 <span class="w">        </span><span class="no">ISTIO_META_CERT_SIGNER: istio-system</span>
 <span class="w">    </span><span class="no">caCertificates:</span>
-<span class="w">        </span><span class="no"># ルート認証局のルート証明書 </span>
+<span class="w">        </span><span class="no"># ルート認証局のCA証明書 </span>
 <span class="w">      </span><span class="no">- pem: |</span>
 <span class="w">          </span><span class="no">Ci0tLS0tQk...</span>
 <span class="w">        </span><span class="no"># 中間認証局名</span>
@@ -24673,7 +24673,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
   </span>
 
     
