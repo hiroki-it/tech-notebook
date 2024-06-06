@@ -453,9 +453,9 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 `discovery`コンテナは、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求に基づいてSSL証明書を作成し、ルート認証局としてこれを証明する。
 
-秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。
+この秘密鍵と証明書署名要求は、明示的に設定しない限り、自動的に作成する。
 
-`istio-ca-root-cert`というConfigMapを`istio-proxy`コンテナにマウントし、SSL証明書に紐づける。
+秘密鍵を持つ`istio-ca-root-cert` (ConfigMap) を`istio-proxy`コンテナにマウントし、秘密鍵とペアになるSSL証明書に紐づける。
 
 KubernetesリソースにSSL証明書を提供しつつ、これを定期的に自動更新する。
 

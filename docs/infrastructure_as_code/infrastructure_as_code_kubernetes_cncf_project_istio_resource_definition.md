@@ -1276,7 +1276,7 @@ spec:
 
 #### ▼ tls.caCertificates
 
-`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアとなるCA証明書が必要である。
+`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアになるCA証明書が必要である。
 
 **＊実装例＊**
 
@@ -1382,7 +1382,7 @@ spec:
 
 SSL証明書のファイルを設定する。
 
-`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアとなるSSL証明書が必要である。
+`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書のペアになるSSL証明書が必要である。
 
 SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
 
