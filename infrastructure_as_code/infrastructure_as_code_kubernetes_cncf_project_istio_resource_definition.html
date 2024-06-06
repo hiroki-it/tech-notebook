@@ -18991,9 +18991,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tlscertificate" class="md-nav__link">
+  <a href="#tlsclientcertificate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tls.certificate系
+      ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsclientcertificate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsclientcertificate_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.clientCertificate
     </span>
   </a>
   
@@ -24191,9 +24209,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tlscertificate" class="md-nav__link">
+  <a href="#tlsclientcertificate" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ tls.certificate系
+      ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsclientcertificate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.clientCertificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsclientcertificate_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.clientCertificate
     </span>
   </a>
   
@@ -25702,7 +25738,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE</span><span class="w"> </span><span class="c1"># HTTPプロトコル</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE</span><span class="w"> </span><span class="c1"># 非TLS</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -25712,16 +25748,56 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_MUTUAL</span><span class="w"> </span><span class="c1"># 相互TLS認証</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIMPLE</span><span class="w"> </span><span class="c1"># TLS</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span><span class="w"> </span><span class="c1"># 自己管理下の相互TLS認証</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_MUTUAL</span><span class="w"> </span><span class="c1"># Istio管理下の相互TLS認証</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode</a></li>
 </ul>
 </blockquote>
-<h4 id="tlscertificate">▼ tls.certificate系<a class="headerlink" href="#tlscertificate" title="Permanent link">&para;</a></h4>
-<p>相互TLSの場合に、使用するSSL証明書を設定する。</p>
-<p>設定しない場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てる。</p>
+<h4 id="tlsclientcertificate">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate" title="Permanent link">&para;</a></h4>
+<p>自己管理下の相互TLS (<code>MUTUAL</code>) の場合に、使用するSSL証明書を設定する。</p>
+<p>Istio管理下の相互TLS (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
+<p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
+<span class="w">      </span><span class="nt">privateKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/client_private_key.pem</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
+</ul>
+</blockquote>
+<h4 id="tlsclientcertificate_1">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate_1" title="Permanent link">&para;</a></h4>
+<p>自己管理下の相互TLS (<code>MUTUAL</code>) の場合に、使用するSSL証明書を設定する。</p>
+<p>Istio管理下の相互TLS (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
 <p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -25733,7 +25809,25 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
 <span class="w">      </span><span class="nt">clientCertificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/myclientcert.pem</span>
-<span class="w">      </span><span class="nt">privateKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/client_private_key.pem</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
+</ul>
+</blockquote>
+<h4 id="tlsclientcertificate_2">▼ tls.clientCertificate<a class="headerlink" href="#tlsclientcertificate_2" title="Permanent link">&para;</a></h4>
+<p>自己管理下の相互TLS (<code>MUTUAL</code>) の場合に、使用するSSL証明書を設定する。</p>
+<p>Istio管理下の相互TLS (<code>ISTIO_MUTUAL</code>) の場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てるので、設定不要である。</p>
+<p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
 <span class="w">      </span><span class="nt">caCertificates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/rootcacerts.pem</span>
 </code></pre></div>
 <blockquote>
@@ -26242,7 +26336,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">caCertificates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
+<span class="w">        </span><span class="nt">caCertificates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root-cert.pem</span>
 </code></pre></div>
 <blockquote>
 <ul>
