@@ -1928,6 +1928,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#db_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      DB
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23388,6 +23397,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#db_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      DB
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23725,7 +23743,7 @@
 <h3 id="_11">実装パターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 自前で実装する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ステートマシンとしてモデリングすることになる。</p>
-<p>オーケストレーターは、現在の進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBや実行ログに都度記録する。</p>
+<p>オーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
 <p>オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
@@ -23757,7 +23775,7 @@
 <h4 id="_15">▼ ポイントツーポイントの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
 <p>メッセージブローカーを経由するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。</p>
-<p>現在の進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
+<p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
@@ -24093,6 +24111,83 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="db_5">DB<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h3>
+<p>Sagaサービスは、ローカルトランザクションの進捗度をDBに永続化する。</p>
+<p>SagaサービスごとにDBを分割すると良い。</p>
+<p>AWS StepFunctionsのステートも設計例として参考になる。</p>
+<table>
+<thead>
+<tr>
+<th><code>id</code></th>
+<th><code>order_saga_execution_id</code></th>
+<th><code>order_saga_current_step</code></th>
+<th><code>order_id</code></th>
+<th><code>order_saga_payload</code></th>
+<th><code>order_saga_status</code></th>
+<th><code>order_saga_state</code></th>
+<th><code>order_saga_version</code></th>
+<th><code>start_data</code></th>
+<th><code>end_data</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>9db5b6da-daba-4633-b3cf-9c79f2bcf6f5</code></td>
+<td>CreditApproval</td>
+<td>1</td>
+<td><code>"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"</code></td>
+<td>SUCCEEDED</td>
+<td><code>"{\"creditApproval\":\"SUCCEEDED\"}"</code></td>
+<td>楽観的ロックに使用するバージョン値 (例：最終更新日など)</td>
+<td>開始時刻</td>
+<td>終了時刻</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>b1f14b72-393d-432b-8ec2-782974a6ed60</code></td>
+<td>Payment</td>
+<td>1</td>
+<td><code>"{ \"order-id\": 1, \"customer-id\": 456, ... }"</code></td>
+<td>STARTED</td>
+<td><code>"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"</code></td>
+<td>〃</td>
+<td>〃</td>
+<td>〃</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>b38229c6-30df-4166-a725-8b2c578e5ed5</code></td>
+<td>CreditApproval</td>
+<td>2</td>
+<td><code>"{ \"order-id\": 2, \"customer-id\": 456, ... }"</code></td>
+<td>STARTED</td>
+<td><code>"{\"creditApproval\":\"STARTED\"}"</code></td>
+<td>〃</td>
+<td>〃</td>
+<td>〃</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/articles/saga-orchestration-outbox/">https://www.infoq.com/articles/saga-orchestration-outbox/</a></li>
+<li><a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html">https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_2">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
@@ -24198,7 +24293,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
   </span>
 
     

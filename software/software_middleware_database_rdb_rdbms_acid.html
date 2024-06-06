@@ -23976,9 +23976,9 @@
 <h3 id="_26">楽観的ロック<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="_27">▼ 楽観的ロックとは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>アプリケーションまたはDBの機能を使用して、テーブルをロックする。</p>
-<p>DBのレコードにはバージョンに関するカラム値 (最終更新日時など) が存在しているとする。</p>
+<p>DBのレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。</p>
 <p><code>UPDATE</code>処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。</p>
-<p>続けて更新する直前に、DBからバージョンの値を改めて取得する。</p>
+<p>ユーザーAが続けて更新する直前に、DBからバージョンの値を改めて取得する。</p>
 <p>保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、<code>UPDATE</code>処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
 <p>競合によるエラーを表す<code>409</code>ステータスをレスポンスとして返信すると良い。</p>
 <blockquote>
@@ -24087,7 +24087,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
   </span>
 
     
