@@ -24623,11 +24623,11 @@
 <p><br></p>
 <h3 id="ssl">クライアント証明書 / SSL証明書発行<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h3>
 <h4 id="istiod-discovery">▼ Istiodコントロールプレーン (<code>discovery</code>コンテナ) をルート認証局として使用する場合<a class="headerlink" href="#istiod-discovery" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、<code>discovery</code>コンテナがルート認証局として働く。</p>
+<p>デフォルトでは、Istiodコントロールプレーンがルート認証局として働く。</p>
 <p>クライアント証明書 / SSL証明書を提供しつつ、これを定期的に自動更新する。</p>
 <ol>
-<li>Istiodは、<code>istio-ca-secret</code> (Secret) を使用して、ルート認証局 (CA認証局) であることをオレオレで証明する。</li>
-<li>Istiodは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、pilot-agentプロセスは秘密鍵と証明書署名要求を自動で作成してくれる。</li>
+<li>Istiodコントロールプレーンは、<code>istio-ca-secret</code> (Secret) を使用して、ルート認証局であることをオレオレで証明する。</li>
+<li>Istiodコントロールプレーンは、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、クライアント証明書 / SSL証明書を発行する。特に設定しなければ、<code>istio-proxy</code>コンテナのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
 <li><code>istio-proxy</code>コンテナからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書 / SSL証明書を<code>istio-proxy</code>コンテナに配布する。</li>
 <li>秘密鍵を持つ<code>istio-ca-root-cert</code> (ConfigMap) を<code>istio-proxy</code>コンテナにマウントし、秘密鍵とペアになるクライアント証明書 / SSL証明書に紐づける。</li>
 <li><code>istio-proxy</code>コンテナ間で相互TLS認証できるようになる。</li>
