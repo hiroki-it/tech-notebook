@@ -164,7 +164,6 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
 > - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
-> - https://news.mynavi.jp/itsearch/article/devsoft/1598
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
 > - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
@@ -212,7 +211,17 @@ Sagaサービスのドメインモデリングにステートソーシング方�
 
 <br>
 
-### イベントのパブリッシュとサブスクライブの方式
+### 先行マイクロサービスとの通信パターン
+
+オーケストレーションベースのSagaパターンにて、Sagaサービスにリクエストを送信するマイクロサービスは、Sagaサービスの処理結果を知る必要がある。
+
+Sagaサービスは、処理の開始時に先行マイクロサービスにひとまずレスポンスを返信し、処理の終了時にこれを先行マイクロサービスにリクエスト (またはWeb Hook) を送信する。
+
+> - https://microservices.io/patterns/data/saga.html#resulting-context
+
+<br>
+
+### 後続マイクロサービスとの通信パターン
 
 #### ▼ ポイントツーポイントの場合
 
@@ -633,7 +642,7 @@ Sagaサービスのドメインモデリングにイベントソーシング方�
 
 <br>
 
-### イベントのパブリッシュとサブスクライブの方式
+### 後続マイクロサービスとの通信パターン
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
 
