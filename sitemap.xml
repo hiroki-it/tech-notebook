@@ -2491,6 +2491,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_security_vault.html</loc>
+         <lastmod>2024-06-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_service_mesh_envoy_command.html</loc>
          <lastmod>2024-06-07</lastmod>
          <changefreq>daily</changefreq>
