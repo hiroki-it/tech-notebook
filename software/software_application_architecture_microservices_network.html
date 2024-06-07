@@ -1688,11 +1688,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      ロードバランシング
+      リクエストリプライ方式の場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ロードバランシング">
+    <nav class="md-nav" aria-label="リクエストリプライ方式の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22725,11 +22725,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      ロードバランシング
+      リクエストリプライ方式の場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ロードバランシング">
+    <nav class="md-nav" aria-label="リクエストリプライ方式の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22897,10 +22897,16 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 障害対策<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_14">ロードバランシング<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_14">リクエストリプライ方式の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ サーキットブレイカー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>アップストリーム側マイクロサービスに障害が発生した時に、ダウンストリーム側マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。</p>
-<p>マイクロサービス間に配置され、他のマイクロサービスに連鎖的に起こる障害 (カスケード障害) を吸収する仕組みのこと。</p>
+<p>マイクロサービス間通信の方式がリクエストロプライ方式の場合の障害対策である。</p>
+<p>アップストリーム側マイクロサービスで問題が起こると、ダウンストリーム側マイクロサービスはタイムアウトになるまで処理を待機する。</p>
+<p>その間、ダウンストリーム側マイクロサービスは他の処理を実行できなくなってしまうため、これを防ぐ。</p>
+<ol>
+<li>アップストリーム側マイクロサービスに障害 (あるいは設定した閾値の超過) が発生する</li>
+<li>アップストリーム側マイクロサービスへのルーティングを停止し、エラーのステータス (<code>503</code>など) をダウンストリーム側マイクロサービスに返信する。</li>
+<li>障害が回復次第、ルーティングを再開する。</li>
+</ol>
 <p>blast-radiusを最小限にできる。</p>
 <p><img alt="circuit-breaker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png" /></p>
 <blockquote>
@@ -22929,7 +22935,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-07</span>
   </span>
 
     
