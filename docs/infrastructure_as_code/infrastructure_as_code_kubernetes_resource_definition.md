@@ -3488,7 +3488,7 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートリポジトリからコンテナイメージをプルするため、プライベートリポジトリの認証情報を持つSecretを設定する。
+プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの認証情報を持つSecretを設定する。
 
 別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
 
@@ -3502,9 +3502,9 @@ metadata:
 spec:
   containers:
     - name: app
-      image: private-app:1.0.0 # プライベートリポジトリ
+      image: private-app:1.0.0 # プライベートプライベートイメージリポジトリ
   imagePullSecrets:
-    - name: foo-repository-credentials-secret # プライベートリポジトリの認証情報を持つSecret
+    - name: foo-repository-credentials-secret # プライベートイメージリポジトリの認証情報を持つSecret
 ```
 
 > - https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
@@ -5704,9 +5704,9 @@ spec:
 
 #### ▼ imagePullSecretsとは
 
-プライベートリポジトリの認証情報を持つSecretを設定する。
+プライベートイメージリポジトリの認証情報を持つSecretを設定する。
 
-これにより、ServiceAccountが紐付けられたPodは、プライベートリポジトリの認証情報を使用できるようになる。
+これにより、ServiceAccountが紐付けられたPodは、プライベートイメージリポジトリの認証情報を使用できるようになる。
 
 ```yaml
 apiVersion: v1
