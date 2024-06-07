@@ -152,6 +152,16 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
+### デザインパターン
+
+#### ▼ Stateパターン
+
+状態をオブジェクト化する。
+
+> - https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719
+
+<br>
+
 ## 04-02. オーケストレーションベースのSagaパターン
 
 ### オーケストレーションベースのSagaパターンとは
