@@ -23,7 +23,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 振舞の視点
 
-システムシーケンス図、状態遷移図、などがある。
+システムシーケンス図、ステートマシン図、などがある。
 
 <br>
 
@@ -132,25 +132,25 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 <br>
 
-## 06. 状態遷移図
+## 06. ステートマシン図
 
-### 状態遷移図とは
+### ステートマシン図とは
 
 状態 (丸) と遷移 (矢印) の関係性を基に、ソフトウェアの『動的な振舞』を表す。
 
 矢印の横の説明は、遷移のきっかけとなる『イベント (入力) /アクション (出力) 』を表す。
 
-![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移図.jpg)
+![ステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチステートマシン図.jpg)
 
 <br>
 
-### 状態遷移表とは
+### ステートマシン表とは
 
-状態遷移図から作成した表。
+ステートマシン図から作成した表。
 
-状態遷移表を作成してみると、状態遷移図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
+ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
 
-![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチ状態遷移表.jpg)
+![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.jpg)
 
 **＊例題＊**
 
@@ -172,7 +172,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 : 現在の状態『d』から、次は数字なため、b行の『e』へ移動。
 
-![状態遷移表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/状態遷移表.png)
+![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.png)
 
 <br>
 
