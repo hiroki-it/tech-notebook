@@ -23833,7 +23833,7 @@
 <p><br></p>
 <h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
-<p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
+<p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
 <p>各マイクロサービス間の通信方式は、リクエストリプライ方式またはイベント駆動方式のどちらでもよい。</p>
 <p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
 <blockquote>
@@ -23847,12 +23847,12 @@
 <p><br></p>
 <h3 id="_12">実装パターン<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 自前で実装する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>ステートマシンとしてモデリングすることになる。</p>
-<p>オーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。</p>
+<p>ステートマシンとして、モデリングすることになる。</p>
+<p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
-<p>オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
-<p>オーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
+<p>Sagaオーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
+<p>Sagaオーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
+<p>Sagaオーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
 <p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
 <p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
 <blockquote>
@@ -23865,7 +23865,7 @@
 </ul>
 </blockquote>
 <h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
-<p>オーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。</p>
+<p>SagaオーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。</p>
 <p>Sagaサービスのドメインモデリングにステートソーシング方式を採用する必要がある。</p>
 <blockquote>
 <ul>
@@ -23873,8 +23873,8 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。</p>
-<p>ステートマシンとしてモデリングすることになる。</p>
+<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。</p>
+<p>ステートマシンとして、モデリングすることになる。</p>
 <p><br></p>
 <h3 id="_15">先行マイクロサービスとの通信パターン<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>オーケストレーションベースのSagaパターンにて、Sagaサービスにリクエストを送信するマイクロサービスは、Sagaサービスの処理結果を知る必要がある。</p>
@@ -23888,7 +23888,7 @@
 <h3 id="_16">後続マイクロサービスとの通信パターン<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ ポイントツーポイントの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
-<p>メッセージブローカーを経由するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。</p>
+<p>メッセージブローカーを経由するよりも、Sagaオーケストレーターと各マイクロサービスの結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。</p>
 <p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
 <blockquote>
 <ul>
@@ -23900,7 +23900,7 @@
 <p>メッセージキュー (例：AWS SQS、など) を経由して、マイクロサービス間で通信する。</p>
 <h4 id="_19">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
-<p>オーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
+<p>Sagaオーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
 <p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>
 <p><img alt="orchestration_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png" /></p>
 <blockquote>
@@ -23927,7 +23927,7 @@
 </ul>
 </blockquote>
 <h4 id="_23">▼ 例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>この例では、Sagaをステートマシンとして実装している。</p>
+<p>この例では、Sagaをステートマシンとして、実装している。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -24139,7 +24139,7 @@
 </ul>
 </blockquote>
 <h4 id="_25">▼ 例<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>この例では、Goのsliceでローカルトランザクション関数と補償トランザクション関数を管理している。</p>
+<p>この例では、Goのsliceでローカルトランザクションと補償トランザクションを管理している。</p>
 <p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -24148,24 +24148,24 @@
 <span class="w">    </span><span class="s">&quot;errors&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// Define a type to represent a local transaction</span>
+<span class="c1">// ローカルトランザクションを表す関数型</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
 
-<span class="c1">// Define a type to represent a compensating action</span>
+<span class="c1">// 補償トランザクションを表す関数型</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
 
-<span class="c1">// Define a type to represent a saga step</span>
+<span class="c1">// Sagaオーケストレーターの各ステップを表す構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Transaction</span><span class="w"> </span><span class="nx">LocalTransaction</span>
-<span class="w">    </span><span class="nx">Compensate</span><span class="w">  </span><span class="nx">CompensatingAction</span>
+<span class="w">    </span><span class="nx">Transaction</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="c1">// ローカルトランザクション</span>
+<span class="w">    </span><span class="nx">Compensate</span><span class="w">  </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="c1">// 補償トランザクション</span>
 <span class="p">}</span>
 
-<span class="c1">// Define a type to represent a saga</span>
+<span class="c1">// Sagaを表す構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Saga</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span>
+<span class="w">    </span><span class="nx">Steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="w"> </span><span class="c1">// 複数のSagaStepから成る</span>
 <span class="p">}</span>
 
-<span class="c1">// Define a function to execute a saga</span>
+<span class="c1">// ローカルトランザクションと補償トランザクションを実行する関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Saga</span><span class="p">)</span><span class="w"> </span><span class="nx">Execute</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="w"> </span><span class="p">{</span>
@@ -24174,47 +24174,50 @@
 <span class="w">            </span><span class="c1">// 失敗した場合は、補償トランザクションを逆順で実行する</span>
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Compensate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// 補償トランザクションが失敗した場合はエラーメッセージを返す</span>
 <span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;failed to compensate for step %d: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// 最初のエラーを返す</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 全てのトランザクションが成功した場合、nilを返す</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// Define a function to perform a local transaction</span>
+<span class="c1">// ローカルトランザクション</span>
+<span class="c1">// 資金移動</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Perform the transfer of funds</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="c1">// Define a function to perform a compensating action</span>
+<span class="c1">// 補償トランザクション</span>
+<span class="c1">// 資金移動の取り消し</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">reverseTransfer</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Reverse the transfer of funds</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Define a saga consisting of two local transactions and their compensating actions</span>
+<span class="w">    </span><span class="c1">// Sagaオーケストレーター</span>
 <span class="w">    </span><span class="nx">saga</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Saga</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">Steps</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">{</span>
 <span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1つ目のローカルトランザクション</span>
+<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span><span class="w"> </span><span class="c1">// 1つ目の補償トランザクション</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nx">SagaStep</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">Transaction</span><span class="p">:</span><span class="w"> </span><span class="nx">transferFunds</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2つ目のローカルトランザクション</span>
+<span class="w">                </span><span class="nx">Compensate</span><span class="p">:</span><span class="w">  </span><span class="nx">reverseTransfer</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2つ目の補償トランザクション</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Execute the saga</span>
+<span class="w">    </span><span class="c1">// Sagaの実行</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">Execute</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="c1">// エラーが発生した場合</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga succeeded&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga succeeded&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 正常に完了した場合</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -24226,7 +24229,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="_26">例<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
-<p>この例では、Typescriptの配列でローカルトランザクション関数と補償トランザクション関数を管理している。</p>
+<p>この例では、Typescriptの配列でローカルトランザクションと補償トランザクションを管理している。</p>
 <p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
@@ -24239,48 +24242,48 @@
 
 <span class="c1">// APIErrorかどうかをチェックする関数</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">isAPIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 引数がオブジェクトでない場合はfalseを返す</span>
+<span class="w">  </span><span class="c1">// 引数がオブジェクトでない場合は、トランザクション不可とする</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// ステータスコードが200, 400, 500のいずれかでない場合はfalseを返す</span>
+<span class="w">  </span><span class="c1">// ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="p">)))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// メッセージが文字列でない場合はfalseを返す</span>
+<span class="w">  </span><span class="c1">// メッセージが文字列でない場合は、トランザクション不可とする</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// 全ての条件を満たす場合はtrueを返す</span>
+<span class="w">  </span><span class="c1">// 全ての条件を満たす場合はトランザクション可とする</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// Durable Functionのオーケストレーター</span>
+<span class="c1">// Sagaオーケストレーター</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">saga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">df</span><span class="p">.</span><span class="nx">orchestrator</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 補償トランザクション関数を格納する配列</span>
+<span class="w">  </span><span class="c1">// 補償トランザクションを格納する配列</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">compensatingTransactions</span><span class="o">:</span><span class="w"> </span><span class="kt">Task</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// オーケストレーターの入力を取得</span>
+<span class="w">    </span><span class="c1">// Sagaオーケストレーターの入力を取得</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">getInput</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// doActivityAを呼び出し、結果をaに格納</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityAを追加する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityAを追加</span>
+<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityAを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// doActivityBを呼び出し、結果をbに格納</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityBを追加する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityBを追加</span>
+<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityBを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// doActivityCを呼び出し、結果をcに格納</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityCを追加する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityCを追加</span>
+<span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityCを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
@@ -24291,13 +24294,13 @@
 <span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 例外発生時に全ての補償トランザクション関数を実行</span>
+<span class="w">    </span><span class="c1">// 例外発生時に全ての補償トランザクションを実行する</span>
 <span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">Task</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">compensatingTransactions</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 例外がAPIError型の場合、そのまま返す</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isAPIError</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">e</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// その他の例外は500エラーとして返す</span>
+<span class="w">    </span><span class="c1">// その他の例外は500エラーとして、返す</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="ne">Error</span><span class="p">).</span><span class="nx">message</span><span class="p">,</span>
@@ -24314,7 +24317,7 @@
 <h3 id="db_5">DB<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h3>
 <p>Sagaサービスは、ローカルトランザクションの進捗度をDBに永続化する。</p>
 <p>SagaサービスごとにDBを分割すると良い。</p>
-<p>AWS StepFunctionsのステートも設計例として参考になる。</p>
+<p>AWS StepFunctionsのステートも設計例として、参考になる。</p>
 <table>
 <thead>
 <tr>
