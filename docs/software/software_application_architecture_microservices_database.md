@@ -156,8 +156,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 #### ▼ Stateパターン
 
-状態をオブジェクト化する。
+SagaサービスをStateパターンで実装する。
 
+> - https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713
 > - https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719
 
 <br>
@@ -452,7 +453,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 	options := workflow.ActivityOptions{
 		StartToCloseTimeout: time.Minute,
-		RetryPolicy: retryPolicy,
+		RetryPolicy:         retryPolicy,
 	}
 
 	ctx = workflow.WithActivityOptions(ctx, options)
@@ -513,8 +514,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 package main
 
 import (
-    "fmt"
-    "errors"
+	"fmt"
+	"errors"
 )
 
 // Define a type to represent a local transaction
@@ -525,71 +526,160 @@ type CompensatingAction func() error
 
 // Define a type to represent a saga step
 type SagaStep struct {
-    Transaction LocalTransaction
-    Compensate  CompensatingAction
+	Transaction LocalTransaction
+	Compensate  CompensatingAction
 }
 
 // Define a type to represent a saga
 type Saga struct {
-    Steps []SagaStep
+	Steps []SagaStep
 }
 
 // Define a function to execute a saga
 func (s *Saga) Execute() error {
 
-    for _, step := range s.Steps {
+	for _, step := range s.Steps {
 		// ローカルトランザクションを順番に実行する
-        if err := step.Transaction(); err != nil {
-            // 失敗した場合は、補償トランザクションを逆順で実行する
-            for i := len(s.Steps) - 1; i >= 0; i-- {
-                if err := s.Steps[i].Compensate(); err != nil {
-                    return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
-                }
-            }
-            return err
-        }
-    }
-    return nil
+		if err := step.Transaction(); err != nil {
+			// 失敗した場合は、補償トランザクションを逆順で実行する
+			for i := len(s.Steps) - 1; i >= 0; i-- {
+				if err := s.Steps[i].Compensate(); err != nil {
+					return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
+				}
+			}
+			return err
+		}
+	}
+	return nil
 }
 
 // Define a function to perform a local transaction
 func transferFunds() error {
-    // Perform the transfer of funds
-    return nil
+	// Perform the transfer of funds
+	return nil
 }
 
 // Define a function to perform a compensating action
 func reverseTransfer() error {
-    // Reverse the transfer of funds
-    return nil
+	// Reverse the transfer of funds
+	return nil
 }
 
 func main() {
-    // Define a saga consisting of two local transactions and their compensating actions
-    saga := Saga{
-        Steps: []SagaStep{
-            SagaStep{
-                Transaction: transferFunds,
-                Compensate:  reverseTransfer,
-            },
-            SagaStep{
-                Transaction: transferFunds,
-                Compensate:  reverseTransfer,
-            },
-        },
-    }
+	// Define a saga consisting of two local transactions and their compensating actions
+	saga := Saga{
+		Steps: []SagaStep{
+			SagaStep{
+				Transaction: transferFunds,
+				Compensate:  reverseTransfer,
+			},
+			SagaStep{
+				Transaction: transferFunds,
+				Compensate:  reverseTransfer,
+			},
+		},
+	}
 
-    // Execute the saga
-    if err := saga.Execute(); err != nil {
-        fmt.Println("saga failed:", err)
-    } else {
-        fmt.Println("saga succeeded")
-    }
+	// Execute the saga
+	if err := saga.Execute(); err != nil {
+		fmt.Println("saga failed:", err)
+	} else {
+		fmt.Println("saga succeeded")
+	}
 }
 ```
 
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
 > - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
+
+<br>
+
+## 例
+
+この例では、Typescriptの配列でローカルトランザクション関数と補償トランザクション関数を管理している。
+
+スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
+
+```typescript
+import df from "durable-functions";
+import {Task} from "durable-functions/lib/src/classes";
+
+// APIError型の定義。ステータスコードとボディを持つ
+type APIError = {
+  status: 200 | 400 | 500;
+  body: object | string;
+};
+
+// APIErrorかどうかをチェックする関数
+const isAPIError = (arg: any): arg is APIError => {
+  // 引数がオブジェクトでない場合はfalseを返す
+  if (typeof arg !== "object") return false;
+
+  // ステータスコードが200, 400, 500のいずれかでない場合はfalseを返す
+  if (!(arg.status && [200, 400, 500].includes(arg.status))) return false;
+
+  // メッセージが文字列でない場合はfalseを返す
+  if (typeof arg.message !== "string") return false;
+
+  // 全ての条件を満たす場合はtrueを返す
+  return true;
+};
+
+// Durable Functionのオーケストレーター
+export const saga = df.orchestrator(function* (context) {
+  // 補償トランザクション関数を格納する配列
+  const compensatingTransactions: Task[] = [];
+
+  try {
+    // オーケストレーターの入力を取得
+    const {input} = context.df.getInput();
+
+    // doActivityAを呼び出し、結果をaに格納
+    const a = yield context.df.callActivity("doActivityA", input.body);
+
+    // 補償トランザクション関数としてrejectActivityAを追加
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityA", input.body),
+    );
+
+    // doActivityBを呼び出し、結果をbに格納
+    const b = yield context.df.callActivity("doActivityB", a);
+
+    // 補償トランザクション関数としてrejectActivityBを追加
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityB", b),
+    );
+
+    // doActivityCを呼び出し、結果をcに格納
+    const c = yield context.df.callActivity("doActivityC", b);
+
+    // 補償トランザクション関数としてrejectActivityCを追加
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityC", c),
+    );
+
+    // 正常終了のレスポンスを返す
+    return {
+      status: 200,
+      body: "The process has succeeded.",
+    };
+  } catch (e) {
+    // 例外発生時に全ての補償トランザクション関数を実行
+    yield context.df.Task.all(compensatingTransactions);
+
+    // 例外がAPIError型の場合、そのまま返す
+    if (isAPIError(e)) return e;
+
+    // その他の例外は500エラーとして返す
+    return {
+      status: 500,
+      body: (e as Error).message,
+    };
+  }
+});
+```
+
+> - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
 <br>
 
