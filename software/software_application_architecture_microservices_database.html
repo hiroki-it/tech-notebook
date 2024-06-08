@@ -1956,8 +1956,12 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
   
 </li>
         
@@ -1965,16 +1969,6 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="例">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db_5" class="md-nav__link">
@@ -23473,8 +23467,12 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 例
+    </span>
+  </a>
   
 </li>
         
@@ -23482,16 +23480,6 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="例">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db_5" class="md-nav__link">
@@ -23810,8 +23798,8 @@
 <p><br></p>
 <h2 id="04-saga">04. Sagaパターン<a class="headerlink" href="#04-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga">Sagaパターンとは<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
-<p>ワークフローエンジンである。</p>
-<p>各マイクロサービスに永続化とロールバックに関するAPIを実装し、ローカルトランザクションを連続的に実行する。</p>
+<p>Sagaオーケストレーターにコールされるマイクロサービスに、永続化とロールバックに関するAPIを実装する。</p>
+<p>Sagaオーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクションを連続的に実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687">https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687</a></li>
@@ -23823,7 +23811,7 @@
 <p><br></p>
 <h3 id="_11">デザインパターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="state">▼ Stateパターン<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
-<p>SagaサービスをStateパターンで実装する。</p>
+<p>SagaオーケストレーターをStateパターンで実装し、ステートマシンを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713">https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713</a></li>
@@ -23833,7 +23821,7 @@
 <p><br></p>
 <h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
-<p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
+<p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
 <p>各マイクロサービス間の通信方式は、リクエストリプライ方式またはイベント駆動方式のどちらでもよい。</p>
 <p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
 <blockquote>
@@ -23847,12 +23835,11 @@
 <p><br></p>
 <h3 id="_12">実装パターン<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 自前で実装する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>ステートマシンとして、モデリングすることになる。</p>
 <p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Sagaオーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。</p>
-<p>Sagaオーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
-<p>Sagaオーケストレーターサービスは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
+<p>Sagaオーケストレーターと、これをコールする別のマイクロサービスを配置する。</p>
+<p>Sagaオーケストレーターは、各ローカルトランザクションの成否を表すデータをDBで管理する。</p>
+<p>Sagaオーケストレーターは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) 、のローカルトランザクションを連続して実行する。</p>
 <p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
 <p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
 <blockquote>
@@ -23866,7 +23853,7 @@
 </blockquote>
 <h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
 <p>SagaオーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。</p>
-<p>Sagaサービスのドメインモデリングにステートソーシング方式を採用する必要がある。</p>
+<p>Sagaオーケストレーターのドメインモデリングにステートソーシング方式を採用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
@@ -23874,11 +23861,10 @@
 </blockquote>
 <h4 id="_14">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。</p>
-<p>ステートマシンとして、モデリングすることになる。</p>
 <p><br></p>
 <h3 id="_15">先行マイクロサービスとの通信パターン<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>オーケストレーションベースのSagaパターンにて、Sagaサービスにリクエストを送信するマイクロサービスは、Sagaサービスの処理結果を知る必要がある。</p>
-<p>Sagaサービスは、処理の開始時に先行マイクロサービスにひとまずレスポンスを返信し、処理の終了時にこれを先行マイクロサービスにリクエスト (またはWeb Hook) を送信する。</p>
+<p>オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するマイクロサービスは、Sagaオーケストレーターの処理結果を知る必要がある。</p>
+<p>Sagaオーケストレーターは、処理の開始時に先行マイクロサービスにひとまずレスポンスを返信し、処理の終了時にこれを先行マイクロサービスにリクエスト (またはWeb Hook) を送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://microservices.io/patterns/data/saga.html#resulting-context">https://microservices.io/patterns/data/saga.html#resulting-context</a></li>
@@ -24227,9 +24213,8 @@
 <li><a href="https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85">https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="_26">例<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
-<p>この例では、Typescriptの配列でローカルトランザクションと補償トランザクションを管理している。</p>
+<h4 id="_26">▼ 例<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>この例では、AzureのDurable Functionにて、Typescriptの配列でローカルトランザクションと補償トランザクションを管理している。</p>
 <p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
@@ -24264,7 +24249,7 @@
 <span class="w">    </span><span class="c1">// Sagaオーケストレーターの入力を取得</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">getInput</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityAを追加する</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityAを実行する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityAを追加する</span>
@@ -24272,7 +24257,7 @@
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityBを追加する</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityBを実行する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityBを追加する</span>
@@ -24280,7 +24265,7 @@
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityCを追加する</span>
+<span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityCを実行する</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityCを追加する</span>
@@ -24288,13 +24273,13 @@
 <span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 正常終了のレスポンスを返す</span>
+<span class="w">    </span><span class="c1">// Sagaオーケストレーターのクライアントに正常終了のレスポンスを返す</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 例外発生時に全ての補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 例外発生時に補償トランザクションをまとめて実行する</span>
 <span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">Task</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">compensatingTransactions</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 例外がAPIError型の場合、そのまま返す</span>
@@ -24315,8 +24300,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="db_5">DB<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h3>
-<p>Sagaサービスは、ローカルトランザクションの進捗度をDBに永続化する。</p>
-<p>SagaサービスごとにDBを分割すると良い。</p>
+<p>Sagaオーケストレーターは、ローカルトランザクションの進捗度をDBに永続化する。</p>
+<p>SagaオーケストレーターごとにDBを分割すると良い。</p>
 <p>AWS StepFunctionsのステートも設計例として、参考になる。</p>
 <table>
 <thead>
@@ -24417,7 +24402,7 @@
 </blockquote>
 <h4 id="oss_2">▼ OSSを使用する場合<a class="headerlink" href="#oss_2" title="Permanent link">&para;</a></h4>
 <p>コレオグラフィのOSS (例：Debezium、Maxwell、など) を使用する。</p>
-<p>Sagaサービスのドメインモデリングにイベントソーシング方式を採用する必要がある。</p>
+<p>Sagaオーケストレーターのドメインモデリングにイベントソーシング方式を採用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
