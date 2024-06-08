@@ -273,7 +273,7 @@ Sagaオーケストレーターは、メッセージブローカーに対して�
 
 その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。
 
-#### ▼ 例
+#### ▼ 設計例
 
 受注に関するトランザクションが異なるマイクロサービスにまたがる例。
 
@@ -285,9 +285,271 @@ Sagaオーケストレーターは、メッセージブローカーに対して�
 
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
 
-#### ▼ 例
+#### ▼ 実装例 (Goの`defer`関数)
 
-この例では、Sagaをステートマシンとして、実装している。
+この例では、Goの`defer`関数で補償トランザクションの仕組みを実装している。
+
+ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
+
+その後、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
+
+```go
+package saga
+
+import (
+	"time"
+
+	"go.uber.org/multierr"
+
+	"go.temporal.io/sdk/temporal"
+	"go.temporal.io/sdk/workflow"
+)
+
+func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err error) {
+	retryPolicy := &temporal.RetryPolicy{
+		InitialInterval:    time.Second,
+		BackoffCoefficient: 2.0,
+		MaximumInterval:    time.Minute,
+		MaximumAttempts:    3,
+	}
+
+	options := workflow.ActivityOptions{
+		StartToCloseTimeout: time.Minute,
+		RetryPolicy:         retryPolicy,
+	}
+
+	ctx = workflow.WithActivityOptions(ctx, options)
+
+	err = workflow.ExecuteActivity(ctx, Withdraw, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, WithdrawCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+	}()
+
+	// ローカルトランザクション
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, DepositCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+
+		// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart
+		// workflow.Sleep(ctx, 10*time.Second)
+	}()
+
+	// ローカルトランザクション
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+
+#### ▼ 実装例 (Goのslice)
+
+この例では、Goのsliceで補償トランザクションの仕組みを実装している。
+
+スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
+
+```go
+package main
+
+import (
+	"fmt"
+	"errors"
+)
+
+// ローカルトランザクションを表す関数型
+type LocalTransaction func() error
+
+// 補償トランザクションを表す関数型
+type CompensatingAction func() error
+
+// Sagaオーケストレーターの各ステップを表す構造体
+type SagaStep struct {
+	Transaction LocalTransaction // ローカルトランザクション
+	Compensate  CompensatingAction // 補償トランザクション
+}
+
+// Sagaを表す構造体
+type Saga struct {
+	Steps []SagaStep // 複数のSagaStepから成る
+}
+
+// ローカルトランザクションと補償トランザクションを実行する関数
+func (s *Saga) Execute() error {
+
+	for _, step := range s.Steps {
+		// ローカルトランザクションを順番に実行する
+		if err := step.Transaction(); err != nil {
+			// 失敗した場合は、補償トランザクションを逆順で実行する
+			for i := len(s.Steps) - 1; i >= 0; i-- {
+				if err := s.Steps[i].Compensate(); err != nil {
+					// 補償トランザクションが失敗した場合はエラーメッセージを返す
+					return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
+				}
+			}
+			// 最初のエラーを返す
+			return err
+		}
+	}
+	// 全てのトランザクションが成功した場合、nilを返す
+	return nil
+}
+
+// ローカルトランザクション
+// 資金移動
+func transferFunds() error {
+	return nil
+}
+
+// 補償トランザクション
+// 資金移動の取り消し
+func reverseTransfer() error {
+	return nil
+}
+
+func main() {
+	// Sagaオーケストレーター
+	saga := Saga{
+		Steps: []SagaStep{
+			SagaStep{
+				Transaction: transferFunds, // 1つ目のローカルトランザクション
+				Compensate:  reverseTransfer, // 1つ目の補償トランザクション
+			},
+			SagaStep{
+				Transaction: transferFunds, // 2つ目のローカルトランザクション
+				Compensate:  reverseTransfer, // 2つ目の補償トランザクション
+			},
+		},
+	}
+
+	// Sagaの実行
+	if err := saga.Execute(); err != nil {
+		fmt.Println("saga failed:", err) // エラーが発生した場合
+	} else {
+		fmt.Println("saga succeeded") // 正常に完了した場合
+	}
+}
+
+```
+
+> - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
+> - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
+
+#### ▼ 実装例 (Typescriptの配列)
+
+この例では、AzureのDurable Functionにて、Typescriptの配列で補償トランザクションの仕組みを実装している。
+
+スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
+
+```typescript
+import df from "durable-functions";
+import {Task} from "durable-functions/lib/src/classes";
+
+// APIError型の定義。ステータスコードとボディを持つ
+type APIError = {
+  status: 200 | 400 | 500;
+  body: object | string;
+};
+
+// APIErrorかどうかをチェックする関数
+const isAPIError = (arg: any): arg is APIError => {
+  // 引数がオブジェクトでない場合は、トランザクション不可とする
+  if (typeof arg !== "object") return false;
+
+  // ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする
+  if (!(arg.status && [200, 400, 500].includes(arg.status))) return false;
+
+  // メッセージが文字列でない場合は、トランザクション不可とする
+  if (typeof arg.message !== "string") return false;
+
+  // 全ての条件を満たす場合はトランザクション可とする
+  return true;
+};
+
+// Sagaオーケストレーター
+export const saga = df.orchestrator(function* (context) {
+  // 補償トランザクションを格納する配列
+  const compensatingTransactions: Task[] = [];
+
+  try {
+    // Sagaオーケストレーターの入力を取得
+    const {input} = context.df.getInput();
+
+    // ローカルトランザクションとして、doActivityAを実行する
+    const a = yield context.df.callActivity("doActivityA", input.body);
+
+    // 補償トランザクションとして、rejectActivityAを追加する
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityA", input.body),
+    );
+
+    // ローカルトランザクションとして、doActivityBを実行する
+    const b = yield context.df.callActivity("doActivityB", a);
+
+    // 補償トランザクションとして、rejectActivityBを追加する
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityB", b),
+    );
+
+    // ローカルトランザクションとして、doActivityCを実行する
+    const c = yield context.df.callActivity("doActivityC", b);
+
+    // 補償トランザクションとして、rejectActivityCを追加する
+    compensatingTransactions.push(
+      context.df.callActivity("rejectActivityC", c),
+    );
+
+    // Sagaオーケストレーターのクライアントに正常終了のレスポンスを返す
+    return {
+      status: 200,
+      body: "The process has succeeded.",
+    };
+  } catch (e) {
+    // 例外発生時に補償トランザクションをまとめて実行する
+    yield context.df.Task.all(compensatingTransactions);
+
+    // 例外がAPIError型の場合、そのまま返す
+    if (isAPIError(e)) return e;
+
+    // その他の例外は500エラーとして、返す
+    return {
+      status: 500,
+      body: (e as Error).message,
+    };
+  }
+});
+```
+
+> - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
+
+#### ▼ 実装例 (Goのslice)
+
+この例では、アウトボックスパターンでSagaオーケストレーションを実装している。
+
+ちょっと難しいかな...
 
 ```go
 package saga
@@ -418,267 +680,61 @@ func PrevSagaStep(steps []SagaStep, currentStep SagaStep) SagaStep {
 }
 ```
 
-> - https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go
-
-#### ▼ 例
-
-この例では、Goの`defer`関数で補償トランザクションを定義している。
-
-ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
-
-その後、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
-
 ```go
-package saga
+package reservation
 
 import (
-	"time"
-
-	"go.uber.org/multierr"
-
-	"go.temporal.io/sdk/temporal"
-	"go.temporal.io/sdk/workflow"
-)
-
-func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err error) {
-	retryPolicy := &temporal.RetryPolicy{
-		InitialInterval:    time.Second,
-		BackoffCoefficient: 2.0,
-		MaximumInterval:    time.Minute,
-		MaximumAttempts:    3,
-	}
-
-	options := workflow.ActivityOptions{
-		StartToCloseTimeout: time.Minute,
-		RetryPolicy:         retryPolicy,
-	}
-
-	ctx = workflow.WithActivityOptions(ctx, options)
-
-	err = workflow.ExecuteActivity(ctx, Withdraw, transferDetails).Get(ctx, nil)
-	if err != nil {
-		return err
-	}
-
-	// 補償トランザクション
-	defer func() {
-		if err != nil {
-			errCompensation := workflow.ExecuteActivity(ctx, WithdrawCompensation, transferDetails).Get(ctx, nil)
-			err = multierr.Append(err, errCompensation)
-		}
-	}()
-
-	// ローカルトランザクション
-	// 失敗した場合、まずは自身のトランザクションをロールバックする
-	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
-	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
-	if err != nil {
-		return err
-	}
-
-	// 補償トランザクション
-	defer func() {
-		if err != nil {
-			errCompensation := workflow.ExecuteActivity(ctx, DepositCompensation, transferDetails).Get(ctx, nil)
-			err = multierr.Append(err, errCompensation)
-		}
-
-		// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart
-		// workflow.Sleep(ctx, 10*time.Second)
-	}()
-
-	// ローカルトランザクション
-	// 失敗した場合、まずは自身のトランザクションをロールバックする
-	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
-	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-```
-
-> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
-
-#### ▼ 例
-
-この例では、Goのsliceでローカルトランザクションと補償トランザクションを管理している。
-
-スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
-
-```go
-package main
-
-import (
+	"context"
+	"database/sql"
 	"fmt"
-	"errors"
+	"go.example/saga/pkg/saga"
+	"go.example/saga/pkg/store/postgres"
+	"go.example/saga/reservation/pkg/model"
+	"log"
 )
 
-// ローカルトランザクションを表す関数型
-type LocalTransaction func() error
+...
 
-// 補償トランザクションを表す関数型
-type CompensatingAction func() error
+func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationCmd) (*model.Reservation, error) {
+	r := model.NewReservation(cmd.HotelID, cmd.RoomID, cmd.GuestID, cmd.PaymentDue, cmd.StartDate, cmd.EndDate, cmd.CreditCardNO)
 
-// Sagaオーケストレーターの各ステップを表す構造体
-type SagaStep struct {
-	Transaction LocalTransaction // ローカルトランザクション
-	Compensate  CompensatingAction // 補償トランザクション
-}
+	if _, err := c.store.Transact(ctx, func(tx *sql.Tx) (interface{}, error) {
 
-// Sagaを表す構造体
-type Saga struct {
-	Steps []SagaStep // 複数のSagaStepから成る
-}
-
-// ローカルトランザクションと補償トランザクションを実行する関数
-func (s *Saga) Execute() error {
-
-	for _, step := range s.Steps {
-		// ローカルトランザクションを順番に実行する
-		if err := step.Transaction(); err != nil {
-			// 失敗した場合は、補償トランザクションを逆順で実行する
-			for i := len(s.Steps) - 1; i >= 0; i-- {
-				if err := s.Steps[i].Compensate(); err != nil {
-					// 補償トランザクションが失敗した場合はエラーメッセージを返す
-					return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
-				}
-			}
-			// 最初のエラーを返す
-			return err
+		// persist reservation
+		if err := c.repository.Add(ctx, tx, r); err != nil {
+			return nil, err
 		}
-	}
-	// 全てのトランザクションが成功した場合、nilを返す
-	return nil
-}
 
-// ローカルトランザクション
-// 資金移動
-func transferFunds() error {
-	return nil
-}
+		payload := r.ToJSONMap()
+		currStep := saga.NextSagaStep(sagaSteps, "")
+		sagaState := saga.NewSaga(roomReservationSaga, payload, currStep)
 
-// 補償トランザクション
-// 資金移動の取り消し
-func reverseTransfer() error {
-	return nil
-}
+		if err := c.sagaRepository.Persist(ctx, tx, sagaState); err != nil {
+			return nil, err
+		}
 
-func main() {
-	// Sagaオーケストレーター
-	saga := Saga{
-		Steps: []SagaStep{
-			SagaStep{
-				Transaction: transferFunds, // 1つ目のローカルトランザクション
-				Compensate:  reverseTransfer, // 1つ目の補償トランザクション
-			},
-			SagaStep{
-				Transaction: transferFunds, // 2つ目のローカルトランザクション
-				Compensate:  reverseTransfer, // 2つ目の補償トランザクション
-			},
-		},
+		outboxEvent := postgres.NewEvent(sagaState.ID.String(), string(currStep), postgres.RequestEventType, payload)
+		if err := outboxEvent.Persist(ctx, tx); err != nil {
+			return nil, err
+		}
+
+		log.Printf("Started Saga for reservationID %s sagaID %s", r.ID, sagaState.ID)
+
+		return r, nil
+	}); err != nil {
+		return nil, err
 	}
 
-	// Sagaの実行
-	if err := saga.Execute(); err != nil {
-		fmt.Println("saga failed:", err) // エラーが発生した場合
-	} else {
-		fmt.Println("saga succeeded") // 正常に完了した場合
-	}
+	return r, nil
 }
 
+...
 ```
 
-> - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
-> - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
+> - https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go
+> - https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go
 
-#### ▼ 例
-
-この例では、AzureのDurable Functionにて、Typescriptの配列でローカルトランザクションと補償トランザクションを管理している。
-
-スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
-
-```typescript
-import df from "durable-functions";
-import {Task} from "durable-functions/lib/src/classes";
-
-// APIError型の定義。ステータスコードとボディを持つ
-type APIError = {
-  status: 200 | 400 | 500;
-  body: object | string;
-};
-
-// APIErrorかどうかをチェックする関数
-const isAPIError = (arg: any): arg is APIError => {
-  // 引数がオブジェクトでない場合は、トランザクション不可とする
-  if (typeof arg !== "object") return false;
-
-  // ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする
-  if (!(arg.status && [200, 400, 500].includes(arg.status))) return false;
-
-  // メッセージが文字列でない場合は、トランザクション不可とする
-  if (typeof arg.message !== "string") return false;
-
-  // 全ての条件を満たす場合はトランザクション可とする
-  return true;
-};
-
-// Sagaオーケストレーター
-export const saga = df.orchestrator(function* (context) {
-  // 補償トランザクションを格納する配列
-  const compensatingTransactions: Task[] = [];
-
-  try {
-    // Sagaオーケストレーターの入力を取得
-    const {input} = context.df.getInput();
-
-    // ローカルトランザクションとして、doActivityAを実行する
-    const a = yield context.df.callActivity("doActivityA", input.body);
-
-    // 補償トランザクションとして、rejectActivityAを追加する
-    compensatingTransactions.push(
-      context.df.callActivity("rejectActivityA", input.body),
-    );
-
-    // ローカルトランザクションとして、doActivityBを実行する
-    const b = yield context.df.callActivity("doActivityB", a);
-
-    // 補償トランザクションとして、rejectActivityBを追加する
-    compensatingTransactions.push(
-      context.df.callActivity("rejectActivityB", b),
-    );
-
-    // ローカルトランザクションとして、doActivityCを実行する
-    const c = yield context.df.callActivity("doActivityC", b);
-
-    // 補償トランザクションとして、rejectActivityCを追加する
-    compensatingTransactions.push(
-      context.df.callActivity("rejectActivityC", c),
-    );
-
-    // Sagaオーケストレーターのクライアントに正常終了のレスポンスを返す
-    return {
-      status: 200,
-      body: "The process has succeeded.",
-    };
-  } catch (e) {
-    // 例外発生時に補償トランザクションをまとめて実行する
-    yield context.df.Task.all(compensatingTransactions);
-
-    // 例外がAPIError型の場合、そのまま返す
-    if (isAPIError(e)) return e;
-
-    // その他の例外は500エラーとして、返す
-    return {
-      status: 500,
-      body: (e as Error).message,
-    };
-  }
-});
-```
-
-> - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
+<br>
 
 <br>
 

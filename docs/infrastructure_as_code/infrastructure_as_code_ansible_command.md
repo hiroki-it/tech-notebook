@@ -77,7 +77,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 $ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
-> - https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849>
+> - https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
 
 <br>
 
