@@ -136,17 +136,19 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### ステートマシン図とは
 
-状態 (丸) と遷移 (矢印) の関係性を基に、ソフトウェアの『動的な振舞』を表す。
+ステート、遷移 (矢印) 、遷移のきっかけの説明 (アクティビティ) を記載する。
 
-矢印の横の説明は、遷移のきっかけとなる『イベント (入力) /アクション (出力) 』を表す。
+Stateパターンで実装する。
 
-![ステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチステートマシン図.jpg)
+> - https://cacoo.com/ja/blog/what-is-state-machine-diagram/
 
 <br>
 
 ### ステートマシン表とは
 
-ステートマシン図から作成した表。
+ストップウォッチのステートマシン図がある。
+
+![ストップウォッチのステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン図.jpg)
 
 ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
 
@@ -171,8 +173,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 `(4)`
 
 : 現在の状態『d』から、次は数字なため、b行の『e』へ移動。
-
-![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.png)
 
 <br>
 
