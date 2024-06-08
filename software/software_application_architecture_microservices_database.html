@@ -1961,6 +1961,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#db_5" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1995,7 +2010,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -2005,7 +2020,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -2028,7 +2043,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       後続マイクロサービスとの通信パターン
     </span>
@@ -2061,7 +2076,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23463,6 +23478,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#db_5" class="md-nav__link">
     <span class="md-ellipsis">
@@ -23497,7 +23527,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23507,7 +23537,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 自前で実装する場合
     </span>
@@ -23530,7 +23560,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       後続マイクロサービスとの通信パターン
     </span>
@@ -23563,7 +23593,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       実装パターン
     </span>
@@ -23793,9 +23823,10 @@
 <p><br></p>
 <h3 id="_11">デザインパターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="state">▼ Stateパターン<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
-<p>状態をオブジェクト化する。</p>
+<p>SagaサービスをStateパターンで実装する。</p>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713">https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713</a></li>
 <li><a href="https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719">https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719</a></li>
 </ul>
 </blockquote>
@@ -24054,7 +24085,7 @@
 
 <span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ActivityOptions</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">StartToCloseTimeout</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Minute</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w"> </span><span class="nx">retryPolicy</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w">         </span><span class="nx">retryPolicy</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
@@ -24194,6 +24225,92 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="_26">例<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>この例では、Typescriptの配列でローカルトランザクション関数と補償トランザクション関数を管理している。</p>
+<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
+
+<span class="c1">// APIError型の定義。ステータスコードとボディを持つ</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">400</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">500</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="kt">object</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// APIErrorかどうかをチェックする関数</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isAPIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 引数がオブジェクトでない場合はfalseを返す</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// ステータスコードが200, 400, 500のいずれかでない場合はfalseを返す</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="p">)))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// メッセージが文字列でない場合はfalseを返す</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 全ての条件を満たす場合はtrueを返す</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Durable Functionのオーケストレーター</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">saga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">df</span><span class="p">.</span><span class="nx">orchestrator</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 補償トランザクション関数を格納する配列</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">compensatingTransactions</span><span class="o">:</span><span class="w"> </span><span class="kt">Task</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// オーケストレーターの入力を取得</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">getInput</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// doActivityAを呼び出し、結果をaに格納</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityAを追加</span>
+<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// doActivityBを呼び出し、結果をbに格納</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityBを追加</span>
+<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// doActivityCを呼び出し、結果をcに格納</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 補償トランザクション関数としてrejectActivityCを追加</span>
+<span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 正常終了のレスポンスを返す</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 例外発生時に全ての補償トランザクション関数を実行</span>
+<span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">Task</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">compensatingTransactions</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 例外がAPIError型の場合、そのまま返す</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isAPIError</span><span class="p">(</span><span class="nx">e</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">e</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// その他の例外は500エラーとして返す</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">500</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="ne">Error</span><span class="p">).</span><span class="nx">message</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF">https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="db_5">DB<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h3>
 <p>Sagaサービスは、ローカルトランザクションの進捗度をDBに永続化する。</p>
 <p>SagaサービスごとにDBを分割すると良い。</p>
@@ -24285,8 +24402,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_26">実装パターン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<h4 id="_27">▼ 自前で実装する場合<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<h3 id="_27">実装パターン<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="_28">▼ 自前で実装する場合<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリポジトリを参考にせよ。</p>
 <p><img alt="choreography_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png" /></p>
@@ -24304,7 +24421,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_28">後続マイクロサービスとの通信パターン<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h3 id="_29">後続マイクロサービスとの通信パターン<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。</p>
 <p><img alt="choreography_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png" /></p>
 <blockquote>
@@ -24324,7 +24441,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_29">実装パターン<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h3 id="_30">実装パターン<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
 <p>並列パイプラインのOSS (例：Apache Camel、など) を使用する。</p>
 <blockquote>
@@ -24376,7 +24493,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-08</span>
   </span>
 
     
