@@ -71,7 +71,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証/認可は全てのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                              |
 
 > - https://it-koala.com/usecasediagrams-1832>
-> - https://www.itsenka.com/contents/development/uml/usecase.html>
+> - https://www.itsenka.com/contents/development/uml/usecase.html
 
 **＊例＊**
 
@@ -140,8 +140,6 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ステートマシンをオブジェクト、各ステートをステートマシンの依存先オブジェクト、アクションをオブジェクトのメソッド、として実装する。
 
-Stateパターンで実装する。
-
 > - https://cacoo.com/ja/blog/what-is-state-machine-diagram/
 > - https://github.com/yohang/Finite
 > - https://yohan.giarel.li/Finite/
@@ -157,26 +155,6 @@ Stateパターンで実装する。
 ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
 
 ![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.jpg)
-
-**＊例題＊**
-
-`12.2`という状態
-
-`(1)`
-
-: 初期の状態を『a』として、最初が数字なため、a行の『b』へ移動。
-
-`(2)`
-
-: 現在の状態『b』から、次は数字なため、b行の『b』へ移動。
-
-`(3)`
-
-: 現在の状態『b』から、次は小数点なため、b行の『d』へ移動。
-
-`(4)`
-
-: 現在の状態『d』から、次は数字なため、b行の『e』へ移動。
 
 <br>
 
@@ -200,7 +178,7 @@ Stateパターンで実装する。
 | スロット         | インスタンスが保持する具体的なデータを表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                 |
 | リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                                       |
 
-> - https://thinkit.co.jp/article/40/3/3.html>
-> - https://www.itsenka.com/contents/development/uml/object.html>
+> - https://thinkit.co.jp/article/40/3/3.html
+> - https://www.itsenka.com/contents/development/uml/object.html
 
 <br>

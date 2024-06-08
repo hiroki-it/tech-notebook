@@ -31,7 +31,7 @@ description: オブジェクト指向設計＠アーキテクチャの知見を�
 
 ドメインモデル図がある。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html>
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 
@@ -57,7 +57,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 #### ▼ is-a-kind-of (グループとメンバーの関係性)
 
@@ -67,7 +67,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 #### ▼ use (引数型/返却値型として使用する関係性)
 
@@ -79,7 +79,7 @@ Dependency (依存) が使用される。
 
 実装例は以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html>
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 
@@ -93,7 +93,7 @@ Dependency (依存) が使用される。
 
 オブジェクト図のインスタンス間のリンク記号数を参考にして定義する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html>
+> - https://atmarkit.itmedia.co.jp/ait/articles/0105/02/news002.html
 
 #### ▼ 記法
 
@@ -195,7 +195,7 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 | 複合フラグメント (結合フラグメント) | 条件分岐、繰り返し、などによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を`alt` (`alternative`) 、繰り返しの場合は`loop`とする。<br>・https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
 
 > - https://rainbow-engine.com/sequence-diagram-sample/
-> - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html>
+> - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
 
 **＊例＊**
 

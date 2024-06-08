@@ -31,7 +31,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
-> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
+> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
 
 <br>
 
@@ -103,7 +103,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 $ ansible-vault decrypt parameters.yml
 ```
 
-> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
+> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 <br>
 
@@ -126,8 +126,8 @@ $ANSIBLE_VAULT;1.1;AES256
 *****
 ```
 
-> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8>
-> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html>
+> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
+> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
 
 <br>
 

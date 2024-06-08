@@ -45,8 +45,8 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
-> - https://speakerdeck.com/bells17/metrics-server?slide=20>
-> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base>
+> - https://speakerdeck.com/bells17/metrics-server?slide=20
+> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
 > - https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server
 
 <br>
@@ -59,8 +59,8 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 データポイントはローカルストレージに保管している。
 
-> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html>
-> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58>
+> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
+> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
 
 <br>
 

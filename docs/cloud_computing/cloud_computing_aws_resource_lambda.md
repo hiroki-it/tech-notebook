@@ -21,7 +21,7 @@ description: Lambda＠AWSリソース
 
 ![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png)
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html>
+> - https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
 <br>
 
@@ -298,7 +298,7 @@ CloudFrontのビューワーリクエスト、オリジンリクエスト、オ�
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html>
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
 <br>
 
