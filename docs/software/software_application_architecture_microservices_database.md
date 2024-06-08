@@ -167,7 +167,7 @@ SagaサービスをStateパターンで実装する。
 
 ### オーケストレーションベースのSagaパターンとは
 
-一連のローカルトランザクションの実行をまとめて制御する責務を持ったオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。
+一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーターサービス (コーディネーター) と、これをコールする別のマイクロサービスを配置する。
 
 各マイクロサービス間の通信方式は、リクエストリプライ方式またはイベント駆動方式のどちらでもよい。
 
@@ -184,17 +184,17 @@ SagaサービスをStateパターンで実装する。
 
 #### ▼ 自前で実装する場合
 
-ステートマシンとしてモデリングすることになる。
+ステートマシンとして、モデリングすることになる。
 
-オーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。
+Sagaオーケストレーターは、ローカルトランザクションの進捗度 (いずれのローカルトランザクションを実行し終えたかの成否) をDBに都度記録する。
 
 **＊実装例＊**
 
-オーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。
+Sagaオーケストレーターサービスと、これをコールする別のマイクロサービスを配置する。
 
-オーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。
+Sagaオーケストレーターサービスは、各ローカルトランザクションの成否を表すデータをDBで管理する。
 
-オーケストレーターサービスは、Orderサービス (`T1`) 、Inventoryサービス (`T2`) 、Paymentサービス (`T3`) 、のローカルトランザクションを連続して実行する。
+Sagaオーケストレーターサービスは、Orderサービス (`T1`) 、Inventoryサービス (`T2`) 、Paymentサービス (`T3`) 、のローカルトランザクションを連続して実行する。
 
 例えば、Paymentサービスのローカルトランザクション (`T3`) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (`C1`、`C2`) を実行する。
 
@@ -208,7 +208,7 @@ SagaサービスをStateパターンで実装する。
 
 #### ▼ OSSを使用する場合
 
-オーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。
+SagaオーケストレーターのOSS (Argo Workflow、Netflix Conductor、Uber Cadence、Apache Airflow、など) を使用する。
 
 Sagaサービスのドメインモデリングにステートソーシング方式を採用する必要がある。
 
@@ -216,9 +216,9 @@ Sagaサービスのドメインモデリングにステートソーシング方�
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
-クラウドプロバイダー (例：AWS、Google Cloud) が提供するオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。
+クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。
 
-ステートマシンとしてモデリングすることになる。
+ステートマシンとして、モデリングすることになる。
 
 <br>
 
@@ -238,7 +238,7 @@ Sagaサービスは、処理の開始時に先行マイクロサービスにひ�
 
 メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由しないオーケストレーションベースのSagaパターンを実装する。
 
-メッセージブローカーを経由するよりも、オーケストレーターと各マイクロサービスの結合度が高まってしまうが、オーケストレーターの実装が簡単になる。
+メッセージブローカーを経由するよりも、Sagaオーケストレーターと各マイクロサービスの結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。
 
 ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。
 
@@ -253,7 +253,7 @@ Sagaサービスは、処理の開始時に先行マイクロサービスにひ�
 
 メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。
 
-オーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。
+Sagaオーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。
 
 サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。
 
@@ -290,7 +290,7 @@ Sagaサービスは、処理の開始時に先行マイクロサービスにひ�
 
 #### ▼ 例
 
-この例では、Sagaをステートマシンとして実装している。
+この例では、Sagaをステートマシンとして、実装している。
 
 ```go
 package saga
@@ -506,7 +506,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 #### ▼ 例
 
-この例では、Goのsliceでローカルトランザクション関数と補償トランザクション関数を管理している。
+この例では、Goのsliceでローカルトランザクションと補償トランザクションを管理している。
 
 スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
 
@@ -518,24 +518,24 @@ import (
 	"errors"
 )
 
-// Define a type to represent a local transaction
+// ローカルトランザクションを表す関数型
 type LocalTransaction func() error
 
-// Define a type to represent a compensating action
+// 補償トランザクションを表す関数型
 type CompensatingAction func() error
 
-// Define a type to represent a saga step
+// Sagaオーケストレーターの各ステップを表す構造体
 type SagaStep struct {
-	Transaction LocalTransaction
-	Compensate  CompensatingAction
+	Transaction LocalTransaction // ローカルトランザクション
+	Compensate  CompensatingAction // 補償トランザクション
 }
 
-// Define a type to represent a saga
+// Sagaを表す構造体
 type Saga struct {
-	Steps []SagaStep
+	Steps []SagaStep // 複数のSagaStepから成る
 }
 
-// Define a function to execute a saga
+// ローカルトランザクションと補償トランザクションを実行する関数
 func (s *Saga) Execute() error {
 
 	for _, step := range s.Steps {
@@ -544,49 +544,53 @@ func (s *Saga) Execute() error {
 			// 失敗した場合は、補償トランザクションを逆順で実行する
 			for i := len(s.Steps) - 1; i >= 0; i-- {
 				if err := s.Steps[i].Compensate(); err != nil {
+					// 補償トランザクションが失敗した場合はエラーメッセージを返す
 					return errors.New(fmt.Sprintf("failed to compensate for step %d: %v", i, err))
 				}
 			}
+			// 最初のエラーを返す
 			return err
 		}
 	}
+	// 全てのトランザクションが成功した場合、nilを返す
 	return nil
 }
 
-// Define a function to perform a local transaction
+// ローカルトランザクション
+// 資金移動
 func transferFunds() error {
-	// Perform the transfer of funds
 	return nil
 }
 
-// Define a function to perform a compensating action
+// 補償トランザクション
+// 資金移動の取り消し
 func reverseTransfer() error {
-	// Reverse the transfer of funds
 	return nil
 }
 
 func main() {
-	// Define a saga consisting of two local transactions and their compensating actions
+	// Sagaオーケストレーター
 	saga := Saga{
 		Steps: []SagaStep{
 			SagaStep{
-				Transaction: transferFunds,
-				Compensate:  reverseTransfer,
+				Transaction: transferFunds, // 1つ目のローカルトランザクション
+				Compensate:  reverseTransfer, // 1つ目の補償トランザクション
 			},
 			SagaStep{
-				Transaction: transferFunds,
-				Compensate:  reverseTransfer,
+				Transaction: transferFunds, // 2つ目のローカルトランザクション
+				Compensate:  reverseTransfer, // 2つ目の補償トランザクション
 			},
 		},
 	}
 
-	// Execute the saga
+	// Sagaの実行
 	if err := saga.Execute(); err != nil {
-		fmt.Println("saga failed:", err)
+		fmt.Println("saga failed:", err) // エラーが発生した場合
 	} else {
-		fmt.Println("saga succeeded")
+		fmt.Println("saga succeeded") // 正常に完了した場合
 	}
 }
+
 ```
 
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
@@ -596,7 +600,7 @@ func main() {
 
 ## 例
 
-この例では、Typescriptの配列でローカルトランザクション関数と補償トランザクション関数を管理している。
+この例では、Typescriptの配列でローカルトランザクションと補償トランザクションを管理している。
 
 スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
 
@@ -612,48 +616,48 @@ type APIError = {
 
 // APIErrorかどうかをチェックする関数
 const isAPIError = (arg: any): arg is APIError => {
-  // 引数がオブジェクトでない場合はfalseを返す
+  // 引数がオブジェクトでない場合は、トランザクション不可とする
   if (typeof arg !== "object") return false;
 
-  // ステータスコードが200, 400, 500のいずれかでない場合はfalseを返す
+  // ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする
   if (!(arg.status && [200, 400, 500].includes(arg.status))) return false;
 
-  // メッセージが文字列でない場合はfalseを返す
+  // メッセージが文字列でない場合は、トランザクション不可とする
   if (typeof arg.message !== "string") return false;
 
-  // 全ての条件を満たす場合はtrueを返す
+  // 全ての条件を満たす場合はトランザクション可とする
   return true;
 };
 
-// Durable Functionのオーケストレーター
+// Sagaオーケストレーター
 export const saga = df.orchestrator(function* (context) {
-  // 補償トランザクション関数を格納する配列
+  // 補償トランザクションを格納する配列
   const compensatingTransactions: Task[] = [];
 
   try {
-    // オーケストレーターの入力を取得
+    // Sagaオーケストレーターの入力を取得
     const {input} = context.df.getInput();
 
-    // doActivityAを呼び出し、結果をaに格納
+    // ローカルトランザクションとして、doActivityAを追加する
     const a = yield context.df.callActivity("doActivityA", input.body);
 
-    // 補償トランザクション関数としてrejectActivityAを追加
+    // 補償トランザクションとして、rejectActivityAを追加する
     compensatingTransactions.push(
       context.df.callActivity("rejectActivityA", input.body),
     );
 
-    // doActivityBを呼び出し、結果をbに格納
+    // ローカルトランザクションとして、doActivityBを追加する
     const b = yield context.df.callActivity("doActivityB", a);
 
-    // 補償トランザクション関数としてrejectActivityBを追加
+    // 補償トランザクションとして、rejectActivityBを追加する
     compensatingTransactions.push(
       context.df.callActivity("rejectActivityB", b),
     );
 
-    // doActivityCを呼び出し、結果をcに格納
+    // ローカルトランザクションとして、doActivityCを追加する
     const c = yield context.df.callActivity("doActivityC", b);
 
-    // 補償トランザクション関数としてrejectActivityCを追加
+    // 補償トランザクションとして、rejectActivityCを追加する
     compensatingTransactions.push(
       context.df.callActivity("rejectActivityC", c),
     );
@@ -664,13 +668,13 @@ export const saga = df.orchestrator(function* (context) {
       body: "The process has succeeded.",
     };
   } catch (e) {
-    // 例外発生時に全ての補償トランザクション関数を実行
+    // 例外発生時に全ての補償トランザクションを実行する
     yield context.df.Task.all(compensatingTransactions);
 
     // 例外がAPIError型の場合、そのまま返す
     if (isAPIError(e)) return e;
 
-    // その他の例外は500エラーとして返す
+    // その他の例外は500エラーとして、返す
     return {
       status: 500,
       body: (e as Error).message,
@@ -689,7 +693,7 @@ Sagaサービスは、ローカルトランザクションの進捗度をDBに�
 
 SagaサービスごとにDBを分割すると良い。
 
-AWS StepFunctionsのステートも設計例として参考になる。
+AWS StepFunctionsのステートも設計例として、参考になる。
 
 | `id` | `order_saga_execution_id`              | `order_saga_current_step` | `order_id` | `order_saga_payload`                                                                                           | `order_saga_status` | `order_saga_state`                                             | `order_saga_version`                                    | `start_data` | `end_data` |
 | ---- | -------------------------------------- | ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ---------- |
