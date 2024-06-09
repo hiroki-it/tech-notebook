@@ -17,10 +17,11 @@ description: Temporal＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー (ユーザーのアプリ) 、からなる。
+Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー、からなる。
 
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
 > - https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7
+> - https://temporal.io/blog/sergey-inversion-of-execution
 
 <br>
 
@@ -30,7 +31,7 @@ Temporalクライアントは、Temporalサーバーをコールし、ワーク�
 
 <br>
 
-### Temporalサーバー
+### Temporalサーバーとステート用データベース
 
 Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
@@ -38,9 +39,7 @@ Temporalサーバーは、ワークフローを実行し、またステートを
 
 ### Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーをコールし、ワークフローの処理結果を取得する。
-
-Temporalワーカーが実行するべき処理タスクを取得する場合もある。
+Temporalワーカーは、Temporalサーバーをコールし、ステップやワークフロー全体の処理結果を取得する。
 
 <br>
 
@@ -104,7 +103,7 @@ func main() {
 
 > - https://docs.temporal.io/develop/go/temporal-clients
 
-#### ▼ Temporalサーバー
+#### ▼ Temporalサーバーとステート用データベース
 
 Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
@@ -228,9 +227,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
 > - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
-#### ▼ Temporalワーカー\_
+#### ▼ Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーからワークフロー全体の処理結果を取得する必要がある。
+Temporalワーカーは、Temporalサーバーからステップやワークフロー全体の処理結果を取得する必要がある。
 
 TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。
 
