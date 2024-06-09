@@ -22338,6 +22338,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporalクライアント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporalサーバー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporalワーカー
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -22396,12 +22423,23 @@
 <p><br></p>
 <h2 id="01-temporal">01. Temporalの仕組み<a class="headerlink" href="#01-temporal" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Temporalは、Temporalサーバー、ステート用データベース、Temporalワーカー (ユーザーのアプリ) 、からなる。</p>
+<p>Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー (ユーザーのアプリ) 、からなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://michaelangelo.io/blog/temporal-sqs#temporal-components">https://michaelangelo.io/blog/temporal-sqs#temporal-components</a></li>
+<li><a href="https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7">https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="temporal">Temporalクライアント<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h3>
+<p>Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。</p>
+<p><br></p>
+<h3 id="temporal_1">Temporalサーバー<a class="headerlink" href="#temporal_1" title="Permanent link">&para;</a></h3>
+<p>ワークフローを実行し、またステートをデータベースに永続化する。</p>
+<p><br></p>
+<h3 id="temporal_2">Temporalワーカー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
+<p>Temporalサーバーをコールし、ワークフローの処理結果を取得する。</p>
+<p>Temporalワーカーが実行するべき処理タスクを取得する場合もある。</p>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="saga">Sagaオーケストレーターとして<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
