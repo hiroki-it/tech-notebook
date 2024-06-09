@@ -161,7 +161,7 @@
 ### Temporal
 
 * #### [Temporal](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.html)
-* #### [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.html)
+* #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_conf.html)
 
 <br>
 
