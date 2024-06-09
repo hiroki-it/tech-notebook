@@ -104,9 +104,17 @@ func main() {
 
 > - https://docs.temporal.io/develop/go/temporal-clients
 
+#### ▼ Temporalサーバー
+
+これは設定ファイルで実装する。
+
+各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。
+
 #### ▼ Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーからワークフローの処理結果を取得する必要がある。
+Temporalワーカーは、Temporalサーバーからワークフロー全体の処理結果を取得する必要がある。
+
+TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。
 
 ```go
 package main
@@ -129,13 +137,11 @@ func main() {
 		HostPort: client.DefaultHostPort,
 	})
 
-	// ワークフローのID
-	workflowID := "Your-Custom-Workflow-Id"
+	workflowRun := temporalClient.GetWorkflow(context.Background, "<ワークフローのID>")
 
-	workflowRun := temporalClient.GetWorkflow(context.Background, workflowID)
+	var result workflowResponse
 
-	var result YourWorkflowResponse
-
+	// ワークフローの結果を取得する
 	err = workflowRun.Get(context.Background(), &result)
 
 	if err != nil {
