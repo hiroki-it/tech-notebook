@@ -32,13 +32,13 @@ Temporalクライアントは、Temporalサーバーをコールし、ワーク�
 
 ### Temporalサーバー
 
-ワークフローを実行し、またステートをデータベースに永続化する。
+Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
 <br>
 
 ### Temporalワーカー
 
-Temporalサーバーをコールし、ワークフローの処理結果を取得する。
+Temporalワーカーは、Temporalサーバーをコールし、ワークフローの処理結果を取得する。
 
 Temporalワーカーが実行するべき処理タスクを取得する場合もある。
 
@@ -56,9 +56,9 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 > - https://temporal.io/blog/saga-pattern-made-easy
 > - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
 
-#### ▼ クライアント
+#### ▼ Temporalクライアント
 
-Temporalサーバーをコールするクライアントが必要である。
+クライアントは、Temporalサーバーをコールする必要である。
 
 ```go
 package main
@@ -103,5 +103,47 @@ func main() {
 ```
 
 > - https://docs.temporal.io/develop/go/temporal-clients
+
+#### ▼ Temporalワーカー
+
+Temporalワーカーは、Temporalサーバーからワークフローの処理結果を取得する必要がある。
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"log"
+	"net/http"
+
+	"documentation-samples-go/yourapp"
+
+	"go.temporal.io/sdk/client"
+)
+
+func main() {
+
+	// Temporalサーバーに接続する
+	temporalClient, err := client.Dial(client.Options{
+		HostPort: client.DefaultHostPort,
+	})
+
+	// ワークフローのID
+	workflowID := "Your-Custom-Workflow-Id"
+
+	workflowRun := temporalClient.GetWorkflow(context.Background, workflowID)
+
+	var result YourWorkflowResponse
+
+	err = workflowRun.Get(context.Background(), &result)
+
+	if err != nil {
+		...
+	}
+}
+```
+
+> - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
 
 <br>
