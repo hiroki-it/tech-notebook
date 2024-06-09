@@ -19,7 +19,7 @@ description: リソース定義＠FluentBitの知見を記録しています。
 
 #### ▼ チャートとして
 
-Node内でFluentBitをコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://fluent.github.io/helm-charts

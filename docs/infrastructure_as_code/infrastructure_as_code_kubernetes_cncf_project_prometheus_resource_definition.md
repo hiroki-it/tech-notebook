@@ -47,7 +47,7 @@ $ kubectl apply -f manifests/
 
 #### ▼ チャートとして (kube-prometheus-stack)
 
-Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts

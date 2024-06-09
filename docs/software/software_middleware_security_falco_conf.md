@@ -19,7 +19,7 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 #### ▼ チャートとして
 
-Node内でfalcoをコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://falcosecurity.github.io/charts

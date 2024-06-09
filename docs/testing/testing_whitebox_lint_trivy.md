@@ -41,7 +41,7 @@ $ docker run aquasec/trivy
 
 #### ▼ チャートとして
 
-trivy-operatorをインストールする。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aquasecurity.github.io/helm-charts/

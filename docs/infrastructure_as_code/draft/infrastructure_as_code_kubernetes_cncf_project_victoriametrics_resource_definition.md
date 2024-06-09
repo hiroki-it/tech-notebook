@@ -19,7 +19,7 @@ description: VictoriaMetrics＠CNCFの知見を記録しています。
 
 #### ▼ チャートとして
 
-Node内でVictoriaMetricsをコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://victoriametrics.github.io/helm-charts/
