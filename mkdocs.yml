@@ -745,7 +745,7 @@ nav:
               - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.md
       - ■ Temporal:
             - Temporal: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.md
-            - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.md
+            - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_conf.md
       - ■ VCluster:
           - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.md
 
