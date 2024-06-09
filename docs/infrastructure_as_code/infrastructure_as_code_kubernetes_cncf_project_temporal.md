@@ -59,6 +59,8 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 
 クライアントは、Temporalサーバーをコールする必要である。
 
+Temporalクライアントは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。
+
 ```go
 package main
 
@@ -86,21 +88,70 @@ func main() {
 
 	defer temporalClient.Close()
 
-	...
+	// Temporalクライアントがワークフローを実行するエンドポイント
+	http.HandleFunc("/start", func(w http.ResponseWriter, r *http.Request) {
+		// ワークフローを実行するラッパー関数
+		startWorkflowHandler(w, r, temporalClient)
+	})
+
+	// サーバーを起動する
+	err = http.ListenAndServe(":8091", nil)
+
+	if err != nil {
+		log.Fatalln("Unable to run http server", err)
+	}
+}
+
+func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient client.Client) {
 
 	workflowOptions := client.StartWorkflowOptions{
-		...
+		ID:        "your-workflow-id",
+		TaskQueue: "your-custom-task-queue-name",
+	}
+
+	workflowParams := yourapp.YourWorkflowParam{
+		WorkflowParamX: "Hello World!",
+		WorkflowParamY: 999,
 	}
 
 	// Temporalサーバーのワークフローを実行する
-	workflowRun, err := temporalClient.ExecuteWorkflow(context.Background(), workflowOptions, YourWorkflowDefinition, param)
+	workflowExecution, err := temporalClient.ExecuteWorkflow(
+		context.Background(),
+		workflowOptions,
+		yourapp.YourWorkflowDefinition,
+		workflowParams,
+	)
 
 	if err != nil {
-		...
+		log.Fatalln("Unable to execute the Workflow", err)
 	}
+
+	log.Println("Started Workflow!")
+
+	log.Println("WorkflowID:", workflowExecution.GetID())
+
+	log.Println("RunID:", workflowExecution.GetRunID())
+
+	var result yourapp.YourWorkflowResultObject
+
+	workflowExecution.Get(context.Background(), &result)
+
+	if err != nil {
+		log.Fatalln("Unable to get Workflow result:", err)
+	}
+
+	b, err := json.Marshal(result)
+
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
+
+	log.Println(string(b))
 }
 ```
 
+> - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/gateway/main.go
 > - https://docs.temporal.io/develop/go/temporal-clients
 
 #### ▼ Temporalサーバーとステート用データベース
