@@ -106,9 +106,75 @@ func main() {
 
 #### ▼ Temporalサーバー
 
-これは設定ファイルで実装する。
+Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
 各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。
+
+```go
+package yourapp
+
+import (
+	"time"
+
+	"go.temporal.io/sdk/workflow"
+)
+
+func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*YourWorkflowResultObject, error) {
+
+	activityOptions := workflow.ActivityOptions{
+		StartToCloseTimeout: 10 * time.Second,
+	}
+
+	ctx = workflow.WithActivityOptions(ctx, activityOptions)
+
+	activityParam := YourActivityParam{
+		ActivityParamX: param.WorkflowParamX,
+		ActivityParamY: param.WorkflowParamY,
+	}
+
+	var a *YourActivityObject
+
+	var activityResult YourActivityResultObject
+
+	// (1) ワークフローのステップを実行する
+	err := workflow.ExecuteActivity(ctx, a.YourActivityDefinition, activityParam).Get(ctx, &activityResult)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var infoResult *YourActivityResultObject
+
+	// (2) ワークフローのステップを実行する
+	err = workflow.ExecuteActivity(ctx, a.GetInfo).Get(ctx, &infoResult)
+
+	if err != nil {
+		return nil, err
+	}
+
+	infoParam := YourActivityParam{
+		ActivityParamX: infoResult.ResultFieldX,
+		ActivityParamY: infoResult.ResultFieldY,
+	}
+
+	// (3) ワークフローのステップを実行する
+	err = workflow.ExecuteActivity(ctx, a.PrintInfo, infoParam).Get(ctx, nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	workflowResult := &YourWorkflowResultObject{
+		WFResultFieldX: activityResult.ResultFieldX,
+		WFResultFieldY: activityResult.ResultFieldY,
+	}
+
+	// ワークフロー全体の処理結果を返却する
+	return workflowResult, nil
+}
+```
+
+> - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
 #### ▼ Temporalワーカー
 
