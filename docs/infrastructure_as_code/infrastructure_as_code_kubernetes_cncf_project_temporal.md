@@ -119,19 +119,32 @@ import (
 	"go.temporal.io/sdk/activity"
 )
 
+// パラメーター
+type YourActivityParam struct {
+	ActivityParamX string
+	ActivityParamY int
+}
+
+
 type YourActivityObject struct {
 	Message *string
 	Number  *int
 }
 
+// アクション
 func (a *YourActivityObject) PrintInfo(ctx context.Context, param YourActivityParam) error {
 	logger := activity.GetLogger(ctx)
+
 	logger.Info("The message is:", param.ActivityParamX)
+
 	logger.Info("The number is:", param.ActivityParamY)
+
 	return nil
 }
 
+// アクション
 func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultObject, error) {
+
 	return &YourActivityResultObject{
 		ResultFieldX: *a.Message,
 		ResultFieldY: *a.Number,
@@ -158,6 +171,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 	ctx = workflow.WithActivityOptions(ctx, activityOptions)
 
+	// ワークフローのパラメーターを定義する
 	activityParam := YourActivityParam{
 		ActivityParamX: param.WorkflowParamX,
 		ActivityParamY: param.WorkflowParamY,
@@ -167,7 +181,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 	var activityResult YourActivityResultObject
 
-	// (1) ワークフローのステップを実行する
+	// (1)
+	// ワークフローのステップを実行する
+	// パラメーターの入力
 	err := workflow.ExecuteActivity(ctx, a.YourActivityDefinition, activityParam).Get(ctx, &activityResult)
 
 	if err != nil {
@@ -176,7 +192,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 	var infoResult *YourActivityResultObject
 
-	// (2) ワークフローのステップを実行する
+	// (2)
+	// ワークフローのステップを実行する
+	// GetInfoアクション
 	err = workflow.ExecuteActivity(ctx, a.GetInfo).Get(ctx, &infoResult)
 
 	if err != nil {
@@ -188,7 +206,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 		ActivityParamY: infoResult.ResultFieldY,
 	}
 
-	// (3) ワークフローのステップを実行する
+	// (3)
+	// ワークフローのステップを実行する
+	// PrintInfoアクション
 	err = workflow.ExecuteActivity(ctx, a.PrintInfo, infoParam).Get(ctx, nil)
 
 	if err != nil {
@@ -206,8 +226,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 ```
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
+> - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
-#### ▼ Temporalワーカー
+#### ▼ Temporalワーカー\_
 
 Temporalワーカーは、Temporalサーバーからワークフロー全体の処理結果を取得する必要がある。
 
