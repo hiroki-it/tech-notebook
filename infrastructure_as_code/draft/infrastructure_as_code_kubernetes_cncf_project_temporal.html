@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Temporal＠Prometheusの知見を記録しています。">
+        <meta name="description" content="Temporal＠CNCFの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Temporal＠Prometheus - 俺の技術ノート</title>
+        <title>【IT技術の知見】Temporal＠CNCF - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#temporalprometheus" class="md-skip">
+        <a href="#temporalcncf" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Temporal＠Prometheus
+              【IT技術の知見】Temporal＠CNCF
             
           </span>
         </div>
@@ -22343,117 +22343,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02-global" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. global
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. persistence
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. persistence">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#defaultstore" class="md-nav__link">
-    <span class="md-ellipsis">
-      defaultStore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#visibilitystore" class="md-nav__link">
-    <span class="md-ellipsis">
-      visibilityStore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secondaryvisibilitystore" class="md-nav__link">
-    <span class="md-ellipsis">
-      secondaryVisibilityStore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#numhistoryshards" class="md-nav__link">
-    <span class="md-ellipsis">
-      numHistoryShards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#datastores" class="md-nav__link">
-    <span class="md-ellipsis">
-      datastores
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="datastores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ デフォルト値
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cassandra" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ cassandra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ elasticsearch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sql
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -22472,7 +22361,7 @@
   
 
 
-<h1 id="temporalprometheus">Temporal＠Prometheus<a class="headerlink" href="#temporalprometheus" title="Permanent link">&para;</a></h1>
+<h1 id="temporalcncf">Temporal＠CNCF<a class="headerlink" href="#temporalcncf" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22488,112 +22377,6 @@
 <ul>
 <li><a href="https://michaelangelo.io/blog/temporal-sqs#temporal-components">https://michaelangelo.io/blog/temporal-sqs#temporal-components</a></li>
 <li><a href="https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern">https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-global">02. global<a class="headerlink" href="#02-global" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#global">https://docs.temporal.io/references/configuration#global</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-persistence">03. persistence<a class="headerlink" href="#03-persistence" title="Permanent link">&para;</a></h2>
-<h3 id="defaultstore">defaultStore<a class="headerlink" href="#defaultstore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">defaultStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#defaultstore">https://docs.temporal.io/references/configuration#defaultstore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="visibilitystore">visibilityStore<a class="headerlink" href="#visibilitystore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">visibilityStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cass-visibility</span><span class="w"> </span><span class="c1"># The primary Visibility store.</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#visibilitystore">https://docs.temporal.io/references/configuration#visibilitystore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="secondaryvisibilitystore">secondaryVisibilityStore<a class="headerlink" href="#secondaryvisibilitystore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">secondaryVisibilityStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">es-visibility</span><span class="w"> </span><span class="c1"># A secondary Visibility store added to enable Dual Visibility.</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#secondaryvisibilitystore">https://docs.temporal.io/references/configuration#secondaryvisibilitystore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="numhistoryshards">numHistoryShards<a class="headerlink" href="#numhistoryshards" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">numHistoryShards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#numhistoryshards">https://docs.temporal.io/references/configuration#numhistoryshards</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="datastores">datastores<a class="headerlink" href="#datastores" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ デフォルト値<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="cassandra">▼ cassandra<a class="headerlink" href="#cassandra" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">cassandra</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-<span class="w">        </span><span class="nt">keyspace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temporal&quot;</span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#cassandra">https://docs.temporal.io/references/configuration#cassandra</a></li>
-</ul>
-</blockquote>
-<h4 id="elasticsearch">▼ elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">elasticsearch</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v7&quot;</span>
-<span class="w">        </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span>
-<span class="w">        </span><span class="nt">url</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
-<span class="w">          </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:9200&quot;</span>
-<span class="w">        </span><span class="nt">indices</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal_visibility_v1_dev</span>
-<span class="w">        </span><span class="nt">closeIdleConnectionsInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-</code></pre></div>
-<h4 id="sql">▼ sql<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sql</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mysql&quot;</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_HOST_</span>
-<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
-<span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal</span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_USERNAME_</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_PASSWORD_</span>
-<span class="w">        </span><span class="nt">maxConns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">        </span><span class="nt">maxConnLifetime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1h&quot;</span>
-<span class="w">        </span><span class="nt">connectAttributes</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">tx_isolation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;READ-COMMITTED&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#sql">https://docs.temporal.io/references/configuration#sql</a></li>
 </ul>
 </blockquote>
 <p><br></p>
