@@ -18,7 +18,7 @@
         <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_temporal_conf.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -19690,9 +19690,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#temporal_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアント
+      ▼ Temporalクライアント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Temporalワーカー
     </span>
   </a>
   
@@ -19724,11 +19733,11 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.html" class="md-nav__link">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_temporal_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    リソース定義
+    設定ファイル
   </span>
   
 
@@ -22657,9 +22666,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#temporal_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアント
+      ▼ Temporalクライアント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Temporalワーカー
     </span>
   </a>
   
@@ -22716,10 +22734,10 @@
 <p>Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。</p>
 <p><br></p>
 <h3 id="temporal_1">Temporalサーバー<a class="headerlink" href="#temporal_1" title="Permanent link">&para;</a></h3>
-<p>ワークフローを実行し、またステートをデータベースに永続化する。</p>
+<p>Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。</p>
 <p><br></p>
 <h3 id="temporal_2">Temporalワーカー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
-<p>Temporalサーバーをコールし、ワークフローの処理結果を取得する。</p>
+<p>Temporalワーカーは、Temporalサーバーをコールし、ワークフローの処理結果を取得する。</p>
 <p>Temporalワーカーが実行するべき処理タスクを取得する場合もある。</p>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -22733,8 +22751,8 @@
 <li><a href="https://github.com/efortuna/sagas-temporal-trip-booking/tree/main">https://github.com/efortuna/sagas-temporal-trip-booking/tree/main</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ クライアント<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Temporalサーバーをコールするクライアントが必要である。</p>
+<h4 id="temporal_3">▼ Temporalクライアント<a class="headerlink" href="#temporal_3" title="Permanent link">&para;</a></h4>
+<p>クライアントは、Temporalサーバーをコールする必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22778,6 +22796,47 @@
 <blockquote>
 <ul>
 <li><a href="https://docs.temporal.io/develop/go/temporal-clients">https://docs.temporal.io/develop/go/temporal-clients</a></li>
+</ul>
+</blockquote>
+<h4 id="temporal_4">▼ Temporalワーカー<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカーは、Temporalサーバーからワークフローの処理結果を取得する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;documentation-samples-go/yourapp&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Temporalサーバーに接続する</span>
+<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="c1">// ワークフローのID</span>
+<span class="w">    </span><span class="nx">workflowID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;Your-Custom-Workflow-Id&quot;</span>
+
+<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowID</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">YourWorkflowResponse</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
 </ul>
 </blockquote>
 <p><br></p>
