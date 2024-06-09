@@ -19701,6 +19701,15 @@
           <li class="md-nav__item">
   <a href="#temporal_4" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ Temporalサーバー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_5" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ Temporalワーカー
     </span>
   </a>
@@ -22677,6 +22686,15 @@
           <li class="md-nav__item">
   <a href="#temporal_4" class="md-nav__link">
     <span class="md-ellipsis">
+      ▼ Temporalサーバー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_5" class="md-nav__link">
+    <span class="md-ellipsis">
       ▼ Temporalワーカー
     </span>
   </a>
@@ -22798,8 +22816,12 @@
 <li><a href="https://docs.temporal.io/develop/go/temporal-clients">https://docs.temporal.io/develop/go/temporal-clients</a></li>
 </ul>
 </blockquote>
-<h4 id="temporal_4">▼ Temporalワーカー<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカーは、Temporalサーバーからワークフローの処理結果を取得する必要がある。</p>
+<h4 id="temporal_4">▼ Temporalサーバー<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
+<p>これは設定ファイルで実装する。</p>
+<p>各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。</p>
+<h4 id="temporal_5">▼ Temporalワーカー<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカーは、Temporalサーバーからワークフロー全体の処理結果を取得する必要がある。</p>
+<p>TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22820,13 +22842,11 @@
 <span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="c1">// ワークフローのID</span>
-<span class="w">    </span><span class="nx">workflowID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;Your-Custom-Workflow-Id&quot;</span>
+<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;ワークフローのID&gt;&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="nx">workflowID</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">workflowResponse</span>
 
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">YourWorkflowResponse</span>
-
+<span class="w">    </span><span class="c1">// ワークフローの結果を取得する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
