@@ -48,10 +48,60 @@ Temporalワーカーが実行するべき処理タスクを取得する場合も
 
 ### Sagaオーケストレーターとして
 
+#### ▼ Sagaオーケストレーターとして
+
 TemporalをSagaパターンのオーケストレーターとして使用する。
 
 > - https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern
 > - https://temporal.io/blog/saga-pattern-made-easy
 > - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
+
+#### ▼ クライアント
+
+Temporalサーバーをコールするクライアントが必要である。
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"log"
+	"net/http"
+
+	"documentation-samples-go/yourapp"
+
+	"go.temporal.io/sdk/client"
+)
+
+func main() {
+
+	// Temporalサーバーに接続する
+	temporalClient, err := client.Dial(client.Options{
+		HostPort: client.DefaultHostPort,
+	})
+
+	if err != nil {
+		log.Fatalln("Unable to create Temporal Client", err)
+	}
+
+	defer temporalClient.Close()
+
+	...
+
+	workflowOptions := client.StartWorkflowOptions{
+		...
+	}
+
+	// Temporalサーバーのワークフローを実行する
+	workflowRun, err := temporalClient.ExecuteWorkflow(context.Background(), workflowOptions, YourWorkflowDefinition, param)
+
+	if err != nil {
+		...
+	}
+}
+```
+
+> - https://docs.temporal.io/develop/go/temporal-clients
 
 <br>
