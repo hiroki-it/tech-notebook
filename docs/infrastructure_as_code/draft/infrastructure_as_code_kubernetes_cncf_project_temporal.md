@@ -17,9 +17,30 @@ description: Temporal＠CNCFの知見を記録しています。
 
 ### アーキテクチャ
 
-Temporalは、Temporalサーバー、ステート用データベース、Temporalワーカー (ユーザーのアプリ) 、からなる。
+Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー (ユーザーのアプリ) 、からなる。
 
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
+> - https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7
+
+<br>
+
+### Temporalクライアント
+
+Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。
+
+<br>
+
+### Temporalサーバー
+
+ワークフローを実行し、またステートをデータベースに永続化する。
+
+<br>
+
+### Temporalワーカー
+
+Temporalサーバーをコールし、ワークフローの処理結果を取得する。
+
+Temporalワーカーが実行するべき処理タスクを取得する場合もある。
 
 <br>
 
