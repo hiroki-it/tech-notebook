@@ -19708,9 +19708,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#temporal_5" class="md-nav__link">
+  <a href="#temporal_" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー
+      ▼ Temporalワーカー_
     </span>
   </a>
   
@@ -22693,9 +22693,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#temporal_5" class="md-nav__link">
+  <a href="#temporal_" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー
+      ▼ Temporalワーカー_
     </span>
   </a>
   
@@ -22827,19 +22827,32 @@
 <span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/activity&quot;</span>
 <span class="p">)</span>
 
+<span class="c1">// パラメーター</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">YourActivityParam</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ActivityParamX</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">ActivityParamY</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+
 <span class="kd">type</span><span class="w"> </span><span class="nx">YourActivityObject</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Message</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Number</span><span class="w">  </span><span class="o">*</span><span class="kt">int</span>
 <span class="p">}</span>
 
+<span class="c1">// アクション</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">YourActivityObject</span><span class="p">)</span><span class="w"> </span><span class="nx">PrintInfo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">param</span><span class="w"> </span><span class="nx">YourActivityParam</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">activity</span><span class="p">.</span><span class="nx">GetLogger</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;The message is:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">ActivityParamX</span><span class="p">)</span>
+
 <span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;The number is:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">ActivityParamY</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
+<span class="c1">// アクション</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">YourActivityObject</span><span class="p">)</span><span class="w"> </span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">YourActivityResultObject</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">YourActivityResultObject</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">ResultFieldX</span><span class="p">:</span><span class="w"> </span><span class="o">*</span><span class="nx">a</span><span class="p">.</span><span class="nx">Message</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">ResultFieldY</span><span class="p">:</span><span class="w"> </span><span class="o">*</span><span class="nx">a</span><span class="p">.</span><span class="nx">Number</span><span class="p">,</span>
@@ -22867,6 +22880,7 @@
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">activityOptions</span><span class="p">)</span>
 
+<span class="w">    </span><span class="c1">// ワークフローのパラメーターを定義する</span>
 <span class="w">    </span><span class="nx">activityParam</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">YourActivityParam</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">ActivityParamX</span><span class="p">:</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">WorkflowParamX</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">ActivityParamY</span><span class="p">:</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">WorkflowParamY</span><span class="p">,</span>
@@ -22876,7 +22890,9 @@
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">activityResult</span><span class="w"> </span><span class="nx">YourActivityResultObject</span>
 
-<span class="w">    </span><span class="c1">// (1) ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// (1)</span>
+<span class="w">    </span><span class="c1">// ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// パラメーターの入力</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">YourActivityDefinition</span><span class="p">,</span><span class="w"> </span><span class="nx">activityParam</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">activityResult</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -22885,7 +22901,9 @@
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">infoResult</span><span class="w"> </span><span class="o">*</span><span class="nx">YourActivityResultObject</span>
 
-<span class="w">    </span><span class="c1">// (2) ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// (2)</span>
+<span class="w">    </span><span class="c1">// ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// GetInfoアクション</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">GetInfo</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">infoResult</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -22897,7 +22915,9 @@
 <span class="w">        </span><span class="nx">ActivityParamY</span><span class="p">:</span><span class="w"> </span><span class="nx">infoResult</span><span class="p">.</span><span class="nx">ResultFieldY</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// (3) ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// (3)</span>
+<span class="w">    </span><span class="c1">// ワークフローのステップを実行する</span>
+<span class="w">    </span><span class="c1">// PrintInfoアクション</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">PrintInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">infoParam</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -22916,9 +22936,10 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go</a></li>
+<li><a href="https://docs.temporal.io/develop/go/core-application#develop-workflows">https://docs.temporal.io/develop/go/core-application#develop-workflows</a></li>
 </ul>
 </blockquote>
-<h4 id="temporal_5">▼ Temporalワーカー<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
+<h4 id="temporal_">▼ Temporalワーカー_<a class="headerlink" href="#temporal_" title="Permanent link">&para;</a></h4>
 <p>Temporalワーカーは、Temporalサーバーからワークフロー全体の処理結果を取得する必要がある。</p>
 <p>TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
