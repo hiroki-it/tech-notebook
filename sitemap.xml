@@ -1006,6 +1006,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.html</loc>
+         <lastmod>2024-06-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.html</loc>
+         <lastmod>2024-06-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html</loc>
          <lastmod>2024-06-09</lastmod>
          <changefreq>daily</changefreq>
@@ -1322,16 +1332,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_prometheus_operator.html</loc>
-         <lastmod>2024-06-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_temporal.html</loc>
-         <lastmod>2024-06-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_temporal_resource_definition.html</loc>
          <lastmod>2024-06-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
