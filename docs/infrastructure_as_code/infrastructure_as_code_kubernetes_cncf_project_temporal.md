@@ -114,6 +114,37 @@ Temporalサーバーは、ワークフローを実行し、またステートを
 package yourapp
 
 import (
+	"context"
+
+	"go.temporal.io/sdk/activity"
+)
+
+type YourActivityObject struct {
+	Message *string
+	Number  *int
+}
+
+func (a *YourActivityObject) PrintInfo(ctx context.Context, param YourActivityParam) error {
+	logger := activity.GetLogger(ctx)
+	logger.Info("The message is:", param.ActivityParamX)
+	logger.Info("The number is:", param.ActivityParamY)
+	return nil
+}
+
+func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultObject, error) {
+	return &YourActivityResultObject{
+		ResultFieldX: *a.Message,
+		ResultFieldY: *a.Number,
+	}, nil
+}
+```
+
+> - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
+
+```go
+package yourapp
+
+import (
 	"time"
 
 	"go.temporal.io/sdk/workflow"
@@ -174,7 +205,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 }
 ```
 
-> - https://docs.temporal.io/develop/go/core-application#develop-workflows
+> - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
 
 #### ▼ Temporalワーカー
 
