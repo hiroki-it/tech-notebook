@@ -22772,6 +22772,7 @@
 <h4 id="temporal_3">▼ Temporalクライアント<a class="headerlink" href="#temporal_3" title="Permanent link">&para;</a></h4>
 <p>クライアントは、Temporalサーバーをコールする必要である。</p>
 <p>Temporalクライアントは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。</p>
+<p>Temporalサーバーと別のアプリとして実行することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22869,6 +22870,7 @@
 <h4 id="temporal_4">▼ Temporalサーバーとステート用データベース<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
 <p>Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。</p>
 <p>各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。</p>
+<p>Temporalクライアントと別のアプリとして実行することもできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">yourapp</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -22992,6 +22994,7 @@
 <h4 id="temporal_5">▼ Temporalワーカー<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
 <p>Temporalワーカーは、Temporalサーバーからステップやワークフロー全体の処理結果を取得する必要がある。</p>
 <p>TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。</p>
+<p>Temporalクライアントやサーバーとは別のアプリとして実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23026,6 +23029,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go</a></li>
 <li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
 </ul>
 </blockquote>
