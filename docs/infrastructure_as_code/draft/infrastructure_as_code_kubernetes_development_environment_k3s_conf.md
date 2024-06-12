@@ -15,6 +15,10 @@ description: 設定ファイル＠K3Sの知見を記録しています。
 
 ## 01. `registries.yaml`ファイル
 
+### configs
+
+#### ▼ configsとは
+
 K3S Cluster内のPodが使用するイメージレジストリ情報を設定する。
 
 `/etc/rancher/k3s`ディレクトリ配下に配置する。

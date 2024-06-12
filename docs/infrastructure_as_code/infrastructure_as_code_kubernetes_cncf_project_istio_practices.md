@@ -473,7 +473,23 @@ variables:
   ISTIO_NEXT_VERSION: "1.17.5"
 
 stages:
+  - build
   - test
+
+# registries.yamlをセットアップする
+setup_registries_file:
+  stage: build
+  image: docker
+  script:
+    - AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+    - |
+      cat > registries.yaml <<EOF
+      configs:
+        ${AWS_ECR}:
+          auth:
+            username: AWS
+            password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
+      EOF
 
 # 指定したバージョンのIstioを検証する
 test_istio:
@@ -505,13 +521,13 @@ test_istio:
       mv ./kubectl /usr/local/bin/kubectl
       kubectl version
     # Clusterを作成する
-    # Clusterを作成する
+    # registries.yamlファイルをvolumeで配置する
     # もし該当のバージョンのイメージがなければ、rc版を使用する
     - |
       if [ $? -ne 0 ]; then \
-        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2; \
+        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 --volume "registries.yaml:/etc/rancher/k3s/registries.yaml"; \
       else \
-        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2; \
+        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2 --volume "registries.yaml:/etc/rancher/k3s/registries.yaml"; \
       fi
     # Nodeにラベル付けする
     - |

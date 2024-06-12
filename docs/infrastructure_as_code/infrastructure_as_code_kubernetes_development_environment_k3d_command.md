@@ -91,6 +91,18 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 
 > - https://k3d.io/v5.5.2/usage/multiserver/
 
+#### ▼ --volume
+
+ホストマシンのファイルをK3d Clusterにマウントする。
+
+`registries.yaml`ファイルをK3D Cluster内の`/etc/rancher/k3s/registries.yaml`に配置する時に役立つ。
+
+```bash
+$ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/registries.yaml
+```
+
+> - https://cloudandbuild.jp/blog/article-2#make%E3%81%A7cluster%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%8A%E7%A0%B4%E6%A3%84%E3%81%99%E3%82%8B
+
 #### ▼ --wait
 
 kube-apiserverからリクエストが返却された上で、処理を完了させる。
