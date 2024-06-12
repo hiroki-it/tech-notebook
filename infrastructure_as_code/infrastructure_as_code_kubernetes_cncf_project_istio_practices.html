@@ -23742,7 +23742,23 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.17.5&quot;</span>
 
 <span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+
+<span class="c1"># registries.yamlをセットアップする</span>
+<span class="nt">setup_registries_file</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ECR=&quot;${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">cat &gt; registries.yaml &lt;&lt;EOF</span>
+<span class="w">      </span><span class="no">configs:</span>
+<span class="w">        </span><span class="no">${AWS_ECR}:</span>
+<span class="w">          </span><span class="no">auth:</span>
+<span class="w">            </span><span class="no">username: AWS</span>
+<span class="w">            </span><span class="no">password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})</span>
+<span class="w">      </span><span class="no">EOF</span>
 
 <span class="c1"># 指定したバージョンのIstioを検証する</span>
 <span class="nt">test_istio</span><span class="p">:</span>
@@ -23774,13 +23790,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">      </span><span class="no">mv ./kubectl /usr/local/bin/kubectl</span>
 <span class="w">      </span><span class="no">kubectl version</span>
 <span class="w">    </span><span class="c1"># Clusterを作成する</span>
-<span class="w">    </span><span class="c1"># Clusterを作成する</span>
+<span class="w">    </span><span class="c1"># registries.yamlファイルをvolumeで配置する</span>
 <span class="w">    </span><span class="c1"># もし該当のバージョンのイメージがなければ、rc版を使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">if [ $? -ne 0 ]; then \</span>
-<span class="w">        </span><span class="no">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2; \</span>
+<span class="w">        </span><span class="no">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2 --volume &quot;registries.yaml:/etc/rancher/k3s/registries.yaml&quot;; \</span>
 <span class="w">      </span><span class="no">else \</span>
-<span class="w">        </span><span class="no">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-rc1-k3s1 --agents 2; \</span>
+<span class="w">        </span><span class="no">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-rc1-k3s1 --agents 2 --volume &quot;registries.yaml:/etc/rancher/k3s/registries.yaml&quot;; \</span>
 <span class="w">      </span><span class="no">fi</span>
 <span class="w">    </span><span class="c1"># Nodeにラベル付けする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -23858,7 +23874,7 @@ istioctl<span class="w"> </span>version
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-12</span>
   </span>
 
     
