@@ -10682,11 +10682,11 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      クレームの取得
+      認可リクエスト時のクレームの取得
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="クレームの取得">
+    <nav class="md-nav" aria-label="認可リクエスト時のクレームの取得">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22649,11 +22649,11 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      クレームの取得
+      認可リクエスト時のクレームの取得
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="クレームの取得">
+    <nav class="md-nav" aria-label="認可リクエスト時のクレームの取得">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22806,16 +22806,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">クレームの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">認可リクエスト時のクレームの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="scope">▼ <code>scope</code>パラメーター<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h4>
-<p><code>scope</code>パラメーターでクレームグループを指定し、クレームを取得できる。</p>
+<p>認可リクエスト時に、<code>scope</code>パラメーターでクレームグループを指定し、クレームを取得できる。</p>
 <p>IDプロバイダーは、指定したクレームグループに対応したクレームをIDトークン (アクセストークンではなく) に設定し、クライアントに返信する。</p>
-<p>クライアントでは、取得したクレームに応じて認可処理を実行する。</p>
+<p>クライアントは、取得したクレームを認証情報として扱い、認可処理を実行する。</p>
 <table>
 <thead>
 <tr>
 <th>クレームグループ</th>
-<th>取得できるクレーム (アカウント情報の要素)</th>
+<th>取得できるクレーム (認証情報の要素)</th>
 </tr>
 </thead>
 <tbody>
@@ -22848,7 +22848,7 @@
 </ul>
 </blockquote>
 <h4 id="claims">▼ <code>claims</code>パラメーター<a class="headerlink" href="#claims" title="Permanent link">&para;</a></h4>
-<p><code>claims</code>パラメーターで特定のクレームを指定し、クレームを取得できる。</p>
+<p>認可リクエスト時に、<code>claims</code>パラメーターで特定のクレームを指定し、クレームを取得できる。</p>
 <p>クレームの指定の仕方が複雑らしい...</p>
 <blockquote>
 <ul>
