@@ -10682,35 +10682,26 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      トークンとクレームの紐付け
+      クレームの取得
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="トークンとクレームの紐付け">
+    <nav class="md-nav" aria-label="クレームの取得">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#scope" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアントスコープ
+      ▼ scopeパラメーター
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#claims" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プロトコルマッパー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スクリプトマッパー
+      ▼ claimsパラメーター
     </span>
   </a>
   
@@ -22658,35 +22649,26 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      トークンとクレームの紐付け
+      クレームの取得
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="トークンとクレームの紐付け">
+    <nav class="md-nav" aria-label="クレームの取得">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#scope" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ クライアントスコープ
+      ▼ scopeパラメーター
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#claims" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プロトコルマッパー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ スクリプトマッパー
+      ▼ claimsパラメーター
     </span>
   </a>
   
@@ -22778,6 +22760,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">クレーム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>クレームはアカウントの認証情報の要素である。</p>
 <p>OIDCのIDプロバイダーでは、アカウントの情報としてクレームを設定できる。</p>
 <table>
 <thead>
@@ -22823,17 +22806,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">トークンとクレームの紐付け<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ クライアントスコープ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>クライアントスコープでは、認証の複数のクライアント (例：Webアプリ) をまとめてクレームと紐づける。</p>
-<p>クライアントは、OIDCのIDプロバイダーからアカウントのクレームを取得するために、クライアントスコープを設定する。</p>
-<p>IDプロバイダーは、指定したクライアントスコープをIDトークン (アクセストークンではなく) に含めて、クライアントに送信する。</p>
-<p>クライアントでは、取得したクライアントスコープに応じて認可処理を実行する。</p>
+<h3 id="_4">クレームの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="scope">▼ <code>scope</code>パラメーター<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h4>
+<p><code>scope</code>パラメーターでクレームグループを指定し、クレームを取得できる。</p>
+<p>IDプロバイダーは、指定したクレームグループに対応したクレームをIDトークン (アクセストークンではなく) に設定し、クライアントに返信する。</p>
+<p>クライアントでは、取得したクレームに応じて認可処理を実行する。</p>
 <table>
 <thead>
 <tr>
-<th>スコープ</th>
-<th>取得できるクレーム</th>
+<th>クレームグループ</th>
+<th>取得できるクレーム (アカウント情報の要素)</th>
 </tr>
 </thead>
 <tbody>
@@ -22866,22 +22848,15 @@
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim">https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim</a></li>
-<li><a href="https://kazuhira-r.hatenablog.com/entry/2022/08/27/001928">https://kazuhira-r.hatenablog.com/entry/2022/08/27/001928</a></li>
-<li><a href="https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9">https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9</a></li>
+<li><a href="https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims">https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ プロトコルマッパー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>プロトコルマッパーでは、認証のクライアント (例：Webアプリ) の単位でクレームを紐づける。</p>
+<h4 id="claims">▼ <code>claims</code>パラメーター<a class="headerlink" href="#claims" title="Permanent link">&para;</a></h4>
+<p><code>claims</code>パラメーターでユーザー定義のクレームグループを指定し、クレームを取得できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9">https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ スクリプトマッパー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>スクリプトマッパーでは、自由な単位でクレームを紐づける。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9">https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9</a></li>
+<li><a href="https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim">https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim</a></li>
+<li><a href="https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter">https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter</a></li>
 </ul>
 </blockquote>
 <p><br></p>

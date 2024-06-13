@@ -22934,7 +22934,8 @@
 <p>免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://www.facebook.com/auth?&lt;下表で説明&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認可エンドポイントに認可リクエストを送信する</span>
+<span class="l l-Scalar l-Scalar-Plain">GET https://www.facebook.com/auth?&lt;下表で説明&gt;</span>
 <span class="nn">---</span>
 <span class="nt">HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authorization-server.com</span><span class="w"> </span><span class="c1"># 認可サーバーのホスト</span>
 </code></pre></div>
@@ -23046,10 +23047,11 @@
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>免許証作成サイトは、Facebookの認可サーバーに認可コードを含むトークンリクエストを送信する。</p>
+<p>免許証作成サイトは、Facebookの認可サーバーのトークンエンドポイントにトークンリクエストを送信する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://www.facebook.com/auth?</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># トークンエンドポイントにトークンリクエストを送信する</span>
+<span class="l l-Scalar l-Scalar-Plain">POST https://www.facebook.com/auth?</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authorization-server.com</span><span class="w"> </span><span class="c1"># 認可サーバーのホスト</span>
 <span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/x-www-form-urlencoded</span>
