@@ -150,6 +150,34 @@ data:
 
 <br>
 
+### discoverySelectors
+
+#### ▼ discoverySelectorsとは
+
+IstiodコントロールプレーンがwatchするNamespaceを限定する。
+
+これは、サイドカーをインジェクションする`istio.io/rev`キーよりも強い影響力がある。
+
+例えば、サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodコントロールプレーンの負荷を下げられる。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    discoverySelectors:
+      - matchLabels:
+          istio.io/rev: stable
+```
+
+> - https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true
+> - https://github.com/istio/api/blob/v1.22.1/mesh/v1alpha1/config.proto#L1252-L1274
+
+<br>
+
 ### outboundTrafficPolicy
 
 #### ▼ outboundTrafficPolicyとは
