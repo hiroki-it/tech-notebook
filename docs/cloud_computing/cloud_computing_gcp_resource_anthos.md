@@ -130,7 +130,7 @@ Google Cloud上で`kubectl`コマンドを実行して各クラウドプロバ�
 
 #### ▼ fleet-workload-identity
 
-Google Cloud側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。
+Google Cloud側の認証情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。
 
 これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
