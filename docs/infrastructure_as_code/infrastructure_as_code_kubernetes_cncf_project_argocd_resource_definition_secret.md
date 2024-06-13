@@ -546,11 +546,11 @@ metadata:
     app.kubernetes.io/part-of: argocd
 type: Opaque
 data:
-  # base64方式でエンコードしたクライアントシークレット値
+  # base64方式でエンコードしたクライアントシークレット
   oidc.auth0.clientSecret: *****
 ```
 
-argocd-cmにて、`$<Secret名>:<キー名>`を指定して、定義したクライアントシークレット値を出力する。
+argocd-cmにて、`$<Secret名>:<キー名>`を指定して、定義したクライアントシークレットを出力する。
 
 ```yaml
 apiVersion: v1
