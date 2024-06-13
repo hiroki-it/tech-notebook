@@ -79,6 +79,9 @@ ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善に�
 
 application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
 
+- `1000`Applicationの場合、`--status-processors`に`50`、`--operation-processors`に`25`を指定
+- `400`Applicationの場合、`--status-processors`に`20`、`--operation-processors`に`10`を指定 (デフォルト値)
+
 Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。
 
 大量のApplicationをReconciliationする場合、次のような対処方法がある。
