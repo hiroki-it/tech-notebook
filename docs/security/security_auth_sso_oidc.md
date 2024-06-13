@@ -39,6 +39,8 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 
 ### クレーム
 
+クレームはアカウントの認証情報の要素である。
+
 OIDCのIDプロバイダーでは、アカウントの情報としてクレームを設定できる。
 
 | クレーム  | 説明                        |
@@ -55,42 +57,34 @@ OIDCのIDプロバイダーでは、アカウントの情報としてクレー�
 
 <br>
 
-### トークンとクレームの紐付け
+### クレームの取得
 
-#### ▼ クライアントスコープ
+#### ▼ `scope`パラメーター
 
-クライアントスコープでは、認証の複数のクライアント (例：Webアプリ) をまとめてクレームと紐づける。
+`scope`パラメーターでクレームグループを指定し、クレームを取得できる。
 
-クライアントは、OIDCのIDプロバイダーからアカウントのクレームを取得するために、クライアントスコープを設定する。
+IDプロバイダーは、指定したクレームグループに対応したクレームをIDトークン (アクセストークンではなく) に設定し、クライアントに返信する。
 
-IDプロバイダーは、指定したクライアントスコープをIDトークン (アクセストークンではなく) に含めて、クライアントに送信する。
+クライアントでは、取得したクレームに応じて認可処理を実行する。
 
-クライアントでは、取得したクライアントスコープに応じて認可処理を実行する。
-
-| スコープ  | 取得できるクレーム                                                                                                                                                               |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `profile` | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
-| `email`   | `email`、`email_verified`                                                                                                                                                        |
-| `phone`   | `address`                                                                                                                                                                        |
-| `address` | `phone_number`、`phone_number_verified`                                                                                                                                          |
-| `openid`  | IDプロバイダー側で設定しているアカウントの識別子                                                                                                                                 |
-| `groups`  | IDプロバイダー側で設定しているアカウントの認証グループ                                                                                                                           |
+| クレームグループ | 取得できるクレーム (アカウント情報の要素)                                                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `profile`        | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
+| `email`          | `email`、`email_verified`                                                                                                                                                        |
+| `phone`          | `address`                                                                                                                                                                        |
+| `address`        | `phone_number`、`phone_number_verified`                                                                                                                                          |
+| `openid`         | IDプロバイダー側で設定しているアカウントの識別子                                                                                                                                 |
+| `groups`         | IDプロバイダー側で設定しているアカウントの認証グループ                                                                                                                           |
 
 > - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
-> - https://kazuhira-r.hatenablog.com/entry/2022/08/27/001928
-> - https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9
+> - https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
 
-#### ▼ プロトコルマッパー
+#### ▼ `claims`パラメーター
 
-プロトコルマッパーでは、認証のクライアント (例：Webアプリ) の単位でクレームを紐づける。
+`claims`パラメーターでユーザー定義のクレームグループを指定し、クレームを取得できる。
 
-> - https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9
-
-#### ▼ スクリプトマッパー
-
-スクリプトマッパーでは、自由な単位でクレームを紐づける。
-
-> - https://qiita.com/takashyan/items/241be471d4c6e10d4e1b#%E3%82%84%E3%82%8A%E6%96%B9
+> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
+> - https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter
 
 <br>
 

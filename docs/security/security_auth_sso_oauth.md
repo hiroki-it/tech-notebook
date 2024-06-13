@@ -102,6 +102,7 @@ Facebookで認証フェーズのみでログインし、連携先の免許証作
      免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。
 
 ```yaml
+# 認可エンドポイントに認可リクエストを送信する
 GET https://www.facebook.com/auth?<下表で説明>
 ---
 HOST: authorization-server.com # 認可サーバーのホスト
@@ -158,9 +159,10 @@ Location: https://www.免許証作成サイト.com/callback?code=<認可コー�
 
 `(7)`
 
-: 免許証作成サイトは、Facebookの認可サーバーに認可コードを含むトークンリクエストを送信する。
+: 免許証作成サイトは、Facebookの認可サーバーのトークンエンドポイントにトークンリクエストを送信する。
 
 ```yaml
+# トークンエンドポイントにトークンリクエストを送信する
 POST https://www.facebook.com/auth?
 ---
 Host: authorization-server.com # 認可サーバーのホスト
