@@ -67,21 +67,22 @@ IDプロバイダーは、指定したクレームグループに対応したク
 
 クライアントでは、取得したクレームに応じて認可処理を実行する。
 
-| クレームグループ | 取得できるクレーム (アカウント情報の要素)                                                                                                                                        |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `profile`        | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
-| `email`          | `email`、`email_verified`                                                                                                                                                        |
-| `phone`          | `address`                                                                                                                                                                        |
-| `address`        | `phone_number`、`phone_number_verified`                                                                                                                                          |
-| `openid`         | IDプロバイダー側で設定しているアカウントの識別子                                                                                                                                 |
-| `groups`         | IDプロバイダー側で設定しているアカウントの認証グループ                                                                                                                           |
+| クレームグループ               | 取得できるクレーム (アカウント情報の要素)                                                                                                                                        |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `profile`                      | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
+| `email`                        | `email`、`email_verified`                                                                                                                                                        |
+| `phone`                        | `address`                                                                                                                                                                        |
+| `address`                      | `phone_number`、`phone_number_verified`                                                                                                                                          |
+| ユーザー定義のクレームグループ | 自由にクレームを設定できる                                                                                                                                                       |
 
 > - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
 > - https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
 
 #### ▼ `claims`パラメーター
 
-`claims`パラメーターでユーザー定義のクレームグループを指定し、クレームを取得できる。
+`claims`パラメーターで特定のクレームを指定し、クレームを取得できる。
+
+クレームの指定の仕方が複雑らしい...
 
 > - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
 > - https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter
