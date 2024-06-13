@@ -22479,16 +22479,58 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#oidc" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      OIDC
+      認証情報の伝播方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="認証情報の伝播方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアントシークレットの場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#x509" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ X509証明書の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ JWTの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jwt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWTとクライアントシークレットの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ユースケース
     </span>
@@ -22498,7 +22540,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 認証マイクロサービスとして
     </span>
@@ -22570,7 +22612,12 @@
 <p>アカウント情報を保管する。</p>
 <p><br></p>
 <h2 id="02">02. 認証<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
+<h3 id="_3">認証情報の伝播方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ クライアントシークレットの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="x509">▼ X509証明書の場合<a class="headerlink" href="#x509" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="jwt">▼ JWTの場合<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
 <p>Keycloakクライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを<code>base64</code>方式によってエンコードし、ドットでつなぐ。</p>
 <p>これらの処理によって、JWTを作成する。</p>
 <p>その後、Keycloakの認可エンドポイントにJWTを送信する。</p>
@@ -22581,8 +22628,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">ユースケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 認証マイクロサービスとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="jwt_1">JWTとクライアントシークレットの場合<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="_5">ユースケース<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 認証マイクロサービスとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 
@@ -22605,7 +22655,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
   </span>
 
     
