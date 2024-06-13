@@ -483,7 +483,7 @@ setup_registries_file:
   script:
     - AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
     - |
-      cat > registries.yaml <<EOF
+      cat <<EOF registries.yaml >
       configs:
         ${AWS_ECR}:
           auth:

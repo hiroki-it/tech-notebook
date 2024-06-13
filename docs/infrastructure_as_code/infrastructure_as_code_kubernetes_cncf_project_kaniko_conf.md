@@ -50,7 +50,7 @@ CIの実行コンテナでは、機密情報を動的に設定できるように
 $ aws ecr get-login-password --region ap-northeast-1 \
     | docker login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
 
-$ cat > /kaniko/.docker/config.json <<EOF
+$ cat <<EOF > /kaniko/.docker/config.json
   {
     ...
   }
