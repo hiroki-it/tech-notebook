@@ -15,55 +15,153 @@ description: 設定ファイル＠K3Dの知見を記録しています。
 
 ## config.yaml
 
+### apiVersion
+
 ```yaml
-# k3d configuration file, saved as e.g. /home/me/myk3dcluster.yaml
-apiVersion: k3d.io/v1alpha5 # this will change in the future as we make everything more stable
-kind: Simple # internally, we also have a Cluster config, which is not yet available externally
+apiVersion: k3d.io/v1alpha5
+```
+
+<br>
+
+### kind
+
+```yaml
+kind: Simple
+```
+
+<br>
+
+### metadata
+
+```yaml
 metadata:
-  name: mycluster # name that you want to give to your cluster (will still be prefixed with `k3d-`)
-servers: 1 # same as `--servers 1`
-agents: 2 # same as `--agents 2`
-kubeAPI: # same as `--api-port myhost.my.domain:6445` (where the name would resolve to 127.0.0.1)
-  host: "myhost.my.domain" # important for the `server` setting in the kubeconfig
-  hostIP: "127.0.0.1" # where the Kubernetes API will be listening on
-  hostPort: "6445" # where the Kubernetes API listening port will be mapped to on your host system
-image: rancher/k3s:v1.20.4-k3s1 # same as `--image rancher/k3s:v1.20.4-k3s1`
-network: my-custom-net # same as `--network my-custom-net`
-subnet: "172.28.0.0/16" # same as `--subnet 172.28.0.0/16`
-token: superSecretToken # same as `--token superSecretToken`
-volumes: # repeatable flags are represented as YAML lists
-  - volume: /my/host/path:/path/in/node # same as `--volume '/my/host/path:/path/in/node@server:0;agent:*'`
+  name: mycluster
+```
+
+<br>
+
+### servers
+
+```yaml
+servers: 1
+```
+
+<br>
+
+### agents
+
+```yaml
+agents: 2
+```
+
+<br>
+
+### kubeAPI
+
+```yaml
+kubeAPI:
+  host: myhost.my.domain
+  hostIP: 127.0.0.1
+  hostPort: "6445"
+```
+
+<br>
+
+### image
+
+```yaml
+image: "rancher/k3s:v1.20.4-k3s1"
+```
+
+<br>
+
+### network
+
+```yaml
+network: my-custom-net
+```
+
+<br>
+
+### subnet
+
+```yaml
+subnet: 172.28.0.0/16
+```
+
+<br>
+
+### token
+
+```yaml
+token: superSecretToken
+```
+
+<br>
+
+### volumes
+
+```yaml
+volumes:
+  - volume: "/my/host/path:/path/in/node"
     nodeFilters:
-      - server:0
-      - agent:*
+      - "server:0"
+      - "agent:*"
+```
+
+<br>
+
+### ports
+
+```yaml
 ports:
-  - port: 8080:80 # same as `--port '8080:80@loadbalancer'`
+  - port: "8080:80"
     nodeFilters:
       - loadbalancer
+```
+
+<br>
+
+### env
+
+```yaml
 env:
-  - envVar: bar=baz # same as `--env 'bar=baz@server:0'`
+  - envVar: bar=baz
     nodeFilters:
-      - server:0
-registries: # define how registries should be created or used
-  create: # creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`
+      - "server:0"
+```
+
+<br>
+
+### registries
+
+```yaml
+registries:
+  create:
     name: registry.localhost
-    host: "0.0.0.0"
+    host: 0.0.0.0
     hostPort: "5000"
-    proxy: # omit this to have a "normal" registry, set this to create a registry proxy (pull-through cache)
-      remoteURL: https://registry-1.docker.io # mirror the DockerHub registry
-      username: "" # unauthenticated
-      password: "" # unauthenticated
+    proxy:
+      remoteURL: "https://registry-1.docker.io"
+      username: ""
+      password: ""
     volumes:
-      - /some/path:/var/lib/registry # persist registry data locally
+      - "/some/path:/var/lib/registry"
   use:
-    - k3d-myotherregistry:5000 # some other k3d-managed registry; same as `--registry-use 'k3d-myotherregistry:5000'`
-  config:
-    | # define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`
+    - "k3d-myotherregistry:5000"
+  config: |
     mirrors:
       "my.company.registry":
         endpoint:
           - http://my.company.registry:5000
-hostAliases: # /etc/hosts style entries to be injected into /etc/hosts in the node containers and in the NodeHosts section in CoreDNS
+```
+
+<br>
+
+### hostAliases
+
+```yaml
+hostAliases:
   - ip: 1.2.3.4
     hostnames:
       - my.host.local
@@ -71,40 +169,47 @@ hostAliases: # /etc/hosts style entries to be injected into /etc/hosts in the no
   - ip: 1.1.1.1
     hostnames:
       - cloud.flare.dns
+```
+
+<br>
+
+### options
+
+```yaml
 options:
-  k3d: # k3d runtime settings
-    wait: "true" # wait for cluster to be usable before returning; same as `--wait` (default: "true")
-    timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
-    disableLoadbalancer: "false" # same as `--no-lb`
-    disableImageVolume: "false" # same as `--no-image-volume`
-    disableRollback: "false" # same as `--no-Rollback`
+  k3d:
+    wait: true
+    timeout: 60s
+    disableLoadbalancer: false
+    disableImageVolume: false
+    disableRollback: false
     loadbalancer:
       configOverrides:
         - settings.workerConnections=2048
-  k3s: # options passed on to K3s itself
-    extraArgs: # additional arguments passed to the `k3s server|agent` command; same as `--k3s-arg`
+  k3s:
+    extraArgs:
       - arg: "--tls-san=my.host.domain"
         nodeFilters:
-          - server:*
+          - "server:*"
     nodeLabels:
-      - label: foo=bar # same as `--k3s-node-label 'foo=bar@agent:1'` -> this results in a Kubernetes node label
+      - label: foo=bar
         nodeFilters:
-          - agent:1
+          - "agent:1"
   kubeconfig:
-    updateDefaultKubeconfig: "true" # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: "true")
-    switchCurrentContext: "true" # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: "true")
-  runtime: # runtime (docker) specific options
-    gpuRequest: all # same as `--gpus all`
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
+  runtime:
+    gpuRequest: all
     labels:
-      - label: bar=baz # same as `--runtime-label 'bar=baz@agent:1'` -> this results in a runtime (docker) container label
+      - label: bar=baz
         nodeFilters:
-          - agent:1
+          - "agent:1"
     ulimits:
       - name: nofile
         soft: 26677
         hard: 26677
 ```
 
-> - https://k3d.io/v5.5.1/usage/configfile/#all-options-example
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>

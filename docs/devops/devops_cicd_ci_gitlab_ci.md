@@ -563,40 +563,9 @@ foo_job:
 
 #### ▼ artifactsとは
 
-GitLabでは、同じJob間ではファイルを自動で継承できるが、異なるJob間ではこれを継承できない。
+GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる。
 
-異なるJob間でファイルを継承する。
-
-なお、継承ファイルを使用したい後続のJobでは、ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。
-
-```yaml
-# ビルドステージ
-foo_job:
-  stage: build
-  script:
-    - echo foo
-  # 継承したいファイル
-  artifacts:
-    paths:
-      - path/tmp/
-
-# デプロイステージ
-bar_job:
-  stage: deploy
-  script:
-    # path/tmp/を使用する
-    ...
-```
-
-> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
-> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
-> - https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts
-> - https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/
-> - https://dev.classmethod.jp/articles/gitlab-runner-ci-cd-2/#toc-3
-
-#### ▼ artifactsを使用できない場合
-
-`needs`でJob間に依存関係を定義している場合、`artifacts`を使用しても、`needs`で指定しているJob以外のファイルを継承できない。
+しかし、`needs`でJob間に依存関係を定義している場合、`artifacts`を使用しても、`needs`で指定しているJob以外のファイルを継承できない。
 
 `needs`で指定したJobの`artifacts`のみを継承できる。
 
@@ -642,6 +611,31 @@ qux_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts
+
+#### ▼ artifactsが不要な場合
+
+GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる。
+
+そのため、`artifacts`は不要である。
+
+```yaml
+# ビルドステージ
+foo_job:
+  stage: build
+  script:
+    - echo foo
+
+# デプロイステージ
+bar_job:
+  stage: deploy
+  script:
+    # buildステージのファイルを使用する
+    ...
+```
+
+> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
+> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
+> - https://docs.gitlab.com/ee/ci/caching/#artifacts
 
 <br>
 

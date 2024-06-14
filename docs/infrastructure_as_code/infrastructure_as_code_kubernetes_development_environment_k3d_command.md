@@ -68,7 +68,7 @@ $ kubectl label node k3d-foo-cluster-agent-2 node-type=app
 $ k3d cluster create --config config.yaml
 ```
 
-> - https://k3d.io/v5.5.1/usage/configfile/#usage
+> - https://k3d.io/v5.6.3/usage/configfile/#usage
 
 #### ▼ --image
 
@@ -79,7 +79,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 ```
 
 > - https://github.com/k3d-io/k3d/discussions/474
-> - https://k3d.io/v5.5.2/usage/commands/k3d_cluster_create/
+> - https://k3d.io/v5.6.3/usage/commands/k3d_cluster_create/
 
 #### ▼ --servers
 
