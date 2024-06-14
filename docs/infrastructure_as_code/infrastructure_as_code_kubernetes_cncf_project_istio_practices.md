@@ -525,9 +525,9 @@ test_istio:
     # もし該当のバージョンのイメージがなければ、rc版を使用する
     - |
       if [ $? -ne 0 ]; then \
-        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 --volume "registries.yaml:/etc/rancher/k3s/registries.yaml"; \
+        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2; \
       else \
-        k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2 --volume "registries.yaml:/etc/rancher/k3s/registries.yaml"; \
+        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2; \
       fi
     # Nodeにラベル付けする
     - |

@@ -149,11 +149,12 @@ registries:
       - "/some/path:/var/lib/registry"
   use:
     - "k3d-myotherregistry:5000"
-  config: |
-    mirrors:
-      "my.company.registry":
-        endpoint:
-          - http://my.company.registry:5000
+  config:
+    <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+      auth:
+        username: AWS
+        # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
+        password: <パスワード>
 ```
 
 <br>
