@@ -22424,6 +22424,156 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="config.yaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apiversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      apiVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      kind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      servers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      agents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubeAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    <span class="md-ellipsis">
+      image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    <span class="md-ellipsis">
+      network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      subnet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      volumes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      ports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      registries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostaliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      hostAliases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      options
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -22454,54 +22604,95 @@
 </blockquote>
 <p><br></p>
 <h2 id="configyaml">config.yaml<a class="headerlink" href="#configyaml" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># k3d configuration file, saved as e.g. /home/me/myk3dcluster.yaml</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d.io/v1alpha5</span><span class="w"> </span><span class="c1"># this will change in the future as we make everything more stable</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simple</span><span class="w"> </span><span class="c1"># internally, we also have a Cluster config, which is not yet available externally</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mycluster</span><span class="w"> </span><span class="c1"># name that you want to give to your cluster (will still be prefixed with `k3d-`)</span>
-<span class="nt">servers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"> </span><span class="c1"># same as `--servers 1`</span>
-<span class="nt">agents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># same as `--agents 2`</span>
-<span class="nt">kubeAPI</span><span class="p">:</span><span class="w"> </span><span class="c1"># same as `--api-port myhost.my.domain:6445` (where the name would resolve to 127.0.0.1)</span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myhost.my.domain&quot;</span><span class="w"> </span><span class="c1"># important for the `server` setting in the kubeconfig</span>
-<span class="w">  </span><span class="nt">hostIP</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="c1"># where the Kubernetes API will be listening on</span>
-<span class="w">  </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6445&quot;</span><span class="w"> </span><span class="c1"># where the Kubernetes API listening port will be mapped to on your host system</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rancher/k3s:v1.20.4-k3s1</span><span class="w"> </span><span class="c1"># same as `--image rancher/k3s:v1.20.4-k3s1`</span>
-<span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-net</span><span class="w"> </span><span class="c1"># same as `--network my-custom-net`</span>
-<span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.28.0.0/16&quot;</span><span class="w"> </span><span class="c1"># same as `--subnet 172.28.0.0/16`</span>
-<span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">superSecretToken</span><span class="w"> </span><span class="c1"># same as `--token superSecretToken`</span>
-<span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="c1"># repeatable flags are represented as YAML lists</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/my/host/path:/path/in/node</span><span class="w"> </span><span class="c1"># same as `--volume &#39;/my/host/path:/path/in/node@server:0;agent:*&#39;`</span>
+<h3 id="apiversion">apiVersion<a class="headerlink" href="#apiversion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d.io/v1alpha5</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="kind">kind<a class="headerlink" href="#kind" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simple</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mycluster</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="servers">servers<a class="headerlink" href="#servers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">servers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="agents">agents<a class="headerlink" href="#agents" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="kubeapi">kubeAPI<a class="headerlink" href="#kubeapi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kubeAPI</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost.my.domain</span>
+<span class="w">  </span><span class="nt">hostIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="w">  </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6445&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rancher/k3s:v1.20.4-k3s1&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-net</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="subnet">subnet<a class="headerlink" href="#subnet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.28.0.0/16</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="token">token<a class="headerlink" href="#token" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">superSecretToken</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="volumes">volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/my/host/path:/path/in/node&quot;</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server:0</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent:*</span>
-<span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:80</span><span class="w"> </span><span class="c1"># same as `--port &#39;8080:80@loadbalancer&#39;`</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:0&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:*&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="ports">ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loadbalancer</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">envVar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar=baz</span><span class="w"> </span><span class="c1"># same as `--env &#39;bar=baz@server:0&#39;`</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="env">env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">envVar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar=baz</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server:0</span>
-<span class="nt">registries</span><span class="p">:</span><span class="w"> </span><span class="c1"># define how registries should be created or used</span>
-<span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="c1"># creates a default registry to be used with the cluster; same as `--registry-create registry.localhost`</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:0&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="registries">registries<a class="headerlink" href="#registries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">create</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.localhost</span>
-<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
 <span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5000&quot;</span>
-<span class="w">    </span><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="c1"># omit this to have a &quot;normal&quot; registry, set this to create a registry proxy (pull-through cache)</span>
-<span class="w">      </span><span class="nt">remoteURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://registry-1.docker.io</span><span class="w"> </span><span class="c1"># mirror the DockerHub registry</span>
-<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># unauthenticated</span>
-<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># unauthenticated</span>
+<span class="w">    </span><span class="nt">proxy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">remoteURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://registry-1.docker.io&quot;</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/some/path:/var/lib/registry</span><span class="w"> </span><span class="c1"># persist registry data locally</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/some/path:/var/lib/registry&quot;</span>
 <span class="w">  </span><span class="nt">use</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d-myotherregistry:5000</span><span class="w"> </span><span class="c1"># some other k3d-managed registry; same as `--registry-use &#39;k3d-myotherregistry:5000&#39;`</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">|</span><span class="w"> </span><span class="c1"># define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;k3d-myotherregistry:5000&quot;</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">mirrors:</span>
 <span class="w">      </span><span class="no">&quot;my.company.registry&quot;:</span>
 <span class="w">        </span><span class="no">endpoint:</span>
 <span class="w">          </span><span class="no">- http://my.company.registry:5000</span>
-<span class="nt">hostAliases</span><span class="p">:</span><span class="w"> </span><span class="c1"># /etc/hosts style entries to be injected into /etc/hosts in the node containers and in the NodeHosts section in CoreDNS</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="hostaliases">hostAliases<a class="headerlink" href="#hostaliases" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">hostAliases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3.4</span>
 <span class="w">    </span><span class="nt">hostnames</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my.host.local</span>
@@ -22509,34 +22700,37 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
 <span class="w">    </span><span class="nt">hostnames</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud.flare.dns</span>
-<span class="nt">options</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">k3d</span><span class="p">:</span><span class="w"> </span><span class="c1"># k3d runtime settings</span>
-<span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># wait for cluster to be usable before returning; same as `--wait` (default: &quot;true&quot;)</span>
-<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;60s&quot;</span><span class="w"> </span><span class="c1"># wait timeout before aborting; same as `--timeout 60s`</span>
-<span class="w">    </span><span class="nt">disableLoadbalancer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="c1"># same as `--no-lb`</span>
-<span class="w">    </span><span class="nt">disableImageVolume</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="c1"># same as `--no-image-volume`</span>
-<span class="w">    </span><span class="nt">disableRollback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="c1"># same as `--no-Rollback`</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="options">options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">options</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">k3d</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="w">    </span><span class="nt">disableLoadbalancer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">disableImageVolume</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">disableRollback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">loadbalancer</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">configOverrides</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">settings.workerConnections=2048</span>
-<span class="w">  </span><span class="nt">k3s</span><span class="p">:</span><span class="w"> </span><span class="c1"># options passed on to K3s itself</span>
-<span class="w">    </span><span class="nt">extraArgs</span><span class="p">:</span><span class="w"> </span><span class="c1"># additional arguments passed to the `k3s server|agent` command; same as `--k3s-arg`</span>
+<span class="w">  </span><span class="nt">k3s</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">extraArgs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;--tls-san=my.host.domain&quot;</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server:*</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:*&quot;</span>
 <span class="w">    </span><span class="nt">nodeLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo=bar</span><span class="w"> </span><span class="c1"># same as `--k3s-node-label &#39;foo=bar@agent:1&#39;` -&gt; this results in a Kubernetes node label</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo=bar</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent:1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:1&quot;</span>
 <span class="w">  </span><span class="nt">kubeconfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">updateDefaultKubeconfig</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: &quot;true&quot;)</span>
-<span class="w">    </span><span class="nt">switchCurrentContext</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># also set current-context to the new cluster&#39;s context; same as `--kubeconfig-switch-context` (default: &quot;true&quot;)</span>
-<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="c1"># runtime (docker) specific options</span>
-<span class="w">    </span><span class="nt">gpuRequest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"> </span><span class="c1"># same as `--gpus all`</span>
+<span class="w">    </span><span class="nt">updateDefaultKubeconfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">switchCurrentContext</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">runtime</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpuRequest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar=baz</span><span class="w"> </span><span class="c1"># same as `--runtime-label &#39;bar=baz@agent:1&#39;` -&gt; this results in a runtime (docker) container label</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar=baz</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent:1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:1&quot;</span>
 <span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nofile</span>
 <span class="w">        </span><span class="nt">soft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26677</span>
@@ -22544,7 +22738,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://k3d.io/v5.5.1/usage/configfile/#all-options-example">https://k3d.io/v5.5.1/usage/configfile/#all-options-example</a></li>
+<li><a href="https://k3d.io/v5.6.3/usage/configfile/#all-options-example">https://k3d.io/v5.6.3/usage/configfile/#all-options-example</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22568,7 +22762,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-14</span>
   </span>
 
     
