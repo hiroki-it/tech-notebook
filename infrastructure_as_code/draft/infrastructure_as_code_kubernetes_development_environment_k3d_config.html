@@ -22684,11 +22684,12 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/some/path:/var/lib/registry&quot;</span>
 <span class="w">  </span><span class="nt">use</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;k3d-myotherregistry:5000&quot;</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">mirrors:</span>
-<span class="w">      </span><span class="no">&quot;my.company.registry&quot;:</span>
-<span class="w">        </span><span class="no">endpoint:</span>
-<span class="w">          </span><span class="no">- http://my.company.registry:5000</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS</span>
+<span class="w">        </span><span class="c1"># aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パスワード&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="hostaliases">hostAliases<a class="headerlink" href="#hostaliases" title="Permanent link">&para;</a></h3>
