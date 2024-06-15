@@ -20,7 +20,7 @@ description: JSクライアントパッケージ＠Keycloakの知見を記録し
 ログイン処理が成功した場合に、事後処理を挿入する。
 
 ```javascript
-import Keycloak from 'keycloak-js';
+import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
   url: "http://127.0.0.1:8080",
@@ -42,7 +42,7 @@ keycloak.onAuthSuccess = function () {
 ログアウト処理が成功した場合に、事後処理を挿入する。
 
 ```javascript
-import Keycloak from 'keycloak-js';
+import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
   url: "http://127.0.0.1:8080",

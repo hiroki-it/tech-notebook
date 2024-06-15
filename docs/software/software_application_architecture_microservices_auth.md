@@ -42,7 +42,6 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
-
 <br>
 
 ### セッションパターン
@@ -104,8 +103,10 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
 
-> - https://stackoverflow.com/a/53396041
+![microservices_auth_jwt-apigateway.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png)
 
+> - https://www.jerney.io/secure-apis-kong-keycloak-1/
+> - https://stackoverflow.com/a/53396041
 
 <br>
 
