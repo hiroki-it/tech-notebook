@@ -210,7 +210,7 @@ cookie: sessionid=<セッションID>
 
 この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
-なお、APIでは`Cookie`ヘッダーを使用できないため、必然的に他の方法 (例：`Authorization`ヘッダー) でトークンを運ぶことになる。
+なお、APIでは`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
 
 また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
 
@@ -237,7 +237,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。
 
-なお、APIでは`Cookie`ヘッダーを使用できないため、`Authorization`ヘッダーでトークンを運ぶことになる。
+なお、APIでは`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
 
 また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
 
