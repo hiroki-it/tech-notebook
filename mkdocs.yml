@@ -323,6 +323,7 @@ nav:
               - 検証ロジック: language/language_js_logic_validation.md
               - 非同期処理ロジック: language/language_js_logic_asynchronous_process.md
               - デバッグ: language/language_js_logic_debug.md
+              - 認証: language/language_js_logic_authentication.md
           - ■ フレームワーク:
               - Nuxt.js: language/language_js_framework_nuxtjs.md
               - ■ Vue.js:
