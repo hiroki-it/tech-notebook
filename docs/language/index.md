@@ -65,6 +65,7 @@
   > * ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_validation.html)
   > * ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html)
   > * ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_debug.html)
+  > * ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_authentication.html)
 * #### <u>フレームワーク</u>
   > * ##### <u>︎Vue.js</u>
   > > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html)
