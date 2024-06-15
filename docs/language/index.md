@@ -66,7 +66,10 @@
   > * ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html)
   > * ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_debug.html)
 * #### <u>フレームワーク</u>
-  > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html)
+  > * ##### <u>︎Vue.js</u>
+  > > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html)
+  > > * ##### [︎vue-router](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuerouter.html)
+  > > * ##### [︎Vuex](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuex.html)
   > * ##### [︎Nuxt.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_nuxtjs.html)
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_js_package_management.html)

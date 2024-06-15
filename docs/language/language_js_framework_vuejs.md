@@ -333,7 +333,7 @@ class Foo {
 
 <br>
 
-## 01-02. View層とViewModel層の間での双方向データバインディングの方法
+## 02. View層とViewModel層の間での双方向データバインディングの方法
 
 ### イベントハンドリング
 
@@ -345,13 +345,13 @@ View層 (`template`タグ部分) のイベントを、ViewModel層 (`script`タ�
 
 コンポーネントの`script`タグ部分 (ViewModel層) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
-```
+```html
 v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にあるメソッド) }"
 ```
 
 または、省略して、
 
-```
+```html
 @:{イベント名}="<イベントハンドラ関数>"
 ```
 
@@ -494,7 +494,7 @@ View層で`input`タグで、一文字でも値が入力された時点で発火
 
 <br>
 
-## 01-03. コンポーネント
+## 03. コンポーネント
 
 ### コンポーネントの登録方法
 
@@ -548,278 +548,6 @@ var vm = new Vue({
     "v-foo-component": require("./xxx/xxx/foo"),
   },
 });
-```
-
-<br>
-
-## 02. vue-routerパッケージによるルーティング
-
-### vue-router
-
-#### ▼ vue-routerとは
-
-![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-router.png)
-
-ルーティングパッケージの一種。コンポーネントに対してルーティングを行い、`/<ルート>/<パラメータ>`に応じて、コールするコンポーネントを動的に切り替えられる。
-
-```yaml
-GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b
-```
-
-**＊実装例＊**
-
-```javascript
-// vue-routerパッケージを読み込む。
-const vueRouter = require("vue-router").default;
-
-// VueRouterインスタンスを作成する。
-const router = new VueRouter({
-  routes: [
-    {path: "/", component: Home},
-    {path: "/foo", component: Foo},
-  ],
-});
-
-// 外部ファイルが、VueRouterインスタンスを読み込めるようにしておく。
-module.exports = router;
-```
-
-また、vue-routerの能力を利用するために、`router`オプションをルートコンポーネントに注入する必要がある。
-
-```javascript
-import router from "./router";
-
-// 変数に対する格納を省略しても良い
-var vm = new Vue({
-  // routerオプション
-  router,
-
-  // watchオプション
-  watch: {
-    // スタック内で履歴の移動が発生した時に、対応付けた無名関数を実行。
-    $route: function (to, from) {
-      if (to.fullPath !== from.fullPath) {
-        // 何らかの処理。
-      }
-    },
-  },
-});
-```
-
-#### ▼ `$router` (Routerインスタンス)
-
-Webアプリ全体に1つ存在し、全体的なRouter機能を管理しているインスタンス。
-
-スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移を実行する。
-
-| メソッド | 説明                                                                                                                                                           |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `push`   | `query`オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の1つ前の履歴に移動する。 |
-
-> - https://router.vuejs.org/guide/essentials/navigation.html
-
-**＊実装例＊**
-
-```javascript
-// users/?foo=xyz が履歴スタックに追加される。
-this.$router.push({
-  path: "/users",
-  query: {
-    foo: "xyz",
-  },
-});
-```
-
-#### ▼ `$route` (Routeオブジェクト)
-
-現在のアクティブなルートを持つオブジェクト
-
-| プロパティ | データ型 | 説明                                                                                                                              | 注意                                     |
-| :--------- | -------- | :-------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `path`     | `string` | 現在のルートの文字列。                                                                                                            |                                          |
-| `query`    | `Object` | クエリパラメーターのキー名と値を保持するオブジェクト。`/foo?user=1`というクエリパラメーターの場合、`$route.query.user==1`となる。 | もしクエリーがない場合は、空オブジェクト |
-| `fullPath` | `string` | URL全体の文字列。                                                                                                                 |                                          |
-
-<br>
-
-### その他のRouterパッケージ
-
-JQueryにはJQueryRouter、ReactにはReact-Routerがある。
-
-<br>
-
-## 03. Vuexパッケージによるデータの状態変化の管理
-
-### Vuex
-
-#### ▼ Vuexとは
-
-Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相当する機能を提供し、グローバルで参照できる。
-
-異なるコンポーネントで共通したデータを扱いたくとも、双方向データバインディングでは、親子コンポーネント間でしか、データを受け渡しできない。
-
-しかし、Vuexストア内で、データの状態の変化を管理することによって、親子関係なく、全てのコンポーネント間でデータを受け渡しできるようになる。
-
-※Vuexからなるモデルはどうあるべきか、について記入中...
-
-![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueコンポーネントツリーとVuexの関係.png)
-
-<br>
-
-### `Vuex.Store`メソッドによるVuexストアの実装
-
-外部のコンポーネントは、各オプションにアクセスできる。
-
-#### ▼ `getters:{}`
-
-データから状態を取得するメソッドをいくつか持つ。
-
-クラスベースオブジェクト指向でいうところの、Getterメソッドに相当する。
-
-※ MVVMで、モデルにゲッターを持たせてはいけないというルールについては、記入中...
-
-#### ▼ `state:{}`
-
-データの状態の変化をいくつか管理する。
-
-クラスベースオブジェクト指向でいうところの、データ (プロパティ) に相当する。
-
-#### ▼ `mutations:{}`
-
-データに状態 (`state`) を設定するメソッドをいくつか持つ。
-
-保守性の観点から、`mutations:{}`におくメソッド間は同期的に実行されるようにしておかなければならない。
-
-クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。
-
-#### ▼ `actions:{}`
-
-定義された`mutations{}`のメソッドを間接的にコールするためのメソッドをいくつか持つ。
-
-また、JQueryの`ajax`メソッド をコールし、サーバー側からレスポンスされたデータを`mutations:{}`へ渡す。
-
-クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。
-
-**＊実装例＊**
-
-```javascript
-// Vuexパッケージを読み込む。
-const vuex = require("vuex");
-
-// 外部ファイルが、このStoreインスタンスを読み込めるようにする。
-module.exports = new Vuex.Store({
-  // getters
-  // データから状態を取得するメソッドをいくつか持つ
-  // クラスベースオブジェクト指向のGetterメソッドに相当
-  getters: {
-    staffData(state) {
-      return state.staffData;
-    },
-  },
-
-  // state
-  // 状態の変化を管理したいデータを持つ。
-  // クラスベースオブジェクト指向のプロパティに相当。
-  state: {
-    // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
-    staffData: [],
-  },
-
-  // mutations
-  // データの状態 (state) を変化させるメソッドを持つ。
-  // クラスベースオブジェクト指向のSetterメソッドに相当。
-  mutations: {
-    // Vuexのstateを第一引数、外部からセットしたい値を第二引数
-    mutate(state, staffData) {
-      exArray.forEach(
-        // 矢印はアロー関数を表し、無名関数の即コールを省略できる。
-        // 引数で渡されたexArrayの要素を、stateのexArrayに格納する。
-        (element) => {
-          state.exArray.push(element);
-        },
-
-        // アロー関数を使用しなければ、以下の様に記述できる。
-        // function(element) { state.exArray.push(element); }
-      );
-    },
-  },
-
-  // actions
-  // mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
-  // contextオブジェクトからcommit機能を取り出す必要がある。
-  // (※省略記法あり)
-  //  クラスベースオブジェクト指向のSetterメソッドに相当。
-  actions: {
-    // 省略記法 (Argument destructuring)
-    mutate({commit}) {
-      commit("mutate");
-    },
-  },
-});
-```
-
-<br>
-
-### コンポーネントからVuexに対するアクセス
-
-例えば、子コンポーネントのファイル (`template`タグを持つファイル) の下部に、以下を記述することにより、`Vuex.Store`メソッドとデータを受け渡しできるようになる。
-
-#### ▼ `computed: {}`
-
-イベントハンドラ関数として、`mapGetters`ヘルパーと`mapState`ヘルパーを設定する。
-
-#### ▼ `methods: {}`
-
-イベントハンドラ関数として、`mapMutations`ヘルパーと`mapActions`ヘルパーを設定する。
-
-#### ▼ `mapGetters`ヘルパー
-
-コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`getters: {}`をマッピングし、コール可能にする。
-
-#### ▼ `mapState`ヘルパー
-
-コンポーネントの`computed:{}`に、`Vuex.Store`メソッドの`state: {}`をマッピングし、コール可能にする。
-
-#### ▼ `mapMutations`ヘルパー
-
-コンポーネントの`methods: {}`に、Vuex.Store`メソッドの`mutations: {}```をマッピングし、コール可能にする。
-
-#### ▼ `mapActions`ヘルパー
-
-コンポーネントの`methods: {}`に、`Vuex.Store`メソッドの`actions:{}`をマッピングし、コール可能にする。
-
-**＊実装例＊**
-
-```html
-<!-- 子コンポーネント -->
-<template> ... </template>
-<script>
-  // Vuex.Store()を読み込む。
-  const store = require("./_store");
-
-  // Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。
-  const mapGetters = require("vuex").mapGetters;
-  const mapActions = require("vuex").mapActions;
-  const mapMutaions = require("vuex").mapMutaions;
-
-  module.exports = {
-    // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)
-    computed: {
-      // mapGettersヘルパー
-      // StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
-      ...mapGetters(["x-Function"]),
-    },
-
-    // イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの)
-    methods: {
-      // mapMutationsヘルパー
-      ...mapMutations(["y-Function"]),
-
-      // mapActionsヘルパー
-      ...mapActions(["z-Function"]),
-    },
-  };
-</script>
 ```
 
 <br>
