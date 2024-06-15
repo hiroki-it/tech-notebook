@@ -208,15 +208,16 @@ cookie: sessionid=<セッションID>
 
 トークン (例：アクセストークン、IDトークン、など) を`Cookie`ヘッダーに割り当て、リクエストを送信する。
 
-この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
+CSRFトークンと組み合わせるとさらに良くなる。
 
-なお、APIでは`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
+なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
 
 また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
 
 > - https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+> - https://softwareengineering.stackexchange.com/a/141434
 > - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
 > - https://stackoverflow.com/a/72182434
 > - https://qiita.com/ledmonster/items/0ee1e757af231aa927b1#%E8%AA%8D%E8%A8%BC%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%96%B9%E9%87%9D
@@ -237,11 +238,12 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。
 
-なお、APIでは`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
+なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでトークンを運ぶことになる。
 
 また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
 
 > - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
+> - https://softwareengineering.stackexchange.com/a/141434
 > - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
 > - https://stackoverflow.com/questions/72180420/is-there-any-reason-to-use-http-header-authorization-to-send-jwt-token-instead-o/72182434#72182434
 > - https://qiita.com/ledmonster/items/0ee1e757af231aa927b1#%E8%AA%8D%E8%A8%BC%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%96%B9%E9%87%9D
@@ -267,6 +269,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 > - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
+> - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
 
 <br>
 
@@ -283,6 +286,7 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 > - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
+> - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
 
 <br>
 

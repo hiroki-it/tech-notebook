@@ -165,9 +165,9 @@ redirect_url: "https://<アプリのドメイン>/oauth2/callback"
 
 ## 05. reverse_proxy
 
-OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
+### reverse_proxyとは
 
-OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。
+OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
 ```yaml
 reverse_proxy: true
@@ -175,7 +175,15 @@ reverse_proxy: true
 
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
 
+<br>
+
+### 認可リクエストのプロキシとして使用する場合
+
+NginxがOAuth2 Proxyに認可リクエストを送信すると、OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。
+
 例えばNginxは、認可レスポンスのステータスコードが`200`であれば認証成功、`401`または`403`であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。
+
+認証が失敗した場合、クライアント側のアプリケーションは改めて認証処理を実施する。
 
 ```nginx
 http {
@@ -204,6 +212,16 @@ http {
 > - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
 > - https://tech.jxpress.net/entry/2018/08/23/104123
 > - https://techlife.cookpad.com/entry/2015/10/16/080000
+
+<br>
+
+### リクエストのバリデーションに使う場合
+
+クライアントのアプリが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信することがある。
+
+この場合、OAuth2 Proxyはクライアントからのリクエストが認証済みか否かだけをバリデーションすることになる。
+
+> - https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450
 
 <br>
 

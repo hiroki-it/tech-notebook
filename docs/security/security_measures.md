@@ -500,7 +500,9 @@ Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 
 #### ▼ HttpOnly属性とは
 
-これを有効化した場合、`Set-Cookie`ヘッダーに`HttpOnly`属性が割り当てられるようになる。JavaScriptから`Cookie`ヘッダーにアクセスできなくできる。
+これを有効化した場合、`Set-Cookie`ヘッダーに`HttpOnly`属性が割り当てられるようになる。
+
+JavaScriptから`Cookie`ヘッダーにアクセスできなくできる。
 
 ```yaml
 200 OK
