@@ -109,18 +109,19 @@ JWT仕様のトークンには以下の種類がある。
 
 トークンを`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
-`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
-
-そのため、`Cookie`ヘッダーの方がよく使われている (らしい)。
-
 ```yaml
 POST https://example.com/foo
 ---
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
-> - https://stackoverflow.com/a/33281233
-> - https://zenn.dev/aoisensi/scraps/a869e8095581ae
+`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
+
+なお、APIでは`Cookie`ヘッダーを使用できないため、`Authorization`ヘッダーでトークンを運ぶことになる。
+
+> - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
+> - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
+> - https://stackoverflow.com/questions/72180420/is-there-any-reason-to-use-http-header-authorization-to-send-jwt-token-instead-o/72182434#72182434
 
 <br>
 
