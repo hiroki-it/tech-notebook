@@ -21,6 +21,8 @@ description: 設定ファイル＠K3Dの知見を記録しています。
 apiVersion: k3d.io/v1alpha5
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### kind
@@ -29,14 +31,18 @@ apiVersion: k3d.io/v1alpha5
 kind: Simple
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### metadata
 
 ```yaml
 metadata:
-  name: mycluster
+  name: foo-cluster
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -46,6 +52,8 @@ metadata:
 servers: 1
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### agents
@@ -54,16 +62,20 @@ servers: 1
 agents: 2
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### kubeAPI
 
 ```yaml
 kubeAPI:
-  host: myhost.my.domain
+  host: example.com
   hostIP: 127.0.0.1
   hostPort: "6445"
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -73,13 +85,17 @@ kubeAPI:
 image: "rancher/k3s:v1.20.4-k3s1"
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### network
 
 ```yaml
-network: my-custom-net
+network: foo-network
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -89,6 +105,8 @@ network: my-custom-net
 subnet: 172.28.0.0/16
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### token
@@ -97,17 +115,21 @@ subnet: 172.28.0.0/16
 token: superSecretToken
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### volumes
 
 ```yaml
 volumes:
-  - volume: "/my/host/path:/path/in/node"
+  - volume: "/foo/path:/path/node"
     nodeFilters:
       - "server:0"
       - "agent:*"
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -120,16 +142,20 @@ ports:
       - loadbalancer
 ```
 
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+
 <br>
 
 ### env
 
 ```yaml
 env:
-  - envVar: bar=baz
+  - envVar: foo=foo
     nodeFilters:
       - "server:0"
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -148,7 +174,7 @@ registries:
     volumes:
       - "/some/path:/var/lib/registry"
   use:
-    - "k3d-myotherregistry:5000"
+    - "foo-registries:5000"
   config:
     <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
       auth:
@@ -156,6 +182,8 @@ registries:
         # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
         password: <パスワード>
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -165,12 +193,14 @@ registries:
 hostAliases:
   - ip: 1.2.3.4
     hostnames:
-      - my.host.local
-      - that.other.local
+      - foo.example.com
+      - bar.example.com
   - ip: 1.1.1.1
     hostnames:
       - cloud.flare.dns
 ```
+
+> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
 
 <br>
 
@@ -189,11 +219,11 @@ options:
         - settings.workerConnections=2048
   k3s:
     extraArgs:
-      - arg: "--tls-san=my.host.domain"
+      - arg: "--tls-san=foo.host.domain"
         nodeFilters:
           - "server:*"
     nodeLabels:
-      - label: foo=bar
+      - label: foo=foo
         nodeFilters:
           - "agent:1"
   kubeconfig:
@@ -202,7 +232,7 @@ options:
   runtime:
     gpuRequest: all
     labels:
-      - label: bar=baz
+      - label: foo=foo
         nodeFilters:
           - "agent:1"
     ulimits:

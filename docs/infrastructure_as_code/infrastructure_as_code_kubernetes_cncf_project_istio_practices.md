@@ -476,19 +476,22 @@ stages:
   - build
   - test
 
-# registries.yamlをセットアップする
-setup_registries_file:
+# K3Dの設定ファイルをセットアップする
+setup_k3d_config:
   stage: build
-  image: docker
+  image: amazon/aws-cli
   script:
     - AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
     - |
-      cat <<EOF registries.yaml >
-      configs:
-        ${AWS_ECR}:
-          auth:
-            username: AWS
-            password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
+      cat <<EOF > k3d-config.yaml
+      apiVersion: k3d.io/v1alpha5
+      kind: Simple
+      registries:
+        configs:
+          ${AWS_ECR}:
+            auth:
+              username: AWS
+              password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
       EOF
 
 # 指定したバージョンのIstioを検証する
