@@ -210,9 +210,12 @@ cookie: sessionid=<セッションID>
 
 この時のトークンの選択肢として、単なるランダムな文字列やJWTがある。
 
+なお、APIでは`Cookie`ヘッダーを使用できないため、必然的に他の方法 (例：`Authorization`ヘッダー) でトークンを運ぶことになる。
+
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
 
 > - https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
+> - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
 
 <br>
 
@@ -222,13 +225,17 @@ cookie: sessionid=<セッションID>
 
 なお不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
 
+そのため、`Cookie`ヘッダーの方がよく使われている (らしい)。
+
 その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる。
 
 Chromeでは、LocalStorageあるいはSessionStorageに保管される。
 
+なお、APIでは`Cookie`ヘッダーを使用できないため、`Authorization`ヘッダーでトークンを運ぶことになる。
+
 > - https://zenn.dev/aoisensi/scraps/a869e8095581ae
-> - https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
 > - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
+> - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
 
 <br>
 

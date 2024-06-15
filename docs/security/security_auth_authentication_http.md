@@ -17,7 +17,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 HTTPプロトコルの中で認証を行う認証スキームのこと。
 
-リクエストの`authorization`ヘッダーとレスポンスの`WWW-Authenticate`ヘッダーで認証スキームを指定する。
+リクエストの`Authorization`ヘッダーとレスポンスの`WWW-Authenticate`ヘッダーで認証スキームを指定する。
 
 認証スキームの種類には、『Basic認証』、『Digest認証』、『Bearer認証』などがある。
 
@@ -71,12 +71,12 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 `(3)`
 
-: 『`<ユーザー名>:<パスワード>`』をbase64方式でエンコードした値を`authorization`ヘッダーに割り当て、リクエストを送信する。
+: 『`<ユーザー名>:<パスワード>`』をbase64方式でエンコードした値を`Authorization`ヘッダーに割り当て、リクエストを送信する。
 
 ```yaml
 POST https://example.com/foo-form
 ---
-authorization: Basic bG9naW46cGFzc3dvcmQ=
+Authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
 `(4)`

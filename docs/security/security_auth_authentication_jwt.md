@@ -107,7 +107,11 @@ JWT仕様のトークンには以下の種類がある。
 
 #### ▼ Bearer認証
 
-トークンを`authorization`ヘッダーに割り当て、リクエストを送信する。
+トークンを`Authorization`ヘッダーに割り当て、リクエストを送信する。
+
+`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
+
+そのため、`Cookie`ヘッダーの方がよく使われている (らしい)。
 
 ```yaml
 POST https://example.com/foo
@@ -116,6 +120,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 ```
 
 > - https://stackoverflow.com/a/33281233
+> - https://zenn.dev/aoisensi/scraps/a869e8095581ae
 
 <br>
 
