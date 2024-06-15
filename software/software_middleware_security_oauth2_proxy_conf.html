@@ -4128,6 +4128,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="05. reverse_proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverse_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse_proxyとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      認可リクエストのプロキシとして使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      リクエストのバリデーションに使う場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -22959,6 +22992,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="05. reverse_proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reverse_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      reverse_proxyとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      認可リクエストのプロキシとして使用する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      リクエストのバリデーションに使う場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -23156,8 +23222,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="05-reverse_proxy">05. reverse_proxy<a class="headerlink" href="#05-reverse_proxy" title="Permanent link">&para;</a></h2>
+<h3 id="reverse_proxy">reverse_proxyとは<a class="headerlink" href="#reverse_proxy" title="Permanent link">&para;</a></h3>
 <p>OAuth2 Proxyのダウンストリームに任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
-<p>OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">reverse_proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <blockquote>
@@ -23165,7 +23231,11 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive">https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="_2">認可リクエストのプロキシとして使用する場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>NginxがOAuth2 Proxyに認可リクエストを送信すると、OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。</p>
 <p>例えばNginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
+<p>認証が失敗した場合、クライアント側のアプリケーションは改めて認証処理を実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
@@ -23193,6 +23263,15 @@
 <li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
 <li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
 <li><a href="https://techlife.cookpad.com/entry/2015/10/16/080000">https://techlife.cookpad.com/entry/2015/10/16/080000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_3">リクエストのバリデーションに使う場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>クライアントのアプリが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信することがある。</p>
+<p>この場合、OAuth2 Proxyはクライアントからのリクエストが認証済みか否かだけをバリデーションすることになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450">https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23231,7 +23310,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-16</span>
   </span>
 
     
