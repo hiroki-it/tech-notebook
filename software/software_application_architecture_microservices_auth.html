@@ -23155,7 +23155,7 @@
 </blockquote>
 <h4 id="api-gateway">▼ API Gatewayを配置する場合<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h4>
 <p>初回の認証時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。</p>
-<p>その後、クライアントのローカルマシンのディレクトリ (<code>Cookie</code>ディレクトリ)にJWTを保管する。</p>
+<p>その後、クライアントのローカルマシンの<code>Cookie</code>ディレクトリにJWTを保管する。</p>
 <p>次回、API GatewayがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。</p>
 <p>結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。</p>
 <p><img alt="microservices_auth_jwt-apigateway.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png" /></p>

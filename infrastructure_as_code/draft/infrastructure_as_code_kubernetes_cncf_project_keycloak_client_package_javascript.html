@@ -22549,6 +22549,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    <span class="md-ellipsis">
+      init
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#onauthsuccess" class="md-nav__link">
     <span class="md-ellipsis">
       onAuthSuccess
@@ -22599,12 +22608,40 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-keycloak">01. Keycloak<a class="headerlink" href="#01-keycloak" title="Permanent link">&para;</a></h2>
+<h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<p>ログイン処理を実施する。</p>
+<p>初回認証時の場合は、Keycloakに認可リクエストを送信する。</p>
+<p>次回認証時は、任意の場所 (例：SessionStorage、LocalStorage、ローカルマシンの<code>Cookie</code>ディレクトリ) に保管している認証情報をリクエストに設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Keycloak</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;keycloak-js&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">keycloak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Keycloak</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://keycloak.example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">realm</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo-realm&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authenticated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">keycloak</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`User is </span><span class="si">${</span><span class="nx">authenticated</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;authenticated&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;not authenticated&quot;</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed to initialize adapter:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.keycloak.org/docs/latest/securing_apps/#using-the-adapter">https://www.keycloak.org/docs/latest/securing_apps/#using-the-adapter</a></li>
+<li><a href="https://qiita.com/mamomamo/items/cdde95feffbb5e524fd4#keycloak%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90">https://qiita.com/mamomamo/items/cdde95feffbb5e524fd4#keycloak%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="onauthsuccess">onAuthSuccess<a class="headerlink" href="#onauthsuccess" title="Permanent link">&para;</a></h3>
 <p>ログイン処理が成功した場合に、事後処理を挿入する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Keycloak</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;keycloak-js&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">keycloak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Keycloak</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8080&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://keycloak.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">realm</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo-realm&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
 <span class="p">});</span>
@@ -22615,7 +22652,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.keycloak.org/docs/latest/securing_apps/#api-reference">https://www.keycloak.org/docs/latest/securing_apps/#api-reference</a></li>
+<li><a href="https://www.keycloak.org/docs/latest/securing_apps/#callback-events">https://www.keycloak.org/docs/latest/securing_apps/#callback-events</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -22624,7 +22661,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Keycloak</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;keycloak-js&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">keycloak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Keycloak</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8080&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://keycloak.example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">realm</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo-realm&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
 <span class="p">});</span>
@@ -22635,7 +22672,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.keycloak.org/docs/latest/securing_apps/#api-reference">https://www.keycloak.org/docs/latest/securing_apps/#api-reference</a></li>
+<li><a href="https://www.keycloak.org/docs/latest/securing_apps/#callback-events">https://www.keycloak.org/docs/latest/securing_apps/#callback-events</a></li>
 </ul>
 </blockquote>
 <p><br></p>
