@@ -23242,7 +23242,9 @@
 <h2 id="03-jwt">03. JWTの運搬方法<a class="headerlink" href="#03-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="http">HTTP認証の場合<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <h4 id="bearer">▼ Bearer認証<a class="headerlink" href="#bearer" title="Permanent link">&para;</a></h4>
-<p>トークンを<code>authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<p>トークンを<code>Authorization</code>ヘッダーに割り当て、リクエストを送信する。</p>
+<p><code>Authorization</code>ヘッダーは<code>Cookie</code>ヘッダーとは異なり、ローカルマシンに保管できない。</p>
+<p>そのため、<code>Cookie</code>ヘッダーの方がよく使われている (らしい)。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo</span>
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
@@ -23250,6 +23252,7 @@
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/33281233">https://stackoverflow.com/a/33281233</a></li>
+<li><a href="https://zenn.dev/aoisensi/scraps/a869e8095581ae">https://zenn.dev/aoisensi/scraps/a869e8095581ae</a></li>
 </ul>
 </blockquote>
 <p><br></p>
