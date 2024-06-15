@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Vue.js
-description: Vue.jsの知見を記録しています。
+title: 【IT技術の知見】Vue.js@フレームワーク
+description: Vue.js@フレームワークの知見を記録しています。
 ---
 
-# Vue.js
+# Vue.js@フレームワーク
 
 ## はじめに
 
