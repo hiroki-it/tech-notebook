@@ -20,6 +20,8 @@ description: JSクライアントパッケージ＠Keycloakの知見を記録し
 ログイン処理が成功した場合に、事後処理を挿入する。
 
 ```javascript
+import Keycloak from 'keycloak-js';
+
 const keycloak = new Keycloak({
   url: "http://127.0.0.1:8080",
   realm: "foo-realm",
@@ -31,6 +33,8 @@ keycloak.onAuthSuccess = function () {
 };
 ```
 
+> - https://www.keycloak.org/docs/latest/securing_apps/#api-reference
+
 <br>
 
 ### onAuthLogout
@@ -38,6 +42,8 @@ keycloak.onAuthSuccess = function () {
 ログアウト処理が成功した場合に、事後処理を挿入する。
 
 ```javascript
+import Keycloak from 'keycloak-js';
+
 const keycloak = new Keycloak({
   url: "http://127.0.0.1:8080",
   realm: "foo-realm",
@@ -48,5 +54,7 @@ keycloak.onAuthLogout = function () {
   console.log("ログアウト成功!");
 };
 ```
+
+> - https://www.keycloak.org/docs/latest/securing_apps/#api-reference
 
 <br>
