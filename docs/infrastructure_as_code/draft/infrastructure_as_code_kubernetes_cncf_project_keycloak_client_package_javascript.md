@@ -13,7 +13,7 @@ description: JSクライアントパッケージ＠Keycloakの知見を記録し
 
 <br>
 
-## 01. keycloak
+## 01. Keycloak
 
 ### onAuthSuccess
 

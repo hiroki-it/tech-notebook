@@ -42,6 +42,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
+
 <br>
 
 ### セッションパターン
@@ -92,6 +93,19 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
+
+#### ▼ API Gatewayを配置する場合
+
+初回の認証時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
+
+その後、クライアントのローカルマシンのディレクトリ (`Cookie`ディレクトリ)にJWTを保管する。
+
+次回、API GatewayがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。
+
+結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
+
+> - https://stackoverflow.com/a/53396041
+
 
 <br>
 
