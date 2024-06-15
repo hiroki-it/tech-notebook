@@ -279,8 +279,6 @@ var vm = new Vue({
         /*
         ・コンポーネント (v-foo-component-1) と紐付く処理
         ・changeイベントの発火と、これのイベントハンドラ関数に引数を渡す。
-
-
         */
         this.$emit("change", {criteria: localCriteria});
       },
