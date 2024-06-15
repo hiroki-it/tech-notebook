@@ -22538,6 +22538,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#01-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onauthsuccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      onAuthSuccess
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onauthlogout" class="md-nav__link">
+    <span class="md-ellipsis">
+      onAuthLogout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -22564,6 +22597,33 @@
 <li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="01-keycloak">01. keycloak<a class="headerlink" href="#01-keycloak" title="Permanent link">&para;</a></h2>
+<h3 id="onauthsuccess">onAuthSuccess<a class="headerlink" href="#onauthsuccess" title="Permanent link">&para;</a></h3>
+<p>ログイン処理が成功した場合に、事後処理を挿入する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">keycloak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Keycloak</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8080&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">realm</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo-realm&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">keycloak</span><span class="p">.</span><span class="nx">onAuthSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;ログイン成功&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="onauthlogout">onAuthLogout<a class="headerlink" href="#onauthlogout" title="Permanent link">&para;</a></h3>
+<p>ログアウト処理が成功した場合に、事後処理を挿入する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">keycloak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Keycloak</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8080&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">realm</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo-realm&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">clientId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">keycloak</span><span class="p">.</span><span class="nx">onAuthLogout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;ログアウト成功!&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
 <p><br></p>
 
 
