@@ -4141,18 +4141,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#nginx" class="md-nav__link">
     <span class="md-ellipsis">
-      認可リクエストのプロキシとして使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      リクエストのバリデーションに使う場合
+      リバースプロキシがNginxの場合
     </span>
   </a>
   
@@ -23005,18 +22996,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#nginx" class="md-nav__link">
     <span class="md-ellipsis">
-      認可リクエストのプロキシとして使用する場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      リクエストのバリデーションに使う場合
+      リバースプロキシがNginxの場合
     </span>
   </a>
   
@@ -23232,17 +23214,19 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">認可リクエストのプロキシとして使用する場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>NginxがOAuth2 Proxyに認可リクエストを送信すると、OAuth2 ProxyはIDプロバイダーから認可レスポンスを受信し、リバースプロキシにこれを返信する。</p>
-<p>例えばNginxは、認可レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
+<h3 id="nginx">リバースプロキシがNginxの場合<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
+<p>まずは、クライアントアプリが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信する。</p>
+<p>IDプロバイダーがトークンの発行を終え、クライアントが再びリクエストを送信した時、これはNginxを通過する。</p>
+<p>NginxはOAuth2 Proxyにトークンバリデーションリクエストを送信し、OAuth2 ProxyはIDプロバイダーのバリデーション結果をNginxに返信する。</p>
+<p>例えばNginxは、レスポンスのステータスコードが<code>200</code>であれば認証成功、<code>401</code>または<code>403</code>であれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
 <p>認証が失敗した場合、クライアント側のアプリケーションは改めて認証処理を実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="c1"># 認可リクエストの宛先とするパスを設定する</span>
-<span class="w">        </span><span class="c1"># ここでは、認可リクエストをOAuth2 Proxyに送信する</span>
+<span class="w">        </span><span class="c1"># トークンバリデーションリクエストの宛先とするパスを設定する</span>
+<span class="w">        </span><span class="c1"># ここでは、トークンバリデーションリクエストをOAuth2 Proxyに送信する</span>
 <span class="w">        </span><span class="kn">auth_request</span><span class="w"> </span><span class="s">/oauth2/auth</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">...</span>
@@ -23263,14 +23247,6 @@
 <li><a href="https://nginx.org/en/docs/http/ngx_http_auth_request_module.html">https://nginx.org/en/docs/http/ngx_http_auth_request_module.html</a></li>
 <li><a href="https://tech.jxpress.net/entry/2018/08/23/104123">https://tech.jxpress.net/entry/2018/08/23/104123</a></li>
 <li><a href="https://techlife.cookpad.com/entry/2015/10/16/080000">https://techlife.cookpad.com/entry/2015/10/16/080000</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_3">リクエストのバリデーションに使う場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>クライアントのアプリが、Nginxを介さずに認可リクエストを直接的にIDプロバイダーに送信することがある。</p>
-<p>この場合、OAuth2 Proxyはクライアントからのリクエストが認証済みか否かだけをバリデーションすることになる。</p>
-<blockquote>
-<ul>
 <li><a href="https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450">https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450</a></li>
 </ul>
 </blockquote>
