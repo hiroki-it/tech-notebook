@@ -22979,7 +22979,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-oauth">03. OAuthとの違い<a class="headerlink" href="#03-oauth" title="Permanent link">&para;</a></h2>
-<p>OIDCでは、OAuthとは異なり、アクセストークンではなくIDトークン (必ずJWT仕様) を使用する。</p>
+<p>OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDトークン (必ずJWT仕様) の使用する。</p>
 <p>また、OAuthの脆弱性に対処できる。</p>
 <p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
 <blockquote>
@@ -22994,7 +22994,13 @@
 <p>ベースになっているOAuthと同様にして、OIDCには仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。</p>
 <p><br></p>
 <h2 id="05">05. 認可コードフロー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>Facebookには認証フェーズと認可フェーズでログインする点はOAuthと同じであるが、免許証作成サイトには認証フェーズと認可フェーズでログインする。</p>
+<p>OAuthの認可コードフローと仕組みが似ており、アクセストークンだけでなくIDトークンも使用する。</p>
+<p>短命な認可コードを送信すると、IDプロバイダーからアクセストークンとIDトークンの両方を取得できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://wagby.com/wdn8/juser-oidc.html">https://wagby.com/wdn8/juser-oidc.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
