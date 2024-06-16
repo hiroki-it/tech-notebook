@@ -91,6 +91,8 @@ IDプロバイダーは、指定したクレームグループに対応したク
 
 ## 03. OAuthとの違い
 
+### トークンの違い
+
 OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDトークン (必ずJWT仕様) の使用する。
 
 また、OAuthの脆弱性に対処できる。
@@ -100,6 +102,12 @@ OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDト
 > - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 > - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3
 > - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
+
+### IDトークン検証
+
+IDトークンはJWT仕様であるため、検証処理が必要である。
+
+IDトークンの発行元が正しいかどうかを検証する。
 
 <br>
 
