@@ -10845,6 +10845,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. OAuthとの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      トークンの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      IDトークン検証
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -22812,6 +22836,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="03. OAuthとの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      トークンの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      IDトークン検証
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -22979,6 +23027,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-oauth">03. OAuthとの違い<a class="headerlink" href="#03-oauth" title="Permanent link">&para;</a></h2>
+<h3 id="_5">トークンの違い<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDトークン (必ずJWT仕様) の使用する。</p>
 <p>また、OAuthの脆弱性に対処できる。</p>
 <p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
@@ -22989,6 +23038,9 @@
 <li><a href="https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B">https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
 </ul>
 </blockquote>
+<h3 id="id">IDトークン検証<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
+<p>IDトークンはJWT仕様であるため、検証処理が必要である。</p>
+<p>IDトークンの発行元が正しいかどうかを検証する。</p>
 <p><br></p>
 <h2 id="04-oidc">04. OIDCの種類<a class="headerlink" href="#04-oidc" title="Permanent link">&para;</a></h2>
 <p>ベースになっているOAuthと同様にして、OIDCには仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。</p>

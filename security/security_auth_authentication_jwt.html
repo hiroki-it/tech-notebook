@@ -10554,6 +10554,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#jwt_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWTの検証とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       署名が共通鍵方式の場合
@@ -10701,7 +10710,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_3" class="md-nav__link">
+  <a href="#jwt_4" class="md-nav__link">
     <span class="md-ellipsis">
       JWT作成の全体像
     </span>
@@ -10710,7 +10719,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jwt_4" class="md-nav__link">
+  <a href="#jwt_5" class="md-nav__link">
     <span class="md-ellipsis">
       JWTの作成
     </span>
@@ -22906,6 +22915,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#jwt_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWTの検証とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       署名が共通鍵方式の場合
@@ -23053,7 +23071,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#jwt_3" class="md-nav__link">
+  <a href="#jwt_4" class="md-nav__link">
     <span class="md-ellipsis">
       JWT作成の全体像
     </span>
@@ -23062,7 +23080,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jwt_4" class="md-nav__link">
+  <a href="#jwt_5" class="md-nav__link">
     <span class="md-ellipsis">
       JWTの作成
     </span>
@@ -23179,6 +23197,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-jwt">02. JWTによるトークンベース伝播による認証の仕組み<a class="headerlink" href="#02-jwt" title="Permanent link">&para;</a></h2>
+<h3 id="jwt_3">JWTの検証とは<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
+<p>JWT仕様のトークン (例：IDトークン) の発行元が正しいかどうかを検証する。</p>
+<p>署名の仕組みを使用して、発行元を検証する。</p>
+<p><br></p>
 <h3 id="_2">署名が共通鍵方式の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 共通鍵方式の特徴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) とJWT検証 (次回認証時) の両方を実施する。</p>
@@ -23283,7 +23305,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="04-jwt">04. JWTの作成<a class="headerlink" href="#04-jwt" title="Permanent link">&para;</a></h2>
-<h3 id="jwt_3">JWT作成の全体像<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
+<h3 id="jwt_4">JWT作成の全体像<a class="headerlink" href="#jwt_4" title="Permanent link">&para;</a></h3>
 <p>JWTは以下のサイトから取得できる。</p>
 <blockquote>
 <ul>
@@ -23305,7 +23327,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="jwt_4">JWTの作成<a class="headerlink" href="#jwt_4" title="Permanent link">&para;</a></h3>
+<h3 id="jwt_5">JWTの作成<a class="headerlink" href="#jwt_5" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ヘッダーの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ヘッダーは以下のJSON型データで定義される。</p>
 <p>署名のための暗号アルゴリズムは、『<code>HS256</code> (共通鍵方式) 』『<code>RS256</code> (公開鍵方式) 』『<code>ES256</code>』『<code>none</code> (署名なし) 』から選択できる。</p>
