@@ -10887,6 +10887,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="05. 認可コードフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      運搬
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -23028,6 +23052,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="05. 認可コードフロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      運搬
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -23128,7 +23176,7 @@
 <h3 id="_4">認可リクエスト時のクレームの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="scope">▼ <code>scope</code>パラメーター<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h4>
 <p>認可リクエスト時に、<code>scope</code>パラメーターでクレームグループを指定し、クレームを取得できる。</p>
-<p>IDプロバイダーは、指定したクレームグループに対応したクレームをIDトークン (アクセストークンではなく) に設定し、クライアントに返信する。</p>
+<p>IDプロバイダーは、指定したクレームグループに対応したクレームをIDトークンに設定し、クライアントに返信する。</p>
 <p>委譲元のクライアントは、取得したクレームを認証情報として扱い、認可処理を実行する。</p>
 <table>
 <thead>
@@ -23197,13 +23245,23 @@
 <p>ベースになっているOAuthと同様にして、OIDCには仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などがある。</p>
 <p><br></p>
 <h2 id="05">05. 認可コードフロー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_6">仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>OAuthの認可コードフローと仕組みが似ており、アクセストークンだけでなくIDトークンも使用する。</p>
 <p>短命な認可コードを送信すると、IDプロバイダーからリフレッシュトークンを含むアクセストークンとIDトークンを取得できる。</p>
-<p><img alt="oidc_codeflow" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.png" /></p>
+<p><img alt="oidc_codeflow" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.jpeg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://wagby.com/wdn8/juser-oidc.html">https://wagby.com/wdn8/juser-oidc.html</a></li>
 <li><a href="https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC">https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC</a></li>
+<li><a href="https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d">https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">運搬<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>アクセストークンを<code>Authorization</code>ヘッダーで運べる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/oauth2-proxy/oauth2-proxy/issues/843">https://github.com/oauth2-proxy/oauth2-proxy/issues/843</a></li>
 </ul>
 </blockquote>
 <p><br></p>
