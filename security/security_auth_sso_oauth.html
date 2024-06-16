@@ -23066,7 +23066,7 @@
 <tr>
 <td>認可サーバー</td>
 <td>認可</td>
-<td>アクセストークンを発行するサーバーのこと。</td>
+<td>リフレッシュトークンを含むアクセストークンを発行するサーバーのこと。</td>
 <td>認可サーバーがリダイレクト先のクライアントアプリケーションのURLをレスポンスに割り当てられるように、クライアントアプリケーションの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br><a href="https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844">https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844</a></td>
 </tr>
 <tr>
@@ -23150,7 +23150,7 @@
 <h2 id="04">04. 認可コードフロー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_3">認可コードフローの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ アーキテクチャ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>アクセストークンを発行するために、短命な認可コードを発行する。</p>
+<p>リフレッシュトークンを含むアクセストークンを発行するために、短命な認可コードを発行する。</p>
 <p><img alt="oauth_authorization-code" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png" /></p>
 <blockquote>
 <ul>
@@ -23162,7 +23162,7 @@
 <h3 id="_5">例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 全体像<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。</p>
-<p>OIDCではなくOAuthのため、IDトークンではなくアクセストークンであることに注意する。</p>
+<p>OIDCではなくOAuthのため、IDトークンではなく、リフレッシュトークンを含むアクセストークンであることに注意する。</p>
 <p><img alt="oauth_authorization-code_facebook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png" /></p>
 <blockquote>
 <ul>
@@ -23399,6 +23399,7 @@
 <h3 id="_7">インプリシットの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ アーキテクチャ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>アクセストークンを直接的に発行する。</p>
+<p>また、リフレッシュトークンを発行しない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.authlete.com/ja/kb/oauth-and-openid-connect/grant-type/how-to-choose-the-appropriate-oauth-2-flow/">https://www.authlete.com/ja/kb/oauth-and-openid-connect/grant-type/how-to-choose-the-appropriate-oauth-2-flow/</a></li>
