@@ -115,6 +115,8 @@ OAuthの認可コードフローと仕組みが似ており、アクセストー
 
 短命な認可コードを送信すると、IDプロバイダーからアクセストークンとIDトークンの両方を取得できる。
 
+![oidc_codeflow.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.png)
+
 > - https://wagby.com/wdn8/juser-oidc.html
 
 <br>

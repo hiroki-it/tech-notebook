@@ -62,6 +62,8 @@ JWT仕様のトークンには以下の種類がある。
 4. アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
 
+![jwt_common_generate_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
+
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
 #### ▼ 次回認証時
@@ -71,6 +73,8 @@ JWT仕様のトークンには以下の種類がある。
 1. ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する。
 2. アプリケーションは、秘密鍵を使用して、JWTが有効か否かを検証する。
 3. JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する。
+
+![jwt_common_verify_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
@@ -98,6 +102,8 @@ JWT仕様のトークンには以下の種類がある。
 4. IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
 
+![jwt_public_generate_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
+
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
 #### ▼ 次回認証時
@@ -109,6 +115,8 @@ JWT仕様のトークンには以下の種類がある。
 3. IDプロバイダーは、IDプロバイダーに公開鍵をレスポンスする。
 4. IDプロバイダーは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。
 5. JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する
+
+![jwt_public_verify_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
