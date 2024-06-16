@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ログ収集＠Datadog
-description: ログ収集＠Datadogの知見を記録しています。
+title: 【IT技術の知見】ログ＠Datadog
+description: ログ＠Datadogの知見を記録しています。
 ---
 
-# ログ収集＠Datadog
+# ログ＠Datadog
 
 ## はじめに
 

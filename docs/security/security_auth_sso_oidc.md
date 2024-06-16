@@ -103,11 +103,13 @@ OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDト
 > - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3
 > - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
 
+<br>
+
 ### IDトークン検証
 
 IDトークンはJWT仕様であるため、検証処理が必要である。
 
-IDトークンの発行元が正しいかどうかを検証する。
+IDトークンの有効期限や発行元が正しいかどうかを検証する。
 
 <br>
 

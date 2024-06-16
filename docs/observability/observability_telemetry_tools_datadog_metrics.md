@@ -1,8 +1,9 @@
 ---
-title: 【IT技術の知見】メトリクス収集＠Datadog
+title: 【IT技術の知見】メトリクス＠Datadog
+description: メトリクス＠Datadogの知見を記録しています。
 ---
 
-# メトリクス収集＠Datadog
+# メトリクス＠Datadog
 
 ## はじめに
 
