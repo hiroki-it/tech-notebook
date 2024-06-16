@@ -123,11 +123,12 @@ authorization: <パーソナルアクセストークン>
 
 トークンには以下の種類がある。
 
-- アクセストークン
+- JWT仕様でないアクセストークン
 - JWT仕様のアクセストークン
 - IDトークン (必ずJWT仕様)
 
 > - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82
+> - https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84
 
 <br>
 

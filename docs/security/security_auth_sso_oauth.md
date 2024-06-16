@@ -48,7 +48,7 @@ OAuthには、仕組み別に『認可コードフロー』『インプリシッ
 
 ### OIDCとの違い
 
-OAuthでは、OIDCとは異なり、IDトークンではなくアクセストークンを使用する。
+OAuthでは、OIDCとは異なり、IDトークンではなくアクセストークン (JWT仕様ではない) を使用する。
 
 OAuthには脆弱性があるが、OIDCであればこれに対処できる。
 
@@ -82,6 +82,8 @@ OAuthには脆弱性があるが、OIDCであればこれに対処できる。
 #### ▼ 全体像
 
 Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。
+
+OIDCではなくOAuthのため、IDトークンではなくアクセストークンであることに注意する。
 
 ![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png)
 
@@ -189,7 +191,7 @@ Content-Type: application/x-www-form-urlencoded
 
 `(9)`
 
-: 免許証作成サイトはアクセストーンを受信し、Facebookの認可サーバーにアクセストークンを再度送信する。
+: 免許証作成サイトはアクセストークンを受信し、Facebookの認可サーバーにアクセストークンを再度送信する。
 
 ```yaml
 HTTP/1.1 200 OK
