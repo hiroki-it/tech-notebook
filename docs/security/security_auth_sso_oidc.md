@@ -113,10 +113,11 @@ OIDCでは、OAuthとは異なり、アクセストークンだけでなくIDト
 
 OAuthの認可コードフローと仕組みが似ており、アクセストークンだけでなくIDトークンも使用する。
 
-短命な認可コードを送信すると、IDプロバイダーからアクセストークンとIDトークンの両方を取得できる。
+短命な認可コードを送信すると、IDプロバイダーからリフレッシュトークンを含むアクセストークンとIDトークンを取得できる。
 
 ![oidc_codeflow.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.png)
 
 > - https://wagby.com/wdn8/juser-oidc.html
+> - https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC
 
 <br>
