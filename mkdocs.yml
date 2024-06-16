@@ -726,6 +726,10 @@ nav:
           - Kaniko: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko.md
           - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_conf.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_command.md
+      - ■ Keycloak:
+          - Keycloak: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak.md
+          - ■ クライアント:
+            - Javascript: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak_client_package_javascript.md
       - ■ Kiali:
           - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.md
           - ■ リソース定義:
@@ -811,7 +815,7 @@ nav:
           - Prometheus: observability/observability_telemetry_tools_prometheus.md
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
-              - ■ 分散トレース:
+              - ■ 分散トレースクライアントパッケージ:
                   - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_trace_client_package.md
                   - Go: observability/observability_telemetry_tools_open_telemetry_trace_client_package_go.md
                   - Python: observability/observability_telemetry_tools_open_telemetry_trace_client_package_python.md
@@ -819,10 +823,10 @@ nav:
               - datadogエージェントの設定: observability/observability_telemetry_tools_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_tools_datadog_monitoring.md
               - インテグレーション: observability/observability_telemetry_tools_datadog_integration.md
-              - ■ テレメトリー収集:
-                  - メトリクス収集: observability/observability_telemetry_tools_datadog_metrics.md
-                  - ログ収集: observability/observability_telemetry_tools_datadog_log.md
-                  - ■ 分散トレース収集:
+              - ■ テレメトリー:
+                  - メトリクス: observability/observability_telemetry_tools_datadog_metrics.md
+                  - ログ: observability/observability_telemetry_tools_datadog_log.md
+                  - ■ 分散トレースクライアントパッケージ:
                       - 分散トレース収集: observability/observability_telemetry_tools_datadog_distributed_trace.md
                       - クライアントパッケージ: observability/observability_telemetry_tools_datadog_distributed_trace_client_package.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_tools_datadog_telemetry_association.md
