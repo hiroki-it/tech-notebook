@@ -103,7 +103,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
 
-![microservices_auth_jwt-apigateway.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png)
+![microservices_auth_jwt-apigateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png)
 
 > - https://www.jerney.io/secure-apis-kong-keycloak-1/
 > - https://stackoverflow.com/a/53396041

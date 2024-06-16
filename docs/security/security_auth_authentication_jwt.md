@@ -70,7 +70,7 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元が�
 4. アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
 
-![jwt_common_generate_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
+![jwt_common_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
@@ -82,7 +82,7 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元が�
 2. アプリケーションは、秘密鍵を使用して、JWTが有効か否かを検証する。
 3. JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する。
 
-![jwt_common_verify_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
+![jwt_common_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
@@ -110,7 +110,7 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元が�
 4. IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWTをLocalStorageやローカルマシンの`Cookie`ディレクトリに保管する。
 
-![jwt_public_generate_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
+![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 
@@ -118,13 +118,13 @@ JWT仕様のトークン (例：IDトークン) の有効期限や発行元が�
 
 認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。
 
-1. ユーザーは、ブラウザの保管したJWTをリクエストに含め、IDプロバイダーに送信する。
-2. IDプロバイダーは、IDプロバイダーに公開鍵をリクエストする。
-3. IDプロバイダーは、IDプロバイダーに公開鍵をレスポンスする。
-4. IDプロバイダーは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。
-5. JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する
+1. ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する。
+2. アプリケーションは、IDプロバイダーに公開鍵をリクエストする。
+3. IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。
+4. アプリケーションは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。
+5. JWTが有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する
 
-![jwt_public_verify_token.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
+![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
 
 > - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
 

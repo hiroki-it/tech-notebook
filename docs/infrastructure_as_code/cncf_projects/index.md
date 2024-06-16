@@ -71,14 +71,6 @@
 
 <br>
 
-### Kyverno
-
-* #### [Kyverno](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html)
-
-* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html)
-
-<br>
-
 ### Istio
 
 * #### [︎Istio](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html)
@@ -130,6 +122,14 @@
 * #### [︎Kiali](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html)
 * #### <u>リソース定義</u>
   > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.html)
+
+<br>
+
+### Kyverno
+
+* #### [Kyverno](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html)
+
+* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html)
 
 <br>
 
