@@ -23181,8 +23181,10 @@
 <h3 id="_2">署名が共通鍵方式の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 共通鍵方式の特徴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) とJWT検証 (次回認証時) の両方を実施する。</p>
-<h4 id="_4">▼ 初回認証時<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>例えば、SSOではない認証では、JWTの署名が公開鍵方式である。</p>
+<p>ユーザー側とアプリケーション側に秘密鍵を置く。</p>
+<h4 id="_4">▼ 初回認証時<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>初回認証時は、JWTを作成する。</p>
 <ol>
 <li>ユーザーは、ログインフォームにユーザーIDとパスワードを入力する。</li>
 <li>アプリケーションは、フォームの入力情報を含むリクエストを受信する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
@@ -23211,8 +23213,15 @@
 <h3 id="_6">署名が公開鍵方式の場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 公開鍵方式の特徴<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) 、公開鍵を使用してJWT検証 (次回認証時) を実施する。</p>
-<h4 id="_8">▼ 初回認証時<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>例えば、SSOでは、JWTの署名が公開鍵方式である。</p>
+<p>クライアント側に秘密鍵、IDプロバイダー側に公開鍵を置く。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88">https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ 初回認証時<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>初回認証時は、JWTを作成する。</p>
 <ol>
 <li>ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する。</li>
 <li>IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
@@ -23226,11 +23235,12 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 次回認証時<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。</p>
 <ol>
-<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、アプリケーションに送信する。</li>
-<li>アプリケーションは、IDプロバイダーに公開鍵をリクエストする。</li>
-<li>IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。</li>
-<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。</li>
+<li>ユーザーは、ブラウザの保管したJWTをリクエストに含め、IDプロバイダーに送信する。</li>
+<li>IDプロバイダーは、IDプロバイダーに公開鍵をリクエストする。</li>
+<li>IDプロバイダーは、IDプロバイダーに公開鍵をレスポンスする。</li>
+<li>IDプロバイダーは、IDプロバイダーから取得した公開鍵を使用して、JWTが有効か否かを検証する。</li>
 <li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する</li>
 </ol>
 <blockquote>
