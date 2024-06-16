@@ -496,7 +496,7 @@ server {
 
 Keycloakと連携し、NginxではなくKeycloak側で認証処理を実施する。
 
-Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントに認可リクエストを送信する。
+Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントにトークンバリデーションリクエストを送信する。
 
 ```nginx
 user  nginx;
@@ -526,7 +526,7 @@ http {
 
 
         location /keycloak/auth/ {
-            # 認可エンドポイントに認可リクエストを送信する
+            # 認可エンドポイントにトークンバリデーションリクエストを送信する
             proxy_pass          https://<Keycloakのドメイン>/auth/realms/<realm名>;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
