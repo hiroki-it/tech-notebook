@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JSクライアントパッケージ＠Keycloak
-description: JSクライアントパッケージ＠Keycloakの知見を記録しています。
+title: 【IT技術の知見】Javascript＠Keycloakクライアント
+description: Javascript＠Keycloakクライアントの知見を記録しています。
 ---
 
-# JSクライアントパッケージ＠Keycloak
+# Javascript＠Keycloakクライアント
 
 ## はじめに
 

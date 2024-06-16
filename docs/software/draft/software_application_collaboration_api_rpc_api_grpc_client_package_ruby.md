@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Rubyクライアントパッケージ＠gRPC
-description: Rubyクライアントパッケージ＠gRPCの知見を記録しています。
+title: 【IT技術の知見】Ruby＠gRPCクライアントパッケージ
+description: Ruby＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# Rubyクライアントパッケージ＠gRPC
+# Ruby＠gRPCクライアントパッケージ
 
 ## はじめに
 

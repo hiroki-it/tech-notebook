@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JavaScriptクライアントパッケージ＠gRPC
-description: JavaScriptクライアントパッケージ＠gRPCの知見を記録しています。
+title: 【IT技術の知見】JavaScript＠gRPCクライアントパッケージ
+description: JavaScript＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# JavaScriptクライアントパッケージ＠gRPC
+# JavaScript＠gRPCクライアントパッケージ
 
 ## はじめに
 
@@ -31,11 +31,11 @@ $ npm install grpc-tools
 
 <br>
 
-### gRPCクライアント側
+### gRPCクライアントパッケージ側
 
-#### ▼ gRPCクライアントパッケージ
+#### ▼ gRPCクライアントパッケージパッケージ
 
-npmリポジトリから、gRPCクライアントをインストールする。
+npmリポジトリから、gRPCクライアントパッケージをインストールする。
 
 ```bash
 $ npm install grpc

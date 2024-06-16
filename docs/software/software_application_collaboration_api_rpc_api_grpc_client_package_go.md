@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Goクライアントパッケージ＠gRPC
-description: Goクライアントパッケージ＠gRPCの知見を記録しています。
+title: 【IT技術の知見】Go＠gRPCクライアントパッケージ
+description: Go＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# Goクライアントパッケージ＠gRPC
+# Go＠gRPCクライアントパッケージ
 
 ## はじめに
 

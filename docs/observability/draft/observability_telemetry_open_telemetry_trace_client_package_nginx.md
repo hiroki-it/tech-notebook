@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Nginxクライアントパッケージ＠OpenTelemetry
-description: Nginxクライアントパッケージ＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】Nginx＠OpenTelemetryクライアントパッケージ
+description: Nginx＠OpenTelemetryクライアントパッケージの知見を記録しています。
 ---
 
-# Nginxクライアントパッケージ＠OpenTelemetry
+# Nginx＠OpenTelemetryクライアントパッケージ
 
 ## はじめに
 
