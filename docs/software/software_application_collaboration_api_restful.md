@@ -404,7 +404,7 @@ APIキーのヘッダー名の頭文字に『`X`』を付けるのは、自前�
 POST https://example.com
 ---
 # Authorizationヘッダー
-authorization: Bearer <トークン>
+authorization: Bearer <Bearerトークン>
 # APIキーヘッダー
 x-api-key: *****
 ```

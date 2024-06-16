@@ -323,7 +323,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # dex-serverが認可レスポンスを受信するURLを設定する
+        # dex-serverが認可レスポンスによるリダイレクトを受信するURLを設定する
         redirectURI: https://<ArgoCDのドメイン>/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する
@@ -359,7 +359,7 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # dex-serverが認可レスポンスを受信するURLを設定する
+        # dex-serverが認可レスポンスによるリダイレクトを受信するURLを設定する
         redirectURI: https://<ArgoCDのドメイン>/api/dex/callback
 
   # ArgoCDのダッシュボードのNode外公開URLを設定する。

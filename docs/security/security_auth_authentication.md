@@ -73,7 +73,7 @@ x-api-key: <APIキー>
 ```yaml
 POST https://example.com/foo
 ---
-authorization: <パーソナルアクセストークン>
+Authorization: <パーソナルアクセストークン>
 ```
 
 | サービス例 | トークン名                 | 説明                                                                                                                                                                                                                                                                                                    |
