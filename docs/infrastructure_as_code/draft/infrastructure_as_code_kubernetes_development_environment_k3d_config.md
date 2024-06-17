@@ -177,7 +177,6 @@ registries:
 
 <br>
 
-
 ### use
 
 ```yaml
@@ -187,7 +186,6 @@ registries:
 ```
 
 <br>
-
 
 ### config
 
@@ -226,7 +224,23 @@ registries:
           # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
           password: <パスワード>
         # イメージレジストリとの通信がHTTPSの場合は、SSL証明書が必要になる
-        # HTTPSの検証をスキップすることもできる
+        tls:
+          ca_file: <証明書>
+          cert_file: <証明書>
+          key_file: <証明書>
+```
+
+HTTPSの検証をスキップすることもできる
+
+```yaml
+registries:
+  config: |
+    config:
+      <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+        auth:
+          username: AWS
+          # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
+          password: <パスワード> 
         tls:
           insecure_skip_verify: true
 ```
