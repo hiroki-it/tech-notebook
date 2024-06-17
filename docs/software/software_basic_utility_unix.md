@@ -1105,6 +1105,18 @@ $ cat foo.txt | grep -i bar
 
 <br>
 
+### -v
+
+指定した文字を除外する。
+
+```bash
+$ cat foo.txt | grep -v bar
+```
+
+> - https://qiita.com/mtanabe/items/61bcdd3ab6b0eaa442a8
+
+<br>
+
 ## history
 
 ### historyとは
