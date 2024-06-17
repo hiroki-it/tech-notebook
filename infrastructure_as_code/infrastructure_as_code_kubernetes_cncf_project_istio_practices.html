@@ -24026,16 +24026,17 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">      </span><span class="no">cat &lt;&lt;EOF &gt; k3d-config.yaml</span>
 <span class="w">      </span><span class="no">apiVersion: k3d.io/v1alpha5</span>
 <span class="w">      </span><span class="no">kind: Simple</span>
-<span class="w">      </span><span class="no">registries: |</span>
-<span class="w">        </span><span class="no">mirrors:</span>
-<span class="w">          </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
-<span class="w">            </span><span class="no">endpoint:</span>
-<span class="w">              </span><span class="no">- &quot;http://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span>
-<span class="w">        </span><span class="no">configs:</span>
-<span class="w">          </span><span class="no">${AWS_ECR}:</span>
-<span class="w">            </span><span class="no">auth:</span>
-<span class="w">              </span><span class="no">username: AWS</span>
-<span class="w">              </span><span class="no">password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})</span>
+<span class="w">      </span><span class="no">registries:</span>
+<span class="w">        </span><span class="no">config: |</span>
+<span class="w">          </span><span class="no">mirrors:</span>
+<span class="w">            </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
+<span class="w">              </span><span class="no">endpoint:</span>
+<span class="w">                </span><span class="no">- &quot;http://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span>
+<span class="w">          </span><span class="no">configs:</span>
+<span class="w">            </span><span class="no">${AWS_ECR}:</span>
+<span class="w">              </span><span class="no">auth:</span>
+<span class="w">                </span><span class="no">username: AWS</span>
+<span class="w">                </span><span class="no">password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})</span>
 <span class="w">      </span><span class="no">EOF</span>
 
 <span class="c1"># 指定したバージョンのIstioを検証する</span>
