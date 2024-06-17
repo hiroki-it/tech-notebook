@@ -22822,6 +22822,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="registries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ use
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -23007,6 +23040,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="registries">registries<a class="headerlink" href="#registries" title="Permanent link">&para;</a></h3>
+<h4 id="create">▼ create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">create</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.localhost</span>
@@ -23018,18 +23052,33 @@
 <span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/some/path:/var/lib/registry&quot;</span>
+</code></pre></div>
+<h4 id="use">▼ use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">use</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo-registries:5000&quot;</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS</span>
-<span class="w">        </span><span class="c1"># aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パスワード&gt;</span>
+</code></pre></div>
+<h4 id="config">▼ config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">mirrors:</span>
+<span class="w">      </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
+<span class="w">        </span><span class="no">endpoint:</span>
+<span class="w">          </span><span class="no">- &quot;https://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span>
+<span class="w">    </span><span class="no">config:</span>
+<span class="w">      </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
+<span class="w">        </span><span class="no">auth:</span>
+<span class="w">          </span><span class="no">username: AWS</span>
+<span class="w">          </span><span class="no"># aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード</span>
+<span class="w">          </span><span class="no">password: &lt;パスワード&gt;</span>
+<span class="w">        </span><span class="no"># イメージレジストリとの通信がHTTPSの場合は、SSL証明書が必要になる</span>
+<span class="w">        </span><span class="no">tls:</span>
+<span class="w">          </span><span class="no">ca_file: &quot;/etc/ssl/certs/myca.crt&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://k3d.io/v5.6.3/usage/configfile/#all-options-example">https://k3d.io/v5.6.3/usage/configfile/#all-options-example</a></li>
+<li><a href="https://github.com/sokube/kciss/blob/998654edac3bd7571a749ea95528ea5e847b7386/k3d-cluster-config-with-private-registry.yml#L23-L34">https://github.com/sokube/kciss/blob/998654edac3bd7571a749ea95528ea5e847b7386/k3d-cluster-config-with-private-registry.yml#L23-L34</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23109,7 +23158,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-18</span>
   </span>
 
     
