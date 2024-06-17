@@ -161,6 +161,8 @@ env:
 
 ### registries
 
+#### ▼ create
+
 ```yaml
 registries:
   create:
@@ -173,17 +175,38 @@ registries:
       password: ""
     volumes:
       - "/some/path:/var/lib/registry"
+```
+
+#### ▼ use
+
+```yaml
+registries:
   use:
     - "foo-registries:5000"
-  config:
-    <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
-      auth:
-        username: AWS
-        # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
-        password: <パスワード>
+```
+
+#### ▼ config
+
+```yaml
+registries:
+  config: |
+    mirrors:
+      <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+        endpoint:
+          - "https://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
+    config:
+      <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+        auth:
+          username: AWS
+          # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
+          password: <パスワード>
+        # イメージレジストリとの通信がHTTPSの場合は、SSL証明書が必要になる
+        tls:
+          ca_file: "/etc/ssl/certs/myca.crt"
 ```
 
 > - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - https://github.com/sokube/kciss/blob/998654edac3bd7571a749ea95528ea5e847b7386/k3d-cluster-config-with-private-registry.yml#L23-L34
 
 <br>
 

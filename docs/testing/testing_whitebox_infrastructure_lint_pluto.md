@@ -71,6 +71,14 @@ deprecated-versions:
 
 ```
 
+もしplutoが対応していない項目に関しては、以下のコマンドで確認すると良い。
+
+```bash
+$ kubectl get crd \
+    -o jsonpath='{range .items[*]}{.spec.group}{"\t"}{range .spec.versions[*]}{.name}{","}{end}{"\t"}{.metadata.name}{"\n"}{end}' \
+    | grep <リソースの種類 (例：istio) >
+```
+
 > - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
 > - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
 > - https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates

@@ -486,7 +486,11 @@ setup_k3d_config:
       cat <<EOF > k3d-config.yaml
       apiVersion: k3d.io/v1alpha5
       kind: Simple
-      registries:
+      registries: |
+        mirrors:
+          <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+            endpoint:
+              - "http://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
         configs:
           ${AWS_ECR}:
             auth:
