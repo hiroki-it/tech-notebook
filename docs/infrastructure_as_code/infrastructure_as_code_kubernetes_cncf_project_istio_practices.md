@@ -486,16 +486,17 @@ setup_k3d_config:
       cat <<EOF > k3d-config.yaml
       apiVersion: k3d.io/v1alpha5
       kind: Simple
-      registries: |
-        mirrors:
-          <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
-            endpoint:
-              - "http://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
-        configs:
-          ${AWS_ECR}:
-            auth:
-              username: AWS
-              password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
+      registries:
+        config: |
+          mirrors:
+            <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
+              endpoint:
+                - "http://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
+          configs:
+            ${AWS_ECR}:
+              auth:
+                username: AWS
+                password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
       EOF
 
 # 指定したバージョンのIstioを検証する
