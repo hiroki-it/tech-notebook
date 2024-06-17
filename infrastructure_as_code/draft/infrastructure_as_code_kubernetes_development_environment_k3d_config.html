@@ -23103,7 +23103,20 @@
 <span class="w">          </span><span class="no"># aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード</span>
 <span class="w">          </span><span class="no">password: &lt;パスワード&gt;</span>
 <span class="w">        </span><span class="no"># イメージレジストリとの通信がHTTPSの場合は、SSL証明書が必要になる</span>
-<span class="w">        </span><span class="no"># HTTPSの検証をスキップすることもできる</span>
+<span class="w">        </span><span class="no">tls:</span>
+<span class="w">          </span><span class="no">ca_file: &lt;証明書&gt;</span>
+<span class="w">          </span><span class="no">cert_file: &lt;証明書&gt;</span>
+<span class="w">          </span><span class="no">key_file: &lt;証明書&gt;</span>
+</code></pre></div>
+<p>HTTPSの検証をスキップすることもできる</p>
+<div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">config:</span>
+<span class="w">      </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
+<span class="w">        </span><span class="no">auth:</span>
+<span class="w">          </span><span class="no">username: AWS</span>
+<span class="w">          </span><span class="no"># aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード</span>
+<span class="w">          </span><span class="no">password: &lt;パスワード&gt; </span>
 <span class="w">        </span><span class="no">tls:</span>
 <span class="w">          </span><span class="no">insecure_skip_verify: true</span>
 </code></pre></div>
