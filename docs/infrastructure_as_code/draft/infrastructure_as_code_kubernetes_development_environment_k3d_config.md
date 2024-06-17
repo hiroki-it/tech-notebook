@@ -13,9 +13,7 @@ description: 設定ファイル＠K3Dの知見を記録しています。
 
 <br>
 
-## config.yaml
-
-### apiVersion
+## apiVersion
 
 ```yaml
 apiVersion: k3d.io/v1alpha5
@@ -25,7 +23,7 @@ apiVersion: k3d.io/v1alpha5
 
 <br>
 
-### kind
+## kind
 
 ```yaml
 kind: Simple
@@ -35,7 +33,7 @@ kind: Simple
 
 <br>
 
-### metadata
+## metadata
 
 ```yaml
 metadata:
@@ -46,7 +44,7 @@ metadata:
 
 <br>
 
-### servers
+## servers
 
 ```yaml
 servers: 1
@@ -56,7 +54,7 @@ servers: 1
 
 <br>
 
-### agents
+## agents
 
 ```yaml
 agents: 2
@@ -66,7 +64,7 @@ agents: 2
 
 <br>
 
-### kubeAPI
+## kubeAPI
 
 ```yaml
 kubeAPI:
@@ -79,7 +77,7 @@ kubeAPI:
 
 <br>
 
-### image
+## image
 
 ```yaml
 image: "rancher/k3s:v1.20.4-k3s1"
@@ -89,7 +87,7 @@ image: "rancher/k3s:v1.20.4-k3s1"
 
 <br>
 
-### network
+## network
 
 ```yaml
 network: foo-network
@@ -99,7 +97,7 @@ network: foo-network
 
 <br>
 
-### subnet
+## subnet
 
 ```yaml
 subnet: 172.28.0.0/16
@@ -109,7 +107,7 @@ subnet: 172.28.0.0/16
 
 <br>
 
-### token
+## token
 
 ```yaml
 token: superSecretToken
@@ -119,7 +117,7 @@ token: superSecretToken
 
 <br>
 
-### volumes
+## volumes
 
 ```yaml
 volumes:
@@ -133,7 +131,7 @@ volumes:
 
 <br>
 
-### ports
+## ports
 
 ```yaml
 ports:
@@ -146,7 +144,7 @@ ports:
 
 <br>
 
-### env
+## env
 
 ```yaml
 env:
@@ -159,9 +157,9 @@ env:
 
 <br>
 
-### registries
+## registries
 
-#### ▼ create
+### create
 
 ```yaml
 registries:
@@ -177,7 +175,10 @@ registries:
       - "/some/path:/var/lib/registry"
 ```
 
-#### ▼ use
+<br>
+
+
+### use
 
 ```yaml
 registries:
@@ -185,7 +186,22 @@ registries:
     - "foo-registries:5000"
 ```
 
-#### ▼ config
+<br>
+
+
+### config
+
+#### ▼ configとは
+
+```yaml
+registries:
+  config: |
+    ...
+```
+
+#### ▼ mirrors
+
+Node内でイメージプルが起こる時に、デフォルトのイメージレジストリ (例：DockerHub) ではなく、代わりにミラーリングレジストリからプルするように変更する。
 
 ```yaml
 registries:
@@ -194,6 +210,15 @@ registries:
       <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
         endpoint:
           - "https://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
+```
+
+#### ▼ config
+
+プライベートリポジトリからイメージをプルする場合に、これの認証情報を設定する。
+
+```yaml
+registries:
+  config: |
     config:
       <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
         auth:
@@ -201,8 +226,9 @@ registries:
           # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
           password: <パスワード>
         # イメージレジストリとの通信がHTTPSの場合は、SSL証明書が必要になる
+        # HTTPSの検証をスキップすることもできる
         tls:
-          ca_file: "/etc/ssl/certs/myca.crt"
+          insecure_skip_verify: true
 ```
 
 > - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
@@ -210,7 +236,7 @@ registries:
 
 <br>
 
-### hostAliases
+## hostAliases
 
 ```yaml
 hostAliases:
@@ -227,7 +253,7 @@ hostAliases:
 
 <br>
 
-### options
+## options
 
 ```yaml
 options:
