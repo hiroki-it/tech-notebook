@@ -261,6 +261,8 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 ### SessionStorage
 
+#### ▼ SessionStorage
+
 セッションIDで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
 ブラウザは、SessionStorageにセッションIDを保管する。
@@ -272,9 +274,19 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 > - https://magazine.techacademy.jp/magazine/32870
 > - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
 
+#### ▼ 場所
+
+**＊例＊**
+
+ローカルマシンがMacOSであれば、Chromeは`~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/`ディレクトリに保管する。
+
+> - https://stackoverflow.com/questions/8634058/where-the-sessionstorage-and-localstorage-stored
+
 <br>
 
 ### LocalStorage
+
+#### ▼ LocalStorageとは
 
 トークンで認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
@@ -284,14 +296,24 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。
 
+#### ▼ 場所
+
 > - https://developer.chrome.com/docs/devtools/storage/localstorage/
 > - https://zenn.dev/simsim/articles/3f3e043dd750e8
 > - https://magazine.techacademy.jp/magazine/32870
 > - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
 
+**＊例＊**
+
+ローカルマシンがMacOSであれば、Chromeは`~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/`ディレクトリに保管する。
+
+> - https://stackoverflow.com/a/27612275/12771072
+
 <br>
 
 ### ローカルマシンの`Cookie`ディレクトリ
+
+#### ▼ `Cookie`ディレクトリ
 
 トークン (例：アクセストークン、IDトークン、など) で認証情報を伝播した場合に、初回認証以降に、認証の成功状態を維持する必要がある。
 
@@ -299,11 +321,14 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 ブラウザを閉じても、ブラウザはローカルマシンのディレクトリのトークンを破棄せず、認証の成功状態を維持できる。
 
+> - https://developer.chrome.com/docs/devtools/storage/cookies/
+
+#### ▼ 場所
+
 **＊例＊**
 
 ローカルマシンがMacOSであれば、Chromeは`/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies`ディレクトリに`Cookie`ヘッダーの値を保管する。
 
-> - https://developer.chrome.com/docs/devtools/storage/cookies/
 > - https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
 
 <br>
