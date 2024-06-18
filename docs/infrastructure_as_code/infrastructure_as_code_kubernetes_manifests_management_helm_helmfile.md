@@ -118,10 +118,10 @@ releases:
     # 実行環境ごとに、読み込むvalues.yaml.gotmplファイルを切り替える。
     values:
       {{- if or (eq .Environment.Name "tes") (eq .Environment.Name "stg") }}
-      - values-nonprd.yaml.gotmpl
+      - common-values-nonprd.yaml.gotmpl
       {{- end }}
       {{- if eq .Environment.Name "prd" }}
-      - values-prd.yaml.gotmpl
+      - common-values-prd.yaml.gotmpl
       {{- end }}
 ```
 
@@ -569,7 +569,11 @@ Helmでは`values`ファイルをテンプレート化できないが、Helmfile
 
 特に、公式チャートに実行環境別の`values`ファイルを渡したい場合に役立つ。
 
-注意点として、`environments`キーの後に`releases`キーが読み込まれる。
+<br>
+
+### helmfileでの指定
+
+Helmfileでは、`environments`キーの後に`releases`キーが読み込まれる。
 
 そのため、`values.yaml.gotmpl`ファイルに値を渡すための`values`ファイルは、Helmfileの`environments`キー配下で読み込まなければならない。
 
@@ -577,7 +581,7 @@ Helmでは`values`ファイルをテンプレート化できないが、Helmfile
 environments:
   {{.Environment.Name}}:
     values:
-      # values.yaml.gotmplファイルに値を渡すvaluesファイル
+      # common-values.yaml.gotmplファイルに値を渡すvaluesファイル
       - values-{{ .Environment.Name }}.yaml
 
 repositories:
@@ -590,11 +594,37 @@ releases:
     version: <バージョンタグ>
     values:
       # 実行環境間で共有するvaluesファイル
-      - foo-values.yaml.gotmpl
+      - common-values.yaml.gotmpl
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 > - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
 > - https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
+
+<br>
+
+### 共通valuesファイルとの使い分け
+
+`common-values.yaml.gotmpl`ファイルを使用する代わりに、共有の`values`ファイルを使用する方法もある。
+
+```yaml
+environments:
+  {{.Environment.Name}}:
+    values:
+      # 環境別のvaluesファイル
+      - values-{{ .Environment.Name }}.yaml
+
+repositories:
+  - name: foo-repository
+    url: https://github.com/hiroki-hasegawa/foo-repository
+
+releases:
+  - name: foo
+    chart: foo-repository/foo-chart
+    version: <バージョンタグ>
+    values:
+      # 実行環境間で共有するvaluesファイル
+      - common-values.yaml
+```
 
 <br>

@@ -1458,6 +1458,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 Bearer認証で使用するJWTの発行元を設定する。
 
+JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
+
 ```yaml
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication

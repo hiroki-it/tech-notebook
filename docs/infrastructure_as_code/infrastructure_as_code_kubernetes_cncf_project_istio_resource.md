@@ -965,6 +965,10 @@ Pod間通信時に、相互TLS認証を実施する。
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 
+JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
+
+なお、アプリケーションで同様の実装をしても良い。
+
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 <br>
