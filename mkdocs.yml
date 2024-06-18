@@ -233,8 +233,8 @@ nav:
               - Falco: software/software_middleware_security_falco.md
               - 設定ファイル: software/software_middleware_security_falco_conf.md
           - ■ OAuth2 Proxy:
-                - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
-                - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
+              - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
+              - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ サービスメッシュ系:
           - サービスメッシュ: software/software_middleware_service_mesh.md
           - サービスメッシュの担う責務: software/software_middleware_service_mesh_responsibility.md
@@ -327,9 +327,9 @@ nav:
           - ■ フレームワーク:
               - Nuxt.js: language/language_js_framework_nuxtjs.md
               - ■ Vue.js:
-                - ■ Vue.js: language/language_js_framework_vuejs.md
-                - ■ vue-router: language/language_js_framework_vuejs_vuerouter.md
-                - ■ Vuex: language/language_js_framework_vuejs_vuex.md
+                  - ■ Vue.js: language/language_js_framework_vuejs.md
+                  - ■ vue-router: language/language_js_framework_vuejs_vuerouter.md
+                  - ■ Vuex: language/language_js_framework_vuejs_vuex.md
           - ■ パッケージ:
               - パッケージ管理: language/language_js_package_management.md
           - ■ ブラウザ:
@@ -370,7 +370,7 @@ nav:
           - ■ Goのテストツール:
               - Goのテストツール: testing/testing_whitebox_application_go.md
               - ■ 単体テスト:
-                    - testify: testing/testing_whitebox_application_go_unit_testify.md
+                  - testify: testing/testing_whitebox_application_go_unit_testify.md
           - ■ インフラ:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
@@ -687,8 +687,8 @@ nav:
               - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_secret.md
               - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_job.md
       - ■ Argo Rollouts:
-            - Argo Rollouts: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.md
-            - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts_resource_definition.md
+          - Argo Rollouts: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.md
+          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts_resource_definition.md
       - ■ Argo Workflows:
           - Argo Workflows: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.md
           - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow_resource_definition.md
@@ -729,7 +729,7 @@ nav:
       - ■ Keycloak:
           - Keycloak: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak.md
           - ■ クライアント:
-            - Javascript: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak_client_package_javascript.md
+              - Javascript: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak_client_package_javascript.md
       - ■ Kiali:
           - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.md
           - ■ リソース定義:
@@ -755,8 +755,8 @@ nav:
               - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.md
               - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.md
       - ■ Temporal:
-            - Temporal: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.md
-            - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_conf.md
+          - Temporal: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.md
+          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_conf.md
       - ■ VCluster:
           - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.md
 
