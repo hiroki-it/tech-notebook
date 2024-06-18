@@ -611,6 +611,9 @@ nav:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind_command.md
               - ■ K3D:
                   - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_command.md
+              - ■ K3S:
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3s_command.md
+                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3s_conf.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
