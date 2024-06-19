@@ -38,26 +38,20 @@ Applicationがポーリングするリポジトリのパス直下に`.argocd-all
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
 > - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
 
-#### ▼ レプリカ当たりの負荷の低減
-
-repo-serverは、レプリカ当たり1処理単位のマニフェスト作成しか実行できない。
-
-冗長化によりrepo-serverのレプリカ数 (Pod数) を増やすと、レプリカ当たりのマニフェスト作成処理の負荷を下げられる。
-
-これにより、複数人が同時にDiff操作やSync操作しやすくなる。
-
-> - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
-> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
-> - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
-
 #### ▼ キャッシュ作成の頻度を下げる
 
-単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がり、キャッシュ再作成の頻度が上がる。
+ArgoCDは、Applicationのリポジトリのキャッシュを積極的に再作成する。
+
+単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がる。
+
+そのため、複数のApplicationが単一のリポジトリをWatchしているような状況では、一度のコミットで複数のApplicationでキャッシュの再作成がおこる。
 
 Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#manifest-paths-annotation
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
+> - https://medium.com/@michail.gebka/optimizing-argocd-for-monorepo-setup-7c5f548e5575
+> - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
 
 <br>
 
