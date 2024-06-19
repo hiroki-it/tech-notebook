@@ -223,7 +223,7 @@ class Foo
 
 ### 書き込み系の操作
 
-#### ▼ トランザクション、コミット、ロールバック
+#### ▼ トランザクション開始、コミット、ロールバック
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
@@ -236,14 +236,14 @@ RDBの処理用語に相当する`beginTransaction`メソッド、`commit`メソ
 
 $conn = new Doctrine\DBAL\Connection
 
-// トランザクションの開始
+// トランザクションを開始する
 $conn->beginTransaction();
 try{
-    // コミット
+    // コミットを実行する
     $conn->commit();
 } catch (\Exception $e) {
 
-    // ロールバック
+    // ロールバックを実行する
     $conn->rollBack();
     throw $e;
 }

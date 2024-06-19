@@ -1109,7 +1109,7 @@ class FooRepository extends Repository implements DomainFooRepository
                 ])
                 ->save();
 
-            // コミットメントを実行する。
+            // コミットを実行する。
             DB::commit();
         } catch (Exception $e) {
 
@@ -1172,10 +1172,10 @@ class FooRepository extends Repository implements DomainFooRepository
                 "age"   => $foo->age(),
                 "email" => $foo->email()
             ])
-            // update文を実行する。
+            // UPDATE処理を実行する。
             ->save();
 
-            // コミットメントを実行する。
+            // コミットを実行する。
             DB::commit();
         } catch (\Exception $e) {
 

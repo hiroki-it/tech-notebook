@@ -225,6 +225,11 @@ func (User) TableName() string {
 
 ### トランザクションの流れ
 
+1. トランザクションを開始する
+2. 複数のCRUD処理を実行する
+3. コミットする
+4. 1-3の処理が途中で失敗した場合にロールバックする
+
 ```go
 package db
 
@@ -256,7 +261,7 @@ func CreateFoo(db *gorm.DB) error {
 		return err
 	}
 
-	// SQLをコミットする
+	// コミットする
 	return tx.Commit().Error
 }
 ```
@@ -265,9 +270,9 @@ func CreateFoo(db *gorm.DB) error {
 
 <br>
 
-### Create処理
+### CREATE処理
 
-#### ▼ Create処理とは
+#### ▼ CREATE処理とは
 
 gormモデルのフィールドに設定された値を元に、レコードを作成する。
 
@@ -289,9 +294,9 @@ result.RowsAffected
 
 <br>
 
-### Read処理
+### READ処理
 
-#### ▼ Read処理とは
+#### ▼ READ理とは
 
 gormモデルに対応するレコードを読み出す。
 
@@ -331,9 +336,9 @@ db.Find(&users, []int{1,2,3})
 
 <br>
 
-### Update処理
+### UPDATE処理
 
-#### ▼ Updateとは
+#### ▼ UPDATEとは
 
 gormモデルのフィールドに設定された値を元に、レコードを変更する。
 

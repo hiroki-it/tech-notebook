@@ -108,10 +108,10 @@ class FooController():
      def createFoo(self):
          foo = Foo(first_name="hiroki", last_name="hasegawa")
 
-         # セッションにクラスを追加する。
+         # CREATE処理を実行する (セッションにクラスを追加する)
          self.db.add(foo)
 
-         # DBレコードを作成する。
+         # コミットを実行する
          self.db.commit()
 
          # 作成したレコードをインスタンスのデータに設定する。

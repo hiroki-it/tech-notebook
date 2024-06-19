@@ -30,7 +30,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 トランザクションに含まれる全ての処理が成功することと、またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと。
 
-コミットメント制御によって実装される。
+コミット制御によって実装される。
 
 <br>
 
@@ -68,7 +68,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### 一連の流れ
 
-![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
+![コミット制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg)
 
 | RDBの書き込み系の操作                                      | よくあるメソッド名 (例：PDO)                                   | ラッピング            | 障害からの復旧                       |
 | :--------------------------------------------------------- | :------------------------------------------------------------- | --------------------- | ------------------------------------ |
@@ -112,12 +112,13 @@ try{
     // 例外処理を有効化。
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // トランザクションを開始。
+    // トランザクションを開始する。
     $db->beginTransaction();
     // いくつかのSQLが実行される。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
     $db->exec("INSERT INTO movie(title, price) VALUES("ハリポタ", 2000)")
     $db->exec("INSERT INTO movie(title, price) VALUES("シスター", 2000)")
 
+    // コミットを実行する
     // トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。
     $db->commit();
 
