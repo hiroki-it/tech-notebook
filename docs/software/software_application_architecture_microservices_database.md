@@ -108,6 +108,12 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 
+#### ▼ グローバルトランザクションの実行方式の種類
+
+グローバルトランザクションのトランザクションパターンとして、二相コミット (２フェーズコミット) がある。
+
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
+
 <br>
 
 ## 03. トランザクションパターン
@@ -127,7 +133,15 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-## 04. 二相コミット
+## 04. 二相コミット (２フェーズコミット)
+
+### 二相コミットとは
+
+『２フェーズコミット』ともいう。
+
+> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
+
+<br>
 
 ### 実装パターン
 
