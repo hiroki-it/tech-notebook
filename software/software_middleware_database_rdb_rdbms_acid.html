@@ -24109,7 +24109,7 @@
 <h3 id="atomicity">Atomicity (不可分性)<a class="headerlink" href="#atomicity" title="Permanent link">&para;</a></h3>
 <h4 id="atomicity_1">▼ Atomicityとは<a class="headerlink" href="#atomicity_1" title="Permanent link">&para;</a></h4>
 <p>トランザクションに含まれる全ての処理が成功することと、またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと。</p>
-<p>コミットメント制御によって実装される。</p>
+<p>コミット制御によって実装される。</p>
 <p><br></p>
 <h3 id="consistency">Consistency (整合性)<a class="headerlink" href="#consistency" title="Permanent link">&para;</a></h3>
 <h4 id="consistency_1">▼ Consistencyとは<a class="headerlink" href="#consistency_1" title="Permanent link">&para;</a></h4>
@@ -24128,7 +24128,7 @@
 <p><br></p>
 <h2 id="02-db">02. DBの処理フロー<a class="headerlink" href="#02-db" title="Permanent link">&para;</a></h2>
 <h3 id="_2">一連の流れ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><img alt="コミットメント制御" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg" /></p>
+<p><img alt="コミット制御" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg" /></p>
 <table>
 <thead>
 <tr>
@@ -24233,12 +24233,13 @@
     <span class="c1">// 例外処理を有効化。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
 
-    <span class="c1">// トランザクションを開始。</span>
+    <span class="c1">// トランザクションを開始する。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
     <span class="c1">// いくつかのSQLが実行される。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span><span class="nx">ハリポタ</span><span class="s2">&quot;, 2000)&quot;</span><span class="p">)</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span><span class="nx">シスター</span><span class="s2">&quot;, 2000)&quot;</span><span class="p">)</span>
 
+    <span class="c1">// コミットを実行する</span>
     <span class="c1">// トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
 
@@ -24577,7 +24578,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-19</span>
   </span>
 
     

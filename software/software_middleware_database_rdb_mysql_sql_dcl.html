@@ -23329,13 +23329,13 @@
 <p><br></p>
 <h2 id="03-commit">03. COMMIT<a class="headerlink" href="#03-commit" title="Permanent link">&para;</a></h2>
 <h3 id="commit">COMMITとは<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h3>
-<p>トランザクションを終了する。</p>
+<p>コミットを実行しつつ、トランザクションを終了する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- トランザクションを終了する</span>
 <span class="k">BEGIN</span><span class="p">;</span>
 
 <span class="c1">-- 何らかのステートメント</span>
 
-<span class="c1">-- トランザクションを終了する</span>
+<span class="c1">-- コミットを実行しつつ、トランザクションを終了する</span>
 <span class="k">COMMIT</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
@@ -23408,7 +23408,7 @@
 <h3 id="rollback">ROLLBACKとは<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h3>
 <p>トランザクション中の一連のステートメントを取り消し、元の状態に戻す。</p>
 <p>RDBMSでいう『ロールバック』の概念を実装する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- トランザクションを介しする</span>
+<div class="highlight"><pre><span></span><code><span class="c1">-- トランザクションを開始する</span>
 <span class="k">BEGIN</span><span class="p">;</span>
 
 <span class="c1">-- テーブルのデータを削除するステートメント</span>
@@ -23423,7 +23423,7 @@
 <span class="c1">-- ロールバックする</span>
 <span class="k">ROLLBACK</span><span class="p">;</span>
 
-<span class="c1">-- トランザクションを終了する</span>
+<span class="c1">-- コミットを実行しつつ、トランザクションを終了する</span>
 <span class="k">COMMIT</span><span class="p">;</span>
 </code></pre></div>
 <p>トランザクション後にもう一度クエリを実行すると、データが復元されている。</p>
@@ -23457,7 +23457,7 @@ FROM score;
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-19</span>
   </span>
 
     
