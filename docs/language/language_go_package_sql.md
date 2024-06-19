@@ -32,6 +32,8 @@ Go製のORMである。
 #### ▼ MySQLの場合
 
 ```go
+package db
+
 func NewDB() (*gorm.DB, error) {
 
     // 接続情報。sprintf関数を使用すると、可読性が高い。
@@ -86,6 +88,8 @@ func Close(db *gorm.DB) error {
 構造体をマッピングしたテーブルに、対応するカラム (`id`、`created_at`、`updated_at`、`deleted_at`) を持つレコードを作成する。
 
 ```go
+package model
+
 type User struct {
 	// gormモデルを埋め込む
 	gorm.Model
@@ -111,6 +115,8 @@ Gormは、構造体をデータベースに自動的にマッピングする。
 明示的に設定しない限り、スネークケースに変換して自動的にマッピングする。
 
 ```go
+package model
+
 // usersテーブルにマッピング
 type User struct {
 	// テーブルの主キーにマッピング
@@ -135,6 +141,8 @@ type User struct {
 もし、他の名前のフィールドをIDとして使用したい場合は、`gorm:"primaryKey"`タグをつける。
 
 ```go
+package model
+
 type User struct {
 	ID   string // プライマリーキーとして使用される。
 	Name string
@@ -142,6 +150,8 @@ type User struct {
 ```
 
 ```go
+package model
+
 type User struct {
 	UserID string `gorm:"primaryKey"` // プライマリーキーとして使用される。
 	Name   string
@@ -157,6 +167,8 @@ type User struct {
 gormモデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDeleteを有効化できる。
 
 ```go
+package model
+
 type User struct {
 	ID      int
 	Deleted gorm.DeletedAt
@@ -190,6 +202,8 @@ db.Where("age = 20").Find(&user)
 `TableName`関数により、ユーザー定義のテーブル名をつけられる。
 
 ```go
+package model
+
 // テーブル名はデフォルトでは『users』になる。
 type User struct {
 	ID      int
@@ -207,11 +221,53 @@ func (User) TableName() string {
 
 <br>
 
-## 01-02. gormクエリ
+## 01-02. トランザクション
 
-### Create
+### トランザクションの流れ
 
-#### ▼ Createとは
+```go
+package db
+
+func CreateFoo(db *gorm.DB) error {
+
+	// トランザクションを開始する
+	tx := db.Begin()
+
+	// ロールバックは遅延実行する
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+		}
+	}()
+
+	if err := tx.Error; err != nil {
+		return err
+	}
+
+	// CREATE処理を実行する
+	if err := tx.Create(&Animal{Name: "Giraffe"}).Error; err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	// CREATE処理を実行する。
+	if err := tx.Create(&Animal{Name: "Lion"}).Error; err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	// SQLをコミットする
+	return tx.Commit().Error
+}
+```
+
+> - https://gorm.io/docs/transactions.html#A-Specific-Example
+
+<br>
+
+### Create処理
+
+#### ▼ Create処理とは
 
 gormモデルのフィールドに設定された値を元に、レコードを作成する。
 
@@ -223,7 +279,9 @@ user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 result := db.Create(&user)
 
 user.ID
+
 result.Error
+
 result.RowsAffected
 ```
 
@@ -231,71 +289,9 @@ result.RowsAffected
 
 <br>
 
-### Exec
+### Read処理
 
-#### ▼ Execとは
-
-SQLステートメントをそのまま実行する。
-
-```go
-db.Exec("DROP TABLE users")
-db.Exec("UPDATE orders SET shipped_at = ? WHERE id IN ?", time.Now(), []int64{1, 2, 3})
-db.Exec("UPDATE users SET money = ? WHERE name = ?", gorm.Expr("money * ? + ?", 10000, 1), "jinzhu")
-```
-
-```go
-db.Exec(fmt.Sprintf("SET SESSION max_execution_time=%d;", 10))
-```
-
-> - https://gorm.io/docs/sql_builder.html
-
-<br>
-
-### Hook
-
-#### ▼ Hookとは
-
-CRUDの関数の前後に設定した独自処理を実行できるようにする。
-
-#### ▼ 特定のCRUD関数の前後
-
-```go
-func NewDb() {
-
-	...
-
-	// Createの前
-	db.Callback().Create().Before("gorm:before_create").Register("<フック名>", "<CRUD関数名>")
-
-	...
-}
-```
-
-> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
-
-#### ▼ 全てのCRUD関数の前後
-
-```go
-func (user *User) BeforeSave(tx *gorm.DB) (err error) {
-    user.LastUpdated = time.Now()
-    return nil
-}
-```
-
-```go
-func (user *User) AfterSave(tx *gorm.DB) (err error) {
-    log.Println("User successfully saved:", user.ID)
-    return nil
-}
-```
-
-> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
-
-<br>
-
-### Read
-
-#### ▼ Readとは
+#### ▼ Read処理とは
 
 gormモデルに対応するレコードを読み出す。
 
@@ -308,6 +304,7 @@ user := User{}
 result := db.Find(&users)
 
 result.RowsAffected
+
 result.Error
 ```
 
@@ -334,59 +331,7 @@ db.Find(&users, []int{1,2,3})
 
 <br>
 
-### Statement
-
-#### ▼ Statementとは
-
-gormクエリに関する情報を持つ。
-
-```go
-type DB struct {
-	*Config
-	Error        error
-	RowsAffected int64
-	Statement    *Statement
-	clone        int
-}
-
-type Statement struct {
-	*DB
-	TableExpr            *clause.Expr
-	Table                string
-	Model                interface{}
-	Unscoped             bool
-	Dest                 interface{}
-	ReflectValue         reflect.Value
-	Clauses              map[string]clause.Clause
-	BuildClauses         []string
-	Distinct             bool
-	Selects              []string
-	Omits                []string
-	Joins                []join
-	Preloads             map[string][]interface{}
-	Settings             sync.Map
-	ConnPool             ConnPool
-	Schema               *schema.Schema
-	// SQLステートメントごとのコンテキスト
-	// SQLにタイムアウト値やキャンセル関数を設定できる
-	Context              context.Context
-	RaiseErrorOnNotFound bool
-	SkipHooks            bool
-	// SQLステートメント
-	SQL                  strings.Builder
-	Vars                 []interface{}
-	CurDestIndex         int
-	attrs                []interface{}
-	assigns              []interface{}
-	scopes               []func(*DB) *DB
-}
-```
-
-> - https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49
-
-<br>
-
-### Update
+### Update処理
 
 #### ▼ Updateとは
 
@@ -470,6 +415,8 @@ db.Save(&user)
 
 <br>
 
+## 01-04. クエリのオプション
+
 ### WithContext
 
 #### ▼ WithContextとは
@@ -491,5 +438,127 @@ db.WithContext(ctx).Find(&users)
 
 > - https://gorm.io/docs/context.html#Context-Timeout
 > - https://elahe-dstn.medium.com/query-timeout-a-gopher-perspective-3caa221566e0
+
+<br>
+
+### Exec
+
+#### ▼ Execとは
+
+SQLステートメントをそのまま実行する。
+
+```go
+db.Exec("DROP TABLE users")
+db.Exec("UPDATE orders SET shipped_at = ? WHERE id IN ?", time.Now(), []int64{1, 2, 3})
+db.Exec("UPDATE users SET money = ? WHERE name = ?", gorm.Expr("money * ? + ?", 10000, 1), "jinzhu")
+```
+
+```go
+db.Exec(fmt.Sprintf("SET SESSION max_execution_time=%d;", 10))
+```
+
+> - https://gorm.io/docs/sql_builder.html
+
+<br>
+
+### Hook
+
+#### ▼ Hookとは
+
+CRUDの関数の前後に設定した独自処理を実行できるようにする。
+
+#### ▼ 特定のCRUD関数の前後
+
+```go
+package db
+
+func NewDb() {
+
+	...
+
+	// Createの前
+	db.Callback().Create().Before("gorm:before_create").Register("<フック名>", "<CRUD関数名>")
+
+	...
+}
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+#### ▼ 全てのCRUD関数の前後
+
+```go
+package db
+
+func (user *User) BeforeSave(tx *gorm.DB) (err error) {
+    user.LastUpdated = time.Now()
+    return nil
+}
+```
+
+```go
+package db
+
+func (user *User) AfterSave(tx *gorm.DB) (err error) {
+    log.Println("User successfully saved:", user.ID)
+    return nil
+}
+```
+
+> - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
+
+<br>
+
+### Statement
+
+#### ▼ Statementとは
+
+gormクエリに関する情報を持つ。
+
+```go
+package db
+
+type DB struct {
+	*Config
+	Error        error
+	RowsAffected int64
+	Statement    *Statement
+	clone        int
+}
+
+type Statement struct {
+	*DB
+	TableExpr            *clause.Expr
+	Table                string
+	Model                interface{}
+	Unscoped             bool
+	Dest                 interface{}
+	ReflectValue         reflect.Value
+	Clauses              map[string]clause.Clause
+	BuildClauses         []string
+	Distinct             bool
+	Selects              []string
+	Omits                []string
+	Joins                []join
+	Preloads             map[string][]interface{}
+	Settings             sync.Map
+	ConnPool             ConnPool
+	Schema               *schema.Schema
+	// SQLステートメントごとのコンテキスト
+	// SQLにタイムアウト値やキャンセル関数を設定できる
+	Context              context.Context
+	RaiseErrorOnNotFound bool
+	SkipHooks            bool
+	// SQLステートメント
+	SQL                  strings.Builder
+	Vars                 []interface{}
+	CurDestIndex         int
+	attrs                []interface{}
+	assigns              []interface{}
+	scopes               []func(*DB) *DB
+}
+```
+
+> - https://github.com/go-gorm/gorm/blob/v1.25.9/statement.go#L22-L49
 
 <br>
