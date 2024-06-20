@@ -30,25 +30,33 @@ description: Keycloak＠CNCFの知見を記録しています。
 
 Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。
 
-![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/<realm名>/images/keycloak_architecture.png)
+![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
 
 > - https://blog.palark.com/ha-keycloak-infinispan-kubernetes/
 
 <br>
 
-## Infinispan
+### Infinispan
 
 キャッシュを保管する。
 
 <br>
 
-## RDBMS
+### RDBMS
 
 認証情報を保管する。
 
 <br>
 
 ## 02. 認証認可
+
+### Realm
+
+Keycloakでは、Adminユーザーの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
+
+> - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
+
+<br>
 
 ### 認証認可の種類
 
@@ -141,6 +149,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
   },
 
   ...
+
 }
 ```
 
