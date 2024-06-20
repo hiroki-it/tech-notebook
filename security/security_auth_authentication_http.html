@@ -23200,14 +23200,14 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、これ拒否し、<code>401</code>ステータスで認証領域を設定し、レスポンスを返信する。</p>
-<p>これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。</p>
-<p>ユーザーに表示するための認証領域には、任意の値を持たせられ、サイト名が設定されることが多い。</p>
+<p>サーバーは、これ拒否し、<code>401</code>ステータスでrealm名を設定し、レスポンスを返信する。</p>
+<p>これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。</p>
+<p>ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;認証領域&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -23253,7 +23253,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;認証領域&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-digest">03. Digest認証<a class="headerlink" href="#03-digest" title="Permanent link">&para;</a></h2>
@@ -23263,11 +23263,11 @@
 <h3 id="digest_1">Digest認証の仕組み<a class="headerlink" href="#digest_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;認証領域&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
 <span class="nn">---</span>
-<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest realm=&quot;&lt;認証領域&gt;&quot; nonce=&quot;&lt;サーバー側が作成した任意の文字列&gt;&quot; algorithm=&quot;&lt;ハッシュ関数名&gt;&quot; qoq=&quot;auth&quot;</span>
+<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest realm=&quot;&lt;realm名&gt;&quot; nonce=&quot;&lt;サーバー側が作成した任意の文字列&gt;&quot; algorithm=&quot;&lt;ハッシュ関数名&gt;&quot; qoq=&quot;auth&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04-bearer">04. Bearer認証<a class="headerlink" href="#04-bearer" title="Permanent link">&para;</a></h2>
@@ -23376,7 +23376,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;認証領域&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_2">正常系/異常系レスポンス<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -23424,7 +23424,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-21</span>
   </span>
 
     
