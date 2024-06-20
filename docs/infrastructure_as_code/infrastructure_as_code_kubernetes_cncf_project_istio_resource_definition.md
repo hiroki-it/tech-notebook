@@ -1485,6 +1485,30 @@ spec:
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
+#### ▼ Auth0に送信する場合
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+  namespace: istio-system
+spec:
+  jwtRules:
+    # JWTの発行元エンドポイントを設定する
+    - issuer: https://<テナント名>.auth0.com/
+      # 公開鍵のエンドポイントを設定する
+      jwksUri: https://<テナント名>.auth0.com/.well-known/jwks.json
+      # 既存のJWTを転送する
+      forwardOriginalTolen: true
+      # Authorizationヘッダーを指定する
+      fromHeaders:
+        - name: Authorization
+          prefix: "Bearer "
+```
+
+> - https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins
+
 #### ▼ Keycloakに送信する場合
 
 ```yaml
@@ -1510,7 +1534,7 @@ spec:
 > - https://thinkit.co.jp/article/18023
 > - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
 
-#### ▼ OAuth Proxy2を介してIDプロバイダーに送信する場合
+#### ▼ OAuth2 Proxyを介してKeycloakに送信する場合
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -1521,9 +1545,9 @@ metadata:
 spec:
   jwtRules:
     # ここの値がわからない...
-    - issuer: $OIDC_ISSUER_URL
+    - issuer: https://<OAuth2 Proxyのドメイン>/auth/realms/<realm名>
       # ここの値がわからない...
-      jwksUri: $OIDC_JWKS_URI
+      jwksUri: https://<OAuth2 Proxyのドメイン>/auth/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを転送する
       forwardOriginalTolen: true
       # Authorizationヘッダーを指定する
