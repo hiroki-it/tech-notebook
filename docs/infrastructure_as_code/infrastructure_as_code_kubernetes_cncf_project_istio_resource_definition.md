@@ -1565,10 +1565,43 @@ spec:
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
+---
+# AuthorizationPolicyでRequestAuthenticationを強制する
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: foo-authorization-policy
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: CUSTOM
+  # oauth2-proxyプロバイダーの設定を使用する
+  provider:
+    name: oauth2-proxy
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foo-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: oauth2-proxy
+        envoyExtAuthzHttp:
+          service: oauth2-proxy.foo-namespace.svc.cluster.local
+          port: 4180
+          includeRequestHeadersInCheck:
+            - cookie
+          headersToUpstreamOnAllow:
+            - authorization
+          headersToDownstreamOnDeny:
+            - set-cookie
 ```
 
 > - https://venafi.com/blog/istio-oidc/
-> - https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A
 
 <br>
 
