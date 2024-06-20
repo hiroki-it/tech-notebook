@@ -19107,12 +19107,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#infinispan" class="md-nav__link">
     <span class="md-ellipsis">
       Infinispan
@@ -19120,13 +19115,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rdbms" class="md-nav__link">
     <span class="md-ellipsis">
       RDBMS
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -19139,6 +19139,15 @@
   
     <nav class="md-nav" aria-label="02. 認証認可">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Realm
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
@@ -23137,12 +23146,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#infinispan" class="md-nav__link">
     <span class="md-ellipsis">
       Infinispan
@@ -23150,13 +23154,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rdbms" class="md-nav__link">
     <span class="md-ellipsis">
       RDBMS
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -23169,6 +23178,15 @@
   
     <nav class="md-nav" aria-label="02. 認証認可">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Realm
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
@@ -23389,20 +23407,28 @@
 <h2 id="01-02">01-02. 仕組み<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。</p>
-<p><img alt="keycloak_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/&lt;realm名&gt;/images/keycloak_architecture.png" /></p>
+<p><img alt="keycloak_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://blog.palark.com/ha-keycloak-infinispan-kubernetes/">https://blog.palark.com/ha-keycloak-infinispan-kubernetes/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="infinispan">Infinispan<a class="headerlink" href="#infinispan" title="Permanent link">&para;</a></h2>
+<h3 id="infinispan">Infinispan<a class="headerlink" href="#infinispan" title="Permanent link">&para;</a></h3>
 <p>キャッシュを保管する。</p>
 <p><br></p>
-<h2 id="rdbms">RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h2>
+<h3 id="rdbms">RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h3>
 <p>認証情報を保管する。</p>
 <p><br></p>
 <h2 id="02">02. 認証認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="realm">Realm<a class="headerlink" href="#realm" title="Permanent link">&para;</a></h3>
+<p>Keycloakでは、Adminユーザーの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。</p>
+<blockquote>
+<ul>
+<li><a href="https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm">https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="_3">認証認可の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="oidc">▼ OIDCの場合<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h4>
 <ul>
@@ -23474,6 +23500,7 @@
 <span class="w">  </span><span class="p p-Indicator">}</span><span class="err">,</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
 <span class="err">}</span>
 </code></pre></div>
 <h4 id="_9">▼ トークン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
