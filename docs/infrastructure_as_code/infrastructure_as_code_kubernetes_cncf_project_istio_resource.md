@@ -972,5 +972,6 @@ JWTが失効していたり、不正であったりする場合に、認証処�
 また、Nginx製のBFFなど、認証処理を実装しにくい場所にのみ採用しても良い。
 
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - https://www.reddit.com/r/istio/comments/1cazua5/comment/l0v73tx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 <br>

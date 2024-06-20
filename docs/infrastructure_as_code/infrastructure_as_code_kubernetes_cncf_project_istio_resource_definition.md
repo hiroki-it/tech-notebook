@@ -1529,6 +1529,18 @@ spec:
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
+---
+# AuthorizationPolicyでRequestAuthenticationを強制する
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: keycloak
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values: ["https://<Keycloakのドメイン>/realms/<realm名>"]
 ```
 
 > - https://thinkit.co.jp/article/18023
@@ -1544,9 +1556,8 @@ metadata:
   namespace: istio-system
 spec:
   jwtRules:
-    # ここの値がわからない...
+    # OAuth2 Proxyに送信する
     - issuer: https://<OAuth2 Proxyのドメイン>/realms/<realm名>
-      # ここの値がわからない...
       jwksUri: https://<OAuth2 Proxyのドメイン>/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを転送する
       forwardOriginalTolen: true

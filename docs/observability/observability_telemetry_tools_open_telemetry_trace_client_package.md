@@ -1181,7 +1181,7 @@ Span Processorは、Graceful Shutdown処理を実行するための関数を持�
 
 トレースコンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。
 
-Carrierからトレースコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
+Carrierからトレースコンテキストを注入する操作を『注入 (Inject) 』、反対に取り出す操作を『抽出 (Extract) 』という。
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
