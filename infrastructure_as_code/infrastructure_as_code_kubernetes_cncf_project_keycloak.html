@@ -19243,7 +19243,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ トークン
+      ▼ 全体
     </span>
   </a>
   
@@ -19252,7 +19252,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ログアウト
+      ▼ トークン
     </span>
   </a>
   
@@ -19261,7 +19261,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 公開鍵
+      ▼ ログアウト
     </span>
   </a>
   
@@ -19269,6 +19269,15 @@
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イントロスペクション
     </span>
@@ -23240,7 +23249,7 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ トークン
+      ▼ 全体
     </span>
   </a>
   
@@ -23249,7 +23258,7 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ログアウト
+      ▼ トークン
     </span>
   </a>
   
@@ -23258,7 +23267,7 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 公開鍵
+      ▼ ログアウト
     </span>
   </a>
   
@@ -23266,6 +23275,15 @@
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 公開鍵
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ イントロスペクション
     </span>
@@ -23323,7 +23341,7 @@
 <h2 id="01-02">01-02. 仕組み<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。</p>
-<p><img alt="keycloak_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png" /></p>
+<p><img alt="keycloak_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/&lt;realm名&gt;/images/keycloak_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://blog.palark.com/ha-keycloak-infinispan-kubernetes/">https://blog.palark.com/ha-keycloak-infinispan-kubernetes/</a></li>
@@ -23362,7 +23380,43 @@
 <p><br></p>
 <h2 id="03">03. エンドポイント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="oidc">OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ トークン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 全体<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>全ての設定を取得できる。</p>
+<div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/.well-known/openid-configuration
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ curl https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/.well-known/openid-configuration</span>
+
+<span class="l l-Scalar l-Scalar-Plain">{</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&quot;issuer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;authorization_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/auth&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;token_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;introspection_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;userinfo_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;end_session_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/logout&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;frontchannel_logout_session_supported&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">  </span><span class="s">&quot;frontchannel_logout_supported&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true,</span>
+<span class="w">  </span><span class="s">&quot;jwks_uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/certs&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;check_session_iframe&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/login-status-iframe.html&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;registration_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/clients-registrations/openid-connect&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;revocation_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/revoke&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;device_authorization_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/auth/device&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;backchannel_authentication_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/ext/ciba/auth&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/ext/par/request&quot;</span><span class="err">,</span>
+<span class="w">  </span><span class="s">&quot;mtls_endpoint_aliases&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">&quot;token_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;revocation_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/revoke&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;introspection_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;device_authorization_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/auth/device&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;registration_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/clients-registrations/openid-connect&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;userinfo_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/ext/par/request&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">&quot;backchannel_authentication_endpoint&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/ext/ciba/auth&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">}</span><span class="err">,</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="err">}</span>
+</code></pre></div>
+<h4 id="_8">▼ トークン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/token
 </code></pre></div>
@@ -23371,7 +23425,7 @@
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#token-endpoint">https://www.keycloak.org/docs/latest/securing_apps/index.html#token-endpoint</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ ログアウト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ ログアウト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>認証を意図的に失効させられる。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/logout
 </code></pre></div>
@@ -23380,7 +23434,7 @@
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#logout-endpoint">https://www.keycloak.org/docs/latest/securing_apps/index.html#logout-endpoint</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ 公開鍵<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ 公開鍵<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>認証が失効していないか、また不正でないかを検証できる。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/certs
 </code></pre></div>
@@ -23389,7 +23443,7 @@
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint">https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ イントロスペクション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ イントロスペクション<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect
 </code></pre></div>
 <blockquote>
@@ -23418,7 +23472,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-21</span>
   </span>
 
     
