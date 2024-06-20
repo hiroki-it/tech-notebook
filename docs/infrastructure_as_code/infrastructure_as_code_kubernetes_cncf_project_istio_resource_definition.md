@@ -1520,9 +1520,9 @@ metadata:
 spec:
   jwtRules:
     # JWTの発行元エンドポイントを設定する
-    - issuer: https://<Keycloakのドメイン>/auth/realms/<realm名>
+    - issuer: https://<Keycloakのドメイン>/realms/<realm名>
       # 公開鍵のエンドポイントを設定する
-      jwksUri: https://<Keycloakのドメイン>/auth/realms/<realm名>/protocol/openid-connect/certs
+      jwksUri: https://<Keycloakのドメイン>/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを転送する
       forwardOriginalTolen: true
       # Authorizationヘッダーを指定する
@@ -1545,9 +1545,9 @@ metadata:
 spec:
   jwtRules:
     # ここの値がわからない...
-    - issuer: https://<OAuth2 Proxyのドメイン>/auth/realms/<realm名>
+    - issuer: https://<OAuth2 Proxyのドメイン>/realms/<realm名>
       # ここの値がわからない...
-      jwksUri: https://<OAuth2 Proxyのドメイン>/auth/realms/<realm名>/protocol/openid-connect/certs
+      jwksUri: https://<OAuth2 Proxyのドメイン>/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを転送する
       forwardOriginalTolen: true
       # Authorizationヘッダーを指定する

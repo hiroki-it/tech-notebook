@@ -496,7 +496,7 @@ data:
     extensionProviders:
       - name: OAuth2 Proxy
         envoyExtAuthzHttp:
-          service: oauth2-proxy.auth.svc.cluster.local
+          service: oauth2-proxy.foo-namespace.svc.cluster.local
           port: 80
         includeHeadersInCheck:
           - cookie

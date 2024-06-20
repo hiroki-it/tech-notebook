@@ -30,7 +30,7 @@ description: Keycloak＠CNCFの知見を記録しています。
 
 Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。
 
-![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
+![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/<realm名>/images/keycloak_architecture.png)
 
 > - https://blog.palark.com/ha-keycloak-infinispan-kubernetes/
 
@@ -90,6 +90,48 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 ## 03. エンドポイント
 
 ### OIDC
+
+#### ▼ 全体
+
+全ての設定を取得できる。
+
+```bash
+/realms/<realm名>/.well-known/openid-configuration
+```
+
+```yaml
+$ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid-configuration
+
+{
+  "issuer": "https://<Keycloakのドメイン名>/realms/<realm名>",
+  "authorization_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth",
+  "token_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token",
+  "introspection_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect",
+  "userinfo_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/userinfo",
+  "end_session_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout",
+  "frontchannel_logout_session_supported": true,
+  "frontchannel_logout_supported": true,
+  "jwks_uri": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs",
+  "check_session_iframe": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/login-status-iframe.html",
+  "registration_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/clients-registrations/openid-connect",
+  "revocation_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/revoke",
+  "device_authorization_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth/device",
+  "backchannel_authentication_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/ext/ciba/auth",
+  "pushed_authorization_request_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/ext/par/request",
+  "mtls_endpoint_aliases": {
+    "token_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token",
+    "revocation_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/revoke",
+    "introspection_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect",
+    "device_authorization_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth/device",
+    "registration_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/clients-registrations/openid-connect",
+    "userinfo_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/userinfo",
+    "pushed_authorization_request_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/ext/par/request",
+    "backchannel_authentication_endpoint": "https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/ext/ciba/auth"
+  },
+
+  ...
+}
+```
 
 #### ▼ トークン
 
