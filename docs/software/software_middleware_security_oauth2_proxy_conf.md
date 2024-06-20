@@ -43,6 +43,15 @@ providers:
 
 ### oidcConfig
 
+#### ▼ oidcConfig
+
+```yaml
+providers:
+  - oidcConfig: ...
+```
+
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider
+
 #### ▼ issuerURL
 
 OIDCのIDプロバイダーの認可エンドポイントを設定する。
@@ -54,12 +63,13 @@ providers:
       issuerURL: "https://<Keycloakのドメイン>/auth/realms/<realm名>"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
+> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions
 
 ```yaml
 # 認証方法がOIDCで、IDプロバイダーがAWS Cognitoの場合
 providers:
-  - issuerURL: "https://cognito-idp.ap-northeast-1.amazonaws.com/<ユーザープールID>"
+  - oidcConfig:
+      issuerURL: "https://cognito-idp.ap-northeast-1.amazonaws.com/<ユーザープールID>"
 ```
 
 > - https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90

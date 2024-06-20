@@ -1695,6 +1695,7 @@ func NewTracerProvider() {
 ```
 
 > - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message
+> - https://github.com/udhos/opentelemetry-trace-sqs
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -1781,6 +1782,7 @@ func main() {
 ```
 
 > - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage
+> - https://github.com/udhos/opentelemetry-trace-sqs
 
 <br>
 
