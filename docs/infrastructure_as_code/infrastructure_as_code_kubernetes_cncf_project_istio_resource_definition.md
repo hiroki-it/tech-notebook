@@ -1495,9 +1495,9 @@ metadata:
   namespace: istio-system
 spec:
   jwtRules:
-    # JWTの発行元を設定する
+    # JWTの発行元エンドポイントを設定する
     - issuer: https://<Keycloakのドメイン>/auth/realms/<realm名>
-      # 公開鍵のURLを設定する
+      # 公開鍵のエンドポイントを設定する
       jwksUri: https://<Keycloakのドメイン>/auth/realms/<realm名>/protocol/openid-connect/certs
       # 既存のJWTを転送する
       forwardOriginalTolen: true
@@ -1524,7 +1524,12 @@ spec:
     - issuer: $OIDC_ISSUER_URL
       # ここの値がわからない...
       jwksUri: $OIDC_JWKS_URI
+      # 既存のJWTを転送する
       forwardOriginalTolen: true
+      # Authorizationヘッダーを指定する
+      fromHeaders:
+        - name: Authorization
+          prefix: "Bearer "
 ```
 
 > - https://venafi.com/blog/istio-oidc/
