@@ -19578,6 +19578,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label=".spec.jwtRules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwtrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ jwtRulesとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Keycloakに送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-proxy2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OAuth Proxy2に送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -25136,6 +25169,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label=".spec.jwtRules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwtrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ jwtRulesとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Keycloakに送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-proxy2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OAuth Proxy2に送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -26985,22 +27051,44 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="07-requestauthentication">07. RequestAuthentication<a class="headerlink" href="#07-requestauthentication" title="Permanent link">&para;</a></h2>
 <h3 id="specjwtrules">.spec.jwtRules<a class="headerlink" href="#specjwtrules" title="Permanent link">&para;</a></h3>
+<h4 id="jwtrules">▼ jwtRulesとは<a class="headerlink" href="#jwtrules" title="Permanent link">&para;</a></h4>
 <p>Bearer認証で使用するJWTの発行元を設定する。</p>
 <p>JWTが失効していたり、不正であったりする場合に、認証処理を失敗として<code>401</code>ステータスを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt&quot;</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-issuer</span>
 <span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com/.well-known/jwks.json</span>
+<span class="w">      </span><span class="nt">forwardOriginalTolen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/security/request_authentication/">https://istio.io/latest/docs/reference/config/security/request_authentication/</a></li>
 <li><a href="https://news.mynavi.jp/techplus/article/kubernetes-30/">https://news.mynavi.jp/techplus/article/kubernetes-30/</a></li>
+</ul>
+</blockquote>
+<h4 id="keycloak">▼ Keycloakに送信する場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="oauth-proxy2">▼ OAuth Proxy2に送信する場合<a class="headerlink" href="#oauth-proxy2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$OIDC_ISSUER_URL</span><span class="w"> </span><span class="c1"># ここの値がわからない...</span>
+<span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$OIDC_JWKS_URI</span><span class="w"> </span><span class="c1"># ここの値がわからない...</span>
+<span class="w">      </span><span class="nt">forwardOriginalTolen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A">https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A</a></li>
+<li><a href="https://www.ventx.de/blog/post/istio_oauth2_proxy/index.html">https://www.ventx.de/blog/post/istio_oauth2_proxy/index.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -27842,7 +27930,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-20</span>
   </span>
 
     
