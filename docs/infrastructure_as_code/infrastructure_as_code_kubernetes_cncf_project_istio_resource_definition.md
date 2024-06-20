@@ -1476,6 +1476,10 @@ spec:
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを転送する
       forwardOriginalTolen: true
+      # Authorizationヘッダーを指定する
+      fromHeaders:
+        - name: Authorization
+          prefix: "Bearer "
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
@@ -1483,9 +1487,30 @@ spec:
 
 #### ▼ Keycloakに送信する場合
 
-記入中...
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+  namespace: istio-system
+spec:
+  jwtRules:
+    # JWTの発行元を設定する
+    - issuer: https://<Keycloakのドメイン>/auth/realms/<realm名>
+      # 公開鍵のURLを設定する
+      jwksUri: https://<Keycloakのドメイン>/auth/realms/<realm名>/protocol/openid-connect/certs
+      # 既存のJWTを転送する
+      forwardOriginalTolen: true
+      # Authorizationヘッダーを指定する
+      fromHeaders:
+        - name: Authorization
+          prefix: "Bearer "
+```
 
-#### ▼ OAuth Proxy2に送信する場合
+> - https://thinkit.co.jp/article/18023
+> - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
+
+#### ▼ OAuth Proxy2を介してIDプロバイダーに送信する場合
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -1502,6 +1527,7 @@ spec:
       forwardOriginalTolen: true
 ```
 
+> - https://venafi.com/blog/istio-oidc/
 > - https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A
 
 <br>
