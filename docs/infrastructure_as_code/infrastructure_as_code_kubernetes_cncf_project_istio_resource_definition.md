@@ -1470,8 +1470,11 @@ metadata:
   namespace: istio-system
 spec:
   jwtRules:
+    # JWTの発行元を設定する
     - issuer: foo-issuer
+      # 公開鍵のURLを設定する
       jwksUri: https://example.com/.well-known/jwks.json
+      # 既存のJWTを転送する
       forwardOriginalTolen: true
 ```
 
@@ -1492,13 +1495,14 @@ metadata:
   namespace: istio-system
 spec:
   jwtRules:
-    - issuer: $OIDC_ISSUER_URL # ここの値がわからない...
-      jwksUri: $OIDC_JWKS_URI # ここの値がわからない...
+    # ここの値がわからない...
+    - issuer: $OIDC_ISSUER_URL
+      # ここの値がわからない...
+      jwksUri: $OIDC_JWKS_URI
       forwardOriginalTolen: true
 ```
 
 > - https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A
-> - https://www.ventx.de/blog/post/istio_oauth2_proxy/index.html
 
 <br>
 
