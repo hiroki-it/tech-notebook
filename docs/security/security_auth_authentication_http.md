@@ -57,16 +57,16 @@ GET https://example.com/foo-form
 
 `(2)`
 
-: サーバーは、これ拒否し、`401`ステータスで認証領域を設定し、レスポンスを返信する。
+: サーバーは、これ拒否し、`401`ステータスでrealm名を設定し、レスポンスを返信する。
 
-     これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。
+     これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。
 
-     ユーザーに表示するための認証領域には、任意の値を持たせられ、サイト名が設定されることが多い。
+     ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。
 
 ```yaml
 401 Unauthorized
 ---
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
 ```
 
 `(3)`
@@ -110,7 +110,7 @@ authorization: Basic <誤った認証情報>
 ```yaml
 401 Unauthorized
 ---
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
 ```
 
 <br>
@@ -128,13 +128,13 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```yaml
 200 OK
 ---
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
 ```
 
 ```yaml
 POST https://example.com/foo-form
 ---
-authorization: Digest realm="<認証領域>" nonce="<サーバー側が作成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
+authorization: Digest realm="<realm名>" nonce="<サーバー側が作成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
 <br>
@@ -247,7 +247,7 @@ WWW-Authenticate: Bearer realm=""
 ```yaml
 401 Unauthorized
 ---
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
 ```
 
 <br>
