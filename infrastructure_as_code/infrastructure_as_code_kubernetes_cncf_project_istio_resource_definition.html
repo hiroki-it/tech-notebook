@@ -19591,6 +19591,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#auth0" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Auth0に送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#keycloak" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Keycloakに送信する場合
@@ -19600,9 +19609,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#oauth-proxy2id" class="md-nav__link">
+  <a href="#oauth2-proxykeycloak" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OAuth Proxy2を介してIDプロバイダーに送信する場合
+      ▼ OAuth2 Proxyを介してKeycloakに送信する場合
     </span>
   </a>
   
@@ -25182,6 +25191,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#auth0" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Auth0に送信する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#keycloak" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Keycloakに送信する場合
@@ -25191,9 +25209,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#oauth-proxy2id" class="md-nav__link">
+  <a href="#oauth2-proxykeycloak" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OAuth Proxy2を介してIDプロバイダーに送信する場合
+      ▼ OAuth2 Proxyを介してKeycloakに送信する場合
     </span>
   </a>
   
@@ -27078,6 +27096,30 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://news.mynavi.jp/techplus/article/kubernetes-30/">https://news.mynavi.jp/techplus/article/kubernetes-30/</a></li>
 </ul>
 </blockquote>
+<h4 id="auth0">▼ Auth0に送信する場合<a class="headerlink" href="#auth0" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># JWTの発行元エンドポイントを設定する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;テナント名&gt;.auth0.com/</span>
+<span class="w">      </span><span class="c1"># 公開鍵のエンドポイントを設定する</span>
+<span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;テナント名&gt;.auth0.com/.well-known/jwks.json</span>
+<span class="w">      </span><span class="c1"># 既存のJWTを転送する</span>
+<span class="w">      </span><span class="nt">forwardOriginalTolen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="c1"># Authorizationヘッダーを指定する</span>
+<span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins">https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins</a></li>
+</ul>
+</blockquote>
 <h4 id="keycloak">▼ Keycloakに送信する場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
@@ -27103,7 +27145,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint">https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint</a></li>
 </ul>
 </blockquote>
-<h4 id="oauth-proxy2id">▼ OAuth Proxy2を介してIDプロバイダーに送信する場合<a class="headerlink" href="#oauth-proxy2id" title="Permanent link">&para;</a></h4>
+<h4 id="oauth2-proxykeycloak">▼ OAuth2 Proxyを介してKeycloakに送信する場合<a class="headerlink" href="#oauth2-proxykeycloak" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -27112,9 +27154,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># ここの値がわからない...</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$OIDC_ISSUER_URL</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;OAuth2 Proxyのドメイン&gt;/auth/realms/&lt;realm名&gt;</span>
 <span class="w">      </span><span class="c1"># ここの値がわからない...</span>
-<span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$OIDC_JWKS_URI</span>
+<span class="w">      </span><span class="nt">jwksUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;OAuth2 Proxyのドメイン&gt;/auth/realms/&lt;realm名&gt;/protocol/openid-connect/certs</span>
 <span class="w">      </span><span class="c1"># 既存のJWTを転送する</span>
 <span class="w">      </span><span class="nt">forwardOriginalTolen</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="c1"># Authorizationヘッダーを指定する</span>
