@@ -27174,11 +27174,44 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="nn">---</span>
+<span class="c1"># AuthorizationPolicyでRequestAuthenticationを強制する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-authorization-policy</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
+<span class="w">  </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CUSTOM</span>
+<span class="w">  </span><span class="c1"># oauth2-proxyプロバイダーの設定を使用する</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oauth2-proxy</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">- name: oauth2-proxy</span>
+<span class="w">        </span><span class="no">envoyExtAuthzHttp:</span>
+<span class="w">          </span><span class="no">service: oauth2-proxy.foo-namespace.svc.cluster.local</span>
+<span class="w">          </span><span class="no">port: 4180</span>
+<span class="w">          </span><span class="no">includeRequestHeadersInCheck:</span>
+<span class="w">            </span><span class="no">- cookie</span>
+<span class="w">          </span><span class="no">headersToUpstreamOnAllow:</span>
+<span class="w">            </span><span class="no">- authorization</span>
+<span class="w">          </span><span class="no">headersToDownstreamOnDeny:</span>
+<span class="w">            </span><span class="no">- set-cookie</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://venafi.com/blog/istio-oidc/">https://venafi.com/blog/istio-oidc/</a></li>
-<li><a href="https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A">https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A</a></li>
 </ul>
 </blockquote>
 <p><br></p>
