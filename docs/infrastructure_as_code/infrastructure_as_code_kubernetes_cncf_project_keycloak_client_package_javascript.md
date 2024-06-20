@@ -29,9 +29,9 @@ description: Javascript＠Keycloakクライアントの知見を記録してい�
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "http://keycloak.example.com",
-  realm: "foo-realm",
-  clientId: "frontend",
+  url: "http://<Keycloakのドメイン名>",
+  realm: "<realm名>",
+  clientId: "<クライアントID>",
 });
 
 keycloak.init({onLoad: "login-required"}).then((auth) => {
@@ -60,9 +60,9 @@ keycloak.init({onLoad: "login-required"}).then((auth) => {
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "http://keycloak.example.com",
-  realm: "foo-realm",
-  clientId: "frontend",
+  url: "http://<Keycloakのドメイン名>",
+  realm: "<realm名>",
+  clientId: "<クライアントID>",
 });
 
 keycloak.onAuthSuccess = () => {
@@ -82,9 +82,9 @@ keycloak.onAuthSuccess = () => {
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "http://keycloak.example.com",
-  realm: "foo-realm",
-  clientId: "frontend",
+  url: "http://<Keycloakのドメイン名>",
+  realm: "<realm名>",
+  clientId: "<クライアントID>",
 });
 
 keycloak.onAuthLogout = () => {

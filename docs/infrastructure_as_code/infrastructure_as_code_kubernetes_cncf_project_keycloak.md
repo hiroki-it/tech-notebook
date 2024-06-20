@@ -118,7 +118,7 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 /realms/<realm名>/.well-known/openid-configuration
 ```
 
-```yaml
+```bash
 $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid-configuration
 
 {
