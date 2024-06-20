@@ -1456,6 +1456,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ### .spec.jwtRules
 
+#### ▼ jwtRulesとは
+
 Bearer認証で使用するJWTの発行元を設定する。
 
 JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
@@ -1464,16 +1466,39 @@ JWTが失効していたり、不正であったりする場合に、認証処�
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
-  name: foo-request-authentication-jwt"
+  name: foo-request-authentication-jwt
   namespace: istio-system
 spec:
   jwtRules:
     - issuer: foo-issuer
       jwksUri: https://example.com/.well-known/jwks.json
+      forwardOriginalTolen: true
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
+
+#### ▼ Keycloakに送信する場合
+
+記入中...
+
+#### ▼ OAuth Proxy2に送信する場合
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: foo-request-authentication-jwt
+  namespace: istio-system
+spec:
+  jwtRules:
+    - issuer: $OIDC_ISSUER_URL # ここの値がわからない...
+      jwksUri: $OIDC_JWKS_URI # ここの値がわからない...
+      forwardOriginalTolen: true
+```
+
+> - https://qiita.com/hir00/items/c21719104c718133a2f2#%E5%90%84%E7%A8%AE%E8%A8%AD%E5%AE%9A
+> - https://www.ventx.de/blog/post/istio_oauth2_proxy/index.html
 
 <br>
 

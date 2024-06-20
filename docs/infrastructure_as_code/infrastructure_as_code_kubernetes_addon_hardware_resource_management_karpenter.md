@@ -316,6 +316,16 @@ Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能な
 
 <br>
 
+### マルチAZ
+
+Karpenterでは、Nodeを作成するAZを設定できない。
+
+代わりに、PodのAZ指定を尊重し、Podのスケジューリング先のAZに合わせてNodeを作成する。
+
+> - https://karpenter.sh/docs/concepts/scheduling/#topology-spread
+
+<br>
+
 ## 03. セットアップ
 
 ### AWS側
