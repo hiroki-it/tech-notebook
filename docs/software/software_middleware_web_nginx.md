@@ -495,6 +495,10 @@ API Gatewayのため、リバースプロキシやロードバランサーとは
 
 #### ▼ ルーティング
 
+API Gatewayとしてのルーティングの機能であれば、難しい実装はいらない。
+
+特定のパスに対するリクエストを特定のAPIに転送すれば良い。
+
 **＊実装例＊**
 
 ```nginx
@@ -517,6 +521,7 @@ server {
 > - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
 > - https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx
+> - https://github.com/nanit/api-gateway-example/blob/master/app/services/authentication.conf
 
 #### ▼ 認証
 
