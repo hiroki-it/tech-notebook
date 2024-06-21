@@ -27200,10 +27200,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="no">extensionProviders:</span>
 <span class="w">      </span><span class="no">- name: oauth2-proxy</span>
 <span class="w">        </span><span class="no">envoyExtAuthzHttp:</span>
+<span class="w">          </span><span class="no"># 認可リクエストの宛先を設定する</span>
 <span class="w">          </span><span class="no">service: oauth2-proxy.foo-namespace.svc.cluster.local</span>
-<span class="w">          </span><span class="no">port: 4180</span>
+<span class="w">          </span><span class="no">port: 4180    </span>
+<span class="w">          </span><span class="no"># 認可リクエストに追加する必要のあるヘッダーを設定する</span>
 <span class="w">          </span><span class="no">includeRequestHeadersInCheck:</span>
 <span class="w">            </span><span class="no">- cookie</span>
+<span class="w">          </span><span class="no"># 認証の完了後に、元のアップストリームへのリクエストを変更するかどうかを設定する</span>
+<span class="w">          </span><span class="no"># リフレッシュしたアクセストークンを元のAuthorizarionヘッダーに設定したい場合、これを設定する必要がある (たぶん)</span>
 <span class="w">          </span><span class="no">headersToUpstreamOnAllow:</span>
 <span class="w">            </span><span class="no">- authorization</span>
 <span class="w">          </span><span class="no">headersToDownstreamOnDeny:</span>

@@ -23544,73 +23544,79 @@ ngx_stream_geoip_module.so
 $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
-<span class="c1"># HTTPリクエスト</span>
-<span class="c1">#-------------------------------------</span>
-<span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">listen</span><span class="w">      </span><span class="mi">80</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">root</span><span class="w">        </span><span class="s">/var/www/foo/public</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">index</span><span class="w">       </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/default/nginx.conf</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">#-------------------------------------</span>
+<span class="w">    </span><span class="c1"># HTTPリクエスト</span>
+<span class="w">    </span><span class="c1">#-------------------------------------</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w">      </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">root</span><span class="w">        </span><span class="s">/var/www/foo/public</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">index</span><span class="w">       </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">#『/』で始まる全てのインバウンド通信の場合</span>
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/default/nginx.conf</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">#--------------------------------------------------</span>
-<span class="w">    </span><span class="c1"># インバウンド通信をFastCGIプロトコルでルーティングする。</span>
-<span class="w">    </span><span class="c1"># OSによって、fastcgi_paramsファイルの必要な設定が異なる</span>
-<span class="w">    </span><span class="c1">#--------------------------------------------------</span>
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php$</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1"># ルーティング先のTCPソケット</span>
-<span class="w">        </span><span class="kn">fastcgi_pass</span><span class="w">   </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
-<span class="w">        </span><span class="c1"># もしくは、Unixドメインソケット</span>
-<span class="w">        </span><span class="c1"># fastcgi_pass unix:/run/php-fpm/www.sock;</span>
+<span class="w">        </span><span class="c1">#『/』で始まる全てのインバウンド通信の場合</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">try_files</span><span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri/</span><span class="w"> </span><span class="s">/index.php?</span><span class="nv">$query_string</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="c1"># ルーティング先のURL (rootディレクティブ値+パスパラメータ)</span>
-<span class="w">        </span><span class="kn">fastcgi_param</span><span class="w">  </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">#--------------------------------------------------</span>
+<span class="w">        </span><span class="c1"># インバウンド通信をFastCGIプロトコルでルーティングする。</span>
+<span class="w">        </span><span class="c1"># OSによって、fastcgi_paramsファイルの必要な設定が異なる</span>
+<span class="w">        </span><span class="c1">#--------------------------------------------------</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.php$</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1"># ルーティング先のTCPソケット</span>
+<span class="w">            </span><span class="kn">fastcgi_pass</span><span class="w">   </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># もしくは、Unixドメインソケット</span>
+<span class="w">            </span><span class="c1"># fastcgi_pass unix:/run/php-fpm/www.sock;</span>
 
-<span class="w">        </span><span class="c1"># 設定ファイルからデフォルト値を読み込む</span>
-<span class="w">        </span><span class="kn">include</span><span class="w">        </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># ルーティング先のURL (rootディレクティブ値+パスパラメータ)</span>
+<span class="w">            </span><span class="kn">fastcgi_param</span><span class="w">  </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1"># 設定ファイルからデフォルト値を読み込む</span>
+<span class="w">            </span><span class="kn">include</span><span class="w">        </span><span class="s">fastcgi_params</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="grpc">▼ gRPCプロトコルの場合<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
 <p>Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">stream</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">host.docker.internal</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/ssl/localhost+1.pem</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/ssl/localhost+1-key.pem</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">ssl_protocols</span><span class="w"> </span><span class="s">TLSv1.2</span><span class="w"> </span><span class="s">TLSv1.3</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">host.docker.internal</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">access_log</span><span class="w"> </span><span class="s">/dev/stdout</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/dev/stderr</span><span class="w"> </span><span class="s">debug</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/ssl/localhost+1.pem</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/ssl/localhost+1-key.pem</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_protocols</span><span class="w"> </span><span class="s">TLSv1.2</span><span class="w"> </span><span class="s">TLSv1.3</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">/dev/stdout</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/dev/stderr</span><span class="w"> </span><span class="s">debug</span><span class="p">;</span>
 
 
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(html|js)$</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/html</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">~</span><span class="w"> </span><span class="sr">\.(html|js)$</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">root</span><span class="w"> </span><span class="s">/var/www/html</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1"># HTTPSリクエストをマッチングする</span>
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
-<span class="w">        </span><span class="c1"># gRPCサーバーにルーティングする</span>
-<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50051</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="c1"># HTTPSリクエストをマッチングする</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># gRPCサーバーにルーティングする</span>
+<span class="w">            </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50051</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1"># gRPCリクエストをマッチングする</span>
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/hello.HelloService/Hello</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
-<span class="w">        </span><span class="c1"># gRPCサーバーにルーティングする</span>
-<span class="w">        </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50052</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">common/cors.conf</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># gRPCリクエストをマッチングする</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/hello.HelloService/Hello</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">grpc_set_header</span><span class="w"> </span><span class="s">Content-Type</span><span class="w"> </span><span class="s">application/grpc</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># gRPCサーバーにルーティングする</span>
+<span class="w">            </span><span class="kn">grpc_pass</span><span class="w"> </span><span class="s">grpc://localhost:50052</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">include</span><span class="w"> </span><span class="s">common/cors.conf</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -23640,26 +23646,26 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">    </span><span class="kn">keepalive_timeout</span><span class="w">  </span><span class="mi">65</span><span class="p">;</span>
 
-<span class="w">     </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="kn">listen</span><span class="w">                         </span><span class="mi">3128</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w">                         </span><span class="mi">3128</span><span class="p">;</span>
 
-<span class="w">         </span><span class="kn">resolver</span><span class="w">                       </span><span class="mi">8</span><span class="s">.8.8.8</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">resolver</span><span class="w">                       </span><span class="mi">8</span><span class="s">.8.8.8</span><span class="p">;</span>
 
-<span class="w">         </span><span class="kn">proxy_connect</span><span class="p">;</span>
-<span class="w">         </span><span class="kn">proxy_connect_allow</span><span class="w">            </span><span class="mi">443</span><span class="w"> </span><span class="mi">563</span><span class="p">;</span>
-<span class="w">         </span><span class="kn">proxy_connect_connect_timeout</span><span class="w">  </span><span class="s">10s</span><span class="p">;</span>
-<span class="w">         </span><span class="kn">proxy_connect_read_timeout</span><span class="w">     </span><span class="s">10s</span><span class="p">;</span>
-<span class="w">         </span><span class="kn">proxy_connect_send_timeout</span><span class="w">     </span><span class="s">10s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect_allow</span><span class="w">            </span><span class="mi">443</span><span class="w"> </span><span class="mi">563</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect_connect_timeout</span><span class="w">  </span><span class="s">10s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect_read_timeout</span><span class="w">     </span><span class="s">10s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_connect_send_timeout</span><span class="w">     </span><span class="s">10s</span><span class="p">;</span>
 
-<span class="w">         </span><span class="c1"># 受信したリクエストを外部ネットワークにルーティングする。</span>
-<span class="w">         </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">             </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$host$request_uri</span><span class="p">;</span>
-<span class="w">             </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">             </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-<span class="w">             </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<span class="w">             </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Port</span><span class="w"> </span><span class="nv">$remote_port</span><span class="p">;</span>
-<span class="w">         </span><span class="p">}</span>
-<span class="w">     </span><span class="p">}</span>
+<span class="w">        </span><span class="c1"># 受信したリクエストを外部ネットワークにルーティングする。</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$host$request_uri</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Port</span><span class="w"> </span><span class="nv">$remote_port</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -23671,52 +23677,54 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p>また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。</p>
 <p>ただし、HTTPSプロトコルのリクエストを受信するために、NginxにSSL証明書を設定する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
-<span class="c1"># HTTPリクエスト</span>
-<span class="c1">#-------------------------------------</span>
-<span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
-<span class="w">    </span><span class="c1"># リダイレクト</span>
-<span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">#-------------------------------------</span>
-<span class="c1"># HTTPSリクエスト</span>
-<span class="c1">#-------------------------------------</span>
-<span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">index</span><span class="w"> </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">#-------------------------------------</span>
-<span class="w">    </span><span class="c1"># SSL</span>
+<span class="w">    </span><span class="c1"># HTTPリクエスト</span>
 <span class="w">    </span><span class="c1">#-------------------------------------</span>
-<span class="w">    </span><span class="kn">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
-<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=86400&quot;</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://foo_servers</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Port</span><span class="w"> </span><span class="nv">$remote_port</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">        </span><span class="c1"># リダイレクト</span>
+<span class="w">        </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1"># ルーティング先のリスト</span>
-<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">srv1.example.com</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">srv2.example.com</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">srv3.example.com</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">#-------------------------------------</span>
+<span class="w">    </span><span class="c1"># HTTPSリクエスト</span>
+<span class="w">    </span><span class="c1">#-------------------------------------</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/rds_1a_001.sock</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">index</span><span class="w"> </span><span class="s">index.php</span><span class="w"> </span><span class="s">index.html</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">#-------------------------------------</span>
+<span class="w">        </span><span class="c1"># SSL</span>
+<span class="w">        </span><span class="c1">#-------------------------------------</span>
+<span class="w">        </span><span class="kn">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=86400&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$ip_addresses</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Port</span><span class="w"> </span><span class="nv">$remote_port</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://nginx.org/en/docs/http/load_balancing.html">https://nginx.org/en/docs/http/load_balancing.html</a></li>
-<li><a href="https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5">https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5</a></li>
+<li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
+<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
 </ul>
 </blockquote>
 <h4 id="l4">▼ <code>L4</code>ロードバランサーの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
@@ -23730,21 +23738,24 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/stream.log</span><span class="w"> </span><span class="s">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">proxy_protocol</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">grpc_servers</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">50051</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.2</span><span class="p">:</span><span class="mi">50051</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">50051</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">grpc_servers</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$ip_addresses</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://engineering.mercari.com/blog/entry/2016-08-17-170114/">https://engineering.mercari.com/blog/entry/2016-08-17-170114/</a></li>
-<li><a href="https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5">https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5</a></li>
+<li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
+<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23761,26 +23772,33 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </ul>
 <h4 id="_10">▼ ルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
-<span class="w">   </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">   </span><span class="c1"># Products API</span>
-<span class="w">   </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/products</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://products.api.com:80</span><span class="p">;</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
-<span class="w">   </span><span class="c1"># Users API</span>
-<span class="w">   </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/users</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://users.api.com:80</span><span class="p">;</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/products_ip_addresses.sock</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/users_ip_addresses.sock</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$products_ip_addresses</span><span class="w"> </span><span class="s">&quot;products.example.com&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$users_ip_addresses</span><span class="w"> </span><span class="s">&quot;users.example.com&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Products API</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/products</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$products_ip_addresses:80</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1"># Users API</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/users</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$users_ip_addresses:80</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/">https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/</a></li>
-<li><a href="https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/">https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/</a></li>
-<li><a href="https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx">https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx</a></li>
+<li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
+<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ 認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -23801,7 +23819,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">8080</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">https://&lt;Keycloakのドメイン&gt;/</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="nv">$scheme://&lt;Keycloakのドメイン&gt;/</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
@@ -23811,10 +23829,9 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-Proto</span><span class="w">  </span><span class="nv">$scheme</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 
-
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/keycloak/auth/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1"># 認可エンドポイントにトークン検証リクエストを送信する</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="s">https://&lt;Keycloakのドメイン&gt;/realms/&lt;realm名&gt;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w">          </span><span class="nv">$scheme://&lt;Keycloakのドメイン&gt;/realms/&lt;realm名&gt;</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">Host</span><span class="w">               </span><span class="nv">$host</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Real-IP</span><span class="w">          </span><span class="nv">$remote_addr</span><span class="p">;</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w">    </span><span class="s">X-Forwarded-For</span><span class="w">    </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
