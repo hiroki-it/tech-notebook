@@ -23786,6 +23786,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <li>...</li>
 </ul>
 <h4 id="_10">▼ ルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>API Gatewayとしてのルーティングの機能であれば、難しい実装はいらない。</p>
+<p>特定のパスに対するリクエストを特定のAPIに転送すれば良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
@@ -23807,6 +23809,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
 <li><a href="https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/">https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/</a></li>
 <li><a href="https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx">https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx</a></li>
+<li><a href="https://github.com/nanit/api-gateway-example/blob/master/app/services/authentication.conf">https://github.com/nanit/api-gateway-example/blob/master/app/services/authentication.conf</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ 認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
