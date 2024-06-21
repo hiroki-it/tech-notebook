@@ -250,8 +250,11 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 
 オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaオーケストレーターの処理結果を知る必要がある。
 
-Sagaオーケストレーターは、処理の開始時にクライアントにひとまずレスポンスを返信し、処理の終了時にこれを先行マイクロサービスにリクエスト (またはWeb Hook) を送信する。
+実装方法はいくつかあり、個人的には、Sagaステータスチェッカーというクライアントを用意し、SagaオーケストレーターのステートDBを定期的にクエリさせるのがよい。
 
+![saga-pattern_orchestrator_status-checker.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
+
+> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md#compensation-workflow
 > - https://microservices.io/patterns/data/saga.html#resulting-context
 
 <br>

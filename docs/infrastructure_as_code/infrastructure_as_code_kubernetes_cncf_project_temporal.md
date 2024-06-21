@@ -29,17 +29,23 @@ Temporalは、Temporalクライアント、Temporalサーバー、ステート�
 
 Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。
 
+> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+
 <br>
 
 ### Temporalサーバーとステート用データベース
 
 Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
+> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+
 <br>
 
 ### Temporalワーカー
 
 Temporalワーカーは、Temporalサーバーをコールし、ステップやワークフロー全体の処理結果を取得する。
+
+> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
 
 <br>
 
