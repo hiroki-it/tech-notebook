@@ -498,6 +498,10 @@ IstioのPodからデータポイントを収集する。
 
 ### uid
 
+ダッシュボードのURLの元になるUIDを設定する。
+
+ダッシュボードのURLは、`<UID>-<ダッシュボードのタイトルになる。>`
+
 ```yaml
 {"uid": "cLV5GDCkz"}
 ```
@@ -506,8 +510,12 @@ IstioのPodからデータポイントを収集する。
 
 ### title
 
+ダッシュボードのURLを設定する。
+
+ダッシュボードのURLがハッシュ値になってしまうため、英語の方がいい。
+
 ```yaml
-{"title": "New dashboard"}
+{"title": "foo dashboard"}
 ```
 
 <br>

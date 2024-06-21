@@ -227,37 +227,40 @@ $ php-fpm -t
 **＊実装例＊**
 
 ```nginx
-#-------------------------------------
-# HTTPリクエスト
-#-------------------------------------
-server {
-    listen      80;
-    server_name example.com;
-    root        /var/www/foo/public;
-    index       index.php index.html;
+http {
 
-    include /etc/nginx/default/nginx.conf;
+    #-------------------------------------
+    # HTTPリクエスト
+    #-------------------------------------
+    server {
+        listen      80;
+        server_name example.com;
+        root        /var/www/foo/public;
+        index       index.php index.html;
 
-    #『/』で始まる全てのインバウンド通信の場合
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
+        include /etc/nginx/default/nginx.conf;
 
-    #--------------------------------------------------
-    # インバウンド通信をFastCGIプロトコルでルーティングする。
-    # OSによって、fastcgi_paramsファイルの必要な設定が異なる
-    #--------------------------------------------------
-    location ~ \.php$ {
-        # ルーティング先のTCPソケット
-        fastcgi_pass   127.0.0.1:9000;
-        # もしくは、Unixドメインソケット
-        # fastcgi_pass unix:/run/php-fpm/www.sock;
+        #『/』で始まる全てのインバウンド通信の場合
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
 
-        # ルーティング先のURL (rootディレクティブ値+パスパラメータ)
-        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #--------------------------------------------------
+        # インバウンド通信をFastCGIプロトコルでルーティングする。
+        # OSによって、fastcgi_paramsファイルの必要な設定が異なる
+        #--------------------------------------------------
+        location ~ \.php$ {
+            # ルーティング先のTCPソケット
+            fastcgi_pass   127.0.0.1:9000;
+            # もしくは、Unixドメインソケット
+            # fastcgi_pass unix:/run/php-fpm/www.sock;
 
-        # 設定ファイルからデフォルト値を読み込む
-        include        fastcgi_params;
+            # ルーティング先のURL (rootディレクティブ値+パスパラメータ)
+            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+            # 設定ファイルからデフォルト値を読み込む
+            include        fastcgi_params;
+        }
     }
 }
 ```
@@ -267,37 +270,40 @@ server {
 Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。
 
 ```nginx
-server {
+stream {
 
-    listen 8080 ssl http2;
-    server_name host.docker.internal;
+    server {
 
-    ssl_certificate /ssl/localhost+1.pem;
-    ssl_certificate_key /ssl/localhost+1-key.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
+        listen 8080 ssl http2;
+        server_name host.docker.internal;
 
-    access_log /dev/stdout;
-    error_log /dev/stderr debug;
+        ssl_certificate /ssl/localhost+1.pem;
+        ssl_certificate_key /ssl/localhost+1-key.pem;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers on;
+
+        access_log /dev/stdout;
+        error_log /dev/stderr debug;
 
 
-    location ~ \.(html|js)$ {
-        root /var/www/html;
-    }
+        location ~ \.(html|js)$ {
+            root /var/www/html;
+        }
 
-    # HTTPSリクエストをマッチングする
-    location / {
-        grpc_set_header Content-Type application/grpc;
-        # gRPCサーバーにルーティングする
-        grpc_pass grpc://localhost:50051;
-    }
+        # HTTPSリクエストをマッチングする
+        location / {
+            grpc_set_header Content-Type application/grpc;
+            # gRPCサーバーにルーティングする
+            grpc_pass grpc://localhost:50051;
+        }
 
-    # gRPCリクエストをマッチングする
-    location /hello.HelloService/Hello {
-        grpc_set_header Content-Type application/grpc;
-        # gRPCサーバーにルーティングする
-        grpc_pass grpc://localhost:50052;
-        include common/cors.conf;
+        # gRPCリクエストをマッチングする
+        location /hello.HelloService/Hello {
+            grpc_set_header Content-Type application/grpc;
+            # gRPCサーバーにルーティングする
+            grpc_pass grpc://localhost:50052;
+            include common/cors.conf;
+        }
     }
 }
 ```
@@ -332,26 +338,26 @@ http {
 
     keepalive_timeout  65;
 
-     server {
-         listen                         3128;
+    server {
+        listen                         3128;
 
-         resolver                       8.8.8.8;
+        resolver                       8.8.8.8;
 
-         proxy_connect;
-         proxy_connect_allow            443 563;
-         proxy_connect_connect_timeout  10s;
-         proxy_connect_read_timeout     10s;
-         proxy_connect_send_timeout     10s;
+        proxy_connect;
+        proxy_connect_allow            443 563;
+        proxy_connect_connect_timeout  10s;
+        proxy_connect_read_timeout     10s;
+        proxy_connect_send_timeout     10s;
 
-         # 受信したリクエストを外部ネットワークにルーティングする。
-         location / {
-             proxy_pass $scheme://$host$request_uri;
-             proxy_set_header Host $host;
-             proxy_set_header X-Forwarded-Proto $scheme;
-             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-             proxy_set_header X-Forwarded-Port $remote_port;
-         }
-     }
+        # 受信したリクエストを外部ネットワークにルーティングする。
+        location / {
+            proxy_pass $scheme://$host$request_uri;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Port $remote_port;
+        }
+    }
 }
 ```
 
@@ -374,51 +380,53 @@ Nginxは、HTTPプロコトルのインバウンド通信を複数のwebサー�
 **＊実装例＊**
 
 ```nginx
-#-------------------------------------
-# HTTPリクエスト
-#-------------------------------------
-server {
-    server_name example.com;
-    listen 80;
-    # リダイレクト
-    return 301 https://$host$request_uri;
-}
+http {
 
-#-------------------------------------
-# HTTPSリクエスト
-#-------------------------------------
-server {
-    server_name example.com;
-    listen 443 ssl http2;
-    index index.php index.html;
+    resolver <DNSサーバー> valid=5s;
 
     #-------------------------------------
-    # SSL
+    # HTTPリクエスト
     #-------------------------------------
-    ssl on;
-    ssl_certificate /etc/nginx/ssl/server.crt;
-    ssl_certificate_key /etc/nginx/ssl/server.key;
-    add_header Strict-Transport-Security "max-age=86400";
-
-    location / {
-        proxy_pass http://foo_servers;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Port $remote_port;
+    server {
+        server_name example.com;
+        listen 80;
+        # リダイレクト
+        return 301 https://$host$request_uri;
     }
 
-    # ルーティング先のリスト
-    upstream foo_servers {
-        server srv1.example.com;
-        server srv2.example.com;
-        server srv3.example.com;
+    #-------------------------------------
+    # HTTPSリクエスト
+    #-------------------------------------
+    server {
+        server_name example.com;
+        listen unix:/var/run/rds_1a_001.sock;
+        index index.php index.html;
+
+        #-------------------------------------
+        # SSL
+        #-------------------------------------
+        ssl on;
+        ssl_certificate /etc/nginx/ssl/server.crt;
+        ssl_certificate_key /etc/nginx/ssl/server.key;
+        add_header Strict-Transport-Security "max-age=86400";
+
+        listen unix:/var/run/ip_addresses.sock;
+
+        set $ip_addresses "example.com";
+
+        location / {
+            proxy_pass $scheme://$ip_addresses;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Port $remote_port;
+        }
     }
 }
 ```
 
-> - https://nginx.org/en/docs/http/load_balancing.html
-> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
+> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
+> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
 
 #### ▼ `L4`ロードバランサーの場合
 
@@ -436,20 +444,23 @@ stream {
     error_log /var/log/nginx/stream.log info;
     proxy_protocol on;
 
-    upstream grpc_servers {
-        server 192.168.0.1:50051;
-        server 192.168.0.2:50051;
-    }
+    resolver <DNSサーバー> valid=5s;
 
     server {
-        listen 50051;
-        proxy_pass grpc_servers;
+        listen unix:/var/run/ip_addresses.sock;
+
+        set $ip_addresses "example.com";
+
+        location / {
+            proxy_pass $scheme://$ip_addresses;
+        }
     }
 }
 ```
 
 > - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
-> - https://blog.mosuke.tech/entry/2014/11/09/171436/#l4-l7%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B5
+> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
+> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
 
 <br>
 
@@ -472,25 +483,32 @@ API Gatewayのため、リバースプロキシやロードバランサーとは
 **＊実装例＊**
 
 ```nginx
-server {
-   listen 80 default_server;
-   listen [::]:80 default_server;
+http {
 
-   # Products API
-   location /api/products {
-       proxy_pass http://products.api.com:80;
-   }
+    resolver <DNSサーバー> valid=5s;
 
-   # Users API
-   location /api/users {
-       proxy_pass http://users.api.com:80;
-   }
+    server {
+        listen unix:/var/run/products_ip_addresses.sock;
+        listen unix:/var/run/users_ip_addresses.sock;
+
+        set $products_ip_addresses "products.example.com";
+        set $users_ip_addresses "users.example.com";
+
+        # Products API
+        location /api/products {
+            proxy_pass $scheme://$products_ip_addresses:80;
+        }
+
+        # Users API
+        location /api/users {
+            proxy_pass $scheme://$users_ip_addresses:80;
+        }
+    }
 }
 ```
 
-> - https://marcospereirajr.com.br/posts/using-nginx-as-api-gateway/
-> - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
-> - https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx
+> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
+> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
 
 #### ▼ 認証
 
@@ -514,7 +532,7 @@ http {
         listen 8080;
 
         location /keycloak/ {
-            proxy_pass          https://<Keycloakのドメイン>/;
+            proxy_pass          $scheme://<Keycloakのドメイン>/;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
             proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
@@ -524,10 +542,9 @@ http {
             proxy_set_header    X-Forwarded-Proto  $scheme;
         }
 
-
         location /keycloak/auth/ {
             # 認可エンドポイントにトークン検証リクエストを送信する
-            proxy_pass          https://<Keycloakのドメイン>/realms/<realm名>;
+            proxy_pass          $scheme://<Keycloakのドメイン>/realms/<realm名>;
             proxy_set_header    Host               $host;
             proxy_set_header    X-Real-IP          $remote_addr;
             proxy_set_header    X-Forwarded-For    $proxy_add_x_forwarded_for;
