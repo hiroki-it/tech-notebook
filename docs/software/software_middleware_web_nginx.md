@@ -363,7 +363,7 @@ http {
 
 ### `L4`/`L7`ロードバランサ－のミドルウェアとして
 
-#### ▼ `L7`ロードバランサーの場合
+#### ▼ `L7`ロードバランサーの場合 (実装がかなり複雑になる)
 
 `L7`ロードバランサーとして使用できる。
 
@@ -385,6 +385,7 @@ http {
 
     # これで合ってるのかわからない...
     upstream backend {
+        # 宛先のIPアドレスを動的に決める
         server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
     }
 
@@ -432,7 +433,7 @@ http {
 > - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
 > - https://ktrysmt.github.io/blog/name-specification-of-nginx/
 
-#### ▼ `L4`ロードバランサーの場合
+#### ▼ `L4`ロードバランサーの場合 (実装がかなり複雑になる)
 
 Nginxは、TCPスリーウェイハンドシェイクを複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。
 
@@ -453,6 +454,7 @@ stream {
 
     # これで合ってるのかわからない...
     upstream backend {
+        # 宛先のIPアドレスを動的に決める
         server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
     }
 
@@ -483,50 +485,38 @@ NginxをAPI Gatewayとして使用する。
 
 API Gatewayのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。
 
-- 受信した通信を適切なマイクロサービスのAPIにルーティング
+- 全てのAPIのセットとして機能し、受信した通信を適切なマイクロサービスのAPIにルーティング
 - 認証
 - トレースIDの付与
 - キャッシュの作成
-- リクエスト制限
+- リクエストのレートリミット
+- 通信の暗号化
+- ...
 
 #### ▼ ルーティング
 
 **＊実装例＊**
 
 ```nginx
-http {
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-    # IPアドレスを定期的に取得する
-    resolver <DNSサーバーのIPアドレス> valid=5s;
-
-    # これで合ってるのかわからない...
-    upstream backend {
-        server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
+    # Products API
+    location /api/products {
+        proxy_pass http://products.api.com:80;
     }
 
-    server {
-        listen unix:/var/run/products_ip_addresses.sock;
-        listen unix:/var/run/users_ip_addresses.sock;
-
-        # IPアドレスを動的に設定する
-        set $products_ip_addresses "products.example.com";
-        set $users_ip_addresses "users.example.com";
-
-        # Products API
-        location /api/products {
-            proxy_pass $scheme://$products_ip_addresses:80;
-        }
-
-        # Users API
-        location /api/users {
-            proxy_pass $scheme://$users_ip_addresses:80;
-        }
+    # Users API
+    location /api/users {
+        proxy_pass http://users.api.com:80;
     }
 }
 ```
 
-> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
+> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
+> - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
+> - https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx
 
 #### ▼ 認証
 
