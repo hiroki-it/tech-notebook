@@ -341,8 +341,6 @@ http {
     server {
         listen                         3128;
 
-        resolver                       8.8.8.8;
-
         proxy_connect;
         proxy_connect_allow            443 563;
         proxy_connect_connect_timeout  10s;
@@ -382,7 +380,8 @@ Nginxは、HTTPプロコトルのインバウンド通信を複数のwebサー�
 ```nginx
 http {
 
-    resolver <DNSサーバー> valid=5s;
+    # IPアドレスを定期的に取得する
+    resolver <DNSサーバーのIPアドレス> valid=5s;
 
     #-------------------------------------
     # HTTPリクエスト
@@ -410,8 +409,8 @@ http {
         ssl_certificate_key /etc/nginx/ssl/server.key;
         add_header Strict-Transport-Security "max-age=86400";
 
+        # IPアドレスを動的に設定する
         listen unix:/var/run/ip_addresses.sock;
-
         set $ip_addresses "example.com";
 
         location / {
@@ -444,11 +443,13 @@ stream {
     error_log /var/log/nginx/stream.log info;
     proxy_protocol on;
 
-    resolver <DNSサーバー> valid=5s;
+    # IPアドレスを定期的に取得する
+    resolver <DNSサーバーのIPアドレス> valid=5s;
 
     server {
-        listen unix:/var/run/ip_addresses.sock;
 
+        # IPアドレスを動的に設定する
+        listen unix:/var/run/ip_addresses.sock;
         set $ip_addresses "example.com";
 
         location / {
@@ -485,12 +486,14 @@ API Gatewayのため、リバースプロキシやロードバランサーとは
 ```nginx
 http {
 
-    resolver <DNSサーバー> valid=5s;
+    # IPアドレスを定期的に取得する
+    resolver <DNSサーバーのIPアドレス> valid=5s;
 
     server {
         listen unix:/var/run/products_ip_addresses.sock;
         listen unix:/var/run/users_ip_addresses.sock;
 
+        # IPアドレスを動的に設定する
         set $products_ip_addresses "products.example.com";
         set $users_ip_addresses "users.example.com";
 

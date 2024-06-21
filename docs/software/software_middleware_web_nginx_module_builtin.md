@@ -535,10 +535,13 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。
 
+注意点としては、このままでは宛先がスケーリングした時にIPアドレスを動的に取得できない。
+
+そのため、`resolver`ディレクティブとUNIXドメインソケットを使用する必要がある。
+
 **＊実装例＊**
 
 ```nginx
-# このままでは宛先がスケーリングした時にIPアドレスを動的に取得できないため、他にも実装が必要であるが、よくわからん...
 upstream foo_servers {
     server 192.168.0.1:80;
     server 192.168.0.2:80;
@@ -547,6 +550,7 @@ upstream foo_servers {
 ```
 
 > - https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
+> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
 
 <br>
 
