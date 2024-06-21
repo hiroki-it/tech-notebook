@@ -23649,8 +23649,6 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w">                         </span><span class="mi">3128</span><span class="p">;</span>
 
-<span class="w">        </span><span class="kn">resolver</span><span class="w">                       </span><span class="mi">8</span><span class="s">.8.8.8</span><span class="p">;</span>
-
 <span class="w">        </span><span class="kn">proxy_connect</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_connect_allow</span><span class="w">            </span><span class="mi">443</span><span class="w"> </span><span class="mi">563</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">proxy_connect_connect_timeout</span><span class="w">  </span><span class="s">10s</span><span class="p">;</span>
@@ -23679,7 +23677,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">#-------------------------------------</span>
 <span class="w">    </span><span class="c1"># HTTPリクエスト</span>
@@ -23707,8 +23706,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=86400&quot;</span><span class="p">;</span>
 
+<span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
-
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -23738,11 +23737,13 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/stream.log</span><span class="w"> </span><span class="s">info</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">proxy_protocol</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
 
+<span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -23774,12 +23775,14 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバー&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
+<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/products_ip_addresses.sock</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/users_ip_addresses.sock</span><span class="p">;</span>
 
+<span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$products_ip_addresses</span><span class="w"> </span><span class="s">&quot;products.example.com&quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$users_ip_addresses</span><span class="w"> </span><span class="s">&quot;users.example.com&quot;</span><span class="p">;</span>
 
