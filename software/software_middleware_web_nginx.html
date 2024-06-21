@@ -2381,7 +2381,7 @@
           <li class="md-nav__item">
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ L7ロードバランサーの場合
+      ▼ L7ロードバランサーの場合 (実装がかなり複雑になる)
     </span>
   </a>
   
@@ -2390,7 +2390,7 @@
           <li class="md-nav__item">
   <a href="#l4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ L4ロードバランサーの場合
+      ▼ L4ロードバランサーの場合 (実装がかなり複雑になる)
     </span>
   </a>
   
@@ -23282,7 +23282,7 @@
           <li class="md-nav__item">
   <a href="#l7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ L7ロードバランサーの場合
+      ▼ L7ロードバランサーの場合 (実装がかなり複雑になる)
     </span>
   </a>
   
@@ -23291,7 +23291,7 @@
           <li class="md-nav__item">
   <a href="#l4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ L4ロードバランサーの場合
+      ▼ L4ロードバランサーの場合 (実装がかなり複雑になる)
     </span>
   </a>
   
@@ -23668,7 +23668,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </code></pre></div>
 <p><br></p>
 <h3 id="l4l7-"><code>L4</code>/<code>L7</code>ロードバランサ－のミドルウェアとして<a class="headerlink" href="#l4l7-" title="Permanent link">&para;</a></h3>
-<h4 id="l7">▼ <code>L7</code>ロードバランサーの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
+<h4 id="l7">▼ <code>L7</code>ロードバランサーの場合 (実装がかなり複雑になる)<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
 <p><code>L7</code>ロードバランサーとして使用できる。</p>
 <p>Nginxは、HTTPプロコトルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。</p>
 <p>受信した通信がHTTPプロトコルであった場合、HTTPSリクエストにリダイレクトすると良い。</p>
@@ -23682,6 +23682,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
 <span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># 宛先のIPアドレスを動的に決める</span>
 <span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -23731,7 +23732,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
 </ul>
 </blockquote>
-<h4 id="l4">▼ <code>L4</code>ロードバランサーの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
+<h4 id="l4">▼ <code>L4</code>ロードバランサーの場合 (実装がかなり複雑になる)<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
 <p>Nginxは、TCPスリーウェイハンドシェイクを複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。</p>
 <p><code>L4</code>ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -23747,6 +23748,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
 <span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># 宛先のIPアドレスを動的に決める</span>
 <span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -23775,48 +23777,36 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p>NginxをAPI Gatewayとして使用する。</p>
 <p>API Gatewayのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。</p>
 <ul>
-<li>受信した通信を適切なマイクロサービスのAPIにルーティング</li>
+<li>全てのAPIのセットとして機能し、受信した通信を適切なマイクロサービスのAPIにルーティング</li>
 <li>認証</li>
 <li>トレースIDの付与</li>
 <li>キャッシュの作成</li>
-<li>リクエスト制限</li>
+<li>リクエストのレートリミット</li>
+<li>通信の暗号化</li>
+<li>...</li>
 </ul>
 <h4 id="_10">▼ ルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
-<span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
-<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
+<span class="w">    </span><span class="c1"># Products API</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/products</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://products.api.com:80</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/products_ip_addresses.sock</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/users_ip_addresses.sock</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
-<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$products_ip_addresses</span><span class="w"> </span><span class="s">&quot;products.example.com&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$users_ip_addresses</span><span class="w"> </span><span class="s">&quot;users.example.com&quot;</span><span class="p">;</span>
-
-<span class="w">        </span><span class="c1"># Products API</span>
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/products</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$products_ip_addresses:80</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="c1"># Users API</span>
-<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/users</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$users_ip_addresses:80</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># Users API</span>
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/users</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://users.api.com:80</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
-<li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
+<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
+<li><a href="https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/">https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/</a></li>
+<li><a href="https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx">https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ 認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
