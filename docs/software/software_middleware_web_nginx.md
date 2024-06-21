@@ -383,6 +383,11 @@ http {
     # IPアドレスを定期的に取得する
     resolver <DNSサーバーのIPアドレス> valid=5s;
 
+    # これで合ってるのかわからない...
+    upstream backend {
+        server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
+    }
+
     #-------------------------------------
     # HTTPリクエスト
     #-------------------------------------
@@ -425,7 +430,7 @@ http {
 ```
 
 > - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
+> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
 
 #### ▼ `L4`ロードバランサーの場合
 
@@ -446,6 +451,11 @@ stream {
     # IPアドレスを定期的に取得する
     resolver <DNSサーバーのIPアドレス> valid=5s;
 
+    # これで合ってるのかわからない...
+    upstream backend {
+        server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
+    }
+
     server {
 
         # IPアドレスを動的に設定する
@@ -461,7 +471,7 @@ stream {
 
 > - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
 > - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
+> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
 
 <br>
 
@@ -489,6 +499,11 @@ http {
     # IPアドレスを定期的に取得する
     resolver <DNSサーバーのIPアドレス> valid=5s;
 
+    # これで合ってるのかわからない...
+    upstream backend {
+        server unix:/var/run/ip_addresses.sock weight=9 max_fails=1 fail_timeout=20s;
+    }
+
     server {
         listen unix:/var/run/products_ip_addresses.sock;
         listen unix:/var/run/users_ip_addresses.sock;
@@ -511,7 +526,7 @@ http {
 ```
 
 > - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
+> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
 
 #### ▼ 認証
 
