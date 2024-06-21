@@ -23680,6 +23680,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
 <span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
 
+<span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
+<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="c1">#-------------------------------------</span>
 <span class="w">    </span><span class="c1"># HTTPリクエスト</span>
 <span class="w">    </span><span class="c1">#-------------------------------------</span>
@@ -23723,7 +23728,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <blockquote>
 <ul>
 <li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
-<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
+<li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
 </ul>
 </blockquote>
 <h4 id="l4">▼ <code>L4</code>ロードバランサーの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
@@ -23739,6 +23744,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
 <span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
+<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 
@@ -23756,7 +23766,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <ul>
 <li><a href="https://engineering.mercari.com/blog/entry/2016-08-17-170114/">https://engineering.mercari.com/blog/entry/2016-08-17-170114/</a></li>
 <li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
-<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
+<li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23777,6 +23787,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">    </span><span class="c1"># IPアドレスを定期的に取得する</span>
 <span class="w">    </span><span class="kn">resolver</span><span class="w"> </span><span class="s">&lt;DNSサーバーのIPアドレス&gt;</span><span class="w"> </span><span class="s">valid=5s</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># これで合ってるのかわからない...</span>
+<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="w"> </span><span class="s">weight=9</span><span class="w"> </span><span class="s">max_fails=1</span><span class="w"> </span><span class="s">fail_timeout=20s</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/products_ip_addresses.sock</span><span class="p">;</span>
@@ -23801,7 +23816,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <blockquote>
 <ul>
 <li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
-<li><a href="https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48">https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48</a></li>
+<li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ 認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>

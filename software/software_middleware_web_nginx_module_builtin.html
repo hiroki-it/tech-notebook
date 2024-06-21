@@ -24832,7 +24832,7 @@
 <p>ロードバランシング先を設定する。</p>
 <p>デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。</p>
 <p>注意点としては、このままでは宛先がスケーリングした時にIPアドレスを動的に取得できない。</p>
-<p>そのため、<code>resolver</code>ディレクティブとUNIXドメインソケットを使用する必要がある。</p>
+<p>そのため、<code>resolver</code>ディレクティブ、<code>upstream</code>ディレクティブ、UNIXドメインソケット、を使用する必要がある。(ちょっと複雑すぎる...)</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
@@ -24844,6 +24844,7 @@
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream</a></li>
 <li><a href="https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A">https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A</a></li>
+<li><a href="https://ktrysmt.github.io/blog/name-specification-of-nginx/">https://ktrysmt.github.io/blog/name-specification-of-nginx/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
