@@ -20049,6 +20049,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ステート用データベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PostgreSQLの場合
@@ -23058,6 +23067,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ステート用データベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ PostgreSQLの場合
@@ -23206,6 +23224,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ステート用データベース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ステート用データベース<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ステート用データベースは、Sagaのステートを保管する。</p>
+<p>Sagaステートで障害が起こった場合でも、ワークフローの途中から処理を実行できるようにする。</p>
 <h4 id="postgresql">▼ PostgreSQLの場合<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>temporal<span class="w"> </span>-h<span class="w"> </span>temporal-postgresql<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span><span class="w"> </span>-d<span class="w"> </span>temporal
 
@@ -23247,7 +23268,9 @@
 <h3 id="saga">Sagaオーケストレーターとして<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
 <h4 id="saga_1">▼ Sagaオーケストレーターとして<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h4>
 <p>TemporalをSagaパターンのオーケストレーターとして使用する。</p>
-<p>Temporalサーバー内にメッセージキューが内臓されており、Temporalの外部にメッセージキュー (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。</p>
+<p>なお、Temporalサーバー内にメッセージキューが内臓されている。</p>
+<p>そのため、タイムアウト処理、リトライ処理、キャンセル処理、などの点でTemporalの外部にメッセージキュー (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。</p>
+<p><img alt="temporal_saga-pattern.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern">https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern</a></li>
