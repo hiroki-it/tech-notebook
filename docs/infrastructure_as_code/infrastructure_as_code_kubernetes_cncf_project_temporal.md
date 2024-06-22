@@ -33,11 +33,46 @@ Temporalクライアントは、Temporalサーバーをコールし、ワーク�
 
 <br>
 
-### Temporalサーバーとステート用データベース
+### Temporalサーバー
 
 Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
 
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+
+<br>
+
+### ステート用データベース
+
+#### ▼ PostgreSQLの場合
+
+```bash
+$ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
+
+# 現在はtemporalデータベース
+# データベースの一覧
+temporal=# \l
+
+                                      List of databases
+        Name         |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+---------------------+----------+----------+------------+------------+-----------------------
+ postgres            | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0           | temporal | UTF8     | en_US.utf8 | en_US.utf8 | =c/temporal          +
+                     |          |          |            |            | temporal=CTc/temporal
+ template1           | temporal | UTF8     | en_US.utf8 | en_US.utf8 | =c/temporal          +
+                     |          |          |            |            | temporal=CTc/temporal
+ temporal            | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
+ temporal_visibility | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
+
+
+# 現在のデータベースのテーブル一覧
+temporal=# \dt
+                   List of relations
+ Schema |           Name            | Type  |  Owner
+--------+---------------------------+-------+----------
+ public | activity_info_maps        | table | temporal
+ public | buffered_events           | table | temporal
+ ...
+```
 
 <br>
 
