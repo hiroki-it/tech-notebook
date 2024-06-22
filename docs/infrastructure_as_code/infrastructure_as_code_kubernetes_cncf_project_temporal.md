@@ -92,9 +92,12 @@ Temporalワーカーは、Temporalサーバーをコールし、ステップや�
 
 TemporalをSagaパターンのオーケストレーターとして使用する。
 
+Temporalサーバー内にメッセージキューが内臓されており、Temporalの外部にメッセージキュー (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
+
 > - https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern
 > - https://temporal.io/blog/saga-pattern-made-easy
 > - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
+> - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4
 
 #### ▼ Temporalクライアント
 
