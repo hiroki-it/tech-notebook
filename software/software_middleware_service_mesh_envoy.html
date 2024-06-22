@@ -4509,6 +4509,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RBACフィルター
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23867,6 +23876,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ RBACフィルター
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24710,12 +24728,14 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ リスナーフィルター<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>各種プロトコルの受信処理を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener</a></li>
 </ul>
 </blockquote>
 <h4 id="_21">▼ ネットワークフィルター<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>TCPプロトコルの処理や後続のHTTPフィルターの管理を実施する。</p>
 <p>主要なネットワークフィルターとして、<code>network.http_connection_manager</code>や<code>network.tcp_proxy</code>がある。</p>
 <blockquote>
 <ul>
@@ -24724,6 +24744,7 @@
 </ul>
 </blockquote>
 <h4 id="http">▼ HTTPフィルター<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<p>HTTPプロトコルの処理を実施する。</p>
 <p>主要なHTTPフィルターとして、<code>http.router</code>や<code>http.grpc_web</code>がある。</p>
 <blockquote>
 <ul>
@@ -24737,6 +24758,15 @@
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp</a></li>
+</ul>
+</blockquote>
+<h4 id="rbac">▼ RBACフィルター<a class="headerlink" href="#rbac" title="Permanent link">&para;</a></h4>
+<p>認証認可を実施する。</p>
+<p>主なフィルターとして、<code>http.rbac.v3.RBAC</code>がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter</a></li>
+<li><a href="https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF">https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25243,7 +25273,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-23</span>
   </span>
 
     
