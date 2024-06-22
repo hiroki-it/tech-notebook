@@ -568,6 +568,8 @@ data:
 
 Datadogに送信するためには、`mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
+アクセスログの設定は以下の通りである。
+
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
@@ -586,6 +588,8 @@ spec:
     - providers:
         - name: envoy
 ```
+
+分散トレースの設定は以下の通りである。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
@@ -635,6 +639,8 @@ data:
 
 OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
+アクセスログの設定は以下の通りである。
+
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
@@ -653,6 +659,8 @@ spec:
     - providers:
         - name: envoy
 ```
+
+分散トレースの設定は以下の通りである。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
@@ -713,6 +721,8 @@ data:
 
 ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
+アクセスログの設定は以下の通りである。
+
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
@@ -731,6 +741,8 @@ spec:
     - providers:
         - name: envoy
 ```
+
+分散トレースの設定は以下の通りである。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
