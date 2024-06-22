@@ -1462,6 +1462,10 @@ Bearer認証で使用するJWTの発行元を設定する。
 
 JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
 
+注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
+
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+
 ```yaml
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
@@ -1471,7 +1475,7 @@ metadata:
 spec:
   jwtRules:
     # JWTの発行元を設定する
-    - issuer: foo-issuer
+    - issuer: foo-issuer.com
       # 公開鍵のURLを設定する
       jwksUri: https://example.com/.well-known/jwks.json
       # 既存のJWTを転送する
@@ -1480,12 +1484,30 @@ spec:
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
+---
+# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: foo-authorization-policy
+  namespace: istio-system
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values: ["foo-issuer.com"]
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
+> - https://istio.io/latest/docs/concepts/security/#request-authentication
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
 #### ▼ Auth0に送信する場合
+
+注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
+
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -1496,20 +1518,38 @@ metadata:
 spec:
   jwtRules:
     # JWTの発行元エンドポイントを設定する
-    - issuer: https://<テナント名>.auth0.com/
+    - issuer: https://<Auth0のドメイン>/
       # 公開鍵のエンドポイントを設定する
-      jwksUri: https://<テナント名>.auth0.com/.well-known/jwks.json
+      jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
       # 既存のJWTを転送する
       forwardOriginalTolen: true
       # Authorizationヘッダーを指定する
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
+---
+# AuthorizationPolicyでRequestAuthenticationを強制する
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: foo-authorization-policy
+  namespace: istio-system
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values: ["https://<Auth0のドメイン>/"]
 ```
 
 > - https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins
+> - https://istio.io/latest/docs/concepts/security/#request-authentication
 
 #### ▼ Keycloakに送信する場合
+
+注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
+
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -1530,11 +1570,12 @@ spec:
         - name: Authorization
           prefix: "Bearer "
 ---
-# AuthorizationPolicyでRequestAuthenticationを強制する
+# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: keycloak
+  name: foo-authorization-policy
+  namespace: istio-system
 spec:
   action: ALLOW
   rules:
@@ -1545,8 +1586,13 @@ spec:
 
 > - https://thinkit.co.jp/article/18023
 > - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
+> - https://istio.io/latest/docs/concepts/security/#request-authentication
 
 #### ▼ OAuth2 Proxyを介してKeycloakに送信する場合
+
+注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
+
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -1566,7 +1612,7 @@ spec:
         - name: Authorization
           prefix: "Bearer "
 ---
-# AuthorizationPolicyでRequestAuthenticationを強制する
+# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
@@ -1606,6 +1652,7 @@ data:
 ```
 
 > - https://venafi.com/blog/istio-oidc/
+> - https://istio.io/latest/docs/concepts/security/#request-authentication
 
 <br>
 

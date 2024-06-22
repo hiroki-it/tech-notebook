@@ -600,9 +600,13 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 #### ▼ リスナーフィルター
 
+各種プロトコルの受信処理を実施する。
+
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener
 
 #### ▼ ネットワークフィルター
+
+TCPプロトコルの処理や後続のHTTPフィルターの管理を実施する。
 
 主要なネットワークフィルターとして、`network.http_connection_manager`や`network.tcp_proxy`がある。
 
@@ -610,6 +614,8 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
 #### ▼ HTTPフィルター
+
+HTTPプロトコルの処理を実施する。
 
 主要なHTTPフィルターとして、`http.router`や`http.grpc_web`がある。
 
@@ -621,6 +627,15 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 #### ▼ UDPリスナーフィルター
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp
+
+#### ▼ RBACフィルター
+
+認証認可を実施する。
+
+主なフィルターとして、`http.rbac.v3.RBAC`がある。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter
+> - https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
 
 <br>
 
