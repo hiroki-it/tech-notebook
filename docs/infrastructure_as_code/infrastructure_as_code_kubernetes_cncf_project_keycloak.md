@@ -157,11 +157,14 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。
 
+なお、KeycloakはJWT仕様のアクセストークンを採用している。
+
 ```bash
 /realms/<realm名>/protocol/openid-connect/token
 ```
 
 > - https://www.keycloak.org/docs/latest/securing_apps/index.html#token-endpoint
+> - https://thinkit.co.jp/article/17621
 
 #### ▼ ログアウト
 
