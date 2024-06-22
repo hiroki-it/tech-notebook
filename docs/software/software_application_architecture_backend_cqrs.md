@@ -120,9 +120,12 @@ READ処理を実行するオブジェクトのこと。
 
 ## 02. CQRSとイベントソーシング式モデリング
 
+イベントソーシングは、ステートソーシング (CRUD) とは異なり、データの参照/更新しかない。
+
 イベントソーシング式モデリングではDBアクセスの処理を更新系と参照系に分離することになるため、CQRSの方法論と相性が良い。
 
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/
+> - https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95
 
 <br>

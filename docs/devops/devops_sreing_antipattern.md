@@ -393,6 +393,6 @@ SREingの最終目標はシステムの信頼性を高めることであり、�
 - SREingのアンチパターンは、変化し続ける。
 - 筆者が集めたアンチパターンは、全体のほんの一部分でしかない。
 - SREingの失敗事例を、自社内外問わず、共有していく必要がある。
-- 失敗事例があれば、Twitterアカウント`@BlakeBisset`宛に、 `#SREantipatterns`をつけて共有してほしい。
+- 失敗事例があれば、Twitterアカウント`@BlakeBisset`宛に、`#SREantipatterns`をつけて共有してほしい。
 
 <br>
