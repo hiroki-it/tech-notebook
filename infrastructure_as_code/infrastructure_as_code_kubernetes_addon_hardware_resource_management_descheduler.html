@@ -23318,7 +23318,7 @@
 <p><br></p>
 <h2 id="01-descheduler">01. descheduler<a class="headerlink" href="#01-descheduler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させる。</p>
+<p>deschedulerは、ポリシーに応じて不適切なNodeからPodを退避させる。</p>
 <p>その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>foo
 
@@ -23343,7 +23343,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="kube-scheduler">kube-schedulerだけでは足りない理由<a class="headerlink" href="#kube-scheduler" title="Permanent link">&para;</a></h3>
-<p>Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは現在のNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。</p>
+<p>Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは不適切なNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
 <p><code>kubectl rollout restart</code>コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。</p>
 <p>deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。</p>
@@ -23475,7 +23475,7 @@
 <h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
 <p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。</p>
-<p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。</p>
+<p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodをスケジューリングさせる。</p>
 <p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。</p>
 <p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
@@ -23633,7 +23633,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-24</span>
   </span>
 
     
