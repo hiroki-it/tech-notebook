@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】vue-router@Vue.js
-description: vue-router@Vue.jsの知見を記録しています。
+title: 【IT技術の知見】vue-router＠Vue.js
+description: vue-router＠Vue.jsの知見を記録しています。
 ---
 
-# vue-router@Vue.js
+# vue-router＠Vue.js
 
 ## はじめに
 

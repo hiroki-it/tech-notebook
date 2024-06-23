@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】アンチパターン@SREing
-description: アンチパターン@SREingの知見を記録しています。
+title: 【IT技術の知見】アンチパターン＠SREing
+description: アンチパターン＠SREingの知見を記録しています。
 ---
 
-# アンチパターン@SREing
+# アンチパターン＠SREing
 
 ## はじめに
 

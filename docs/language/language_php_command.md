@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】コマンド@PHP
-description: コマンド@PHPの知見を記録しています。
+title: 【IT技術の知見】コマンド＠PHP
+description: コマンド＠PHPの知見を記録しています。
 ---
 
-# コマンド@PHP
+# コマンド＠PHP
 
 ## はじめに
 

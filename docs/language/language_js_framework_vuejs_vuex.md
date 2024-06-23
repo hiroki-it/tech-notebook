@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Vuex@Vue.js
-description: Vuex@Vue.jsの知見を記録しています。
+title: 【IT技術の知見】Vuex＠Vue.js
+description: Vuex＠Vue.jsの知見を記録しています。
 ---
 
-# Vuex@Vue.js
+# Vuex＠Vue.js
 
 ## はじめに
 

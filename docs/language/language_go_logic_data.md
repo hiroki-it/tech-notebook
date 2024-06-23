@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】データ@Go
-description: データ@Goの知見を記録しています。
+title: 【IT技術の知見】データ＠Go
+description: データ＠Goの知見を記録しています。
 ---
 
-# データ@Go
+# データ＠Go
 
 ## はじめに
 
