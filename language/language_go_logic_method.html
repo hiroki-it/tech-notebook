@@ -8005,17 +8005,17 @@
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-      並列処理
+      並行処理
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="並列処理">
+    <nav class="md-nav" aria-label="並行処理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#goroutine" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutineによる並列処理
+      ▼ Goroutineによる並行処理
     </span>
   </a>
   
@@ -24961,17 +24961,17 @@
           <li class="md-nav__item">
   <a href="#_46" class="md-nav__link">
     <span class="md-ellipsis">
-      並列処理
+      並行処理
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="並列処理">
+    <nav class="md-nav" aria-label="並行処理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#goroutine" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Goroutineによる並列処理
+      ▼ Goroutineによる並行処理
     </span>
   </a>
   
@@ -26363,7 +26363,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="c1">// Goroutineの関数を反復処理する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">hooks</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">        </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">            </span><span class="k">defer</span><span class="w"> </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
@@ -26374,7 +26374,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// Goroutineを中断するためのdoneチャネルを作成</span>
 <span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
@@ -26407,7 +26407,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
@@ -26919,10 +26919,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// 3</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_46">並列処理<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
-<h4 id="goroutine">▼ Goroutineによる並列処理<a class="headerlink" href="#goroutine" title="Permanent link">&para;</a></h4>
-<p>指定した処理を同時に開始し、それぞれの処理が独立して完了する。</p>
-<p>関数でGoroutine (<code>go func()</code>) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。</p>
+<h3 id="_46">並行処理<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<h4 id="goroutine">▼ Goroutineによる並行処理<a class="headerlink" href="#goroutine" title="Permanent link">&para;</a></h4>
+<p>指定した処理をバラバラに開始し、またそれぞれの処理がバラバラに終了する。</p>
+<p>関数でGoroutine (<code>go func()</code>) を宣言すると、その関数の完了を待たずに後続の処理を並行的に実行できる。</p>
 <p>結果、完了する順番は順不同になる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
@@ -27015,7 +27015,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// チャネルを作成</span>
 <span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
@@ -27051,7 +27051,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// 空構造体はサイズがゼロなため、使い捨てのチャネルと相性がいい</span>
 <span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
@@ -27106,7 +27106,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// チャネルを作成</span>
 <span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
@@ -27153,7 +27153,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">channel1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">channel2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// 完了までに2秒かかるとする。</span>
@@ -27162,7 +27162,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="nx">channel1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;one&quot;</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// 完了までに1秒かかるとする。</span>
@@ -27208,12 +27208,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="waitgroup_2">▼ WaitGroupとは<a class="headerlink" href="#waitgroup_2" title="Permanent link">&para;</a></h4>
 <p>Goroutineを宣言した関数が終了するまで、後続の処理の実行開始を待機する。</p>
 <p><code>sync.WaitGroup.Add</code>関数、<code>sync.WaitGroup.Done</code>関数、<code>sync.WaitGroup.Wait</code>関数、で制御する。</p>
-<p>Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、<code>WaitGroup</code>は役立つ。</p>
+<p>Goroutineの関数の反復処理や異なるGoroutineの関数の並行実行を待機し、その上で後続の処理を実行するような場合に、<code>WaitGroup</code>は役立つ。</p>
 <p>単一のGoroutineを待機するのは順次実行と変わらないため、<code>WaitGroup</code>は使用しない。</p>
 <p><strong>実行例</strong></p>
 <p>実行完了に1秒かかる関数があると仮定する。</p>
 <p>反復処理でこの関数をコールする場合、毎回の走査に1秒かかるため、反復の回数だけ秒数が増える。</p>
-<p>しかし、各関数をGoroutineとして実行すると、各反復処理を並列実行できる。</p>
+<p>しかし、各関数をGoroutineとして実行すると、各反復処理を並行実行できる。</p>
 <p>そのため、反復回数が何回であっても、およそ1秒で処理が終了する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -27240,7 +27240,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="c1">// 完了の待機カウンターを設定する</span>
 <span class="w">        </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="w">        </span><span class="c1">// Goroutineを宣言して並列化</span>
+<span class="w">        </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">        </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
