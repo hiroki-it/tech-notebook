@@ -23261,8 +23261,14 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="temporal_2">Temporalワーカー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
-<p>Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。</p>
-<p>また、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートに応じてアクティビティを実行する。</p>
+<p>『制御の反転』という仕組みになっており、実際にワークフローやアクティビティを実行するのは、TemporalサーバーではなくTemporalワーカーである。</p>
+<ol>
+<li>Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。</li>
+<li>Temporalワーカーは、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートを取得する。</li>
+<li>Temporalワーカーは、ワークフローを開始する。</li>
+<li>Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。</li>
+<li>Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。</li>
+</ol>
 <p><img alt="temporal_worker_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png" /></p>
 <blockquote>
 <ul>
