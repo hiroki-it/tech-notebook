@@ -266,7 +266,7 @@ func main() {
 > - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
 
 ```go
-package yourapp
+package activity
 
 import (
 	"context"
@@ -286,7 +286,7 @@ type YourActivityObject struct {
 	Number  *int
 }
 
-// アクション
+// アクティビティ
 func (a *YourActivityObject) PrintInfo(ctx context.Context, param YourActivityParam) error {
 	logger := activity.GetLogger(ctx)
 
@@ -297,7 +297,7 @@ func (a *YourActivityObject) PrintInfo(ctx context.Context, param YourActivityPa
 	return nil
 }
 
-// アクション
+// アクティビティ
 func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultObject, error) {
 
 	return &YourActivityResultObject{
@@ -310,7 +310,7 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
 
 ```go
-package yourapp
+package workflow
 
 import (
 	"time"
@@ -349,7 +349,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 	// (2)
 	// ワークフローのステップを実行する
-	// GetInfoアクション
+	// GetInfoアクティビティ
 	err = workflow.ExecuteActivity(ctx, a.GetInfo).Get(ctx, &infoResult)
 
 	if err != nil {
@@ -363,7 +363,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 	// (3)
 	// ワークフローのステップを実行する
-	// PrintInfoアクション
+	// PrintInfoアクティビティ
 	err = workflow.ExecuteActivity(ctx, a.PrintInfo, infoParam).Get(ctx, nil)
 
 	if err != nil {
