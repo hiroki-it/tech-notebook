@@ -20135,7 +20135,16 @@
           <li class="md-nav__item">
   <a href="#temporal_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (マイクロサービス)
+      ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
     </span>
   </a>
   
@@ -23153,7 +23162,16 @@
           <li class="md-nav__item">
   <a href="#temporal_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (マイクロサービス)
+      ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
     </span>
   </a>
   
@@ -23390,8 +23408,8 @@
 </blockquote>
 <h4 id="temporal_4">▼ Temporalサーバーとステート用データベース<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
 <p>制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。</p>
-<h4 id="temporal_5">▼ Temporalワーカー (マイクロサービス)<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
+<h4 id="temporal_5">▼ Temporalワーカー (アクティビティを持つマイクロサービス)<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23475,6 +23493,8 @@
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go</a></li>
 </ul>
 </blockquote>
+<h4 id="temporal_6">▼ Temporalワーカー (ワークフローを持つマイクロサービス)<a class="headerlink" href="#temporal_6" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">workflow</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
