@@ -30,7 +30,7 @@ Temporalは、Temporalクライアント、Temporalサーバー、ステート�
 
 ### Temporalクライアント
 
-Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。
+Temporalクライアントは、Temporalサーバーをコールし、Temporalワーカーによって登録されたワークフローを実行する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -222,11 +222,48 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 #### ▼ Temporalサーバーとステート用データベース
 
-Temporalサーバーは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。
+制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 
-各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。
+#### ▼ Temporalワーカー (マイクロサービス)
 
-Temporalクライアントと別のアプリとして実行することもできる。
+Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"log"
+	"net/http"
+
+	"documentation-samples-go/yourapp"
+
+	"go.temporal.io/sdk/client"
+)
+
+func main() {
+
+	// Temporalサーバーに接続する
+	temporalClient, err := client.Dial(client.Options{
+		HostPort: client.DefaultHostPort,
+	})
+
+	workflowRun := temporalClient.GetWorkflow(context.Background, "<ワークフローのID>")
+
+	var result workflowResponse
+
+	// ワークフローの結果を取得する
+	err = workflowRun.Get(context.Background(), &result)
+
+	if err != nil {
+		...
+	}
+}
+```
+
+> - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go
+> - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
 
 ```go
 package yourapp
@@ -345,48 +382,5 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
 > - https://docs.temporal.io/develop/go/core-application#develop-workflows
-
-#### ▼ Temporalワーカー (マイクロサービス)
-
-Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
-
-TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。
-
-```go
-package main
-
-import (
-	"context"
-	"encoding/json"
-	"log"
-	"net/http"
-
-	"documentation-samples-go/yourapp"
-
-	"go.temporal.io/sdk/client"
-)
-
-func main() {
-
-	// Temporalサーバーに接続する
-	temporalClient, err := client.Dial(client.Options{
-		HostPort: client.DefaultHostPort,
-	})
-
-	workflowRun := temporalClient.GetWorkflow(context.Background, "<ワークフローのID>")
-
-	var result workflowResponse
-
-	// ワークフローの結果を取得する
-	err = workflowRun.Get(context.Background(), &result)
-
-	if err != nil {
-		...
-	}
-}
-```
-
-> - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go
-> - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
 
 <br>
