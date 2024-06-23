@@ -89,12 +89,15 @@ temporal=# \dt
 
 ### Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。
+『制御の反転』という仕組みになっており、実際にワークフローやアクティビティを実行するのは、TemporalサーバーではなくTemporalワーカーである。
 
-また、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートに応じてアクティビティを実行する。
+1. Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。
+2. Temporalワーカーは、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートを取得する。
+3. Temporalワーカーは、ワークフローを開始する。
+4. Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。
+5. Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。
 
 ![temporal_worker_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
-
 
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
 > - https://temporal.io/blog/sergey-inversion-of-execution
