@@ -224,9 +224,9 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 
-#### ▼ Temporalワーカー (マイクロサービス)
+#### ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
 
-Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。
 
 ```go
 package main
@@ -308,6 +308,10 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 ```
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
+
+#### ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
+
+Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。
 
 ```go
 package workflow
