@@ -19,6 +19,9 @@ description: Temporal＠CNCFの知見を記録しています。
 
 Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー、からなる。
 
+![temporal_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
+
+> - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
 > - https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -29,15 +32,17 @@ Temporalは、Temporalクライアント、Temporalサーバー、ステート�
 
 Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。
 
-> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+> - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
+> - https://temporal.io/blog/sergey-inversion-of-execution
 
 <br>
 
 ### Temporalサーバー
 
-Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
+Temporalサーバーは、ワーカーを操作し、またステートをデータベースに永続化する。
 
-> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+> - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
+> - https://temporal.io/blog/sergey-inversion-of-execution
 
 <br>
 
@@ -84,7 +89,7 @@ temporal=# \dt
 
 ### Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーをコールし、ステップやワークフロー全体の処理結果を取得する。
+Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。
 
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
 
@@ -336,13 +341,13 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
 > - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
-#### ▼ Temporalワーカー
+#### ▼ Temporalワーカー (マイクロサービス)
 
-Temporalワーカーは、Temporalサーバーからステップやワークフロー全体の処理結果を取得する必要がある。
+Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。
+
+Sagaオーケストレーターでは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
 
 TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。
-
-Temporalクライアントやサーバーとは別のアプリとして実行する。
 
 ```go
 package main
