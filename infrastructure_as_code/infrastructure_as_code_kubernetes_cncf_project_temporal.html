@@ -23219,7 +23219,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="temporal_1">Temporalサーバー<a class="headerlink" href="#temporal_1" title="Permanent link">&para;</a></h3>
-<p>Temporalサーバーは、タスクキューを操作してワークフローのステートを管理し、またステートをデータベースに永続化する。</p>
+<p>Temporalサーバーは、内臓するメッセージキューを操作してワークフローの現在のステートを管理し、またステートの履歴をデータベースに永続化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
@@ -23229,8 +23229,8 @@
 <p><br></p>
 <h3 id="_3">ステート用データベース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ ステート用データベース<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ステート用データベースは、Sagaのステートを保管する。</p>
-<p>Sagaステートで障害が起こった場合でも、ワークフローの途中から処理を実行できるようにする。</p>
+<p>ステート用データベースは、Sagaのステートの履歴を保管する。</p>
+<p>Temporalサーバーで処理中に障害が起こった場合でも、ワークフローの途中から処理を実行できるようにする。</p>
 <h4 id="postgresql">▼ PostgreSQLの場合<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>temporal<span class="w"> </span>-h<span class="w"> </span>temporal-postgresql<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span><span class="w"> </span>-d<span class="w"> </span>temporal
 
@@ -23262,7 +23262,7 @@
 <p><br></p>
 <h3 id="temporal_2">Temporalワーカー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
 <p>Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。</p>
-<p>また、Temporalサーバーでのワークフローのステートに応じて、アクティビティを実行する。</p>
+<p>また、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートに応じてアクティビティを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like">https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like</a></li>
