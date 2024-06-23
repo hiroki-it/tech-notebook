@@ -1092,7 +1092,7 @@ func Invoke(ctx context.Context) error {
 
     // Goroutineの関数を反復処理する
     for i := range hooks {
-		// Goroutineを宣言して並列化
+		// Goroutineを宣言して並行化
         go func(i int) {
 			// 時間のかかる処理
 			defer wg.Done()
@@ -1103,7 +1103,7 @@ func Invoke(ctx context.Context) error {
 	// Goroutineを中断するためのdoneチャネルを作成
 	done := make(chan struct{})
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
 	go func() {
 		// 時間のかかる処理
 		wg.Wait()
@@ -1136,7 +1136,7 @@ import (
 
 func init() {
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
 	go func() {
 		// 時間のかかる処理
 		for {
@@ -1765,13 +1765,13 @@ func main() {
 
 <br>
 
-### 並列処理
+### 並行処理
 
-#### ▼ Goroutineによる並列処理
+#### ▼ Goroutineによる並行処理
 
-指定した処理を同時に開始し、それぞれの処理が独立して完了する。
+指定した処理をバラバラに開始し、またそれぞれの処理がバラバラに終了する。
 
-関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。
+関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を並行的に実行できる。
 
 結果、完了する順番は順不同になる。
 
@@ -1878,7 +1878,7 @@ func main() {
 	// チャネルを作成
 	channel := make(chan string)
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
 	go func() {
 		// 時間のかかる処理
 		// チャネルに値を送信する。
@@ -1916,7 +1916,7 @@ func main() {
 	// 空構造体はサイズがゼロなため、使い捨てのチャネルと相性がいい
 	done := make(chan struct{})
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
 	go func() {
 		// 時間のかかる処理
 		// チャネルに値を送信する。
@@ -1973,7 +1973,7 @@ func main() {
 	// チャネルを作成
 	channel := make(chan string)
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
 	go func() {
 		// 時間のかかる処理
 		// チャネルに値を送信する。
@@ -2021,7 +2021,7 @@ func main() {
     channel1 := make(chan string)
 	channel2 := make(chan string)
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
     go func() {
 		// 時間のかかる処理
 		// 完了までに2秒かかるとする。
@@ -2030,7 +2030,7 @@ func main() {
 		channel1 <- "one"
     }()
 
-	// Goroutineを宣言して並列化
+	// Goroutineを宣言して並行化
     go func() {
 		// 時間のかかる処理
 		// 完了までに1秒かかるとする。
@@ -2080,7 +2080,7 @@ Goroutineを宣言した関数が終了するまで、後続の処理の実行�
 
 `sync.WaitGroup.Add`関数、`sync.WaitGroup.Done`関数、`sync.WaitGroup.Wait`関数、で制御する。
 
-Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行を待機し、その上で後続の処理を実行するような場合に、`WaitGroup`は役立つ。
+Goroutineの関数の反復処理や異なるGoroutineの関数の並行実行を待機し、その上で後続の処理を実行するような場合に、`WaitGroup`は役立つ。
 
 単一のGoroutineを待機するのは順次実行と変わらないため、`WaitGroup`は使用しない。
 
@@ -2090,7 +2090,7 @@ Goroutineの関数の反復処理や異なるGoroutineの関数の並列実行�
 
 反復処理でこの関数をコールする場合、毎回の走査に1秒かかるため、反復の回数だけ秒数が増える。
 
-しかし、各関数をGoroutineとして実行すると、各反復処理を並列実行できる。
+しかし、各関数をGoroutineとして実行すると、各反復処理を並行実行できる。
 
 そのため、反復回数が何回であっても、およそ1秒で処理が終了する。
 
@@ -2120,7 +2120,7 @@ func main() {
 		// 完了の待機カウンターを設定する
 		wg.Add(1)
 
-		// Goroutineを宣言して並列化
+		// Goroutineを宣言して並行化
 		go func(key int, value string) {
 
 			print(key, value)
