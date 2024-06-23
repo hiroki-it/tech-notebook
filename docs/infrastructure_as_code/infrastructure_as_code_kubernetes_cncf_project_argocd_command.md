@@ -130,10 +130,10 @@ $ argocd app sync foo-application --local=<ディレクトリへのパス> --pro
 
 #### ▼ addとは
 
-ArgoCDに監視させたいClusterを登録する。
+ArgoCDにポーリングさせたいClusterを登録する。
 
 ```bash
-$ argocd cluster add <ArgoCDに監視させたいClusterのARN>
+$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN>
 ```
 
 #### ▼ --name
@@ -141,7 +141,7 @@ $ argocd cluster add <ArgoCDに監視させたいClusterのARN>
 ダッシュボードでCluster名を使用してフィルタリングする時に、その表示名を設定する。
 
 ```bash
-$ argocd cluster add <ArgoCDに監視させたいClusterのARN> --name <ダッシュボード上でのClusterの表示名>
+$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name <ダッシュボード上でのClusterの表示名>
 ```
 
 #### ▼ --upsert
@@ -149,7 +149,7 @@ $ argocd cluster add <ArgoCDに監視させたいClusterのARN> --name <ダッ�
 すでにClusterを登録済みの場合に、これを上書きする。
 
 ```bash
-$ argocd cluster add <ArgoCDに監視させたいClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
+$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
 ```
 
 <br>

@@ -44,7 +44,7 @@ ArgoCDは、Applicationのリポジトリのキャッシュを積極的に再作
 
 単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がる。
 
-そのため、複数のApplicationが単一のリポジトリをWatchしているような状況では、一度のコミットで複数のApplicationでキャッシュの再作成がおこる。
+そのため、複数のApplicationが単一のリポジトリをポーリングしているような状況では、一度のコミットで複数のApplicationでキャッシュの再作成がおこる。
 
 Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
 
