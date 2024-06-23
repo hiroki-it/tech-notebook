@@ -364,6 +364,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 		select {
 
+		// 先に終了したcaseに条件分岐する
 		case req, ok := <-con.reqChan:
 			if ok {
 				// pilot-agentからリクエストを受信する。

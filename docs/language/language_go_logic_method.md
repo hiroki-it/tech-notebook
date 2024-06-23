@@ -1739,11 +1739,11 @@ func main() {
 
 ## 06. 処理の種類
 
-### 同期処理
+### 単一処理
 
-#### ▼ 同期処理とは
+#### ▼ 単一処理とは
 
-前の処理を待って、次の処理を開始する。
+特定の処理のみを実行する。
 
 **＊実装例＊**
 
@@ -1765,68 +1765,32 @@ func main() {
 
 <br>
 
-### 非同期処理 (並行処理)
-
-#### ▼ 非同期処理 (並行処理) とは
-
-前の処理の終了を待たずに次の処理を開始し、それぞれの処理が独立して終了する。
-
-結果、終了する順番は順不同になる。
-
-**＊実装例＊**
-
-```go
-...
-```
-
-> - https://golang.org/pkg/sync/
-
-<br>
-
 ### 並列処理
 
 #### ▼ Goroutineによる並列処理
 
 指定した処理を同時に開始し、それぞれの処理が独立して完了する。
 
-結果、完了する順番は順不同になる。
-
 関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。
 
+結果、完了する順番は順不同になる。
+
 ```go
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
 func main() {
 
-    // 6秒の待機後に、quitチャネルにtrueを格納する
-	time.Sleep(6 * time.Second)
-	quit <- true
+	fmt.Println("main")
 
-	select {
+	go func() {
+		fmt.Println("hoge")
+	}()
 
-	// quitチャネルへのtrueの格納を待機しつつ、Afterの完了も並列的に待機する
-	// 先に終了した方のcaseを実行する
-	case <-time.After(5 * time.Second):
-		fmt.Println("timeout")
-
-	case <-quit:
-		fmt.Println("quit")
-	}
-
-	fmt.Println("done")
+	time.Sleep(time.Second)
 }
 ```
 
-> - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
+> - https://qiita.com/gold-kou/items/8e5342d8a30ae8f34dff#goroutine%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
 
 #### ▼ 返却処理はエラーになる
-
-関数でGoroutine (`go func()`) を宣言すると、その関数の完了を待たずに後続の処理を実行できる。
 
 返却処理 (`return`) は、処理の完了を待つことになるため、Goroutineとは矛盾する。
 
@@ -1934,7 +1898,7 @@ func main() {
 
 Goroutineを中断するための`done`チャネルを作成し、これを`close`関数で中断する。
 
-`done`チャネルは使い捨てのため、サイズがゼロの空構造体として定義するよとい。
+`done`チャネルは使い捨てのため、サイズがゼロの空構造体として定義するとよい。
 
 ```go
 package main
@@ -1964,6 +1928,7 @@ func main() {
 	for {
 		select {
 
+		// 先に終了したcaseに条件分岐する
 		// チャネルから値を受信した場合
 		case value := <-channel:
 			fmt.Println(value)
@@ -2020,6 +1985,7 @@ func main() {
 	for {
 		select {
 
+		// 先に終了したcaseに条件分岐する
 		// チャネルから値を受信した場合
 		case value := <-channel:
 			fmt.Println(value)

@@ -17,7 +17,7 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させる。
+deschedulerは、ポリシーに応じて不適切なNodeからPodを退避させる。
 
 その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。
 
@@ -45,7 +45,7 @@ $ kubectl get events -n foo
 
 ### kube-schedulerだけでは足りない理由
 
-Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは現在のNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。
+Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは不適切なNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。
 
 他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
 
@@ -201,7 +201,7 @@ data:
 
 Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。
 
-さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。
+さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodをスケジューリングさせる。
 
 注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。
 

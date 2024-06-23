@@ -202,6 +202,7 @@ func main()  {
 	defer cancel()
 
 	select {
+	// 先に終了したcaseに条件分岐する
 	case <-neverReady:
 		fmt.Println("ready")
 	case <-ctx.Done():
@@ -246,6 +247,7 @@ func main()  {
 	defer cancel()
 
 	select {
+	// 先に終了したcaseに条件分岐する
 	case <-neverReady:
 		fmt.Println("ready")
 	case <-ctx.Done():
