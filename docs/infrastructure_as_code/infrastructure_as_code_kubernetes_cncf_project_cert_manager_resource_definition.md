@@ -113,7 +113,7 @@ spec:
 
 #### ▼ issuerRefとは
 
-SSL証明書を発行してもらう認証局 (Issuer) を設定する。
+SSL証明書を発行してもらう発行元認証局を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -245,7 +245,7 @@ spec:
 
 ### ClusterIssuerとは
 
-異なるNamespaceに対して横断的に証明書を発行する認証局を作成する。
+異なるNamespaceに対して横断的に証明書を発行する発行元認証局を作成する。
 
 > - https://blog.1q77.com/2020/03/cert-manager/#issuer-%E3%81%AE%E7%99%BB%E9%8C%B2
 
