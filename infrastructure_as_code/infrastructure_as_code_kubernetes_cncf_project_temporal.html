@@ -20135,7 +20135,7 @@
           <li class="md-nav__item">
   <a href="#temporal_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー
+      ▼ Temporalワーカー (マイクロサービス)
     </span>
   </a>
   
@@ -23153,7 +23153,7 @@
           <li class="md-nav__item">
   <a href="#temporal_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー
+      ▼ Temporalワーカー (マイクロサービス)
     </span>
   </a>
   
@@ -23199,8 +23199,10 @@
 <h2 id="01-temporal">01. Temporalの仕組み<a class="headerlink" href="#01-temporal" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー、からなる。</p>
+<p><img alt="temporal_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png" /></p>
 <blockquote>
 <ul>
+<li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
 <li><a href="https://michaelangelo.io/blog/temporal-sqs#temporal-components">https://michaelangelo.io/blog/temporal-sqs#temporal-components</a></li>
 <li><a href="https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7">https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7</a></li>
 <li><a href="https://temporal.io/blog/sergey-inversion-of-execution">https://temporal.io/blog/sergey-inversion-of-execution</a></li>
@@ -23211,15 +23213,17 @@
 <p>Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。</p>
 <blockquote>
 <ul>
-<li><a href="https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like">https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like</a></li>
+<li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
+<li><a href="https://temporal.io/blog/sergey-inversion-of-execution">https://temporal.io/blog/sergey-inversion-of-execution</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="temporal_1">Temporalサーバー<a class="headerlink" href="#temporal_1" title="Permanent link">&para;</a></h3>
-<p>Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。</p>
+<p>Temporalサーバーは、ワーカーを操作し、またステートをデータベースに永続化する。</p>
 <blockquote>
 <ul>
-<li><a href="https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like">https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like</a></li>
+<li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
+<li><a href="https://temporal.io/blog/sergey-inversion-of-execution">https://temporal.io/blog/sergey-inversion-of-execution</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23257,7 +23261,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="temporal_2">Temporalワーカー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
-<p>Temporalワーカーは、Temporalサーバーをコールし、ステップやワークフロー全体の処理結果を取得する。</p>
+<p>Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like">https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like</a></li>
@@ -23501,10 +23505,10 @@
 <li><a href="https://docs.temporal.io/develop/go/core-application#develop-workflows">https://docs.temporal.io/develop/go/core-application#develop-workflows</a></li>
 </ul>
 </blockquote>
-<h4 id="temporal_5">▼ Temporalワーカー<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカーは、Temporalサーバーからステップやワークフロー全体の処理結果を取得する必要がある。</p>
+<h4 id="temporal_5">▼ Temporalワーカー (マイクロサービス)<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。</p>
+<p>Sagaオーケストレーターでは、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
 <p>TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。</p>
-<p>Temporalクライアントやサーバーとは別のアプリとして実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
