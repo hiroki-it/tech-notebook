@@ -46,7 +46,6 @@ $ istioctl install --manifests=foo-chart
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  namespace: istio-system
   name: istio-operator
 spec:
   # Istioのdemoチャートをインストールし、リソースを作成する。
@@ -121,7 +120,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: bar-authorization-policy
-  namespace: istio-system
+
 spec:
   action: ALLOW
 ```
@@ -148,7 +147,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: oauth2-proxy-authorization-policy
-  namespace: istio-system
+
 spec:
   action: CUSTOM
   provider:
@@ -166,7 +165,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: istio-mesh-cm
-  namespace: istio-system
+
 data:
   mesh: |
     extensionProviders:
@@ -203,8 +202,8 @@ data:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: bar-authorization-policy
-  namespace: istio-system
+  name: allow-pod
+
 spec:
   rules:
     - from:
@@ -223,8 +222,8 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: bar-authorization-policy
-  namespace: istio-system
+  name: allow-namespace
+
 spec:
   rules:
     - from:
@@ -247,8 +246,8 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: bar-authorization-policy
-  namespace: istio-system
+  name: allow-jwt
+
 spec:
   rules:
     - when:
@@ -295,7 +294,7 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: require-mtls
+  name: deny-non-tls
   namespace: NAMESPACE
 spec:
   action: DENY
@@ -322,7 +321,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: bar-authorization-policy
-  namespace: istio-system
 spec:
   selector:
     matchLabels:
@@ -358,7 +356,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   exportTo:
@@ -379,7 +376,6 @@ Pod間通信の場合、他のNamespaceからリクエストを受信しなて�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   exportTo:
@@ -402,7 +398,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
@@ -438,7 +433,6 @@ VirtualServiceを起点としたPodのカナリアリリースで使用する。
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   subsets:
@@ -472,7 +466,6 @@ EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリク�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -493,7 +486,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -512,7 +504,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -533,7 +524,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -563,7 +553,6 @@ Podへのルーティング時に使用する負荷分散方式を設定する�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -584,7 +573,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
+
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -611,7 +600,6 @@ Podのポート番号別のルーティングの負荷分散方式を設定す�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -632,7 +620,6 @@ Podのポート番号別ルーティングで使用するポート番号を設�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -653,7 +640,6 @@ Podへのルーティング時に使用するHTTPSプロトコルのタイプを
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -665,7 +651,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -677,7 +662,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -689,7 +673,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -711,7 +694,6 @@ Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -734,7 +716,6 @@ Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -757,7 +738,6 @@ Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使�
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  namespace: istio-system
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -784,7 +764,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -801,7 +780,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -818,7 +796,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -847,7 +824,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -866,7 +842,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -889,7 +864,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -902,7 +876,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -915,7 +888,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -928,7 +900,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -959,7 +930,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -977,7 +947,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -995,7 +964,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -1011,7 +979,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -1031,7 +998,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   configPatches:
@@ -1060,7 +1026,6 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  namespace: istio-system
   name: foo-envoy-filter
 spec:
   priority: -1
@@ -1207,7 +1172,6 @@ Istio IngressGateway/EgressGatewayに付与された`.metadata.labels`キーを�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   selector:
@@ -1239,7 +1203,6 @@ Istio IngressGateway/EgressGatewayのPodで待ち受けるポート名を設定�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1263,7 +1226,6 @@ IngressGatewayの内部的なServiceのタイプに関して、NodePort Service�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1283,7 +1245,6 @@ Istio IngressGateway/EgressGatewayのPodで受信するプロトコルを設定�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1303,7 +1264,6 @@ Istio IngressGateway/EgressGatewayのPodの宛先ポート番号を設定する�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1325,7 +1285,6 @@ Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダ�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1343,7 +1302,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1367,7 +1325,6 @@ Secretを更新した場合、Podを再起動せずに、PodにSecretを再マ�
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1391,7 +1348,6 @@ Gatewayの宛先との通信の暗号化方式を設定する。
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1409,7 +1365,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1427,7 +1382,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1451,7 +1405,6 @@ SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tl
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  namespace: istio-system
   name: gateway
 spec:
   servers:
@@ -1530,7 +1483,7 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-  namespace: istio-system
+
 spec:
   jwtRules:
     # JWTの発行元を設定する
@@ -1549,7 +1502,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-  namespace: istio-system
+
 spec:
   action: ALLOW
   rules:
@@ -1574,7 +1527,7 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-  namespace: istio-system
+
 spec:
   jwtRules:
     # JWTの発行元エンドポイントを設定する
@@ -1593,7 +1546,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-  namespace: istio-system
+
 spec:
   action: ALLOW
   rules:
@@ -1617,7 +1570,7 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-  namespace: istio-system
+
 spec:
   jwtRules:
     # JWTの発行元エンドポイントを設定する
@@ -1636,7 +1589,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-  namespace: istio-system
+
 spec:
   action: ALLOW
   rules:
@@ -1661,7 +1614,7 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-  namespace: istio-system
+
 spec:
   jwtRules:
     # OAuth2 Proxyに送信する
@@ -1679,7 +1632,7 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-  namespace: istio-system
+
 spec:
   selector:
     matchLabels:
@@ -1693,7 +1646,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: foo-cm
-  namespace: istio-system
+
 data:
   mesh: |
     extensionProviders:
@@ -1728,7 +1681,7 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt"
-  namespace: istio-system
+
 spec:
   selector:
     matchLabels:
@@ -1945,7 +1898,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   exportTo:
@@ -1966,7 +1918,6 @@ Pod間通信の場合、他のNamespaceからリクエストを受信しなて�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   exportTo:
@@ -1995,7 +1946,6 @@ VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2024,7 +1974,6 @@ VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespace�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   gateways:
@@ -2043,7 +1992,6 @@ VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespace�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-ingress-virtual-service
 spec:
   gateways:
@@ -2054,7 +2002,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-egress-virtual-service
 spec:
   hosts:
@@ -2096,7 +2043,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-egress-virtual-service
 spec:
   hosts:
@@ -2149,7 +2095,6 @@ VirtualServiceを、Pod間通信で使用する場合は`mesh`とする。
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   gateways:
@@ -2179,7 +2124,6 @@ HTTP/`1.1`、HTTP/`2.0` (例：gRPCなど) 、のプロトコルによるイン�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2200,7 +2144,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2225,7 +2168,6 @@ Serviceへのルーティングの失敗ではないことに注意する。
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2248,7 +2190,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2270,7 +2211,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2316,7 +2256,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2334,7 +2273,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   exportTo:
@@ -2381,7 +2319,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   http:
@@ -2428,7 +2365,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2459,7 +2395,6 @@ DestinationRuleで受信した通信を、DestinationRuleのサブセットに�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2497,7 +2432,6 @@ Serviceの重み付けルーティングの割合を設定する。
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2540,7 +2474,6 @@ TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐�
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   tcp:
@@ -2558,7 +2491,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2581,7 +2513,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   hosts:
@@ -2606,7 +2537,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  namespace: istio-system
   name: foo-virtual-service
 spec:
   tcp:
