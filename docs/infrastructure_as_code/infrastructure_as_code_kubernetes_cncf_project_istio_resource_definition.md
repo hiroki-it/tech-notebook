@@ -120,7 +120,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: bar-authorization-policy
-
 spec:
   action: ALLOW
 ```
@@ -147,7 +146,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: oauth2-proxy-authorization-policy
-
 spec:
   action: CUSTOM
   provider:
@@ -165,7 +163,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: istio-mesh-cm
-
 data:
   mesh: |
     extensionProviders:
@@ -203,7 +200,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: allow-pod
-
 spec:
   rules:
     - from:
@@ -223,7 +219,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: allow-namespace
-
 spec:
   rules:
     - from:
@@ -247,7 +242,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: allow-jwt
-
 spec:
   rules:
     - when:
@@ -574,7 +568,6 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-
   name: foo-destination-rule
 spec:
   trafficPolicy:
@@ -1484,7 +1477,6 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-
 spec:
   jwtRules:
     # JWTの発行元認証局を設定する
@@ -1503,7 +1495,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-
 spec:
   action: ALLOW
   rules:
@@ -1530,7 +1521,6 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-
 spec:
   jwtRules:
     # JWTの発行元認証局エンドポイントを設定する
@@ -1549,7 +1539,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-
 spec:
   action: ALLOW
   rules:
@@ -1575,7 +1564,6 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-
 spec:
   jwtRules:
     # JWTの発行元認証局エンドポイントを設定する
@@ -1594,7 +1582,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-
 spec:
   action: ALLOW
   rules:
@@ -1621,7 +1608,6 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt
-
 spec:
   jwtRules:
     # OAuth2 Proxyに送信する
@@ -1639,7 +1625,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: foo-authorization-policy
-
 spec:
   selector:
     matchLabels:
@@ -1653,7 +1638,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: foo-cm
-
 data:
   mesh: |
     extensionProviders:
@@ -1688,7 +1672,6 @@ apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
   name: foo-request-authentication-jwt"
-
 spec:
   selector:
     matchLabels:
