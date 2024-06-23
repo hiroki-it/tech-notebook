@@ -1502,6 +1502,7 @@ spec:
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/
 > - https://istio.io/latest/docs/concepts/security/#request-authentication
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
 #### ▼ Auth0に送信する場合
 
@@ -1544,6 +1545,7 @@ spec:
 
 > - https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins
 > - https://istio.io/latest/docs/concepts/security/#request-authentication
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
 #### ▼ Keycloakに送信する場合
 
@@ -1587,6 +1589,7 @@ spec:
 > - https://thinkit.co.jp/article/18023
 > - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
 > - https://istio.io/latest/docs/concepts/security/#request-authentication
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
 #### ▼ OAuth2 Proxyを介してKeycloakに送信する場合
 
@@ -1653,6 +1656,7 @@ data:
 
 > - https://venafi.com/blog/istio-oidc/
 > - https://istio.io/latest/docs/concepts/security/#request-authentication
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
 <br>
 

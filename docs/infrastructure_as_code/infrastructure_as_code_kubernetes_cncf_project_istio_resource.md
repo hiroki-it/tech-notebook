@@ -953,11 +953,20 @@ Pod間通信時に、JWTによるBearer認証を実施する。
 
 JWTが失効していたり、不正であったりする場合に、認証処理を失敗として`401`ステータスを返信する。
 
+JWTがない場合は、AuthorizationPolicyで`403`ステータスを返信する必要がある。
+
 なお、RequestAuthenticationを使用せずにアプリケーションで同様の実装をしても良い。
 
 また、Nginx製のBFFなど、認証処理を実装しにくい場所にのみ採用しても良い。
 
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 > - https://www.reddit.com/r/istio/comments/1cazua5/comment/l0v73tx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+
+<br>
+
+## 09. AuthorizationPolicy
+
+> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
 
 <br>
