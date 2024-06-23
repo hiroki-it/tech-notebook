@@ -39,7 +39,7 @@ Temporalクライアントは、Temporalサーバーをコールし、ワーク�
 
 ### Temporalサーバー
 
-Temporalサーバーは、ワーカーを操作し、またステートをデータベースに永続化する。
+Temporalサーバーは、タスクキューを操作してワークフローのステートを管理し、またステートをデータベースに永続化する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -89,9 +89,12 @@ temporal=# \dt
 
 ### Temporalワーカー
 
-Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。
+Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。
+
+また、Temporalサーバーでのワークフローのステートに応じて、アクティビティを実行する。
 
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
+> - https://temporal.io/blog/sergey-inversion-of-execution
 
 <br>
 
@@ -116,11 +119,7 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 
 #### ▼ Temporalクライアント
 
-クライアントは、Temporalサーバーをコールする必要である。
-
-Temporalクライアントは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。
-
-Temporalサーバーと別のアプリとして実行することもできる。
+Temporalクライアントは、Temporalサーバーのエンドポイントをコールするサーバーとして実装する。
 
 ```go
 package main
@@ -217,7 +216,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 #### ▼ Temporalサーバーとステート用データベース
 
-Temporalサーバーは、ワークフローを実行し、またステートをデータベースに永続化する。
+Temporalサーバーは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。
 
 各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。
 
@@ -343,9 +342,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 #### ▼ Temporalワーカー (マイクロサービス)
 
-Temporalワーカーは、Temporalサーバーからタスクを受信し、処理を実行する。
-
-Sagaオーケストレーターでは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。
 
 TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。
 
