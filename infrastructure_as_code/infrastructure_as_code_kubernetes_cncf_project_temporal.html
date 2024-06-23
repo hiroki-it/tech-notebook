@@ -23210,7 +23210,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="temporal">Temporalクライアント<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h3>
-<p>Temporalクライアントは、Temporalサーバーをコールし、ワークフローを実行させる。</p>
+<p>Temporalクライアントは、Temporalサーバーをコールし、Temporalワーカーによって登録されたワークフローを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
@@ -23389,9 +23389,47 @@
 </ul>
 </blockquote>
 <h4 id="temporal_4">▼ Temporalサーバーとステート用データベース<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
-<p>Temporalサーバーは、ワークフローを実行するエンドポイントを持つサーバーとして実装する。</p>
-<p>各ステップの都度、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) にステップの処理結果を送信することもできる。</p>
-<p>Temporalクライアントと別のアプリとして実行することもできる。</p>
+<p>制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。</p>
+<h4 id="temporal_5">▼ Temporalワーカー (マイクロサービス)<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
+<p>Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;documentation-samples-go/yourapp&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Temporalサーバーに接続する</span>
+<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;ワークフローのID&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">workflowResponse</span>
+
+<span class="w">    </span><span class="c1">// ワークフローの結果を取得する</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go</a></li>
+<li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
+</ul>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">yourapp</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23510,47 +23548,6 @@
 <ul>
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go</a></li>
 <li><a href="https://docs.temporal.io/develop/go/core-application#develop-workflows">https://docs.temporal.io/develop/go/core-application#develop-workflows</a></li>
-</ul>
-</blockquote>
-<h4 id="temporal_5">▼ Temporalワーカー (マイクロサービス)<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカーは、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
-<p>TemporalサーバーとTemporalワーカーの間にメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：RabbitMQ) を置くこともできる。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;documentation-samples-go/yourapp&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// Temporalサーバーに接続する</span>
-<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
-
-<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;ワークフローのID&gt;&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">workflowResponse</span>
-
-<span class="w">    </span><span class="c1">// ワークフローの結果を取得する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">...</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go</a></li>
-<li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
 </ul>
 </blockquote>
 <p><br></p>
