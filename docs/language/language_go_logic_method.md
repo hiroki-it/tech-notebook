@@ -1775,7 +1775,15 @@ func main() {
 
 結果、完了する順番は順不同になる。
 
+**＊実行例＊**
+
 ```go
+package main
+
+import (
+	"fmt"
+)
+
 func main() {
 
 	fmt.Println("main")
@@ -1789,6 +1797,28 @@ func main() {
 ```
 
 > - https://qiita.com/gold-kou/items/8e5342d8a30ae8f34dff#goroutine%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
+
+#### ▼ 反復処理や長時間処理と相性がいい
+
+反復処理 (`for`文) や長時間処理 (例：ポーリング) と相性がいい。
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	go func() {
+		// ポーリング処理
+		// 実装方法を調べて書く
+	}()
+
+	// ポーリングと並行して実行したい処理
+}
+```
 
 #### ▼ 返却処理はエラーになる
 
