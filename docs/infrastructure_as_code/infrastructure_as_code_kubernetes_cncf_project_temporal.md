@@ -93,6 +93,9 @@ Temporalワーカーは、Temporalサーバーにワークフローやアクテ�
 
 また、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートに応じてアクティビティを実行する。
 
+![temporal_worker_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
+
+
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
 > - https://temporal.io/blog/sergey-inversion-of-execution
 
