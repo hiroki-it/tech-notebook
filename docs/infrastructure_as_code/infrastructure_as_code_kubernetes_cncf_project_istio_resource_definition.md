@@ -193,9 +193,9 @@ data:
 
 その条件に合致した場合に、認証済みの送信元を許可するか否かを実施する。
 
-#### ▼ 認証が『相互TLS認証』の場合
+#### ▼ 特定のServiceAccountを持つPodを許可する
 
-相互TLS認証の場合、送信元のPod紐づくServiceAccountが適切な場合に、認可を実施するように設定する。
+送信元のPod紐づくServiceAccountが適切な場合に、認可を実施するように設定する。
 
 **＊実装例＊**
 
@@ -215,15 +215,9 @@ spec:
             methods: ["GET"]
 ```
 
-> - https://istiobyexample-ja.github.io/istiobyexample/authorization/
-> - https://istio.io/latest/docs/concepts/security/#dependency-on-mutual-tls
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_workload
 
-#### ▼ 認証が『JWTによるBearer認証』の場合
-
-JWTによるBearer認証の場合、リクエストヘッダーにあるJWTの発行元が適切な場合に、認可を実施するように設定する。
-
-**＊実装例＊**
+#### ▼ 特定のNamespaceを許可する
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -239,14 +233,79 @@ spec:
       to:
         - operation:
             methods: ["GET"]
-      when:
+```
+
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_namespace
+
+#### ▼ 正しいJWTを許可する
+
+リクエストヘッダーにあるJWTの発行元が適切な場合に、認可を実施するように設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: bar-authorization-policy
+  namespace: istio-system
+spec:
+  rules:
+    - when:
+        # 認可を実施するクレームを設定する
         - key: request.auth.claims[iss]
           values: ["<JWTの発行元の識別子 (issuer)>"]
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/authorization-policy/
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview#best_practices
-> - https://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html#issDef
+
+#### ▼ 全てを拒否する
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+spec:
+  action: DENY
+  rules:
+    - {}
+```
+
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#allow_nothing
+
+#### ▼ 全てを許可する
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-all
+spec:
+  action: ALLOW
+  rules:
+    - {}
+```
+
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#deny_all_access
+
+#### ▼ 非TLSを拒否する
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: require-mtls
+  namespace: NAMESPACE
+spec:
+  action: DENY
+  rules:
+    - from:
+        - source:
+            notPrincipals: ["*"]
+```
+
+> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#reject_plaintext_requests
 
 <br>
 

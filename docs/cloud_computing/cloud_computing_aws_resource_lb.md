@@ -101,7 +101,7 @@ ALBに割り当てられるIPアドレスには、VPCのものが適用される
 
 単一障害点にならないように、負荷が高まるとALBインスタンスが増えるように自動スケールアウトする仕組みを持つ。
 
-#### ▼ `500`系ステータスコードの原因
+#### ▼ `500`系ステータスの原因
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
 
