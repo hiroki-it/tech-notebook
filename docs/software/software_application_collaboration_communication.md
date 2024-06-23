@@ -334,9 +334,41 @@ $.ajax({
 **＊実装例＊**
 
 ```javascript
+import axios from "axios";
+
 const url = "https://example.com/";
 
 axios.get(url);
+```
+
+**＊実装例＊**
+
+ここでは、バックエンドにポーリングを実行する。
+
+ポーリングの完了を待たずに後続の処理を実行するため、非同期処理である。
+
+```javascript
+import axios from "axios";
+
+async function pollBackend() {
+    try {
+        const response = await axios.get('/api/endpoint');
+        // responseを処理する
+
+        // 再帰的に呼び出す
+        setTimeout(() => {
+            pollBackend();
+        }, 1000);
+
+    } catch (error) {
+        // エラー処理
+    }
+};
+```
+
+```javascript
+// ポーリングを実行する
+pollBackend();
 ```
 
 #### ▼ POST送信
@@ -344,6 +376,8 @@ axios.get(url);
 **＊実装例＊**
 
 ```javascript
+import axios from "axios";
+
 const url = "https://example.com/";
 
 const body = {
