@@ -175,7 +175,7 @@ Nuxtがデフォルトで用意している設定をプロパティの設定値�
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-  // プロパティ
+    // プロパティ
 };
 ```
 
@@ -215,15 +215,15 @@ HOME_PATH=/
 import {Configuration} from "@nuxt/types";
 
 const {
-  API_URL,
-  API_URL_BROWSER,
-  OAUTH_CLIENT_ID,
-  OAUTH_CLIENT_SECRET,
-  HOME_PATH,
+    API_URL,
+    API_URL_BROWSER,
+    OAUTH_CLIENT_ID,
+    OAUTH_CLIENT_SECRET,
+    HOME_PATH,
 } = process.env;
 
 const nuxtConfig: Configuration = {
-  // プロパティ
+    // プロパティ
 };
 ```
 
@@ -245,9 +245,9 @@ const nuxtConfig: Configuration = {
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-  build: {
-    hardSource: "true",
-  },
+    build: {
+        hardSource: "true",
+    },
 };
 ```
 
@@ -273,9 +273,9 @@ import {Configuration} from "@nuxt/types";
 const {API_KEY} = process.env;
 
 const nuxtConfig: Configuration = {
-  privateRuntimeConfig: {
-    apiKey: API_KEY,
-  },
+    privateRuntimeConfig: {
+        apiKey: API_KEY,
+    },
 };
 ```
 
@@ -287,10 +287,10 @@ API_KEY=*****
 
 ```javascript
 export function foo() {
-  // contextオブジェクトの$configプロパティを分割代入
-  const {$config} = useContext();
+    // contextオブジェクトの$configプロパティを分割代入
+    const {$config} = useContext();
 
-  $config.apiKey;
+    $config.apiKey;
 }
 ```
 
@@ -313,9 +313,9 @@ import {Configuration} from "@nuxt/types";
 const {API_URL} = process.env;
 
 const nuxtConfig: Configuration = {
-  publicRuntimeConfig: {
-    apiUrl: API_URL,
-  },
+    publicRuntimeConfig: {
+        apiUrl: API_URL,
+    },
 };
 ```
 
@@ -326,10 +326,10 @@ API_URL=https://example.com/api
 
 ```javascript
 export function foo() {
-  // contextオブジェクトの$configプロパティを分割代入
-  const {$config} = useContext();
+    // contextオブジェクトの$configプロパティを分割代入
+    const {$config} = useContext();
 
-  $config.apiUrl;
+    $config.apiUrl;
 }
 ```
 
@@ -346,9 +346,9 @@ CIツールでログが確認できなくなるため、無効化しておいた
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-  build: {
-    quiet: "false",
-  },
+    build: {
+        quiet: "false",
+    },
 };
 ```
 
@@ -362,12 +362,12 @@ const nuxtConfig: Configuration = {
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-  serverMiddleware: [
-    {
-      path: "/foo",
-      handler: "~/foo/index.js",
-    },
-  ],
+    serverMiddleware: [
+        {
+            path: "/foo",
+            handler: "~/foo/index.js",
+        },
+    ],
 };
 ```
 
@@ -383,7 +383,7 @@ SSG/SSRモードの`yarn dev` (開発用コマンド) 、またSSRモードの`y
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-  buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
+    buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
 };
 ```
 

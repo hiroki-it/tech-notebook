@@ -163,19 +163,20 @@ localNum
 // sample.js
 // 無名関数の即時実行。定義と呼び出しを同時に実行する。
 (function () {
-  // 外側の変数 (foo) を参照できる。
-  if (foo) {
-    console.log("外部ファイルを読み出しました");
-  }
+    // 外側の変数 (foo) を参照できる。
+    if (foo) {
+        console.log("外部ファイルを読み出しました");
+    }
 
-  var localNum = 20;
-  function localMethod() {
-    // 外側の変数 (localNum) を参照できる。
-    console.log("localNum");
-  }
+    var localNum = 20;
 
-  // 定義したメソッドを実行
-  localMethod();
+    function localMethod() {
+        // 外側の変数 (localNum) を参照できる。
+        console.log("localNum");
+    }
+
+    // 定義したメソッドを実行
+    localMethod();
 })();
 ```
 
@@ -187,29 +188,30 @@ localNum
 
 ```html
 <script>
-  var globalNum = 10;
+    var globalNum = 10;
 
-  localNum = localNum * 10;
+    localNum = localNum * 10;
 
-  document.write("<p>結果は" + num + "です</p>");
-  var foo = true;
+    document.write("<p>結果は" + num + "です</p>");
+    var foo = true;
 
-  // 無名関数の即時実行。定義と呼び出しを同時に実行する。
-  (function () {
-    // 外側の変数 (foo) を参照できる。
-    if (foo) {
-      console.log("外部ファイルを読み出しました");
-    }
+    // 無名関数の即時実行。定義と呼び出しを同時に実行する。
+    (function () {
+        // 外側の変数 (foo) を参照できる。
+        if (foo) {
+            console.log("外部ファイルを読み出しました");
+        }
 
-    var localNum = 20;
-    function localMethod() {
-      // 外側の変数 (localNum) を参照できる。
-      console.log("localNum");
-    }
+        var localNum = 20;
 
-    // 定義したメソッドを実行
-    localMethod();
-  })();
+        function localMethod() {
+            // 外側の変数 (localNum) を参照できる。
+            console.log("localNum");
+        }
+
+        // 定義したメソッドを実行
+        localMethod();
+    })();
 </script>
 ```
 
@@ -529,16 +531,14 @@ document.getElementById("btn").onclick = () => {
 ```javascript
 // DOMContentLoadedイベントが発火した時に、処理を実行する。
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("イベントが発火しました");
+    console.log("イベントが発火しました");
 });
 ```
 
 ```javascript
 // 1つ目
 document.getElementById("btn").addEventListener("click", () => {
-	console.log("イベントが発火しました`(1)`
-
-:    ");
+	console.log("イベントが発火しました`(1)`");
 }, false);
 
 // 2つ目

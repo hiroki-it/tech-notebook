@@ -382,15 +382,15 @@ index.jsの`methods:`内には、イベントハンドラ関数として`result`
 ```javascript
 // 変数に対する格納を省略しても良い
 var vm = new Vue({
-  // Vueインスタンスを使用するdivタグを設定.
-  el: "#app",
+    // Vueインスタンスを使用するdivタグを設定.
+    el: "#app",
 
-  // イベントハンドラ関数
-  method: {
-    result() {
-      // 何らかの処理
+    // イベントハンドラ関数
+    method: {
+        result() {
+            // 何らかの処理
+        },
     },
-  },
 });
 ```
 
@@ -502,12 +502,12 @@ View層で`input`タグで、一文字でも値が入力された時点で発火
 
 ```javascript
 Vue.component("v-foo-component", {
-  template: require("./xxx/xxx/foo"),
+    template: require("./xxx/xxx/foo"),
 });
 
 // 変数に対する格納を省略しても良い
 var vm = new Vue({
-  el: "#app",
+    el: "#app",
 });
 ```
 
@@ -517,18 +517,18 @@ var vm = new Vue({
 
 ```javascript
 var vFooComponent = {
-  // テンプレートと親コンポーネントの対応関係
-  template: require("./xxx/xxx/foo"),
+    // テンプレートと親コンポーネントの対応関係
+    template: require("./xxx/xxx/foo"),
 };
 
 // 変数に対する格納を省略しても良い
 var vm = new Vue({
-  el: "#app",
+    el: "#app",
 
-  components: {
-    // 親コンポーネントにオブジェクト名をつける。
-    "v-foo-component": vFooComponent,
-  },
+    components: {
+        // 親コンポーネントにオブジェクト名をつける。
+        "v-foo-component": vFooComponent,
+    },
 });
 ```
 
@@ -539,12 +539,12 @@ var vm = new Vue({
 ```javascript
 // 変数に対する格納を省略しても良い
 var vm = new Vue({
-  el: "#app",
+    el: "#app",
 
-  components: {
-    // テンプレートと親コンポーネントの対応関係
-    "v-foo-component": require("./xxx/xxx/foo"),
-  },
+    components: {
+        // テンプレートと親コンポーネントの対応関係
+        "v-foo-component": require("./xxx/xxx/foo"),
+    },
 });
 ```
 
