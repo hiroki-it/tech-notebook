@@ -24465,19 +24465,20 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// sample.js</span>
 <span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
 <span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// 定義したメソッドを実行</span>
-<span class="w">  </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">    </span><span class="nx">localMethod</span><span class="p">();</span>
 <span class="p">})();</span>
 </code></pre></div>
 <ol>
@@ -24486,29 +24487,30 @@
 <p>ここでは、<code>.html</code>ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
 <p><code>1</code>個のページを構成する<code>.html</code>ファイルを別ファイルとして分割していても、同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
-<span class="w">  </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
+<span class="w">    </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// 定義したメソッドを実行</span>
-<span class="w">    </span><span class="nx">localMethod</span><span class="p">();</span>
-<span class="w">  </span><span class="p">})();</span>
+<span class="w">        </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">        </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="w">    </span><span class="p">})();</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><br></p>
@@ -24726,14 +24728,12 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を実行する。</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// 1つ目</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(1)`</span>
-
-<span class="s2">:    &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(1)`&quot;</span><span class="p">);</span>
 <span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
 
 <span class="c1">// 2つ目</span>
@@ -24791,7 +24791,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-24</span>
   </span>
 
     

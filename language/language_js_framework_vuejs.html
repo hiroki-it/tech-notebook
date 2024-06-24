@@ -24164,15 +24164,15 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
+<span class="w">    </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
 
-<span class="w">  </span><span class="c1">// イベントハンドラ関数</span>
-<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">result</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// 何らかの処理</span>
+<span class="w">    </span><span class="c1">// イベントハンドラ関数</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">result</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 何らかの処理</span>
+<span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <dl>
@@ -24264,41 +24264,41 @@
 <h4 id="_9">▼ グローバル登録<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&quot;v-foo-component&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
 <span class="p">});</span>
 
 <span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 <h4 id="_10">▼ ローカル登録<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
-<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
+<span class="w">    </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
 <span class="p">};</span>
 
 <span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
 
-<span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 親コンポーネントにオブジェクト名をつける。</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 親コンポーネントにオブジェクト名をつける。</span>
+<span class="w">        </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>ただし、コンポーネントのオブジェクト名の定義は、以下の様に省略できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
 
-<span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
-<span class="w">  </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
+<span class="w">        </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <p><br></p>
