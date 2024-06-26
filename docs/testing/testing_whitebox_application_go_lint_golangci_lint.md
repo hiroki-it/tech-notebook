@@ -21,6 +21,8 @@ Goの様々な静的解析ツールをまとめて実行できる。
 
 ## 02. .golangci.yml
 
+### run
+
 ```yaml
 # 実行のオプションを設定する
 run:
@@ -43,16 +45,28 @@ run:
   print-resources-usage: true
   # Goのバージョンを指定する
   go: 1.20
+```
 
+<br>
+
+### output
+
+```yaml
 # 結果の出力形式を設定する
 output:
   format: json
   print-issued-lines: false
   print-linter-name: false
   uniq-by-line: false
-  path-prefix: ''
+  path-prefix: ""
   sort-results: true
+```
 
+<br>
+
+### linters-settings
+
+```yaml
 # 使用するリンターにオプションを設定する
 linters-settings:
   # staticcheckにオプションを設定する
@@ -67,7 +81,13 @@ linters-settings:
       path: /path/to/example.so
       description: This is an example usage of a plugin linter.
       original-url: github.com/golangci/example-linter
+```
 
+<br>
+
+### linters
+
+```yaml
 # 使用するリンターを選ぶ
 linters:
   disable-all: false
@@ -98,7 +118,13 @@ linters:
     - test
     - unused
   fast: true
+```
 
+<br>
+
+### issues
+
+```yaml
 # 検証するルールを設定する
 issues:
   exclude:
@@ -119,10 +145,10 @@ issues:
         - gosec
     - linters:
         - staticcheck
-      text: 'SA9003:'
+      text: "SA9003:"
     - linters:
         - lll
-      source: '^//go:generate '
+      source: "^//go:generate "
   exclude-use-default: false
   exclude-case-sensitive: false
   include:
@@ -148,7 +174,13 @@ issues:
   new-from-patch: path/to/patch/file
   fix: true
   whole-files: true
+```
 
+<br>
+
+### severity
+
+```yaml
 # 重要度を設定する
 severity:
   default-severity: error
