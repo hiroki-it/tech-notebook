@@ -23915,7 +23915,7 @@
 <h4 id="otelopentelemetry-collector">▼ otel/opentelemetry-collector<a class="headerlink" href="#otelopentelemetry-collector" title="Permanent link">&para;</a></h4>
 <p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく<code>otel/opentelemetry-collector-core</code>を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-contrib
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23926,7 +23926,7 @@
 <h4 id="otelopentelemetry-collector-k8s">▼ otel/opentelemetry-collector-k8s<a class="headerlink" href="#otelopentelemetry-collector-k8s" title="Permanent link">&para;</a></h4>
 <p>標準機能 (core) のコンテナイメージである。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-k8s
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-k8s<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23937,7 +23937,7 @@
 <h4 id="otelopentelemetry-collector-contrib">▼ otel/opentelemetry-collector-contrib<a class="headerlink" href="#otelopentelemetry-collector-contrib" title="Permanent link">&para;</a></h4>
 <p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の<code>otel/opentelemetry-collector-k8s</code>ではなく<code>otel/opentelemetry-collector-contrib</code>を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-contrib<span class="w"> </span>--config<span class="w"> </span>relay.yaml
 </code></pre></div>
 <blockquote>
 <ul>
