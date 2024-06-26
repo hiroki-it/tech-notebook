@@ -10,13 +10,16 @@
 
 * #### <u>︎PHPのテストツール</u>
 > * ##### [︎PHPのテストツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
-> * ##### [静的解析](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint.html)
+> * ##### <u>静的解析</u>
+> > * ##### [PHPStan](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint_phpstan.html)
 > * ##### <u>︎単体テスト</u>
 > > * ##### [PHPUnit](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phpunit.html)
 > > * ##### [Phake](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phake.html)
 
 * #### <u>︎Goのテストツール</u>
 > * ##### [︎Goのテストツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html)
+> * ##### <u>静的解析</u>
+> > * ##### [golangci-lint](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_lint_golangci_lint.html)
 > * ##### <u>︎単体テスト</u>
 > > * ##### [testify](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_unit_testify.html)
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】静的解析＠PHPのテストツール
-description: 静的解析＠PHPのテストツールの知見を記録しています。
+title: 【IT技術の知見】PHPStan＠静的解析
+description: PHPStan＠静的解析の知見を記録しています。
 ---
 
-# 静的解析＠PHPのテストツール
+# PHPStan＠静的解析
 
 ## はじめに
 
@@ -13,9 +13,7 @@ description: 静的解析＠PHPのテストツールの知見を記録してい�
 
 <br>
 
-## 01. PHPStan
-
-### PHPStanとは
+## 01. PHPStanとは
 
 レベルに応じて、静的解析を実施する。
 
@@ -26,9 +24,9 @@ description: 静的解析＠PHPのテストツールの知見を記録してい�
 
 <br>
 
-### コマンド
+## 02. コマンド
 
-#### ▼ オプション無し
+### オプション無し
 
 全てのファイルを対象として、静的解析を実施する。
 
@@ -38,20 +36,24 @@ $ vendor/bin/phpstan analyse
 
 <br>
 
-### phpstan.neonファイル
+## 03. phpstan.neonファイル
 
-#### ▼ `phpstan.neonファイル`とは
+### `phpstan.neonファイル`とは
 
 PHPStanの設定を実行する。
 
-#### ▼ `includes`
+<br>
+
+### `includes`
 
 ```yaml
 includes:
   - ./vendor/nunomaduro/larastan/extension.neon
 ```
 
-#### ▼ `parameters`
+<br>
+
+### `parameters`
 
 静的解析の設定を実行する。
 

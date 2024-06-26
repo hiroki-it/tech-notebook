@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】静的解析＠Goのテストツール
-description: 静的解析＠Goのテストツールの知見を記録しています。
+title: 【IT技術の知見】golangci-lint＠静的解析
+description: golangci-lint＠静的解析の知見を記録しています。
 ---
 
-# 静的解析＠Goのテストツール
+# golangci-lint＠静的解析
 
 ## はじめに
 
@@ -13,7 +13,13 @@ description: 静的解析＠Goのテストツールの知見を記録してい�
 
 <br>
 
-## golangci-lint
+## 01. golangci-lintとは
+
+Goの様々な静的解析ツールをまとめて実行できる。
+
+<br>
+
+## 02. .golangci.yml
 
 ```yaml
 # 実行のオプションを設定する
@@ -35,6 +41,7 @@ run:
   allow-parallel-runners: false
   allow-serial-runners: true
   print-resources-usage: true
+  # Goのバージョンを指定する
   go: 1.20
 
 # 結果の出力形式を設定する
@@ -153,5 +160,51 @@ severity:
 ```
 
 > - https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml
+
+<br>
+
+## 03. コマンド
+
+### run
+
+#### ▼ --go
+
+Goのバージョンを指定して実行する。
+
+```bash
+$ golangci-lint run --go <バージョン>
+```
+
+#### ▼ --config
+
+設定ファイルを指定する。
+
+```bash
+$ golangci-lint run --config .golangci.yml
+```
+
+<br>
+
+### linters
+
+有効/無効になっている解析の一覧を取得できる。
+
+```bash
+$ golangci-lint linters
+
+# Enabled by your configuration linters:
+errcheck: errcheck is a program for checking for unchecked errors in Go code. These unchecked errors can be critical bugs in some cases [fast: false, auto-fix: false]
+gosimple: Linter for Go source code that specializes in simplifying code [fast: false, auto-fix: false]
+govet: Vet examines Go source code and reports suspicious constructs. It is roughly the same as 'go vet' and uses its passes. [fast: false, auto-fix: false]
+ineffassign: Detects when assignments to existing variables are not used [fast: true, auto-fix: false]
+staticcheck: It's a set of rules from staticcheck. It's not the same thing as the staticcheck binary. The author of staticcheck doesn't support or approve the use of staticcheck as a library inside golangci-lint. [fast: false, auto-fix: false]
+unused: Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
+
+# Disabled by your configuration linters:
+asasalint: check for pass []any as any in variadic func(...any) [fast: false, auto-fix: false]
+asciicheck: checks that all code identifiers does not have non-ASCII symbols in the name [fast: true, auto-fix: false]
+
+...
+```
 
 <br>
