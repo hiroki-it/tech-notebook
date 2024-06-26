@@ -363,12 +363,15 @@ nav:
           - ホワイトボックステスト: testing/testing_whitebox.md
           - ■ PHPのテストツール:
               - PHPのテストツール: testing/testing_whitebox_application_php.md
-              - 静的解析: testing/testing_whitebox_application_php_lint.md
+              - ■ 静的解析:
+                  - PHPStan: testing/testing_whitebox_application_php_lint_phpstan.md
               - ■ 単体テスト:
                   - PHPUnit: testing/testing_whitebox_application_php_unit_phpunit.md
                   - Phake: testing/testing_whitebox_application_php_unit_phake.md
           - ■ Goのテストツール:
               - Goのテストツール: testing/testing_whitebox_application_go.md
+              - ■ 静的解析:
+                  - golangci-lint: testing/testing_whitebox_application_go_lint_golangci_lint.md
               - ■ 単体テスト:
                   - testify: testing/testing_whitebox_application_go_unit_testify.md
           - ■ インフラ:
