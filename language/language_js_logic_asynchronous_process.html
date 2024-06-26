@@ -23552,12 +23552,12 @@
 <p><strong>＊実装例＊</strong></p>
 <p>非同期化する処理を<code>setTimeout</code>関数に渡し、処理を遅らせる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">asyncMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 1秒だけ実行を遅らせる</span>
-<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 1秒だけ実行を遅らせる</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
 
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">asyncMethod</span><span class="p">();</span>
@@ -23633,12 +23633,12 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 非同期処理を持つ関数を渡す</span>
-<span class="w">        </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 関数内の非同期処理の成否が管理される</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 非同期処理を持つ関数を渡す</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 関数内の非同期処理の成否が管理される</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -23650,15 +23650,15 @@
 <p><code>resolve</code>メソッドと<code>resolve</code>メソッドのコール時に<code>return</code>を使用しないと、後続する処理も実行される。</p>
 <p>1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ステータスが成功の場合に選択される。</span>
-<span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ステータスが成功の場合に選択される。</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
 
-<span class="w">        </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
-<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
+<span class="w">    </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
 
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span>
@@ -23668,13 +23668,13 @@
 </code></pre></div>
 <p>一方で、<code>resolve</code>メソッドと<code>resolve</code>メソッドのコール時に<code>return</code>を使用すると、後続する処理は実行されない。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
 
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span>
@@ -23686,38 +23686,38 @@
 <p>この場合、必ず<code>return</code>で返却する必要がある。</p>
 <p><code>return</code>を使用しないと、何も返却されない。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ステータスが成功の場合に選択される。</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="w">  </span><span class="c1">// ステータスが成功の場合に選択される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
 <span class="p">};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
+<span class="w">  </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
 <span class="p">};</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="nx">asyncFunc</span><span class="p">()</span>
-<span class="w">    </span><span class="c1">// 失敗時に返却されたrejectをハンドリング</span>
-<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// rejectメソッドを実行</span>
-<span class="w">        </span><span class="nx">reject</span><span class="p">;</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// resolveメソッドを実行</span>
-<span class="w">        </span><span class="nx">resolve</span><span class="p">;</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="c1">// 失敗時に返却されたrejectをハンドリング</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// rejectメソッドを実行</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">;</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// resolveメソッドを実行</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
 </code></pre></div>
 <p>非同期処理内で両方をコールするとエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// エラーになってしまう</span>
@@ -23743,40 +23743,34 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resolveFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;resolve!!&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;resolve!!&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="nx">resolveFunc</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// resolveFuncがPromiseを返し、resolve!!がresolveされるため</span>
-<span class="w">    </span><span class="c1">// thenメソッドが実行されコンソールにresolve!!が表示される</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// resolve!!</span>
+<span class="w">  </span><span class="c1">// resolveFuncがPromiseを返し、resolve!!がresolveされるため</span>
+<span class="w">  </span><span class="c1">// thenメソッドが実行されコンソールにresolve!!が表示される</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// resolve!!</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resolveFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// resolveFuncはasync functionではないため、Promiseを返さない</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;resolve!!&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// resolveFuncはasync functionではないため、Promiseを返さない</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;resolve!!&quot;</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="nx">resolveFunc</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// resolveFuncはPromiseを返さないため、エラーが発生して動かない</span>
-<span class="w">    </span><span class="c1">// Uncaught TypeError: resolveError(...).then is not a function</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// resolveFuncはPromiseを返さないため、エラーが発生して動かない</span>
+<span class="w">  </span><span class="c1">// Uncaught TypeError: resolveError(...).then is not a function</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">rejectFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;reject!!&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;reject!!&quot;</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="nx">rejectFunc</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// rejectFuncがPromiseを返し、reject!!がrejectされるため</span>
-<span class="w">    </span><span class="c1">// catchメソッドが実行されコンソールにreject!!が表示される</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// reject!!</span>
+<span class="w">  </span><span class="c1">// rejectFuncがPromiseを返し、reject!!がrejectされるため</span>
+<span class="w">  </span><span class="c1">// catchメソッドが実行されコンソールにreject!!が表示される</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// reject!!</span>
 <span class="p">});</span>
 </code></pre></div>
 <p><br></p>
@@ -23795,26 +23789,24 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p><strong>＊実装例＊</strong></p>
 <p>以下の全ては、同じ処理を定義している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// Promiseオブジェクトに渡すための関数内に暗黙的に定義される。</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Promiseオブジェクトに渡すための関数内に暗黙的に定義される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// 単にreturnとしてもPromiseオブジェクトが返却される。</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
 <span class="c1">// Promiseオブジェクトを返却するようにしても、入れ子にはならない。</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
 <span class="p">};</span>
 
 <span class="c1">// Promiseオブジェクトを返却するようにしても、入れ子にはならない。</span>
@@ -23825,10 +23817,9 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p>非道処理としてGETでリクエストを送信している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -23840,39 +23831,39 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Promiseオブジェクトのthenメソッドを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
 <span class="c1">// awaitを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 以降の全処理がthenメソッドに渡される。</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 以降の全処理がthenメソッドに渡される。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
 <span class="p">};</span>
 </code></pre></div>
 <p>await宣言により、コールバック地獄のコードが分かりやすくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Promiseオブジェクトのthenメソッドを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// コールバック関数地獄になっている。</span>
+<span class="w">  </span><span class="c1">// コールバック関数地獄になっている。</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
 <span class="w">    </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
-<span class="w">        </span><span class="p">});</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
 <span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 
 <span class="c1">// awaitを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path2&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path2&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -23886,29 +23877,28 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">axios</span>
-<span class="w">        </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">        </span><span class="p">})</span>
-<span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">        </span><span class="p">});</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">axios</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 初期化</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// 初期化</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -23917,7 +23907,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p>指定した秒数だけ処理を待機する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 5秒待機する。</span>
 <span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <p><br></p>
@@ -23931,54 +23921,54 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://www.google.co.jp/&quot;</span><span class="p">;</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://www.google.co.jp/&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">    </span><span class="p">})</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 </code></pre></div>
 <p>JQueryパッケージの<code>ajax</code>メソッドを使用した場合。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">})</span>
-<span class="w">    </span><span class="c1">// 非同期通信の成功時のコールバック処理</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="c1">// 非同期通信の成功時のコールバック処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
 
-<span class="w">    </span><span class="c1">// 非同期通信の失敗時のコールバック処理</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">toastr</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;エラーが発生しました。&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="c1">// 非同期通信の失敗時のコールバック処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">toastr</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;エラーが発生しました。&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
 
-<span class="w">    </span><span class="c1">// 非同期通信の成功失敗に関わらず常に実行する処理</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">always</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">isLoaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="c1">// 非同期通信の成功失敗に関わらず常に実行する処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">always</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">isLoaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
 </code></pre></div>
 <h4 id="then">▼ <code>then</code>メソッド<a class="headerlink" href="#then" title="Permanent link">&para;</a></h4>
 <p>Promiseオブジェクトが持つメソッド。</p>
@@ -23989,29 +23979,26 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 
 <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">})</span>
-<span class="w">    </span><span class="c1">// 最初のthen</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
-<span class="w">        </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="c1">// 引数2つめは通信失敗時のコールバック処理</span>
-<span class="w">        </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">)</span>
-<span class="w">    </span><span class="c1">// 次のthen</span>
-<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
-<span class="w">        </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 最初のthen</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="c1">// 引数2つめは通信失敗時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// 次のthen</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 
@@ -24034,7 +24021,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
   </span>
 
     
