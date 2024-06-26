@@ -8275,6 +8275,66 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. .golangci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      linters-settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters" class="md-nav__link">
+    <span class="md-ellipsis">
+      linters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      severity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -8288,7 +8348,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
+  <a href="#run_1" class="md-nav__link">
     <span class="md-ellipsis">
       run
     </span>
@@ -8321,7 +8381,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
+  <a href="#linters_1" class="md-nav__link">
     <span class="md-ellipsis">
       linters
     </span>
@@ -23087,6 +23147,66 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="02. .golangci.yml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      linters-settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters" class="md-nav__link">
+    <span class="md-ellipsis">
+      linters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      severity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -23100,7 +23220,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
+  <a href="#run_1" class="md-nav__link">
     <span class="md-ellipsis">
       run
     </span>
@@ -23133,7 +23253,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#linters" class="md-nav__link">
+  <a href="#linters_1" class="md-nav__link">
     <span class="md-ellipsis">
       linters
     </span>
@@ -23177,6 +23297,7 @@
 <p>Goの様々な静的解析ツールをまとめて実行できる。</p>
 <p><br></p>
 <h2 id="02-golangciyml">02. .golangci.yml<a class="headerlink" href="#02-golangciyml" title="Permanent link">&para;</a></h2>
+<h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 実行のオプションを設定する</span>
 <span class="nt">run</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">concurrency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
@@ -23198,17 +23319,21 @@
 <span class="w">  </span><span class="nt">print-resources-usage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="c1"># Goのバージョンを指定する</span>
 <span class="w">  </span><span class="nt">go</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.20</span>
-
-<span class="c1"># 結果の出力形式を設定する</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="output">output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果の出力形式を設定する</span>
 <span class="nt">output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json</span>
 <span class="w">  </span><span class="nt">print-issued-lines</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">print-linter-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">uniq-by-line</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">path-prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">path-prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">  </span><span class="nt">sort-results</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># 使用するリンターにオプションを設定する</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="linters-settings">linters-settings<a class="headerlink" href="#linters-settings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用するリンターにオプションを設定する</span>
 <span class="nt">linters-settings</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># staticcheckにオプションを設定する</span>
 <span class="w">  </span><span class="nt">staticcheck</span><span class="p">:</span>
@@ -23222,8 +23347,10 @@
 <span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/example.so</span>
 <span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is an example usage of a plugin linter.</span>
 <span class="w">      </span><span class="nt">original-url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.com/golangci/example-linter</span>
-
-<span class="c1"># 使用するリンターを選ぶ</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="linters">linters<a class="headerlink" href="#linters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用するリンターを選ぶ</span>
 <span class="nt">linters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">disable-all</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">enable</span><span class="p">:</span>
@@ -23253,8 +23380,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unused</span>
 <span class="w">  </span><span class="nt">fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># 検証するルールを設定する</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="issues">issues<a class="headerlink" href="#issues" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 検証するルールを設定する</span>
 <span class="nt">issues</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exclude</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abcdef</span>
@@ -23274,10 +23403,10 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gosec</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">linters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staticcheck</span>
-<span class="w">      </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;SA9003:&#39;</span>
+<span class="w">      </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SA9003:&quot;</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">linters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lll</span>
-<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;^//go:generate</span><span class="nv"> </span><span class="s">&#39;</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^//go:generate</span><span class="nv"> </span><span class="s">&quot;</span>
 <span class="w">  </span><span class="nt">exclude-use-default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">exclude-case-sensitive</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">include</span><span class="p">:</span>
@@ -23303,8 +23432,10 @@
 <span class="w">  </span><span class="nt">new-from-patch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path/to/patch/file</span>
 <span class="w">  </span><span class="nt">fix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">whole-files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># 重要度を設定する</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="severity">severity<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 重要度を設定する</span>
 <span class="nt">severity</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">default-severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
 <span class="w">  </span><span class="nt">case-sensitive</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -23320,7 +23451,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
+<h3 id="run_1">run<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h3>
 <h4 id="-go">▼ --go<a class="headerlink" href="#-go" title="Permanent link">&para;</a></h4>
 <p>Goのバージョンを指定して実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>golangci-lint<span class="w"> </span>run<span class="w"> </span>--go<span class="w"> </span>&lt;バージョン&gt;
@@ -23330,7 +23461,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>golangci-lint<span class="w"> </span>run<span class="w"> </span>--config<span class="w"> </span>.golangci.yml
 </code></pre></div>
 <p><br></p>
-<h3 id="linters">linters<a class="headerlink" href="#linters" title="Permanent link">&para;</a></h3>
+<h3 id="linters_1">linters<a class="headerlink" href="#linters_1" title="Permanent link">&para;</a></h3>
 <p>有効/無効になっている解析の一覧を取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>golangci-lint<span class="w"> </span>linters
 
