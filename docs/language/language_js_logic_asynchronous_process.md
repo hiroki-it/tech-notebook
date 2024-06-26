@@ -32,12 +32,12 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 ```javascript
 function asyncMethod() {
-    // 1秒だけ実行を遅らせる
-    setTimeout(function () {
-        console.log("foo");
-    }, 1000);
+  // 1秒だけ実行を遅らせる
+  setTimeout(function () {
+    console.log("foo");
+  }, 1000);
 
-    console.log("bar");
+  console.log("bar");
 }
 
 asyncMethod();
@@ -67,11 +67,11 @@ Promiseオブジェクトの実装の仕様は取り決められており、以�
 
 ネイティブの方が、Promiseオブジェクトの仕様により則った機能を持つ。
 
-| リリース日 | 提供                        | 種類            | 説明                                                                             | 補足                                                                                        |
-|-------|---------------------------|---------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| 2012  | JQueryパッケージのDeferredモジュール | Promiseオブジェクト | バージョン1.5でPromiseオブジェクトが導入された。<br>・https://api.jquery.com/category/version/1.5/ | ・https://api.jquery.com/category/deferred-object/                                         |
-| 2015  | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                             | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
-| 2017  | ビルトインオブジェクト               | async/await宣言 | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。                 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| リリース日 | 提供                                 | 種類                | 説明                                                                                                            | 補足                                                                                       |
+| ---------- | ------------------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 2012       | JQueryパッケージのDeferredモジュール | Promiseオブジェクト | バージョン1.5でPromiseオブジェクトが導入された。<br>・https://api.jquery.com/category/version/1.5/              | ・https://api.jquery.com/category/deferred-object/                                         |
+| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                               | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
+| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
 > - https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
@@ -87,12 +87,12 @@ Promiseオブジェクトのコンストラクタに、非同期処理を持つ�
 
 ```javascript
 const asyncFunc = () => {
-    return new Promise(
-        // 非同期処理を持つ関数を渡す
-        (resolve, reject) => {
-            // 関数内の非同期処理の成否が管理される
-        },
-    );
+  return new Promise(
+    // 非同期処理を持つ関数を渡す
+    (resolve, reject) => {
+      // 関数内の非同期処理の成否が管理される
+    },
+  );
 };
 ```
 
@@ -114,15 +114,15 @@ Promiseオブジェクトのコンストラクタ内では、暗黙的に`try-ca
 
 ```javascript
 const asyncFunc = () => {
-    return new Promise((resolve, reject) => {
-        // ステータスが成功の場合に選択される。
-        resolve("SUCCESS"); // Promise { "SUCCESS" }
+  return new Promise((resolve, reject) => {
+    // ステータスが成功の場合に選択される。
+    resolve("SUCCESS"); // Promise { "SUCCESS" }
 
-        // ステータスが失敗の場合に選択される。
-        reject("FAILED"); // Promise { "FAILED" }
+    // ステータスが失敗の場合に選択される。
+    reject("FAILED"); // Promise { "FAILED" }
 
-        console.log("test");
-    });
+    console.log("test");
+  });
 };
 
 console.log(asyncFunc());
@@ -135,13 +135,13 @@ console.log(asyncFunc());
 
 ```javascript
 const asyncFunc = () => {
-    return new Promise((resolve, reject) => {
-        return resolve("SUCCESS");
+  return new Promise((resolve, reject) => {
+    return resolve("SUCCESS");
 
-        reject("FAILED");
+    reject("FAILED");
 
-        console.log("test");
-    });
+    console.log("test");
+  });
 };
 
 console.log(asyncFunc());
@@ -159,13 +159,13 @@ console.log(asyncFunc());
 
 ```javascript
 const asyncFunc = () => {
-    // ステータスが成功の場合に選択される。
-    return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
+  // ステータスが成功の場合に選択される。
+  return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
 };
 
 const asyncFunc = () => {
-    // ステータスが失敗の場合に選択される。
-    return Promise.reject("FAILED"); // Promise { "FAILED" }
+  // ステータスが失敗の場合に選択される。
+  return Promise.reject("FAILED"); // Promise { "FAILED" }
 };
 
 console.log(asyncFunc()); // Promise { 'SUCCESS' }
@@ -173,19 +173,19 @@ console.log(asyncFunc()); // Promise { 'SUCCESS' }
 
 ```javascript
 const asyncFunc = () => {
-    return Promise.resolve("SUCCESS");
+  return Promise.resolve("SUCCESS");
 };
 
 asyncFunc()
-    // 失敗時に返却されたrejectをハンドリング
-    .catch((reject) => {
-        // rejectメソッドを実行
-        reject;
-    })
-    .then((resolve) => {
-        // resolveメソッドを実行
-        resolve;
-    });
+  // 失敗時に返却されたrejectをハンドリング
+  .catch((reject) => {
+    // rejectメソッドを実行
+    reject;
+  })
+  .then((resolve) => {
+    // resolveメソッドを実行
+    resolve;
+  });
 
 console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
@@ -194,8 +194,8 @@ console.log(asyncFunc()); // Promise { 'SUCCESS' }
 
 ```javascript
 const asyncFunc = () => {
-    Promise.resolve("SUCCESS");
-    Promise.reject("FAILED");
+  Promise.resolve("SUCCESS");
+  Promise.reject("FAILED");
 };
 
 console.log(asyncFunc()); // エラーになってしまう
@@ -224,44 +224,38 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 ```javascript
 const resolveFunc = new Promise((resolve, reject) => {
-
-    return resolve("resolve!!");
+  return resolve("resolve!!");
 });
 
 resolveFunc.then((value) => {
-
-    // resolveFuncがPromiseを返し、resolve!!がresolveされるため
-    // thenメソッドが実行されコンソールにresolve!!が表示される
-    console.log(value); // resolve!!
+  // resolveFuncがPromiseを返し、resolve!!がresolveされるため
+  // thenメソッドが実行されコンソールにresolve!!が表示される
+  console.log(value); // resolve!!
 });
 ```
 
 ```javascript
 const resolveFunc = () => {
-
-    // resolveFuncはasync functionではないため、Promiseを返さない
-    return "resolve!!";
+  // resolveFuncはasync functionではないため、Promiseを返さない
+  return "resolve!!";
 };
 
 resolveFunc.then((value) => {
-
-    // resolveFuncはPromiseを返さないため、エラーが発生して動かない
-    // Uncaught TypeError: resolveError(...).then is not a function
-    console.log(value);
+  // resolveFuncはPromiseを返さないため、エラーが発生して動かない
+  // Uncaught TypeError: resolveError(...).then is not a function
+  console.log(value);
 });
 ```
 
 ```javascript
 const rejectFunc = new Promise((resolve, reject) => {
-
-    reject(new Error("reject!!"));
+  reject(new Error("reject!!"));
 });
 
 rejectFunc.catch((err) => {
-
-    // rejectFuncがPromiseを返し、reject!!がrejectされるため
-    // catchメソッドが実行されコンソールにreject!!が表示される
-    console.log(err); // reject!!
+  // rejectFuncがPromiseを返し、reject!!がrejectされるため
+  // catchメソッドが実行されコンソールにreject!!が表示される
+  console.log(err); // reject!!
 });
 ```
 
@@ -289,9 +283,8 @@ Promiseや、これのコントラクタに渡す関数を実装する必要が�
 
 ```javascript
 const asyncFunc = async () => {
-
-    // Promiseオブジェクトに渡すための関数内に暗黙的に定義される。
-    return "SUCCESS";
+  // Promiseオブジェクトに渡すための関数内に暗黙的に定義される。
+  return "SUCCESS";
 };
 
 // 単にreturnとしてもPromiseオブジェクトが返却される。
@@ -300,10 +293,9 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 ```javascript
 const asyncFunc = async () => {
-
-    return new Promise((resolve, reject) => {
-        return resolve("SUCCESS"); // Promise { "SUCCESS" }
-    });
+  return new Promise((resolve, reject) => {
+    return resolve("SUCCESS"); // Promise { "SUCCESS" }
+  });
 };
 
 // Promiseオブジェクトを返却するようにしても、入れ子にはならない。
@@ -312,7 +304,7 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 ```javascript
 const asyncFunc = async () => {
-    return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
+  return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
 };
 
 // Promiseオブジェクトを返却するようにしても、入れ子にはならない。
@@ -328,10 +320,9 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
-
-    axios.get("/some/path").then((res) => {
-        console.log(res.data); // "some data"
-    });
+  axios.get("/some/path").then((res) => {
+    console.log(res.data); // "some data"
+  });
 };
 ```
 
@@ -352,17 +343,17 @@ Promiseオブジェクトの`then`メソッドに相当するが、`then`メソ�
 ```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
-    axios.get("/some/path").then((res) => {
-        console.log(res.data); // "some data"
-    });
+  axios.get("/some/path").then((res) => {
+    console.log(res.data); // "some data"
+  });
 };
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-    // 以降の全処理がthenメソッドに渡される。
-    const res = await axios.get("/some/path");
+  // 以降の全処理がthenメソッドに渡される。
+  const res = await axios.get("/some/path");
 
-    console.log(res.data); // "some data"
+  console.log(res.data); // "some data"
 };
 ```
 
@@ -371,23 +362,23 @@ await宣言により、コールバック地獄のコードが分かりやすく
 ```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
-    // コールバック関数地獄になっている。
+  // コールバック関数地獄になっている。
+  axios.get("/some/path1").then((res) => {
+    const res1 = res;
     axios.get("/some/path1").then((res) => {
-        const res1 = res;
-        axios.get("/some/path1").then((res) => {
-            const res2 = res;
-            console.log(res1.data + res2.data); // "some data"
-        });
+      const res2 = res;
+      console.log(res1.data + res2.data); // "some data"
     });
+  });
 };
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-    const res1 = await axios.get("/some/path1");
+  const res1 = await axios.get("/some/path1");
 
-    const res2 = await axios.get("/some/path2");
+  const res2 = await axios.get("/some/path2");
 
-    console.log(res1.data + res2.data); // "some data"
+  console.log(res1.data + res2.data); // "some data"
 };
 ```
 
@@ -405,31 +396,30 @@ Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`
 
 ```javascript
 const asyncFunc = async () => {
-
-    return axios
-        .get("/some/path1")
-        .catch((error) => {
-            console.error(error);
-        })
-        .then((data) => {
-            console.info(data);
-        });
+  return axios
+    .get("/some/path1")
+    .catch((error) => {
+      console.error(error);
+    })
+    .then((data) => {
+      console.info(data);
+    });
 };
 ```
 
 ```javascript
 const asyncFunc = async () => {
-    // 初期化
-    let response;
+  // 初期化
+  let response;
 
-    try {
-        response = await axios.get("/some/path1");
-        console.info(response);
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    response = await axios.get("/some/path1");
+    console.info(response);
+  } catch (error) {
+    console.error(error);
+  }
 
-    return response;
+  return response;
 };
 ```
 
@@ -444,7 +434,7 @@ const asyncFunc = async () => {
 ```javascript
 // 5秒待機する。
 await new Promise((resolve) => {
-    setTimeout(resolve, 5000);
+  setTimeout(resolve, 5000);
 });
 ```
 
@@ -468,28 +458,28 @@ JQueryパッケージの`get`メソッドや`post`メソッドを使用した場
 const url = "https://www.google.co.jp/";
 
 $.get(url)
-    .done((data) => {
-        console.log(data);
-    })
-    .fail((error) => {
-        console.log(error);
-    });
+  .done((data) => {
+    console.log(data);
+  })
+  .fail((error) => {
+    console.log(error);
+  });
 ```
 
 ```javascript
 const url = "https://www.google.co.jp/";
 
 const params = {
-    name: "Hiroki",
+  name: "Hiroki",
 };
 
 $.post(url, params)
-    .done((data) => {
-        console.log(data);
-    })
-    .fail((error) => {
-        console.log(error);
-    });
+  .done((data) => {
+    console.log(data);
+  })
+  .fail((error) => {
+    console.log(error);
+  });
 ```
 
 JQueryパッケージの`ajax`メソッドを使用した場合。
@@ -498,29 +488,29 @@ JQueryパッケージの`ajax`メソッドを使用した場合。
 const id = 1;
 
 $.ajax({
-    type: "POST",
-    url: "/xxx/xxx/" + id + "/",
-    contentType: "application/json",
-    data: {
-        param1: "AAA",
-        param2: "BBB",
-    },
+  type: "POST",
+  url: "/xxx/xxx/" + id + "/",
+  contentType: "application/json",
+  data: {
+    param1: "AAA",
+    param2: "BBB",
+  },
 })
-    // 非同期通信の成功時のコールバック処理
-    .done((data) => {
-        console.log(data);
-    })
+  // 非同期通信の成功時のコールバック処理
+  .done((data) => {
+    console.log(data);
+  })
 
-    // 非同期通信の失敗時のコールバック処理
-    .fail((error) => {
-        console.log(data);
-        toastr.error("", "エラーが発生しました。");
-    })
+  // 非同期通信の失敗時のコールバック処理
+  .fail((error) => {
+    console.log(data);
+    toastr.error("", "エラーが発生しました。");
+  })
 
-    // 非同期通信の成功失敗に関わらず常に実行する処理
-    .always((data) => {
-        this.isLoaded = false;
-    });
+  // 非同期通信の成功失敗に関わらず常に実行する処理
+  .always((data) => {
+    this.isLoaded = false;
+  });
 ```
 
 #### ▼ `then`メソッド
@@ -539,29 +529,26 @@ JQueryパッケージの`ajax`メソッドを使用した場合。
 const id = 1;
 
 $.ajax({
-    type: "POST",
-    url: "/xxx/xxx/" + id + "/",
-    contentType: "application/json",
-    data: {
-        param1: "AAA",
-        param2: "BBB",
-    },
+  type: "POST",
+  url: "/xxx/xxx/" + id + "/",
+  contentType: "application/json",
+  data: {
+    param1: "AAA",
+    param2: "BBB",
+  },
 })
-    // 最初のthen
-    .then(
-        // 引数1つめは通信成功時のコールバック処理
-        (data) => {
-        },
-        // 引数2つめは通信失敗時のコールバック処理
-        (data) => {
-        },
-    )
-    // 次のthen
-    .then(
-        // 引数1つめは通信成功時のコールバック処理
-        (data) => {
-        },
-    );
+  // 最初のthen
+  .then(
+    // 引数1つめは通信成功時のコールバック処理
+    (data) => {},
+    // 引数2つめは通信失敗時のコールバック処理
+    (data) => {},
+  )
+  // 次のthen
+  .then(
+    // 引数1つめは通信成功時のコールバック処理
+    (data) => {},
+  );
 ```
 
 <br>

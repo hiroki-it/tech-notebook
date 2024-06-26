@@ -351,19 +351,18 @@ axios.get(url);
 import axios from "axios";
 
 async function pollBackend() {
-    try {
-        const response = await axios.get('/api/endpoint');
-        // responseを処理する
+  try {
+    const response = await axios.get("/api/endpoint");
+    // responseを処理する
 
-        // 再帰的に呼び出す
-        setTimeout(() => {
-            pollBackend();
-        }, 1000);
-
-    } catch (error) {
-        // エラー処理
-    }
-};
+    // 再帰的に呼び出す
+    setTimeout(() => {
+      pollBackend();
+    }, 1000);
+  } catch (error) {
+    // エラー処理
+  }
+}
 ```
 
 ```javascript

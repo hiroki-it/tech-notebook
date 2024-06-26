@@ -15,6 +15,49 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 
 ## 01. 共通
 
+### コンテナイメージ
+
+#### ▼ otel/opentelemetry-collector
+
+標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく`otel/opentelemetry-collector-core`を使用する必要がある。
+
+エントリポイントが異なるため、コマンド名も異なる。
+
+```bash
+$ otelcol-contrib
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/manifest.yaml
+
+#### ▼ otel/opentelemetry-collector-k8s
+
+標準機能 (core) のコンテナイメージである。
+
+エントリポイントが異なるため、コマンド名も異なる。
+
+```bash
+$ otelcol-k8s
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/manifest.yaml
+
+#### ▼ otel/opentelemetry-collector-contrib
+
+標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく`otel/opentelemetry-collector-contrib`を使用する必要がある。
+
+エントリポイントが異なるため、コマンド名も異なる。
+
+```bash
+$ otelcol
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib
+> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/manifest.yaml
+
+<br>
+
 ### タイプ
 
 #### ▼ タイプとは

@@ -77,53 +77,53 @@ const vuex = require("vuex");
 
 // 外部ファイルが、このStoreインスタンスを読み込めるようにする。
 module.exports = new Vuex.Store({
-    // getters
-    // データから状態を取得するメソッドをいくつか持つ
-    // クラスベースオブジェクト指向のGetterメソッドに相当
-    getters: {
-        staffData(state) {
-            return state.staffData;
+  // getters
+  // データから状態を取得するメソッドをいくつか持つ
+  // クラスベースオブジェクト指向のGetterメソッドに相当
+  getters: {
+    staffData(state) {
+      return state.staffData;
+    },
+  },
+
+  // state
+  // 状態の変化を管理したいデータを持つ。
+  // クラスベースオブジェクト指向のプロパティに相当。
+  state: {
+    // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
+    staffData: [],
+  },
+
+  // mutations
+  // データの状態 (state) を変化させるメソッドを持つ。
+  // クラスベースオブジェクト指向のSetterメソッドに相当。
+  mutations: {
+    // Vuexのstateを第一引数、外部からセットしたい値を第二引数
+    mutate(state, staffData) {
+      exArray.forEach(
+        // 矢印はアロー関数を表し、無名関数の即コールを省略できる。
+        // 引数で渡されたexArrayの要素を、stateのexArrayに格納する。
+        (element) => {
+          state.exArray.push(element);
         },
-    },
 
-    // state
-    // 状態の変化を管理したいデータを持つ。
-    // クラスベースオブジェクト指向のプロパティに相当。
-    state: {
-        // stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。
-        staffData: [],
+        // アロー関数を使用しなければ、以下の様に記述できる。
+        // function(element) { state.exArray.push(element); }
+      );
     },
+  },
 
-    // mutations
-    // データの状態 (state) を変化させるメソッドを持つ。
-    // クラスベースオブジェクト指向のSetterメソッドに相当。
-    mutations: {
-        // Vuexのstateを第一引数、外部からセットしたい値を第二引数
-        mutate(state, staffData) {
-            exArray.forEach(
-                // 矢印はアロー関数を表し、無名関数の即コールを省略できる。
-                // 引数で渡されたexArrayの要素を、stateのexArrayに格納する。
-                (element) => {
-                    state.exArray.push(element);
-                },
-
-                // アロー関数を使用しなければ、以下の様に記述できる。
-                // function(element) { state.exArray.push(element); }
-            );
-        },
+  // actions
+  // mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
+  // contextオブジェクトからcommit機能を取り出す必要がある。
+  // (※省略記法あり)
+  //  クラスベースオブジェクト指向のSetterメソッドに相当。
+  actions: {
+    // 省略記法 (Argument destructuring)
+    mutate({commit}) {
+      commit("mutate");
     },
-
-    // actions
-    // mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。
-    // contextオブジェクトからcommit機能を取り出す必要がある。
-    // (※省略記法あり)
-    //  クラスベースオブジェクト指向のSetterメソッドに相当。
-    actions: {
-        // 省略記法 (Argument destructuring)
-        mutate({commit}) {
-            commit("mutate");
-        },
-    },
+  },
 });
 ```
 
@@ -169,31 +169,31 @@ module.exports = new Vuex.Store({
 <!-- 子コンポーネント -->
 <template> ...</template>
 <script>
-    // Vuex.Store()を読み込む。
-    const store = require("./_store");
+  // Vuex.Store()を読み込む。
+  const store = require("./_store");
 
-    // Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。
-    const mapGetters = require("vuex").mapGetters;
-    const mapActions = require("vuex").mapActions;
-    const mapMutaions = require("vuex").mapMutaions;
+  // Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。
+  const mapGetters = require("vuex").mapGetters;
+  const mapActions = require("vuex").mapActions;
+  const mapMutaions = require("vuex").mapMutaions;
 
-    module.exports = {
-        // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)
-        computed: {
-            // mapGettersヘルパー
-            // StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
-            ...mapGetters(["x-Function"]),
-        },
+  module.exports = {
+    // イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)
+    computed: {
+      // mapGettersヘルパー
+      // StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。
+      ...mapGetters(["x-Function"]),
+    },
 
-        // イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの)
-        methods: {
-            // mapMutationsヘルパー
-            ...mapMutations(["y-Function"]),
+    // イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの)
+    methods: {
+      // mapMutationsヘルパー
+      ...mapMutations(["y-Function"]),
 
-            // mapActionsヘルパー
-            ...mapActions(["z-Function"]),
-        },
-    };
+      // mapActionsヘルパー
+      ...mapActions(["z-Function"]),
+    },
+  };
 </script>
 ```
 

@@ -287,10 +287,10 @@ API_KEY=*****
 
 ```javascript
 export function foo() {
-    // contextオブジェクトの$configプロパティを分割代入
-    const {$config} = useContext();
+  // contextオブジェクトの$configプロパティを分割代入
+  const {$config} = useContext();
 
-    $config.apiKey;
+  $config.apiKey;
 }
 ```
 
@@ -326,10 +326,10 @@ API_URL=https://example.com/api
 
 ```javascript
 export function foo() {
-    // contextオブジェクトの$configプロパティを分割代入
-    const {$config} = useContext();
+  // contextオブジェクトの$configプロパティを分割代入
+  const {$config} = useContext();
 
-    $config.apiUrl;
+  $config.apiUrl;
 }
 ```
 
