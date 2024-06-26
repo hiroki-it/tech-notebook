@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="静的解析＠PHPのテストツールの知見を記録しています。">
+        <meta name="description" content="PHPStan＠静的解析の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint_phpstan.html">
       
       
         <link rel="prev" href="testing_whitebox_application_php.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】静的解析＠PHPのテストツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】PHPStan＠静的解析 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#phpstan" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】静的解析＠PHPのテストツール
+              【IT技術の知見】PHPStan＠静的解析
             
           </span>
         </div>
@@ -7914,6 +7914,50 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_2_2" id="__nav_9_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 静的解析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 静的解析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -7926,18 +7970,18 @@
           
   
   <span class="md-ellipsis">
-    静的解析
+    PHPStan
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="testing_whitebox_application_php_lint.html" class="md-nav__link md-nav__link--active">
+      <a href="testing_whitebox_application_php_lint_phpstan.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    静的解析
+    PHPStan
   </span>
   
 
@@ -7972,36 +8016,26 @@
         <li class="md-nav__item">
   <a href="#01-phpstan" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PHPStan
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. PHPStan">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHPStanとは
+      01. PHPStanとは
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. コマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コマンド">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      コマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ オプション無し
+      オプション無し
     </span>
   </a>
   
@@ -8011,21 +8045,21 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#03-phpstanneon" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. phpstan.neonファイル
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. phpstan.neonファイル">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#phpstanneon" class="md-nav__link">
     <span class="md-ellipsis">
-      phpstan.neonファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpstan.neonファイルとは
+      phpstan.neonファイルとは
     </span>
   </a>
   
@@ -8034,7 +8068,7 @@
           <li class="md-nav__item">
   <a href="#includes" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ includes
+      includes
     </span>
   </a>
   
@@ -8043,14 +8077,9 @@
           <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ parameters
+      parameters
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -8062,6 +8091,14 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -8185,6 +8222,8 @@
       
         
       
+        
+      
     
     
       
@@ -8269,7 +8308,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 単体テスト
+    ■ 静的解析
   </span>
   
 
@@ -8278,6 +8317,79 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 静的解析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_go_lint_golangci_lint.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    golangci-lint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_3_3" id="__nav_9_2_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 単体テスト
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_3_3">
             <span class="md-nav__icon md-icon"></span>
             ■ 単体テスト
           </label>
@@ -22962,36 +23074,26 @@
         <li class="md-nav__item">
   <a href="#01-phpstan" class="md-nav__link">
     <span class="md-ellipsis">
-      01. PHPStan
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. PHPStan">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHPStanとは
+      01. PHPStanとは
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. コマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コマンド">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      コマンド
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ オプション無し
+      オプション無し
     </span>
   </a>
   
@@ -23001,21 +23103,21 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#03-phpstanneon" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. phpstan.neonファイル
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. phpstan.neonファイル">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#phpstanneon" class="md-nav__link">
     <span class="md-ellipsis">
-      phpstan.neonファイル
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ phpstan.neonファイルとは
+      phpstan.neonファイルとは
     </span>
   </a>
   
@@ -23024,7 +23126,7 @@
           <li class="md-nav__item">
   <a href="#includes" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ includes
+      includes
     </span>
   </a>
   
@@ -23033,14 +23135,9 @@
           <li class="md-nav__item">
   <a href="#parameters" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ parameters
+      parameters
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -23067,7 +23164,7 @@
   
 
 
-<h1 id="php">静的解析＠PHPのテストツール<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h1 id="phpstan">PHPStan＠静的解析<a class="headerlink" href="#phpstan" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23076,8 +23173,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-phpstan">01. PHPStan<a class="headerlink" href="#01-phpstan" title="Permanent link">&para;</a></h2>
-<h3 id="phpstan">PHPStanとは<a class="headerlink" href="#phpstan" title="Permanent link">&para;</a></h3>
+<h2 id="01-phpstan">01. PHPStanとは<a class="headerlink" href="#01-phpstan" title="Permanent link">&para;</a></h2>
 <p>レベルに応じて、静的解析を実施する。</p>
 <p>最初は、必ず検出したい項目 (例：未定義関数、引数/戻り値の型の誤り) を決めて、これを検出できるレベルを設定すると良い。</p>
 <blockquote>
@@ -23087,20 +23183,22 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">オプション無し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>全てのファイルを対象として、静的解析を実施する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpstan<span class="w"> </span>analyse
 </code></pre></div>
 <p><br></p>
-<h3 id="phpstanneon">phpstan.neonファイル<a class="headerlink" href="#phpstanneon" title="Permanent link">&para;</a></h3>
-<h4 id="phpstanneon_1">▼ <code>phpstan.neonファイル</code>とは<a class="headerlink" href="#phpstanneon_1" title="Permanent link">&para;</a></h4>
+<h2 id="03-phpstanneon">03. phpstan.neonファイル<a class="headerlink" href="#03-phpstanneon" title="Permanent link">&para;</a></h2>
+<h3 id="phpstanneon"><code>phpstan.neonファイル</code>とは<a class="headerlink" href="#phpstanneon" title="Permanent link">&para;</a></h3>
 <p>PHPStanの設定を実行する。</p>
-<h4 id="includes">▼ <code>includes</code><a class="headerlink" href="#includes" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="includes"><code>includes</code><a class="headerlink" href="#includes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">includes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/nunomaduro/larastan/extension.neon</span>
 </code></pre></div>
-<h4 id="parameters">▼ <code>parameters</code><a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="parameters"><code>parameters</code><a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p>静的解析の設定を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
@@ -23141,7 +23239,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
   </span>
 
     
