@@ -24,7 +24,7 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 エントリポイントが異なるため、コマンド名も異なる。
 
 ```bash
-$ otelcol-contrib
+$ otelcol --config relay.yaml
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol
@@ -37,7 +37,7 @@ $ otelcol-contrib
 エントリポイントが異なるため、コマンド名も異なる。
 
 ```bash
-$ otelcol-k8s
+$ otelcol-k8s --config relay.yaml
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s
@@ -50,7 +50,7 @@ $ otelcol-k8s
 エントリポイントが異なるため、コマンド名も異なる。
 
 ```bash
-$ otelcol
+$ otelcol-contrib --config relay.yaml
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib
