@@ -19,6 +19,30 @@ Goの様々な静的解析ツールをまとめて実行できる。
 
 <br>
 
+## 02. CIへの導入
+
+### GitLab CI
+
+```yaml
+variables:
+  GO_VERSION: "1.19.13"
+
+stages:
+  - lint
+
+golangci:
+  stage: lint
+  image: golangci/golangci-lint:latest-alpine
+  script:
+    # 有効にしている静的解析の一覧を表示する
+    # GitLab CIでは色が無効になってしまうため、有効化する
+    - golangci-lint linters --color always
+    # 静的解析を実行する
+    - golangci-lint run -v --go ${GO_VERSION}
+```
+
+<br>
+
 ## 02. .golangci.yml
 
 ### run
@@ -29,6 +53,7 @@ run:
   concurrency: 4
   timeout: 5m
   issues-exit-code: 2
+  # testファイルがあるか否かを設定する
   tests: false
   build-tags:
     - mytag
@@ -92,6 +117,13 @@ linters-settings:
 linters:
   disable-all: false
   enable:
+
+    ...
+
+    - gofmt
+    - gosec
+    - govet
+
     # staticcheckを使用する
     - staticcheck
 
@@ -196,6 +228,20 @@ severity:
 <br>
 
 ## 03. コマンド
+
+### グローバル
+
+#### ▼ --color
+
+コマンドの実行結果に色をつける。
+
+CIによっては、実行時に色がなくなってしまうが、`always`を有効化すると色がつくようになる。
+
+```bash
+$ golangci-lint linters --color always
+```
+
+<br>
 
 ### run
 
