@@ -7868,7 +7868,7 @@
             
   
   <span class="md-ellipsis">
-    ■ PHPのテストツール
+    ■ アプリ (PHP)
   </span>
   
 
@@ -7878,7 +7878,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_2_2">
             <span class="md-nav__icon md-icon"></span>
-            ■ PHPのテストツール
+            ■ アプリ (PHP)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -8114,7 +8114,7 @@
             
   
   <span class="md-ellipsis">
-    ■ Goのテストツール
+    ■ アプリ (Go)
   </span>
   
 
@@ -8124,7 +8124,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_2_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ Goのテストツール
+            ■ アプリ (Go)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -24350,9 +24350,13 @@ http.50004<span class="w">     </span>blackhole:50004<span class="w">     </span
 <h3 id="istio-egressgateway">Istio EgressGatewayとは<a class="headerlink" href="#istio-egressgateway" title="Permanent link">&para;</a></h3>
 <p>Istio EgressGatewayは、サービスメッシュ外宛ての通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
 <p>Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。</p>
+<p>Istio EgressGatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。</p>
+<p>しかし、Istio EgressGatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。</p>
+<p>他に、サービスメッシュ外への特定の通信を識別できるようになるメリットもあります。</p>
 <blockquote>
 <ul>
 <li><a href="https://knowledge.sakura.ad.jp/20489/">https://knowledge.sakura.ad.jp/20489/</a></li>
+<li><a href="https://istio.io/v1.10/blog/2019/egress-performance/#egress-traffic-cases">https://istio.io/v1.10/blog/2019/egress-performance/#egress-traffic-cases</a></li>
 <li><a href="https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html">https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html</a></li>
 <li><a href="https://youtu.be/TW9XivfIFAY?t=330">https://youtu.be/TW9XivfIFAY?t=330</a></li>
 <li><a href="https://www.solo.io/topics/istio/istio-ingress-gateway/">https://www.solo.io/topics/istio/istio-ingress-gateway/</a></li>
@@ -24998,7 +25002,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-27</span>
   </span>
 
     
