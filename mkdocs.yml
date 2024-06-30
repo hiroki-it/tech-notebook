@@ -178,6 +178,13 @@ nav:
                   - Go: software/software_application_collaboration_api_rpc_api_grpc_client_package_go.md
           - ■ GraphQL-API:
               - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
+      - ■ ワークフロー:
+          - ■ Argo Workflows:
+              - Argo Workflows: software/software_application_workflow_argoworkflow.md
+              - リソース定義: software/software_application_workflow_argoworkflow_resource_definition.md
+          - ■ Temporal:
+              - Temporal: software/software_application_workflow_temporal.md
+              - 設定ファイル: software/software_application_workflow_temporal_conf.md
   - 🤝🏻 ミドルウェア:
       - software/middleware/index.md
       - ■ Web系:
@@ -229,6 +236,8 @@ nav:
                   - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
+          - ■ CertManager:
+              - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
           - ■ Falco:
               - Falco: software/software_middleware_security_falco.md
               - 設定ファイル: software/software_middleware_security_falco_conf.md
@@ -244,6 +253,20 @@ nav:
               - テレメトリー: software/software_middleware_service_mesh_envoy_telemetry.md
               - API: software/software_middleware_service_mesh_envoy_api.md
               - プラクティス: software/software_middleware_service_mesh_envoy_practice.md
+          - ■ Istio:
+              - Istio: software/software_middleware_service_mesh_istio.md
+              - コントロールプレーン: software/software_middleware_service_mesh_istio_control_plane.md
+              - データプレーン: software/software_middleware_service_mesh_istio_data_plane.md
+              - コマンド: software/software_middleware_service_mesh_istio_command.md
+              - プラクティス集: software/software_middleware_service_mesh_istio_practices.md
+              - IstioOperator: software/software_middleware_service_mesh_istio_operator_resource_definition.md
+              - ■ リソース:
+                  - リソース: software/software_middleware_service_mesh_istio_resource.md
+                  - ■ リソース定義:
+                      - リソース定義: software/software_middleware_service_mesh_istio_resource_definition.md
+                      - メタデータ: software/software_middleware_service_mesh_istio_resource_definition_common.md
+                      - ConfigMap系: software/software_middleware_service_mesh_istio_resource_definition_configmap.md
+                      - Secret系: software/software_middleware_service_mesh_istio_resource_definition_secret.md
 
   - 🐧 OS:
       - software/basic/index.md
@@ -352,6 +375,7 @@ nav:
           - ■ フレームワーク:
               - ■ Flask:
                   - コンポーネント: language/language_python_framework_flask_component.md
+                  - コンポーネント: language/language_python_framework_flask_component.md
                   - コマンド: language/language_python_framework_flask_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
@@ -361,14 +385,14 @@ nav:
       - testing/index.md
       - ■ ホワイトボックステスト:
           - ホワイトボックステスト: testing/testing_whitebox.md
-          - ■ アプリ (PHP) :
+          - ■ アプリ (PHP):
               - PHPのテストツール: testing/testing_whitebox_application_php.md
               - ■ 静的解析:
                   - PHPStan: testing/testing_whitebox_application_php_lint_phpstan.md
               - ■ 単体テスト:
                   - PHPUnit: testing/testing_whitebox_application_php_unit_phpunit.md
                   - Phake: testing/testing_whitebox_application_php_unit_phake.md
-          - ■ アプリ (Go) :
+          - ■ アプリ (Go):
               - Goのテストツール: testing/testing_whitebox_application_go.md
               - ■ 静的解析:
                   - golangci-lint: testing/testing_whitebox_application_go_lint_golangci_lint.md
@@ -381,6 +405,11 @@ nav:
                       - kubeconform: testing/testing_whitebox_infrastructure_lint_kubeconform.md
                   - ■ コード規約違反テスト:
                       - confest: testing/testing_whitebox_infrastructure_lint_confest.md
+                      - ■ Kyverno:
+                          - Kyverno: testing/testing_whitebox_infrastructure_lint_kyverno.md
+                          - リソース定義: testing/testing_whitebox_infrastructure_lint_kyverno_resource_definition.md
+                      - ■ OpenPolicyAgent:
+                          - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_open_policy_agent.md
                   - ■ ベストプラクティス違反テスト:
                       - polaris: testing/testing_whitebox_infrastructure_lint_polaris.md
                   - ■ バージョンテスト:
@@ -390,6 +419,7 @@ nav:
                       - checkov: testing/testing_whitebox_infrastructure_lint_checkov.md
                       - kics: testing/testing_whitebox_infrastructure_lint_kics.md
                       - kube-score: testing/testing_whitebox_infrastructure_lint_kube_score.md
+
           - ■ アプリ/インフラ両方:
               - ■ 脆弱性診断:
                   - trivy: testing/testing_whitebox_lint_trivy.md
@@ -449,7 +479,6 @@ nav:
               - JWT: security/security_auth_authentication_jwt.md
           - ■ 認可:
               - 認可: security/security_auth_authorization.md
-              - OpenPolicyAgent: security/security_auth_authorization_open_policy_agent.md
           - ■ SSO:
               - SSO: security/security_auth_sso.md
               - OAuth: security/security_auth_sso_oauth.md
@@ -558,6 +587,10 @@ nav:
           - ■ Docker Compose:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
               - docker-compose.yml: infrastructure_as_code/infrastructure_as_code_docker_compose_yml.md
+          - ■ Kaniko:
+              - Kaniko: infrastructure_as_code/infrastructure_as_code_docker_kaniko.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.md
           - ■ Packer:
               - Packer: infrastructure_as_code/infrastructure_as_code_packer.md
               - template.json: infrastructure_as_code/infrastructure_as_code_packer_template_json.md
@@ -589,6 +622,7 @@ nav:
           - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
+          - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_client_package.md
       - ■ プラクティス集:
           - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_practices.md
           - K8s Cluster: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.md
@@ -604,20 +638,24 @@ nav:
           - カスタムリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.md
           - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
-      - ■ 開発:
-          - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.md
+
+  - 🌊 マニフェスト開発ツール:
+      - ■ 実行環境:
           - ■ 開発環境:
               - ■ Minikube:
-                  - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.md
+                  - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md
               - ■ Kind:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind_command.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.md
               - ■ K3D:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_command.md
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_conf.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.md
+                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_conf.md
               - ■ K3S:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3s_command.md
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3s_conf.md
+                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_command.md
+                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_conf.md
+          - ■ 本番環境:
+              - ■ VCluster:
+                  - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_production_vcluster.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
@@ -678,91 +716,14 @@ nav:
 
   - 🌊 CNCF:
       - infrastructure_as_code/cncf_projects/index.md
-      - ■ ArgoCD:
-          - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.md
-          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.md
-          - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.md
-          - ■ リソース定義:
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.md
-              - 共通項目: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.md
-              - プラグイン: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_plugin.md
-              - 認証/認可系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_auth.md
-              - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_configmap.md
-              - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_secret.md
-              - Job系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_job.md
-      - ■ Argo Rollouts:
-          - Argo Rollouts: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argorollouts_resource_definition.md
-      - ■ Argo Workflows:
-          - Argo Workflows: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow_resource_definition.md
-      - ■ CertManager:
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.md
-      - ■ FluentBit/Fluentd:
-          - FluentBit/Fluentd: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.md
-          - ■ FluentBit:
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.md
-              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_resource_definition.md
-      - ■ Grafana:
-          - Grafana: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.md
-          - ■ リソース定義:
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.md
-              - ConfigMap: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.md
-              - ダッシュボード: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.md
-      - ■ Istio:
-          - Istio: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.md
-          - コントロールプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.md
-          - データプレーン: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.md
-          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_command.md
-          - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_practices.md
-          - IstioOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.md
-          - ■ リソース:
-              - リソース: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource.md
-              - ■ リソース定義:
-                  - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition.md
-                  - メタデータ: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_common.md
-                  - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_configmap.md
-                  - Secret系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_secret.md
-      - ■ Jaeger:
-          - Jaeger: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.md
-      - ■ Kaniko:
-          - Kaniko: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko.md
-          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_conf.md
-          - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_command.md
-      - ■ Keycloak:
-          - Keycloak: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak.md
-          - ■ クライアント:
-              - Javascript: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak_client_package_javascript.md
-      - ■ Kiali:
-          - Kiali: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.md
-          - ■ リソース定義:
-              - ConfigMap系: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.md
-      - ■ Kyverno:
-          - Kyverno: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.md
-      - ■ OpenPolicyAgent:
-          - OpenPolicyAgent: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.md
-      - ■ OpenTelemetry:
-          - OpenTelemetry: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.md
-          - ■ OpenTelemetry Collector:
-              - OpenTelemetry Collector: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.md
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.md
-      - ■ Prometheus:
-          - Prometheus: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.md
-          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.md
-          - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.md
-          - Exporter: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.md
-          - ■ メトリクス:
-              - メトリクス: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.md
-              - PromQL: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.md
-              - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.md
-      - ■ Temporal:
-          - Temporal: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal.md
-          - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_temporal_conf.md
-      - ■ VCluster:
-          - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.md
+
+
+
+
+
+
+
+
 
   - ♾️ DevOps:
       - devops/index.md
@@ -797,7 +758,21 @@ nav:
               - skaffold.yaml: devops/devops_cicd_ci_skaffold_yaml.md
               - コマンド: devops/devops_cicd_ci_skaffold_command.md
       - ■ CDツール:
-          - ArgoCD: devops/devops_cicd_cd_argocd.md
+          - ■ ArgoCD:
+              - ArgoCD: devops/devops_cicd_cd_argocd.md
+              - コマンド: devops/devops_cicd_cd_argocd_command.md
+              - プラクティス集: devops/devops_cicd_cd_argocd_practices.md
+              - ■ リソース定義:
+                  - リソース定義: devops/devops_cicd_cd_argocd_resource_definition.md
+                  - 共通項目: devops/devops_cicd_cd_argocd_resource_definition_common.md
+                  - プラグイン: devops/devops_cicd_cd_argocd_resource_definition_plugin.md
+                  - 認証/認可系: devops/devops_cicd_cd_argocd_resource_definition_auth.md
+                  - ConfigMap系: devops/devops_cicd_cd_argocd_resource_definition_configmap.md
+                  - Secret系: devops/devops_cicd_cd_argocd_resource_definition_secret.md
+                  - Job系: devops/devops_cicd_cd_argocd_resource_definition_job.md
+          - ■ Argo Rollouts:
+              - Argo Rollouts: devops/devops_cicd_cd_argorollouts.md
+              - リソース定義: devops/devops_cicd_cd_argorollouts_resource_definition.md
       - ■ 自動レビューツール:
           - github-comment: devops/devops_cicd_auto_review_github_comment.md
           - reviewdog: devops/devops_cicd_auto_review_reviewdog.md
@@ -816,16 +791,6 @@ nav:
           - 分散トレース: observability/observability_telemetry_trace.md
       - ■ テレメトリー収集ツール:
           - テレメトリー収集ツール: observability/observability_telemetry_tools.md
-          - FluentBit/Fluentd: observability/observability_telemetry_tools_fluentbit_fluentd.md
-          - Grafana: observability/observability_telemetry_tools_grafana.md
-          - Jaeger: observability/observability_telemetry_tools_jaeger.md
-          - Prometheus: observability/observability_telemetry_tools_prometheus.md
-          - ■ OpenTelemetry:
-              - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
-              - ■ 分散トレースクライアントパッケージ:
-                  - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_trace_client_package.md
-                  - Go: observability/observability_telemetry_tools_open_telemetry_trace_client_package_go.md
-                  - Python: observability/observability_telemetry_tools_open_telemetry_trace_client_package_python.md
           - ■ Datadog:
               - datadogエージェントの設定: observability/observability_telemetry_tools_datadog_agent_conf.md
               - 監視: observability/observability_telemetry_tools_datadog_monitoring.md
@@ -833,10 +798,47 @@ nav:
               - ■ テレメトリー:
                   - メトリクス: observability/observability_telemetry_tools_datadog_metrics.md
                   - ログ: observability/observability_telemetry_tools_datadog_log.md
-                  - ■ 分散トレースクライアントパッケージ:
-                      - 分散トレース収集: observability/observability_telemetry_tools_datadog_distributed_trace.md
-                      - クライアントパッケージ: observability/observability_telemetry_tools_datadog_distributed_trace_client_package.md
+                  - 分散トレース: observability/observability_telemetry_tools_datadog_trace.md
                   - テレメトリー間の紐づけ: observability/observability_telemetry_tools_datadog_telemetry_association.md
+                  - ■ クライアントパッケージ:
+                      - 分散トレース: observability/observability_telemetry_tools_datadog_client_package_trace.md
+          - ■ FluentBit/Fluentd:
+              - FluentBit/Fluentd: observability/observability_telemetry_tools_fluentbit_fluentd.md
+              - ■ FluentBit:
+                  - 設定ファイル: observability/observability_telemetry_tools_fluentbit_conf.md
+                  - コマンド: observability/observability_telemetry_tools_fluentbit_command.md
+                  - リソース定義: observability/observability_telemetry_tools_fluentbit_resource_definition.md
+          - ■ Grafana:
+              - Grafana: observability/observability_telemetry_tools_grafana.md
+              - ■ リソース定義:
+                  - リソース定義: observability/observability_telemetry_tools_grafana_resource_definition.md
+                  - ConfigMap: observability/observability_telemetry_tools_grafana_resource_definition_configmap.md
+                  - ダッシュボード: observability/observability_telemetry_tools_grafana_resource_definition_dashboard.md
+          - ■ Jaeger:
+              - Jaeger: observability/observability_telemetry_tools_jaeger.md
+          - ■ Kiali:
+              - Kiali: observability/observability_telemetry_tools_kiali.md
+              - ■ リソース定義:
+                  - ConfigMap系: observability/observability_telemetry_tools_kiali_resource_definition_configmap.md
+          - ■ OpenTelemetry:
+              - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
+              - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
+              - ■ 分散トレースクライアントパッケージ:
+                  - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
+                  - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
+                  - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
+              - ■ OpenTelemetry Collector:
+                  - OpenTelemetry Collector: observability/observability_telemetry_tools_open_telemetry_collector.md
+                  - 設定ファイル: observability/observability_telemetry_tools_open_telemetry_collector_config.md
+          - ■ Prometheus:
+              - Prometheus: observability/observability_telemetry_tools_prometheus.md
+              - 設定ファイル: observability/observability_telemetry_tools_prometheus_conf.md
+              - リソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
+              - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
+              - ■ メトリクス:
+                  - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
+                  - PromQL: observability/observability_telemetry_tools_prometheus_metrics_promql.md
+                  - クライアントパッケージ: observability/observability_telemetry_tools_prometheus_metrics_client_package.md
           - ■ Googleアプリ:
               - Googleアナリティクス: observability/observability_telemetry_tools_google_analytics.md
               - Googleサーチコンソール: observability/observability_telemetry_tools_google_search_console.md
