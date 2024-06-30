@@ -713,17 +713,6 @@ nav:
               - AWS VPC CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.md
               - AWS OpenTelemetry Collector Operator: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.md
 
-  - 🌊 CNCF:
-      - infrastructure_as_code/cncf_projects/index.md
-
-
-
-
-
-
-
-
-
   - ♾️ DevOps:
       - devops/index.md
       - ■ DevOps:
