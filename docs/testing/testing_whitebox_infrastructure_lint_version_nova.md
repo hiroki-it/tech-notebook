@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 nova＠ベストプラクティス違反
-description: nova＠ベストプラクティス違反の知見を記録しています。
+title: 【IT技術の知見】 nova＠バージョンテスト
+description: nova＠バージョンテストの知見を記録しています。
 ---
 
-# nova＠ベストプラクティス違反
+# nova＠バージョンテスト
 
 ## はじめに
 

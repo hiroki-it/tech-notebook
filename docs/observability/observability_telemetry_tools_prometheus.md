@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Prometheus＠CNCF
-description: Prometheus＠CNCF
+title: 【IT技術の知見】Prometheus＠テレメトリー収集ツール
+description: Prometheus＠テレメトリー収集ツール
 ---
 
-# Prometheus＠CNCF
+# Prometheus＠テレメトリー収集ツール
 
 ## はじめに
 

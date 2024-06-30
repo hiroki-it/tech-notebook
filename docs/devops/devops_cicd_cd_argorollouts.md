@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Argo Rollouts＠CNCF
-description: Argo Rollouts＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Argo Rollouts＠CDツール
+description: Argo Rollouts＠CDツールの知見を記録しています。
 ---
 
-# Argo Rollouts＠CNCF
+# Argo Rollouts＠CDツール
 
 ## はじめに
 

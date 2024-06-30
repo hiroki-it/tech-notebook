@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Jaeger＠CNCF
-description: Jaeger＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Jaeger＠テレメトリー収集ツール
+description: Jaeger＠テレメトリー収集ツールの知見を記録しています。
 ---
 
-# Jaeger＠CNCF
+# Jaeger＠テレメトリー収集ツール
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana＠CNCF
-description: Grafana＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Grafana＠テレメトリー収集ツール
+description: Grafana＠テレメトリー収集ツールの知見を記録しています。
 ---
 
-# Grafana＠CNCF
+# Grafana＠テレメトリー収集ツール
 
 ## はじめに
 

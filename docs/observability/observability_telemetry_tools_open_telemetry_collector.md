@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenTelemetry Collector＠CNCF
-description: OpenTelemetry Collector＠CNCFの知見を記録しています。
+title: 【IT技術の知見】OpenTelemetry Collector＠テレメトリー収集ツール
+description: OpenTelemetry Collector＠テレメトリー収集ツールの知見を記録しています。
 ---
 
-# OpenTelemetry Collector＠CNCF
+# OpenTelemetry Collector＠テレメトリー収集ツール
 
 ## はじめに
 

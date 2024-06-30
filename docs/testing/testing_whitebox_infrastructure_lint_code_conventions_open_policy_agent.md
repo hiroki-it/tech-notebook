@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenPolicyAgent＠CNCF
-description: OpenPolicyAgent＠CNCFの知見を記録しています。
+title: 【IT技術の知見】OpenPolicyAgent＠コード規約違反
+description: OpenPolicyAgent＠コード規約違反の知見を記録しています。
 ---
 
-# OpenPolicyAgent＠CNCF
+# OpenPolicyAgent＠コード規約違反
 
 ## はじめに
 

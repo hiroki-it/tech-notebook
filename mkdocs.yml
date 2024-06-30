@@ -402,23 +402,23 @@ nav:
               - ■ 静的解析:
                   - 静的解析ツール: testing/testing_whitebox_infrastructure_lint.md
                   - ■ 文法の誤りテスト:
-                      - kubeconform: testing/testing_whitebox_infrastructure_lint_kubeconform.md
+                      - kubeconform: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
                   - ■ コード規約違反テスト:
-                      - confest: testing/testing_whitebox_infrastructure_lint_confest.md
+                      - confest: testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.md
                       - ■ Kyverno:
-                          - Kyverno: testing/testing_whitebox_infrastructure_lint_kyverno.md
-                          - リソース定義: testing/testing_whitebox_infrastructure_lint_kyverno_resource_definition.md
+                          - Kyverno: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.md
+                          - リソース定義: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.md
                       - ■ OpenPolicyAgent:
-                          - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_open_policy_agent.md
+                          - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
                   - ■ ベストプラクティス違反テスト:
-                      - polaris: testing/testing_whitebox_infrastructure_lint_polaris.md
+                      - polaris: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
                   - ■ バージョンテスト:
-                      - pluto: testing/testing_whitebox_infrastructure_lint_pluto.md
-                      - nova: testing/testing_whitebox_infrastructure_lint_nova.md
+                      - pluto: testing/testing_whitebox_infrastructure_lint_version_pluto.md
+                      - nova: testing/testing_whitebox_infrastructure_lint_version_nova.md
                   - ■ 脆弱性診断:
-                      - checkov: testing/testing_whitebox_infrastructure_lint_checkov.md
-                      - kics: testing/testing_whitebox_infrastructure_lint_kics.md
-                      - kube-score: testing/testing_whitebox_infrastructure_lint_kube_score.md
+                      - checkov: testing/testing_whitebox_infrastructure_lint_vulnerability_checkov.md
+                      - kics: testing/testing_whitebox_infrastructure_lint_vulnerability_diagnosis_kics.md
+                      - kube-score: testing/testing_whitebox_infrastructure_lint_vulnerability_diagnosis_kube_score.md
 
           - ■ アプリ/インフラ両方:
               - ■ 脆弱性診断:

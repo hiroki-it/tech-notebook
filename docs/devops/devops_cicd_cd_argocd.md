@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ArgoCD＠CNCF
-description: ArgoCD＠CNCFの知見を記録しています。
+title: 【IT技術の知見】ArgoCD＠CDツール
+description: ArgoCD＠CDツールの知見を記録しています。
 ---
 
-# ArgoCD＠CNCF
+# ArgoCD＠CDツール
 
 ## はじめに
 

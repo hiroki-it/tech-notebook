@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠CNCF
-description: FluentBit/Fluentd＠CNCFの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd＠テレメトリー収集ツール
+description: FluentBit/Fluentd＠テレメトリー収集ツールの知見を記録しています。
 ---
 
-# FluentBit/Fluentd＠CNCF
+# FluentBit/Fluentd＠テレメトリー収集ツール
 
 ## はじめに
 
