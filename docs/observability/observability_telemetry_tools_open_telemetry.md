@@ -83,4 +83,3 @@ otelクライアントパッケージは、テレメトリーデータをAPIパ�
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/schema.go
 
 <br>
-
