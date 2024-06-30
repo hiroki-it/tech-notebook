@@ -38,8 +38,8 @@
  > * #### [︎ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)
  > * #### [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html)
  > * #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html)
- > * #### ︎<u>リソース定義</u>
- > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)
+ > * #### ︎<u>K8sリソース定義</u>
+ > > * ##### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)
  > > * ##### [共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)
  > > * ##### [プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)
  > > * ##### [認証/認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)
@@ -49,7 +49,7 @@
 
 * #### ︎<u>Argo Rollouts</u>
  > * #### [Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)
- > * #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
+ > * #### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
 
 <br>
 

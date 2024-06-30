@@ -73,6 +73,8 @@
 ### セキュリティ系
 
 * #### [︎︎Linux標準](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_linux.html)
+* ### <u>CertManager</u>
+  > * ##### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html)
 * #### <u>Falco</u>
   > * ##### [Falco](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html)
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html)
