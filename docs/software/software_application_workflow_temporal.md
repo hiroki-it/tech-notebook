@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Temporal＠CNCF
-description: Temporal＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Temporal＠ワークフロー
+description: Temporal＠ワークフローの知見を記録しています。
 ---
 
-# Temporal＠CNCF
+# Temporal＠ワークフロー
 
 ## はじめに
 

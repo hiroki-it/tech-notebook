@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kaniko＠CNCF
-description: Kaniko＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Kaniko
+description: Kanikoの知見を記録しています。
 ---
 
-# Kaniko＠CNCF
+# Kaniko
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】c＠CNCF
-description: Argo Workflows＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Argo Workflows＠ワークフロー
+description: Argo Workflows＠ワークフローの知見を記録しています。
 ---
 
-# Argo Workflows＠CNCF
+# Argo Workflows＠ワークフロー
 
 ## はじめに
 

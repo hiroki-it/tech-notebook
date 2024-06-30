@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】SQLパッケージ@Go
-description: SQLパッケージ@Goの知見を記録しています。
+title: 【IT技術の知見】SQLパッケージ＠Go
+description: SQLパッケージ＠Goの知見を記録しています。
 ---
 
-# SQLパッケージ@Go
+# SQLパッケージ＠Go
 
 ## はじめに
 

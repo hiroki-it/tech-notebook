@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio＠CNCF
-description: Istio＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Istio＠サービスメッシュ系ミドルウェア
+description: Istio＠サービスメッシュ系ミドルウェアの知見を記録しています。
 ---
 
-# Istio＠CNCF
+# Istio＠サービスメッシュ系ミドルウェア
 
 ## はじめに
 
