@@ -58,9 +58,9 @@
   > * ##### [Jaeger](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_jaeger.html)
 
 * #### <u>Kiali</u>
-  > * ##### [︎Kiali](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html)
+  > * ##### [︎Kiali](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_kiali.html)
   > * ##### <u>リソース定義</u>
-  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.html)
+  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_kiali_resource_definition_configmap.html)
 
 * #### <u>OpenTelemetry</u>
   > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry.html)
@@ -74,14 +74,14 @@
   > > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_collector_resource_definition.html)
 
 * #### <u>Prometheus</u>
-  > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html)
-  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html)
-  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html)
-  > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html)
+  > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_conf.html)
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_resource_definition.html)
+  > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter.html)
   > * ##### <u>メトリクス</u>
-  > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html)
-  > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.html)
-  > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html)
+  > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics.html)
+  > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics_promql.html)
+  > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics_client_package.html)
 
 * #### <u>Googleアプリ</u>
   > * ##### [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_google_analytics.html)
