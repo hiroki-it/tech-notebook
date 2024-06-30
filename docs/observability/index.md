@@ -69,16 +69,16 @@
   > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace.html)
   > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.html)
   > > * ##### [Python](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.html)
-  > * #### <u>OpenTelemetry Collector</u>
+  > * ##### <u>OpenTelemetry Collector</u>
   > > * ##### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_collector.html)
   > > * ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_collector_resource_definition.html)
 
 * #### <u>Prometheus</u>
-  > * #### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html)
-  > * #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html)
-  > * #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html)
-  > * #### [Exporter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html)
-  > * #### <u>メトリクス</u>
+  > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html)
+  > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html)
+  > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html)
+  > * ##### <u>メトリクス</u>
   > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html)
   > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_promql.html)
   > > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics_client_package.html)

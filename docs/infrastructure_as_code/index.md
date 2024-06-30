@@ -32,9 +32,9 @@
   > * ##### [︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
 
 * #### <u>Kaniko</u>
-  > * #### [Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko.html)
-  > * #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko_conf.html)
-  > * #### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko_command.html)
+  > * ##### [Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko_conf.html)
+  > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kaniko_command.html)
 
 * #### <u>Kubernetes</u>
   > * ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html)

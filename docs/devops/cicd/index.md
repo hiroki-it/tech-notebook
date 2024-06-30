@@ -39,10 +39,10 @@
 ### CDツール
 
 * #### ︎<u>ArgoCD</u>
- > * #### [︎ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)
- > * #### [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html)
- > * #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html)
- > * #### ︎<u>リソース定義</u>
+ > * ##### [︎ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)
+ > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html)
+ > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html)
+ > * ##### ︎<u>リソース定義</u>
  > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)
  > > * ##### [共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)
  > > * ##### [プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)
@@ -52,15 +52,17 @@
  > > * ##### [Job系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)
 
 * #### ︎<u>Argo Rollouts</u>
- > * #### [Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)
- > * #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
+ > * ##### [Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)
+ > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
 
 <br>
 
 ### 自動レビューツール
 
 * #### [github-comment](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_github_comment.html)
+
 * #### [reviewdog](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)
+
 * #### [︎tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_tfnotify.html)
 
 <br>
