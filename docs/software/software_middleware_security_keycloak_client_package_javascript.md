@@ -35,13 +35,16 @@ const keycloak = new Keycloak({
 });
 
 keycloak.init({onLoad: "login-required"}).then((auth) => {
+    
   if (!auth) {
     console.log("not Authenticated");
+  
   } else {
     console.log("Authenticated");
     console.log(keycloak);
     // LocalStorageからトークンを取得する
     localStorage.setItem("token", keycloak.token);
+  
   }
 });
 ```
