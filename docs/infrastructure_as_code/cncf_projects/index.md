@@ -14,78 +14,23 @@
 
 <br>
 
-### FluentBit/Fluentd
 
-* #### [FluentBit/Fluentd](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html)
-
-* #### <u>FluentBit</u>
-  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.html)
-  > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.html)
-  > * ##### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_resource_definition.html)
 
 <br>
 
-### Grafana
 
-* #### [︎Grafana](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html)
-
-* #### <u>K8sリソース定義</u>
-  > * ##### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.html)
-  > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html)
-  > * ##### [ダッシュボード](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html)
 
 <br>
 
-### Istio
-
-* #### [︎Istio](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html)
-
-* #### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.html)
-
-* #### [データプレーン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.html)
-
-* #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_command.html)
-
-* #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_practices.html)
-
-* #### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html)
-
-* #### <u>リソース</u>
-  > * ##### [︎リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource.html)
-  > * ##### <u>K8sリソース定義</u>
-  > > * ##### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition.html)
-  > > * ##### [共通項目](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_common.html)
-  > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_configmap.html)
-  > > * ##### [Secret系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_resource_definition_secret.html)
 
 <br>
-
-### Jaeger
-
-* #### [︎Jaeger](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html)
-
-<br>
-
-### Kaniko
-
-* #### [Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko.html)
-* #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_conf.html)
-* #### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kaniko_command.html)
-
-<br>
-
-### Keycloak
-
-* #### [Keycloak](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak.html)
-* #### <u>クライアント</u>
-  > * #### [Javascript](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_keycloak_client_package_javascript.html)
 
 <br>
 
 ### Kiali
 
 * #### [︎Kiali](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html)
-* #### <u>K8sリソース定義</u>
+* #### <u>リソース定義</u>
   > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali_resource_definition_configmap.html)
 
 <br>
@@ -94,7 +39,7 @@
 
 * #### [Kyverno](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html)
 
-* #### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html)
+* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html)
 
 <br>
 
@@ -107,7 +52,7 @@
 ### OpenTelemetry
 
 * #### [OpenTelemetry](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry.html)
-* #### [K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.html)
+* #### [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_resource_definition.html)
 * #### <u>OpenTelemetry Collector</u>
   > * ##### [OpenTelemetry Collector](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector.html)
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_telemetry_collector_config.html)
@@ -120,7 +65,7 @@
 
 * #### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html)
 
-* #### [︎K8sリソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html)
+* #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html)
 
 * #### [Exporter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html)
 
