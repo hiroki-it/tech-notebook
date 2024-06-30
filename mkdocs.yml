@@ -638,7 +638,7 @@ nav:
           - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
 
-  - 🌊 マニフェスト開発ツール:
+  - 🌊 開発ツール:
       - ■ 実行環境:
           - ■ 開発環境:
               - ■ Minikube:
@@ -811,7 +811,7 @@ nav:
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
               - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
-              - ■ 分散トレースクライアントパッケージ:
+              - ■ 分散トレース:
                   - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
                   - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
                   - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
