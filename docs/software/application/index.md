@@ -76,6 +76,10 @@
 
 ### ワークフロー
 
-* ### Argo Workflows
- > * #### [Argo Workflows](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow.html)
- > * #### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argoworkflow_resource_definition.html)
+* #### Argo Workflows
+ > * ##### [Argo Workflows](https://hiroki-it.github.io/tech-notebook/software/software_application_argoworkflow.html)
+ > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_argoworkflow_resource_definition.html)
+
+* #### Temporal
+ > * ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_temporal.html)
+ > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_application_temporal_conf.html)

@@ -27,6 +27,11 @@
 > > * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kubeconform.html)
 > * ##### <u>コード規約違反テスト</u>
 > > * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_confest.html)
+> > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html)
+> > * ##### <u>Kyverno</u>
+> > > * ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html)
+> > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno_resource_definition.html)
+
 > * ##### <u>ベストプラクティス違反テスト</u>
 > > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_polaris.html)
 > * ##### <u>バージョンテスト</u>
