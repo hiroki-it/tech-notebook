@@ -77,9 +77,9 @@
 ### ワークフロー
 
 * #### Argo Workflows
- > * ##### [Argo Workflows](https://hiroki-it.github.io/tech-notebook/software/software_application_argoworkflow.html)
- > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_argoworkflow_resource_definition.html)
+ > * ##### [Argo Workflows](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow.html)
+ > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow_resource_definition.html)
 
 * #### Temporal
- > * ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_temporal.html)
- > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_application_temporal_conf.html)
+ > * ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html)
+ > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf.html)
