@@ -181,7 +181,7 @@ nav:
       - ■ ワークフロー:
           - ■ Argo Workflows:
               - Argo Workflows: software/software_application_workflow_argoworkflow.md
-              - リソース定義: software/software_application_workflow_argoworkflow_resource_definition.md
+              - K8sリソース定義: software/software_application_workflow_argoworkflow_resource_definition.md
           - ■ Temporal:
               - Temporal: software/software_application_workflow_temporal.md
               - 設定ファイル: software/software_application_workflow_temporal_conf.md
@@ -237,7 +237,7 @@ nav:
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
           - ■ CertManager:
-              - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
+              - K8sリソース定義: software/software_middleware_security_cert_manager_resource_definition.md
           - ■ Falco:
               - Falco: software/software_middleware_security_falco.md
               - 設定ファイル: software/software_middleware_security_falco_conf.md
@@ -262,8 +262,8 @@ nav:
               - IstioOperator: software/software_middleware_service_mesh_istio_operator_resource_definition.md
               - ■ リソース:
                   - リソース: software/software_middleware_service_mesh_istio_resource.md
-                  - ■ リソース定義:
-                      - リソース定義: software/software_middleware_service_mesh_istio_resource_definition.md
+                  - ■ K8sリソース定義:
+                      - K8sリソース定義: software/software_middleware_service_mesh_istio_resource_definition.md
                       - メタデータ: software/software_middleware_service_mesh_istio_resource_definition_common.md
                       - ConfigMap系: software/software_middleware_service_mesh_istio_resource_definition_configmap.md
                       - Secret系: software/software_middleware_service_mesh_istio_resource_definition_secret.md
@@ -407,7 +407,7 @@ nav:
                       - confest: testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.md
                       - ■ Kyverno:
                           - Kyverno: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.md
-                          - リソース定義: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.md
+                          - K8sリソース定義: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.md
                       - ■ OpenPolicyAgent:
                           - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
                   - ■ ベストプラクティス違反テスト:
@@ -629,8 +629,8 @@ nav:
           - K8sリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
-          - ■ リソース定義:
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
+          - ■ K8sリソース定義:
+              - K8sリソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.md
               - 共通項目: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.md
               - AWS EKS: infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.md
       - ■ カスタムリソース:
@@ -682,10 +682,10 @@ nav:
           - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
           - ■ AWS Load Balancerコントローラー:
               - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md
+              - K8sリソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md
           - ■ Nginx Ingressコントローラー:
               - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
+              - K8sリソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
       - ■ ハードウェアリソース管理アドオン:
           - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.md
           - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.md
@@ -693,7 +693,7 @@ nav:
           - metrics-server: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.md
           - ■ Karpenter:
               - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.md
-              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.md
+              - K8sリソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.md
       - ■ ネットワークアドオン:
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
           - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
@@ -703,7 +703,7 @@ nav:
       - ■ Secretアドオン:
           - ■ SecretsストアCSIドライバー:
               - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.md
-              - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.md
+              - ︎K8sリソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.md
           - ■ ExternalSecretsOperator:
               - ExternalSecretsOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.md
       - ■ クラウドプロバイダーアドオン:
@@ -761,8 +761,8 @@ nav:
               - ArgoCD: devops/devops_cicd_cd_argocd.md
               - コマンド: devops/devops_cicd_cd_argocd_command.md
               - プラクティス集: devops/devops_cicd_cd_argocd_practices.md
-              - ■ リソース定義:
-                  - リソース定義: devops/devops_cicd_cd_argocd_resource_definition.md
+              - ■ K8sリソース定義:
+                  - K8sリソース定義: devops/devops_cicd_cd_argocd_resource_definition.md
                   - 共通項目: devops/devops_cicd_cd_argocd_resource_definition_common.md
                   - プラグイン: devops/devops_cicd_cd_argocd_resource_definition_plugin.md
                   - 認証/認可系: devops/devops_cicd_cd_argocd_resource_definition_auth.md
@@ -771,7 +771,7 @@ nav:
                   - Job系: devops/devops_cicd_cd_argocd_resource_definition_job.md
           - ■ Argo Rollouts:
               - Argo Rollouts: devops/devops_cicd_cd_argorollouts.md
-              - リソース定義: devops/devops_cicd_cd_argorollouts_resource_definition.md
+              - K8sリソース定義: devops/devops_cicd_cd_argorollouts_resource_definition.md
       - ■ 自動レビューツール:
           - github-comment: devops/devops_cicd_auto_review_github_comment.md
           - reviewdog: devops/devops_cicd_auto_review_reviewdog.md
@@ -806,22 +806,22 @@ nav:
               - ■ FluentBit:
                   - 設定ファイル: observability/observability_telemetry_tools_fluentbit_conf.md
                   - コマンド: observability/observability_telemetry_tools_fluentbit_command.md
-                  - リソース定義: observability/observability_telemetry_tools_fluentbit_resource_definition.md
+                  - K8sリソース定義: observability/observability_telemetry_tools_fluentbit_resource_definition.md
           - ■ Grafana:
               - Grafana: observability/observability_telemetry_tools_grafana.md
-              - ■ リソース定義:
-                  - リソース定義: observability/observability_telemetry_tools_grafana_resource_definition.md
+              - ■ K8sリソース定義:
+                  - K8sリソース定義: observability/observability_telemetry_tools_grafana_resource_definition.md
                   - ConfigMap: observability/observability_telemetry_tools_grafana_resource_definition_configmap.md
                   - ダッシュボード: observability/observability_telemetry_tools_grafana_resource_definition_dashboard.md
           - ■ Jaeger:
               - Jaeger: observability/observability_telemetry_tools_jaeger.md
           - ■ Kiali:
               - Kiali: observability/observability_telemetry_tools_kiali.md
-              - ■ リソース定義:
+              - ■ K8sリソース定義:
                   - ConfigMap系: observability/observability_telemetry_tools_kiali_resource_definition_configmap.md
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
-              - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
+              - K8sリソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
               - ■ 分散トレースクライアントパッケージ:
                   - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
                   - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
@@ -832,7 +832,7 @@ nav:
           - ■ Prometheus:
               - Prometheus: observability/observability_telemetry_tools_prometheus.md
               - 設定ファイル: observability/observability_telemetry_tools_prometheus_conf.md
-              - リソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
+              - K8sリソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
               - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
               - ■ メトリクス:
                   - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
