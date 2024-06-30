@@ -638,7 +638,7 @@ nav:
           - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
 
-  - 🌊 開発ツール:
+  - 🌊 K8s開発ツール:
       - infrastructure_as_code/development_tools/index.md
       - ■ 実行環境:
           - ■ 開発環境:
