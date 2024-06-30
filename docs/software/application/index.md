@@ -30,7 +30,7 @@
 
 <br>
 
-### フロントエンドエンドアーキテクチャ
+### フロントエンドアーキテクチャ
 
 * #### [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
 
