@@ -31,7 +31,6 @@
 > > * ##### <u>Kyverno</u>
 > > > * ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kyverno.html)
 > > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kyverno_resource_definition.html)
-
 > * ##### <u>ベストプラクティス違反テスト</u>
 > > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_polaris.html)
 > * ##### <u>バージョンテスト</u>
