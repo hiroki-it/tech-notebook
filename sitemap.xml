@@ -771,6 +771,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html</loc>
+         <lastmod>2024-07-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html</loc>
          <lastmod>2024-07-01</lastmod>
          <changefreq>daily</changefreq>
@@ -2462,11 +2467,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_message_stream_kafka.html</loc>
-         <lastmod>2024-07-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_network_cilium.html</loc>
          <lastmod>2024-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
