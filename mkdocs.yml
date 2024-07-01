@@ -676,9 +676,9 @@ nav:
 
   - ⏬ K8sアドオン:
       - infrastructure_as_code/kubernetes_addon/index.md
-      - ■ コントロールプレーンアドオン:
+      - ■ コントロールプレーン系:
           - admission-controllers: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.md
-      - ■ Ingressコントローラーアドオン:
+      - ■ Ingressコントローラー系:
           - Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.md
           - ■ AWS Load Balancerコントローラー:
               - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
@@ -686,7 +686,7 @@ nav:
           - ■ Nginx Ingressコントローラー:
               - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
-      - ■ ハードウェアリソース管理アドオン:
+      - ■ ハードウェアリソース管理系:
           - addon-resizer: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.md
           - cluster-autoscaler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.md
           - descheduler: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.md
@@ -694,20 +694,20 @@ nav:
           - ■ Karpenter:
               - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.md
-      - ■ ネットワークアドオン:
+      - ■ ネットワーク系:
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
           - Cilium: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.md
           - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
           - ■ CoreDNS:
               - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
               - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.md
-      - ■ Secretアドオン:
+      - ■ Secret系:
           - ■ SecretsストアCSIドライバー:
               - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.md
               - ︎リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.md
           - ■ ExternalSecretsOperator:
               - ExternalSecretsOperator: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.md
-      - ■ クラウドプロバイダーアドオン:
+      - ■ クラウドプロバイダー系:
           - ■ AWS EKSアドオン:
               - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
               - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
