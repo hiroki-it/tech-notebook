@@ -640,22 +640,21 @@ nav:
 
   - 🌊 K8s開発ツール:
       - infrastructure_as_code/development_tools/index.md
-      - ■ 実行環境:
-          - ■ 開発環境:
-              - ■ Minikube:
-                  - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube.md
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md
-              - ■ Kind:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.md
-              - ■ K3D:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.md
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_conf.md
-              - ■ K3S:
-                  - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_command.md
-                  - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_conf.md
-          - ■ 本番環境:
-              - ■ VCluster:
-                  - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_production_vcluster.md
+      - ■ 開発環境:
+          - ■ Minikube:
+              - Minikube: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube.md
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md
+          - ■ Kind:
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.md
+          - ■ K3D:
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_conf.md
+          - ■ K3S:
+              - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_command.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_conf.md
+      - ■ 本番環境:
+          - ■ VCluster:
+              - VCluster: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_production_vcluster.md
       - ■ マニフェスト管理:
           - ■ Helm:
               - Helm: infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.md
