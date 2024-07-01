@@ -8,13 +8,13 @@
 
 ## ⏬ K8sアドオン
 
-### コントロールプレーンアドオン
+### コントロールプレーン系
 
 * #### [admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)
 
 <br>
 
-### Ingressコントローラーアドオン
+### Ingressコントローラー系
 
 * #### [Ingressコントローラー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
 
@@ -28,7 +28,7 @@
 
 <br>
 
-### ︎ハードウェアリソース管理アドオン
+### ︎ハードウェアリソース管理系
 
 * #### [︎addon-resizer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html)
 
@@ -44,19 +44,21 @@
 
 <br>
 
-### ネットワークアドオン
+### ネットワーク系
+
+* #### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
+
+* #### [Cilium](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html)
+
+* #### [ExternalDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html)
 
 * #### <u>CoreDNS</u>
   > * ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html)
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.html)
 
-* #### [CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)
-
-* #### [ExternalDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html)
-
 <br>
 
-### Secretアドオン
+### Secret系
 
 * #### <u>SecretsストアCSIドライバー</u>
   > * ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)
@@ -66,7 +68,7 @@
 
 <br>
 
-### クラウドプロバイダーアドオン
+### クラウドプロバイダー系
 
 * #### <u>AWS EKSアドオン</u>
   > * ##### [AWS EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
