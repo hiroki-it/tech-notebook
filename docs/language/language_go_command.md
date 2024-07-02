@@ -350,7 +350,7 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 `go.mod`ファイルで指定しているバージョンを変更する。
 
 ```bash
-$ go mod edit -go <バージョン>
+$ go mod edit
 ```
 
 <br>
@@ -381,13 +381,15 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 
 #### ▼ `-go`
 
-Goのバージョンを指定して、`go.mod`ファイルと`go.sum`ファイルを更新する。
+`go.mod`ファイルに記載のGoのバージョンを上書きしつつ、`go.sum`ファイルを更新する。
 
 ただし、`-go`オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。
 
 ```bash
 $ go mod tidy -go <バージョン>
 ```
+
+> - https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode#go-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B
 
 #### ▼ `-v`
 

@@ -31,15 +31,21 @@ variables:
   GO_VERSION: "1.19"
 
 stages:
-  - lint
+  - build
+  - test
 
-golangci:
-  stage: lint
-  image: golangci/golangci-lint:latest-alpine
+go_build:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
   script:
-    # 新しいバージョンになっていることを確認する
+    # バージョンを確認する
     - go version
     - go mod tidy -go ${GO_VERSION}
+
+go_lint:
+  stage: test
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:latest-alpine
+  script:
     # 有効にしている静的解析の一覧を表示する
     # GitLab CIでは色が無効になってしまうため、有効化する
     - golangci-lint linters --color always

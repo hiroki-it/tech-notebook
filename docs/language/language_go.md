@@ -233,7 +233,7 @@ $ source ~/.zshrc
 # 新しいバージョンになっていることを確認する
 $ go version
 
-$ go mod tidy -go <新しいバージョン>
+$ go mod tidy
 ```
 
 `(4)`
