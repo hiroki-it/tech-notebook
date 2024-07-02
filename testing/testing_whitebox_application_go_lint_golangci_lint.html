@@ -9198,13 +9198,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-golangciyml" class="md-nav__link">
+  <a href="#03-golangciyml" class="md-nav__link">
     <span class="md-ellipsis">
-      02. .golangci.yml
+      03. .golangci.yml
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. .golangci.yml">
+    <nav class="md-nav" aria-label="03. .golangci.yml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -9267,13 +9267,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. コマンド
+      04. コマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. コマンド">
+    <nav class="md-nav" aria-label="04. コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -9339,6 +9339,45 @@
       linters
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. コメントアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. コメントアウト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      静的解析のスキップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="静的解析のスキップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lintignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ //lint:ignore &lt;番号&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23173,13 +23212,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-golangciyml" class="md-nav__link">
+  <a href="#03-golangciyml" class="md-nav__link">
     <span class="md-ellipsis">
-      02. .golangci.yml
+      03. .golangci.yml
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. .golangci.yml">
+    <nav class="md-nav" aria-label="03. .golangci.yml">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23242,13 +23281,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. コマンド
+      04. コマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. コマンド">
+    <nav class="md-nav" aria-label="04. コマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23322,6 +23361,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. コメントアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. コメントアウト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      静的解析のスキップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="静的解析のスキップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lintignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ //lint:ignore &lt;番号&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23351,6 +23429,11 @@
 <p><br></p>
 <h2 id="01-golangci-lint">01. golangci-lintとは<a class="headerlink" href="#01-golangci-lint" title="Permanent link">&para;</a></h2>
 <p>Goの様々な静的解析ツールをまとめて実行できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/sanpo_shiho/books/61bc1e1a30bf27/viewer/642fe9">https://zenn.dev/sanpo_shiho/books/61bc1e1a30bf27/viewer/642fe9</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-ci">02. CIへの導入<a class="headerlink" href="#02-ci" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab-ci">GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h3>
@@ -23371,7 +23454,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run -v --go ${GO_VERSION}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="02-golangciyml">02. .golangci.yml<a class="headerlink" href="#02-golangciyml" title="Permanent link">&para;</a></h2>
+<h2 id="03-golangciyml">03. .golangci.yml<a class="headerlink" href="#03-golangciyml" title="Permanent link">&para;</a></h2>
 <h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 実行のオプションを設定する</span>
 <span class="nt">run</span><span class="p">:</span>
@@ -23533,7 +23616,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. コマンド<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_2">グローバル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="-color">▼ --color<a class="headerlink" href="#-color" title="Permanent link">&para;</a></h4>
 <p>コマンドの実行結果に色をつける。</p>
@@ -23570,6 +23653,58 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 ...
 </code></pre></div>
 <p><br></p>
+<h2 id="05">05. コメントアウト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_3">静的解析のスキップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="lintignore">▼ <code>//lint:ignore &lt;番号&gt;</code><a class="headerlink" href="#lintignore" title="Permanent link">&para;</a></h4>
+<p>コメントアウトのコードに対して、指定した番号の静的解析をスキップする。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// ChainUnaryServerInterceptor gRPCサーバー側の計装に必要なUnaryServerInterceptorをチェインする</span>
+<span class="c1">// NOTE:</span>
+<span class="c1">// このミドルウェアを実行すると、リクエストを単位としてスパンを自動的に開始/終了できる</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う</span>
+<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// ChainStreamServerInterceptor gRPCサーバー側の計装に必要なStreamServerInterceptorをチェインする</span>
+<span class="c1">// NOTE:</span>
+<span class="c1">// このミドルウェアを実行すると、リクエストを単位としてスパンを自動的に開始/終了できる</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainStreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
+<span class="w">        </span><span class="c1">//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う</span>
+<span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
+<span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// InterceptorFilterHealthCheck ヘルスチェックパスではスパンを作成しない</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">()</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">//lint:ignore SA1019 gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -23590,7 +23725,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-02</span>
   </span>
 
     
