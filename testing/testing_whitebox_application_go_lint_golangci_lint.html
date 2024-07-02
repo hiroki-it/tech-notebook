@@ -23448,6 +23448,8 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci/golangci-lint:latest-alpine</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># 新しいバージョンになっていることを確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go version</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go mod tidy -go ${GO_VERSION}</span>
 <span class="w">    </span><span class="c1"># 有効にしている静的解析の一覧を表示する</span>
 <span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>

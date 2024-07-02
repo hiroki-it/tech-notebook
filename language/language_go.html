@@ -24231,9 +24231,13 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~
 <dt><code>(3)</code></dt>
 <dd>
 <p><code>go.mod</code>ファイルのGoのバージョン定義や、Goパッケージをアップグレードする。</p>
+<p><code>-go</code>オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-go<span class="o">=</span>&lt;新しいバージョン&gt;
+<div class="highlight"><pre><span></span><code><span class="c1"># 新しいバージョンになっていることを確認する</span>
+$<span class="w"> </span>go<span class="w"> </span>version
+
+$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-go<span class="w"> </span>&lt;新しいバージョン&gt;
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
@@ -24241,7 +24245,11 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~
 <p>古いバージョンのGoバイナリをアンインストールする。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/local/go
+<div class="highlight"><pre><span></span><code><span class="c1"># which goでバイナリの場所を確認する</span>
+$<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/local/go
+
+<span class="c1"># もし、asdfでGoをインストールしている場合</span>
+$<span class="w"> </span>asdf<span class="w"> </span>uninstall<span class="w"> </span>go<span class="w"> </span>&lt;古いバージョン&gt;
 </code></pre></div>
 <blockquote>
 <ul>
