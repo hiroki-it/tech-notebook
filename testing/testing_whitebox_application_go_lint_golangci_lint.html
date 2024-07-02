@@ -23438,7 +23438,8 @@
 <h2 id="02-ci">02. CIへの導入<a class="headerlink" href="#02-ci" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab-ci">GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19.13&quot;</span>
+<span class="w">  </span><span class="c1"># パッチバージョンを指定する必要はない</span>
+<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19&quot;</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
@@ -23447,11 +23448,13 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci/golangci-lint:latest-alpine</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go mod tidy -go ${GO_VERSION}</span>
 <span class="w">    </span><span class="c1"># 有効にしている静的解析の一覧を表示する</span>
 <span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint linters --color always</span>
 <span class="w">    </span><span class="c1"># 静的解析を実行する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run -v --go ${GO_VERSION}</span>
+<span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --go ${GO_VERSION} --color always</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-golangciyml">03. .golangci.yml<a class="headerlink" href="#03-golangciyml" title="Permanent link">&para;</a></h2>
@@ -23656,6 +23659,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <h2 id="05">05. コメントアウト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_3">静的解析のスキップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="lintignore">▼ <code>//lint:ignore &lt;番号&gt;</code><a class="headerlink" href="#lintignore" title="Permanent link">&para;</a></h4>
+<p>静的解析ツールによってコメントアウト方法が異なる。</p>
 <p>コメントアウトのコードに対して、指定した番号の静的解析をスキップする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
@@ -23704,6 +23708,11 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()))</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://staticcheck.dev/docs/configuration/#ignoring-problems">https://staticcheck.dev/docs/configuration/#ignoring-problems</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
