@@ -413,9 +413,9 @@ nav:
                           - Kyverno: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.md
                           - リソース定義: testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.md
                       - ■ OpenPolicyAgent:
-                          - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
+                          - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.md
                   - ■ ベストプラクティス違反テスト:
-                      - polaris: testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.md
+                      - polaris: testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.md
                   - ■ バージョンテスト:
                       - pluto: testing/testing_whitebox_infrastructure_lint_version_pluto.md
                       - nova: testing/testing_whitebox_infrastructure_lint_version_nova.md
