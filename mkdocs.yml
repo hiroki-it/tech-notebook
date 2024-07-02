@@ -444,22 +444,21 @@ nav:
   - 🌏 ネットワーク:
       - network/index.md
       - ネットワーク: network/network.md
-      - ■ モデル:
-          - ■ OSI参照モデル:
-              - OSI参照モデル: network/network_model_osi.md
-              - ■ L5 ~ L7:
-                  - L5 ~ L7: network/network_model_osi_l5_l7.md
-                  - HTTP: network/network_model_osi_l5_l7_http.md
-              - ■ L4:
-                  - L4: network/network_model_osi_l4.md
-                  - ポート: network/network_model_osi_l4_port.md
-              - ■ L3:
-                  - L3: network/network_model_osi_l3.md
-                  - IPアドレス: network/network_model_osi_l3_ip_address.md
-                  - ルーター: network/network_model_osi_l3_router.md
-              - L2: network/network_model_osi_l2.md
-              - L1: network/network_model_osi_l1.md
-          - TCP階層モデル: network/network_model_tcp.md
+      - ■ OSI参照モデル:
+          - OSI参照モデル: network/network_model_osi.md
+          - ■ L5 ~ L7:
+              - L5 ~ L7: network/network_model_osi_l5_l7.md
+              - HTTP: network/network_model_osi_l5_l7_http.md
+          - ■ L4:
+              - L4: network/network_model_osi_l4.md
+              - ポート: network/network_model_osi_l4_port.md
+          - ■ L3:
+              - L3: network/network_model_osi_l3.md
+              - IPアドレス: network/network_model_osi_l3_ip_address.md
+              - ルーター: network/network_model_osi_l3_router.md
+          - L2: network/network_model_osi_l2.md
+          - L1: network/network_model_osi_l1.md
+      - TCP階層モデル: network/network_model_tcp.md
 
   - 🔐 セキュリティ:
       - security/index.md
@@ -817,11 +816,11 @@ nav:
               - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
               - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
               - 計装:
-                - 計装: observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.md
-                - ■ 分散トレース:
-                  - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
-                  - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
-                  - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
+                  - 計装: observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.md
+                  - ■ 分散トレース:
+                      - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
+                      - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
+                      - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
               - ■ OpenTelemetry Collector:
                   - OpenTelemetry Collector: observability/observability_telemetry_tools_open_telemetry_collector.md
                   - 設定ファイル: observability/observability_telemetry_tools_open_telemetry_collector_config.md
