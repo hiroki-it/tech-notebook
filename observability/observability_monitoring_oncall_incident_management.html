@@ -3935,6 +3935,8 @@
       
         
       
+        
+      
     
     
       
@@ -4190,7 +4192,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OAuth2 Proxy
+    ■ Keycloak
   </span>
   
 
@@ -4199,6 +4201,154 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Keycloak
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software/software_middleware_security_keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5_4_2" id="__nav_6_5_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ クライアントパッケージ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_5_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ クライアントパッケージ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software/software_middleware_security_keycloak_client_package_javascript.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5_5" id="__nav_6_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ OAuth2 Proxy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5_5">
             <span class="md-nav__icon md-icon"></span>
             ■ OAuth2 Proxy
           </label>
@@ -24328,7 +24478,8 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>CloudWactchアラームからSlackのチャンネルに、アラートが通知される。ただし、Slackからオンコール担当者に電話をかけることはできない。</p>
+<p>CloudWactchアラームからSlackのチャンネルに、アラートが通知される。</p>
+<p>ただし、Slackからオンコール担当者に電話をかけることはできない。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -24340,7 +24491,9 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>アラートがどのロググループに紐づいているかを探す。執筆時点 (2021/12/09) では、AWSの仕様ではこれがわかりにくくなっている。メトリクスフィルターが設定されているロググループは、アラームに紐づいている可能性があり、メトリクスフィルターで作成されているメトリクス名 (例：ErrorCount) がアラームに記載されたものであれば、紐づいているとわかる。</p>
+<p>アラートがどのロググループに紐づいているかを探す。</p>
+<p>執筆時点 (2021/12/09) では、AWSの仕様ではこれがわかりにくくなっている。</p>
+<p>メトリクスフィルターが設定されているロググループは、アラームに紐づいている可能性があり、メトリクスフィルターで作成されているメトリクス名 (例：ErrorCount) がアラームに記載されたものであれば、紐づいているとわかる。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -24356,7 +24509,8 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>クエリの結果から、アラートの原因になっているエラーを見つける。CloudWatchのタイムスタンプとSlackのアラートの通知時刻には若干のタイムラグがある。</p>
+<p>クエリの結果から、アラートの原因になっているエラーを見つける。</p>
+<p>CloudWatchのタイムスタンプとSlackのアラートの通知時刻には若干のタイムラグがある。</p>
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
@@ -24372,11 +24526,13 @@
 </dd>
 <dt><code>(9)</code></dt>
 <dd>
-<p>ログイベントがインシデントであれば、その旨をエスカレーションする。また、タスク化し、迅速に対応する。</p>
+<p>ログイベントがインシデントであれば、その旨をエスカレーションする。</p>
+<p>また、タスク化し、迅速に対応する。</p>
 </dd>
 <dt><code>(10)</code></dt>
 <dd>
-<p>ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。タスク化し、時間のある時に対応する。</p>
+<p>ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。</p>
+<p>タスク化し、時間のある時に対応する。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -24696,7 +24852,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-02</span>
   </span>
 
     
