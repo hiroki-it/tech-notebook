@@ -241,6 +241,10 @@ nav:
           - ■ Falco:
               - Falco: software/software_middleware_security_falco.md
               - 設定ファイル: software/software_middleware_security_falco_conf.md
+          - ■ Keycloak:
+              - Keycloak: software/software_middleware_security_keycloak.md
+              - ■ クライアントパッケージ:
+                  - JavaScript: software/software_middleware_security_keycloak_client_package_javascript.md
           - ■ OAuth2 Proxy:
               - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
               - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
