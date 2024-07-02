@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Ingressコントローラー＠Ingressコントローラーアドオン
-description: Ingressコントローラー＠Ingressコントローラーアドオンの知見を記録しています。
+title: 【IT技術の知見】Ingressコントローラー＠Ingressコントローラー系
+description: Ingressコントローラー＠Ingressコントローラー系の知見を記録しています。
 ---
 
-# Ingressコントローラー＠Ingressコントローラーアドオン
+# Ingressコントローラー＠Ingressコントローラー系
 
 ## はじめに
 

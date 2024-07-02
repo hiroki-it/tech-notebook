@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Karpenter＠ハードウェアリソース管理
-description: Karpenter＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】Karpenter＠ハードウェアリソース管理系
+description: Karpenter＠ハードウェアリソース管理系の知見を記録しています。
 ---
 
-# Karpenter＠ハードウェアリソース管理
+# Karpenter＠ハードウェアリソース管理系
 
 ## はじめに
 

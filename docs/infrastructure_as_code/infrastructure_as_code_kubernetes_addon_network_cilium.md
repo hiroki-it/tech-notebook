@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Cilium@ネットワークアドオン
-description: Cilium@ネットワークアドオンの知見を記録しています。
+title: 【IT技術の知見】Cilium@ネットワーク系
+description: Cilium@ネットワーク系の知見を記録しています。
 ---
 
-# Cilium@ネットワークアドオン
+# Cilium@ネットワーク系
 
 ## はじめに
 

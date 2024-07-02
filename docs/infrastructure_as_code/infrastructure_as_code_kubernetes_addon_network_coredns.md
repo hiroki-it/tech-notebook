@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CoreDNS＠ネットワークアドオン
-description: CoreDNS＠ネットワークアドオンの知見を記録しています。
+title: 【IT技術の知見】CoreDNS＠ネットワーク系
+description: CoreDNS＠ネットワーク系の知見を記録しています。
 ---
 
-# CoreDNS＠ネットワークアドオン
+# CoreDNS＠ネットワーク系
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】metrics-server＠ハードウェアリソース管理
-description: metrics-server＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】metrics-server＠ハードウェアリソース管理系
+description: metrics-server＠ハードウェアリソース管理系の知見を記録しています。
 ---
 
-# metrics-server＠ハードウェアリソース管理
+# metrics-server＠ハードウェアリソース管理系
 
 ## はじめに
 

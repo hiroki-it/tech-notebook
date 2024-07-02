@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】cluster-autoscaler＠ハードウェアリソース管理
-description: cluster-autoscaler＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】cluster-autoscaler＠ハードウェアリソース管理系
+description: cluster-autoscaler＠ハードウェアリソース管理系の知見を記録しています。
 ---
 
-# cluster-autoscaler＠ハードウェアリソース管理
+# cluster-autoscaler＠ハードウェアリソース管理系
 
 ## はじめに
 

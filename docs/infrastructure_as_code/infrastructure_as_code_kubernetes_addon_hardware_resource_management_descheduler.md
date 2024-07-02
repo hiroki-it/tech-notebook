@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】descheduler＠ハードウェアリソース管理
-description: descheduler＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】descheduler＠ハードウェアリソース管理系
+description: descheduler＠ハードウェアリソース管理系の知見を記録しています。
 ---
 
-# descheduler＠ハードウェアリソース管理
+# descheduler＠ハードウェアリソース管理系
 
 ## はじめに
 

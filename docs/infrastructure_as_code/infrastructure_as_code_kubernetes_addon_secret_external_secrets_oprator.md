@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ExternalSecretsOperator＠Secretアドオン
-description: ExternalSecretsOperator＠Secretアドオンの知見を記録しています。
+title: 【IT技術の知見】ExternalSecretsOperator＠Secret系
+description: ExternalSecretsOperator＠Secret系の知見を記録しています。
 ---
 
-# ExternalSecretsOperator＠Secretアドオン
+# ExternalSecretsOperator＠Secret系
 
 ## はじめに
 

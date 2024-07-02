@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】addon-resizer＠ハードウェアリソース管理
-description: addon-resizer＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】addon-resizer＠ハードウェアリソース管理系
+description: addon-resizer＠ハードウェアリソース管理系の知見を記録しています。
 ---
 
-# addon-resizer＠ハードウェアリソース管理
+# addon-resizer＠ハードウェアリソース管理系
 
 ## はじめに
 

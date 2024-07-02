@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ExternalDNS＠ネットワークアドオン
-description: ExternalDNS＠ネットワークアドオンの知見を記録しています。
+title: 【IT技術の知見】ExternalDNS＠ネットワーク系
+description: ExternalDNS＠ネットワーク系の知見を記録しています。
 ---
 
-# ExternalDNS＠ネットワークアドオン
+# ExternalDNS＠ネットワーク系
 
 ## はじめに
 
