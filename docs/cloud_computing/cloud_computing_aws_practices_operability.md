@@ -36,7 +36,7 @@ Code三兄弟のデータポイントを収集し、メトリクスとして分�
 - 変更失敗率 (デプロイの失敗頻度)
 - CIの状態 (失敗、成功、実施頻度)
 - CDの状態 (失敗、成功、実施頻度)
-- CICD全体の状態 (失敗、成功、実施頻度)
+- CI/CD全体の状態 (失敗、成功、実施頻度)
 
 > - https://docs.aws.amazon.com/solutions/latest/devops-monitoring-dashboard-on-aws/devops-metrics-list.html
 > - https://docs.aws.amazon.com/solutions/latest/devops-monitoring-dashboard-on-aws/amazon-quicksight-dashboards-visuals.html

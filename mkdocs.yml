@@ -131,9 +131,9 @@ plugins:
 
 # ナビゲーション
 nav:
-  - 当サイトについて: index.md
+  - はじめに: index.md
 
-  - 『俺』: about.md
+  - ✊🏻 俺: about.md
 
   - 🌳 システム:
       - system/index.md
@@ -642,7 +642,7 @@ nav:
           - custom-controller: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.md
           - ロジック: infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.md
 
-  - 🌊 K8s開発ツール:
+  - 🌊 K8s開発:
       - infrastructure_as_code/development_tools/index.md
       - ■ 開発環境:
           - ■ Minikube:
