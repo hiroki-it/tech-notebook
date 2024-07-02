@@ -816,7 +816,9 @@ nav:
           - ■ OpenTelemetry:
               - OpenTelemetry: observability/observability_telemetry_tools_open_telemetry.md
               - リソース定義: observability/observability_telemetry_tools_open_telemetry_resource_definition.md
-              - ■ 分散トレース:
+              - 計装:
+                - 計装: observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.md
+                - ■ 分散トレース:
                   - クライアントパッケージ: observability/observability_telemetry_tools_open_telemetry_client_package_trace.md
                   - Go: observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.md
                   - Python: observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.md
