@@ -24356,7 +24356,7 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 <h3 id="mod-edit">mod edit<a class="headerlink" href="#mod-edit" title="Permanent link">&para;</a></h3>
 <h4 id="mod-edit_1">▼ mod editとは<a class="headerlink" href="#mod-edit_1" title="Permanent link">&para;</a></h4>
 <p><code>go.mod</code>ファイルで指定しているバージョンを変更する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>edit<span class="w"> </span>-go<span class="w"> </span>&lt;バージョン&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>edit
 </code></pre></div>
 <p><br></p>
 <h3 id="mod-tidy">mod tidy<a class="headerlink" href="#mod-tidy" title="Permanent link">&para;</a></h3>
@@ -24381,10 +24381,15 @@ go:<span class="w"> </span>upgraded<span class="w"> </span>&lt;ドメインを�
 </ul>
 </blockquote>
 <h4 id="-go">▼ <code>-go</code><a class="headerlink" href="#-go" title="Permanent link">&para;</a></h4>
-<p>Goのバージョンを指定して、<code>go.mod</code>ファイルと<code>go.sum</code>ファイルを更新する。</p>
+<p><code>go.mod</code>ファイルに記載のGoのバージョンを上書きしつつ、<code>go.sum</code>ファイルを更新する。</p>
 <p>ただし、<code>-go</code>オプションは推奨バージョンを設定できるだけで、これを守らない場合もある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-go<span class="w"> </span>&lt;バージョン&gt;
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode#go-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B">https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode#go-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B</a></li>
+</ul>
+</blockquote>
 <h4 id="-v_1">▼ <code>-v</code><a class="headerlink" href="#-v_1" title="Permanent link">&para;</a></h4>
 <p><code>import</code>していないために<code>go.mod</code>ファイルから削除したモジュールを、標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy<span class="w"> </span>-v
