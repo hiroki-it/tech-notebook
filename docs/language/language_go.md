@@ -227,8 +227,13 @@ $ source ~/.zshrc
 
 : `go.mod`ファイルのGoのバージョン定義や、Goパッケージをアップグレードする。
 
+    `-go`オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。
+
 ```bash
-$ go mod tidy -go=<新しいバージョン>
+# 新しいバージョンになっていることを確認する
+$ go version
+
+$ go mod tidy -go <新しいバージョン>
 ```
 
 `(4)`
@@ -236,7 +241,11 @@ $ go mod tidy -go=<新しいバージョン>
 : 古いバージョンのGoバイナリをアンインストールする。
 
 ```bash
+# which goでバイナリの場所を確認する
 $ rm -rf /usr/local/go
+
+# もし、asdfでGoをインストールしている場合
+$ asdf uninstall go <古いバージョン>
 ```
 
 > - https://zenn.dev/wasuwa/articles/3d2e65516b760e

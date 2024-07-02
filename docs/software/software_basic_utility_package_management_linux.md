@@ -318,6 +318,8 @@ $ asdf plugin list
 $ asdf install
 ```
 
+エディタを使用している場合は、新しくインストールしたバイナリに切り替える。
+
 <br>
 
 ### uninstall

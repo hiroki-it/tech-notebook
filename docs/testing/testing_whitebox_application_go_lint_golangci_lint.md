@@ -37,6 +37,8 @@ golangci:
   stage: lint
   image: golangci/golangci-lint:latest-alpine
   script:
+    # 新しいバージョンになっていることを確認する
+    - go version
     - go mod tidy -go ${GO_VERSION}
     # 有効にしている静的解析の一覧を表示する
     # GitLab CIでは色が無効になってしまうため、有効化する
