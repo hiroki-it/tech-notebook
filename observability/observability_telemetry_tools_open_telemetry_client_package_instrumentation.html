@@ -6,15 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OpenTelemetry＠テレメトリー収集ツールの知見を記録しています。">
+        <meta name="description" content="計装＠OpenTelemetryの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.html">
       
       
+        <link rel="prev" href="observability_telemetry_tools_open_telemetry_resource_definition.html">
+      
+      
+        <link rel="next" href="observability_telemetry_tools_open_telemetry_client_package_trace.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】OpenTelemetry＠テレメトリー収集ツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】計装＠OpenTelemetry - 俺の技術ノート</title>
       
     
     
@@ -121,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】OpenTelemetry＠テレメトリー収集ツール
+              【IT技術の知見】計装＠OpenTelemetry
             
           </span>
         </div>
@@ -590,10 +594,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -9610,11 +9616,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.html" class="md-nav__link">
+      <a href="../testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    kubeconform
+    OpenPolicyAgent
   </span>
   
 
@@ -9691,11 +9697,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.html" class="md-nav__link">
+      <a href="../testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    kubeconform
+    polaris
   </span>
   
 
@@ -20368,6 +20374,8 @@
       
   
   
+    
+  
   
   
     
@@ -20390,16 +20398,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
         
           
           
@@ -20415,13 +20424,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             🔎 可観測性
@@ -20693,8 +20702,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -20722,13 +20733,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_5" checked>
         
           
           <label class="md-nav__link" for="__nav_21_5" id="__nav_21_5_label" tabindex="0">
@@ -20742,7 +20751,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_21_5">
             <span class="md-nav__icon md-icon"></span>
             ■ テレメトリー収集ツール
@@ -21721,8 +21730,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -21740,13 +21751,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_5_7" checked>
         
           
           <label class="md-nav__link" for="__nav_21_5_7" id="__nav_21_5_7_label" tabindex="0">
@@ -21760,7 +21769,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_5_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_5_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_21_5_7">
             <span class="md-nav__icon md-icon"></span>
             ■ OpenTelemetry
@@ -21813,6 +21822,217 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_5_7_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_21_5_7_3" id="__nav_21_5_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    計装
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_5_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_5_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            計装
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    計装
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="observability_telemetry_tools_open_telemetry_client_package_instrumentation.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    計装
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. 分散トレースの計装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 分散トレースの計装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      手動計装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      自動計装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自動計装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 自動計装とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インタプリタ言語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ コンパイル言語
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      比較
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. ログの計装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. メトリクスの計装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. テレメトリー間の紐付け
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -21836,10 +22056,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_5_7_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_5_7_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_21_5_7_3" id="__nav_21_5_7_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21_5_7_3_2" id="__nav_21_5_7_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -21850,8 +22070,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_5_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_21_5_7_3">
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_21_5_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21_5_7_3_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 分散トレース
           </label>
@@ -21915,6 +22135,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -22932,7 +23160,7 @@
   
 
 
-<h1 id="opentelemetry">OpenTelemetry＠テレメトリー収集ツール<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
+<h1 id="opentelemetry">計装＠OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23054,7 +23282,7 @@ $<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-02</span>
   </span>
 
     
