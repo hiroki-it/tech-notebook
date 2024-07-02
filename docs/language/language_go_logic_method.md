@@ -269,7 +269,7 @@ func main() {
 	fmt.Print(GetCurrentModuleName())
 }
 
-// 以下のモジュール名とする
+// 以下のパッケージ名とする
 -- go.mod --
 module example.com/foo
 ```

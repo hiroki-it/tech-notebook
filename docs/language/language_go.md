@@ -65,7 +65,7 @@ WORKDIR /go/src
 # インストールのキャッシュを活用するためにコピーしておく。
 COPY go.mod go.sum /go/src/
 
-# パッケージをインストールする。
+# モジュールをインストールする。
 RUN go get github.com/cosmtrek/air@v1.27.3
 
 COPY ../software /go/src/

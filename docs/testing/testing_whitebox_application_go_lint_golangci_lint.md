@@ -27,7 +27,8 @@ Goの様々な静的解析ツールをまとめて実行できる。
 
 ```yaml
 variables:
-  GO_VERSION: "1.19.13"
+  # パッチバージョンを指定する必要はない
+  GO_VERSION: "1.19"
 
 stages:
   - lint
@@ -36,11 +37,13 @@ golangci:
   stage: lint
   image: golangci/golangci-lint:latest-alpine
   script:
+    - go mod tidy -go ${GO_VERSION}
     # 有効にしている静的解析の一覧を表示する
     # GitLab CIでは色が無効になってしまうため、有効化する
     - golangci-lint linters --color always
     # 静的解析を実行する
-    - golangci-lint run -v --go ${GO_VERSION}
+    # GitLab CIでは色が無効になってしまうため、有効化する
+    - golangci-lint run --go ${GO_VERSION} --color always
 ```
 
 <br>
@@ -295,6 +298,8 @@ asciicheck: checks that all code identifiers does not have non-ASCII symbols in 
 
 #### ▼ `//lint:ignore <番号>`
 
+静的解析ツールによってコメントアウト方法が異なる。
+
 コメントアウトのコードに対して、指定した番号の静的解析をスキップする。
 
 ```go
@@ -345,5 +350,7 @@ func InterceptorFilterHealthCheck() otelgrpc.Option {
 	return otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck()))
 }
 ```
+
+> - https://staticcheck.dev/docs/configuration/#ignoring-problems
 
 <br>
