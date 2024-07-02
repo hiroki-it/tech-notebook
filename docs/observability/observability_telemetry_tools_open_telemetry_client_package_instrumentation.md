@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenTelemetry＠テレメトリー収集ツール
-description: OpenTelemetry＠テレメトリー収集ツールの知見を記録しています。
+title: 【IT技術の知見】計装＠OpenTelemetry
+description: 計装＠OpenTelemetryの知見を記録しています。
 ---
 
-# OpenTelemetry＠テレメトリー収集ツール
+# 計装＠OpenTelemetry
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 

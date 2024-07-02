@@ -24,22 +24,22 @@
 * #### <u>インフラ</u>
 > * ##### [静的解析ツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint.html)
 > * ##### <u>文法の誤りテスト</u>
-> > * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kubeconform.html)
+> > * ##### [kubeconform](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_grammatical_mistake_kubeconform.html)
 > * ##### <u>コード規約違反テスト</u>
-> > * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_confest.html)
-> > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_open_policy_agent.html)
+> > * ##### [confest](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_violation_confest.html)
+> > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.html)
 > > * ##### <u>Kyverno</u>
-> > > * ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kyverno.html)
-> > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kyverno_resource_definition.html)
+> > > * ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.html)
+> > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.html)
 > * ##### <u>ベストプラクティス違反テスト</u>
-> > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_polaris.html)
+> > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.html)
 > * ##### <u>バージョンテスト</u>
-> > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_pluto.html)
-> > * ##### [nova](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_nova.html)
+> > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_version_pluto.html)
+> > * ##### [nova](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_version_nova.html)
 > * ##### <u>脆弱性診断</u>
-> > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_checkov.html)
-> > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kics.html)
-> > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kube_score.html)
+> > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_vulnerability_checkov.html)
+> > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_vulnerability_diagnosis_kics.html)
+> > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_vulnerability_diagnosis_kube_score.html)
 
 * #### <u>アプリ/インフラ両方</u>
 > * ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_trivy.html)
