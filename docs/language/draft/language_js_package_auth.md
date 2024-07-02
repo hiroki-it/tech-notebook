@@ -16,7 +16,7 @@ description: 認証パッケージ＠JavaScriptの知見を記録しています
 ## 01. oidc-client-ts
 
 ```javascript
-import {OidcClient, UserManager} from "oidc-client";
+import {OidcClient, UserManager} from "oidc-client-ts";
 
 const client = new OidcClient({
   authority: "<IDプロバイダーの認可エンドポイント>",

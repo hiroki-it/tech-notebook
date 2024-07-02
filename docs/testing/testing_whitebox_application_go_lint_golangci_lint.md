@@ -17,6 +17,8 @@ description: golangci-lint＠静的解析の知見を記録しています。
 
 Goの様々な静的解析ツールをまとめて実行できる。
 
+> - https://zenn.dev/sanpo_shiho/books/61bc1e1a30bf27/viewer/642fe9
+
 <br>
 
 ## 02. CIへの導入
@@ -43,7 +45,7 @@ golangci:
 
 <br>
 
-## 02. .golangci.yml
+## 03. .golangci.yml
 
 ### run
 
@@ -227,7 +229,7 @@ severity:
 
 <br>
 
-## 03. コマンド
+## 04. コマンド
 
 ### グローバル
 
@@ -283,6 +285,65 @@ asasalint: check for pass []any as any in variadic func(...any) [fast: false, au
 asciicheck: checks that all code identifiers does not have non-ASCII symbols in the name [fast: true, auto-fix: false]
 
 ...
+```
+
+<br>
+
+## 05. コメントアウト
+
+### 静的解析のスキップ
+
+#### ▼ `//lint:ignore <番号>`
+
+コメントアウトのコードに対して、指定した番号の静的解析をスキップする。
+
+```go
+package grpc
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+	"google.golang.org/grpc"
+
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+)
+
+// ChainUnaryServerInterceptor gRPCサーバー側の計装に必要なUnaryServerInterceptorをチェインする
+// NOTE:
+// このミドルウェアを実行すると、リクエストを単位としてスパンを自動的に開始/終了できる
+func ChainUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
+	return grpc.ChainUnaryInterceptor(
+		grpc_recovery.UnaryServerInterceptor(),
+		//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う
+		otelgrpc.UnaryServerInterceptor(
+			append(opts, []otelgrpc.Option{
+				InterceptorFilterHealthCheck(),
+			}...)...,
+		),
+	)
+}
+
+// ChainStreamServerInterceptor gRPCサーバー側の計装に必要なStreamServerInterceptorをチェインする
+// NOTE:
+// このミドルウェアを実行すると、リクエストを単位としてスパンを自動的に開始/終了できる
+func ChainStreamServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
+	return grpc.ChainStreamInterceptor(
+		grpc_recovery.StreamServerInterceptor(),
+		//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う
+		otelgrpc.StreamServerInterceptor(
+			append(opts, []otelgrpc.Option{
+				InterceptorFilterHealthCheck(),
+			}...)...,
+		),
+	)
+}
+
+// InterceptorFilterHealthCheck ヘルスチェックパスではスパンを作成しない
+func InterceptorFilterHealthCheck() otelgrpc.Option {
+
+	//lint:ignore SA1019 gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う
+	return otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck()))
+}
 ```
 
 <br>

@@ -107,6 +107,12 @@ $ yq -P foo.json > foo.yaml
 
 入力された`.yaml`ファイルを処理し、新しい`.yaml`ファイルとして出力する。
 
+<br>
+
+## 01-04. ireduce
+
+### ireduceとは
+
 ```bash
 $ yq eval-all '. as $item ireduce ({}; . * $item )' foo.yaml bar.yaml
 ```
