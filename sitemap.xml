@@ -1466,6 +1466,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_js_package_auth.html</loc>
+         <lastmod>2024-07-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/draft/language_python_class_based.html</loc>
          <lastmod>2024-07-02</lastmod>
          <changefreq>daily</changefreq>
