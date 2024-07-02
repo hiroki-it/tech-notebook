@@ -23069,18 +23069,23 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>PagerDutyのServiceは、インシデントをメールや電話に通知する。</p>
-<p>執筆時点 (2022/12/26) では、電話での通知は英語である。</p>
+<p>Runbook Automationが、インシデントの自動復旧を試みる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>インシデントの通知を受けたオンコール担当者は、PagerDutyのServiceを確認する。</p>
+<p>Runbook Automationがインシデントを解決できなかったとする。</p>
+<p>PagerDutyのServiceは、インシデントをメールや電話に通知する。</p>
+<p>執筆時点 (2022/12/26) では、電話での通知は英語である。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>解決フェーズがOpenになっているインシデントを確認し、問題を解決する。</p>
+<p>インシデントの通知を受けたオンコール担当者は、PagerDutyのServiceを確認する。</p>
 </dd>
 <dt><code>(5)</code></dt>
+<dd>
+<p>解決フェーズがOpenになっているインシデントを確認し、問題を解決する。</p>
+</dd>
+<dt><code>(6)</code></dt>
 <dd>
 <p>問題を解決できれば、Resolved状態に移行する。</p>
 </dd>
