@@ -90,7 +90,7 @@ foo_job:
     - echo foo
   rules:
     # featureブランチ (develop、main、以外) のみで実行する
-    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH != 'develop' && $CI_COMMIT_BRANCH != 'main'
+    - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH$CI_COMMIT_BRANCH != 'develop' && $CI_COMMIT_BRANCH != 'main'
 ```
 
 #### ▼ `CI_COMMIT_TAG`

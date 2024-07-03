@@ -637,23 +637,25 @@ $ git merge release
 空文字を`false`として判定可能にする。
 
 ```bash
-DIFF=$(git diff origin/main)
+DIFF=$(git diff origin/main --name-only --relative ./...)
 
-# 差分があるかどうかを検証する
-if [ $DIFF="" ] ; then
+# 空文字かどうかを検証する
+if [ -z $DIFF ] ; then
   echo "差分なし";
-else
-  echo "差分あり";
+  exit0
 fi
+
+echo "差分あり";
 ```
 
 > - https://stackoverflow.com/a/74817537
+> - https://zenn.dev/aki_artisan/articles/bash-test-option-zn
 
 ```bash
-DIFF=$(git diff origin/main --quiet)
+EXIT_CODE=$(git diff origin/main --quiet)
 
-# 差分があるかどうかを検証する
-case $DIFF in
+# 終了コードを検証する
+case $EXIT_CODE in
   0) echo "差分なし" ;;
   1) echo "差分あり" ;;
   128) echo "パラーメーターが誤っている" ;;
