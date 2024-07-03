@@ -24483,7 +24483,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># featureブランチ (develop、main、以外) のみで実行する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;push&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;develop&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;main&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;push&#39; &amp;&amp; $CI_COMMIT_BRANCH$CI_COMMIT_BRANCH != &#39;develop&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;main&#39;</span>
 </code></pre></div>
 <h4 id="ci_commit_tag">▼ <code>CI_COMMIT_TAG</code><a class="headerlink" href="#ci_commit_tag" title="Permanent link">&para;</a></h4>
 <p>現在のタグ名が割り当てられている。</p>
