@@ -634,22 +634,41 @@ $ git merge release
 
 結果に応じた終了コードをを出力する。
 
-空文字を`false`として判定可能にする。
+空文字を`true`として判定する。
+
+`too many arguments`のエラーにならないように、ダブルクオーテーションをつける。
 
 ```bash
 DIFF=$(git diff origin/main --name-only --relative ./...)
 
 # 空文字かどうかを検証する
-if [ -z $DIFF ] ; then
+if [ -z "$DIFF" ] ; then
   echo "差分なし";
-  exit0
+  exit 0
 fi
 
 echo "差分あり";
 ```
 
+空文字でないことを`true`として判定することもできる。
+
+ダブルクオーテーションをつける。
+
+```bash
+DIFF=$(git diff origin/main --name-only --relative ./...)
+
+# 空文字でないかどうかを検証する
+if [ -n "$DIFF" ] ; then
+  echo "差分あり";
+  exit 1
+fi
+
+echo "差分なし";
+```
+
 > - https://stackoverflow.com/a/74817537
 > - https://zenn.dev/aki_artisan/articles/bash-test-option-zn
+> - https://qiita.com/XYZXYZXYZ/items/9bc17ec8466fa6bf875a
 
 ```bash
 EXIT_CODE=$(git diff origin/main --quiet)

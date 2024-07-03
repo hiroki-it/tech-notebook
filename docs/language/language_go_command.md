@@ -125,6 +125,9 @@ $ go fmt ./...
 内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば`bin`ディレクトリ配下に配置し、それ以外 (例：`.a`ファイル) であれば`pkg`ディレクトリ配下に配置する。
 
 ```bash
+# asdfでGoをインストールしている場合は、go installコマンドの前に`PATH`を設定しておく
+$ export PATH="$(go env GOPATH)/bin:$PATH"
+
 $ go install
 ```
 
@@ -144,6 +147,7 @@ $ ${GOPATH}/bin/foo-package --version
 
 > - https://go.dev/doc/go-get-install-deprecation
 > - https://github.com/golang/go/issues/44840#issuecomment-1828537390
+> - https://okkun-sh.hatenablog.com/entry/2023/06/16/013008
 
 #### ▼ 最新バージョンの指定
 
