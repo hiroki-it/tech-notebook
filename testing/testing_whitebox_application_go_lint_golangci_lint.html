@@ -23440,8 +23440,10 @@
 <h2 id="02-ci">02. CIへの導入<a class="headerlink" href="#02-ci" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab-ci">GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># パッチバージョンを指定する必要はない</span>
-<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19&quot;</span>
+<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;Goのバージョン&gt;&quot;</span>
+<span class="w">  </span><span class="c1"># golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある</span>
+<span class="w">  </span><span class="c1"># @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore</span>
+<span class="w">  </span><span class="nt">GOLANGCI_LINT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;golangci-lintのバージョン&gt;&quot;</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -23453,12 +23455,10 @@
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># バージョンを確認する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go version</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go mod tidy -go ${GO_VERSION}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go mod tidy</span>
 
 <span class="nt">go_lint</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<span class="w">  </span><span class="c1"># golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある</span>
-<span class="w">  </span><span class="c1"># @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:&lt;必要なGoのバージョンを含むイメージ&gt;-alpine</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go version</span>
@@ -23467,7 +23467,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint linters --color always</span>
 <span class="w">    </span><span class="c1"># 静的解析を実行する</span>
 <span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --go ${GO_VERSION} --color always --timeout 5m</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --color always --timeout 5m</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-golangciyml">03. .golangci.yml<a class="headerlink" href="#03-golangciyml" title="Permanent link">&para;</a></h2>
