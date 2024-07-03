@@ -9149,7 +9149,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コード規約
+      ▼ コード規約違反
     </span>
   </a>
   
@@ -23128,7 +23128,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コード規約
+      ▼ コード規約違反
     </span>
   </a>
   
@@ -23324,52 +23324,6 @@
 <td>マジックナンバーを採用していないかを検証する。</td>
 <td></td>
 </tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>ツール名</th>
-<th>解析内容</th>
-<th>理由</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>govulncheck</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>gosec</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
-<li><a href="https://go.dev/blog/vuln">https://go.dev/blog/vuln</a></li>
-<li><a href="https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3">https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3</a></li>
-</ul>
-</blockquote>
-<h4 id="_6">▼ コード規約<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>ツール名</th>
-<th>解析内容</th>
-<th>理由</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>funlen</td>
 <td>メソッド名が指定した文字数より長くないかを検証する。</td>
@@ -23415,8 +23369,49 @@
 <td><code>printf</code>のようなメソッドの名前が<code>f</code>で終わっているかを検証する。</td>
 <td></td>
 </tr>
+<tr>
+<td>revive</td>
+<td>用意されたコード規約に則っているかを検証する。</td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>ツール名</th>
+<th>解析内容</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>govulncheck</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>gosec</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
+<li><a href="https://go.dev/blog/vuln">https://go.dev/blog/vuln</a></li>
+<li><a href="https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3">https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ コード規約違反<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>ユーザー定義のコード規約違反を検証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
