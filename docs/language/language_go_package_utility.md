@@ -112,6 +112,36 @@ $ godoc -http=:8080
 
 ## gomarkdoc
 
+### CI上で実行する
+
+CI上で`gomarkdoc`コマンドを実行する。
+
+差分があれば、CIを失敗させる。
+
+```yaml
+variables:
+  GO_VERSION: "1.19.13"
+
+stages:
+  - test
+
+go_doc:
+  stage: test
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
+  script:
+    - go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+    - gomarkdoc ./... --config .gomarkdoc.yml
+    - |
+      DIFF=$(git diff origin/${CI_COMMIT_BRANCH} --name-only --relative ./)
+      echo $DIFF
+      if [ -n "$DIFF" ] ; then
+        echo "ローカルマシンでgomarkdocを実行し、ドキュメントを更新してください"
+        exit 1
+      fi
+```
+
+<br>
+
 ### `{{.Dir}}`
 
 ディレクトリ名を再帰的に出力する。
