@@ -27,8 +27,10 @@ Goの様々な静的解析ツールをまとめて実行できる。
 
 ```yaml
 variables:
-  # パッチバージョンを指定する必要はない
-  GO_VERSION: "1.19"
+  GO_VERSION: "<Goのバージョン>"
+  # golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある
+  # @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore
+  GOLANGCI_LINT: "<golangci-lintのバージョン>"
 
 stages:
   - build
@@ -40,12 +42,10 @@ go_build:
   script:
     # バージョンを確認する
     - go version
-    - go mod tidy -go ${GO_VERSION}
+    - go mod tidy
 
 go_lint:
   stage: test
-  # golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある
-  # @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore
   image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:<必要なGoのバージョンを含むイメージ>-alpine
   script:
     - go version
@@ -54,7 +54,7 @@ go_lint:
     - golangci-lint linters --color always
     # 静的解析を実行する
     # GitLab CIでは色が無効になってしまうため、有効化する
-    - golangci-lint run --go ${GO_VERSION} --color always --timeout 5m
+    - golangci-lint run --color always --timeout 5m
 ```
 
 <br>

@@ -572,7 +572,7 @@ test_istio:
     - k3d cluster delete $CI_PIPELINE_ID
 ```
 
-#### ▼ `.setup-asdf.sh`ファイル
+#### ▼ `setup-asdf.sh`ファイル
 
 ```bash
 #!/bin/bash
