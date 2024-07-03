@@ -9360,17 +9360,26 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      静的解析のスキップ
+      静的解析の無視
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="静的解析のスキップ">
+    <nav class="md-nav" aria-label="静的解析の無視">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lintignore" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ //lint:ignore &lt;番号&gt;
+      ▼ コード全体
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のコード
     </span>
   </a>
   
@@ -23322,17 +23331,26 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      静的解析のスキップ
+      静的解析の無視
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="静的解析のスキップ">
+    <nav class="md-nav" aria-label="静的解析の無視">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lintignore" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ //lint:ignore &lt;番号&gt;
+      ▼ コード全体
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のコード
     </span>
   </a>
   
@@ -23403,14 +23421,17 @@
 
 <span class="nt">go_lint</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:latest-alpine</span>
+<span class="w">  </span><span class="c1"># golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある</span>
+<span class="w">  </span><span class="c1"># @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:&lt;必要なGoのバージョンを含むイメージ&gt;-alpine</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go version</span>
 <span class="w">    </span><span class="c1"># 有効にしている静的解析の一覧を表示する</span>
 <span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint linters --color always</span>
 <span class="w">    </span><span class="c1"># 静的解析を実行する</span>
 <span class="w">    </span><span class="c1"># GitLab CIでは色が無効になってしまうため、有効化する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --go ${GO_VERSION} --color always</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --go ${GO_VERSION} --color always --timeout 5m</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-golangciyml">03. .golangci.yml<a class="headerlink" href="#03-golangciyml" title="Permanent link">&para;</a></h2>
@@ -23613,10 +23634,25 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. コメントアウト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_3">静的解析のスキップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="lintignore">▼ <code>//lint:ignore &lt;番号&gt;</code><a class="headerlink" href="#lintignore" title="Permanent link">&para;</a></h4>
-<p>静的解析ツールによってコメントアウト方法が異なる。</p>
-<p>コメントアウトのコードに対して、指定した番号の静的解析をスキップする。</p>
+<h3 id="_3">静的解析の無視<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ コード全体<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">linters-settings</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">staticcheck</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">checks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">      </span><span class="c1"># マイナスをつけると無視できる</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-SA1000&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-SA1004&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/false-positives/#specific-linter-excludes">https://golangci-lint.run/usage/false-positives/#specific-linter-excludes</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ 特定のコード<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>コメントアウトのコードに対して、指定した番号の静的解析を無視する。</p>
+<p>注意点として、各ツールの用意しているignoreコメントではなく、golangci-lint専用のコメントである。</p>
+<p>特定の番号 (例：<code>SA1019</code>) を無視することは難しそう。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23633,7 +23669,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う</span>
+<span class="w">        </span><span class="c1">//nolint:staticcheck // NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
 <span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
@@ -23648,7 +23684,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainStreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
-<span class="w">        </span><span class="c1">//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う</span>
+<span class="w">        </span><span class="c1">//nolint:staticcheck // NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
 <span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
@@ -23660,13 +23696,13 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <span class="c1">// InterceptorFilterHealthCheck ヘルスチェックパスではスパンを作成しない</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">()</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">//lint:ignore SA1019 gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う</span>
+<span class="w">    </span><span class="c1">//nolint:staticcheck // gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">()))</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://staticcheck.dev/docs/configuration/#ignoring-problems">https://staticcheck.dev/docs/configuration/#ignoring-problems</a></li>
+<li><a href="https://golangci-lint.run/usage/false-positives/#nolint-directive">https://golangci-lint.run/usage/false-positives/#nolint-directive</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23690,7 +23726,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-03</span>
   </span>
 
     
