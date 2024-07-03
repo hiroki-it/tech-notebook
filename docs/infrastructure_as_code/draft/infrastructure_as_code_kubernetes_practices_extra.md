@@ -1204,7 +1204,7 @@ readOnlyRootFilesystem |
 
 なお、Dockerfileの`USER`や`GROUP`でも同様にUIDとGIDを設定できるが、マニフェスト側でもDockerfileと同様にrunAsUserとrunAsGroupを設定した方が可読性が高くなる。
 
-そのため、Dockerfile側にすでに設定があるかどうかに関わらず、実装規約としてマニフェスト側でも設定するようにする。
+そのため、Dockerfile側にすでに設定があるかどうかに関わらず、コード規約としてマニフェスト側でも設定するようにする。
 
 > [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
 
