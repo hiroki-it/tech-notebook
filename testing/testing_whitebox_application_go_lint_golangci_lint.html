@@ -9370,7 +9370,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コード全体
+      ▼ プロジェクト全体
     </span>
   </a>
   
@@ -9378,6 +9378,24 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のパス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 特定のコード
     </span>
@@ -23341,7 +23359,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コード全体
+      ▼ プロジェクト全体
     </span>
   </a>
   
@@ -23349,6 +23367,24 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のパス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 特定のコード
     </span>
@@ -23635,7 +23671,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <p><br></p>
 <h2 id="05">05. コメントアウト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_3">静的解析の無視<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ コード全体<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ プロジェクト全体<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">linters-settings</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">staticcheck</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">checks</span><span class="p">:</span>
@@ -23649,7 +23685,28 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 <li><a href="https://golangci-lint.run/usage/false-positives/#specific-linter-excludes">https://golangci-lint.run/usage/false-positives/#specific-linter-excludes</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ 特定のコード<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 特定のパス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">issues</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">exclude-rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path-except</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;(.+)_test\.go&#39;</span>
+<span class="w">      </span><span class="nt">linters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staticcheck</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/false-positives/#exclude-or-skip">https://golangci-lint.run/usage/false-positives/#exclude-or-skip</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ 特定のファイル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">//nolint:staticcheck</span>
+<span class="kn">package</span><span class="w"> </span><span class="nx">pkg</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/false-positives/#nolint-directive">https://golangci-lint.run/usage/false-positives/#nolint-directive</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ 特定のコード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>コメントアウトのコードに対して、指定した番号の静的解析を無視する。</p>
 <p>注意点として、各ツールの用意しているignoreコメントではなく、golangci-lint専用のコメントである。</p>
 <p>特定の番号 (例：<code>SA1019</code>) を無視することは難しそう。</p>
