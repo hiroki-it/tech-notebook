@@ -23326,6 +23326,11 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
+</ul>
+</blockquote>
 <h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -23350,6 +23355,7 @@
 </table>
 <blockquote>
 <ul>
+<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
 <li><a href="https://go.dev/blog/vuln">https://go.dev/blog/vuln</a></li>
 <li><a href="https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3">https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3</a></li>
 </ul>
@@ -23375,6 +23381,11 @@
 <td></td>
 </tr>
 <tr>
+<td>statickcheck</td>
+<td>パフォーマンスの出る実装方法になっているかを検証する。</td>
+<td></td>
+</tr>
+<tr>
 <td>stylecheck</td>
 <td>Effective Goに則った方法で実装しているかを検証する。</td>
 <td>パッケージ名にアンダースコアを使用していないか。キャメルケースの変数名に略語 (例：HTTP、ID、など) を使う場合、略語は全て大文字にする。</td>
@@ -23384,8 +23395,33 @@
 <td>不要な改行がないかを検証する。</td>
 <td></td>
 </tr>
+<tr>
+<td>gocognit</td>
+<td>コードが複雑 (例：<code>if</code>の入れ子) であるかどうかを検証する。</td>
+<td></td>
+</tr>
+<tr>
+<td>godox</td>
+<td>TODOコメントがあるかどうかを検証する。</td>
+<td></td>
+</tr>
+<tr>
+<td>goimports</td>
+<td>足りない<code>import</code>や余分な<code>import</code>があるかどうかを検証する。</td>
+<td></td>
+</tr>
+<tr>
+<td>goprintffuncname</td>
+<td><code>printf</code>のようなメソッドの名前が<code>f</code>で終わっているかを検証する。</td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://golangci-lint.run/usage/linters/">https://golangci-lint.run/usage/linters/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_7">単体テスト、機能テストツール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ul>
