@@ -25121,21 +25121,35 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 <p><br></p>
 <h2 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h2>
 <p>結果に応じた終了コードをを出力する。</p>
-<p>空文字を<code>false</code>として判定可能にする。</p>
+<p>空文字を<code>true</code>として判定する。</p>
+<p><code>too many arguments</code>のエラーにならないように、ダブルクオーテーションをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
 
 <span class="c1"># 空文字かどうかを検証する</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="nv">$DIFF</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIFF</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="p">;</span>
-<span class="w">  </span>exit0
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 <span class="k">fi</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>空文字でないことを<code>true</code>として判定することもできる。</p>
+<p>ダブルクオーテーションをつける。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
+
+<span class="c1"># 空文字でないかどうかを検証する</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIFF</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/74817537">https://stackoverflow.com/a/74817537</a></li>
 <li><a href="https://zenn.dev/aki_artisan/articles/bash-test-option-zn">https://zenn.dev/aki_artisan/articles/bash-test-option-zn</a></li>
+<li><a href="https://qiita.com/XYZXYZXYZ/items/9bc17ec8466fa6bf875a">https://qiita.com/XYZXYZXYZ/items/9bc17ec8466fa6bf875a</a></li>
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--quiet<span class="k">)</span>
