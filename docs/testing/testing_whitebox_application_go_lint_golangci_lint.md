@@ -307,7 +307,7 @@ asciicheck: checks that all code identifiers does not have non-ASCII symbols in 
 
 ### 静的解析の無視
 
-#### ▼ コード全体
+#### ▼ プロジェクト全体
 
 ```yaml
 linters-settings:
@@ -320,6 +320,27 @@ linters-settings:
 ```
 
 > - https://golangci-lint.run/usage/false-positives/#specific-linter-excludes
+
+#### ▼ 特定のパス
+
+```yaml
+issues:
+  exclude-rules:
+    - path-except: '(.+)_test\.go'
+      linters:
+        - staticcheck
+```
+
+> - https://golangci-lint.run/usage/false-positives/#exclude-or-skip
+
+#### ▼ 特定のファイル
+
+```go
+//nolint:staticcheck
+package pkg
+```
+
+> - https://golangci-lint.run/usage/false-positives/#nolint-directive
 
 #### ▼ 特定のコード
 
