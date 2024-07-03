@@ -695,7 +695,7 @@ bar_job:
 
 #### ▼ dependencies
 
-通常、`dependencies`を指定しなければ、`artifacts`が設定された全てのJobとファイルを継承する。
+通常、`dependencies`を指定せずに`artifacts`を使用した場合に、全てのJobとファイルを継承する。
 
 `dependencies`を設定すれば、`artifacts`が設定された特定のJobを指定し、そのJobのみをファイルを継承する。
 

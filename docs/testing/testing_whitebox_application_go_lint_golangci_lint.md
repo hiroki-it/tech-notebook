@@ -44,14 +44,17 @@ go_build:
 
 go_lint:
   stage: test
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:latest-alpine
+  # golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある
+  # @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:<必要なGoのバージョンを含むイメージ>-alpine
   script:
+    - go version
     # 有効にしている静的解析の一覧を表示する
     # GitLab CIでは色が無効になってしまうため、有効化する
     - golangci-lint linters --color always
     # 静的解析を実行する
     # GitLab CIでは色が無効になってしまうため、有効化する
-    - golangci-lint run --go ${GO_VERSION} --color always
+    - golangci-lint run --go ${GO_VERSION} --color always --timeout 5m
 ```
 
 <br>
@@ -302,13 +305,29 @@ asciicheck: checks that all code identifiers does not have non-ASCII symbols in 
 
 ## 05. コメントアウト
 
-### 静的解析のスキップ
+### 静的解析の無視
 
-#### ▼ `//lint:ignore <番号>`
+#### ▼ コード全体
 
-静的解析ツールによってコメントアウト方法が異なる。
+```yaml
+linters-settings:
+  staticcheck:
+    checks:
+      - all
+      # マイナスをつけると無視できる
+      - "-SA1000"
+      - "-SA1004"
+```
 
-コメントアウトのコードに対して、指定した番号の静的解析をスキップする。
+> - https://golangci-lint.run/usage/false-positives/#specific-linter-excludes
+
+#### ▼ 特定のコード
+
+コメントアウトのコードに対して、指定した番号の静的解析を無視する。
+
+注意点として、各ツールの用意しているignoreコメントではなく、golangci-lint専用のコメントである。
+
+特定の番号 (例：`SA1019`) を無視することは難しそう。
 
 ```go
 package grpc
@@ -327,7 +346,7 @@ import (
 func ChainUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
 	return grpc.ChainUnaryInterceptor(
 		grpc_recovery.UnaryServerInterceptor(),
-		//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う
+		//nolint:staticcheck // NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のUnaryServerInterceptorを使う
 		otelgrpc.UnaryServerInterceptor(
 			append(opts, []otelgrpc.Option{
 				InterceptorFilterHealthCheck(),
@@ -342,7 +361,7 @@ func ChainUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
 func ChainStreamServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
 	return grpc.ChainStreamInterceptor(
 		grpc_recovery.StreamServerInterceptor(),
-		//lint:ignore SA1019 NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う
+		//nolint:staticcheck // NewServerHandlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではNewServerHandlerはオプションが少ないため、止むを得ず非推奨のStreamServerInterceptorを使う
 		otelgrpc.StreamServerInterceptor(
 			append(opts, []otelgrpc.Option{
 				InterceptorFilterHealthCheck(),
@@ -354,11 +373,11 @@ func ChainStreamServerInterceptor(opts ...otelgrpc.Option) grpc.ServerOption {
 // InterceptorFilterHealthCheck ヘルスチェックパスではスパンを作成しない
 func InterceptorFilterHealthCheck() otelgrpc.Option {
 
-	//lint:ignore SA1019 gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う
+	//nolint:staticcheck // gRPCのstats handlerが推奨となっているが、実装時点 (2027/07/02) のバージョンではstats handlerはオプションが少ないため、止むを得ず非推奨のWithInterceptorFilterを使う
 	return otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck()))
 }
 ```
 
-> - https://staticcheck.dev/docs/configuration/#ignoring-problems
+> - https://golangci-lint.run/usage/false-positives/#nolint-directive
 
 <br>
