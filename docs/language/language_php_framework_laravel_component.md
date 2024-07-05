@@ -1198,7 +1198,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 ALBやGlobal Acceleratorから『`/healthcheck`』に対してヘルスチェックを設定した上で、`200`ステータスを含むレスポンスを返信する。
 
-Nginxでヘルスチェックを実装もできるが、アプリケーションの死活管理としては、Laravelに実装する方が適切である。
+Nginxでヘルスチェックの返信を実装もできるが、アプリケーションの死活管理としては、Laravelに返信を実装する方が適切である。
 
 RouteServiceProviderも参照せよ。
 
@@ -1209,12 +1209,13 @@ RouteServiceProviderも参照せよ。
 webサーバーではヘルスチェックエンドポイントを設けず、appサーバー側にヘルスエンドポイント (例：`/healthcheck`) を設ける。
 
 ```yaml
+ロードバランサー # /healthcheckにヘルスチェックを送信する
 ⬇⬆︎︎
 ⬇⬆︎︎
 webサーバー
 ⬇⬆︎︎
 ⬇⬆︎︎
-appサーバー # /healthcheckで、00を返却する
+appサーバー # /healthcheckで、200を返却する
 ```
 
 ```php
