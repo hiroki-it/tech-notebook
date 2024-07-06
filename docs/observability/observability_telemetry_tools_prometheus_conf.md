@@ -263,7 +263,7 @@ global:
 
 アラートのルーティング先の名前を設定する。
 
-receiver自体は、`receivers`キー配下で設定する。
+`receiver`キーは別の`receivers`キー配下で設定し、これを呼び出す。
 
 ```yaml
 route:
@@ -305,6 +305,42 @@ route:
 
 アラートの通知先をレシーバーとして設定する。
 
+#### ▼ discord_configs
+
+```yaml
+receivers:
+  - name: discord-foo-channel
+    discord_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#discord_configs
+
+#### ▼ email_configs
+
+```yaml
+receivers:
+  - name: email-foo
+    email_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#email_configs
+
+#### ▼ sns_configs
+
+```yaml
+receivers:
+  - name: sns-foo-topics
+    sns_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#sns_configs
+
 #### ▼ pagerduty_configs
 
 通知先とするPagerDutyのServiceを設定する。
@@ -319,6 +355,20 @@ receivers:
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
+
+
+#### ▼ pushover_configs
+
+```yaml
+receivers:
+  - name: pushover-foo
+    pushover_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs
+
 
 #### ▼ slack_configs
 
@@ -337,5 +387,33 @@ receivers:
     slack_configs:
       - channel: prd-foo-channel
 ```
+
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#slack_configs
+
+#### ▼ webex_configs
+
+```yaml
+receivers:
+  - name: webex-foo
+    webex_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#webex_configs
+
+#### ▼ webhook_configs
+
+```yaml
+receivers:
+  - name: webhook-foo
+    webhook_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs
 
 <br>

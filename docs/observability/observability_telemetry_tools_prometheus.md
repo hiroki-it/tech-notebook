@@ -270,6 +270,8 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 > - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
 > - https://amateur-engineer-blog.com/alertmanager-silence/
 
+<br>
+
 ### Storage
 
 Alertmanagerのデータを永続化する。

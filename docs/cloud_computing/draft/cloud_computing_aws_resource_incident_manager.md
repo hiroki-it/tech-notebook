@@ -25,17 +25,20 @@ CloudWatchアラームに通知されたアラートを、Incident Managerにイ
 
 `(1)`
 
-: エラーイベントの送信元 (例：CloudWatchアラーム、EventBridge、など) からIncident Managerに、インシデントを通知する。
+: エラーイベントの送信元 (例：CloudWatchアラーム、EventBridge、など) からIncident Managerに、エラーイベントを通知する。
 
 `(2)`
 
-: Automationが、インシデントの自動復旧を試みる。
+: Incident Managerは、エラーイベントからインシデントを作成する。
+
+     Automationが、インシデントの自動復旧を試みる。
+
 
 `(3)`
 
 : Automationがインシデントを解決できなかったとする。
 
-     Incident Managerは、インシデントをメールや電話に通知する。
+      Incident Managerは、インシデントを一次担当者オンコールする。
 
 `(4)`
 
