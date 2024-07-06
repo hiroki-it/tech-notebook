@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】PagerDuty＠インシデント管理ツール
-description: PagerDuty＠インシデント管理ツールオンコールとインシデント管理の知見を記録しています。
+description: PagerDuty＠インシデント管理ツールの知見を記録しています。
 ---
 
 # PagerDuty＠インシデント管理ツール

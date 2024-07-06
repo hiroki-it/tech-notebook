@@ -9,7 +9,8 @@
 
 * #### <u>監視</u>
   > * ##### [︎監視](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html)
-  > * ##### [︎オンコールとインシデント管理](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_oncall_incident_management.html)
+  > * ##### [︎オンコール](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_oncall.html)
+  > * ##### [インシデント管理](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_incident_management.html)
   > * ##### [︎サービスレベル](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html)
 
 <br>
