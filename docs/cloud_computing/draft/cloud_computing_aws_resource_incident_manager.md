@@ -33,7 +33,6 @@ CloudWatchアラームに通知されたアラートを、Incident Managerにイ
 
      Automationが、インシデントの自動復旧を試みる。
 
-
 `(3)`
 
 : Automationがインシデントを解決できなかったとする。
@@ -56,4 +55,3 @@ CloudWatchアラームに通知されたアラートを、Incident Managerにイ
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-SystemsManager-IncidentManager_0430_v1.pdf#page=34
 
 <br>
-

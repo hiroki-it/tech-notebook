@@ -356,7 +356,6 @@ receivers:
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
 
-
 #### ▼ pushover_configs
 
 ```yaml
@@ -368,7 +367,6 @@ receivers:
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs
-
 
 #### ▼ slack_configs
 
@@ -387,7 +385,6 @@ receivers:
     slack_configs:
       - channel: prd-foo-channel
 ```
-
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#slack_configs
