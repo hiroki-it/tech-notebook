@@ -17,7 +17,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 ### インシデント管理
 
-インシデント管理ツール (例：PagerDuty、Grafana OnCall、AWS Incident Manager、Slackによる手動管理) を採用し、障害を担当者に迅速に通知する。
+インシデント管理ツール (例：PagerDuty、Grafana OnCall、AWS Incident Manager、Slack Apps) を採用し、障害を担当者に迅速に通知する。
 
 > - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel-failmgmt.html
 
