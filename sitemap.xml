@@ -1786,6 +1786,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_incident_management_grafana_oncall.html</loc>
+         <lastmod>2024-07-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/observability/draft/observability_monitoring_business_intelligence_redash.html</loc>
          <lastmod>2024-07-06</lastmod>
          <changefreq>daily</changefreq>
