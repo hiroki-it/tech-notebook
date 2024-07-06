@@ -17,9 +17,11 @@ description: PagerDuty＠インシデント管理ツールオンコールとイ�
 
 ![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png)
 
-ここでは、PagerDutyをインシデント管理ツールとして使用する。
+PagerDutyをインシデント管理ツールとして使用する。
 
 CloudWatchアラームに通知されたアラートを、PagerDutyにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。
+
+その後の担当者のエスカレーションは自動で実施する。
 
 `(1)`
 

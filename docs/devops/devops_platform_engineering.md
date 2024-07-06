@@ -90,7 +90,20 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 ### ゴールデンパス
 
+プロジェクトを迅速に始め、完了させるために役立つテンプレート構成のこと。
+
+- セットアップ方法
+- サンプルソースコード
+- 依存関係の管理
+- CI/CDパイプラインテンプレート
+- クラウドIaCテンプレート
+- Kubernetesマニフェスト
+- 実装規約
+- ロギングとモニタリング計測
+- リファレンス
+
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
+> - https://cloud.google.com/blog/ja/products/application-development/golden-paths-for-engineering-execution-consistency
 
 <br>
 

@@ -17,9 +17,11 @@ description: Incident Management＠AWSの知見を記録しています。
 
 ![aws_incident_manager.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_incident_manager.png)
 
-ここでは、Incident Managerをインシデント管理ツールとして使用する。
+Incident Managerをインシデント管理ツールとして使用する。
 
 CloudWatchアラームに通知されたアラートを、Incident Managerにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。
+
+その後の担当者のエスカレーションは自動で実施する。
 
 `(1)`
 
