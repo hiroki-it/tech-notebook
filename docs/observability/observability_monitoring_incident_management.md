@@ -1,6 +1,19 @@
-## 01. インシデント管理
+---
+title: 【IT技術の知見】インシデント管理＠監視
+description: インシデント管理＠監視の知見を記録しています。
+---
 
-### インシデントとは
+# インシデント管理＠監視
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> - https://hiroki-it.github.io/tech-notebook/
+
+<br>
+
+## 01. インシデントとは
 
 サービスの停止を起こし得る想定外のイベントのこと。
 
@@ -9,7 +22,7 @@
 
 <br>
 
-### インシデント管理とは
+## 02. インシデント管理とは
 
 ![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png)
 
@@ -30,6 +43,8 @@
 - AWS Incident Management
 
 <br>
+
+## 03. インシデントの解決
 
 ### インシデントの解決フェーズ
 
@@ -152,7 +167,7 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 02. インシデント管理の組織化
+## 04. インシデント管理の組織化
 
 ### インシデントコマンドシステムに基づく役割分離
 
@@ -184,7 +199,7 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 03. アラート、インシデントの通知抑制
+## 05. アラート、インシデントの通知抑制
 
 ### アラートの通知抑制
 
@@ -252,7 +267,7 @@ fields @timestamp, @message, @logStream
 
 <br>
 
-## 04. インシデント管理の事後評価
+## 06. インシデント管理の事後評価
 
 ### MTxxメトリクス
 
