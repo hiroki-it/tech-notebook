@@ -1576,7 +1576,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_oncall_incident_management.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_incident_management.html</loc>
+         <lastmod>2024-07-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_oncall.html</loc>
          <lastmod>2024-07-06</lastmod>
          <changefreq>daily</changefreq>
     </url>

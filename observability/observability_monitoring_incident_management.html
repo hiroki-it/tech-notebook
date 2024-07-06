@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="AWS OpenTelemetry Collector Operator＠AWS EKSアドオンの知見を記録しています。">
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_incident_management.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html">
+        <link rel="prev" href="observability_monitoring_oncall.html">
       
       
-        <link rel="next" href="../devops/index.html">
+        <link rel="next" href="observability_monitoring_service_level.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】AWS OpenTelemetry Collector Operator＠AWS EKSアドオン - 俺の技術ノート</title>
+        <title>インシデント管理 - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-opentelemetry-collector-operatoraws-eks" class="md-skip">
+        <a href="#01" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】AWS OpenTelemetry Collector Operator＠AWS EKSアドオン
+              インシデント管理
             
           </span>
         </div>
@@ -478,7 +478,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
           
   
     
@@ -498,7 +498,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="kubernetes/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -518,7 +518,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="development_tools/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/development_tools/index.html" class="md-tabs__link">
           
   
     
@@ -534,13 +534,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -596,11 +594,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../observability/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -14131,7 +14131,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -14164,7 +14164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14283,7 +14283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14304,7 +14304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_ansible_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14325,7 +14325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_ansible_playbook.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_playbook.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14346,7 +14346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_ansible_cfg.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_cfg.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14367,7 +14367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_ansible_galaxy.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14444,7 +14444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14465,7 +14465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14486,7 +14486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14623,7 +14623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14644,7 +14644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_compose_yml.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14721,7 +14721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_kaniko.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_kaniko.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14742,7 +14742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_kaniko_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14763,7 +14763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_docker_kaniko_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14838,7 +14838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_packer.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_packer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14859,7 +14859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_packer_template_json.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_packer_template_json.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14934,7 +14934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -14955,7 +14955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_serverless_framework_serverless_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15038,7 +15038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15059,7 +15059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15126,7 +15126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15147,7 +15147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_tf_module.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15222,7 +15222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15243,7 +15243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_provider_kubernetes.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15272,7 +15272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15339,7 +15339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15360,7 +15360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15443,7 +15443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15464,7 +15464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_vagrant_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_vagrant_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15539,7 +15539,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -15626,7 +15626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15647,7 +15647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15668,7 +15668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15689,7 +15689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15710,7 +15710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15731,7 +15731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_client_package.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15810,7 +15810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15831,7 +15831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15852,7 +15852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_practices_component.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15873,7 +15873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_practices_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -15948,7 +15948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16017,7 +16017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16038,7 +16038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_resource_definition_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16059,7 +16059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_resource_definition_aws_eks.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16144,7 +16144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16165,7 +16165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_custom_resource_custom_controller.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16186,7 +16186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_custom_resource_logic.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16251,7 +16251,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="development_tools/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/development_tools/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -16380,7 +16380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_minikube.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16401,7 +16401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_minikube_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16474,7 +16474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_kind_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16549,7 +16549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_k3d_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16570,7 +16570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_k3d_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16645,7 +16645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_k3s_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16666,7 +16666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_development_k3s_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3s_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16791,7 +16791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_environment_production_vcluster.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_environment_production_vcluster.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16926,7 +16926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -16993,7 +16993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17014,7 +17014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17091,7 +17091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17112,7 +17112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17133,7 +17133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17162,7 +17162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17229,7 +17229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17250,7 +17250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17335,7 +17335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17356,7 +17356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize_command.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17377,7 +17377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize_practices.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17418,8 +17418,6 @@
       
   
   
-    
-  
   
   
     
@@ -17444,22 +17442,21 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -17470,13 +17467,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_18" id="__nav_18_label" tabindex="">
+              <label class="md-nav__link " for="__nav_18" id="__nav_18_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             ⏬ K8sアドオン
@@ -17536,7 +17533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17613,7 +17610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17680,7 +17677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17701,7 +17698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17776,7 +17773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17797,7 +17794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17886,7 +17883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17907,7 +17904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17928,7 +17925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -17949,7 +17946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18016,7 +18013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18037,7 +18034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18124,7 +18121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18145,7 +18142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_network_cilium.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18166,7 +18163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_network_external_dns.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18233,7 +18230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18254,7 +18251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_network_coredns_conf.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18383,7 +18380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18404,7 +18401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18477,7 +18474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18511,8 +18508,6 @@
                 
   
   
-    
-  
   
   
     
@@ -18526,11 +18521,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18_7" >
         
           
           <label class="md-nav__link" for="__nav_18_7" id="__nav_18_7_label" tabindex="0">
@@ -18544,7 +18541,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_7">
             <span class="md-nav__icon md-icon"></span>
             ■ クラウドプロバイダー系
@@ -18555,10 +18552,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -18576,11 +18571,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_7_1" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_18_7_1" >
         
           
           <label class="md-nav__link" for="__nav_18_7_1" id="__nav_18_7_1_label" tabindex="0">
@@ -18594,7 +18591,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_7_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_7_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18_7_1">
             <span class="md-nav__icon md-icon"></span>
             ■ AWS EKSアドオン
@@ -18608,7 +18605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18629,7 +18626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18650,7 +18647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18668,30 +18665,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    AWS OpenTelemetry Collector Operator
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -18700,103 +18677,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. アーキテクチャ
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#eks" class="md-nav__link">
-    <span class="md-ellipsis">
-      EKSアドオンとして
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EKSアドオンとして">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#opentelemetryhelm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ OpenTelemetryによるHelmチャートの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#awshelm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ AWSによるHelmチャートの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Terraformの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -20442,6 +20322,8 @@
       
   
   
+    
+  
   
   
     
@@ -20464,21 +20346,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../observability/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -20489,13 +20372,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_21" id="__nav_21_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             🔎 可観測性
@@ -20511,7 +20394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability.html" class="md-nav__link">
+      <a href="observability.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20529,8 +20412,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -20548,13 +20433,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_3" checked>
         
           
           <label class="md-nav__link" for="__nav_21_3" id="__nav_21_3_label" tabindex="0">
@@ -20568,7 +20451,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_21_3">
             <span class="md-nav__icon md-icon"></span>
             ■ 監視
@@ -20582,7 +20465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring.html" class="md-nav__link">
+      <a href="observability_monitoring.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20603,7 +20486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring_oncall.html" class="md-nav__link">
+      <a href="observability_monitoring_oncall.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20621,10 +20504,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../observability/observability_monitoring_incident_management.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    インシデント管理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="observability_monitoring_incident_management.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -20633,6 +20534,485 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. インシデント管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. インシデント管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデント管理とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントの解決フェーズ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの解決フェーズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 解決フェーズとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 解決フェーズの種類
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデント重要度レベル (severityレベル)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデント重要度レベル (severityレベル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデント重要度レベルとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      一次オンコール担当者の作業
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PagerDutyの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafana-oncall" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Grafana OnCallの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slack" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Slackの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. インシデント管理の組織化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. インシデント管理の組織化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントコマンドシステムに基づく役割分離
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントコマンドシステムに基づく役割分離">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントコマンドシステムとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 指揮
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 実行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 計画
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 後方支援
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. アラート、インシデントの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. アラート、インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      アラートの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの抑制とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エラーイベントの重要度レベルの調節
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの一時無効化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートのグループ化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの条件の調節
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントの抑制とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のシステムを無視
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントの一時無効化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エラーイベントの重要度レベルの調節
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントのグループ化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. インシデント管理の事後評価
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. インシデント管理の事後評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTxxメトリクス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTxxメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MTxxメトリクスとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 稼働率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MTxxメトリクスのインシデント管理への適用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ダッシュボード
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ポストモーテム
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ポストモーテム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ポストモーテムとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 独自テンプレート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PagerDutyの事例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ その他の会社事例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -20645,7 +21025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_monitoring_service_level.html" class="md-nav__link">
+      <a href="observability_monitoring_service_level.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20722,7 +21102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_log.html" class="md-nav__link">
+      <a href="observability_telemetry_log.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20743,7 +21123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20764,7 +21144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20853,7 +21233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools.html" class="md-nav__link">
+      <a href="observability_telemetry_tools.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20924,7 +21304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_agent_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_agent_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20945,7 +21325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_monitoring.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_monitoring.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -20966,7 +21346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_integration.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_integration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21039,7 +21419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21060,7 +21440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_log.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_log.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21081,7 +21461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21102,7 +21482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_telemetry_association.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_telemetry_association.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21167,7 +21547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_datadog_client_package_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_datadog_client_package_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21258,7 +21638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_fluentbit_fluentd.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_fluentbit_fluentd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21327,7 +21707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_fluentbit_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_fluentbit_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21348,7 +21728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_fluentbit_command.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_fluentbit_command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21369,7 +21749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_fluentbit_resource_definition.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_fluentbit_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21452,7 +21832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_grafana.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_grafana.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21521,7 +21901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_grafana_resource_definition.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_grafana_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21542,7 +21922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_grafana_resource_definition_configmap.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_grafana_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21563,7 +21943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_grafana_resource_definition_dashboard.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_grafana_resource_definition_dashboard.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21644,7 +22024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_jaeger.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_jaeger.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21719,7 +22099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_kiali.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_kiali.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21784,7 +22164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_kiali_resource_definition_configmap.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_kiali_resource_definition_configmap.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21871,7 +22251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21892,7 +22272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_resource_definition.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -21959,7 +22339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_client_package_instrumentation.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_client_package_instrumentation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22028,7 +22408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_client_package_trace.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_client_package_trace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22049,7 +22429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_client_package_trace_go.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_client_package_trace_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22070,7 +22450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_client_package_trace_python.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_client_package_trace_python.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22153,7 +22533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_collector.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_collector.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22174,7 +22554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_open_telemetry_collector_config.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_open_telemetry_collector_config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22263,7 +22643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22284,7 +22664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_conf.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_conf.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22305,7 +22685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_resource_definition.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_resource_definition.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22326,7 +22706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_exporter.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_exporter.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22395,7 +22775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_metrics.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22416,7 +22796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_metrics_promql.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_metrics_promql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22437,7 +22817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_prometheus_metrics_client_package.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_prometheus_metrics_client_package.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22520,7 +22900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_google_analytics.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_google_analytics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22541,7 +22921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_telemetry_tools_google_search_console.html" class="md-nav__link">
+      <a href="observability_telemetry_tools_google_search_console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22622,7 +23002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/observability_incident_management_pagerduty.html" class="md-nav__link">
+      <a href="observability_incident_management_pagerduty.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -22975,8 +23355,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -22985,65 +23363,449 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. インシデント管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. インシデント管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      はじめに
+      インシデントとは
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アーキテクチャ
+      インシデント管理とは
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントの解決フェーズ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの解決フェーズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 解決フェーズとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 解決フェーズの種類
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデント重要度レベル (severityレベル)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデント重要度レベル (severityレベル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデント重要度レベルとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      一次オンコール担当者の作業
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PagerDutyの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafana-oncall" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Grafana OnCallの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slack" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Slackの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      02. インシデント管理の組織化
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="02. インシデント管理の組織化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#eks" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      EKSアドオンとして
+      インシデントコマンドシステムに基づく役割分離
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="EKSアドオンとして">
+    <nav class="md-nav" aria-label="インシデントコマンドシステムに基づく役割分離">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opentelemetryhelm" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ OpenTelemetryによるHelmチャートの場合
+      ▼ インシデントコマンドシステムとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#awshelm" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWSによるHelmチャートの場合
+      ▼ 指揮
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Terraformの場合
+      ▼ 実行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 計画
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 後方支援
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. アラート、インシデントの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. アラート、インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      アラートの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの抑制とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エラーイベントの重要度レベルの調節
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの一時無効化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートのグループ化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アラートの条件の調節
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      インシデントの通知抑制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントの抑制とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 特定のシステムを無視
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントの一時無効化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エラーイベントの重要度レベルの調節
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ インシデントのグループ化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. インシデント管理の事後評価
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. インシデント管理の事後評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTxxメトリクス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTxxメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MTxxメトリクスとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 稼働率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ MTxxメトリクスのインシデント管理への適用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ダッシュボード
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ポストモーテム
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ポストモーテム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ポストモーテムとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 独自テンプレート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PagerDutyの事例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ その他の会社事例
     </span>
   </a>
   
@@ -23077,120 +23839,463 @@
   
 
 
-<h1 id="aws-opentelemetry-collector-operatoraws-eks">AWS OpenTelemetry Collector Operator＠AWS EKSアドオン<a class="headerlink" href="#aws-opentelemetry-collector-operatoraws-eks" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+  <h1>インシデント管理</h1>
+
+<h2 id="01">01. インシデント管理<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_1">インシデントとは<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>サービスの停止を起こし得る想定外のイベントのこと。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+<li><a href="https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management">https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management</a></li>
+<li><a href="https://response.pagerduty.com/before/what_is_an_incident/">https://response.pagerduty.com/before/what_is_an_incident/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. アーキテクチャ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>AWS OpenTelemetry Collector Operatorは、OpenTelemetry Collectorに関するカスタムリソースのOperatorである。</p>
+<h3 id="_2">インシデント管理とは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="incident_management" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png" /></p>
+<p>一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。</p>
+<p>エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。</p>
+<p>その後、二次担当者に作業をエスカレーションする。</p>
+<p>これらを自動化するためのツールがいくつかある。</p>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/">https://aws.amazon.com/jp/blogs/news/metrics-and-traces-collection-using-amazon-eks-add-ons-for-aws-distro-for-opentelemetry/</a></li>
+<li><a href="https://smart-stage.jp/topics/itsm_keyword_relate/p3/">https://smart-stage.jp/topics/itsm_keyword_relate/p3/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊技術ツール例＊</strong></p>
+<ul>
+<li>PagerDuty</li>
+<li>Grafana OnCall</li>
+<li>AWS Incident Management</li>
+</ul>
+<p><br></p>
+<h3 id="_3">インシデントの解決フェーズ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 解決フェーズとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>インシデントとして見なされたアラートが、どの程度解決できたのかを可視化する必要がある。</p>
+<h4 id="_5">▼ 解決フェーズの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>解決フェーズ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>発火</td>
+<td>アラートがインシデントとして見なされ、タスクが作成された。</td>
+</tr>
+<tr>
+<td>認知</td>
+<td>インシデントのタスクに対応中であるが、まだ解決できていない。</td>
+</tr>
+<tr>
+<td>解決済み</td>
+<td>インシデントのタスクを解決した。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="severity">インシデント重要度レベル (severityレベル)<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ インシデント重要度レベルとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>そのため、インシデントの優先度付けが必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>エラーイベントの重要度レベル</th>
+<th>優先度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>即時に解決する必要がある。</td>
+</tr>
+<tr>
+<td>medium</td>
+<td><code>24</code>時間以内に解決する必要がある。</td>
+</tr>
+<tr>
+<td>low</td>
+<td>いつかは解決する必要がある。</td>
+</tr>
+<tr>
+<td>notification</td>
+<td>解決する必要はない。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/oncall/alerting_principles/">https://response.pagerduty.com/oncall/alerting_principles/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="eks">EKSアドオンとして<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
-<h4 id="opentelemetryhelm">▼ OpenTelemetryによるHelmチャートの場合<a class="headerlink" href="#opentelemetryhelm" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryによるHelmチャートの場合、KubernetesリソースでOpenTelemetry Collectorを作成することになる。</p>
-<p>ただし、これにはAWS X-Ray exporterが含まれていないため、AWS製のコンテナイメージ (パブリックECRの<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替える。</p>
+<h3 id="_7">一次オンコール担当者の作業<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="pagerduty">▼ PagerDutyの場合<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
+<p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたアラートをオンコール担当者が作業する。</p>
+<p>その後、二次担当者に自動的にエスカレーションする。</p>
+<h4 id="grafana-oncall">▼ Grafana OnCallの場合<a class="headerlink" href="#grafana-oncall" title="Permanent link">&para;</a></h4>
+<p>Grafana OnCallをインシデント管理ツールとして、Grafana OnCallに通知されたアラートをオンコール担当者が作業する。</p>
+<p>その後、二次担当者に作業を自動的にエスカレーションする。</p>
+<h4 id="slack">▼ Slackの場合<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
+<p>Slackをインシデント管理ツールとして、Slackに通知されたアラートをオンコール担当者が作業する。</p>
+<p>その後、二次担当者に作業を手動でエスカレーションする。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>CloudWactchアラームからSlackのチャンネルに、アラートが通知される。</p>
+<p>ただし、Slackからオンコール担当者に電話をかけることはできない。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>オンコール担当者は、Slackに通知されたアラートを確認する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>アラート名 (例：prd-foo-ecs-container-laravel-log-alarm) から、CloudWatchアラームを探す。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>アラートがどのロググループに紐づいているかを探す。</p>
+<p>執筆時点 (2021/12/09) では、AWSの仕様ではこれがわかりにくくなっている。</p>
+<p>メトリクスフィルターが設定されているロググループは、アラームに紐づいている可能性があり、メトリクスフィルターで作成されているメトリクス名 (例：ErrorCount) がアラームに記載されたものであれば、紐づいているとわかる。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>Log Insightsを使用して、ロググループの直近のエラーログを抽出する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 小文字と大文字を区別せずに、Errorを含むログを検索する。</span>
+<span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>クエリの結果から、アラートの原因になっているエラーを見つける。</p>
+<p>CloudWatchのタイムスタンプとSlackのアラートの通知時刻には若干のタイムラグがある。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p>クエリの結果をコピーし、アラートのThreadに貼り付ける。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code> [2021-12-01 00:00:00] request.ERROR: Uncaught PHP Exception *****
+</code></pre></div>
+<dl>
+<dt><code>(8)</code></dt>
+<dd>
+<p>ログイベントが許容できるものあれば、保留として、その旨をエスカレーションする。</p>
+</dd>
+<dt><code>(9)</code></dt>
+<dd>
+<p>ログイベントがインシデントであれば、その旨をエスカレーションする。</p>
+<p>また、タスク化し、迅速に対応する。</p>
+</dd>
+<dt><code>(10)</code></dt>
+<dd>
+<p>ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。</p>
+<p>タスク化し、時間のある時に対応する。</p>
+</dd>
+</dl>
+<p><br></p>
+<h2 id="02">02. インシデント管理の組織化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_8">インシデントコマンドシステムに基づく役割分離<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ インシデントコマンドシステムとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネージメント手法のこと。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector</a></li>
-<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/</a></li>
-<li><a href="https://gallery.ecr.aws/aws-observability/aws-otel-collector">https://gallery.ecr.aws/aws-observability/aws-otel-collector</a></li>
+<li><a href="https://fastalert.jp/column/disaster-prevention/incident-command-system">https://fastalert.jp/column/disaster-prevention/incident-command-system</a></li>
 </ul>
 </blockquote>
-<h4 id="awshelm">▼ AWSによるHelmチャートの場合<a class="headerlink" href="#awshelm" title="Permanent link">&para;</a></h4>
-<p>AWSによるHelmチャートを使用する場合、KubernetesリソースでOpenTelemetry Collectorを作成することになる。</p>
-<p>執筆時点 (2024/01/22) では、Helmチャートがメトリクス収集の設定にしかサポートしていない。</p>
+<h4 id="_10">▼ 指揮<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>インシデントの状況把握を担当する。</p>
+<p>また、インシデント担当チームを組織し、各担当者にタスクを割り振る。</p>
+<h4 id="_11">▼ 実行<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>インシデントの解決を担当する。</p>
+<h4 id="_12">▼ 計画<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>ステークホルダーへの状況報告やドキュメントの作成を担当する。</p>
+<h4 id="_13">▼ 後方支援<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>作業者のサポートを担当する。</p>
+<p>作業者間引継ぎの調整、夕食の発注、などがある。</p>
+<p><br></p>
+<h2 id="03">03. アラート、インシデントの通知抑制<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_14">アラートの通知抑制<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ アラートの抑制とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>通知不要なアラートや、実際には重要度の高くないアラートの通知が頻発する場合、アラート疲れしてしまう。</p>
+<p>そういった場合は、アラートの通知を抑制する。</p>
+<h4 id="_16">▼ エラーイベントの重要度レベルの調節<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>アラートの重要度レベルを調節し、通知する必要があるアラートを選別する。</p>
+<h4 id="_17">▼ アラートの一時無効化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>特定の期間に発生したアラートを無視するようにし、アラートが一定期間だけ通知されないようにする。</p>
+<h4 id="_18">▼ アラートのグループ化<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws-observability/aws-otel-helm-charts">https://github.com/aws-observability/aws-otel-helm-charts</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/11635/">https://knowledge.sakura.ad.jp/11635/</a></li>
 </ul>
 </blockquote>
-<h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>Terraformを使用する場合、カスタムリソースでOpenTelemetry Collectorを作成することになる。</p>
-<p>EKSアドオンは、OpenTelemetry Collector Operatorをデプロイする。</p>
-<p>Terraformの<code>aws_eks_addon</code>でEKSアドオンをインストールし、OpenTelemetry CollectorのOperatorに関するKubernetesリソースを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># AWS EKSアドオンをインストールする。</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;adot&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_eks_cluster.cluster.name</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;adot&quot;</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">service_account_role_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_open_telemetry_operator[0].iam_role_arn</span>
-<span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
-<span class="p">}</span>
-
-<span class="c1"># X-Ray</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_xray_group&quot;</span><span class="w"> </span><span class="nv">&quot;environment&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="na">group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-prd&quot;</span>
-
-<span class="w">  </span><span class="na">filter_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
-<span class="sh">(annotation.otel_resource_system_name = &quot;foo&quot;) AND (annotation.otel_resource_environment = &quot;prd&quot;)</span>
-<span class="dl">EOF</span>
-
-<span class="w">  </span><span class="nb">insights_configuration</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">insights_enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<h4 id="_19">▼ アラートの条件の調節<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>アラートの条件となる期間を拡大し、加えてエラーイベントの閾値を緩和するようにし、アラートの通知数を減らす。</p>
+<p><br></p>
+<h3 id="_20">インシデントの通知抑制<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="_21">▼ インシデントの抑制とは<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>そういった場合は、インシデントの通知を抑制する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pagerduty.digitalstacks.net/blog/suppress-your-data/">https://pagerduty.digitalstacks.net/blog/suppress-your-data/</a></li>
+</ul>
+</blockquote>
+<h4 id="_22">▼ 特定のシステムを無視<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_23">▼ インシデントの一時無効化<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、指定した期間に発生したインシデントを無視し、インシデントが一定期間だけ通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_24">▼ エラーイベントの重要度レベルの調節<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、インシデントごとに重要度レベルを調節し、インシデントの優先度付けする。</p>
+<p>特定のインシデント以外は通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_25">▼ インシデントのグループ化<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。</p>
+<blockquote>
+<ul>
+<li><a href="https://knowledge.sakura.ad.jp/11635/">https://knowledge.sakura.ad.jp/11635/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. インシデント管理の事後評価<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="mtxx">MTxxメトリクス<a class="headerlink" href="#mtxx" title="Permanent link">&para;</a></h3>
+<h4 id="mtxx_1">▼ MTxxメトリクスとは<a class="headerlink" href="#mtxx_1" title="Permanent link">&para;</a></h4>
+<p><img alt="mtxx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png" /></p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th></th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTTF：Mean Time To Failure</td>
+<td>稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。</td>
+<td>・<a href="https://e-words.jp/w/MTTF.html">https://e-words.jp/w/MTTF.html</a></td>
+</tr>
+<tr>
+<td>MTBF：Mean Time Between Failure</td>
+<td>特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。</td>
+<td>・<a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+</tr>
+<tr>
+<td>MTTD：Mean Time To Diagnose</td>
+<td>障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTR：Mean Time To Repair</td>
+<td>障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。</td>
+<td>・<a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf">https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf</a></li>
+<li><a href="https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633">https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633</a></li>
+</ul>
+</blockquote>
+<h4 id="_26">▼ 稼働率<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>システムの実際の稼働時間割合を表す。</p>
+<p>以下の計算式で算出できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="err">動作した時間</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="err">全体の時間</span><span class="p">)</span>
 </code></pre></div>
-<p>OpenTelemetry Collectorのカスタムリソースを作成する。</p>
-<p>ここでは、スパンを送信すると仮定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OpenTelemetryCollector</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-opentelemetry-collector</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
-<span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-collector</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-
-<span class="w">    </span><span class="no">receivers:</span>
-<span class="w">      </span><span class="no">otlp:</span>
-<span class="w">        </span><span class="no">protocols:</span>
-<span class="w">          </span><span class="no">grpc:</span>
-<span class="w">            </span><span class="no">endpoint: &lt;PodのIPアドレス&gt;:4317</span>
-<span class="w">          </span><span class="no">http:</span>
-<span class="w">            </span><span class="no">endpoint: &lt;PodのIPアドレス&gt;:4318</span>
-
-<span class="w">    </span><span class="no">processors:</span>
-<span class="w">      </span><span class="no">batch:</span>
-<span class="w">        </span><span class="no">timeout: 5s</span>
-<span class="w">        </span><span class="no">send_batch_size: 50</span>
-
-<span class="w">    </span><span class="no">exporters:</span>
-<span class="w">      </span><span class="no">awsxray:</span>
-<span class="w">        </span><span class="no">region: ap-northeast-1</span>
-<span class="w">      </span><span class="no">datadog:</span>
-<span class="w">        </span><span class="no">api:</span>
-<span class="w">          </span><span class="no">site: datadoghq.com</span>
-<span class="w">          </span><span class="no">key: *****</span>
-
-<span class="w">    </span><span class="no">service:</span>
-<span class="w">      </span><span class="no">pipelines:</span>
-<span class="w">        </span><span class="no">traces:</span>
-<span class="w">          </span><span class="no">receivers:</span>
-<span class="w">            </span><span class="no">- otlp</span>
-<span class="w">          </span><span class="no">processors: </span>
-<span class="w">            </span><span class="no">- batch</span>
-<span class="w">          </span><span class="no">exporters: </span>
-<span class="w">            </span><span class="no">- awsxray</span>
+<p>この数式は、以下ように書き換えられる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MTTR</span><span class="p">)</span>
+</code></pre></div>
+<p>システムが冗長化されている場合、全てのインスタンスの非稼働率をかけて、全体から引くことにより、稼働率を算出できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml">https://github.com/aws-observability/observability-best-practices/blob/main/sandbox/eks-addon-adot/otel-collector-xray-cloudwatch-complete.yaml</a></li>
-<li><a href="https://github.com/aws-observability/aws-otel-helm-charts/blob/main/charts/adot-exporter-for-eks-on-ec2/templates/adot-collector/configmap.yaml">https://github.com/aws-observability/aws-otel-helm-charts/blob/main/charts/adot-exporter-for-eks-on-ec2/templates/adot-collector/configmap.yaml</a></li>
-<li><a href="https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson">https://zenn.dev/nameless_gyoza/articles/aws-distro-for-opentelemetry-with-datadog-handson</a></li>
-<li><a href="https://zenn.dev/tmrekk/articles/689cae0e9b41bd">https://zenn.dev/tmrekk/articles/689cae0e9b41bd</a></li>
+<li><a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>システムが冗長化されている例を示す。</p>
+<p>すでに稼働率は算出されているものとする。</p>
+<p>全てのインスタンスの非稼働率をかけて、全体から引く。</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.81</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.64</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.9316</span>
+</code></pre></div>
+<p><img alt="稼働率の計算" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg" /></p>
+<h4 id="mtxx_2">▼ MTxxメトリクスのインシデント管理への適用<a class="headerlink" href="#mtxx_2" title="Permanent link">&para;</a></h4>
+<p><img alt="mttx-metrics" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png" /></p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>説明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTTD</td>
+<td>インシデントが起こってから、これがオンコール担当にアラートされるまで。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTE</td>
+<td>インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTF</td>
+<td>オンコール担当がタスクに着手してから、これを完了するまで。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4873119618">https://www.amazon.co.jp/dp/4873119618</a></li>
+<li><a href="https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262">https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262</a></li>
+</ul>
+</blockquote>
+<h4 id="_27">▼ ダッシュボード<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>MTxxメトリクスをダッシュボード化する。</p>
+<p>実際に時間と目標時間を比較すれば、今回のインシデント管理の良し悪しを判断できる。</p>
+<p>そのため、インシデント管理自体をソフトウェア開発と同様に反復的に改善しやすくになる。</p>
+<p>DRI Hops (インシデントの直接的に責任者) の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。</p>
+<p><img alt="mttx-metrics_dash-board" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4873119618">https://www.amazon.co.jp/dp/4873119618</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_28">ポストモーテム<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="_29">▼ ポストモーテムとは<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>アラートで通知されたインシデントがビジネスに大きな影響を与えた場合、振り返りとして、ポストモーテムを作成する。</p>
+<p>ポストモーテムは、障害報告書とは異なり、原因特定とシステム改善に重きを置いた報告書である。</p>
+<p>障害報告書は、責任の報告の意味合いが強くなってしまう。</p>
+<h4 id="_30">▼ 独自テンプレート<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="gh"># ポストモーテム</span>
+
+<span class="gu">## タイトル</span>
+
+<span class="gu">## 日付</span>
+
+<span class="gu">## 担当者</span>
+
+<span class="gs">**※担当者を絶対に責めず、障害は誰のせいでもないという意識を強く持つ。**</span>
+
+<span class="gu">## 原因と対応</span>
+
+<span class="gs">**※原因特定とシステム改善を最優先にすること**</span>
+
+<span class="gu">## システム的/収益的な影響範囲</span>
+
+<span class="gu">## 幸運だったこと</span>
+
+<span class="gu">## 仕組みの改善策</span>
+
+<span class="gs">**※『以後は注意する』ではなく、再発しない仕組み作りになるようにする。 **</span>
+
+<span class="gu">## 障害発生から対応までのタイムライン</span>
+</code></pre></div>
+<h4 id="pagerduty_1">▼ PagerDutyの事例<a class="headerlink" href="#pagerduty_1" title="Permanent link">&para;</a></h4>
+<p>PagerDuty社が公開しているテンプレートがある。</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># ポストモーテム</span>
+
+<span class="gu">## 全体の要約</span>
+
+<span class="gu">## 何が発生したか</span>
+
+<span class="gu">## 原因</span>
+
+<span class="gu">## 解決方法</span>
+
+<span class="gu">## 影響</span>
+
+<span class="k">-</span><span class="w"> </span>問題の発生期間
+<span class="k">-</span><span class="w"> </span>影響を受けたユーザー数
+<span class="k">-</span><span class="w"> </span>発生した技術サポートのチケット数
+<span class="k">-</span><span class="w"> </span>未解決のエラーイベント数
+
+<span class="gu">## 担当者</span>
+
+<span class="k">-</span><span class="w"> </span>担当者名
+<span class="k">-</span><span class="w"> </span>担当補佐名
+
+<span class="gu">## タイムライン</span>
+
+<span class="k">-</span><span class="w"> </span>原因が発生した時刻
+<span class="k">-</span><span class="w"> </span>...
+
+<span class="gu">## 対応結果</span>
+
+<span class="k">-</span><span class="w"> </span>うまくいったこと
+<span class="k">-</span><span class="w"> </span>うまくいかなかったこと
+
+<span class="gu">## インシデントのタスク</span>
+
+<span class="gu">## メッセージ</span>
+
+<span class="k">-</span><span class="w"> </span>社内への周知内容
+<span class="k">-</span><span class="w"> </span>社外への周知内容
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/after/post_mortem_template/">https://response.pagerduty.com/after/post_mortem_template/</a></li>
+</ul>
+</blockquote>
+<h4 id="_31">▼ その他の会社事例<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>リンク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS</td>
+<td><a href="https://aws.amazon.com/jp/message/5467D2/">https://aws.amazon.com/jp/message/5467D2/</a></td>
+</tr>
+<tr>
+<td>Heroku</td>
+<td><a href="https://status.heroku.com/incidents/151">https://status.heroku.com/incidents/151</a></td>
+</tr>
+<tr>
+<td>Twilio</td>
+<td><a href="https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html">https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/after/effective_post_mortems/#examples">https://response.pagerduty.com/after/effective_post_mortems/#examples</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23214,7 +24319,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-06</span>
   </span>
 
     
