@@ -315,7 +315,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#discord_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#discord_config
 
 #### ▼ email_configs
 
@@ -327,7 +327,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#email_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#email_config
 
 #### ▼ sns_configs
 
@@ -339,7 +339,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#sns_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#sns_config
 
 #### ▼ pagerduty_configs
 
@@ -366,7 +366,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#pushover_config
 
 #### ▼ slack_configs
 
@@ -387,7 +387,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#slack_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#slack_config
 
 #### ▼ webex_configs
 
@@ -399,7 +399,7 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#webex_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#webex_config
 
 #### ▼ webhook_configs
 
@@ -411,6 +411,6 @@ receivers:
 ```
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs
+> - https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 
 <br>
