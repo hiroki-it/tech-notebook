@@ -23886,7 +23886,7 @@
 <p><img alt="incident_management" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png" /></p>
 <p>一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。</p>
 <p>エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。</p>
-<p>その後、二次担当者に作業をエスカレーションする。</p>
+<p>その後、二次担当者にオンコールをエスカレーションする。</p>
 <p>これらを自動化するためのツールがいくつかある。</p>
 <blockquote>
 <ul>
@@ -23967,13 +23967,13 @@
 <h3 id="_7">インシデントの解決フロー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="pagerduty">▼ PagerDutyの場合<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
 <p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
-<p>また、作業を各担当者に自動的にエスカレーションする。</p>
+<p>また、各担当者にオンコールを自動的にエスカレーションする。</p>
 <h4 id="grafana-oncall">▼ Grafana OnCallの場合<a class="headerlink" href="#grafana-oncall" title="Permanent link">&para;</a></h4>
 <p>Grafana OnCallをインシデント管理ツールとして、Grafana OnCallに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
-<p>また、作業を各担当者に自動的にエスカレーションする。</p>
+<p>また、各担当者にオンコールを自動的にエスカレーションする。</p>
 <h4 id="slack">▼ Slackの場合<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
 <p>Slackをインシデント管理ツールとして、Slackに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
-<p>また、作業を各担当者に自動的にエスカレーションする。</p>
+<p>また、各担当者にオンコールを自動的にエスカレーションする。</p>
 <p>ただ、SlackのBot (例：echoboomer/incident-bot) やワークフロー (例：Incident.io) で自動化しても良い。</p>
 <p>注意点として、各ツールはインシデントごとにチャンネルが作るため、チャンネルの残骸が増えてしまう。</p>
 <blockquote>
@@ -24029,16 +24029,16 @@
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>ログイベントが許容できるものあれば、保留として、その旨をエスカレーションする。</p>
+<p>ログイベントが許容できるものあれば、保留として、オンコールをエスカレーションする。</p>
 </dd>
 <dt><code>(9)</code></dt>
 <dd>
-<p>ログイベントがインシデントであれば、その旨をエスカレーションする。</p>
+<p>ログイベントがインシデントであれば、オンコールをエスカレーションする。</p>
 <p>また、タスク化し、迅速に対応する。</p>
 </dd>
 <dt><code>(10)</code></dt>
 <dd>
-<p>ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。</p>
+<p>ログイベントがインシデントでないエラーイベントであれば、オンコールをエスカレーションする。</p>
 <p>タスク化し、時間のある時に対応する。</p>
 </dd>
 </dl>
