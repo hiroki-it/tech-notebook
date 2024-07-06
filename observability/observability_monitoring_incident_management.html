@@ -23966,14 +23966,14 @@
 <p><br></p>
 <h3 id="_7">インシデントの解決フロー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="pagerduty">▼ PagerDutyの場合<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
-<p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたアラートをオンコール担当者が作業する。</p>
-<p>その後、二次担当者に自動的にエスカレーションする。</p>
+<p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたエラーイベントの内から、インシデントを作成する。</p>
+<p>また、作業を各担当者に自動的にエスカレーションする。</p>
 <h4 id="grafana-oncall-incident">▼ Grafana OnCall / Incidentの場合<a class="headerlink" href="#grafana-oncall-incident" title="Permanent link">&para;</a></h4>
-<p>Grafana OnCall / Incidentをインシデント管理ツールとして、Grafana OnCallに通知されたアラートをオンコール担当者が作業する。</p>
-<p>その後、二次担当者に作業を自動的にエスカレーションする。</p>
+<p>Grafana OnCall / Incidentをインシデント管理ツールとして、Grafana OnCallに通知されたエラーイベントの内から、Incidentでインシデントを作成する。</p>
+<p>また、作業を各担当者に自動的にエスカレーションする。</p>
 <h4 id="slack">▼ Slackの場合<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
-<p>Slackをインシデント管理ツールとして、Slackに通知されたアラートをオンコール担当者が作業する。</p>
-<p>その後、二次担当者に作業を手動でエスカレーションする。</p>
+<p>Slackをインシデント管理ツールとして、Slackに通知されたエラーイベントの内から、インシデントを作成する。</p>
+<p>また、作業を各担当者に自動的にエスカレーションする。</p>
 <p>ただ、SlackのBot (例：echoboomer/incident-bot) やワークフロー (例：Incident.io) で自動化しても良い。</p>
 <p>注意点として、各ツールはインシデントごとにチャンネルが作るため、チャンネルの残骸が増えてしまう。</p>
 <blockquote>

@@ -23107,8 +23107,8 @@
 <h2 id="01-pagerduty">01. PagerDutyの仕組み<a class="headerlink" href="#01-pagerduty" title="Permanent link">&para;</a></h2>
 <p><img alt="pagerduty_on-call" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png" /></p>
 <p>PagerDutyをインシデント管理ツールとして使用する。</p>
-<p>CloudWatchアラームに通知されたアラートを、PagerDutyにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。</p>
-<p>その後、二次担当者に作業を自動的にエスカレーションする。</p>
+<p>CloudWatchアラームに通知されたエラーイベントの内から、PagerDutyでインシデントを作成する。</p>
+<p>また、作業を各担当者に自動的にエスカレーションする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
