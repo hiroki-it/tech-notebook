@@ -22911,16 +22911,17 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>エラーイベントの送信元 (例：CloudWatchアラーム、EventBridge、など) からIncident Managerに、インシデントを通知する。</p>
+<p>エラーイベントの送信元 (例：CloudWatchアラーム、EventBridge、など) からIncident Managerに、エラーイベントを通知する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
+<p>Incident Managerは、エラーイベントからインシデントを作成する。</p>
 <p>Automationが、インシデントの自動復旧を試みる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
 <p>Automationがインシデントを解決できなかったとする。</p>
-<p>Incident Managerは、インシデントをメールや電話に通知する。</p>
+<p>Incident Managerは、インシデントを一次担当者オンコールする。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>

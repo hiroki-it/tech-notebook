@@ -22478,6 +22478,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#discord_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ discord_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ email_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ sns_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pagerduty_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ pagerduty_configs
@@ -22487,9 +22514,36 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pushover_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ pushover_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#slack_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ slack_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webex_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ webex_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ webhook_configs
     </span>
   </a>
   
@@ -23464,6 +23518,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#discord_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ discord_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ email_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ sns_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pagerduty_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ pagerduty_configs
@@ -23473,9 +23554,36 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pushover_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ pushover_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#slack_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ slack_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webex_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ webex_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhook_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ webhook_configs
     </span>
   </a>
   
@@ -23730,7 +23838,7 @@
 <p>合致条件に応じて、受信したアラートを特定の通知先にルーティングする。</p>
 <h4 id="receiver">▼ receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h4>
 <p>アラートのルーティング先の名前を設定する。</p>
-<p>receiver自体は、<code>receivers</code>キー配下で設定する。</p>
+<p><code>receiver</code>キーは別の<code>receivers</code>キー配下で設定し、これを呼び出す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">route</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># WarningレベルはSlackのレシーバーを選ぶ。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack-foo-channel</span>
@@ -23763,6 +23871,42 @@
 <h3 id="receivers">receiversセクション<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h3>
 <h4 id="receivers_1">▼ receiversセクションとは<a class="headerlink" href="#receivers_1" title="Permanent link">&para;</a></h4>
 <p>アラートの通知先をレシーバーとして設定する。</p>
+<h4 id="discord_configs">▼ discord_configs<a class="headerlink" href="#discord_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discord-foo-channel</span>
+<span class="w">    </span><span class="nt">discord_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#discord_configs">https://prometheus.io/docs/alerting/latest/configuration/#discord_configs</a></li>
+</ul>
+</blockquote>
+<h4 id="email_configs">▼ email_configs<a class="headerlink" href="#email_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email-foo</span>
+<span class="w">    </span><span class="nt">email_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#email_configs">https://prometheus.io/docs/alerting/latest/configuration/#email_configs</a></li>
+</ul>
+</blockquote>
+<h4 id="sns_configs">▼ sns_configs<a class="headerlink" href="#sns_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sns-foo-topics</span>
+<span class="w">    </span><span class="nt">sns_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#sns_configs">https://prometheus.io/docs/alerting/latest/configuration/#sns_configs</a></li>
+</ul>
+</blockquote>
 <h4 id="pagerduty_configs">▼ pagerduty_configs<a class="headerlink" href="#pagerduty_configs" title="Permanent link">&para;</a></h4>
 <p>通知先とするPagerDutyのServiceを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
@@ -23775,6 +23919,18 @@
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config">https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config</a></li>
+</ul>
+</blockquote>
+<h4 id="pushover_configs">▼ pushover_configs<a class="headerlink" href="#pushover_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pushover-foo</span>
+<span class="w">    </span><span class="nt">pushover_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs">https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs</a></li>
 </ul>
 </blockquote>
 <h4 id="slack_configs">▼ slack_configs<a class="headerlink" href="#slack_configs" title="Permanent link">&para;</a></h4>
@@ -23790,6 +23946,36 @@
 <span class="w">    </span><span class="nt">slack_configs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd-foo-channel</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#slack_configs">https://prometheus.io/docs/alerting/latest/configuration/#slack_configs</a></li>
+</ul>
+</blockquote>
+<h4 id="webex_configs">▼ webex_configs<a class="headerlink" href="#webex_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webex-foo</span>
+<span class="w">    </span><span class="nt">webex_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webex_configs">https://prometheus.io/docs/alerting/latest/configuration/#webex_configs</a></li>
+</ul>
+</blockquote>
+<h4 id="webhook_configs">▼ webhook_configs<a class="headerlink" href="#webhook_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">webhook-foo</span>
+<span class="w">    </span><span class="nt">webhook_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs">https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -23811,7 +23997,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
   </span>
 
     
