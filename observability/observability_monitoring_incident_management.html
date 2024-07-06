@@ -20651,11 +20651,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      一次オンコール担当者の作業
+      インシデントの解決フロー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+    <nav class="md-nav" aria-label="インシデントの解決フロー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -20668,9 +20668,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grafana-oncall" class="md-nav__link">
+  <a href="#grafana-oncall-incident" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Grafana OnCallの場合
+      ▼ Grafana OnCall / Incidentの場合
     </span>
   </a>
   
@@ -23474,11 +23474,11 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      一次オンコール担当者の作業
+      インシデントの解決フロー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+    <nav class="md-nav" aria-label="インシデントの解決フロー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23491,9 +23491,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grafana-oncall" class="md-nav__link">
+  <a href="#grafana-oncall-incident" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Grafana OnCallの場合
+      ▼ Grafana OnCall / Incidentの場合
     </span>
   </a>
   
@@ -23873,7 +23873,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. インシデントとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>サービスの停止を起こし得る想定外のイベントのこと。</p>
+<p>エラーイベントの内で、サービスの停止を起こし得る想定外のイベントのこと。</p>
+<p>全てのエラーイベントがインシデントというわけではない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management">https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management</a></li>
@@ -23895,7 +23896,7 @@
 <p><strong>＊技術ツール例＊</strong></p>
 <ul>
 <li>PagerDuty</li>
-<li>Grafana OnCall</li>
+<li>Grafana OnCall / Incident</li>
 <li>AWS Incident Management</li>
 </ul>
 <p><br></p>
@@ -23963,16 +23964,24 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">一次オンコール担当者の作業<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_7">インシデントの解決フロー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="pagerduty">▼ PagerDutyの場合<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
 <p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたアラートをオンコール担当者が作業する。</p>
 <p>その後、二次担当者に自動的にエスカレーションする。</p>
-<h4 id="grafana-oncall">▼ Grafana OnCallの場合<a class="headerlink" href="#grafana-oncall" title="Permanent link">&para;</a></h4>
-<p>Grafana OnCallをインシデント管理ツールとして、Grafana OnCallに通知されたアラートをオンコール担当者が作業する。</p>
+<h4 id="grafana-oncall-incident">▼ Grafana OnCall / Incidentの場合<a class="headerlink" href="#grafana-oncall-incident" title="Permanent link">&para;</a></h4>
+<p>Grafana OnCall / Incidentをインシデント管理ツールとして、Grafana OnCallに通知されたアラートをオンコール担当者が作業する。</p>
 <p>その後、二次担当者に作業を自動的にエスカレーションする。</p>
 <h4 id="slack">▼ Slackの場合<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
 <p>Slackをインシデント管理ツールとして、Slackに通知されたアラートをオンコール担当者が作業する。</p>
 <p>その後、二次担当者に作業を手動でエスカレーションする。</p>
+<p>ただ、SlackのBot (例：echoboomer/incident-bot) やワークフロー (例：Incident.io) で自動化しても良い。</p>
+<p>注意点として、各ツールはインシデントごとにチャンネルが作るため、チャンネルの残骸が増えてしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://note.com/kubopi/n/ne7c60f3c2d94">https://note.com/kubopi/n/ne7c60f3c2d94</a></li>
+<li><a href="https://qiita.com/kashee337/items/5791a5dfab7a1019a2cb#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8">https://qiita.com/kashee337/items/5791a5dfab7a1019a2cb#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8</a></li>
+</ul>
+</blockquote>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
