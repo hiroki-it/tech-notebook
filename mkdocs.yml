@@ -775,7 +775,8 @@ nav:
       - 可観測性: observability/observability.md
       - ■ 監視:
           - 監視: observability/observability_monitoring.md
-          - オンコールとインシデント管理: observability/observability_monitoring_oncall_incident_management.md
+          - オンコール: observability/observability_monitoring_oncall.md
+          - インシデント管理: observability/observability_monitoring_incident_management.md
           - サービスレベル: observability/observability_monitoring_service_level.md
       - ■ テレメトリー:
           - ログ: observability/observability_telemetry_log.md
