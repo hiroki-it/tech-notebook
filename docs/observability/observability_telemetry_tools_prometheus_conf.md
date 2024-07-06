@@ -329,18 +329,6 @@ receivers:
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#email_config
 
-#### ▼ sns_configs
-
-```yaml
-receivers:
-  - name: sns-foo-topics
-    sns_configs:
-      - ...
-```
-
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#sns_config
-
 #### ▼ pagerduty_configs
 
 通知先とするPagerDutyのServiceを設定する。
@@ -388,6 +376,18 @@ receivers:
 
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#slack_config
+
+#### ▼ sns_configs
+
+```yaml
+receivers:
+  - name: sns-foo-topics
+    sns_configs:
+      - ...
+```
+
+> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
+> - https://prometheus.io/docs/alerting/latest/configuration/#sns_config
 
 #### ▼ webex_configs
 
