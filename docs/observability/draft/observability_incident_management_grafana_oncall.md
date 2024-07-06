@@ -23,7 +23,7 @@ description: Grafana OnCall＠インシデント管理ツールの知見を記�
 
 Grafana OnCallは、Grafana OnCall Engine、データベース、から構成されている。
 
-![grafana-oncall_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grafana-oncall_architecture.png)
+![grafana-oncall_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grafana-oncall_architecture.png)
 
 > - https://github.com/grafana/oncall/blob/dev/docs/img/architecture_diagram.png
 

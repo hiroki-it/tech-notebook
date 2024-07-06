@@ -21,11 +21,11 @@ Incident Managerをインシデント管理ツールとして使用する。
 
 CloudWatchアラームに通知されたアラートを、Incident Managerにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。
 
-また、作業を各担当者に自動的にエスカレーションする。
+また、各担当者にオンコールを自動的にエスカレーションする。
 
 `(1)`
 
-: CloudWatchアラームからIncident Managerに、インシデントを通知する。
+: エラーイベントの送信元 (例：CloudWatchアラーム、EventBridge、など) からIncident Managerに、インシデントを通知する。
 
 `(2)`
 
@@ -50,5 +50,7 @@ CloudWatchアラームに通知されたアラートを、Incident Managerにイ
 : 問題を解決できれば、クローズに移行する。
 
 > - https://blog.serverworks.co.jp/incidentmanager-automation-2
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-SystemsManager-IncidentManager_0430_v1.pdf#page=34
 
 <br>
+
