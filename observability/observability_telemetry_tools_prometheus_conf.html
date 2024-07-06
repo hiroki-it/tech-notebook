@@ -22496,15 +22496,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sns_configs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sns_configs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#pagerduty_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ pagerduty_configs
@@ -22526,6 +22517,15 @@
   <a href="#slack_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ slack_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ sns_configs
     </span>
   </a>
   
@@ -23536,15 +23536,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sns_configs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sns_configs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#pagerduty_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ pagerduty_configs
@@ -23566,6 +23557,15 @@
   <a href="#slack_configs" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ slack_configs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns_configs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ sns_configs
     </span>
   </a>
   
@@ -23880,7 +23880,7 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#discord_configs">https://prometheus.io/docs/alerting/latest/configuration/#discord_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#discord_config">https://prometheus.io/docs/alerting/latest/configuration/#discord_config</a></li>
 </ul>
 </blockquote>
 <h4 id="email_configs">▼ email_configs<a class="headerlink" href="#email_configs" title="Permanent link">&para;</a></h4>
@@ -23892,19 +23892,7 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#email_configs">https://prometheus.io/docs/alerting/latest/configuration/#email_configs</a></li>
-</ul>
-</blockquote>
-<h4 id="sns_configs">▼ sns_configs<a class="headerlink" href="#sns_configs" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sns-foo-topics</span>
-<span class="w">    </span><span class="nt">sns_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#sns_configs">https://prometheus.io/docs/alerting/latest/configuration/#sns_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#email_config">https://prometheus.io/docs/alerting/latest/configuration/#email_config</a></li>
 </ul>
 </blockquote>
 <h4 id="pagerduty_configs">▼ pagerduty_configs<a class="headerlink" href="#pagerduty_configs" title="Permanent link">&para;</a></h4>
@@ -23930,7 +23918,7 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs">https://prometheus.io/docs/alerting/latest/configuration/#pushover_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#pushover_config">https://prometheus.io/docs/alerting/latest/configuration/#pushover_config</a></li>
 </ul>
 </blockquote>
 <h4 id="slack_configs">▼ slack_configs<a class="headerlink" href="#slack_configs" title="Permanent link">&para;</a></h4>
@@ -23949,7 +23937,19 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#slack_configs">https://prometheus.io/docs/alerting/latest/configuration/#slack_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#slack_config">https://prometheus.io/docs/alerting/latest/configuration/#slack_config</a></li>
+</ul>
+</blockquote>
+<h4 id="sns_configs">▼ sns_configs<a class="headerlink" href="#sns_configs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sns-foo-topics</span>
+<span class="w">    </span><span class="nt">sns_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#sns_config">https://prometheus.io/docs/alerting/latest/configuration/#sns_config</a></li>
 </ul>
 </blockquote>
 <h4 id="webex_configs">▼ webex_configs<a class="headerlink" href="#webex_configs" title="Permanent link">&para;</a></h4>
@@ -23961,7 +23961,7 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webex_configs">https://prometheus.io/docs/alerting/latest/configuration/#webex_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webex_config">https://prometheus.io/docs/alerting/latest/configuration/#webex_config</a></li>
 </ul>
 </blockquote>
 <h4 id="webhook_configs">▼ webhook_configs<a class="headerlink" href="#webhook_configs" title="Permanent link">&para;</a></h4>
@@ -23973,7 +23973,7 @@
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
-<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs">https://prometheus.io/docs/alerting/latest/configuration/#webhook_configs</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/configuration/#webhook_config">https://prometheus.io/docs/alerting/latest/configuration/#webhook_config</a></li>
 </ul>
 </blockquote>
 <p><br></p>
