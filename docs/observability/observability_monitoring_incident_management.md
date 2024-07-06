@@ -41,7 +41,7 @@ description: インシデント管理＠監視の知見を記録しています�
 **＊技術ツール例＊**
 
 - PagerDuty
-- Grafana OnCall / Incident
+- Grafana OnCall
 - AWS Incident Management
 
 <br>
@@ -87,19 +87,19 @@ description: インシデント管理＠監視の知見を記録しています�
 
 #### ▼ PagerDutyの場合
 
-PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたエラーイベントの内から、インシデントを作成する。
+PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。
 
 また、作業を各担当者に自動的にエスカレーションする。
 
-#### ▼ Grafana OnCall / Incidentの場合
+#### ▼ Grafana OnCallの場合
 
-Grafana OnCall / Incidentをインシデント管理ツールとして、Grafana OnCallに通知されたエラーイベントの内から、Incidentでインシデントを作成する。
+Grafana OnCallをインシデント管理ツールとして、Grafana OnCallに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。
 
 また、作業を各担当者に自動的にエスカレーションする。
 
 #### ▼ Slackの場合
 
-Slackをインシデント管理ツールとして、Slackに通知されたエラーイベントの内から、インシデントを作成する。
+Slackをインシデント管理ツールとして、Slackに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。
 
 また、作業を各担当者に自動的にエスカレーションする。
 
