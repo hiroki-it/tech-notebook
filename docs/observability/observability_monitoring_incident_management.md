@@ -185,7 +185,7 @@ fields @timestamp, @message, @logStream
 
 > - https://fastalert.jp/column/disaster-prevention/incident-command-system
 
-#### ▼ 指揮 (Commander)
+#### ▼ 指揮 (インシデントコマンダー)
 
 インシデントの状況把握を担当する。
 

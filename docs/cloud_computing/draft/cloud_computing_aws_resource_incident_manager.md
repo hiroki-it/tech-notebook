@@ -54,5 +54,6 @@ CloudWatchアラームのアラートを、Incident Managerにインシデント
 > - https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-SystemsManager-IncidentManager_0430_v1.pdf#page=34
 > - https://blog.serverworks.co.jp/incidentmanager-automation-2
+> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19
 
 <br>

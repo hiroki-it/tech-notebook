@@ -52,6 +52,7 @@ CloudWatchアラームに通知されたエラーイベントの内から、特�
 : 問題を解決できれば、Resolved状態に移行する。
 
 > - https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
+> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19
 
 <br>
 
