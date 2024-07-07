@@ -93,7 +93,7 @@ $ yq -i '.metadata.namespace = "foo"' manifest.yaml
 
 #### ▼ -Pとは
 
-`.json`ファイルを`.yaml`ファイルに変換する。
+`json`ファイルを`yaml`ファイルに変換する。
 
 ```bash
 $ yq -P foo.json > foo.yaml
@@ -105,7 +105,7 @@ $ yq -P foo.json > foo.yaml
 
 ### reduceとは
 
-入力された`.yaml`ファイルを処理し、新しい`.yaml`ファイルとして出力する。
+入力された`yaml`ファイルを処理し、新しい`yaml`ファイルとして出力する。
 
 <br>
 

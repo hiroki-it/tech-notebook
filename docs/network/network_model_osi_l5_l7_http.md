@@ -326,7 +326,7 @@ GET送信には不要である。
 |                    | json                  | jsonファイル                        |
 |                    | x-www-form-urlencoded | POST送信のデータ                    |
 |                    | zip                   | `.zip`ファイル                      |
-| text               | html                  | `.html`ファイル                     |
+| text               | html                  | `html`ファイル                      |
 |                    | css                   | `.css`ファイル                      |
 |                    | plane                 | プレーンテキスト                    |
 | image              | png                   | pngファイル                         |

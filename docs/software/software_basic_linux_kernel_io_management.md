@@ -332,7 +332,7 @@ $ sudo pgrep \
 
 **＊例＊**
 
-巨大な`.yaml`ファイルをページングして出力する。
+巨大な`yaml`ファイルをページングして出力する。
 
 ```bash
 $ cat foo.yaml | less

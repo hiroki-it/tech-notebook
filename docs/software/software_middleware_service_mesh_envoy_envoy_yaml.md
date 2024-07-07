@@ -29,7 +29,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 Dockerfileにて、自前の`/etc/envoy/envoy.yaml`ファイルを組み込む。
 
-拡張子は、`.yml`ではなく、`.yaml`とする。
+拡張子は、`yml`ではなく、`yaml`とする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -58,7 +58,7 @@ Istioは、Envoyをベースとしたリバースプロキシを自動的に挿�
 
 執筆時点 (2022/11/16) では、設定ファイルのドキュメントの記載が不十分である。
 
-設定ファイルのYAMLファイルのデータ型や階層は、APIのJSON形式と同じ構成になっている。
+設定ファイルのYAMLファイルのデータ型や階層は、APIの`json`形式と同じ構成になっている。
 
 そのため、設定ファイルのドキュメントで探す代わりに、APIのドキュメントを確認した方が良い。
 

@@ -436,13 +436,13 @@ $ yarn upgrade --latest
 
 JavaScriptファイルを読み込むscriptタグを1つにまとめる。
 
-`.html`ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
+`html`ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
 
 > - https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
 **＊例＊**
 
-以下のような`.html`ファイルがあるとする。
+以下のような`html`ファイルがあるとする。
 
 ```html
 <!doctype html>

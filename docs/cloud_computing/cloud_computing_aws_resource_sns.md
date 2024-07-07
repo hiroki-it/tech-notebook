@@ -86,9 +86,9 @@ Webhook用のエンドポイントに送信する。
 - Chatbotのドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
 - incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)
 
-#### ▼ `.json`形式のメール
+#### ▼ `json`形式のメール
 
-メースアドレスにJSON形式で送信する。
+メースアドレスに`json`形式で送信する。
 
 #### ▼ SMS
 

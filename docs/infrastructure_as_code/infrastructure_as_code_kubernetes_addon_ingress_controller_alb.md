@@ -184,7 +184,7 @@ AWS Load Balancerコントローラーのセットアップのうち、AWS側で
 
 `(1)`
 
-: ローカルマシンにIAMポリシーの`.json`ファイルをダウンロードする。
+: ローカルマシンにIAMポリシーの`json`ファイルをダウンロードする。
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
@@ -195,7 +195,7 @@ $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-co
 
 `(2)`
 
-: `.json`ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
+: `json`ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
 
 ```bash
 $ aws iam create-policy \

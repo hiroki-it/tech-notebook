@@ -54,7 +54,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 #### ▼ ドキュメントから
 
-Grafanaのドキュメントから`.yaml`ファイルをコピーし、`grafana.yaml`ファイルを作成する。
+Grafanaのドキュメントから`yaml`ファイルをコピーし、`grafana.yaml`ファイルを作成する。
 
 これを作成する。
 

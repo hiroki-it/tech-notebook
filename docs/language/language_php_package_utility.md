@@ -296,7 +296,7 @@ $body = json_decode($response->getBody(), true);
 
 ### KnpLabs/Snappyとは
 
-ローカルまたは指定したURLの`.html`ファイルから、PDFや画像のファイルを作成するパッケージ。
+ローカルまたは指定したURLの`html`ファイルから、PDFや画像のファイルを作成するパッケージ。
 
 > - https://github.com/KnpLabs/snappy
 
@@ -306,7 +306,7 @@ $body = json_decode($response->getBody(), true);
 
 #### ▼ `generateFromHtml`メソッド
 
-ローカルディレクトリ配下に、`.html`ファイルを基にしたPDFファイルを作成する。
+ローカルディレクトリ配下に、`html`ファイルを基にしたPDFファイルを作成する。
 
 **＊実装例＊**
 

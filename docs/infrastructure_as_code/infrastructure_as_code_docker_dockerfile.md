@@ -212,7 +212,7 @@ FROM python:${PYTHON_VERSION}
 
 イメージのプロセスの起動コマンドを実行する。
 
-パラメーターの記述形式には、文字列形式、`.json`形式がある。
+パラメーターの記述形式には、文字列形式、`json`形式がある。
 
 > - https://docs.docker.com/engine/reference/builder/#cmd
 

@@ -44,19 +44,19 @@ CRDのマニフェストをインストールする。
 $ wget https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 ```
 
-あるいは、JSON形式のスキーマを直接インストールしてもよい。
+あるいは、`json`形式のスキーマを直接インストールしてもよい。
 
 この場合、後述のスキーマの作成は不要になる。
 
 #### ▼ スキーマの作成
 
-`openapi2jsonschema`を使い、CRDのマニフェストから各カスタムリソースのスキーマをJSON形式で作成する。
+`openapi2jsonschema`を使い、CRDのマニフェストから各カスタムリソースのスキーマを`json`形式で作成する。
 
 ```bash
 # 各カスタムリソースのJSONスキーマのファイル形式を設定する
 $ export FILENAME_FORMAT='{kind}-{version}'
 
-# 各カスタムリソースのスキーマをJSON形式で作成する
+# 各カスタムリソースのスキーマをjson形式で作成する
 $ ./openapi2jsonschema.py crds.yaml
 
 # ファイル形式は {kind}-{version} になっている
@@ -131,7 +131,7 @@ $ kubeconform \
 
 #### ▼ -schema-locationとは
 
-JSON形式のスキーマの場所を明示的に設定する。
+`json`形式のスキーマの場所を明示的に設定する。
 
 Goテンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。
 

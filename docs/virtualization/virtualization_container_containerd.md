@@ -102,7 +102,7 @@ Containerdは、テキスト形式ログを作成する。
 
 ### Dockerのログとの比較
 
-Dockerは、JSON形式をログを作成する。
+Dockerは、`json`形式をログを作成する。
 
 ```yaml
 {

@@ -284,7 +284,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 #### ▼ json
 
-`.json`形式で取得する。
+`json`形式で取得する。
 
 ```bash
 $ aws iam list-users --output json > data.json

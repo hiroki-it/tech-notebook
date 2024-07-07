@@ -29,7 +29,7 @@ $ brew install sops
 
 #### ▼ 平文ファイル
 
-`.yaml`ファイル、`.env`ファイル、などを暗号化できる。
+`yaml`ファイル、`.env`ファイル、などを暗号化できる。
 
 暗号化すると、`secrets`ファイルになる。
 
@@ -43,7 +43,7 @@ SOPSによって暗号化されたファイルであり、キーバリュー型�
 
 **＊実装例＊**
 
-ここでは、`.yaml`ファイルを暗号化する。
+ここでは、`yaml`ファイルを暗号化する。
 
 ```bash
 # 平文ファイル
@@ -143,7 +143,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 #### ▼ -d
 
-`.yaml`ファイルや`.json`ファイルの値の部分を復号化する。
+`yaml`ファイルや`json`ファイルの値の部分を復号化する。
 
 標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
@@ -159,7 +159,7 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP、など) に基づいて、`.yaml`ファイルや`.json`ファイルの値の部分を暗号化する。
+外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP、など) に基づいて、`yaml`ファイルや`json`ファイルの値の部分を暗号化する。
 
 環境変数や`.sops.yaml`ファイルで暗号化ルールを定義しておく必要がある。
 

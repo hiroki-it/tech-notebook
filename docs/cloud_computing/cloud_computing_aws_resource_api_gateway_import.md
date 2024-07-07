@@ -17,7 +17,7 @@ description: API Gatewayへのymlインポート＠AWSの知見を記録して�
 
 #### ▼ 必要なキー
 
-API Gatewayのインポートに当たり、OpenAPIの`.yaml`ファイルにキーを新たに実装する必要がある。
+API Gatewayのインポートに当たり、OpenAPIの`yaml`ファイルにキーを新たに実装する必要がある。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
@@ -206,7 +206,7 @@ x-amazon-apigateway-request-validators:
 
 インポートにあたり、以下に注意する。
 
-Swagger EditorでAPIの仕様書の`.html`ファイルを確認できる。
+Swagger EditorでAPIの仕様書の`html`ファイルを確認できる。
 
 > - https://editor.swagger.io/
 

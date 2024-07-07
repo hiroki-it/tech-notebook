@@ -839,7 +839,7 @@ kube-dns               10.0.0.10    53,53
 kubernetes-dashboard   10.0.0.250   9090
 ```
 
-なお、さらにJSON形式で出力することもできる。
+なお、さらに`json`形式で出力することもできる。
 
 ```bash
 $ kubectl get service \

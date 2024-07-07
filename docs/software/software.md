@@ -87,7 +87,7 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ### ハイブリッドアプリケーション
 
-端末でWebviewを稼働させ、ソフトウェアの`.html`ファイルのレンダリングをWebview上で実行するアプリケーションのこと。
+端末でWebviewを稼働させ、ソフトウェアの`html`ファイルのレンダリングをWebview上で実行するアプリケーションのこと。
 
 ![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webviewよるアプリパッケージ.png)
 

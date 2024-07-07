@@ -33,7 +33,7 @@ $ pip3 install uwsgi
 
 uWSGIの起動時の値を設定する。
 
-`.json`形式やXML形式でも問題ない。
+`json`形式やXML形式でも問題ない。
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 > - https://qiita.com/11ohina017/items/da2ae5b039257752e558
