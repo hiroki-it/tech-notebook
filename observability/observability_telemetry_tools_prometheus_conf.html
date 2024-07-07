@@ -23970,6 +23970,16 @@
 <span class="w">    </span><span class="nt">webhook_configs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
+<p>インシデント管理ツールが専用のエンドポイントを公開していれば、</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack-incident-io</span>
+<span class="w">      </span><span class="nt">webhook_configs</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.incident.io/v2/alert_events/alertmanager/*****</span>
+<span class="w">          </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">http_config</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">authorization</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">credentials</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/configuration/#receiver">https://prometheus.io/docs/alerting/latest/configuration/#receiver</a></li>
