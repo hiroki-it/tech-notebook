@@ -22631,6 +22631,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      担当ロール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="担当ロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 担当ロールとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23072,6 +23096,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      担当ロール
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="担当ロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 担当ロールとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23108,7 +23156,7 @@
 <p><img alt="pagerduty_on-call" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png" /></p>
 <p>PagerDutyをインシデント管理ツールとして使用する。</p>
 <p>CloudWatchアラームに通知されたエラーイベントの内から、特に重要なものをPagerDutyでインシデントとして対処する。</p>
-<p>また、各担当者にオンコールを自動的にエスカレーションする。</p>
+<p>また、各ロールの担当者にオンコールを自動的にエスカレーションする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -23121,7 +23169,7 @@
 <dt><code>(3)</code></dt>
 <dd>
 <p>Runbook Automationがインシデントを解決できなかったとする。</p>
-<p>PagerDutyのServiceは、インシデントをメールや電話に通知する。</p>
+<p>PagerDutyのServiceは、インシデントを責任者 (インシデントコマンダー) のメールや電話に通知する。</p>
 <p>執筆時点 (2022/12/26) では、電話での通知は英語である。</p>
 </dd>
 <dt><code>(4)</code></dt>
@@ -23197,6 +23245,16 @@
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">担当ロール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 担当ロールとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>インシデントの対応にあたり、チームのメンバーにロール (例：Commander) を割り当てておくとよい。</p>
+<p>インシデントコマンドシステムを採用し、ロールを決める。</p>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/before/different_roles/">https://response.pagerduty.com/before/different_roles/</a></li>
 </ul>
 </blockquote>
 <p><br></p>

@@ -22906,8 +22906,8 @@
 <h2 id="01-incident-manager">01. Incident Managerとは<a class="headerlink" href="#01-incident-manager" title="Permanent link">&para;</a></h2>
 <p><img alt="aws_incident_manager.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_incident_manager.png" /></p>
 <p>Incident Managerをインシデント管理ツールとして使用する。</p>
-<p>CloudWatchアラームに通知されたアラートを、Incident Managerにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。</p>
-<p>また、各担当者にオンコールを自動的にエスカレーションする。</p>
+<p>CloudWatchアラームのアラートを、Incident Managerにインシデントとして通知する。</p>
+<p>また、各ロールの担当者にオンコールを自動的にエスカレーションする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -22921,7 +22921,7 @@
 <dt><code>(3)</code></dt>
 <dd>
 <p>Automationがインシデントを解決できなかったとする。</p>
-<p>Incident Managerは、インシデントを一次担当者オンコールする。</p>
+<p>Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
