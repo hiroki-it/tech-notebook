@@ -17,7 +17,7 @@ description: OpenPolicyAgent＠コード規約違反の知見を記録してい�
 
 ### アーキテクチャ
 
-OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、といったコンポーネントから構成される。
+OpenPolicyAgentは、OpenPolicyエージェント、`rego`ファイル、DB、といったコンポーネントから構成される。
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
@@ -30,7 +30,7 @@ OpenPolicyAgentは、OpenPolicyエージェント、`.rego`ファイル、DB、�
 
 DBから認証情報を読み出し、認可処理を実行する。
 
-この時、`.rego`ファイルのロジックに基づいて、boolean型値を返却する。
+この時、`rego`ファイルのロジックに基づいて、boolean型値を返却する。
 
 返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
 
@@ -40,7 +40,7 @@ DBから認証情報を読み出し、認可処理を実行する。
 
 <br>
 
-### `.rego`ファイル
+### `rego`ファイル
 
 認可スコープのロジックを定義する。
 
@@ -48,7 +48,7 @@ DBから認証情報を読み出し、認可処理を実行する。
 
 ### DB
 
-認証情報を`json`形式、認可スコープ定義を`.rego`形式で、保管する。
+認証情報を`json`形式、認可スコープ定義を`rego`形式で、保管する。
 
 <br>
 
@@ -95,7 +95,7 @@ $ curl \
 
 `(3)`
 
-: 認可スコープ定義のロジックを`.rego`形式で作成する。
+: 認可スコープ定義のロジックを`rego`形式で作成する。
 
 > - https://thinkit.co.jp/article/17511
 
@@ -126,7 +126,7 @@ allow {
 
 `(4)`
 
-: アプリケーションは、OpenPolicyエージェントに`.rego`ファイルを送信し、認可スコープ定義をDBに作成する。
+: アプリケーションは、OpenPolicyエージェントに`rego`ファイルを送信し、認可スコープ定義をDBに作成する。
 
 ```bash
 $ curl \

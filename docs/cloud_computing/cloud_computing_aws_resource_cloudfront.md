@@ -84,7 +84,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | TTL                            | CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
 | Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
 | Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                    |
-| Compress Objects Automatically | レスポンス時に`.gzip`ファイルとして圧縮するか否かを設定                        | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                             |
+| Compress Objects Automatically | レスポンス時に`gzip`ファイルとして圧縮するか否かを設定                         | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                             |
 
 #### ▼ オリジンに対するリクエストの構造
 
