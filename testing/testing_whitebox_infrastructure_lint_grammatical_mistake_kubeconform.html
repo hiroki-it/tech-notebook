@@ -23298,14 +23298,14 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># リポジトリからCRDを取得する</span>
 $<span class="w"> </span>wget<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 </code></pre></div>
-<p>あるいは、JSON形式のスキーマを直接インストールしてもよい。</p>
+<p>あるいは、<code>json</code>形式のスキーマを直接インストールしてもよい。</p>
 <p>この場合、後述のスキーマの作成は不要になる。</p>
 <h4 id="_5">▼ スキーマの作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><code>openapi2jsonschema</code>を使い、CRDのマニフェストから各カスタムリソースのスキーマをJSON形式で作成する。</p>
+<p><code>openapi2jsonschema</code>を使い、CRDのマニフェストから各カスタムリソースのスキーマを<code>json</code>形式で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 各カスタムリソースのJSONスキーマのファイル形式を設定する</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">FILENAME_FORMAT</span><span class="o">=</span><span class="s1">&#39;{kind}-{version}&#39;</span>
 
-<span class="c1"># 各カスタムリソースのスキーマをJSON形式で作成する</span>
+<span class="c1"># 各カスタムリソースのスキーマをjson形式で作成する</span>
 $<span class="w"> </span>./openapi2jsonschema.py<span class="w"> </span>crds.yaml
 
 <span class="c1"># ファイル形式は {kind}-{version} になっている</span>
@@ -23360,7 +23360,7 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
 <p><br></p>
 <h3 id="-schema-location">-schema-location<a class="headerlink" href="#-schema-location" title="Permanent link">&para;</a></h3>
 <h4 id="-schema-location_1">▼ -schema-locationとは<a class="headerlink" href="#-schema-location_1" title="Permanent link">&para;</a></h4>
-<p>JSON形式のスキーマの場所を明示的に設定する。</p>
+<p><code>json</code>形式のスキーマの場所を明示的に設定する。</p>
 <p>Goテンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-schema-location<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
@@ -23397,7 +23397,7 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
   </span>
 
     

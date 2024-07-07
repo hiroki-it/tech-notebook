@@ -24494,7 +24494,7 @@
 <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="script">▼ scriptタグが複数ある場合<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のWebページの<code>.html</code>ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。</p>
+<p><code>1</code>個のWebページの<code>html</code>ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。</p>
 <p>そのため、より上部のscriptタグの処理は、より下部のscriptに引き継がれる。</p>
 <p>1。</p>
 <p>例えば、以下のコードがある。</p>
@@ -24542,8 +24542,8 @@
 <ol>
 <li>実行時には以下の様に、まとめて実行される。</li>
 </ol>
-<p>ここでは、<code>.html</code>ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
-<p><code>1</code>個のページを構成する<code>.html</code>ファイルを別ファイルとして分割していても、同じである。</p>
+<p>ここでは、<code>html</code>ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
+<p><code>1</code>個のページを構成する<code>html</code>ファイルを別ファイルとして分割していても、同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 
@@ -24581,7 +24581,7 @@
 <h2 id="02-downloading">02. Downloading処理<a class="headerlink" href="#02-downloading" title="Permanent link">&para;</a></h2>
 <h3 id="downloading">Downloading処理とは<a class="headerlink" href="#downloading" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 非同期的な読み出し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>まず、サーバーサイドからWebページ (<code>.html</code>ファイル、<code>.css</code>ファイル、JavaScriptファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
+<p>まず、サーバーサイドからWebページ (<code>html</code>ファイル、<code>.css</code>ファイル、JavaScriptファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
 <p>これは、メッセージボディに含まれている。</p>
 <p>これを優先度を基に読み込む処理。</p>
 <p>分割でレスポンスされたWebページを、随時読み込んでいく。</p>
@@ -24649,7 +24649,7 @@
 <h3 id="html_1">HTML形式テキストファイルの構造解析<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 構造解析の流れ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Downloading処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。</p>
-<p>ここでは、以下の<code>.html</code>ファイルと<code>.css</code>ファイル (<code>style.css</code>) に変換されたとする。</p>
+<p>ここでは、以下の<code>html</code>ファイルと<code>.css</code>ファイル (<code>style.css</code>) に変換されたとする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -24712,7 +24712,7 @@
 <p><br></p>
 <h2 id="03-scripting">03. Scripting処理<a class="headerlink" href="#03-scripting" title="Permanent link">&para;</a></h2>
 <h3 id="scripting">Scripting処理とは<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h3>
-<p>サーバーサイドからWebページ (<code>.html</code>ファイル、<code>.css</code>ファイル、JavaScriptファイル、画像ファイル) を取得した後、レンダリングエンジンのHTMLの解析が<code>script</code>タグに到達する。</p>
+<p>サーバーサイドからWebページ (<code>html</code>ファイル、<code>.css</code>ファイル、JavaScriptファイル、画像ファイル) を取得した後、レンダリングエンジンのHTMLの解析が<code>script</code>タグに到達する。</p>
 <p>レンダリングエンジンは、JavaScriptエンジンに<code>script</code>タグの内容を渡す。</p>
 <p>JavaScriptエンジンは、JavaScriptコードを機械語に翻訳し、実行する。</p>
 <p>この処理は、初回アクセス時のみでなく、イベントが発火した時にも実行される。</p>
@@ -24725,7 +24725,7 @@
 <h3 id="javascript_1">JavaScriptエンジン<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h3>
 <h4 id="javascript_2">▼ JavaScriptエンジンとは<a class="headerlink" href="#javascript_2" title="Permanent link">&para;</a></h4>
 <p>JavaScriptのインタプリタのこと。</p>
-<p>JavaScriptエンジンは、レンダリングエンジンから<code>.html</code>ファイルに組み込まれたJavaScriptのコードを受け取る。</p>
+<p>JavaScriptエンジンは、レンダリングエンジンから<code>html</code>ファイルに組み込まれたJavaScriptのコードを受け取る。</p>
 <p>JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。</p>
 <p><img alt="JavascriptEngine" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png" /></p>
 <h4 id="_12">▼ 機械語翻訳<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -24733,7 +24733,7 @@
 <h2 id="03-02">03-02. イベント<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_13">イベント<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ イベントとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>ブラウザの各操作はイベントとして<code>.js</code>ファイルまたは<code>.html</code>ファイルに紐付けられている。</p>
+<p>ブラウザの各操作はイベントとして<code>.js</code>ファイルまたは<code>html</code>ファイルに紐付けられている。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mozilla.org/ja/docs/Web/Events">https://developer.mozilla.org/ja/docs/Web/Events</a></li>
@@ -24857,7 +24857,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
   </span>
 
     
