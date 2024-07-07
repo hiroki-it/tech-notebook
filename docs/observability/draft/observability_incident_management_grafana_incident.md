@@ -17,7 +17,9 @@ description: Grafana Incident＠インシデント管理ツールの知見を記
 
 Grafana OnCallを拡張する。
 
-Grafana OnCallとは異なり、インシデントの担当者に異なるロールを割り当てられる。
+Grafana OnCallとは異なり、オンコール担当者に異なるロール (例：Commanderなど) を割り当てられる。
+
+インシデントコマンドシステムを採用し、ロールを決める。
 
 また、インシデントに各種ノートを追加できる。
 

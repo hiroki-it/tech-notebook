@@ -19,9 +19,9 @@ description: Incident Management＠AWSの知見を記録しています。
 
 Incident Managerをインシデント管理ツールとして使用する。
 
-CloudWatchアラームに通知されたアラートを、Incident Managerにインシデントとして通知し、これをオンコール担当者が対応すると仮定する。
+CloudWatchアラームのアラートを、Incident Managerにインシデントとして通知する。
 
-また、各担当者にオンコールを自動的にエスカレーションする。
+また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
 `(1)`
 
@@ -37,7 +37,7 @@ CloudWatchアラームに通知されたアラートを、Incident Managerにイ
 
 : Automationがインシデントを解決できなかったとする。
 
-      Incident Managerは、インシデントを一次担当者オンコールする。
+      Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。
 
 `(4)`
 

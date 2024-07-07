@@ -43,12 +43,4 @@ AWSリソースのイベントを、EventBridge (CloudWatchイベント) を使�
 
 > - https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
-#### ▼ インシデント
-
-ゴールデンシグナル (４大シグナル) を含む、システム的に良くない事象のこと。
-
-#### ▼ オンコール
-
-インシデントを通知するようにし、通知を受けて対応すること。
-
 <br>
