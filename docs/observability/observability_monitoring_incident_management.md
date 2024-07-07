@@ -109,6 +109,7 @@ Slackをインシデント管理ツールとして、Slackに通知されたエ�
 
 > - https://note.com/kubopi/n/ne7c60f3c2d94
 > - https://qiita.com/kashee337/items/5791a5dfab7a1019a2cb#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8
+> - https://incident.io/alternatives/pagerduty
 
 `(1)`
 

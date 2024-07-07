@@ -894,7 +894,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『`with an explicit deny`』という文言がつく。
 
-```
+```bash
 Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
 ```
 

@@ -63,14 +63,37 @@ AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能�
 
 ### サブスクリプション
 
-| メッセージの種類      | 転送先                | 補足                                                                    |
-| --------------------- | --------------------- | ----------------------------------------------------------------------- |
-| Kinesis Data Firehose | Kinesis Data Firehose |                                                                         |
-| SQS                   | SQS                   |                                                                         |
-| Lambda                | Lambda                |                                                                         |
-| Eメール               | 任意のメールアドレス  |                                                                         |
-| HTTP/HTTPS            | 任意のドメイン名      | Chatbotのドメイン名は『`https://global.sns-api.chatbot.amazonaws.com`』 |
-| `.json`形式のメール   | 任意のメールアドレス  |                                                                         |
-| SMS                   | SMS                   | 受信者の電話番号を設定する。                                            |
+#### ▼ Kinesis Data Firehose
+
+Kinesis Data Firehoseに送信する。
+
+#### ▼ SQS
+
+SQSに送信する。
+
+#### ▼ Lambda
+
+Lambdaに送信する。
+
+#### ▼ Eメール
+
+メールアドレスに送信する。
+
+#### ▼ HTTP/HTTPS
+
+Webhook用のエンドポイントに送信する。
+
+- Chatbotのドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
+- incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)
+
+#### ▼ `.json`形式のメール
+
+メースアドレスにJSON形式で送信する。
+
+#### ▼ SMS
+
+SMSに送信する。
+
+電話番号を設定する必要がある。
 
 <br>

@@ -410,6 +410,19 @@ receivers:
       - ...
 ```
 
+インシデント管理ツールが専用のエンドポイントを公開していれば、
+
+```yaml
+  receivers:
+    - name: slack-incident-io
+      webhook_configs:
+        - url: https://api.incident.io/v2/alert_events/alertmanager/*****
+          send_resolved: true
+          http_config:
+            authorization:
+              credentials: *****
+```
+
 > - https://prometheus.io/docs/alerting/latest/configuration/#receiver
 > - https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 
