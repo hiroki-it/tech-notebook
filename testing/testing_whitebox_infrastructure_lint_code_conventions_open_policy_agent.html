@@ -9706,7 +9706,7 @@
           <li class="md-nav__item">
   <a href="#rego" class="md-nav__link">
     <span class="md-ellipsis">
-      .regoファイル
+      regoファイル
     </span>
   </a>
   
@@ -23108,7 +23108,7 @@
           <li class="md-nav__item">
   <a href="#rego" class="md-nav__link">
     <span class="md-ellipsis">
-      .regoファイル
+      regoファイル
     </span>
   </a>
   
@@ -23256,7 +23256,7 @@
 <p><br></p>
 <h2 id="01-openpolicyagent">01. OpenPolicyAgentの仕組み<a class="headerlink" href="#01-openpolicyagent" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OpenPolicyAgentは、OpenPolicyエージェント、<code>.rego</code>ファイル、DB、といったコンポーネントから構成される。</p>
+<p>OpenPolicyAgentは、OpenPolicyエージェント、<code>rego</code>ファイル、DB、といったコンポーネントから構成される。</p>
 <p><img alt="open-policy-agent_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -23267,7 +23267,7 @@
 <p><br></p>
 <h3 id="openpolicy">OpenPolicyエージェント<a class="headerlink" href="#openpolicy" title="Permanent link">&para;</a></h3>
 <p>DBから認証情報を読み出し、認可処理を実行する。</p>
-<p>この時、<code>.rego</code>ファイルのロジックに基づいて、boolean型値を返却する。</p>
+<p>この時、<code>rego</code>ファイルのロジックに基づいて、boolean型値を返却する。</p>
 <p>返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。</p>
 <p><img alt="open-policy-agent" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png" /></p>
 <blockquote>
@@ -23276,11 +23276,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="rego"><code>.rego</code>ファイル<a class="headerlink" href="#rego" title="Permanent link">&para;</a></h3>
+<h3 id="rego"><code>rego</code>ファイル<a class="headerlink" href="#rego" title="Permanent link">&para;</a></h3>
 <p>認可スコープのロジックを定義する。</p>
 <p><br></p>
 <h3 id="db">DB<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
-<p>認証情報を<code>json</code>形式、認可スコープ定義を<code>.rego</code>形式で、保管する。</p>
+<p>認証情報を<code>json</code>形式、認可スコープ定義を<code>rego</code>形式で、保管する。</p>
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">アプリケーションの認可サービスとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -23320,7 +23320,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>認可スコープ定義のロジックを<code>.rego</code>形式で作成する。</p>
+<p>認可スコープ定義のロジックを<code>rego</code>形式で作成する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -23354,7 +23354,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>アプリケーションは、OpenPolicyエージェントに<code>.rego</code>ファイルを送信し、認可スコープ定義をDBに作成する。</p>
+<p>アプリケーションは、OpenPolicyエージェントに<code>rego</code>ファイルを送信し、認可スコープ定義をDBに作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
