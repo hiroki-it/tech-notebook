@@ -374,6 +374,20 @@ AWS EKSでの目安であるが、サブネットごとに `/19`や `/20`なる�
 
 ## 07. 監視ポリシー
 
+### メトリクスエンドポイント
+
+Kubernetesの以下のコンポーネントが、メトリクスエンドポイント (`/metrics`) を持つ。
+
+- kube-controller-manager
+- kube-proxy
+- kube-apiserver
+- kube-scheduler
+- kubelet
+
+> - https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/#metrics-in-kubernetes
+
+<br>
+
 ### ハードウェアリソース系
 
 #### ▼ ハードウェアリソース系

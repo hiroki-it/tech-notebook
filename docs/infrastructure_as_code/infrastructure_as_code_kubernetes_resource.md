@@ -443,19 +443,32 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 `(1)`
 
-: クライアント (特に`kubectl`コマンド実行者) が`kubectl logs`コマンドを実行する。
+: Node上のkubeletとコンテナランタイムは、`/var/log/`ディレクトリの`log`ファイルにログを書き込む。
 
 `(2)`
 
-: kube-apiserverが、`/logs/pods/<ログへのパス>`エンドポイントにリクエストを送信する。
+: クライアント (特に`kubectl`コマンド実行者) が`kubectl logs`コマンドを実行する。
 
 `(3)`
 
-: kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリを読み込む。Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっているため、kubeletを経由して、コンテナのログを確認できる。補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
+: kube-apiserverが、`/logs/pods/<ログへのパス>`エンドポイントにリクエストを送信する。
+
+`(4)`
+
+: kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリの`log`ファイルを読み込む。
+
+     Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっている。
+
+     そのため、kubeletを経由して、コンテナのログを確認できる。
+
+     補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
 > - https://www.creationline.com/lab/29281
+> - https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node
+> - https://tech.studyplus.co.jp/entry/2020/03/23/094119
+> - https://qiita.com/daitak/items/679785bd0724cb1f4971#%E3%83%AD%E3%82%B0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E9%9A%8E%E5%B1%A4%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D
 
 補足として、DaemonSetとして稼働するFluentdは、Nodeの`/var/log`ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
