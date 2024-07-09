@@ -25698,7 +25698,55 @@
 <p>プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。</p>
 <p>アクセスエントリーは、アクセスエントリーポリシーをIAMロールに動的にを設定する。</p>
 <p>プリンシパルIAMロールとアクセスエントリーを経由して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># アクセスエントリー</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール</span>
+<span class="c1"># サービス側EKS ClusterにアクセスするためのIAMロールにスイッチロールできる</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_access_entry_service&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+
+<span class="c1">  # ArgoCDのPodに紐付けるIAMロール</span>
+<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-access-entry-service&quot;</span>
+
+<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
+<span class="c1">  # ArgoCDは外部のAWS EKS Clusterで稼働している</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">  # ArgoCDのPodのServiceAccount名</span>
+<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
+<span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="c1">    # argocd applicaton-controller</span>
+<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-application-controller&quot;</span><span class="p">,</span>
+<span class="c1">    # argocd-server</span>
+<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># サービス側のEKS ClusterにアクセスするためのIAMロール</span>
+<span class="c1"># サービス側でアクセスエントリーを設定する必要がある</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_argocd_access_entry_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
+
+
+<span class="w">  </span><span class="na">source</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role&quot;</span>
+
+<span class="w">  </span><span class="na">version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+
+<span class="w">  </span><span class="na">create_role</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-access-entry-cluster&quot;</span>
+
+<span class="w">  </span><span class="na">trusted_role_actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sts:AssumeRole&quot;</span><span class="p">]</span>
+
+<span class="w">  </span><span class="na">trusted_role_arns</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nv">module.iam_assumable_role_with_oidc_argocd_access_entry_service.iam_role_arn</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="w">  </span><span class="na">role_requires_mfa</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># アクセス先のEKSでアクセスエントリーを設定する</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_entry&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
@@ -25719,32 +25767,6 @@
 <span class="w">    </span><span class="na">type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;namespace&quot;</span>
 <span class="w">    </span><span class="na">namespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;example-namespace&quot;</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1"># IAMプリンシパルロール</span>
-<span class="c1"># argocd-application-controllerとargocd-serverのPodがIRSA用IAMロールにスイッチするためのロール</span>
-<span class="c1"># IRSA用IAMロールを使用すると、PodはEKSクラスターにアクセスできる</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
-
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-
-<span class="c1">  # ArgoCDのPodに紐付けるIAMロール</span>
-<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-principal&quot;</span>
-
-<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="c1">  # ArgoCDは外部のAWS EKS Clusterで稼働している</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
-
-<span class="c1">  # ArgoCDのPodのServiceAccount名</span>
-<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
-<span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-application-controller&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-server&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
