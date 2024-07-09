@@ -25699,7 +25699,7 @@
 <p>アクセスエントリーは、アクセスエントリーポリシーをIAMロールに動的にを設定する。</p>
 <p>プリンシパルIAMロールとアクセスエントリーを経由して、<code>kubectl</code>クライアントの認可スコープを制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール</span>
-<span class="c1"># サービス側EKS ClusterにアクセスするためのIAMロールにスイッチロールできる</span>
+<span class="c1"># 対象のEKS ClusterにアクセスするためのIAMロールにスイッチロールできる</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_access_entry_service&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -25725,10 +25725,9 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># サービス側のEKS ClusterにアクセスするためのIAMロール</span>
-<span class="c1"># サービス側でアクセスエントリーを設定する必要がある</span>
+<span class="c1"># 対象のEKS ClusterにアクセスするためのIAMロール</span>
+<span class="c1"># 対象のEKS Clusterでアクセスエントリーを設定する必要がある</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_argocd_access_entry_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
-
 
 <span class="w">  </span><span class="na">source</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role&quot;</span>
 
@@ -25746,28 +25745,55 @@
 <span class="w">  </span><span class="na">role_requires_mfa</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># アクセス先のEKSでアクセスエントリーを設定する</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 対象のEKS Clusterでアクセスエントリーを設定する</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_entry&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
 
 <span class="w">  </span><span class="na">principal_arn</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_with_oidc_argocd_principal.arn</span>
+
+<span class="w">  </span><span class="na">kubernetes_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;argocd-group&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># アクセスエントリーポリシー</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_policy_association&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_policy_association&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
 
-<span class="w">  </span><span class="na">policy_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy&quot;</span>
+<span class="c1">  // アクセス元にどのようなIAMポリシーを付与するかを設定する</span>
+<span class="w">  </span><span class="na">policy_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy&quot;</span>
 
 <span class="w">  </span><span class="na">principal_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_with_oidc_argocd_principal.arn</span>
 
 <span class="w">  </span><span class="nb">access_scope</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;namespace&quot;</span>
-<span class="w">    </span><span class="na">namespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;example-namespace&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span>
 <span class="w">  </span><span class="p">}</span>
+
 <span class="p">}</span>
+</code></pre></div>
+<p>EKS ClusterのSSL証明書をbase64方式エンコードした値 (<code>-----BEGIN CERTIFICATE-----</code>から<code>-----END CERTIFICATE-----</code>まで) を<code>caData</code>として設定する。</p>
+<p><code>aws eks describe-cluster</code>コマンドやコンソール画面から確認できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;クラスター名&gt;</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">argocd.argoproj.io/secret-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+<span class="nt">stringData</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クラスター名&gt;&quot;</span>
+<span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&quot;</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">      </span><span class="no">&quot;awsAuthConfig&quot;: {</span>
+<span class="w">        </span><span class="no">&quot;clusterName&quot;: &quot;&lt;クラスター名&gt;&quot;,</span>
+<span class="w">        </span><span class="no">&quot;roleARN&quot;: &quot;&lt;対象のEKS ClusterにアクセスするためのIAMロールARN&gt;&quot;</span>
+<span class="w">      </span><span class="no">},</span>
+<span class="w">      </span><span class="no">&quot;tlsClientConfig&quot;: {</span>
+<span class="w">        </span><span class="no">&quot;insecure&quot;: false,</span>
+<span class="w">        </span><span class="no">&quot;caData&quot;: &quot;*****&quot;</span>
+<span class="w">      </span><span class="no">}</span>
+<span class="w">    </span><span class="no">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
