@@ -25722,7 +25722,9 @@
 <span class="p">}</span>
 
 <span class="c1"># IAMプリンシパルロール</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_principal&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># argocd-application-controllerとargocd-serverのPodがIRSA用IAMロールにスイッチするためのロール</span>
+<span class="c1"># IRSA用IAMロールを使用すると、PodはEKSクラスターにアクセスできる</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
 
@@ -25730,7 +25732,7 @@
 
 <span class="c1">  # ArgoCDのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-principal&quot;</span>
 
 <span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
 <span class="c1">  # ArgoCDは外部のAWS EKS Clusterで稼働している</span>

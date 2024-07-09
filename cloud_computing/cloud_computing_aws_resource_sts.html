@@ -13166,12 +13166,21 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      02. スイッチロールの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="02. スイッチロールの仕組み">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      スイッチロールとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#1-iam" class="md-nav__link">
@@ -13183,9 +13192,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      2. ロールを引き受けた認証情報をリクエスト
+      2. IAMロールを引き受けた認証情報をリクエスト
     </span>
   </a>
   
@@ -13276,7 +13285,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       フェデレーテッドユーザー
     </span>
@@ -13397,7 +13406,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ フェデレーテッドユーザー
     </span>
@@ -13411,7 +13420,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       フェデレーテッドユーザー
     </span>
@@ -23242,12 +23251,21 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. セットアップ
+      02. スイッチロールの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="02. スイッチロールの仕組み">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      スイッチロールとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#1-iam" class="md-nav__link">
@@ -23259,9 +23277,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-iam" class="md-nav__link">
     <span class="md-ellipsis">
-      2. ロールを引き受けた認証情報をリクエスト
+      2. IAMロールを引き受けた認証情報をリクエスト
     </span>
   </a>
   
@@ -23352,7 +23370,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       フェデレーテッドユーザー
     </span>
@@ -23473,7 +23491,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ フェデレーテッドユーザー
     </span>
@@ -23487,7 +23505,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       フェデレーテッドユーザー
     </span>
@@ -23564,11 +23582,18 @@
 <p>認証済みのIAMユーザーに対して、特定のAWSアカウントのAWSリソースに認可スコープを持つ一時的な認証情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つIAMユーザーを発行する。</p>
 <p><img alt="STS" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg" /></p>
 <p><br></p>
-<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. スイッチロールの仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">スイッチロールとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>AssumeRole (権限委譲) によって、ユーザーのIAMロールを動的に切り替える。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF">https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF</a></li>
+</ul>
+</blockquote>
 <h3 id="1-iam">1. IAMロールに信頼ポリシーを紐付け<a class="headerlink" href="#1-iam" title="Permanent link">&para;</a></h3>
 <p>必要なポリシーが設定されたIAMロールを作成する。</p>
 <p>その時信頼ポリシーでは、IAMユーザーの<code>ARN</code>を信頼されたエンティティとして設定しておく。</p>
-<p>これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。</p>
+<p>これにより、そのIAMユーザーに対して、IAMロールを紐付けできるようになる。</p>
 <p>この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -23588,7 +23613,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="2">2. ロールを引き受けた認証情報をリクエスト<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<h3 id="2-iam">2. IAMロールを引き受けた認証情報をリクエスト<a class="headerlink" href="#2-iam" title="Permanent link">&para;</a></h3>
 <p>信頼されたエンティティから、STSのエンドポイント (<code>https://sts.amazonaws.com</code>) に対して、ロールの紐付けをリクエストする。</p>
 <p>OIDCによるフェデレーションユーザーの場合は、<code>--external-id</code>オプションの代わりに、<code>--web-identity-token</code>オプションを使用する。</p>
 <p>このオプションに、発行されたJWTを設定する必要がある。</p>
@@ -23641,11 +23666,6 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <p>STSのエンドポイントから一時的な認証情報が発行される。</p>
 <p>また同時に、この認証情報は、ローカルマシンの<code>~/.aws/cli/cache</code>ディレクトリ配下にも<code>json</code>ファイルで保管される。</p>
 <p>認証情報の失効時間に合わせて、STSはこの<code>json</code>ファイルを定期的に更新する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/cli/latest/topic/config-vars.html">https://docs.aws.amazon.com/cli/latest/topic/config-vars.html</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Credentials&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -23674,6 +23694,11 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/cli/latest/topic/config-vars.html">https://docs.aws.amazon.com/cli/latest/topic/config-vars.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="4">4. 認証情報を取得<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
 <p>レスポンスされたデータから認証情報を抽出する。</p>
@@ -23720,14 +23745,16 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <h2 id="03-stsiam">03. STSで発行されるIAMユーザー<a class="headerlink" href="#03-stsiam" title="Permanent link">&para;</a></h2>
 <h3 id="trusted-entity">Trusted Entityの事前作成<a class="headerlink" href="#trusted-entity" title="Permanent link">&para;</a></h3>
 <p>事前に、元となるIAMユーザー (Trusted Entity) を作成しておく。</p>
-<p>AssumeRoleの仕組みでは、まずこの(Trusted Entityをコールする。</p>
+<p>AssumeRoleによるスイッチロールの仕組みでは、まずTrusted Entityをコールする。</p>
 <p>Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時的なIAMユーザーを作成する。</p>
 <p><img alt="AssumeRole" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10">https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10</a></li>
+<li><a href="https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/">https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="iam">IAMユーザーの自動更新<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
 <p>STSで発行されたIAMユーザーには、そのAWSアカウント内のみで使用できるロールが紐付けられている。</p>
 <p>この情報には失効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。</p>
@@ -23743,7 +23770,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 </blockquote>
 <p><br></p>
 <h2 id="04-iam">04. IAMユーザーの発行元<a class="headerlink" href="#04-iam" title="Permanent link">&para;</a></h2>
-<h3 id="_2">フェデレーテッドユーザー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">フェデレーテッドユーザー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>任意のIDプロバイダーで認証済みのユーザー (フェデレーテッドユーザー) にIAMロールを付与することにより、AWSリソースにリクエストを送信できる。</p>
 <blockquote>
 <ul>
@@ -23866,7 +23893,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ フェデレーテッドユーザー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ フェデレーテッドユーザー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>OIDC、SAML、によって発行されたユーザーに委譲できる。</p>
 <p>OIDCのフェデレーテッドユーザーの場合、発行されたJWTが必要になる。</p>
 <blockquote>
@@ -23876,7 +23903,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">フェデレーテッドユーザー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">フェデレーテッドユーザー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="aws-oidc">▼ AWS OIDC<a class="headerlink" href="#aws-oidc" title="Permanent link">&para;</a></h4>
 <p>IAMロールの信頼されたエンティティに、AWS OIDCで発行されたユーザーを設定する。</p>
 <p>フェデレーテッドユーザーは任意のIPプロバイダーで発行する。</p>
@@ -23971,7 +23998,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-09</span>
   </span>
 
     
