@@ -311,7 +311,9 @@ resource "aws_eks_access_policy_association" "foo" {
 }
 
 # IAMプリンシパルロール
-module "iam_assumable_role_with_oidc_argocd_principal" {
+# argocd-application-controllerとargocd-serverのPodがIRSA用IAMロールにスイッチするためのロール
+# IRSA用IAMロールを使用すると、PodはEKSクラスターにアクセスできる
+module "iam_assumable_role_with_oidc_argocd_cluster" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
@@ -319,7 +321,7 @@ module "iam_assumable_role_with_oidc_argocd_principal" {
 
   # ArgoCDのPodに紐付けるIAMロール
   create_role                   = true
-  role_name                     = "foo-argocd"
+  role_name                     = "foo-argocd-principal"
 
   # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   # ArgoCDは外部のAWS EKS Clusterで稼働している

@@ -720,7 +720,7 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 AWS EKSアクセスエントリーを使用する場合、`argocd cluster add`コマンドは不要になる。
 
-まず、argocd-serverとapplication-controllerのPodのServiceAccountにIRSA用のIAMプリンシパルロールを紐づける。
+まず、argocd-serverとapplication-controllerのPodのServiceAccountにIRSA用IAMプリンシパルロールを紐づける。
 
 プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。
 

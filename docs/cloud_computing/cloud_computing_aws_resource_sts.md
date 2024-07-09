@@ -21,7 +21,13 @@ description: STS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 02. セットアップ
+## 02. スイッチロールの仕組み
+
+### スイッチロールとは
+
+AssumeRole (権限委譲) によって、ユーザーのIAMロールを動的に切り替える。
+
+> - https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
 ### 1. IAMロールに信頼ポリシーを紐付け
 
@@ -29,7 +35,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 その時信頼ポリシーでは、IAMユーザーの`ARN`を信頼されたエンティティとして設定しておく。
 
-これにより、そのIAMユーザーに対して、ロールを紐付けできるようになる。
+これにより、そのIAMユーザーに対して、IAMロールを紐付けできるようになる。
 
 この時に使用するユーザーは、IAMユーザーではなく、AWSリソースやフェデレーテッドユーザーでもよい。
 
@@ -54,7 +60,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 <br>
 
-### 2. ロールを引き受けた認証情報をリクエスト
+### 2. IAMロールを引き受けた認証情報をリクエスト
 
 信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
@@ -118,8 +124,6 @@ STSのエンドポイントから一時的な認証情報が発行される。
 
 認証情報の失効時間に合わせて、STSはこの`json`ファイルを定期的に更新する。
 
-> - https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
-
 ```yaml
 {
   "Credentials":
@@ -149,6 +153,8 @@ STSのエンドポイントから一時的な認証情報が発行される。
     },
 }
 ```
+
+> - https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 <br>
 
@@ -214,13 +220,16 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 事前に、元となるIAMユーザー (Trusted Entity) を作成しておく。
 
-AssumeRoleの仕組みでは、まずこの(Trusted Entityをコールする。
+AssumeRoleによるスイッチロールの仕組みでは、まずTrusted Entityをコールする。
 
 Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時的なIAMユーザーを作成する。
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
 > - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10
+> - https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/
+
+<br>
 
 ### IAMユーザーの自動更新
 
