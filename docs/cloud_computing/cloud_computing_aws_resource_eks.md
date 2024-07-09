@@ -288,7 +288,7 @@ data:
 
 ```terraform
 # ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール
-# サービス側EKS ClusterにアクセスするためのIAMロールにスイッチロールできる
+# 対象のEKS ClusterにアクセスするためのIAMロールにスイッチロールできる
 module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
@@ -314,10 +314,9 @@ module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
   ]
 }
 
-# サービス側のEKS ClusterにアクセスするためのIAMロール
-# サービス側でアクセスエントリーを設定する必要がある
+# 対象のEKS ClusterにアクセスするためのIAMロール
+# 対象のEKS Clusterでアクセスエントリーを設定する必要がある
 module "iam_assumable_role_argocd_access_entry_cluster" {
-
 
   source               = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
 
@@ -337,28 +336,59 @@ module "iam_assumable_role_argocd_access_entry_cluster" {
 ```
 
 ```terraform
-# アクセス先のEKSでアクセスエントリーを設定する
+# 対象のEKS Clusterでアクセスエントリーを設定する
 resource "aws_eks_access_entry" "argocd" {
 
   cluster_name      = aws_eks_cluster.foo_argocd.name
 
   principal_arn     = module.iam_assumable_role_with_oidc_argocd_principal.arn
+
+  kubernetes_groups = ["argocd-group"]
 }
 
 # アクセスエントリーポリシー
-resource "aws_eks_access_policy_association" "foo" {
+resource "aws_eks_access_policy_association" "argocd" {
 
   cluster_name  = aws_eks_cluster.foo_argocd.name
 
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+  // アクセス元にどのようなIAMポリシーを付与するかを設定する
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
 
   principal_arn = module.iam_assumable_role_with_oidc_argocd_principal.arn
 
   access_scope {
-    type       = "namespace"
-    namespaces = ["example-namespace"]
+    type = "cluster"
   }
+
 }
+```
+
+EKS ClusterのSSL証明書をbase64方式エンコードした値 (`-----BEGIN CERTIFICATE-----`から`-----END CERTIFICATE-----`まで) を`caData`として設定する。
+
+`aws eks describe-cluster`コマンドやコンソール画面から確認できる。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <クラスター名>
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: "<クラスター名>"
+  server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
+  config: |
+    {
+      "awsAuthConfig": {
+        "clusterName": "<クラスター名>",
+        "roleARN": "<対象のEKS ClusterにアクセスするためのIAMロールARN>"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "*****"
+      }
+    }
 ```
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/

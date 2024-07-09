@@ -694,7 +694,7 @@ ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの
 
 例えば、ArgoCDの`v2.7.3`は、K3Sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/ci-build.yaml#L359-L462
+> - https://github.com/argoproj/argo-cd/blob/v2.7.3/.github/workflows/ci-build.yaml#L359-L462
 > - https://github.com/argoproj/argo-cd/tree/master/test/e2e
 
 #### ▼ CRDについて
@@ -739,6 +739,19 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 ### AWS ALB、Nginxコントローラーを採用している場合
 
 AWS ALBのターゲットグループでB/G Clusterを切り替える方法。
+
+<br>
+
+## 13-03. インプレース
+
+ArgoCDと同時にKubernetesもアップグレードする場合、問題を切り分けやすいように、別々にアップグレードする。
+
+検証時は`1`バージョンずつアップグレードし、最終的な設定方法を探る。
+
+検証後は、最終的な設定方法で一気にアップグレードすると良い。
+
+> - https://github.com/argoproj/argo-cd/blob/v2.7.3/.github/workflows/ci-build.yaml#L359-L462
+> - https://github.com/argoproj/argo-cd/tree/master/test/e2e
 
 <br>
 
