@@ -280,9 +280,60 @@ data:
 
 プリンシパルIAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、AWS EKSへのアクセス制御をKubernetesリソースで管理する必要がない。
 
-プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介して動的にIAMポリシーを設定する。
+プリンシパルIAMロールに紐づくPodがAWS EKSに接続する時に、アクセスエントリーがこれを仲介する。
+
+アクセスエントリーは、アクセスエントリーポリシーをIAMロールに動的にを設定する。
 
 プリンシパルIAMロールとアクセスエントリーを経由して、`kubectl`クライアントの認可スコープを制御する。
+
+```terraform
+# アクセスエントリー
+resource "aws_eks_access_entry" "argocd" {
+
+  cluster_name      = aws_eks_cluster.foo_argocd.name
+
+  principal_arn     = module.iam_assumable_role_with_oidc_argocd_principal.arn
+}
+
+# アクセスエントリーポリシー
+resource "aws_eks_access_policy_association" "foo" {
+
+  cluster_name  = aws_eks_cluster.foo_argocd.name
+
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+
+  principal_arn = module.iam_assumable_role_with_oidc_argocd_principal.arn
+
+  access_scope {
+    type       = "namespace"
+    namespaces = ["example-namespace"]
+  }
+}
+
+# IAMプリンシパルロール
+module "iam_assumable_role_with_oidc_argocd_principal" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # ArgoCDのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-argocd"
+
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは外部のAWS EKS Clusterで稼働している
+  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
+
+  # ArgoCDのPodのServiceAccount名
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:argocd:foo-argocd-application-controller",
+    "system:serviceaccount:argocd:foo-argocd-server",
+    ...
+  ]
+}
+```
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 > - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/

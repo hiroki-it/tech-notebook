@@ -385,6 +385,7 @@ Kubernetesの以下のコンポーネントが、メトリクスエンドポイ�
 - kubelet
 
 > - https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/#metrics-in-kubernetes
+> - https://sysdig.jp/blog/kubernetes-metrics-ingestion/
 
 <br>
 
