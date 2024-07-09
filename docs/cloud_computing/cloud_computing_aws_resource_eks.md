@@ -287,7 +287,57 @@ data:
 プリンシパルIAMロールとアクセスエントリーを経由して、`kubectl`クライアントの認可スコープを制御する。
 
 ```terraform
-# アクセスエントリー
+# ArgoCDのPodにスイッチロールの権限を持たせるためのIAMロール
+# サービス側EKS ClusterにアクセスするためのIAMロールにスイッチロールできる
+module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<バージョン>"
+
+  # ArgoCDのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-argocd-access-entry-service"
+
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは外部のAWS EKS Clusterで稼働している
+  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
+
+  # ArgoCDのPodのServiceAccount名
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    # argocd applicaton-controller
+    "system:serviceaccount:argocd:foo-argocd-application-controller",
+    # argocd-server
+    "system:serviceaccount:argocd:foo-argocd-server",
+    ...
+  ]
+}
+
+# サービス側のEKS ClusterにアクセスするためのIAMロール
+# サービス側でアクセスエントリーを設定する必要がある
+module "iam_assumable_role_argocd_access_entry_cluster" {
+
+
+  source               = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
+
+  version              = "<バージョン>"
+
+  create_role          = true
+  role_name            = "foo-argocd-access-entry-cluster"
+
+  trusted_role_actions = ["sts:AssumeRole"]
+
+  trusted_role_arns    = [
+    module.iam_assumable_role_with_oidc_argocd_access_entry_service.iam_role_arn
+  ]
+
+  role_requires_mfa    = false
+}
+```
+
+```terraform
+# アクセス先のEKSでアクセスエントリーを設定する
 resource "aws_eks_access_entry" "argocd" {
 
   cluster_name      = aws_eks_cluster.foo_argocd.name
@@ -308,32 +358,6 @@ resource "aws_eks_access_policy_association" "foo" {
     type       = "namespace"
     namespaces = ["example-namespace"]
   }
-}
-
-# IAMプリンシパルロール
-# argocd-application-controllerとargocd-serverのPodがIRSA用IAMロールにスイッチするためのロール
-# IRSA用IAMロールを使用すると、PodはEKSクラスターにアクセスできる
-module "iam_assumable_role_with_oidc_argocd_cluster" {
-
-  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-
-  version                       = "<バージョン>"
-
-  # ArgoCDのPodに紐付けるIAMロール
-  create_role                   = true
-  role_name                     = "foo-argocd-principal"
-
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
-  # ArgoCDは外部のAWS EKS Clusterで稼働している
-  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
-
-  # ArgoCDのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
-  oidc_fully_qualified_subjects = [
-    "system:serviceaccount:argocd:foo-argocd-application-controller",
-    "system:serviceaccount:argocd:foo-argocd-server",
-    ...
-  ]
 }
 ```
 
