@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="回帰テスト＠インフラのブラックボックステストの知見を記録しています。">
+        <meta name="description" content="Kubernetes＠総合テストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_infrastructure_regression.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_system_test_kubernetes.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】回帰テスト＠インフラのブラックボックステスト - 俺の技術ノート</title>
+        <title>【IT技術の知見】Kubernetes＠総合テスト - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#kubernetes" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】回帰テスト＠インフラのブラックボックステスト
+              【IT技術の知見】Kubernetes＠総合テスト
             
           </span>
         </div>
@@ -22859,7 +22859,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -22896,7 +22896,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       テストパッケージ
     </span>
@@ -22927,8 +22927,8 @@
   
 
 
-<h1 id="_1">回帰テスト＠インフラのブラックボックステスト<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="kubernetes">Kubernetes＠総合テスト<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -22943,7 +22943,7 @@
 <p><br></p>
 <h3 id="helm"><code>helm</code>コマンドを使用する場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
 <p><code>helm</code>コマンドを使用するか、アプリから<code>helm</code>コマンドを実行す</p>
-<h3 id="_3">テストパッケージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">テストパッケージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>テストパッケージ (例：e2e-framework) を使用する。</p>
 <p>e2e-frameworkは、回帰テストのために以下のような機能がある。</p>
 <ul>

@@ -2706,12 +2706,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_infrastructure_regression.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_system_test_gatling.html</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_system_test_gatling.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_system_test_kubernetes.html</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -2721,7 +2721,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_js_e2e.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_e2e_js_playwright.html</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

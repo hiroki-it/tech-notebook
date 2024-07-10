@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+        <meta name="description" content="Playwright＠E2Eテストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_js_e2e.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_application_e2e_js_playwright.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Testing whitebox application js e2e - 俺の技術ノート</title>
+        <title>【IT技術の知見】Playwright＠E2Eテスト - 俺の技術ノート</title>
       
     
     
@@ -85,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#playwrighte2e" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -116,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Testing whitebox application js e2e
+              【IT技術の知見】Playwright＠E2Eテスト
             
           </span>
         </div>
@@ -22844,6 +22849,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. セットアップ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 設定ファイル
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. シナリオ
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -22861,9 +22912,124 @@
   
 
 
-  <h1>Testing whitebox application js e2e</h1>
+<h1 id="playwrighte2e">Playwright＠E2Eテスト<a class="headerlink" href="#playwrighte2e" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># npm を使う場合</span>
+$<span class="w"> </span>npm<span class="w"> </span>init<span class="w"> </span>playwright@latest
 
+<span class="c1"># yarn を使う場合</span>
+$<span class="w"> </span>yarn<span class="w"> </span>create<span class="w"> </span>playwright
 
+<span class="c1"># pnpm を使う場合</span>
+$<span class="w"> </span>pnpm<span class="w"> </span>create<span class="w"> </span>playwright
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 設定ファイル<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p><code>playwright.config.ts</code>ファイルに設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. シナリオ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<p>実際のユーザーを模した一連の操作をコードで表現する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@playwright/test&quot;</span><span class="p">;</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Home ページレンダリンテスト&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="nx">page</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Home ページにアクセス</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// &#39;All&#39;タブがアクティブになっていることを確認</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__navigation--active&quot;</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span><span class="s2">&quot;All&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// &#39;All&#39;タブをクリック該当ページに遷移</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__navigation--active&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 各ページに遷移したことを確認</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postLinks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__box a&quot;</span><span class="p">).</span><span class="nx">all</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 各 post のリンクをクリックして、post ページに遷移</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">postLinks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// post ページに遷移したことを確認</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__title&quot;</span><span class="p">)).</span><span class="nx">toHaveText</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;Lorem ipsum dolor sit amet&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// ブラウザの戻るボタンをクリックして、Home ページに戻る</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">goBack</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Footer のリンクをクリックして、該当ページに遷移</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;footer a:has-text (&quot;write&quot;)&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000/posts/new&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">goBack</span><span class="p">();</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;footer a:has-text(&quot;posts&quot;)&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000/posts&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">goBack</span><span class="p">();</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s1">&#39;footer a:has-text(&quot;profile&quot;)&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">).</span><span class="nx">toHaveURL</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000/profile&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">&quot;PostDetail ページレンダリン&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="nx">page</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// PostDetail ページにアクセス</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000/posts/0&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Expect post__detail クラス名を持つ要素が存在することを確認</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postDetailElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__detail&quot;</span><span class="p">).</span><span class="nx">first</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">postDetailElement</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// post__title クラス名を持つ要素を取得</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postTitleElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__title&quot;</span><span class="p">).</span><span class="nx">first</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// post__author-name クラス名を持つ要素が存在することを確認</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">postTitleElement</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// post__author-name クラス名を持つ要素を取得</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authorNameElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">locator</span><span class="p">(</span><span class="s2">&quot;.post__author-name&quot;</span><span class="p">).</span><span class="nx">first</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// post__author-name クラス名を持つ要素が存在することを確認</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">authorNameElement</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">&quot;Post タイトルと作成者確認&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="nx">page</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// PostDetail ページにアクセス add</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s2">&quot;http://localhost:3000/posts/0&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// posto__title クラス名を持つ要素のテキストを取得</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">textContent</span><span class="p">(</span><span class="s2">&quot;.post__title&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// post__author-name クラス名を持つ要素のテキストを取得</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">authorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">textContent</span><span class="p">(</span><span class="s2">&quot;.post__author-name&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// post__title クラス名を持つ要素のテキストが正しいことを確認</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">postTitle</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;Lorem ipsum dolor sit amet&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">authorName</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;kim&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%A7%E3%83%86%E3%82%B9%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90-(%E5%AE%9F%E8%B7%B5">https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%A7%E3%83%86%E3%82%B9%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90-(%E5%AE%9F%E8%B7%B5</a>)</li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
