@@ -375,20 +375,16 @@ metadata:
   labels:
     argocd.argoproj.io/secret-type: cluster
 type: Opaque
-stringData:
+data:
+  config: |
+    awsAuthConfig:
+      clusterName": "<クラスター名>",
+      roleARN: "<対象のEKS ClusterにアクセスするためのIAMロールARN>"
+    tlsClientConfig:
+      insecure: false,
+      caData: "<EKS ClusterのSSL証明書をbase64方式エンコードした値>"
   name: "<クラスター名>"
   server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
-  config: |
-    {
-      "awsAuthConfig": {
-        "clusterName": "<クラスター名>",
-        "roleARN": "<対象のEKS ClusterにアクセスするためのIAMロールARN>"
-      },
-      "tlsClientConfig": {
-        "insecure": false,
-        "caData": "<EKS ClusterのSSL証明書をbase64方式エンコードした値>"
-      }
-    }
 ```
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/

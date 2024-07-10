@@ -611,8 +611,7 @@ data:
   config: |
     awsAuthConfig:
       clusterName: <デプロイ先のCluster名>
-      # IRSAでArgoCDのPodに紐づくIAMロール
-      roleARN: arn:aws:iam::<AWSアカウントID>:role/foo-role
+      roleARN: <IRSAでArgoCDのPodに紐づくIAMロールARN>
     tlsClientConfig:
       insecure: "false"
       caData: <HTTPSに必要なSSL証明書>
