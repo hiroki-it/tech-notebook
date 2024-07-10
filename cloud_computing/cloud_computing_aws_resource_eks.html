@@ -25780,20 +25780,16 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">argocd.argoproj.io/secret-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
 <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
-<span class="nt">stringData</span><span class="p">:</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">awsAuthConfig:</span>
+<span class="w">      </span><span class="no">clusterName&quot;: &quot;&lt;クラスター名&gt;&quot;,</span>
+<span class="w">      </span><span class="no">roleARN: &quot;&lt;対象のEKS ClusterにアクセスするためのIAMロールARN&gt;&quot;</span>
+<span class="w">    </span><span class="no">tlsClientConfig:</span>
+<span class="w">      </span><span class="no">insecure: false,</span>
+<span class="w">      </span><span class="no">caData: &quot;&lt;EKS ClusterのSSL証明書をbase64方式エンコードした値&gt;&quot;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&quot;</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">{</span>
-<span class="w">      </span><span class="no">&quot;awsAuthConfig&quot;: {</span>
-<span class="w">        </span><span class="no">&quot;clusterName&quot;: &quot;&lt;クラスター名&gt;&quot;,</span>
-<span class="w">        </span><span class="no">&quot;roleARN&quot;: &quot;&lt;対象のEKS ClusterにアクセスするためのIAMロールARN&gt;&quot;</span>
-<span class="w">      </span><span class="no">},</span>
-<span class="w">      </span><span class="no">&quot;tlsClientConfig&quot;: {</span>
-<span class="w">        </span><span class="no">&quot;insecure&quot;: false,</span>
-<span class="w">        </span><span class="no">&quot;caData&quot;: &quot;&lt;EKS ClusterのSSL証明書をbase64方式エンコードした値&gt;&quot;</span>
-<span class="w">      </span><span class="no">}</span>
-<span class="w">    </span><span class="no">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
