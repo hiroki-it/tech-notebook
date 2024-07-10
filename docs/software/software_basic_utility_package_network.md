@@ -383,14 +383,12 @@ $ tcpdump <コマンド/オプション> \
 
 `ping`コマンドの宛先で、通信を受信できていることを確認する。
 
-
 ```bash
 # デフォルトでは、eth0のパケットを確認する。
 $ tcpdump icmp -i eth0
 ```
 
 > - https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
-
 
 <br>
 
