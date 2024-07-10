@@ -30,7 +30,7 @@ description: Backup＠AWSの知見を記録しています。
 | EC2               | EC2のAMIを作成する。                                                            |
 | S3                | S3バケットの中身のバックアップを作成する。                                      |
 | EBSボリューム     | EBSボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
-| RDS (Aurora)      | Aurora cluster全体のバックアップを作成する。                                    |
+| RDS (Aurora)      | Aurora DB Cluster全体のバックアップを作成する。                                 |
 
 <br>
 

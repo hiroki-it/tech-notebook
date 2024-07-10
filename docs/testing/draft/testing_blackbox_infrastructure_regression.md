@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】E2Eテスト＠インフラのホワイトボックステスト
-description: E2Eテスト＠インフラのホワイトボックステストの知見を記録しています。
+title: 【IT技術の知見】回帰テスト＠インフラのブラックボックステスト
+description: 回帰テスト＠インフラのブラックボックステストの知見を記録しています。
 ---
 
-# E2Eテスト＠インフラのホワイトボックステスト
+# 回帰テスト＠インフラのブラックボックステスト
 
 ## はじめに
 
@@ -13,13 +13,13 @@ description: E2Eテスト＠インフラのホワイトボックステストの�
 
 <br>
 
-## Kubernetes ClusterのE2Eテスト
+## Kubernetes Clusterの回帰テスト
 
-### Kubernetes ClusterのE2Eテストとは
+### Kubernetes Clusterの回帰テストとは
 
 CI上にKubernetesの環境を構築して、これにマニフェストやHelmチャートをデプロイする。
 
-起動したコンテナに対してリクエストを送信し、コンテナが期待値を返却することを確認する。
+起動したコンテナに対してリクエストを送信し、変更後のコンテナが期待値を返却することを確認する。
 
 <br>
 
@@ -31,11 +31,11 @@ CI上にKubernetesの環境を構築して、これにマニフェストやHelm�
 
 テストパッケージ (例：e2e-framework) を使用する。
 
-e2e-frameworkは、E2Eテストのために以下のような機能がある。
+e2e-frameworkは、回帰テストのために以下のような機能がある。
 
 - Kubernetes Clusterを構築してくれる
 - ソースコードから`helm`コマンドを実行できる
-- E2Eテストの完了後にマニフェストを削除してくれるため、実Clusterでもテストできる。
+- 回帰テストの完了後にマニフェストを削除してくれるため、実Clusterでもテストできる。
 
 > - https://github.com/kubernetes-sigs/e2e-framework/blob/main/examples/third_party_integration/helm/helm_test.go
 

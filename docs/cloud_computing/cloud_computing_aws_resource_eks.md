@@ -386,13 +386,14 @@ stringData:
       },
       "tlsClientConfig": {
         "insecure": false,
-        "caData": "*****"
+        "caData": "<EKS ClusterのSSL証明書をbase64方式エンコードした値>"
       }
     }
 ```
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 > - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
+> - https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799
 
 #### ▼ パブリックアクセス/プライベートアクセス
 
