@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="E2Eテスト＠インフラのホワイトボックステストの知見を記録しています。">
+        <meta name="description" content="回帰テスト＠インフラのブラックボックステストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_e2e.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_infrastructure_regression.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】E2Eテスト＠インフラのホワイトボックステスト - 俺の技術ノート</title>
+        <title>【IT技術の知見】回帰テスト＠インフラのブラックボックステスト - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#e2e" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】E2Eテスト＠インフラのホワイトボックステスト
+              【IT技術の知見】回帰テスト＠インフラのブラックボックステスト
             
           </span>
         </div>
@@ -22859,7 +22859,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -22868,19 +22868,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kubernetes-clustere2e" class="md-nav__link">
+  <a href="#kubernetes-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes ClusterのE2Eテスト
+      Kubernetes Clusterの回帰テスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Kubernetes ClusterのE2Eテスト">
+    <nav class="md-nav" aria-label="Kubernetes Clusterの回帰テスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kubernetes-clustere2e_1" class="md-nav__link">
+  <a href="#kubernetes-cluster_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes ClusterのE2Eテストとは
+      Kubernetes Clusterの回帰テストとは
     </span>
   </a>
   
@@ -22896,7 +22896,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       テストパッケージ
     </span>
@@ -22927,8 +22927,8 @@
   
 
 
-<h1 id="e2e">E2Eテスト＠インフラのホワイトボックステスト<a class="headerlink" href="#e2e" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">回帰テスト＠インフラのブラックボックステスト<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -22936,20 +22936,20 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="kubernetes-clustere2e">Kubernetes ClusterのE2Eテスト<a class="headerlink" href="#kubernetes-clustere2e" title="Permanent link">&para;</a></h2>
-<h3 id="kubernetes-clustere2e_1">Kubernetes ClusterのE2Eテストとは<a class="headerlink" href="#kubernetes-clustere2e_1" title="Permanent link">&para;</a></h3>
+<h2 id="kubernetes-cluster">Kubernetes Clusterの回帰テスト<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h2>
+<h3 id="kubernetes-cluster_1">Kubernetes Clusterの回帰テストとは<a class="headerlink" href="#kubernetes-cluster_1" title="Permanent link">&para;</a></h3>
 <p>CI上にKubernetesの環境を構築して、これにマニフェストやHelmチャートをデプロイする。</p>
-<p>起動したコンテナに対してリクエストを送信し、コンテナが期待値を返却することを確認する。</p>
+<p>起動したコンテナに対してリクエストを送信し、変更後のコンテナが期待値を返却することを確認する。</p>
 <p><br></p>
 <h3 id="helm"><code>helm</code>コマンドを使用する場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
 <p><code>helm</code>コマンドを使用するか、アプリから<code>helm</code>コマンドを実行す</p>
-<h3 id="_2">テストパッケージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">テストパッケージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>テストパッケージ (例：e2e-framework) を使用する。</p>
-<p>e2e-frameworkは、E2Eテストのために以下のような機能がある。</p>
+<p>e2e-frameworkは、回帰テストのために以下のような機能がある。</p>
 <ul>
 <li>Kubernetes Clusterを構築してくれる</li>
 <li>ソースコードから<code>helm</code>コマンドを実行できる</li>
-<li>E2Eテストの完了後にマニフェストを削除してくれるため、実Clusterでもテストできる。</li>
+<li>回帰テストの完了後にマニフェストを削除してくれるため、実Clusterでもテストできる。</li>
 </ul>
 <blockquote>
 <ul>
@@ -22977,7 +22977,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
   </span>
 
     
