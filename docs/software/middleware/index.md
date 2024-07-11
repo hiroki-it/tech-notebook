@@ -27,19 +27,16 @@
 
 ### アプリケーション系
 
-* #### <u>FastCGI</u>
-  > * ##### <u>PHP-FPM</u>
-  > > * ##### [︎PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
-  > > * ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
+* ##### <u>PHP-FPM</u>
+  > * ##### [︎PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
+  > * ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
 
-* #### <u>WSGI</u>
-  > * ##### <u>︎uWSGI</u>
-  > > * ##### [︎uWSGI](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html)
-  > > * ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
+* ##### <u>︎uWSGI</u>
+  > * ##### [︎uWSGI](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html)
+  > * ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
 
-* #### <u>ASGI</u>
-  > * ##### <u>︎Uvicorn</u>
-  > > * ##### [︎Uvicorn](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html)
+* ##### <u>︎Uvicorn</u>
+  > * ##### [︎Uvicorn](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html)
 
 <br>
 
