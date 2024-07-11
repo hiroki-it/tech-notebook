@@ -43,34 +43,40 @@
 
 <br>
 
-### データベース系
+### リレーショナルデータベース系
 
-* #### <u>RDB</u>
-  > * ##### <u>RDBMS</u>
-  > > * ##### [︎RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
-  > > * ##### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html)
-  > > * ##### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
-  > * ##### <u>MySQL</u>
-  > > * ##### [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html)
-  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
-  > > * ##### <u>SQL</u>
-  > > > * ##### [DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)
-  > > > * ##### [DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)
-  > > > * ##### [DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)
-  > * ##### <u>PostgreSQL</u>
-  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
-  > > * ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
+* #### [︎RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
 
-* #### <u>TSDB</u>
-  > * ##### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
-  > * ##### <u>VictoriaMetrics</u>
-  > > * ##### [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html)
-  > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html)
+* #### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html)
+
+* #### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
+
+* #### <u>MySQL</u>
+  > * ##### [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
+  > * ##### <u>SQL</u>
+  > > * ##### [DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)
+  > > * ##### [DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)
+  > > * ##### [DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)
+
+* #### <u>PostgreSQL</u>
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
+  > * ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 
 * #### <u>コネクションプールプロキシ</u>
   > * ##### <u>PgBouncer</u>
   > > * ##### [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html)
   > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
+
+<br>
+
+### 時系列データベース系
+
+* #### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
+
+* #### <u>VictoriaMetrics</u>
+  > * ##### [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html)
+  > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html)
 
 <br>
 
