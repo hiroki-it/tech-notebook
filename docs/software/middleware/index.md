@@ -45,7 +45,7 @@
 
 ### リレーショナルデータベース系
 
-* #### <u>MySQL</u>
+* #### <u>︎RDBMS</u>
   > * ##### [︎RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
   > * ##### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html)
   > * ##### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
