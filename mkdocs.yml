@@ -199,41 +199,37 @@ nav:
               - apache.conf: software/software_middleware_web_apache_conf.md
               - コマンド: software/software_middleware_web_apache_command.md
       - ■ アプリケーション系:
-          - ■ FastCGI:
-              - ■ PHP-FPM:
-                  - PHP-FPM: software/software_middleware_application_gi_fastcgi_php_fpm.md
-                  - 設定ファイル: software/software_middleware_application_gi_fastcgi_php_fpm_conf.md
-          - ■ WSGI:
-              - ■ uWSGI:
-                  - uWSGI: software/software_middleware_application_gi_wsgi_uwsgi.md
-                  - 設定ファイル: software/software_middleware_application_gi_wsgi_uwsgi_conf.md
-          - ■ ASGI:
-              - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
-      - ■ データベース系:
-          - ■ RDB:
-              - ■ RDBMS:
-                  - RDBMS: software/software_middleware_database_rdb_rdbms.md
-                  - プラクティス集: software/software_middleware_database_rdb_rdbms_practices.md
-                  - ACID: software/software_middleware_database_rdb_rdbms_acid.md
-              - ■ My︎SQL:
-                  - MySQL: software/software_middleware_database_rdb_mysql.md
-                  - 設定ファイル: software/software_middleware_database_rdb_mysql_conf.md
-                  - ■ SQL:
-                      - DML: software/software_middleware_database_rdb_mysql_sql_dml.md
-                      - DCL: software/software_middleware_database_rdb_mysql_sql_dcl.md
-                      - DDL: software/software_middleware_database_rdb_mysql_sql_ddl.md
-              - ■ PostgreSQL:
-                  - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
-                  - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
-          - ■ TSDB:
-              - TSDB: software/software_middleware_database_tsdb.md
-              - ■ VictoriaMetrics:
-                  - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
-                  - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
+          - ■ PHP-FPM:
+              - PHP-FPM: software/software_middleware_application_gi_fastcgi_php_fpm.md
+              - 設定ファイル: software/software_middleware_application_gi_fastcgi_php_fpm_conf.md
+          - ■ uWSGI:
+              - uWSGI: software/software_middleware_application_gi_wsgi_uwsgi.md
+              - 設定ファイル: software/software_middleware_application_gi_wsgi_uwsgi_conf.md
+          - Uvicorn: software/software_middleware_application_gi_asgi_uvicorn.md
+      - ■ リレーショナルデータベース系:
+          - ■ RDBMS:
+              - RDBMS: software/software_middleware_database_rdb_rdbms.md
+              - プラクティス集: software/software_middleware_database_rdb_rdbms_practices.md
+              - ACID: software/software_middleware_database_rdb_rdbms_acid.md
+          - ■ My︎SQL:
+              - MySQL: software/software_middleware_database_rdb_mysql.md
+              - 設定ファイル: software/software_middleware_database_rdb_mysql_conf.md
+              - ■ SQL:
+                  - DML: software/software_middleware_database_rdb_mysql_sql_dml.md
+                  - DCL: software/software_middleware_database_rdb_mysql_sql_dcl.md
+                  - DDL: software/software_middleware_database_rdb_mysql_sql_ddl.md
+          - ■ PostgreSQL:
+              - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
+              - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
           - ■ コネクションプールプロキシー:
               - ■ PgBouncer:
                   - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
                   - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
+      - ■ 時系列データベース系:
+          - TSDB: software/software_middleware_database_tsdb.md
+          - ■ VictoriaMetrics:
+              - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
+              - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
           - ■ CertManager:
@@ -249,8 +245,9 @@ nav:
               - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
               - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ サービスメッシュ系:
-          - サービスメッシュ: software/software_middleware_service_mesh.md
-          - サービスメッシュの担う責務: software/software_middleware_service_mesh_responsibility.md
+          - ■ サービスメッシュ:
+              - サービスメッシュ: software/software_middleware_service_mesh.md
+              - サービスメッシュの担う責務: software/software_middleware_service_mesh_responsibility.md
           - ■ Envoy:
               - Envoy: software/software_middleware_service_mesh_envoy.md
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
