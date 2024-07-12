@@ -230,20 +230,6 @@ nav:
           - ■ VictoriaMetrics:
               - VictoriaMetrics: software/software_middleware_database_tsdb_victoriametrics.md
               - コマンド: software/software_middleware_database_tsdb_victoriametrics_command.md
-      - ■ セキュリティ系:
-          - Linux標準: software/software_middleware_security_linux.md
-          - ■ CertManager:
-              - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
-          - ■ Falco:
-              - Falco: software/software_middleware_security_falco.md
-              - 設定ファイル: software/software_middleware_security_falco_conf.md
-          - ■ Keycloak:
-              - Keycloak: software/software_middleware_security_keycloak.md
-              - ■ クライアントパッケージ:
-                  - JavaScript: software/software_middleware_security_keycloak_client_package_javascript.md
-          - ■ OAuth2 Proxy:
-              - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
-              - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
       - ■ サービスメッシュ系:
           - ■ サービスメッシュ:
               - サービスメッシュ: software/software_middleware_service_mesh.md
@@ -268,6 +254,20 @@ nav:
                       - メタデータ: software/software_middleware_service_mesh_istio_resource_definition_common.md
                       - ConfigMap系: software/software_middleware_service_mesh_istio_resource_definition_configmap.md
                       - Secret系: software/software_middleware_service_mesh_istio_resource_definition_secret.md
+      - ■ セキュリティ系:
+          - Linux標準: software/software_middleware_security_linux.md
+          - ■ CertManager:
+              - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
+          - ■ Falco:
+              - Falco: software/software_middleware_security_falco.md
+              - 設定ファイル: software/software_middleware_security_falco_conf.md
+          - ■ Keycloak:
+              - Keycloak: software/software_middleware_security_keycloak.md
+              - ■ クライアントパッケージ:
+                  - JavaScript: software/software_middleware_security_keycloak_client_package_javascript.md
+          - ■ OAuth2 Proxy:
+              - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
+              - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
 
   - 🐧 OS:
       - software/basic/index.md
