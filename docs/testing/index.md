@@ -32,6 +32,7 @@
 > > > * ##### [Kyverno](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno.html)
 > > > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_code_conventions_kyverno_resource_definition.html)
 > * ##### <u>ベストプラクティス違反テスト</u>
+> > * ##### [krr](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_best_practice_violation_krr.html)
 > > * ##### [polaris](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.html)
 > * ##### <u>バージョンテスト</u>
 > > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_version_pluto.html)

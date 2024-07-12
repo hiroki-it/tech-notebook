@@ -29,6 +29,14 @@ RDBとは異なり、データをメインメモリに保管する。
 
 #### ▼ NoSQLの種類
 
+代表的なものとして、以下がある。
+
+- Memcached
+- Redis
+- AWS DynamoDB
+- MongoDB
+- Cassandra
+
 ![NoSQLの分類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NoSQLの種類.jpg)
 
 <br>
