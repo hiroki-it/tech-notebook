@@ -61,7 +61,7 @@
 
 <br>
 
-### <u>コネクションプールプロキシ</u>
+### <u>コネクションプールプロキシ系</u>
 
 * #### <u>PgBouncer</u>
   > * ##### [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html)
