@@ -412,6 +412,7 @@ nav:
                       - ■ OpenPolicyAgent:
                           - OpenPolicyAgent: testing/testing_whitebox_infrastructure_lint_code_conventions_open_policy_agent.md
                   - ■ ベストプラクティス違反テスト:
+                      - krr: testing/testing_whitebox_infrastructure_lint_best_practice_violation_krr.md
                       - polaris: testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.md
                   - ■ バージョンテスト:
                       - pluto: testing/testing_whitebox_infrastructure_lint_version_pluto.md
