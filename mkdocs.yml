@@ -221,10 +221,10 @@ nav:
           - ■ PostgreSQL:
               - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
               - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
-          - ■ コネクションプールプロキシー:
-              - ■ PgBouncer:
-                  - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
-                  - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
+      - ■ コネクションプールプロキシー:
+          - ■ PgBouncer:
+              - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
+              - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
       - ■ 時系列データベース系:
           - TSDB: software/software_middleware_database_tsdb.md
           - ■ VictoriaMetrics:
