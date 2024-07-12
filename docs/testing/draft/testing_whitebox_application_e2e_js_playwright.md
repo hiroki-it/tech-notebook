@@ -15,6 +15,8 @@ description: Playwright＠E2Eテストの知見を記録しています。
 
 ## 01. セットアップ
 
+### Javascriptの場合
+
 ```bash
 # npm を使う場合
 $ npm init playwright@latest
@@ -26,7 +28,18 @@ $ yarn create playwright
 $ pnpm create playwright
 ```
 
+> - https://playwright.dev/docs/intro#installing-playwright
 > - https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+
+<br>
+
+### Pythonの場合
+
+```bash
+$ pip install pytest-playwright
+```
+
+> - https://playwright.dev/python/docs/intro
 
 <br>
 
@@ -40,7 +53,9 @@ $ pnpm create playwright
 
 ## 03. シナリオ
 
-実際のユーザーを模した一連の操作をコードで表現する。
+### Javascriptの場合
+
+実際のユーザーを模した一連の操作をJavascriptのコードで表現する。
 
 ```javascript
 import {test, expect} from "@playwright/test";
@@ -122,5 +137,30 @@ test("Post タイトルと作成者確認", async ({page}) => {
 ```
 
 > - https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%A7%E3%83%86%E3%82%B9%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90-(%E5%AE%9F%E8%B7%B5)
+
+<br>
+
+### Pythonの場合
+
+実際のユーザーを模した一連の操作をPythonのコードで表現する。
+
+```python
+import re
+from playwright.sync_api import Page, expect
+
+def test_has_title(page: Page):
+    page.goto("https://playwright.dev/")
+
+    expect(page).to_have_title(re.compile("Playwright"))
+
+def test_get_started_link(page: Page):
+    page.goto("https://playwright.dev/")
+
+    page.get_by_role("link", name="Get started").click()
+
+    expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+```
+
+> - https://playwright.dev/python/docs/intro
 
 <br>
