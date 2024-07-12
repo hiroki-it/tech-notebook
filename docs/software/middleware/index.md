@@ -59,10 +59,13 @@
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
   > * ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 
-* #### <u>コネクションプールプロキシ</u>
-  > * ##### <u>PgBouncer</u>
-  > > * ##### [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html)
-  > > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
+<br>
+
+### <u>コネクションプールプロキシ</u>
+
+* #### <u>PgBouncer</u>
+  > * ##### [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
 
 <br>
 
