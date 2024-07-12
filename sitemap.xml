@@ -2646,6 +2646,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_best_practice_violation_krr.html</loc>
+         <lastmod>2024-07-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_best_practice_violation_polaris.html</loc>
          <lastmod>2024-07-12</lastmod>
          <changefreq>daily</changefreq>
@@ -2727,11 +2732,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks.html</loc>
-         <lastmod>2024-07-12</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks_krr.html</loc>
          <lastmod>2024-07-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
