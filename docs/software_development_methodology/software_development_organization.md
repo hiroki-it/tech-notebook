@@ -64,3 +64,21 @@ description: 組織論＠開発手法の知見を記録しています。
 > - https://note.com/cwmasaki/n/nb181309fac93
 
 <br>
+
+## 02. キャリア
+
+ITエンジニアには、様々なキャリアパスがある。
+
+駆け出しのITエンジニアから始まって、例えば以下のパスがある (他にもたくさん) 。
+
+- ITスペシャリスト
+- フルスタックエンジニア
+- ITアーキテクト
+- プロジェクトリーダー (プロジェクトマネージャー)
+- ITコンサルタント
+
+![engineer_carrier-path.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.jpg)
+
+> - https://www.netvisionacademy.com/column/910/
+
+<br>
