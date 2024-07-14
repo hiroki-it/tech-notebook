@@ -1811,6 +1811,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#openapi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenAPI仕様の視覚化とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#redoc" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ReDocの場合
@@ -1820,9 +1829,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#swagger-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼
+      ▼ Swagger UIの場合
     </span>
   </a>
   
@@ -1834,7 +1843,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       クラウドプロバイダーとの統合
     </span>
@@ -1873,7 +1882,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#openapi_2" class="md-nav__link">
+  <a href="#openapi_3" class="md-nav__link">
     <span class="md-ellipsis">
       openapiフィールド (必須)
     </span>
@@ -1960,7 +1969,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマとは
     </span>
@@ -1969,7 +1978,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマによるバリデーション
     </span>
@@ -23025,6 +23034,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#openapi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenAPI仕様の視覚化とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#redoc" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ReDocの場合
@@ -23034,9 +23052,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#swagger-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼
+      ▼ Swagger UIの場合
     </span>
   </a>
   
@@ -23048,7 +23066,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       クラウドプロバイダーとの統合
     </span>
@@ -23087,7 +23105,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#openapi_2" class="md-nav__link">
+  <a href="#openapi_3" class="md-nav__link">
     <span class="md-ellipsis">
       openapiフィールド (必須)
     </span>
@@ -23174,7 +23192,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマとは
     </span>
@@ -23183,7 +23201,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマによるバリデーション
     </span>
@@ -23252,8 +23270,16 @@
 </blockquote>
 <p><br></p>
 <h3 id="openapi_1">OpenAPI仕様の視覚化<a class="headerlink" href="#openapi_1" title="Permanent link">&para;</a></h3>
+<h4 id="openapi_2">▼ OpenAPI仕様の視覚化とは<a class="headerlink" href="#openapi_2" title="Permanent link">&para;</a></h4>
+<p>OpenAPI仕様を共有して閲覧できるように、静的ファイル (例：<code>html</code>ファイル、<code>css</code>ファイル、<code>js</code>ファイル)</p>
+<p>さらに、静的なWebサイトとして公開すると、チーム内で共有するとなおよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
+</ul>
+</blockquote>
 <h4 id="redoc">▼ ReDocの場合<a class="headerlink" href="#redoc" title="Permanent link">&para;</a></h4>
-<p>ReDocを使用して、OpenAPI仕様から<code>html</code>ファイルを作成する。</p>
+<p>ReDocを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 <span class="nt">info</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
@@ -23281,11 +23307,18 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/icck/items/97d00495ec324e1902d6">https://qiita.com/icck/items/97d00495ec324e1902d6</a></li>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
 </ul>
 </blockquote>
-<h4 id="_2">▼<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="swagger-ui">▼ Swagger UIの場合<a class="headerlink" href="#swagger-ui" title="Permanent link">&para;</a></h4>
+<p>Swagger UIを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_3">クラウドプロバイダーとの統合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">クラウドプロバイダーとの統合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="api-gateway">▼ API Gatewayの場合<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h4>
 <p>API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -23295,7 +23328,7 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </blockquote>
 <p><br></p>
 <h2 id="02">02. フィールド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="openapi_2">openapiフィールド (必須)<a class="headerlink" href="#openapi_2" title="Permanent link">&para;</a></h3>
+<h3 id="openapi_3">openapiフィールド (必須)<a class="headerlink" href="#openapi_3" title="Permanent link">&para;</a></h3>
 <p>OpenAPI仕様のバージョンを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
@@ -23645,10 +23678,10 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. スキーマ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_4">スキーマとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">スキーマとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>RESTful-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
 <p><br></p>
-<h3 id="_5">スキーマによるバリデーション<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">スキーマによるバリデーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。</p>
