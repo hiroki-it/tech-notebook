@@ -23369,6 +23369,7 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <h3 id="_2">スキーマ駆動開発<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ スキーマ駆動開発とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>以下の流れに基づいて、APIを実装していく。</p>
+<p>ここでは、コードの自動作成にOpenAPI Generatorを使用するものとする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -23397,18 +23398,47 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>OpenAPI Generatorを使って、API仕様からコードを作成する。</p>
+<p>OpenAPI Generatorを使って、API仕様からコードを自動的に作成する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
+<div class="highlight"><pre><span></span><code><span class="c1"># brew、npm、などでインストールする</span>
+$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
 
 <span class="c1"># GoのAPIを作成する</span>
+<span class="c1"># openapi-generator generate -i &lt;OpenAPI仕様書&gt; -g go-gin-server -p packageVersion=&lt;タグ&gt; -o &lt;出力先&gt;</span>
 $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-g<span class="w"> </span>go-gin-server<span class="w"> </span>-p<span class="w"> </span><span class="nv">packageVersion</span><span class="o">=</span><span class="m">0</span>.0.1<span class="w"> </span>-o<span class="w"> </span>go-gin
+
+<span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// テンプレートファイル</span>
+<span class="p">{{&gt;</span><span class="nx">partial_header</span><span class="p">}}</span>
+<span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="c1">// WARNING!</span>
+<span class="w">    </span><span class="c1">// Change this to a fully-qualified import path</span>
+<span class="w">    </span><span class="c1">// once you place this file into your project.</span>
+<span class="w">    </span><span class="c1">// For example,</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">//    sw &quot;github.com/myname/myrepo/{{apiPath}}&quot;</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="nx">sw</span><span class="w"> </span><span class="s">&quot;openapi-gin-server/{{apiPath}}&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Server started&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sw</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:{{serverPort}}&quot;</span><span class="p">))</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>作成されたコードに実際のAPIを追加実装していく。</p>
+<p>自動的に作成されたコードに実際のAPIを追加実装していく。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="cm">/*</span>
