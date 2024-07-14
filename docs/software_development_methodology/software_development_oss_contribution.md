@@ -44,43 +44,6 @@ OSSコントリビューションするためのツールに関するバグを�
 
 ## 02. Kubernetes
 
-### ツール
-
-ロギング処理で正しい処理を実装できているかを静的解析する。
-
-`(1)`
-
-: インストールする。
-
-```bash
-$ go install sigs.k8s.io/logtools/logcheck@HEAD
-```
-
-`(2)`
-
-: 構造化ロギングのチェックを実行する。
-
-```bash
-$ $GOPATH/bin/logcheck -check-structured ./...
-
-kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: unstructured logging function "Infof" should not be used
-```
-
-`(3)`
-
-: コンテキストロギングのチェックを実行する。
-
-```bash
-$ $GOPATH/bin/logcheck -check-contextual ./...
-
-kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "InfoS" should not be used, convert to contextual logging
-kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "V" should not be used, convert to contextual logging
-```
-
-> - https://github.com/kubernetes-sigs/logtools/tree/main/logcheck
-
-<br>
-
 ### コントリビューションの流れ
 
 #### 1. 公式リポジトリからフォークリポジトリを作る
@@ -206,5 +169,46 @@ $ make test-integration
 ```
 
 > - https://www.kubernetes.dev/docs/guide/pull-requests/#run-local-verifications
+
+<br>
+
+### 実際にやってみた
+
+#### ▼ Structured Logging & Contextual Logging対応
+
+https://github.com/kubernetes/kubernetes/pull/124905 でOSSコントリビュートしてみた。
+
+ロギング処理で正しい処理を実装できているかを静的解析する。
+
+`(1)`
+
+: インストールする。
+
+```bash
+$ go install sigs.k8s.io/logtools/logcheck@HEAD
+```
+
+`(2)`
+
+: 構造化ロギングのチェックを実行する。
+
+```bash
+$ $GOPATH/bin/logcheck -check-structured ./...
+
+kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: unstructured logging function "Infof" should not be used
+```
+
+`(3)`
+
+: コンテキストロギングのチェックを実行する。
+
+```bash
+$ $GOPATH/bin/logcheck -check-contextual ./...
+
+kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "InfoS" should not be used, convert to contextual logging
+kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "V" should not be used, convert to contextual logging
+```
+
+> - https://github.com/kubernetes-sigs/logtools/tree/main/logcheck
 
 <br>

@@ -21,8 +21,6 @@ RESTful-APIの仕様を実装により説明するためのフォーマットの
 
 いくつかのフィールドから構成されている。
 
-> - https://spec.openapis.org/oas/v3.1.0#fixed-fields
-
 ```yaml
 openapi: # openapiフィールド
 
@@ -43,6 +41,8 @@ tags: # tagsフィールド
 externalDocs: # externalDocsフィールド
 ```
 
+> - https://spec.openapis.org/oas/v3.1.0#fixed-fields
+
 <br>
 
 ### OpenAPI仕様の視覚化
@@ -51,13 +51,37 @@ externalDocs: # externalDocsフィールド
 
 ReDocを使用して、OpenAPI仕様から`html`ファイルを作成する。
 
-> - https://qiita.com/icck/items/97d00495ec324e1902d6
+```yaml
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger sample
+paths:
+  /users:
+    get:
+      summary: Usersを取得するAPIです。
+      responses:
+        "200":
+          description: HTTPステータスコード200と以下の情報を含むJSONオブジェクトを返します。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: string
+                    example: 1234567
+```
 
 ```bash
 $ npm install -g redoc-cli
 
 $ redoc-cli bundle openapi.yaml redoc.html
 ```
+
+> - https://qiita.com/icck/items/97d00495ec324e1902d6
+
+#### ▼
 
 <br>
 
