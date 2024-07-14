@@ -47,9 +47,17 @@ externalDocs: # externalDocsフィールド
 
 ### OpenAPI仕様の視覚化
 
+#### ▼ OpenAPI仕様の視覚化とは
+
+OpenAPI仕様を共有して閲覧できるように、静的ファイル (例：`html`ファイル、`css`ファイル、`js`ファイル)
+
+さらに、静的なWebサイトとして公開すると、チーム内で共有するとなおよい。
+
+> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
+
 #### ▼ ReDocの場合
 
-ReDocを使用して、OpenAPI仕様から`html`ファイルを作成する。
+ReDocを使用して、OpenAPI仕様から静的ファイルを作成する。
 
 ```yaml
 openapi: 3.0.0
@@ -80,8 +88,13 @@ $ redoc-cli bundle openapi.yaml redoc.html
 ```
 
 > - https://qiita.com/icck/items/97d00495ec324e1902d6
+> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼
+#### ▼ Swagger UIの場合
+
+Swagger UIを使用して、OpenAPI仕様から静的ファイルを作成する。
+
+> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
 <br>
 
