@@ -1845,6 +1845,30 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      スキーマ駆動開発
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スキーマ駆動開発">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スキーマ駆動開発とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       クラウドプロバイダーとの統合
     </span>
   </a>
@@ -1969,7 +1993,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマとは
     </span>
@@ -1978,7 +2002,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマによるバリデーション
     </span>
@@ -23068,6 +23092,30 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
+      スキーマ駆動開発
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スキーマ駆動開発">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ スキーマ駆動開発とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       クラウドプロバイダーとの統合
     </span>
   </a>
@@ -23192,7 +23240,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマとは
     </span>
@@ -23201,7 +23249,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       スキーマによるバリデーション
     </span>
@@ -23318,7 +23366,90 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">クラウドプロバイダーとの統合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_2">スキーマ駆動開発<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ スキーマ駆動開発とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>以下の流れに基づいて、APIを実装していく。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>OpenAPIに基づいてAPI仕様を定義する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.3</span>
+<span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC API</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023.1.1</span>
+<span class="nt">servers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Online EC Example Service</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/v1</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product Operation</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product</span>
+<span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">/products</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/products/{productId}</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>OpenAPI Generatorを使って、API仕様からコードを作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
+
+<span class="c1"># GoのAPIを作成する</span>
+$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-g<span class="w"> </span>go-gin-server<span class="w"> </span>-p<span class="w"> </span><span class="nv">packageVersion</span><span class="o">=</span><span class="m">0</span>.0.1<span class="w"> </span>-o<span class="w"> </span>go-gin
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>作成されたコードに実際のAPIを追加実装していく。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm"> * EC</span>
+<span class="cm"> *</span>
+<span class="cm"> * EC API</span>
+<span class="cm"> *</span>
+<span class="cm"> * API version: 2023.1.1</span>
+<span class="cm"> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span>
+<span class="cm"> */</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nx">openapi</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// DeleteProductById - Cancel a specified product</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">DeleteProductById</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
+<span class="p">}</span>
+
+<span class="c1">// GetProductById - Get a specified product</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetProductById</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
+<span class="p">}</span>
+
+<span class="c1">// GetProducts - Get all products</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetProducts</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C">https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">クラウドプロバイダーとの統合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="api-gateway">▼ API Gatewayの場合<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h4>
 <p>API GatewayによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -23678,10 +23809,10 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. スキーマ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_3">スキーマとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_5">スキーマとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>RESTful-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
 <p><br></p>
-<h3 id="_4">スキーマによるバリデーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_6">スキーマによるバリデーション<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>データ型や必須データにより、リクエスト/レスポンスのデータのバリデーションを実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。</p>
