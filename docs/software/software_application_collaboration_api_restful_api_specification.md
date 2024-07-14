@@ -104,6 +104,8 @@ Swagger UIを使用して、OpenAPI仕様から静的ファイルを作成する
 
 以下の流れに基づいて、APIを実装していく。
 
+ここでは、コードの自動作成にOpenAPI Generatorを使用するものとする。
+
 `(1)`
 
 : OpenAPIに基づいてAPI仕様を定義する。
@@ -131,18 +133,49 @@ components:
 
 `(2)`
 
-: OpenAPI Generatorを使って、API仕様からコードを作成する。
+: OpenAPI Generatorを使って、API仕様からコードを自動的に作成する。
 
 ```bash
+# brew、npm、などでインストールする
 $ brew install openapi-generator
 
 # GoのAPIを作成する
+# openapi-generator generate -i <OpenAPI仕様書> -g go-gin-server -p packageVersion=<タグ> -o <出力先>
 $ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVersion=0.0.1 -o go-gin
+
+# --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる
+```
+
+```go
+// テンプレートファイル
+{{>partial_header}}
+package main
+
+import (
+	"log"
+	// WARNING!
+	// Change this to a fully-qualified import path
+	// once you place this file into your project.
+	// For example,
+	//
+	//    sw "github.com/myname/myrepo/{{apiPath}}"
+	//
+	sw "openapi-gin-server/{{apiPath}}"
+)
+
+func main() {
+
+	log.Printf("Server started")
+
+	router := sw.NewRouter()
+
+	log.Fatal(router.Run(":{{serverPort}}"))
+}
 ```
 
 `(3)`
 
-: 作成されたコードに実際のAPIを追加実装していく。
+: 自動的に作成されたコードに実際のAPIを追加実装していく。
 
 ```go
 /*
