@@ -23389,11 +23389,20 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product</span>
 <span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/products</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/products/{productId}</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+
 <span class="nt">components</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -23410,7 +23419,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 
 <span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// テンプレートファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// テンプレートファイル (mustache形式)</span>
 <span class="p">{{&gt;</span><span class="nx">partial_header</span><span class="p">}}</span>
 <span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -23828,6 +23837,8 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <div class="highlight"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報取得エンドポイント</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">      </span><span class="no">...</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="externaldocs">externalDocsフィールド<a class="headerlink" href="#externaldocs" title="Permanent link">&para;</a></h3>
