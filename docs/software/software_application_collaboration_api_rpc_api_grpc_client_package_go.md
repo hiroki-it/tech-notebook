@@ -132,7 +132,7 @@ protoc \
 
 ### gRPCクライアントとgRPCサーバーの両方
 
-#### ▼ サービス定義ファイル (`proto`ファイル)
+#### ▼ `proto`ファイル (サービス定義ファイル) とは
 
 gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto`ファイル) を作成する。
 
@@ -143,7 +143,7 @@ gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明�
 > - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 > - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 
-#### ▼ `pb.go`ファイル
+#### ▼ `pb.go`ファイルとは
 
 gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルから`pb.go`ファイルをコンパイルする。
 
@@ -1092,6 +1092,8 @@ func main() {
 ### `proto`ファイル
 
 クライアントからのコールで返信する構造体や関数を定義する。
+
+gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
