@@ -2197,7 +2197,7 @@
           <li class="md-nav__item">
   <a href="#protocol-buffer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Protocol Bufferのリポジトリ
+      ▼ Protocol Bufferの共有リポジトリ
     </span>
   </a>
   
@@ -23492,7 +23492,7 @@
           <li class="md-nav__item">
   <a href="#protocol-buffer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Protocol Bufferのリポジトリ
+      ▼ Protocol Bufferの共有リポジトリ
     </span>
   </a>
   
@@ -24019,6 +24019,7 @@
 <h3 id="protopb_go"><code>proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
+<p>なお、<code>pb</code>ファイルはProtocol Bufferの共有リポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
@@ -24064,10 +24065,10 @@
 <li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
 </ul>
 </blockquote>
-<h4 id="protocol-buffer">▼ Protocol Bufferのリポジトリ<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
+<h4 id="protocol-buffer">▼ Protocol Bufferの共有リポジトリ<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
 <p><code>pb</code>ファイルに関しては、gRPCサーバーがさらにアップストリームのマイクロサービスをコールするgRPCクライアントにもなる。</p>
-<p>そのため、Protocol Bufferのリポジトリでは、各マイクロサービスの<code>proto</code>ファイル、RPC-API仕様書、<code>pb</code>ファイル、を共有リポジトリで管理する。</p>
-<p>なお、<code>pb</code>ファイルには以下がある。</p>
+<p>そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの<code>proto</code>ファイル、RPC-API仕様書、<code>pb</code>ファイル、を管理する。</p>
+<p><code>pb</code>ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。</p>
 <ul>
 <li>gRPCサーバーとしての<code>proto</code>ファイルから作った<code>pb</code>ファイル</li>
 <li>gRPCクライアントとしての<code>proto</code>ファイル (これはアップストリームのgRPCサーバーのリポジトリにある) から作った<code>pb</code>ファイル</li>
