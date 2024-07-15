@@ -36,7 +36,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 ### --プラグイン名\_optとは
 
-`proto`ファイルから`pb.*`ファイルをコンパイルする時のオプションを設定する。
+`proto`ファイルから`pb`ファイルをコンパイルする時のオプションを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 
@@ -97,7 +97,7 @@ $ protoc \
 
 ### --プラグイン名\_outとは
 
-`pb.*`ファイルの出力先パスを設定する。
+`pb`ファイルの出力先パスを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 

@@ -124,11 +124,21 @@ tags:
     name: Product
 paths:
   /products:
-    get: ...
+    get:
+
+    ...
+
   /products/{productId}:
-    get: ...
+    get:
+
+    ...
+
+
 components:
-  schemas: ...
+  schemas:
+
+  ...
+
 ```
 
 `(2)`
@@ -147,7 +157,7 @@ $ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVer
 ```
 
 ```go
-// テンプレートファイル
+// テンプレートファイル (mustache形式)
 {{>partial_header}}
 package main
 
@@ -606,6 +616,8 @@ security:
 tags:
   - name: ユーザー情報取得エンドポイント
     description: |
+
+      ...
 ```
 
 <br>

@@ -301,6 +301,7 @@ jobs:
     uses: <オーナー>/<GitHubリポジトリ>/.github/workflows/post-foo-templateyml@main
 ```
 
+> - https://docs.github.com/ja/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
 > - https://zenn.dev/dzeyelid/articles/fc4bd999fbccd8#github-actions-%E3%81%A7%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%82%8B%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%A7%E3%81%8D%E3%82%8B
 
 <br>
