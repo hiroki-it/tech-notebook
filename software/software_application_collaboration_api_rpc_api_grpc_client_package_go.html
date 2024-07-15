@@ -1995,7 +1995,7 @@
           <li class="md-nav__item">
   <a href="#proto" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サービス定義ファイル (protoファイル)
+      ▼ protoファイル (サービス定義ファイル) とは
     </span>
   </a>
   
@@ -2004,7 +2004,7 @@
           <li class="md-nav__item">
   <a href="#pbgo" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ pb.goファイル
+      ▼ pb.goファイルとは
     </span>
   </a>
   
@@ -23660,7 +23660,7 @@
           <li class="md-nav__item">
   <a href="#proto" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サービス定義ファイル (protoファイル)
+      ▼ protoファイル (サービス定義ファイル) とは
     </span>
   </a>
   
@@ -23669,7 +23669,7 @@
           <li class="md-nav__item">
   <a href="#pbgo" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ pb.goファイル
+      ▼ pb.goファイルとは
     </span>
   </a>
   
@@ -24504,7 +24504,7 @@ protoc<span class="w"> </span><span class="se">\</span>
 </blockquote>
 <p><br></p>
 <h3 id="grpcgrpc">gRPCクライアントとgRPCサーバーの両方<a class="headerlink" href="#grpcgrpc" title="Permanent link">&para;</a></h3>
-<h4 id="proto">▼ サービス定義ファイル (<code>proto</code>ファイル)<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
+<h4 id="proto">▼ <code>proto</code>ファイル (サービス定義ファイル) とは<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (<code>proto</code>ファイル) を作成する。</p>
 <p>gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。</p>
 <p>サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから<code>pb.go</code>ファイルをコンパイルする。</p>
@@ -24514,7 +24514,7 @@ protoc<span class="w"> </span><span class="se">\</span>
 <li><a href="https://engineering.mercari.com/blog/entry/2019-05-31-040000/">https://engineering.mercari.com/blog/entry/2019-05-31-040000/</a></li>
 </ul>
 </blockquote>
-<h4 id="pbgo">▼ <code>pb.go</code>ファイル<a class="headerlink" href="#pbgo" title="Permanent link">&para;</a></h4>
+<h4 id="pbgo">▼ <code>pb.go</code>ファイルとは<a class="headerlink" href="#pbgo" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントとgRPCサーバーの両方で、<code>proto</code>ファイルから<code>pb.go</code>ファイルをコンパイルする。</p>
 <p><code>protoc</code>コマンドを使用して、<code>pb.go</code>ファイルを作成する。</p>
 <p>このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
@@ -25358,6 +25358,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h2 id="06-grpc">06. gRPCサーバーとクライアントの両方の実装例<a class="headerlink" href="#06-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="proto_1"><code>proto</code>ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h3>
 <p>クライアントからのコールで返信する構造体や関数を定義する。</p>
+<p>gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// protoファイルの構文のバージョンを設定する。</span>
 <span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
 
@@ -25901,7 +25902,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-16</span>
   </span>
 
     
