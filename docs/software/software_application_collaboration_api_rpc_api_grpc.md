@@ -428,6 +428,8 @@ repository/
 
 各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
 
+なお、`pb`ファイルはProtocol Bufferの共有リポジトリで管理する。
+
 ```yaml
 # fooサービス (Node.js製)
 repository/
@@ -476,13 +478,13 @@ repository/
 > - https://lab.mo-t.com/blog/protocol-buffers
 > - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 
-#### ▼ Protocol Bufferのリポジトリ
+#### ▼ Protocol Bufferの共有リポジトリ
 
 `pb`ファイルに関しては、gRPCサーバーがさらにアップストリームのマイクロサービスをコールするgRPCクライアントにもなる。
 
-そのため、Protocol Bufferのリポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`pb`ファイル、を共有リポジトリで管理する。
+そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの`proto`ファイル、RPC-API仕様書、`pb`ファイル、を管理する。
 
-なお、`pb`ファイルには以下がある。
+`pb`ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。
 
 - gRPCサーバーとしての`proto`ファイルから作った`pb`ファイル
 - gRPCクライアントとしての`proto`ファイル (これはアップストリームのgRPCサーバーのリポジトリにある) から作った`pb`ファイル

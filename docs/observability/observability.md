@@ -19,7 +19,7 @@ description: 可観測性の知見を記録しています。
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observality_and_monitoring.png)
 
-『収集されたデータから、システムと想定内と想定外 (想定できない) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
+『収集されたデータから、システムの想定内 (既知) と想定外 (未知) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
 
 システムの想定内の不具合は『監視』や『テスト (ホワイトボックステスト、ブラックボックステスト) 』によって検知できるが、想定外のものを検知できない。
 
@@ -27,7 +27,7 @@ description: 可観測性の知見を記録しています。
 
 想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
-> - https://blog.thundra.io/observability-driven-development-for-serverless
+> - https://unlimited.humio.com/rs/756-LMY-106/images/Distributed-Systems-Observability-eBook.pdf#page=11
 > - https://sookocheff.com/post/architecture/testing-in-production/
 > - https://www.sentinelone.com/blog/observability-production-systems-why-how/
 > - https://kakakakakku.hatenablog.com/entry/2020/05/25/064548

@@ -39,6 +39,8 @@ $ asdf install protoc
 
 サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
+ただし、執筆時点 (2024/07/15) では、 `protoc-gen-go`モジュールに移行するべきである。
+
 ```bash
 $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
@@ -55,6 +57,8 @@ protoc-gen-go <バージョン>
 
 サービス定義ファイル (`proto`ファイル) からgRPC対応の`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
+`protoc-gen-go`の移行先のモジュールである。
+
 ```bash
 $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@HEAD
 
@@ -64,8 +68,8 @@ protoc-gen-go-grpc <バージョン>
 ```
 
 > - https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc#section-readme
-> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
-> - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
+> - https://stackoverflow.com/a/60580149/12771072
+> - https://stackoverflow.com/a/64849053/12771072
 
 #### ▼ 上記ツールを持つ専用コンテナ
 
