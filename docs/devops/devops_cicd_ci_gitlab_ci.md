@@ -73,7 +73,32 @@ repository/
 
 <br>
 
-## 03. Global
+## 03. API
+
+### パイプライン実行
+
+他のリポジトリのパイプラインを発火する。
+
+例えば、GitOps時にアプリリポジトリがKubernetesリポジトリのパイプラインを実行する場合に役立つ。
+
+```yaml
+trigger_upstream_pipeline:
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/alpine/git
+  before_script:
+    - apk update && apk --no-cache add curl curl-dev
+  script:
+    - |
+      curl -X POST "https://gitlab.com/api/v4/projects/<プロジェクトID>/trigger/pipeline"
+      -F token=<トークン>
+      -F ref=<ブランチ>
+      -F variables[<変数名>]=<値>
+```
+
+> - https://blogs.networld.co.jp/entry/2023/03/10/090000
+
+<br>
+
+## 04. Global
 
 ### 予約変数
 
@@ -503,7 +528,7 @@ workflow:
 
 <br>
 
-## 04. Job
+## 05. Job
 
 ### allow_failure
 
