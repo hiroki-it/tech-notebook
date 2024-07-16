@@ -93,9 +93,9 @@ AWSリソースを操作するために使用する。
 
 CloudFrontに保管されているキャッシュを削除する。
 
-フロントエンドをデプロイしたとしても、CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
+フロントエンドアプリをデプロイしたとしても、ダウンストリームのCloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
 
-そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
+そのため、S3へのデプロイ後に、CloudFrontのキャッシュを削除する必要がある。
 
 ```yaml
 version: 2.1
@@ -104,6 +104,7 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
+  # CloudFrontのキャッシュを削除する
   cloudfront_create_invalidation:
     docker:
       - image: cimg/python:3.9-node
@@ -178,6 +179,9 @@ EOF
 # 正しく設定されたかを確認する。
 aws configure list
 ```
+
+> - https://zenn.dev/keita_hino/articles/a39e98b59b7afb
+> - https://nshmura.com/posts/automate-cache-cleaning-of-cloudfront/
 
 <br>
 
