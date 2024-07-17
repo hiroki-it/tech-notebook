@@ -1829,9 +1829,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#swagger-ui" class="md-nav__link">
+  <a href="#swagger-ui-swagger-codegen" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Swagger UIの場合
+      ▼ Swagger UI / Swagger Codegenの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenAPI Generator
     </span>
   </a>
   
@@ -23076,9 +23085,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#swagger-ui" class="md-nav__link">
+  <a href="#swagger-ui-swagger-codegen" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Swagger UIの場合
+      ▼ Swagger UI / Swagger Codegenの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ OpenAPI Generator
     </span>
   </a>
   
@@ -23358,11 +23376,21 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
 </ul>
 </blockquote>
-<h4 id="swagger-ui">▼ Swagger UIの場合<a class="headerlink" href="#swagger-ui" title="Permanent link">&para;</a></h4>
-<p>Swagger UIを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
+<h4 id="swagger-ui-swagger-codegen">▼ Swagger UI / Swagger Codegenの場合<a class="headerlink" href="#swagger-ui-swagger-codegen" title="Permanent link">&para;</a></h4>
+<p>Swagger UI / Swagger Codegenを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
+</ul>
+</blockquote>
+<h4 id="openapi-generator">▼ OpenAPI Generator<a class="headerlink" href="#openapi-generator" title="Permanent link">&para;</a></h4>
+<p>openapi-generatorを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
+<p>なお、openapi-generatorはOpenAPI仕様からコードを作成することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99">https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23406,6 +23434,14 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
+<dd>
+<p>OpenAPI Generatorを使用して、API仕様から静的ファイルを自動的に作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
 <dd>
 <p>OpenAPI Generatorを使って、API仕様からコードを自動的に作成する。</p>
 </dd>
@@ -23906,7 +23942,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-17</span>
   </span>
 
     
