@@ -23450,7 +23450,7 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
 
 <span class="c1"># GoのAPIを作成する</span>
-<span class="c1"># openapi-generator generate -i &lt;OpenAPI仕様書&gt; -g go-gin-server -p packageVersion=&lt;タグ&gt; -o &lt;出力先&gt;</span>
+<span class="c1"># openapi-generator generate -i &lt;OpenAPI仕様書&gt; -g &lt;言語、フレームワーク&gt; -p packageVersion=&lt;タグ&gt; -o &lt;出力先ディレクトリ&gt;</span>
 $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-g<span class="w"> </span>go-gin-server<span class="w"> </span>-p<span class="w"> </span><span class="nv">packageVersion</span><span class="o">=</span><span class="m">0</span>.0.1<span class="w"> </span>-o<span class="w"> </span>go-gin
 
 <span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
@@ -23521,6 +23521,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C">https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C</a></li>
+<li><a href="https://openapi-generator.tech/docs/generators/">https://openapi-generator.tech/docs/generators/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
