@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GraphQL＠RESTful-API
-description: GraphQL＠RESTful-APIの知見を記録しています。
+title: 【IT技術の知見】GraphQL＠GraphQL-API
+description: GraphQL＠GraphQL-APIの知見を記録しています。
 ---
 
-# GraphQL＠RESTful-API
+# GraphQL＠GraphQL-API
 
 ## はじめに
 
@@ -15,9 +15,9 @@ description: GraphQL＠RESTful-APIの知見を記録しています。
 
 ## 01. GraphQL
 
-### GraphQL-API
+### GraphQL
 
-GraphQL-APIは、スキーマ、クエリ、から構成される。
+GraphQLは、GraphQL-APIのGraphQLサーバー、GraphQLクライアント、から構成される。
 
 従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。
 
@@ -29,15 +29,20 @@ GraphQL-APIは、スキーマ、クエリ、から構成される。
 
 <br>
 
-### スキーマ
+### GraphQLサーバー
+
+#### ▼ スキーマ
 
 GraphQL-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
 > - https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88
+> - https://zenn.dev/hsaki/books/golang-graphql/viewer/tutorial
 
 <br>
 
-### クエリ
+### GraphQLクライアント
+
+#### ▼ クエリ
 
 GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
@@ -49,7 +54,7 @@ GraphQL-APIに送信するCRUDの実際のデータを定義したもの。
 
 ### Query
 
-#### ▼ スキーマ
+#### ▼ スキーマ (サーバー側)
 
 **＊例＊**
 
@@ -71,7 +76,7 @@ type User {
 
 > - https://zenn.dev/offers/articles/20220609-graphql-onboarding#query
 
-#### ▼ クエリ
+#### ▼ クエリ (クライアント側)
 
 データ読出のクエリを定義する。
 
@@ -113,7 +118,7 @@ $ curl \
 
 ### Mutation
 
-#### ▼ スキーマ
+#### ▼ スキーマ (サーバー側)
 
 **＊例＊**
 
@@ -142,7 +147,7 @@ input UserCreateInput {
 
 > - https://zenn.dev/offers/articles/20220609-graphql-onboarding#mutation
 
-#### ▼ クエリ
+#### ▼ クエリ (クライアント側)
 
 データ作成/更新/削除のクエリを定義する。
 
@@ -150,7 +155,7 @@ input UserCreateInput {
 
 **＊例＊**
 
-ここでは、前述のMutation処理のスキーマで定義した`createUser`メソッドを使用すると仮定する。
+ここでは、前述のMutation処理のスキーマで定義した`CreateUser`メソッドを実行すると仮定する。
 
 ```graphql
 mutation CreateUser {
@@ -159,6 +164,8 @@ mutation CreateUser {
   }
 }
 ```
+
+クライアント側で`CreateUser`メソッドを実行する。
 
 ```bash
 $ curl \
