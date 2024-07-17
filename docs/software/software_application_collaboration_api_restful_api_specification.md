@@ -170,7 +170,7 @@ $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 $ brew install openapi-generator
 
 # GoのAPIを作成する
-# openapi-generator generate -i <OpenAPI仕様書> -g go-gin-server -p packageVersion=<タグ> -o <出力先>
+# openapi-generator generate -i <OpenAPI仕様書> -g <言語、フレームワーク> -p packageVersion=<タグ> -o <出力先ディレクトリ>
 $ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVersion=0.0.1 -o go-gin
 
 # --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる
@@ -242,6 +242,7 @@ func GetProducts(c *gin.Context) {
 ```
 
 > - https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
+> - https://openapi-generator.tech/docs/generators/
 
 <br>
 

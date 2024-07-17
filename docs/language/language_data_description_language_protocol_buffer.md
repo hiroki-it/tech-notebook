@@ -97,11 +97,15 @@ package foo;
 
 メソッド (`rpc`) とそのグループ (`service`) を設定する。
 
+gRPCにおけるAPI仕様である。
+
 ```protobuf
 service GreetingService {
 	rpc Hello (HelloRequest) returns (HelloResponse);
 }
 ```
+
+> - https://docs.wantedly.dev/fields/the-system/apis#protofairu
 
 <br>
 

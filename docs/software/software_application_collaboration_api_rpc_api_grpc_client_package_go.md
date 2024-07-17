@@ -136,12 +136,13 @@ protoc \
 
 gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto`ファイル) を作成する。
 
-gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
+例えば、`message`はJSONに代わるスキーマを表し、`service`はgRPCにおけるAPI仕様を表す。
 
 サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから`pb.go`ファイルをコンパイルする。
 
 > - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 > - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+> - https://docs.wantedly.dev/fields/the-system/apis#protofairu
 
 #### ▼ `pb.go`ファイルとは
 
@@ -164,7 +165,9 @@ $ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 
 #### ▼ RPC-API仕様書
 
-gRPCにおけるAPI仕様書である。仕様の実装である`proto`ファイルを使用して、RPC-API仕様書を作成できる。
+gRPCにおけるAPI仕様書である。
+
+仕様の実装である`proto`ファイルを使用して、RPC-API仕様書を作成できる。
 
 ```bash
 $ protoc --doc_out=. --doc_opt=html,index.html *.proto
@@ -1092,8 +1095,6 @@ func main() {
 ### `proto`ファイル
 
 クライアントからのコールで返信する構造体や関数を定義する。
-
-gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。
 
 ```protobuf
 // protoファイルの構文のバージョンを設定する。
