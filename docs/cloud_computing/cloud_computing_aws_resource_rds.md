@@ -306,6 +306,20 @@ DBインスタンスとクラスターボリュームから構成されている
 
 <br>
 
+### クラスターボリュームのみのセカンダリーDBクラスター (ヘッドレスセカンダリーDBクラスター)
+
+『ヘッドレスセカンダリーDBクラスター』ともいう。
+
+コスト削減などを目的として、クラスターボリュームのみのセカンダリDBクラスターがある。
+
+セカンダリーDBクラスターのリードレプリカを削除すると、ヘッドレスセカンダリーDBクラスターを作成できる。
+
+> - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/_
+> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless
+> - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/
+
+<br>
+
 ### 仕組み
 
 #### ▼ ウォームスタンバイ構成
@@ -359,7 +373,7 @@ DBインスタンスとクラスターボリュームから構成されている
 
 グローバルクラスターでは、プライマリークラスターとセカンダリークラスターを同時にアップグレードできない。
 
-マイナーバージョンのアップグレードの場合は、セカンダリクラスターからアップグレードする。
+マイナーバージョンのアップグレードの場合は、セカンダリーDBクラスターからアップグレードする。
 
 メジャーバージョンのアップグレードの場合は、グローバルクラスター自体をアップグレードする。
 
