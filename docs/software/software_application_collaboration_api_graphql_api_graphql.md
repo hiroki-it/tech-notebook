@@ -13,9 +13,9 @@ description: GraphQL＠GraphQL-APIの知見を記録しています。
 
 <br>
 
-## 01. GraphQL
+## 01. GraphQLの仕組み
 
-### GraphQL
+### アーキテクチャ
 
 GraphQLは、GraphQL-APIのGraphQLサーバー、GraphQLクライアント、から構成される。
 

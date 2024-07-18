@@ -409,16 +409,22 @@ API GatewayのAPI形式に応じて、分割パターンがある。
 
 #### ▼ 自前で実装する場合
 
-API Gatewayを自前 (例：フルスクラッチ、Nginx、など) で実装する。
+API Gatewayを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチ、など) で実装する。
 
 Kubernetes内で管理できるメリットがある。
+
+GraphQLでAPI Gatewayを実装する場合は、特に注意が必要である。
+
+フロントエンドとAPI Gatewayの両方でGraphQL特有の実装が必要になるので、フロントエンドとAPI Gatewayの開発が分業にしくくなってしまう。
+
+ただ、フロントエンドとAPI Gatewayの開発チームの両方がGraphQLの知識を持ってれば、これは起こらない。
 
 > - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 > - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
 
 #### ▼ OSSを使用する場合
 
-API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、など) を使用する。
+API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIX、など) を使用する。
 
 Kubernetes内で管理できるメリットがある。
 

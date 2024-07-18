@@ -805,7 +805,9 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 
 #### ▼ ServiceMonitor
 
-ServiceMonitorを作成し、ArgoCDのコンポーネントのPodを監視する。ServiceMonitorは、ArgoCDのコンポーネントがテナントごとにあっても、1つ作成すれば良い。
+ServiceMonitorを作成し、ArgoCDのコンポーネントのPodを監視する。
+
+ServiceMonitorは、ArgoCDのコンポーネントがテナントごとにあっても、1つ作成すれば良い。
 
 ```yaml
 # application-controllerのPodを監視する
