@@ -254,6 +254,10 @@ nav:
                       - メタデータ: software/software_middleware_service_mesh_istio_resource_definition_common.md
                       - ConfigMap系: software/software_middleware_service_mesh_istio_resource_definition_configmap.md
                       - Secret系: software/software_middleware_service_mesh_istio_resource_definition_secret.md
+      - ■ DNS系:
+          - ■ CoreDNS:
+              - CoreDNS: software/software_middleware_dns_coredns.md
+              - 設定ファイル: software/software_middleware_dns_coredns_conf.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
           - ■ CertManager:
@@ -699,9 +703,6 @@ nav:
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
           - Cilium: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.md
           - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
-          - ■ CoreDNS:
-              - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
-              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.md
       - ■ Secret系:
           - ■ SecretsストアCSIドライバー:
               - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.md

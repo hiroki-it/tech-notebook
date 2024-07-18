@@ -108,6 +108,14 @@
 
 <br>
 
+### DNS系
+
+* #### <u>CoreDNS</u>
+  > * ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns_conf.html)
+
+<br>
+
 ### セキュリティ系
 
 * #### [︎︎Linux標準](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_linux.html)
