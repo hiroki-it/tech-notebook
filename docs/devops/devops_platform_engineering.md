@@ -162,7 +162,7 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 ## 04. 組織モデルの種類
 
-### Centralized Provisioning (中央集権型)
+### Centralized Provisioning (中央集中型)
 
 記入中...
 

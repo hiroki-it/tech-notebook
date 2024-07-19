@@ -959,7 +959,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     log_group_name    /prd-foo-ecs-container/laravel/log
     # ログストリーム名。予約変数あり。AWS ECSタスクIDなどアウトプットできる。
     log_stream_name   container/laravel/$(ecs_task_id)
-    # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
+    # ログを特定のAWSアカウントで中央集中的に管理する場合に、IAMロールを設定する。
     role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 
 [OUTPUT]
@@ -969,7 +969,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     region            ap-northeast-1
     log_group_name    /prd-foo-ecs-container/nginx/log
     log_stream_name   container/nginx/$(ecs_task_id)
-    # ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。
+    # ログを特定のAWSアカウントで中央集中的に管理する場合に、IAMロールを設定する。
     role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 ```
 
