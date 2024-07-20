@@ -629,9 +629,9 @@ nav:
           - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_client_package.md
       - ■ プラクティス集:
           - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_practices.md
+          - K8sリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md
           - K8s Cluster: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.md
           - K8sコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.md
-          - K8sリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
           - ■ リソース定義:
