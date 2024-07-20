@@ -221,7 +221,7 @@ nav:
           - ■ PostgreSQL:
               - 設定ファイル: software/software_middleware_database_rdb_postgresql_conf.md
               - Repmgr: software/software_middleware_database_rdb_postgresql_repmgr.md
-      - ■ コネクションプールプロキシー:
+      - ■ コネクションプールプロキシ系:
           - ■ PgBouncer:
               - PgBouncer: software/software_middleware_database_connection_pool_proxy_pgbouncer.md
               - 設定ファイル: software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.md
