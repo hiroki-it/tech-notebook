@@ -19,11 +19,11 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
 
-CNIアドオンで選べるモードごとに異なる仕組みによって、Clusterネットワークを作成する。
+CNIアドオンで選べるモードごとに異なる仕組みによって、新しいPodをClusterネットワークに参加させる。
 
-また、Podに仮想NICを紐付け、Node内のネットワークのIPアドレスをPodの仮想NICに割り当てる。
+具体的には、Podに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。
 
-これにより、PodをNode内のClusterネットワークに参加させ、異なるNode上のPod間を接続する。
+PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。
 
 CNIアドオンは、kubeletによるPodの起動時に有効化される。
 
