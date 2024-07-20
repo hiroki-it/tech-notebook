@@ -435,7 +435,9 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 `(2)`
 
-: kubeletは、ENIに関する`ADD`/`DEL`の命令をCNIバイナリに送信する。
+: kubeletは、kube-apiserverからPodの`ADD`/`DEL`リクエストを受信する。
+
+    Podの`ADD`/`DEL`リクエストをCNIバイナリに送信する。
 
 `(3)`
 
@@ -449,7 +451,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 `(3)`
 
-: kubeletは、セカンダリープライベートIPアドレスに関する`ADD`/`DEL`の命令を、CNIバイナリに送信する。
+: kubeletは、セカンダリープライベートIPアドレスの`ADD`/`DEL`リクエストを、CNIバイナリに送信する。
 
 `(4)`
 
@@ -460,6 +462,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
