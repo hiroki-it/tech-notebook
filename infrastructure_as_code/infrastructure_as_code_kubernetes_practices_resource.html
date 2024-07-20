@@ -16016,30 +16016,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      安全性
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="安全性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Secretの変数を暗号化する
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -23009,30 +22985,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      安全性
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="安全性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Secretの変数を暗号化する
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -23068,13 +23020,6 @@
 <h2 id="01-pod">01. Pod<a class="headerlink" href="#01-pod" title="Permanent link">&para;</a></h2>
 <h3 id="_2">安全性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 認証/認可の実施<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/sheepland/items/67a5bb9b19d8686f389d">https://qiita.com/sheepland/items/67a5bb9b19d8686f389d</a></li>
-<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="_4">可用性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 冗長化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -23082,48 +23027,6 @@
 <h4 id="_6">▼ 水平スケーリング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。</p>
 <p>水平スケーリングは、Podの負荷が高くなると冗長化してくれ、高負荷でいずれかのPodで障害が起こっても正常なPodがこれを埋め合わせしてくれるため、システム全体として稼働時間を長くできる。</p>
-<p><br></p>
-<h3 id="_7">安全性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="secret">▼ Secretの変数を暗号化する<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
-<p>Secretの <code>.data</code>キーには、<code>base64</code>方式でエンコードされた値を設定する必要がある。</p>
-<p>この <code>base64</code>方式エンコード値をどのように管理するかには選択肢がある。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>リポジトリ</th>
-<th>リポジトリ + キーバリュー型ストア</th>
-<th>リポジトリ + クラウドキーバリュー型ストア</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>バージョン管理</td>
-<td>管理できる。</td>
-<td>管理できる。</td>
-<td>管理できない。</td>
-</tr>
-<tr>
-<td>暗号化</td>
-<td><code>base64</code>方式エンコード値をリポジトリ内でそのまま管理する。</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
-</tr>
-<tr>
-<td>Secretストア</td>
-<td>なし</td>
-<td>リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud SecretManager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、<code>base64</code>方式エンコード値に復号化する。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/">https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/</a></li>
-<li><a href="https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/">https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/</a></li>
-<li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
@@ -23145,7 +23048,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-20</span>
   </span>
 
     
