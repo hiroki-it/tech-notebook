@@ -961,11 +961,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_extra.html</loc>
-         <lastmod>2024-07-20</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html</loc>
          <lastmod>2024-07-20</lastmod>
          <changefreq>daily</changefreq>
