@@ -18656,7 +18656,7 @@
           <li class="md-nav__item">
   <a href="#cni" class="md-nav__link">
     <span class="md-ellipsis">
-      CNIプラグイン
+      CNIバイナリ
     </span>
   </a>
   
@@ -23225,7 +23225,7 @@
           <li class="md-nav__item">
   <a href="#cni" class="md-nav__link">
     <span class="md-ellipsis">
-      CNIプラグイン
+      CNIバイナリ
     </span>
   </a>
   
@@ -23591,17 +23591,19 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cni">CNIプラグイン<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
-<p>CNIプラグインは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
+<h3 id="cni">CNIバイナリ<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
+<p>CNIバイナリは、L-IPAMデーモンからIPアドレスを取得する。</p>
+<p>また、kubeletとともに、新しいPodをNode内のClusterネットワークに参加させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=12">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=12</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="l-ipamlocal-ip-address-manager-daemon">L-IPAMデーモン：Local IP Address Manager Daemon<a class="headerlink" href="#l-ipamlocal-ip-address-manager-daemon" title="Permanent link">&para;</a></h3>
 <h4 id="l-ipam">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h4>
-<p>NodeやPodにIPアドレスを割り当てる。</p>
+<p>L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
 <h4 id="_3">▼ ログ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code>ファイルと<code>/var/log/aws-routed-eni/plugin.log</code>ファイルにログを出力する。</p>
 <p>aws-eks-vpc-cniアドオンが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
