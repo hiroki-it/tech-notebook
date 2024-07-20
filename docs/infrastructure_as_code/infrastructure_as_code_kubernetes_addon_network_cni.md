@@ -19,7 +19,7 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
 
-CNIアドオンで選べるモードごとに異なる仕組みによって、新しいPodをClusterネットワークに参加させる。
+Podを新しくスケジューリングする時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 
 具体的には、Podに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。
 
