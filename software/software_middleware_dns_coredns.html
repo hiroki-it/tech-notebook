@@ -3426,7 +3426,7 @@
             
   
   <span class="md-ellipsis">
-    ■ コネクションプールプロキシー
+    ■ コネクションプールプロキシ系
   </span>
   
 
@@ -3436,7 +3436,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシー
+            ■ コネクションプールプロキシ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4729,6 +4729,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Serviceの名前解決の仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -4774,7 +4798,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       名前解決の仕組み
     </span>
@@ -4807,7 +4831,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       疎通確認
     </span>
@@ -4817,7 +4841,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 事前確認
     </span>
@@ -11774,7 +11798,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 保存データの暗号化技術
+    ■ 保管データの暗号化技術
   </span>
   
 
@@ -11784,7 +11808,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 保存データの暗号化技術
+            ■ 保管データの暗号化技術
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -11799,7 +11823,7 @@
         
   
   <span class="md-ellipsis">
-    保存データの暗号化技術
+    保管データの暗号化技術
   </span>
   
 
@@ -23301,6 +23325,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Serviceの名前解決の仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -23346,7 +23394,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       名前解決の仕組み
     </span>
@@ -23379,7 +23427,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       疎通確認
     </span>
@@ -23389,7 +23437,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 事前確認
     </span>
@@ -23575,10 +23623,21 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <p><br></p>
 <h2 id="02-service">02. Serviceの名前解決<a class="headerlink" href="#02-service" title="Permanent link">&para;</a></h2>
 <h3 id="service_1">Serviceの名前解決の仕組み<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ アーキテクチャ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><img alt="coredns_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/coredns_service-discovery.png" /></p>
+<p>CoreDNSは、kube-apiserverから必要なKubernetesリソース (Service、Endpoints) を取得する。</p>
 <p>Podのスケジューリング時に、kubeletはPod内のコンテナの<code>/etc/resolv.conf</code>ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。</p>
-<p>Pod内のコンテナは、自身の<code>/etc/resolv.conf</code>ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。</p>
+<p>Pod内のコンテナは、自身の<code>/etc/resolv.conf</code>ファイルを使用して、CoreDNSのServiceにリクエストを送信する。</p>
+<p>また、CoreDNSから、宛先のPodに紐づくServiceのIPアドレスを正引きする。</p>
 <p>このServiceのIPアドレスを指定し、Podにリクエストを送信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/bells17/kubernetestocorednsnituiteli-jie-suru?slide=30">https://speakerdeck.com/bells17/kubernetestocorednsnituiteli-jie-suru?slide=30</a></li>
+<li><a href="https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/dns-overview">https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/dns-overview</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -23601,8 +23660,6 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <ul>
 <li><a href="https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/">https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/</a></li>
 <li><a href="https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101">https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101</a></li>
-<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42</a></li>
-<li><a href="https://help.aliyun.com/document_detail/201873.html">https://help.aliyun.com/document_detail/201873.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23634,7 +23691,7 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">名前解決の仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_5">名前解決の仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="podservice">▼ Pod内からServiceに対する正引き名前解決<a class="headerlink" href="#podservice" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナから宛先のServiceに対して、<code>nslookup</code>コマンドの正引きする。</p>
 <p>Serviceに<code>.metadata.name</code>キーが設定されている場合、Serviceの完全修飾ドメイン名は、<code>.metadata.name</code>キーの値になる。</p>
@@ -23702,8 +23759,8 @@ $<span class="w"> </span>dig<span class="w"> </span>nginx-service.default.svc.cl
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">疎通確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 事前確認<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h3 id="_6">疎通確認<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 事前確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -23790,7 +23847,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-20</span>
   </span>
 
     
