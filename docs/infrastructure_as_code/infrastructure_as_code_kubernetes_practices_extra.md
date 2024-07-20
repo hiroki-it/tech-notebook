@@ -6,6 +6,8 @@
 
 もし単純に新しいKubernetesクラスターにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。
 
+<br>
+
 ## クラスターのDR構成
 
 特定のリージョンのみにシステムを置いてしまうと、大規模な障害 (例：災害によるデータセンター大爆発！) があった場合に、システムのダウンタイムとなる。
@@ -20,6 +22,8 @@
 | 備考 | リージョン間クラスターを構築する場合、当然リージョン内のクラスターと比べ通信の遅延が発生するため、リージョン間のetcd同期が遅くなったりといった影響がある。 | リージョンを横断する形でクラスターを構築した場合でも、データベースなどの永続化データを持つシステムは片方のリージョンだけで動かすか、あるいはリージョンをまたいで構築する必要がある。 |
 
 上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行った上で必要に応じてDR構成を検討する。
+
+<br>
 
 ## ハードウェアをサイジングする
 
@@ -56,7 +60,9 @@
 
 ### ■ ストレージをサイジングする
 
-…
+記入中...
+
+<br>
 
 ## 適切な方法でアップグレードする
 
@@ -108,6 +114,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
   - コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を実行する
     - コントロールプレーンがマネージドなGKEやEKSなどでは考慮不要
 
+<br>
+
 # コントロールプレーンNode
 
 ## 冗長化する
@@ -117,6 +125,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 > [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/)
 
 > [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
+
+<br>
 
 ## ロードバランシングする
 
@@ -133,6 +143,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 
 > [https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s](https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s)
 
+<br>
+
 ## コントロールプレーンNodeを異なるトポロジーに分散させる
 
 冗長化したコントロールプレーンNodeを特定のトポロジー偏らせてに配置すると、その特定のトポロジーで障害が起こった場合に、コントロールプレーンNodeが全滅してしまう。
@@ -140,6 +152,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。
 
 > [https://kubernetes.io/docs/setup/best-practices/multiple-zones/](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)
+
+<br>
 
 ## kube-apiserverへのインバウンド通信を制限する
 
@@ -153,6 +167,8 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 - 認証
   - 必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。
 
+<br>
+
 ## ハードウェアをサイジングする
 
 ### ■ ストレージをサイジングする
@@ -164,13 +180,19 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 
 > [CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud](https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja)
 
+<br>
+
 # Etcd
+
+<br>
 
 ## バックアップする
 
 障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。
 
 > [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+
+<br>
 
 ## 冗長化する
 
@@ -182,17 +204,23 @@ etcd Nodeは3台に冗長化する。
 
 > [https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance](https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance)
 
+<br>
+
 ## 高性能ストレージを利用する
 
 Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。
 
 > [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
 
+<br>
+
 ## RAIDのミラーリングやパリティを利用しない
 
 etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。
 
 > [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
+
+<br>
 
 # ワーカーNode
 
@@ -225,15 +253,21 @@ Nodeグループの特徴に合った数だけ冗長化しつつ、N+1にする�
 |                    | ↓                                                                             | ↓                                                                             | ↓                                                                                                             | ↓                                                                                 |
 | Nodeの冗長化の程度 | Nodeを多く冗長化する。                                                        | Nodeを多く冗長化する。                                                        | Nodeを最も多く冗長化する。                                                                                    | Nodeを少なく冗長化する。                                                          |
 
+<br>
+
 ## 自動スケーリング
 
 IaaS環境でNode数をスケールさせることができる余地がある環境では動的にNode数をスケールさせることで処理量の増加に対して柔軟に対応することができるようになる。
 
 KubernetesではNodeに対する動的なスケール手段としてcluster autoscaler、Karpenterといったアプリケーションが用意されているため、これらを利用して自動スケーリングできるようにする。
 
+<br>
+
 ## 適切なOS、CPUアーキテクチャを選ぶ
 
 コントロールプレーンNodeと重複するため、省略する。
+
+<br>
 
 ## ハードウェアをサイジングする
 
@@ -267,6 +301,8 @@ Nodeグループにあったストレージを割り当てる。
 
 一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使用するにしても数日分は保管することになる)。
 
+<br>
+
 # コントロールプレーンNodeとワーカーNodeで共通のプラクティス
 
 ## 異なるゾーンに分散させる
@@ -275,6 +311,8 @@ Nodeグループにあったストレージを割り当てる。
 
 異なるゾーンに分散させるように配置する。
 
+<br>
+
 ## 適切なOS、CPUアーキテクチャを選ぶ
 
 - OSは適切なの、くらいな表現になる
@@ -282,6 +320,8 @@ Nodeグループにあったストレージを割り当てる。
   - armが安いからarm使用する
   - マルチプラットフォームビルドを避けれるなら避けたいのでamdを使用する、など
   - ベースイメージにarm製が少ないから理由がなければamd使用する
+
+<br>
 
 # Ingress
 
@@ -301,6 +341,8 @@ Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Loa
 
 > [https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/)
 
+<br>
+
 ## IngressをSSL/TLS終端にする
 
 PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、様々な対処事項 (例：SSL証明書管理、相互TLSの有無) で実装難易度が上がる。
@@ -311,6 +353,8 @@ IngressをSSL/TLS終端にすると、PodへのリクエストはHTTP通信に�
 
 > [https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/](https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/)
 
+<br>
+
 ## IngressClassの指定にingressClassnameを使用する
 
 IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata.annotations.kubernetes.io/ingress.class` キーがある。
@@ -318,6 +362,8 @@ IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata
 `.spec.ingressClassname` キーの指定方法が推奨である。
 
 > [https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
+
+<br>
 
 # CronJob
 
@@ -328,6 +374,8 @@ CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の
 トラブルシューティングしやすくするために、`.spec.startingDeadlineSeconds`キーで`3`回分以上を設定しておく。
 
 > [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
+
+<br>
 
 ## startingDeadlineSecondsを設定する
 
@@ -344,6 +392,8 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 `100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
 > [https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/](https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/)
+
+<br>
 
 # Job
 
@@ -365,6 +415,8 @@ Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) でPodを�
 
 N+1個にすると良い。
 
+<br>
+
 ## 水平スケーリングする
 
 HorizontalPodAutoscalerでPodを水平スケーリングする。
@@ -380,6 +432,8 @@ metrics-serverはデフォルトでClusterに存在していないため、別�
 > [https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server)
 
 > [https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33](https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33)
+
+<br>
 
 ## ロードバランシングする
 
@@ -397,6 +451,8 @@ L7ロードバランサーが冗長化されたNodeに適切にインバウン�
 
 > [https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods](https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods)
 
+<br>
+
 ## Podのインバウンド通信を制限する
 
 Podのインバウンド通信を全て許可することは危険である。
@@ -406,6 +462,8 @@ Podのインバウンド通信を全て許可することは危険である。
 ただし、Podの通信に関する様々な要件が上がるたびにNetworkPolicyを変更するのは大変なため、採用するかどうかはプロダクトの方針による。
 
 なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるため、アウトバウンド通信は全て許可しておく。
+
+<br>
 
 ## preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する
 
@@ -431,6 +489,8 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 > [https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
 
+<br>
+
 ## ハードウェアをサイジングする
 
 ### ■ CPU/メモリをサイジングする
@@ -447,7 +507,9 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 ### ■ ストレージをサイジングする
 
-…
+記入中...
+
+<br>
 
 ## DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる
 
@@ -461,6 +523,8 @@ DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリング�
 
 そこで、`.spec.priorityClassName`キーを使用すると、Podのスケジューリング優先度を設定できる。
 
+<br>
+
 ## DeploymentやStatefulSetを使用する場合はPodDisruptionBudgeも合わせて作成する
 
 Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。
@@ -468,6 +532,8 @@ Nodeのスケールインやアップグレード時に、Nodeはドレイン処
 この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。
 
 そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。
+
+<br>
 
 ## Deploymentでは適切なデプロイ戦略をぶ
 
@@ -486,6 +552,8 @@ Recreate戦略では、既存のPodを削除した後、新しいPodをデプロ
 RollingUpdate戦略では、デプロイ時に新旧Podが並列的に稼働するため、アプリの仕様上で不都合がある場合に適さない。
 
 そういったユースケースでは、Recreate戦略を選ぶようにする。
+
+<br>
 
 ## Podを異なるNodeに分散させる / 特定のNodeにスケジューリングする
 
@@ -587,6 +655,8 @@ spec:
 
 > [https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
+<br>
+
 ## 適切なストレージの種類を選ぶ
 
 ### ■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する
@@ -653,6 +723,8 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 
 > [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
 
+<br>
+
 ## 適切なボリュームアクセスモードを選択する
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
@@ -680,6 +752,8 @@ ConfigMapに保管するには大きすぎる設定ファイルや共通デー�
 
 - 例 機械学習モデルのパラメータストア
 
+<br>
+
 ## ラベルを利用して目的に合ったストレージを選択する
 
 アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。
@@ -689,6 +763,8 @@ ConfigMapに保管するには大きすぎる設定ファイルや共通デー�
 > [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
 
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html)
+
+<br>
 
 ## 利用用途に合ったReclaim Policyを設定する
 
@@ -718,6 +794,8 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle)
 
+<br>
+
 ## ストレージをPodと同じNodeに作成する
 
 Nodeを冗長化している場合、Workloadは配下のPodを各NodeにスケジューリングされるためPodがアクセスするストレージも同様のNodeに作成する必要がある。
@@ -725,6 +803,8 @@ Nodeを冗長化している場合、Workloadは配下のPodを各Nodeにスケ�
 ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。
 
 そこで`topologySpreadConstraints`キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。
+
+<br>
 
 ## StorageClassやPersistentVolumeに適切なラベルを設定する
 
@@ -735,6 +815,8 @@ PodからPersistentVolumeClaimを利用する場合ラベルなどがついて�
 > [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
 
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define)
+
+<br>
 
 ## Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する
 
@@ -768,6 +850,8 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 > [https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
 
+<br>
+
 # コンテナ
 
 ## startupProbe、readinessProbe、livenessProbe、を設定する
@@ -790,6 +874,8 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 > [https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status)
 
 > [https://thinkit.co.jp/article/17500](https://thinkit.co.jp/article/17500)
+
+<br>
 
 ## Cluster DNS に対する無駄な名前解決のリクエストを減らす
 
@@ -852,6 +938,8 @@ Podは、Cluster DNSに名前解決のリクエストを送信する前に、一
 
 > [https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/](https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/)
 
+<br>
+
 ## 機密性の高い情報を守る
 
 ### ■ env変数やConfigMapに機密性の高い情報を設定しない
@@ -875,6 +963,12 @@ Secretは、base64方式のエンコード値を保持する。
 | バージョン管理 | 管理できる。                                                                                                                       | 管理できない。                                                                                                                                                                                                                                                                        |
 | 暗号化         | base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。                                | base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。                                                                                                                                                                                   |
 | Secretストア   | リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。 | クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud SecretManager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。 |
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
+> - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
+> - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
+
+<br>
 
 ## ハードウェアリソース要求量の上限下限値は設定する
 
@@ -916,6 +1010,8 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、
 
 > [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
 
+<br>
+
 ## イメージタグにlatestを設定しない
 
 イメージタグにlatestを指定すると、むやみに新しいバージョンのイメージタグをプルしてしまい、障害が起こりかねない。
@@ -923,6 +1019,8 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、
 そこで、イメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。
 
 なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるため、ダイジェスト値は指定しない。
+
+<br>
 
 ## イメージが更新された場合のみイメージレジストリからプルする
 
@@ -934,11 +1032,15 @@ K8sでは、一度プルしたコンテナイメージを基本的に削除し�
 
 デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。
 
+<br>
+
 ## Nodeに永続化データを持たせない
 
 StatefulSetを使用してNodeに永続化データを持たせた場合、Nodeの障害が永続化データにも影響を与えかねない。
 
 そこで、Nodeに永続化データを持たせずに、外部のサーバー (例：AWS RDS、MySQL) を使用する。
+
+<br>
 
 ## コンテナにセッションデータを持たせない
 
@@ -960,15 +1062,17 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 
 > [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
 
+<br>
+
 ## InitContainerを適切に使用する
 
 ### ■ InitContainerで他のPodのコンテナの起動を待機する
 
-…
+記入中...
 
 ### ■ InitContainerで初期データをDBに挿入する
 
-…
+記入中...
 
 > [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
 
@@ -980,7 +1084,9 @@ istio-initコンテナとかまさにその例
 
 ### ■ InitContainerでSSL証明書を準備する
 
-…
+記入中...
+
+<br>
 
 # Podとコンテナで共通のプラクティス
 
@@ -1096,6 +1202,8 @@ readOnlyRootFilesystem |
 
 > [https://en.wikipedia.org/wiki/Root_directory](https://en.wikipedia.org/wiki/Root_directory)
 
+<br>
+
 # UserAccount とRole / ClusterRole
 
 ## UserAccountと最小権限のRoleを作成する
@@ -1127,6 +1235,8 @@ readOnlyRootFilesystem |
 
 実行環境の誤選択や悪意のある人のアクセスを防ぐために、リリース時以外は全てのUserAccountの本番環境の認可スコープをReadにする。
 
+<br>
+
 ## 本番環境ではUserAccountに不必要に権限を割り当てない
 
 ### ■ `pods/exec`や`pods/attach`を設定しない
@@ -1145,15 +1255,20 @@ RoleやClusterRoleに設定できる`pods/exec`や`pods/attach`といった権�
 
 ### ■ Secretに関する権限を設定しない
 
-…
+<br>
 
 # ServiceAccountとRole / ClusterRole
 
-…
+RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
+
+> - https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
+> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+
+<br>
 
 # テスト
 
-### マニフェスト静的解析ツールを使用する
+## マニフェスト静的解析ツールを使用する
 
 ### ■ 検証したい項目を選ぶ
 
@@ -1198,6 +1313,8 @@ $ helm template . -f foo-values.yaml \
 | 非推奨APIチェック            | https://kubepug.xyz/                                               | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。                                                                                  |            |                                                                                                                                                                                                                                                                                                                         |                        |
 | 非推奨APIチェック            | https://github.com/doitintl/kube-no-trouble                        | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。                                                                                  |            |                                                                                                                                                                                                                                                                                                                         |                        |
 
+<br>
+
 ## Helmチャートの静的解析ツールを使用する
 
 ### ■ 検証したい項目を選ぶ
@@ -1214,6 +1331,8 @@ Helmチャート専用の静的解析ツールが存在するため、必要に�
 | Helm専用のツールであり、Helmチャートを渡す必要がある。 | ★                                    | Helmのビルトインツールであり、めぼしい競合ツールがない。                                                 | ✅         |
 | チャートのバージョン                                   | https://nova.docs.fairwinds.com/     | Helmチャートのバージョンが古くなっていないかを検証する。                                                 |
 | Helm専用のツールであり、Helmチャートを渡す必要がある。 |                                      |                                                                                                          |            |
+
+<br>
 
 ## ブラックボックステスト
 
@@ -1233,6 +1352,8 @@ Helmチャート専用の静的解析ツールが存在するため、必要に�
 | WorkloadがPodのレプリカ数を維持できることを確認する。      | Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。                                                                                                                                                                        |
 | Podのスケーリングが正しく動作することを確認する。          | HPAやVPAを使用している場合、HPAやVPAの設定と使用しているメトリクスに応じたスケーリングが行われることを確認する。                                                                                                                                                                                                                                     |
 | Nodeのスケーリングが正しく動作することを確認する。         | Cluster AutoscalerやKarpenterを使用している場合、Cluster AutoscalerやKarpenterの設定とNodeのリソース状況応じたスケーリングが行われることを確認する。                                                                                                                                                                                                 |
+
+<br>
 
 # 運用
 
@@ -1274,6 +1395,8 @@ K8s Clusterを使用したプロダクトのチームメンバー構成の例を
 | K8s Clusterが依存する周辺インフラ                                                                    |                | ✅                          | ✅                         | ✅               |
 | インフラの低レイヤー                                                                                 |                |                             |                            | ✅               |
 
+<br>
+
 ## 運用しやすいテナントに分割する
 
 ### ■ マルチテナントパターン
@@ -1287,6 +1410,8 @@ K8sリソースをグルーピングしたテナントを作成し、影響範�
 | テナントの単位 | 実Clusterテナント                                                         | 仮想Cluster                                                               | Namespaceテナント                     | カスタムリソーステナント                                                   |
 | ツール         | 実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
 | …              |                                                                           |                                                                           |                                       |                                                                            |
+
+<br>
 
 ## マニフェストを管理しやすくする
 
@@ -1312,6 +1437,8 @@ K8sリソースをグルーピングしたテナントを作成し、影響範�
 
 - Helm
 - Kustomize
+
+<br>
 
 # 監視
 
@@ -1344,6 +1471,8 @@ K8sリソースをグルーピングしたテナントを作成し、影響範�
 | ハードウェアリソース系 (CPU使用量、メモリ使用量、など) | node-exporter、cAdvisor |
 | ネットワーク系 (帯域幅、スループット値、など)          | cAdvisor                |
 | 状態系 (Podのレプリカ数、ヘルスチェックの失敗数、など) | kube-state-metrics      |
+
+<br>
 
 ## 対象のデータを収集する
 
