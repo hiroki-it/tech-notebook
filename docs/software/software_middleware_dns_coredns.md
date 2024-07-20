@@ -98,13 +98,25 @@ data:
 
 ### Serviceの名前解決の仕組み
 
+#### ▼ アーキテクチャ
+
 ![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/coredns_service-discovery.png)
+
+CoreDNSは、kube-apiserverから必要なKubernetesリソース (Service、Endpoints) を取得する。
 
 Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。
 
-Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルを使用して、CoreDNSのServiceを介して、宛先のPodに紐づくServiceのIPアドレスを正引きする。
+Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルを使用して、CoreDNSのServiceにリクエストを送信する。
+
+また、CoreDNSから、宛先のPodに紐づくServiceのIPアドレスを正引きする。
 
 このServiceのIPアドレスを指定し、Podにリクエストを送信する。
+
+> - https://speakerdeck.com/bells17/kubernetestocorednsnituiteli-jie-suru?slide=30
+> - https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/dns-overview
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+
+#### ▼ 確認方法
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -130,8 +142,6 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
-> - https://help.aliyun.com/document_detail/201873.html
 
 <br>
 

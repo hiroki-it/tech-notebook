@@ -108,7 +108,9 @@ spec: ...
 
 ### kube-proxyとは
 
-kube-proxyは、各ワーカーNode上でDaemonSetとして稼働し、IPアドレスベースのサービスディスカバリー、検出したサービス (Pod) に対する`L4`ロードバランサー、として働く。
+kube-proxyは、各ワーカーNode上でDaemonSetとして稼働する。
+
+IPアドレスベースのサービスディスカバリー、検出したサービス (Pod) に対する`L4`ロードバランサー、として働く。
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
 > - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
