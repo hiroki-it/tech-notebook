@@ -23290,7 +23290,7 @@
 <h2 id="01-cni">01. CNIアドオン<a class="headerlink" href="#01-cni" title="Permanent link">&para;</a></h2>
 <h3 id="cni_1">CNIアドオンとは<a class="headerlink" href="#cni_1" title="Permanent link">&para;</a></h3>
 <p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png" /></p>
-<p>CNIアドオンで選べるモードごとに異なる仕組みによって、新しいPodをClusterネットワークに参加させる。</p>
+<p>Podを新しくスケジューリングする時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。</p>
 <p>具体的には、Podに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。</p>
 <p>PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。</p>
 <p>CNIアドオンは、kubeletによるPodの起動時に有効化される。</p>
