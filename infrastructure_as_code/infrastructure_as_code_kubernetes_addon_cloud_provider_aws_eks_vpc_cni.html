@@ -24147,7 +24147,8 @@ Capacity:
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>kubeletは、ENIに関する<code>ADD</code>/<code>DEL</code>の命令をCNIバイナリに送信する。</p>
+<p>kubeletは、kube-apiserverからPodの<code>ADD</code>/<code>DEL</code>リクエストを受信する。</p>
+<p>Podの<code>ADD</code>/<code>DEL</code>リクエストをCNIバイナリに送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -24160,7 +24161,7 @@ Capacity:
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>kubeletは、セカンダリープライベートIPアドレスに関する<code>ADD</code>/<code>DEL</code>の命令を、CNIバイナリに送信する。</p>
+<p>kubeletは、セカンダリープライベートIPアドレスの<code>ADD</code>/<code>DEL</code>リクエストを、CNIバイナリに送信する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -24172,6 +24173,7 @@ Capacity:
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam</a></li>
 <li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
