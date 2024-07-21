@@ -23593,11 +23593,11 @@
 <p><br></p>
 <h3 id="cni">CNIバイナリ<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
 <p>CNIバイナリは、L-IPAMデーモンからIPアドレスを取得する。</p>
-<p>Podを新しくスケジューリングする時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。</p>
+<p>Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html</a></li>
-<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=12">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=12</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24155,7 +24155,7 @@ Capacity:
 <dt><code>(3)</code></dt>
 <dd>
 <p>L-IPAMデーモンはCNIバイナリを参照する。</p>
-<p>また、CNIバイナリ上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。</p>
+<p>また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。</p>
 <p>反対に、NodeのENIを解放し、ENIのプールに戻す。</p>
 </dd>
 </dl>

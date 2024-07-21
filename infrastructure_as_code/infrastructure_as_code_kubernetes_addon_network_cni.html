@@ -23290,13 +23290,13 @@
 <h2 id="01-cni">01. CNIアドオン<a class="headerlink" href="#01-cni" title="Permanent link">&para;</a></h2>
 <h3 id="cni_1">CNIアドオンとは<a class="headerlink" href="#cni_1" title="Permanent link">&para;</a></h3>
 <p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png" /></p>
-<p>Podを新しくスケジューリングする時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。</p>
-<p>具体的には、Podに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。</p>
+<p>Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。</p>
+<p>kubeletは、設定ファイルで指定されたCNIアドオンを実行する。</p>
+<p>その後、CNIアドオンはPodに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。</p>
 <p>PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。</p>
-<p>CNIアドオンは、kubeletによるPodの起動時に有効化される。</p>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=30</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/">https://kubernetes.io/docs/concepts/cluster-administration/networking/</a></li>
 </ul>
 </blockquote>
