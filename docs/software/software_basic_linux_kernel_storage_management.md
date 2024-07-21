@@ -23,25 +23,36 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 プロトコル (例：NFS、SMB、など) ごとに保管の仕組みが異なる。
 
-ローカルファイルストレージ (例：ローカルドライブ) とクラウドファイルストレージ (例：Googleドライブ、AWS EFS、など) がある。
+ファイルストレージとして、ローカルファイルストレージ (例：ローカルドライブ) とクラウドファイルストレージ (例：Googleドライブ、AWS EFS、など) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#file-storage
+> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
 
 #### ▼ オブジェクトストレージ
 
 属性を付与したデータ (例：写真、動画、メール、など) を保管する。
 
-ローカルオブジェクトストレージとクラウドオブジェクトストレージ (例：AWS S3) がある。
+オブジェクトストレージとして、ローカルオブジェクトストレージとクラウドオブジェクトストレージ (例：AWS S3) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#object-storage
+> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
 
 #### ▼ ブロックストレージ
 
 一意な識別子を付与したデータをブロックとして分割し、保管する。
 
-DB (例：RDB、TSDB、NoSQL、など) はブロックストレージである。
+ブロックストレージとして、特定のDB (例：RDB、TSDB、など) やボリューム (例：AWS EBS) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#block-storage
+> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
+
+#### ▼ キーバリューストレージ
+
+キーとバリューの形式で分割し、保管する。
+
+キーバリューストレージとして、特定のDB (例：NoSQL) がある。
+
+> - https://www.techtarget.com/searchstorage/feature/NVMe-key-value-storage-vs-block-and-object-storage
 
 <br>
 
