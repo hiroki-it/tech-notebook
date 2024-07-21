@@ -662,7 +662,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-### Secret Manager
+### Secrets Manager
 
 #### ▼ get-secret-value
 
@@ -679,7 +679,7 @@ $ aws secretsmanager get-secret-value \
 "..."
 ```
 
-もしSecret ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
+もしSecrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
 
 そのため、`--output`オプションで`text`使用してダブルクオーテーションを削除する必要がある。
 
