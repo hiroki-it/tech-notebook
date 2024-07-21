@@ -43,10 +43,10 @@ AWS EKS Cluster内にネットワークを作成する。
 
 CNIバイナリは、L-IPAMデーモンからIPアドレスを取得する。
 
-Podを新しくスケジューリングする時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。
+Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=12
+> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 <br>
 
@@ -446,7 +446,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 : L-IPAMデーモンはCNIバイナリを参照する。
 
-     また、CNIバイナリ上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。
+     また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。
 
      反対に、NodeのENIを解放し、ENIのプールに戻す。
 

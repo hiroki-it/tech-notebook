@@ -420,7 +420,7 @@ baz qux:
 FOO:=foo
 
 echo:
-	echo "${FOO}" # echo
+	echo "${FOO}" # 何も出力されない
 ```
 
 > - https://make-muda.net/2014/10/1824/
@@ -433,7 +433,7 @@ echo:
 FOO=foo
 
 echo:
-	echo "${FOO}" # echo foo
+	echo "${FOO}" # fooを出力できる
 ```
 
 > - https://make-muda.net/2014/10/1824/
