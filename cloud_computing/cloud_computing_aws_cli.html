@@ -12827,13 +12827,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#secret-manager" class="md-nav__link">
+  <a href="#secrets-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Secret Manager
+      Secrets Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Secret Manager">
+    <nav class="md-nav" aria-label="Secrets Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24546,13 +24546,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#secret-manager" class="md-nav__link">
+  <a href="#secrets-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Secret Manager
+      Secrets Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Secret Manager">
+    <nav class="md-nav" aria-label="Secrets Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25203,7 +25203,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="secret-manager">Secret Manager<a class="headerlink" href="#secret-manager" title="Permanent link">&para;</a></h3>
+<h3 id="secrets-manager">Secrets Manager<a class="headerlink" href="#secrets-manager" title="Permanent link">&para;</a></h3>
 <h4 id="get-secret-value">▼ get-secret-value<a class="headerlink" href="#get-secret-value" title="Permanent link">&para;</a></h4>
 <p>特定のSecretに格納されている文字列を取得する。</p>
 <p>注意点として、出力した文字列はダブルクオーテーションで囲われている。</p>
@@ -25214,7 +25214,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <span class="c1"># ダブルクオーテーションで囲われている</span>
 <span class="s2">&quot;...&quot;</span>
 </code></pre></div>
-<p>もしSecret ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
+<p>もしSecrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
 <p>そのため、<code>--output</code>オプションで<code>text</code>使用してダブルクオーテーションを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--secret-id<span class="o">=</span>&lt;シークレット名&gt;<span class="w"> </span><span class="se">\</span>
@@ -25414,7 +25414,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-22</span>
   </span>
 
     
