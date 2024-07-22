@@ -622,6 +622,8 @@ spec:
 
 OpenTelemetryでは、トレースコンテキスト仕様はW3C Trace Contextになる。
 
+OTLP形式のエンドポイントであればよいため、OpenTelemetry Collectorも指定できる。
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
