@@ -559,14 +559,38 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: datadog-tracing
+      - name: foo-provider
         datadog:
           # datadogエージェントを宛先として設定する
           service: datadog-agent.foo-namespace.svc.cluster.local
           port: 8126
+      - name: bar-provider
+        envoyFileAccessLog
 ```
 
 Datadogに送信するためには、`mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+分散トレースの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Datadogにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: foo-provider
+      randomSamplingPercentage: 100
+```
 
 アクセスログの設定は以下の通りである。
 
@@ -586,28 +610,8 @@ spec:
   # Envoyをアクセスログプロバイダーとして設定する
   accessLogging:
     - providers:
-        - name: envoy
-```
-
-分散トレースの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1alpha1
-kind: Telemetry
-metadata:
-  name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Datadogにスパンを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  tracing:
-    - providers:
-        - name: datadog
-      randomSamplingPercentage: 100
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: bar-provider
 ```
 
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
@@ -638,31 +642,11 @@ data:
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
           # gRPC用のエンドポイントを設定する
           port: 4317
+      - name: bar-provider
+        envoyFileAccessLog
 ```
 
 OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
-
-アクセスログの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1alpha1
-kind: Telemetry
-metadata:
-  name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # Opentelemetryにアクセスログを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  # Envoyをアクセスログプロバイダーとして設定する
-  # なお、デフォルトのため設定不要である
-  accessLogging:
-    - providers:
-        - name: envoy
-```
 
 分散トレースの設定は以下の通りである。
 
@@ -684,6 +668,28 @@ spec:
         # mesh.extensionProviders[*].nameキーで設定した名前
         - name: foo-provider
       randomSamplingPercentage: 100
+```
+
+アクセスログの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # Opentelemetryにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # Envoyをアクセスログプロバイダーとして設定する
+  accessLogging:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: bar-provider
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
@@ -723,30 +729,11 @@ data:
           # jaegerエージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
           port: 8126
+      - name: bar-provider
+        envoyFileAccessLog
 ```
 
 ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
-
-アクセスログの設定は以下の通りである。
-
-```yaml
-apiVersion: telemetry.istio.io/v1alpha1
-kind: Telemetry
-metadata:
-  name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
-  namespace: foo
-spec:
-  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
-  selector:
-    matchLabels:
-      name: app
-  # Envoyをアクセスログプロバイダーとして設定する
-  accessLogging:
-    - providers:
-        - name: envoy
-```
 
 分散トレースの設定は以下の通りである。
 
@@ -768,6 +755,28 @@ spec:
         # mesh.extensionProviders[*].nameキーで設定した名前
         - name: foo-provider
       randomSamplingPercentage: 100
+```
+
+アクセスログの設定は以下の通りである。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  namespace: foo
+spec:
+  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  # Envoyをアクセスログプロバイダーとして設定する
+  accessLogging:
+    - providers:
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: bar-provider
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
