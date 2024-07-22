@@ -24486,14 +24486,16 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 <p><br></p>
 <h2 id="06-l7">06. <code>L7</code>ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
 <h3 id="l7"><code>L7</code>ロードバランサーとは<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) の通信のヘッダー情報に基づいて、通信をロードバランシングする。</p>
-<p><code>L4</code>のヘッダー情報を失うわけではなく、あくまでパケットの<code>L7</code>プロトコルの情報を使用するだけである。</p>
+<p>通信の<code>L7</code>プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) のヘッダー情報に基づいて、通信をロードバランシングする。</p>
+<p>一方で、<code>L7</code>プロトコルのヘッダー情報をもたない通信をロードバランシングできない。</p>
+<p><code>L4</code>のヘッダー情報を失うわけではなく、あくまでパケットの<code>L7</code>プロトコルの情報をロードバランシングに使用するだけである。</p>
 <p><code>L7</code>プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。</p>
 <p><code>L7</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef">https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef</a></li>
 <li><a href="https://www.infraexpert.com/study/tcpip16.html">https://www.infraexpert.com/study/tcpip16.html</a></li>
+<li><a href="https://hakobe932.hatenablog.com/entry/2018/04/11/123000">https://hakobe932.hatenablog.com/entry/2018/04/11/123000</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24526,7 +24528,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-22</span>
   </span>
 
     
