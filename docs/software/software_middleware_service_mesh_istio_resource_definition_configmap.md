@@ -643,7 +643,8 @@ data:
           # gRPC用のエンドポイントを設定する
           port: 4317
       - name: bar-provider
-        envoyFileAccessLog
+        envoyFileAccessLog:
+          path: /dev/stdout
 ```
 
 OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
@@ -730,7 +731,8 @@ data:
           service: jaeger-agent.foo-namespace.svc.cluster.local
           port: 8126
       - name: bar-provider
-        envoyFileAccessLog
+        envoyFileAccessLog:
+          path: /dev/stdout
 ```
 
 ZipkinやJaegerに送信するためには、`mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
