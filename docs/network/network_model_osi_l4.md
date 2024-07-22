@@ -141,7 +141,7 @@ unix://./etc/foo.sock
 
 ### `L4`ロードバランサーとは
 
-通信の`L4`プロトコル (例：UDP、TCP) のヘッダー情報に基づいて、通信をロードバランシングする。
+通信の`L4`プロトコル (例：UDP、TCP) やツール固有のプロトコル (例：MySQL、Memcached、など) のヘッダー情報に基づいて、通信をロードバランシングする。
 
 `L7`プロトコルのヘッダー情報をもつ通信であっても、`L4`プロトコルの情報のみを使用してロードバランシングすることもできる (例えば、HTTPのバージョンの影響を回避できるといったメリットがある) 。
 
@@ -156,5 +156,6 @@ unix://./etc/foo.sock
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
 > - https://www.infraexpert.com/study/tcpip8.html
 > - https://hakobe932.hatenablog.com/entry/2018/04/11/123000
+> - https://asnokaze.hatenablog.com/entry/20150421/1429621022
 
 <br>
