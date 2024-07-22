@@ -1801,13 +1801,29 @@ spec:
     matchLabels:
       name: app
   # Envoyをアクセスログプロバイダーとして設定する
-  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
 ```
 
 > - https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging
+
+ConfigMapで設定する場合は、以下のように設定する。
+
+Telemetryによる設定が推奨である。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    accessLogFile: /dev/stdout
+```
+
+> - https://istio.io/latest/docs/tasks/observability/logs/access-log/#using-mesh-config
 
 <br>
 
