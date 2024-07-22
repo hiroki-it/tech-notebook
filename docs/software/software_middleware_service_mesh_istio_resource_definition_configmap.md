@@ -584,7 +584,6 @@ spec:
     matchLabels:
       name: app
   # Envoyをアクセスログプロバイダーとして設定する
-  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
@@ -633,7 +632,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: opentelemetry
+      - name: foo-provider
         opentelemetry:
           # OpenTelemetry Collectorを宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
@@ -682,7 +681,8 @@ spec:
       name: app
   tracing:
     - providers:
-        - name: opentelemetry
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: foo-provider
       randomSamplingPercentage: 100
 ```
 
@@ -718,7 +718,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: jaeger-tracing
+      - name: foo-provider
         jaeger:
           # jaegerエージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
@@ -743,7 +743,6 @@ spec:
     matchLabels:
       name: app
   # Envoyをアクセスログプロバイダーとして設定する
-  # なお、デフォルトのため設定不要である
   accessLogging:
     - providers:
         - name: envoy
@@ -766,7 +765,8 @@ spec:
       name: app
   tracing:
     - providers:
-        - name: jaeger
+        # mesh.extensionProviders[*].nameキーで設定した名前
+        - name: foo-provider
       randomSamplingPercentage: 100
 ```
 
