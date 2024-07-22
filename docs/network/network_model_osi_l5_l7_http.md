@@ -596,9 +596,11 @@ session.gc_divisor = 1
 
 ### `L7`ロードバランサーとは
 
-`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) の通信のヘッダー情報に基づいて、通信をロードバランシングする。
+通信の`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) のヘッダー情報に基づいて、通信をロードバランシングする。
 
-`L4`のヘッダー情報を失うわけではなく、あくまでパケットの`L7`プロトコルの情報を使用するだけである。
+一方で、`L7`プロトコルのヘッダー情報をもたない通信をロードバランシングできない。
+
+`L4`のヘッダー情報を失うわけではなく、あくまでパケットの`L7`プロトコルの情報をロードバランシングに使用するだけである。
 
 `L7`プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。
 
@@ -606,6 +608,7 @@ session.gc_divisor = 1
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
 > - https://www.infraexpert.com/study/tcpip16.html
+> - https://hakobe932.hatenablog.com/entry/2018/04/11/123000
 
 <br>
 
