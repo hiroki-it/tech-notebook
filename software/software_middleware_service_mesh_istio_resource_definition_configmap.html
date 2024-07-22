@@ -24752,13 +24752,34 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: datadog-tracing</span>
+<span class="w">      </span><span class="no">- name: foo-provider</span>
 <span class="w">        </span><span class="no">datadog:</span>
 <span class="w">          </span><span class="no"># datadogエージェントを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: datadog-agent.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 8126</span>
+<span class="w">      </span><span class="no">- name: bar-provider</span>
+<span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
 <p>Datadogに送信するためには、<code>mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>分散トレースの設定は以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracing-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Datadogにスパンを送信させるPodを設定する</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider</span>
+<span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+</code></pre></div>
 <p>アクセスログの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -24775,25 +24796,8 @@
 <span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
-</code></pre></div>
-<p>分散トレースの設定は以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracing-provider</span>
-<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Datadogにスパンを送信させるPodを設定する</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datadog</span>
-<span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24821,27 +24825,10 @@
 <span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no"># gRPC用のエンドポイントを設定する</span>
 <span class="w">          </span><span class="no">port: 4317</span>
+<span class="w">      </span><span class="no">- name: bar-provider</span>
+<span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
 <p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[*].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
-<p>アクセスログの設定は以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
-<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Opentelemetryにアクセスログを送信させるPodを設定する</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
-<span class="w">  </span><span class="c1"># なお、デフォルトのため設定不要である</span>
-<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
-</code></pre></div>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -24860,6 +24847,25 @@
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+</code></pre></div>
+<p>アクセスログの設定は以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Opentelemetryにアクセスログを送信させるPodを設定する</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
+<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24897,26 +24903,10 @@
 <span class="w">          </span><span class="no"># jaegerエージェントを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: jaeger-agent.foo-namespace.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 8126</span>
+<span class="w">      </span><span class="no">- name: bar-provider</span>
+<span class="w">        </span><span class="no">envoyFileAccessLog</span>
 </code></pre></div>
 <p>ZipkinやJaegerに送信するためには、<code>mesh.extensionProviders[*].zipkin</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
-<p>アクセスログの設定は以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
-<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># ZipkinやJaegerにアクセスログを送信させるPodを設定する</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
-<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
-</code></pre></div>
 <p>分散トレースの設定は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -24935,6 +24925,25 @@
 <span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+</code></pre></div>
+<p>アクセスログの設定は以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ZipkinやJaegerにアクセスログを送信させるPodを設定する</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
+<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-provider</span>
 </code></pre></div>
 <blockquote>
 <ul>
