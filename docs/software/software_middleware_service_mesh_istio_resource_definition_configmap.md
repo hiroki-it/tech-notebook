@@ -576,6 +576,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにアクセスログを送信させるPodを設定する
@@ -597,6 +598,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにスパンを送信させるPodを設定する
@@ -647,6 +649,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Opentelemetryにアクセスログを送信させるPodを設定する
@@ -668,6 +671,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Opentelemetryにスパンを送信させるPodを設定する
@@ -729,6 +733,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # ZipkinやJaegerにアクセスログを送信させるPodを設定する
@@ -750,6 +755,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにスパンを送信させるPodを設定する

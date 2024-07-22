@@ -1783,6 +1783,24 @@ spec:
 
 ## 09. Telemetry
 
+### .metadata.namespace
+
+NamespaceでTelemetyの対象のサイドカーを絞れる。
+
+もし`istio-system`を指定した場合、Root Namespaceという設定になり、サイドカーのある全てのNamespaceが対象になる。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  namespace: foo
+```
+
+> - https://istio.io/latest/docs/tasks/observability/telemetry/#scope-inheritance-and-overrides
+
+<br>
+
 ### accessLogging
 
 #### ▼ accessLoggingとは
@@ -1795,6 +1813,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:
@@ -1839,6 +1858,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:
@@ -1865,6 +1885,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
+  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:
