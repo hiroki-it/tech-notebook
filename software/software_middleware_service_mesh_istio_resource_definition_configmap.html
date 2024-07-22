@@ -24773,7 +24773,6 @@
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
-<span class="w">  </span><span class="c1"># なお、デフォルトのため設定不要である</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
@@ -24816,7 +24815,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: opentelemetry</span>
+<span class="w">      </span><span class="no">- name: foo-provider</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
 <span class="w">          </span><span class="no"># OpenTelemetry Collectorを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.foo-namespace.svc.cluster.local</span>
@@ -24858,7 +24857,8 @@
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
@@ -24892,7 +24892,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: jaeger-tracing</span>
+<span class="w">      </span><span class="no">- name: foo-provider</span>
 <span class="w">        </span><span class="no">jaeger:</span>
 <span class="w">          </span><span class="no"># jaegerエージェントを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: jaeger-agent.foo-namespace.svc.cluster.local</span>
@@ -24913,7 +24913,6 @@
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="c1"># Envoyをアクセスログプロバイダーとして設定する</span>
-<span class="w">  </span><span class="c1"># なお、デフォルトのため設定不要である</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
@@ -24933,7 +24932,8 @@
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger</span>
+<span class="w">        </span><span class="c1"># mesh.extensionProviders[*].nameキーで設定した名前</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provider</span>
 <span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
