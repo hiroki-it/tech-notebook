@@ -149,7 +149,7 @@ go_doc:
 `./...`を指定すれば、再帰的にドキュメントを作成できる。
 
 ```bash
-$ gomarkdoc ./... -o {{.Dir}}/doc.md
+$ gomarkdoc ./... -o {{.Dir}}/DOCUMENT.md
 ```
 
 <br>
@@ -160,7 +160,7 @@ $ gomarkdoc ./... -o {{.Dir}}/doc.md
 
 ```yaml
 # .gomarkdoc.ymlファイル
-output: "{{.Dir}}/doc.md" # ダブルクオーテーションで囲わないとエラーになる
+output: "{{.Dir}}/DOCUMENT.md" # ダブルクオーテーションで囲わないとエラーになる
 repository:
   defaultBranch: main
   url: https://github.com/hiroki-hasegawa/foo-repository.git
@@ -179,7 +179,7 @@ $ gomarkdoc . --config .gomarkdoc.yml
 埋め込みタグの箇所にドキュメントを出力する。
 
 ```bash
-$ gomarkdoc . -o doc.md -e
+$ gomarkdoc . -o DOCUMENT.md -e
 ```
 
 ```markdown
@@ -201,7 +201,7 @@ $ gomarkdoc . -o doc.md -e
 出力先のファイル名を指定する。
 
 ```bash
-$ gomarkdoc . -o doc.md
+$ gomarkdoc . -o DOCUMENT.md
 ```
 
 <br>
@@ -212,7 +212,7 @@ $ gomarkdoc . -o doc.md
 
 ```bash
 $  gomarkdoc . \
-     -o doc.md \
+     -o DOCUMENT.md \
      --repository.default-branch main \
      --repository.url https://github.com/hiroki-hasegawa/foo-repository.git
 ```

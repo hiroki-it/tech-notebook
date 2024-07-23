@@ -241,7 +241,7 @@ spec:
 
 <br>
 
-## 04.ClusterIssuer
+## 04. ClusterIssuer
 
 ### ClusterIssuerとは
 

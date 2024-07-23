@@ -21,6 +21,11 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
 
+検証用のツールとして、他に以下がある。
+
+> - https://github.com/equinix-labs/otel-cli
+> - https://newrelic.com/jp/blog/how-to-relic/how-to-observe-your-cicd-pipelines-with-opentelemetry
+
 <br>
 
 ## 02. セットアップ
