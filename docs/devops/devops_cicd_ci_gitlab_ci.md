@@ -73,6 +73,26 @@ repository/
 
 <br>
 
+### 他のプライベートリポジトリへのアクセス
+
+他のプライベートリポジトリにアクセスするためには、GitLab CIで、Gitの認証情報をセットアップする必要がある。
+
+```yaml
+go_mod:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
+  before_script:
+    # 他のプライベートリポジトリからモジュールをプルするために、認証情報をセットアップする
+    - echo "machine gitlab.paylab.sh" > ~/.netrc
+    - echo "login ${GIT_USER}" >> ~/.netrc
+    - echo "password ${GIT_TOKEN}" >> ~/.netrc
+  script:
+    # 他のプライベートリポジトリのモジュールをインポートする
+    - go mod tidy
+```
+
+<br>
+
 ## 03. API
 
 ### パイプライン実行
@@ -588,7 +608,7 @@ foo_job:
 
 #### ▼ artifactsとは
 
-GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる。
+GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる (GitLabのバージョンが古いとこの機能がない場合がある) 。
 
 しかし、`needs`でJob間に依存関係を定義している場合、`artifacts`を使用しても、`needs`で指定しているJob以外のファイルを継承できない。
 
@@ -661,6 +681,38 @@ bar_job:
 > - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
 > - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
 > - https://docs.gitlab.com/ee/ci/caching/#artifacts
+
+<br>
+
+### before_script
+
+#### ▼ before_scriptとは
+
+記入中...
+
+#### ▼ 共通化
+
+`before_script`キーを隠しJobとして定義することで、共通のスクリプトとして使用できる。
+
+```yaml
+# GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
+.setup_git:
+  before_script:
+    - echo "machine gitlab.paylab.sh" > ~/.netrc
+    - echo "login ${GIT_USER}" >> ~/.netrc
+    - echo "password ${GIT_TOKEN}" >> ~/.netrc
+
+go_mod:
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
+  extends:
+    - .setup_git
+  script:
+    # 本モジュールはgo buildする必要はないため、go modのみを実行する
+    - go mod tidy
+```
+
+> - https://stackoverflow.com/a/74831820/12771072
 
 <br>
 
@@ -1097,6 +1149,8 @@ qux_job:
 <br>
 
 ### script
+
+#### ▼ scriptとは
 
 Jobで実行する処理を設定する。
 
