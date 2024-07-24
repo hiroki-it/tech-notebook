@@ -142,7 +142,13 @@ go_doc:
 
 <br>
 
-### `{{.Dir}}`
+### ビルトイン変数
+
+#### ▼ 一覧
+
+> - https://github.com/princjef/gomarkdoc/blob/master/cmd/gomarkdoc/command.go#L30-L44
+
+#### ▼ `{{.Dir}}`
 
 ディレクトリ名を再帰的に出力する。
 
