@@ -21,7 +21,9 @@ DevOpsというインターフェースを実装したエンジニアリング�
 
 SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
-出典は要記入...
+![platform-engineering.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering.png)
+
+> - https://jimmysong.io/blog/cloud-native-ai-whitepaper/
 
 <br>
 
