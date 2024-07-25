@@ -210,9 +210,14 @@ ECサイトを運営するアスクルの例。
 
 > - https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
-#### ▼ ECサイトの例
+#### ▼ 抽出例
 
-記入中...
+| 単語 | 意味合い | 対応するドメインモデル |
+| ---- | -------- | ---------------------- |
+| ...  | ...      | ...                    |
+| ...  | ...      | ...                    |
+
+> - https://zenn.dev/leaner_dev/articles/20210922-ubiquitous-language?redirected=1
 
 <br>
 

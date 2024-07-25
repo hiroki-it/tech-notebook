@@ -2670,6 +2670,16 @@ class DogComboFactory
 
 <br>
 
+### キュー操作処理
+
+#### ▼ キュー操作処理とは
+
+メッセージキューを操作する。
+
+#### ▼ Sagaパターンのクライアント
+
+<br>
+
 ### イベントリスナー (イベントハンドラー)
 
 #### ▼ イベントリスナーとは
@@ -2685,7 +2695,7 @@ class DogComboFactory
 
 イベントでリスナーを使い回さずに、各イベントごとにリスナーを作成する。
 
-そのため、名前は『イベント名』+Listener (Handler) となる。
+そのため、名前は『イベント名』+ Listener (Handler) となる。
 
 > - https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
