@@ -44,6 +44,9 @@ DNS検証かEメール検証かを設定する。
 | 中間認証局     | ATS：Amazon Trust Services |
 | ルート認証局   | Starfield社                |
 
+> - https://docs.aws.amazon.com/ja_jp/acm/latest/userguide/acm-certificate.html
+> - https://www.amazontrust.com/repository/
+
 <br>
 
 ## 04. SSL証明書の検証方法
