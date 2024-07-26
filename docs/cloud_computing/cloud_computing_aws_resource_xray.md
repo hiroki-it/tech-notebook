@@ -453,7 +453,7 @@ W3C Trace Context仕様のスパンのIDに相当する。
 }
 ```
 
-> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-sql
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-sql
 
 <br>
 

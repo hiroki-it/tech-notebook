@@ -15,7 +15,7 @@ description: Certificate Manager＠AWSリソースを記録しています。
 
 ## 01. Certificate Managerとは
 
-記入中...
+認証局から発行されたSSL証明書を管理する。
 
 <br>
 
@@ -39,13 +39,15 @@ DNS検証かEメール検証かを設定する。
 
 認証局であるATSによって認証済みのSSL証明書を管理できる。
 
-| サーバー提供者 | 名前                       |
-| -------------- | -------------------------- |
-| 中間認証局     | ATS：Amazon Trust Services |
-| ルート認証局   | Starfield社                |
+| サーバー提供者 | 名前                          |
+| -------------- | ----------------------------- |
+| 中間認証局     | Amazon認証局                  |
+| ルート認証局   | Starfield認証局、Amazon認証局 |
 
-> - https://docs.aws.amazon.com/ja_jp/acm/latest/userguide/acm-certificate.html
+> - https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html
 > - https://www.amazontrust.com/repository/
+> - https://dev.classmethod.jp/articles/ssl-introduction-for-aws-client-vpn/#%25E5%25AE%259F%25E9%259A%259B%25E3%2581%25AB%25E8%25A6%258B%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B
+> - https://speakerdeck.com/minorun365/zheng-ming-shu-tutehe-datuke-awsnozhong-jian-cayi-xing-nibei-eru?slide=10
 
 <br>
 
@@ -151,33 +153,33 @@ CloudFrontは謎...
 
 ### EC2/ECS/EKSのダウンストリーム
 
-#### ▼ SSL終端
+#### ▼ SSL/TLS終端
 
-HTTPSによるSSLプロトコルを受け付けるネットワークの最終地点のことを、SSL終端という。
+HTTPSによるSSLプロトコルを受け付けるネットワークの最終地点のことを、SSL/TLS終端という。
 
-SSL証明書の配置場所は、SSL終端をどこにするかで決める。
+SSL証明書の配置場所は、SSL/TLS終端をどこにするかで決める。
 
 AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対しては、外部のSSL証明書を手に入れて配置する。
 
 トレードオフとして、パケットペイロードの暗号化処理は通信速度が低下させる。
 
-そのため、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワーク、など) の境界をSSL終端とすることが多い。
+そのため、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワーク、など) の境界をSSL/TLS終端とすることが多い。
 
 > - https://serverfault.com/a/1126428
 > - https://www.reddit.com/r/aws/comments/aidrfn/comment/eenbc60/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 #### ▼ Route53 ➡︎ ALB、NLB、の場合
 
-ALBでSSL終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
+ALBでSSL/TLS終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
 
-EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
+EC2/ECS/EKSでSSL/TLS終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(Route53には必ず配置)                                     | SSL終端<br>(HTTPSの最終地点) |
-| --------------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                      | ALB                          |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
-| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)   | Lightsail                    |
-| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
+| パターン<br>(Route53には必ず配置)                                     | SSL/TLS終端<br>(HTTPSの最終地点) |
+| --------------------------------------------------------------------- | -------------------------------- |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                      | ALB                              |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                      |
+| Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)   | Lightsail                        |
+| Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                      |
 
 > - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
 
@@ -185,11 +187,11 @@ EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したS
 
 AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。
 
-| パターン<br>(Route53には必ず配置)                                                    | SSL終端<br>(HTTPSの最終地点) |
-| ------------------------------------------------------------------------------------ | ---------------------------- |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                     | ALB                          |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                      | Ingressコントローラー        |
-| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS以外のSSL証明書) | Pod                          |
+| パターン<br>(Route53には必ず配置)                                                    | SSL/TLS終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------------------------ | -------------------------------- |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎︎ Service / Pod                     | ALB                              |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod                      | Ingressコントローラー            |
+| Route53 ➡︎ LBコントローラー (ACMのSSL証明書) ➡︎ Service / Pod (AWS以外のSSL証明書) | Pod                              |
 
 > - https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/
 > - https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/
@@ -202,24 +204,24 @@ CloudFrontからALBにHTTPSリクエストを送信する場合、それぞれ�
 
 CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。
 
-| パターン<br>(Route53には必ず配置)                                               | SSL終端<br>(HTTPSの最終地点) |
-| ------------------------------------------------------------------------------- | ---------------------------- |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2/ECS/EKS | ALB                          |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                         | CloudFront                   |
-| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                                  | CloudFront                   |
+| パターン<br>(Route53には必ず配置)                                               | SSL/TLS終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------------------- | -------------------------------- |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2/ECS/EKS | ALB                              |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2/ECS/EKS                         | CloudFront                       |
+| Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                                  | CloudFront                       |
 
 #### ▼ Route53 ➡︎ EC2/ECS/EKS、Lightsail、の場合
 
-Route53でSSL終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
+Route53でSSL/TLS終端とする場合、EC2/ECS/EKSにSSL証明書は不要である。
 
-EC2/ECS/EKSでSSL終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
+EC2/ECS/EKSでSSL/TLS終端とする場合、EC2/ECS/EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(Route53には必ず配置)            | SSL終端<br>(HTTPSの最終地点) |
-| -------------------------------------------- | ---------------------------- |
+| パターン<br>(Route53には必ず配置)            | SSL/TLS終端<br>(HTTPSの最終地点) |
+| -------------------------------------------- | -------------------------------- |
 |                                              |
-| Route53 ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                  |
-| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                    |
-| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                    |
+| Route53 ➡︎ EC2/ECS/EKS (AWS以外のSSL証明書) | EC2/ECS/EKS                      |
+| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                        |
+| Route53 ➡︎ Lightsail (ACMのSSL証明書)       | Lightsail                        |
 
 <br>
 
