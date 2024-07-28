@@ -328,7 +328,7 @@ spec:
 
 ### NodePoolとは
 
-NodePool内のNodeに対して、クラウドプロバイダーに寄らない仕様を設定する。
+NodePool内のNodeに対して、クラウドプロバイダーに依らない仕様を設定する。
 
 EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
 
