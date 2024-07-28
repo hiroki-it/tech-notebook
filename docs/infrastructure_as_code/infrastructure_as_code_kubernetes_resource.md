@@ -761,7 +761,7 @@ Node外から通信を受信し、Ingressに定義されたルールに応じて
 
 Serviceは、`L4`ロードバランサーとしてPodに通信をルーティングする。
 
-kube-proxyが更新したNode上で稼働するiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。
+kube-proxyが更新したiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。
 
 DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) でServiceを使用できる。
 
@@ -973,6 +973,8 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 Serviceは、パケットの`L4`に関するヘッダーの持つ情報を見て、Podに`L4`ロードバランシングする。
 
+ServiceがPodと紐づいたり、切り離したりした後、kube-procyがiptablesを変更する。
+
 受信したリクエストをパケットとして処理していく流れを見ていく。
 
 `(1)`
@@ -1060,6 +1062,7 @@ coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-
 
 > - https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented
 > - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
+> - https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown
 
 <br>
 
