@@ -59,7 +59,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 データポイントはローカルストレージに保管している。
 
-> - https://software.fujitsu.com/jp/manual/manualfiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
+> - https://software.fujitsu.com/jp/manual/manualiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
 > - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
 
 <br>
@@ -81,6 +81,7 @@ kubeletのデーモンはメトリクス収集用エンドポイント (例：`/
 ![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
 
 > - https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
+> - https://luandy-4171.medium.com/the-kubernetes-metrics-and-monitoring-architecture-8999c4bb5a04
 
 <br>
 

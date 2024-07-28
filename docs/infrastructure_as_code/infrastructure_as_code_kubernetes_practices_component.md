@@ -78,7 +78,7 @@ Nodeグループにあった数に冗長化する。
 
 ### 可用性
 
-コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。
+kubeletにより、コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。
 
 LivenessProbeヘルスチェックは、コンテナで障害が起こるとコンテナを再起動してくれるため、システム全体として稼働時間を長くできる。
 
