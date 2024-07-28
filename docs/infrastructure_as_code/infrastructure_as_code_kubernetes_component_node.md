@@ -564,7 +564,7 @@ $ journalctl -u containerd.service
 
 <br>
 
-### コンテナライフサイクル
+### コンテナのライフサイクル
 
 #### ▼ フェーズ
 

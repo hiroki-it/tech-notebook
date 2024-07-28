@@ -880,9 +880,8 @@ kubeletにより、Podの終了プロセスが始まると、以下の一連の�
 
 また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。
 
-そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.containers[*].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
-
-また、コンテナの正常な終了後にPodを終了できるように、`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの削除に伴う一連のプロセスの完了を待機する必要がある。
+- Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの削除に伴うServiceとkube-proxyの処理の完了を待機する必要がある。
+- コンテナの正常な終了後にPodを終了できるように、ユーザーがPodの`.spec.containers[*].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
 
 なお、`.spec.terminationGracePeriodSeconds`の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。
 
