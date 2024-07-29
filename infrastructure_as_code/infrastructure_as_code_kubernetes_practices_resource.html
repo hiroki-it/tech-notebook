@@ -22918,8 +22918,10 @@
 <p>例えば、<code>1</code>秒間に<code>50</code>人のユーザーからリクエスト (<code>50</code>個/秒のリクエスト) があり、この時のレスポンスタイム目標値が<code>3</code>秒以内であるとする。</p>
 <p>この場合、平均スループットの目標値は<code>50</code> (個/秒) 、平均レスポンスタイムの目標値は<code>3</code>秒以内、となる。</p>
 <blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Load_testing">https://en.wikipedia.org/wiki/Load_testing</a></p>
-<p><a href="https://gihyo.jp/dev/serial/01/tech_station/0008">https://gihyo.jp/dev/serial/01/tech_station/0008</a></p>
+<ul>
+<li>[<a href="https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing">https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing</a></li>
+<li><a href="https://gihyo.jp/dev/serial/01/tech_station/0008">https://gihyo.jp/dev/serial/01/tech_station/0008</a></li>
+</ul>
 </blockquote>
 <p>ロードテストの結果をメトリクスとして収集し、サイジングを最適化していく。</p>
 <p>この時、以下の設定値を調整し、Cluster全体をサイジングする。</p>
@@ -23007,9 +23009,11 @@
 </tbody>
 </table>
 <blockquote>
-<p><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">Control Plane - EKS Best Practices Guides</a></p>
-<p><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">マネージド型ノードの更新動作 - Amazon EKS</a></p>
-<p><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades">ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud</a></p>
+<ul>
+<li>[Control Plane - EKS Best Practices Guides](<a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
+<li>[マネージド型ノードの更新動作 - Amazon EKS](<a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades">ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud</a></li>
+</ul>
 </blockquote>
 <h3 id="_7">■ クラスターアップグレードのルールを決める<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Kubernetesクラスターの規模や運用しているシステム、アップグレード方法によってはアップグレード時間が長くかかることもあれば、既存システムに影響がある可能性もある。</p>
@@ -23045,8 +23049,10 @@
 <h2 id="_8">冗長化する<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を実行する。</p>
 <blockquote>
-<p><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">Why should a Kubernetes control plane be three nodes? - Sidero Labs</a></p>
-<p><a href="https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/">https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/</a></p>
+<ul>
+<li>[Why should a Kubernetes control plane be three nodes? - Sidero Labs](<a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
+<li><a href="https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/">https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_9">ロードバランシングする<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
@@ -23075,14 +23081,18 @@
 </tbody>
 </table>
 <blockquote>
-<p><a href="https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s">https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s</a></p>
+<ul>
+<li><a href="https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s">https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="node_1">コントロールプレーンNodeを異なるトポロジーに分散させる<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h2>
 <p>冗長化したコントロールプレーンNodeを特定のトポロジー偏らせてに配置すると、その特定のトポロジーで障害が起こった場合に、コントロールプレーンNodeが全滅してしまう。</p>
 <p>そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/setup/best-practices/multiple-zones/">https://kubernetes.io/docs/setup/best-practices/multiple-zones/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/setup/best-practices/multiple-zones/">https://kubernetes.io/docs/setup/best-practices/multiple-zones/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="kube-apiserver">kube-apiserverへのインバウンド通信を制限する<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h2>
@@ -23101,8 +23111,10 @@
 <p>コントロールプレーンにetcdを作成する場合、etcdのディスクアクセスがクラスタ全体のパフォーマンスや安全性に影響するためSSDを利用する。
 ストレージ容量は最低限40GiB程度割り当てる。</p>
 <blockquote>
-<p><a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites">第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal</a></p>
-<p><a href="https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja">CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud</a></p>
+<ul>
+<li>[第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](<a href="https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites">https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites</a></li>
+<li><a href="https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja">CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="etcd">Etcd<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h1>
@@ -23110,27 +23122,35 @@
 <h2 id="_12">バックアップする<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/">https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/">https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_13">冗長化する<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p>etcd Nodeは3台に冗長化する。</p>
 <blockquote>
-<p><a href="https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members">https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members</a></p>
-<p><a href="https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size">https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size</a></p>
-<p><a href="https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance">https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance</a></p>
+<ul>
+<li>[<a href="https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members">https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members</a></li>
+<li>[<a href="https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size">https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size</a></li>
+<li><a href="https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance">https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_14">高性能ストレージを利用する<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <p>Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。</p>
 <blockquote>
-<p><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></p>
+<ul>
+<li><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="raid">RAIDのミラーリングやパリティを利用しない<a class="headerlink" href="#raid" title="Permanent link">&para;</a></h2>
 <p>etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。</p>
 <blockquote>
-<p><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></p>
+<ul>
+<li><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="node_2">ワーカーNode<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h1>
@@ -23301,8 +23321,10 @@
 <p>多くのIngressコントローラーでは、制限のルールをIngressの<code>.metadata.annotations</code>キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) 、を選べる。</p>
 <p>管理しやすいように、Ingressから切り離して設定すると良い。</p>
 <blockquote>
-<p><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></p>
-<p><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/</a></p>
+<ul>
+<li>[<a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="ingressssltls">IngressをSSL/TLS終端にする<a class="headerlink" href="#ingressssltls" title="Permanent link">&para;</a></h2>
@@ -23310,14 +23332,18 @@
 <p>仮にサービスメッシュを採用すれば対処しやすくなるが、採用しないのであれば自前での対処は大変である。</p>
 <p>IngressをSSL/TLS終端にすると、PodへのリクエストはHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。</p>
 <blockquote>
-<p><a href="https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/">https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/</a></p>
+<ul>
+<li><a href="https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/">https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="ingressclassingressclassname">IngressClassの指定にingressClassnameを使用する<a class="headerlink" href="#ingressclassingressclassname" title="Permanent link">&para;</a></h2>
 <p>IngressClassの指定方法には、<code>.spec.ingressClassname</code> キーと<code>.metadata.annotations.kubernetes.io/ingress.class</code> キーがある。</p>
 <p><code>.spec.ingressClassname</code> キーの指定方法が推奨である。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation">https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation">https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="cronjob">CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h1>
@@ -23325,7 +23351,9 @@
 <p>CronJobでJobが失敗した時、CronJobはデフォルトで過去<code>1</code>回分の失敗しか履歴に残さない。</p>
 <p>トラブルシューティングしやすくするために、<code>.spec.startingDeadlineSeconds</code>キーで<code>3</code>回分以上を設定しておく。</p>
 <blockquote>
-<p><a href="https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk">https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk</a></p>
+<ul>
+<li><a href="https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk">https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="startingdeadlineseconds">startingDeadlineSecondsを設定する<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h2>
@@ -23336,7 +23364,9 @@
 <p>この時、<code>.spec.startingDeadlineSeconds</code>キーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
 <p><code>100</code>回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
 <blockquote>
-<p><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></p>
+<ul>
+<li><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h1>
@@ -23357,8 +23387,10 @@
 <p>HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例：CPU使用率、メモリ使用率、など) 、カスタムメトリクス、K8s外のメトリクス (ロードバランサーのrps/qps値、メッセージキューの待機リクエスト数、など) 、に基づいてPod数を決める。</p>
 <p>metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。</p>
 <blockquote>
-<p><a href="https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server</a></p>
-<p><a href="https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33">https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33</a></p>
+<ul>
+<li>[<a href="https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33">https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_23">ロードバランシングする<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
@@ -23366,12 +23398,16 @@
 <p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。</p>
 <p>L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/</a></li>
+</ul>
 </blockquote>
 <h3 id="l4">L4のプロトコルの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
 <p>冗長化したPodに負荷分散できるように、PodのダウンストリームにL4ロードバランサーとしてServiceを置く。</p>
 <blockquote>
-<p><a href="https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods">https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods</a></p>
+<ul>
+<li><a href="https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods">https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="pod_1">Podのインバウンド通信を制限する<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h2>
@@ -23386,8 +23422,10 @@
 <p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
 <p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></p>
-<p><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></p>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
+</ul>
 </blockquote>
 <h3 id="_25">■ ストレージをサイジングする<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -23429,26 +23467,34 @@
 <p>Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。</p>
 <p>deschedulerは条件に一致しないPodを退避させるだけで、Podの再スケジューリングはkube-schedulerが実行する。</p>
 <blockquote>
-<p><a href="https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity">https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity</a></p>
+<ul>
+<li><a href="https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity">https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity</a></li>
+</ul>
 </blockquote>
 <h3 id="nodeselector">■ NodeSelectorを使用する<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h3>
 <p>NodeSelectorを使用すると、Workload配下のPodを指定したNodeやNodeグループにスケジューリングさせ、Podを分散させられる。</p>
 <p>NodeやNodeグループを単純な条件 (例：Nodeのラベルと値の有無) で指定できる。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/</a></li>
+</ul>
 </blockquote>
 <h3 id="nodeaffinity">■ NodeAffinityを使用する<a class="headerlink" href="#nodeaffinity" title="Permanent link">&para;</a></h3>
 <p>NodeAffinityを使用すると、Workload配下のPodを指定したNodeやNodeグループにスケジューリングさせ、Podを分散させられる。</p>
 <p>NodeやNodeグループをNodeSelectorよりも複雑な条件 (例：Nodeのラベル自体の有無、Nodeのラベル値の有無) で指定できる。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></p>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/</a></p>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/">https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/</a></li>
+</ul>
 </blockquote>
 <h3 id="topologyspreadconstraints">■ TopologySpreadConstraintsを使用する<a class="headerlink" href="#topologyspreadconstraints" title="Permanent link">&para;</a></h3>
 <p>TopologySpreadConstraintsを使用すると、ドメイン (例 ゾーン、リージョン、ラック、Node) と制約を定義することで、Workload配下のPodをドメインに対して均等に分散することができる。</p>
 <p>NodeSelectorやNodeAffinityとは異なり、特定のドメインにPodが偏らないようにすることで、障害の影響を一部のドメイン内のPodに抑えることができる。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/">https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/">https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/</a></li>
+</ul>
 </blockquote>
 <h3 id="taintstolerations">■ TaintsとTolerationsを使用する<a class="headerlink" href="#taintstolerations" title="Permanent link">&para;</a></h3>
 <p>TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。</p>
@@ -23480,7 +23526,9 @@
 <span class="w">      </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
 </code></pre></div>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_26">適切なストレージの種類を選ぶ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
@@ -23492,8 +23540,10 @@
 <p>そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がEmptyDirよりも多い。</p>
 <p>一方で、外部ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes">https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes</a></p>
-<p><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></p>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes">https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes</a></li>
+<li><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></li>
+</ul>
 </blockquote>
 <h3 id="emptydir-volume">■ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する<a class="headerlink" href="#emptydir-volume" title="Permanent link">&para;</a></h3>
 <p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保管できる。</p>
@@ -23502,14 +23552,18 @@
 <p>そのため、Nodeのストレージ次第では、一時的に保管できるデータ量がEphemeral Volumesよりも少ない。</p>
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
 <blockquote>
-<p><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a></p>
-<p><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></p>
+<ul>
+<li>[<a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF</a></li>
+<li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
+</ul>
 </blockquote>
 <p>Podのリソース要求やリソース制限に <code>ephemeral-storage</code> のフィールドを追加して、利用するディスク容量を制限することができる。</p>
 <p>これにより、schedulerが Nodeのストレージのキャパシティを考慮してPodを配置してくれる。</p>
 <p>また、リソース制限で指定した <code>ephemeral-storage</code> を超えてディスク容量を使用した場合に、そのPodは退避されて再起動する。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage">https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage</a></p>
+<ul>
+<li><a href="https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage">https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage</a></li>
+</ul>
 </blockquote>
 <h3 id="persistentvolumeclaim">■ 永続的ストレージを必要とする場合はPersistentVolume(Claim)を使用する<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <p>PersistentVolume(Claim)を使用することで特定のストレージ製品のボリュームにPodのデータを永続化することができる。</p>
@@ -23522,12 +23576,16 @@
 <p>PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制限しない。</p>
 <p>そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。</p>
 <blockquote>
-<p><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></p>
+<ul>
+<li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_27">適切なボリュームアクセスモードを選択する<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
+</ul>
 </blockquote>
 <h3 id="specaccessmodereadwriteonce">■ 独自ファイルシステムやファイルのロックが影響する場合は<code>.spec.accessMode=ReadWriteOnce</code>を割り当てる<a class="headerlink" href="#specaccessmodereadwriteonce" title="Permanent link">&para;</a></h3>
 <p>一つのNodeに対してRead/Writeが可能なボリュームとしてマウントする。</p>
@@ -23552,8 +23610,10 @@
 <p>アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。</p>
 <p>そこでストレージクラスやPersistentVolumeのラベルに<code>.metadata.label.storage-type=ssd</code>のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
 <blockquote>
-<p><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></p>
-<p><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html</a></p>
+<ul>
+<li>[<a href="https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
+<li><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="reclaim-policy">利用用途に合ったReclaim Policyを設定する<a class="headerlink" href="#reclaim-policy" title="Permanent link">&para;</a></h2>
@@ -23561,20 +23621,26 @@
 <p>KubernetesのデフォルトではReclaim PolicyがDeleteに指定されている。</p>
 <p>Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete</a></li>
+</ul>
 </blockquote>
 <h3 id="pvcretain">■ 重要なデータを含むPVCはRetainを指定する<a class="headerlink" href="#pvcretain" title="Permanent link">&para;</a></h3>
 <p>データベースやファイルストレージ用途などでPersistentVolumeClaim(PVC)を利用している場合、誤ったPVCの削除によるデータ損失を防ぐ必要がある。</p>
 <p>そのため重要なデータを保管するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></p>
-<p><a href="https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention">https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention</a></p>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain</a></li>
+<li><a href="https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention">https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention</a></li>
+</ul>
 </blockquote>
 <h3 id="recycledynamic-provisioning">■ RecycleポリシーではなくDynamic Provisioningを利用する<a class="headerlink" href="#recycledynamic-provisioning" title="Permanent link">&para;</a></h3>
 <p>現在RecycleポリシーはDeprecatedされている。</p>
 <p>そのためPVCのみ削除し、PVは削除しないようなユースケースではDynamic Provisioningを利用する。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="podnode">ストレージをPodと同じNodeに作成する<a class="headerlink" href="#podnode" title="Permanent link">&para;</a></h2>
@@ -23586,8 +23652,10 @@
 <p>PodからPersistentVolumeClaimを利用する場合ラベルなどがついていないと、適切なボリューム選択が困難になってしまう。</p>
 <p>そのためStorageClassやPersistentVolumeの<code>metadata.label</code>に<code>storage-type=ssd</code>や<code>iops=3000</code>、<code>environment=prd</code>などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>
 <blockquote>
-<p><a href="https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1</a></p>
-<p><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define</a></p>
+<ul>
+<li>[<a href="https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1">https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1</a></li>
+<li><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="pod-node">Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する<a class="headerlink" href="#pod-node" title="Permanent link">&para;</a></h2>
@@ -23597,8 +23665,10 @@
 <p>ただ、悪意のある人がコンテナに接続した場合に、Nodeの他のプロセスにリクエストできてしまう。</p>
 <p>そのため、無効化しておく。</p>
 <blockquote>
-<p><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></p>
-<p><a href="https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway">https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway</a></p>
+<ul>
+<li>[<a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
+<li><a href="https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway">https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway</a></li>
+</ul>
 </blockquote>
 <h3 id="hostpid">■ hostPIDを無効化する<a class="headerlink" href="#hostpid" title="Permanent link">&para;</a></h3>
 <p>Podの<code>.spec.hostPID</code>キー有効化すると、コンテナとNode間で同じPID名前空間を使用するようになる。</p>
@@ -23606,9 +23676,11 @@
 <p>つまり、悪意のある人がコンテナに接続した場合に、Nodeのプロセスを操作できてしまう。</p>
 <p>そのため、無効化しておく。</p>
 <blockquote>
-<p><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></p>
-<p><a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></p>
-<p><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5</a></p>
+<ul>
+<li>[<a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
+<li>[<a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
+<li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="_29">コンテナ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h1>
@@ -23651,11 +23723,13 @@
 </tbody>
 </table>
 <blockquote>
-<p><a href="https://zenn.dev/toversus/articles/5d1292160f5035">https://zenn.dev/toversus/articles/5d1292160f5035</a></p>
-<p><a href="https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html">https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html</a></p>
-<p><a href="https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready">https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready</a></p>
-<p><a href="https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status">https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status</a></p>
-<p><a href="https://thinkit.co.jp/article/17500">https://thinkit.co.jp/article/17500</a></p>
+<ul>
+<li>[<a href="https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035">https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035</a></li>
+<li>[<a href="https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html">https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html</a></li>
+<li>[<a href="https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready">https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready</a></li>
+<li>[<a href="https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status">https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status</a></li>
+<li><a href="https://thinkit.co.jp/article/17500">https://thinkit.co.jp/article/17500</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="prestopterminationgraceperiodsecondspod">preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する<a class="headerlink" href="#prestopterminationgraceperiodsecondspod" title="Permanent link">&para;</a></h2>
@@ -23675,7 +23749,9 @@
 <p>なお、<code>.spec.terminationGracePeriodSeconds</code>の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードに時間に影響が出る。</p>
 <p>長くとも<code>120</code>秒以内にするとよい。</p>
 <blockquote>
-<p><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></p>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="cluster-dns">Cluster DNS に対する無駄な名前解決のリクエストを減らす<a class="headerlink" href="#cluster-dns" title="Permanent link">&para;</a></h2>
@@ -23686,7 +23762,9 @@
 <p>完全修飾ドメイン名であることを宣言できるため、コンテナはそのドメインをそのまま名前解決しようとする。</p>
 <p>これにより、DNS の検索パスを補間しなくなるため、名前解決の無駄なリクエストが発生しない。</p>
 <blockquote>
-<p><a href="https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83">https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較</a></p>
+<ul>
+<li><a href="https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83">https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較</a></li>
+</ul>
 </blockquote>
 <p>別の方法として、<code>/etc/resolv.conf</code>ファイルのndots値を<code>1</code>に変更してもよい。</p>
 <p>デフォルトでは、コンテナの<code>/etc/resolv.conf</code>ファイルには、<code>ndots:5</code>が設定されている。</p>
@@ -23711,15 +23789,19 @@ options ndots:5
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <blockquote>
-<p><a href="https://zenn.dev/toversus/articles/d9faba80f68ea2">https://zenn.dev/toversus/articles/d9faba80f68ea2</a></p>
-<p><a href="https://developer.feedforce.jp/entry/2021/09/02/134725">https://developer.feedforce.jp/entry/2021/09/02/134725</a></p>
-<p><a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config</a></p>
+<ul>
+<li>[<a href="https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2">https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2</a></li>
+<li>[<a href="https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725">https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config">https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config</a></li>
+</ul>
 </blockquote>
 <p>前述の2つの対策を講じてもCluster DNSに必要以上の負荷がかかったり、ノード上の conntrack テーブルが溢れるなどの問題がある場合、NodeLocal DNSCacheの採用を検討する。</p>
 <p>Podは、Cluster DNSに名前解決のリクエストを送信する前に、一度NodeLocal DNSCacheにリクエストを送信する。</p>
 <p>この時、名前解決のキャッシュがあると、Cluster DNSにリクエストを送信せずに名前解決できる。</p>
 <blockquote>
-<p><a href="https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/">https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/</a></p>
+<ul>
+<li><a href="https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/">https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="_30">機密性の高い情報を守る<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
@@ -23776,7 +23858,9 @@ options ndots:5
 <p>基本的には、ほとんどのコンテナをGuaranteedなQoSにすればよい。</p>
 <p>補足として、GuaranteedなQoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed</a></li>
+</ul>
 </blockquote>
 <h3 id="burstableqos">■ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする<a class="headerlink" href="#burstableqos" title="Permanent link">&para;</a></h3>
 <p>ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ) では、BurstableなQoSにする。</p>
@@ -23787,7 +23871,9 @@ options ndots:5
 <p>ただし、上限 (<code>limits</code>) を高くしすぎると、割り当て可能な全体量を超えてしまう (オーバーコミットする) ため、上限は慎重に設定する。</p>
 <p>補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="latest">イメージタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h2>
@@ -23818,8 +23904,10 @@ options ndots:5
 <p>そこで、コンテナにセッションデータを持たせずに、外部のセッション管理サーバー (例：AWS ElastiCache、Redis) を使用する。</p>
 <p>コンテナが入れ替わっても、セッション管理サーバーからセッションデータを取得できるようにする。</p>
 <blockquote>
-<p><a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d</a></p>
-<p><a href="https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05">https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05</a></p>
+<ul>
+<li>[<a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d</a></li>
+<li><a href="https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05">https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h2 id="initcontainer">InitContainerを適切に使用する<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h2>
@@ -23828,12 +23916,16 @@ options ndots:5
 <h3 id="initcontainerdb">■ InitContainerで初期データをDBに挿入する<a class="headerlink" href="#initcontainerdb" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <blockquote>
-<p><a href="https://loft.sh/blog/kubernetes-init-containers/">https://loft.sh/blog/kubernetes-init-containers/</a></p>
+<ul>
+<li><a href="https://loft.sh/blog/kubernetes-init-containers/">https://loft.sh/blog/kubernetes-init-containers/</a></li>
+</ul>
 </blockquote>
 <h3 id="initcontainer_1">■ どうしても特権コンテナが必要ならInitContainerを使用する<a class="headerlink" href="#initcontainer_1" title="Permanent link">&para;</a></h3>
 <p>istio-initコンテナとかまさにその例</p>
 <blockquote>
-<p><a href="https://loft.sh/blog/kubernetes-init-containers/">https://loft.sh/blog/kubernetes-init-containers/</a></p>
+<ul>
+<li><a href="https://loft.sh/blog/kubernetes-init-containers/">https://loft.sh/blog/kubernetes-init-containers/</a></li>
+</ul>
 </blockquote>
 <h3 id="initcontainerssl">■ InitContainerでSSL証明書を準備する<a class="headerlink" href="#initcontainerssl" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -23855,46 +23947,45 @@ options ndots:5
 <tbody>
 <tr>
 <td>キー</td>
-<td>runAsUser</td>
-<td></td>
-<td></td>
+<td>runAsUser、runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など</td>
+<td>fsGroup、fsGroupChangePolicy、など</td>
+<td>privileged、allowPrivilegeEscalation、readOnlyRootFilesystem</td>
 </tr>
 </tbody>
 </table>
-<p>runAsGroup
-runAsNonRoot
-seLinuxOptions
-seccompProfile
-など | fsGroup
-fsGroupChangePolicy
-など | privileged
-allowPrivilegeEscalation
-readOnlyRootFilesystem |</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">https://kubernetes.io/docs/concepts/security/pod-security-standards/</a></p>
-<p><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></p>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/">https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/</a></li>
+<li><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></li>
+</ul>
 </blockquote>
 <h3 id="runasnonrootrunasuser-runasgrouproot">■ runAsNonRoot、runAsUser / runAsGroup、を使用して、非rootユーザーでコンテナを実行する<a class="headerlink" href="#runasnonrootrunasuser-runasgrouproot" title="Permanent link">&para;</a></h3>
 <p>コンテナはホスト (Node) と各namespaceを分離しており、Capabilityを制限した上で実行する。</p>
 <p>しかし、Kubernetesでは諸々の理由により、<code>1.28</code> 時点でnamespaceのうちuser namespaceをデフォルトで分離しない実装になっている (なお、Dockerではデフォルトで無効)。</p>
 <p>そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。</p>
 <blockquote>
-<p><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces</a></p>
-<p><a href="https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations">https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations</a></p>
+<ul>
+<li>[<a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces</a></li>
+<li><a href="https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations">https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations</a></li>
+</ul>
 </blockquote>
 <p>コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。</p>
 <p>例えば、コンテナをrootユーザーで実行している状況で、コンテナのrunC (OCIランタイムの一種) の脆弱性を突かれると、コンテナがNodeのrootユーザーを操作できてしまう (<a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">CVE-2019-5736</a>)</p>
 <p>よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。</p>
 <blockquote>
-<p><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></p>
-<p><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></p>
+<ul>
+<li>[<a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li><a href="https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/">https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/</a></li>
+</ul>
 </blockquote>
 <p>そこで、<code>.securityContext.runAsNonRoot</code>キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。</p>
 <p>さらに、<code>.securityContext.runAsUser</code>キーと<code>.securityContext.runAsGroup</code>キーで、使用する実行ユーザーのUIDとGIDを指定するようにしておく。</p>
 <p>なお、Dockerfileの<code>USER</code>や<code>GROUP</code>でも同様にUIDとGIDを設定できるが、マニフェスト側でもDockerfileと同様にrunAsUserとrunAsGroupを設定した方が可読性が高くなる。</p>
 <p>そのため、Dockerfile側にすでに設定があるかどうかに関わらず、コード規約としてマニフェスト側でも設定するようにする。</p>
 <blockquote>
-<p><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></p>
+<ul>
+<li><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></li>
+</ul>
 </blockquote>
 <h3 id="privileged">■ privilegedを無効化する<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h3>
 <p>特権コンテナの実行ユーザーは、rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE、など) の全て持っている。</p>
@@ -23904,9 +23995,11 @@ readOnlyRootFilesystem |</p>
 <p>よって、これらを防ぐために特権コンテナは無効化しておいた方が良い。</p>
 <p><code>.spec.containers[*].securityContext.privileged</code>キーで、コンテナに特権を付与するかどうかを設定できる。</p>
 <blockquote>
-<p><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></p>
-<p><a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></p>
-<p><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></p>
+<ul>
+<li>[<a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li>[<a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
+<li><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></li>
+</ul>
 </blockquote>
 <h3 id="allowprivilegeescalation">■ allowPrivilegeEscalationを無効化する<a class="headerlink" href="#allowprivilegeescalation" title="Permanent link">&para;</a></h3>
 <p>コンテナのプロセスは、コンテナ起動コマンド (親プロセス)、親プロセスが実行するプロセス (子プロセス) 、からなる。</p>
@@ -23914,12 +24007,16 @@ readOnlyRootFilesystem |</p>
 <p>権限フラグを使用すると、コンテナの実行ユーザーは、rootユーザーに近い権限を一時的に持てるようになる。</p>
 <p>つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。</p>
 <blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Setuid">https://en.wikipedia.org/wiki/Setuid</a></p>
-<p><a href="https://docs.docker.com/engine/security/userns-remap/">https://docs.docker.com/engine/security/userns-remap/</a></p>
+<ul>
+<li>[<a href="https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid">https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid</a></li>
+<li><a href="https://docs.docker.com/engine/security/userns-remap/">https://docs.docker.com/engine/security/userns-remap/</a></li>
+</ul>
 </blockquote>
 <p>そこで、<code>.containers[*].securityContext.allowPrivilegeEscalation</code>キーを有効化し、権限フラグを使用できないようにしておく。</p>
 <blockquote>
-<p><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></p>
+<ul>
+<li><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></li>
+</ul>
 </blockquote>
 <h3 id="readonlyrootfilesystem">■ readOnlyRootFilesystemを有効化する<a class="headerlink" href="#readonlyrootfilesystem" title="Permanent link">&para;</a></h3>
 <p>コンテナは自身のファイルシステムにリクエストを送信できる。</p>
@@ -23928,8 +24025,10 @@ readOnlyRootFilesystem |</p>
 <p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーを有効化し、Readのみを実行できるようにしておく。</p>
 <p>アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。</p>
 <blockquote>
-<p><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Root_directory">https://en.wikipedia.org/wiki/Root_directory</a></p>
+<ul>
+<li>[<a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Root_directory">https://en.wikipedia.org/wiki/Root_directory</a></li>
+</ul>
 </blockquote>
 <p><br></p>
 <h1 id="useraccount-role-clusterrole">UserAccount とRole / ClusterRole<a class="headerlink" href="#useraccount-role-clusterrole" title="Permanent link">&para;</a></h1>
@@ -23938,7 +24037,9 @@ readOnlyRootFilesystem |</p>
 <p>最小権限にするため、UserAccountにはClusterRoleを紐付けない。</p>
 <p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにリクエストを送信できるようにする。</p>
 <blockquote>
-<p><a href="https://kubernetes.io/docs/concepts/security/rbac-good-practices/">https://kubernetes.io/docs/concepts/security/rbac-good-practices/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/security/rbac-good-practices/">https://kubernetes.io/docs/concepts/security/rbac-good-practices/</a></li>
+</ul>
 </blockquote>
 <h3 id="useraccountrole_1">■ チーム構成に合わせたUserAccountとRoleを作成する<a class="headerlink" href="#useraccountrole_1" title="Permanent link">&para;</a></h3>
 <p>最小権限にするため、チームを構成するメンバーの役割に合わせて、Roleを作成する。</p>
@@ -23995,7 +24096,9 @@ readOnlyRootFilesystem |</p>
 <p>そこで、本番環境ではClusterの管理者のUserAccount以外には<code>pods/exec</code>や<code>pods/attach</code>を付与しない</p>
 <p>また、テスト環境では基本的に設定しないが、必要であれば設定を許容する。</p>
 <blockquote>
-<p><a href="https://www.baeldung.com/linux/kubectl-attach-exec">https://www.baeldung.com/linux/kubectl-attach-exec</a></p>
+<ul>
+<li><a href="https://www.baeldung.com/linux/kubectl-attach-exec">https://www.baeldung.com/linux/kubectl-attach-exec</a></li>
+</ul>
 </blockquote>
 <h3 id="secret">■ Secretに関する権限を設定しない<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h3>
 <p><br></p>
@@ -24434,7 +24537,9 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tbody>
 </table>
 <blockquote>
-<p><a href="https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/">https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/</a></p>
+<ul>
+<li><a href="https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/">https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/</a></li>
+</ul>
 </blockquote>
 <h3 id="_48">■ マニフェスト管理ツールを使用する<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
 <p>大量のマニフェストファイルを個別にバージョン管理することは大変であり、一括して管理できるように、マニフェスト管理ツールを使用する。</p>
@@ -24562,7 +24667,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-29</span>
   </span>
 
     
