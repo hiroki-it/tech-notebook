@@ -154,9 +154,9 @@ func main() {
 
 	defer temporalClient.Close()
 
-	// Temporalクライアントがワークフローを実行するエンドポイント
+	// Temporalクライアントがワークフローを登録し、また実行するエンドポイント
 	http.HandleFunc("/start", func(w http.ResponseWriter, r *http.Request) {
-		// ワークフローを実行するラッパー関数
+		// ワークフローを登録し、また実行するラッパー関数
 		startWorkflowHandler(w, r, temporalClient)
 	})
 
@@ -180,10 +180,11 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 		WorkflowParamY: 999,
 	}
 
-	// Temporalサーバーのワークフローを実行する
+	// Temporalサーバーにワークフローを登録し、また実行する
 	workflowExecution, err := temporalClient.ExecuteWorkflow(
 		context.Background(),
 		workflowOptions,
+		// ワークフローの定義
 		yourapp.YourWorkflowDefinition,
 		workflowParams,
 	)
