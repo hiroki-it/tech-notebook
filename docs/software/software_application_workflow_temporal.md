@@ -388,3 +388,84 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 > - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
 <br>
+
+### 補償トランザクション
+
+ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
+
+その後、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
+
+```go
+package saga
+
+import (
+	"time"
+
+	"go.uber.org/multierr"
+
+	"go.temporal.io/sdk/temporal"
+	"go.temporal.io/sdk/workflow"
+)
+
+func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err error) {
+	retryPolicy := &temporal.RetryPolicy{
+		InitialInterval:    time.Second,
+		BackoffCoefficient: 2.0,
+		MaximumInterval:    time.Minute,
+		MaximumAttempts:    3,
+	}
+
+	options := workflow.ActivityOptions{
+		StartToCloseTimeout: time.Minute,
+		RetryPolicy:         retryPolicy,
+	}
+
+	ctx = workflow.WithActivityOptions(ctx, options)
+
+	err = workflow.ExecuteActivity(ctx, Withdraw, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, WithdrawCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+	}()
+
+	// ローカルトランザクション
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	// 補償トランザクション
+	defer func() {
+		if err != nil {
+			errCompensation := workflow.ExecuteActivity(ctx, DepositCompensation, transferDetails).Get(ctx, nil)
+			err = multierr.Append(err, errCompensation)
+		}
+
+		// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart
+		// workflow.Sleep(ctx, 10*time.Second)
+	}()
+
+	// ローカルトランザクション
+	// 失敗した場合、まずは自身のトランザクションをロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+
+<br>
