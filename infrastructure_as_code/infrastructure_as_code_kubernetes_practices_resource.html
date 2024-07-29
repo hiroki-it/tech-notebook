@@ -23416,20 +23416,6 @@
 <p>ただし、Podの通信に関する様々な要件が上がるたびにNetworkPolicyを変更するのは大変なため、採用するかどうかはプロダクトの方針による。</p>
 <p>なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるため、アウトバウンド通信は全て許可しておく。</p>
 <p><br></p>
-<h2 id="_24">ハードウェアをサイジングする<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
-<h3 id="cpu_2">■ CPU/メモリをサイジングする<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h3>
-<p>Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。</p>
-<p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
-<p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
-<blockquote>
-<ul>
-<li>[<a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
-</ul>
-</blockquote>
-<h3 id="_25">■ ストレージをサイジングする<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
 <h2 id="daemonsetstatefulsetpod">DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる<a class="headerlink" href="#daemonsetstatefulsetpod" title="Permanent link">&para;</a></h2>
 <p>Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。</p>
 <p>この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。</p>
@@ -23531,7 +23517,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_26">適切なストレージの種類を選ぶ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<h2 id="_24">適切なストレージの種類を選ぶ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
 <h3 id="generic-ephemeral-volumes">■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する<a class="headerlink" href="#generic-ephemeral-volumes" title="Permanent link">&para;</a></h3>
 <p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。</p>
 <p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データ、など) に役立つ。</p>
@@ -23581,7 +23567,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_27">適切なボリュームアクセスモードを選択する<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<h2 id="_25">適切なボリュームアクセスモードを選択する<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></li>
@@ -23606,7 +23592,7 @@
 <li>例 機械学習モデルのパラメータストア</li>
 </ul>
 <p><br></p>
-<h2 id="_28">ラベルを利用して目的に合ったストレージを選択する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<h2 id="_26">ラベルを利用して目的に合ったストレージを選択する<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
 <p>アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。</p>
 <p>そこでストレージクラスやPersistentVolumeのラベルに<code>.metadata.label.storage-type=ssd</code>のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
 <blockquote>
@@ -23683,7 +23669,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h1 id="_29">コンテナ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h1>
+<h1 id="_27">コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h1>
 <h2 id="startupprobereadinessprobelivenessprobe">startupProbe、readinessProbe、livenessProbe、を設定する<a class="headerlink" href="#startupprobereadinessprobelivenessprobe" title="Permanent link">&para;</a></h2>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぐ。</p>
 <table>
@@ -23804,7 +23790,7 @@ options ndots:5
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_30">機密性の高い情報を守る<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h2 id="_28">機密性の高い情報を守る<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
 <h3 id="envconfigmap">■ env変数やConfigMapに機密性の高い情報を設定しない<a class="headerlink" href="#envconfigmap" title="Permanent link">&para;</a></h3>
 <p>ConfigMapやSecret上のファイルやデータを、コンテナにファイルや環境変数として渡せる。</p>
 <p>この時、ConfigMapでは情報を平文で保持することになる。</p>
@@ -23846,6 +23832,20 @@ options ndots:5
 <li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="_29">ハードウェアをサイジングする<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<h3 id="cpu_2">■ CPU/メモリをサイジングする<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h3>
+<p>Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。</p>
+<p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
+<p>なおLimitRangeを使用すれば、<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。</p>
+<blockquote>
+<ul>
+<li>[<a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
+</ul>
+</blockquote>
+<h3 id="_30">■ ストレージをサイジングする<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
 <p><br></p>
 <h2 id="_31">ハードウェアリソース要求量の上限下限値は設定する<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
 <p>ハードウェアリソース要求量の上限 (<code>limits</code>) / 下限 (<code>requests</code>) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。</p>
