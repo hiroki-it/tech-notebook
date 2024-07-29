@@ -57,9 +57,8 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 この場合、平均スループットの目標値は`50` (個/秒) 、平均レスポンスタイムの目標値は`3`秒以内、となる。
 
-> [https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing)
-
-> [https://gihyo.jp/dev/serial/01/tech_station/0008](https://gihyo.jp/dev/serial/01/tech_station/0008)
+> - [https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing
+> - [https://gihyo.jp/dev/serial/01/tech_station/0008](https://gihyo.jp/dev/serial/01/tech_station/0008)
 
 ロードテストの結果をメトリクスとして収集し、サイジングを最適化していく。
 
@@ -92,11 +91,9 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 | 金銭コスト                                | 既存のNodeをそのまま使用する。そのため、既存のコストと変わらない。                                                                                                                                                                                                                      | 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。                                                                                                                                                                                              | 新Nodeグループを作成することでNodeが二倍になる。そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 新Clusterを作成することでNodeが二倍になる。そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。                                                                                   |
 | 切り戻ししやすさ                          | しにくい                                                                                                                                                                                                                                                                                | しにくい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | しやすい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | しやすい                                                                                                                                                                                                                                                                                  |
 
-> [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
-
-> [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
-
-> [ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades)
+> - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+> - [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
+> - [ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades)
 
 ### ■ クラスターアップグレードのルールを決める
 
@@ -137,9 +134,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 
 オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは`3`台以上に設定して冗長化を実行する。
 
-> [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/)
-
-> [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
+> - [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
+> - [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
 
 <br>
 
@@ -156,7 +152,7 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 | アクティブなルーティング先への仮想IPアドレスの割り当て | keep-alived                             | kube-vip                               |
 | L4ロードバランサー                                     | haproxy                                 | kube-vip                               |
 
-> [https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s](https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s)
+> - [https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s](https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s)
 
 <br>
 
@@ -166,7 +162,7 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 
 そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。
 
-> [https://kubernetes.io/docs/setup/best-practices/multiple-zones/](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)
+> - [https://kubernetes.io/docs/setup/best-practices/multiple-zones/](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)
 
 <br>
 
@@ -191,9 +187,8 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 コントロールプレーンにetcdを作成する場合、etcdのディスクアクセスがクラスタ全体のパフォーマンスや安全性に影響するためSSDを利用する。
 ストレージ容量は最低限40GiB程度割り当てる。
 
-> [第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites)
-
-> [CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud](https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja)
+> - [第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites
+> - [CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud](https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja)
 
 <br>
 
@@ -205,7 +200,7 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 
 障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。
 
-> [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+> - [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 
 <br>
 
@@ -213,11 +208,9 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 
 etcd Nodeは3台に冗長化する。
 
-> [https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members)
-
-> [https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size)
-
-> [https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance](https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance)
+> - [https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members
+> - [https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size
+> - [https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance](https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance)
 
 <br>
 
@@ -225,7 +218,7 @@ etcd Nodeは3台に冗長化する。
 
 Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。
 
-> [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
+> - [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
 
 <br>
 
@@ -233,7 +226,7 @@ Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分�
 
 etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。
 
-> [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
+> - [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
 
 <br>
 
@@ -352,9 +345,8 @@ Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Loa
 
 管理しやすいように、Ingressから切り離して設定すると良い。
 
-> [https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/)
-
-> [https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/)
+> - [https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+> - [https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/)
 
 <br>
 
@@ -366,7 +358,7 @@ PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用するこ�
 
 IngressをSSL/TLS終端にすると、PodへのリクエストはHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。
 
-> [https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/](https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/)
+> - [https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/](https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/)
 
 <br>
 
@@ -376,7 +368,7 @@ IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata
 
 `.spec.ingressClassname` キーの指定方法が推奨である。
 
-> [https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
+> - [https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
 
 <br>
 
@@ -388,7 +380,7 @@ CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の
 
 トラブルシューティングしやすくするために、`.spec.startingDeadlineSeconds`キーで`3`回分以上を設定しておく。
 
-> [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
+> - [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
 
 <br>
 
@@ -406,7 +398,7 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 
 `100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
-> [https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/](https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/)
+> - [https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/](https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/)
 
 <br>
 
@@ -444,9 +436,8 @@ HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例�
 
 metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。
 
-> [https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server)
-
-> [https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33](https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33)
+> - [https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server
+> - [https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33](https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33)
 
 <br>
 
@@ -458,13 +449,13 @@ metrics-serverはデフォルトでClusterに存在していないため、別�
 
 L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。
 
-> [https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)
+> - [https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)
 
 ### L4のプロトコルの場合
 
 冗長化したPodに負荷分散できるように、PodのダウンストリームにL4ロードバランサーとしてServiceを置く。
 
-> [https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods](https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods)
+> - [https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods](https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods)
 
 <br>
 
@@ -490,9 +481,8 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 なおLimitRangeを使用すれば、`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。
 
-> [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
-
-> [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
+> - [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+> - [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
 
 ### ■ ストレージをサイジングする
 
@@ -572,7 +562,7 @@ Nodeにスケジュール後のPodを定期的に再スケジューリングす�
 
 deschedulerは条件に一致しないPodを退避させるだけで、Podの再スケジューリングはkube-schedulerが実行する。
 
-> [https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity](https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity)
+> - [https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity](https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity)
 
 ### ■ NodeSelectorを使用する
 
@@ -580,7 +570,7 @@ NodeSelectorを使用すると、Workload配下のPodを指定したNodeやNode�
 
 NodeやNodeグループを単純な条件 (例：Nodeのラベルと値の有無) で指定できる。
 
-> [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
+> - [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
 
 ### ■ NodeAffinityを使用する
 
@@ -588,9 +578,8 @@ NodeAffinityを使用すると、Workload配下のPodを指定したNodeやNode�
 
 NodeやNodeグループをNodeSelectorよりも複雑な条件 (例：Nodeのラベル自体の有無、Nodeのラベル値の有無) で指定できる。
 
-> [https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement)
-
-> [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
+> - [https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+> - [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
 
 ### ■ TopologySpreadConstraintsを使用する
 
@@ -598,7 +587,7 @@ TopologySpreadConstraintsを使用すると、ドメイン (例 ゾーン、リ�
 
 NodeSelectorやNodeAffinityとは異なり、特定のドメインにPodが偏らないようにすることで、障害の影響を一部のドメイン内のPodに抑えることができる。
 
-> [https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)
+> - [https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)
 
 ### ■ TaintsとTolerationsを使用する
 
@@ -642,7 +631,7 @@ spec:
       effect: NoSchedule
 ```
 
-> [https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+> - [https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
 <br>
 
@@ -662,9 +651,8 @@ EmptyDir Volumeとは異なり、NodeのストレージがVolumeの容量を制�
 
 一方で、外部ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。
 
-> [https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes)
-
-> [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
+> - [https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes
+> - [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
 
 ### ■ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する
 
@@ -678,9 +666,8 @@ Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容�
 
 一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。
 
-> [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
-
-> [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
+> - [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF
+> - [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
 
 Podのリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限することができる。
 
@@ -688,7 +675,7 @@ Podのリソース要求やリソース制限に `ephemeral-storage` のフィ�
 
 また、リソース制限で指定した `ephemeral-storage` を超えてディスク容量を使用した場合に、そのPodは退避されて再起動する。
 
-> [https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage)
+> - [https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage)
 
 ### ■ 永続的ストレージを必要とする場合はPersistentVolume(Claim)を使用する
 
@@ -710,13 +697,13 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 
 そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。
 
-> [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
+> - [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
 
 <br>
 
 ## 適切なボリュームアクセスモードを選択する
 
-> [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+> - [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
 
 ### ■ 独自ファイルシステムやファイルのロックが影響する場合は`.spec.accessMode=ReadWriteOnce`を割り当てる
 
@@ -749,9 +736,8 @@ ConfigMapに保管するには大きすぎる設定ファイルや共通デー�
 
 そこでストレージクラスやPersistentVolumeのラベルに`.metadata.label.storage-type=ssd`のようにストレージの種類などを設定し、**`spec.selector.matchLabels: storage-type: ssd`**のように指定することで利用用途に合ったストレージを選択することが出来る。
 
-> [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
-
-> [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html)
+> - [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1
+> - [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html)
 
 <br>
 
@@ -763,7 +749,7 @@ KubernetesのデフォルトではReclaim PolicyがDeleteに指定されてい�
 
 Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。
 
-> [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete)
+> - [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete)
 
 ### ■ 重要なデータを含むPVCはRetainを指定する
 
@@ -771,9 +757,8 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 
 そのため重要なデータを保管するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
 
-> [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain)
-
-> [https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention](https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention)
+> - [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain
+> - [https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention](https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention)
 
 ### ■ RecycleポリシーではなくDynamic Provisioningを利用する
 
@@ -781,7 +766,7 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 
 そのためPVCのみ削除し、PVは削除しないようなユースケースではDynamic Provisioningを利用する。
 
-> [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle)
+> - [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle)
 
 <br>
 
@@ -801,9 +786,8 @@ PodからPersistentVolumeClaimを利用する場合ラベルなどがついて�
 
 そのためStorageClassやPersistentVolumeの`metadata.label`に`storage-type=ssd`や`iops=3000`、`environment=prd`などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。
 
-> [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
-
-> [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define)
+> - [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1
+> - [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define)
 
 <br>
 
@@ -819,9 +803,8 @@ Podの`.spec.hostIPC`キー有効化すると、Pod内のコンテナのホス�
 
 そのため、無効化しておく。
 
-> [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured)
-
-> [https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
+> - [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - [https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
 
 ### ■ hostPIDを無効化する
 
@@ -833,11 +816,9 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 そのため、無効化しておく。
 
-> [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured)
-
-> [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896)
-
-> [https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
+> - [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
+> - [https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
 
 <br>
 
@@ -854,15 +835,11 @@ kubeletは、コンテナをヘルスチェック (例：StartupProbe、Liveness
 | 正常時         | LivenessProbeまたはReadinessProbeを実行する。                                                                                                                                                                        | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。                                             | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。                                                                                                                                                                                                                                                                                                  |
 | 異常時         | LivenessProbeまたはReadinessProbeを実行しない。                                                                                                                                                                      | コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。                                                        | コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。                                                                                                                                                                                                                                                                                                 |
 
-> [https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035)
-
-> [https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html)
-
-> [https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready)
-
-> [https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status)
-
-> [https://thinkit.co.jp/article/17500](https://thinkit.co.jp/article/17500)
+> - [https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035
+> - [https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html
+> - [https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready
+> - [https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status
+> - [https://thinkit.co.jp/article/17500](https://thinkit.co.jp/article/17500)
 
 <br>
 
@@ -887,7 +864,7 @@ kubeletにより、Podの終了プロセスが始まると、以下の一連の�
 
 長くとも`120`秒以内にするとよい。
 
-> [https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
+> - [https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
 
 <br>
 
@@ -905,7 +882,7 @@ Cluster外へのリクエストでは、ドメインの末尾にドットをつ�
 
 これにより、DNS の検索パスを補間しなくなるため、名前解決の無駄なリクエストが発生しない。
 
-> [https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較](https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83)
+> - [https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較](https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83)
 
 別の方法として、`/etc/resolv.conf`ファイルのndots値を`1`に変更してもよい。
 
@@ -938,11 +915,9 @@ spec:
         value: 1
 ```
 
-> [https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2)
-
-> [https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725)
-
-> [https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config)
+> - [https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2
+> - [https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725
+> - [https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config)
 
 前述の2つの対策を講じてもCluster DNSに必要以上の負荷がかかったり、ノード上の conntrack テーブルが溢れるなどの問題がある場合、NodeLocal DNSCacheの採用を検討する。
 
@@ -950,7 +925,7 @@ Podは、Cluster DNSに名前解決のリクエストを送信する前に、一
 
 この時、名前解決のキャッシュがあると、Cluster DNSにリクエストを送信せずに名前解決できる。
 
-> [https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/](https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/)
+> - [https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/](https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/)
 
 <br>
 
@@ -1004,7 +979,7 @@ GuaranteedなQoSでは、上限 (`limits`) = 下限 (`requests`) のように、
 
 補足として、GuaranteedなQoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。
 
-> [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)
+> - [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)
 
 ### ■ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする
 
@@ -1022,7 +997,7 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、
 
 補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。
 
-> [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
+> - [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
 
 <br>
 
@@ -1072,9 +1047,8 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 
 コンテナが入れ替わっても、セッション管理サーバーからセッションデータを取得できるようにする。
 
-> [https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d)
-
-> [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
+> - [https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d
+> - [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
 
 <br>
 
@@ -1088,13 +1062,13 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 
 記入中...
 
-> [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
+> - [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
 
 ### ■ どうしても特権コンテナが必要ならInitContainerを使用する
 
 istio-initコンテナとかまさにその例
 
-> [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
+> - [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
 
 ### ■ InitContainerでSSL証明書を準備する
 
@@ -1112,23 +1086,12 @@ istio-initコンテナとかまさにその例
 
 特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。
 
-|      | 両方      | Podのみ | コンテナのみ |
-| ---- | --------- | ------- | ------------ |
-| キー | runAsUser |
+|      | 両方                                                                      | Podのみ                            | コンテナのみ                                                 |
+| ---- | ------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| キー | runAsUser、runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など | fsGroup、fsGroupChangePolicy、など | privileged、allowPrivilegeEscalation、readOnlyRootFilesystem |
 
-runAsGroup
-runAsNonRoot
-seLinuxOptions
-seccompProfile
-など | fsGroup
-fsGroupChangePolicy
-など | privileged
-allowPrivilegeEscalation
-readOnlyRootFilesystem |
-
-> [https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
-
-> [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
+> - [https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/
+> - [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
 
 ### ■ runAsNonRoot、runAsUser / runAsGroup、を使用して、非rootユーザーでコンテナを実行する
 
@@ -1138,9 +1101,8 @@ readOnlyRootFilesystem |
 
 そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。
 
-> [https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces)
-
-> [https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations](https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations)
+> - [https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces
+> - [https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations](https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations)
 
 コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。
 
@@ -1148,9 +1110,8 @@ readOnlyRootFilesystem |
 
 よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。
 
-> [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
-
-> [https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/)
+> - [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - [https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/)
 
 そこで、`.securityContext.runAsNonRoot`キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。
 
@@ -1160,7 +1121,7 @@ readOnlyRootFilesystem |
 
 そのため、Dockerfile側にすでに設定があるかどうかに関わらず、コード規約としてマニフェスト側でも設定するようにする。
 
-> [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
+> - [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
 
 ### ■ privilegedを無効化する
 
@@ -1176,11 +1137,9 @@ readOnlyRootFilesystem |
 
 `.spec.containers[*].securityContext.privileged`キーで、コンテナに特権を付与するかどうかを設定できる。
 
-> [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
-
-> [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896)
-
-> [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
+> - [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
+> - [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
 
 ### ■ allowPrivilegeEscalationを無効化する
 
@@ -1192,13 +1151,12 @@ readOnlyRootFilesystem |
 
 つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にリクエストできてしまう。
 
-> [https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid)
-
-> [https://docs.docker.com/engine/security/userns-remap/](https://docs.docker.com/engine/security/userns-remap/)
+> - [https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid
+> - [https://docs.docker.com/engine/security/userns-remap/](https://docs.docker.com/engine/security/userns-remap/)
 
 そこで、`.containers[*].securityContext.allowPrivilegeEscalation`キーを有効化し、権限フラグを使用できないようにしておく。
 
-> [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/)
+> - [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/)
 
 ### ■ readOnlyRootFilesystemを有効化する
 
@@ -1212,9 +1170,8 @@ readOnlyRootFilesystem |
 
 アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。
 
-> [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/)
-
-> [https://en.wikipedia.org/wiki/Root_directory](https://en.wikipedia.org/wiki/Root_directory)
+> - [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/
+> - [https://en.wikipedia.org/wiki/Root_directory](https://en.wikipedia.org/wiki/Root_directory)
 
 <br>
 
@@ -1228,7 +1185,7 @@ readOnlyRootFilesystem |
 
 代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにリクエストを送信できるようにする。
 
-> [https://kubernetes.io/docs/concepts/security/rbac-good-practices/](https://kubernetes.io/docs/concepts/security/rbac-good-practices/)
+> - [https://kubernetes.io/docs/concepts/security/rbac-good-practices/](https://kubernetes.io/docs/concepts/security/rbac-good-practices/)
 
 ### ■ チーム構成に合わせたUserAccountとRoleを作成する
 
@@ -1265,7 +1222,7 @@ RoleやClusterRoleに設定できる`pods/exec`や`pods/attach`といった権�
 
 また、テスト環境では基本的に設定しないが、必要であれば設定を許容する。
 
-> [https://www.baeldung.com/linux/kubectl-attach-exec](https://www.baeldung.com/linux/kubectl-attach-exec)
+> - [https://www.baeldung.com/linux/kubectl-attach-exec](https://www.baeldung.com/linux/kubectl-attach-exec)
 
 ### ■ Secretに関する権限を設定しない
 
@@ -1443,7 +1400,7 @@ K8sリソースをグルーピングしたテナントを作成し、影響範�
 | http://app.kubernetes.io/managed-by | K8sリソースの管理ツール名を設定する。                                      | helm、foo-operator、EKS (AWS EKSアドオンなど) |
 | …                                   |                                                                            |                                               |
 
-> [https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/](https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/)
+> - [https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/](https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/)
 
 ### ■ マニフェスト管理ツールを使用する
 
