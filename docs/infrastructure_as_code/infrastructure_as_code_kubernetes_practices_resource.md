@@ -471,25 +471,6 @@ Podのインバウンド通信を全て許可することは危険である。
 
 <br>
 
-## ハードウェアをサイジングする
-
-### ■ CPU/メモリをサイジングする
-
-Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。
-
-また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。
-
-なおLimitRangeを使用すれば、`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。
-
-> - [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-> - [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
-
-### ■ ストレージをサイジングする
-
-記入中...
-
-<br>
-
 ## DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる
 
 Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。
@@ -956,6 +937,25 @@ Secretは、base64方式のエンコード値を保持する。
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
 > - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
 > - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
+
+<br>
+
+## ハードウェアをサイジングする
+
+### ■ CPU/メモリをサイジングする
+
+Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。
+
+また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。
+
+なおLimitRangeを使用すれば、`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。
+
+> - [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+> - [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
+
+### ■ ストレージをサイジングする
+
+記入中...
 
 <br>
 
