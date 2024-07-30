@@ -2361,7 +2361,7 @@
           <li class="md-nav__item">
   <a href="#temporal_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (アクティビティ定義)
+      ▼ Temporalワーカー (アクティビティ定義用)
     </span>
   </a>
   
@@ -2370,7 +2370,7 @@
           <li class="md-nav__item">
   <a href="#temporal_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (ワークフロー定義)
+      ▼ ワークフロー定義用Temporalワーカー
     </span>
   </a>
   
@@ -23172,7 +23172,7 @@
           <li class="md-nav__item">
   <a href="#temporal_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (アクティビティ定義)
+      ▼ Temporalワーカー (アクティビティ定義用)
     </span>
   </a>
   
@@ -23181,7 +23181,7 @@
           <li class="md-nav__item">
   <a href="#temporal_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (ワークフロー定義)
+      ▼ ワークフロー定義用Temporalワーカー
     </span>
   </a>
   
@@ -23351,6 +23351,7 @@
 <li><a href="https://temporal.io/blog/saga-pattern-made-easy">https://temporal.io/blog/saga-pattern-made-easy</a></li>
 <li><a href="https://github.com/efortuna/sagas-temporal-trip-booking/tree/main">https://github.com/efortuna/sagas-temporal-trip-booking/tree/main</a></li>
 <li><a href="https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4">https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4</a></li>
+<li><a href="https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6">https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6</a></li>
 </ul>
 </blockquote>
 <h4 id="temporal_4">▼ Temporalクライアント<a class="headerlink" href="#temporal_4" title="Permanent link">&para;</a></h4>
@@ -23452,8 +23453,9 @@
 </blockquote>
 <h4 id="temporal_5">▼ Temporalサーバーとステート用データベース<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
 <p>制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。</p>
-<h4 id="temporal_6">▼ Temporalワーカー (アクティビティ定義)<a class="headerlink" href="#temporal_6" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
+<h4 id="temporal_6">▼ Temporalワーカー (アクティビティ定義用)<a class="headerlink" href="#temporal_6" title="Permanent link">&para;</a></h4>
+<p>アクティビティ定義用Temporalワーカーは、ワークフロー定義を登録する。</p>
+<p>また、実際にローカルトランザクションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -23562,8 +23564,8 @@
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go</a></li>
 </ul>
 </blockquote>
-<h4 id="temporal_7">▼ Temporalワーカー (ワークフロー定義)<a class="headerlink" href="#temporal_7" title="Permanent link">&para;</a></h4>
-<p>Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。</p>
+<h4 id="temporal_7">▼ ワークフロー定義用Temporalワーカー<a class="headerlink" href="#temporal_7" title="Permanent link">&para;</a></h4>
+<p>ワークフロー定義用Temporalワーカーは、ワークフロー定義を登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">workflow</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
