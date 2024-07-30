@@ -93,7 +93,7 @@ temporal=# \dt
 
 1. Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。
 2. Temporalワーカーは、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートを取得する。
-3. Temporalワーカーは、ワークフローを開始する。
+3. Temporalクライアントは、ワークフローを開始する。
 4. Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。
 5. Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。
 
@@ -154,9 +154,9 @@ func main() {
 
 	defer temporalClient.Close()
 
-	// Temporalクライアントがワークフローを登録し、また実行するエンドポイント
+	// Temporalクライアントがワークフローを実行するエンドポイント
 	http.HandleFunc("/start", func(w http.ResponseWriter, r *http.Request) {
-		// ワークフローを登録し、また実行するラッパー関数
+		// ワークフローを実行するラッパー関数
 		startWorkflowHandler(w, r, temporalClient)
 	})
 
@@ -180,7 +180,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 		WorkflowParamY: 999,
 	}
 
-	// Temporalサーバーにワークフローを登録し、また実行する
+	// Temporalサーバーにワークフローを実行する
 	workflowExecution, err := temporalClient.ExecuteWorkflow(
 		context.Background(),
 		workflowOptions,
@@ -225,7 +225,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 
-#### ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
+#### ▼ Temporalワーカー (アクティビティ定義)
 
 Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。
 
@@ -233,38 +233,63 @@ Temporalワーカー (アクティビティを持つマイクロサービス) �
 package main
 
 import (
-	"context"
-	"encoding/json"
 	"log"
-	"net/http"
+
+	"go.temporal.io/sdk/activity"
+	"go.temporal.io/sdk/client"
+	"go.temporal.io/sdk/worker"
+	"go.temporal.io/sdk/workflow"
 
 	"documentation-samples-go/yourapp"
-
-	"go.temporal.io/sdk/client"
 )
 
 func main() {
 
-	// Temporalサーバーに接続する
-	temporalClient, err := client.Dial(client.Options{
-		HostPort: client.DefaultHostPort,
-	})
 
-	workflowRun := temporalClient.GetWorkflow(context.Background, "<ワークフローのID>")
-
-	var result workflowResponse
-
-	// ワークフローの結果を取得する
-	err = workflowRun.Get(context.Background(), &result)
+	temporalClient, err := client.Dial(client.Options{})
 
 	if err != nil {
-		...
+		log.Fatalln("Unable to create client", err)
+	}
+
+	defer temporalClient.Close()
+
+	yourWorker := worker.New(temporalClient, "your-custom-task-queue-name", worker.Options{})
+
+	yourWorker.RegisterWorkflow(yourapp.YourWorkflowDefinition)
+
+	registerWFOptions := workflow.RegisterOptions{
+		Name: "JustAnotherWorkflow",
+	}
+
+	yourWorker.RegisterWorkflowWithOptions(yourapp.YourSimpleWorkflowDefinition, registerWFOptions)
+
+	message := "This could be a connection string or endpoint details"
+
+	number := 100
+
+	activities := &yourapp.YourActivityObject{
+		Message: &message,
+		Number:  &number,
+	}
+
+	yourWorker.RegisterActivity(activities)
+
+	registerAOptions := activity.RegisterOptions{
+		Name: "JustAnotherActivity",
+	}
+
+	yourWorker.RegisterActivityWithOptions(yourapp.YourSimpleActivityDefinition, registerAOptions)
+
+	err = yourWorker.Run(worker.InterruptCh())
+
+	if err != nil {
+		log.Fatalln("Unable to start Worker", err)
 	}
 }
 ```
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go
-> - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
 
 ```go
 package activity
@@ -310,7 +335,7 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
 
-#### ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
+#### ▼ Temporalワーカー (ワークフロー定義)
 
 Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。
 
@@ -386,7 +411,6 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 ```
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go
-> - https://docs.temporal.io/develop/go/core-application#develop-workflows
 
 <br>
 
@@ -470,3 +494,45 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 > - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
 
 <br>
+
+## 03. 実装
+
+### GetWorkflow
+
+Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"log"
+	"net/http"
+
+	"documentation-samples-go/yourapp"
+
+	"go.temporal.io/sdk/client"
+)
+
+func main() {
+
+	// Temporalサーバーに接続する
+	temporalClient, err := client.Dial(client.Options{
+		HostPort: client.DefaultHostPort,
+	})
+
+	workflowRun := temporalClient.GetWorkflow(context.Background, "<ワークフローのID>")
+
+	var result workflowResponse
+
+	// ワークフローの結果を取得する
+	err = workflowRun.Get(context.Background(), &result)
+
+	if err != nil {
+		...
+	}
+}
+```
+
+> - https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results
