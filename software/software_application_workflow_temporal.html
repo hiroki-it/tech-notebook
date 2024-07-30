@@ -2361,7 +2361,7 @@
           <li class="md-nav__item">
   <a href="#temporal_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
+      ▼ Temporalワーカー (アクティビティ定義)
     </span>
   </a>
   
@@ -2370,7 +2370,7 @@
           <li class="md-nav__item">
   <a href="#temporal_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
+      ▼ Temporalワーカー (ワークフロー定義)
     </span>
   </a>
   
@@ -2385,6 +2385,30 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       補償トランザクション
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 実装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getworkflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetWorkflow
     </span>
   </a>
   
@@ -23148,7 +23172,7 @@
           <li class="md-nav__item">
   <a href="#temporal_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (アクティビティを持つマイクロサービス)
+      ▼ Temporalワーカー (アクティビティ定義)
     </span>
   </a>
   
@@ -23157,7 +23181,7 @@
           <li class="md-nav__item">
   <a href="#temporal_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Temporalワーカー (ワークフローを持つマイクロサービス)
+      ▼ Temporalワーカー (ワークフロー定義)
     </span>
   </a>
   
@@ -23172,6 +23196,30 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       補償トランザクション
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 実装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getworkflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetWorkflow
     </span>
   </a>
   
@@ -23278,7 +23326,7 @@
 <ol>
 <li>Temporalワーカーは、Temporalサーバーにワークフローやアクティビティを登録する。</li>
 <li>Temporalワーカーは、Temporalサーバー内のメッセージキューにポーリングを実施し、ワークフローの現在のステートを取得する。</li>
-<li>Temporalワーカーは、ワークフローを開始する。</li>
+<li>Temporalクライアントは、ワークフローを開始する。</li>
 <li>Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。</li>
 <li>Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。</li>
 </ol>
@@ -23333,9 +23381,9 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// Temporalクライアントがワークフローを登録し、また実行するエンドポイント</span>
+<span class="w">    </span><span class="c1">// Temporalクライアントがワークフローを実行するエンドポイント</span>
 <span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/start&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ワークフローを登録し、また実行するラッパー関数</span>
+<span class="w">        </span><span class="c1">// ワークフローを実行するラッパー関数</span>
 <span class="w">        </span><span class="nx">startWorkflowHandler</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 
@@ -23359,7 +23407,7 @@
 <span class="w">        </span><span class="nx">WorkflowParamY</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// Temporalサーバーにワークフローを登録し、また実行する</span>
+<span class="w">    </span><span class="c1">// Temporalサーバーにワークフローを実行する</span>
 <span class="w">    </span><span class="nx">workflowExecution</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">ExecuteWorkflow</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">workflowOptions</span><span class="p">,</span>
@@ -23404,44 +23452,69 @@
 </blockquote>
 <h4 id="temporal_5">▼ Temporalサーバーとステート用データベース<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
 <p>制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。</p>
-<h4 id="temporal_6">▼ Temporalワーカー (アクティビティを持つマイクロサービス)<a class="headerlink" href="#temporal_6" title="Permanent link">&para;</a></h4>
+<h4 id="temporal_6">▼ Temporalワーカー (アクティビティ定義)<a class="headerlink" href="#temporal_6" title="Permanent link">&para;</a></h4>
 <p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/activity&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/worker&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/workflow&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;documentation-samples-go/yourapp&quot;</span>
-
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Temporalサーバーに接続する</span>
-<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;ワークフローのID&gt;&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">workflowResponse</span>
-
-<span class="w">    </span><span class="c1">// ワークフローの結果を取得する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalln</span><span class="p">(</span><span class="s">&quot;Unable to create client&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">yourWorker</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;your-custom-task-queue-name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">Options</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="nx">yourWorker</span><span class="p">.</span><span class="nx">RegisterWorkflow</span><span class="p">(</span><span class="nx">yourapp</span><span class="p">.</span><span class="nx">YourWorkflowDefinition</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">registerWFOptions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">RegisterOptions</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;JustAnotherWorkflow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">yourWorker</span><span class="p">.</span><span class="nx">RegisterWorkflowWithOptions</span><span class="p">(</span><span class="nx">yourapp</span><span class="p">.</span><span class="nx">YourSimpleWorkflowDefinition</span><span class="p">,</span><span class="w"> </span><span class="nx">registerWFOptions</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;This could be a connection string or endpoint details&quot;</span>
+
+<span class="w">    </span><span class="nx">number</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">100</span>
+
+<span class="w">    </span><span class="nx">activities</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">yourapp</span><span class="p">.</span><span class="nx">YourActivityObject</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">message</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Number</span><span class="p">:</span><span class="w">  </span><span class="o">&amp;</span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">yourWorker</span><span class="p">.</span><span class="nx">RegisterActivity</span><span class="p">(</span><span class="nx">activities</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">registerAOptions</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">activity</span><span class="p">.</span><span class="nx">RegisterOptions</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;JustAnotherActivity&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">yourWorker</span><span class="p">.</span><span class="nx">RegisterActivityWithOptions</span><span class="p">(</span><span class="nx">yourapp</span><span class="p">.</span><span class="nx">YourSimpleActivityDefinition</span><span class="p">,</span><span class="w"> </span><span class="nx">registerAOptions</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">yourWorker</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">InterruptCh</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalln</span><span class="p">(</span><span class="s">&quot;Unable to start Worker&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/worker/main_dacx.go</a></li>
-<li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">activity</span>
@@ -23489,7 +23562,7 @@
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go</a></li>
 </ul>
 </blockquote>
-<h4 id="temporal_7">▼ Temporalワーカー (ワークフローを持つマイクロサービス)<a class="headerlink" href="#temporal_7" title="Permanent link">&para;</a></h4>
+<h4 id="temporal_7">▼ Temporalワーカー (ワークフロー定義)<a class="headerlink" href="#temporal_7" title="Permanent link">&para;</a></h4>
 <p>Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">workflow</span>
 
@@ -23563,7 +23636,6 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go">https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_workflow_definition_dacx.go</a></li>
-<li><a href="https://docs.temporal.io/develop/go/core-application#develop-workflows">https://docs.temporal.io/develop/go/core-application#develop-workflows</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23645,6 +23717,46 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="03">03. 実装<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="getworkflow">GetWorkflow<a class="headerlink" href="#getworkflow" title="Permanent link">&para;</a></h3>
+<p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;documentation-samples-go/yourapp&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/client&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// Temporalサーバーに接続する</span>
+<span class="w">    </span><span class="nx">temporalClient</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">Options</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">HostPort</span><span class="p">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">DefaultHostPort</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+
+<span class="w">    </span><span class="nx">workflowRun</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">temporalClient</span><span class="p">.</span><span class="nx">GetWorkflow</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;ワークフローのID&gt;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">workflowResponse</span>
+
+<span class="w">    </span><span class="c1">// ワークフローの結果を取得する</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflowRun</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results">https://docs.temporal.io/develop/go/temporal-clients#get-workflow-results</a></li>
+</ul>
+</blockquote>
 
 
 
