@@ -122,6 +122,7 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 > - https://temporal.io/blog/saga-pattern-made-easy
 > - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
 > - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4
+> - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6
 
 #### ▼ Temporalクライアント
 
@@ -225,9 +226,11 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 
-#### ▼ Temporalワーカー (アクティビティ定義)
+#### ▼ Temporalワーカー (アクティビティ定義用)
 
-Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+アクティビティ定義用Temporalワーカーは、ワークフロー定義を登録する。
+
+また、実際にローカルトランザクションを実行する。
 
 ```go
 package main
@@ -335,9 +338,9 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
 
-#### ▼ Temporalワーカー (ワークフロー定義)
+#### ▼ ワークフロー定義用Temporalワーカー
 
-Temporalワーカー (ワークフローを持つマイクロサービス) は、アクティビティを持つ各マイクロサービスを実行する。
+ワークフロー定義用Temporalワーカーは、ワークフロー定義を登録する。
 
 ```go
 package workflow
