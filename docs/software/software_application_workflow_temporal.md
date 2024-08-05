@@ -181,7 +181,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 		WorkflowParamY: 999,
 	}
 
-	// Temporalサーバーにワークフローを実行する
+	// Temporalサーバーでワークフローを実行する
 	workflowExecution, err := temporalClient.ExecuteWorkflow(
 		context.Background(),
 		workflowOptions,
@@ -226,9 +226,9 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。
 
-#### ▼ Temporalワーカー (アクティビティ定義用)
+#### ▼ アクティビティ定義用のTemporalワーカー
 
-アクティビティ定義用Temporalワーカーは、ワークフロー定義を登録する。
+アクティビティ定義用のTemporalワーカーは、ワークフロー定義を登録する。
 
 また、実際にローカルトランザクションを実行する。
 
@@ -338,9 +338,9 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
 
-#### ▼ ワークフロー定義用Temporalワーカー
+#### ▼ ワークフロー定義用のTemporalワーカー
 
-ワークフロー定義用Temporalワーカーは、ワークフロー定義を登録する。
+ワークフロー定義用のTemporalワーカーは、ワークフロー定義を登録する。
 
 ```go
 package workflow

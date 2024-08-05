@@ -13,7 +13,7 @@ description: 共通項目＠Helmの知見を記録しています。
 
 <br>
 
-## 01. Helmの`metadata.labels`キーとは
+## 01. Helmの`metadata.labels`キー
 
 ### Helmの`metadata.labels`キーとは
 
@@ -33,7 +33,7 @@ Helmが設定してくれるため、開発者が設定する必要はない。
 
 <br>
 
-## 02. Helmのmetadata.annotation
+## 02. Helmの`metadata.annotation`キー
 
 ### `meta.helm.sh`キー
 
