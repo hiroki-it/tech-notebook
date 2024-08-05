@@ -123,6 +123,8 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 > - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
 > - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4
 > - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6
+> - https://spiral.dev/blog/temporal-workflow-and-microservices
+> - https://github.com/guntenbein/temporal_microservices/tree/main/cmd
 
 #### ▼ Temporalクライアント
 
