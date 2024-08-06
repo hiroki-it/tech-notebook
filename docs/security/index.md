@@ -11,17 +11,17 @@
 
 <br>
 
-### 対策
+### ネットワークセキュリティ
 
-* #### [︎対策](https://hiroki-it.github.io/tech-notebook/security/security_measures.html)
+* #### [ネットワークセキュリティ](https://hiroki-it.github.io/tech-notebook/security/security_network.html)
 
 * #### <u>︎パケットペイロードの暗号化技術</u>
-  > * ##### [︎パケットペイロードの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload.html)
-  > * ##### [︎暗号方式](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload_method.html)
-  > * ##### [︎暗号化プロトコル](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_packet_payload_protocol.html)
+  > * ##### [︎パケットペイロードの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload.html)
+  > * ##### [︎暗号方式](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload_method.html)
+  > * ##### [︎暗号化プロトコル](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_packet_payload_protocol.html)
 
 * #### <u>︎保管データの暗号化技術</u>
-  > * ##### [︎保管データの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_storage.html)
+  > * ##### [︎保管データの暗号化技術](https://hiroki-it.github.io/tech-notebook/security/security_network_encryption_technology_storage.html)
 
 <br>
 
