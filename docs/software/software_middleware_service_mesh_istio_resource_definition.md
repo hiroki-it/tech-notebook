@@ -2292,6 +2292,37 @@ spec:
               exact: bar
 ```
 
+**＊実装例＊**
+
+ユーザーエージェントで振り分ける。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: foo-virtual-service
+spec:
+  hosts:
+    - reviews
+  http:
+    - match:
+        - headers:
+            user-agent:
+              regex: <PCのユーザーエージェント>
+      route:
+        - destination:
+            host: pc
+    - match:
+        - headers:
+            user-agent:
+              regex: <スマホのユーザーエージェント>
+      route:
+        - destination:
+            host: sp
+```
+
+> - https://www.mtioutput.com/entry/oc-istio-header
+
 #### ▼ gateways
 
 `.spec.gateways`キーで設定した`<Gateway名>`と`mesh`のうちで、その合致条件に使用する方を設定する。
