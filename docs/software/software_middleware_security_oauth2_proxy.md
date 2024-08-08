@@ -83,3 +83,20 @@ spec:
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 
 <br>
+
+### ダッシュボード
+
+#### ▼ Prometheus
+
+PrometheusのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+
+#### ▼ Grafana
+
+GrafanaのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+
+一方で、GrafanaはIDプロバイダーに認可リクエストを直背的に送信できるため、OAuth2 Proxyがなくてもよい。
+
+> - https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285
+> - https://stackoverflow.com/a/73088436/12771072
+
+<br>
