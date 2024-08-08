@@ -194,6 +194,37 @@ data:
 
 <br>
 
+### auth.githubセクション
+
+GitHubをIDプロバイダーとして、SSOでログインできるようにする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    enabled = true
+    client_id = YOUR_GITHUB_APP_CLIENT_ID
+    client_secret = YOUR_GITHUB_APP_CLIENT_SECRET
+    scopes = user:email,read:org
+    auth_url = https://github.com/login/oauth/authorize
+    token_url = https://github.com/login/oauth/access_token
+    api_url = https://api.github.com/user
+    allow_sign_up = true
+    auto_login = false
+    team_ids = 150,300
+    allowed_organizations = ["My Organization", "Octocats"]
+    allowed_domains = mycompany.com mycompany.org
+    role_attribute_path = [login=='octocat'][0] && 'GrafanaAdmin' || 'Viewer'
+```
+
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/#example-of-github-configuration-in-grafana
+
+<br>
+
 ### pathsセクション
 
 記入中...
