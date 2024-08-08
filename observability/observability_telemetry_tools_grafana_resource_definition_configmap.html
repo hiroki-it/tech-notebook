@@ -21513,6 +21513,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authgeneric_oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      auth.generic_oauthセクション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authgithub" class="md-nav__link">
+    <span class="md-ellipsis">
+      auth.githubセクション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#paths" class="md-nav__link">
     <span class="md-ellipsis">
       pathsセクション
@@ -23352,6 +23370,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authgeneric_oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      auth.generic_oauthセクション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authgithub" class="md-nav__link">
+    <span class="md-ellipsis">
+      auth.githubセクション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#paths" class="md-nav__link">
     <span class="md-ellipsis">
       pathsセクション
@@ -23817,6 +23853,65 @@
 <ul>
 <li><a href="https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578">https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578</a></li>
 <li><a href="https://github.com/grafana/grafana/issues/10727#issuecomment-832617680">https://github.com/grafana/grafana/issues/10727#issuecomment-832617680</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="authgeneric_oauth">auth.generic_oauthセクション<a class="headerlink" href="#authgeneric_oauth" title="Permanent link">&para;</a></h3>
+<p>KeycloakをIDプロバイダーとして、SSOでログインできるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">grafana.ini</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">[auth.generic_oauth]</span>
+<span class="w">    </span><span class="no">enabled = true</span>
+<span class="w">    </span><span class="no">name = Keycloak-OAuth</span>
+<span class="w">    </span><span class="no">allow_sign_up = true</span>
+<span class="w">    </span><span class="no">client_id = YOUR_APP_CLIENT_ID</span>
+<span class="w">    </span><span class="no">client_secret = YOUR_APP_CLIENT_SECRET</span>
+<span class="w">    </span><span class="no">scopes = openid email profile offline_access roles</span>
+<span class="w">    </span><span class="no">email_attribute_path = email</span>
+<span class="w">    </span><span class="no">login_attribute_path = username</span>
+<span class="w">    </span><span class="no">name_attribute_path = full_name</span>
+<span class="w">    </span><span class="no">auth_url = https://&lt;PROVIDER_DOMAIN&gt;/realms/&lt;REALM_NAME&gt;/protocol/openid-connect/auth</span>
+<span class="w">    </span><span class="no">token_url = https://&lt;PROVIDER_DOMAIN&gt;/realms/&lt;REALM_NAME&gt;/protocol/openid-connect/token</span>
+<span class="w">    </span><span class="no">api_url = https://&lt;PROVIDER_DOMAIN&gt;/realms/&lt;REALM_NAME&gt;/protocol/openid-connect/userinfo</span>
+<span class="w">    </span><span class="no">role_attribute_path = contains(roles[*], &#39;admin&#39;) &amp;&amp; &#39;Admin&#39; || contains(roles[*], &#39;editor&#39;) &amp;&amp; &#39;Editor&#39; || &#39;Viewer&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/keycloak/#configure-keycloak-oauth2-authentication">https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/keycloak/#configure-keycloak-oauth2-authentication</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="authgithub">auth.githubセクション<a class="headerlink" href="#authgithub" title="Permanent link">&para;</a></h3>
+<p>GitHubをIDプロバイダーとして、SSOでログインできるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">grafana.ini</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">enabled = true</span>
+<span class="w">    </span><span class="no">client_id = YOUR_GITHUB_APP_CLIENT_ID</span>
+<span class="w">    </span><span class="no">client_secret = YOUR_GITHUB_APP_CLIENT_SECRET</span>
+<span class="w">    </span><span class="no">scopes = user:email,read:org</span>
+<span class="w">    </span><span class="no">auth_url = https://github.com/login/oauth/authorize</span>
+<span class="w">    </span><span class="no">token_url = https://github.com/login/oauth/access_token</span>
+<span class="w">    </span><span class="no">api_url = https://api.github.com/user</span>
+<span class="w">    </span><span class="no">allow_sign_up = true</span>
+<span class="w">    </span><span class="no">auto_login = false</span>
+<span class="w">    </span><span class="no">team_ids = 150,300</span>
+<span class="w">    </span><span class="no">allowed_organizations = [&quot;My Organization&quot;, &quot;Octocats&quot;]</span>
+<span class="w">    </span><span class="no">allowed_domains = mycompany.com mycompany.org</span>
+<span class="w">    </span><span class="no">role_attribute_path = [login==&#39;octocat&#39;][0] &amp;&amp; &#39;GrafanaAdmin&#39; || &#39;Viewer&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/#example-of-github-configuration-in-grafana">https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/#example-of-github-configuration-in-grafana</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24294,7 +24389,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-09</span>
   </span>
 
     
