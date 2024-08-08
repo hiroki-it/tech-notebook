@@ -194,6 +194,38 @@ data:
 
 <br>
 
+### auth.generic_oauthセクション
+
+KeycloakをIDプロバイダーとして、SSOでログインできるようにする。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana
+  namespace: prometheus
+data:
+  grafana.ini: |
+    [auth.generic_oauth]
+    enabled = true
+    name = Keycloak-OAuth
+    allow_sign_up = true
+    client_id = YOUR_APP_CLIENT_ID
+    client_secret = YOUR_APP_CLIENT_SECRET
+    scopes = openid email profile offline_access roles
+    email_attribute_path = email
+    login_attribute_path = username
+    name_attribute_path = full_name
+    auth_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/auth
+    token_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/token
+    api_url = https://<PROVIDER_DOMAIN>/realms/<REALM_NAME>/protocol/openid-connect/userinfo
+    role_attribute_path = contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'
+```
+
+> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/keycloak/#configure-keycloak-oauth2-authentication
+
+<br>
+
 ### auth.githubセクション
 
 GitHubをIDプロバイダーとして、SSOでログインできるようにする。
