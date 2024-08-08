@@ -19,6 +19,8 @@ OAuth2 Proxyは、ダウンストリームからのトークン検証リクエ�
 
 OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) のトークン検証リクエストをプロキシできる。
 
+認証処理のないアプリケーションやツールのダッシュボードに認証機能を追加できる。
+
 <br>
 
 ## 02. OAuth2 Proxyの仕組み
@@ -67,15 +69,15 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: foo.bar.com
+    - host: foo.application.com
       http:
         paths:
           - backend:
               service:
-                name: nginx-service
+                name: foo-application-service
                 port:
                   number: 80
-            path: /index.html
+            path: /
             pathType: Prefix
 ```
 
@@ -86,9 +88,33 @@ spec:
 
 ### ダッシュボード
 
-#### ▼ Prometheus
+#### ▼ Prometheus、Alertmanager
 
-PrometheusのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+Prometheus、AlertmanagerのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
+    nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth  name: nginx-ingress
+  namespace: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: foo.prometheus.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: prometheus-service
+                port:
+                  number: 9093
+            path: /
+```
+
+> - https://stackoverflow.com/a/71062075/12771072
 
 #### ▼ Grafana
 
@@ -96,7 +122,55 @@ GrafanaのダウンストリームにあるIngressは、OAuth2 Proxyに認可リ
 
 一方で、GrafanaはIDプロバイダーに認可リクエストを直背的に送信できるため、OAuth2 Proxyがなくてもよい。
 
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
+    nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth  name: nginx-ingress
+  namespace: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: foo.grafana.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: grafana-service
+                port:
+                  number: 8000
+            path: /
+```
+
 > - https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285
 > - https://stackoverflow.com/a/73088436/12771072
+
+#### ▼ Kiali
+
+KialiのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
+    nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth  name: nginx-ingress
+  namespace: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: foo.kiali.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: kiali-service
+                port:
+                  number: 20001
+            path: /
+```
 
 <br>
