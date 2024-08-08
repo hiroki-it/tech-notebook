@@ -56,6 +56,8 @@ Temporalサーバーで処理中に障害が起こった場合でも、ワーク
 
 #### ▼ PostgreSQLの場合
 
+主に、`temporal`データベースと`temporal_visibility`を使用する。
+
 ```bash
 $ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
 
@@ -84,6 +86,16 @@ temporal=# \dt
  public | buffered_events           | table | temporal
  ...
 ```
+
+> - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/temporal/schema.sql
+> - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/visibility/schema.sql
+
+#### ▼ MySQLの場合
+
+主に、`temporal`データベースと`temporal_visibility`を使用する。
+
+> - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/temporal/schema.sql
+> - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/visibility/schema.sql
 
 <br>
 

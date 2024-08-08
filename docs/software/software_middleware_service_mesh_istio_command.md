@@ -102,6 +102,7 @@ Info [IST0118] (Service default/foo-service) Port name (port: 80, targetPort: 80
 ```
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
+> - https://jimmysong.io/blog/istio-configuration-safety-common-misconfigurations/#istioctl-analyze
 
 <br>
 

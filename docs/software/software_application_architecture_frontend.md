@@ -161,7 +161,17 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 06. マイクロサービスアーキテクチャにおけるフロントエンド
+## 06. クリーンアーキテクチャ風
+
+- Viewレイヤー
+- State Managementレイヤー
+- API Clientレイヤー
+
+> - https://www.upp-technology.com/blogs/a-different-approach-to-frontend-architecture/
+
+<br>
+
+## 07. マイクロサービスアーキテクチャにおけるフロントエンド
 
 ### UI部品合成
 
