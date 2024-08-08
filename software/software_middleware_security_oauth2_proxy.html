@@ -5158,9 +5158,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+  <a href="#prometheusalertmanager" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Prometheus
+      ▼ Prometheus、Alertmanager
     </span>
   </a>
   
@@ -5170,6 +5170,15 @@
   <a href="#grafana" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Grafana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiali" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Kiali
     </span>
   </a>
   
@@ -23017,9 +23026,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+  <a href="#prometheusalertmanager" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Prometheus
+      ▼ Prometheus、Alertmanager
     </span>
   </a>
   
@@ -23029,6 +23038,15 @@
   <a href="#grafana" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Grafana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiali" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Kiali
     </span>
   </a>
   
@@ -23074,6 +23092,7 @@
 <h2 id="01-oauth2-proxy">01. OAuth2 Proxyとは<a class="headerlink" href="#01-oauth2-proxy" title="Permanent link">&para;</a></h2>
 <p>OAuth2 Proxyは、ダウンストリームからのトークン検証リクエストをIDプロバイダーにプロキシする。</p>
 <p>OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) のトークン検証リクエストをプロキシできる。</p>
+<p>認証処理のないアプリケーションやツールのダッシュボードに認証機能を追加できる。</p>
 <p><br></p>
 <h2 id="02-oauth2-proxy">02. OAuth2 Proxyの仕組み<a class="headerlink" href="#02-oauth2-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -23113,15 +23132,15 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.bar.com</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.application.com</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-service</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-application-service</span>
 <span class="w">                </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/index.html</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
 <blockquote>
@@ -23132,17 +23151,84 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">ダッシュボード<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="prometheus">▼ Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
-<p>PrometheusのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。</p>
+<h4 id="prometheusalertmanager">▼ Prometheus、Alertmanager<a class="headerlink" href="#prometheusalertmanager" title="Permanent link">&para;</a></h4>
+<p>Prometheus、AlertmanagerのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-signin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/sign_in</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-url: http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/auth  name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.prometheus.com</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus-service</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9093</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/71062075/12771072">https://stackoverflow.com/a/71062075/12771072</a></li>
+</ul>
+</blockquote>
 <h4 id="grafana">▼ Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h4>
 <p>GrafanaのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。</p>
 <p>一方で、GrafanaはIDプロバイダーに認可リクエストを直背的に送信できるため、OAuth2 Proxyがなくてもよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-signin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/sign_in</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-url: http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/auth  name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.grafana.com</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-service</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285">https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285</a></li>
 <li><a href="https://stackoverflow.com/a/73088436/12771072">https://stackoverflow.com/a/73088436/12771072</a></li>
 </ul>
 </blockquote>
+<h4 id="kiali">▼ Kiali<a class="headerlink" href="#kiali" title="Permanent link">&para;</a></h4>
+<p>KialiのダウンストリームにあるIngressは、OAuth2 Proxyに認可リクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-signin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/sign_in</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/auth-url: http://&lt;OAuth2 Proxyのドメイン名&gt;/oauth2/auth  name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.kiali.com</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kiali-service</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20001</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+</code></pre></div>
 <p><br></p>
 
 
