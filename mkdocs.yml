@@ -184,7 +184,9 @@ nav:
               - リソース定義: software/software_application_workflow_argoworkflow_resource_definition.md
           - ■ Temporal:
               - Temporal: software/software_application_workflow_temporal.md
-              - 設定ファイル: software/software_application_workflow_temporal_conf.md
+              - ■ 設定ファイル:
+                - Clusterスコープ: software/software_application_workflow_temporal_conf_cluster.md
+                - Webスコープ: software/software_application_workflow_temporal_conf_web.md
   - 🤝🏻 ミドルウェア:
       - software/middleware/index.md
       - ■ Web系:
