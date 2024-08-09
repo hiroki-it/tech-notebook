@@ -6,16 +6,16 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設定ファイル＠Temporalの知見を記録しています。">
+        <meta name="description" content="Webスコープ設定ファイル＠Temporalの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html">
       
       
-        <link rel="prev" href="software_application_workflow_temporal.html">
+        <link rel="prev" href="software_application_workflow_temporal_conf_cluster.html">
       
       
         <link rel="next" href="middleware/index.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設定ファイル＠Temporal - 俺の技術ノート</title>
+        <title>【IT技術の知見】Webスコープ設定ファイル＠Temporal - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#temporal" class="md-skip">
+        <a href="#webtemporal" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設定ファイル＠Temporal
+              【IT技術の知見】Webスコープ設定ファイル＠Temporal
             
           </span>
         </div>
@@ -2193,6 +2193,73 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2" id="__nav_5_7_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 設定ファイル
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 設定ファイル
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_workflow_temporal_conf_cluster.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clusterスコープ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -2205,18 +2272,18 @@
           
   
   <span class="md-ellipsis">
-    設定ファイル
+    Webスコープ
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_workflow_temporal_conf.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_workflow_temporal_conf_web.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    設定ファイル
+    Webスコープ
   </span>
   
 
@@ -2249,132 +2316,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-auth" class="md-nav__link">
     <span class="md-ellipsis">
-      01. セットアップ
+      01. auth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. セットアップ">
+    <nav class="md-nav" aria-label="01. auth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#enabled" class="md-nav__link">
     <span class="md-ellipsis">
-      インストール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-global" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. global
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. persistence
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. persistence">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#defaultstore" class="md-nav__link">
-    <span class="md-ellipsis">
-      defaultStore
+      enabled
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#visibilitystore" class="md-nav__link">
+  <a href="#providers" class="md-nav__link">
     <span class="md-ellipsis">
-      visibilityStore
+      providers
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secondaryvisibilitystore" class="md-nav__link">
-    <span class="md-ellipsis">
-      secondaryVisibilityStore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#numhistoryshards" class="md-nav__link">
-    <span class="md-ellipsis">
-      numHistoryShards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#datastores" class="md-nav__link">
-    <span class="md-ellipsis">
-      datastores
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="datastores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ デフォルト値
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cassandra" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ cassandra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ elasticsearch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sql
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2386,6 +2351,14 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -22982,132 +22955,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-auth" class="md-nav__link">
     <span class="md-ellipsis">
-      01. セットアップ
+      01. auth
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. セットアップ">
+    <nav class="md-nav" aria-label="01. auth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#enabled" class="md-nav__link">
     <span class="md-ellipsis">
-      インストール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-global" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. global
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. persistence
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. persistence">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#defaultstore" class="md-nav__link">
-    <span class="md-ellipsis">
-      defaultStore
+      enabled
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#visibilitystore" class="md-nav__link">
+  <a href="#providers" class="md-nav__link">
     <span class="md-ellipsis">
-      visibilityStore
+      providers
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secondaryvisibilitystore" class="md-nav__link">
-    <span class="md-ellipsis">
-      secondaryVisibilityStore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#numhistoryshards" class="md-nav__link">
-    <span class="md-ellipsis">
-      numHistoryShards
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#datastores" class="md-nav__link">
-    <span class="md-ellipsis">
-      datastores
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="datastores">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ デフォルト値
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cassandra" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ cassandra
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ elasticsearch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ sql
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -23134,7 +23005,7 @@
   
 
 
-<h1 id="temporal">設定ファイル＠Temporal<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h1>
+<h1 id="webtemporal">Webスコープ設定ファイル＠Temporal<a class="headerlink" href="#webtemporal" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23143,125 +23014,39 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://github.com/temporalio/helm-charts
-
-$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
-
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>temporalio
-
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/temporalio<span class="w"> </span>-n<span class="w"> </span>temporalio
+<h2 id="01-auth">01. auth<a class="headerlink" href="#01-auth" title="Permanent link">&para;</a></h2>
+<h3 id="enabled">enabled<a class="headerlink" href="#enabled" title="Permanent link">&para;</a></h3>
+<p>組み込みの認証機能を有効化するかどうかを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">auth</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/temporalio/helm-charts">https://github.com/temporalio/helm-charts</a></li>
+<li><a href="https://docs.temporal.io/references/web-ui-configuration#auth">https://docs.temporal.io/references/web-ui-configuration#auth</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-global">02. global<a class="headerlink" href="#02-global" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#global">https://docs.temporal.io/references/configuration#global</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-persistence">03. persistence<a class="headerlink" href="#03-persistence" title="Permanent link">&para;</a></h2>
-<h3 id="defaultstore">defaultStore<a class="headerlink" href="#defaultstore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">defaultStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<h3 id="providers">providers<a class="headerlink" href="#providers" title="Permanent link">&para;</a></h3>
+<p>IDプロバイダーを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">auth</span><span class="p">:</span>
+<span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">providers</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc</span>
+<span class="w">    </span><span class="nt">providerUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://accounts.google.com</span>
+<span class="w">    </span><span class="nt">issuerUrl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxxxx-xxxx.apps.googleusercontent.com</span>
+<span class="w">    </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxxxxxxxxxxxxxxxxxxx</span>
+<span class="w">    </span><span class="nt">callbackUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://xxxx.com:8080/auth/sso/callback</span>
+<span class="w">    </span><span class="nt">scopes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.temporal.io/references/configuration#defaultstore">https://docs.temporal.io/references/configuration#defaultstore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="visibilitystore">visibilityStore<a class="headerlink" href="#visibilitystore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">visibilityStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cass-visibility</span><span class="w"> </span><span class="c1"># The primary Visibility store.</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#visibilitystore">https://docs.temporal.io/references/configuration#visibilitystore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="secondaryvisibilitystore">secondaryVisibilityStore<a class="headerlink" href="#secondaryvisibilitystore" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">secondaryVisibilityStore</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">es-visibility</span><span class="w"> </span><span class="c1"># A secondary Visibility store added to enable Dual Visibility.</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#secondaryvisibilitystore">https://docs.temporal.io/references/configuration#secondaryvisibilitystore</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="numhistoryshards">numHistoryShards<a class="headerlink" href="#numhistoryshards" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">numHistoryShards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#numhistoryshards">https://docs.temporal.io/references/configuration#numhistoryshards</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="datastores">datastores<a class="headerlink" href="#datastores" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ デフォルト値<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="cassandra">▼ cassandra<a class="headerlink" href="#cassandra" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">cassandra</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-<span class="w">        </span><span class="nt">keyspace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temporal&quot;</span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#cassandra">https://docs.temporal.io/references/configuration#cassandra</a></li>
-</ul>
-</blockquote>
-<h4 id="elasticsearch">▼ elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">elasticsearch</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v7&quot;</span>
-<span class="w">        </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span>
-<span class="w">        </span><span class="nt">url</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
-<span class="w">          </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:9200&quot;</span>
-<span class="w">        </span><span class="nt">indices</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal_visibility_v1_dev</span>
-<span class="w">        </span><span class="nt">closeIdleConnectionsInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-</code></pre></div>
-<h4 id="sql">▼ sql<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">persistence</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sql</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mysql&quot;</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_HOST_</span>
-<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
-<span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal</span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_USERNAME_</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_PASSWORD_</span>
-<span class="w">        </span><span class="nt">maxConns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">        </span><span class="nt">maxConnLifetime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1h&quot;</span>
-<span class="w">        </span><span class="nt">connectAttributes</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">tx_isolation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;READ-COMMITTED&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.temporal.io/references/configuration#sql">https://docs.temporal.io/references/configuration#sql</a></li>
+<li><a href="https://docs.temporal.io/references/web-ui-configuration#auth">https://docs.temporal.io/references/web-ui-configuration#auth</a></li>
+<li><a href="https://github.com/temporalio/ui-server/blob/main/config/development.yaml#L24-L39">https://github.com/temporalio/ui-server/blob/main/config/development.yaml#L24-L39</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23285,7 +23070,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-09</span>
   </span>
 
     
