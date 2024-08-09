@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Temporal
-description: 設定ファイル＠Temporalの知見を記録しています。
+title: 【IT技術の知見】Clusterスコープ設定ファイル＠Temporal
+description: Clusterスコープ設定ファイル＠Temporalの知見を記録しています。
 ---
 
-# 設定ファイル＠Temporal
+# Clusterスコープ設定ファイル＠Temporal
 
 ## はじめに
 

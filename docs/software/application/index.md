@@ -81,4 +81,6 @@
 
 * #### Temporal
  > * ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html)
- > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf.html)
+ > * ##### <u>設定ファイル</u>
+ > > * ##### [Clusterスコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)
+ > > * ##### [Webスコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html)
