@@ -41,9 +41,9 @@ flowchart LR
     pagerDuty -...-> aws
 ```
 
-<br>
-
 > - https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax
+
+<br>
 
 ## Gitグラフ
 
