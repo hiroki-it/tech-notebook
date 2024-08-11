@@ -1458,7 +1458,11 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 <br>
 
-## 07. RequestAuthentication
+## 07. ProxyConfig
+
+<br>
+
+## 08. RequestAuthentication
 
 ### .spec.jwtRules
 
@@ -1683,7 +1687,7 @@ spec:
 
 <br>
 
-## 08. ServiceEntry
+## 09. ServiceEntry
 
 ### .spec.hosts
 
@@ -1781,7 +1785,13 @@ spec:
 
 <br>
 
-## 09. Telemetry
+## 10. Sidecar
+
+記入中...
+
+<br>
+
+## 11. Telemetry
 
 ### .metadata.namespace
 
@@ -1901,7 +1911,7 @@ spec:
 
 <br>
 
-## 10. VirtualService
+## 12. VirtualService
 
 ### .spec.exportTo
 
@@ -2683,5 +2693,13 @@ spec:
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
 > - https://zenn.dev/toshikish/articles/d0dd54ae067bed
+
+<br>
+
+## 13. WorkloadEntry
+
+<br>
+
+## 14. WorkloadGroup
 
 <br>
