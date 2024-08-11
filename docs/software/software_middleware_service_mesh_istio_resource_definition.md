@@ -1460,6 +1460,8 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 ## 07. ProxyConfig
 
+記入中...
+
 <br>
 
 ## 08. RequestAuthentication
@@ -2698,8 +2700,12 @@ spec:
 
 ## 13. WorkloadEntry
 
+記入中...
+
 <br>
 
 ## 14. WorkloadGroup
+
+記入中...
 
 <br>
