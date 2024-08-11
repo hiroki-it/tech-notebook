@@ -15,9 +15,9 @@ description: データプレーン＠Istioの知見を記録しています。
 
 ## 01. データプレーンとは
 
-### サイドカープロキシメッシュの場合
+### サイドカーモデルの場合
 
-サイドカープロキシメッシュのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
+サイドカーモデルのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
 > - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 

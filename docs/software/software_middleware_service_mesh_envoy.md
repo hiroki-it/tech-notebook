@@ -57,7 +57,7 @@ Envoyは、通信を切断することなく、コントロールプレーンか
 
 一方で、マイクロサービスにおけるEnvoyでは、Envoyのコントロールプレーンが通信の送信元と宛先の両方のリバースプロキシを一緒に管理する。
 
-このようなリバースプロキシの配置方法をダブルプロキシといい、サイドカープロキシメッシュとして機能する。
+このようなリバースプロキシの配置方法をダブルプロキシといい、サイドカーモデルとして機能する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/double_proxy
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/double-proxy#install-sandboxes-double-proxy
