@@ -255,8 +255,8 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 ![saga-pattern_orchestrator_status-checker.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md#compensation-workflow
-> - https://microservices.io/patterns/data/saga.html#resulting-context
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
+> - https://microservices.io/patterns/data/saga.html#resulting-context
 
 <br>
 
