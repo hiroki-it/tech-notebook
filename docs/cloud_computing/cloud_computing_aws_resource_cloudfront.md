@@ -168,6 +168,7 @@ CloudFrontのドメインは、AWS Route53のDNSレコードとして登録す�
 ![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
 > - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html
 
 <br>
 
