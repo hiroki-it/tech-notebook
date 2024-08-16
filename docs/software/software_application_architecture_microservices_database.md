@@ -30,7 +30,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 共有DBの場合に、マイクロサービス別にスキーマを作成する。
 
-![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
+![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
 
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
@@ -40,7 +40,7 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 共有DBの場合に、マイクロサービス別にテーブルを作成する。
 
-![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
+![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
 
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 
