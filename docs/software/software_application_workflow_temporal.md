@@ -512,6 +512,44 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 <br>
 
+### 仕組み
+
+記入中...
+
+```mermaid
+---
+title: Sagaオーケストレーション実行の仕組み
+---
+sequenceDiagram
+
+    autonumber
+
+    フロントエンド ->> API Gateway: 同期リクエスト
+
+    API Gateway ->> ワークフローハンドラー: 同期リクエスト
+
+    ワークフローハンドラー ->> Temporalサーバー: 同期リクエスト<br>(ワークフロー実行)
+
+    ワークフローハンドラー -->> API Gateway: レスポンス
+
+    API Gateway -->> フロントエンド: レスポンス
+
+    フロントエンド -) API Gateway: 非同期リクエスト<br>(ポーリング処理)
+
+    API Gateway -) Sagaステータスチェッカー: 非同期リクエスト<br>(ポーリング処理)
+
+
+    TemporalワーカーA ->> Temporalサーバー: アクティビティ登録
+
+    Temporalサーバー -) TemporalワーカーA: タスク取得
+
+    TemporalワーカーB ->> Temporalサーバー: アクティビティ登録
+
+    Temporalサーバー -) TemporalワーカーB: アクタスク取得
+```
+
+<br>
+
 ## 03. 実装
 
 ### GetWorkflow
