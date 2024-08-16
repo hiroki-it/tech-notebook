@@ -134,9 +134,9 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 <br>
 
-## 04. 二相コミット (２フェーズコミット)
+## 04. 二相コミットパターン (２フェーズコミット)
 
-### 二相コミットとは
+### 二相コミットパターンとは
 
 『２フェーズコミット』ともいう。
 
@@ -172,6 +172,12 @@ Sagaオーケストレーターは、これらのマイクロサービスをコ�
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 > - https://qiita.com/nk2/items/d9e9a220190549107282
 > - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
+
+<br>
+
+### SagaパターンとACID
+
+> - https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7
 
 <br>
 
@@ -254,7 +260,7 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 
 ![saga-pattern_orchestrator_status-checker.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
-> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md#compensation-workflow
+> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
 > - https://microservices.io/patterns/data/saga.html#resulting-context
 
