@@ -548,6 +548,8 @@ sequenceDiagram
     Temporalサーバー -) TemporalワーカーB: アクタスク取得
 ```
 
+> - https://temporal.io/blog/workflow-engine-principles
+
 <br>
 
 ## 03. 実装
