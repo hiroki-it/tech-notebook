@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パケットペイロード安全性＠AWS
-description: パケットペイロード安全性＠AWSの知見を記録しています。
+title: 【IT技術の知見】アプリケーションデータ安全性＠AWS
+description: アプリケーションデータ安全性＠AWSの知見を記録しています。
 ---
 
-# パケットペイロード安全性＠AWS
+# アプリケーションデータ安全性＠AWS
 
 ## はじめに
 
@@ -466,7 +466,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 ### Certificate Managerによる防御
 
-パケットペイロードの暗号化のために、Certificate Manager (`L7`) を使用する。
+アプリケーションデータの暗号化のために、Certificate Manager (`L7`) を使用する。
 
 リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKS、など) に紐づけられる。
 

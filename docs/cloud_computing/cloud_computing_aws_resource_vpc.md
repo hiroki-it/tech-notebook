@@ -357,7 +357,7 @@ Direct Connectがオンプレミスとの通信機能を持つため、Transit G
 
 #### ▼ AWS間
 
-AWS間の通信の場合、パケットペイロードを自動的に暗号化する。
+AWS間の通信の場合、アプリケーションデータを自動的に暗号化する。
 
 > - https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html
 

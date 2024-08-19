@@ -238,7 +238,7 @@ Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCor
 
 Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに権威DNSサーバーのIPアドレスを設定する。
 
-Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。
+Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。
 
 レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにリクエストを送信する。
 

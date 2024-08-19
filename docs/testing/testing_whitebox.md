@@ -342,14 +342,15 @@ AとBは、『1』または『0』になり得るとする。
 
 <br>
 
-## 06. E2Eテスト (ホワイトボックステストの結合テスト)
+## 06. E2Eテスト
 
 ### E2Eテストとは
 
-ホワイトボックステストでの結合テストは、特に『E2Eテスト』ともいう。
+実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、全てのコンポーネントを対象としたテストを実施する。
 
-実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、全てのコンポーネントを対象とした結合テストを実施する。
+注意点として、結合テストの一種ではない。
 
+> - https://www.testim.io/blog/end-to-end-testing-vs-integration-testing/
 > - https://commerce-engineer.rakuten.careers/entry/tech/0031
 > - https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
 > - https://speakerdeck.com/hgsgtk/real-world-e2e-testing?slide=4

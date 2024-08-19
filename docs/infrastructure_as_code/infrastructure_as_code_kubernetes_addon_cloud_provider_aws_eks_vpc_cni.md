@@ -462,6 +462,8 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
      反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
+     必要に応じて、
+
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/

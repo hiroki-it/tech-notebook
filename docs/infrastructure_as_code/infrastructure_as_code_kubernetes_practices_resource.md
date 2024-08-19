@@ -1017,7 +1017,7 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、
 
 コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。
 
-そこで、`pullPolicy`キーに`IfNotPresent`を使用し、Node上にイメージのキャッシュがない場合のみプルできるようにする。
+そこで、`.spec.containers[*].imagePullPolicy`キーに`IfNotPresent`を使用し、Node上にイメージのキャッシュがない場合のみプルできるようにする。
 
 K8sでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。
 

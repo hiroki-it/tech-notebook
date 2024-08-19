@@ -48,19 +48,20 @@ TransitGatewayが必要になるため、各VPC上にそのためのルートテ
 
 <br>
 
-## 03. パケットペイロードの暗号化
+## 03. アプリケーションデータの暗号化
 
 ### IPSec
 
-AWS Site-to-Site VPNを採用した場合、 IPSecを使用してパケットペイロードを暗号化できる。
+AWS Site-to-Site VPNを採用した場合、 IPSecを使用してアプリケーションデータだけでなくパケットペイロード全体を暗号化できる。
 
 > - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
+> - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
 
 <br>
 
 ### MACsec
 
-MACsecを有効化した場合、MACsecを使用してパケットペイロードを暗号化できる。
+MACsecを有効化した場合、MACsecを使用してアプリケーションデータを暗号化できる。
 
 > - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
 > - https://blog.serverworks.co.jp/everyday-aws-172
