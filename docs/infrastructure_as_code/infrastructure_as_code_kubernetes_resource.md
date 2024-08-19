@@ -457,11 +457,11 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 : kubeletはリクエストを受信し、Nodeの`/var/log`ディレクトリの`log`ファイルを読み込む。
 
-     Nodeの`/var/log/pods/<Namespace名>_<Pod名>_<UID>/container/<数字>.log`ファイルは、Pod内のコンテナの`/var/lib/docker/container/<ID>/<ID>-json.log`ファイルへのシンボリックリンクになっている。
+     コンテナは、標準出力または標準エラー出力に出力したログを`/var/log/container`ディレクトリ配下に保管する。
 
-     そのため、kubeletを経由して、コンテナのログを確認できる。
+     Podは、`/var/log/pods/<Namespace名>_<Pod名>_<UID>/<コンテナ名>/<数字>.log`ファイルにログを保管する。
 
-     補足として、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
+     なお、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
 ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
 
@@ -469,6 +469,7 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 > - https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node
 > - https://tech.studyplus.co.jp/entry/2020/03/23/094119
 > - https://qiita.com/daitak/items/679785bd0724cb1f4971#%E3%83%AD%E3%82%B0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E9%9A%8E%E5%B1%A4%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D
+> - https://dunkshoot.hatenablog.com/entry/kubernetes_container_log
 
 補足として、DaemonSetとして稼働するFluentdは、Nodeの`/var/log`ディレクトリを読み込むことにより、Pod内のコンテナのログを収集する。
 
