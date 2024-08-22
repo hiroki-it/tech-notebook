@@ -1630,19 +1630,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      04. マイクロサービスの結合テスト (機能テスト、サービステスト)
+      02. マイクロサービスの回帰テストとロードテスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト、サービステスト)">
+    <nav class="md-nav" aria-label="02. マイクロサービスの回帰テストとロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      マイクロサービスの結合テストとは
+      マイクロサービスの回帰テストとロードテストとは
     </span>
   </a>
   
@@ -1651,11 +1651,11 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      結合テストツール例
+      回帰テスト、ロードテストツール例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="結合テストツール例">
+    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23084,19 +23084,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      04. マイクロサービスの結合テスト (機能テスト、サービステスト)
+      02. マイクロサービスの回帰テストとロードテスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト、サービステスト)">
+    <nav class="md-nav" aria-label="02. マイクロサービスの回帰テストとロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      マイクロサービスの結合テストとは
+      マイクロサービスの回帰テストとロードテストとは
     </span>
   </a>
   
@@ -23105,11 +23105,11 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      結合テストツール例
+      回帰テスト、ロードテストツール例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="結合テストツール例">
+    <nav class="md-nav" aria-label="回帰テスト、ロードテストツール例">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23177,21 +23177,12 @@
 <h4 id="_6">▼ ツール<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="04">04. マイクロサービスの結合テスト (機能テスト、サービステスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_7">マイクロサービスの結合テストとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャの文脈では、一般的な機能テストを結合テストと呼ぶ。</p>
-<p>特定のマイクロサービス自体と、アップストリーム側マイクロサービスや外部API (正常である前提) との連携が、機能要件通りに返信されるか否かを検証する。</p>
-<p>もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。</p>
+<h2 id="02">02. マイクロサービスの回帰テストとロードテスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_7">マイクロサービスの回帰テストとロードテストとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>もしマイクロサービスの回帰テストとロードテストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、これらテスト専用のパイプライン上で実施する。</p>
 <p>またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/">https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/</a></li>
-<li><a href="https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/">https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/</a></li>
-<li><a href="https://semaphoreci.com/blog/test-microservices">https://semaphoreci.com/blog/test-microservices</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="_8">結合テストツール例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_8">回帰テスト、ロードテストツール例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ ツール<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Jenkins</li>
