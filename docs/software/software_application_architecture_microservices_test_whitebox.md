@@ -51,23 +51,30 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 <br>
 
-## 03. CDCテスト：Consumer-Driven Contract
+## 03. CDCテスト
 
 ### CDCテストとは
 
-送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー)
+特定のマイクロサービス (コンシューマー) とアップストリーム側マイクロサービス (プロデューサー) の連携のテストを実施する。
+
+この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を別に切り分ける。
+
+![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
 > - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
 > - https://semaphoreci.com/blog/test-microservices
+> - https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13
 
 <br>
 
-## 04. マイクロサービスのE2Eテスト
+## 04. マイクロサービスのE2Eテスト (機能テストも兼ねる)
 
 ### マイクロサービスのE2Eテストとは
 
-実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関する全てのコンポーネント間 (フロントエンド、各マイクロサービス、外部API、など) の連携をテストを実施する。
+マイクロサービスアーキテクチャの文脈では、E2Eテストが機能テストも担う。
+
+実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関する全てのコンポーネント間 (フロントエンド、各マイクロサービス、外部API、など) の連携のテストを実施する。
 
 フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。
 
