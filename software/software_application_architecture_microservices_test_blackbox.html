@@ -1677,87 +1677,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#05-cdcconsumer-driven-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. CDCテスト：Consumer-Driven Contract
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. CDCテスト：Consumer-Driven Contract">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      CDCテストとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. マイクロサービスのE2Eテスト
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. マイクロサービスのE2Eテスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービスのE2Eテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -23212,87 +23131,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#05-cdcconsumer-driven-contract" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. CDCテスト：Consumer-Driven Contract
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. CDCテスト：Consumer-Driven Contract">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      CDCテストとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      05. マイクロサービスのE2Eテスト
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. マイクロサービスのE2Eテスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#e2e" class="md-nav__link">
-    <span class="md-ellipsis">
-      マイクロサービスのE2Eテストとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      結合テストツール例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="結合テストツール例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 手動
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ツール
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -23342,7 +23180,7 @@
 <h2 id="04">04. マイクロサービスの結合テスト (機能テスト、サービステスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_7">マイクロサービスの結合テストとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャの文脈では、一般的な機能テストを結合テストと呼ぶ。</p>
-<p>特定のマイクロサービス自体と、アップストリーム側マイクロサービスや外部Webサービス (正常である前提) との連携が、機能要件通りに返信されるか否かを検証する。</p>
+<p>特定のマイクロサービス自体と、アップストリーム側マイクロサービスや外部API (正常である前提) との連携が、機能要件通りに返信されるか否かを検証する。</p>
 <p>もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。</p>
 <p>またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。</p>
 <blockquote>
@@ -23361,45 +23199,6 @@
 <li>Gatling</li>
 <li>Taurus</li>
 </ul>
-<p><br></p>
-<h2 id="05-cdcconsumer-driven-contract">05. CDCテスト：Consumer-Driven Contract<a class="headerlink" href="#05-cdcconsumer-driven-contract" title="Permanent link">&para;</a></h2>
-<h3 id="cdc">CDCテストとは<a class="headerlink" href="#cdc" title="Permanent link">&para;</a></h3>
-<blockquote>
-<ul>
-<li><a href="https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/">https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/</a></li>
-<li><a href="https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/">https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/</a></li>
-<li><a href="https://semaphoreci.com/blog/test-microservices">https://semaphoreci.com/blog/test-microservices</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="05-e2e">05. マイクロサービスのE2Eテスト<a class="headerlink" href="#05-e2e" title="Permanent link">&para;</a></h2>
-<h3 id="e2e">マイクロサービスのE2Eテストとは<a class="headerlink" href="#e2e" title="Permanent link">&para;</a></h3>
-<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、全てのコンポーネント (マイクロサービス、外部Webサービス) を対象とした結合テストを実施する。</p>
-<p>フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。</p>
-<blockquote>
-<ul>
-<li><a href="https://commerce-engineer.rakuten.careers/entry/tech/0031">https://commerce-engineer.rakuten.careers/entry/tech/0031</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_10">結合テストツール例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ 手動<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>手動でフロントエンドを操作し、E2Eテストを実施する。</p>
-<h4 id="_12">▼ ツール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。</p>
-<ul>
-<li>Autify</li>
-<li>Cypress</li>
-<li>Mabl</li>
-<li>Selenium</li>
-<li>Puppeteer</li>
-<li>TestCafe</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://www.amazon.co.jp/dp/B0CH7XY3YT">https://www.amazon.co.jp/dp/B0CH7XY3YT</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
 
@@ -23421,7 +23220,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-22</span>
   </span>
 
     
