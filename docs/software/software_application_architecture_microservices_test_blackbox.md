@@ -46,7 +46,7 @@ description: ブラックボックステスト＠マイクロサービスアー�
 
 マイクロサービスアーキテクチャの文脈では、一般的な機能テストを結合テストと呼ぶ。
 
-特定のマイクロサービス自体と、アップストリーム側マイクロサービスや外部Webサービス (正常である前提) との連携が、機能要件通りに返信されるか否かを検証する。
+特定のマイクロサービス自体と、アップストリーム側マイクロサービスや外部API (正常である前提) との連携が、機能要件通りに返信されるか否かを検証する。
 
 もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。
 
@@ -66,48 +66,5 @@ description: ブラックボックステスト＠マイクロサービスアー�
 - K6
 - Gatling
 - Taurus
-
-<br>
-
-## 05. CDCテスト：Consumer-Driven Contract
-
-### CDCテストとは
-
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
-
-<br>
-
-## 05. マイクロサービスのE2Eテスト
-
-### マイクロサービスのE2Eテストとは
-
-実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、全てのコンポーネント (マイクロサービス、外部Webサービス) を対象とした結合テストを実施する。
-
-フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。
-
-> - https://commerce-engineer.rakuten.careers/entry/tech/0031
-
-<br>
-
-### 結合テストツール例
-
-#### ▼ 手動
-
-手動でフロントエンドを操作し、E2Eテストを実施する。
-
-#### ▼ ツール
-
-実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。
-
-- Autify
-- Cypress
-- Mabl
-- Selenium
-- Puppeteer
-- TestCafe
-
-> - https://www.amazon.co.jp/dp/B0CH7XY3YT
 
 <br>

@@ -1879,6 +1879,7 @@ spec:
   metrics:
     - providers:
         - name: prometheus
+          prometheus
 ```
 
 > - https://istio.io/latest/docs/reference/config/telemetry/#Metrics

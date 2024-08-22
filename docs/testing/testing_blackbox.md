@@ -99,7 +99,9 @@ description: ブラックボックステストの知見を記録しています�
 
 ### 結合テストとは
 
-機能追加/変更を含む複数のコンポーネントを組み合わせ、複数のコンポーネント間の連携が正しく動作しているかを検証する。
+機能追加/変更を含む特定のコンポーネントを組み合わせ、特定のコンポーネント間の連携が正しく動作しているかを検証する。
+
+注意点として、特定の機能に関する全てのコンポーネント間の連携をテストする『E2Eテスト』とは異なる。
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
