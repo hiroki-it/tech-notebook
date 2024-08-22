@@ -51,20 +51,20 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 <br>
 
-## 03. CDCテスト
+## 03. CDCテスト：Consumer Driven Test
 
 ### CDCテストとは
 
 特定のマイクロサービス (コンシューマー) とアップストリーム側マイクロサービス (プロデューサー) の連携のテストを実施する。
 
-この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を別に切り分ける。
+この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『Contract (契約) サービスと』して切り分ける。
+
+これを双方のマイクロサービス間で共有する。
 
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
 > - https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13
+> - https://docs.pact.io/
 
 <br>
 
@@ -79,6 +79,9 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 フロントエンドに対してリクエストを送信し、一連のマイクロサービスの処理を検証する。
 
 > - https://commerce-engineer.rakuten.careers/entry/tech/0031
+> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
+> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
+> - https://semaphoreci.com/blog/test-microservices
 
 <br>
 
