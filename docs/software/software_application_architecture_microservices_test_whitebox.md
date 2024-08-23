@@ -13,19 +13,11 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 <br>
 
-## 01. マイクロサービス固有のホワイトボックステスト手法
+## 01. 単体テスト
 
-### マイクロサービス固有のホワイトボックステスト手法とは
+### 単体テストとは
 
-マイクロサービスアーキテクチャを採用している場合、マイクロサービス固有の観点でホワイトボックステストが必要になる。
-
-<br>
-
-## 02. マイクロサービスの単体テスト
-
-### マイクロサービスの単体テストとは
-
-単体テストは、マイクロサービスアーキテクチャでも同じである。
+単体テストは、マイクロサービスアーキテクチャの文脈であってもなくても同じである。
 
 マイクロサービスのクラスや構造体のメソッドが、それ単体で正しく動作するかを検証する。
 
@@ -51,13 +43,41 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 <br>
 
-## 03. CDCテスト：Consumer Driven Contracts Test
+## 02. コンポーネントテスト
+
+### コンポーネントテストとは
+
+マイクロサービスがそれ単体で正しく動作するかを検証する。
+
+アップストリーム側マイクロサービスは検証対象ではないため、サービスモックとする。
+
+> - https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
+> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
+> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
+> - https://semaphoreci.com/blog/test-microservices
+> - https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools
+
+<br>
+
+### コンポーネントテストツール例
+
+#### ▼ 自前
+
+言語によっては、ビルトインのコマンド (例：`go test`コマンド) でコンポーネントテストを実装できる。
+
+#### ▼ ツール
+
+記入中...
+
+<br>
+
+## 03. CDCテスト：Consumer-Driven Contracts Testing
 
 ### CDCテストとは
 
 送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の連携のテストを実施する。
 
-この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『Contract (契約) サービス』として切り分ける。
+この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分ける。
 
 これを双方のマイクロサービス間で共有する。
 
@@ -72,7 +92,7 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の双方のモックとして機能する。
 
-例えば、PactはContractサービスをPact Brokerとして提供する。
+例えば、Pactは契約サービスをPact Brokerとして提供する。
 
 ![cdc-test_contract-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test_contract-service.png)
 
@@ -88,9 +108,9 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 <br>
 
-## 04. マイクロサービスのE2Eテスト (機能テストも兼ねる)
+## 04. E2Eテスト (機能テストも兼ねる)
 
-### マイクロサービスのE2Eテストとは
+### E2Eテストとは
 
 マイクロサービスアーキテクチャの文脈では、E2Eテストが機能テストも担う。
 
