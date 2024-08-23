@@ -49,7 +49,7 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 
 マイクロサービスがそれ単体で正しく動作するかを検証する。
 
-アップストリーム側マイクロサービスは検証対象ではないため、サービスモックとする。
+アップストリーム側マイクロサービスは検証対象ではないため、モックサービスとする。
 
 > - https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
 > - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
@@ -80,6 +80,8 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分ける。
 
 これを双方のマイクロサービス間で共有する。
+
+契約サービス上で、双方のリクエスト/レスポンスの内容が期待値に合致するかを検証する。
 
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
