@@ -1533,11 +1533,11 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. マイクロサービス間通信の方式
+      01. マイクロサービス間のメッセージング方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. マイクロサービス間通信の方式">
+    <nav class="md-nav" aria-label="01. マイクロサービス間のメッセージング方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23110,11 +23110,11 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. マイクロサービス間通信の方式
+      01. マイクロサービス間のメッセージング方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. マイクロサービス間通信の方式">
+    <nav class="md-nav" aria-label="01. マイクロサービス間のメッセージング方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23320,11 +23320,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. マイクロサービス間通信の方式<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. マイクロサービス間のメッセージング方式<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">リクエストリプライ方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リクエストリプライ方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="service_request_reply" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_reply.png" /></p>
-<p>マイクロサービス間で相互通信を実行する。</p>
+<p>マイクロサービス間で同期的に双方向で通信を実行する。</p>
 <p>ドメインモデリングは、ステートソーシング方式になる。</p>
 <p>送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を実行することになる。</p>
 <p>また、マイクロサービス間で直接的にリクエストを送受信することになる。</p>
@@ -23377,7 +23377,7 @@
 <h3 id="_7">イベント駆動方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ イベント駆動方式とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><img alt="service_event_driven" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png" /></p>
-<p>マイクロサービスからマイクロサービスに一方通行で通信する。</p>
+<p>マイクロサービスからマイクロサービスに非同期的に一方向で通信する。</p>
 <p>ドメインモデリングは、イベントソーシング方式になる。</p>
 <p>送信側と受信側で通信処理が独立して実行されるため、メッセージキューやメッセージブローカーを経由した非同期通信を実行することになる。</p>
 <blockquote>
@@ -23441,7 +23441,7 @@
 <h2 id="03">03. 障害対策<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_14">リクエストリプライ方式の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ サーキットブレイカー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>マイクロサービス間通信の方式がリクエストロプライ方式の場合の障害対策である。</p>
+<p>マイクロサービス間のメッセージング方式がリクエストロプライ方式の場合の障害対策である。</p>
 <p>アップストリーム側マイクロサービスで問題が起こると、ダウンストリーム側マイクロサービスはタイムアウトになるまで処理を待機する。</p>
 <p>その間、ダウンストリーム側マイクロサービスは他の処理を実行できなくなってしまうため、これを防ぐ。</p>
 <ol>
@@ -23477,7 +23477,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-23</span>
   </span>
 
     
