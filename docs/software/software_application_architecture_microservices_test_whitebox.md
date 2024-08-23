@@ -64,7 +64,7 @@ description: ホワイトボックステスト＠マイクロサービスアー�
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
 > - https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13
-> - https://docs.pact.io/
+> - https://zenn.dev/hedrall/articles/cdc-test-20220614
 
 <br>
 
