@@ -396,14 +396,14 @@ nav:
               - PHPのテストツール: testing/testing_whitebox_application_php.md
               - ■ 静的解析:
                   - PHPStan: testing/testing_whitebox_application_php_lint_phpstan.md
-              - ■ 単体テスト:
+              - ■ ユニットテスト:
                   - PHPUnit: testing/testing_whitebox_application_php_unit_phpunit.md
                   - Phake: testing/testing_whitebox_application_php_unit_phake.md
           - ■ アプリ (Go):
               - Goのテストツール: testing/testing_whitebox_application_go.md
               - ■ 静的解析:
                   - golangci-lint: testing/testing_whitebox_application_go_lint_golangci_lint.md
-              - ■ 単体テスト:
+              - ■ ユニットテスト:
                   - testify: testing/testing_whitebox_application_go_unit_testify.md
           - ■ インフラ:
               - ■ 静的解析:
@@ -432,8 +432,8 @@ nav:
                   - trivy: testing/testing_whitebox_lint_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
-          - ■ 総合テスト:
-              - 総合テスト: testing/testing_blackbox_system_test.md
+          - ■ システムテスト:
+              - システムテスト: testing/testing_blackbox_system_test.md
               - JMeter: testing/testing_blackbox_system_test_jmeter.md
               - ChaosMesh: testing/testing_blackbox_system_test_chaos_mesh.md
 
@@ -471,8 +471,8 @@ nav:
           - マルウェア: security/security_cyber_attacks_malware.md
       - ■ ネットワークセキュリティ:
           - ネットワークセキュリティ: security/security_network.md
-          - ■ パケットペイロードの暗号化技術:
-              - パケットペイロードの暗号化技術: security/security_network_encryption_technology_packet_payload.md
+          - ■ アプリケーションデータの暗号化技術:
+              - アプリケーションデータの暗号化技術: security/security_network_encryption_technology_packet_payload.md
               - 暗号方式: security/security_network_encryption_technology_packet_payload_method.md
               - 暗号化プロトコル: security/security_network_encryption_technology_packet_payload_protocol.md
           - ■ 保管データの暗号化技術:
@@ -548,7 +548,7 @@ nav:
           - ■ プラクティス集:
               - 運用性: cloud_computing/cloud_computing_aws_practices_operability.md
               - 信頼性: cloud_computing/cloud_computing_aws_practices_reliability.md
-              - パケットペイロード安全性: cloud_computing/cloud_computing_aws_practices_security_packet_payload.md
+              - アプリケーションデータ安全性: cloud_computing/cloud_computing_aws_practices_security_packet_payload.md
               - ストレージ安全性: cloud_computing/cloud_computing_aws_practices_security_storage.md
               - コスト最適化: cloud_computing/cloud_computing_aws_practices_cost_optimization.md
           - ツール: cloud_computing/cloud_computing_aws_tools.md
