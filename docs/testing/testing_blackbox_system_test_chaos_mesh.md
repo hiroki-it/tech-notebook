@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ChaosMesh＠総合テスト
-description: ChaosMesh＠総合テストの知見を記録しています。
+title: 【IT技術の知見】ChaosMesh＠システムテスト
+description: ChaosMesh＠システムテストの知見を記録しています。
 ---
 
-# ChaosMesh＠総合テスト
+# ChaosMesh＠システムテスト
 
 ## はじめに
 

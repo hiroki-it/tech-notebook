@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Phake＠PHP単体テスト
-description: Phake＠PHP単体テストの知見を記録しています。
+title: 【IT技術の知見】Phake＠PHPユニットテスト
+description: Phake＠PHPユニットテストの知見を記録しています。
 ---
 
-# Phake＠PHP単体テスト
+# Phake＠PHPユニットテスト
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Phake＠PHP単体テストの知見を記録しています。
 
 ## 01. Phakeとは
 
-単体テストに必要なテストダブルを提供する。
+ユニットテストに必要なテストダブルを提供する。
 
 > - https://github.com/mlively/Phake#phake
 

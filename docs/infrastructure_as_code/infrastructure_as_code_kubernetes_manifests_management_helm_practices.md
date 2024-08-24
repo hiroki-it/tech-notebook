@@ -485,9 +485,9 @@ Helmリリースの粒度を小さくし、差分が少なくなるようにす�
 
 > - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
 
-#### ▼ 単体テスト
+#### ▼ ユニットテスト
 
-Helmの単体テストコマンド (`helm test`コマンド) を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。
+Helmのユニットテストコマンド (`helm test`コマンド) を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。
 
 代わりに、外部のテストツール (例：Terratest) を使用しても良い。
 
@@ -565,9 +565,9 @@ GitHub Actionsであれば、CI上にCluster構築するActionが提供されて
 > - https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
 > - https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
 
-#### ▼ 総合テスト
+#### ▼ システムテスト
 
-テスト環境に対して`helm upgrade`コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。
+テスト環境に対して`helm upgrade`コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。
 
 これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では`helm upgrade`コマンドで出力される警告ログを確認できなくなってしまう。
 

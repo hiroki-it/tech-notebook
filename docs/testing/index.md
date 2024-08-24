@@ -10,7 +10,7 @@
 > * ##### [︎PHPのテストツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
 > * ##### <u>静的解析</u>
 > > * ##### [PHPStan](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint_phpstan.html)
-> * ##### <u>︎単体テスト</u>
+> * ##### <u>︎ユニットテスト</u>
 > > * ##### [PHPUnit](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phpunit.html)
 > > * ##### [Phake](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit_phake.html)
 
@@ -18,7 +18,7 @@
 > * ##### [︎Goのテストツール](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html)
 > * ##### <u>静的解析</u>
 > > * ##### [golangci-lint](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_lint_golangci_lint.html)
-> * ##### <u>︎単体テスト</u>
+> * ##### <u>︎ユニットテスト</u>
 > > * ##### [testify](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go_unit_testify.html)
 
 * #### <u>インフラ</u>
@@ -49,8 +49,8 @@
 
 * #### [︎ブラックボックステスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox.html)
 
-* #### <u>総合テスト</u>
-> * ##### [︎総合テスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html)
+* #### <u>システムテスト</u>
+> * ##### [︎システムテスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html)
 > * ##### [︎JMeter](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test_jmeter.html)
 > * ##### [ChaosMesh](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test_chaos_mesh.html)
 

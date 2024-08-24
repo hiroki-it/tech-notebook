@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】testify＠Go単体テスト
-description: testify＠Go単体テストの知見を記録しています。
+title: 【IT技術の知見】testify＠Goユニットテスト
+description: testify＠Goユニットテストの知見を記録しています。
 ---
 
-# testify＠Go単体テスト
+# testify＠Goユニットテスト
 
 ## はじめに
 
@@ -625,7 +625,7 @@ import (
 )
 
 /**
- * 単体テストのテストスイートを構成する。
+ * ユニットテストのテストスイートを構成する。
  */
 type FooSuite struct {
 	suite.Suite
@@ -633,7 +633,7 @@ type FooSuite struct {
 }
 
 /**
- * 単体テストの直前の事前処理を実行する。
+ * ユニットテストの直前の事前処理を実行する。
  */
 func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
@@ -642,7 +642,7 @@ func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 }
 
 /**
- * 単体テストのテストスイートを実行する。
+ * ユニットテストのテストスイートを実行する。
  */
 func TestFooSuite(t *testing.T) {
 	suite.Run(t, &FooSuite{})

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Gatling＠総合テスト
-description: Gatling＠総合テストの知見を記録しています。
+title: 【IT技術の知見】Gatling＠システムテスト
+description: Gatling＠システムテストの知見を記録しています。
 ---
 
-# Gatling＠総合テスト
+# Gatling＠システムテスト
 
 ## はじめに
 
