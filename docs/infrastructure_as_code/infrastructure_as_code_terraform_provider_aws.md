@@ -13,7 +13,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 <br>
 
-## 01. AWSプロバイダーとは
+## AWSプロバイダーとは
 
 TerraformがAWSリソースのAPIと通信可能にする。
 
@@ -23,7 +23,7 @@ TerraformがAWSリソースのAPIと通信可能にする。
 
 <br>
 
-## 02. ACM
+## ACM
 
 ### SSL証明書のリクエスト
 
@@ -134,7 +134,7 @@ SSL証明書のEメール検証時に、ドメインの所有者にメールが�
 
 <br>
 
-## 03. AMI
+## AMI
 
 ### まとめ
 
@@ -202,7 +202,7 @@ AWS BackupでEC2のAMIを作成している場合に、フィルターの条件�
 
 <br>
 
-## 04. API Gateway
+## API Gateway
 
 ### まとめ
 
@@ -305,7 +305,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 <br>
 
-## 05. CloudWatchログ
+## CloudWatchログ
 
 ### まとめ
 
@@ -325,7 +325,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 
 <br>
 
-## 06. CloudFront
+## CloudFront
 
 ### まとめ
 
@@ -502,7 +502,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 <br>
 
-## 07. ECR
+## ECR
 
 ### ライフサイクルポリシー
 
@@ -542,7 +542,7 @@ ECRに紐付けられる、コンテナイメージの有効期間を定義す�
 
 <br>
 
-## 08. ECS
+## ECS
 
 ### まとめ
 
@@ -674,7 +674,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 <br>
 
-## 09. EC2
+## EC2
 
 ### まとめ
 
@@ -721,7 +721,7 @@ Internet Gatewayの後にEC2を作成可能にする。
 
 <br>
 
-## 10. EKS
+## EKS
 
 ### まとめ
 
@@ -806,7 +806,7 @@ EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせ�
 
 <br>
 
-## 11. IAMユーザー
+## IAMユーザー
 
 ### カスタマー管理ポリシーを持つロール
 
@@ -892,7 +892,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 <br>
 
-## 12. IAMロール
+## IAMロール
 
 ### 信頼ポリシーを持つロール
 
@@ -1147,7 +1147,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 <br>
 
-## 13. リスナーとターゲットグループ
+## リスナーとターゲットグループ
 
 ### まとめ
 
@@ -1229,7 +1229,7 @@ status code: 400, request id: *****
 
 <br>
 
-## 14. RDS (Aurora) の場合
+## RDS (Aurora) の場合
 
 ### まとめ
 
@@ -1444,7 +1444,46 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 <br>
 
-## 15. Route53
+## RDS (Global) の場合
+
+`aws_rds_global_cluster` が `aws_rds_global_cluster` 依存している。
+
+これにより、スタンドアローンを作成した上で、これをグローバルクラスターに昇格させられる。
+
+```terraform
+resource "aws_rds_global_cluster" "mysql" {
+
+  ...
+
+  global_cluster_identifier    = "<東京リージョンの>"
+  source_db_cluster_identifier = aws_rds_cluster.mysql.arn
+  force_destroy                = true
+
+  ...
+
+}
+
+
+resource "aws_rds_cluster" "mysql" {
+
+  ...
+
+  lifecycle {
+    ignore_changes = [
+      global_cluster_identifier
+    ]
+  }
+
+  ...
+
+}
+```
+
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
+
+<br>
+
+## Route53
 
 ### まとめ
 
@@ -1495,7 +1534,7 @@ resource "aws_route53_record" "foo" {
 
 <br>
 
-## 16. ルートテーブル
+## ルートテーブル
 
 ### メインルートテーブルは自動作成
 
@@ -1505,7 +1544,7 @@ Terraformを使用してVPCを作成した時、メインルートテーブル�
 
 <br>
 
-## 17. S3
+## S3
 
 ### バケットポリシー
 
@@ -1615,7 +1654,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
 
 <br>
 
-## 18. Systems Manager
+## Systems Manager
 
 ### まとめ
 
@@ -1652,7 +1691,7 @@ CIの`terraform plan`コマンド時に値が公開されないように`output`
 
 <br>
 
-## 19. VPC
+## VPC
 
 ### まとめ
 
@@ -1850,7 +1889,7 @@ AZを上長化している場合、VPC内のサブネットと関連のAWSリソ
 
 <br>
 
-## 20. VPC endpoint
+## VPC endpoint
 
 ### まとめ
 
@@ -1938,7 +1977,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 <br>
 
-## 21. WAF
+## WAF
 
 ### ruleブロック
 
@@ -2191,7 +2230,7 @@ WAFのIPセットと他設定の依存関係に癖がある。
 
 <br>
 
-## 22. Terraform管理外のAWSリソース
+## Terraform管理外のAWSリソース
 
 ### 判断基準
 
@@ -2411,7 +2450,7 @@ resource "aws_dynamodb_table" "tfstate" {
 
 <br>
 
-## 23. 複数のAWSリソースに共通のプラクティス
+## 複数のAWSリソースに共通のプラクティス
 
 ### 環境変数
 

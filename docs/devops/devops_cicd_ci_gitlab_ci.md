@@ -83,7 +83,7 @@ go_mod:
   image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
   before_script:
     # 他のプライベートリポジトリからモジュールをプルするために、認証情報をセットアップする
-    - echo "machine gitlab.paylab.sh" > ~/.netrc
+    - echo "machine foo.gitlab.com" > ~/.netrc
     - echo "login ${GIT_USER}" >> ~/.netrc
     - echo "password ${GIT_TOKEN}" >> ~/.netrc
   script:
@@ -698,7 +698,7 @@ bar_job:
 # GitLabの他のリポジトリからモジュールをプルするために、認証情報をセットアップする
 .setup_git:
   before_script:
-    - echo "machine gitlab.paylab.sh" > ~/.netrc
+    - echo "machine foo.gitlab.com" > ~/.netrc
     - echo "login ${GIT_USER}" >> ~/.netrc
     - echo "password ${GIT_TOKEN}" >> ~/.netrc
 
