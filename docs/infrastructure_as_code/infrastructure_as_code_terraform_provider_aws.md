@@ -1458,7 +1458,8 @@ resource "aws_rds_global_cluster" "mysql" {
   ...
 
   global_cluster_identifier    = "<東京リージョンのクラスター名>"
-  source_db_cluster_identifier = aws_rds_cluster.mysql.arn
+  database_name                = aws_rds_cluster.foo.database_name
+  source_db_cluster_identifier = aws_rds_cluster.foo.arn
   force_destroy                = true
 
   ...
@@ -1489,7 +1490,7 @@ resource "aws_rds_cluster" "mysql" {
 `aws_rds_global_cluster` が `aws_rds_global_cluster` に依存している。
 
 ```terraform
-resource "aws_rds_global_cluster" "mysql" {
+resource "aws_rds_global_cluster" "foo" {
 
   ...
 
@@ -1501,13 +1502,13 @@ resource "aws_rds_global_cluster" "mysql" {
 
 }
 
-resource "aws_rds_cluster" "mysql" {
+resource "aws_rds_cluster" "foo_primary" {
 
   ...
 
-  engine                      = aws_rds_global_cluster.mysql.engine
-  engine_version              = aws_rds_global_cluster.mysql.engine_version
-  global_cluster_identifier   = aws_rds_global_cluster.mysql.id
+  engine                      = aws_rds_global_cluster.foo.engine
+  engine_version              = aws_rds_global_cluster.foo.engine_version
+  global_cluster_identifier   = aws_rds_global_cluster.foo.id
 
   ...
 
@@ -1521,7 +1522,7 @@ resource "aws_rds_cluster" "mysql" {
 ### アップグレードする
 
 ```terraform
-resource "aws_rds_global_cluster" "mysql" {
+resource "aws_rds_global_cluster" "foo" {
 
   ...
 
@@ -1533,13 +1534,13 @@ resource "aws_rds_global_cluster" "mysql" {
 
 }
 
-resource "aws_rds_cluster" "mysql" {
+resource "aws_rds_cluster" "foo_primary" {
 
   ...
 
-  engine                      = aws_rds_global_cluster.mysql.engine
-  engine_version              = aws_rds_global_cluster.mysql.engine_version
-  global_cluster_identifier   = aws_rds_global_cluster.mysql.id
+  engine                      = aws_rds_global_cluster.foo.engine
+  engine_version              = aws_rds_global_cluster.foo.engine_version
+  global_cluster_identifier   = aws_rds_global_cluster.foo.id
 
   lifecycle {
     ignore_changes = [engine_version]
