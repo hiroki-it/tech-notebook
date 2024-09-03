@@ -1446,6 +1446,8 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 ## RDS (Global) の場合
 
+### 既存のクラスターをグローバルに昇格する
+
 `aws_rds_global_cluster` が `aws_rds_global_cluster` 依存している。
 
 これにより、スタンドアローンを作成した上で、これをグローバルクラスターに昇格させられる。
@@ -1455,14 +1457,13 @@ resource "aws_rds_global_cluster" "mysql" {
 
   ...
 
-  global_cluster_identifier    = "<東京リージョンの>"
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
   source_db_cluster_identifier = aws_rds_cluster.mysql.arn
   force_destroy                = true
 
   ...
 
 }
-
 
 resource "aws_rds_cluster" "mysql" {
 
@@ -1480,6 +1481,76 @@ resource "aws_rds_cluster" "mysql" {
 ```
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
+
+<br>
+
+### 新規のグローバルクラスターを作成する
+
+`aws_rds_global_cluster` が `aws_rds_global_cluster` に依存している。
+
+```terraform
+resource "aws_rds_global_cluster" "mysql" {
+
+  ...
+
+  engine                       = "aurora-mysql"
+  engine_version               = "5.7.mysql_aurora.2.07.5"
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+
+  ...
+
+}
+
+resource "aws_rds_cluster" "mysql" {
+
+  ...
+
+  engine                      = aws_rds_global_cluster.mysql.engine
+  engine_version              = aws_rds_global_cluster.mysql.engine_version
+  global_cluster_identifier   = aws_rds_global_cluster.mysql.id
+
+  ...
+
+}
+```
+
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
+
+<br>
+
+### アップグレードする
+
+```terraform
+resource "aws_rds_global_cluster" "mysql" {
+
+  ...
+
+  engine                       = "aurora-mysql"
+  engine_version               = "5.7.mysql_aurora.2.07.5"
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+
+  ...
+
+}
+
+resource "aws_rds_cluster" "mysql" {
+
+  ...
+
+  engine                      = aws_rds_global_cluster.mysql.engine
+  engine_version              = aws_rds_global_cluster.mysql.engine_version
+  global_cluster_identifier   = aws_rds_global_cluster.mysql.id
+
+  lifecycle {
+    ignore_changes = [engine_version]
+  }
+
+  ...
+
+}
+```
+
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#upgrading-engine-versions
 
 <br>
 
