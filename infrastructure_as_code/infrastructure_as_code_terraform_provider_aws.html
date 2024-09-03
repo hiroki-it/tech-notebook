@@ -26315,7 +26315,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
-<span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.mysql.arn</span>
+<span class="w">  </span><span class="na">database_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.database_name</span>
+<span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.arn</span>
 <span class="w">  </span><span class="na">force_destroy</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
 <span class="w">  </span><span class="p">...</span>
@@ -26344,7 +26345,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p><br></p>
 <h3 id="_24">新規のグローバルクラスターを作成する<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p><code>aws_rds_global_cluster</code> が <code>aws_rds_global_cluster</code> に依存している。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26356,13 +26357,13 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo_primary&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.engine</span>
-<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.engine_version</span>
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.id</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26375,7 +26376,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </blockquote>
 <p><br></p>
 <h3 id="_25">アップグレードする<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26387,13 +26388,13 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo_primary&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.engine</span>
-<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.engine_version</span>
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.mysql.id</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">engine_version</span><span class="p">]</span>
