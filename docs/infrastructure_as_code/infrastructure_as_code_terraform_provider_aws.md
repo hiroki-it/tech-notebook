@@ -1456,7 +1456,9 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 <br>
 
-### 既存のクラスターをグローバルに昇格する
+### 既存のクラスターからグローバルクラスターを作成する
+
+既存のクラスターからグローバルクラスターを作成する。
 
 `aws_rds_global_cluster`ブロックが `aws_rds_cluster`ブロック依存している。
 
@@ -1465,7 +1467,7 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 この依存関係の方向は、新規にグローバルクラスターを作成させる場合と逆である。
 
 ```terraform
-resource "aws_rds_global_cluster" "mysql" {
+resource "aws_rds_global_cluster" "foo" {
 
   ...
 
@@ -1484,9 +1486,14 @@ resource "aws_rds_global_cluster" "mysql" {
 
 }
 
-resource "aws_rds_cluster" "mysql" {
+resource "aws_rds_cluster" "foo" {
 
-  ...
+  // グローバルクラスターに依存しないように、設定値をハードコーディングする
+  database_name              = "foo"
+  engine                      = "<エンジン>"
+  engine_version              = "<エンジンバージョン>"
+  master_username             = "admin"
+  master_password             = "password"
 
   lifecycle {
     ignore_changes = [
@@ -1501,9 +1508,62 @@ resource "aws_rds_cluster" "mysql" {
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
 
+作成したグローバルクラスターにセカンダリークラスターを追加する。
+
+『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。
+
+```terraform
+resource "aws_rds_global_cluster" "foo" {
+
+  ...
+
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+  source_db_cluster_identifier = aws_rds_cluster.foo.arn
+  force_destroy                = true
+
+  lifecycle {
+    ignore_changes = [
+      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する
+      database_name,
+    ]
+  }
+
+  ...
+
+}
+
+resource "aws_rds_cluster" "foo" {
+
+  // グローバルクラスターに依存しないように、設定値をハードコーディングする
+  database_name              = "foo"
+  engine                      = "<エンジン>"
+  engine_version              = "<エンジンバージョン>"
+
+  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする
+  master_username             = "admin"
+  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする
+  master_password             = "password"
+  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトを外す
+  // global_cluster_identifier  = "<東京リージョンのクラスター名>"
+
+  lifecycle {
+    ignore_changes = [
+      global_cluster_identifier
+    ]
+  }
+
+  ...
+
+}
+```
+
 <br>
 
-### 新規のグローバルクラスターを作成する
+### グローバルクラスターを新規作成する
+
+グローバルクラスターを新規作成する。
+
+同時に、プライマリークラスターとセカンダリークラスターを新規作成する
 
 `aws_rds_cluster`ブロックが `aws_rds_global_cluster`ブロックに依存している。
 
@@ -1522,13 +1582,16 @@ resource "aws_rds_global_cluster" "foo" {
 
 }
 
-resource "aws_rds_cluster" "foo_primary" {
+resource "aws_rds_cluster" "foo" {
 
   ...
 
+  database_name               = "foo"
   engine                      = aws_rds_global_cluster.foo.engine
   engine_version              = aws_rds_global_cluster.foo.engine_version
   global_cluster_identifier   = aws_rds_global_cluster.foo.id
+  master_username             = "admin"
+  master_password             = "password"
 
   ...
 
@@ -1558,13 +1621,16 @@ resource "aws_rds_global_cluster" "foo" {
 
 }
 
-resource "aws_rds_cluster" "foo_primary" {
+resource "aws_rds_cluster" "foo" {
 
   ...
 
+  database_name               = "foo"
   engine                      = aws_rds_global_cluster.foo.engine
   engine_version              = aws_rds_global_cluster.foo.engine_version
   global_cluster_identifier   = aws_rds_global_cluster.foo.id
+  master_username             = "admin"
+  master_password             = "password"
 
   lifecycle {
     ignore_changes = [engine_version]
