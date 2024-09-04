@@ -1446,11 +1446,23 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 ## RDS (Global) の場合
 
+### グローバルクラスター
+
+グローバルクラスターは、状況によって実装方法が少し異なる。
+
+実装方法で依存関係の向きを変えているが、使っているAWSリソースのAPIは同じである。
+
+そのため、変更前後で`terraform plan`コマンドで差分は同じになる。
+
+<br>
+
 ### 既存のクラスターをグローバルに昇格する
 
-`aws_rds_global_cluster` が `aws_rds_global_cluster` 依存している。
+`aws_rds_global_cluster`ブロックが `aws_rds_cluster`ブロック依存している。
 
 これにより、スタンドアローンを作成した上で、これをグローバルクラスターに昇格させられる。
+
+この依存関係の方向は、新規にグローバルクラスターを作成させる場合と逆である。
 
 ```terraform
 resource "aws_rds_global_cluster" "mysql" {
@@ -1487,7 +1499,9 @@ resource "aws_rds_cluster" "mysql" {
 
 ### 新規のグローバルクラスターを作成する
 
-`aws_rds_global_cluster` が `aws_rds_global_cluster` に依存している。
+`aws_rds_cluster`ブロックが `aws_rds_global_cluster`ブロックに依存している。
+
+この依存関係の方向は、既存のクラスターをグローバルクラスターに昇格させる場合と逆である。
 
 ```terraform
 resource "aws_rds_global_cluster" "foo" {
@@ -1520,6 +1534,10 @@ resource "aws_rds_cluster" "foo_primary" {
 <br>
 
 ### アップグレードする
+
+`aws_rds_cluster`ブロックが `aws_rds_global_cluster`ブロックに依存している。
+
+この依存関係の方向は、既存のクラスターをグローバルクラスターに昇格させる場合と逆である。
 
 ```terraform
 resource "aws_rds_global_cluster" "foo" {
