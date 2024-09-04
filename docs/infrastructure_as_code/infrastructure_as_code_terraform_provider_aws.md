@@ -1470,9 +1470,15 @@ resource "aws_rds_global_cluster" "mysql" {
   ...
 
   global_cluster_identifier    = "<東京リージョンのクラスター名>"
-  database_name                = aws_rds_cluster.foo.database_name
   source_db_cluster_identifier = aws_rds_cluster.foo.arn
   force_destroy                = true
+
+  lifecycle {
+    ignore_changes = [
+      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する
+      database_name,
+    ]
+  }
 
   ...
 
