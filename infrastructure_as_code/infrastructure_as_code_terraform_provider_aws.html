@@ -26339,9 +26339,15 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
-<span class="w">  </span><span class="na">database_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.database_name</span>
 <span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.arn</span>
 <span class="w">  </span><span class="na">force_destroy</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+
+<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="c1">      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する</span>
+<span class="w">      </span><span class="err">database_name</span><span class="p">,</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="p">...</span>
 
