@@ -16109,7 +16109,7 @@
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      既存のクラスターをグローバルに昇格する
+      既存のクラスターからグローバルクラスターを作成する
     </span>
   </a>
   
@@ -16118,7 +16118,7 @@
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
-      新規のグローバルクラスターを作成する
+      グローバルクラスターを新規作成する
     </span>
   </a>
   
@@ -24782,7 +24782,7 @@
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      既存のクラスターをグローバルに昇格する
+      既存のクラスターからグローバルクラスターを作成する
     </span>
   </a>
   
@@ -24791,7 +24791,7 @@
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
-      新規のグローバルクラスターを作成する
+      グローバルクラスターを新規作成する
     </span>
   </a>
   
@@ -26330,11 +26330,12 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>実装方法で依存関係の向きを変えているが、使っているAWSリソースのAPIは同じである。</p>
 <p>そのため、変更前後で<code>terraform plan</code>コマンドで差分は同じになる。</p>
 <p><br></p>
-<h3 id="_24">既存のクラスターをグローバルに昇格する<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_24">既存のクラスターからグローバルクラスターを作成する<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>既存のクラスターからグローバルクラスターを作成する。</p>
 <p><code>aws_rds_global_cluster</code>ブロックが <code>aws_rds_cluster</code>ブロック依存している。</p>
 <p>これにより、スタンドアローンを作成した上で、これをグローバルクラスターに昇格させられる。</p>
 <p>この依存関係の方向は、新規にグローバルクラスターを作成させる場合と逆である。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26353,9 +26354,14 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;mysql&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="p">...</span>
+<span class="c1">  // グローバルクラスターに依存しないように、設定値をハードコーディングする</span>
+<span class="w">  </span><span class="na">database_name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジン&gt;&quot;</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジンバージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -26372,8 +26378,55 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster</a></li>
 </ul>
 </blockquote>
+<p>作成したグローバルクラスターにセカンダリークラスターを追加する。</p>
+<p>『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
+<span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.arn</span>
+<span class="w">  </span><span class="na">force_destroy</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+
+<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="c1">      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する</span>
+<span class="w">      </span><span class="err">database_name</span><span class="p">,</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">  // グローバルクラスターに依存しないように、設定値をハードコーディングする</span>
+<span class="w">  </span><span class="na">database_name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジン&gt;&quot;</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジンバージョン&gt;&quot;</span>
+
+<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
+<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトを外す</span>
+<span class="c1">  // global_cluster_identifier  = &quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
+
+<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="nb">      global_cluster_identifier</span>
+<span class="nb">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="p">}</span>
+</code></pre></div>
 <p><br></p>
-<h3 id="_25">新規のグローバルクラスターを作成する<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h3 id="_25">グローバルクラスターを新規作成する<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>グローバルクラスターを新規作成する。</p>
+<p>同時に、プライマリークラスターとセカンダリークラスターを新規作成する</p>
 <p><code>aws_rds_cluster</code>ブロックが <code>aws_rds_global_cluster</code>ブロックに依存している。</p>
 <p>この依存関係の方向は、既存のクラスターをグローバルクラスターに昇格させる場合と逆である。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -26388,13 +26441,16 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo_primary&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
+<span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26421,13 +26477,16 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo_primary&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
+<span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">engine_version</span><span class="p">]</span>
