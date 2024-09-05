@@ -26335,12 +26335,20 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p><code>aws_rds_global_cluster</code>ブロックが <code>aws_rds_cluster</code>ブロック依存している。</p>
 <p>これにより、スタンドアローンを作成した上で、これをグローバルクラスターに昇格させられる。</p>
 <p>この依存関係の方向は、新規にグローバルクラスターを作成させる場合と逆である。</p>
+<p>さらに、作成したグローバルクラスターにセカンダリークラスターを追加する。</p>
+<p>『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
+<span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
+
+<span class="c1">  // 既存クラスターからグローバルクラスターを作成する</span>
+<span class="c1">  // aws_rds_cluster には、同時に設定できない global_cluster_identifier という対になるオプションがあり、大阪リージョンではそちらを使用する</span>
+<span class="c1">  // 東京リージョンでは、aws_rds_global_cluster の source_db_cluster_identifier を使用する</span>
+<span class="c1">  // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster</span>
 <span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.arn</span>
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="na">force_destroy</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
@@ -26357,11 +26365,23 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  // グローバルクラスターに依存しないように、設定値をハードコーディングする</span>
-<span class="w">  </span><span class="na">database_name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+
+<span class="c1">  // 大阪リージョンのクラスターでは、東京リージョンから各種設定を継承するため、設定が不要である</span>
+<span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="c1">  // 大阪リージョンのクラスターでは、データのソースを東京リージョンとする</span>
+<span class="w">  </span><span class="na">source_region</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">var.region</span>
+
+<span class="c1">  // グローバルクラスターに大阪リージョンを追加する</span>
+<span class="c1">  // aws_rds_global_cluster には、同時に設定できない source_db_cluster_identifier という対になるオプションがあり、東京リージョンではそちらを使用する</span>
+<span class="c1">  // 大阪リージョンでは、aws_rds_cluster の global_cluster_identifier を使用する</span>
+<span class="c1">  // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster</span>
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
 <span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジン&gt;&quot;</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジンバージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
-<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -26378,51 +26398,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster</a></li>
 </ul>
 </blockquote>
-<p>作成したグローバルクラスターにセカンダリークラスターを追加する。</p>
-<p>『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_global_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="p">...</span>
-
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
-<span class="w">  </span><span class="na">source_db_cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.arn</span>
-<span class="w">  </span><span class="na">force_destroy</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="c1">      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する</span>
-<span class="w">      </span><span class="err">database_name</span><span class="p">,</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">...</span>
-
-<span class="p">}</span>
-
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="c1">  // グローバルクラスターに依存しないように、設定値をハードコーディングする</span>
-<span class="w">  </span><span class="na">database_name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジン&gt;&quot;</span>
-<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;エンジンバージョン&gt;&quot;</span>
-
-<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする</span>
-<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
-<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする</span>
-<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
-<span class="c1">  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトを外す</span>
-<span class="c1">  // global_cluster_identifier  = &quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
-
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="nb">      global_cluster_identifier</span>
-<span class="nb">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="p">...</span>
-
-<span class="p">}</span>
-</code></pre></div>
 <p><br></p>
 <h3 id="_25">グローバルクラスターを新規作成する<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>グローバルクラスターを新規作成する。</p>
@@ -26433,9 +26408,11 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="w">  </span><span class="p">...</span>
 
+<span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
+
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aurora-mysql&quot;</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.7.mysql_aurora.2.07.5&quot;</span>
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26446,11 +26423,11 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
-<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
-<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26469,9 +26446,11 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="w">  </span><span class="p">...</span>
 
+<span class="w">  </span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.is_tokyo</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
+
+<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aurora-mysql&quot;</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5.7.mysql_aurora.2.07.5&quot;</span>
-<span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;東京リージョンのクラスター名&gt;&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -26482,11 +26461,11 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 <span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine</span>
 <span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.engine_version</span>
 <span class="w">  </span><span class="na">global_cluster_identifier</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_global_cluster.foo.id</span>
-<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
-<span class="w">  </span><span class="na">master_password</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">engine_version</span><span class="p">]</span>
@@ -27522,7 +27501,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-05</span>
   </span>
 
     
