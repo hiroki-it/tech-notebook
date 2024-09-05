@@ -1466,13 +1466,23 @@ Auroraでは、紐付けられたサブネットグループが複数のAZのサ
 
 この依存関係の方向は、新規にグローバルクラスターを作成させる場合と逆である。
 
+さらに、作成したグローバルクラスターにセカンダリークラスターを追加する。
+
+『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。
+
 ```terraform
 resource "aws_rds_global_cluster" "foo" {
 
   ...
 
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+  count = var.is_tokyo ? 1 : 0
+
+  // 既存クラスターからグローバルクラスターを作成する
+  // aws_rds_cluster には、同時に設定できない global_cluster_identifier という対になるオプションがあり、大阪リージョンではそちらを使用する
+  // 東京リージョンでは、aws_rds_global_cluster の source_db_cluster_identifier を使用する
+  // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
   source_db_cluster_identifier = aws_rds_cluster.foo.arn
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
   force_destroy                = true
 
   lifecycle {
@@ -1489,11 +1499,23 @@ resource "aws_rds_global_cluster" "foo" {
 resource "aws_rds_cluster" "foo" {
 
   // グローバルクラスターに依存しないように、設定値をハードコーディングする
-  database_name              = "foo"
+
+  // 大阪リージョンのクラスターでは、東京リージョンから各種設定を継承するため、設定が不要である
+  database_name               = var.is_tokyo ? "foo" : ""
+  master_username             = var.is_tokyo ? "admin" : ""
+  master_password             = var.is_tokyo ? "password" : ""
+
+  // 大阪リージョンのクラスターでは、データのソースを東京リージョンとする
+  source_region               = var.is_tokyo ? "" : var.region
+
+  // グローバルクラスターに大阪リージョンを追加する
+  // aws_rds_global_cluster には、同時に設定できない source_db_cluster_identifier という対になるオプションがあり、東京リージョンではそちらを使用する
+  // 大阪リージョンでは、aws_rds_cluster の global_cluster_identifier を使用する
+  // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
+  global_cluster_identifier   = var.is_tokyo ? "<東京リージョンのクラスター名>" : ""
+
   engine                      = "<エンジン>"
   engine_version              = "<エンジンバージョン>"
-  master_username             = "admin"
-  master_password             = "password"
 
   lifecycle {
     ignore_changes = [
@@ -1507,55 +1529,6 @@ resource "aws_rds_cluster" "foo" {
 ```
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
-
-作成したグローバルクラスターにセカンダリークラスターを追加する。
-
-『既存のクラスターからグローバルクラスターを作成する』と『グローバルクラスターを新規作成する』の実装方法を組み合わせた方法である。
-
-```terraform
-resource "aws_rds_global_cluster" "foo" {
-
-  ...
-
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
-  source_db_cluster_identifier = aws_rds_cluster.foo.arn
-  force_destroy                = true
-
-  lifecycle {
-    ignore_changes = [
-      // グローバルクラスターは、既存クラスターからデータベース名の設定を継承するため、変更を無視する
-      database_name,
-    ]
-  }
-
-  ...
-
-}
-
-resource "aws_rds_cluster" "foo" {
-
-  // グローバルクラスターに依存しないように、設定値をハードコーディングする
-  database_name              = "foo"
-  engine                      = "<エンジン>"
-  engine_version              = "<エンジンバージョン>"
-
-  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする
-  master_username             = "admin"
-  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトする
-  master_password             = "password"
-  // NOTE: 大阪リージョンのプロビジョニング時はコメントアウトを外す
-  // global_cluster_identifier  = "<東京リージョンのクラスター名>"
-
-  lifecycle {
-    ignore_changes = [
-      global_cluster_identifier
-    ]
-  }
-
-  ...
-
-}
-```
 
 <br>
 
@@ -1574,9 +1547,11 @@ resource "aws_rds_global_cluster" "foo" {
 
   ...
 
+  count = var.is_tokyo ? 1 : 0
+
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.07.5"
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
 
   ...
 
@@ -1587,11 +1562,11 @@ resource "aws_rds_cluster" "foo" {
   ...
 
   database_name               = "foo"
+  master_username             = "admin"
+  master_password             = "password"
   engine                      = aws_rds_global_cluster.foo.engine
   engine_version              = aws_rds_global_cluster.foo.engine_version
   global_cluster_identifier   = aws_rds_global_cluster.foo.id
-  master_username             = "admin"
-  master_password             = "password"
 
   ...
 
@@ -1613,9 +1588,11 @@ resource "aws_rds_global_cluster" "foo" {
 
   ...
 
+  count = var.is_tokyo ? 1 : 0
+
+  global_cluster_identifier    = "<東京リージョンのクラスター名>"
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.07.5"
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
 
   ...
 
@@ -1626,11 +1603,11 @@ resource "aws_rds_cluster" "foo" {
   ...
 
   database_name               = "foo"
+  master_username             = "admin"
+  master_password             = "password"
   engine                      = aws_rds_global_cluster.foo.engine
   engine_version              = aws_rds_global_cluster.foo.engine_version
   global_cluster_identifier   = aws_rds_global_cluster.foo.id
-  master_username             = "admin"
-  master_password             = "password"
 
   lifecycle {
     ignore_changes = [engine_version]

@@ -1193,6 +1193,7 @@ resource "aws_security_group" "ec2" {
 
   dynamic ingress {
     for_each = var.security_group_ingress_ec2_ssh
+
     content {
       cidr_blocks = [ ingress.value["cidr_blocks"] ]
       description = ingress.value["description"]
