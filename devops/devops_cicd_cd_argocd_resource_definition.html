@@ -24798,20 +24798,20 @@ sops<span class="w"> </span><span class="m">3</span>.7.3
 <p>ここでは、Terraformの公式モジュールを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_repo_server&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 
 <span class="c1">  # ArgoCDのrepo-serverのPodに紐付けるIAMロール</span>
-<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver&quot;</span>
+<span class="w">  </span><span class="na">create_role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver&quot;</span>
 
 <span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
 <span class="c1">  # ArgoCDは外部のAWS EKS Clusterで稼働している</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
-<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="na">role_policy_arns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nv">aws_iam_policy.argocd_reposerver_policy.arn</span>
 <span class="w">  </span><span class="p">]</span>
 
@@ -24824,7 +24824,7 @@ sops<span class="w"> </span><span class="m">3</span>.7.3
 <span class="p">}</span>
 
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;argocd_reposerver_policy&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver-policy&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver-policy&quot;</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
 <span class="w">    </span><span class="s2">&quot;${path.module}/policies/inline_policies/argocd_reposerver_policy.tpl&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">{}</span>
@@ -25124,9 +25124,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="c1"># 各種ConfigMapやSecretを読み込む</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins-home</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh-known-hosts</span>
 <span class="w">      </span><span class="nt">configMap</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
@@ -25311,15 +25311,15 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="c1"># 各種Secretを読み込む</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var-files</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp</span>
-<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh-known-hosts</span>
 <span class="w">      </span><span class="nt">configMap</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
@@ -25499,7 +25499,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-tls</span>
 
-<span class="w w-Error"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-application">02. Application<a class="headerlink" href="#02-application" title="Permanent link">&para;</a></h2>
@@ -25694,7 +25694,8 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p><br></p>
 <h3 id="specsource">.spec.source<a class="headerlink" href="#specsource" title="Permanent link">&para;</a></h3>
 <h4 id="source">▼ sourceとは<a class="headerlink" href="#source" title="Permanent link">&para;</a></h4>
-<p>リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで<code>kubectl apply</code>コマンドを実行。</p>
+<p>リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
+<code>kubectl apply</code>コマンドを実行。</p>
 <table>
 <thead>
 <tr>
@@ -26012,13 +26013,15 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.data.AWS_SECRET_ACCESS_KEY | b64en</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p>ArgoCDはHelmの<code>v2</code>と<code>v3</code>の両方を保持している。</p>
-<p>Helmリリースするチャートの<code>.apiVersion</code>キーの値が<code>v1</code>であれば、ArgoCDはHelmの<code>v2</code>を使用して、一方で<code>.apiVersion</code>キーの値が<code>v2</code>であれば、Helmの<code>v3</code>を使用するようになっている。</p>
+<p>Helmリリースするチャートの<code>.apiVersion</code>キーの値が<code>v1</code>であれば、ArgoCDはHelmの<code>v2</code>を使用して、一方で<code>.apiVersion</code>キーの値が
+<code>v2</code>であれば、Helmの<code>v3</code>を使用するようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681">https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681</a></li>
 </ul>
 </blockquote>
-<p>ArgoCDを介してHelmを実行する場合、内部的には<code>helm template</code>コマンドとetcd上のマニフェストを<code>kubectl diff</code>コマンドで比較し、生じた差分を<code>kubectl apply</code>コマンドを使用してデプロイしている。</p>
+<p>ArgoCDを介してHelmを実行する場合、内部的には<code>helm template</code>コマンドとetcd上のマニフェストを<code>kubectl diff</code>コマンドで比較し、生じた差分を
+<code>kubectl apply</code>コマンドを使用してデプロイしている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
@@ -26048,7 +26051,8 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <h4 id="repourl_1">▼ repoURL<a class="headerlink" href="#repourl_1" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のチャートレジストリ内のリポジトリのURLを設定する。</p>
 <p>パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。</p>
-<p>チャートリポジトリとして扱うために、リポジトリのルート直下に<code>index.yaml</code>ファイルと<code>.tgz</code>ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。</p>
+<p>チャートリポジトリとして扱うために、リポジトリのルート直下に<code>index.yaml</code>ファイルと
+<code>.tgz</code>ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -26227,7 +26231,8 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">  </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
 </code></pre></div>
-<p>注意点として、Applicationがリポジトリで検知したKubernetesリソースの<code>metadata.namespace</code>キーで、別のNamespaceで作成されている場合、そちらが優先される。</p>
+<p>注意点として、Applicationがリポジトリで検知したKubernetesリソースの
+<code>metadata.namespace</code>キーで、別のNamespaceで作成されている場合、そちらが優先される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455">https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455</a></li>
@@ -26635,7 +26640,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-07</span>
   </span>
 
     
