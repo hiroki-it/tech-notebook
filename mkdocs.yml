@@ -167,17 +167,17 @@ nav:
           - ホワイトボックステスト: software/software_application_architecture_microservices_test_blackbox.md
           - ブラックボックステスト: software/software_application_architecture_microservices_test_whitebox.md
           - 開発手法: software/software_application_architecture_microservices_development.md
-      - ■ アプリケーション間通信:
-          - アプリケーション間通信: software/software_application_collaboration_communication.md
+      - ■ メッセージング方式: software/software_application_messaging.md
+      - ■ API:
           - ■ RESTful-API:
-              - RESTful-API: software/software_application_collaboration_api_restful.md
-              - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
+              - RESTful-API: software/software_application_api_restful.md
+              - API仕様書: software/software_application_api_restful_api_specification.md
           - ■ RPC-API:
-              - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
+              - gRPC: software/software_application_api_rpc_api_grpc.md
               - ■ クライアントパッケージ:
-                  - Go: software/software_application_collaboration_api_rpc_api_grpc_client_package_go.md
+                  - Go: software/software_application_api_rpc_api_grpc_client_package_go.md
           - ■ GraphQL-API:
-              - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
+              - GraphQL: software/software_application_api_graphql_api_graphql.md
       - ■ ワークフロー:
           - ■ Argo Workflows:
               - Argo Workflows: software/software_application_workflow_argoworkflow.md
