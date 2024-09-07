@@ -55,9 +55,13 @@
 
 <br>
 
-### アプリケーション間通信
+### メッセージング方式
 
-* #### [︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging.html)
+* #### [メッセージング方式](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging.html)
+
+<br>
+
+### API
 
 * #### <u>RESTful-API</u>
   > * ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html)
