@@ -30,7 +30,7 @@ func main() {
 
     client := openfeature.NewClient("app")
 
-	// フィーチャーフラグサービスから、フラグのboolean値を取得する
+	// フィーチャーフラグ返信プロキシから、フラグのboolean値を取得する
 	v2Enabled, _ := client.BooleanValue(
         context.Background(),
 		"v2_enabled",
@@ -46,5 +46,6 @@ func main() {
 ```
 
 > - https://openfeature.dev/docs/reference/technologies/server/go
+> - https://gofeatureflag.org/docs/relay_proxy
 
 <br>
