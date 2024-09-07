@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kong Ingress＠CNCF
-description: Kong Ingress＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Kong Ingress＠Kong
+description: Kong Ingress＠Kongの知見を記録しています。
 ---
 
-# Kong Ingress＠CNCF
+# Kong Ingress＠Kong
 
 ## はじめに
 

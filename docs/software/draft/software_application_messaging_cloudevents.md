@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudEvents＠CNCF
-description: CloudEvents＠CNCFの知見を記録しています。
+title: 【IT技術の知見】CloudEvents＠メッセージング
+description: CloudEvents＠メッセージングの知見を記録しています。
 ---
 
-# CloudEvents＠CNCF
+# CloudEvents＠メッセージング
 
 ## はじめに
 

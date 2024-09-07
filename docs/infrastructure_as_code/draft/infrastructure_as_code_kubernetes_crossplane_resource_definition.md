@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Crossplane＠CNCF
-description: Crossplane＠CNCFの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Crossplane
+description: リソース定義＠Crossplaneの知見を記録しています。
 ---
 
-# Crossplane＠CNCF
+# リソース定義＠Crossplane
 
 ## はじめに
 
@@ -13,7 +13,9 @@ description: Crossplane＠CNCFの知見を記録しています。
 
 <br>
 
-## 01.
+## 01. AWS Provider
+
+### package
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1
@@ -25,5 +27,6 @@ spec:
 ```
 
 > - https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider
+> - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0
 
 <br>

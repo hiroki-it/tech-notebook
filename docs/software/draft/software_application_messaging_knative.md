@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Knative＠CNCF
-description: Knative＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Knative＠メッセージング
+description: Knative＠メッセージングの知見を記録しています。
 ---
 
-# Knative＠CNCF
+# Knative＠メッセージング
 
 ## はじめに
 

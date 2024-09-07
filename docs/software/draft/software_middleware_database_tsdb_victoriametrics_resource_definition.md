@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠CNCF
-description: VictoriaMetrics＠CNCFの知見を記録しています。
+title: 【IT技術の知見】リソース定義＠VictoriaMetrics
+description: リソース定義＠VictoriaMetricsの知見を記録しています。
 ---
 
-# VictoriaMetrics＠CNCF
+# リソース定義＠VictoriaMetrics
 
 ## はじめに
 

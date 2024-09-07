@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kong Gateway＠CNCF
-description: Kong Gateway＠CNCFの知見を記録しています。
+title: 【IT技術の知見】Kong Gateway＠Kong
+description: Kong Gateway＠Kongの知見を記録しています。
 ---
 
-# Kong Gateway＠CNCF
+# Kong Gateway＠Kong
 
 ## はじめに
 
