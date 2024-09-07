@@ -1933,6 +1933,18 @@
          <lastmod>2024-09-07</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_api_rpc_api_grpc_client_package_javascript.html</loc>
+         <lastmod>2024-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_api_rpc_api_grpc_client_package_python.html</loc>
+         <lastmod>2024-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_api_rpc_api_grpc_client_package_ruby.html</loc>
+         <lastmod>2024-09-07</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_object_orientation_patterns.html</loc>
          <lastmod>2024-09-07</lastmod>
     </url>
@@ -1945,23 +1957,11 @@
          <lastmod>2024-09-07</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_javascript.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_event_driven_cloudevents.html</loc>
          <lastmod>2024-09-07</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_python.html</loc>
-         <lastmod>2024-09-07</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_ruby.html</loc>
-         <lastmod>2024-09-07</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_cloudevents.html</loc>
-         <lastmod>2024-09-07</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_knative.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_event_driven_knative.html</loc>
          <lastmod>2024-09-07</lastmod>
     </url>
     <url>

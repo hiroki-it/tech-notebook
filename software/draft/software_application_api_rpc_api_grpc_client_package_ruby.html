@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="JavaScript＠gRPCクライアントパッケージの知見を記録しています。">
+        <meta name="description" content="Ruby＠gRPCクライアントパッケージの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_collaboration_api_rpc_api_grpc_client_package_javascript.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_api_rpc_api_grpc_client_package_ruby.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】JavaScript＠gRPCクライアントパッケージ - 俺の技術ノート</title>
+        <title>【IT技術の知見】Ruby＠gRPCクライアントパッケージ - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#javascriptgrpc" class="md-skip">
+        <a href="#rubygrpc" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】JavaScript＠gRPCクライアントパッケージ
+              【IT技術の知見】Ruby＠gRPCクライアントパッケージ
             
           </span>
         </div>
@@ -22957,19 +22957,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      gRPCクライアントパッケージ側
+      クライアント側
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="gRPCクライアントパッケージ側">
+    <nav class="md-nav" aria-label="クライアント側">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
+  <a href="#grpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ gRPCクライアントパッケージパッケージ
+      ▼ gRPCクライアントパッケージ
     </span>
   </a>
   
@@ -22981,7 +22981,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     <span class="md-ellipsis">
       gRPCサーバーとクライアントの両方
     </span>
@@ -23000,9 +23000,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pbjs" class="md-nav__link">
+  <a href="#pbrb" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ pb.jsファイル
+      ▼ pb.rbファイル
     </span>
   </a>
   
@@ -23036,7 +23036,7 @@
   
 
 
-<h1 id="javascriptgrpc">JavaScript＠gRPCクライアントパッケージ<a class="headerlink" href="#javascriptgrpc" title="Permanent link">&para;</a></h1>
+<h1 id="rubygrpc">Ruby＠gRPCクライアントパッケージ<a class="headerlink" href="#rubygrpc" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23048,22 +23048,22 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">サーバー側<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="protocol-buffer">▼ Protocol Buffer自動作成ツール<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
-<p>npmリポジトリから、Protocol Buffer自動作成ツールをインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>grpc-tools
+<p>gemリポジトリから、Protocol Buffer自動作成ツールをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gem<span class="w"> </span>install<span class="w"> </span>grpc-tools
 </code></pre></div>
 <h4 id="grpc">▼ gRPCサーバー<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="grpc_1">gRPCクライアントパッケージ側<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_2">▼ gRPCクライアントパッケージパッケージ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
-<p>npmリポジトリから、gRPCクライアントパッケージをインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>grpc
+<h3 id="_3">クライアント側<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_1">▼ gRPCクライアントパッケージ<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
+<p>gemリポジトリから、gRPCクライアントをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gem<span class="w"> </span>install<span class="w"> </span>grpc
 </code></pre></div>
 <p><br></p>
-<h3 id="grpc_3">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h3>
+<h3 id="grpc_2">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h3>
 <h4 id="proto">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<h4 id="pbjs">▼ <code>pb.js</code>ファイル<a class="headerlink" href="#pbjs" title="Permanent link">&para;</a></h4>
+<h4 id="pbrb">▼ <code>pb.rb</code>ファイル<a class="headerlink" href="#pbrb" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 
@@ -23086,7 +23086,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-07</span>
   </span>
 
     

@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Knative＠メッセージングの知見を記録しています。">
+        <meta name="description" content="JavaScript＠gRPCクライアントパッケージの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_knative.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_api_rpc_api_grpc_client_package_javascript.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Knative＠メッセージング - 俺の技術ノート</title>
+        <title>【IT技術の知見】JavaScript＠gRPCクライアントパッケージ - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#knative" class="md-skip">
+        <a href="#javascriptgrpc" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Knative＠メッセージング
+              【IT技術の知見】JavaScript＠gRPCクライアントパッケージ
             
           </span>
         </div>
@@ -22914,28 +22914,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-knative" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Knativeとは
+      01. セットアップ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      サーバー側
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="サーバー側">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocol-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Protocol Buffer自動作成ツール
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. イベント駆動関数テンプレート
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. イベント駆動関数テンプレート">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
+  <a href="#grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Goの場合
+      ▼ gRPCサーバー
     </span>
   </a>
   
@@ -22945,40 +22955,54 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      03. コマンド
+      gRPCクライアントパッケージ側
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. コマンド">
+    <nav class="md-nav" aria-label="gRPCクライアントパッケージ側">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#func" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     <span class="md-ellipsis">
-      func
+      ▼ gRPCクライアントパッケージパッケージ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="func">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      gRPCサーバーとクライアントの両方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gRPCサーバーとクライアントの両方">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
+  <a href="#proto" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ create
+      ▼ protoファイル
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
+  <a href="#pbjs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ deploy
+      ▼ pb.jsファイル
     </span>
   </a>
   
@@ -23012,7 +23036,7 @@
   
 
 
-<h1 id="knative">Knative＠メッセージング<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
+<h1 id="javascriptgrpc">JavaScript＠gRPCクライアントパッケージ<a class="headerlink" href="#javascriptgrpc" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23021,64 +23045,26 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-knative">01. Knativeとは<a class="headerlink" href="#01-knative" title="Permanent link">&para;</a></h2>
-<p>Knativeを使用しない場合、イベント駆動関数の公開に必要なKubernetesリソース (例：Deployment、Service、Pod、など) をユーザーが作成し、関数を公開する。</p>
-<p>一方で、Knativeであれば、イベント駆動関数の公開に必要なKubernetesリソースをフレームワークとして作成し、簡単にPodを公開できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/321365">https://logmi.jp/tech/articles/321365</a></li>
-<li><a href="https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f">https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f</a></li>
-</ul>
-</blockquote>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">サーバー側<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="protocol-buffer">▼ Protocol Buffer自動作成ツール<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
+<p>npmリポジトリから、Protocol Buffer自動作成ツールをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>grpc-tools
+</code></pre></div>
+<h4 id="grpc">▼ gRPCサーバー<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
-<h2 id="02">02. イベント駆動関数テンプレート<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">Handle</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="o">...</span>
-<span class="p">}</span>
+<h3 id="grpc_1">gRPCクライアントパッケージ側<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_2">▼ gRPCクライアントパッケージパッケージ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
+<p>npmリポジトリから、gRPCクライアントパッケージをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>grpc
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/knative/func/blob/main/docs/function-templates/golang.md">https://github.com/knative/func/blob/main/docs/function-templates/golang.md</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="func">func<a class="headerlink" href="#func" title="Permanent link">&para;</a></h3>
-<h4 id="create">▼ create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
-<p>イベント駆動関数のテンプレートを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>create<span class="w"> </span>-l<span class="w"> </span>&lt;言語&gt;<span class="w"> </span>&lt;関数名&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/functions/creating-functions/">https://knative.dev/docs/functions/creating-functions/</a></li>
-</ul>
-</blockquote>
-<h4 id="deploy">▼ deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h4>
-<p>イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>deploy<span class="w"> </span>--registry<span class="w"> </span>&lt;コンテナレジストリ名&gt;
-
-🙌<span class="w"> </span>Function<span class="w"> </span>image<span class="w"> </span>built:<span class="w"> </span>&lt;registry&gt;/hello:latest
-✅<span class="w"> </span>Function<span class="w"> </span>deployed<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>and<span class="w"> </span>exposed<span class="w"> </span>at<span class="w"> </span>URL:
-http://hello.default.127.0.0.1.sslip.io
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/functions/deploying-functions/#procedure">https://knative.dev/docs/functions/deploying-functions/#procedure</a></li>
-</ul>
-</blockquote>
+<h3 id="grpc_3">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h3>
+<h4 id="proto">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="pbjs">▼ <code>pb.js</code>ファイル<a class="headerlink" href="#pbjs" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
 
 
