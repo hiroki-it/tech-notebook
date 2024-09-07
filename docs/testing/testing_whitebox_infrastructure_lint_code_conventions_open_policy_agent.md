@@ -30,9 +30,9 @@ OpenPolicyAgentは、OpenPolicyエージェント、`rego`ファイル、DB、�
 
 DBから認証情報を読み出し、認可処理を実行する。
 
-この時、`rego`ファイルのロジックに基づいて、boolean型値を返却する。
+この時、`rego`ファイルのロジックに基づいて、boolean値を返却する。
 
-返却されたboolean型値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
+返却されたboolean値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
@@ -60,9 +60,9 @@ DBから認証情報を読み出し、認可処理を実行する。
 
 アプリケーションの認可スコープ定義の責務を認可サービスとして切り分ける。
 
-アプリケーションはOpenPolicyAgentにリクエストを送信し、OpenPolicyAgentは認可スコープに応じてboolean型値を返却する。
+アプリケーションはOpenPolicyAgentにリクエストを送信し、OpenPolicyAgentは認可スコープに応じてboolean値を返却する。
 
-返却されたboolean型値を使用して、アプリケーションは認可スコープ内の処理を実行する。
+返却されたboolean値を使用して、アプリケーションは認可スコープ内の処理を実行する。
 
 #### ▼ 認証情報の作成
 

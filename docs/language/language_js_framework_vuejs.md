@@ -323,7 +323,7 @@ class Foo {
 
   // コンストラクタによって宣言されているため、アクセスできる。
   isOk() {
-    // bool値を返却する例を考える。
+    // boolean値を返却する例を考える。
     return this.isOk;
   }
 }

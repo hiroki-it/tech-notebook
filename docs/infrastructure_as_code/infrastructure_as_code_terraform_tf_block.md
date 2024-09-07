@@ -541,7 +541,7 @@ variable "waf_blocked_user_agents" {
 
 **＊実装例＊**
 
-`module`ブロックや`resource`ブロック内で、`count`引数を使用して条件分岐を定義した場合に、そのフラグ値となるboolean型値をデフォルト値として定義すると良い。
+`module`ブロックや`resource`ブロック内で、`count`引数を使用して条件分岐を定義した場合に、そのフラグ値となるboolean値をデフォルト値として定義すると良い。
 
 ```terraform
 variable "enable_provision" {
