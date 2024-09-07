@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="メッセージング方式＠アプリケーションの知見を記録しています。">
+        <meta name="description" content="リクエストリプライ方式＠メッセージング方式の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_request_reply.html">
       
       
         <link rel="prev" href="software_application_architecture_microservices_development.html">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】メッセージング方式＠アプリケーション - 俺の技術ノート</title>
+        <title>【IT技術の知見】リクエストリプライ方式＠メッセージング方式 - 俺の技術ノート</title>
       
     
     
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】メッセージング方式＠アプリケーション
+              【IT技術の知見】リクエストリプライ方式＠メッセージング方式
             
           </span>
         </div>
@@ -1590,6 +1590,50 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ メッセージング方式
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ メッセージング方式
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1602,18 +1646,18 @@
           
   
   <span class="md-ellipsis">
-    メッセージング方式
+    リクエストリプライ方式
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_messaging.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_messaging_request_reply.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    メッセージング方式
+    リクエストリプライ方式
   </span>
   
 
@@ -1648,21 +1692,21 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. メッセージング方式の種類
+      01. リクエストリプライ方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. メッセージング方式の種類">
+    <nav class="md-nav" aria-label="01. リクエストリプライ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      処理タイミングで見た種類
+      処理の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="処理タイミングで見た種類">
+    <nav class="md-nav" aria-label="処理の種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1691,11 +1735,11 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      通信仲介コンポーネントで見た種類
+      通信仲介コンポーネントの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信仲介コンポーネントで見た種類">
+    <nav class="md-nav" aria-label="通信仲介コンポーネントの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1733,11 +1777,11 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      通信方向で見た種類
+      通信方向の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信方向で見た種類">
+    <nav class="md-nav" aria-label="通信方向の種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1978,6 +2022,14 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -23254,21 +23306,21 @@
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. メッセージング方式の種類
+      01. リクエストリプライ方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. メッセージング方式の種類">
+    <nav class="md-nav" aria-label="01. リクエストリプライ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      処理タイミングで見た種類
+      処理の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="処理タイミングで見た種類">
+    <nav class="md-nav" aria-label="処理の種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23297,11 +23349,11 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      通信仲介コンポーネントで見た種類
+      通信仲介コンポーネントの種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信仲介コンポーネントで見た種類">
+    <nav class="md-nav" aria-label="通信仲介コンポーネントの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23339,11 +23391,11 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      通信方向で見た種類
+      通信方向の種類
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信方向で見た種類">
+    <nav class="md-nav" aria-label="通信方向の種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23599,7 +23651,7 @@
   
 
 
-<h1 id="_1">メッセージング方式＠アプリケーション<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">リクエストリプライ方式＠メッセージング方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23608,17 +23660,18 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. メッセージング方式の種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">処理タイミングで見た種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="01">01. リクエストリプライ方式<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">処理の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 同期通信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>同期処理の一種である。</p>
+<p>アプリ間で同期的に双方向で通信を実行する。</p>
+<p>リクエスト処理の完了 (レスポンス) を待ってから、後続の処理が開始する。</p>
 <h4 id="_5">▼ 非同期通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>非同期処理の一種である。</p>
-<p>そのため、リクエスト処理の完了 (レスポンス) を待たずに後続の処理が開始する。</p>
+<p>アプリ間で非同期的に双方向で通信を実行する。</p>
+<p>リクエスト処理の完了 (レスポンス) を待たずに、後続の処理が開始する。</p>
 <p>後続の全処理が非同期通信と無関係であれば、そのままで問題は起こらない。</p>
 <p>しかし、後続の処理に非同期通信の結果を使用するものが含まれている場合、この処理だけは非同期通信の後に実行されるように定義する必要がある。</p>
 <p><br></p>
-<h3 id="_6">通信仲介コンポーネントで見た種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_6">通信仲介コンポーネントの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ポイントツーポイントの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>アプリ間で直接的に通信する。</p>
 <p>送信側のアプリはリクエスト送信し、受信側のアプリは同期的にリクエストを受信する。</p>
@@ -23641,7 +23694,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_10">通信方向で見た種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_10">通信方向の種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 一方向<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>クライアントからサーバーにリクエストを送信する。</p>
 <p>サーバーからクライアントにリクエストを送信することはない。</p>
