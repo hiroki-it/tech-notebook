@@ -1579,7 +1579,7 @@ resource "aws_rds_cluster" "foo" {
 
 ### アップグレードする
 
-`aws_rds_cluster`ブロックが `aws_rds_global_cluster`ブロックに依存している。
+`aws_rds_cluster`ブロックが`aws_rds_global_cluster`ブロックに依存している。
 
 この依存関係の方向は、既存のクラスターをグローバルクラスターに昇格させる場合と逆である。
 

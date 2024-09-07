@@ -371,7 +371,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html
 
 #### ▼ RewriteRuleとは
 

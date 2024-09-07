@@ -55,21 +55,21 @@
 
 <br>
 
-### アプリケーション間連携
+### アプリケーション間通信
 
-* #### [︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_communication.html)
+* #### [︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging.html)
 
 * #### <u>RESTful-API</u>
-  > * ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html)
-  > * ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful_api_specification.html)
+  > * ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html)
+  > * ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful_api_specification.html)
 
 * #### <u>RPC-API</u>
-  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc.html)
+  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_rpc_api_grpc.html)
   > * ##### <u>クライアントパッケージ</u>
-  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc_client_package_go.html)
+  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_rpc_api_grpc_client_package_go.html)
 
 * #### <u>GraphQL-API</u>
-  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html)
+  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_graphql_api_graphql.html)
 
 <br>
 

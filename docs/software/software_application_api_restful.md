@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】RESTful-API＠アプリケーション連携
-description: RESTful-API＠アプリケーション連携の知見を記録しています。
+title: 【IT技術の知見】RESTful-API＠API
+description: RESTful-API＠APIの知見を記録しています。
 ---
 
-# RESTful-API＠アプリケーション連携
+# RESTful-API＠API
 
 ## はじめに
 

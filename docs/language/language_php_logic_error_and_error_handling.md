@@ -111,7 +111,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html
 
 **＊実装例＊**
 
