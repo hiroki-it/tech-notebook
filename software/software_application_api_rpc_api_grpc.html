@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="アプリケーション間通信＠アプリケーション連携の知見を記録しています。">
+        <meta name="description" content="gRPC＠RPC-APIの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_communication.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html">
       
       
-        <link rel="prev" href="software_application_architecture_microservices_development.html">
+        <link rel="prev" href="software_application_api_restful_api_specification.html">
       
       
-        <link rel="next" href="software_application_collaboration_api_restful.html">
+        <link rel="next" href="software_application_api_rpc_api_grpc_client_package_go.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】アプリケーション間通信＠アプリケーション連携 - 俺の技術ノート</title>
+        <title>【IT技術の知見】gRPC＠RPC-API - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#grpcrpc-api" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】アプリケーション間通信＠アプリケーション連携
+              【IT技術の知見】gRPC＠RPC-API
             
           </span>
         </div>
@@ -968,6 +968,8 @@
       
         
       
+        
+      
     
     
       
@@ -1584,14 +1586,33 @@
                 
   
   
-    
   
   
-  
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="software_application_messaging.html" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    ■ メッセージング方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
         
       
@@ -1609,24 +1630,166 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    ■ アプリケーション間連携
+    ■ API
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
-            ■ アプリケーション間連携
+            ■ API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_1" id="__nav_5_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RESTful-API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RESTful-API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_restful.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RESTful-API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_restful_api_specification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API仕様書
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2" id="__nav_5_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RPC-API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RPC-API
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1650,18 +1813,18 @@
           
   
   <span class="md-ellipsis">
-    アプリケーション間通信
+    gRPC
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_collaboration_communication.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_api_rpc_api_grpc.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    アプリケーション間通信
+    gRPC
   </span>
   
 
@@ -1685,7 +1848,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -1694,29 +1857,173 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アプリケーション間通信の種類
+      01. gRPCの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アプリケーション間通信の種類">
+    <nav class="md-nav" aria-label="01. gRPCの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 通信方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 通信方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gRPCの通信方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unary-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unary RPC (単項RPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unary RPC (単項RPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 単項RPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Streaming RPC (サーバーストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Streaming RPC (サーバーストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバーストリーミングRPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Streaming RPC (クライアントストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client Streaming RPC (クライアントストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアントストリーミングRPC とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Streaming RPC (双方向ストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bidirectional Streaming RPC (双方向ストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 双方向ストリーミングRPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-http11grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. HTTP/1.1とgRPCの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. HTTP/1.1とgRPCの違い">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      処理タイミングで見た種類
+      リクエストの構造
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="処理タイミングで見た種類">
+    <nav class="md-nav" aria-label="リクエストの構造">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 同期通信
+      ▼ リクエストメタデータ
     </span>
   </a>
   
@@ -1725,7 +2032,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非同期通信
+      ▼ レスポンスメタデータ
     </span>
   </a>
   
@@ -1739,17 +2046,40 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      通信仲介コンポーネントで見た種類
+      レスポンスタイム
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信仲介コンポーネントで見た種類">
+    <nav class="md-nav" aria-label="レスポンスタイム">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ HTTP/1.1の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gRPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ポイントツーポイントの場合
+      ステータスコード
     </span>
   </a>
   
@@ -1758,16 +2088,83 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージキューを経由する場合
+      タイムアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タイムアウト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ HTTP/1/1の場合
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 単項RPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ストリーミングRPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ディレクトリ構成規約
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ディレクトリ構成規約">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを経由する場合
+      前提
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protogrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      protoファイルをgRPCサーバー側に置く場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に置く場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gRPCクライアント/サーバーのリポジトリ
     </span>
   </a>
   
@@ -1779,235 +2176,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#protopb_go" class="md-nav__link">
     <span class="md-ellipsis">
-      通信方向で見た種類
+      protoファイルとpb_goファイルを専用リポジトリに置く場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信方向で見た種類">
+    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 一方向
+      ▼ gRPCクライアント/サーバーのリポジトリ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#protocol-buffer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 双方向
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Ajaxによる非同期通信
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Ajaxによる非同期通信">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ajaxasynchronous-javascript-xml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajaxとは：Asynchronous JavaScript + XML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajaxの仕組み
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装方法の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装方法の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xhr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ xhrオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetch" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ fetchメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jquery" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ JQueryオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#axios" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ axiosオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02-ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. Ajaxの実装
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. Ajaxの実装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xhr_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      xhrオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="xhrオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jquery_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      JQueryオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JQueryオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 任意のHTTPメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#axios_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Axiosオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Axiosオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
+      ▼ Protocol Bufferの共有リポジトリ
     </span>
   </a>
   
@@ -2043,8 +2233,6 @@
       
         
       
-        
-      
     
     
       
@@ -2057,171 +2245,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_6_2" id="__nav_5_6_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ RESTful-API
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_6_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ RESTful-API
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_collaboration_api_restful.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RESTful-API
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_collaboration_api_restful_api_specification.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    API仕様書
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_6_3" id="__nav_5_6_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ RPC-API
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_6_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ RPC-API
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_application_collaboration_api_rpc_api_grpc.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    gRPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_6_3_2" id="__nav_5_6_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_7_2_2" id="__nav_5_7_2_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2232,8 +2259,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_6_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_6_3_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_2_2">
             <span class="md-nav__icon md-icon"></span>
             ■ クライアントパッケージ
           </label>
@@ -2246,7 +2273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_collaboration_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2299,10 +2326,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_6_4" id="__nav_5_6_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_7_3" id="__nav_5_7_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2313,8 +2340,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_6_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_3">
             <span class="md-nav__icon md-icon"></span>
             ■ GraphQL-API
           </label>
@@ -2327,7 +2354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_collaboration_api_graphql_api_graphql.html" class="md-nav__link">
+      <a href="software_application_api_graphql_api_graphql.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2382,10 +2409,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
         
           
-          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2396,8 +2423,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             ■ ワークフロー
           </label>
@@ -2428,10 +2455,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8_1" >
         
           
-          <label class="md-nav__link" for="__nav_5_7_1" id="__nav_5_7_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8_1" id="__nav_5_8_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2442,8 +2469,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Argo Workflows
           </label>
@@ -2524,10 +2551,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_7_2" id="__nav_5_7_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8_2" id="__nav_5_8_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2538,8 +2565,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Temporal
           </label>
@@ -2591,10 +2618,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_7_2_2" id="__nav_5_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8_2_2" id="__nav_5_8_2_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2605,8 +2632,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7_2_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_8_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8_2_2">
             <span class="md-nav__icon md-icon"></span>
             ■ 設定ファイル
           </label>
@@ -23243,7 +23270,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -23252,29 +23279,173 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
+  <a href="#01-grpc" class="md-nav__link">
     <span class="md-ellipsis">
-      01. アプリケーション間通信の種類
+      01. gRPCの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アプリケーション間通信の種類">
+    <nav class="md-nav" aria-label="01. gRPCの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. 通信方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 通信方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gRPCの通信方式とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unary-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unary RPC (単項RPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unary RPC (単項RPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 単項RPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Streaming RPC (サーバーストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server Streaming RPC (サーバーストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ サーバーストリーミングRPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Streaming RPC (クライアントストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client Streaming RPC (クライアントストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クライアントストリーミングRPC とは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bidirectional-streaming-rpc-rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bidirectional Streaming RPC (双方向ストリーミングRPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bidirectional Streaming RPC (双方向ストリーミングRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rpc_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 双方向ストリーミングRPCとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-http11grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. HTTP/1.1とgRPCの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. HTTP/1.1とgRPCの違い">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      処理タイミングで見た種類
+      リクエストの構造
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="処理タイミングで見た種類">
+    <nav class="md-nav" aria-label="リクエストの構造">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 同期通信
+      ▼ リクエストメタデータ
     </span>
   </a>
   
@@ -23283,7 +23454,7 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 非同期通信
+      ▼ レスポンスメタデータ
     </span>
   </a>
   
@@ -23297,17 +23468,40 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      通信仲介コンポーネントで見た種類
+      レスポンスタイム
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信仲介コンポーネントで見た種類">
+    <nav class="md-nav" aria-label="レスポンスタイム">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ HTTP/1.1の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gRPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ポイントツーポイントの場合
+      ステータスコード
     </span>
   </a>
   
@@ -23316,16 +23510,83 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージキューを経由する場合
+      タイムアウト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タイムアウト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ HTTP/1/1の場合
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 単項RPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ストリーミングRPCの場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ディレクトリ構成規約
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ディレクトリ構成規約">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ メッセージブローカーを経由する場合
+      前提
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protogrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      protoファイルをgRPCサーバー側に置く場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に置く場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ gRPCクライアント/サーバーのリポジトリ
     </span>
   </a>
   
@@ -23337,235 +23598,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#protopb_go" class="md-nav__link">
     <span class="md-ellipsis">
-      通信方向で見た種類
+      protoファイルとpb_goファイルを専用リポジトリに置く場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="通信方向で見た種類">
+    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 一方向
+      ▼ gRPCクライアント/サーバーのリポジトリ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#protocol-buffer" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 双方向
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Ajaxによる非同期通信
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Ajaxによる非同期通信">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ajaxasynchronous-javascript-xml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajaxとは：Asynchronous JavaScript + XML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajaxの仕組み
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      実装方法の種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="実装方法の種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xhr" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ xhrオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetch" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ fetchメソッド
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jquery" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ JQueryオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#axios" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ axiosオブジェクト
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-02-ajax" class="md-nav__link">
-    <span class="md-ellipsis">
-      02-02. Ajaxの実装
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02-02. Ajaxの実装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xhr_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      xhrオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="xhrオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jquery_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      JQueryオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JQueryオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 任意のHTTPメソッド
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#axios_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Axiosオブジェクトの場合
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Axiosオブジェクトの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GET送信
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POST送信
+      ▼ Protocol Bufferの共有リポジトリ
     </span>
   </a>
   
@@ -23599,8 +23653,8 @@
   
 
 
-<h1 id="_1">アプリケーション間通信＠アプリケーション連携<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="grpcrpc-api">gRPC＠RPC-API<a class="headerlink" href="#grpcrpc-api" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23608,321 +23662,578 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. アプリケーション間通信の種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">処理タイミングで見た種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 同期通信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>同期処理の一種である。</p>
-<h4 id="_5">▼ 非同期通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>非同期処理の一種である。</p>
-<p>そのため、リクエスト処理の完了 (レスポンス) を待たずに後続の処理が開始する。</p>
-<p>後続の全処理が非同期通信と無関係であれば、そのままで問題は起こらない。</p>
-<p>しかし、後続の処理に非同期通信の結果を使用するものが含まれている場合、この処理だけは非同期通信の後に実行されるように定義する必要がある。</p>
-<p><br></p>
-<h3 id="_6">通信仲介コンポーネントで見た種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ ポイントツーポイントの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>アプリ間で直接的に通信する。</p>
-<p>送信側のアプリはリクエスト送信し、受信側のアプリは同期的にリクエストを受信する。</p>
-<p>送信側のアプリは、受信側のアプリの障害を受けてしまう。</p>
+<h2 id="01-grpc">01. gRPCの仕組み<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>RPCフレームワークの一つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。</p>
+<p>従来のHTTP/<code>1.1</code>ではなく、HTTP/<code>2.0</code> (例：gRPCなど) を使用する。</p>
+<p>RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
+<p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
+<p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ メッセージキューを経由する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>メッセージキュー (例：AWS SQS、など) を経由して、アプリ間で通信する。</p>
-<h4 id="_9">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>通信仲介コンポーネントにメッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由して、アプリ間で通信する。</p>
-<p>送信側のアプリはこれらにリクエストを送信する。</p>
-<p>受信側のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。</p>
-<p>送信側のアプリは、受信側のアプリの障害を受けない。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
+<li><a href="https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96">https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96</a></li>
+<li><a href="https://openstandia.jp/oss_info/grpc/">https://openstandia.jp/oss_info/grpc/</a></li>
+<li><a href="https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411">https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1501/26/news009.html">https://atmarkit.itmedia.co.jp/ait/articles/1501/26/news009.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_10">通信方向で見た種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ 一方向<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>クライアントからサーバーにリクエストを送信する。</p>
-<p>サーバーからクライアントにリクエストを送信することはない。</p>
-<h4 id="_12">▼ 双方向<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>クライアントとサーバー間が双方向でリクエストを送信し合う。</p>
-<ul>
-<li>gRPCの双方向ストリーミングRPC</li>
-<li>Websocket</li>
-</ul>
+<h2 id="02">02. 通信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="grpc">gRPCの通信方式とは<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
+<p>gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に種類がある。</p>
+<p>通信方式は、<code>proto</code>ファイルで定義する。</p>
+<p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/namusyaka/items/71cf27fd3242adbf348c">https://qiita.com/namusyaka/items/71cf27fd3242adbf348c</a></li>
+<li><a href="https://fintan.jp/page/1521/">https://fintan.jp/page/1521/</a></li>
+<li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-ajax">02. Ajaxによる非同期通信<a class="headerlink" href="#02-ajax" title="Permanent link">&para;</a></h2>
-<h3 id="ajaxasynchronous-javascript-xml">Ajaxとは：Asynchronous JavaScript + XML<a class="headerlink" href="#ajaxasynchronous-javascript-xml" title="Permanent link">&para;</a></h3>
-<p>JavaScriptで非同期通信を実装する手法のこと。</p>
-<p>JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT、を組み合わせる。</p>
-<p><br></p>
-<h3 id="ajax">Ajaxの仕組み<a class="headerlink" href="#ajax" title="Permanent link">&para;</a></h3>
-<p><img alt="AJAXの処理フロー" src="https://user-images.githubusercontent.com/42175286/58467340-6741cb80-8176-11e9-9692-26e6401f1de9.png" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>urlに接続することにより、サーバーからデータがレスポンスされる。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>DOMのマークアップ言語の解析により、Webページが構成される。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>ページ上で任意のイベント (例：ページング操作、フォーム入力など) が発火し、紐付くハンドラ関数が実行される。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>JavaScript型オブジェクトがJSONに変換される。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
-<p>非同期通信により、バックエンドにリクエストを送信する。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
-<p>コントローラーは、JSON型データを受信し、加えてそれを元にDBからオブジェクトをReadする。</p>
-</dd>
-<dt><code>(7)</code></dt>
-<dd>
-<p>コントローラーは、PHP型オブジェクトをJSONに変換し、レスポンスを返信する。</p>
-</dd>
-<dt><code>(8)</code></dt>
-<dd>
-<p>非同期通信メソッドがバックエンドからレスポンスを受信する。</p>
-</dd>
-<dt><code>(9)</code></dt>
-<dd>
-<p>JSONがJavaScript型オブジェクトに変換される。</p>
-</dd>
-<dt><code>(10)</code></dt>
-<dd>
-<p>オブジェクトがマークアップ言語に出力される。</p>
-</dd>
-<dt><code>(11)</code></dt>
-<dd>
-<p>DOMを使用して、Webページを再び構成する。</p>
-</dd>
-</dl>
-<p><br></p>
-<h3 id="_13">実装方法の種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>歴史的に、Ajaxを実装するための方法がいくつかある。</p>
-<h4 id="xhr">▼ xhrオブジェクト<a class="headerlink" href="#xhr" title="Permanent link">&para;</a></h4>
-<p>JavaScriptのビルトインオブジェクトである。</p>
-<p>今では使用することは少ないが、Ajaxが登場した初期の頃によく使われた。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest</a></li>
-</ul>
-</blockquote>
-<h4 id="fetch">▼ <code>fetch</code>メソッド<a class="headerlink" href="#fetch" title="Permanent link">&para;</a></h4>
-<p>JavaScriptのビルトイン関数である。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch">https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch</a></li>
-</ul>
-</blockquote>
-<h4 id="jquery">▼ JQueryオブジェクト<a class="headerlink" href="#jquery" title="Permanent link">&para;</a></h4>
-<p>JQueryパッケージである。</p>
-<blockquote>
-<ul>
-<li><a href="https://api.jquery.com/category/ajax/shorthand-methods/">https://api.jquery.com/category/ajax/shorthand-methods/</a></li>
-<li><a href="https://api.jquery.com/jquery.ajax">https://api.jquery.com/jquery.ajax</a></li>
-</ul>
-</blockquote>
-<h4 id="axios">▼ axiosオブジェクト<a class="headerlink" href="#axios" title="Permanent link">&para;</a></h4>
-<p>Axiosパッケージである。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/axios/axios#request-method-aliases">https://github.com/axios/axios#request-method-aliases</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-02-ajax">02-02. Ajaxの実装<a class="headerlink" href="#02-02-ajax" title="Permanent link">&para;</a></h2>
-<h3 id="xhr_1">xhrオブジェクトの場合<a class="headerlink" href="#xhr_1" title="Permanent link">&para;</a></h3>
-<h4 id="get">▼ GET送信<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// URL</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
+<h3 id="unary-rpc-rpc">Unary RPC (単項RPC)<a class="headerlink" href="#unary-rpc-rpc" title="Permanent link">&para;</a></h3>
+<h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
+<p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に<code>1</code>個のストリームを作成する。</p>
+<p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えると受信後に<code>1</code>個のレスポンスを返信する。</p>
+<p>一番よく使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">xhr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">(</span><span class="n">Request</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">// HTTPメソッドを指定</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="c1">// レスポンス受信後の処理</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// 最後に送信を実行</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://blog.capilano-fw.com/?p=6920#Ajax">https://blog.capilano-fw.com/?p=6920#Ajax</a></li>
-</ul>
-</blockquote>
-<h4 id="post">▼ POST送信<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// URL</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
-
-<span class="c1">// メッセージボディ</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">queries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
-<span class="w">  </span><span class="nx">queries</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">query</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">queryString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">queries</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">xhr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
-
-<span class="c1">// HTTPメソッドを指定</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
-
-<span class="c1">// 送信するデータ型</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">);</span>
-
-<span class="c1">// レスポンス受信後の処理</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="c1">// 最後に送信を実行</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">queryString</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://blog.capilano-fw.com/?p=6920#Ajax">https://blog.capilano-fw.com/?p=6920#Ajax</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="jquery_1">JQueryオブジェクトの場合<a class="headerlink" href="#jquery_1" title="Permanent link">&para;</a></h3>
-<h4 id="get_1">▼ GET送信<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-</code></pre></div>
-<h4 id="post_1">▼ POST送信<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="p">};</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">);</span>
-</code></pre></div>
-<h4 id="http">▼ 任意のHTTPメソッド<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>任意のHTTPメソッド、URL、ヘッダー、メッセージボディなどを設定し、非同期的にパケットを送受信する。</p>
-<p>Promiseオブジェクトを返却する。</p>
-<blockquote>
-<ul>
-<li><a href="https://api.jquery.com/jquery.ajax">https://api.jquery.com/jquery.ajax</a></li>
-</ul>
-</blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
-
-<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-<span class="w">  </span><span class="c1">// ###################</span>
-<span class="w">  </span><span class="c1">//  リクエスト</span>
-<span class="w">  </span><span class="c1">// ###################</span>
-
-<span class="w">  </span><span class="c1">// HTTPメソッド</span>
-<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-
-<span class="w">  </span><span class="c1">// URL</span>
-<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-
-<span class="w">  </span><span class="c1">// 送信するデータ型</span>
-<span class="w">  </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-
-<span class="w">  </span><span class="c1">// メッセージボディ</span>
-<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="p">},</span>
-
-<span class="w">  </span><span class="c1">// ###################</span>
-<span class="w">  </span><span class="c1">//  レスポンス</span>
-<span class="w">  </span><span class="c1">// ###################</span>
-
-<span class="w">  </span><span class="c1">// 受信するデータ型</span>
-<span class="w">  </span><span class="nx">dataType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
-<span class="p">});</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="axios_1">Axiosオブジェクトの場合<a class="headerlink" href="#axios_1" title="Permanent link">&para;</a></h3>
-<h4 id="get_2">▼ GET送信<a class="headerlink" href="#get_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
-
-<span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>＊実装例＊</strong></p>
-<p>ここでは、バックエンドにポーリングを実行する。</p>
-<p>ポーリングの完了を待たずに後続の処理を実行するため、非同期処理である。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">pollBackend</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/api/endpoint&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// responseを処理する</span>
-
-<span class="w">    </span><span class="c1">// 再帰的に呼び出す</span>
-<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">pollBackend</span><span class="p">();</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// エラー処理</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// ポーリングを実行する</span>
-<span class="nx">pollBackend</span><span class="p">();</span>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc">https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc</a></li>
+<li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
+<li><a href="https://kiririmode.hatenablog.jp/entry/20190623/1561247109">https://kiririmode.hatenablog.jp/entry/20190623/1561247109</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="server-streaming-rpc-rpc">Server Streaming RPC (サーバーストリーミングRPC)<a class="headerlink" href="#server-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
+<h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
+<p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
+<p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">(</span><span class="n">NotificationRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">NotificationResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h4 id="post_2">▼ POST送信<a class="headerlink" href="#post_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc">https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc</a></li>
+<li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="client-streaming-rpc-rpc">Client Streaming RPC (クライアントストリーミングRPC)<a class="headerlink" href="#client-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
+<h4 id="rpc_2">▼ クライアントストリーミングRPC とは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
+<p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーは<code>1</code>個のレスポンスを返信する。</p>
+<p>gRPCクライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com/&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">UploadRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">UploadResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="p">};</span>
+<span class="w">    </span><span class="o">...</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc">https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc</a></li>
+<li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="bidirectional-streaming-rpc-rpc">Bidirectional Streaming RPC (双方向ストリーミングRPC)<a class="headerlink" href="#bidirectional-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
+<h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
+<p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。</p>
+<p>gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// gRPCクライアントからのリクエストを受信する。</span>
+<span class="w">    </span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">stream.Recv</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCクライアントにリクエストを送信する。</span>
+<span class="w">    </span><span class="n">stream.Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// リクエストを終了する。</span>
+<span class="w">    </span><span class="na">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stream.CloseSend</span><span class="p">()</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc">https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc</a></li>
+<li><a href="https://reboooot.net/post/hello-grpc/">https://reboooot.net/post/hello-grpc/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/2017/11/13/203000">https://christina04.hatenablog.com/entry/2017/11/13/203000</a></li>
+<li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-http11grpc">03. HTTP/<code>1.1</code>とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
+<h3 id="_3">リクエストの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ リクエストメタデータ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>gRPCのリクエストでは、メタデータをヘッダーに格納する。</p>
+<table>
+<thead>
+<tr>
+<th>メタデータのキー名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accept-encoding</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>content-type</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>grpc-accept-encoding</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>grpc-timeout</code></td>
+<td>gRPCのタイムアウト時間を表す。</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>リクエストのメソッドを表す。</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>リクエストのパスを表す。</td>
+</tr>
+<tr>
+<td><code>scheme</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>user-agent</code></td>
+<td></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata</a></li>
+<li><a href="https://soichisumi.net/2019/04/grpc-custom-error-response/">https://soichisumi.net/2019/04/grpc-custom-error-response/</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ レスポンスメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>gRPCのレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata</a></li>
+<li><a href="https://soichisumi.net/2019/04/grpc-custom-error-response/">https://soichisumi.net/2019/04/grpc-custom-error-response/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">レスポンスタイム<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="http11">▼ HTTP/<code>1.1</code>の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<p>HTTP/<code>1.1</code>の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
+<li><a href="https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6">https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6</a></li>
+</ul>
+</blockquote>
+<h4 id="grpc_1">▼ gRPCの場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
+<p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<p>そのため、従来のHTTP/<code>1.1</code>と同じレスポンスタイムである。</p>
+<p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
+<p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
+<p>この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
+<p><img alt="grpc_streaming-rpc_response-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
+<li><a href="https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6">https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6</a></li>
+<li><a href="https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96">https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">ステータスコード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>HTTP/<code>1.1</code>のステータスコード</th>
+<th>gRPCのステータス番号</th>
+<th>ステータスコード</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td><code>0</code></td>
+<td><code>OK</code></td>
+<td>リクエストに成功した。</td>
+</tr>
+<tr>
+<td><code>499</code></td>
+<td><code>1</code></td>
+<td><code>Canceled</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td><code>2</code></td>
+<td><code>Unknown</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>3</code></td>
+<td><code>InvalidArgument</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>504</code></td>
+<td><code>4</code></td>
+<td><code>DeadlineExceeded</code></td>
+<td>タイムアウト時間内にgRPCサーバーに接続できなかった。</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><code>5</code></td>
+<td><code>NotFound</code></td>
+<td>リクエストしたデータが存在しない。</td>
+</tr>
+<tr>
+<td><code>409</code></td>
+<td><code>6</code></td>
+<td><code>AlreadyExists</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td><code>7</code></td>
+<td><code>PermissionDenied</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>429</code></td>
+<td><code>8</code></td>
+<td><code>ResourceExhausted</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>9</code></td>
+<td><code>FailedPrecondition</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>499</code></td>
+<td><code>10</code></td>
+<td><code>Aborted</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td><code>11</code></td>
+<td><code>OutOfRange</code></td>
+<td>リクエストのパラメーターが正しくない。</td>
+</tr>
+<tr>
+<td><code>501</code></td>
+<td><code>12</code></td>
+<td><code>Unimplemented</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td><code>13</code></td>
+<td><code>Internal</code></td>
+<td>宛先がエラーを返却した。</td>
+</tr>
+<tr>
+<td><code>503</code></td>
+<td><code>14</code></td>
+<td><code>Unavailable</code></td>
+<td>gRPCサーバー側で関数を実行する準備ができておらず、gRPCクライアント側で関数のコールに失敗している。gRPCクライアントからgRPCサーバーへのリクエスト送信は完了したが、レスポンスが返信されていない可能性がある。</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td><code>15</code></td>
+<td><code>DataLoss</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td><code>16</code></td>
+<td><code>Unauthenticated</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://grpc.io/docs/guides/error/#error-status-codes">https://grpc.io/docs/guides/error/#error-status-codes</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
+<li><a href="https://qiita.com/Hiraku/items/0549e4cf7079d22b27e8">https://qiita.com/Hiraku/items/0549e4cf7079d22b27e8</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">タイムアウト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="http11_1">▼ HTTP/1/1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
+<p>TCPコネクションをリクエスト/レスポンスにタイムアウト時間を適用する。</p>
+<h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
+<p>TCPコネクション上に単一のストリーミングしかない。</p>
+<p>そのため、ストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
+</ul>
+</blockquote>
+<h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
+<p>TCPコネクション上に複数のストリーミングがある。</p>
+<p>そのため、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. ディレクトリ構成規約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_9">前提<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>ここでは、マイクロサービスが以下のような順で実行されるとする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># Node.js製</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">bar</span><span class="w"> </span><span class="c1"># Go製</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">baz</span><span class="w"> </span><span class="c1"># Python製</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="protogrpc"><code>proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>proto</code>ファイルを置く。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── bar-client.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したpb.*ファイル</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── bar-client.pb.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── bar-client.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Go製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   │   └── bar-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-client.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したpb.*ファイル</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   │   └── bar-server.pb.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-client.pb.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントとgRPCサーバーの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar-server.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-client.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Python製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したpb.*ファイル</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.pb.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-server.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="protopb_go"><code>proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
+<p>なお、<code>pb</code>ファイルはProtocol Bufferの共有リポジトリで管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Go製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーとクライアントの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Python製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
+<h4 id="protocol-buffer">▼ Protocol Bufferの共有リポジトリ<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
+<p><code>pb</code>ファイルに関しては、gRPCサーバーは、さらにアップストリームのマイクロサービスをコールするgRPCクライアントにもなる。</p>
+<p>そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの<code>proto</code>ファイル、RPC-API仕様書、<code>pb</code>ファイル、を管理する。</p>
+<p><code>pb</code>ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。</p>
+<ul>
+<li>gRPCサーバーとしての<code>proto</code>ファイルから作った<code>pb</code>ファイル</li>
+<li>gRPCクライアントとしての<code>proto</code>ファイル (これはアップストリームのgRPCサーバーのリポジトリにある) から作った<code>pb</code>ファイル</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Protocol Buffer</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── bar-server.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar-client.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-server.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── bar-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar-client.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server.pb.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar-client.pb.js</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── baz/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── baz-client.pb.go</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.py</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -23944,7 +24255,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-07</span>
   </span>
 
     
