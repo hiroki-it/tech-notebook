@@ -12,7 +12,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_feature_flagging_open_feature.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/draft/devops_cicd_feature_flag_open_feature.html">
       
       
       
@@ -22964,7 +22964,7 @@
 
 <span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="s">&quot;app&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// フィーチャーフラグサービスから、フラグのboolean値を取得する</span>
+<span class="w">    </span><span class="c1">// フィーチャーフラグ返信プロキシから、フラグのboolean値を取得する</span>
 <span class="w">    </span><span class="nx">v2Enabled</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">BooleanValue</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
 <span class="w">        </span><span class="s">&quot;v2_enabled&quot;</span><span class="p">,</span>
@@ -22981,6 +22981,7 @@
 <blockquote>
 <ul>
 <li><a href="https://openfeature.dev/docs/reference/technologies/server/go">https://openfeature.dev/docs/reference/technologies/server/go</a></li>
+<li><a href="https://gofeatureflag.org/docs/relay_proxy">https://gofeatureflag.org/docs/relay_proxy</a></li>
 </ul>
 </blockquote>
 <p><br></p>
