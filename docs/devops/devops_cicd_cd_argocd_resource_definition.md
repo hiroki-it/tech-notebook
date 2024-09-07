@@ -40,20 +40,20 @@ ArgoCDのセットアップのうち、AWS側で必要なものをまとめる�
 ```terraform
 module "iam_assumable_role_with_oidc_argocd_repo_server" {
 
-  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
-  version                       = "<バージョン>"
+  version = "<バージョン>"
 
   # ArgoCDのrepo-serverのPodに紐付けるIAMロール
-  create_role                   = true
-  role_name                     = "foo-argocd-reposerver"
+  create_role = true
+  role_name   = "foo-argocd-reposerver"
 
   # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   # ArgoCDは外部のAWS EKS Clusterで稼働している
-  provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
+  provider_url = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
-  role_policy_arns              = [
+  role_policy_arns = [
     aws_iam_policy.argocd_reposerver_policy.arn
   ]
 
@@ -66,7 +66,7 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
 }
 
 resource "aws_iam_policy" "argocd_reposerver_policy" {
-  name   = "foo-argocd-reposerver-policy"
+  name = "foo-argocd-reposerver-policy"
   policy = templatefile(
     "${path.module}/policies/inline_policies/argocd_reposerver_policy.tpl",
     {}
@@ -417,9 +417,9 @@ spec:
   # 各種ConfigMapやSecretを読み込む
   volumes:
     - name: plugins-home
-      emptyDir: {}
+      emptyDir: { }
     - name: tmp
-      emptyDir: {}
+      emptyDir: { }
     - name: ssh-known-hosts
       configMap:
         defaultMode: 420
@@ -605,15 +605,15 @@ spec:
   # 各種Secretを読み込む
   volumes:
     - name: custom-tools
-      emptyDir: {}
+      emptyDir: { }
     - name: helm-working-dir
-      emptyDir: {}
+      emptyDir: { }
     - name: plugins
-      emptyDir: {}
+      emptyDir: { }
     - name: var-files
-      emptyDir: {}
+      emptyDir: { }
     - name: tmp
-      emptyDir: {}
+      emptyDir: { }
     - name: ssh-known-hosts
       configMap:
         defaultMode: 420
@@ -807,7 +807,7 @@ spec:
         optional: "true"
         secretName: argocd-repo-server-tls
 
- ...
+  ...
 
 ```
 
@@ -972,7 +972,8 @@ spec:
 
 #### ▼ sourceとは
 
-リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで`kubectl apply`コマンドを実行。
+リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
+`kubectl apply`コマンドを実行。
 
 | リポジトリの種類                                                           | 管理方法                                | マニフェストのapply方法                                                                                                       |
 | -------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -1268,11 +1269,13 @@ data:
 
 ArgoCDはHelmの`v2`と`v3`の両方を保持している。
 
-Helmリリースするチャートの`.apiVersion`キーの値が`v1`であれば、ArgoCDはHelmの`v2`を使用して、一方で`.apiVersion`キーの値が`v2`であれば、Helmの`v3`を使用するようになっている。
+Helmリリースするチャートの`.apiVersion`キーの値が`v1`であれば、ArgoCDはHelmの`v2`を使用して、一方で`.apiVersion`キーの値が
+`v2`であれば、Helmの`v3`を使用するようになっている。
 
 > - https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
 
-ArgoCDを介してHelmを実行する場合、内部的には`helm template`コマンドとetcd上のマニフェストを`kubectl diff`コマンドで比較し、生じた差分を`kubectl apply`コマンドを使用してデプロイしている。
+ArgoCDを介してHelmを実行する場合、内部的には`helm template`コマンドとetcd上のマニフェストを`kubectl diff`コマンドで比較し、生じた差分を
+`kubectl apply`コマンドを使用してデプロイしている。
 
 ```bash
 $ helm template . --include-crds | kubectl diff -f -
@@ -1307,7 +1310,8 @@ ID  DATE                           REVISION
 
 パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 
-チャートリポジトリとして扱うために、リポジトリのルート直下に`index.yaml`ファイルと`.tgz`ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。
+チャートリポジトリとして扱うために、リポジトリのルート直下に`index.yaml`ファイルと
+`.tgz`ファイルを配置して、チャートリポジトリとして扱えるようにしておく必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1516,7 +1520,8 @@ spec:
     namespace: foo-namespace
 ```
 
-注意点として、Applicationがリポジトリで検知したKubernetesリソースの`metadata.namespace`キーで、別のNamespaceで作成されている場合、そちらが優先される。
+注意点として、Applicationがリポジトリで検知したKubernetesリソースの
+`metadata.namespace`キーで、別のNamespaceで作成されている場合、そちらが優先される。
 
 > - https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455
 > - https://github.com/argoproj/argo-cd/issues/6274#issuecomment-844494318

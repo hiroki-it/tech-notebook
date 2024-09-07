@@ -19,29 +19,29 @@ description: OpenFeature＠フィーチャーフラグの知見を記録して�
 package main
 
 import (
-    "fmt"
-    "context"
-    "github.com/open-feature/go-sdk/openfeature"
+	"fmt"
+	"context"
+	"github.com/open-feature/go-sdk/openfeature"
 )
 
 func main() {
 
-    openfeature.SetProvider(openfeature.NoopProvider{})
+	openfeature.SetProvider(openfeature.NoopProvider{})
 
-    client := openfeature.NewClient("app")
+	client := openfeature.NewClient("app")
 
 	// フィーチャーフラグ返信プロキシから、フラグのboolean値を取得する
 	v2Enabled, _ := client.BooleanValue(
-        context.Background(),
+		context.Background(),
 		"v2_enabled",
 		true,
 		openfeature.EvaluationContext{},
-    )
+	)
 
 	// フィーチャーフラグが有効な場合
 	if v2Enabled {
-        fmt.Println("v2 is enabled")
-    }
+		fmt.Println("v2 is enabled")
+	}
 }
 ```
 
