@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="リソース定義＠Crossplaneの知見を記録しています。">
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_crossplane_resource_definition.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_crossplane.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】リソース定義＠Crossplane - 俺の技術ノート</title>
+        <title>Infrastructure as code kubernetes crossplane - 俺の技術ノート</title>
       
     
     
@@ -85,11 +85,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#crossplane" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -121,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】リソース定義＠Crossplane
+              Infrastructure as code kubernetes crossplane
             
           </span>
         </div>
@@ -22843,49 +22838,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-aws-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. AWS Provider
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. AWS Provider">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#package" class="md-nav__link">
-    <span class="md-ellipsis">
-      package
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -22903,31 +22855,9 @@
   
 
 
-<h1 id="crossplane">リソース定義＠Crossplane<a class="headerlink" href="#crossplane" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-aws-provider">01. AWS Provider<a class="headerlink" href="#01-aws-provider" title="Permanent link">&para;</a></h2>
-<h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pkg.crossplane.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provider</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provider-aws-s3</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider">https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider</a></li>
-<li><a href="https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0">https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0</a></li>
-</ul>
-</blockquote>
-<p><br></p>
+  <h1>Infrastructure as code kubernetes crossplane</h1>
+
+
 
 
 
