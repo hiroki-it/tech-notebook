@@ -167,7 +167,7 @@ nav:
           - ホワイトボックステスト: software/software_application_architecture_microservices_test_blackbox.md
           - ブラックボックステスト: software/software_application_architecture_microservices_test_whitebox.md
           - 開発手法: software/software_application_architecture_microservices_development.md
-      - ■ アプリケーション間連携:
+      - ■ アプリケーション間通信:
           - アプリケーション間通信: software/software_application_collaboration_communication.md
           - ■ RESTful-API:
               - RESTful-API: software/software_application_collaboration_api_restful.md
