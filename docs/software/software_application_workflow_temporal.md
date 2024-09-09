@@ -19,7 +19,7 @@ description: Temporal＠ワークフローの知見を記録しています。
 
 Temporalは、Temporalクライアント、Temporalサーバー、ステート用データベース、Temporalワーカー、からなる。
 
-![temporal_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
+![temporal_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
@@ -109,7 +109,7 @@ temporal=# \dt
 4. Temporalワーカーは、ワークフロー内のアクティビティを実行し、結果をTemporalサーバーのメッセージキューに格納する。
 5. Temporalワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。
 
-![temporal_worker_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
+![temporal_worker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
 
 > - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -128,7 +128,7 @@ TemporalをSagaパターンのオーケストレーターとして使用する�
 
 そのため、タイムアウト処理、リトライ処理、キャンセル処理、などの点でTemporalの外部にメッセージキュー (例：AWS SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
 
-![temporal_saga-pattern.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
+![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
 
 > - https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern
 > - https://temporal.io/blog/saga-pattern-made-easy

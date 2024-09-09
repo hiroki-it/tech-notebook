@@ -77,7 +77,7 @@ ITエンジニアには、様々なキャリアパスがある。
 - プロジェクトリーダー (プロジェクトマネージャー)
 - ITコンサルタント
 
-![engineer_carrier-path.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.jpg)
+![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.jpg)
 
 > - https://www.netvisionacademy.com/column/910/
 

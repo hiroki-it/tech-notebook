@@ -30,6 +30,11 @@ Knativeを使用しない場合、イベント駆動関数の公開に必要なK
 
 Knativeは、Service、Route、Configuration、Revision、から構成される。
 
+![knative_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture.png)
+
+> - https://opensource.com/article/21/11/knative-serving-serverless
+> - https://www.syntio.net/en/labs-musings/knative-overview/
+
 <br>
 
 ## 03. イベント駆動関数テンプレート

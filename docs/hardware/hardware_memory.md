@@ -165,7 +165,7 @@ CPUは、キャッシュメモリのみに書き込む。
 
 ### 全体像
 
-![what_and_where_to_cache.jpeg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg)
+![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg)
 
 > - https://twitter.com/pvergadia/status/1633216210308595712/photo/1
 
