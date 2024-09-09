@@ -22923,19 +22923,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#02-knative" class="md-nav__link">
     <span class="md-ellipsis">
-      02. イベント駆動関数テンプレート
+      02. Knativeの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. イベント駆動関数テンプレート">
+    <nav class="md-nav" aria-label="02. Knativeの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Goの場合
+      アーキテクチャ
     </span>
   </a>
   
@@ -22949,43 +22949,19 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. コマンド
+      03. イベント駆動関数テンプレート
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. コマンド">
+    <nav class="md-nav" aria-label="03. イベント駆動関数テンプレート">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#func" class="md-nav__link">
+  <a href="#go" class="md-nav__link">
     <span class="md-ellipsis">
-      func
+      Goの場合
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="func">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ deploy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -23031,7 +23007,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. イベント駆動関数テンプレート<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02-knative">02. Knativeの仕組み<a class="headerlink" href="#02-knative" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Knativeは、Service、Route、Configuration、Revision、から構成される。</p>
+<p><br></p>
+<h2 id="03">03. イベント駆動関数テンプレート<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -23052,31 +23032,6 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/knative/func/blob/main/docs/function-templates/golang.md">https://github.com/knative/func/blob/main/docs/function-templates/golang.md</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="func">func<a class="headerlink" href="#func" title="Permanent link">&para;</a></h3>
-<h4 id="create">▼ create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
-<p>イベント駆動関数のテンプレートを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>create<span class="w"> </span>-l<span class="w"> </span>&lt;言語&gt;<span class="w"> </span>&lt;関数名&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/functions/creating-functions/">https://knative.dev/docs/functions/creating-functions/</a></li>
-</ul>
-</blockquote>
-<h4 id="deploy">▼ deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h4>
-<p>イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>deploy<span class="w"> </span>--registry<span class="w"> </span>&lt;コンテナレジストリ名&gt;
-
-🙌<span class="w"> </span>Function<span class="w"> </span>image<span class="w"> </span>built:<span class="w"> </span>&lt;registry&gt;/hello:latest
-✅<span class="w"> </span>Function<span class="w"> </span>deployed<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>and<span class="w"> </span>exposed<span class="w"> </span>at<span class="w"> </span>URL:
-http://hello.default.127.0.0.1.sslip.io
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/functions/deploying-functions/#procedure">https://knative.dev/docs/functions/deploying-functions/#procedure</a></li>
 </ul>
 </blockquote>
 <p><br></p>

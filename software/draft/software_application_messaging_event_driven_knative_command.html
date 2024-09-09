@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="リソース定義＠Knativeの知見を記録しています。">
+        <meta name="description" content="コマンド＠Knativeの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_event_driven_knative_resource_definition.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_event_driven_knative_command.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】リソース定義＠Knative - 俺の技術ノート</title>
+        <title>【IT技術の知見】コマンド＠Knative - 俺の技術ノート</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】リソース定義＠Knative
+              【IT技術の知見】コマンド＠Knative
             
           </span>
         </div>
@@ -22914,11 +22914,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-service" class="md-nav__link">
+  <a href="#01-func" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Service
+      01. func
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. func">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      deploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -22940,7 +22964,7 @@
   
 
 
-<h1 id="knative">リソース定義＠Knative<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
+<h1 id="knative">コマンド＠Knative<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22949,24 +22973,28 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-service">01. Service<a class="headerlink" href="#01-service" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serving.knative.dev/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld-go</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/knative/helloworld-go:latest</span>
-<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TARGET</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Go</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">v1&quot;</span>
+<h2 id="01-func">01. func<a class="headerlink" href="#01-func" title="Permanent link">&para;</a></h2>
+<h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<p>イベント駆動関数のテンプレートを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>create<span class="w"> </span>-l<span class="w"> </span>&lt;言語&gt;<span class="w"> </span>&lt;関数名&gt;
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://knative.dev/docs/serving/services/creating-services/#procedure">https://knative.dev/docs/serving/services/creating-services/#procedure</a></li>
+<li><a href="https://knative.dev/docs/functions/creating-functions/">https://knative.dev/docs/functions/creating-functions/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="deploy">deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h3>
+<p>イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>deploy<span class="w"> </span>--registry<span class="w"> </span>&lt;コンテナレジストリ名&gt;
+
+🙌<span class="w"> </span>Function<span class="w"> </span>image<span class="w"> </span>built:<span class="w"> </span>&lt;registry&gt;/hello:latest
+✅<span class="w"> </span>Function<span class="w"> </span>deployed<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>and<span class="w"> </span>exposed<span class="w"> </span>at<span class="w"> </span>URL:
+http://hello.default.127.0.0.1.sslip.io
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://knative.dev/docs/functions/deploying-functions/#procedure">https://knative.dev/docs/functions/deploying-functions/#procedure</a></li>
 </ul>
 </blockquote>
 <p><br></p>
