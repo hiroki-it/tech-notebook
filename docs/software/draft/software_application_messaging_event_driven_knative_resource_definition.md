@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Knative＠イベント駆動方式
-description: Knative＠イベント駆動方式の知見を記録しています。
+title: 【IT技術の知見】リソース定義＠Knative
+description: リソース定義＠Knativeの知見を記録しています。
 ---
 
-# Knative＠イベント駆動方式
+# リソース定義＠Knative
 
 ## はじめに
 

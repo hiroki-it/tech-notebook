@@ -24,7 +24,15 @@ Knativeを使用しない場合、イベント駆動関数の公開に必要なK
 
 <br>
 
-## 02. イベント駆動関数テンプレート
+## 02. Knativeの仕組み
+
+### アーキテクチャ
+
+Knativeは、Service、Route、Configuration、Revision、から構成される。
+
+<br>
+
+## 03. イベント駆動関数テンプレート
 
 ### Goの場合
 
@@ -47,35 +55,5 @@ func Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 ```
 
 > - https://github.com/knative/func/blob/main/docs/function-templates/golang.md
-
-<br>
-
-## 03. コマンド
-
-### func
-
-#### ▼ create
-
-イベント駆動関数のテンプレートを作成する。
-
-```bash
-$ func create -l <言語> <関数名>
-```
-
-> - https://knative.dev/docs/functions/creating-functions/
-
-#### ▼ deploy
-
-イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。
-
-```bash
-$ func deploy --registry <コンテナレジストリ名>
-
-🙌 Function image built: <registry>/hello:latest
-✅ Function deployed in namespace "default" and exposed at URL:
-http://hello.default.127.0.0.1.sslip.io
-```
-
-> - https://knative.dev/docs/functions/deploying-functions/#procedure
 
 <br>
