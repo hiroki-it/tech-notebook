@@ -26,6 +26,8 @@ $ k3s version
 
 > - https://docs.k3s.io/installation/configuration#configuration-with-binary
 
+<br>
+
 ### インストールスクリプトの場合
 
 ```bash

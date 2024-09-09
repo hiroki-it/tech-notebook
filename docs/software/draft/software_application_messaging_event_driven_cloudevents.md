@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudEvents＠メッセージング
-description: CloudEvents＠メッセージングの知見を記録しています。
+title: 【IT技術の知見】CloudEvents＠イベント駆動方式
+description: CloudEvents＠イベント駆動方式の知見を記録しています。
 ---
 
-# CloudEvents＠メッセージング
+# CloudEvents＠イベント駆動方式
 
 ## はじめに
 
