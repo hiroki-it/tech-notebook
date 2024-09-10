@@ -839,7 +839,7 @@ resource "aws_instance" "server" {
 
 ```terraform
 resource "aws_kms_key" "foo" {
-  count = var.region == "ap-northeast-1" ? 0 : 1
+  count = var.region == "ap-northeast-1" ? 1 : 0
 
   policy = data.aws_iam_policy_document.foo.json
 
@@ -853,7 +853,7 @@ resource "aws_kms_key" "foo" {
 
 resource "aws_kms_alias" "foo" {
   # count関数によるaws_kms_key.footリソースがなければ、本リソースも作成しない
-  # count = var.region == "ap-northeast-1" ? 0 : 1 でもよい。
+  # count = var.region == "ap-northeast-1" ? 1 : 0 でもよい。
   count = length(aws_kms_key.foo)
 
   name          = "alias/foo"
@@ -862,7 +862,7 @@ resource "aws_kms_alias" "foo" {
 
 resource "aws_kms_replica_key" "foo" {
   # count関数によるaws_kms_key.fooリソースがなければ、本リソースも作成しない
-  # count = var.region == "ap-northeast-1" ? 0 : 1 でもよい。
+  # count = var.region == "ap-northeast-1" ? 1 : 0 でもよい。
   count = length(aws_kms_key.k8s_secret)
 
   provider = aws.ap-northeast-3

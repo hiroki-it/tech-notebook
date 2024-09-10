@@ -431,8 +431,6 @@ tcp6       0      0 :::15014                :::*                    LISTEN      
 
 `discovery`コンテナの`15014`番ポートにポートフォワーディングしながら、別に` go tool pprof`コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
 
-> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
-
 ```bash
 # ポートフォワーディングを実行する。
 $ kubectl port-forward svc/istiod-<リビジョン番号> 15014 -n istio-system
@@ -446,6 +444,8 @@ Serving web UI on http://127.0.0.1:8080
 # どのパッケージでどのくらいハードウェアリソースを消費しているか
 $ curl http://127.0.0.1:8080/ui/flamegraph?si=alloc_objects
 ```
+
+> - https://www.zhaohuabing.com/istio-guide/docs/debug-istio/istio-debug/#%E6%9F%A5%E7%9C%8B-istiod-%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8
 
 <br>
 

@@ -1475,14 +1475,15 @@ resource "aws_rds_global_cluster" "foo" {
 
   ...
 
-  count = var.is_tokyo ? 1 : 0
+  // 東京リージョンのみで作成する
+  count = var.region == "ap-northeast-1" ? 1 : 0
 
   // 既存クラスターからグローバルクラスターを作成する
   // aws_rds_cluster には、同時に設定できない global_cluster_identifier という対になるオプションがあり、大阪リージョンではそちらを使用する
   // 東京リージョンでは、aws_rds_global_cluster の source_db_cluster_identifier を使用する
   // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
   source_db_cluster_identifier = aws_rds_cluster.foo.arn
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+  global_cluster_identifier    = "<東京リージョンのプライマリークラスター名>"
   force_destroy                = true
 
   lifecycle {
@@ -1496,23 +1497,24 @@ resource "aws_rds_global_cluster" "foo" {
 
 }
 
+// プライマリークラスターとセカンダリークラスター兼用
 resource "aws_rds_cluster" "foo" {
 
   // グローバルクラスターに依存しないように、設定値をハードコーディングする
 
-  // 大阪リージョンのクラスターでは、東京リージョンから各種設定を継承するため、設定が不要である
-  database_name               = var.is_tokyo ? "foo" : ""
-  master_username             = var.is_tokyo ? "admin" : ""
-  master_password             = var.is_tokyo ? "password" : ""
+  // 大阪リージョンのセカンダリークラスターでは、東京リージョンから各種設定を継承するため、設定が不要である
+  database_name               = var.region == "ap-northeast-1" ? "foo" : ""
+  master_username             = var.region == "ap-northeast-1" ? "admin" : ""
+  master_password             = var.region == "ap-northeast-1" ? "password" : ""
 
-  // 大阪リージョンのクラスターでは、データのソースを東京リージョンとする
-  source_region               = var.is_tokyo ? "" : var.region
+  // 大阪リージョンのセカンダリークラスターでは、データのソースを東京リージョンとする
+  source_region               = var.region == "ap-northeast-1" ? "" : var.region
 
   // グローバルクラスターに大阪リージョンを追加する
   // aws_rds_global_cluster には、同時に設定できない source_db_cluster_identifier という対になるオプションがあり、東京リージョンではそちらを使用する
   // 大阪リージョンでは、aws_rds_cluster の global_cluster_identifier を使用する
   // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
-  global_cluster_identifier   = var.is_tokyo ? "<東京リージョンのクラスター名>" : ""
+  global_cluster_identifier   = var.region == "ap-northeast-1" ? "<東京リージョンのプライマリークラスター名>" : ""
 
   engine                      = "<エンジン>"
   engine_version              = "<エンジンバージョン>"
@@ -1547,9 +1549,10 @@ resource "aws_rds_global_cluster" "foo" {
 
   ...
 
-  count = var.is_tokyo ? 1 : 0
+  // 東京リージョンのみで作成する
+  count = var.region == "ap-northeast-1" ? 1 : 0
 
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+  global_cluster_identifier    = "<東京リージョンのプライマリークラスター名>"
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.07.5"
 
@@ -1557,6 +1560,7 @@ resource "aws_rds_global_cluster" "foo" {
 
 }
 
+// プライマリークラスターとセカンダリークラスター兼用
 resource "aws_rds_cluster" "foo" {
 
   ...
@@ -1588,9 +1592,10 @@ resource "aws_rds_global_cluster" "foo" {
 
   ...
 
-  count = var.is_tokyo ? 1 : 0
+  // 東京リージョンのみで作成する
+  count = var.region == "ap-northeast-1" ? 1 : 0
 
-  global_cluster_identifier    = "<東京リージョンのクラスター名>"
+  global_cluster_identifier    = "<東京リージョンのプライマリークラスター名>"
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.07.5"
 
@@ -1598,6 +1603,7 @@ resource "aws_rds_global_cluster" "foo" {
 
 }
 
+// プライマリークラスターとセカンダリークラスター兼用
 resource "aws_rds_cluster" "foo" {
 
   ...
