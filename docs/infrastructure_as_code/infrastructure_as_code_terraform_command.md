@@ -1108,13 +1108,28 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 
 `(5)`
 
-: `terraform import`コマンドの実行と`.tf`ファイルの変更を繰り返す。
+: `tfstate`ファイルから`.tf`ファイルを表示する。
+
+     `.tf`ファイルにこれを定義する。
+
+```bash
+$ terraform state show '<resourceタイプ>.<resourceブロック名>'`
+
+# <resourceタイプ>.<resourceブロック名>:
+resource "<resourceタイプ>" "<resourceブロック名>" {
+  ...
+}
+```
+
+`(6)`
+
+: `terraform import`コマンドを実行する。
 
      この時、`tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
 
 > - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
-`(6)`
+`(7)`
 
 : `tfstate`ファイルと実インフラの差分が無くなったら完了である。
 
@@ -1126,7 +1141,7 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ さいごに
 
-`(7)`
+`(8)`
 
 : ローカルマシンの`tfstate`ファイルをリモートバックエンドにアップロードし、上書きする。
 
