@@ -102,6 +102,17 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは
 > - https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do
 > - https://rurukblog.com/post/terraform-refresh-onlyt/
 
+```bash
+Changes to Outputs:
+  ...
+
+$ terraform apply -refresh-only
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
+```
+
+> - https://devops.stackexchange.com/questions/14286/terraform-apply-output-only
+
 #### ▼ -target
 
 特定の`resource`ブロックを使用して、`terraform apply`コマンドを実行する。
