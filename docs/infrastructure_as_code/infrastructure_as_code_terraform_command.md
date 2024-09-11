@@ -81,7 +81,12 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 #### ▼ -refresh-only
 
-すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、`tfstate`ファイルにその状態を書き込む。
+実インフラの状態はそのままに、`tfstate`ファイルにその状態を書き込む。
+
+以下の場合に使用できる。
+
+- すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合
+- `output`ブロックのみを更新したい場合
 
 具体的は、`terraform plan`コマンドで出力される`Note: Objects have changed outside of Terraform`の内容を指す。
 

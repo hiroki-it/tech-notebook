@@ -1478,7 +1478,7 @@ resource "aws_rds_global_cluster" "foo" {
   // 東京リージョンのみで作成する
   count = var.region == "ap-northeast-1" ? 1 : 0
 
-  // 既存クラスターからグローバルクラスターを作成する
+  // 既存クラスターからグローバルクラスターを作成するために、グローバルクラスターが既存クラスターに依存するように設定する
   // aws_rds_cluster には、同時に設定できない global_cluster_identifier という対になるオプションがあり、大阪リージョンではそちらを使用する
   // 東京リージョンでは、aws_rds_global_cluster の source_db_cluster_identifier を使用する
   // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
@@ -1512,7 +1512,7 @@ resource "aws_rds_cluster" "foo" {
 
   // グローバルクラスターに大阪リージョンを追加する
   // aws_rds_global_cluster には、同時に設定できない source_db_cluster_identifier という対になるオプションがあり、東京リージョンではそちらを使用する
-  // 大阪リージョンでは、aws_rds_cluster の global_cluster_identifier を使用する
+  // 大阪リージョンでは、aws_rds_cluster の global_cluster_identifier を使用するため、global_cluster_identifier の値は空文字とする
   // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
   global_cluster_identifier   = var.region == "ap-northeast-1" ? "<東京リージョンのプライマリークラスター名>" : ""
 
@@ -1521,6 +1521,7 @@ resource "aws_rds_cluster" "foo" {
 
   lifecycle {
     ignore_changes = [
+      // @see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
       global_cluster_identifier
     ]
   }
@@ -1616,7 +1617,9 @@ resource "aws_rds_cluster" "foo" {
   global_cluster_identifier   = aws_rds_global_cluster.foo.id
 
   lifecycle {
-    ignore_changes = [engine_version]
+    ignore_changes = [
+      engine_version
+    ]
   }
 
   ...
