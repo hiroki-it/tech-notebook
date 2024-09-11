@@ -25125,16 +25125,16 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="-filter">▼ --filter<a class="headerlink" href="#-filter" title="Permanent link">&para;</a></h4>
-<p>SES、Cost Explorer、など</p>
+<p>SES、Cost Explorerなど</p>
 <h4 id="-filters">▼ --filters<a class="headerlink" href="#-filters" title="Permanent link">&para;</a></h4>
-<p>EC2、AutoScaling、RDS、など</p>
+<p>EC2、AutoScaling、RDSなど</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span>
 </code></pre></div>
 <h4 id="filter">▼ filterの文字を含む独自のオプション<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
-<p>DynamoDB、など</p>
+<p>DynamoDBなど</p>
 <h4 id="-include">▼ --include<a class="headerlink" href="#-include" title="Permanent link">&para;</a></h4>
-<p>ACM、など</p>
+<p>ACMなど</p>
 <p><br></p>
 <h3 id="_6">コマンド実行側のフィルタリング系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ コマンド実行側のフィルタリング系とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -25251,7 +25251,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <li><a href="https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/">https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/</a></li>
 </ul>
 </blockquote>
-<p>AWSリソースの種類 (ec2、alb、など) を指定して、特定のAWSリソースのみを取得することもできる。</p>
+<p>AWSリソースの種類 (ec2、albなど) を指定して、特定のAWSリソースのみを取得することもできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>resourcegroupstaggingapi<span class="w"> </span>get-resources<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--resource-type-filters<span class="w"> </span>&lt;AWSリソースの種類&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--tag-filters<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>&lt;タグ名&gt;,Values<span class="o">=</span>&lt;タグ値&gt;
@@ -25379,7 +25379,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <p><br></p>
 <h3 id="systems-manager-ssm">Systems Manager (新SSM)<a class="headerlink" href="#systems-manager-ssm" title="Permanent link">&para;</a></h3>
 <h4 id="create-activation">▼ create-activation<a class="headerlink" href="#create-activation" title="Permanent link">&para;</a></h4>
-<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシン、など) をSystems Managerで管理するために、IDとコードを発行する。</p>
+<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をSystems Managerで管理するために、IDとコードを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>create-activation<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--default-instance-name<span class="w"> </span>foo-vm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--iam-role<span class="w"> </span>foo-vm-role<span class="w"> </span><span class="se">\</span>
@@ -25474,7 +25474,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <h3 id="sso">SSO<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
 <h4 id="saml2aws">▼ saml2aws<a class="headerlink" href="#saml2aws" title="Permanent link">&para;</a></h4>
 <p>AWSにSSOでログインする。</p>
-<p>認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Auth、など) に委譲し、AWSでは認可フェーズのみを実施する。</p>
+<p>認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。</p>
 <p>追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。</p>
 <blockquote>
 <ul>
@@ -25541,7 +25541,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

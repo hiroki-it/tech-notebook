@@ -24106,7 +24106,7 @@
 <p><br></p>
 <h2 id="01-l2l4">01. 【<code>L2</code>～<code>L4</code>】ネットワークファイアウォール<a class="headerlink" href="#01-l2l4" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ネットワークファイアウォールとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><code>L2</code> (データリンク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャン、など) を防御する。</p>
+<p><code>L2</code> (データリンク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャンなど) を防御する。</p>
 <p><br></p>
 <h3 id="_4">ネットワークファイアウォールの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
@@ -24131,7 +24131,7 @@
 <tr>
 <td>クラウド型</td>
 <td>クラウドプロバイダーが提供するネットワークファイアウォールを配置する。</td>
-<td>AWS NF (<code>L2</code>〜<code>L3</code>のみ)、など</td>
+<td>AWS NF (<code>L2</code>〜<code>L3</code>のみ)など</td>
 </tr>
 </tbody>
 </table>
@@ -24273,7 +24273,7 @@ public
 <p><br></p>
 <h2 id="02-l3l6ipsintrusion-prevention-system">02. 【<code>L3</code>～<code>L6</code>】IPS：Intrusion Prevention System<a class="headerlink" href="#02-l3l6ipsintrusion-prevention-system" title="Permanent link">&para;</a></h2>
 <h3 id="ips">IPSとは<a class="headerlink" href="#ips" title="Permanent link">&para;</a></h3>
-<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など) を遮断するセキュリティシステムのこと。</p>
+<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃など) を遮断するセキュリティシステムのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://digital-jyoshisu.com/archives/468">https://digital-jyoshisu.com/archives/468</a></li>
@@ -24294,8 +24294,8 @@ public
 <p><br></p>
 <h2 id="05-l7webweb-application-firewall">05. 【<code>L7</code>】Webアプリファイアウォール：Web Application Firewall<a class="headerlink" href="#05-l7webweb-application-firewall" title="Permanent link">&para;</a></h2>
 <h3 id="web">Webアプリファイアウォールとは<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
-<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。</p>
-<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を実施できてしまうことになる。</p>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクションなど) を防御する。</p>
+<p><code>L7</code>を防御できていない場合、より低いレイヤー (例：<code>L3</code>) を突破できれば (例：送信元IPアドレスの乗っ取り) 、<code>L7</code>のサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクションなど) を実施できてしまうことになる。</p>
 <p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
 <blockquote>
 <ul>
@@ -24317,17 +24317,17 @@ public
 <tr>
 <td>ソフトウェア型</td>
 <td>Webアプリファイアウォールの能力を持つソフトウェアを自社サーバーにセットアップし、これを配置する。</td>
-<td>SuiteGuard、SmartCloud、など</td>
+<td>SuiteGuard、SmartCloudなど</td>
 </tr>
 <tr>
 <td>アプライアンス型</td>
 <td>Webアプリファイアウォールのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。</td>
-<td>FortiWeb、Imperva SecureSphere、SiteGuard、など</td>
+<td>FortiWeb、Imperva SecureSphere、SiteGuardなど</td>
 </tr>
 <tr>
 <td>クラウド型</td>
 <td>クラウドプロバイダーが提供するWebアプリファイアウォールを配置する。</td>
-<td>AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など</td>
+<td>AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrikeなど</td>
 </tr>
 </tbody>
 </table>
@@ -24656,7 +24656,7 @@ public
 <p><br></p>
 <h2 id="12-l7">12. 【<code>L7</code>】アプリケーションのリクエスト数制限<a class="headerlink" href="#12-l7" title="Permanent link">&para;</a></h2>
 <h3 id="_17">リクエスト数制限とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。</p>
+<p><code>L7</code>に対するサイバー攻撃 (例：Dos攻撃、DDos攻撃など) を防御する。</p>
 <p><br></p>
 <h3 id="post">POSTリクエストのリクエスト制限<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
@@ -24688,7 +24688,7 @@ public
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

@@ -24750,7 +24750,7 @@
 <p><img alt="istio_sidecar-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png" /></p>
 <p>サイドカーモデルは、データプレーン、Isiodコントロールプレーン、といったコンポーネントから構成される。</p>
 <p>サイドカープロキシを使用して、サービスメッシュを実装する。</p>
-<p>サイドカーは、<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDP、など) と<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。</p>
+<p>サイドカーは、<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) と<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPSなど) を処理できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/architecture/">https://istio.io/latest/docs/ops/deployment/architecture/</a></li>
@@ -24772,7 +24772,7 @@
 <h4 id="_6">▼ アンビエントメッシュの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_ambient-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png" /></p>
 <p>アンビエントメッシュは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。</p>
-<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決する責務を持つ。</p>
+<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
 <p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。</p>
 <p>サイドカーモデルを将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
 <p>ztunnelのPodを経由した段階でHTTPSプロトコルになる。</p>
@@ -24836,10 +24836,10 @@
 </ul>
 </blockquote>
 <h4 id="ztunnel">▼ ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h4>
-<p>ztunnelが<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDP、など) を処理できる。</p>
+<p>ztunnelが<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。</p>
 <p>実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。</p>
 <h4 id="waypoint-proxy">▼ waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h4>
-<p>waypoint-proxyが<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理できる。</p>
+<p>waypoint-proxyが<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) を処理できる。</p>
 <p>実体は、Gateway-APIで作成された<code>envoy</code>コンテナを含むPodであり、任意のNodeにスケジューリングされている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl experimental waypoint generate</span>
 <span class="nn">---</span>
@@ -25178,7 +25178,7 @@
 <p>JWTの取得方法として、例えば以下の方法がある。</p>
 <ul>
 <li>送信元のPodがIDプロバイダーからJWTを直接取得する。</li>
-<li>送信元/宛先の間にOAuthプロキシ (例：OAuth2 Proxy、など) やSSOプロキシ(例：Dex、など) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。</li>
+<li>送信元/宛先の間にOAuthプロキシ (例：OAuth2 Proxyなど) やSSOプロキシ(例：Dexなど) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。</li>
 </ul>
 <blockquote>
 <ul>
@@ -25240,7 +25240,7 @@
 </ul>
 </blockquote>
 <h4 id="_29">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vault、など) に委譲できる。</p>
+<p>Istiodコントロールプレーン (<code>discovery</code>コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。</p>
 <p>外部のルート認証局は、<code>istio-proxy</code>コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。</p>
 <blockquote>
 <ul>
@@ -25511,7 +25511,7 @@
 <h4 id="_37">▼ ログの出力<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p>Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>アクセスログにデフォルトで役立つ値が出力される。</p>
-<p>ログ収集ツール (例：FluentBit、Fluentd、など) をDaemonSetパターンやサイドカーパターンで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。</p>
+<p>ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーパターンで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナのアクセスログ</span>
 <span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># 相互TLSの場合の宛先コンテナ名</span>
@@ -25588,7 +25588,7 @@
 <p>スパンの作成場所が多いほど、各コンテナの処理時間が細分化された分散トレースを収集できる。</p>
 <p>アプリコンテナ間でスパンが持つコンテキストを伝播しないため、コンテキストを伝播させる実装が必要になる。</p>
 <h4 id="_41">▼ スパンの送信<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>Istio上のEnvoyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collector、など) に送信する。</p>
+<p>Istio上のEnvoyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。</p>
 <p>Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは使用できない場合がある。(例：X-Rayデーモン)</p>
 <blockquote>
 <ul>
@@ -25666,7 +25666,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

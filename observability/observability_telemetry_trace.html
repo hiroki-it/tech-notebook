@@ -23808,7 +23808,7 @@
 <li>W3C Baggage</li>
 <li>B3 (Zipkin)</li>
 <li>Jaeger</li>
-<li>独自仕様 (AWS X-Ray、Datadog、LightStep、など)</li>
+<li>独自仕様 (AWS X-Ray、Datadog、LightStepなど)</li>
 </ul>
 <blockquote>
 <ul>
@@ -23847,7 +23847,7 @@
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
 <span class="c1"># バージョン、トレースID、親スパンID、トレースフラグ、をリスト形式で運ぶ</span>
 <span class="nt">traceparent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01</span>
-<span class="c1"># セッションID、特定のリクエストにのみ付与されたデータ、などをリスト形式で運ぶ</span>
+<span class="c1"># セッションID、特定のリクエストにのみ付与されたデータなどをリスト形式で運ぶ</span>
 <span class="nt">tracestate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7</span>
 </code></pre></div>
 <blockquote>
@@ -23929,7 +23929,7 @@
 <h3 id="carrier">ツールごとのCarrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
 <h4 id="carrier_1">▼ Carrierとは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
 <p>トレースコンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。</p>
-<p>伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、gRPCメタデータ、など) を『Carrier』という。</p>
+<p>伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、gRPCメタデータなど) を『Carrier』という。</p>
 <p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
 <h4 id="_15">▼ 標準ヘッダー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <table>
@@ -24088,12 +24088,12 @@
 <tr>
 <td>バックエンド</td>
 <td>イベントの内容</td>
-<td>トレースID、スパンID、親スパンID、処理の開始時間、処理の所要時間、エラーの有無、マイクロサービスの役割名、コールされたエンドポイント、など</td>
+<td>トレースID、スパンID、親スパンID、処理の開始時間、処理の所要時間、エラーの有無、マイクロサービスの役割名、コールされたエンドポイントなど</td>
 </tr>
 <tr>
 <td></td>
 <td>ラベル</td>
-<td>マイクロサービス名、など</td>
+<td>マイクロサービス名など</td>
 </tr>
 </tbody>
 </table>
@@ -24157,7 +24157,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

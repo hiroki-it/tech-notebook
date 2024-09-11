@@ -23974,7 +23974,7 @@
 <h3 id="node_2">Nodeグループとは<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
 <p>KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできない。</p>
 <p>ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。</p>
-<p>同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。</p>
+<p>同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリなど) や同じ役割を持ったNodeのグループのこと。</p>
 <p>基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。</p>
 <p>Nodeグループをターゲットとする<code>L7</code>ロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。</p>
 <blockquote>
@@ -24013,11 +24013,11 @@
 </tr>
 <tr>
 <td><code>master</code></td>
-<td>セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、Google Cloud GKE、Azure AKS、など) の場合、このNodeグループは不要になる。</td>
+<td>セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、Google Cloud GKE、Azure AKSなど) の場合、このNodeグループは不要になる。</td>
 </tr>
 <tr>
 <td><code>system</code></td>
-<td>ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMesh、など) の場合、このNodeグループは不要になる。</td>
+<td>ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMeshなど) の場合、このNodeグループは不要になる。</td>
 </tr>
 </tbody>
 </table>
@@ -24180,7 +24180,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </tr>
 <tr>
 <td><code>L4</code>プロトコルの負荷分散方式</td>
-<td>ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。</td>
+<td>ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。</td>
 </tr>
 </tbody>
 </table>
@@ -24288,7 +24288,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <p><br></p>
 <h3 id="_9">コンテナランタイムの操作<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ガベージコレクション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：<code>var/lib/docker</code>ディレクトリ、<code>var/lib/containerd</code>ディレクトリ、など) に保管する。</p>
+<p>コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：<code>var/lib/docker</code>ディレクトリ、<code>var/lib/containerd</code>ディレクトリなど) に保管する。</p>
 <p>kubeletは、使用されていないイメージレイヤー (<code>5</code>分ごと) やコンテナ (<code>10</code>分ごと) のキャッシュのガベージコレクションを実行する。</p>
 <p>コンテナイメージのガベージコレクションであれば、Nodeのストレージ使用量が<code>85</code>%を超過していると、kubeletは<code>80</code>%未満になるようにコンテナイメージの残骸を削除する。</p>
 <blockquote>
@@ -24554,7 +24554,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

@@ -25927,7 +25927,7 @@
 <p>Node上のPodの個数を維持管理する。</p>
 <p>Podの負荷に合わせてPodの自動水平スケーリングを実行しない (HorizontalPodAutoscalerが必要である) 。</p>
 <p>ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。</p>
-<p>Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、CNI、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など) のために使用される。</p>
+<p>Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、CNI、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporterなど) のために使用される。</p>
 <p>こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。</p>
 <blockquote>
 <ul>
@@ -26116,7 +26116,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <p>ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。</p>
-<p>コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。</p>
+<p>コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>--all<span class="w"> </span>node-role.kubernetes.io/master:NoSchedule-
 </code></pre></div>
 <h4 id="pod_4">▼ Podのライフサイクルフェーズ<a class="headerlink" href="#pod_4" title="Permanent link">&para;</a></h4>
@@ -26321,7 +26321,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <h4 id="pod_7">▼ Podを安全に削除する方法<a class="headerlink" href="#pod_7" title="Permanent link">&para;</a></h4>
 <p>Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
 <ul>
-<li>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) が古いPodを切り離す。</li>
+<li>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) が古いPodを切り離す。</li>
 <li>Serviceとkube-proxyが古いPodの宛先情報を削除する。</li>
 <li>コンテナを停止する。</li>
 </ul>
@@ -26649,7 +26649,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>Ingressコントローラーは、<code>L7</code>ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
 <p>クラウドプロバイダー (例：AWS) では、Ingressコントローラー状況下でIngressを作成すると、Ingressの設定値に応じた<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
-<p>ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。</p>
+<p>ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
@@ -26661,7 +26661,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
 <p>Serviceは、<code>L4</code>ロードバランサーとしてPodに通信をルーティングする。</p>
 <p>kube-proxyが更新したiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。</p>
-<p>DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) でServiceを使用できる。</p>
+<p>DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) でServiceを使用できる。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
 <p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png" /></p>
 <blockquote>
@@ -26689,7 +26689,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、など)</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラーなど)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
@@ -26922,7 +26922,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
 <h4 id="namespace_1">▼ Namespaceとは<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
 <p>各Kubernetesリソースの影響範囲を制御するための領域のこと。</p>
-<p>Namespaceが異なれば、<code>.metadata.labels</code>キーに同じ値 (例：同じ名前、など) を設定できる。</p>
+<p>Namespaceが異なれば、<code>.metadata.labels</code>キーに同じ値 (例：同じ名前など) を設定できる。</p>
 <h4 id="namespace_2">▼ 初期Namespace<a class="headerlink" href="#namespace_2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -27185,7 +27185,7 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 </ul>
 </blockquote>
 <h4 id="volume">▼ 外部サービスのVolume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h4>
-<p>外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。</p>
+<p>外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。</p>
 <p>StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。</p>
 <p>また、外部ストレージを使用する場合には、CSIドライバーも必要である。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
@@ -27193,7 +27193,7 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <h3 id="volume_1">Volume<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h3>
 <h4 id="volume_2">▼ Volumeとは<a class="headerlink" href="#volume_2" title="Permanent link">&para;</a></h4>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
-<p>既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。</p>
+<p>既存 (例：NFS、iSCSI、Cephなど) のボリュームをそのままKubernetesのVolumeとして使用する。</p>
 <p>Podの<code>.spec.volumes</code>キーで指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -27296,7 +27296,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>Podの既存のストレージ上にVolume (<code>/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~empty-dir/</code>ディレクトリ) を作成し、コンテナにボリュームマウントする。</p>
 <p>同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。</p>
 <p>また、Podが削除されるとこのVolumeも同時に削除されてしまう。</p>
-<p>保持期間を設定できるツール (例：Prometheus、Victoria Metrics、など) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。</p>
+<p>保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimirなど) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">https://qiita.com/umkyungil/items/218be95f7a1f8d881415</a></li>
@@ -27304,7 +27304,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="volume_3">▼ 外部サービスのVolume<a class="headerlink" href="#volume_3" title="Permanent link">&para;</a></h4>
-<p>外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。</p>
+<p>外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。</p>
 <p>同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。</p>
 <p>また、Podが削除されてもこのVolumeは削除されない。</p>
 <blockquote>
@@ -27443,7 +27443,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><br></p>
 <h3 id="storageclass">StorageClass<a class="headerlink" href="#storageclass" title="Permanent link">&para;</a></h3>
 <h4 id="storageclass_1">▼ StorageClassとは<a class="headerlink" href="#storageclass_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
+<p>Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。</p>
 <p>そのため、PersistentVolumeも合わせて作成する必要がある。</p>
 <p>StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageClass側で<code>reclaimPolicy</code>キーとして設定する。</p>
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
@@ -27638,7 +27638,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

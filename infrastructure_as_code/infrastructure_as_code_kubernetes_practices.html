@@ -24865,7 +24865,7 @@
 <p><br></p>
 <h3 id="_14">拡張子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、<code>yaml</code>ファイルの拡張子を<code>yml</code>ではなく <code>yaml</code>に統一している。</p>
-<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoy、など) の <code>yaml</code>ファイルの拡張子を <code>yaml</code>で統一する。</p>
+<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoyなど) の <code>yaml</code>ファイルの拡張子を <code>yaml</code>で統一する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
@@ -24891,7 +24891,7 @@
 <th>Minikube</th>
 <th>Docker for Desktop</th>
 <th>Kind</th>
-<th>クラウドプロバイダー (AWS EKS、Google Cloud GKE、など)</th>
+<th>クラウドプロバイダー (AWS EKS、Google Cloud GKEなど)</th>
 </tr>
 </thead>
 <tbody>
@@ -24988,8 +24988,8 @@
 <tr>
 <td>Kuberbetesオーケストレーションツール</td>
 <td>全て自前なため、自由にカスタマイズできる。</td>
-<td>Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)、など</td>
-<td>AWS EKS、Google Cloud GKE、など</td>
+<td>Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)など</td>
+<td>AWS EKS、Google Cloud GKEなど</td>
 </tr>
 <tr>
 <td>説明</td>
@@ -25389,12 +25389,12 @@
 </tr>
 <tr>
 <td>マニフェストのコード規約違反</td>
-<td>外部のPaCツール (例：conftest、GatekeeperCLIのgator、など) を使用する。ポリシー (regoなど) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
+<td>外部のPaCツール (例：conftest、GatekeeperCLIのgatorなど) を使用する。ポリシー (regoなど) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
 <td>・<a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></td>
 </tr>
 <tr>
 <td>マニフェストのベストプラクティス違反テスト</td>
-<td>外部のベストプラクティス違反テストツール (例：polaris、kubeconform、など) を使用する。報告されたCVEに基づいて、チャートの実装方法に起因する脆弱性を検証する。</td>
+<td>外部のベストプラクティス違反テストツール (例：polaris、kubeconformなど) を使用する。報告されたCVEに基づいて、チャートの実装方法に起因する脆弱性を検証する。</td>
 <td>・<a href="https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3">https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3</a></td>
 </tr>
 <tr>
@@ -25463,7 +25463,7 @@
 </ul>
 </blockquote>
 <h4 id="_42">▼ カナリアリリース (推奨)<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：Argo Rollouts) やサービスメッシュツール (例：Istio、Linkerd、など) のカナリアリリース機能を採用する。</p>
+<p>Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：Argo Rollouts) やサービスメッシュツール (例：Istio、Linkerdなど) のカナリアリリース機能を採用する。</p>
 <p>注意点として、サービスメッシュツールであると、重み付けの段階的な変更が手動になってしまう。</p>
 <blockquote>
 <ul>
@@ -25539,7 +25539,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

@@ -23461,7 +23461,7 @@
 <p><br></p>
 <h2 id="01-02">01-02<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">マニフェストの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストから構成されている。</p>
+<p>deschedulerは、Job (descheduler) 、ConfigMapなどのマニフェストから構成されている。</p>
 <p><br></p>
 <h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
 <p>ここでは、CronJob配下で定義したとする。</p>
@@ -23578,7 +23578,7 @@
 <p><br></p>
 <h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。</p>
+<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリなど) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。</p>
 <p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodをスケジューリングさせる。</p>
 <p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。</p>
 <p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
@@ -23607,7 +23607,7 @@
 </ul>
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
-<p>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。</p>
+<p>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。</p>
 <p>該当するNodeがない場合、退避させない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
@@ -23710,7 +23710,7 @@
 <p><br></p>
 <h3 id="_4">グローバルオプション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="nodefit">▼ nodeFit<a class="headerlink" href="#nodefit" title="Permanent link">&para;</a></h4>
-<p>Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity、など) であるかを検証する。</p>
+<p>Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinityなど) であるかを検証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/descheduler#node-fit-filtering">https://github.com/kubernetes-sigs/descheduler#node-fit-filtering</a></li>
@@ -23737,7 +23737,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

@@ -24552,7 +24552,7 @@
 </ul>
 </blockquote>
 <h4 id="oss_1">▼ OSSを使用する場合<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h4>
-<p>SagaオーケストレーターのOSS (Temporal、Netflix Conductor、Uber Cadence、など) を使用する。</p>
+<p>SagaオーケストレーターのOSS (Temporal、Netflix Conductor、Uber Cadenceなど) を使用する。</p>
 <p>Sagaオーケストレーターのドメインモデリングにステートソーシング方式を採用する必要がある。</p>
 <blockquote>
 <ul>
@@ -24560,7 +24560,7 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflows、など) を使用する。</p>
+<p>クラウドプロバイダー (例：AWS、Google Cloud) が提供するSagaオーケストレーター (例：AWS Step Functions、Google Workflowsなど) を使用する。</p>
 <p>各マイクロサービスは、Sagaオーケストレーターをメッセージブローカー (これもクラウドプロバイダーが提供しているものでよい) を介して取得する。</p>
 <blockquote>
 <ul>
@@ -24582,7 +24582,7 @@
 <p><br></p>
 <h3 id="saga_3">Sagaオーケストレーターのワーカー<a class="headerlink" href="#saga_3" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ ポイントツーポイントの場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
+<p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
 <p>メッセージブローカーを経由するよりも、Sagaオーケストレーターと各ワーカーの間の結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。</p>
 <p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
 <blockquote>
@@ -24592,9 +24592,9 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ メッセージキューを経由する場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>メッセージキュー (例：AWS SQS、など) を経由して、Sagaオーケストレーターとワーカーの間で通信する。</p>
+<p>メッセージキュー (例：AWS SQSなど) を経由して、Sagaオーケストレーターとワーカーの間で通信する。</p>
 <h4 id="_20">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>メッセージブローカー (例：Apache Kafka、RabbitMQ、など) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
+<p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を使い、オーケストレーションベースのSagaパターンを実装する。</p>
 <p>Sagaオーケストレーターは、メッセージブローカーに対してパブリッシュとサブスクライブを実行する。</p>
 <p>サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。</p>
 <p><img alt="orchestration_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png" /></p>
@@ -25162,7 +25162,7 @@
 </ul>
 </blockquote>
 <h4 id="oss_2">▼ OSSを使用する場合<a class="headerlink" href="#oss_2" title="Permanent link">&para;</a></h4>
-<p>コレオグラフィのOSS (例：Debezium、Maxwell、など) を使用する。</p>
+<p>コレオグラフィのOSS (例：Debezium、Maxwellなど) を使用する。</p>
 <p>Sagaオーケストレーターのドメインモデリングにイベントソーシング方式を採用する必要がある。</p>
 <blockquote>
 <ul>
@@ -25192,7 +25192,7 @@
 <p><br></p>
 <h3 id="_27">実装パターン<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="oss_3">▼ OSSを使用する場合<a class="headerlink" href="#oss_3" title="Permanent link">&para;</a></h4>
-<p>並列パイプラインのOSS (例：Apache Camel、など) を使用する。</p>
+<p>並列パイプラインのOSS (例：Apache Camelなど) を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared">https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared</a></li>
@@ -25242,7 +25242,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

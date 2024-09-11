@@ -24527,7 +24527,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus-operator">▼ 非チャートとして (prometheus-operator)<a class="headerlink" href="#prometheus-operator" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/prometheus-operator.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bundle.yaml
@@ -24538,7 +24538,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="kube-prometheus">▼ 非チャートとして (kube-prometheus)<a class="headerlink" href="#kube-prometheus" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/kube-prometheus.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests/setup
@@ -24578,7 +24578,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="prometheus_1">▼ チャートとして (prometheus)<a class="headerlink" href="#prometheus_1" title="Permanent link">&para;</a></h4>
 <p>チャートとしてPrometheusをインストールし、リソースを作成する。</p>
-<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporter、など) のKubernetesリソースも合わせて作成する。</p>
+<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporterなど) のKubernetesリソースも合わせて作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -24593,7 +24593,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="_3">▼ バイナリとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>バイナリとして監視系ツール (Prometheus、Alertmanager、など) をインストールし、サーバー上でPrometheusを稼働させる。</p>
+<p>バイナリとして監視系ツール (Prometheus、Alertmanagerなど) をインストールし、サーバー上でPrometheusを稼働させる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/prometheus/prometheus<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--config.file<span class="o">=</span>/opt/prometheus/prometheus.yml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.console.templates<span class="o">=</span>/opt/prometheus/consoles<span class="w"> </span><span class="se">\</span>
@@ -24934,7 +24934,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specexternallabel">.spec.externalLabel<a class="headerlink" href="#specexternallabel" title="Permanent link">&para;</a></h3>
-<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。</p>
+<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimirなど) にメトリクスを送信する時に、これに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25311,8 +25311,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。</p>
 <p>注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。</p>
 <ul>
-<li>Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisor、など)</li>
-<li>PrometheusのExporter (例：node-exporter、kube-state-metrics、など)</li>
+<li>Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisorなど)</li>
+<li>PrometheusのExporter (例：node-exporter、kube-state-metricsなど)</li>
 </ul>
 <p><img alt="prometheus-operator_service-monitor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
@@ -25586,7 +25586,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     

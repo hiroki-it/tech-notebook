@@ -23228,7 +23228,7 @@
 <ul>
 <li>ファイアウォール</li>
 <li>kube-apiserverにリクエストを送信できるIPアドレスを制限する。</li>
-<li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイ、など) からしか、kube-apiserverにリクエストできないようにする。</li>
+<li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイなど) からしか、kube-apiserverにリクエストできないようにする。</li>
 <li>認証</li>
 <li>必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。</li>
 </ul>
@@ -23282,7 +23282,7 @@
 <p><br></p>
 <h1 id="node_2">ワーカーNode<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h1>
 <h2 id="_15">冗長化する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>ワーカーNodeはPodの特性 (アプリ系、監視系、ロードバランサー系、バッチ系、サービスメッシュ系、など) ごとに作成する。</p>
+<p>ワーカーNodeはPodの特性 (アプリ系、監視系、ロードバランサー系、バッチ系、サービスメッシュ系など) ごとに作成する。</p>
 <p>また、ワーカーNodeをグループ化し、Nodeグループごとに冗長化の程度を設計する。</p>
 <p>Nodeグループの特徴に合った数だけ冗長化しつつ、N+1にすると良い。</p>
 <p>ここでは、Nodeグループの例をいくつか挙げる。</p>
@@ -23292,8 +23292,8 @@
 <thead>
 <tr>
 <th></th>
-<th>Stateless系(アプリ、バッチ、L7ロードバランサー、サービスメッシュ、など)</th>
-<th>Stateful系(例：データベース、など)</th>
+<th>Stateless系(アプリ、バッチ、L7ロードバランサー、サービスメッシュなど)</th>
+<th>Stateful系(例：データベースなど)</th>
 </tr>
 </thead>
 <tbody>
@@ -23362,8 +23362,8 @@
 <thead>
 <tr>
 <th></th>
-<th>Stateless系(アプリ、バッチ、L7ロードバランサー、など)</th>
-<th>Stateful系(例：監視ツール、など)</th>
+<th>Stateless系(アプリ、バッチ、L7ロードバランサーなど)</th>
+<th>Stateful系(例：監視ツールなど)</th>
 </tr>
 </thead>
 <tbody>
@@ -23436,14 +23436,14 @@
 <li>OSは適切なの、くらいな表現になる</li>
 <li>CPUアーキテクチャ</li>
 <li>armが安いからarm使用する</li>
-<li>マルチプラットフォームビルドを避けれるなら避けたいのでamdを使用する、など</li>
+<li>マルチプラットフォームビルドを避けれるなら避けたいのでamdを使用するなど</li>
 <li>ベースイメージにarm製が少ないから理由がなければamd使用する</li>
 </ul>
 <p><br></p>
 <h1 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h1>
 <h2 id="ingress_1">Ingressインバウンド通信を制限する<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h2>
 <p>社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。</p>
-<p>Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、GCE L7 load balancerコントローラー、など) が提供する機能を使用して、インバウンド通信を制限する。</p>
+<p>Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、GCE L7 load balancerコントローラーなど) が提供する機能を使用して、インバウンド通信を制限する。</p>
 <p>なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるため、Egressのアウトバウンド通信は全て許可しておく。</p>
 <p>多くのIngressコントローラーでは、制限のルールをIngressの<code>.metadata.annotations</code>キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) 、を選べる。</p>
 <p>管理しやすいように、Ingressから切り離して設定すると良い。</p>
@@ -23504,7 +23504,7 @@
 <p><code>.spec.ttlSecondsAfterFinished</code>キーには、Jobの実行終了後に何秒経過してからJob自体を削除するのかを設定する。</p>
 <h1 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h1>
 <h2 id="_21">冗長化する<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
-<p>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) でPodを冗長化する。</p>
+<p>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) でPodを冗長化する。</p>
 <p>N+1個にすると良い。</p>
 <p><br></p>
 <h2 id="_22">水平スケーリングする<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
@@ -23512,7 +23512,7 @@
 <p>水平スケーリングは、Podの負荷が高くなると Pod の台数を増やし、システム全体が高負荷で機能しなくなる状況を避けることができる。</p>
 <p>ただし、突発的な高負荷には弱く、Podの台数の増強が間に合わないことがある。</p>
 <p>突発的な負荷のタイミングが事前に分かっているなら、事前に最小台数を高めに設定しておく。</p>
-<p>HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例：CPU使用率、メモリ使用率、など) 、カスタムメトリクス、K8s外のメトリクス (ロードバランサーのrps/qps値、メッセージキューの待機リクエスト数、など) 、に基づいてPod数を決める。</p>
+<p>HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例：CPU使用率、メモリ使用率など) 、カスタムメトリクス、K8s外のメトリクス (ロードバランサーのrps/qps値、メッセージキューの待機リクエスト数など) 、に基づいてPod数を決める。</p>
 <p>metrics-serverはデフォルトでClusterに存在していないため、別途インストールしておく必要がある。</p>
 <blockquote>
 <ul>
@@ -23523,7 +23523,7 @@
 <p><br></p>
 <h2 id="_23">ロードバランシングする<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
 <h3 id="l7">L7のプロトコルの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。</p>
+<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLBなど) やこれに相当するもの (例：Gateway-APIを使用しないIstio Ingress Gateway) を置く。</p>
 <p>L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。</p>
 <blockquote>
 <ul>
@@ -23612,7 +23612,7 @@
 </blockquote>
 <h3 id="taintstolerations">■ TaintsとTolerationsを使用する<a class="headerlink" href="#taintstolerations" title="Permanent link">&para;</a></h3>
 <p>TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。</p>
-<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>、など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code>、など) にはこれを設定しないようにする。</p>
+<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code>など) にはこれを設定しないようにする。</p>
 <p>すると、<code>.spec.tolerations</code>キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
@@ -23648,7 +23648,7 @@
 <h2 id="_24">適切なストレージの種類を選ぶ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
 <h3 id="generic-ephemeral-volumes">■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する<a class="headerlink" href="#generic-ephemeral-volumes" title="Permanent link">&para;</a></h3>
 <p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。</p>
-<p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データ、など) に役立つ。</p>
+<p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データなど) に役立つ。</p>
 <p>一時的なストレージのため、Podの作成時にストレージを払い出し、Podが停止するとストレージは削除される。</p>
 <p>EmptyDir Volumeとは異なり、NodeのストレージがVolumeの容量を制限しない。</p>
 <p>そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がEmptyDirよりも多い。</p>
@@ -23661,7 +23661,7 @@
 </blockquote>
 <h3 id="emptydir-volume">■ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する<a class="headerlink" href="#emptydir-volume" title="Permanent link">&para;</a></h3>
 <p>EmptyDir Volumeを使用して、PodのデータをNodeのストレージに一時的に保管できる。</p>
-<p>少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリング、など) に役立つ。</p>
+<p>少量の一時データを保管したい場合 (例：キャッシュの保管、バッファリングなど) に役立つ。</p>
 <p>Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容量を制限する。</p>
 <p>そのため、Nodeのストレージ次第では、一時的に保管できるデータ量がEphemeral Volumesよりも少ない。</p>
 <p>一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。</p>
@@ -23849,7 +23849,7 @@
 <h2 id="prestopterminationgraceperiodsecondspod">preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する<a class="headerlink" href="#prestopterminationgraceperiodsecondspod" title="Permanent link">&para;</a></h2>
 <p>kubeletにより、Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
 <ol>
-<li>Workload (例：Deployment、StatefulSet、など) が古いPodを切り離す。</li>
+<li>Workload (例：Deployment、StatefulSetなど) が古いPodを切り離す。</li>
 <li>Serviceとkube-proxyが古いPodの宛先情報を削除する。</li>
 <li>コンテナを停止する。</li>
 </ol>
@@ -23943,13 +23943,13 @@ options ndots:5
 </tr>
 <tr>
 <td>暗号化</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGPなど) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGPなど) で暗号化する。</td>
 </tr>
 <tr>
 <td>Secretストア</td>
 <td>リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud Secret Manager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud Secret Managerなど) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。</td>
 </tr>
 </tbody>
 </table>
@@ -24075,8 +24075,8 @@ options ndots:5
 <tbody>
 <tr>
 <td>キー</td>
-<td>runAsUser、runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など</td>
-<td>fsGroup、fsGroupChangePolicy、など</td>
+<td>runAsUser、runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfileなど</td>
+<td>fsGroup、fsGroupChangePolicyなど</td>
 <td>privileged、allowPrivilegeEscalation、readOnlyRootFilesystem</td>
 </tr>
 </tbody>
@@ -24116,7 +24116,7 @@ options ndots:5
 </ul>
 </blockquote>
 <h3 id="privileged">■ privilegedを無効化する<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h3>
-<p>特権コンテナの実行ユーザーは、rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE、など) の全て持っている。</p>
+<p>特権コンテナの実行ユーザーは、rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持っている。</p>
 <p>非特権コンテナを実行するrootユーザーがCapabilityを全く持たないことからもわかる通り、非常に大きな権限を持つ。</p>
 <p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある<code>/proc</code>に書き込みする権限を持つ。</p>
 <p><code>/proc</code>配下にはNodeへのアクセスを仲介するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
@@ -24326,7 +24326,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td><a href="https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/">https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/</a></td>
 <td>マニフェストの設定値に起因する脆弱性を検証する</td>
 <td>★</td>
-<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、イメージ (コンテナイメージ、マシンイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHat、など) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。</td>
+<td>他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、イメージ (コンテナイメージ、マシンイメージ) も検証できるため、他の場面でも知見を流用できる。いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHatなど) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。</td>
 <td></td>
 </tr>
 <tr>
@@ -24439,7 +24439,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <tbody>
 <tr>
 <td>Podが全滅していないことを確認する。</td>
-<td>PDBの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) で起動しているアプリケーションのPodが全滅しないかを確認する。 PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PDBの設定した内容に沿ってPodが保護されるかを確認する。</td>
+<td>PDBの設定によってWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) で起動しているアプリケーションのPodが全滅しないかを確認する。 PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PDBの設定した内容に沿ってPodが保護されるかを確認する。</td>
 </tr>
 <tr>
 <td>Podが正しくNodeに分散されていることを確認する。</td>
@@ -24447,11 +24447,11 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>Workloadのデプロイ戦略が正しく動作していることを確認する。</td>
-<td>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。</td>
 </tr>
 <tr>
 <td>WorkloadがPodのレプリカ数を維持できることを確認する。</td>
-<td>Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。</td>
+<td>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。</td>
 </tr>
 <tr>
 <td>Podのスケーリングが正しく動作することを確認する。</td>
@@ -24499,21 +24499,21 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td></td>
 </tr>
 <tr>
-<td>アプリのWorkload(Deployment、CronJob、など)</td>
+<td>アプリのWorkload(Deployment、CronJobなど)</td>
 <td>✅</td>
 <td>✅</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>インフラWorkloadの周辺K8sリソース(PDB、HPA、ConfigMap、Secret、など)</td>
+<td>インフラWorkloadの周辺K8sリソース(PDB、HPA、ConfigMap、Secretなど)</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>アプリCIツール(コンテナイメージビルド、アプリのホワイトボックステスト、イメージレジストリ格納、など)</td>
+<td>アプリCIツール(コンテナイメージビルド、アプリのホワイトボックステスト、イメージレジストリ格納など)</td>
 <td>✅</td>
 <td>✅</td>
 <td></td>
@@ -24555,7 +24555,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <td>✅</td>
 </tr>
 <tr>
-<td>インフラのWorkload(Deployment、CronJob、など) 、周辺K8sリソース (PDB、HPA、ConfigMap、Secret、など)</td>
+<td>インフラのWorkload(Deployment、CronJobなど) 、周辺K8sリソース (PDB、HPA、ConfigMap、Secretなど)</td>
 <td></td>
 <td></td>
 <td>✅</td>
@@ -24588,7 +24588,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <h2 id="_45">運用しやすいテナントに分割する<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
 <h3 id="_46">■ マルチテナントパターン<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
 <p>K8sリソースをグルーピングしたテナントを作成し、影響範囲を小さくする。</p>
-<p>テナントには作成パターンがあり、それぞれのパターンでテナントに役割 (例：プロダクト、実行環境、など) を割り当てる。</p>
+<p>テナントには作成パターンがあり、それぞれのパターンでテナントに役割 (例：プロダクト、実行環境など) を割り当てる。</p>
 <table>
 <thead>
 <tr>
@@ -24609,10 +24609,10 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>ツール</td>
-<td>実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadm、など)</td>
-<td>仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など)</td>
+<td>実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadmなど)</td>
+<td>仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualClusterなど)</td>
 <td>Namespaceを増やすだけなのでツール不要</td>
-<td>ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など</td>
+<td>ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenantなど</td>
 </tr>
 <tr>
 <td>…</td>
@@ -24702,15 +24702,15 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </thead>
 <tbody>
 <tr>
-<td>ハードウェアリソース系 (CPU使用量、メモリ使用量、など)</td>
+<td>ハードウェアリソース系 (CPU使用量、メモリ使用量など)</td>
 <td>node-exporter、cAdvisor</td>
 </tr>
 <tr>
-<td>ネットワーク系 (帯域幅、スループット値、など)</td>
+<td>ネットワーク系 (帯域幅、スループット値など)</td>
 <td>cAdvisor</td>
 </tr>
 <tr>
-<td>状態系 (Podのレプリカ数、ヘルスチェックの失敗数、など)</td>
+<td>状態系 (Podのレプリカ数、ヘルスチェックの失敗数など)</td>
 <td>kube-state-metrics</td>
 </tr>
 </tbody>
@@ -24795,7 +24795,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
   </span>
 
     
