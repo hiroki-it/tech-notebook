@@ -64,6 +64,24 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 <br>
 
+### 関連パターン
+
+マイクロサービスアーキテクチャでは固有の問題が起こる。
+
+これを解決するための関連パターンがたくさんある。
+
+![microservices_related-patterns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_related-patterns.jpg)
+
+> - https://microservices.io/patterns/
+
+**＊実装例＊**
+
+`microservices.io`サイトで紹介しきれていない実装方法は、`softwarepatternslexicon`サイトで確認できる。
+
+> - https://softwarepatternslexicon.com/microservices/
+
+<br>
+
 ## 01-02. マイクロサービスアーキテクチャ
 
 ### 特徴
