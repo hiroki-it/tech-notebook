@@ -19,7 +19,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 ArgoCDで任意のツールを使用する。
 
-ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd-vault-plugin、など) はサイドカーでプラグインとして実行する必要がある。
+ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd-vault-pluginなど) はサイドカーでプラグインとして実行する必要がある。
 
 そのため、これらのツールを使用せずにSecretにデータを注入する場合、プラグインは採用しなくとも良い。
 
@@ -27,7 +27,7 @@ ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd
 
 ### デフォルトツール
 
-執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet、など)
+執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnetなど)
 をApplicationのオプションとして実行できるようになっている。
 
 すなわち、これらのrepo-serverはこれらのツールを実行できる。
@@ -211,8 +211,8 @@ repo-serverは、VolumeのUnixドメインソケットを経由して、`cmp-ser
 
 ArgoCD公式ではサイドカーのベースイメージが用意されていない。
 
-サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) とするかを選ぶことができ、いくつかのツール (
-例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。
+サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntuなど) とするかを選ぶことができ、いくつかのツール (
+例：Helm、Kustomize、Ks、Jsonnetなど) が組み込まれていないため、インストールする必要がある。
 
 このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
 
@@ -523,7 +523,7 @@ Helmfileを使用できるように、Helmfileをインストールする。
 ArgoCDとHelmfileを連携すれば、`helmfile`コマンドを宣言的に実行しつつ、実行を自動化できる。
 
 `helm`コマンドを宣言的に実行するのであれば、`.spec.source.helm`キーを使用すれば十分ではあるが、`helmfile`を使用すればHelmfileの機能 (例：複数の`values`
-ファイルを参照する、など) も活用できる。
+ファイルを参照するなど) も活用できる。
 
 **＊実装例＊**
 

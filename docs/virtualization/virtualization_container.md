@@ -39,7 +39,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 ### コンテナランタイムとは
 
-コンテナのライフサイクル (例：イメージのプル、コンテナ作成削除、コンテナ起動停止、など) を管理する。
+コンテナのライフサイクル (例：イメージのプル、コンテナ作成削除、コンテナ起動停止など) を管理する。
 
 > - https://thinkit.co.jp/article/17453
 
@@ -82,7 +82,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 #### ▼ イメージレイヤーのキャッシュ
 
-コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
+コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリなど) に保管する。
 
 > - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 > - https://stackoverflow.com/a/75905173

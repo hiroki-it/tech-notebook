@@ -448,7 +448,7 @@ spec:
   account: foo-account
 ```
 
-またTemplateを使用して、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRange、など) を一括して設定する。
+またTemplateを使用して、Namespace内の制限に関するKubernetesリソース (例：NetworkPolicy、LimitRangeなど) を一括して設定する。
 
 ```yaml
 apiVersion: config.kiosk.sh/v1alpha1

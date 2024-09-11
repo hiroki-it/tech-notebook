@@ -31,7 +31,7 @@ Dockerは、ホストOS、Dockerコンテナ (ベースイメージ、コンテ�
 
 namespaceとcgroupsを使用して、ホストOSを分割した領域である。
 
-namespaceでは、カーネルを分離できるため、カーネルの要素 (プロセス、マウントポイント、ネットワーク、ファイル構造、ユーザー、グループ、など) を独立させられる。
+namespaceでは、カーネルを分離できるため、カーネルの要素 (プロセス、マウントポイント、ネットワーク、ファイル構造、ユーザー、グループなど) を独立させられる。
 
 > - https://www.itbook.info/network/docker06.html
 > - https://tech-lab.sios.jp/archives/18811
@@ -40,7 +40,7 @@ namespaceでは、カーネルを分離できるため、カーネルの要素 (
 
 ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
 
-各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
 
 #### ▼ イメージレイヤー
 
@@ -80,7 +80,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 #### ▼ 特権コンテナ
 
-rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE、など) の全て持つユーザーで実行したコンテナのこと。
+rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持つユーザーで実行したコンテナのこと。
 
 例えば、特権コンテナの実行ユーザーはルートファイルシステムにある`/proc`に書き込みする権限を持つ。
 

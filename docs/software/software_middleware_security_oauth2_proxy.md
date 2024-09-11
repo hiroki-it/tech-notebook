@@ -17,7 +17,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 OAuth2 Proxyは、ダウンストリームからのトークン検証リクエストをIDプロバイダーにプロキシする。
 
-OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) のトークン検証リクエストをプロキシできる。
+OAuth 2.0をベースとしたSSO (例：OAuth、OIDCなど) のトークン検証リクエストをプロキシできる。
 
 認証処理のないアプリケーションやツールのダッシュボードに認証機能を追加できる。
 
@@ -48,11 +48,11 @@ OAuth 2.0をベースとしたSSO (例：OAuth、OIDC、など) のトークン�
 
 ![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
 
-リバースプロキシ (例：Nginx、など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
+リバースプロキシ (例：Nginxなど) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookieなど) から、ユーザーが認証済みであるかどうかを判定する。
 
 ユーザーが未認証の場合、リバースプロキシはトークン検証リクエストをOAuth2 Proxyに転送する。
 
-OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloak、など) の認可エンドポイントにトークン検証リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
+OAuth2 Proxyは、指定されたIDプロバイダー (例：Keycloakなど) の認可エンドポイントにトークン検証リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

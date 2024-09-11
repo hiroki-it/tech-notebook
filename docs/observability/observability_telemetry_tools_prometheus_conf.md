@@ -55,7 +55,7 @@ global:
 
 #### ▼ external_labels
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimirなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
 
 ```yaml
 global:

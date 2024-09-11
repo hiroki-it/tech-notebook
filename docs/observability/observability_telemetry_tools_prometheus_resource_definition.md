@@ -19,7 +19,7 @@ description: リソース定義＠Prometheusの知見を記録しています。
 
 #### ▼ 非チャートとして (prometheus-operator)
 
-Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/prometheus-operator.git
@@ -31,7 +31,7 @@ $ kubectl create -f bundle.yaml
 
 #### ▼ 非チャートとして (kube-prometheus)
 
-Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
+Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。
 
 ```bash
 $ git clone https://github.com/prometheus-operator/kube-prometheus.git
@@ -72,7 +72,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 チャートとしてPrometheusをインストールし、リソースを作成する。
 
-kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporter、など) のKubernetesリソースも合わせて作成する。
+kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporterなど) のKubernetesリソースも合わせて作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -88,7 +88,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus
 
 #### ▼ バイナリとして
 
-バイナリとして監視系ツール (Prometheus、Alertmanager、など) をインストールし、サーバー上でPrometheusを稼働させる。
+バイナリとして監視系ツール (Prometheus、Alertmanagerなど) をインストールし、サーバー上でPrometheusを稼働させる。
 
 ```bash
 $ /opt/prometheus/prometheus \
@@ -533,7 +533,7 @@ spec:
 
 ### .spec.externalLabel
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、など) にメトリクスを送信する時に、これに付与するラベルを設定する。
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimirなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -886,8 +886,8 @@ Prometheusは、Podから直接的にデータポイントを収集できるが�
 
 注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。
 
-- Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisor、など)
-- PrometheusのExporter (例：node-exporter、kube-state-metrics、など)
+- Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisorなど)
+- PrometheusのExporter (例：node-exporter、kube-state-metricsなど)
 
 ![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
 

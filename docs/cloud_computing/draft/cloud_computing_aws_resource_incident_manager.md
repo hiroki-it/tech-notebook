@@ -25,7 +25,7 @@ CloudWatchアラームのアラートを、Incident Managerにインシデント
 
 `(1)`
 
-: エラーイベントの送信元 (例：手動、CloudWatchアラーム、EventBridge、など) からIncident Managerに、エラーイベントを通知する。
+: エラーイベントの送信元 (例：手動、CloudWatchアラーム、EventBridgeなど) からIncident Managerに、エラーイベントを通知する。
 
 `(2)`
 

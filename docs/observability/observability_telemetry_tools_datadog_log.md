@@ -296,13 +296,13 @@ export default browserLogsForSsgPlugin;
 
 > - https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
-| 属性名               | 説明                                             |
-| -------------------- | ------------------------------------------------ |
-| `logger.name`        | ログパッケージの名前を示す。                     |
-| `logger.thread_name` | スレッド名を示す。                               |
-| `error.stack`        | スタックトレースログ全体を示す。                 |
-| `error.message`      | スタックトレースログのメッセージ部分を示す。     |
-| `error.kind`         | エラーの種類 (Exception、OSError、など) を示す。 |
+| 属性名               | 説明                                           |
+| -------------------- | ---------------------------------------------- |
+| `logger.name`        | ログパッケージの名前を示す。                   |
+| `logger.thread_name` | スレッド名を示す。                             |
+| `error.stack`        | スタックトレースログ全体を示す。               |
+| `error.message`      | スタックトレースログのメッセージ部分を示す。   |
+| `error.kind`         | エラーの種類 (Exception、OSErrorなど) を示す。 |
 
 <br>
 
@@ -474,7 +474,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ▼ ログステータスリマッパー
 
-指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (`INFO`、`WARNING`、`ERROR`、など) として登録する。
+指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (`INFO`、`WARNING`、`ERROR`など) として登録する。
 
 ログコンソール画面にて、ステータスファセットとして表示される。
 
@@ -561,7 +561,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 これに対して、ステータスリマッパーのルールを定義する。
 
-`http.status_category`属性のログステータス値が、ステータスファセット (`INFO`、`WARNING`、`ERROR`、など) として登録されるようにする。
+`http.status_category`属性のログステータス値が、ステータスファセット (`INFO`、`WARNING`、`ERROR`など) として登録されるようにする。
 
 <br>
 

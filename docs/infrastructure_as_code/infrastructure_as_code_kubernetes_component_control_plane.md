@@ -529,7 +529,7 @@ $ kube-controller-manager \
 
 kube-controllerは、kube-apiserverを経由して、etcdにwatchイベントを送信している。
 
-Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+Kubernetesリソースのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
 
 すると、kube-controllerはetcd上でKubernetesリソースのマニフェストを検知し、実際にKubernetesリソースを作成/変更する。
 

@@ -19,7 +19,7 @@ Cluster上に仮想Nodeを作成し、またライフサイクルを管理する
 
 Kuberbetesオーケストレーションツール (例：Kubeadm) を組み合わせられる。
 
-仮想サーバーの各コンポーネントを作成するQEMU、仮想サーバーのライフサイクルを管理するlibvirt、などを使用している。
+仮想サーバーの各コンポーネントを作成するQEMU、仮想サーバーのライフサイクルを管理するlibvirtなどを使用している。
 
 > - https://github.com/kubevirt/kubevirt/blob/main/docs/vm-configuration.md#virtual-machine-configuration
 > - https://wiki.archlinux.jp/index.php/Libvirt

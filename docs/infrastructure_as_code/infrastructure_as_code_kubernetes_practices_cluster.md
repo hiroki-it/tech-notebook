@@ -21,7 +21,7 @@ ArgoCD自体はArgoCD以外でデプロイする必要がある。
 
 GitOpsを採用できないため、CIOpsになる。
 
-本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI、Takton、など) を使用して、ArgoCDをデプロイする。
+本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI、Taktonなど) を使用して、ArgoCDをデプロイする。
 
 > - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
@@ -89,7 +89,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 #### ▼ 自動アップグレードを採用できるのであれば採用する
 
-一連のコマンドを自動化できるツール (例：AWS Step Function、Fablic、など) を使用して、アップグレードの実行から動作確認を自動化する。
+一連のコマンドを自動化できるツール (例：AWS Step Function、Fablicなど) を使用して、アップグレードの実行から動作確認を自動化する。
 
 > - https://www.slideshare.net/techblogyahoo/yahoo-japaniaaskubernetes-yjtc#17
 

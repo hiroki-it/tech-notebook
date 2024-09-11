@@ -51,7 +51,7 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。
 
-同じ設定値 (`.metadata.labels`キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。
+同じ設定値 (`.metadata.labels`キー、CPU、メモリなど) や同じ役割を持ったNodeのグループのこと。
 
 基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。
 
@@ -74,8 +74,8 @@ node affinityやnode selectorを実施できるように、`.metadata.labels`キ
 | `batch`、`job`                               | 単発的なバッチ処理やジョブ (定期的なバッチ処理) のコンテナを配置する。                                                                                                                                                                                                                                                            |
 | `deploy`                                     | 他のKubernetesリソースをデプロイするためのKubernetesリソース (例：ArgoCDのPod) のコンテナを配置する。Nodeグループ内に含めずに、異なるClusterに切り分けて管理しても良い。                                                                                                                                                          |
 | `ingress`、`gateway`                         | ワーカーNodeへのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API Gatewayのアプリコンテナを配置する。これは単一障害点になりうるため、ワーカーNodeのCPUやメモリを潤沢にしようできるように、他のリソースのコンテナとは別のNodeグループにした方が良い。また、アップグレード時間の短縮にも繋がる。 |
-| `master`                                     | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、Google Cloud GKE、Azure AKS、など) の場合、このNodeグループは不要になる。                                                                                                                          |
-| `system`                                     | ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMesh、など) の場合、このNodeグループは不要になる。                        |
+| `master`                                     | セルフマネージドなKubernetesコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS EKS、Google Cloud GKE、Azure AKSなど) の場合、このNodeグループは不要になる。                                                                                                                            |
+| `system`                                     | ログやメトリクスのデータポイントを収集するリソース (例：Prometheus、Alertmanager、のPod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーンNodeのコンテナを稼働させる。マネージドなコントロールプレーンNode (例：AWS AppMeshなど) の場合、このNodeグループは不要になる。                          |
 
 ```yaml
 apiVersion: v1
@@ -218,7 +218,7 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 | 項目                                     | 仕組み                                                                                                                        |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| `L4`プロトコルの負荷分散方式             | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値、など。                                            |
+| `L4`プロトコルの負荷分散方式             | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                              |
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
@@ -333,7 +333,7 @@ kubeletを設定する。
 
 #### ▼ ガベージコレクション
 
-コンテナランタイム (例：Docker、Containerd、など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリ、など) に保管する。
+コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリなど) に保管する。
 
 kubeletは、使用されていないイメージレイヤー (`5`分ごと) やコンテナ (`10`分ごと) のキャッシュのガベージコレクションを実行する。
 

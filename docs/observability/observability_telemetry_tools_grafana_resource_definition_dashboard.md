@@ -319,7 +319,7 @@ data:
 
 『`USE`』という名前を含むコミュニティダッシュボードがある。
 
-ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。
+ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーションなど) を表示できる。
 
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
@@ -394,15 +394,15 @@ Podからデータポイントを収集する。
 
 kubeletからデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                    | 監視対象 | メトリクス                           | 説明                                                                                                                                                                                                                          | おすすめ |
-| --------------------------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Cluster`          | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) の合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                          | ★        |
-| `Kubernetes / Compute Resources / Namespace (Pods)` | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
-| `Kubernetes / Compute Resources / Node (Pods)`      | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNode単位で分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
-| `Kubernetes / Compute Resources / Pod`              | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をPod単位で分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。                                                    |          |
-| `Kubernetes / Networking / Cluster`                 | Pod      | ネットワークの性能指標               | Podのネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                                      | ★        |
-| `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                |          |
-| `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをPod単位で分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                                 |          |
+| ダッシュボード名                                    | 監視対象 | メトリクス                           | 説明                                                                                                                                                                                                                        | おすすめ |
+| --------------------------------------------------- | -------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Cluster`          | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) の合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                          | ★        |
+| `Kubernetes / Compute Resources / Namespace (Pods)` | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNamespace単位で分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
+| `Kubernetes / Compute Resources / Node (Pods)`      | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNode単位で分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
+| `Kubernetes / Compute Resources / Pod`              | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をPod単位で分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。                                                    |          |
+| `Kubernetes / Networking / Cluster`                 | Pod      | ネットワークの性能指標               | Podのネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                                    | ★        |
+| `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                              |          |
+| `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをPod単位で分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                               |          |
 
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23
@@ -417,12 +417,12 @@ Nodeからデータポイントを収集する。
 
 kubeletからデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                         | 監視対象                | メトリクス                           | 説明                                                                                                                         | おすすめ |
-| -------------------------------------------------------- | ----------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。 |          |
-| `Kubernetes / Compute Resources / Workload`              | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をWorkload 単位で分析できる。 |          |
-| `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。                                                             |          |
-| `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをWorkload単位で分析できる。                                                              |          |
+| ダッシュボード名                                         | 監視対象                | メトリクス                           | 説明                                                                                                                       | おすすめ |
+| -------------------------------------------------------- | ----------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNamespace単位で分析できる。 |          |
+| `Kubernetes / Compute Resources / Workload`              | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をWorkload 単位で分析できる。 |          |
+| `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。                                                           |          |
+| `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをWorkload単位で分析できる。                                                            |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 

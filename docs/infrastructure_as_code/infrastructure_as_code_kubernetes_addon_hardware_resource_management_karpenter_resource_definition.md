@@ -226,7 +226,7 @@ status:
 
 #### ▼ tags
 
-NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリューム、など) に挿入するタグを設定する。
+NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリュームなど) に挿入するタグを設定する。
 
 なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
 
@@ -310,7 +310,7 @@ spec:
 }
 ```
 
-もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したタグを使用しても良い。
+もちろん、Karpenter以外の方法 (例：Terraformなど) で挿入したタグを使用しても良い。
 
 > - https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053
 
@@ -330,7 +330,7 @@ spec:
 
 NodePool内のNodeに対して、クラウドプロバイダーに依らない仕様を設定する。
 
-EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
+EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプールなど) に合わせて、複数作成すると良い。
 
 ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
 

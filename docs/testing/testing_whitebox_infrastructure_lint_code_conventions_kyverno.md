@@ -17,7 +17,7 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 ![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
 
-Kyvernoは、admission-controllersアドオン、webhookサーバー、Controller、などのコンポーネトから構成されている。
+Kyvernoは、admission-controllersアドオン、webhookサーバー、Controllerなどのコンポーネトから構成されている。
 
 文法の誤りテストを実施する静的解析ツール (例：kubeconform) とは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
 

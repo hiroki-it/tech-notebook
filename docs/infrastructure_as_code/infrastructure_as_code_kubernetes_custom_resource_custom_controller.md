@@ -102,7 +102,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 `(2)`
 
-: カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+: カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
 
 `(3)`
 
@@ -177,7 +177,7 @@ custom-controllerとして動作する。
 
 custom-controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。
 
-Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンド、など) でetcd上に永続化したとする。
+Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
 
 するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 

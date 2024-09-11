@@ -34,7 +34,7 @@ Secrets Managerは、機密データをキーバリュー単位で保管でき�
 
 Auroraは、永続化データをブロック単位で保管できるブロックストレージである。
 
-永続化データ (クラスター全体、自動バックアップ、リードレプリカ全体、スナップショット、ログ、など) の暗号化のために、AuroraではKMSを採用する。
+永続化データ (クラスター全体、自動バックアップ、リードレプリカ全体、スナップショット、ログなど) の暗号化のために、AuroraではKMSを採用する。
 
 > - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
 > - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
@@ -52,7 +52,7 @@ EBSは、ファイルをブロック単位で保管できるブロックスト�
 
 #### ▼ S3
 
-S3は、属性を付与した静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メール、など) やビッグデータをオブジェクト単位で管理できるオブジェクトストレージである。
+S3は、属性を付与した静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) やビッグデータをオブジェクト単位で管理できるオブジェクトストレージである。
 
 テキストファイル (`csv`ファイル、`eml`ファイル) や圧縮ファイル (`zip`ファイル) の暗号化のために、S3とこれのサーバーサイド暗号化を採用する。
 

@@ -82,7 +82,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ Anthos Config Managementとは
 
-一連のacm-operator (cluster-operator、など) から構成される。
+一連のacm-operator (cluster-operatorなど) から構成される。
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
 
@@ -90,7 +90,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ acm-operatorの仕組み
 
-一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。
+一連のacm-operator (cluster-operatorなど) は、組み合わさって動作する。
 
 Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
 
@@ -238,7 +238,7 @@ Google Cloud環境上にAnthos GKE Clusterを作成する。
 
 Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
 
-ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKS、など) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKSなど) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
 ![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
 

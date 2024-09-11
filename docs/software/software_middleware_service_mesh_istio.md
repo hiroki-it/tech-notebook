@@ -35,7 +35,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 サイドカープロキシを使用して、サービスメッシュを実装する。
 
-サイドカーは、`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) と`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
+サイドカーは、`L4` (トランスポート層) のプロトコル (例：TCP、UDPなど) と`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPSなど) を処理できる。
 
 > - https://istio.io/latest/docs/ops/deployment/architecture/
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
@@ -60,7 +60,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 アンビエントメッシュは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。
 
-マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決する責務を持つ。
+マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。
 
 Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。
 
@@ -136,13 +136,13 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 
 #### ▼ ztunnel
 
-ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDP、など) を処理できる。
+ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDPなど) を処理できる。
 
 実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。
 
 #### ▼ waypoint-proxy
 
-waypoint-proxyが`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理できる。
+waypoint-proxyが`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) を処理できる。
 
 実体は、Gateway-APIで作成された`envoy`コンテナを含むPodであり、任意のNodeにスケジューリングされている。
 
@@ -396,7 +396,7 @@ JWTによるBearer認証を実施し、送信元のPodの通信を認証する�
 JWTの取得方法として、例えば以下の方法がある。
 
 - 送信元のPodがIDプロバイダーからJWTを直接取得する。
-- 送信元/宛先の間にOAuthプロキシ (例：OAuth2 Proxy、など) やSSOプロキシ(例：Dex、など) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。
+- 送信元/宛先の間にOAuthプロキシ (例：OAuth2 Proxyなど) やSSOプロキシ(例：Dexなど) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
@@ -467,7 +467,7 @@ AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AW
 
 #### ▼ 外部ツールをルート認証局として使用する場合
 
-Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vault、など) に委譲できる。
+Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外 (例：HashiCorp Vaultなど) に委譲できる。
 
 外部のルート認証局は、`istio-proxy`コンテナから送信された秘密鍵と証明書署名要求による署名で、SSL証明書を作成する。
 
@@ -656,7 +656,7 @@ Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバ�
 
 アクセスログにデフォルトで役立つ値が出力される。
 
-ログ収集ツール (例：FluentBit、Fluentd、など) をDaemonSetパターンやサイドカーパターンで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。
+ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーパターンで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。
 
 ```yaml
 # istio-proxyコンテナのアクセスログ
@@ -725,7 +725,7 @@ Istio上のEnvoyは、スパンを作成する。
 
 #### ▼ スパンの送信
 
-Istio上のEnvoyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collector、など) に送信する。
+Istio上のEnvoyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。
 
 Envoyでは宛先としてサポートしていても、Istio上のEnvoyでは使用できない場合がある。(例：X-Rayデーモン)
 

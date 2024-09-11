@@ -295,7 +295,7 @@ go-repository/
 │   ├── ROUTING.md
 │   └── TODO.md
 │
-├── init/ # プロセスマネージャー (systemd、supervisord、など)
+├── init/ # プロセスマネージャー (systemd、supervisordなど)
 │
 ├── internal/ # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
 │   └── pkg/

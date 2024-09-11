@@ -377,7 +377,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 ### マニフェストの種類
 
-AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration、などのマニフェストから構成されている。
+AWS Load Balancerコントローラーは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfigurationなどのマニフェストから構成されている。
 
 <br>
 

@@ -316,7 +316,7 @@ arm64
 
 イメージのビルド時に無視するファイルを設定する。
 
-開発環境のみで使用するファイル、`.gitignore`ファイル、`README`ファイル、などはコンテナの稼働には不要である。
+開発環境のみで使用するファイル、`.gitignore`ファイル、`README`ファイルなどはコンテナの稼働には不要である。
 
 ```ignore
 .env.example
@@ -703,7 +703,7 @@ Dockerfileの文法の誤りを検証する。
 
 ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。
 
-ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) が存在するかを検証する。
+ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の`ENTRYPOINT`が正しく動作するかなど) が存在するかを検証する。
 
 > - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
 

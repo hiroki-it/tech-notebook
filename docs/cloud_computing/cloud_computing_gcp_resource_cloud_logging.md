@@ -55,7 +55,7 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 
 #### ▼ ログシンク
 
-ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring、など) にログイベントを送信する。
+ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoringなど) にログイベントを送信する。
 
 ![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png)
 

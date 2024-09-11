@@ -296,7 +296,7 @@ $ go-callvis -group pkg,type ./
 
 ## go-grpc-middleware
 
-gRPCに関するミドルウェア処理 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
+gRPCに関するミドルウェア処理 (例：認証、ロギング、メトリクス、分散トレーシングなど) を持つ。
 
 なお、gRPCはリモートプロシージャーコールであるため、ミドルウェア処理にルーティングは含まれない。
 
@@ -1192,7 +1192,7 @@ func (p *otelPlugin) before(spanName string) gormHookFunc {
 		ctx := tx.Statement.Context
 		ctx = context.WithValue(ctx, parentCtxKey{}, ctx)
 		// スパンを作成する
-		// スパン名は、gorm.Create、gorm.Query、gorm.Delete、gorm.Update、などになる
+		// スパン名は、gorm.Create、gorm.Query、gorm.Delete、gorm.Updateなどになる
 		ctx, _ = p.tracer.Start(ctx, spanName, trace.WithSpanKind(trace.SpanKindClient))
 		tx.Statement.Context = ctx
 	}

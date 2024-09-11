@@ -25,7 +25,7 @@ otelクライアントパッケージからのテレメトリーデータを、R
 
 テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用した方が良い。
 
-もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetry Collectorにテレメトリーデータを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetry Collectorにテレメトリーデータを送信する責務を持つ。
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
@@ -70,7 +70,7 @@ OpenTelemetryクライアントのProcessorと同じである。
 
 #### ▼ Exporterとは
 
-OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
+OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaegerなど) のテレメトリーを監視バックエンドに送信する。
 
 また、OpenTelemetryのスキーマ (`semconv`パッケージ) を経由して、スパンのデータ構造を変換する。
 
@@ -187,7 +187,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ エージェントパターンの実装例
 
-エージェントは、デーモンプロセス、サイドカー、DaemonSet、などで実装できる。
+エージェントは、デーモンプロセス、サイドカー、DaemonSetなどで実装できる。
 
 #### ▼ エージェントパターンのデメリット
 
@@ -211,7 +211,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンの実装例
 
-`L7`ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeployment、などで実装できる。
+`L7`ロードバランサーはIngressコントローラーや`istio-proxy`コンテナ、ゲートウェイはDeploymentなどで実装できる。
 
 #### ▼ ゲートウェイパターンのデメリット
 

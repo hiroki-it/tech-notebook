@@ -15,7 +15,7 @@ description: Systems Manager (新SSM) ＠AWSリソースの知見を記録して
 
 ## 01. チェンジカレンダー
 
-他のAWSリソース (例：SMオートメーション、EventBridge、など) を定期的に実行するCronとして使用する。
+他のAWSリソース (例：SMオートメーション、EventBridgeなど) を定期的に実行するCronとして使用する。
 
 定期的に実行するAWSリソースで、他のAWSリソース (EC2、RDS) の起動処理と停止処理を定義すれば、夜間だけ停止させられる。
 

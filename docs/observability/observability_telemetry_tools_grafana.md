@@ -29,11 +29,11 @@ PromQLに基づいて、収集されたメトリクスを可視化する。
 
 ### データソース
 
-| データソース名       | 例                                                          |
-| -------------------- | ----------------------------------------------------------- |
-| TSDB                 | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB |
-| RDB                  | MySQL、PostgreSQL                                           |
-| クラウドデータソース | AWS CloudWatch、Google Cloud Logging                        |
+| データソース名       | 例                                                                         |
+| -------------------- | -------------------------------------------------------------------------- |
+| TSDB                 | PrometheusのローカルDB、VictoriaMetrics、Graphite、InfluxDB、Grafana Mimir |
+| RDB                  | MySQL、PostgreSQL                                                          |
+| クラウドデータソース | AWS CloudWatch、Google Cloud Logging                                       |
 
 > - https://qiita.com/MetricFire/items/15e024aea40785be622c
 

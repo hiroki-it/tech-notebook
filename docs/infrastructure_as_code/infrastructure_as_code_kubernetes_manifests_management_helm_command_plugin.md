@@ -17,7 +17,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 ### helm-dashboardとは
 
-`helm`コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴、など) をダッシュボードで表示する。
+`helm`コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴など) をダッシュボードで表示する。
 
 > - https://github.com/komodorio/helm-dashboard
 

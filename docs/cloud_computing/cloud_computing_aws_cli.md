@@ -358,11 +358,11 @@ AWSリソースごとに専用のオプションがある。
 
 #### ▼ --filter
 
-SES、Cost Explorer、など
+SES、Cost Explorerなど
 
 #### ▼ --filters
 
-EC2、AutoScaling、RDS、など
+EC2、AutoScaling、RDSなど
 
 ```bash
 # 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。
@@ -371,11 +371,11 @@ $ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
 
 #### ▼ filterの文字を含む独自のオプション
 
-DynamoDB、など
+DynamoDBなど
 
 #### ▼ --include
 
-ACM、など
+ACMなど
 
 <br>
 
@@ -545,7 +545,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 > - https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
-AWSリソースの種類 (ec2、alb、など) を指定して、特定のAWSリソースのみを取得することもできる。
+AWSリソースの種類 (ec2、albなど) を指定して、特定のAWSリソースのみを取得することもできる。
 
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
@@ -729,7 +729,7 @@ $ aws sts get-caller-identity --profile foo
 
 #### ▼ create-activation
 
-サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシン、など) をSystems Managerで管理するために、IDとコードを発行する。
+サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をSystems Managerで管理するために、IDとコードを発行する。
 
 ```bash
 $ aws ssm create-activation \
@@ -839,7 +839,7 @@ $ aws ec2 revoke-security-group-ingress \
 
 AWSにSSOでログインする。
 
-認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Auth、など) に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 

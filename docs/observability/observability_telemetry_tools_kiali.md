@@ -29,7 +29,7 @@ Kialiは、バックエンドコンポーネントとフロントエンドコン
 
 #### ▼ バックエンドコンポーネントとは
 
-バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Service、など) の情報を収集し、PrometheusからIstioのメトリクス (例：`istio_requests_total`、`istio_request_bytes_bucket`、`istio_request_bytes_count`、など) を収集する。
+バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Serviceなど) の情報を収集し、PrometheusからIstioのメトリクス (例：`istio_requests_total`、`istio_request_bytes_bucket`、`istio_request_bytes_count`など) を収集する。
 
 そのため、Kialiが必要とするメトリクスをPrometheusで事前に収集していないと、Kialiが正しく機能しない。
 
@@ -65,7 +65,7 @@ Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ
 
 ### マニフェストの種類
 
-Kialiは、Deployment、ConfigMap、Service、などのマニフェストから構成されている。
+Kialiは、Deployment、ConfigMap、Serviceなどのマニフェストから構成されている。
 
 <br>
 
@@ -204,7 +204,7 @@ Virtual Service間の通信を表示する。
 
 #### ▼ Workloadグラフ
 
-Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) の通信を表示する。
+Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) の通信を表示する。
 
 <br>
 

@@ -932,7 +932,7 @@ func main()  {
 
 ### Exporterとは
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collector、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collectorなど) を決める処理を持つ。
 
 <br>
 
@@ -983,7 +983,7 @@ Google Cloud Traceをスパンの宛先とする。
 
 ### スパン宛先の設定
 
-Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`、など) を設定する。
+Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`など) を設定する。
 
 <br>
 

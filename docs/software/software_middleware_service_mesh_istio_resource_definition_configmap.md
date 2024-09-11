@@ -318,7 +318,7 @@ data:
 
 #### ▼ tracing
 
-`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStep、など) で計装するかを設定する。
+`istio-proxy`コンテナでトレースIDとスパンIDを作成する場合に、いずれのパッケージ (例：Zipkin、Datadog、LightStepなど) で計装するかを設定する。
 
 ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
 
@@ -443,7 +443,7 @@ data:
 
 `istio-proxy`コンテナでトレースIDとスパンIDを作成するか否かを設定する。
 
-これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Zipkin、Jaeger、など) で計装するかを設定する。
+これを有効化した場合に、`.mesh.defaultConfig`キー配下で、いずれのパッケージ (例：Zipkin、Jaegerなど) で計装するかを設定する。
 
 ```yaml
 apiVersion: v1

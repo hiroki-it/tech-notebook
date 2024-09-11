@@ -17,7 +17,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 ### アプリケーション層とは
 
-アプリが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理する層である。
+アプリが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) を処理する層である。
 
 > - https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
 
@@ -57,7 +57,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 `(1)`
 
-: 送信側のアプリ (例：任意のアプリ、Gmail、など) は、メールを送信する。
+: 送信側のアプリ (例：任意のアプリ、Gmailなど) は、メールを送信する。
 
 `(2)`
 
@@ -75,7 +75,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 `(5)`
 
-: 受信側のアプリ( 例：任意のアプリ、Gmail、など) は、各々が指定したプロトコルに応じて、POP/IMAPサーバーからメールデータを定期的に取得する。
+: 受信側のアプリ( 例：任意のアプリ、Gmailなど) は、各々が指定したプロトコルに応じて、POP/IMAPサーバーからメールデータを定期的に取得する。
 
 > - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
@@ -83,7 +83,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 アプリのメール送信機能を開発する時に、送信テストを実施する必要があり、この内容は公開したくない。
 
-そこで、SMTPサーバーのモック (例：mailtrap、MailCatcher、MailDev、など) を提供するサービスを利用する。
+そこで、SMTPサーバーのモック (例：mailtrap、MailCatcher、MailDevなど) を提供するサービスを利用する。
 
 このSMTPサーバーのモックは、アプリから受信したメールをPOP/IMAPサーバーに転送しない。
 

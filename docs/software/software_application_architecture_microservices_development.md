@@ -38,7 +38,7 @@ description: 開発手法＠マイクロサービスアーキテクチャの知�
 
 Googleではモノレポによるマイクロサービスアーキテクチャが採用されており、自前のバージョン管理システム (Piper/CitC) を使用している。
 
-その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter、など) でもモノリポを採用している。
+その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitterなど) でもモノリポを採用している。
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
 

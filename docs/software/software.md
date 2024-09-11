@@ -182,7 +182,7 @@ Unixから分岐したLinuxは、加えて3系統 (Debian、RedHat、Slackware) 
 
 #### ▼ Debian系統
 
-Debian、Ubuntu、など
+Debian、Ubuntuなど
 
 ```bash
 # 確認方法
@@ -195,7 +195,7 @@ Debian GNU/Linux 10 \n \l
 
 #### ▼ RedHat系統
 
-RedHat、CentOS、Fedora、など
+RedHat、CentOS、Fedoraなど
 
 ```bash
 # 確認方法

@@ -23,7 +23,7 @@ Ingressコントローラーは、kube-controllerのように単一/複数のIng
 
 注意点として、IngressコントローラーがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。
 
-Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD、など) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
+Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCDなど) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。
 
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 

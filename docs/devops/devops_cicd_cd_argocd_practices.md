@@ -505,7 +505,7 @@ ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けら�
 
 対象のソースコードの脆弱性ではなく、CDツールに関するそれに対処する。
 
-CDツール (例：ArgoCD、Flux、など) によっては、公式リポジトリで脆弱性診断を実施してくれている。
+CDツール (例：ArgoCD、Fluxなど) によっては、公式リポジトリで脆弱性診断を実施してくれている。
 
 > - https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md
@@ -520,7 +520,7 @@ ArgoCDのデフォルトの認証方法は、Bearer認証である。
 
 利便性のためSSOを採用しつつ、二要素認証を組み合わせて強度を高める。
 
-そのために、認証フェーズを信頼性の高い外部サービス (Auth0、GitHub、GitLab、など) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。
+そのために、認証フェーズを信頼性の高い外部サービス (Auth0、GitHub、GitLabなど) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。
 
 さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求する。
 
@@ -559,7 +559,7 @@ ArgoCDをServiceAccountで認証し、またClusterRoleで認可する。
 
 ### 通知
 
-CDパイプライン上で実行しているステップ (例：デプロイ、ロールバック、など) の結果が通知されるようにする。
+CDパイプライン上で実行しているステップ (例：デプロイ、ロールバックなど) の結果が通知されるようにする。
 
 通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。
 
@@ -644,7 +644,7 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 この問題が起こった場合、以下のいずれかで解決する。
 
 - argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。
-- Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
+- Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。
 
 <br>
 

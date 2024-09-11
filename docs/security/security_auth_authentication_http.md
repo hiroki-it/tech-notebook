@@ -169,7 +169,7 @@ Bearer認証にて、トークンとして使用する。
 
      この時、`Content-Type`ヘッダーを`application/x-www-form-urlencoded`とする。
 
-     必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプ、などが必要なことが多い。
+     必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。
 
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/post-oauth2-token/#request
@@ -187,7 +187,7 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
 : レスポンスボディにBearerトークンを含むレスポンスが返信される。
 
-     他に、有効期限、権限のスコープ、指定できる認証スキーマ、などが提供されることが多い。
+     他に、有効期限、権限のスコープ、指定できる認証スキーマなどが提供されることが多い。
 
 > - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 > - https://ja.developer.box.com/reference/resources/access-token/

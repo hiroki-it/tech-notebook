@@ -875,7 +875,7 @@ Applicationは任意のNamespaceに作成できる。
 
 特定のApplicationのSyncステータス (Synced、OutOfSync) の判定時に、特定のKubernetesリソースの特定の設定値の差分を無視し、OutOfSyncにならないようする。
 
-Sync後にKubernetesリソースが変化するような仕様 (動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストの自動整形、など) の場合に使用する。
+Sync後にKubernetesリソースが変化するような仕様 (動的な設定値、Jobによる変更、mutating-admissionステップでのWebhook、マニフェストの自動整形など) の場合に使用する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1568,7 +1568,7 @@ Syncのオプションを設定する。
 
 #### ▼ automated
 
-GitOpsでのリポジトリ (例：GitHub、Helm、など) とKubernetesの間の自動Syncを設定する。
+GitOpsでのリポジトリ (例：GitHub、Helmなど) とKubernetesの間の自動Syncを設定する。
 
 ArgoCDはリポジトリを`3`分間ごとにポーリングしており、このタイミングでリポジトリとの間でマニフェストの状態を同期する。
 
@@ -1749,7 +1749,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   # AppProjectへの所属を許可したいApplicationのNamespaceを設定する
   sourceNamespaces:
@@ -1838,7 +1838,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   sourceRepos:
     - "*"
@@ -1853,7 +1853,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   description: This is application in prd environment
 ```
@@ -1869,7 +1869,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   destinations:
     - namespace: "*" # 所属するApplictionは、全てのNamespaceにデプロイできる。
@@ -1887,7 +1887,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   clusterResourceWhitelist:
     - group: "*"
@@ -1903,7 +1903,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: prd # 実行環境名、運用チーム名など
-  namespace: foo # サービス名、など
+  namespace: foo # サービス名など
 spec:
   namespaceResourceWhitelist:
     - group: "*"

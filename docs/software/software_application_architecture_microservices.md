@@ -155,7 +155,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### フレームワーク
 
-マイクロサービスアーキテクチャのフレームワークとして、Dapr、Axon、Eventuate、MicroProfile LRA、などがある。
+マイクロサービスアーキテクチャのフレームワークとして、Dapr、Axon、Eventuate、MicroProfile LRAなどがある。
 
 > - https://speakerdeck.com/polar3130/portable-microservices-with-dapr-and-kubernetes?slide=24
 > - https://www.publickey1.jp/blog/19/dapr.html
@@ -361,7 +361,7 @@ API Gatewayの責務をどのように分割するかに応じて、分割パタ
 
 #### ▼ BFF：Backends For Frontends
 
-マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーション、など) を単位として、API Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
+マイクロサービスにリクエストを送信するクライアントアプリケーションの種類 (Webアプリケーション、モバイルアプリケーション、他社向けアプリケーションなど) を単位として、API Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gatewayなど) を作成する。
 
 ただし、ドメインによっては同じクライアントアプリケーションの種類であっても、API Gatewayを分割することもある。
 
@@ -410,7 +410,7 @@ API GatewayのAPI形式に応じて、分割パターンがある。
 
 #### ▼ 自前で実装する場合
 
-API Gatewayを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチ、など) で実装する。
+API Gatewayを自前 (例：フルスクラッチ、GraphQLを使用したフルスクラッチなど) で実装する。
 
 Kubernetes内で管理できるメリットがある。
 
@@ -425,7 +425,7 @@ GraphQLでAPI Gatewayを実装する場合は、特に注意が必要である�
 
 #### ▼ OSSを使用する場合
 
-API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIX、など) を使用する。
+API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIXなど) を使用する。
 
 Kubernetes内で管理できるメリットがある。
 

@@ -145,7 +145,7 @@ Envoyの`15090`番ポートでは、メトリクス収集ツール (例：Promet
 
 Envoyが、`/stats/prometheus`エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
 
-もしサービスメッシュツール (例：Istio、Linkerd、など) を使用する場合、コントロールプレーン側にも同じエンドポイントがあり、メトリクス収集ツールはこちら側を指定することが多い。
+もしサービスメッシュツール (例：Istio、Linkerdなど) を使用する場合、コントロールプレーン側にも同じエンドポイントがあり、メトリクス収集ツールはこちら側を指定することが多い。
 
 ```bash
 # envoyコンテナからメトリクスを取得する。
@@ -162,7 +162,7 @@ $ kubectl exec \
 
 ### Carrier
 
-Envoyは、自身を通過したリクエストのCarrier (例：HTTPヘッダー、gRPCメタデータ、など) にリクエストIDを設定する。
+Envoyは、自身を通過したリクエストのCarrier (例：HTTPヘッダー、gRPCメタデータなど) にリクエストIDを設定する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 
@@ -176,7 +176,7 @@ Envoyでは、様々なCarrierを使用できる。
 
 EnvoyはIDを自動作成する。
 
-また、受信したリクエストのCarrier (例：HTTPヘッダー、gRPCメタデータ、など) に`X-REQUEST-ID`ヘッダーを割り当てる。
+また、受信したリクエストのCarrier (例：HTTPヘッダー、gRPCメタデータなど) に`X-REQUEST-ID`ヘッダーを割り当てる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 

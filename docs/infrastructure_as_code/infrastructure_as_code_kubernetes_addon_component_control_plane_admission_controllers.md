@@ -82,9 +82,9 @@ ValidatingAdmissionWebhook,
 
 #### ▼ Webhook系プラグインのSSL証明書
 
-Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook、など) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時に、webhookサーバーのためにSL証明書が必要である。
+Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時に、webhookサーバーのためにSL証明書が必要である。
 
-このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration、など) で管理している。
+このSSL証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。
 
 SSL証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
 

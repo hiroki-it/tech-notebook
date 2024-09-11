@@ -72,7 +72,7 @@ Karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIを
 
 ### マニフェストの種類
 
-cluster-autoscalerは、Deployment (cluster-autoscaler) 、ConfigMap (cluster-autoscaler-status) 、などのマニフェストから構成されている。
+cluster-autoscalerは、Deployment (cluster-autoscaler) 、ConfigMap (cluster-autoscaler-status) などのマニフェストから構成されている。
 
 <br>
 

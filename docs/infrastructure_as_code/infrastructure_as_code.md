@@ -224,7 +224,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 ### コンテナオーケストレーション
 
-複数のコンテナの稼働 (プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワーク、など) を一括で管理する。
+複数のコンテナの稼働 (プロビジョニング、デプロイメインと、スケーリング、コンテナ間ネットワークなど) を一括で管理する。
 
 > - https://www.vmware.com/topics/glossary/content/container-orchestration.html
 
@@ -275,7 +275,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 #### ▼ アンバサダーパターンとは
 
-アプリコンテナと同じPod内や、AWS ECSタスク内に、リバースプロキシコンテナ (Envoy、Linkerd、など) を配置する。
+アプリコンテナと同じPod内や、AWS ECSタスク内に、リバースプロキシコンテナ (Envoy、Linkerdなど) を配置する。
 
 サービスメッシュを実現するために採用される。
 

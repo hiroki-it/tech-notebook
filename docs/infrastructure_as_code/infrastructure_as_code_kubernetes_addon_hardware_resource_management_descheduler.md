@@ -65,7 +65,7 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に退�
 
 ### マニフェストの種類
 
-deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストから構成されている。
+deschedulerは、Job (descheduler) 、ConfigMapなどのマニフェストから構成されている。
 
 <br>
 
@@ -199,7 +199,7 @@ data:
 
 #### ▼ LowNodeUtilization
 
-Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。
+Nodeのハードウェアリソース使用量 (例：CPU、メモリなど) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。
 
 さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodをスケジューリングさせる。
 
@@ -232,7 +232,7 @@ strategies:
 
 #### ▼ RemoveDuplicates
 
-Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。
+Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。
 
 該当するNodeがない場合、退避させない。
 
@@ -348,7 +348,7 @@ strategies:
 
 #### ▼ nodeFit
 
-Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity、など) であるかを検証する。
+Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinityなど) であるかを検証する。
 
 > - https://github.com/kubernetes-sigs/descheduler#node-fit-filtering
 

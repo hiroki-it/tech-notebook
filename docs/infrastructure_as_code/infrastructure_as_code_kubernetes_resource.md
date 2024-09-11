@@ -59,7 +59,7 @@ Podの負荷に合わせてPodの自動水平スケーリングを実行しな�
 
 ただしReplicaSetとは異なり、Node内でPodを1つだけ維持管理する。
 
-Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、CNI、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporter、など) のために使用される。
+Nodeで1つだけ稼働させる必要のあるプロセス (例：kube-proxy、CNI、FluentBit、datadogエージェント、cAdvisorエージェント、Prometheusの一部のExporterなど) のために使用される。
 
 こういったプロセスが稼働するコンテナは、Node内の全てのコンテナからデータを収集し、可観測性のためのデータセットを整備する。
 
@@ -254,7 +254,7 @@ Taints: <none>
 
 ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。
 
-コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。
+コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。
 
 ```bash
 $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
@@ -363,7 +363,7 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 
 Podの終了プロセスが始まると、以下の一連のプロセスも開始する。
 
-- Workload (例：Deployment、DaemonSet、StatefulSet、Job、など) が古いPodを切り離す。
+- Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) が古いPodを切り離す。
 - Serviceとkube-proxyが古いPodの宛先情報を削除する。
 - コンテナを停止する。
 
@@ -750,7 +750,7 @@ Node外から通信を受信し、Ingressに定義されたルールに応じて
 
 クラウドプロバイダー (例：AWS) では、Ingressコントローラー状況下でIngressを作成すると、Ingressの設定値に応じた`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
-ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。
+ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。
 
 この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 
@@ -766,7 +766,7 @@ Serviceは、`L4`ロードバランサーとしてPodに通信をルーティン
 
 kube-proxyが更新したiptablesを使用し、また負荷分散方式によるルーティング先Podの決定に基づいて、Podに通信をルーティングする。
 
-DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Job、など) でServiceを使用できる。
+DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) でServiceを使用できる。
 
 マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
@@ -803,7 +803,7 @@ Cluster-IPはNode外から宛先として指定できないため、通信にIng
 パブリックネットワーク
 ⬇⬆︎︎
 # L7ロードバランサー
-Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、など)
+Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラーなど)
 ⬇⬆︎︎
 # L4ロードバランサー
 ClusterIP Service
@@ -1085,7 +1085,7 @@ Cluster全体に渡る機能を提供する。
 
 各Kubernetesリソースの影響範囲を制御するための領域のこと。
 
-Namespaceが異なれば、`.metadata.labels`キーに同じ値 (例：同じ名前、など) を設定できる。
+Namespaceが異なれば、`.metadata.labels`キーに同じ値 (例：同じ名前など) を設定できる。
 
 #### ▼ 初期Namespace
 
@@ -1291,7 +1291,7 @@ Node上にVolumeを作成し、これをコンテナにバインドマウント�
 
 #### ▼ 外部サービスのVolume
 
-外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
+外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。
 
 StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部サービスを紐付け、Volumeとしてコンテナにマウントする。
 
@@ -1307,7 +1307,7 @@ StorageClassとPersistentVolumeClaimを経由して、PersistentVolumeと外部�
 
 ![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
 
-既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。
+既存 (例：NFS、iSCSI、Cephなど) のボリュームをそのままKubernetesのVolumeとして使用する。
 
 Podの`.spec.volumes`キーで指定する。
 
@@ -1421,14 +1421,14 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 また、Podが削除されるとこのVolumeも同時に削除されてしまう。
 
-保持期間を設定できるツール (例：Prometheus、Victoria Metrics、など) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。
+保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimirなど) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。
 
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
 
 #### ▼ 外部サービスのVolume
 
-外部サービス (例：AWS EBS、NFS、など) が提供するVolumeをコンテナにマウントする。
+外部サービス (例：AWS EBS、NFSなど) が提供するVolumeをコンテナにマウントする。
 
 同一Node上のPod間でこのVolumeを共有でき、同一Pod内のコンテナ間でもVolumeを共有できる。
 
@@ -1594,7 +1594,7 @@ $ kubectl delete statefulset -l operator.prometheus.io/name=foo-operator --casca
 
 #### ▼ StorageClassとは
 
-Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Disk、など) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。
+Kubernetes外部でプロビジョニングされたストレージ (例：AWS EBS、Azure Diskなど) を要求し、これをVolumeとしてPersistentVolumeClaimに提供する。
 
 そのため、PersistentVolumeも合わせて作成する必要がある。
 

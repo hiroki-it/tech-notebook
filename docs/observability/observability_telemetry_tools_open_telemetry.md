@@ -17,7 +17,7 @@ description: OpenTelemetry＠テレメトリー収集ツールの知見を記録
 
 ### アーキテクチャ
 
-OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージ、など) 、テレメトリーサブスクライバー (例：OpenTelemetry Collector、など) といったコンポーネントから構成されている。
+OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージなど) 、テレメトリーサブスクライバー (例：OpenTelemetry Collectorなど) といったコンポーネントから構成されている。
 
 OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
 
@@ -44,7 +44,7 @@ otelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやOpenTelemetry Collectorにこれを渡す。
 
-もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
+もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 

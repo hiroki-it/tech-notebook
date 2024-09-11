@@ -562,7 +562,7 @@ spec:
 
 指定したゾーンのPodに対して、指定した重みづけでルーティングする。
 
-リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キー、など) の値を設定する。
+リージョン名やゾーン名は、Podの`topologyKey`キー（`topology.kubernetes.io/region`キー、`topology.kubernetes.io/zone`キーなど) の値を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1976,7 +1976,7 @@ VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
 
 ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (`*`) を使用して全てのドメインを許可しても良い。
 
-なお、`.spec.gateways`キーで`mesh`を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のホストヘッダー値を設定する、など)
+なお、`.spec.gateways`キーで`mesh`を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のホストヘッダー値を設定するなど)
 
 **＊実装例＊**
 

@@ -1026,7 +1026,7 @@ usage: grep [-abcdDEFGHhIiJLlMmnOopqRSsUVvwXxZz] [-A num] [-B num] [-C[num]]
 
 ### 基本的な使い方
 
-文字列の表示に関する様々なユーティリティ (例：`ls`、`cat`、`find`、など) と組み合わせて使用する。
+文字列の表示に関する様々なユーティリティ (例：`ls`、`cat`、`find`など) と組み合わせて使用する。
 
 ```bash
 $ cat foo.txt | grep bar

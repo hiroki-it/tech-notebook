@@ -29,7 +29,7 @@ Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決
 
 ### マニフェストの種類
 
-CoreDNSアドオンは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) 、などのマニフェストから構成される。
+CoreDNSアドオンは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) などのマニフェストから構成される。
 
 ```bash
 $ kubectl get pod -n kube-system

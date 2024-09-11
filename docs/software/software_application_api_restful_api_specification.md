@@ -166,7 +166,7 @@ $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 : OpenAPI Generatorを使って、API仕様からコードを自動的に作成する。
 
 ```bash
-# brew、npm、などでインストールする
+# brew、npmなどでインストールする
 $ brew install openapi-generator
 
 # GoのAPIを作成する
@@ -272,7 +272,7 @@ openapi: 3.0.0
 
 ### infoフィールド (必須)
 
-API名、作成者名、メールアドレス、ライセンス、などを定義する。
+API名、作成者名、メールアドレス、ライセンスなどを定義する。
 
 **＊実装例＊**
 
@@ -295,7 +295,7 @@ info:
 
 ### serversフィールド
 
-API自体のURL、などを定義する。
+API自体のURLなどを定義する。
 
 **＊実装例＊**
 
@@ -316,7 +316,7 @@ servers:
 
 ### pathsフィールド (必須)
 
-APIのエンドポイント、HTTPメソッド、ステータスコード、などを定義する。
+APIのエンドポイント、HTTPメソッド、ステータスコードなどを定義する。
 
 ```yaml
 paths:

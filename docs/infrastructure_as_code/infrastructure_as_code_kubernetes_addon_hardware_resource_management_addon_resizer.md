@@ -35,7 +35,7 @@ addon-resizerは、サイドカーコンテナとして稼働し、指定した�
 
 ### マニフェストの種類
 
-addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) 、などのマニフェストから構成されている。
+addon-resizerは、Deployment (nanny) 、ConfigMap (nanny-config) などのマニフェストから構成されている。
 
 <br>
 

@@ -437,7 +437,7 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 ```bash
 $ terraform import \
     -var-file=foo.tfvars \
-    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前、など>
+    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前など>
 
 
 Import successful!
@@ -1028,7 +1028,7 @@ $ terraform init -reconfigure
 
      パラメーターの『```<resourceタイプ>.<resourceブロック名>```』は、`terraform plan`コマンドの結果が参考になる。
 
-     また『ARN、ID、名前、など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
+     また『ARN、ID、名前など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
      何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで`resource`ブロックを削除し、改めて書き込む。
 
@@ -1036,7 +1036,7 @@ $ terraform init -reconfigure
 # 関数を使用せずに定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前、など>
+    '<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1048,7 +1048,7 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>'
 # moduleブロックを使用して定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前、など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1060,13 +1060,13 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 # for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前など>
 
 
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1080,13 +1080,13 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名2
 # count関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前、など>
+    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前など>
 
 
 # その他のインデックス番号もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前、など>
+    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1100,13 +1100,13 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>[1]'
 # moduleブロックを使用して、for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前、など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前など>
 
 
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前、など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1184,7 +1184,7 @@ $ rm terraform.tfstate.backup
 
 #### ▼ importできない`resource`タイプ
 
-`resource`ブロック間の紐付けに特化したような`resource`ブロックは、`terraform import`コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment`、など) 。
+`resource`ブロック間の紐付けに特化したような`resource`ブロックは、`terraform import`コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment`など) 。
 
 その場合、`tfstate`ファイルと実インフラの差分を解消できない。
 

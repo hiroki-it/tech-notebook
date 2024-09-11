@@ -154,7 +154,7 @@ $ helm install <Helmリリース名> <リポジトリ名>/aws-ebs-csi-driver -n 
 
 ### マニフェストの種類
 
-AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccount、などのマニフェストから構成される。
+AWS EBS CSIドライバーは、Deployment (ebs-csi-controller) 、ServiceAccountなどのマニフェストから構成される。
 
 <br>
 

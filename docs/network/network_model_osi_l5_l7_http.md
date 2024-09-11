@@ -211,7 +211,7 @@ Connection: close
 # webサーバー (nginx、apache、AmazonS3などが表示される)
 Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
-# リファラポリシー (nginx、apache、などで実装可能)
+# リファラポリシー (nginx、apacheなどで実装可能)
 Referrer-Policy: no-referrer-when-downgrade
 x-amz-rid:	*****
 # セッションIDを含むCookie情報
@@ -533,7 +533,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 
 #### ▼ ストレージ
 
-SessionStorage (例：Redis、ElastiCache、など) やDB (例：MySQL) にて、レコード形式で保管する。
+SessionStorage (例：Redis、ElastiCacheなど) やDB (例：MySQL) にて、レコード形式で保管する。
 
 > - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
 
@@ -596,7 +596,7 @@ session.gc_divisor = 1
 
 ### `L7`ロードバランサーとは
 
-通信の`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) のヘッダー情報に基づいて、通信をロードバランシングする。
+通信の`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダー情報に基づいて、通信をロードバランシングする。
 
 一方で、`L7`プロトコルのヘッダー情報をもたない通信をロードバランシングできない。
 
@@ -616,7 +616,7 @@ session.gc_divisor = 1
 
 `L7`ロードバランサーは、元々のリクエストの情報を保持しつつ、宛先を変更しなければならない。
 
-`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) のヘッダーを保持し、NATの仕組みで`L4`ヘッダーに含まれる宛先IPアドレスやポート番号を変更している。
+`L7`プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) のヘッダーを保持し、NATの仕組みで`L4`ヘッダーに含まれる宛先IPアドレスやポート番号を変更している。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html
 

@@ -69,7 +69,7 @@ aws-repository/
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClass、など）
+        ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClassなど）
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
@@ -107,7 +107,7 @@ aws-remote-repository/
     │   ├── outputs.tf
     │   └── variables.tf
     │
-    ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClass、など）
+    ├── kubernetes/ # Kubernetesリソース（例：RoleBinding、StorageClassなど）
     │   ├── main.tf
     │   ├── outputs.tf
     │   └── variables.tf

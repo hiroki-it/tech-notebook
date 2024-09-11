@@ -143,7 +143,7 @@ $ kubectl get node -o wide
 
 `(9)`
 
-: Crash、Terminating、Error、などのPodがいないかを確認する。
+: Crash、Terminating、ErrorなどのPodがいないかを確認する。
 
      また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
 
@@ -255,7 +255,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 ```bash
 $ ./repository/asmcli-1140-0 install \
     --kubeconfig <kubeconfigファイルへのパス> \
-    `# Google Cloud以外 (オンプレ、AWS、Azure、など) で稼働させることを宣言する。` \
+    `# Google Cloud以外 (オンプレ、AWS、Azureなど) で稼働させることを宣言する。` \
     --platform multicloud \
     --fleet_id <フリートのグループID> \
     --output_dir ./output \

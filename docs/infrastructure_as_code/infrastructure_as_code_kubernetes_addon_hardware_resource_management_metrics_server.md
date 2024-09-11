@@ -74,7 +74,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保管する。
 
-kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`、など) を持ち、これがスクレイパーの収集対象になる。
+kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`など) を持ち、これがスクレイパーの収集対象になる。
 
 そのため、PodやNodeにメトリクス収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
