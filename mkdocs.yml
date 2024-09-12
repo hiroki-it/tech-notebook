@@ -167,8 +167,8 @@ nav:
           - ホワイトボックステスト: software/software_application_architecture_microservices_test_blackbox.md
           - ブラックボックステスト: software/software_application_architecture_microservices_test_whitebox.md
           - 開発手法: software/software_application_architecture_microservices_development.md
-      - ■ メッセージング方式:
-            - リクエストレスポンス方式: software/software_application_messaging_request_response.md
+      - ■ 通信方式:
+            - リクエスト/レスポンス方式: software/software_application_communication_style_request_response.md
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
