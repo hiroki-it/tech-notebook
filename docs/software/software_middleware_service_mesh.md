@@ -49,7 +49,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 ### サービスメッシュとは
 
-マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。
+マイクロサービス間の通信方式でリクエストレスポンス方式を採用した場合に使用するメッシュ。
 
 <br>
 
@@ -203,7 +203,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_client-side" style="zoom:60%;">
 
-サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。
+サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務は、リクエストの送信元マイクロサービスにある。
 
 `(1)`
 
@@ -232,7 +232,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_server-side" style="zoom:60%;">
 
-サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。
+サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務が、リクエストの送信元から切り離されている。
 
 `(1)`
 
@@ -260,5 +260,15 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 - クラウド (例：AWS ALB)
 
 > - https://traefik.io/glossary/service-discovery/
+
+<br>
+
+### Self registration
+
+#### ▼ Self registrationとは
+
+サービスレジストリ (例：etcd) に自身を登録し、宛先を問い合わせ、宛先にルーティングする責務は、リクエストの送信元マイクロサービスにある。
+
+> - https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/
 
 <br>

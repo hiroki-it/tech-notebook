@@ -199,7 +199,7 @@ Sagaオーケストレーターをステートマシン図やStateパターン�
 
 一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。
 
-各マイクロサービス間のメッセージング方式は、リクエストリプライ方式またはイベント駆動方式のどちらでもよい。
+各マイクロサービス間のメッセージング方式は、リクエストレスポンス方式またはイベント駆動方式のどちらでもよい。
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 

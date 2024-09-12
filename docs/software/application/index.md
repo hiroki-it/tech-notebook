@@ -57,7 +57,7 @@
 
 ### メッセージング方式
 
-* #### [リクエストリプライ方式](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_request_reply.html)
+* #### [リクエストレスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_request_response.html)
 
 <br>
 
