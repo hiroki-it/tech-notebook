@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudEvents＠イベント駆動方式
-description: CloudEvents＠イベント駆動方式の知見を記録しています。
+title: 【IT技術の知見】CloudEvents＠パブリッシュ/サブスクライブ方式
+description: CloudEvents＠パブリッシュ/サブスクライブ方式の知見を記録しています。
 ---
 
-# CloudEvents＠イベント駆動方式
+# CloudEvents＠パブリッシュ/サブスクライブ方式
 
 ## はじめに
 
