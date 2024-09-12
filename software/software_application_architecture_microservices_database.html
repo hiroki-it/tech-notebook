@@ -24522,7 +24522,7 @@
 <h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
 <p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
-<p>各マイクロサービス間のメッセージング方式は、リクエストレスポンス方式またはイベント駆動方式のどちらでもよい。</p>
+<p>各マイクロサービス間のメッセージング方式は、リクエスト/レスポンス方式またはパブリッシュ/サブスクライブ方式のどちらでもよい。</p>
 <p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
 <blockquote>
 <ul>
@@ -25140,7 +25140,7 @@
 <h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_4">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_4" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
-<p>各マイクロサービス間のメッセージング方式は、イベント駆動方式にする必要がある。</p>
+<p>各マイクロサービス間のメッセージング方式は、パブリッシュ/サブスクライブ方式にする必要がある。</p>
 <p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
 <blockquote>
 <ul>

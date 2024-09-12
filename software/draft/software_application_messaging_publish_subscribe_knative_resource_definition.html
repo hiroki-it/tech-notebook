@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コマンド＠Knativeの知見を記録しています。">
+        <meta name="description" content="リソース定義＠Knativeの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_event_driven_knative_command.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_messaging_publish_subscribe_knative_resource_definition.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】コマンド＠Knative - 俺の技術ノート</title>
+        <title>【IT技術の知見】リソース定義＠Knative - 俺の技術ノート</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コマンド＠Knative
+              【IT技術の知見】リソース定義＠Knative
             
           </span>
         </div>
@@ -22914,35 +22914,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-func" class="md-nav__link">
+  <a href="#01-service" class="md-nav__link">
     <span class="md-ellipsis">
-      01. func
+      01. Service
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="01. func">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    <span class="md-ellipsis">
-      create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      deploy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -22964,7 +22940,7 @@
   
 
 
-<h1 id="knative">コマンド＠Knative<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
+<h1 id="knative">リソース定義＠Knative<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -22973,28 +22949,24 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-func">01. func<a class="headerlink" href="#01-func" title="Permanent link">&para;</a></h2>
-<h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
-<p>イベント駆動関数のテンプレートを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>create<span class="w"> </span>-l<span class="w"> </span>&lt;言語&gt;<span class="w"> </span>&lt;関数名&gt;
+<h2 id="01-service">01. Service<a class="headerlink" href="#01-service" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serving.knative.dev/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld-go</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/knative/helloworld-go:latest</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TARGET</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Go</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">v1&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://knative.dev/docs/functions/creating-functions/">https://knative.dev/docs/functions/creating-functions/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="deploy">deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h3>
-<p>イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>func<span class="w"> </span>deploy<span class="w"> </span>--registry<span class="w"> </span>&lt;コンテナレジストリ名&gt;
-
-🙌<span class="w"> </span>Function<span class="w"> </span>image<span class="w"> </span>built:<span class="w"> </span>&lt;registry&gt;/hello:latest
-✅<span class="w"> </span>Function<span class="w"> </span>deployed<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>and<span class="w"> </span>exposed<span class="w"> </span>at<span class="w"> </span>URL:
-http://hello.default.127.0.0.1.sslip.io
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://knative.dev/docs/functions/deploying-functions/#procedure">https://knative.dev/docs/functions/deploying-functions/#procedure</a></li>
+<li><a href="https://knative.dev/docs/serving/services/creating-services/#procedure">https://knative.dev/docs/serving/services/creating-services/#procedure</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23018,7 +22990,7 @@ http://hello.default.127.0.0.1.sslip.io
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-12</span>
   </span>
 
     

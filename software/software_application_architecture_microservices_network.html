@@ -1545,17 +1545,17 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      リクエストレスポンス方式
+      リクエスト/レスポンス方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リクエストレスポンス方式">
+    <nav class="md-nav" aria-label="リクエスト/レスポンス方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リクエストレスポンス方式とは
+      ▼ リクエスト/レスポンス方式とは
     </span>
   </a>
   
@@ -1587,17 +1587,17 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      イベント駆動方式
+      パブリッシュ/サブスクライブ方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="イベント駆動方式">
+    <nav class="md-nav" aria-label="パブリッシュ/サブスクライブ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ イベント駆動方式とは
+      ▼ パブリッシュ/サブスクライブ方式とは
     </span>
   </a>
   
@@ -1692,11 +1692,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      リクエストレスポンス方式の場合
+      リクエスト/レスポンス方式の場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リクエストレスポンス方式の場合">
+    <nav class="md-nav" aria-label="リクエスト/レスポンス方式の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23172,17 +23172,17 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      リクエストレスポンス方式
+      リクエスト/レスポンス方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リクエストレスポンス方式">
+    <nav class="md-nav" aria-label="リクエスト/レスポンス方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ リクエストレスポンス方式とは
+      ▼ リクエスト/レスポンス方式とは
     </span>
   </a>
   
@@ -23214,17 +23214,17 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      イベント駆動方式
+      パブリッシュ/サブスクライブ方式
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="イベント駆動方式">
+    <nav class="md-nav" aria-label="パブリッシュ/サブスクライブ方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ イベント駆動方式とは
+      ▼ パブリッシュ/サブスクライブ方式とは
     </span>
   </a>
   
@@ -23319,11 +23319,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      リクエストレスポンス方式の場合
+      リクエスト/レスポンス方式の場合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リクエストレスポンス方式の場合">
+    <nav class="md-nav" aria-label="リクエスト/レスポンス方式の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23373,8 +23373,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. マイクロサービス間のメッセージング方式<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">リクエストレスポンス方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ リクエストレスポンス方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="_3">リクエスト/レスポンス方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ リクエスト/レスポンス方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="service_request_response" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_response.png" /></p>
 <p>マイクロサービス間で同期的に双方向で通信を実行する。</p>
 <p>ドメインモデリングは、ステートソーシング方式になる。</p>
@@ -23416,8 +23416,8 @@
 <h4 id="_6">▼ メッセージキューやメッセージブローカーを経由する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由して、マイクロサービス間で通信する。</p>
 <p>宛先マイクロサービスが永続化の責務を担っている場合は、処理の開始/終了を担保して処理完了の確実性を担保したがいい。</p>
-<p>そのため、リクエストレスポンス方式であってもマイクロサービス間に双方向のメッセージブローカーを設置する。</p>
-<p>例えば、リクエストレスポンス方式でオーケストレーションベースSagaパターンを採用する場合がある。</p>
+<p>そのため、リクエスト/レスポンス方式であってもマイクロサービス間に双方向のメッセージブローカーを設置する。</p>
+<p>例えば、リクエスト/レスポンス方式でオーケストレーションベースSagaパターンを採用する場合がある。</p>
 <p>Sagaオーケストレーターの後続マイクロサービスの間にメッセージブローカーを置くのは、後続マイクロサービスのローカルトランザクションを確実に完了するためである。</p>
 <blockquote>
 <ul>
@@ -23426,8 +23426,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">イベント駆動方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ イベント駆動方式とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h3 id="_7">パブリッシュ/サブスクライブ方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ パブリッシュ/サブスクライブ方式とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><img alt="service_event_driven" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png" /></p>
 <p>マイクロサービスからマイクロサービスに非同期的に一方向で通信する。</p>
 <p>ドメインモデリングは、イベントソーシング方式になる。</p>
@@ -23442,7 +23442,7 @@
 <p>このパターンは存在しない。</p>
 <h4 id="_10">▼ メッセージキューやメッセージブローカーを経由する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由して、マイクロサービス間で通信する。</p>
-<p>イベント駆動方式の場合は、各マイクロサービスは非同期で通信した方がよく、一方向のメッセージブローカーを設置する。</p>
+<p>モデリングがイベントソーシングの場合は、各マイクロサービスは非同期で通信した方がよく、一方向のメッセージブローカーを設置する。</p>
 <p>特に、複数のダウンストリーム側マイクロサービスからのリクエストを集約するようなアップストリーム側マイクロサービスがある場合、そのダウンストリームにメッセージブローカーを配置すれば、アップストリーム側マイクロサービスのレートリミットを超過しないように、一定の間隔で通信を転送できる。</p>
 <p>もしマイクロサービス間双方向に送信したい場合は、ダウンストリーム側マイクロサービスからメッセージを受信するメッセージブローカーと、アップストリーム側マイクロサービスから受信するメッセージブローカーを、別々に配置する。</p>
 <blockquote>
@@ -23491,7 +23491,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 障害対策<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_14">リクエストレスポンス方式の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_14">リクエスト/レスポンス方式の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ サーキットブレイカー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>マイクロサービス間のメッセージング方式がリクエストロプライ方式の場合の障害対策である。</p>
 <p>アップストリーム側マイクロサービスで問題が起こると、ダウンストリーム側マイクロサービスはタイムアウトになるまで処理を待機する。</p>
