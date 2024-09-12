@@ -55,25 +55,25 @@
 
 <br>
 
-### メッセージング方式
+### 通信方式
 
-* #### [リクエスト_レスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_request_response.html)
+* #### [リクエスト_レスポンス方式](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_request_response.html)
 
 <br>
 
 ### API
 
 * #### <u>RESTful-API</u>
-  > * ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html)
-  > * ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful_api_specification.html)
+  > * ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_restful.html)
+  > * ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_restful_api_specification.html)
 
 * #### <u>RPC-API</u>
-  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_rpc_api_grpc.html)
+  > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_rpc_api_grpc.html)
   > * ##### <u>クライアントパッケージ</u>
-  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_rpc_api_grpc_client_package_go.html)
+  > > * ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_rpc_api_grpc_client_package_go.html)
 
 * #### <u>GraphQL-API</u>
-  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_graphql_api_graphql.html)
+  > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_communication_style_api_graphql_api_graphql.html)
 
 <br>
 
