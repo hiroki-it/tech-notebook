@@ -24551,17 +24551,18 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 </ul>
 </blockquote>
 <h4 id="-refresh-only">▼ -refresh-only<a class="headerlink" href="#-refresh-only" title="Permanent link">&para;</a></h4>
-<p>実インフラの状態はそのままに、<code>tfstate</code>ファイルにその状態を書き込む。</p>
-<p>以下の場合に使用できる。</p>
-<ul>
-<li>すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合</li>
-<li><code>output</code>ブロックのみを更新したい場合</li>
-</ul>
+<p>すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、<code>tfstate</code>ファイルにその状態を書き込む。</p>
+<p>もし、Terraform管理外の実インフラがない場合は、<code>No changes.</code>になる。</p>
 <p>具体的は、<code>terraform plan</code>コマンドで出力される<code>Note: Objects have changed outside of Terraform</code>の内容を指す。</p>
 <p>ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに<code>terraform import</code>コマンドの実行が必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-refresh-only
 
-Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">0</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.<span class="w"> </span><span class="c1"># 実インフラは変更しない。</span>
+Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">0</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-refresh-only
+
+<span class="c1"># もし、Terraform管理外の実インフラがない場合は、No changes. になる。</span>
+No<span class="w"> </span>changes.<span class="w"> </span>Your<span class="w"> </span>infrastructure<span class="w"> </span>still<span class="w"> </span>matches<span class="w"> </span>the<span class="w"> </span>configuration.
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24840,7 +24841,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> 
 <p><code>.tfvars</code>ファイルを指定して、<code>terraform import</code>コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;<span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;<span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 Import<span class="w"> </span>successful!
@@ -25330,7 +25331,7 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
@@ -25340,7 +25341,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
@@ -25350,13 +25351,13 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="c1"># for_each関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のキー名もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
@@ -25368,13 +25369,13 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="c1"># count関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のインデックス番号もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
@@ -25386,13 +25387,13 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して、for_each関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のキー名もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
@@ -25525,7 +25526,7 @@ $<span class="w"> </span>rm<span class="w"> </span>terraform.tfstate.backup
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-13</span>
   </span>
 
     
