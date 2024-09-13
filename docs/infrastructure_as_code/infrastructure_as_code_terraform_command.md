@@ -81,12 +81,9 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 #### ▼ -refresh-only
 
-実インフラの状態はそのままに、`tfstate`ファイルにその状態を書き込む。
+すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、`tfstate`ファイルにその状態を書き込む。
 
-以下の場合に使用できる。
-
-- すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合
-- `output`ブロックのみを更新したい場合
+もし、Terraform管理外の実インフラがない場合は、`No changes.`になる。
 
 具体的は、`terraform plan`コマンドで出力される`Note: Objects have changed outside of Terraform`の内容を指す。
 
@@ -95,7 +92,14 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 ```bash
 $ terraform apply -refresh-only
 
-Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは変更しない。
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+```
+
+```bash
+$ terraform plan -refresh-only
+
+# もし、Terraform管理外の実インフラがない場合は、No changes. になる。
+No changes. Your infrastructure still matches the configuration.
 ```
 
 > - https://learn.hashicorp.com/tutorials/terraform/refresh
@@ -437,7 +441,7 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 ```bash
 $ terraform import \
     -var-file=foo.tfvars \
-    <resourceタイプ>.<resourceブロック名> <ARN、ID、名前など>
+    <resourceタイプ>.<resourceブロック名> <実体リソースのARN、ID、名前など>
 
 
 Import successful!
@@ -1036,7 +1040,7 @@ $ terraform init -reconfigure
 # 関数を使用せずに定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前など>
+    '<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1048,7 +1052,7 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>'
 # moduleブロックを使用して定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <ARN、ID、名前など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1060,13 +1064,13 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 # for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前など>
+    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
 
 
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前など>
+    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1080,13 +1084,13 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名2
 # count関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[0]' <ARN、ID、名前など>
+    '<resourceタイプ>.<resourceブロック名>[0]' <実体リソースのARN、ID、名前など>
 
 
 # その他のインデックス番号もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[1]' <ARN、ID、名前など>
+    '<resourceタイプ>.<resourceブロック名>[1]' <実体リソースのARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
@@ -1100,13 +1104,13 @@ $ terraform state rm '<resourceタイプ>.<resourceブロック名>[1]'
 # moduleブロックを使用して、for_each関数で定義されている場合
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <ARN、ID、名前など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
 
 
 # その他のキー名もimportが必要になる
 $ terraform import \
     -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <ARN、ID、名前など>
+    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
 
 
 # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
