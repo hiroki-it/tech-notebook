@@ -25278,18 +25278,53 @@
 <h4 id="outbox_1">▼ Outboxパターンとは<a class="headerlink" href="#outbox_1" title="Permanent link">&para;</a></h4>
 <p>Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。</p>
 <p>メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>AggregateType</th>
+<th>AggregateId</th>
+<th>Type</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ec6e</td>
+<td>Order</td>
+<td>123</td>
+<td>OrderCreated</td>
+<td><code>{"id": 123, ...}</code></td>
+</tr>
+<tr>
+<td>8af8</td>
+<td>Order</td>
+<td>456</td>
+<td>OrderDetailCanceled</td>
+<td><code>{"id": 456, ...}</code></td>
+</tr>
+<tr>
+<td>890b</td>
+<td>Customer</td>
+<td>789</td>
+<td>InvoiceCreated</td>
+<td><code>{"id": 789, ...}</code></td>
+</tr>
+</tbody>
+</table>
 <p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://microservices.io/patterns/data/transactional-outbox.html">https://microservices.io/patterns/data/transactional-outbox.html</a></li>
 <li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
+<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
 </ul>
 </blockquote>
 <h4 id="polling-publisher">▼ Polling publisherパターンとは<a class="headerlink" href="#polling-publisher" title="Permanent link">&para;</a></h4>
 <p>DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
 <p>また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。</p>
 <p>Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。</p>
-<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
+<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
