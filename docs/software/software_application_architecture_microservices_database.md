@@ -254,6 +254,42 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 
 <br>
 
+### DBパターンの種類
+
+#### ▼ 通常
+
+通常のオーケストレーションベースのSagaパターンでは、DBにSagaログテーブルを作成する。
+
+Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに永続化する。
+
+SagaオーケストレーターごとにDBを分割すると良い。
+
+AWS StepFunctionsのステートも設計例として、参考になる。
+
+| `id` | `order_saga_execution_id`              | `order_saga_current_step` | `order_id` | `order_saga_payload`                                                                                           | `order_saga_status` | `order_saga_state`                                             | `order_saga_version`                                    | `start_data` | `end_data` |
+| ---- | -------------------------------------- | ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ---------- |
+| 1    | `9db5b6da-daba-4633-b3cf-9c79f2bcf6f5` | CreditApproval            | 1          | `"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"` | SUCCEEDED           | `"{\"creditApproval\":\"SUCCEEDED\"}"`                         | 楽観的ロックに使用するバージョン値 (例：最終更新日など) | 開始時刻     | 終了時刻   |
+| 2    | `b1f14b72-393d-432b-8ec2-782974a6ed60` | Payment                   | 1          | `"{ \"order-id\": 1, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"` | 〃                                                      | 〃           | 〃         |
+| 3    | `b38229c6-30df-4166-a725-8b2c578e5ed5` | CreditApproval            | 2          | `"{ \"order-id\": 2, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"STARTED\"}"`                           | 〃                                                      | 〃           | 〃         |
+| ...  | ...                                    | ...                       | ...        | ...                                                                                                            | ...                 | ...                                                            | ...                                                     | ...          | ...        |
+
+> - https://www.infoq.com/articles/saga-orchestration-outbox/
+> - https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html
+
+#### ▼ Outboxパターン
+
+Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。
+
+イベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) に送信する。
+
+![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
+
+> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
+> - https://github.com/debezium/debezium-examples/tree/main/saga
+> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
+
+<br>
+
 ### Sagaオーケストレーターのクライアント
 
 #### ▼ Sagaオーケストレーターのクライアントとは
@@ -273,12 +309,6 @@ Sagaオーケストレーターにリクエストを送信するクライアン�
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
 > - https://microservices.io/patterns/data/saga.html#resulting-context
-
-#### ▼ Outboxパターン
-
-> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
-> - https://github.com/debezium/debezium-examples/tree/main/saga
-> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
 
 <br>
 
@@ -786,42 +816,6 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 > - https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go
 > - https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go
-
-<br>
-
-<br>
-
-### DB
-
-#### ▼ Sagaログテーブル
-
-Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに永続化する。
-
-SagaオーケストレーターごとにDBを分割すると良い。
-
-AWS StepFunctionsのステートも設計例として、参考になる。
-
-| `id` | `order_saga_execution_id`              | `order_saga_current_step` | `order_id` | `order_saga_payload`                                                                                           | `order_saga_status` | `order_saga_state`                                             | `order_saga_version`                                    | `start_data` | `end_data` |
-| ---- | -------------------------------------- | ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ---------- |
-| 1    | `9db5b6da-daba-4633-b3cf-9c79f2bcf6f5` | CreditApproval            | 1          | `"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"` | SUCCEEDED           | `"{\"creditApproval\":\"SUCCEEDED\"}"`                         | 楽観的ロックに使用するバージョン値 (例：最終更新日など) | 開始時刻     | 終了時刻   |
-| 2    | `b1f14b72-393d-432b-8ec2-782974a6ed60` | Payment                   | 1          | `"{ \"order-id\": 1, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"` | 〃                                                      | 〃           | 〃         |
-| 3    | `b38229c6-30df-4166-a725-8b2c578e5ed5` | CreditApproval            | 2          | `"{ \"order-id\": 2, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"STARTED\"}"`                           | 〃                                                      | 〃           | 〃         |
-| ...  | ...                                    | ...                       | ...        | ...                                                                                                            | ...                 | ...                                                            | ...                                                     | ...          | ...        |
-
-> - https://www.infoq.com/articles/saga-orchestration-outbox/
-> - https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html
-
-<br>
-
-#### ▼ Outboxテーブル
-
-Outboxパターンを採用する場合に作成する。
-
-![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
-
-> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
-> - https://github.com/debezium/debezium-examples/tree/main/saga
-> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
 
 <br>
 
