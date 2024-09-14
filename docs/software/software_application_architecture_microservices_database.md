@@ -820,12 +820,15 @@ Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブ�
 
 #### ▼ Polling publisherパターンとは
 
-イベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。
+DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。
 
 また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。
 
 Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。
 
+![saga-pattern_orchestrator_outbox-pattern_polling-publisher.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
+
+> - https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/
 > - https://microservices.io/patterns/data/polling-publisher.html
 > - https://github.com/debezium/debezium-examples/tree/main/saga
 > - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
