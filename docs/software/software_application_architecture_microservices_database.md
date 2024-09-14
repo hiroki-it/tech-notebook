@@ -813,10 +813,17 @@ Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブ�
 
 メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。
 
+| Id   | AggregateType | AggregateId | Type                | Payload            |
+| ---- | ------------- | ----------- | ------------------- | ------------------ |
+| ec6e | Order         | 123         | OrderCreated        | `{"id": 123, ...}` |
+| 8af8 | Order         | 456         | OrderDetailCanceled | `{"id": 456, ...}` |
+| 890b | Customer      | 789         | InvoiceCreated      | `{"id": 789, ...}` |
+
 ![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
 
 > - https://microservices.io/patterns/data/transactional-outbox.html
 > - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
+> - https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/
 
 #### ▼ Polling publisherパターンとは
 
@@ -826,7 +833,7 @@ DBのイベントチェッカー (例：Debezium) を使用して、Outboxテー
 
 Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。
 
-![saga-pattern_orchestrator_outbox-pattern_polling-publisher.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
+![saga-pattern_orchestrator_outbox-pattern_polling-publisher](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
 
 > - https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/
 > - https://microservices.io/patterns/data/polling-publisher.html
