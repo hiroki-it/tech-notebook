@@ -164,14 +164,19 @@ description: DB＠マイクロサービスアーキテクチャの知見を記�
 
 ### Sagaパターンとは
 
+各マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要がある。
+
 Sagaオーケストレーターにコールされるマイクロサービスに、永続化とロールバックに関するAPIを実装する。
 
 Sagaオーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクションを連続的に実行する。
+
+![saga-pattern_usecase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_usecase.png)
 
 > - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
 > - https://thinkit.co.jp/article/14639?page=0%2C1
 > - https://qiita.com/nk2/items/d9e9a220190549107282
 > - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
+> - https://github.com/yongk/orderdemo?tab=readme-ov-file#bounded-context-mappings
 
 <br>
 
