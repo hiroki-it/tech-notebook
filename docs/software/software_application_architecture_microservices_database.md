@@ -254,7 +254,7 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 
 <br>
 
-### SagaオーケスとレーターのDB
+### SagaオーケストレーターのDB
 
 通常のオーケストレーションベースのSagaパターンでは、DBにSagaログテーブルを作成する。
 
@@ -273,37 +273,6 @@ AWS StepFunctionsのステートも設計例として、参考になる。
 
 > - https://www.infoq.com/articles/saga-orchestration-outbox/
 > - https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html
-
-<br>
-
-### Outboxパターン
-
-#### ▼ Outboxパターンとは
-
-Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。
-
-メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。
-
-![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
-
-> - https://microservices.io/patterns/data/transactional-outbox.html
-> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
-
-#### ▼ Polling publisherパターンとは
-
-イベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。
-
-また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。
-
-Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。
-
-> - https://microservices.io/patterns/data/polling-publisher.html
-> - https://github.com/debezium/debezium-examples/tree/main/saga
-> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
-
-#### ▼ Transaction log tailingパターンとは
-
-> - https://microservices.io/patterns/data/transaction-log-tailing.html
 
 <br>
 
@@ -833,6 +802,37 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 > - https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go
 > - https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go
+
+<br>
+
+### Outboxパターン
+
+#### ▼ Outboxパターンとは
+
+Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。
+
+メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。
+
+![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
+
+> - https://microservices.io/patterns/data/transactional-outbox.html
+> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
+
+#### ▼ Polling publisherパターンとは
+
+イベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。
+
+また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。
+
+Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。
+
+> - https://microservices.io/patterns/data/polling-publisher.html
+> - https://github.com/debezium/debezium-examples/tree/main/saga
+> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
+
+#### ▼ Transaction log tailingパターンとは
+
+> - https://microservices.io/patterns/data/transaction-log-tailing.html
 
 <br>
 
