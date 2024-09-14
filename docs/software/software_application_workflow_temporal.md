@@ -75,7 +75,21 @@ temporal=# \l
                      |          |          |            |            | temporal=CTc/temporal
  temporal            | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
  temporal_visibility | temporal | UTF8     | en_US.utf8 | en_US.utf8 |
+```
 
+`temporal`データベースには、例えば以下のテーブルがある。(SQLスキーマを参照)
+
+- namespaces
+- namespace_metadata
+- shards
+- executions
+- current_executions
+- buffered_events
+- tasks
+- ...
+
+```bash
+$ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
 
 # 現在のデータベースのテーブル一覧
 temporal=# \dt
