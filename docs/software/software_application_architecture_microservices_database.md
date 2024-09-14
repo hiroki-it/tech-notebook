@@ -262,15 +262,23 @@ Sagaオーケストレーターのドメインモデリングにステートソ�
 
 #### ▼ ステータスチェッカー
 
-Sagaステータスチェッカーというクライアントを用意する。
+ポーリングパターンの場合、Sagaステータスチェッカーを採用する。
 
 Sagaステータスチェッカーは、SagaオーケストレーターのDBからSagaログを取得する。
+
+Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaステータスチェッカーをポーリングし、処理結果を取得する。
 
 ![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
 > - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
 > - https://microservices.io/patterns/data/saga.html#resulting-context
+
+#### ▼ Outboxパターン
+
+> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
+> - https://github.com/debezium/debezium-examples/tree/main/saga
+> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
 
 <br>
 
@@ -812,6 +820,8 @@ Outboxパターンを採用する場合に作成する。
 ![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
 
 > - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
+> - https://github.com/debezium/debezium-examples/tree/main/saga
+> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
 
 <br>
 
