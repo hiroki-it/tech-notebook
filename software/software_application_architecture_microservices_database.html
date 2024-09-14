@@ -1918,6 +1918,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Outboxパターン
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2054,7 +2063,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
+  <a href="#outbox_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Outboxテーブル
     </span>
@@ -24103,6 +24112,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Outboxパターン
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24239,7 +24257,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
+  <a href="#outbox_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Outboxテーブル
     </span>
@@ -24669,14 +24687,23 @@
 <h4 id="saga_3">▼ Sagaオーケストレーターのクライアントとは<a class="headerlink" href="#saga_3" title="Permanent link">&para;</a></h4>
 <p>オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaオーケストレーターの処理結果を知る必要がある。</p>
 <h4 id="_18">▼ ステータスチェッカー<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>Sagaステータスチェッカーというクライアントを用意する。</p>
+<p>ポーリングパターンの場合、Sagaステータスチェッカーを採用する。</p>
 <p>Sagaステータスチェッカーは、SagaオーケストレーターのDBからSagaログを取得する。</p>
+<p>Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaステータスチェッカーをポーリングし、処理結果を取得する。</p>
 <p><img alt="saga-pattern_orchestrator_status-checker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md</a></li>
 <li><a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md</a></li>
 <li><a href="https://microservices.io/patterns/data/saga.html#resulting-context">https://microservices.io/patterns/data/saga.html#resulting-context</a></li>
+</ul>
+</blockquote>
+<h4 id="outbox">▼ Outboxパターン<a class="headerlink" href="#outbox" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
+<li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
+<li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -25238,12 +25265,14 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h4 id="outbox">▼ Outboxテーブル<a class="headerlink" href="#outbox" title="Permanent link">&para;</a></h4>
+<h4 id="outbox_1">▼ Outboxテーブル<a class="headerlink" href="#outbox_1" title="Permanent link">&para;</a></h4>
 <p>Outboxパターンを採用する場合に作成する。</p>
 <p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
+<li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
+<li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
 </ul>
 </blockquote>
 <p><br></p>
