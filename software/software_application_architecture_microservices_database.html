@@ -25286,11 +25286,13 @@
 </ul>
 </blockquote>
 <h4 id="polling-publisher">▼ Polling publisherパターンとは<a class="headerlink" href="#polling-publisher" title="Permanent link">&para;</a></h4>
-<p>イベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
+<p>DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
 <p>また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。</p>
 <p>Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。</p>
+<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
 <blockquote>
 <ul>
+<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
 <li><a href="https://microservices.io/patterns/data/polling-publisher.html">https://microservices.io/patterns/data/polling-publisher.html</a></li>
 <li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
 <li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
