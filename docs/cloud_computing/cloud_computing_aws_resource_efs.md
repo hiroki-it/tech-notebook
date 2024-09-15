@@ -44,7 +44,7 @@ description: EFS＠AWSリソースの知見を記録しています。
 
 ### バーストモードの仕組み
 
-スループット性能の自動スケーリングに残高があり、ベースラインを超過した分だけ自動スケーリング残高が減っていく。
+スループット性能のオートスケーリングに残高があり、ベースラインを超過した分だけオートスケーリング残高が減っていく。
 
 また、ベースライン未満の分は残高として蓄積されていく。
 
@@ -66,7 +66,7 @@ description: EFS＠AWSリソースの知見を記録しています。
 
 ### プロビジョニングモードの仕組み
 
-スループット性能の自動スケーリング機能は無いが、一定の性能は保証されている。
+スループット性能のオートスケーリング機能は無いが、一定の性能は保証されている。
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 

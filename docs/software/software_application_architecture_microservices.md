@@ -66,6 +66,8 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ### 関連パターン
 
+#### ▼ 関連パターンとは
+
 マイクロサービスアーキテクチャでは固有の問題が起こる。
 
 これを解決するための関連パターンがたくさんある。
@@ -79,6 +81,23 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 `microservices.io`サイトで紹介しきれていない実装方法は、`softwarepatternslexicon`サイトで確認できる。
 
 > - https://softwarepatternslexicon.com/microservices/
+
+#### ▼ マイクロサービスアーキテクチャとクラウドネイティブ
+
+| マイクロサービスの関連パターン | クラウドネイティブ                      |
+| ------------------------------ | --------------------------------------- |
+| Externalized configuration     | Kubernetes ConfigMap、Kubernetes Secret |
+| サービスディスカバリー         | Kubernetes Service                      |
+| 負荷分散                       | Kubernetes Service                      |
+| API Gateway                    | Kubernetes Ingress                      |
+| 集中ロギング                   | Fluentd                                 |
+| 集中メトリクス                 | Prometheus、Grafana                     |
+| 分散トレース                   | OpenTelemetry、Grafana Tempo            |
+| 回復力                         | Kubernetes Probe、Istio                 |
+| 自己回復                       | Kubernetes Deployment                   |
+| ...                            | ...                                     |
+
+> - https://en.wikipedia.org/wiki/Microservices#A_comparison_of_platforms
 
 <br>
 
