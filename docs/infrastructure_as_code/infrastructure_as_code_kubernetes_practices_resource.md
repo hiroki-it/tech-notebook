@@ -892,6 +892,7 @@ metadata:
 spec:
 
   ...
+
   dnsConfig:
     options:
       - name: ndots

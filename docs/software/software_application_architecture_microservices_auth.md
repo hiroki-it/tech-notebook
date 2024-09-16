@@ -37,7 +37,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 各マイクロサービスは、SSOのIDプロバイダーに認証を委譲する。
 
-![micro-authentication_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_sso.png)
+![microservices_authentication_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -62,7 +62,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 そのため、SessionStorageが必要になるというデメリットがある。
 
-![micro-authentication_type_session](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_session.png)
+![microservices_authentication_type_session](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -88,7 +88,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 クライアント側に保管されたJWTの失効が難しいというデメリットがある。
 
-![micro-authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt.png)
+![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -132,7 +132,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。
 
-![micro-authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_opaque-token.png)
+![microservices_authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -141,28 +141,38 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 ## 02. 認可
 
-### SSOパターン
+### 集中型
 
-#### ▼ SSOパターンとは
+#### ▼ 集中型とは
 
-サーバー側に、認可スコープを定義する認可サービス (例：自前、OpenPolicyAgentなど) を`1`個だけ配置し、認可処理を実行する。
+認可スコープを定義する認可サービス (例：自前、OpenPolicyAgentなど) を`1`個だけ配置し、認可処理を実行する。
 
-<br>
+![microservices_authorization_centralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png)
 
-### JWTパターン
-
-#### ▼ JWTパターンとは
-
-サーバー側に、認可サービス (例：自前、Keycloakなど) を`1`個だけ配置し、認可処理を実行する。
-
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
 <br>
 
-### マイクロサービス実装パターン
+### 分散型
+
+#### ▼ 分散型とは
 
 認可処理を各マイクロサービスに実装する。
 
 認可処理はドメインと結びつきが強いので、マイクロサービス側に実装すると拡張性が高くなる。
+
+![microservices_authorization_decentralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_decentralized-authorization.png)
+
+> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
+
+<br>
+
+### ハイブリッド型
+
+#### ▼ ハイブリッド型とは
+
+![microservices_authorization_hybrid-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_hybrid-authorization.png)
+
+> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
 
 <br>
