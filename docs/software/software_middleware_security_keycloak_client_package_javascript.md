@@ -28,21 +28,37 @@ description: Javascript＠Keycloakクライアントの知見を記録してい�
 ```javascript
 import Keycloak from "keycloak-js";
 
+// Javascriptアダプターを初期化する
 const keycloak = new Keycloak({
   url: "http://<Keycloakのドメイン名>",
   realm: "<realm名>",
   clientId: "<クライアントID>",
 });
 
+// login-requiredを有効にすると、未認証の場合には認証を開始し、認証済みの場合はログインページをリクエストする
+// @see https://www.keycloak.org/docs/23.0.7/securing_apps/#using-the-adapter
 keycloak.init({onLoad: "login-required"}).then((auth) => {
   if (!auth) {
     console.log("not Authenticated");
   } else {
     console.log("Authenticated");
     console.log(keycloak);
-    // LocalStorageからトークンを取得する
+    // LocalStorageにトークンを設定する
     localStorage.setItem("token", keycloak.token);
   }
+});
+
+const authLink = setContext((_, {headers}) => {
+  // LocalStorageからトークンを取得する
+  const token = localStorage.getItem("token");
+
+  return {
+    headers: {
+      ...headers,
+      // 取得したトークンをリクエストのAuthorizationヘッダーに設定する
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  };
 });
 ```
 
