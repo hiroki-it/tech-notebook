@@ -36,6 +36,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 認証サービスが単一障害点になるというデメリットがある。
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86
+> - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
 #### ▼ SSOパターンの仕組み
 
@@ -59,6 +60,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 この認証サービスは、セッションデータを保管するためのストレージを持つ。
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86
+> - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
 #### ▼ セッションパターンの仕組み
 
@@ -88,6 +90,8 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を`1`個だけ配置し、認証処理を実行する。
 
 この認証サービスは、認証情報を永続化するためのDBを持つ。
+
+> - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7
 
 #### ▼ JWTパターンの仕組み
 
@@ -140,6 +144,7 @@ API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、JWTを
 一方でクライアント側ではOpaqueトークンを保管し、認証処理を実行する。
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
+> - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
 
 #### ▼ Opaqueトークンパターンの仕組み
 
