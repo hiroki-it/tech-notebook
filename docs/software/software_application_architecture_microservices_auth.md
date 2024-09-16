@@ -95,6 +95,8 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 クライアント側に保管されたJWTの失効が難しいというデメリットがある。
 
+その解決策として、Opaqueトークンパターン (ゲートウェイ分散パターン) がある。
+
 ![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
@@ -125,9 +127,11 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 『ゲートウェイ分散パターン』ともいう。
 
+JWTパターンでJWTの失効が難しいというデメリットを解決する。
+
 サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を`1`個だけ配置する。
 
-この認証サービスは、認証情報を永続化するためのDBを持つ。
+API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、JWTを失効できる。
 
 一方でクライアント側ではOpaqueトークンを保管し、認証処理を実行する。
 
