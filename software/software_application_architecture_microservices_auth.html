@@ -23555,6 +23555,7 @@
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保管させる。</p>
 <p>トークンベースの認証情報伝播とコンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
 <p>クライアント側に保管されたJWTの失効が難しいというデメリットがある。</p>
+<p>その解決策として、Opaqueトークンパターン (ゲートウェイ分散パターン) がある。</p>
 <p><img alt="microservices_authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png" /></p>
 <blockquote>
 <ul>
@@ -23580,8 +23581,9 @@
 <h3 id="opaque">Opaqueトークンパターン (ゲートウェイ分散パターン)<a class="headerlink" href="#opaque" title="Permanent link">&para;</a></h3>
 <h4 id="opaque_1">▼ Opaqueトークンパターンとは<a class="headerlink" href="#opaque_1" title="Permanent link">&para;</a></h4>
 <p>『ゲートウェイ分散パターン』ともいう。</p>
+<p>JWTパターンでJWTの失効が難しいというデメリットを解決する。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置する。</p>
-<p>この認証サービスは、認証情報を永続化するためのDBを持つ。</p>
+<p>API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、JWTを失効できる。</p>
 <p>一方でクライアント側ではOpaqueトークンを保管し、認証処理を実行する。</p>
 <h4 id="opaque_2">▼ Opaqueトークンパターンの仕組み<a class="headerlink" href="#opaque_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスは、JWTとOpaqueトークンに基づいてユーザーを認証する。</p>
