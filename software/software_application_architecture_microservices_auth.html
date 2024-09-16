@@ -23513,8 +23513,9 @@
 <h4 id="sso_1">▼ SSOパターンとは<a class="headerlink" href="#sso_1" title="Permanent link">&para;</a></h4>
 <p>『独立パターン』ともいう。</p>
 <p>サーバー側に、IDプロバイダーを認証サービスとして、SSOを実行する。</p>
-<p>この認証サービスは、認証情報を永続化するためのDBを持つ。</p>
+<p>この認証サービスは、認証情報を永続化するためのDBを持ち、有効期限が切れればアクセストークンを失効する。</p>
 <p>認証サービスが単一障害点になるというデメリットがある。</p>
+<p>アクセストークン (JWT仕様またはそうでない場合がある) を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
@@ -23562,6 +23563,7 @@
 <p>『分散パターン』ともいう。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理を実行する。</p>
 <p>この認証サービスは、認証情報を永続化するためのDBを持つ。</p>
+<p>SSOパターンと似ているが、こちらは非SSOでJWT仕様のトークンを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7</a></li>
@@ -23600,7 +23602,7 @@
 <p>『ゲートウェイ分散パターン』ともいう。</p>
 <p>JWTパターンにAPI Gatewayを組み合わせたパターンであり、JWTパターンでJWTの失効が難しいというデメリットを解決する。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置する。</p>
-<p>API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、JWTを失効できる。</p>
+<p>API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、有効期限が切れればJWTを失効する。</p>
 <p>一方でクライアント側ではOpaqueトークンを保管し、認証処理を実行する。</p>
 <blockquote>
 <ul>
