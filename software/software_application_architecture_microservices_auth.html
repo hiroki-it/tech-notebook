@@ -23518,6 +23518,7 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
+<li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6</a></li>
 </ul>
 </blockquote>
 <h4 id="sso_2">▼ SSOパターンの仕組み<a class="headerlink" href="#sso_2" title="Permanent link">&para;</a></h4>
@@ -23538,6 +23539,7 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86</a></li>
+<li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ セッションパターンの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -23560,6 +23562,11 @@
 <p>『分散パターン』ともいう。</p>
 <p>サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を<code>1</code>個だけ配置し、認証処理を実行する。</p>
 <p>この認証サービスは、認証情報を永続化するためのDBを持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7</a></li>
+</ul>
+</blockquote>
 <h4 id="jwt_2">▼ JWTパターンの仕組み<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスは、JWTに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保管させる。</p>
@@ -23598,6 +23605,7 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
+<li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8</a></li>
 </ul>
 </blockquote>
 <h4 id="opaque_2">▼ Opaqueトークンパターンの仕組み<a class="headerlink" href="#opaque_2" title="Permanent link">&para;</a></h4>
