@@ -23,9 +23,11 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 <br>
 
-### SSOパターン
+### SSOパターン (独立パターン)
 
 #### ▼ SSOパターンとは
+
+『独立パターン』ともいう。
 
 サーバー側に、IDプロバイダーを認証サービスとして、SSOを実行する。
 
@@ -50,7 +52,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 『集中パターン』ともいう。
 
-サーバー側に、セッションデータを作成する認証サービス (例：自前、Keycloakなど) を`1`個だけ配置し、認証処理を実行する。
+サーバー側に、セッションデータを作成する認証サービス (例：自前、Redisなど) を`1`個だけ配置し、認証処理を実行する。
 
 この認証サービスは、セッションデータを保管するためのストレージを持つ。
 
@@ -69,6 +71,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 > - https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi
+> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 
 <br>
 
@@ -95,9 +98,10 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 ![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
-#### ▼ API Gatewayを配置する場合
+#### ▼ API Gateway (またはBFF) を配置する場合
 
 初回の認証時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
 
@@ -110,6 +114,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 ![microservices_auth_jwt-apigateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png)
 
 > - https://www.jerney.io/secure-apis-kong-keycloak-1/
+> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 > - https://stackoverflow.com/a/53396041
 
 <br>
