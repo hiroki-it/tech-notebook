@@ -19,6 +19,10 @@ description: Kubernetesリソース＠Kubernetesの知見を記録していま�
 
 Kubernetes上でアプリケーションを稼働させる概念のこと。
 
+![kubernetes_workload-resource](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_workload-resource.png)
+
+> - https://developers.redhat.com/articles/2023/04/05/kubernetes-patterns-path-cloud-native#discussion
+
 <br>
 
 ### Kubernetesオブジェクト
