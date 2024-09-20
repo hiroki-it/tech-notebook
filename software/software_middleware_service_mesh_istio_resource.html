@@ -4989,6 +4989,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="10. その他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      実験段階の設定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -24069,6 +24084,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="10. その他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      実験段階の設定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -24778,7 +24808,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># ネットワークフィルターであるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -24802,7 +24832,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># ネットワークフィルターであるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -24874,7 +24904,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># ネットワークフィルターの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -24896,7 +24926,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># ネットワークフィルターの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -24978,7 +25008,64 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </blockquote>
 <p><br></p>
 <h2 id="10">10. その他<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
-<p>設定によっては、リソースではなくバイナリに直接的に渡す必要がある。</p>
+<h3 id="_15">実験段階の設定<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>設定によっては、リソースではなくpilot-agentの環境変数として直接的に渡す必要がある。</p>
+<p>これらの環境変数は、いずれistio-sidecar-injector (ConfigMap) やistio-mesh-cm (ConfigMap) などに移行される可能性がある。</p>
+<table>
+<thead>
+<tr>
+<th>環境変数</th>
+<th>対応する設定 (実験段階)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ENHANCED_RESOURCE_SCOPING</code></td>
+<td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code>を有効化してもよい。</td>
+</tr>
+<tr>
+<td><code>ENABLE_NATIVE_SIDECARS</code></td>
+<td>istio-sidecar-injector (ConfigMap) で、<code>istio-proxy</code>コンテナの代わりにKubernetesのInit Container</td>
+</tr>
+<tr>
+<td><code>ENABLE_RESOLUTION_NONE_TARGET_PORT</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_DELIMITED_STATS_TAG_REGEX</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_INBOUND_RETRY_POLICY</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PREFER_DESTINATIONRULE_TLS_FOR_EXTERNAL_SERVICES</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ENABLE_ENHANCED_DESTINATIONRULE_MERGE</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PILOT_UNIFIED_SIDECAR_SCOPE</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VERIFY_CERT_AT_CLIENT</code></td>
+<td>どこにこの変数あるんやろか...</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go">https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 

@@ -26796,7 +26796,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
-<p>指定したワークロードタイプ (例：istio-ingressgateway内の<code>istio-proxy</code>コンテナ、サイドカーの<code>istio-proxy</code>コンテナ) の場合に、フィルターの設定値を変更する。</p>
+<p>指定したワークロードタイプ (例：istio-ingressgateway内の<code>istio-proxy</code>コンテナ、istio-proxyコンテナの<code>istio-proxy</code>コンテナ) の場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -26805,7 +26805,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-ingressgatewayとサイドカーの両方に適用する</span>
+<span class="w">        </span><span class="c1"># istio-ingressgatewayとistio-proxyコンテナの両方に適用する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -26815,7 +26815,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのIngressリスナー後のフィルターに適用する</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのIngressリスナー後のフィルターに適用する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -26835,7 +26835,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 </code></pre></div>
 <blockquote>
@@ -27629,11 +27629,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="11-telemetry">11. Telemetry<a class="headerlink" href="#11-telemetry" title="Permanent link">&para;</a></h2>
 <h3 id="metadatanamespace">.metadata.namespace<a class="headerlink" href="#metadatanamespace" title="Permanent link">&para;</a></h3>
 <p>NamespaceでTelemetyの対象のサイドカーを絞れる。</p>
-<p>もし<code>istio-system</code>を指定した場合、Root Namespaceという設定になり、サイドカーのある全てのNamespaceが対象になる。</p>
+<p>もし<code>istio-system</code>を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <blockquote>
@@ -27650,7 +27650,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
@@ -27691,7 +27691,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
@@ -27716,7 +27716,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
-<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる</span>
+<span class="w">  </span><span class="c1"># もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
