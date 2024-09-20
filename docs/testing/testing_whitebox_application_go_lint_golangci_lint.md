@@ -50,7 +50,7 @@ go_lint:
   image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:<必要なGoのバージョンを含むイメージ>-alpine
   script:
     - go version
-    # 有効にしている静的解析の一覧を表示する
+    # 有効化している静的解析の一覧を表示する
     # GitLab CIでは色が無効になってしまうため、有効化する
     - golangci-lint linters --color always
     # 静的解析を実行する

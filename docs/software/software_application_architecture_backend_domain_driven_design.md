@@ -321,6 +321,24 @@ ECサイトを運営するアスクルの例。
 
 <br>
 
+### ドメインモデルの種類
+
+#### ▼ 隠蔽モデル
+
+特定の境界づけられたコンテキストのみで使用するドメインモデルのこと。
+
+![bounded-context_domain-model_type.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+
+#### ▼ 共有モデル
+
+異なる境界づけられたコンテキスト間で、一部のデータを共有ドメインモデルのこと。
+
+図では、在庫品目モデルがそれに相当する。
+
+![bounded-context_domain-model_type.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+
+<br>
+
 ### コンテキストマップ
 
 #### ▼ コンテキストマップとは

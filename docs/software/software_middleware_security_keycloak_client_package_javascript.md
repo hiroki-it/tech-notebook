@@ -35,7 +35,7 @@ const keycloak = new Keycloak({
   clientId: "<クライアントID>",
 });
 
-// login-requiredを有効にすると、未認証の場合には認証を開始し、認証済みの場合はログインページをリクエストする
+// login-requiredを有効化すると、未認証の場合には認証を開始し、認証済みの場合はログインページをリクエストする
 // @see https://www.keycloak.org/docs/23.0.7/securing_apps/#using-the-adapter
 keycloak.init({onLoad: "login-required"}).then((auth) => {
   if (!auth) {

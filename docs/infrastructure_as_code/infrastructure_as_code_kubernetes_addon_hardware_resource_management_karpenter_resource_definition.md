@@ -707,7 +707,7 @@ spec:
 
 ### aws.interruptionQueueName
 
-割り込み処理を有効にする場合に、AWS SQSの名前を設定する。
+割り込み処理を有効化する場合に、AWS SQSの名前を設定する。
 
 別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。
 

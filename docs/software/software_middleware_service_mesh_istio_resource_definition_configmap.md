@@ -154,7 +154,7 @@ data:
 
 #### ▼ discoverySelectorsとは
 
-IstiodコントロールプレーンがwatchするNamespaceを限定する。
+`ENHANCED_RESOURCE_SCOPING`を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
 
 これは、サイドカーをインジェクションする`istio.io/rev`キーよりも強い影響力がある。
 

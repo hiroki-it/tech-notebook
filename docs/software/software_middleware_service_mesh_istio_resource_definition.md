@@ -1056,7 +1056,7 @@ spec:
           socket_options:
             - level: 1
               name: 9
-              # KeepAliveを有効にする
+              # KeepAliveを有効化する
               int_value: 1
               state: STATE_PREBIND
             - level: 6
