@@ -578,7 +578,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにスパンを送信させるPodを設定する
@@ -600,7 +600,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにアクセスログを送信させるPodを設定する
@@ -657,7 +657,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Opentelemetryにスパンを送信させるPodを設定する
@@ -679,7 +679,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Opentelemetryにアクセスログを送信させるPodを設定する
@@ -745,7 +745,7 @@ kind: Telemetry
 metadata:
   name: tracing-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # Datadogにスパンを送信させるPodを設定する
@@ -767,7 +767,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   # ZipkinやJaegerにアクセスログを送信させるPodを設定する
@@ -945,7 +945,7 @@ data:
 
 #### ▼ .templates.sidecar
 
-サイドカーの設定値をHelmテンプレートの状態で管理する。
+istio-proxyコンテナの設定値をHelmテンプレートの状態で管理する。
 
 Istioは、istio-sidecar-injectorの`.values`キーを使用してテンプレートを動的に完成させる。
 

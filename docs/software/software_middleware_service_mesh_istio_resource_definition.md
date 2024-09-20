@@ -850,7 +850,7 @@ spec:
 
 #### ▼ context
 
-指定したワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) の場合に、フィルターの設定値を変更する。
+指定したワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、istio-proxyコンテナの`istio-proxy`コンテナ) の場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -862,7 +862,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-ingressgatewayとサイドカーの両方に適用する
+        # istio-ingressgatewayとistio-proxyコンテナの両方に適用する
         - context: ANY
 ```
 
@@ -874,7 +874,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # サイドカーのistio-proxyコンテナのIngressリスナー後のフィルターに適用する
+        # istio-proxyコンテナのIngressリスナー後のフィルターに適用する
         - context: SIDECAR_INBOUND
 ```
 
@@ -898,7 +898,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
+        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
         - context: SIDECAR_OUTBOUND
 ```
 
@@ -1799,13 +1799,13 @@ spec:
 
 NamespaceでTelemetyの対象のサイドカーを絞れる。
 
-もし`istio-system`を指定した場合、Root Namespaceという設定になり、サイドカーのある全てのNamespaceが対象になる。
+もし`istio-system`を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 ```
 
@@ -1825,7 +1825,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:
@@ -1870,7 +1870,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:
@@ -1898,7 +1898,7 @@ kind: Telemetry
 metadata:
   name: access-log-provider
   # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、サイドカーのある全てのNamespaceが対象になる
+  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
   namespace: foo
 spec:
   selector:

@@ -775,7 +775,7 @@ spec:
     # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)
+        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -799,7 +799,7 @@ spec:
     # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)
+        # istio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -873,7 +873,7 @@ spec:
     # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)
+        # istio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -895,7 +895,7 @@ spec:
     # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
+        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -980,6 +980,25 @@ JWTがない場合は、AuthorizationPolicyで`403`ステータスを返信す�
 
 ## 10. その他
 
-設定によっては、リソースではなくバイナリに直接的に渡す必要がある。
+### 実験段階の設定
+
+設定によっては、リソースではなくpilot-agentの環境変数として直接的に渡す必要がある。
+
+これらの環境変数は、いずれistio-sidecar-injector (ConfigMap) やistio-mesh-cm (ConfigMap) などに移行される可能性がある。
+
+| 環境変数                                           | 対応する設定 (実験段階)                                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `ENHANCED_RESOURCE_SCOPING`                        | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。                           |
+| `ENABLE_NATIVE_SIDECARS`                           | istio-sidecar-injector (ConfigMap) で、`istio-proxy`コンテナの代わりにKubernetesのInit Container |
+| `ENABLE_RESOLUTION_NONE_TARGET_PORT`               |                                                                                                  |
+| `ENABLE_DELIMITED_STATS_TAG_REGEX`                 |                                                                                                  |
+| `ENABLE_INBOUND_RETRY_POLICY`                      |                                                                                                  |
+| `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`            |                                                                                                  |
+| `PREFER_DESTINATIONRULE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                                  |
+| `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`            |                                                                                                  |
+| `PILOT_UNIFIED_SIDECAR_SCOPE`                      |                                                                                                  |
+| `VERIFY_CERT_AT_CLIENT`                            | どこにこの変数あるんやろか...                                                                    |
+
+> - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
 
 <br>

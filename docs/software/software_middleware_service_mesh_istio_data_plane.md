@@ -262,6 +262,12 @@ spec:
 > - https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal
 
+#### ▼ startProbe
+
+サイドカーは、`10`分以上起動が完了しないと、Podが終了する。
+
+> - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
+
 <br>
 
 ### istio-cniアドオンによる`istio-validation`コンテナ
