@@ -23980,12 +23980,13 @@ options ndots:5
 <p>ハードウェアリソース要求量の上限 (<code>limits</code>) / 下限 (<code>requests</code>) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。</p>
 <p><code>.spec.containers[*].resources</code>キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
 <p>なお、コンテナの特性に合わせて、上限下限値を設定すると良い。</p>
-<h3 id="guaranteedqos">■ ハードウェアリソースを恒常的に要求する場合はGuaranteedなQoSにする<a class="headerlink" href="#guaranteedqos" title="Permanent link">&para;</a></h3>
-<p>ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、GuaranteedなQoSにする。</p>
-<p>GuaranteedなQoSでは、上限 (<code>limits</code>) = 下限 (<code>requests</code>) のように、CPUとメモリを設定する。</p>
-<p>コンテナが一定量のハードウェアリソースを要求し続けたとしても、これに耐えられるようにする。</p>
-<p>基本的には、ほとんどのコンテナをGuaranteedなQoSにすればよい。</p>
-<p>補足として、GuaranteedなQoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。</p>
+<h3 id="guaranteed-qos">■ ハードウェアリソースを恒常的に要求する場合はGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h3>
+<p>ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、Guaranteed QoSにする。</p>
+<p>Guaranteed QoSでは、上限 (<code>limits</code>) = 下限 (<code>requests</code>) のように、CPUとメモリを設定する。</p>
+<p>上限 (<code>limits</code>) と下限 (<code>requests</code>) の設定の両方または一方を省略すると、自動的にGuaranteedになる。</p>
+<p>コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Nodeの空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。</p>
+<p>基本的には、ほとんどのコンテナをGuaranteed QoSにすればよい。</p>
+<p>補足として、Guaranteed QoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed</a></li>
@@ -23993,10 +23994,10 @@ options ndots:5
 </blockquote>
 <h3 id="burstableqos">■ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする<a class="headerlink" href="#burstableqos" title="Permanent link">&para;</a></h3>
 <p>ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ) では、BurstableなQoSにする。</p>
-<p>GuaranteedなQoSでは、上限 (<code>limits</code>) &gt; 下限 (<code>requests</code>) のように、CPUとメモリを設定する。</p>
+<p>Guaranteed QoSでは、上限 (<code>limits</code>) &gt; 下限 (<code>requests</code>) のように、CPUとメモリを設定する。</p>
 <p>上限 (<code>limits</code>) を設定しないと上限が無制限になるため、下限 (<code>requests</code>) のみを設定した場合もBurstableである。</p>
 <p>コンテナがハードウェアリソース要求量が瞬間的に上昇させても、これに耐えられるようにする。</p>
-<p>全てのコンテナをGuaranteedなQoSにするとハードウェアのコストが高くなるため、部分的にBurstableなQoSにするとよい。</p>
+<p>全てのコンテナをGuaranteed QoSにするとハードウェアのコストが高くなるため、部分的にBurstableなQoSにするとよい。</p>
 <p>ただし、上限 (<code>limits</code>) を高くしすぎると、割り当て可能な全体量を超えてしまう (オーバーコミットする) ため、上限は慎重に設定する。</p>
 <p>補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。</p>
 <blockquote>
@@ -24796,7 +24797,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-20</span>
   </span>
 
     
