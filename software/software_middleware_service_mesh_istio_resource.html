@@ -4445,11 +4445,11 @@
         <li class="md-nav__item">
   <a href="#01-k8sistioenvoy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
+      01. K8sリソース/IstioリソースとEnvoy設定値の関係
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係">
+    <nav class="md-nav" aria-label="01. K8sリソース/IstioリソースとEnvoy設定値の関係">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4977,6 +4977,15 @@
   <a href="#09-authorizationpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       09. AuthorizationPolicy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. その他
     </span>
   </a>
   
@@ -23516,11 +23525,11 @@
         <li class="md-nav__item">
   <a href="#01-k8sistioenvoy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
+      01. K8sリソース/IstioリソースとEnvoy設定値の関係
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係">
+    <nav class="md-nav" aria-label="01. K8sリソース/IstioリソースとEnvoy設定値の関係">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24053,6 +24062,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. その他
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24080,7 +24098,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-k8sistioenvoy">01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係<a class="headerlink" href="#01-k8sistioenvoy" title="Permanent link">&para;</a></h2>
+<h2 id="01-k8sistioenvoy">01. K8sリソース/IstioリソースとEnvoy設定値の関係<a class="headerlink" href="#01-k8sistioenvoy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">一覧表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
@@ -24090,7 +24108,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ルートへの変換<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioカスタムリソースがルートに変換されたかは、ルートの<code>metadata.filter_metadata</code>キーで確認できる。</p>
+<p>いずれのIstioリソースがルートに変換されたかは、ルートの<code>metadata.filter_metadata</code>キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
@@ -24098,7 +24116,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">クラスターへの変換<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>いずれのIstioカスタムリソースがクラスターに変換されたかは、クラスターの<code>metadata.filter_metadata</code>キーで確認できる。</p>
+<p>いずれのIstioリソースがクラスターに変換されたかは、クラスターの<code>metadata.filter_metadata</code>キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">filter_metadata</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio</span><span class="p">:</span>
@@ -24559,7 +24577,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <h4 id="_13">▼ クラスターとして<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスターに変換する。</p>
 <p>なお、クラスター配下のエンドポイントは、KubernetesのServiceから動的に取得する。</p>
-<p>そのため、Envoyのエンドポイントに相当するIstioのカスタムリソースはない。</p>
+<p>そのため、Envoyのエンドポイントに相当するIstioリソースはない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -24959,6 +24977,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="10">10. その他<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<p>設定によっては、リソースではなくバイナリに直接的に渡す必要がある。</p>
+<p><br></p>
 
 
 
@@ -24979,7 +25000,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-20</span>
   </span>
 
     
