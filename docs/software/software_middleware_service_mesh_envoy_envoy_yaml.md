@@ -984,7 +984,7 @@ static_resources:
 
 <br>
 
-## 05. dynamic_resources
+## 07. dynamic_resources
 
 ### dynamic_resourcesとは
 
@@ -1162,5 +1162,31 @@ dynamic_resources:
   lds_config:
     path: /var/lib/envoy/lds.yaml
 ```
+
+<br>
+
+## 08. overload_manager
+
+### overload_managerとは
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#
+
+<br>
+
+### envoy.resource_monitors
+
+#### ▼ global_downstream_max_connections
+
+ダウンストリーム接続の上限数を設定する
+
+```yaml
+resource_monitors:
+  - name: "envoy.resource_monitors.global_downstream_max_connections"
+    typed_config:
+      "@type": type.googleapis.com/envoy.extensions.resource_monitors.downstream_connections.v3.DownstreamConnectionsConfig
+      max_active_downstream_connections: 1000
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections
 
 <br>
