@@ -970,17 +970,19 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 なお、コンテナの特性に合わせて、上限下限値を設定すると良い。
 
-### ■ ハードウェアリソースを恒常的に要求する場合はGuaranteedなQoSにする
+### ■ ハードウェアリソースを恒常的に要求する場合はGuaranteed QoSにする
 
-ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、GuaranteedなQoSにする。
+ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、Guaranteed QoSにする。
 
-GuaranteedなQoSでは、上限 (`limits`) = 下限 (`requests`) のように、CPUとメモリを設定する。
+Guaranteed QoSでは、上限 (`limits`) = 下限 (`requests`) のように、CPUとメモリを設定する。
 
-コンテナが一定量のハードウェアリソースを要求し続けたとしても、これに耐えられるようにする。
+上限 (`limits`) と下限 (`requests`) の設定の両方または一方を省略すると、自動的にGuaranteedになる。
 
-基本的には、ほとんどのコンテナをGuaranteedなQoSにすればよい。
+コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Nodeの空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。
 
-補足として、GuaranteedなQoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。
+基本的には、ほとんどのコンテナをGuaranteed QoSにすればよい。
+
+補足として、Guaranteed QoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。
 
 > - [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)
 
@@ -988,13 +990,13 @@ GuaranteedなQoSでは、上限 (`limits`) = 下限 (`requests`) のように、
 
 ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ) では、BurstableなQoSにする。
 
-GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、CPUとメモリを設定する。
+Guaranteed QoSでは、上限 (`limits`) > 下限 (`requests`) のように、CPUとメモリを設定する。
 
 上限 (`limits`) を設定しないと上限が無制限になるため、下限 (`requests`) のみを設定した場合もBurstableである。
 
 コンテナがハードウェアリソース要求量が瞬間的に上昇させても、これに耐えられるようにする。
 
-全てのコンテナをGuaranteedなQoSにするとハードウェアのコストが高くなるため、部分的にBurstableなQoSにするとよい。
+全てのコンテナをGuaranteed QoSにするとハードウェアのコストが高くなるため、部分的にBurstableなQoSにするとよい。
 
 ただし、上限 (`limits`) を高くしすぎると、割り当て可能な全体量を超えてしまう (オーバーコミットする) ため、上限は慎重に設定する。
 

@@ -327,7 +327,7 @@ ECサイトを運営するアスクルの例。
 
 特定の境界づけられたコンテキストのみで使用するドメインモデルのこと。
 
-![bounded-context_domain-model_type.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
 
 #### ▼ 共有モデル
 
@@ -335,7 +335,7 @@ ECサイトを運営するアスクルの例。
 
 図では、在庫品目モデルがそれに相当する。
 
-![bounded-context_domain-model_type.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
 
 <br>
 

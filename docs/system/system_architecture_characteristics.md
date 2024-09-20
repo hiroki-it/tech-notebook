@@ -199,7 +199,7 @@ IPAが公開している非機能要件の種類を参考にするとよい。
 
 稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
-![ha-cluster-system,png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
+![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
 > - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
 
