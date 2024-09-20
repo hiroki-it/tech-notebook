@@ -25,7 +25,7 @@ argo-rollouts-controller、ダッシュボード、から構成される。
 
 ### argo-rollouts-controller
 
-Argo RolloutsのカスタムリソースのReconciliationを実行する。
+Argo RolloutsリソースのReconciliationを実行する。
 
 <br>
 

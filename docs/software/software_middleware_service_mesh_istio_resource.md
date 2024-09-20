@@ -13,7 +13,7 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
+## 01. K8sリソース/IstioリソースとEnvoy設定値の関係
 
 ### 一覧表
 
@@ -24,7 +24,7 @@ description: リソース＠Istioの知見を記録しています。
 
 ### ルートへの変換
 
-いずれのIstioカスタムリソースがルートに変換されたかは、ルートの`metadata.filter_metadata`キーで確認できる。
+いずれのIstioリソースがルートに変換されたかは、ルートの`metadata.filter_metadata`キーで確認できる。
 
 ```yaml
 metadata:
@@ -37,7 +37,7 @@ metadata:
 
 ### クラスターへの変換
 
-いずれのIstioカスタムリソースがクラスターに変換されたかは、クラスターの`metadata.filter_metadata`キーで確認できる。
+いずれのIstioリソースがクラスターに変換されたかは、クラスターの`metadata.filter_metadata`キーで確認できる。
 
 ```yaml
 metadata:
@@ -547,7 +547,7 @@ Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyの
 
 なお、クラスター配下のエンドポイントは、KubernetesのServiceから動的に取得する。
 
-そのため、Envoyのエンドポイントに相当するIstioのカスタムリソースはない。
+そのため、Envoyのエンドポイントに相当するIstioリソースはない。
 
 ```yaml
 $ kubectl exec \
@@ -975,5 +975,11 @@ JWTがない場合は、AuthorizationPolicyで`403`ステータスを返信す�
 ## 09. AuthorizationPolicy
 
 > - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+
+<br>
+
+## 10. その他
+
+設定によっては、リソースではなくバイナリに直接的に渡す必要がある。
 
 <br>

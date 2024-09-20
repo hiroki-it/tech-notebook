@@ -59,7 +59,7 @@ deprecated-versions:
 
   ...
 
-  # Istioのカスタムリソース
+  # Istioリソース
   - version: rbac.istio.io
     kind: AuthorizationPolicies
     deprecated-in: v1.4.0

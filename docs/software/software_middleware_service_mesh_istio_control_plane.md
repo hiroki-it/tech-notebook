@@ -276,7 +276,7 @@ Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Co
 
 #### ▼ Config Ingestionレイヤーとは
 
-Clusterで作成されたIstioのカスタムリソースの状態を取得する。
+Clusterで作成されたIstioリソースの状態を取得する。
 
 > - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
@@ -294,7 +294,7 @@ Clusterで作成されたIstioのカスタムリソースの状態を取得す�
 
 #### ▼ リスナーの場合
 
-IstioのカスタムリソースをEnvoyのリスナーに変換する。
+IstioリソースをEnvoyのリスナーに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71
@@ -302,7 +302,7 @@ IstioのカスタムリソースをEnvoyのリスナーに変換する。
 
 #### ▼ ルートの場合
 
-IstioのカスタムリソースをEnvoyのルートに変換する。
+IstioリソースをEnvoyのルートに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40
@@ -310,7 +310,7 @@ IstioのカスタムリソースをEnvoyのルートに変換する。
 
 #### ▼ クラスターの場合
 
-IstioのカスタムリソースをEnvoyのクラスターに変換する。
+IstioリソースをEnvoyのクラスターに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/cds.go#L35-L60
@@ -318,7 +318,7 @@ IstioのカスタムリソースをEnvoyのクラスターに変換する。
 
 #### ▼ エンドポイントの場合
 
-IstioのカスタムリソースをEnvoyのエンドポイントに変換する。
+IstioリソースをEnvoyのエンドポイントに変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245
