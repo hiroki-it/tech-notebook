@@ -2065,6 +2065,15 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      パケットの構造
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       リクエストの構造
     </span>
   </a>
@@ -2073,7 +2082,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ リクエストメタデータ
     </span>
@@ -2082,7 +2091,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ レスポンスメタデータ
     </span>
@@ -2096,7 +2105,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       レスポンスタイム
     </span>
@@ -2129,7 +2138,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ステータスコード
     </span>
@@ -2138,7 +2147,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       タイムアウト
     </span>
@@ -2150,7 +2159,7 @@
           <li class="md-nav__item">
   <a href="#http11_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTP/1/1の場合
+      ▼ HTTP/1.1の場合
     </span>
   </a>
   
@@ -2195,7 +2204,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       前提
     </span>
@@ -23487,6 +23496,15 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
+      パケットの構造
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
       リクエストの構造
     </span>
   </a>
@@ -23495,7 +23513,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ リクエストメタデータ
     </span>
@@ -23504,7 +23522,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ レスポンスメタデータ
     </span>
@@ -23518,7 +23536,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       レスポンスタイム
     </span>
@@ -23551,7 +23569,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       ステータスコード
     </span>
@@ -23560,7 +23578,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       タイムアウト
     </span>
@@ -23572,7 +23590,7 @@
           <li class="md-nav__item">
   <a href="#http11_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTP/1/1の場合
+      ▼ HTTP/1.1の場合
     </span>
   </a>
   
@@ -23617,7 +23635,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       前提
     </span>
@@ -23717,7 +23735,7 @@
 <h2 id="01-grpc">01. gRPCの仕組み<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>RPCフレームワークの一つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。</p>
-<p>従来のHTTP/<code>1.1</code>ではなく、HTTP/<code>2.0</code> (例：gRPCなど) を使用する。</p>
+<p>従来のHTTP/1.1ではなく、HTTP/2 (例：gRPCなど) を使用する。</p>
 <p>RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
 <p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
 <p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png" /></p>
@@ -23843,9 +23861,47 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-http11grpc">03. HTTP/<code>1.1</code>とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
-<h3 id="_3">リクエストの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ リクエストメタデータ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="03-http11grpc">03. HTTP/1.1とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
+<h3 id="_3">パケットの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>HTTP1.1の場合</th>
+<th>HTTP2の場合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリケーションデータの形式</td>
+<td>テキスト</td>
+<td>バイナリ</td>
+</tr>
+<tr>
+<td>TLSによるアプリケーションデータの暗号化</td>
+<td>任意</td>
+<td>必須</td>
+</tr>
+<tr>
+<td>トランスポートヘッダー</td>
+<td>あり</td>
+<td>あり</td>
+</tr>
+<tr>
+<td>IPヘッダー</td>
+<td>あり</td>
+<td>あり</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1">https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">リクエストの構造<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ リクエストメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>gRPCのリクエストでは、メタデータをヘッダーに格納する。</p>
 <table>
 <thead>
@@ -23900,7 +23956,7 @@
 <li><a href="https://soichisumi.net/2019/04/grpc-custom-error-response/">https://soichisumi.net/2019/04/grpc-custom-error-response/</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ レスポンスメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ レスポンスメタデータ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>gRPCのレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。</p>
 <blockquote>
 <ul>
@@ -23910,9 +23966,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_6">レスポンスタイム<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="http11">▼ HTTP/<code>1.1</code>の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
-<p>HTTP/<code>1.1</code>の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<h3 id="_7">レスポンスタイム<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="http11">▼ HTTP/1.1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<p>HTTP/1.1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
@@ -23921,7 +23977,7 @@
 </blockquote>
 <h4 id="grpc_1">▼ gRPCの場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
 <p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
-<p>そのため、従来のHTTP/<code>1.1</code>と同じレスポンスタイムである。</p>
+<p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
 <p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
 <p>この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
@@ -23934,13 +23990,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">ステータスコード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">ステータスコード<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>HTTP/<code>1.1</code>のステータスコード</th>
-<th>gRPCのステータス番号</th>
-<th>ステータスコード</th>
+<th>HTTP/1.1の場合</th>
+<th>HTTP/2の場合</th>
+<th>意味</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -24058,8 +24114,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">タイムアウト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="http11_1">▼ HTTP/1/1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
+<h3 id="_9">タイムアウト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="http11_1">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
 <p>TCPコネクションをリクエスト/レスポンスにタイムアウト時間を適用する。</p>
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
 <p>TCPコネクション上に単一のストリーミングしかない。</p>
@@ -24081,7 +24137,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. ディレクトリ構成規約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_9">前提<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">前提<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>ここでは、マイクロサービスが以下のような順で実行されるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># Node.js製</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
@@ -24307,7 +24363,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-23</span>
   </span>
 
     
