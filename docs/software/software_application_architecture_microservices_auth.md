@@ -49,6 +49,22 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
+#### ▼ API Gatewayがある場合
+
+初回のSSO時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
+
+その後、クライアントのローカルマシンの`Cookie`ディレクトリにJWTを保管する。
+
+次回、API GatewayがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。
+
+結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
+
+![microservices_authentication_type_sso_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png)
+
+> - https://www.jerney.io/secure-apis-kong-keycloak-1/
+> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
+> - https://stackoverflow.com/a/53396041
+
 <br>
 
 ### セッションパターン (集中パターン)
@@ -107,7 +123,7 @@ SSOパターンと似ているが、こちらは非SSOでJWT仕様のトーク�
 
 クライアント側に保管されたJWTの失効が難しいというデメリットがある。
 
-その解決策として、Opaqueトークンパターン (ゲートウェイ分散パターン) がある。
+その解決策として、Opaqueトークンパターン (ゲートウェイ集中パターン) がある。
 
 ![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
@@ -115,37 +131,19 @@ SSOパターンと似ているが、こちらは非SSOでJWT仕様のトーク�
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 > - https://engineer.retty.me/entry/2019/12/21/171549
 
-#### ▼ API Gateway (またはBFF) を配置する場合
-
-初回の認証時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。
-
-その後、クライアントのローカルマシンの`Cookie`ディレクトリにJWTを保管する。
-
-次回、API GatewayがフロントエンドからのリクエストをKeycloakに転送し、JWTを検証する。
-
-結果に応じて、後続のマイクロサービスにルーティングするかどうかを決める。
-
-![microservices_auth_jwt-apigateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_auth_jwt-apigateway.png)
-
-> - https://www.jerney.io/secure-apis-kong-keycloak-1/
-> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
-> - https://stackoverflow.com/a/53396041
-
 <br>
 
-### Opaqueトークンパターン (ゲートウェイ分散パターン)
+### Opaqueトークンパターン (ゲートウェイ集中パターン)
 
 #### ▼ Opaqueトークンパターンとは
 
-『ゲートウェイ分散パターン』ともいう。
+『ゲートウェイ集中パターン』ともいう。
 
 JWTパターンにAPI Gatewayを組み合わせたパターンであり、JWTパターンでJWTの失効が難しいというデメリットを解決する。
 
 サーバー側に、JWTを作成する認証サービス (例：自前、Keycloakなど) を`1`個だけ配置する。
 
-API Gatewayは、OpaqueトークンとJWTを変換する機能を持ち、有効期限が切れればJWTを失効する。
-
-一方でクライアント側ではOpaqueトークンを保管し、認証処理を実行する。
+API Gatewayは、認証を集中的に管理し、認証とアクセストークン検証を担う。
 
 > - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
