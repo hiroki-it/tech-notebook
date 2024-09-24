@@ -21,6 +21,8 @@ SSOの一種である。
 
 OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。
 
+そのため、OAuthの一種ともいえる。
+
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
 
@@ -120,12 +122,15 @@ IDプロバイダーは、指定したクレームグループに対応したク
 
 ### トークンの違い
 
+OIDCはOAuthの拡張であるため、仕組みは非常に似ている。
+
 OIDCでは、OAuthとは異なり、アクセストークン (JWT仕様かどうかはツール次第) だけでなくIDトークン (必ずJWT仕様) の使用する。
 
 また、OAuthの脆弱性に対処できる。
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
+> - https://auth0.com/jp/intro-to-iam/what-is-oauth-2
 > - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
 > - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3
 > - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
