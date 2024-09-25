@@ -111,6 +111,8 @@ Keycloakクライアントは、『ヘッダー』『ペイロード』『署名
 #### ▼ Back-Channel
 
 ```yaml
+# リクエスト
+# ログアウトエンドポイント
 POST /auth/realms/<realm名>/protocol/openid-connect/logout HTTP/1.1
 ---
 Host: <Keycloakのドメイン名>
@@ -126,11 +128,19 @@ client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...tw
 | `client_secret` | クライアントシークレット |
 | `refresh_token` | リフレッシュトークン     |
 
+```yaml
+# レスポンス
+HTTP/1.1 204 No Content
+```
+
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%90%E3%83%83%E3%82%AF%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#keycloak%E3%81%AEslo%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ Front-Channel
 
 ```yaml
+# リクエスト
+# ログアウトエンドポイント
 GET http://<Keycloakのドメイン名>/auth/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
@@ -140,7 +150,18 @@ GET http://<Keycloakのドメイン名>/auth/realms/<realm名>/protocol/openid-c
 | `post_logout_redirect_uri` | ログアウト後のリダイレクトURL |
 | `state`                    | CSRF対策の文字列              |
 
+```yaml
+# レスポンス
+HTTP/1.1 307 Temporary Redirect
+http://localhost:8000/auth/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
+```
+
+| パラメーター | 説明                                  |
+| ------------ | ------------------------------------- |
+| `state`      | リクエスト時の`state`パラメーターの値 |
+
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#keycloak%E3%81%AEslo%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>
 
