@@ -28,7 +28,7 @@ description: Javascript＠Keycloakクライアントの知見を記録してい�
 ```javascript
 import Keycloak from "keycloak-js";
 
-// Javascriptアダプターを初期化する
+// Javascriptパッケージを初期化する
 const keycloak = new Keycloak({
   url: "http://<Keycloakのドメイン名>",
   realm: "<realm名>",

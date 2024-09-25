@@ -202,6 +202,8 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ IDプロバイダーへのリクエスト
 
+IDプロバイダーのログアウトエンドポイント (`/logout`) にPOSTリクエストを送信します。
+
 ```yaml
 # リクエスト
 # IDプロバイダーのログアウトエンドポイント
@@ -225,10 +227,12 @@ client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...tw
 
 #### ▼ アプリケーションへのリクエスト
 
+アプリケーションのバックチャネルログアウトエンドポイント (`/k_logout`) にPOSTリクエストを送信します。
+
 ```yaml
 # リクエスト
 # アプリケーションのバックチャネルログアウトエンドポイント
-POST /auth/backchannel_logout HTTP/1.1
+POST /auth/k_logout HTTP/1.1
 ---
 Host: localhost:8000
 Content-Type: application/x-www-form-urlencoded
@@ -241,6 +245,8 @@ logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ IDプロバイダーからのレスポンス
+
+IDプロバイダーのログアウトエンドポイントは、レスポンスを送信します。
 
 ```yaml
 # レスポンス
@@ -255,6 +261,8 @@ HTTP/1.1 204 No Content
 ### フロントチャネル
 
 #### ▼ IDプロバイダーへのリクエスト
+
+IDプロバイダーのログアウトエンドポイント (`/logout`) にGETリクエストを送信します。
 
 ```yaml
 # リクエスト
@@ -272,6 +280,8 @@ GET http://<Keycloakのドメイン名>/auth/realms/<realm名>/protocol/openid-c
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ IDプロバイダーからのレスポンス
+
+IDプロバイダーのログアウトエンドポイントは、レスポンスを送信します。
 
 ```yaml
 # レスポンス
