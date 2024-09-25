@@ -241,6 +241,25 @@ Content-Length: 759
 logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg
 ```
 
+POSTリクエストには、JWT仕様のトークン (たぶんIDトークン) が含まれている。
+
+IDトークンには、アプリケーション間で共有しているクライアントのセッションIDが含まれてする。
+
+Keycloakは、このセッションIDでログアウトすべきクライアントを判定し、認証処理を実行する。
+
+```yaml
+{
+  "id": "edfd2bf0-1f2d-4875-a4b1-2752caa07ee1-1606363972255",
+  "expiration": 1606364002,
+  "resource": "kc-tomcat",
+  "action": "LOGOUT",
+  # アプリケーション間で共有しているクライアントのセッションID
+  "adapterSessionIds": ["FC60BED115518DFB043EDDB77F0E0A8E"],
+  "notBefore": 0,
+  "keycloakSessionIds": ["ac04ef9d-7793-481c-a5c7-5750560e3c14"],
+}
+```
+
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
