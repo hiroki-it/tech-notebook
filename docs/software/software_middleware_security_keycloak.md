@@ -196,7 +196,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 <br>
 
-## 04. ログアウト
+## 04. SLO：シングルログアウト
 
 ### バックチャネル
 
