@@ -23879,6 +23879,20 @@
 <span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg</span>
 </code></pre></div>
+<p>POSTリクエストには、JWT仕様のトークン (たぶんIDトークン) が含まれている。</p>
+<p>IDトークンには、アプリケーション間で共有しているクライアントのセッションIDが含まれてする。</p>
+<p>Keycloakは、このセッションIDでログアウトすべきクライアントを判定し、認証処理を実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;edfd2bf0-1f2d-4875-a4b1-2752caa07ee1-1606363972255&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;expiration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1606364002</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;kc-tomcat&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;LOGOUT&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># アプリケーション間で共有しているクライアントのセッションID</span>
+<span class="w">  </span><span class="s">&quot;adapterSessionIds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FC60BED115518DFB043EDDB77F0E0A8E&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;notBefore&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;keycloakSessionIds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ac04ef9d-7793-481c-a5c7-5750560e3c14&quot;</span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96">https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96</a></li>
