@@ -160,3 +160,45 @@ OAuthの認可コードフローと仕組みが似ており、アクセストー
 > - https://github.com/oauth2-proxy/oauth2-proxy/issues/843
 
 <br>
+
+## 09. ログアウト
+
+### RP-Initiatedログアウト
+
+#### ▼ シングル
+
+> - https://zenn.dev/putcho/articles/61bd31a33f8441#rp-initiated-logout
+
+#### ▼ グローバル
+
+記入中...
+
+<br>
+
+### Front-Channelログアウト
+
+#### ▼ シングル
+
+> - https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98
+
+#### ▼ グローバル
+
+ブラウザがIDプロバイダーにセッションの終了を通知し、全てのアプリケーションからログアウトする。
+
+> - https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------
+
+<br>
+
+### Back-Channelログアウト
+
+#### ▼ シングル
+
+> - https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98
+
+#### ▼ グローバル
+
+IDプロバイダーが全ての関連アプリケーションにセッションの終了を通知し、全てのアプリケーションからログアウトする。
+
+> - https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------
+
+<br>

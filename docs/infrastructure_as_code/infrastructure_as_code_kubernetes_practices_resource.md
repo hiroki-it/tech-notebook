@@ -57,7 +57,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 この場合、平均スループットの目標値は`50` (個/秒) 、平均レスポンスタイムの目標値は`3`秒以内、となる。
 
-> - [https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing
+> - [https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing)
 > - [https://gihyo.jp/dev/serial/01/tech_station/0008](https://gihyo.jp/dev/serial/01/tech_station/0008)
 
 ロードテストの結果をメトリクスとして収集し、サイジングを最適化していく。

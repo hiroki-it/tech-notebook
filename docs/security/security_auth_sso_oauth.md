@@ -102,14 +102,13 @@ OAuthでは、認証スキーマとしてBearer認証が選択されることが
 
 ## 06. 認可コードフロー
 
-### 認可コードフローの仕組み
-
-#### ▼ アーキテクチャ
+### 認可コードフローとは
 
 リフレッシュトークンを含むアクセストークンを発行するために、短命な認可コードを発行する。
 
 ![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png)
 
+> - https://cloudentity.com/developers/basics/oauth-grant-types/authorization-code-flow/
 > - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 > - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
 
@@ -263,16 +262,26 @@ Pragma: no-cache
 
 <br>
 
-## 07. 暗黙的フロー
+## 07. 暗黙的フロー (インプリシットフロー)
 
-### 暗黙的フローの仕組み
-
-#### ▼ アーキテクチャ
+### 暗黙的フローとは
 
 アクセストークンを直接的に発行する。
 
 また、リフレッシュトークンを発行しない。
 
+> - https://cloudentity.com/developers/basics/oauth-grant-types/implicit-flow/
 > - https://www.authlete.com/ja/kb/oauth-and-openid-connect/grant-type/how-to-choose-the-appropriate-oauth-2-flow/
+
+<br>
+
+## 08. リフレッシュトークンフロー
+
+### リフレッシュトークンフローとは
+
+アクセストークンの失効期限をリフレッシュトークンで管理する方法である。
+
+> - https://cloudentity.com/developers/basics/oauth-grant-types/refresh-token-flow/
+> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749
 
 <br>
