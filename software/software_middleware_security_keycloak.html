@@ -23671,7 +23671,7 @@
 
 <h1 id="keycloak">Keycloak＠セキュリティ系ミドルウェア<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたする。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
@@ -23828,7 +23828,7 @@
 <h2 id="04-slo">04. SLO：シングルログアウト<a class="headerlink" href="#04-slo" title="Permanent link">&para;</a></h2>
 <h3 id="_13">バックチャネル<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="id">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にPOSTリクエストを送信します。</p>
+<p>アプリケーションは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にPOSTリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
 <span class="c1"># IDプロバイダーのログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">POST /auth/realms/&lt;realm名&gt;/protocol/openid-connect/logout HTTP/1.1</span>
@@ -23868,9 +23868,10 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ アプリケーションへのリクエスト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>アプリケーションのバックチャネルログアウトエンドポイント (<code>/k_logout</code>) にPOSTリクエストを送信します。</p>
+<p>IDプロバイダーは、バックエンドアプリケーションのバックチャネルログアウトエンドポイント (<code>/k_logout</code>) にPOSTリクエストを送信する。</p>
+<p>全てのアプリケーションに対して、この処理を繰り返す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
-<span class="c1"># アプリケーションのバックチャネルログアウトエンドポイント</span>
+<span class="c1"># バックエンドアプリケーションのバックチャネルログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">POST /auth/k_logout HTTP/1.1</span>
 <span class="nn">---</span>
 <span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost:8000</span>
@@ -23900,7 +23901,7 @@
 </ul>
 </blockquote>
 <h4 id="id_1">▼ IDプロバイダーからのレスポンス<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのログアウトエンドポイントは、レスポンスを送信します。</p>
+<p>IDプロバイダーのログアウトエンドポイントは、アプリケーションにレスポンスを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス</span>
 <span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 204 No Content</span>
 </code></pre></div>
@@ -23913,7 +23914,7 @@
 <p><br></p>
 <h3 id="_15">フロントチャネル<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="id_2">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にGETリクエストを送信します。</p>
+<p>ブラウザは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にGETリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
 <span class="c1"># IDプロバイダーのログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">GET http://&lt;Keycloakのドメイン名&gt;/auth/realms/&lt;realm名&gt;/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&amp;post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&amp;state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81</span>
@@ -23947,7 +23948,7 @@
 </ul>
 </blockquote>
 <h4 id="id_3">▼ IDプロバイダーからのレスポンス<a class="headerlink" href="#id_3" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーのログアウトエンドポイントは、レスポンスを送信します。</p>
+<p>IDプロバイダーのログアウトエンドポイントは、ブラウザにレスポンスを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス</span>
 <span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 307 Temporary Redirect</span>
 <span class="l l-Scalar l-Scalar-Plain">http://localhost:8000/auth/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81</span>
