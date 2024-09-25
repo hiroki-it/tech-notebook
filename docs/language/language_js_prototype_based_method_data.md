@@ -100,7 +100,7 @@ $.get();
 ```javascript
 const asyncFunc = (param, callback) => {
   setTimeout(() => {
-    // getDataメソッドは、数値を渡すとdataを取得してくれると仮定します。
+    // getDataメソッドは、数値を渡すとdataを取得してくれると仮定する
     const data = getData(param);
     const err = data.getError();
 

@@ -1998,7 +1998,7 @@ func NewValidator() *Validator {
 	return &Validator{}
 }
 
-// Validate バリデーションを実行します。
+// Validate バリデーションを実行する
 func (v *FoobarbazValidator) Validate() map[string]string {
 
 	err := validator.New().Struct(v)
@@ -2008,7 +2008,7 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 	if err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Field() {
-			// フィールドごとにmapでバリデーションメッセージを構成します。
+			// フィールドごとにmapでバリデーションメッセージを構成する
 			case "foo":
 				errorMessages["foo"] = v.stringValidation(err)
 				errorMessages["foo"] = v.requiredValidation(err)
@@ -2024,12 +2024,12 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 	return errorMessages
 }
 
-// stringValidation string型指定のメッセージを返却します。
+// stringValidation string型指定のメッセージを返却する
 func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
 }
 
-// requiredValidation 必須メッセージを返却します。
+// requiredValidation 必須メッセージを返却する
 func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
 	return fmt.Sprintf("%s は必須です", err.Field())
 }
@@ -2050,7 +2050,7 @@ func main() {
 
 	v := NewFoobarbazValidator()
 
-	// JSONを構造体にマッピングします。
+	// JSONを構造体にマッピングする
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
@@ -2058,16 +2058,16 @@ func main() {
 		return
 	}
 
-	// バリデーションを実行します。
+	// バリデーションを実行する
 	errorMessages := v.Validate()
 
 	if len(errorMessages) > 0 {
-		// mapをJSONに変換します。
+		// mapをJSONに変換する
 		byteJson, _ := json.Marshal(errorMessages)
 		log.Printf("%v", byteJson)
 	}
 
-	// エンコード結果を出力します。
+	// エンコード結果を出力する
 	fmt.Println("データに問題はありません。")
 }
 ```

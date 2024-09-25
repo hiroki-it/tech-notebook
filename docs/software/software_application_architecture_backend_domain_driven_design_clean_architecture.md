@@ -124,7 +124,7 @@ use Respect\Validation\Validator;
 class FormatValidator
 {
     /**
-     * 日時データのフォーマットを検証します。
+     * 日時データのフォーマットを検証する
 
 
      */
@@ -649,7 +649,7 @@ class ColorType
     const BLUE = 2;
 
     /**
-     * 『self::定数名』で、定義の値へアクセスします。
+     * 『self::定数名』で、定義の値へアクセスする
      */
     private $set = [
         self::RED  => ["name" => "レッド"],
@@ -675,7 +675,7 @@ class ColorType
     }
 
     /**
-     * 値を返却します。
+     * 値を返却する
 
 
      */
@@ -686,7 +686,7 @@ class ColorType
 
 
     /**
-     * 色名を返却します。
+     * 色名を返却する
 
 
      */
@@ -738,14 +738,14 @@ class SexType
     }
 
     /**
-     * 値を返却します。
+     * 値を返却する
      */
     public function value(): int
     {
         return $this->value;
     }
     /**
-     * 名前を返却します。
+     * 名前を返却する
      */
     public function name()
     {
@@ -822,7 +822,7 @@ class YmdType extends Type
     private $name;
 
     /**
-     * 値を返却します
+     * 値を返却する
      *
      * @return string
      */
@@ -841,7 +841,7 @@ class YmdType extends Type
     }
 
     /**
-     * 年号名を返却します
+     * 年号名を返却する
      *
      * @return string
      */
@@ -905,7 +905,7 @@ class CheckDuplicateFooService
     }
 
     /**
-     * エンティティがすでに存在しているか否かを判定します。
+     * エンティティがすでに存在しているか否かを判定する
 
 
      *
@@ -958,7 +958,7 @@ class AuthorizeFooService
     }
 
     /**
-     * 更新処理を実行できるかを検証します。
+     * 更新処理を実行できるかを検証する
      *
      * @param FooId  $fooId
      * @param UserId $userId
@@ -1019,7 +1019,7 @@ namespace App\Domain\Foo\Specifications;
 class FooSpecification
 {
     /**
-     * ビジネスルールを判定します。
+     * ビジネスルールを判定する
      * @param Entity $entity
      * @return bool
      */
@@ -1065,7 +1065,7 @@ class FooCriteria
     private string $email;
 
     /**
-     * 検索条件のオブジェクトを作成します。
+     * 検索条件のオブジェクトを作成する
      *
      * @param array $array
      * @return $this
@@ -1277,7 +1277,7 @@ class DogToy extends Entity
     }
 
     /**
-     * 犬用おもちゃ名 (色) を返却します。
+     * 犬用おもちゃ名 (色) を返却する
      *
      * @return string
      */
@@ -1326,7 +1326,7 @@ abstract class Entity
     protected Id $id;
 
     /**
-     * エンティティの等価性を検証します。
+     * エンティティの等価性を検証する
 
 
      *
@@ -1340,7 +1340,7 @@ abstract class Entity
     }
 
     /**
-     * IDクラスを返却します。
+     * IDクラスを返却する
 
 
      */
@@ -1393,11 +1393,11 @@ abstract class Id
     }
 
     /**
-     * ハッシュ値を返却します。
+     * ハッシュ値を返却する
 
 
      *
-     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドします。
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
 
 
      *
@@ -1409,11 +1409,11 @@ abstract class Id
     }
 
     /**
-     * オブジェクトの等価性を検証します。
+     * オブジェクトの等価性を検証する
 
 
      *
-     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドします。
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
 
 
      *
@@ -1495,7 +1495,7 @@ class MoneyVO extends ValueObject
     }
 
     /**
-     * 金額を返却します
+     * 金額を返却する
      *
      * @return float
      */
@@ -1505,7 +1505,7 @@ class MoneyVO extends ValueObject
     }
 
     /**
-     * 単位を返却します
+     * 単位を返却する
      *
      * @return string
      */
@@ -1515,7 +1515,7 @@ class MoneyVO extends ValueObject
     }
 
     /**
-     * 足し算の結果を返却します
+     * 足し算の結果を返却する
      *
      * @param Money $price
      * @return $this
@@ -1526,7 +1526,7 @@ class MoneyVO extends ValueObject
     }
 
     /**
-     * 引き算の結果を返却します
+     * 引き算の結果を返却する
      *
      * @param Money $price
      * @return $this
@@ -1537,7 +1537,7 @@ class MoneyVO extends ValueObject
     }
 
     /**
-     * 掛け算の結果を返却します
+     * 掛け算の結果を返却する
      *
      * @param Money $price
      * @return $this
@@ -1588,7 +1588,7 @@ class RequiredTime extends ValueObject
     }
 
     /**
-     * 徒歩または車のどちらを使用するかを判定します
+     * 徒歩または車のどちらを使用するかを判定する
      *
      * @return bool
      */
@@ -1602,7 +1602,7 @@ class RequiredTime extends ValueObject
     }
 
     /**
-     * 徒歩での所要時間を計算します
+     * 徒歩での所要時間を計算する
      *
      * @return float
      */
@@ -1613,7 +1613,7 @@ class RequiredTime extends ValueObject
     }
 
     /**
-     * 車での所用時間を計算します
+     * 車での所用時間を計算する
      *
      * @return float
      */
@@ -1681,7 +1681,7 @@ class Address extends ValueObject
     }
 
     /**
-     * 郵便番号を作成し、返却します
+     * 郵便番号を作成し、返却する
      *
      * @return string
      */
@@ -1695,7 +1695,7 @@ class Address extends ValueObject
     }
 
     /**
-     * 住所を作成し、返却します
+     * 住所を作成し、返却する
      *
      * @return string
      */
@@ -1777,7 +1777,7 @@ class Name extends ValueObject
     }
 
     /**
-     * 氏名を作成します。
+     * 氏名を作成する
 
 
      */
@@ -1787,7 +1787,7 @@ class Name extends ValueObject
     }
 
     /**
-     * カナ氏名を作成します。
+     * カナ氏名を作成する
 
 
      */
@@ -1906,12 +1906,12 @@ use LogicException;
 
 /**
  * イミュータブルトレイト
- * NOTE: イミュータブルなオブジェクトで使用する汎用的なメソッドを定義します。
+ * NOTE: イミュータブルなオブジェクトで使用する汎用的なメソッドを定義する
  */
 trait イミュータブルTrait
 {
     /**
-     * ゲッターが定義されていなくとも、プロパティにアクセスできるようにします。
+     * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする
      *
      * @param string $name
      * @return mixed
@@ -2012,7 +2012,7 @@ final class ContactMail extends ValueObject
     }
 
     /**
-     * 値オブジェクトの等価性を検証します。
+     * 値オブジェクトの等価性を検証する
 
 
      *
@@ -2073,7 +2073,7 @@ final class PaymentInfoVO extends ValueObject
     }
 
     /**
-     * 値オブジェクトの等価性を検証します。
+     * 値オブジェクトの等価性を検証する
 
 
      *
@@ -2107,7 +2107,7 @@ namespace App\Domain;
 abstract class ValueObject
 {
     /**
-     * 値オブジェクトの等価性を検証します。
+     * 値オブジェクトの等価性を検証する
 
 
      *
@@ -2116,7 +2116,7 @@ abstract class ValueObject
      */
     public function equals(ValueObject $VO): bool
     {
-        // 全ての属性を反復的に検証します。
+        // 全ての属性を反復的に検証する
         foreach (get_object_vars($this) as $key => $value) {
             if ($this->__get($key) !== $VO->__get($key)) {
                 return false;
@@ -2201,7 +2201,7 @@ class DogOrder
     }
 
     /**
-     * 犬用おもちゃを返却します。
+     * 犬用おもちゃを返却する
      *
      * @return DogToy
      */
@@ -2211,7 +2211,7 @@ class DogOrder
     }
 
     /**
-     * 犬えさを返却します。
+     * 犬えさを返却する
 
 
      *
@@ -2412,7 +2412,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ドメインモデルを作成します。
+     * ドメインモデルを作成する
      */
     public function create(DogToy $dogToy): DogToy
     {
@@ -2449,7 +2449,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ドメインモデルを更新します。
+     * ドメインモデルを更新する
      */
     public function update(DogToy $dogToy): DogToy
     {
@@ -2487,7 +2487,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ドメインモデルを削除します。
+     * ドメインモデルを削除する
      */
     public function delete(ToyId $toyId): bool
     {
@@ -2549,7 +2549,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
      /**
-     * ドメインモデルを全て取得します。
+     * ドメインモデルを全て取得する
      */
     public function findAll(): array
     {
@@ -2582,7 +2582,7 @@ class DogToyRepository
     }
 
     /**
-     * ドメインモデルに変換します。
+     * ドメインモデルに変換する
      */
     private function toDogToy(array $entity): DogToy
     {
@@ -2624,7 +2624,7 @@ use App\Domain\Foo\Entities\DogCombo;
 class DogComboFactory
 {
     /**
-     * 新たな集約を作成します。
+     * 新たな集約を作成する
      */
     public static function createDogCombo($data): DogItem
     {

@@ -686,7 +686,7 @@ namespace App\Traits;
 trait UnsupportedMagicMethodTrait
 {
     /**
-     * 性能の観点から、マジックゲッターメソッドの使用を制限します。
+     * 性能の観点から、マジックゲッターメソッドの使用を制限する
 
 
      *
@@ -699,7 +699,7 @@ trait UnsupportedMagicMethodTrait
     }
 
     /**
-     * 性能の観点から、マジックセッターメソッドの使用を制限します。
+     * 性能の観点から、マジックセッターメソッドの使用を制限する
 
 
      *
