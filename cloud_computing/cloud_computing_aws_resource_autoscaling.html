@@ -12718,6 +12718,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
       EC2ヘルスチェック
@@ -12727,7 +12736,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ロードバランサー
     </span>
@@ -23464,6 +23473,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
       EC2ヘルスチェック
@@ -23473,7 +23491,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       ロードバランサー
     </span>
@@ -23890,14 +23908,40 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. ヘルスチェック<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_15">仕組み<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="ec2">EC2ヘルスチェック<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
 <p>EC2が自身をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。</p>
+<p><code>running</code>が正常である。</p>
+<p><code>impaired</code>、<code>stopping</code>、<code>stopped</code>、<code>shutting-down</code>、<code>terminated</code>が異常である。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_15">ロードバランサー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_16">ロードバランサー<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。</p>
+<p><code>Healthy</code>が正常である。</p>
+<p><code>Unhealthy</code>が異常である。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ebs">EBS<a class="headerlink" href="#ebs" title="Permanent link">&para;</a></h3>
 <p>EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてEC2を作成し直す。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
