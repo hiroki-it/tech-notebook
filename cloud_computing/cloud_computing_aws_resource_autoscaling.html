@@ -12489,9 +12489,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-autoscaling" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AutoScalingとは
+      01. オートスケーリングとは
     </span>
   </a>
   
@@ -12699,6 +12699,48 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EC2ヘルスチェック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ロードバランサー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs" class="md-nav__link">
+    <span class="md-ellipsis">
+      EBS
+    </span>
+  </a>
   
 </li>
         
@@ -23193,9 +23235,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-autoscaling" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AutoScalingとは
+      01. オートスケーリングとは
     </span>
   </a>
   
@@ -23411,6 +23453,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. ヘルスチェック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ヘルスチェック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EC2ヘルスチェック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ロードバランサー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs" class="md-nav__link">
+    <span class="md-ellipsis">
+      EBS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23438,10 +23522,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-autoscaling">01. AutoScalingとは<a class="headerlink" href="#01-autoscaling" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. オートスケーリングとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>ALBを使用して、起動テンプレートを基にしたEC2の自動水平スケーリングを実行する。</p>
-<p>注意点として、AutoScalingに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。</p>
-<p>言い換えると、AutoScalingにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。</p>
+<p>注意点として、オートスケーリングに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。</p>
+<p>言い換えると、オートスケーリングにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。</p>
 <p><img alt="Auto-scaling" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png" /></p>
 <blockquote>
 <ul>
@@ -23477,6 +23561,16 @@
 <td>選択したAZの個数よりも少ない個数のEC2を作成する場合、作成先のAZをランダムに選択する。</td>
 </tr>
 <tr>
+<td>ロードバランシング</td>
+<td>オートスケーリングに紐づけるALBを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>ヘルスチェック</td>
+<td>ヘルスチェックの実行方法を設定する。</td>
+<td></td>
+</tr>
+<tr>
 <td>スケーリングポリシー</td>
 <td>スケーリングの方法を設定する。</td>
 <td></td>
@@ -23491,8 +23585,8 @@
 <p><br></p>
 <h3 id="terraform">Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ スケーリンググループ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># AutoScalingグループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># オートスケーリンググループ</span>
+<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_オートスケーリング_group&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-group&quot;</span>
 <span class="w">  </span><span class="na">max_size</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
 <span class="w">  </span><span class="na">min_size</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
@@ -23524,21 +23618,21 @@
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
+<span class="c1">    # オートスケーリングで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
+<span class="c1">    # オートスケーリングで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Env&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
+<span class="c1">    # オートスケーリングで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -23555,7 +23649,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group</a></li>
+<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_group">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_group</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ 起動テンプレート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -23634,32 +23728,32 @@
 </blockquote>
 <h4 id="_6">▼ アクティビティ通知<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># アクティビティ通知</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_notification&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_オートスケーリング_notification&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">group_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nv">aws_autoscaling_group.bar.name</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">aws_autoscaling_group.baz.name</span><span class="p">,</span>
+<span class="w">    </span><span class="err">aws_オートスケーリング_group</span><span class="p">.</span><span class="nv">bar.name</span><span class="p">,</span>
+<span class="w">    </span><span class="err">aws_オートスケーリング_group</span><span class="p">.</span><span class="nv">baz.name</span><span class="p">,</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="c1">  # 通知したいイベントを設定する</span>
 <span class="w">  </span><span class="na">notifications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_LAUNCH&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_TERMINATE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_LAUNCH_ERROR&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_TERMINATE_ERROR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;オートスケーリング:EC2_INSTANCE_LAUNCH&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;オートスケーリング:EC2_INSTANCE_TERMINATE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;オートスケーリング:EC2_INSTANCE_LAUNCH_ERROR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;オートスケーリング:EC2_INSTANCE_TERMINATE_ERROR&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="w">  </span><span class="na">topic_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sns_topic.foo.arn</span>
 <span class="p">}</span>
 
 
-<span class="c1"># AutoScalingグループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1"># オートスケーリンググループ</span>
+<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_オートスケーリング_group&quot; &quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;baz&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="err">resource</span><span class="w"> </span><span class="s2">&quot;aws_オートスケーリング_group&quot; &quot;baz&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
@@ -23670,7 +23764,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification</a></li>
+<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_notification">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_notification</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23695,7 +23789,7 @@
 <p>記入中...</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-オートスケーリング-stepscaling.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-オートスケーリング-stepscaling.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23780,7 +23874,7 @@
 </table>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-オートスケーリング-targettracking.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-オートスケーリング-targettracking.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23791,9 +23885,19 @@
 <blockquote>
 <ul>
 <li><a href="https://blog.takuros.net/entry/2020/08/11/082712">https://blog.takuros.net/entry/2020/08/11/082712</a></li>
-<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html</a></li>
+<li><a href="https://docs.aws.amazon.com/オートスケーリング/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html">https://docs.aws.amazon.com/オートスケーリング/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="04">04. ヘルスチェック<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="ec2">EC2ヘルスチェック<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<p>EC2が自身をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。</p>
+<p><br></p>
+<h3 id="_15">ロードバランサー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。</p>
+<p><br></p>
+<h3 id="ebs">EBS<a class="headerlink" href="#ebs" title="Permanent link">&para;</a></h3>
+<p>EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてEC2を作成し直す。</p>
 <p><br></p>
 
 
@@ -23815,7 +23919,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-28</span>
   </span>
 
     
