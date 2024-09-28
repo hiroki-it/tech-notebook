@@ -36,7 +36,9 @@ cluster-autoscalerを使用しない場合、クラウドプロバイダーのNo
 
 #### ▼ Podのスケジューリングの可否が条件の場合
 
-Podのスケジューリングの可否を条件とする場合は、metrics-serverを使用する。
+cluster-autoscalerは、ハードウェアリソース不足が原因でスケジューリングできないPodがある時、Nodeをスケーリングする。
+
+これのために、合わせてmetrics-serverを使用する。
 
 取得したPodのハードウェアの最大リソース消費量 (`.spec.containers[*].resources`キーの合計値) と、Node全体のリソースの空き領域を定期的 (`10`分ほど) に比較し、Nodeをスケーリングさせる。
 
@@ -47,6 +49,7 @@ Podのスケジューリングの可否を条件とする場合は、metrics-ser
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
 
 > - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler
+> - https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster
 
 #### ▼ Kubernetes以外のメトリクスを条件すると仮定する場合
 

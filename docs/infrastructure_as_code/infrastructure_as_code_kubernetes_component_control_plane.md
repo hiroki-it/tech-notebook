@@ -576,6 +576,8 @@ kube-controller-managerは、kube-controllerを反復的に実行する。
 
 Nodeが複数ある場合、NodeとPodのスペックを基に、PodをスケジューリングさせるべきNodeを選定する。
 
+また、kubeletによるヘルスチェックでNodeが`NotReady`になった場合に、kube-schedulerはこれを検知し、新しいNodeを作成する。
+
 なお、kube-schedulerは一度スケジューリングしたPodを再スケジューリングできず、deschedulerを使用する必要がある。
 
 ![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler.png)

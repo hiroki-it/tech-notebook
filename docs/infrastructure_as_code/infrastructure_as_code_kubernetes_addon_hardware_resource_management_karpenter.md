@@ -61,7 +61,16 @@ cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode�
 
 ### disruption-controller
 
-記入中...
+Karpenterは、Nodeで特定のイベントを検知すると、これが実際に起こる前にNodeを自身で中断する。
+
+- Nodeのスポット中断警告イベント
+- Nodeのヘルスステータス
+- Nodeのインスタンス終了イベント
+- Nodeのインスタンス停止イベント
+
+> - https://karpenter.sh/docs/concepts/disruption/#interruption
+> - https://d1.awsstatic.com/events/Summits/reinvent2023/CON331_Harness-the-power-of-Karpenter-to-scale-optimize-and-upgrade-Kubernetes.pdf#page=42
+> - https://medium.com/@gajaoncloud/karpeneters-drift-detection-maintaining-consistency-in-your-kubernetes-cluster-cabe2a34bb49
 
 <br>
 
@@ -270,11 +279,11 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 <br>
 
-### 水平/垂直スケーリング
+### 垂直/水平スケーリング
 
 #### ▼ 対応するスケーリング
 
-Karpenterは、現在のハードウェアリソースの使用量に応じて、Nodeを水平/垂直スケーリングする。
+Karpenterは、現在のハードウェアリソースの使用量に応じて、Nodeを垂直/水平スケーリングする。
 
 なお、Karpeneterでは垂直スケーリングを代わりに『deprovisioning』という。
 
@@ -282,7 +291,7 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 #### ▼ スケールアウト/スケールアップの場合
 
-例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウト/スケールアップを実行する。
+例えば、以下のような仕組みで、Nodeの垂直/水平スケーリングのスケールアウト/スケールアップを実行する。
 
 Karpenterは、スケジューリングできないPod (`Pending`状態) が出現すると、スケールアウト/スケールアップを検討する。
 
