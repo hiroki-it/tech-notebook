@@ -339,9 +339,21 @@ CPU平均使用率に段階的な閾値を設定する。
 
 ## 04. ヘルスチェック
 
+### 仕組み
+
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html
+
+<br>
+
 ### EC2ヘルスチェック
 
 EC2が自身をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
+
+`running`が正常である。
+
+`impaired`、`stopping`、`stopped`、`shutting-down`、`terminated`が異常である。
+
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html
 
 <br>
 
@@ -349,10 +361,18 @@ EC2が自身をヘルスチェックし、異常なEC2があれば、必要に�
 
 ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
 
+`Healthy`が正常である。
+
+`Unhealthy`が異常である。
+
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html
+
 <br>
 
 ### EBS
 
 EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてEC2を作成し直す。
+
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html
 
 <br>
