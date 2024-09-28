@@ -13,13 +13,13 @@ description: AutoScaling＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. AutoScalingとは
+## 01. オートスケーリングとは
 
 ALBを使用して、起動テンプレートを基にしたEC2の自動水平スケーリングを実行する。
 
-注意点として、AutoScalingに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
+注意点として、オートスケーリングに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
 
-言い換えると、AutoScalingにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。
+言い換えると、オートスケーリングにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
@@ -38,6 +38,8 @@ ALBを使用して、起動テンプレートを基にしたEC2の自動水平�
 | スケーリンググループ | スケーリングのグループ構成を定義する。各グループで最大最小必要数を設定できる。                     |                                                                                       |
 | 起動テンプレート     | スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプなど) を設定する。 |                                                                                       |
 | ネットワーク         | いずれのAZのサブネットでインスタンスを作成するかを設定する。                                       | 選択したAZの個数よりも少ない個数のEC2を作成する場合、作成先のAZをランダムに選択する。 |
+| ロードバランシング   | オートスケーリングに紐づけるALBを設定する。                                                        |                                                                                       |
+| ヘルスチェック       | ヘルスチェックの実行方法を設定する。                                                               |                                                                                       |
 | スケーリングポリシー | スケーリングの方法を設定する。                                                                     |                                                                                       |
 | アクティビティ通知   | スケーリング時のイベントをSNSに通知するように設定する。                                            |                                                                                       |
 
@@ -48,8 +50,8 @@ ALBを使用して、起動テンプレートを基にしたEC2の自動水平�
 #### ▼ スケーリンググループ
 
 ```terraform
-# AutoScalingグループ
-resource "aws_autoscaling_group" "foo" {
+# オートスケーリンググループ
+resource "aws_オートスケーリング_group" "foo" {
   name                      = "foo-group"
   max_size                  = 5
   min_size                  = 2
@@ -81,21 +83,21 @@ resource "aws_autoscaling_group" "foo" {
   tag {
     key                 = "Name"
     value               = "foo-instance"
-    # AutoScalingで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したEC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Service"
     value               = "foo"
-    # AutoScalingで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したEC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Env"
     value               = "prd"
-    # AutoScalingで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したEC2にタグを伝搬する
     propagate_at_launch = true
   }
 }
@@ -111,7 +113,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_group
 
 #### ▼ 起動テンプレート
 
@@ -191,32 +193,32 @@ resource "aws_launch_template" "foo" {
 
 ```terraform
 # アクティビティ通知
-resource "aws_autoscaling_notification" "foo" {
+resource "aws_オートスケーリング_notification" "foo" {
 
   group_names = [
-    aws_autoscaling_group.bar.name,
-    aws_autoscaling_group.baz.name,
+    aws_オートスケーリング_group.bar.name,
+    aws_オートスケーリング_group.baz.name,
   ]
 
   # 通知したいイベントを設定する
   notifications = [
-    "autoscaling:EC2_INSTANCE_LAUNCH",
-    "autoscaling:EC2_INSTANCE_TERMINATE",
-    "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
-    "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
+    "オートスケーリング:EC2_INSTANCE_LAUNCH",
+    "オートスケーリング:EC2_INSTANCE_TERMINATE",
+    "オートスケーリング:EC2_INSTANCE_LAUNCH_ERROR",
+    "オートスケーリング:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
   topic_arn = aws_sns_topic.foo.arn
 }
 
 
-# AutoScalingグループ
-resource "aws_autoscaling_group" "bar" {
+# オートスケーリンググループ
+resource "aws_オートスケーリング_group" "bar" {
   ...
 }
 
 
-resource "aws_autoscaling_group" "baz" {
+resource "aws_オートスケーリング_group" "baz" {
   ...
 }
 
@@ -227,7 +229,7 @@ resource "aws_sns_topic" "foo" {
 
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_notification
 
 <br>
 
@@ -263,7 +265,7 @@ CPU平均使用率に段階的な閾値を設定する。
 
 記入中...
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-オートスケーリング-stepscaling.html
 
 <br>
 
@@ -318,7 +320,7 @@ CPU平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間       | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。                      |                                                                                                                                                                                                                                   |
 | スケールインの無効化               |                                                                                                       |                                                                                                                                                                                                                                   |
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-オートスケーリング-targettracking.html
 
 <br>
 
@@ -331,6 +333,26 @@ CPU平均使用率に段階的な閾値を設定する。
 負荷に合わせて動的にスケーリングするのではなく、一定の間隔で規則的にスケーリングする。
 
 > - https://blog.takuros.net/entry/2020/08/11/082712
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+> - https://docs.aws.amazon.com/オートスケーリング/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+
+<br>
+
+## 04. ヘルスチェック
+
+### EC2ヘルスチェック
+
+EC2が自身をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
+
+<br>
+
+### ロードバランサー
+
+ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
+
+<br>
+
+### EBS
+
+EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてEC2を作成し直す。
 
 <br>
