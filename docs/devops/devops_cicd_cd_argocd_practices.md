@@ -83,19 +83,8 @@ ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善に�
 
 application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
 
-`--status-processors` (Applicationの状態を監視・更新するためのプロセッサ数) と `--operation-processors` (Kubernetesへの操作を実行するプロセッサ数) がある。
-
-- Application`1000`個の場合、`--status-processors`に`50`、`--operation-processors`に`25`を指定
-- Application`400`個の場合、`--status-processors`に`20`、`--operation-processors`に`10`を指定 (デフォルト値)
-
-Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。
-
-大量のApplicationをReconciliationする場合、次のような対処方法がある。
-
-> - https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
-> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+- `--status-processors`は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数
+- `--operation-processors`は、application-controllerがデプロイ対象のClusterに対して、差分確認 (`kubectl diff`) と Sync (`kubectl apply`) するためのプロセッサ数
 
 #### ▼ レプリカ当たりの処理効率の向上
 
@@ -121,13 +110,25 @@ data:
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
 > - https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
+- Application`1000`個の場合、`--status-processors`に`50`、`--operation-processors`に`25`を指定
+- Application`400`個の場合、`--status-processors`に`20`、`--operation-processors`に`10`を指定 (デフォルト値)
+
+Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。
+
+大量のApplicationをReconciliationする場合、次のような対処方法がある。
+
+> - https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+
 #### ▼ レプリカ当たりの負荷の低減
 
 application-controllerは、デプロイ対象のClusterを処理する。
 
-冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの処理の負荷を下げられる。
+レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。
 
-`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの処理を異なるレプリカで分業できる。
+そこで、`ARGOCD_CONTROLLER_REPLICAS`をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -156,6 +157,8 @@ spec:
 #### ▼ レプリカ当たりのReconciliation頻度の低減
 
 application-controllerのReconciliationの頻度を設定する。
+
+ArgoCDのカスタムリソースに対するReconcileの頻度が下がれば、平常時のapplication-controllerの負荷は下がる。
 
 ```yaml
 apiVersion: v1
