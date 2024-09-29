@@ -19,8 +19,6 @@ description: プラクティス集＠ArgoCDの知見を記録しています。
 
 Podを冗長化させることで、repo-serverの可用性を高める。
 
-ArgoCDの場合、冗長化はrepo-serverの性能設計の改善にもつながる。
-
 <br>
 
 ### 性能
@@ -31,6 +29,14 @@ repo-serverは、リポジトリでコミットが更新されるたびにキャ
 
 Volumeの種類によるが、EmptyDir Volumeであれば、Podを再作成するたびにリポジトリをクローンする。
 
+#### ▼ レプリカ数
+
+repo-serverの冗長化は、可用性だけでなく性能設計の改善にもつながる。
+
+例えば、レプリカ数を`3`倍にすると、Sync時間が1/3になる。
+
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+
 #### ▼ レプリカ当たりの処理効率の向上
 
 Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。
@@ -40,11 +46,15 @@ Applicationがポーリングするリポジトリのパス直下に`.argocd-all
 
 #### ▼ キャッシュ作成の頻度を下げる
 
-ArgoCDは、Applicationのリポジトリのキャッシュを積極的に再作成する。
+ArgoCDのApplicationは、デプロイ対象のリポジトリのキャッシュを積極的に作成する
 
-単一のリポジトリで管理するマニフェストやチャートが多くなるほど、コミットの頻度が上がる。
+この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定します。
 
-そのため、複数のApplicationが単一のリポジトリをポーリングしているような状況では、一度のコミットで複数のApplicationでキャッシュの再作成がおこる。
+すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになります。
+
+これが、パフォーマンスの問題になる。
+
+そのため、モノリポジトリには注意が必要である。
 
 Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
 
@@ -73,6 +83,8 @@ ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善に�
 
 application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
 
+`--status-processors` (Applicationの状態を監視・更新するためのプロセッサ数) と `--operation-processors` (Kubernetesへの操作を実行するプロセッサ数) がある。
+
 - Application`1000`個の場合、`--status-processors`に`50`、`--operation-processors`に`25`を指定
 - Application`400`個の場合、`--status-processors`に`20`、`--operation-processors`に`10`を指定 (デフォルト値)
 
@@ -80,8 +92,10 @@ Application数が多くなるほど、Reconciliationの処理キューを空に�
 
 大量のApplicationをReconciliationする場合、次のような対処方法がある。
 
+> - https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
 #### ▼ レプリカ当たりの処理効率の向上
 
@@ -105,7 +119,7 @@ data:
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
-> - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
+> - https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
 #### ▼ レプリカ当たりの負荷の低減
 

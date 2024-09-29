@@ -40,3 +40,17 @@ RDBとは異なり、データをメインメモリに保管する。
 ![NoSQLの分類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NoSQLの種類.jpg)
 
 <br>
+
+### イネーブラ型
+
+#### ▼ インメモリDB
+
+メモリ (例：DRAMなどの物理メモリ、仮想メモリ) 上にデータを保管するDBを、ストレージ上に保管することと比較して、インメモリDBという。
+
+インメモリDBを採用する場合は、データ保管とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
+
+> - https://e-words.jp/w/%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%A2%E3%83%AA.html
+> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
+> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
+
+<br>

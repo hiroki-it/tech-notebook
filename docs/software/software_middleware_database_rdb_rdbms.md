@@ -54,6 +54,7 @@ RDBMSは、リレーショナルエンジン、DBエンジン (ストレージ�
 
 RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフトウェアのこと。
 
+> - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
 > - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html
 > - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3
 
@@ -67,27 +68,6 @@ RDMS (例：MySQL、PostgreSQLなど) によって、対応するDBエンジン�
 
 <br>
 
-### 保管場所
-
-#### ▼ インメモリDB
-
-メモリ (例：DRAMなどの物理メモリ、仮想メモリ) 上にデータを保管するDBを、ストレージ上に保管することと比較して、インメモリDBという。
-
-インメモリDBを採用する場合は、データ保管とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
-
-> - https://e-words.jp/w/%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%A2%E3%83%AA.html
-> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
-> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
-
-#### ▼ オンディスクDB
-
-ストレージ (例：HDD、SSD) 上にデータを保管するDBを、メモリ上に保管することと比較して、オンディスクDBという。
-
-> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
-> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
-
-<br>
-
 ### RDB (関係DB)
 
 #### ▼ RDBとは
@@ -96,9 +76,18 @@ RDMS (例：MySQL、PostgreSQLなど) によって、対応するDBエンジン�
 
 NoSQLとは異なり、データはストレージに保管する。
 
+#### ▼ オンディスクDB
+
+RDBは、ストレージにデータを保存する。
+
+ストレージ (例：HDD、SSD) 上にデータを保管するDBを、メモリ上に保管することと比較して、オンディスクDBという。
+
+> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
+> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
+
 <br>
 
-## 03. RDBMSクライアント
+## 04. RDBMSクライアント
 
 ### クエリ
 
@@ -164,7 +153,7 @@ TCP/IPプロトコルを使用する。
 
 <br>
 
-## 04. 性能指標
+## 05. 性能指標
 
 ### 秒当たりの平均トランザクション数 (TPS：Transaction Per Second)
 
