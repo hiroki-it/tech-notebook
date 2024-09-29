@@ -25102,9 +25102,9 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ レプリカ当たりの負荷の低減<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>application-controllerは、デプロイ対象のClusterと通信する。</p>
-<p>冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの通信処理の負荷を下げられる。</p>
-<p><code>ARGOCD_CONTROLLER_REPLICAS</code>変数で、application-controllerの通信処理を異なるレプリカに分散できる。</p>
+<p>application-controllerは、デプロイ対象のClusterを処理する。</p>
+<p>冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの処理の負荷を下げられる。</p>
+<p><code>ARGOCD_CONTROLLER_REPLICAS</code>変数で、application-controllerの処理を異なるレプリカで分業できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
