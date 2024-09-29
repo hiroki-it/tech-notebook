@@ -25065,21 +25065,10 @@
 <h4 id="_10">▼ 問題<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。</p>
 <p>application-controllerは、デフォルトだとレプリカ当たり<code>400</code>個のApplicationまでReconciliationできる。</p>
-<p><code>--status-processors</code> (Applicationの状態を監視・更新するためのプロセッサ数) と <code>--operation-processors</code> (Kubernetesへの操作を実行するプロセッサ数) がある。</p>
 <ul>
-<li>Application<code>1000</code>個の場合、<code>--status-processors</code>に<code>50</code>、<code>--operation-processors</code>に<code>25</code>を指定</li>
-<li>Application<code>400</code>個の場合、<code>--status-processors</code>に<code>20</code>、<code>--operation-processors</code>に<code>10</code>を指定 (デフォルト値)</li>
+<li><code>--status-processors</code>は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数</li>
+<li><code>--operation-processors</code>は、application-controllerがデプロイ対象のClusterに対して、差分確認 (<code>kubectl diff</code>) と Sync (<code>kubectl apply</code>) するためのプロセッサ数</li>
 </ul>
-<p>Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。</p>
-<p>大量のApplicationをReconciliationする場合、次のような対処方法がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/">https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/</a></li>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller">https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller</a></li>
-<li><a href="https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b">https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b</a></li>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/">https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/</a></li>
-</ul>
-</blockquote>
 <h4 id="_11">▼ レプリカ当たりの処理効率の向上<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。</p>
 <p>CPUの並列処理数を増やすと、レプリカ当たりの処理効率を上げられる。</p>
@@ -25101,10 +25090,24 @@
 <li><a href="https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/">https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/</a></li>
 </ul>
 </blockquote>
+<ul>
+<li>Application<code>1000</code>個の場合、<code>--status-processors</code>に<code>50</code>、<code>--operation-processors</code>に<code>25</code>を指定</li>
+<li>Application<code>400</code>個の場合、<code>--status-processors</code>に<code>20</code>、<code>--operation-processors</code>に<code>10</code>を指定 (デフォルト値)</li>
+</ul>
+<p>Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。</p>
+<p>大量のApplicationをReconciliationする場合、次のような対処方法がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/">https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller">https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller</a></li>
+<li><a href="https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b">https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/">https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/</a></li>
+</ul>
+</blockquote>
 <h4 id="_12">▼ レプリカ当たりの負荷の低減<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>application-controllerは、デプロイ対象のClusterを処理する。</p>
-<p>冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの処理の負荷を下げられる。</p>
-<p><code>ARGOCD_CONTROLLER_REPLICAS</code>変数で、application-controllerの処理を異なるレプリカで分業できる。</p>
+<p>レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。</p>
+<p>そこで、<code>ARGOCD_CONTROLLER_REPLICAS</code>をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25134,6 +25137,7 @@
 </blockquote>
 <h4 id="reconciliation">▼ レプリカ当たりのReconciliation頻度の低減<a class="headerlink" href="#reconciliation" title="Permanent link">&para;</a></h4>
 <p>application-controllerのReconciliationの頻度を設定する。</p>
+<p>ArgoCDのカスタムリソースに対するReconcileの頻度が下がれば、平常時のapplication-controllerの負荷は下がる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
