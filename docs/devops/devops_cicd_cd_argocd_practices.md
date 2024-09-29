@@ -123,11 +123,11 @@ data:
 
 #### ▼ レプリカ当たりの負荷の低減
 
-application-controllerは、デプロイ対象のClusterと通信する。
+application-controllerは、デプロイ対象のClusterを処理する。
 
-冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの通信処理の負荷を下げられる。
+冗長化によりapplication-controllerのレプリカ数を増やすと、レプリカ当たりの処理の負荷を下げられる。
 
-`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの通信処理を異なるレプリカに分散できる。
+`ARGOCD_CONTROLLER_REPLICAS`変数で、application-controllerの処理を異なるレプリカで分業できる。
 
 ```yaml
 apiVersion: apps/v1
