@@ -6,7 +6,10 @@
 
 * #### [︎組織論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_organization.html)
 
-* #### [︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management.html)
+* #### <u>︎プロジェクト管理</u>
+  > * ##### [︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management.html)
+  > * ##### [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management_task_management.html)
+  > * ##### [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_project_management_estimate.html)
 
 * #### [OSSコントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)
 
