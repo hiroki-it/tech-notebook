@@ -168,7 +168,7 @@ nav:
           - ブラックボックステスト: software/software_application_architecture_microservices_test_whitebox.md
           - 開発手法: software/software_application_architecture_microservices_development.md
       - ■ 通信方式:
-            - リクエスト/レスポンス方式: software/software_application_communication_style_request_response.md
+          - リクエスト/レスポンス方式: software/software_application_communication_style_request_response.md
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
@@ -186,8 +186,8 @@ nav:
           - ■ Temporal:
               - Temporal: software/software_application_workflow_temporal.md
               - ■ 設定ファイル:
-                - Clusterスコープ: software/software_application_workflow_temporal_conf_cluster.md
-                - Webスコープ: software/software_application_workflow_temporal_conf_web.md
+                  - Clusterスコープ: software/software_application_workflow_temporal_conf_cluster.md
+                  - Webスコープ: software/software_application_workflow_temporal_conf_web.md
   - 🤝🏻 ミドルウェア:
       - software/middleware/index.md
       - ■ Web系:
@@ -846,7 +846,10 @@ nav:
       - software_development_methodology/index.md
       - 開発手法論: software_development_methodology/software_development_methodology.md
       - 組織論: software_development_methodology/software_development_organization.md
-      - プロジェクト管理: software_development_methodology/software_development_project_management.md
+      - ■ プロジェクト管理:
+          - プロジェクト管理: software_development_methodology/software_development_project_management.md
+          - タスク管理: software_development_methodology/software_development_project_management_task_management.md
+          - 見積もり: software_development_methodology/software_development_project_management_estimate.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
       - ■ バージョン管理:
           - ■ Git:
