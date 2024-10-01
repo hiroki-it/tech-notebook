@@ -56,6 +56,29 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 
 <br>
 
+### -httpListenAddr
+
+インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
+```
+
+<br>
+
+### -maxConcurrentInserts
+
+書き込みの最大同時実行数を設定する。
+
+設定値は、CPUのコア数によって自動的に設定される。
+
+> - https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/
+> - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18
+
+<br>
+
 ### -maxLabelsPerTimeseries
 
 メトリクスに付与できるラベルの上限数を設定する。
@@ -99,34 +122,6 @@ $ victoria-metrics-prod -memory.allowedPercent=80
 ```
 
 > - https://docs.victoriametrics.com/#resource-usage-limits
-
-<br>
-
-### -httpListenAddr
-
-インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。
-
-**＊例＊**
-
-```bash
-$ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
-```
-
-<br>
-
-### -storageDataPath
-
-メトリクスを保管するディレクトリを設定する。
-
-設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
-
-**＊例＊**
-
-```bash
-$ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
-```
-
-> - https://docs.victoriametrics.com/#storage
 
 <br>
 
@@ -182,5 +177,21 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0
 ```
+
+<br>
+
+### -storageDataPath
+
+メトリクスを保管するディレクトリを設定する。
+
+設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
+```
+
+> - https://docs.victoriametrics.com/#storage
 
 <br>
