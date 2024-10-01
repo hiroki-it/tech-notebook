@@ -58,25 +58,37 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 <br>
 
-### Nodeモード
+## 01-02. Nodeモード
 
-#### ▼ シングルNodeモード
+### シングルNodeモード
+
+#### ▼ シングルNodeモードとは
 
 シングルNodeモードでは、各コンポーネントは冗長化されない。
 
-もう一方のクラスターNodeモードとは、バイナリやセットアップ方法が異なる。
+> - https://docs.victoriametrics.com/single-server-victoriametrics/
 
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Single-server-VictoriaMetrics#install
+#### ▼ インストール
 
-#### ▼ クラスターNodeモード
+もう一方のクラスターNodeモードとは、バイナリ (特に接尾辞はない) やセットアップ方法が異なる。
+
+> - https://docs.victoriametrics.com/single-server-victoriametrics/#how-to-build-from-sources
+
+<br>
+
+### クラスターNodeモード
+
+#### ▼ クラスターNodeモードとは
 
 クラスターNodeモードでは、各コンポーネントは冗長化される。
 
-もう一方のシングルNodeモードとは、バイナリやセットアップ方法が異なる。
+> - https://docs.victoriametrics.com/cluster-victoriametrics/
 
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/wiki/Cluster-VictoriaMetrics#building-from-sources
+#### ▼ インストール
+
+もう一方のシングルNodeモードとは、バイナリ (`-cluster`という接尾辞がつく) やセットアップ方法が異なる。
+
+> - https://docs.victoriametrics.com/cluster-victoriametrics/#binaries
 
 <br>
 
