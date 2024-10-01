@@ -23407,14 +23407,15 @@
 <p><br></p>
 <h3 id="-maxconcurrentinserts">-maxConcurrentInserts<a class="headerlink" href="#-maxconcurrentinserts" title="Permanent link">&para;</a></h3>
 <p>DBへの書き込みの最大同時実行数を設定する。</p>
-<p>設定値は、CPUのコア数によって自動的に設定される。</p>
-<p>最大同時実行数を制限することで、スパイクの発生と、それに伴うクラッシュを防げる。</p>
+<p>設定値は、ホストマシンのCPUのコア数に応じて自動的に設定される。</p>
+<p>最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxConcurrentInserts<span class="o">=</span><span class="m">64</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxConcurrentInserts<span class="o">=</span>&lt;ホストマシンのCPUのコア数に応じて自動的に設定される&gt;
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/">https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/</a></li>
+<li><a href="https://github.com/VictoriaMetrics/VictoriaMetrics/issues/946#issuecomment-740635526">https://github.com/VictoriaMetrics/VictoriaMetrics/issues/946#issuecomment-740635526</a></li>
 <li><a href="https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18">https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18</a></li>
 </ul>
 </blockquote>
