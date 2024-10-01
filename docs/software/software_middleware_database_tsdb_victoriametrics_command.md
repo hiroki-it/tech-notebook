@@ -78,13 +78,15 @@ DBへの書き込みの同時実行時に、キューで待機する最大時間
 $ victoria-metrics-prod -insert.maxQueueDuration=32
 ```
 
+> - https://docs.victoriametrics.com/#list-of-command-line-flags
+
 <br>
 
 ### -maxConcurrentInserts
 
 DBへの書き込みの最大同時実行数を設定する。
 
-設定値は、ホストマシンのCPUのコア数に応じて自動的に設定される。
+設定値は、ホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。
 
 最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。
 
@@ -94,6 +96,7 @@ DBへの書き込みの最大同時実行数を設定する。
 $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア数に応じて自動的に設定される>
 ```
 
+> - https://docs.victoriametrics.com/#list-of-command-line-flags
 > - https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/946#issuecomment-740635526
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18
