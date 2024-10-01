@@ -19,13 +19,13 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ リモートストレージとして
 
-ロードバランサー、vm-select、vm-storage、vm-insert、といったコンポーネントから構成されている。
+ロードバランサー、vmselect、vmstorage、vminsert、といったコンポーネントから構成されている。
 
 リモートストレージとして、Prometheusで収集したデータポイントを保管する。
 
-エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vm-insertを経由して、vm-storageにメトリクスを書き込める。
+エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vminsertを経由して、vmstorageにメトリクスを書き込める。
 
-また読み出しエンドポイントを指定すれば、vm-selectを経由して、vm-storageからメトリクスを読み込める。
+また読み出しエンドポイントを指定すれば、vmselectを経由して、vmstorageからメトリクスを読み込める。
 
 補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。
 
@@ -39,13 +39,13 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 #### ▼ メトリクス監視バックエンドとして
 
-vm-agent、vm-storage、vm-alert、といったコンポーネントから構成されている。
+vm-agent、vmstorage、vm-alert、といったコンポーネントから構成されている。
 
 また、アラートの通知のためにalertmanager、可視化のためにGrafana、が必要である。
 
-vm-agentがPull型でメトリクスのデータポイントを収集し、vm-storageに保管する。
+vm-agentがPull型でメトリクスのデータポイントを収集し、vmstorageに保管する。
 
-vm-alertは、vm-storageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
+vm-alertは、vmstorageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
 
 VictoriaMetricsをメトリクス監視バックエンドとして使用する場合はPrometheusは不要になる。
 
@@ -92,15 +92,19 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 <br>
 
+## 01-03. コンポーネント
+
 ### ロードバランサー
 
 #### ▼ ロードバランサーとは
 
-HTTPSプロトコルの`8224`番ポートでインバウンド通信を待ち受け、vm-selectやvm-insertに通信をルーティングする。
+HTTPSプロトコルの`8224`番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。
 
 このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
 #### ▼ 読み出しエンドポイント
+
+読み出しエンドポイントから、ストレージに永続化されているメトリクスを取得できる。
 
 PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
 
@@ -115,6 +119,8 @@ $ curl \
 
 #### ▼ 書き込みエンドポイント
 
+書き込みエンドポイントで、ストレージにメトリクスを永続化できる。
+
 PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
 
 ```bash
@@ -126,13 +132,13 @@ $ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
 
 <br>
 
-### vm-select
+### vmselect
 
-#### ▼ vm-selectとは
+#### ▼ vmselectとは
 
-クライアントから読み出しリクエストを受信し、vm-storageからデータを読み出す。
+クライアントから読み出しリクエストを受信し、vmstorageからデータを読み出す。
 
-#### ▼ vm-selectの仕組み
+#### ▼ vmselectの仕組み
 
 VictoriaMetricsは、クエリの実行前に、ディスクに永続化したデータポイントを一度メモリに移動する。
 
@@ -161,9 +167,9 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 
 <br>
 
-### vm-storage
+### vmstorage
 
-#### ▼ vm-storageとは
+#### ▼ vmstorageとは
 
 データをファイルシステムに保管する。
 
@@ -203,17 +209,17 @@ $ du -hs /var/lib/victoriametrics/data
 
 #### ▼ ReadOnlyモード
 
-vm-storageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
+vmstorageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
 
-ReadOnlyモードにより、vm-storageの空きサイズが`minFreeDiskSpaceBytes`オプション値を超えると、書き込みできなくなるような仕様になっている。
+ReadOnlyモードにより、vmstorageの空きサイズが`minFreeDiskSpaceBytes`オプション値を超えると、書き込みできなくなるような仕様になっている。
 
-これにより、vm-storageの最大サイズを超えてデータを書き込むことを防いでいる。
+これにより、vmstorageの最大サイズを超えてデータを書き込むことを防いでいる。
 
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
 
 #### ▼ 保管期間
 
-vm-storageは、一定期間だけ経過したメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリ、の配下など) を削除する。
+vmstorageは、一定期間だけ経過したメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリ、の配下など) を削除する。
 
 VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
 
@@ -221,7 +227,7 @@ VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retenti
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vm-storageの必要最低限のサイズを算出できる。
+vmstorageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vmstorageの必要最低限のサイズを算出できる。
 
 また、`20`%の空きサイズを考慮するために、増加量を`1.2`倍する必要がある。
 
@@ -249,7 +255,7 @@ vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日
 
 これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
 
-もし、データの保管日数が`10`日分という非機能的な品質であれば、vm-storageは常に過去`10`日分のデータを保管している必要がある。
+もし、データの保管日数が`10`日分という非機能的な品質であれば、vmstorageは常に過去`10`日分のデータを保管している必要がある。
 
 そのため、以下の数式で`10`日分のサイズを算出できる。
 
@@ -265,15 +271,15 @@ vm-storageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日
 = 28380 (MB/10日)
 ```
 
-VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvm-storageのサイズ以上にする必要がある。
+VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvmstorageのサイズ以上にする必要がある。
 
 <br>
 
-### vm-insert
+### vminsert
 
-#### ▼ vm-insertとは
+#### ▼ vminsertとは
 
-クライアントから書き込みリクエストを受信し、vm-storageにデータを書き込む。
+クライアントから書き込みリクエストを受信し、vmstorageにデータを書き込む。
 
 <br>
 
