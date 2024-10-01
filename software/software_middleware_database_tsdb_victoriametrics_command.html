@@ -23412,7 +23412,7 @@
 <p><br></p>
 <h3 id="-maxconcurrentinserts">-maxConcurrentInserts<a class="headerlink" href="#-maxconcurrentinserts" title="Permanent link">&para;</a></h3>
 <p>DBへの書き込みの最大同時実行数を設定する。</p>
-<p>設定値は、ホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。</p>
+<p>各CPUで一つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。</p>
 <p>最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxConcurrentInserts<span class="o">=</span>&lt;ホストマシンのCPUのコア数に応じて自動的に設定される&gt;

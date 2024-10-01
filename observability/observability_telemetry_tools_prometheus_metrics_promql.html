@@ -22637,20 +22637,68 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ローカルストレージ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ローカルストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#kb_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ローカルストレージの必要サイズ (KB/日)
+      ▼ 必要データサイズ (KB/日)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      リモートストレージ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リモートストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kb_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 必要データサイズ (KB/日)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kb_4" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      リモートストレージの必要サイズ (KB/日)
+      ▼ 送信メタデータサイズ
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 送信サイズ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23565,20 +23613,68 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ローカルストレージ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ローカルストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#kb_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ローカルストレージの必要サイズ (KB/日)
+      ▼ 必要データサイズ (KB/日)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      リモートストレージ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リモートストレージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kb_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 必要データサイズ (KB/日)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kb_4" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      リモートストレージの必要サイズ (KB/日)
+      ▼ 送信メタデータサイズ
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 送信サイズ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -23802,10 +23898,11 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. ストレージの各種数値の算出<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="kb_3">ローカルストレージの必要サイズ (KB/日)<a class="headerlink" href="#kb_3" title="Permanent link">&para;</a></h3>
+<h3 id="_9">ローカルストレージ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="kb_3">▼ 必要データサイズ (KB/日)<a class="headerlink" href="#kb_3" title="Permanent link">&para;</a></h4>
 <p>データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を表す。</p>
 <p>ローカルストレージの部品ファイル分で、<code>20</code>%のサイズが必要になる。</p>
-<p>この結果から、ローカルストレージの必要サイズを推測できる。</p>
+<p>この結果から、ローカルストレージの必要データサイズを推測できる。</p>
 <div class="highlight"><pre><span></span><code>rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_size_bytes_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>/
 rate<span class="o">(</span>prometheus_tsdb_compaction_chunk_samples_sum<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
 rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
@@ -23824,16 +23921,32 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="kb_4">リモートストレージの必要サイズ (KB/日)<a class="headerlink" href="#kb_4" title="Permanent link">&para;</a></h3>
+<h3 id="_10">リモートストレージ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="kb_4">▼ 必要データサイズ (KB/日)<a class="headerlink" href="#kb_4" title="Permanent link">&para;</a></h4>
 <p>Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。</p>
 <p>リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。</p>
-<p>この結果から、リモートストレージの必要サイズを推測できる。</p>
-<p>補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。</p>
+<p>この結果から、リモートストレージの必要データサイズを推測できる。</p>
+<p>補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要データサイズを確認する方がより正確である。</p>
 <div class="highlight"><pre><span></span><code>rate<span class="o">(</span>prometheus_remote_storage_bytes_total<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
 <span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">24</span>
 
 <span class="c1"># 結果</span>
 <span class="o">{</span><span class="nv">container</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">endpoint</span><span class="o">=</span><span class="s2">&quot;web&quot;</span>,<span class="w"> </span><span class="nv">instance</span><span class="o">=</span><span class="s2">&quot;*.*.*.*:9090&quot;</span>,<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-prometheus&quot;</span>,<span class="w"> </span><span class="nv">namespace</span><span class="o">=</span><span class="s2">&quot;prometheus&quot;</span>,<span class="w"> </span><span class="nv">pod</span><span class="o">=</span><span class="s2">&quot;foo-prometheus-pod&quot;</span>,<span class="w"> </span><span class="nv">remote_name</span><span class="o">=</span><span class="s2">&quot;victoria-metrics&quot;</span>,<span class="w"> </span><span class="nv">service</span><span class="o">=</span><span class="s2">&quot;oo-prometheus-service&quot;</span>,<span class="w"> </span><span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://*.*.*.*:8248/api/v1/write&quot;</span><span class="o">}</span><span class="w"> </span>&lt;算出値&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics">https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="_11">▼ 送信メタデータサイズ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>リモートストレージに送信したメタデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。</p>
+<div class="highlight"><pre><span></span><code>prometheus_remote_storage_metadata_retried_total<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
+<span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">24</span>
+</code></pre></div>
+<h4 id="_12">▼ 送信サイズ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>リモートストレージに送信したデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。</p>
+<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>prometheus_remote_storage_samples_retries_total<span class="o">[</span>1h<span class="o">])</span><span class="w"> </span>*
+<span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">60</span><span class="w"> </span>*<span class="w"> </span><span class="m">24</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23861,7 +23974,7 @@ rate<span class="o">(</span>prometheus_tsdb_head_samples_appended_total<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-01</span>
   </span>
 
     
