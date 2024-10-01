@@ -251,13 +251,15 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 ## 04. ストレージの各種数値の算出
 
-### ローカルストレージの必要サイズ (KB/日)
+### ローカルストレージ
+
+#### ▼ 必要データサイズ (KB/日)
 
 データポイントの合計サイズ (KB/日) とローカルストレージの部品ファイルの合計を表す。
 
 ローカルストレージの部品ファイル分で、`20`%のサイズが必要になる。
 
-この結果から、ローカルストレージの必要サイズを推測できる。
+この結果から、ローカルストレージの必要データサイズを推測できる。
 
 ```bash
 rate(prometheus_tsdb_compaction_chunk_size_bytes_sum[1h]) /
@@ -277,15 +279,17 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 <br>
 
-### リモートストレージの必要サイズ (KB/日)
+### リモートストレージ
+
+#### ▼ 必要データサイズ (KB/日)
 
 Prometheusで収集されたデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
 
 リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。
 
-この結果から、リモートストレージの必要サイズを推測できる。
+この結果から、リモートストレージの必要データサイズを推測できる。
 
-補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要サイズを確認する方がより正確である。
+補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要データサイズを確認する方がより正確である。
 
 ```bash
 rate(prometheus_remote_storage_bytes_total[1h]) *
@@ -293,6 +297,26 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 
 # 結果
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <算出値>
+```
+
+> - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+
+#### ▼ 送信メタデータサイズ
+
+リモートストレージに送信したメタデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。
+
+```bash
+prometheus_remote_storage_metadata_retried_total[1h]) *
+60 * 60 * 24
+```
+
+#### ▼ 送信サイズ
+
+リモートストレージに送信したデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。
+
+```bash
+rate(prometheus_remote_storage_samples_retries_total[1h]) *
+60 * 60 * 24
 ```
 
 > - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
