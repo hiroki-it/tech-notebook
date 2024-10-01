@@ -68,11 +68,31 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 <br>
 
+### -insert.maxQueueDuration
+
+DBへの書き込みの同時実行時に、キューで待機する最大時間を設定する。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -insert.maxQueueDuration=32
+```
+
+<br>
+
 ### -maxConcurrentInserts
 
-書き込みの最大同時実行数を設定する。
+DBへの書き込みの最大同時実行数を設定する。
 
 設定値は、CPUのコア数によって自動的に設定される。
+
+最大同時実行数を制限することで、スパイクの発生と、それに伴うクラッシュを防げる。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -maxConcurrentInserts=64
+```
 
 > - https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18
