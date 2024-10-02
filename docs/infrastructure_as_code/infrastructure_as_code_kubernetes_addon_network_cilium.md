@@ -40,7 +40,7 @@ Ciliumエージェントは、システムコールのイベントが発生し�
 
 ### Cilium CNI
 
-#### ▼ Cilium CNIとは。
+#### ▼ Cilium CNIとは
 
 KubernetesのデフォルトのCNIと衝突するため、これを無効化する必要がある。
 
