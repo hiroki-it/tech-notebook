@@ -15999,28 +15999,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kube-proxy_1" class="md-nav__link">
+  <a href="#l3" class="md-nav__link">
     <span class="md-ellipsis">
-      kube-proxyの仕組み
+      L3制御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="kube-proxyの仕組み">
+    <nav class="md-nav" aria-label="L3制御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#coredns" class="md-nav__link">
+  <a href="#l3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CoreDNSと組み合わせたサービスディスカバリー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podl4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PodのL4ロードバランサー
+      ▼ L3制御とは
     </span>
   </a>
   
@@ -16037,6 +16028,48 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      L4制御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L4制御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ L4制御とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podl4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PodのL4ロードバランサー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-proxyの仕組み
+    </span>
+  </a>
   
 </li>
         
@@ -23670,28 +23703,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kube-proxy_1" class="md-nav__link">
+  <a href="#l3" class="md-nav__link">
     <span class="md-ellipsis">
-      kube-proxyの仕組み
+      L3制御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="kube-proxyの仕組み">
+    <nav class="md-nav" aria-label="L3制御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#coredns" class="md-nav__link">
+  <a href="#l3_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CoreDNSと組み合わせたサービスディスカバリー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podl4" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PodのL4ロードバランサー
+      ▼ L3制御とは
     </span>
   </a>
   
@@ -23708,6 +23732,48 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      L4制御
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L4制御">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ L4制御とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podl4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PodのL4ロードバランサー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-proxy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-proxyの仕組み
+    </span>
+  </a>
   
 </li>
         
@@ -24146,13 +24212,16 @@
 <p><br></p>
 <h2 id="04-kube-proxy">04. kube-proxy<a class="headerlink" href="#04-kube-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="kube-proxy">kube-proxyとは<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h3>
-<p>kube-proxyは、各ワーカーNode上でDaemonSetとして稼働する。</p>
-<p>Podのサービスディスカバリーと<code>L4</code>ロードバランシングを実行する。</p>
-<p>Serviceは、kube-proxyによって検出されたサービス (Pod) に対して、<code>L4</code>ロードバランシングを実行する。</p>
+<p>kube-proxyは、<code>L3</code>または<code>L4</code>を制御する。</p>
+<p>各ワーカーNode上でDaemonSetとして稼働する。</p>
+<p>Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。</p>
+<p>ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。</p>
+<p><img alt="kubernetes_kube-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></li>
-<li><a href="https://iximiuz.com/en/posts/service-discovery-in-kubernetes/">https://iximiuz.com/en/posts/service-discovery-in-kubernetes/</a></li>
+<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
+<li><a href="https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction">https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction</a></li>
+<li><a href="https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/">https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24164,25 +24233,13 @@
 <span class="w">    </span>...
 </code></pre></div>
 <p><br></p>
-<h3 id="kube-proxy_1">kube-proxyの仕組み<a class="headerlink" href="#kube-proxy_1" title="Permanent link">&para;</a></h3>
-<h4 id="coredns">▼ CoreDNSと組み合わせたサービスディスカバリー<a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h4>
-<p>kube-proxyは、ワーカーNode上で稼働するパケットフィルタリング型ファイアウォール (iptablesによる<code>L2</code>～<code>L4</code>の防御) や<code>L4</code>ロードバランサー (ipvs) に、EndpointSliceで管理するPodの宛先情報を追加/削除する。</p>
-<p>Serviceネットワークさえ作成できていれば、ServiceとPodが同じワーカーNode上にあるか否かに限らず、Serviceは、ワーカーNodeの宛先情報ルールを使用してPodを動的に検出できる。</p>
-<p>ただし、宛先のIPアドレスは動的に変化するため、別途CoreDNSも使用して、サービスディスカバリーを実装する。</p>
-<p><img alt="kubernetes_kube-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png" /></p>
+<h3 id="l3"><code>L3</code>制御<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h3>
+<h4 id="l3_1">▼ <code>L3</code>制御とは<a class="headerlink" href="#l3_1" title="Permanent link">&para;</a></h4>
+<p>ワーカーNode上で稼働するiptablesまたはipvsのIPアドレス設定 (<code>L3</code>) を追加/削除する。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
-<li><a href="https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction">https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction</a></li>
-<li><a href="https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/">https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/</a></li>
-</ul>
-</blockquote>
-<h4 id="podl4">▼ Podの<code>L4</code>ロードバランサー<a class="headerlink" href="#podl4" title="Permanent link">&para;</a></h4>
-<p>負荷分散方式によって、Serviceがルーティング先のPodを決める。</p>
-<p>プロキシモードごとに、使用する負荷分散方式が異なる。</p>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></li>
+<li><a href="https://speakerdeck.com/takara9/k8stosabisumetusiyufalsesu-di-naguan-xi?slide=14">https://speakerdeck.com/takara9/k8stosabisumetusiyufalsesu-di-naguan-xi?slide=14</a></li>
+<li><a href="https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables">https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables</a></li>
 </ul>
 </blockquote>
 <h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -24206,6 +24263,28 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <li><a href="https://zenn.dev/tayusa/articles/c705cd65b6ee74">https://zenn.dev/tayusa/articles/c705cd65b6ee74</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="l4"><code>L4</code>制御<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
+<h4 id="l4_1">▼ <code>L4</code>制御とは<a class="headerlink" href="#l4_1" title="Permanent link">&para;</a></h4>
+<p>EndpointSliceで管理するPodの宛先情報を追加/削除する。</p>
+<p>Serviceは、kube-proxyによって検出されたサービス (Pod) に対して、<code>L4</code>ロードバランシングを実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></li>
+<li><a href="https://iximiuz.com/en/posts/service-discovery-in-kubernetes/">https://iximiuz.com/en/posts/service-discovery-in-kubernetes/</a></li>
+<li><a href="https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables">https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables</a></li>
+</ul>
+</blockquote>
+<h4 id="podl4">▼ Podの<code>L4</code>ロードバランサー<a class="headerlink" href="#podl4" title="Permanent link">&para;</a></h4>
+<p>負荷分散方式によって、Serviceがルーティング先のPodを決める。</p>
+<p>プロキシモードごとに、使用する負荷分散方式が異なる。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies">https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kube-proxy_1">kube-proxyの仕組み<a class="headerlink" href="#kube-proxy_1" title="Permanent link">&para;</a></h3>
 <p><br></p>
 <h3 id="_5">プロキシモードの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="iptables">▼ iptablesプロキシモード<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h4>
@@ -24652,7 +24731,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-02</span>
   </span>
 
     
