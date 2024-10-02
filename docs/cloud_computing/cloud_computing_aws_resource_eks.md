@@ -748,7 +748,7 @@ $ kubectl get service -A jsonpath='{.spec.clusterIP}'
 
 PodのIPアドレスは、EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。
 
-aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIプラグインにプールする。
+aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
