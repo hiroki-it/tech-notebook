@@ -119,9 +119,8 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
 > - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
-> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
-> - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
 
 <br>
 
@@ -158,16 +157,17 @@ $ kube-proxy \
 
 デフォルトのプロキシモードである。
 
-| 項目                                         | 仕組み                                                                                                                                             |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
-| `L4`プロトコルの負荷分散方式                 | ランダム方式のみ。                                                                                                                                 |
+| 項目                       | 仕組み                                                                                                                                             |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
+| `L4`ロードバランサー       | ランダム方式のみ。                                                                                                                                 |
 
 ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
+> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 
 #### ▼ `L3`サービスディスカバリー
 
@@ -209,10 +209,10 @@ iptable方式の場合、kube-proxyによって検出されたPodのIPアドレ�
 
 #### ▼ userspaceプロキシモード
 
-| 項目                                         | 仕組み                                                                                                                                             |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
-| `L4`プロトコルの負荷分散方式                 | ラウンドロビン方式のみ。                                                                                                                           |
+| 項目                       | 仕組み                                                                                                                                             |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
+| `L4`ロードバランサー       | ラウンドロビン方式のみ。                                                                                                                           |
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
@@ -227,10 +227,10 @@ iptable方式の場合、kube-proxyによって検出されたPodのIPアドレ�
 
 kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxyMode=true`、`--proxy-mode`オプションに`ipvs`を設定する。
 
-| 項目                                         | 仕組み                                                                                                                                         |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsにハッシュ値を追加/削除する。 |
-| `L4`プロトコルの負荷分散方式                 | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                               |
+| 項目                       | 仕組み                                                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsにハッシュ値を追加/削除する。 |
+| `L4`ロードバランサー       | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                               |
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
