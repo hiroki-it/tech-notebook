@@ -24196,9 +24196,8 @@
 <blockquote>
 <ul>
 <li><a href="https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b">https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b</a></li>
-<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
 <li><a href="https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction">https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction</a></li>
-<li><a href="https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/">https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/</a></li>
+<li><a href="https://iximiuz.com/en/posts/service-discovery-in-kubernetes/">https://iximiuz.com/en/posts/service-discovery-in-kubernetes/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24236,11 +24235,11 @@
 </thead>
 <tbody>
 <tr>
-<td>IPアドレスベースの<code>L3</code>サービスディスカバリー</td>
+<td><code>L3</code>サービスディスカバリー</td>
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルの負荷分散方式</td>
+<td><code>L4</code>ロードバランサー</td>
 <td>ランダム方式のみ。</td>
 </tr>
 </tbody>
@@ -24251,6 +24250,7 @@
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables">https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables</a></li>
 <li><a href="https://www.mtioutput.com/entry/kube-proxy-iptable">https://www.mtioutput.com/entry/kube-proxy-iptable</a></li>
 <li><a href="https://github.com/kubernetes/kubernetes/pull/81430">https://github.com/kubernetes/kubernetes/pull/81430</a></li>
+<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
 </ul>
 </blockquote>
 <h4 id="l3">▼ <code>L3</code>サービスディスカバリー<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h4>
@@ -24296,11 +24296,11 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </thead>
 <tbody>
 <tr>
-<td>IPアドレスベースの<code>L3</code>サービスディスカバリー</td>
+<td><code>L3</code>サービスディスカバリー</td>
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルの負荷分散方式</td>
+<td><code>L4</code>ロードバランサー</td>
 <td>ラウンドロビン方式のみ。</td>
 </tr>
 </tbody>
@@ -24325,11 +24325,11 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </thead>
 <tbody>
 <tr>
-<td>IPアドレスベースの<code>L3</code>サービスディスカバリー</td>
+<td><code>L3</code>サービスディスカバリー</td>
 <td>ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsにハッシュ値を追加/削除する。</td>
 </tr>
 <tr>
-<td><code>L4</code>プロトコルの負荷分散方式</td>
+<td><code>L4</code>ロードバランサー</td>
 <td>ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。</td>
 </tr>
 </tbody>
