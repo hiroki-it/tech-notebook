@@ -18389,17 +18389,17 @@
           <li class="md-nav__item">
   <a href="#cilium-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      Cilium CNIプラグイン
+      Cilium CNI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cilium CNIプラグイン">
+    <nav class="md-nav" aria-label="Cilium CNI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cilium-cni_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cilium CNIプラグインとは
+      ▼ Cilium CNIとは。
     </span>
   </a>
   
@@ -23222,17 +23222,17 @@
           <li class="md-nav__item">
   <a href="#cilium-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      Cilium CNIプラグイン
+      Cilium CNI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cilium CNIプラグイン">
+    <nav class="md-nav" aria-label="Cilium CNI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#cilium-cni_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Cilium CNIプラグインとは
+      ▼ Cilium CNIとは。
     </span>
   </a>
   
@@ -23310,7 +23310,7 @@
 <p><br></p>
 <h2 id="01-cilium">01. Ciliumの仕組み<a class="headerlink" href="#01-cilium" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Ciliumは、Ciliumエージェント、CNIプラグイン、から構成される。</p>
+<p>Ciliumは、Ciliumエージェント、Cilium CNI、から構成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://caddi.tech/archives/3864">https://caddi.tech/archives/3864</a></li>
@@ -23329,30 +23329,44 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cilium-cni">Cilium CNIプラグイン<a class="headerlink" href="#cilium-cni" title="Permanent link">&para;</a></h3>
-<h4 id="cilium-cni_1">▼ Cilium CNIプラグインとは<a class="headerlink" href="#cilium-cni_1" title="Permanent link">&para;</a></h4>
-<p>コンテナ間ネットワークのL3を制御する。</p>
+<h3 id="cilium-cni">Cilium CNI<a class="headerlink" href="#cilium-cni" title="Permanent link">&para;</a></h3>
+<h4 id="cilium-cni_1">▼ Cilium CNIとは。<a class="headerlink" href="#cilium-cni_1" title="Permanent link">&para;</a></h4>
 <p>KubernetesのデフォルトのCNIと衝突するため、これを無効化する必要がある。</p>
-<p>デフォルトのCNIを無効化すると、kube-proxyがCiliumに置き換わる。</p>
+<p>デフォルトのCNIを無効化すると、このCNIとkube-proxyがCilium CNIに置き換わる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/">https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/</a></li>
 </ul>
 </blockquote>
 <h4 id="istio">▼ Istioとの連携<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Cilium CNIプラグインと<code>istio-proxy</code>コンテナを組み合わせて、トラフィックを制御する。</p>
+<p>Cilium CNIと<code>istio-proxy</code>コンテナを組み合わせて、トラフィックを制御する。</p>
+<p>Ciliumのサービスメッシュ機能は、あくまでCiliumの中で一機能としてでしかない。</p>
+<p>そのため、IstioとCilium CNIであれば連携できる。</p>
+<ul>
+<li>Istio + kube-proxy + 従来のCNI</li>
+<li>Istio + Cilium CNI</li>
+<li>Ciliumサービスメッシュ + Cilium CNI</li>
+<li>Ciliumサービスメッシュ + Istio (CiliumサービスメッシュとIstioが部分的に競合するので、どちらかのサービスメッシュで設定の無効化が必要) + Cilium CNI</li>
+</ul>
 <blockquote>
 <ul>
 <li><a href="https://www.slideshare.net/techcet/kernel-advantages-for-istio-realized-with-cilium#12">https://www.slideshare.net/techcet/kernel-advantages-for-istio-realized-with-cilium#12</a></li>
+<li><a href="https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l5lf7ua/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l5lf7ua/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
 </ul>
 </blockquote>
-<p><br></p>
+<p>IstioとCiliumサービスメッシュの間で競合する機能 (例えば、L7のトラフィック管理) については、以下の箇所に対処方法がある。</p>
+<p>しかし、全体としてかなり複雑な設定になりそうです</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.cilium.io/en/latest/network/servicemesh/istio/#istio-configuration">https://docs.cilium.io/en/latest/network/servicemesh/istio/#istio-configuration</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-cilium">02. Ciliumサービスメッシュ<a class="headerlink" href="#02-cilium" title="Permanent link">&para;</a></h2>
 <h3 id="cilium_3">Ciliumサービスメッシュの仕組み<a class="headerlink" href="#cilium_3" title="Permanent link">&para;</a></h3>
 <p>Ciliumエージェント上ではEnvoyプロセスが動いている。</p>
 <p>マイクロサービス間の通信時には、eBPFではなくEnvoyを使用する。</p>
-<p>なお、Ciliumサービスメッシュは前提としてCilium CNIプラグインを必要とする。</p>
+<p>なお、Ciliumサービスメッシュは前提としてCilium CNIを必要とする。</p>
 <p>そのため、Istioのように、既存のKubernetesのネットワークを残したままサービスメッシュを導入することはできない。</p>
 <blockquote>
 <ul>
