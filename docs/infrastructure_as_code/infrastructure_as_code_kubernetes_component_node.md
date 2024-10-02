@@ -108,7 +108,7 @@ spec: ...
 
 ### kube-proxyとは
 
-kube-proxyは、`L4`ロードバランサーする。
+kube-proxyは、`L3`サービスディスカバリーと`L4`ロードバランシングを実行する。
 
 各ワーカーNode上でDaemonSetとして稼働する。
 
@@ -138,13 +138,40 @@ $ kube-proxy \
 
 <br>
 
-### kube-proxyの`L4`ロードバランシング
+### その他のプロキシ
 
-#### ▼ kube-proxyの`L4`ロードバランシングとは
+ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシが、他にもいくつかある。
 
-ワーカーNode上で稼働するiptablesまたはipvsのIPアドレス設定を追加/削除する。
+- `kubectl proxy`コマンド
+- `minikube tunnel`コマンド
+- LoadBalancer
 
-iptableの場合、Serviceと連携し、kube-proxyによって検出されたサービス (Pod) に対して、`L4`ロードバランシングを実行する。
+> - https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+
+<br>
+
+## 04-02.プロキシモードの種類
+
+### iptablesプロキシモード
+
+#### ▼ iptablesプロキシモード
+
+デフォルトのプロキシモードである。
+
+| 項目                                         | 仕組み                                                                                                                                             |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
+| `L4`プロトコルの負荷分散方式                 | ランダム方式のみ。                                                                                                                                 |
+
+![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
+
+> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
+> - https://www.mtioutput.com/entry/kube-proxy-iptable
+> - https://github.com/kubernetes/kubernetes/pull/81430
+
+#### ▼ `L4`ロードバランシング
+
+iptable方式の場合、kube-proxyによって検出されたPodのIPアドレスに対して、`L4`ロードバランシングを実行する。
 
 > - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
 > - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
@@ -176,61 +203,38 @@ num  target                     prot   opt   source      destination
 
 <br>
 
-### プロキシモードの種類
-
-#### ▼ iptablesプロキシモード
-
-デフォルトのプロキシモードである。
-
-| 項目                                     | 仕組み                                                                                                                            |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| `L4`プロトコルの負荷分散方式             | ランダム方式のみ。                                                                                                                |
-
-![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
-
-> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
-> - https://www.mtioutput.com/entry/kube-proxy-iptable
-> - https://github.com/kubernetes/kubernetes/pull/81430
+### userspaceプロキシモード
 
 #### ▼ userspaceプロキシモード
 
-| 項目                                     | 仕組み                                                                                                                            |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesを更新する。 |
-| `L4`プロトコルの負荷分散方式             | ラウンドロビン方式のみ。                                                                                                          |
+| 項目                                         | 仕組み                                                                                                                                             |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するiptablesにIPアドレスを追加/削除する。 |
+| `L4`プロトコルの負荷分散方式                 | ラウンドロビン方式のみ。                                                                                                                           |
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
+<br>
+
+### ipvsプロキシモード
+
 #### ▼ ipvsプロキシモード
 
 kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxyMode=true`、`--proxy-mode`オプションに`ipvs`を設定する。
 
-| 項目                                     | 仕組み                                                                                                                        |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| IPアドレスベースのサービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsを更新する。 |
-| `L4`プロトコルの負荷分散方式             | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                              |
+| 項目                                         | 仕組み                                                                                                                                         |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| IPアドレスベースの`L3`サービスディスカバリー | ServiceとそのService配下のEndpointSliceの追加と削除を監視し、これらの増減に合わせて、ワーカーNode上で稼働するipvsにハッシュ値を追加/削除する。 |
+| `L4`プロトコルの負荷分散方式                 | ラウンドロビン方式、コネクションの最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                               |
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
 > - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
 > - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
 > - https://github.com/kubernetes/kubernetes/pull/81430
-
-<br>
-
-### その他のプロキシ
-
-ワーカーNode外部からのインバウンド通信をPodにルーティングするためのプロキシが、他にもいくつかある。
-
-- `kubectl proxy`コマンド
-- `minikube tunnel`コマンド
-- LoadBalancer
-
-> - https://kubernetes.io/docs/concepts/cluster-administration/proxies/
 
 <br>
 
