@@ -45,6 +45,14 @@ description: メトリクス＠Prometheus
 
 <br>
 
+### メタデータ
+
+Prometheusのメトリクスには、メタデータとして『ラベル』を付与できる。
+
+> - https://docs.logz.io/docs/user-guide/infrastructure-monitoring/introduction-to-prometheus/explore-metrics-prometheus/#prometheus-metrics-metadata-labels
+
+<br>
+
 ## 02. Prometheus自身のメトリクス
 
 ### 命名規則

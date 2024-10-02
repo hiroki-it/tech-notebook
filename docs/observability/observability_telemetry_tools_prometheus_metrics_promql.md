@@ -300,6 +300,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 ```
 
 > - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+> - https://grafana.com/blog/2021/04/12/how-to-troubleshoot-remote-write-issues-in-prometheus/
 
 #### ▼ 送信メタデータサイズ
 
@@ -310,7 +311,7 @@ prometheus_remote_storage_metadata_retried_total[1h]) *
 60 * 60 * 24
 ```
 
-#### ▼ 送信サイズ
+#### ▼ 送信データサイズ
 
 リモートストレージに送信したデータのうち、送信に失敗してリトライしたサンプル数の合計を表す。
 
@@ -320,5 +321,16 @@ rate(prometheus_remote_storage_samples_retries_total[1h]) *
 ```
 
 > - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+
+#### ▼ リモート送信シャード数
+
+リモート送信処理のシャード数を表す。
+
+```bash
+rate(prometheus_remote_storage_shards[1h]) *
+60 * 60 * 24
+```
+
+> - https://grafana.com/blog/2021/04/12/how-to-troubleshoot-remote-write-issues-in-prometheus/
 
 <br>

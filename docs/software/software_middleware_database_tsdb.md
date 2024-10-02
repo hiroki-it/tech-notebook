@@ -24,3 +24,14 @@ description: TSDBの知見を記録しています。
 > - https://thecustomizewindows.com/2019/10/what-is-time-series-database-tsdb/
 
 <br>
+
+## テーブル
+
+#### レコード
+
+- タイムスタンプをレコードにする
+- メトリクスの種類をレコードにする
+
+> - https://qiita.com/KentOhwada_AlibabaCloudJapan/items/743ffcf8a2441de1167f#%E6%99%82%E7%B3%BB%E5%88%97%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AB
+
+<br>
