@@ -169,17 +169,11 @@ $ kube-proxy \
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://github.com/kubernetes/kubernetes/pull/81430
 
-#### ▼ `L4`ロードバランシング
+#### ▼ `L3`サービスディスカバリー
 
-iptable方式の場合、kube-proxyによって検出されたPodのIPアドレスに対して、`L4`ロードバランシングを実行する。
+iptable方式の場合、kube-proxyはiptablesにPodのIPアドレスを追加/削除する。
 
-> - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
-> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
-
-#### ▼ 確認方法
-
-`iptable`コマンドで、『`KUBE-SERVICES`』というチェインのターゲットを確認する。
+`iptables`コマンドで、『`KUBE-SERVICES`』というチェインのターゲットを確認する。
 
 ターゲットには、Serviceのルーティング先となるPod (異なるワーカーNode上にある場合もある) の宛先情報が登録されている。
 
@@ -200,6 +194,14 @@ num  target                     prot   opt   source      destination
 
 > - https://dream.jp/vps/support/manual/mnl_security_04.html
 > - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+
+#### ▼ `L4`ロードバランシング
+
+iptable方式の場合、kube-proxyによって検出されたPodのIPアドレスに対して、`L4`ロードバランシングを実行する。
+
+> - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
+> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
 
 <br>
 
