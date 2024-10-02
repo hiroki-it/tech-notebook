@@ -108,7 +108,7 @@ spec: ...
 
 ### kube-proxyとは
 
-kube-proxyは、`L3`または`L4`を制御する。
+kube-proxyは、`L4`ロードバランサーする。
 
 各ワーカーNode上でDaemonSetとして稼働する。
 
@@ -118,6 +118,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
+> - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 > - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
@@ -137,14 +138,17 @@ $ kube-proxy \
 
 <br>
 
-### `L3`制御
+### kube-proxyの`L4`ロードバランシング
 
-#### ▼ `L3`制御とは
+#### ▼ kube-proxyの`L4`ロードバランシングとは
 
-ワーカーNode上で稼働するiptablesまたはipvsのIPアドレス設定 (`L3`) を追加/削除する。
+ワーカーNode上で稼働するiptablesまたはipvsのIPアドレス設定を追加/削除する。
 
-> - https://speakerdeck.com/takara9/k8stosabisumetusiyufalsesu-di-naguan-xi?slide=14
-> - https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables
+iptableの場合、Serviceと連携し、kube-proxyによって検出されたサービス (Pod) に対して、`L4`ロードバランシングを実行する。
+
+> - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
+> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
+> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
 
 #### ▼ 確認方法
 
@@ -169,32 +173,6 @@ num  target                     prot   opt   source      destination
 
 > - https://dream.jp/vps/support/manual/mnl_security_04.html
 > - https://zenn.dev/tayusa/articles/c705cd65b6ee74
-
-<br>
-
-### `L4`制御
-
-#### ▼ `L4`制御とは
-
-EndpointSliceで管理するPodの宛先情報を追加/削除する。
-
-Serviceは、kube-proxyによって検出されたサービス (Pod) に対して、`L4`ロードバランシングを実行する。
-
-> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
-> - https://isovalent.com/blog/post/why-replace-iptables-with-ebpf/#h-what-is-kube-proxy-and-how-does-it-use-iptables
-
-#### ▼ Podの`L4`ロードバランサー
-
-負荷分散方式によって、Serviceがルーティング先のPodを決める。
-
-プロキシモードごとに、使用する負荷分散方式が異なる。
-
-> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-
-<br>
-
-### kube-proxyの仕組み
 
 <br>
 
