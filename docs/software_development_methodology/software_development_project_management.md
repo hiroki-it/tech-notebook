@@ -31,10 +31,10 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 図とは若干用語の表記を変えている。
 
-1. 交渉
-2. タスク管理
-3. プロジェクト計画
-4. 見積もり
+1. 交渉 (ステークホルダーや開発メンバーとの合意形成)
+2. タスク管理 (プロジェクト全体像の可視化、大粒度でのタスクの洗い出しと割り当て、メンバー調達、進捗管理、振り返り)
+3. プロジェクト計画 (プロジェクト全体のマイルストーン策定、MTGの設置)
+4. 見積もり (大粒度でのタスクの工数)
 5. 契約
 
 ![project-management-skills_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
@@ -53,14 +53,15 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 より具体的には、アーキテクトスキルは以下に分けられる。
 
-図とは若干用語の表記を変えている。
+図とは若干用語の表記を変えており、実装も加えている。
 
-1. 要件定義
+1. 要件定義 (窓口的に課題をヒアリングする)
 2. UIデザイン
-3. システム設計
-4. テスト
-5. リリース
-6. 保守運用
+3. システム設計 (技術選定、必要な設計ドキュメントの整備、その他開発ルールの整備)
+4. 実装 (機能追加、変更、修正)
+5. テスト (テストコード含めて、テスト方法の品質担保)
+6. リリース (リリース方法の品質担保)
+7. 保守運用 (監視体制の整備、リリース規約、アップグレード規約)
 
 ![project-management-skills_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_2.png)
 
