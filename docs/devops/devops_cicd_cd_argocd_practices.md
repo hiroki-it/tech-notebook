@@ -46,11 +46,13 @@ Applicationがポーリングするリポジトリのパス直下に`.argocd-all
 
 #### ▼ キャッシュ作成の頻度を下げる
 
-ArgoCDのApplicationは、デプロイ対象のリポジトリのキャッシュを積極的に作成する
+repo-serverは、デプロイ対象のリポジトリにあるマニフェストのキャッシュを積極的に作成する
 
-この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定します。
+この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。
 
-すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになります。
+例えば、Applicationが`500`個でリポジトリが`1`個のような場合である。
+
+すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになる。
 
 これが、パフォーマンスの問題になる。
 
@@ -128,7 +130,7 @@ application-controllerは、デプロイ対象のClusterを処理する。
 
 レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。
 
-そこで、`ARGOCD_CONTROLLER_REPLICAS`をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。
+例えば、`ARGOCD_CONTROLLER_REPLICAS`をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -778,25 +780,26 @@ ArgoCDと同時にKubernetesもアップグレードする場合、問題を切�
 
 ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。
 
-| Prometheusのメトリクス                | メトリクスの種類 | 説明                                                                                        |
-| ------------------------------------- | :--------------: | ------------------------------------------------------------------------------------------- |
-| `argocd_app_info`                     |      Gauge       | Applicationの状態を表す。                                                                   |
-| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationからポーリング対象Clusterに送信されたリクエスト数を表す。        |
-| `argocd_app_labels`                   |      Gauge       | 記入中...                                                                                   |
-| `argocd_app_reconcile`                |    Histogram     | Applicationの性能を表す。                                                                   |
-| `argocd_app_sync_total`               |     Counter      | ApplicationのSync数を表す。                                                                 |
-| `argocd_cluster_api_resource_objects` |      Gauge       | ポーリング対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。 |
-| `argocd_cluster_api_resources`        |      Gauge       | ポーリング対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。       |
-| `argocd_cluster_cache_age_seconds`    |      Gauge       | ポーリング対象Clusterに関して、キャッシュの有効期間を表す。                                 |
-| `argocd_cluster_connection_status`    |      Gauge       | ポーリング対象Clusterに関して、現在の接続状態を表す。                                       |
-| `argocd_cluster_events_total`         |     Counter      | ポーリング対象Clusterに関して、イベントの合計数を表す。                                     |
-| `argocd_cluster_info`                 |      Gauge       | ポーリング対象Clusterの状態を表す。                                                         |
-| `argocd_kubectl_exec_pending`         |      Gauge       | ArgoCDのexecのPending数を表す。                                                             |
-| `argocd_kubectl_exec_total`           |     Counter      | ArgoCDのexecの合計数を表す。                                                                |
-| `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                                   |
-| `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                               |
-| `app_reconciliation_queue`            |     Counter      | application-controllerのReconciliation処理キューに格納されている処理数を表す。              |
-| `app_operation_processing_queue`      |     Counter      | application-controllerのSync処理キューに格納されている処理数を表す。                        |
+| Prometheusのメトリクス                | メトリクスの種類 | 説明                                                                                                                                                                                                                           |
+| ------------------------------------- | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `argocd_app_info`                     |      Gauge       | Applicationの状態を表す。                                                                                                                                                                                                      |
+| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Applicationからポーリング対象Clusterに送信されたリクエスト数を表す。                                                                                                                                           |
+| `argocd_app_labels`                   |      Gauge       | 記入中...                                                                                                                                                                                                                      |
+| `argocd_app_reconcile`                |    Histogram     | Applicationの性能を表す。                                                                                                                                                                                                      |
+| `argocd_app_sync_total`               |     Counter      | ApplicationのSync数を表す。                                                                                                                                                                                                    |
+| `argocd_cluster_api_resource_objects` |      Gauge       | ポーリング対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。                                                                                                                                    |
+| `argocd_cluster_api_resources`        |      Gauge       | ポーリング対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。                                                                                                                                          |
+| `argocd_cluster_cache_age_seconds`    |      Gauge       | ポーリング対象Clusterに関して、キャッシュの有効期間を表す。                                                                                                                                                                    |
+| `argocd_cluster_connection_status`    |      Gauge       | ポーリング対象Clusterに関して、現在の接続状態を表す。                                                                                                                                                                          |
+| `argocd_cluster_events_total`         |     Counter      | ポーリング対象Clusterに関して、イベントの合計数を表す。                                                                                                                                                                        |
+| `argocd_cluster_info`                 |      Gauge       | ポーリング対象Clusterの状態を表す。                                                                                                                                                                                            |
+| `argocd_kubectl_exec_pending`         |      Gauge       | ArgoCDのexecのPending数を表す。                                                                                                                                                                                                |
+| `argocd_kubectl_exec_total`           |     Counter      | ArgoCDのexecの合計数を表す。                                                                                                                                                                                                   |
+| `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                                                                                                                                                                      |
+| `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                                                                                                                                                                  |
+| `app_reconciliation_queue`            |     Counter      | application-controllerのReconciliation処理キューに格納されている処理数を表す。                                                                                                                                                 |
+| `app_operation_processing_queue`      |     Counter      | application-controllerのSync処理キューに格納されている処理数を表す。                                                                                                                                                           |
+| `argocd_git_request_total`            |     Counter      | repo-serverの`git ls-remote`コマンドや`git fetch`コマンドの実行数を表す。これらは、`request_type`ラベルで`ls-remote`と`fetch`という値で取得できる。キャッシュが更新される頻度が高いと`git fetch`コマンドの実行頻度も高くなる。 |
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/

@@ -588,7 +588,9 @@ ArgoCDのapplication-controllerは、`cluster-<エンドポイントURL>`とい�
 
 <br>
 
-### AWS EKSの場合
+### awsAuthConfig
+
+#### ▼ AWS EKSの場合
 
 AWS EKSの場合、
 
@@ -620,6 +622,31 @@ data:
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#eks
+
+<br>
+
+### shard
+
+application-controllerの特定のClusterに対するシャード数を設定する。
+
+アルゴリズムによるシャード数の自動調整ではなく、シャード数を明示的に偏らせたい場合に使用する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+  name: cluster-<エンドポイントURL>
+  namespace: argocd
+type: Opaque
+data:
+  shard: 3
+```
+
+> - https://ca-srg.dev/45d51b9059e44f62b2aafdd5b0e6f7f1#block-8dd20c94825c4c3fadd492ef384a579e
 
 <br>
 

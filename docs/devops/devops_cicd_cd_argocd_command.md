@@ -124,7 +124,31 @@ $ argocd app sync foo-application --local=<ディレクトリへのパス> --pro
 
 <br>
 
-## 02. argocd clusterコマンド
+## 02. argocd adminコマンド
+
+### cluster
+
+application-controllerのレプリカ当たるの情報を取得できる。
+
+シャード数やReconcile中のApplication数を知れる。
+
+```bash
+$ argocd admin cluster stats
+
+SERVER                          SHARD  CONNECTION  NAMESPACES COUNT  APPS COUNT  RESOURCES COUNT
+https://*.*.*.*                 4      Successful  36                274         9307
+https://*.*.*.*                 5      Successful  38                279         13726
+https://*.*.*.*                 3      Successful  32                204         8872
+https://*.*.*.*                 4      Successful  34                218         2185
+https://*.*.*.*                 3      Successful  35                282         14265
+https://kubernetes.default.svc  0      Successful  1                 10          3192
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/
+
+<br>
+
+## 03. argocd clusterコマンド
 
 ### add
 
@@ -154,7 +178,7 @@ $ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name 
 
 <br>
 
-## 03. argocd repoコマンド
+## 04. argocd repoコマンド
 
 ### repo
 
@@ -180,7 +204,7 @@ $ argocd repo add oci://<OCIレジストリ名> \
 
 <br>
 
-## 04. argocd loginコマンド
+## 05. argocd loginコマンド
 
 ### login
 
@@ -213,7 +237,7 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 
 <br>
 
-## 05. argocd-application-controllerコマンド
+## 06. argocd-application-controllerコマンド
 
 ### argocd-application-controllerコマンドとは
 
@@ -247,7 +271,7 @@ $ argocd-application-controller --application-namespaces "*"
 
 <br>
 
-## 06. argocd-serverコマンド
+## 07. argocd-serverコマンド
 
 ### argocd-serverコマンドとは
 

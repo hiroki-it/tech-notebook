@@ -47,7 +47,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 #### ▼ アーキテクトスキルとは
 
-システムの設計から保守運用までをリードすることである。
+システムの設計から運用保守までをリードすることである。
 
 #### ▼ より具体的に
 
@@ -61,7 +61,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 4. 実装 (機能追加、変更、修正)
 5. テスト (テストコード含めて、テスト方法の品質担保)
 6. リリース (リリース方法の品質担保)
-7. 保守運用 (監視体制の整備、リリース規約、アップグレード規約)
+7. 運用保守 (監視体制の整備、リリース規約、アップグレード規約)
 
 ![project-management-skills_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_2.png)
 

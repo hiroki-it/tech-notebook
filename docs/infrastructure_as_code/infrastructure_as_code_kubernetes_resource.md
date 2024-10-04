@@ -1421,6 +1421,8 @@ $ docker inspect <コンテナID>
 
 Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/volumes/kubernetes.io~empty-dir/`ディレクトリ) を作成し、コンテナにボリュームマウントする。
 
+ディレクトリの中身は、Nodeの外部ストレージやメモリ上 (上限はNodeのメモリの`50`%) に保管できる。
+
 同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。
 
 また、Podが削除されるとこのVolumeも同時に削除されてしまう。
@@ -1429,6 +1431,7 @@ Podの既存のストレージ上にVolume (`/var/lib/kubelet/pods/<PodのUUID>/
 
 > - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 > - https://cstoku.dev/posts/2018/k8sdojo-05/
+> - https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5
 
 #### ▼ 外部サービスのVolume
 
