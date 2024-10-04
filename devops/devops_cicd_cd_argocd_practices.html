@@ -25139,9 +25139,10 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ キャッシュ作成の頻度を下げる<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのApplicationは、デプロイ対象のリポジトリのキャッシュを積極的に作成する</p>
-<p>この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定します。</p>
-<p>すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになります。</p>
+<p>repo-serverは、デプロイ対象のリポジトリにあるマニフェストのキャッシュを積極的に作成する</p>
+<p>この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。</p>
+<p>例えば、Applicationが<code>500</code>個でリポジトリが<code>1</code>個のような場合である。</p>
+<p>すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成することになる。</p>
 <p>これが、パフォーマンスの問題になる。</p>
 <p>そのため、モノリポジトリには注意が必要である。</p>
 <p>Applicationの<code>metadata.annotations</code>キーに<code>argocd.argoproj.io/manifest-generate-paths</code>キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。</p>
@@ -25205,7 +25206,7 @@
 <h4 id="_12">▼ レプリカ当たりの負荷の低減<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>application-controllerは、デプロイ対象のClusterを処理する。</p>
 <p>レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。</p>
-<p>そこで、<code>ARGOCD_CONTROLLER_REPLICAS</code>をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。</p>
+<p>例えば、<code>ARGOCD_CONTROLLER_REPLICAS</code>をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -25849,6 +25850,11 @@
 <td style="text-align: center;">Counter</td>
 <td>application-controllerのSync処理キューに格納されている処理数を表す。</td>
 </tr>
+<tr>
+<td><code>argocd_git_request_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>repo-serverの<code>git ls-remote</code>コマンドや<code>git fetch</code>コマンドの実行数を表す。これらは、<code>request_type</code>ラベルで<code>ls-remote</code>と<code>fetch</code>という値で取得できる。キャッシュが更新される頻度が高いと<code>git fetch</code>コマンドの実行頻度も高くなる。</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
@@ -26098,7 +26104,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-04</span>
   </span>
 
     

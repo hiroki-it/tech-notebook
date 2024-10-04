@@ -27398,6 +27398,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </blockquote>
 <h4 id="emptydir">▼ EmptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
 <p>Podの既存のストレージ上にVolume (<code>/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~empty-dir/</code>ディレクトリ) を作成し、コンテナにボリュームマウントする。</p>
+<p>ディレクトリの中身は、Nodeの外部ストレージやメモリ上 (上限はNodeのメモリの<code>50</code>%) に保管できる。</p>
 <p>同一Node上のPod間でこのVolumeを共有できず、同一Pod内のコンテナ間ではVolumeを共有できる。</p>
 <p>また、Podが削除されるとこのVolumeも同時に削除されてしまう。</p>
 <p>保持期間を設定できるツール (例：Prometheus、Victoria Metrics、Grafana Mimirなど) にて、PodのVolumeをEmptyDirとしている場合、Podを保持期間より先に削除すると、保持期間を待たずにVolumeを削除することになってしまう。</p>
@@ -27405,6 +27406,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <ul>
 <li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">https://qiita.com/umkyungil/items/218be95f7a1f8d881415</a></li>
 <li><a href="https://cstoku.dev/posts/2018/k8sdojo-05/">https://cstoku.dev/posts/2018/k8sdojo-05/</a></li>
+<li><a href="https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5">https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5</a></li>
 </ul>
 </blockquote>
 <h4 id="volume_3">▼ 外部サービスのVolume<a class="headerlink" href="#volume_3" title="Permanent link">&para;</a></h4>
@@ -27742,7 +27744,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-04</span>
   </span>
 
     
