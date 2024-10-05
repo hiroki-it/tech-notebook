@@ -613,6 +613,6 @@ max_input_vars = 1000
 
 同じ送信元からの`1`分間当たりのリクエスト数を制限する。
 
-例えば、AWS WAF、API Gatewayを使用する。
+例えば、AWS WAF、AWS API Gatewayを使用する。
 
 <br>

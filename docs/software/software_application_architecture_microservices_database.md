@@ -955,5 +955,6 @@ API Compositionサービスは、クライアントからのリクエストを�
 メモリ上で取得結果を結合し、クライアントにレスポンスする。
 
 > - https://crishantha.medium.com/microservices-patterns-api-composition-pattern-27040cae5bd3
+> - https://stackoverflow.com/a/68074337/12771072
 
 <br>

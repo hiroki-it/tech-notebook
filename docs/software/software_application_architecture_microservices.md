@@ -452,6 +452,29 @@ API GatewayのAPI形式に応じて、分割パターンがある。
 
 <br>
 
+### 責務パターン
+
+#### ▼ Gateway Offloadingパターン
+
+API Gatewayは、マイクロサービス間で共通する課題 (認証、ロギング、SSL証明書など) を処理する責務を持ちます。
+
+> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading
+
+#### ▼ Gatewayルーティングパターン
+
+API Gatewayは、複数のマイクロサービスにリクエストをルーティングする責務を持ちます。
+
+> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing
+
+#### ▼ Gatewayアグリゲーターパターン
+
+API GatewayにAPI Compositionを適用した方法である。
+
+> - https://stackoverflow.com/a/68074337/12771072
+> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation
+
+<br>
+
 ### 実装パターン
 
 #### ▼ 自前で実装する場合
@@ -488,13 +511,5 @@ Kubernetes内で管理できるメリットがある。
 
 > - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
 > - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
-
-<br>
-
-## 04-03. APIアグリゲーター
-
-システム内部で、一部のAPIのセットとして機能し、受信した通信をマイクロサービスのAPIセットにルーティングする。
-
-> - https://stackoverflow.com/a/68074337
 
 <br>
