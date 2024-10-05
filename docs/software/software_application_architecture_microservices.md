@@ -397,13 +397,14 @@ DBレコードの書き込み/読み出しのトランザクションをルー�
 
 API Gatewayの責務をどのように分割するかに応じて、分割パターンがある。
 
-#### ▼ Public API
+#### ▼ Central Aggregating Gateway
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを`1`個だけ作成する。
 
 ![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
+> - https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/
 
 #### ▼ BFF：Backends For Frontends
 
