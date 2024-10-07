@@ -28,6 +28,22 @@ ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、と�
 
 <br>
 
+### 注入できる障害
+
+#### ▼ Kubernetes
+
+- Podの障害 (再起動など)
+
+#### ▼ AWS
+
+- AWS EC2 Nodeの障害 (再起動など)
+
+#### ▼ Google Cloud
+
+- Google Compute Engineの障害 (再起動など)
+
+<br>
+
 ## 02. セットアップ
 
 ### マニフェストとして

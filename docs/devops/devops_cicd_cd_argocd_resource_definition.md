@@ -861,11 +861,16 @@ Application自体もカスタムリソースなため、ApplicationがApplicatio
 
 #### ▼ Namespace
 
-Applicationは任意のNamespaceに作成できる。
+Applicationは、元はArgocCDのapplication-controllerと同じNamespaceのみに作成できたが、執筆時点 (2024/10/07) では任意のNamespaceに作成できる。
+
+これにより、例えばapplication-controllerを`argocd`というNamespaceに、Applicationを自由なNamespaceに配置できる。
 
 ただし、ルートのApplicationはargocd-serverと同じNamespaceに配置しないと、UI上にApplicationを表示できない。
 
+また、この方法を採用するのであれば、Namespaceごとにapplication-controllerを分けた方がシンプルでわかりやすい。
+
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/
+> - https://zenn.dev/cybozu_neco/articles/argocd-sharding#application-controller%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
 
 <br>
 

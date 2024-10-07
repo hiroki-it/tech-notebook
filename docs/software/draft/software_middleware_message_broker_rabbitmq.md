@@ -20,6 +20,7 @@ description: RabbitMQ＠メッセージブローカー系ミドルウェアの�
 送受信が多対多のパブリッシュ/サブスクライブパターンである。
 
 > - https://tech.asoview.co.jp/entry/2022/04/06/102637
+> - https://aws.amazon.com/jp/compare/the-difference-between-rabbitmq-and-kafka/
 
 <br>
 
