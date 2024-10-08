@@ -13,15 +13,20 @@ description: CloudEvents＠パブリッシュ/サブスクライブ方式の知�
 
 <br>
 
-## 01. CloudEventsとは
+## 01. CloudEventsの仕組み
 
-メッセージを発行する。
+### アーキテクチャ
 
-また、発行したメッセージをメッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：Apache Kafka、RabbitMQなど) に送信し、またこれらから受信する。
+送信側では、メッセージを発行し、メッセージキュー (例：AWS SQSなど) やメッセージブローカー (例：Apache Kafka、RabbitMQなど) に送信する。
+
+また宛先側では、メッセージキューからメッセージを受信する。
 
 異なる言語間でメッセージの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。
 
+![cloudevents_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudevents_architecture.png)
+
 > - https://github.com/cloudevents/spec
+> - https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
 
 <br>
 
