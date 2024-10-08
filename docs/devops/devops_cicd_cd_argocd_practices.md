@@ -60,6 +60,8 @@ repo-serverは、デプロイ対象のリポジトリにあるマニフェスト
 
 Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
 
+これにより、`argocd_app_reconcile_count`と`argocd_git_request_total`のメトリクスを改善できる。
+
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#manifest-paths-annotation
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://medium.com/@michail.gebka/optimizing-argocd-for-monorepo-setup-7c5f548e5575

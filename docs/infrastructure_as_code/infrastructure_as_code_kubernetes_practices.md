@@ -302,6 +302,7 @@ repository/
 | デメリット                           | ユーザーが Kubernetes のワーカーNodeを管理するコストが高い。                                                                                                                                                        | ユーザーが Kubernetes のワーカーNodeを管理するコストが高い。                                                                                                                                                                                                                                                                                                                      | カスタマイズ性が低い                                                                                                                                                                                                                                                                            |
 
 > - https://techstep.hatenablog.com/entry/2019/12/23/000715
+> - https://medium.com/@PlanB./on-premises-kubernetes-is-kubeadm-or-rancher-the-right-choice-c569e51773dc
 
 #### ▼ Kubernetesリソースのapply
 
