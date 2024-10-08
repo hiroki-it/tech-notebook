@@ -21,7 +21,7 @@ Cert Managerは、を作成し、Secretに保管する。
 
 このSecret上で、クライアント / SSL証明書と、これのペアとなる秘密鍵を管理する。
 
-PodにSecretをマウントし、Pod間の通信をTLS化する。
+Pod内のコンテナにSecretをマウントし、Pod間の通信をTLS化する。
 
 ![cert-manager_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cert-manager_architecture.png)
 
