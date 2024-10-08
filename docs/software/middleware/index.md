@@ -120,7 +120,8 @@
 
 * #### [︎︎Linux標準](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_linux.html)
 
-* #### <u>CertManager</u>
+* #### <u>Cert Manager</u>
+  > * ##### [︎Cert Manager](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html)
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html)
 
 * #### <u>Falco</u>

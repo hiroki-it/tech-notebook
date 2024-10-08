@@ -766,7 +766,7 @@ argocd-server、repo-server、dex-server、はHTTPSリクエストを受信で�
 
 反対にHTTPリクエストを送信する場合は、このConfigMapが不要である。
 
-ConfigMap上のSSL証明書の代わりに、ArgoCD外のSSL証明書 (例：CertManager) を使用しても良い。
+ConfigMap上のSSL証明書の代わりに、ArgoCD外のSSL証明書 (例：Cert Manager) を使用しても良い。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
 

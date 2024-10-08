@@ -185,7 +185,7 @@ EC2/ECS/EKSでSSL/TLS終端とする場合、EC2/ECS/EKSにAWS以外で作成し
 
 #### ▼ Route53 ➡︎ LB コントローラー由来) の場合
 
-AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSL証明書 (Let’s Encrypt、CertManager、Istio) しか紐づけられない。
+AWSリソースにはACMのSSL証明書を紐づけられるが、KubernetesリソースにはAWS以外のSSL証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。
 
 | パターン<br>(Route53には必ず配置)                                                    | SSL/TLS終端<br>(HTTPSの最終地点) |
 | ------------------------------------------------------------------------------------ | -------------------------------- |

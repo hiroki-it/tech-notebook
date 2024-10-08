@@ -37,7 +37,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 4. 見積もり (大粒度でのタスクの工数)
 5. 契約
 
-![project-management-skills_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
+![project-management-skills_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
 
 > - https://www.amazon.co.jp/dp/4798177415
 
@@ -63,7 +63,7 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 6. リリース (リリース方法の品質担保)
 7. 運用保守 (監視体制の整備、リリース規約、アップグレード規約)
 
-![project-management-skills_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_2.png)
+![project-management-skills_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_2.png)
 
 > - https://www.amazon.co.jp/dp/4798177415
 

@@ -52,7 +52,7 @@ issueやEpic issueを1つのタスクとみなし、大きく洗い出す。
 
 クリティカルパスでタスク間の関係を可視化すると、優先順位を見つけやすくなる
 
-![critical-path.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/critical-path.png)
+![critical-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/critical-path.png)
 
 > - https://www.amazon.co.jp/dp/4798177415
 
