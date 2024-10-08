@@ -263,7 +263,8 @@ nav:
               - 設定ファイル: software/software_middleware_dns_coredns_conf.md
       - ■ セキュリティ系:
           - Linux標準: software/software_middleware_security_linux.md
-          - ■ CertManager:
+          - ■ Cert Manager:
+              - Cert Manager: software/software_middleware_security_cert_manager.md
               - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
           - ■ Falco:
               - Falco: software/software_middleware_security_falco.md
