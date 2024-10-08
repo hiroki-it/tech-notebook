@@ -88,3 +88,13 @@ Ciliumエージェント上ではEnvoyプロセスが動いている。
 > - https://caddi.tech/archives/3864
 
 <br>
+
+### 通信の暗号化
+
+Node上のPod間の通信をIPSecやWireGuardで暗号化する。
+
+![cilium-service-mesh_tls.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cilium-service-mesh_tls.png)
+
+> - https://isovalent.com/blog/post/2022-05-03-servicemesh-security/
+
+<br>
