@@ -24002,11 +24002,13 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 </blockquote>
 <h4 id="_15">▼ 保管期間<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>vmstorageは、保管期間を過ぎたメトリクスファイル (主に、<code>data</code>ディレクトリ、<code>indexdb</code>ディレクトリ、の配下など) を削除する。</p>
+<p>ただし実際には、期間を過ぎたメトリクスファイルを翌日にすぐ削除するわけではなく、月初のバックグラウンドマージ中にまとめて削除する。</p>
 <p>VictoriaMetricsの起動時に、<code>victoria-metrics-prod</code>コマンドの<code>-retentionPeriod</code>オプションで指定できる。</p>
-<p>例えば、保管期間を90日とすれば、91日目に入るメトリクスを毎日削除する。</p>
+<p>例えば、<code>retentionPeriod</code>を90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。</p>
 <p>日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。</p>
 <blockquote>
 <ul>
+<li><a href="https://docs.victoriametrics.com/#retention">https://docs.victoriametrics.com/#retention</a></li>
 <li><a href="https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/">https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/</a></li>
 <li><a href="https://github.com/VictoriaMetrics/VictoriaMetrics/issues/1401">https://github.com/VictoriaMetrics/VictoriaMetrics/issues/1401</a></li>
 </ul>
