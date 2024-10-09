@@ -227,12 +227,15 @@ ReadOnlyモードにより、vmstorageの空きサイズが`minFreeDiskSpaceByte
 
 vmstorageは、保管期間を過ぎたメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリ、の配下など) を削除する。
 
+ただし実際には、期間を過ぎたメトリクスファイルを翌日にすぐ削除するわけではなく、月初のバックグラウンドマージ中にまとめて削除する。
+
 VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
 
-例えば、保管期間を90日とすれば、91日目に入るメトリクスを毎日削除する。
+例えば、`retentionPeriod`を90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。
 
 日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。
 
+> - https://docs.victoriametrics.com/#retention
 > - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
 > - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/1401
 

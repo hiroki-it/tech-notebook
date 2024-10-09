@@ -849,6 +849,8 @@ Sagaオーケストレーターのクライアントやマイクロサービス�
 
 #### ▼ Transaction log tailingパターンとは
 
+トランザクションログ (例：MySQLバイナリログ、PostgreSQL WALなど) を追跡する。
+
 > - https://microservices.io/patterns/data/transaction-log-tailing.html
 
 <br>
