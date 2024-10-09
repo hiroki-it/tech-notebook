@@ -90,6 +90,8 @@ DBへの書き込みの最大同時実行数を設定する。
 
 最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。
 
+![victoria-metrics_ingestion-spike](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_ingestion-spike.png)
+
 **＊例＊**
 
 ```bash

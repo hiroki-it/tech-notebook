@@ -207,6 +207,12 @@ $ du -hs /var/lib/victoriametrics/data
 100G /var/lib/victoria-metrics/data
 ```
 
+#### ▼ バックグラウンドマージ
+
+VictoriaMetricsは、容量節約のためにデータのブロックを定期的にバックグラウンドでマージし、大きなブロックにする。
+
+> - https://docs.victoriametrics.com/#storage
+
 #### ▼ ReadOnlyモード
 
 vmstorageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
