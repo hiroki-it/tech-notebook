@@ -74,6 +74,12 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 
 > - https://docs.victoriametrics.com/single-server-victoriametrics/#how-to-build-from-sources
 
+#### ▼ アップグレード
+
+シングルNodeモードの場合、ダウンタイムを避けられない。
+
+> - https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime
+
 <br>
 
 ### クラスターNodeモード
@@ -89,6 +95,13 @@ VictoriaMetricsをメトリクス監視バックエンドとして使用する�
 もう一方のシングルNodeモードとは、バイナリ (`-cluster`という接尾辞がつく) やセットアップ方法が異なる。
 
 > - https://docs.victoriametrics.com/cluster-victoriametrics/#binaries
+
+#### ▼ アップグレード
+
+クラスターNodeモードの場合、ダウンタイムを避けられる。
+
+> - https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime
+> - https://docs.victoriametrics.com/cluster-victoriametrics/#updating--reconfiguring-cluster-nodes
 
 <br>
 

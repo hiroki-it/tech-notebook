@@ -19,7 +19,9 @@ description: Redshift＠AWSリソースの知見を記録しています。
 
 データウェアハウスとして働く。
 
-データベースよりも柔軟性の高い保管形式で処理済みのデータを管理できる。
+データベースよりも柔軟性の高い保管形式で、データレイク (例：AWS Glue、AWS S3など) の処理済みのデータを管理できる。
+
+> - https://aws.amazon.com/jp/big-data/datalakes-and-analytics/datalakes/?nc=sn&loc=4
 
 <br>
 
