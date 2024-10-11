@@ -22,7 +22,7 @@ Knativeを使用しない場合、イベント駆動関数の公開に必要なK
 > - https://logmi.jp/tech/articles/321365
 > - https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f
 
-<br>
+.png<br>
 
 ## 02. Knativeの仕組み
 
@@ -34,6 +34,18 @@ Knativeは、Service、Route、Configuration、Revision、から構成される�
 
 > - https://opensource.com/article/21/11/knative-serving-serverless
 > - https://www.syntio.net/en/labs-musings/knative-overview/
+
+<br>
+
+### イベントメッシュ
+
+Knativeのイベントメッシュは、イベントブローカー、イベントトリガー、からなる。
+
+マイクロサービス間のメッセージキューやメッセージブローカーのクライアント実装を共通化する。
+
+![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
+
+> - https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
 
 <br>
 
