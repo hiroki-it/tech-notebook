@@ -23724,7 +23724,7 @@
 <p><img alt="service_request_response" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_response.png" /></p>
 <p>マイクロサービス間で同期的に双方向で通信を実行する。</p>
 <p>ドメインモデリングは、ステートソーシングパターンになる。</p>
-<p>送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を実行することになる。</p>
+<p>送信元と宛先で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を実行することになる。</p>
 <p>また、マイクロサービス間で直接的にリクエストを送受信することになる。</p>
 <p>使用することのできる通信プロトコルは以下の通りである。</p>
 <table>
@@ -23777,10 +23777,9 @@
 <p><img alt="service_event_driven" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png" /></p>
 <p>マイクロサービスからマイクロサービスに非同期的に一方向で通信する。</p>
 <p>ドメインモデリングは、イベントソーシングパターンになる。</p>
-<p>送信側と受信側で通信処理が独立して実行されるため、メッセージキューやメッセージブローカーを経由した非同期通信を実行することになる。</p>
-<p>送信元マイクロサービスはメッセージブローカーやメッセージキューにイベントをパブリッシュする。</p>
-<p>そして、メッセージブローカーやメッセージキューは、イベントを宛先マイクロサービスにサブスクリプションする。</p>
-<p>サブスクライブではなく、宛先マイクロサービスがメッセージブローカーやメッセージキューにポーリングする方法もある。</p>
+<p>送信元と宛先で通信処理が独立して実行されるため、メッセージキューやメッセージブローカーを経由した非同期通信を実行することになる。</p>
+<p>送信元マイクロサービスはメッセージブローカーやメッセージキューにメッセージをパブリッシュする。</p>
+<p>サブスクライブには、宛先マイクロサービスによるプルベースと、メッセージブローカーやメッセージキューによるプッシュベース、がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Message_queue">https://en.wikipedia.org/wiki/Message_queue</a></li>

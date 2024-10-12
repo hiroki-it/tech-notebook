@@ -5357,7 +5357,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      パブリッシュ/サブスクライブパターン
+      プロデューサー/コンシューマーパターン
     </span>
   </a>
   
@@ -5366,7 +5366,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      プロデューサー/コンシューマーパターン
+      パブリッシュ/サブスクライブパターン
     </span>
   </a>
   
@@ -23407,7 +23407,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      パブリッシュ/サブスクライブパターン
+      プロデューサー/コンシューマーパターン
     </span>
   </a>
   
@@ -23416,7 +23416,7 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      プロデューサー/コンシューマーパターン
+      パブリッシュ/サブスクライブパターン
     </span>
   </a>
   
@@ -23497,14 +23497,19 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. 送信元と宛先の対応関係<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">パブリッシュ/サブスクライブパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">プロデューサー/コンシューマーパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
 <li><a href="https://fourtheorem.com/what-can-you-do-with-eventbridge/">https://fourtheorem.com/what-can-you-do-with-eventbridge/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">プロデューサー/コンシューマーパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">パブリッシュ/サブスクライブパターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>送信元から宛先に非同期的に一方向で通信する。</p>
+<p>送信元と宛先で通信処理が独立して実行されるため、メッセージキューやメッセージブローカーを経由した非同期通信を実行することになる。</p>
+<p>送信元はメッセージブローカーやメッセージキューにメッセージをパブリッシュする。</p>
+<p>プルベースベースの場合、宛先はメッセージブローカーやメッセージキューからメッセージにポーリングを実行し、サブスクリプションする。</p>
+<p>プッシュベースの場合、メッセージブローカーやメッセージキューは、メッセージを宛先にサブスクリプションする。</p>
 <blockquote>
 <ul>
 <li><a href="https://fourtheorem.com/what-can-you-do-with-eventbridge/">https://fourtheorem.com/what-can-you-do-with-eventbridge/</a></li>

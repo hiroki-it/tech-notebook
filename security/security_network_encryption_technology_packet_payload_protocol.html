@@ -24226,7 +24226,7 @@
 <h4 id="ssltls">▼ SSL/TLSとは<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
 <p><img alt="encryption_protocol_ssh-tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png" /></p>
 <p>ハイブリッド暗号方式に基づく暗号化プロトコル。</p>
-<p>SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定する必要がある。</p>
+<p>SSL/TLSを使用した通信では、通信の宛先にSSL証明書を設定する必要がある。</p>
 <p>トランスポート層で、パケットペイロードのアプリケーションデータの暗号化を担う。</p>
 <p>パケットペイロード全体を暗号化したい場合は、IPSecを使用する必要がある。</p>
 <blockquote>
@@ -24236,8 +24236,8 @@
 </blockquote>
 <h4 id="tls-mtls">▼ 相互TLS認証 (mTLS)<a class="headerlink" href="#tls-mtls" title="Permanent link">&para;</a></h4>
 <p>トランスポート層で、双方向のピア認証を実施する。</p>
-<p>通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。</p>
-<p>送信側がSSL証明書を持っていなければ、認証エラーになる。</p>
+<p>通常のSSL/TLSを使用した通信では、通信の宛先のみSSL証明書を設定すればよいが、相互TLS認証では宛先のみでなく送信元にも設定が必要になる。</p>
+<p>送信元がSSL証明書を持っていなければ、認証エラーになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/horit0123/items/8eb45bfcef6b848971a4">https://qiita.com/horit0123/items/8eb45bfcef6b848971a4</a></li>
@@ -24245,8 +24245,8 @@
 </ul>
 </blockquote>
 <h4 id="sni-ssltls">▼ SNI (SSL/TLSの拡張)<a class="headerlink" href="#sni-ssltls" title="Permanent link">&para;</a></h4>
-<p>受信側のサーバーに複数のSSL証明書を配置できるようになる。</p>
-<p>従来のSSL/TLSでは、受信側のサーバーに単一のSSL証明書しか配置できなかった。</p>
+<p>宛先のサーバーに複数のSSL証明書を配置できるようになる。</p>
+<p>従来のSSL/TLSでは、宛先のサーバーに単一のSSL証明書しか配置できなかった。</p>
 <p>仮想ホストを使用してサーバーに複数のドメインを設定していても、SSL証明書は一つになってしまう。</p>
 <p>各ドメインを異なるユーザーが使用するようなシステム (例：レンタルサーバー) では、ユーザーのドメインごとにSSL/TLSを分離できない。</p>
 <blockquote>
@@ -24370,7 +24370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-12</span>
   </span>
 
     

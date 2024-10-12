@@ -24020,8 +24020,8 @@
 <h3 id="_6">通信仲介コンポーネントの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ポイントツーポイントの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>アプリ間で直接的に通信する。</p>
-<p>送信側のアプリはリクエスト送信し、受信側のアプリは同期的にリクエストを受信する。</p>
-<p>送信側のアプリは、受信側のアプリの障害を受けてしまう。</p>
+<p>送信元のアプリはリクエスト送信し、宛先のアプリは同期的にリクエストを受信する。</p>
+<p>送信元のアプリは、宛先のアプリの障害を受けてしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
@@ -24031,9 +24031,9 @@
 <p>メッセージキュー (例：AWS SQSなど) を経由して、アプリ間で通信する。</p>
 <h4 id="_9">▼ メッセージブローカーを経由する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>通信仲介コンポーネントにメッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由して、アプリ間で通信する。</p>
-<p>送信側のアプリはこれらにリクエストを送信する。</p>
-<p>受信側のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。</p>
-<p>送信側のアプリは、受信側のアプリの障害を受けない。</p>
+<p>送信元のアプリはこれらにリクエストを送信する。</p>
+<p>宛先のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。</p>
+<p>送信元のアプリは、宛先のアプリの障害を受けない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/">https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/</a></li>
