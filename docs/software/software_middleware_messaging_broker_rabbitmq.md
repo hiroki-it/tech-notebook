@@ -26,6 +26,8 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 ## 02. パブリッシュ
 
+> - https://www.rabbitmq.com/docs/publishers#basics
+
 <br>
 
 ## 03. サブスクライプ
@@ -47,5 +49,6 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 メッセージプロトコル (例：AMQP、STOMP、MQTTなど) だけでなく、 一部の`L7`プロトコル (例：HTTP) にも対応している。
 
 > - https://www.rabbitmq.com/docs/protocols
+> - https://www.rabbitmq.com/docs/publishers#protocols
 
 <br>
