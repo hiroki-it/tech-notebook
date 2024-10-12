@@ -276,7 +276,12 @@ nav:
           - ■ OAuth2 Proxy:
               - OAuth2 Proxy: software/software_middleware_security_oauth2_proxy.md
               - 設定ファイル: software/software_middleware_security_oauth2_proxy_conf.md
-
+      - ■ メッセージング系:
+          - メッセージング: software/software_middleware_messaging.md
+          - ■ ブローカー系:
+              - RabbitMQ: software/software_middleware_messaging_broker_rabbitmq.md
+          - ■ ストリーマー系:
+              - Kafka: software/software_middleware_messaging_streamer_kafka.md
   - 🐧 OS:
       - software/basic/index.md
       - ■ Linuxカーネル:
