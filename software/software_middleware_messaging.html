@@ -23520,6 +23520,8 @@
 <p><br></p>
 <h2 id="02">02. 宛先のメッセージ受信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">プルベース<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>メッセージの宛先は、メッセージブローカーやメッセージキューにポーリングを実行し、メッセージを受信する。</p>
+<p>宛先で障害が起こっていても、障害の回復後にメッセージを処理すればよいため、耐障害性が高い。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
@@ -23527,6 +23529,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_7">プッシュベース<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>メッセージブローカーやメッセージキューは、宛先にメッセージを送信する。</p>
+<p>宛先で障害が起こっていると、メッセージが損失する可能性があるため、耐障害性が低い。</p>
+<p>これに対処するために、メッセージブローカーやメッセージキューで、リトライやデッドレターキューが必要になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/riita10069/items/40b1bcc36c25b197077c">https://qiita.com/riita10069/items/40b1bcc36c25b197077c</a></li>
