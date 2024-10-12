@@ -41,9 +41,9 @@ description: リクエスト/レスポンスパターン＠通信方式の知見
 
 アプリ間で直接的に通信する。
 
-送信側のアプリはリクエスト送信し、受信側のアプリは同期的にリクエストを受信する。
+送信元のアプリはリクエスト送信し、宛先のアプリは同期的にリクエストを受信する。
 
-送信側のアプリは、受信側のアプリの障害を受けてしまう。
+送信元のアプリは、宛先のアプリの障害を受けてしまう。
 
 > - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
 
@@ -55,11 +55,11 @@ description: リクエスト/レスポンスパターン＠通信方式の知見
 
 通信仲介コンポーネントにメッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由して、アプリ間で通信する。
 
-送信側のアプリはこれらにリクエストを送信する。
+送信元のアプリはこれらにリクエストを送信する。
 
-受信側のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。
+宛先のアプリは、リクエストを非同期的に (任意のタイミングで) 受信する。
 
-送信側のアプリは、受信側のアプリの障害を受けない。
+送信元のアプリは、宛先のアプリの障害を受けない。
 
 > - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
 

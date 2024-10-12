@@ -577,7 +577,7 @@ func foo()  {
 
 #### ▼ Extract
 
-リクエストの受信側で、Carrierからトレースコンテキストを抽出する。
+リクエストの宛先で、Carrierからトレースコンテキストを抽出する。
 
 ```go
 package middleware
@@ -611,7 +611,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 #### ▼ Inject
 
-リクエストの送信側で、トレースコンテキストをCarrierに注入する。
+リクエストの送信元で、トレースコンテキストをCarrierに注入する。
 
 ```go
 package middleware
