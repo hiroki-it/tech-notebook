@@ -41,7 +41,9 @@ Knativeは、Service、Route、Configuration、Revision、から構成される�
 
 Knativeのイベントメッシュは、イベントブローカー、イベントトリガー、からなる。
 
-マイクロサービス間のメッセージキューやメッセージブローカーのクライアント実装を共通化する。
+イベントブローカーは、送信元マイクロサービスのメッセージキューやメッセージブローカーのクライアントSDKとして機能する。
+
+一方で、イベントトリガーは宛先マイクロサービスのクライアントSDKとして機能する。
 
 ![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
 

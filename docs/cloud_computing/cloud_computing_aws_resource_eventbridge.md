@@ -15,9 +15,16 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 ## 01. EventBridgeとは
 
-AWSリソースで発生したイベントを受信し、他のAWSリソースや外部APIに送信する。
+クラウドパブリッシュ/サブスクライブシステムとして働く。
 
-イベントの書き換えロジックがLambdaで実装するほど複雑でない場合に、Lambdaの代わりに使用できる。
+送受信が多対多のパブリッシュ/サブスクライブパターンであり、プルベースの通信方式である。
+
+AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
+
+また、イベントの書き換えロジックがLambdaで実装するほど複雑でない場合に、Lambdaの代わりにも使用できる。
+
+> - https://fourtheorem.com/what-can-you-do-with-eventbridge/
+> - https://docs.aws.amazon.com/decision-guides/latest/sns-or-sqs-or-eventbridge/sns-or-sqs-or-eventbridge.html
 
 <br>
 
@@ -82,6 +89,8 @@ cron式またはrate式を使用して、スケジュールを定義する。
 ### ターゲット
 
 #### ▼ ターゲットの一覧
+
+AWSリソースで発生したイベントを受信し、他のAWSリソースや外部APIに送信する。
 
 > - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html
 
