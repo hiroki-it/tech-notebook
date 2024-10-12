@@ -1789,6 +1789,18 @@
          <lastmod>2024-10-12</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html</loc>
+         <lastmod>2024-10-12</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_broker_rabbitmq.html</loc>
+         <lastmod>2024-10-12</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_streamer_kafka.html</loc>
+         <lastmod>2024-10-12</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html</loc>
          <lastmod>2024-10-12</lastmod>
     </url>
@@ -2014,14 +2026,6 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_load_balancer_haproxy.html</loc>
-         <lastmod>2024-10-12</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_message_broker_rabbitmq.html</loc>
-         <lastmod>2024-10-12</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_message_stream_kafka.html</loc>
          <lastmod>2024-10-12</lastmod>
     </url>
     <url>
