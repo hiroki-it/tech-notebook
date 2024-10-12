@@ -24,7 +24,25 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 <br>
 
-## 02. プロトコル
+## 02. パブリッシュ
+
+<br>
+
+## 03. サブスクライプ
+
+### プルベース
+
+> - https://www.rabbitmq.com/docs/consumers#fetching
+
+<br>
+
+### プッシュベース
+
+> - https://www.rabbitmq.com/docs/consumers#subscribing
+
+<br>
+
+## 04. プロトコル
 
 メッセージプロトコル (例：AMQP、STOMP、MQTTなど) だけでなく、 一部の`L7`プロトコル (例：HTTP) にも対応している。
 
