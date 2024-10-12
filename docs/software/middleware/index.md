@@ -138,3 +138,15 @@
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html)
 
 <br>
+
+### メッセージング系
+
+* ##### [メッセージング](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging.html)
+
+* #### <u>ブローカー系</u>
+  > * ##### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_brocker_rabbitmq.html)
+
+* #### <u>ストリーマー系</u>
+  > * ##### [Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_streamer_kafka.html)
+
+<br>
