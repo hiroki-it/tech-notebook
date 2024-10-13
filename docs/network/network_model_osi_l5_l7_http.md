@@ -616,17 +616,26 @@ session.gc_divisor = 1
 
 #### ▼ 静的
 
+宛先の負荷を考慮せずに、ロードバランシングする。
+
 - ラウンドロビン
 - 重み付きラウンドロビン
+- IPハッシュ
 
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
+> - https://aws.amazon.com/jp/what-is/load-balancing/
 
 #### ▼ 動的
 
-- 最小コネクション数
+宛先の負荷をリアルタイムに考慮して、ロードバランシングする。
+
+- 最小コネクション数 (最小未処理コネクション数、Least Connection)
 - 重み付きコネクション数
+- 最初レスポンス時間
+- リソースベース
 
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
+> - https://aws.amazon.com/jp/what-is/load-balancing/
 
 <br>
 
