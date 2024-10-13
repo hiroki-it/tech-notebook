@@ -168,7 +168,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 #### ▼ ログアウト
 
-認証を意図的に失効させられる。
+認証を意図的に無効化する。
 
 ```bash
 /realms/<realm名>/protocol/openid-connect/logout

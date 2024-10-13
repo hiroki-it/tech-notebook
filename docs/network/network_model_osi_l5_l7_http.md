@@ -612,6 +612,24 @@ session.gc_divisor = 1
 
 <br>
 
+### 負荷分散方式
+
+#### ▼ 静的
+
+- ラウンドロビン
+- 重み付きラウンドロビン
+
+> - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
+
+#### ▼ 動的
+
+- 最小コネクション数
+- 重み付きコネクション数
+
+> - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
+
+<br>
+
 ### 宛先の変更と保持
 
 `L7`ロードバランサーは、元々のリクエストの情報を保持しつつ、宛先を変更しなければならない。
