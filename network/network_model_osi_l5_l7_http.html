@@ -25040,23 +25040,30 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 <p><br></p>
 <h3 id="_19">負荷分散方式<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 静的<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>宛先の負荷を考慮せずに、ロードバランシングする。</p>
 <ul>
 <li>ラウンドロビン</li>
 <li>重み付きラウンドロビン</li>
+<li>IPハッシュ</li>
 </ul>
 <blockquote>
 <ul>
 <li><a href="https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/">https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/</a></li>
+<li><a href="https://aws.amazon.com/jp/what-is/load-balancing/">https://aws.amazon.com/jp/what-is/load-balancing/</a></li>
 </ul>
 </blockquote>
 <h4 id="_21">▼ 動的<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>宛先の負荷をリアルタイムに考慮して、ロードバランシングする。</p>
 <ul>
-<li>最小コネクション数</li>
+<li>最小コネクション数 (最小未処理コネクション数、Least Connection)</li>
 <li>重み付きコネクション数</li>
+<li>最初レスポンス時間</li>
+<li>リソースベース</li>
 </ul>
 <blockquote>
 <ul>
 <li><a href="https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/">https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/</a></li>
+<li><a href="https://aws.amazon.com/jp/what-is/load-balancing/">https://aws.amazon.com/jp/what-is/load-balancing/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
