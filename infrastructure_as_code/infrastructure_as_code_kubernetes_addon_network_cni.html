@@ -23798,14 +23798,15 @@
 <p><br></p>
 <h3 id="_3">アドオン例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>calico-ipip (Kubeadmで推奨)</li>
-<li>flannel-vxlan</li>
+<li>calico-ipip (<code>L3</code>、Kubeadmで推奨)</li>
+<li>flannel-vxlan (<code>L2</code>)</li>
 <li>Weave</li>
 <li>Cilium</li>
 </ul>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network</a></li>
+<li><a href="https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/">https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23829,7 +23830,7 @@
 <p><br></p>
 <h2 id="03">03. ルーティングモード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ルーティングモードとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>ルーティングテーブル (<code>L3</code>) を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
+<p>ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.netstars.co.jp/kubestarblog/k8s-3/">https://www.netstars.co.jp/kubestarblog/k8s-3/</a></li>
@@ -23839,13 +23840,14 @@
 <p><br></p>
 <h3 id="_6">アドオン例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
-<li>calico-bgp (Kubeadmで推奨)</li>
-<li>flannel-hostgw</li>
+<li>calico-bgp (<code>L3</code>、Kubeadmで推奨)</li>
+<li>flannel-hostgw (<code>L2</code>)</li>
 <li>sriov</li>
 </ul>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network</a></li>
+<li><a href="https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/">https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23882,6 +23884,11 @@
 <li>Multus</li>
 <li>Whereabout</li>
 </ul>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ynakaoku/items/14884f4fb04423bf9747">https://qiita.com/ynakaoku/items/14884f4fb04423bf9747</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -23903,7 +23910,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-14</span>
   </span>
 
     

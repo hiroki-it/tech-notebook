@@ -1706,17 +1706,17 @@
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
-      タイプコード (標準型)
+      区分オブジェクト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="タイプコード (標準型)">
+    <nav class="md-nav" aria-label="区分オブジェクト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ タイプコードとは
+      ▼ 区分オブジェクトとは
     </span>
   </a>
   
@@ -25132,17 +25132,17 @@
           <li class="md-nav__item">
   <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
-      タイプコード (標準型)
+      区分オブジェクト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="タイプコード (標準型)">
+    <nav class="md-nav" aria-label="区分オブジェクト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ タイプコードとは
+      ▼ 区分オブジェクトとは
     </span>
   </a>
   
@@ -26798,9 +26798,9 @@
 <p>エンティティや値オブジェクトは『物』をモデリングするため、着眼点が異なる。</p>
 <p>エンティティデザインパターンの1つである『パブリッシュ/サブスクライブパターン』の概念を使用して、ドメインイベントとイベントリスナー (イベントハンドラー) の関連を表す。</p>
 <p><br></p>
-<h3 id="_34">タイプコード (標準型)<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
-<h4 id="_35">▼ タイプコードとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p>タイプコードは概念的な呼び名で、実際は、標準的なパッケージとして利用できるenum型のクラスに相当する。</p>
+<h3 id="_34">区分オブジェクト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<h4 id="_35">▼ 区分オブジェクトとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>区分オブジェクトは概念的な呼び名で、実際は、標準的なパッケージとして利用できるenum型のクラスに相当する。</p>
 <p>一意に識別する必要がないユビキタス言語の中でも、特に『区分』や『種類』などは、値オブジェクトとしてではなく、enum型のクラスとしてモデリング/実装する。</p>
 <p>ただし、類似するパターンとして値オブジェクトのディレクトリ内に配置しても良い。</p>
 <h4 id="_36">▼ 色<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
@@ -26810,7 +26810,7 @@
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
 
 <span class="sd">/**</span>
-<span class="sd"> * 色のタイプコード</span>
+<span class="sd"> * 色の区分オブジェクト</span>
 <span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">ColorType</span>
 <span class="p">{</span>
@@ -26872,7 +26872,7 @@
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
 
 <span class="sd">/**</span>
-<span class="sd"> * 性別のタイプコード</span>
+<span class="sd"> * 性別の区分オブジェクト</span>
 <span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">SexType</span>
 <span class="p">{</span>
@@ -26925,7 +26925,7 @@
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
 
 <span class="sd">/**</span>
-<span class="sd"> * 年月日のタイプコード</span>
+<span class="sd"> * 年月日の区分オブジェクト</span>
 <span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">YmdType</span> <span class="k">extends</span> <span class="nx">Type</span>
 <span class="p">{</span>
@@ -28797,7 +28797,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-14</span>
   </span>
 
     
