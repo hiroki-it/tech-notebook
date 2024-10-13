@@ -621,11 +621,11 @@ class FooInteractor
 
 <br>
 
-### タイプコード (標準型)
+### 区分オブジェクト
 
-#### ▼ タイプコードとは
+#### ▼ 区分オブジェクトとは
 
-タイプコードは概念的な呼び名で、実際は、標準的なパッケージとして利用できるenum型のクラスに相当する。
+区分オブジェクトは概念的な呼び名で、実際は、標準的なパッケージとして利用できるenum型のクラスに相当する。
 
 一意に識別する必要がないユビキタス言語の中でも、特に『区分』や『種類』などは、値オブジェクトとしてではなく、enum型のクラスとしてモデリング/実装する。
 
@@ -641,7 +641,7 @@ class FooInteractor
 namespace App\Domain\Foo\ValueObjects;
 
 /**
- * 色のタイプコード
+ * 色の区分オブジェクト
  */
 class ColorType
 {
@@ -707,7 +707,7 @@ class ColorType
 namespace App\Domain\Foo\ValueObjects;
 
 /**
- * 性別のタイプコード
+ * 性別の区分オブジェクト
  */
 class SexType
 {
@@ -764,7 +764,7 @@ class SexType
 namespace App\Domain\Foo\ValueObjects;
 
 /**
- * 年月日のタイプコード
+ * 年月日の区分オブジェクト
  */
 class YmdType extends Type
 {

@@ -58,12 +58,13 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### アドオン例
 
-- calico-ipip (Kubeadmで推奨)
-- flannel-vxlan
+- calico-ipip (`L3`、Kubeadmで推奨)
+- flannel-vxlan (`L2`)
 - Weave
 - Cilium
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
 
 <br>
 
@@ -91,7 +92,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### ルーティングモードとは
 
-ルーティングテーブル (`L3`) を使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
+ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
@@ -100,11 +101,12 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### アドオン例
 
-- calico-bgp (Kubeadmで推奨)
-- flannel-hostgw
+- calico-bgp (`L3`、Kubeadmで推奨)
+- flannel-hostgw (`L2`)
 - sriov
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
 
 <br>
 
@@ -143,5 +145,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 - Antrea
 - Multus
 - Whereabout
+
+> - https://qiita.com/ynakaoku/items/14884f4fb04423bf9747
 
 <br>
