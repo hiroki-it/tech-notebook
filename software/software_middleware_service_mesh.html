@@ -24034,7 +24034,7 @@
 <p><img alt="mesh" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png" /></p>
 <p>マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。</p>
 <p>サービスメッシュを導入しない場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。</p>
-<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。</p>
+<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、認証など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://solace.com/blog/event-mesh-service-mesh-for-microservices/">https://solace.com/blog/event-mesh-service-mesh-for-microservices/</a></li>
@@ -24217,7 +24217,7 @@
 <p><br></p>
 <h2 id="04">04. サービスディスカバリー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_17">サービスディスカバリーとは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名など) を動的に検出し、また同時に名前解決できるようにする仕組みのこと。</p>
+<p>マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名など) を動的に検出し、通信できるようにする仕組みのこと。</p>
 <p><br></p>
 <h3 id="_18">サービスディスカバリーの要素<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;"></p>
@@ -24314,6 +24314,7 @@
 <blockquote>
 <ul>
 <li><a href="https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/">https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/</a></li>
+<li><a href="https://www.codeprimers.com/service-discovery-in-microservice-architecture/">https://www.codeprimers.com/service-discovery-in-microservice-architecture/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24337,7 +24338,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-15</span>
   </span>
 
     
