@@ -631,8 +631,7 @@ session.gc_divisor = 1
 
 - 最小コネクション数 (最小未処理コネクション数、Least Connection)
 - 重み付きコネクション数
-- 最初レスポンス時間
-- リソースベース
+- 最小レスポンス時間
 
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
 > - https://aws.amazon.com/jp/what-is/load-balancing/

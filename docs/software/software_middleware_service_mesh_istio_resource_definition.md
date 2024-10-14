@@ -584,6 +584,22 @@ spec:
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
 > - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
 
+**＊実装例＊**
+
+複数のゾーンのPodに対して、最小リクエスト数でルーティングする。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      # 最小リクエスト数
+      simple: LEAST_CONN
+```
+
 #### ▼ portLevelSettings.loadBalancer
 
 Podのポート番号別のルーティングの負荷分散方式を設定する。
