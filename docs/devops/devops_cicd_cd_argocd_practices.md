@@ -176,6 +176,34 @@ data:
 
 > - https://foxutech.medium.com/how-to-modify-the-application-reconciliation-timeout-in-argo-cd-833fedf8ebbd
 
+#### ▼ 処理結果のキャッシュの更新頻度の低減
+
+application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する。
+
+キャッシュの削除時の間、SyncやRefreshの処理を実施できなくなる。
+
+Application数が多いほど、キャッシュの削除時間が長くなる。
+
+キャッシュの頻度を下げたり、無効化することにより、削除時間の長期化を低減できる。
+
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: argocd-application-controller
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: argocd-application-controller
+          env:
+            - name: ARGOCD_CLUSTER_CACHE_RESYNC_DURATION
+              value: 0
+```
+
+> - https://domc.me/2024/09/02/argocd_mono_repo_performance_optimization_second/
+
 <br>
 
 ## 03. argocd-server

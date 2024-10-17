@@ -429,11 +429,21 @@ $ aws ec2 describe-instances \
 
 ### CloudWatch
 
+#### ▼ describe-alarms
+
+アラームの情報を取得する。
+
+```bash
+$ aws cloudwatch describe-alarms --alarm-names <アラーム名>
+```
+
 #### ▼ set-alarm-state
 
 **＊例＊**
 
 CloudWatchアラームの状態を変更する。
+
+アラームをテストできる。
 
 ```bash
 $ aws cloudwatch set-alarm-state \
