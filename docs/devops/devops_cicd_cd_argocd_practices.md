@@ -178,7 +178,7 @@ data:
 
 #### ▼ 処理結果のキャッシュの更新頻度の低減
 
-application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する。
+application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは`12`時間) 。
 
 キャッシュの削除時の間、SyncやRefreshの処理を実施できなくなる。
 
@@ -203,6 +203,7 @@ spec:
 ```
 
 > - https://domc.me/2024/09/02/argocd_mono_repo_performance_optimization_second/
+> - https://github.com/argoproj/argo-cd/issues/15464#issuecomment-2340985236
 
 <br>
 

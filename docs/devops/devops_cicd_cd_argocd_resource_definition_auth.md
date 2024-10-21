@@ -164,7 +164,7 @@ argocd-managerの実体は、ServiceAccountである。
 
 ```bash
 # デフォルトでkube-systemに作成するため、nオプションは不要である
-$ argocd cluster add <デプロイ先ClusterのARN> --name <デプロイ先のCluster名>  -n kube-system
+$ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名> -n kube-system
 
 INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
 INFO[0011] ClusterRole "argocd-manager-role" updated

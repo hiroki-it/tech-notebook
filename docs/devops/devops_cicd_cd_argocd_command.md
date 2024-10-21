@@ -157,7 +157,7 @@ https://kubernetes.default.svc  0      Successful  1                 10         
 ArgoCDにポーリングさせたいClusterを登録する。
 
 ```bash
-$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN>
+$ argocd cluster add <デプロイ先のClusterのARN>
 ```
 
 #### ▼ --name
@@ -165,7 +165,7 @@ $ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN>
 ダッシュボードでCluster名を使用してフィルタリングする時に、その表示名を設定する。
 
 ```bash
-$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name <ダッシュボード上でのClusterの表示名>
+$ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名>
 ```
 
 #### ▼ --upsert
@@ -173,7 +173,7 @@ $ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name 
 すでにClusterを登録済みの場合に、これを上書きする。
 
 ```bash
-$ argocd cluster add <ArgoCDにポーリングさせたいClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
+$ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名> --upsert
 ```
 
 <br>
