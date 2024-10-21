@@ -25397,9 +25397,13 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ レプリカ当たりの処理効率の向上<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>repo-serverは、レプリカ当たり同時に1つの処理しかできない。</p>
+<p>この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。</p>
+<p>すると、各Applicationのマニフェスト作成処理はrepo-serverのレプリカ数に影響を受ける。</p>
 <p>Applicationがポーリングするリポジトリのパス直下に<code>.argocd-allow-concurrency</code>ファイルを置いておくと並行処理をしてくれる。</p>
 <blockquote>
 <ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations">https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations</a></li>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing">https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing</a></li>
 <li><a href="https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/">https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/</a></li>
 </ul>
@@ -25540,6 +25544,7 @@
 <ul>
 <li><a href="https://domc.me/2024/09/02/argocd_mono_repo_performance_optimization_second/">https://domc.me/2024/09/02/argocd_mono_repo_performance_optimization_second/</a></li>
 <li><a href="https://github.com/argoproj/argo-cd/issues/15464#issuecomment-2340985236">https://github.com/argoproj/argo-cd/issues/15464#issuecomment-2340985236</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/blob/v2.12.6/controller/cache/cache.go#L48">https://github.com/argoproj/argo-cd/blob/v2.12.6/controller/cache/cache.go#L48</a></li>
 </ul>
 </blockquote>
 <p><br></p>
