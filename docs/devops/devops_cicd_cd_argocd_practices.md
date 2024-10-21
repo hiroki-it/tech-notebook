@@ -39,8 +39,15 @@ repo-serverの冗長化は、可用性だけでなく性能設計の改善にも
 
 #### ▼ レプリカ当たりの処理効率の向上
 
+repo-serverは、レプリカ当たり同時に1つの処理しかできない。
+
+この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。
+
+すると、各Applicationのマニフェスト作成処理はrepo-serverのレプリカ数に影響を受ける。
+
 Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。
 
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
 > - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
 
@@ -204,6 +211,7 @@ spec:
 
 > - https://domc.me/2024/09/02/argocd_mono_repo_performance_optimization_second/
 > - https://github.com/argoproj/argo-cd/issues/15464#issuecomment-2340985236
+> - https://github.com/argoproj/argo-cd/blob/v2.12.6/controller/cache/cache.go#L48
 
 <br>
 
