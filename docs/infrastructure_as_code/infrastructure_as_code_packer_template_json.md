@@ -76,6 +76,7 @@ build_ami:
   script:
     - export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)
     - echo "source ami-id: $SOURCE_IMAGE_ID"
+    # Packerを実行する
     - packer build template.json
     - AMI_NAME="foo-$(date "+%Y-%m-%d")"
     - AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)
@@ -100,22 +101,6 @@ build_ami:
 
 ### typeがamazon-ebsの場合
 
-#### ▼ region
-
-AMIを作成するリージョンを設定する。
-
-```yaml
-{"builders": [{"type": "amazon-ebs", "region": "ap-northeast-1"}]}
-```
-
-#### ▼ source_ami
-
-AMIの基とするAMI (例：Amazon Linux 2 AMI) を設定する。
-
-```yaml
-{"builders": [{"type": "amazon-ebs", "source_ami": "ami-0b7546e839d7ace12"}]}
-```
-
 #### ▼ ami_name
 
 AMIの名前を設定する。
@@ -128,26 +113,6 @@ AMIの名前を設定する。
 
 ```yaml
 {"builders": [{"type": "amazon-ebs", "ami_users": "<AWSアカウントID>"}]}
-```
-
-#### ▼ snapshot_users
-
-```yaml
-{"builders": [{"type": "amazon-ebs", "snapshot_users": "<AWSアカウントID>"}]}
-```
-
-#### ▼ instance_type
-
-```yaml
-{"builders": [{"type": "amazon-ebs", "instance_type": "t2.micro"}]}
-```
-
-#### ▼ ssh_username
-
-EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
-
-```yaml
-{"builders": [{"type": "amazon-ebs", "ssh_username": "ec2-user"}]}
 ```
 
 #### ▼ ena_support
@@ -176,6 +141,12 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 {"builders": [{"type": "amazon-ebs", "force_deregister": "true"}]}
 ```
 
+#### ▼ instance_type
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "instance_type": "t2.micro"}]}
+```
+
 #### ▼ launch_block_device_mappings
 
 EC2に紐付けるルートデバイスボリュームを設定する。
@@ -199,6 +170,50 @@ EC2に紐付けるルートデバイスボリュームを設定する。
     ],
 }
 ```
+
+#### ▼ region
+
+AMIを作成するリージョンを設定する。
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "region": "ap-northeast-1"}]}
+```
+
+#### ▼ snapshot_users
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "snapshot_users": "<AWSアカウントID>"}]}
+```
+
+#### ▼ source_ami
+
+AMIの基とするAMI (例：Amazon Linux 2 AMI) を設定する。
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "source_ami": "ami-0b7546e839d7ace12"}]}
+```
+
+> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration
+
+#### ▼ ssh_username
+
+EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "ssh_username": "ec2-user"}]}
+```
+
+> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
+
+#### ▼ temporary_key_pair_type
+
+暗号化キーの種類を設定する。
+
+```yaml
+{"builders": [{"type": "amazon-ebs", "temporary_key_pair_type": "rsa"}]}
+```
+
+> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
 
 <br>
 
