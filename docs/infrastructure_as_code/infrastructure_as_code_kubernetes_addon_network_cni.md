@@ -31,7 +31,7 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
-> - https://stackoverflow.com/a/54875440/12771072
+> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
 
 <br>
 
@@ -44,6 +44,8 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 ## 02. オーバーレイモード
 
 ### オーバーレイモードとは
+
+Clusterに`L2`を提供する。
 
 オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
@@ -61,9 +63,9 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### アドオン例
 
-- calico-ipip (`L3`、Kubeadmで推奨)
+- calico-ipip (`L2`、Kubeadmで推奨)
 - flannel-vxlan (`L2`)
-- Weave
+- Weave (`L2`)
 - Cilium
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
@@ -95,6 +97,8 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### ルーティングモードとは
 
+Clusterに`L3`を提供する。
+
 ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
@@ -105,7 +109,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 ### アドオン例
 
 - calico-bgp (`L3`、Kubeadmで推奨)
-- flannel-hostgw (`L2`)
+- flannel-hostgw (`L3`)
 - sriov
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
