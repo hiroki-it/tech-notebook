@@ -18623,16 +18623,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#cni_2" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       オーバーレイモードの仕組み
     </span>
@@ -18680,7 +18680,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ルーティングモードとは
     </span>
@@ -18689,9 +18689,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#cni_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -18713,7 +18713,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       アンダーレイモードとは
     </span>
@@ -18722,9 +18722,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#cni_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -18755,9 +18755,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#cni_5" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -23579,16 +23579,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#cni_2" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       オーバーレイモードの仕組み
     </span>
@@ -23636,7 +23636,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       ルーティングモードとは
     </span>
@@ -23645,9 +23645,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#cni_3" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -23669,7 +23669,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       アンダーレイモードとは
     </span>
@@ -23678,9 +23678,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#cni_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -23711,9 +23711,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#cni_5" class="md-nav__link">
     <span class="md-ellipsis">
-      アドオン例
+      CNI例
     </span>
   </a>
   
@@ -23785,7 +23785,6 @@
 <p><br></p>
 <h2 id="02">02. オーバーレイモード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">オーバーレイモードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Clusterに<code>L2</code>を提供する。</p>
 <p>オーバーレイモードは、Podのネットワークインターフェース (<code>eth</code>) 、Nodeの仮想ネットワークインターフェース (<code>veth</code>) 、Nodeのブリッジ (<code>cni</code>) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (<code>eth</code>) 、といったコンポーネントから構成される。</p>
 <p>オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <p><img alt="kubernetes_cni-addon_overlay-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png" /></p>
@@ -23799,9 +23798,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">アドオン例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="cni_2">CNI例<a class="headerlink" href="#cni_2" title="Permanent link">&para;</a></h3>
+<p>CNIによって、<code>L2</code>または<code>L3</code>を提供する。</p>
 <ul>
-<li>calico-ipip (<code>L2</code>、Kubeadmで推奨)</li>
+<li>calico-ipip (<code>L3</code>、Kubeadmで推奨)</li>
 <li>flannel-vxlan (<code>L2</code>)</li>
 <li>Weave (<code>L2</code>)</li>
 <li>Cilium</li>
@@ -23813,7 +23813,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">オーバーレイモードの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">オーバーレイモードの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="nodepod">▼ 同一Node上のPod間通信<a class="headerlink" href="#nodepod" title="Permanent link">&para;</a></h4>
 <p>Podのネットワークインターフェース (<code>eth</code>) 、Nodeの仮想ネットワークインターフェース (<code>veth</code>) 、Nodeのブリッジ (<code>cni</code>) 、を使用して、同じNode上のPod間でパケットを送受信する。</p>
 <p><img alt="kubernetes_cni-addon_overlay-mode_same-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png" /></p>
@@ -23832,8 +23832,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. ルーティングモード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_5">ルーティングモードとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Clusterに<code>L3</code>を提供する。</p>
+<h3 id="_4">ルーティングモードとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <blockquote>
 <ul>
@@ -23842,7 +23841,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_6">アドオン例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="cni_3">CNI例<a class="headerlink" href="#cni_3" title="Permanent link">&para;</a></h3>
+<p>CNIによって、<code>L2</code>または<code>L3</code>を提供する。</p>
 <ul>
 <li>calico-bgp (<code>L3</code>、Kubeadmで推奨)</li>
 <li>flannel-hostgw (<code>L3</code>)</li>
@@ -23856,7 +23856,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. アンダーレイモード<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_7">アンダーレイモードとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_5">アンダーレイモードとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>アンダーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <blockquote>
 <ul>
@@ -23864,7 +23864,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">アドオン例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="cni_4">CNI例<a class="headerlink" href="#cni_4" title="Permanent link">&para;</a></h3>
+<p>CNIによって、<code>L2</code>または<code>L3</code>を提供する。</p>
 <ul>
 <li>Aliyun</li>
 </ul>
@@ -23877,7 +23878,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">アドオン例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="cni_5">CNI例<a class="headerlink" href="#cni_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>AWS EKS VPC CNI (AWS EKSで推奨)</li>
 </ul>
