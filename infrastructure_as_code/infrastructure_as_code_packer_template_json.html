@@ -15344,6 +15344,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIによる自動化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CIによる自動化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GitLab CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23650,6 +23674,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIによる自動化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CIによる自動化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ GitLab CI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23953,6 +24001,65 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-add-repository<span cla
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>packer
 </code></pre></div>
 <p><br></p>
+<h3 id="ci">CIによる自動化<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
+<h4 id="gitlab-ci">▼ GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AWS_DEFAULT_REGION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="nt">AWS_ACCOUNT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
+<span class="w">  </span><span class="nt">AWS_IAM_ROLE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gitlab-ci-packer&quot;</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+
+<span class="nt">build_ami</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="c1"># CIの実行環境</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0</span>
+<span class="w">  </span><span class="c1"># サービスコンテナ</span>
+<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0-dind</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;recursive&quot;</span>
+<span class="w">  </span><span class="nt">id_tokens</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">GITLAB_OIDC_TOKEN</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">aud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GitLabのURL&gt;</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update &amp;&amp; apt-get install -y git jq awscli</span>
+<span class="w">    </span><span class="c1"># クレデンシャルを取得する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">echo &quot;sleeping random seconds (&lt;15s)&quot;</span>
+<span class="w">      </span><span class="no">sleep $(( $RANDOM % 15 ))</span>
+<span class="w">      </span><span class="no">count=0</span>
+<span class="w">      </span><span class="no">backoff=1</span>
+<span class="w">      </span><span class="no">until STS=($(aws sts assume-role-with-web-identity \</span>
+<span class="w">      </span><span class="no">--role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${AWS_IAM_ROLE} \</span>
+<span class="w">      </span><span class="no">--role-session-name &quot;&quot;&lt;任意のセッション名&gt;&quot; \</span>
+<span class="w">      </span><span class="no">--web-identity-token $GITLAB_OIDC_TOKEN \</span>
+<span class="w">      </span><span class="no">--duration-seconds 1800 \</span>
+<span class="w">      </span><span class="no">--query &#39;Credentials.[AccessKeyId,SecretAccessKey,SessionToken]&#39; \</span>
+<span class="w">      </span><span class="no">--output text)) || (( count++ &gt;= 5 )); do echo &quot;Retrying: $backoff&quot;; sleep $backoff; (( backoff*=2 )); done</span>
+<span class="w">      </span><span class="no">export AWS_ACCESS_KEY_ID=&quot;${STS[0]}&quot;</span>
+<span class="w">      </span><span class="no">export AWS_SECRET_ACCESS_KEY=&quot;${STS[1]}&quot;</span>
+<span class="w">      </span><span class="no">export AWS_SESSION_TOKEN=&quot;${STS[2]}&quot;</span>
+<span class="w">      </span><span class="no">aws sts get-caller-identity</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query &#39;Parameters[0].Value&#39; --output text)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;source ami-id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SOURCE_IMAGE_ID&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">packer build template.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_NAME=&quot;foo-$(date &quot;+%Y-%m-%d&quot;)&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters &quot;Name=name,Values=${AMI_NAME}&quot; --query &#39;Images[*][ImageId]&#39; --output text)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk &#39;{print $2}&#39; | jq -r .image_name)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $SOURCE_IMAGE_NAME</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html">https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02-builders">02. builders<a class="headerlink" href="#02-builders" title="Permanent link">&para;</a></h2>
 <h3 id="builders">buildersとは<a class="headerlink" href="#builders" title="Permanent link">&para;</a></h3>
 <p>作成するマシンイメージやコンテナイメージの内容を設定する。</p>
@@ -24064,7 +24171,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-22</span>
   </span>
 
     

@@ -25424,9 +25424,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="kube-proxy">サービスメッシュ内ではkube-proxyは不要<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h3>
-<p>実は、サービスメッシュ内のPod間通信では、kube-proxyを使用せずにPodにリクエストを送信できる。</p>
+<p>実は、サービスメッシュ内のPod間通信では、kube-proxyは使用しない。</p>
 <p><code>istio-init</code>コンテナは、<code>istio-iptables</code>コマンドを実行し、iptablesのルールを書き換える。</p>
-<p>これにより、サービスメッシュ内では、PodからPodに直接リクエストを送信できるようになる。</p>
+<p>これにより、送信元Podから宛先Podに直接通信できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f">https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f</a></li>
