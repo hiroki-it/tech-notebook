@@ -41,6 +41,22 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 <br>
 
+### CNIによるクラスター内の通信
+
+#### ▼ PodとNode間の通信
+
+> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/166890
+
+#### ▼ 同じNode上のPod間
+
+> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/238ea7
+
+#### ▼ 異なるNode上のPod間
+
+> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#calico%E6%96%B9%E5%BC%8F
+
+<br>
+
 ## 02. オーバーレイモード
 
 ### オーバーレイモードとは
@@ -70,6 +86,7 @@ CNIによって、`L2`または`L3`を提供する。
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 > - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
+> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#flannel%E6%96%B9%E5%BC%8F
 
 <br>
 
@@ -135,26 +152,13 @@ CNIによって、`L2`または`L3`を提供する。
 
 <br>
 
-## 05. AWSの独自モード
-
-### AWSの独自モードとは
-
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html
-
-<br>
-
-### CNI例
-
-- AWS EKS VPC CNI (AWS EKSで推奨)
-
-<br>
-
 ## 06. その他のCNI
 
-- Antrea
+- Antrea (`L3`/`L4`)
 - Multus
 - Whereabout
 
 > - https://qiita.com/ynakaoku/items/14884f4fb04423bf9747
+> - https://antrea.io/docs/v1.11.3/
 
 <br>

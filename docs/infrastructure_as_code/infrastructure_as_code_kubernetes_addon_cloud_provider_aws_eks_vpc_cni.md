@@ -647,3 +647,14 @@ AWSとしては、Prefix delegationモードの方を使って欲しいのかも
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md
 
 <br>
+
+## 05. 代替
+
+- Antrea (`L3`/`L4`)
+- Calico
+- Cilium
+- Cloud-Native Contail Networking
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/alternate-cni-plugins.html
+
+<br>
