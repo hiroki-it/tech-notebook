@@ -82,11 +82,12 @@ CNIによって、`L2`または`L3`を提供する。
 - calico-ipip (`L3`、Kubeadmで推奨)
 - flannel-vxlan (`L2`)
 - Weave (`L2`)
-- Cilium
+- Cilium (`L3`/`L4`/`L7`)
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 > - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
 > - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#flannel%E6%96%B9%E5%BC%8F
+> - https://medium.com/mhiro2/learn-calico-3f4962b2c26c
 
 <br>
 
@@ -131,6 +132,7 @@ CNIによって、`L2`または`L3`を提供する。
 
 > - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 > - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
+> - https://medium.com/mhiro2/learn-calico-3f4962b2c26c
 
 <br>
 
