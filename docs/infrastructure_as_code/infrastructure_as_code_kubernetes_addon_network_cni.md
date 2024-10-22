@@ -45,8 +45,6 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### オーバーレイモードとは
 
-Clusterに`L2`を提供する。
-
 オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
@@ -61,9 +59,11 @@ Clusterに`L2`を提供する。
 
 <br>
 
-### アドオン例
+### CNI例
 
-- calico-ipip (`L2`、Kubeadmで推奨)
+CNIによって、`L2`または`L3`を提供する。
+
+- calico-ipip (`L3`、Kubeadmで推奨)
 - flannel-vxlan (`L2`)
 - Weave (`L2`)
 - Cilium
@@ -97,8 +97,6 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### ルーティングモードとは
 
-Clusterに`L3`を提供する。
-
 ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
@@ -106,7 +104,9 @@ Clusterに`L3`を提供する。
 
 <br>
 
-### アドオン例
+### CNI例
+
+CNIによって、`L2`または`L3`を提供する。
 
 - calico-bgp (`L3`、Kubeadmで推奨)
 - flannel-hostgw (`L3`)
@@ -127,7 +127,9 @@ Clusterに`L3`を提供する。
 
 <br>
 
-### アドオン例
+### CNI例
+
+CNIによって、`L2`または`L3`を提供する。
 
 - Aliyun
 
@@ -141,7 +143,7 @@ Clusterに`L3`を提供する。
 
 <br>
 
-### アドオン例
+### CNI例
 
 - AWS EKS VPC CNI (AWS EKSで推奨)
 
