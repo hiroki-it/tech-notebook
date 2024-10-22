@@ -271,6 +271,18 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 <br>
 
+### サービスメッシュ内ではkube-proxyは不要
+
+実は、サービスメッシュ内のPod間通信では、kube-proxyを使用せずにPodにリクエストを送信できる。
+
+`istio-init`コンテナは、`istio-iptables`コマンドを実行し、iptablesのルールを書き換える。
+
+これにより、サービスメッシュ内では、PodからPodに直接リクエストを送信できるようになる。
+
+> - https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f
+
+<br>
+
 ## 02-02. サービスメッシュ外へのリクエスト送信
 
 ### 安全な通信方式
