@@ -29,6 +29,67 @@ $ sudo apt-get update && sudo apt-get install packer
 
 <br>
 
+### CIによる自動化
+
+#### ▼ GitLab CI
+
+```yaml
+variables:
+  AWS_DEFAULT_REGION: "ap-northeast-1"
+  AWS_ACCOUNT_ID: "*****"
+  AWS_IAM_ROLE: "gitlab-ci-packer"
+
+stages:
+  - build
+
+build_ami:
+  stage: build
+  # CIの実行環境
+  image: docker:19.03.0
+  # サービスコンテナ
+  services:
+    - name: docker:19.03.0-dind
+  variables:
+    GIT_SUBMODULE_STRATEGY: "recursive"
+  id_tokens:
+    GITLAB_OIDC_TOKEN:
+      aud: <GitLabのURL>
+  before_script:
+    - apt-get update && apt-get install -y git jq awscli
+    # クレデンシャルを取得する
+    - |
+      echo "sleeping random seconds (<15s)"
+      sleep $(( $RANDOM % 15 ))
+      count=0
+      backoff=1
+      until STS=($(aws sts assume-role-with-web-identity \
+      --role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${AWS_IAM_ROLE} \
+      --role-session-name ""<任意のセッション名>" \
+      --web-identity-token $GITLAB_OIDC_TOKEN \
+      --duration-seconds 1800 \
+      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+      --output text)) || (( count++ >= 5 )); do echo "Retrying: $backoff"; sleep $backoff; (( backoff*=2 )); done
+      export AWS_ACCESS_KEY_ID="${STS[0]}"
+      export AWS_SECRET_ACCESS_KEY="${STS[1]}"
+      export AWS_SESSION_TOKEN="${STS[2]}"
+      aws sts get-caller-identity
+  script:
+    - export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)
+    - echo "source ami-id: $SOURCE_IMAGE_ID"
+    - packer build template.json
+    - AMI_NAME="foo-$(date "+%Y-%m-%d")"
+    - AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)
+    - SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk '{print $2}' | jq -r .image_name)
+    - echo $SOURCE_IMAGE_NAME
+  rules:
+    - if: $CI_COMMIT_TAG
+    - when: manual
+```
+
+> - https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html
+
+<br>
+
 ## 02. builders
 
 ### buildersとは
