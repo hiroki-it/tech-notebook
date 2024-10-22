@@ -23772,7 +23772,7 @@
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/">https://kubernetes.io/docs/concepts/cluster-administration/networking/</a></li>
-<li><a href="https://stackoverflow.com/a/54875440/12771072">https://stackoverflow.com/a/54875440/12771072</a></li>
+<li><a href="https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/">https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23785,6 +23785,7 @@
 <p><br></p>
 <h2 id="02">02. オーバーレイモード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">オーバーレイモードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Clusterに<code>L2</code>を提供する。</p>
 <p>オーバーレイモードは、Podのネットワークインターフェース (<code>eth</code>) 、Nodeの仮想ネットワークインターフェース (<code>veth</code>) 、Nodeのブリッジ (<code>cni</code>) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (<code>eth</code>) 、といったコンポーネントから構成される。</p>
 <p>オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <p><img alt="kubernetes_cni-addon_overlay-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png" /></p>
@@ -23800,9 +23801,9 @@
 <p><br></p>
 <h3 id="_3">アドオン例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>calico-ipip (<code>L3</code>、Kubeadmで推奨)</li>
+<li>calico-ipip (<code>L2</code>、Kubeadmで推奨)</li>
 <li>flannel-vxlan (<code>L2</code>)</li>
-<li>Weave</li>
+<li>Weave (<code>L2</code>)</li>
 <li>Cilium</li>
 </ul>
 <blockquote>
@@ -23832,6 +23833,7 @@
 <p><br></p>
 <h2 id="03">03. ルーティングモード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ルーティングモードとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>Clusterに<code>L3</code>を提供する。</p>
 <p>ルーティングテーブルを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <blockquote>
 <ul>
@@ -23843,7 +23845,7 @@
 <h3 id="_6">アドオン例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>calico-bgp (<code>L3</code>、Kubeadmで推奨)</li>
-<li>flannel-hostgw (<code>L2</code>)</li>
+<li>flannel-hostgw (<code>L3</code>)</li>
 <li>sriov</li>
 </ul>
 <blockquote>
