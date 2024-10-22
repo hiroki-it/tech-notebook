@@ -17,7 +17,7 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ### CNIとは
 
-CNIは、Cluster内に`L2`または`L3`を提供する (ツールによって様々) 。
+CNIは、Cluster内に`L2`または`L3`を提供する (CNIによって様々) 。
 
 Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 
@@ -45,7 +45,7 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### オーバーレイモードとは
 
-オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
+オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
@@ -143,7 +143,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 <br>
 
-## 06. 未分類のアドオン
+## 06. その他のCNI
 
 - Antrea
 - Multus
