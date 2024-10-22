@@ -19025,19 +19025,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-eks-codedns" class="md-nav__link">
+  <a href="#02-aws-eks-coredns" class="md-nav__link">
     <span class="md-ellipsis">
-      02. aws-eks-codednsアドオン
+      02. AWS EKS CoreDNS
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. aws-eks-codednsアドオン">
+    <nav class="md-nav" aria-label="02. AWS EKS CoreDNS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-eks-codedns" class="md-nav__link">
+  <a href="#aws-eks-coredns" class="md-nav__link">
     <span class="md-ellipsis">
-      aws-eks-codednsアドオンとは
+      AWS EKS CoreDNSとは
     </span>
   </a>
   
@@ -19075,7 +19075,7 @@
         <li class="md-nav__item">
   <a href="#03-aws-eks-distro-for-opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      03. aws-eks-distro-for-opentelemetry
+      03. AWS EKS Distro for OpenTelemetry
     </span>
   </a>
   
@@ -19084,17 +19084,17 @@
         <li class="md-nav__item">
   <a href="#04-aws-eks-kube-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      04. aws-eks-kube-proxy
+      04. AWS EKS kube-proxy
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. aws-eks-kube-proxy">
+    <nav class="md-nav" aria-label="04. AWS EKS kube-proxy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#aws-eks-kube-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      aws-eks-kube-proxyアドオンとは
+      AWS EKS kube-proxyアドオンとは
     </span>
   </a>
   
@@ -19170,7 +19170,7 @@
         
   
   <span class="md-ellipsis">
-    AWS VPC CNI
+    AWS EKS VPC CNI
   </span>
   
 
@@ -23557,19 +23557,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-eks-codedns" class="md-nav__link">
+  <a href="#02-aws-eks-coredns" class="md-nav__link">
     <span class="md-ellipsis">
-      02. aws-eks-codednsアドオン
+      02. AWS EKS CoreDNS
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. aws-eks-codednsアドオン">
+    <nav class="md-nav" aria-label="02. AWS EKS CoreDNS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-eks-codedns" class="md-nav__link">
+  <a href="#aws-eks-coredns" class="md-nav__link">
     <span class="md-ellipsis">
-      aws-eks-codednsアドオンとは
+      AWS EKS CoreDNSとは
     </span>
   </a>
   
@@ -23607,7 +23607,7 @@
         <li class="md-nav__item">
   <a href="#03-aws-eks-distro-for-opentelemetry" class="md-nav__link">
     <span class="md-ellipsis">
-      03. aws-eks-distro-for-opentelemetry
+      03. AWS EKS Distro for OpenTelemetry
     </span>
   </a>
   
@@ -23616,17 +23616,17 @@
         <li class="md-nav__item">
   <a href="#04-aws-eks-kube-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      04. aws-eks-kube-proxy
+      04. AWS EKS kube-proxy
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. aws-eks-kube-proxy">
+    <nav class="md-nav" aria-label="04. AWS EKS kube-proxy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#aws-eks-kube-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      aws-eks-kube-proxyアドオンとは
+      AWS EKS kube-proxyアドオンとは
     </span>
   </a>
   
@@ -23730,7 +23730,7 @@
 </table>
 <h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>Terraformを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># aws-eks-corednsアドオン</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWS EKS CoreDNS</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;coredns&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
 <span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -23758,7 +23758,7 @@
 <span class="p">}</span>
 
 
-<span class="c1"># aws-vpc-cni</span>
+<span class="c1"># AWS EKS VPC CNI</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
 <span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -23782,7 +23782,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://aws.github.io/eks-charts
 
 
-<span class="c1"># aws-eks-corednsアドオン</span>
+<span class="c1"># AWS EKS CoreDNS</span>
 <span class="c1"># 執筆時点 (2023/03/02) 時点でチャートなし</span>
 
 
@@ -23790,7 +23790,7 @@
 <span class="c1"># 執筆時点 (2023/03/02) 時点でチャートなし</span>
 
 
-<span class="c1"># aws-vpc-cni</span>
+<span class="c1"># AWS EKS VPC CNI</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/aws-vpc-cni<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
 <blockquote>
@@ -23799,11 +23799,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-aws-eks-codedns">02. aws-eks-codednsアドオン<a class="headerlink" href="#02-aws-eks-codedns" title="Permanent link">&para;</a></h2>
-<h3 id="aws-eks-codedns">aws-eks-codednsアドオンとは<a class="headerlink" href="#aws-eks-codedns" title="Permanent link">&para;</a></h3>
+<h2 id="02-aws-eks-coredns">02. AWS EKS CoreDNS<a class="headerlink" href="#02-aws-eks-coredns" title="Permanent link">&para;</a></h2>
+<h3 id="aws-eks-coredns">AWS EKS CoreDNSとは<a class="headerlink" href="#aws-eks-coredns" title="Permanent link">&para;</a></h3>
 <p>EKSの各Node上で、<code>kube-dns</code>という名前のDeploymentとして稼働する。</p>
 <p>同じCluster内の全てのPodの名前解決を行う。</p>
-<p>aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。</p>
+<p>AWS EKS CoreDNSがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html</a></li>
@@ -23819,7 +23819,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-aws-eks-distro-for-opentelemetry">03. aws-eks-distro-for-opentelemetry<a class="headerlink" href="#03-aws-eks-distro-for-opentelemetry" title="Permanent link">&para;</a></h2>
+<h2 id="03-aws-eks-distro-for-opentelemetry">03. AWS EKS Distro for OpenTelemetry<a class="headerlink" href="#03-aws-eks-distro-for-opentelemetry" title="Permanent link">&para;</a></h2>
 <p>テレメトリーの収集をマネージドにする。</p>
 <p>メトリクスの場合、ストレージとアラートをマネージドにしたManaged Prometheusと組み合わせると、データの収集 (プル型のみ) から保管までをマネージドにできる。</p>
 <blockquote>
@@ -23828,11 +23828,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-aws-eks-kube-proxy">04. aws-eks-kube-proxy<a class="headerlink" href="#04-aws-eks-kube-proxy" title="Permanent link">&para;</a></h2>
-<h3 id="aws-eks-kube-proxy">aws-eks-kube-proxyアドオンとは<a class="headerlink" href="#aws-eks-kube-proxy" title="Permanent link">&para;</a></h3>
+<h2 id="04-aws-eks-kube-proxy">04. AWS EKS kube-proxy<a class="headerlink" href="#04-aws-eks-kube-proxy" title="Permanent link">&para;</a></h2>
+<h3 id="aws-eks-kube-proxy">AWS EKS kube-proxyアドオンとは<a class="headerlink" href="#aws-eks-kube-proxy" title="Permanent link">&para;</a></h3>
 <p>EKSの各Node上で、<code>kube-proxy</code>という名前のDaemonSetとして稼働する。</p>
 <p>EKSのコントロールプレーン上のkube-apiserverが、Node外からPod内へのリクエストをルーティングできるようにする。</p>
-<p>aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。</p>
+<p>AWS EKS kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html</a></li>

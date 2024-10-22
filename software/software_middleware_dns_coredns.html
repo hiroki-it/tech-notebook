@@ -4724,17 +4724,17 @@
         <li class="md-nav__item">
   <a href="#01-coredns-kube-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CoreDNSアドオン (新kube-dns)
+      01. CoreDNS (新kube-dns)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. CoreDNSアドオン (新kube-dns)">
+    <nav class="md-nav" aria-label="01. CoreDNS (新kube-dns)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#coredns_1" class="md-nav__link">
     <span class="md-ellipsis">
-      CoreDNSアドオンとは
+      CoreDNSとは
     </span>
   </a>
   
@@ -19341,7 +19341,7 @@
         
   
   <span class="md-ellipsis">
-    AWS VPC CNI
+    AWS EKS VPC CNI
   </span>
   
 
@@ -23664,17 +23664,17 @@
         <li class="md-nav__item">
   <a href="#01-coredns-kube-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CoreDNSアドオン (新kube-dns)
+      01. CoreDNS (新kube-dns)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. CoreDNSアドオン (新kube-dns)">
+    <nav class="md-nav" aria-label="01. CoreDNS (新kube-dns)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#coredns_1" class="md-nav__link">
     <span class="md-ellipsis">
-      CoreDNSアドオンとは
+      CoreDNSとは
     </span>
   </a>
   
@@ -24030,8 +24030,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-coredns-kube-dns">01. CoreDNSアドオン (新kube-dns)<a class="headerlink" href="#01-coredns-kube-dns" title="Permanent link">&para;</a></h2>
-<h3 id="coredns_1">CoreDNSアドオンとは<a class="headerlink" href="#coredns_1" title="Permanent link">&para;</a></h3>
+<h2 id="01-coredns-kube-dns">01. CoreDNS (新kube-dns)<a class="headerlink" href="#01-coredns-kube-dns" title="Permanent link">&para;</a></h2>
+<h3 id="coredns_1">CoreDNSとは<a class="headerlink" href="#coredns_1" title="Permanent link">&para;</a></h3>
 <p>Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を実行する。</p>
 <p><img alt="kubernetes_coredns" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png" /></p>
 <blockquote>
@@ -24042,7 +24042,7 @@
 <p><br></p>
 <h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">マニフェストの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>CoreDNSアドオンは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) などのマニフェストから構成される。</p>
+<p>CoreDNSは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) などのマニフェストから構成される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>kube-system
 
 NAME<span class="w">                        </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
@@ -24320,7 +24320,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-22</span>
   </span>
 
     

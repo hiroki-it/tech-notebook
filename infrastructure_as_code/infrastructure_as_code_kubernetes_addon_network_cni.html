@@ -19206,7 +19206,7 @@
         
   
   <span class="md-ellipsis">
-    AWS VPC CNI
+    AWS EKS VPC CNI
   </span>
   
 
@@ -23762,15 +23762,17 @@
 <p><br></p>
 <h2 id="01-cni">01. CNI<a class="headerlink" href="#01-cni" title="Permanent link">&para;</a></h2>
 <h3 id="cni_1">CNIとは<a class="headerlink" href="#cni_1" title="Permanent link">&para;</a></h3>
-<p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png" /></p>
+<p>CNIは、Cluster内に<code>L2</code>または<code>L3</code>を提供する (ツールによって様々) 。</p>
 <p>Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。</p>
 <p>kubeletは、設定ファイルで指定されたCNIを実行する。</p>
 <p>その後、CNIはPodに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。</p>
 <p>PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。</p>
+<p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29">https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/">https://kubernetes.io/docs/concepts/cluster-administration/networking/</a></li>
+<li><a href="https://stackoverflow.com/a/54875440/12771072">https://stackoverflow.com/a/54875440/12771072</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23875,7 +23877,7 @@
 <p><br></p>
 <h3 id="_9">アドオン例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
-<li>aws-eks-vpc-cni (AWS EKSで推奨)</li>
+<li>AWS EKS VPC CNI (AWS EKSで推奨)</li>
 </ul>
 <p><br></p>
 <h2 id="06">06. 未分類のアドオン<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
