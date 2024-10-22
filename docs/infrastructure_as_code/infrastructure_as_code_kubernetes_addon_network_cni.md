@@ -13,17 +13,17 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 <br>
 
-## 01. CNIアドオン
+## 01. CNI
 
-### CNIアドオンとは
+### CNIとは
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
 
 Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 
-kubeletは、設定ファイルで指定されたCNIアドオンを実行する。
+kubeletは、設定ファイルで指定されたCNIを実行する。
 
-その後、CNIアドオンはPodに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。
+その後、CNIはPodに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。
 
 PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。
 
@@ -42,7 +42,7 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### オーバーレイモードとは
 
-オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIアドオンはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
+オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
@@ -136,7 +136,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### アドオン例
 
-- aws-eks-vpc-cniアドオン (AWS EKSで推奨)
+- aws-eks-vpc-cni (AWS EKSで推奨)
 
 <br>
 

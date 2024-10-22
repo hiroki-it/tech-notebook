@@ -270,9 +270,9 @@ spec:
 
 <br>
 
-### istio-cniアドオンによる`istio-validation`コンテナ
+### istio-cniによる`istio-validation`コンテナ
 
-#### ▼ istio-cniアドオンとは
+#### ▼ istio-cniとは
 
 ![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png)
 
@@ -282,9 +282,9 @@ spec:
 
 しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている (同様にして、ユーザーが`iptables`コマンドを実行する時も`sudo`権限が必要である) 。
 
-`istio-init`コンテナの代替案として、istio-cniアドオンが提供されている。
+`istio-init`コンテナの代替案として、istio-cniが提供されている。
 
-もしistio-cniアドオンを使用する場合は、`istio-init`コンテナが不要になる代わりに、`istio-validation`コンテナが必要になる。
+もしistio-cniを使用する場合は、`istio-init`コンテナが不要になる代わりに、`istio-validation`コンテナが必要になる。
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin

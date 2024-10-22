@@ -138,7 +138,7 @@ Google Cloud側の認証情報と、各クラウドプロバイダーのAnthos�
 
 #### ▼ anetd
 
-cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
+cniとして、Ciliumを使用してAnthos GKE Clusterのネットワークを作成する。
 
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
 

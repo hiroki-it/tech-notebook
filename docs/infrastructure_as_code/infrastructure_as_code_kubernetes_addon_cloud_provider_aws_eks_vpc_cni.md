@@ -13,9 +13,9 @@ description: AWS VPC CNI＠AWS EKSアドオンの知見を記録しています�
 
 <br>
 
-## 01. aws-eks-vpc-cniアドオンとは
+## 01. aws-eks-vpc-cniとは
 
-aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
+aws-eks-vpc-cniがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
 
 そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
@@ -27,11 +27,11 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 
 <br>
 
-## 02. aws-eks-vpc-cniアドオンの仕組み
+## 02. aws-eks-vpc-cniの仕組み
 
 ### アーキテクチャ
 
-aws-eks-vpc-cniアドオンは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
+aws-eks-vpc-cniは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
 
 AWS EKS Cluster内にネットワークを作成する。
 
@@ -60,7 +60,7 @@ L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPod
 
 L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log`ファイルと`/var/log/aws-routed-eni/plugin.log`ファイルにログを出力する。
 
-aws-eks-vpc-cniアドオンが正しく動作しない場合、L-IPAMデーモンのログを確認する。
+aws-eks-vpc-cniが正しく動作しない場合、L-IPAMデーモンのログを確認する。
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
 
@@ -569,7 +569,7 @@ resource "aws_eks_addon" "vpc_cni" {
 
 AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。
 
-一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のaws-eks-vpc-cniアドオン)。
+一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のaws-eks-vpc-cni)。
 
 `max-pods-calculator.sh`ファイルを使用して、事前にPodの最大数を計算しておく。
 

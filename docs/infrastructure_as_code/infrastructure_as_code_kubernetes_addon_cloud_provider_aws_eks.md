@@ -72,7 +72,7 @@ resource "aws_eks_addon" "kube_proxy" {
 }
 
 
-# aws-vpc-cniアドオン
+# aws-vpc-cni
 resource "aws_eks_addon" "vpc_cni" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
@@ -108,7 +108,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 # 執筆時点 (2023/03/02) 時点でチャートなし
 
 
-# aws-vpc-cniアドオン
+# aws-vpc-cni
 $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 

@@ -578,6 +578,14 @@ AutoScalingのスケールイン時に、削除されたEC2のEBSボリューム
 
 <br>
 
+### EBSボリュームのマルチアタッチ
+
+ボリュームタイプが`io1`または`io2`のEBSボリュームは、複数のEC2に紐づけられる。
+
+> - https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html
+
+<br>
+
 ### スナップショット
 
 #### ▼ スナップショットとは
