@@ -19003,7 +19003,7 @@
         <li class="md-nav__item">
   <a href="#01-aws-eks-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      01. aws-eks-vpc-cniアドオンとは
+      01. aws-eks-vpc-cniとは
     </span>
   </a>
   
@@ -19012,11 +19012,11 @@
         <li class="md-nav__item">
   <a href="#02-aws-eks-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      02. aws-eks-vpc-cniアドオンの仕組み
+      02. aws-eks-vpc-cniの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. aws-eks-vpc-cniアドオンの仕組み">
+    <nav class="md-nav" aria-label="02. aws-eks-vpc-cniの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23670,7 +23670,7 @@
         <li class="md-nav__item">
   <a href="#01-aws-eks-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      01. aws-eks-vpc-cniアドオンとは
+      01. aws-eks-vpc-cniとは
     </span>
   </a>
   
@@ -23679,11 +23679,11 @@
         <li class="md-nav__item">
   <a href="#02-aws-eks-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      02. aws-eks-vpc-cniアドオンの仕組み
+      02. aws-eks-vpc-cniの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. aws-eks-vpc-cniアドオンの仕組み">
+    <nav class="md-nav" aria-label="02. aws-eks-vpc-cniの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24042,8 +24042,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-eks-vpc-cni">01. aws-eks-vpc-cniアドオンとは<a class="headerlink" href="#01-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
-<p>aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
+<h2 id="01-aws-eks-vpc-cni">01. aws-eks-vpc-cniとは<a class="headerlink" href="#01-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
+<p>aws-eks-vpc-cniがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
 <p>そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。</p>
 <p><img alt="aws_eks-vpc-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png" /></p>
 <blockquote>
@@ -24054,9 +24054,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-aws-eks-vpc-cni">02. aws-eks-vpc-cniアドオンの仕組み<a class="headerlink" href="#02-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
+<h2 id="02-aws-eks-vpc-cni">02. aws-eks-vpc-cniの仕組み<a class="headerlink" href="#02-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>aws-eks-vpc-cniアドオンは、L-IPAMデーモン (<code>aws-node</code>という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
+<p>aws-eks-vpc-cniは、L-IPAMデーモン (<code>aws-node</code>という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
 <p>AWS EKS Cluster内にネットワークを作成する。</p>
 <blockquote>
 <ul>
@@ -24079,7 +24079,7 @@
 <p>L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
 <h4 id="_3">▼ ログ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code>ファイルと<code>/var/log/aws-routed-eni/plugin.log</code>ファイルにログを出力する。</p>
-<p>aws-eks-vpc-cniアドオンが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
+<p>aws-eks-vpc-cniが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging">https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging</a></li>
@@ -24736,7 +24736,7 @@ Capacity:
 </code></pre></div>
 <h4 id="bootstrapsh">▼ <code>bootstrap.sh</code>ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
 <p>AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。</p>
-<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のaws-eks-vpc-cniアドオン)。</p>
+<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のaws-eks-vpc-cni)。</p>
 <p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最大数を計算しておく。</p>
 <p>なお、vCPUが<code>30</code>未満のインスタンスタイプの場合に最大数は<code>110</code>個になり、それ以外の場合は<code>250</code>個になる。</p>
 <p>設定した上限に合わせて、CIDR (サブネット内の<code>*.*.*.*/28</code>) の予約が必要になる。</p>
@@ -24822,7 +24822,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-22</span>
   </span>
 
     
