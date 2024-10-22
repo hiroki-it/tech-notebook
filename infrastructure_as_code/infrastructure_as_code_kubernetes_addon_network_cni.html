@@ -18769,9 +18769,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#06-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      06. 未分類のアドオン
+      06. その他のCNI
     </span>
   </a>
   
@@ -23725,9 +23725,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#06-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      06. 未分類のアドオン
+      06. その他のCNI
     </span>
   </a>
   
@@ -23762,7 +23762,7 @@
 <p><br></p>
 <h2 id="01-cni">01. CNI<a class="headerlink" href="#01-cni" title="Permanent link">&para;</a></h2>
 <h3 id="cni_1">CNIとは<a class="headerlink" href="#cni_1" title="Permanent link">&para;</a></h3>
-<p>CNIは、Cluster内に<code>L2</code>または<code>L3</code>を提供する (ツールによって様々) 。</p>
+<p>CNIは、Cluster内に<code>L2</code>または<code>L3</code>を提供する (CNIによって様々) 。</p>
 <p>Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。</p>
 <p>kubeletは、設定ファイルで指定されたCNIを実行する。</p>
 <p>その後、CNIはPodに仮想NICを紐付け、Node内のClusterネットワークのIPアドレスをPodの仮想NICに割り当てる。</p>
@@ -23785,7 +23785,7 @@
 <p><br></p>
 <h2 id="02">02. オーバーレイモード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">オーバーレイモードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>オーバーレイモードは、Podのネットワークインターフェース (<code>eth</code>) 、Nodeの仮想ネットワークインターフェース (<code>veth</code>) 、Nodeのブリッジ (<code>cni</code>) 、NATルーター (Cilium以外のCNIはiptables、CiliumアドオンはCilium) 、Nodeのネットワークインターフェース (<code>eth</code>) 、といったコンポーネントから構成される。</p>
+<p>オーバーレイモードは、Podのネットワークインターフェース (<code>eth</code>) 、Nodeの仮想ネットワークインターフェース (<code>veth</code>) 、Nodeのブリッジ (<code>cni</code>) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (<code>eth</code>) 、といったコンポーネントから構成される。</p>
 <p>オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。</p>
 <p><img alt="kubernetes_cni-addon_overlay-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png" /></p>
 <blockquote>
@@ -23880,7 +23880,7 @@
 <li>AWS EKS VPC CNI (AWS EKSで推奨)</li>
 </ul>
 <p><br></p>
-<h2 id="06">06. 未分類のアドオン<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="06-cni">06. その他のCNI<a class="headerlink" href="#06-cni" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Antrea</li>
 <li>Multus</li>
