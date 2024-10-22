@@ -13,9 +13,9 @@ description: CoreDNS＠DNS系ミドルウェアの知見を記録しています
 
 <br>
 
-## 01. CoreDNSアドオン (新kube-dns)
+## 01. CoreDNS (新kube-dns)
 
-### CoreDNSアドオンとは
+### CoreDNSとは
 
 Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を実行する。
 
@@ -29,7 +29,7 @@ Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決
 
 ### マニフェストの種類
 
-CoreDNSアドオンは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) などのマニフェストから構成される。
+CoreDNSは、Deployment (CoreDNS) 、Service (kube-dns) 、ConfigMap (coredns-configmap) などのマニフェストから構成される。
 
 ```bash
 $ kubectl get pod -n kube-system

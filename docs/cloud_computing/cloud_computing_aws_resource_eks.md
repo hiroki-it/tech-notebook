@@ -62,7 +62,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 | クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。          |                                                                                                                                                                                                                                                                                                                   |
 | CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                      |                                                                                                                                                                                                                                                                                                                   |
 | クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                             |                                                                                                                                                                                                                                                                                                                   |
-| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、aws-eks-kube-proxyアドオン、aws-eks-corednsアドオン、aws-eks-vpc-cni、を使用できる。                                                                                                                                                                                                  |
+| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、AWS EKS kube-proxyアドオン、AWS EKS CoreDNS、AWS EKS VPC CNI、を使用できる。                                                                                                                                                                                                          |
 | コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                     |
 
 <br>
@@ -748,7 +748,7 @@ $ kubectl get service -A jsonpath='{.spec.clusterIP}'
 
 PodのIPアドレスは、EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。
 
-aws-vpc-cni内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。
+AWS EKS VPC CNI内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
@@ -773,7 +773,7 @@ EKSデータプレーンはプライベートサブネットで稼働させ、�
 
 Podをパブリックサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
 
-この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS EKS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
 > - https://note.com/tyrwzl/n/n715a8ef3c28a
 > - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
@@ -968,7 +968,7 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 | Node上のログの場所                   | 説明                                                                                                   |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/var/log/containers	`                | このディレクトリに、そのEC2ワーカーNode上のPod内コンテナのログファイルのシンボリックリンクを作成する。 |
-| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、aws-vpc-cniのL-IPAMデーモンのログを出力する。                                      |
+| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、AWS EKS VPC CNIのL-IPAMデーモンのログを出力する。                                  |
 | `/var/log/aws-routed-eni/plugin.log` | 同上                                                                                                   |
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
@@ -1736,7 +1736,7 @@ EKS Clusterはおおよそ以下の方法でアップグレードする。
 
 `(3)`
 
-: ワーカーNode上のAWS EKSアドオン (例：aws-eks-codednsアドオン、aws-eks-kube-proxyアドオン、aws-eks-vpc-cniなど) をアップグレードする。
+: ワーカーNode上のAWS EKSアドオン (例：AWS EKS CoreDNS、AWS EKS kube-proxyアドオン、AWS EKS VPC CNIなど) をアップグレードする。
 
 > - https://inside.dmm.com/entry/2022/08/26/eks_is_hard
 

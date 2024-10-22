@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS VPC CNI＠AWS EKSアドオン
-description: AWS VPC CNI＠AWS EKSアドオンの知見を記録しています。
+title: 【IT技術の知見】AWS EKS VPC CNI＠AWS EKSアドオン
+description: AWS EKS VPC CNI＠AWS EKSアドオンの知見を記録しています。
 ---
 
-# AWS VPC CNI＠AWS EKSアドオン
+# AWS EKS VPC CNI＠AWS EKSアドオン
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: AWS VPC CNI＠AWS EKSアドオンの知見を記録しています�
 
 <br>
 
-## 01. aws-eks-vpc-cniとは
+## 01. AWS EKS VPC CNIとは
 
-aws-eks-vpc-cniがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
+AWS EKS VPC CNIがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
 
 そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
@@ -27,11 +27,11 @@ aws-eks-vpc-cniがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにア�
 
 <br>
 
-## 02. aws-eks-vpc-cniの仕組み
+## 02. AWS EKS VPC CNIの仕組み
 
 ### アーキテクチャ
 
-aws-eks-vpc-cniは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
+AWS EKS VPC CNIは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
 
 AWS EKS Cluster内にネットワークを作成する。
 
@@ -60,7 +60,7 @@ L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPod
 
 L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log`ファイルと`/var/log/aws-routed-eni/plugin.log`ファイルにログを出力する。
 
-aws-eks-vpc-cniが正しく動作しない場合、L-IPAMデーモンのログを確認する。
+AWS EKS VPC CNIが正しく動作しない場合、L-IPAMデーモンのログを確認する。
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
 
@@ -316,12 +316,12 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER`    |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
 | `AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG`    |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
 | `AWS_VPC_K8S_CNI_EXTERNALSNAT`          |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
-| `AWS_VPC_K8S_CNI_LOGLEVEL`              | aws-eks-vpcアドオンのログレベルを設定する。                                                                                                                                                                                                                                          | `DEBUG`                                                                          |
-| `AWS_VPC_K8S_CNI_LOG_FILE`              | aws-eks-vpcアドオンのログファイルの保管先を設定する。                                                                                                                                                                                                                                | `/host/var/log/aws-routed-eni/ipamd.log`                                         |
+| `AWS_VPC_K8S_CNI_LOGLEVEL`              | AWS EKS VPC CNIのログレベルを設定する。                                                                                                                                                                                                                                              | `DEBUG`                                                                          |
+| `AWS_VPC_K8S_CNI_LOG_FILE`              | AWS EKS VPC CNIのログファイルの保管先を設定する。                                                                                                                                                                                                                                    | `/host/var/log/aws-routed-eni/ipamd.log`                                         |
 | `AWS_VPC_K8S_CNI_RANDOMIZESNAT`         |                                                                                                                                                                                                                                                                                      | `prng`                                                                           |
 | `AWS_VPC_K8S_CNI_VETHPREFIX`            |                                                                                                                                                                                                                                                                                      | `eni`                                                                            |
-| `AWS_VPC_K8S_PLUGIN_LOG_FILE`           | aws-eks-vpcアドオンのプラグインのログファイルの保管先を設定する。                                                                                                                                                                                                                    | `/var/log/aws-routed-eni/plugin.log`                                             |
-| `AWS_VPC_K8S_PLUGIN_LOG_LEVEL`          | aws-eks-vpcアドオンのプラグインのログレベルを設定する。                                                                                                                                                                                                                              | `DEBUG`                                                                          |
+| `AWS_VPC_K8S_PLUGIN_LOG_FILE`           | AWS EKS VPC CNIのプラグインのログファイルの保管先を設定する。                                                                                                                                                                                                                        | `/var/log/aws-routed-eni/plugin.log`                                             |
+| `AWS_VPC_K8S_PLUGIN_LOG_LEVEL`          | AWS EKS VPC CNIのプラグインのログレベルを設定する。                                                                                                                                                                                                                                  | `DEBUG`                                                                          |
 | `CLUSTER_ENDPOINT`                      | AWS EKS ClusterのエンドポイントのURLを設定する。                                                                                                                                                                                                                                     | `https://*****.sk1.ap-northeast-1.eks.amazonaws.com`                             |
 | `CLUSTER_NAME`                          | AWS EKS Clusterの名前を設定する。                                                                                                                                                                                                                                                    | `foo-cluster`                                                                    |
 | `DISABLE_INTROSPECTION`                 |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
@@ -539,13 +539,13 @@ Prefix delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 
 ### セットアップ
 
-#### ▼ aws-eks-vpc-cni
+#### ▼ AWS EKS VPC CNI
 
 Prefix delegationモードを採用可能なインスタンスタイプを選ぶ。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
 
-aws-eks-vpc-cniの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
+AWS EKS VPC CNIの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
 
 ```terraform
 resource "aws_eks_addon" "vpc_cni" {
@@ -569,7 +569,7 @@ resource "aws_eks_addon" "vpc_cni" {
 
 AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。
 
-一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のaws-eks-vpc-cni)。
+一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のAWS EKS VPC CNI)。
 
 `max-pods-calculator.sh`ファイルを使用して、事前にPodの最大数を計算しておく。
 
@@ -589,7 +589,7 @@ $ chmod +x max-pods-calculator.sh
 # --cni-prefix-delegation-enabledオプションを有効化した上でPod最大数を計算する
 $ ./max-pods-calculator.sh \
     --instance-type <インスタンスタイプ> \
-    --cni-version <aws-eks-vpc-cniのバージョン> \
+    --cni-version <AWS EKS VPC CNIのバージョン> \
     --cni-prefix-delegation-enabled
 ```
 

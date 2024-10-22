@@ -44,7 +44,7 @@ EKSのコントロールプレーンとデータプレーン上でKubernetesを�
 Terraformを使用する。
 
 ```terraform
-# aws-eks-corednsアドオン
+# AWS EKS CoreDNS
 resource "aws_eks_addon" "coredns" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
@@ -72,7 +72,7 @@ resource "aws_eks_addon" "kube_proxy" {
 }
 
 
-# aws-vpc-cni
+# AWS EKS VPC CNI
 resource "aws_eks_addon" "vpc_cni" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
@@ -100,7 +100,7 @@ resource "aws_eks_addon" "vpc_cni" {
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
 
 
-# aws-eks-corednsアドオン
+# AWS EKS CoreDNS
 # 執筆時点 (2023/03/02) 時点でチャートなし
 
 
@@ -108,7 +108,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 # 執筆時点 (2023/03/02) 時点でチャートなし
 
 
-# aws-vpc-cni
+# AWS EKS VPC CNI
 $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
@@ -116,15 +116,15 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cn
 
 <br>
 
-## 02. aws-eks-codednsアドオン
+## 02. AWS EKS CoreDNS
 
-### aws-eks-codednsアドオンとは
+### AWS EKS CoreDNSとは
 
 EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働する。
 
 同じCluster内の全てのPodの名前解決を行う。
 
-aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
+AWS EKS CoreDNSがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
@@ -140,7 +140,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 <br>
 
-## 03. aws-eks-distro-for-opentelemetry
+## 03. AWS EKS Distro for OpenTelemetry
 
 テレメトリーの収集をマネージドにする。
 
@@ -150,15 +150,15 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 <br>
 
-## 04. aws-eks-kube-proxy
+## 04. AWS EKS kube-proxy
 
-### aws-eks-kube-proxyアドオンとは
+### AWS EKS kube-proxyアドオンとは
 
 EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働する。
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPod内へのリクエストをルーティングできるようにする。
 
-aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
+AWS EKS kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 

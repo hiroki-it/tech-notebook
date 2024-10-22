@@ -101,7 +101,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 まず最初に、コントロールプレーンNodeをアップグレードする。
 
-必要であれば、コントロールプレーンNodeのアドオン (例：aws-eks-corednsアドオン、aws-eks-kubeproxyアドオン、aws-vpc-cni) を別々にアップグレードする。
+必要であれば、コントロールプレーンNodeのアドオン (例：AWS EKS CoreDNS、AWS EKS kube-proxyアドオン、AWS EKS VPC CNI) を別々にアップグレードする。
 
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/

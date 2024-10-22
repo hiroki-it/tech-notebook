@@ -17,7 +17,7 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ### CNIとは
 
-![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
+CNIは、Cluster内に`L2`または`L3`を提供する (ツールによって様々) 。
 
 Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 
@@ -27,8 +27,11 @@ kubeletは、設定ファイルで指定されたCNIを実行する。
 
 PodをNode内のClusterネットワークに参加させると、異なるNode上のPod間で通信できるようになる。
 
+![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
+
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
+> - https://stackoverflow.com/a/54875440/12771072
 
 <br>
 
@@ -136,7 +139,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### アドオン例
 
-- aws-eks-vpc-cni (AWS EKSで推奨)
+- AWS EKS VPC CNI (AWS EKSで推奨)
 
 <br>
 
