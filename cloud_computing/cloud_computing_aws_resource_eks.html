@@ -20214,7 +20214,7 @@
         
   
   <span class="md-ellipsis">
-    AWS EKS VPC CNI
+    AWS VPC CNI
   </span>
   
 
@@ -25860,7 +25860,7 @@
 <tr>
 <td>ネットワークアドオン</td>
 <td>ネットワークに関するAWS EKSアドオンを設定する。</td>
-<td>執筆時点 (2023/02/05) では、AWS EKS kube-proxyアドオン、AWS EKS CoreDNS、AWS EKS VPC CNI、を使用できる。</td>
+<td>執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、AWS VPC CNI、を使用できる。</td>
 </tr>
 <tr>
 <td>コントロールプレーンのログ</td>
@@ -26566,7 +26566,7 @@
 <p><br></p>
 <h3 id="podip">PodのためのIPアドレス<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
 <p>PodのIPアドレスは、EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。</p>
-<p>AWS EKS VPC CNI内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。</p>
+<p>AWS VPC CNI内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
@@ -26587,7 +26587,7 @@
 <h2 id="03-04">03-04. データプレーン内外へのリクエスト<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_15">パブリックサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
-<p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたAWS EKS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
+<p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://note.com/tyrwzl/n/n715a8ef3c28a">https://note.com/tyrwzl/n/n715a8ef3c28a</a></li>
@@ -26855,7 +26855,7 @@
 </tr>
 <tr>
 <td><code>var/log/aws-routed-eni/ipamd.log</code></td>
-<td>このディレクトリに、AWS EKS VPC CNIのL-IPAMデーモンのログを出力する。</td>
+<td>このディレクトリに、AWS VPC CNIのL-IPAMデーモンのログを出力する。</td>
 </tr>
 <tr>
 <td><code>/var/log/aws-routed-eni/plugin.log</code></td>
@@ -27630,7 +27630,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ワーカーNode上のAWS EKSアドオン (例：AWS EKS CoreDNS、AWS EKS kube-proxyアドオン、AWS EKS VPC CNIなど) をアップグレードする。</p>
+<p>ワーカーNode上のAWS EKSアドオン (例：AWS CoreDNS、AWS kube-proxy、AWS VPC CNIなど) をアップグレードする。</p>
 </dd>
 </dl>
 <blockquote>

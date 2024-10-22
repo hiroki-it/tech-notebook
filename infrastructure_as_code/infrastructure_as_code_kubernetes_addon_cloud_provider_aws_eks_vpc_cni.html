@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="AWS EKS VPC CNI＠AWS EKSアドオンの知見を記録しています。">
+        <meta name="description" content="AWS VPC CNI＠AWS EKSアドオンの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】AWS EKS VPC CNI＠AWS EKSアドオン - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS VPC CNI＠AWS EKSアドオン - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-eks-vpc-cniaws-eks" class="md-skip">
+        <a href="#aws-vpc-cniaws-eks" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】AWS EKS VPC CNI＠AWS EKSアドオン
+              【IT技術の知見】AWS VPC CNI＠AWS EKSアドオン
             
           </span>
         </div>
@@ -18957,7 +18957,7 @@
           
   
   <span class="md-ellipsis">
-    AWS EKS VPC CNI
+    AWS VPC CNI
   </span>
   
 
@@ -18968,7 +18968,7 @@
         
   
   <span class="md-ellipsis">
-    AWS EKS VPC CNI
+    AWS VPC CNI
   </span>
   
 
@@ -19001,22 +19001,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#01-aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS EKS VPC CNIとは
+      01. AWS VPC CNIとは
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#02-aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      02. AWS EKS VPC CNIの仕組み
+      02. AWS VPC CNIの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. AWS EKS VPC CNIの仕組み">
+    <nav class="md-nav" aria-label="02. AWS VPC CNIの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -19270,9 +19270,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS EKS VPC CNI
+      ▼ AWS VPC CNI
     </span>
   </a>
   
@@ -23677,22 +23677,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#01-aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS EKS VPC CNIとは
+      01. AWS VPC CNIとは
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#02-aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      02. AWS EKS VPC CNIの仕組み
+      02. AWS VPC CNIの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. AWS EKS VPC CNIの仕組み">
+    <nav class="md-nav" aria-label="02. AWS VPC CNIの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23946,9 +23946,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-eks-vpc-cni" class="md-nav__link">
+  <a href="#aws-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ AWS EKS VPC CNI
+      ▼ AWS VPC CNI
     </span>
   </a>
   
@@ -24051,7 +24051,7 @@
   
 
 
-<h1 id="aws-eks-vpc-cniaws-eks">AWS EKS VPC CNI＠AWS EKSアドオン<a class="headerlink" href="#aws-eks-vpc-cniaws-eks" title="Permanent link">&para;</a></h1>
+<h1 id="aws-vpc-cniaws-eks">AWS VPC CNI＠AWS EKSアドオン<a class="headerlink" href="#aws-vpc-cniaws-eks" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24060,8 +24060,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-eks-vpc-cni">01. AWS EKS VPC CNIとは<a class="headerlink" href="#01-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
-<p>AWS EKS VPC CNIがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
+<h2 id="01-aws-vpc-cni">01. AWS VPC CNIとは<a class="headerlink" href="#01-aws-vpc-cni" title="Permanent link">&para;</a></h2>
+<p>AWS VPC CNIがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
 <p>そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。</p>
 <p><img alt="aws_eks-vpc-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png" /></p>
 <blockquote>
@@ -24072,13 +24072,15 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-aws-eks-vpc-cni">02. AWS EKS VPC CNIの仕組み<a class="headerlink" href="#02-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
+<h2 id="02-aws-vpc-cni">02. AWS VPC CNIの仕組み<a class="headerlink" href="#02-aws-vpc-cni" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>AWS EKS VPC CNIは、L-IPAMデーモン (<code>aws-node</code>という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
+<p>AWS EKSクラスター内に<code>L3</code>を提供する。</p>
+<p>AWS VPC CNIは、L-IPAMデーモン (<code>aws-node</code>という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。</p>
 <p>AWS EKS Cluster内にネットワークを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#understand-security-context">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#understand-security-context</a></li>
+<li><a href="https://sigridjin.medium.com/notes-on-eks-networking-i-aws-cni-e6d97e22dec6">https://sigridjin.medium.com/notes-on-eks-networking-i-aws-cni-e6d97e22dec6</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -24097,7 +24099,7 @@
 <p>L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
 <h4 id="_3">▼ ログ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code>ファイルと<code>/var/log/aws-routed-eni/plugin.log</code>ファイルにログを出力する。</p>
-<p>AWS EKS VPC CNIが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
+<p>AWS VPC CNIが正しく動作しない場合、L-IPAMデーモンのログを確認する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging">https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging</a></li>
@@ -24388,12 +24390,12 @@
 </tr>
 <tr>
 <td><code>AWS_VPC_K8S_CNI_LOGLEVEL</code></td>
-<td>AWS EKS VPC CNIのログレベルを設定する。</td>
+<td>AWS VPC CNIのログレベルを設定する。</td>
 <td><code>DEBUG</code></td>
 </tr>
 <tr>
 <td><code>AWS_VPC_K8S_CNI_LOG_FILE</code></td>
-<td>AWS EKS VPC CNIのログファイルの保管先を設定する。</td>
+<td>AWS VPC CNIのログファイルの保管先を設定する。</td>
 <td><code>/host/var/log/aws-routed-eni/ipamd.log</code></td>
 </tr>
 <tr>
@@ -24408,12 +24410,12 @@
 </tr>
 <tr>
 <td><code>AWS_VPC_K8S_PLUGIN_LOG_FILE</code></td>
-<td>AWS EKS VPC CNIのプラグインのログファイルの保管先を設定する。</td>
+<td>AWS VPC CNIのプラグインのログファイルの保管先を設定する。</td>
 <td><code>/var/log/aws-routed-eni/plugin.log</code></td>
 </tr>
 <tr>
 <td><code>AWS_VPC_K8S_PLUGIN_LOG_LEVEL</code></td>
-<td>AWS EKS VPC CNIのプラグインのログレベルを設定する。</td>
+<td>AWS VPC CNIのプラグインのログレベルを設定する。</td>
 <td><code>DEBUG</code></td>
 </tr>
 <tr>
@@ -24728,14 +24730,14 @@ Capacity:
 </blockquote>
 <p><br></p>
 <h3 id="_14">セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="aws-eks-vpc-cni">▼ AWS EKS VPC CNI<a class="headerlink" href="#aws-eks-vpc-cni" title="Permanent link">&para;</a></h4>
+<h4 id="aws-vpc-cni">▼ AWS VPC CNI<a class="headerlink" href="#aws-vpc-cni" title="Permanent link">&para;</a></h4>
 <p>Prefix delegationモードを採用可能なインスタンスタイプを選ぶ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></li>
 </ul>
 </blockquote>
-<p>AWS EKS VPC CNIの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
+<p>AWS VPC CNIの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
 <span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
@@ -24754,7 +24756,7 @@ Capacity:
 </code></pre></div>
 <h4 id="bootstrapsh">▼ <code>bootstrap.sh</code>ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
 <p>AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。</p>
-<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のAWS EKS VPC CNI)。</p>
+<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のAWS VPC CNI)。</p>
 <p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最大数を計算しておく。</p>
 <p>なお、vCPUが<code>30</code>未満のインスタンスタイプの場合に最大数は<code>110</code>個になり、それ以外の場合は<code>250</code>個になる。</p>
 <p>設定した上限に合わせて、CIDR (サブネット内の<code>*.*.*.*/28</code>) の予約が必要になる。</p>
@@ -24768,7 +24770,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>
 <span class="c1"># --cni-prefix-delegation-enabledオプションを有効化した上でPod最大数を計算する</span>
 $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>EKS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--cni-prefix-delegation-enabled
 </code></pre></div>
 <p><code>bootstrap.sh</code>ファイルに必要なパラメーターを渡す。</p>
@@ -24823,8 +24825,8 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 <h2 id="05">05. 代替<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Antrea (<code>L3</code>/<code>L4</code>)</li>
-<li>Calico</li>
-<li>Cilium</li>
+<li>Calico (<code>L3</code>)</li>
+<li>Cilium (<code>L3</code>/<code>L4</code>/<code>L7</code>)</li>
 <li>Cloud-Native Contail Networking</li>
 </ul>
 <blockquote>
