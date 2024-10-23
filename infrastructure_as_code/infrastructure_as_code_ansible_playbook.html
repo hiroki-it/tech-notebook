@@ -25015,6 +25015,7 @@
 
 <span class="na">...</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="group_vars">group_varsディレクトリ<a class="headerlink" href="#group_vars" title="Permanent link">&para;</a></h3>
 <h4 id="group_vars_1">▼ group_varsディレクトリとは<a class="headerlink" href="#group_vars_1" title="Permanent link">&para;</a></h4>
 <p>複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。</p>
@@ -25060,6 +25061,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reloaded</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="host_vars">host_varsディレクトリ<a class="headerlink" href="#host_vars" title="Permanent link">&para;</a></h3>
 <h4 id="host_vars_1">▼ host_varsディレクトリとは<a class="headerlink" href="#host_vars_1" title="Permanent link">&para;</a></h4>
 <p>特定の管理対象ノードで使用する変数に関するファイルを配置する。</p>
@@ -25235,6 +25237,7 @@
 <span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
 <span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
 </code></pre></div>
+<p><br></p>
 <h2 id="02-roleshandlers">02. /roles/handlersセクション<a class="headerlink" href="#02-roleshandlers" title="Permanent link">&para;</a></h2>
 <h3 id="handlers_1">handlersセクションとは<a class="headerlink" href="#handlers_1" title="Permanent link">&para;</a></h3>
 <p>taskセクションの後に実行するセットアップ処理を設定する。</p>
@@ -25248,16 +25251,19 @@
 <li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="name">name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h3>
 <h4 id="name_1">▼ nameとは<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
 <p>プレイの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup nginx</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="hosts">hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h3>
 <h4 id="hosts_1">▼ hostsとは<a class="headerlink" href="#hosts_1" title="Permanent link">&para;</a></h4>
 <p>プレイの実行先のノードを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="become">become<a class="headerlink" href="#become" title="Permanent link">&para;</a></h3>
 <h4 id="become_1">▼ becomeとは<a class="headerlink" href="#become_1" title="Permanent link">&para;</a></h4>
 <p>プレイをroot権限で実行するか否かを設定する。</p>
@@ -25265,6 +25271,7 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">  </span><span class="nt">become_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-user</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="gather_facts">gather_facts<a class="headerlink" href="#gather_facts" title="Permanent link">&para;</a></h3>
 <h4 id="gather_facts_1">▼ gather_factsとは<a class="headerlink" href="#gather_facts_1" title="Permanent link">&para;</a></h4>
 <p>ファクト変数を収集するか否かを設定する。</p>
@@ -25279,6 +25286,7 @@
 <li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="ansiblebuiltinapt">ansible.builtin.apt<a class="headerlink" href="#ansiblebuiltinapt" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinapt_1">▼ ansible.builtin.aptとは<a class="headerlink" href="#ansiblebuiltinapt_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをaptリポジトリからインストールする。</p>
@@ -25296,6 +25304,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinlineinfile">ansible.builtin.lineinfile<a class="headerlink" href="#ansiblebuiltinlineinfile" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinlineinfile_1">▼ ansible.builtin.lineinfileとは<a class="headerlink" href="#ansiblebuiltinlineinfile_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードにあるファイルを行単位で編集する。</p>
@@ -25337,6 +25346,7 @@
 <span class="w">  </span><span class="c1"># もしrsyslog_conf_file内にデータがあれば、実行する</span>
 <span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rsyslog_conf_file.stat.exists</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinfile">ansible.builtin.file<a class="headerlink" href="#ansiblebuiltinfile" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinfile_1">▼ ansible.builtin.fileとは<a class="headerlink" href="#ansiblebuiltinfile_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードでファイルを操作する。</p>
@@ -25353,6 +25363,7 @@
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltincopy">ansible.builtin.copy<a class="headerlink" href="#ansiblebuiltincopy" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltincopy_1">▼ ansible.builtin.copyとは<a class="headerlink" href="#ansiblebuiltincopy_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードのディレクトリにファイルをコピーする。</p>
@@ -25366,6 +25377,7 @@
 <span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0644</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinget_url">ansible.builtin.get_url<a class="headerlink" href="#ansiblebuiltinget_url" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinget_url_1">▼ ansible.builtin.get_urlとは<a class="headerlink" href="#ansiblebuiltinget_url_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで<code>curl</code>コマンドを実行する。</p>
@@ -25379,6 +25391,7 @@
 <span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-tool.tar.gz</span>
 <span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinservice">ansible.builtin.service<a class="headerlink" href="#ansiblebuiltinservice" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinservice_1">▼ ansible.builtin.serviceとは<a class="headerlink" href="#ansiblebuiltinservice_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで<code>service</code>コマンドの実行を設定する。</p>
@@ -25418,6 +25431,7 @@
 <span class="w">      </span><span class="no">-c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \</span>
 <span class="w">      </span><span class="no">-s</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinsystemd">ansible.builtin.systemd<a class="headerlink" href="#ansiblebuiltinsystemd" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinsystemd_1">▼ ansible.builtin.systemdとは<a class="headerlink" href="#ansiblebuiltinsystemd_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで<code>systemctl</code>コマンドの実行を設定する。</p>
@@ -25477,6 +25491,7 @@
 <li><a href="https://dekitakotono.blogspot.com/2019/05/systemd.html">https://dekitakotono.blogspot.com/2019/05/systemd.html</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="ansiblebuiltintemplate">ansible.builtin.template<a class="headerlink" href="#ansiblebuiltintemplate" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltintemplate_1">▼ ansible.builtin.templateとは<a class="headerlink" href="#ansiblebuiltintemplate_1" title="Permanent link">&para;</a></h4>
 <p>テンプレート (<code>.j2</code>ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。</p>
@@ -25486,6 +25501,7 @@
 <span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.conf.j2</span>
 <span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo/foo.conf</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinunarchive">ansible.builtin.unarchive<a class="headerlink" href="#ansiblebuiltinunarchive" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinunarchive_1">▼ ansible.builtin.unarchiveとは<a class="headerlink" href="#ansiblebuiltinunarchive_1" title="Permanent link">&para;</a></h4>
 <p>コントロールノードまたは管理対象ノードで<code>tar</code>コマンドを実行することにより、圧縮ファイルを解凍する。</p>
@@ -25501,6 +25517,7 @@
 <span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin</span>
 <span class="w">    </span><span class="nt">remote_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span><span class="w"> </span><span class="c1"># 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinuser">ansible.builtin.user<a class="headerlink" href="#ansiblebuiltinuser" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinuser_1">▼ ansible.builtin.userとは<a class="headerlink" href="#ansiblebuiltinuser_1" title="Permanent link">&para;</a></h4>
 <p>シェルのユーザーを操作する。</p>
@@ -25517,6 +25534,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">    </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/false</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinyum">ansible.builtin.yum<a class="headerlink" href="#ansiblebuiltinyum" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinyum_1">▼ ansible.builtin.yumとは<a class="headerlink" href="#ansiblebuiltinyum_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをyumリポジトリからインストールする。</p>
@@ -25540,6 +25558,7 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
 <h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードに設定された環境変数を出力する。</p>
@@ -25574,6 +25593,7 @@
 <span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 </code></pre></div>
+<p><br></p>
 <h2 id="02-04-rolesvars">02-04. /roles/varsセクション<a class="headerlink" href="#02-04-rolesvars" title="Permanent link">&para;</a></h2>
 <h3 id="vars">varsセクションとは<a class="headerlink" href="#vars" title="Permanent link">&para;</a></h3>
 <p>プレイで使用する設定値を変数として設定する。</p>
@@ -25596,6 +25616,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.conf.j2ファイル</span>
 <span class="p p-Indicator">{{</span><span class="nv">foo</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
+<p><br></p>
 <h2 id="02-05">02-05. プラグイン<a class="headerlink" href="#02-05" title="Permanent link">&para;</a></h2>
 <h3 id="lookup">lookup<a class="headerlink" href="#lookup" title="Permanent link">&para;</a></h3>
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
@@ -25615,6 +25636,7 @@
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lookup(&quot;env&quot;,</span><span class="nv"> </span><span class="s">&quot;FOO&quot;)&#39;</span>
 </code></pre></div>
+<p><br></p>
 
 
 
