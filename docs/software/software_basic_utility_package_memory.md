@@ -436,6 +436,7 @@ OPTIONS=foo
 
 > - https://serverfault.com/a/806620
 > - https://oji-cloud.net/2023/10/03/post-7777/
+> - https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200
 
 #### ▼ Installセクション
 

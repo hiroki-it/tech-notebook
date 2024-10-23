@@ -56,9 +56,9 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 システムコールはパラメーターに応じてカーネルを操作し、上位のソフトウェアのプロセスにカーネルの処理結果を返却する。
 
-> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
-
 ![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_system-call.png)
+
+> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
 
 <br>
 

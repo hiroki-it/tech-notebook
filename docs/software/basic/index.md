@@ -24,6 +24,8 @@
 
 * #### [︎ジョブ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html)
 
+* #### [︎セキュリティ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_security_management.html)
+
 <br>
 
 ### <u>ユーティリティ</u>
