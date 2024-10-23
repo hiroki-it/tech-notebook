@@ -262,7 +262,6 @@ nav:
               - CoreDNS: software/software_middleware_dns_coredns.md
               - 設定ファイル: software/software_middleware_dns_coredns_conf.md
       - ■ セキュリティ系:
-          - Linux標準: software/software_middleware_security_linux.md
           - ■ Cert Manager:
               - Cert Manager: software/software_middleware_security_cert_manager.md
               - リソース定義: software/software_middleware_security_cert_manager_resource_definition.md
@@ -291,6 +290,7 @@ nav:
           - ストレージ管理: software/software_basic_linux_kernel_storage_management.md
           - I/O (入出力) 管理: software/software_basic_linux_kernel_io_management.md
           - ジョブ管理: software/software_basic_linux_kernel_job_management.md
+          - セキュリティ管理: software/software_basic_linux_kernel_security_management.md
       - ■ ユーティリティ:
           - ユーティリティ: software/software_basic_utility.md
           - Unix系標準ユーティリティ: software/software_basic_utility_unix.md
