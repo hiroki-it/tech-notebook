@@ -182,6 +182,8 @@ PHP製のアプリケーションが稼働するappサーバーをセットア�
 ...
 ```
 
+<br>
+
 ### group_varsディレクトリ
 
 #### ▼ group_varsディレクトリとは
@@ -232,6 +234,8 @@ ports:
     name: firewalld
     state: reloaded
 ```
+
+<br>
 
 ### host_varsディレクトリ
 
@@ -431,6 +435,8 @@ ansible_password=ubuntu
 ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 ```
 
+<br>
+
 ## 02. /roles/handlersセクション
 
 ### handlersセクションとは
@@ -438,6 +444,7 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 taskセクションの後に実行するセットアップ処理を設定する。
 
 <br>
+
 ## 02-02. /roles/targetsセクション
 
 ### targetsセクションとは
@@ -447,6 +454,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 必須である。
 
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+
+<br>
 
 ### name
 
@@ -458,6 +467,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 - name: Setup nginx
 ```
 
+<br>
+
 ### hosts
 
 #### ▼ hostsとは
@@ -467,6 +478,8 @@ taskセクションの後に実行するセットアップ処理を設定する�
 ```yaml
 - hosts: all
 ```
+
+<br>
 
 ### become
 
@@ -480,6 +493,8 @@ root以外であれば、`become_user`キーを設定する。
 - become: yes
   become_user: foo-user
 ```
+
+<br>
 
 ### gather_facts
 
@@ -501,6 +516,8 @@ root以外であれば、`become_user`キーを設定する。
 
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
 
+<br>
+
 ### ansible.builtin.apt
 
 #### ▼ ansible.builtin.aptとは
@@ -521,6 +538,8 @@ root以外であれば、`become_user`キーを設定する。
     name: nginx=1.0.0
     state: present
 ```
+
+<br>
 
 ### ansible.builtin.lineinfile
 
@@ -574,6 +593,8 @@ SELinuxを無効化する。
   when: rsyslog_conf_file.stat.exists
 ```
 
+<br>
+
 ### ansible.builtin.file
 
 #### ▼ ansible.builtin.fileとは
@@ -594,6 +615,8 @@ SELinuxを無効化する。
     group: root
 ```
 
+<br>
+
 ### ansible.builtin.copy
 
 #### ▼ ansible.builtin.copyとは
@@ -613,6 +636,8 @@ SELinuxを無効化する。
     mode: 0644
 ```
 
+<br>
+
 ### ansible.builtin.get_url
 
 #### ▼ ansible.builtin.get_urlとは
@@ -627,6 +652,8 @@ SELinuxを無効化する。
     url: https://github.com/hiroki-hasegawa/foo-tool.tar.gz
     dest: .
 ```
+
+<br>
 
 ### ansible.builtin.service
 
@@ -676,6 +703,8 @@ SELinuxを無効化する。
       -s
 ```
 
+<br>
+
 ### ansible.builtin.systemd
 
 #### ▼ ansible.builtin.systemdとは
@@ -721,6 +750,8 @@ SELinuxを無効化する。
 
 > - https://dekitakotono.blogspot.com/2019/05/systemd.html
 
+<br>
+
 ### ansible.builtin.template
 
 #### ▼ ansible.builtin.templateとは
@@ -735,6 +766,8 @@ SELinuxを無効化する。
     src: foo.conf.j2
     dest: /etc/foo/foo.conf
 ```
+
+<br>
 
 ### ansible.builtin.unarchive
 
@@ -753,6 +786,8 @@ SELinuxを無効化する。
     dest: /usr/local/bin
     remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。
 ```
+
+<br>
 
 ### ansible.builtin.user
 
@@ -774,6 +809,8 @@ SELinuxを無効化する。
     name: foo
     shell: /bin/false
 ```
+
+<br>
 
 ### ansible.builtin.yum
 
@@ -803,6 +840,8 @@ SELinuxを無効化する。
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     state: present
 ```
+
+<br>
 
 ### ansible_env
 
@@ -849,6 +888,8 @@ task内で出力できる環境変数を設定する。
     FOO: FOO
 ```
 
+<br>
+
 ## 02-04. /roles/varsセクション
 
 ### varsセクションとは
@@ -877,6 +918,8 @@ task内で出力できる環境変数を設定する。
 {{foo}}
 ```
 
+<br>
+
 ## 02-05. プラグイン
 
 ### lookup
@@ -900,3 +943,5 @@ task内で出力できる環境変数を設定する。
   vars:
     foo: 'lookup("env", "FOO")'
 ```
+
+<br>
