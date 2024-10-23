@@ -678,6 +678,8 @@ SELinuxを無効化する。
     enabled: "yes"
 ```
 
+<br>
+
 ### ansible.builtin.shell
 
 #### ▼ ansible.builtin.shellとは
