@@ -545,6 +545,35 @@ SELinuxを無効化する。
     line: "SELINUX=disabled"
 ```
 
+**＊実装例＊**
+
+```yaml
+# unlimitの設定を追加します
+- name: Add ulimit setting
+  lineinfile:
+    path: /etc/systemd/system.conf.d/50-limits.conf
+    regexp: "^DefaultLimitNOFILE=.*$"
+    line: "DefaultLimitNOFILE=65536:65536"
+```
+
+**＊実装例＊**
+
+```yaml
+# rsyslog_conf_fileにstatを格納する
+- name: Check if /etc/rsyslog.conf exists
+  ansible.builtin.stat:
+    path: /etc/rsyslog.conf
+  register: rsyslog_conf_file
+
+- name: Create rsyslog.conf
+  ansible.builtin.lineinfile:
+    line: "$FileCreateMode 0640"
+    regexp: "^$FileCreateMode"
+    path: /etc/rsyslog.conf
+  # もしrsyslog_conf_file内にデータがあれば、実行する
+  when: rsyslog_conf_file.stat.exists
+```
+
 ### ansible.builtin.file
 
 #### ▼ ansible.builtin.fileとは

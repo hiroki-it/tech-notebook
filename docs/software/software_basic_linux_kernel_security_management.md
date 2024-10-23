@@ -13,7 +13,20 @@ description: セキュリティ＠基本ソフトウェアの知見を記録し�
 
 <br>
 
-## 01. SELinux：Security Enhanced Linux
+## /etc/security
+
+### limits
+
+システムのリソース (プロセス数、ファイル数など) を制限する。
+
+`/etc/systemd/limits.conf`ファイルとしても設定できる。
+
+> - https://qiita.com/hot_study_man/items/24e2bb953d4dca539c75
+> - https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200
+
+<br>
+
+## 02. SELinux：Security Enhanced Linux
 
 ### SELinuxとは
 
