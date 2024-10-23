@@ -11,6 +11,8 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 > - https://hiroki-it.github.io/tech-notebook/
 
+<br>
+
 ## 01. playbookファイル
 
 ### playbookファイルとは
@@ -78,6 +80,8 @@ repository/
 ```
 
 > - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+
+<br>
 
 ## 01-02. playbookファイルの切り分け
 
@@ -595,6 +599,27 @@ SELinuxを無効化する。
 
 <br>
 
+### ansible.builtin.copy
+
+#### ▼ ansible.builtin.copyとは
+
+管理対象ノードのディレクトリにファイルをコピーする。
+
+**＊実装例＊**
+
+```yaml
+# 設定ファイルを配置します。
+- name: Copy foo.json
+  ansible.builtin.copy:
+    src: foo.json
+    dest: /etc/foo.json
+    owner: root
+    group: root
+    mode: 0644
+```
+
+<br>
+
 ### ansible.builtin.file
 
 #### ▼ ansible.builtin.fileとは
@@ -613,27 +638,6 @@ SELinuxを無効化する。
     path: /usr/local/bin/foo-binary
     owner: root
     group: root
-```
-
-<br>
-
-### ansible.builtin.copy
-
-#### ▼ ansible.builtin.copyとは
-
-管理対象ノードのディレクトリにファイルをコピーする。
-
-**＊実装例＊**
-
-```yaml
-# 設定ファイルを配置します。
-- name: Copy foo.json
-  ansible.builtin.copy:
-    src: foo.json
-    dest: /etc/foo.json
-    owner: root
-    group: root
-    mode: 0644
 ```
 
 <br>
@@ -775,8 +779,6 @@ SELinuxを無効化する。
 
 コントロールノードまたは管理対象ノードで`tar`コマンドを実行することにより、圧縮ファイルを解凍する。
 
-> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
-
 **＊実装例＊**
 
 ```yaml
@@ -786,6 +788,8 @@ SELinuxを無効化する。
     dest: /usr/local/bin
     remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。
 ```
+
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
 
 <br>
 
@@ -829,6 +833,7 @@ SELinuxを無効化する。
 # nginxをインストールします。
 - name: Install Nginx
   ansible.builtin.yum:
+    # バージョンを指定する
     name: nginx=1.0.0
     state: present
 ```
@@ -840,6 +845,8 @@ SELinuxを無効化する。
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     state: present
 ```
+
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state
 
 <br>
 
