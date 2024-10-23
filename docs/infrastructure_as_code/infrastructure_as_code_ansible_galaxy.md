@@ -47,7 +47,10 @@ repository/
 
 ```yaml
 galaxy_info:
+  author: foo
+  description: common role
   min_ansible_version: "1.0.0"
+  galaxy_tags: []
 dependencies: []
 ```
 

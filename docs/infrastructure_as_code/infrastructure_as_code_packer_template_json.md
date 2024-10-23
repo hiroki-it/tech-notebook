@@ -152,23 +152,15 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 EC2に紐付けるルートデバイスボリュームを設定する。
 
 ```yaml
-{
-  "builders":
-    [
-      {
-        "type": "amazon-ebs",
-        "launch_block_device_mappings":
-          [
+{"builders": [{"type": "amazon-ebs", "launch_block_device_mappings": [
             {
               "device_name": "/dev/xvda",
               "volume_type": "gp2",
+              # AMIの作成後に、元となったEC2のボリュームを削除する
               "delete_on_termination": "true",
               "volume_size": "300",
             },
-          ],
-      },
-    ],
-}
+          ]}]}
 ```
 
 #### ▼ region

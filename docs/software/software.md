@@ -195,7 +195,7 @@ Debian GNU/Linux 10 \n \l
 
 #### ▼ RedHat系統
 
-RedHat、CentOS、Fedoraなど
+RHEL、CentOS、Fedoraなど
 
 ```bash
 # 確認方法

@@ -424,6 +424,8 @@ ExecReload=/usr/sbin/httpd $OPTIONS -k graceful
 ExecStop=/bin/kill -WINCH ${MAINPID}
 KillSignal=SIGCONT
 PrivateTmp=true
+# ulimitコマンドのnオプションに相当する
+LimitNOFILE=12345
 ```
 
 `EnvironmentFile`として使用する`sysconfig`ファイルには、`.env`ファイルと同じような形式のものを作成する。
@@ -433,6 +435,7 @@ OPTIONS=foo
 ```
 
 > - https://serverfault.com/a/806620
+> - https://oji-cloud.net/2023/10/03/post-7777/
 
 #### ▼ Installセクション
 
