@@ -15177,30 +15177,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ansiblebuiltinfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      ansible.builtin.file
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ansible.builtin.file">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ansible.builtin.fileとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ansiblebuiltincopy" class="md-nav__link">
     <span class="md-ellipsis">
       ansible.builtin.copy
@@ -15214,6 +15190,30 @@
   <a href="#ansiblebuiltincopy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ansible.builtin.copyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ansible.builtin.fileとは
     </span>
   </a>
   
@@ -24485,30 +24485,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ansiblebuiltinfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      ansible.builtin.file
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ansible.builtin.file">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ansible.builtin.fileとは
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#ansiblebuiltincopy" class="md-nav__link">
     <span class="md-ellipsis">
       ansible.builtin.copy
@@ -24522,6 +24498,30 @@
   <a href="#ansiblebuiltincopy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ansible.builtin.copyとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ansible.builtin.fileとは
     </span>
   </a>
   
@@ -24875,6 +24875,7 @@
 <li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h2 id="01-playbook">01. playbookファイル<a class="headerlink" href="#01-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="playbook">playbookファイルとは<a class="headerlink" href="#playbook" title="Permanent link">&para;</a></h3>
 <p>サーバーのセットアップ処理を設定する。</p>
@@ -24934,6 +24935,7 @@
 <li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h2 id="01-02-playbook">01-02. playbookファイルの切り分け<a class="headerlink" href="#01-02-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="roles">rolesディレクトリ<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
 <h4 id="roles_1">▼ rolesディレクトリとは<a class="headerlink" href="#roles_1" title="Permanent link">&para;</a></h4>
@@ -25347,6 +25349,20 @@
 <span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rsyslog_conf_file.stat.exists</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="ansiblebuiltincopy">ansible.builtin.copy<a class="headerlink" href="#ansiblebuiltincopy" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltincopy_1">▼ ansible.builtin.copyとは<a class="headerlink" href="#ansiblebuiltincopy_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードのディレクトリにファイルをコピーする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 設定ファイルを配置します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy foo.json</span>
+<span class="w">  </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.json</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo.json</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0644</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinfile">ansible.builtin.file<a class="headerlink" href="#ansiblebuiltinfile" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinfile_1">▼ ansible.builtin.fileとは<a class="headerlink" href="#ansiblebuiltinfile_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードでファイルを操作する。</p>
@@ -25362,20 +25378,6 @@
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/foo-binary</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="ansiblebuiltincopy">ansible.builtin.copy<a class="headerlink" href="#ansiblebuiltincopy" title="Permanent link">&para;</a></h3>
-<h4 id="ansiblebuiltincopy_1">▼ ansible.builtin.copyとは<a class="headerlink" href="#ansiblebuiltincopy_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードのディレクトリにファイルをコピーする。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 設定ファイルを配置します。</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy foo.json</span>
-<span class="w">  </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.json</span>
-<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo.json</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0644</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="ansiblebuiltinget_url">ansible.builtin.get_url<a class="headerlink" href="#ansiblebuiltinget_url" title="Permanent link">&para;</a></h3>
@@ -25505,11 +25507,6 @@
 <h3 id="ansiblebuiltinunarchive">ansible.builtin.unarchive<a class="headerlink" href="#ansiblebuiltinunarchive" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinunarchive_1">▼ ansible.builtin.unarchiveとは<a class="headerlink" href="#ansiblebuiltinunarchive_1" title="Permanent link">&para;</a></h4>
 <p>コントロールノードまたは管理対象ノードで<code>tar</code>コマンドを実行することにより、圧縮ファイルを解凍する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unarchive file</span>
 <span class="w">  </span><span class="nt">ansible.builtin.unarchive</span><span class="p">:</span>
@@ -25517,6 +25514,11 @@
 <span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin</span>
 <span class="w">    </span><span class="nt">remote_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span><span class="w"> </span><span class="c1"># 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ansiblebuiltinuser">ansible.builtin.user<a class="headerlink" href="#ansiblebuiltinuser" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinuser_1">▼ ansible.builtin.userとは<a class="headerlink" href="#ansiblebuiltinuser_1" title="Permanent link">&para;</a></h4>
@@ -25549,6 +25551,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
 <span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># バージョンを指定する</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
@@ -25558,6 +25561,11 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
 <h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
