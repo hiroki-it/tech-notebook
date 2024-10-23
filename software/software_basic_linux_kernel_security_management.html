@@ -6,31 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Linux標準＠セキュリティ系ミドルウェアの知見を記録しています。">
+        <meta name="description" content="セキュリティ＠基本ソフトウェアの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_linux.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_security_management.html">
       
       
-        <link rel="prev" href="software_middleware_dns_coredns_conf.html">
+        <link rel="prev" href="software_basic_linux_kernel_job_management.html">
       
       
-        <link rel="next" href="software_middleware_security_cert_manager.html">
+        <link rel="next" href="software_basic_utility.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>【IT技術の知見】Linux標準＠セキュリティ系ミドルウェア - 俺の技術ノート</title>
+        <title>【IT技術の知見】セキュリティ＠基本ソフトウェア - 俺の技術ノート</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Linux標準＠セキュリティ系ミドルウェア
+              【IT技術の知見】セキュリティ＠基本ソフトウェア
             
           </span>
         </div>
@@ -294,12 +294,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="middleware/index.html" class="md-tabs__link">
           
   
@@ -316,10 +314,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="basic/index.html" class="md-tabs__link">
           
   
@@ -2357,8 +2357,6 @@
       
   
   
-    
-  
   
   
     
@@ -2389,17 +2387,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           
@@ -2415,13 +2412,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -4720,14 +4717,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
       
         
       
@@ -4743,11 +4736,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9" >
         
           
           <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
@@ -4761,132 +4756,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_9">
             <span class="md-nav__icon md-icon"></span>
             ■ セキュリティ系
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Linux標準
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_middleware_security_linux.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Linux標準
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-selinuxsecurity-enhanced-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. SELinux：Security Enhanced Linux
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. SELinux：Security Enhanced Linux">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#selinux" class="md-nav__link">
-    <span class="md-ellipsis">
-      SELinuxとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      設定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="設定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#selinux_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ SELinuxの無効化
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
             
               
                 
@@ -4913,10 +4788,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_1" >
         
           
-          <label class="md-nav__link" for="__nav_6_9_2" id="__nav_6_9_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9_1" id="__nav_6_9_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4927,8 +4802,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_1">
             <span class="md-nav__icon md-icon"></span>
             ■ Cert Manager
           </label>
@@ -5009,10 +4884,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_9_3" id="__nav_6_9_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9_2" id="__nav_6_9_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5023,8 +4898,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Falco
           </label>
@@ -5105,10 +4980,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_9_4" id="__nav_6_9_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9_3" id="__nav_6_9_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5119,8 +4994,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_3">
             <span class="md-nav__icon md-icon"></span>
             ■ Keycloak
           </label>
@@ -5170,10 +5045,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_4_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_9_4_2" id="__nav_6_9_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9_3_2" id="__nav_6_9_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5184,8 +5059,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_9_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9_4_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_9_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_3_2">
             <span class="md-nav__icon md-icon"></span>
             ■ クライアントパッケージ
           </label>
@@ -5253,10 +5128,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_9_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_9_5" id="__nav_6_9_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9_4" id="__nav_6_9_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -5267,8 +5142,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9_4">
             <span class="md-nav__icon md-icon"></span>
             ■ OAuth2 Proxy
           </label>
@@ -5566,6 +5441,8 @@
       
   
   
+    
+  
   
   
     
@@ -5584,16 +5461,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           
@@ -5609,13 +5487,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             🐧 OS
@@ -5628,8 +5506,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -5645,19 +5525,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
         
           
           <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
@@ -5671,7 +5551,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             ■ Linuxカーネル
@@ -5799,6 +5679,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    セキュリティ管理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_basic_linux_kernel_security_management.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    セキュリティ管理
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      はじめに
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-selinuxsecurity-enhanced-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. SELinux：Security Enhanced Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. SELinux：Security Enhanced Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELinuxとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selinux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SELinuxの無効化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -23359,7 +23359,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -23387,7 +23387,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       設定
     </span>
@@ -23433,8 +23433,8 @@
   
 
 
-<h1 id="linux">Linux標準＠セキュリティ系ミドルウェア<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">セキュリティ＠基本ソフトウェア<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23446,7 +23446,7 @@
 <h3 id="selinux">SELinuxとは<a class="headerlink" href="#selinux" title="Permanent link">&para;</a></h3>
 <p>Linuxにデフォルトで導入されているミドルウェアで、セキュリティを制御する。</p>
 <p><br></p>
-<h3 id="_2">設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">設定<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="selinux_1">▼ SELinuxの無効化<a class="headerlink" href="#selinux_1" title="Permanent link">&para;</a></h4>
 <p>アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。</p>
 <dl>
@@ -23584,7 +23584,7 @@ Enforcing
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
