@@ -147,15 +147,15 @@ GET https://www.facebook.com/auth?<下表で説明>
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
-| クエリストリングの種類 | 値               | 認可リクエスト時に必須/任意 |
-| ---------------------- | ---------------- | --------------------------- |
-| `response_type`        | code             | 必須                        |
-| `client_id`            | クライアントID   | 必須                        |
-| `redirect_uri`         | リダイレクトURL  | 条件により必須              |
-| `state`                | 任意の文字列     | 推奨                        |
-| `scope`                | クレームグループ | 任意                        |
-| `code_challenge`       | チャレンジ       | 任意                        |
-| `code_challege_method` | メソッド         | 任意                        |
+| クエリストリングの種類 | 値                                       | 認可リクエスト時に必須/任意 |
+| ---------------------- | ---------------------------------------- | --------------------------- |
+| `response_type`        | 認可コードフローを指定する場合は、`code` | 必須                        |
+| `client_id`            | クライアントID                           | 必須                        |
+| `redirect_uri`         | リダイレクトURL                          | 条件により必須              |
+| `state`                | 任意の文字列                             | 推奨                        |
+| `scope`                | クレームグループ                         | 任意                        |
+| `code_challenge`       | チャレンジ                               | 任意                        |
+| `code_challege_method` | メソッド                                 | 任意                        |
 
 > - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
 

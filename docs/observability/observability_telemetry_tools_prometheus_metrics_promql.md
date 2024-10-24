@@ -95,6 +95,30 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
+任意の期間内に関して、Istioの`istio-proxy`コンテナの受信リクエストのテータポイント数の増加量を算出する。
+
+```bash
+sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
+```
+
+**例**
+
+任意の期間内に関して、Istioの`istio-proxy`コンテナの処理時間の一番高い値を算出する。
+
+```bash
+max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
+```
+
+**例**
+
+任意の期間内に関して、Istioの`istio-proxy`コンテナの処理時間の平均を算出する。
+
+```bash
+avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
+```
+
+**例**
+
 複数の種類で集約することもできる。
 
 直近1時間に関して、Istioの`istio-proxy`コンテナで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%`変数) を、Pod名、変数値、の種類ごとに集約する。
