@@ -15565,6 +15565,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazonawsec2_ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      amazon.aws.ec2_ami
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24897,6 +24921,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazonawsec2_ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      amazon.aws.ec2_ami
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -25735,6 +25783,37 @@
 <span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lookup(&quot;env&quot;,</span><span class="nv"> </span><span class="s">&quot;FOO&quot;)&#39;</span>
 </code></pre></div>
+<p><br></p>
+<h2 id="03-aws">03. AWS<a class="headerlink" href="#03-aws" title="Permanent link">&para;</a></h2>
+<h3 id="amazonawsec2_ami">amazon.aws.ec2_ami<a class="headerlink" href="#amazonawsec2_ami" title="Permanent link">&para;</a></h3>
+<p>AWS EC2を作成する。</p>
+<p>これはTerraformでも代替できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic AMI Creation</span>
+<span class="w">  </span><span class="nt">amazon.aws.ec2_ami</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">i-xxxxxx</span>
+<span class="w">    </span><span class="nt">wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newtest</span>
+<span class="w">    </span><span class="nt">architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+<span class="w">    </span><span class="nt">virtualization_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hvm</span>
+<span class="w">    </span><span class="nt">root_device_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/xvda</span>
+<span class="w">    </span><span class="nt">device_mapping</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">device_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/sda1</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XXX</span>
+<span class="w">        </span><span class="nt">delete_on_termination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">device_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/sdb</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YYY</span>
+<span class="w">        </span><span class="nt">delete_on_termination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp2</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newtest</span>
+<span class="w">      </span><span class="nt">Service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TestService</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_ami_module.html#examples">https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_ami_module.html#examples</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
