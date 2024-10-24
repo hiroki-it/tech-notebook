@@ -15153,6 +15153,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ansiblebuiltindnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.dnf
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.dnf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltindnf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ansible.builtin.dnfとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ansiblebuiltinlineinfile" class="md-nav__link">
     <span class="md-ellipsis">
       ansible.builtin.lineinfile
@@ -24461,6 +24485,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ansiblebuiltindnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ansible.builtin.dnf
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.dnf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltindnf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ansible.builtin.dnfとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ansiblebuiltinlineinfile" class="md-nav__link">
     <span class="md-ellipsis">
       ansible.builtin.lineinfile
@@ -25307,6 +25355,48 @@
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="ansiblebuiltindnf">ansible.builtin.dnf<a class="headerlink" href="#ansiblebuiltindnf" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltindnf_1">▼ ansible.builtin.dnfとは<a class="headerlink" href="#ansiblebuiltindnf_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで、パッケージをdnfリポジトリからインストールする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># cloudwatchエージェントをインストールする。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install amazon-cloudwatch-agent</span>
+<span class="w">  </span><span class="nt">ansible.builtin.dnf</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon-cloudwatch-agent</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="c1"># カスタムメトリクスを収集するために、collectdをインストールする。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install collectd</span>
+<span class="w">  </span><span class="nt">ansible.builtin.dnf</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">collectd</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="c1"># 設定ファイルを配置する。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">copy amazon-cloudwatch-agent.json</span>
+<span class="w">  </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon-cloudwatch-agent.json</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0644</span>
+
+<span class="c1"># cloudwatchエージェントを起動する。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fetch-config config.json</span>
+<span class="w">  </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \</span>
+<span class="w">      </span><span class="no">-a fetch-config \</span>
+<span class="w">      </span><span class="no">-m ec2 \</span>
+<span class="w">      </span><span class="no">-c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \</span>
+<span class="w">      </span><span class="no">-s</span>
+
+<span class="c1"># cloudwatchエージェントをsystemdで管理する。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enable cloudwatch-agent</span>
+<span class="w">  </span><span class="nt">ansible.builtin.systemd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon-cloudwatch-agent</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="ansiblebuiltinlineinfile">ansible.builtin.lineinfile<a class="headerlink" href="#ansiblebuiltinlineinfile" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinlineinfile_1">▼ ansible.builtin.lineinfileとは<a class="headerlink" href="#ansiblebuiltinlineinfile_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードにあるファイルを行単位で編集する。</p>
@@ -25666,7 +25756,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-24</span>
   </span>
 
     
