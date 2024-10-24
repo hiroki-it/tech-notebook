@@ -545,6 +545,55 @@ root以外であれば、`become_user`キーを設定する。
 
 <br>
 
+### ansible.builtin.dnf
+
+#### ▼ ansible.builtin.dnfとは
+
+管理対象ノードで、パッケージをdnfリポジトリからインストールする。
+
+**＊実装例＊**
+
+```yaml
+# cloudwatchエージェントをインストールする。
+- name: install amazon-cloudwatch-agent
+  ansible.builtin.dnf:
+    name: amazon-cloudwatch-agent
+    state: present
+
+# カスタムメトリクスを収集するために、collectdをインストールする。
+- name: install collectd
+  ansible.builtin.dnf:
+    name: collectd
+    state: present
+
+# 設定ファイルを配置する。
+- name: copy amazon-cloudwatch-agent.json
+  ansible.builtin.copy:
+    src: amazon-cloudwatch-agent.json
+    dest: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+    owner: root
+    group: root
+    mode: 0644
+
+# cloudwatchエージェントを起動する。
+- name: fetch-config config.json
+  ansible.builtin.shell: |
+    /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+      -a fetch-config \
+      -m ec2 \
+      -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+      -s
+
+# cloudwatchエージェントをsystemdで管理する。
+- name: enable cloudwatch-agent
+  ansible.builtin.systemd:
+    name: amazon-cloudwatch-agent
+    enabled: yes
+    daemon_reload: yes
+```
+
+<br>
+
 ### ansible.builtin.lineinfile
 
 #### ▼ ansible.builtin.lineinfileとは

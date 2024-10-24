@@ -19,17 +19,21 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 > - http://delftswa.github.io/chapters/vagrant/
 
+<br>
+
 ### ユースケース
 
 Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。
 
 Vagrantfile自体をプロビジョナーとして使用もできる。
 
-仮想環境として仮想サーバーとコンテナを選択できるが、Vagrantは仮想サーバーの作成のために使用することが多い。
+プロビジョニングによりサーバー (物理サーバー、仮想サーバー) とコンテナを作成できる。
 
-> - https://computationalmodelling.bitbucket.io/tools/vagrant.html
+ただし、Vagrantは仮想サーバーの作成のために使用することが多い。
 
 ![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vagrant_provider_provisioner.png)
+
+> - https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
 <br>
 

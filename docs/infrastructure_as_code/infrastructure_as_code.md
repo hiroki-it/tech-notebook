@@ -97,7 +97,9 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 ### サーバー系
 
-#### ▼ サーバープロビジョニング (物理/仮想)
+#### ▼ サーバープロビジョニング (物理サーバー、仮想サーバー)
+
+プロビジョニングにより、物理サーバーまたは仮想サーバーを作成する。
 
 - Ansible
 - Chef
@@ -108,6 +110,8 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 #### ▼ コンテナプロビジョニング
 
+プロビジョニングにより、コンテナを作成する。
+
 - Ansible Container
 - Dockerfile
 
@@ -116,6 +120,8 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 ### クラウドインフラストラクチャ系
 
 #### ▼ クラウドインフラストラクチャプロビジョニング
+
+プロビジョニングにより、クラウドインフラストラクチャを作成する。
 
 - Ansible
 
@@ -138,13 +144,17 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 ### サーバー系
 
-#### ▼ サーバープロビジョニング (物理/仮想)
+#### ▼ サーバープロビジョニング (物理サーバー、仮想サーバー)
+
+プロビジョニングにより、物理サーバーまたは仮想サーバーを作成する。
 
 - CFEngine
 - Puppet
 - Vagrantfile
 
 #### ▼ マシンイメージプロビジョニング
+
+プロビジョニングにより、マシンイメージを作成する。
 
 - Packer
 
@@ -154,9 +164,13 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 #### ▼ コンテナプロビジョニング
 
+プロビジョニングにより、コンテナを作成する。
+
 - Vagrantfile
 
 #### ▼ コンテナイメージプロビジョニング
+
+プロビジョニングにより、コンテナイメージを作成する。
 
 - Packer
 
@@ -176,6 +190,8 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 ### クラウドインフラストラクチャ系
 
 #### ▼ クラウドインフラストラクチャプロビジョニング
+
+プロビジョニングにより、クラウドインフラストラクチャを作成する。
 
 - AWS CloudFormation
 - Azure Resource Manager

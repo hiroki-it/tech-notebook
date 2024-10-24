@@ -17,7 +17,7 @@ description: IOT＠Kubernetesの知見を記録しています。
 
 IOTの文脈で、インターネットに接続する機器をエッジデバイスという。
 
-エッジデバイス上でKubernetesを実行するツールがある。
+エッジデバイス上でKubernetesを実行するためのツールがある。
 
 - KubeEdge
 
