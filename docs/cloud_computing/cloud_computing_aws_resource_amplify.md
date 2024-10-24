@@ -15,7 +15,7 @@ description: Amplify＠AWSリソースの知見を記録しています。
 
 ## 01. Amplifyとは
 
-サーバーレスアプリケーションを作成するためのクラウドインフラストラクチャのフレームワーク。
+サーバーレスアプリケーションを作成するためのクラウドインフラのフレームワーク。
 
 > - https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 

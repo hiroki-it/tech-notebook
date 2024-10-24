@@ -147,7 +147,7 @@ $ terraform apply \
 
 #### ▼ -var-file
 
-クラウドプロバイダー上にクラウドインフラストラクチャを作成する。
+クラウドプロバイダー上にクラウドインフラを作成する。
 
 ```bash
 $ terraform apply -var-file foo.tfvars
