@@ -1003,3 +1003,38 @@ task内で出力できる環境変数を設定する。
 ```
 
 <br>
+
+## 03. AWS
+
+### amazon.aws.ec2_ami
+
+AWS EC2を作成する。
+
+これはTerraformでも代替できる。
+
+```yaml
+- name: Basic AMI Creation
+  amazon.aws.ec2_ami:
+    instance_id: i-xxxxxx
+    wait: true
+    name: newtest
+    architecture: x86_64
+    virtualization_type: hvm
+    root_device_name: /dev/xvda
+    device_mapping:
+      - device_name: /dev/sda1
+        size: XXX
+        delete_on_termination: true
+        volume_type: gp2
+      - device_name: /dev/sdb
+        size: YYY
+        delete_on_termination: false
+        volume_type: gp2
+    tags:
+      Name: newtest
+      Service: TestService
+```
+
+> - https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_ami_module.html#examples
+
+<br>
