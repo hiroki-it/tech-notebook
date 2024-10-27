@@ -63,6 +63,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 > - https://www.jerney.io/secure-apis-kong-keycloak-1/
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
+> - https://www.altkomsoftware.com/blog/keycloak-security-in-microservices/
 > - https://stackoverflow.com/a/53396041
 
 <br>

@@ -1452,6 +1452,16 @@ nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ
 
 ## lsof：List open file
 
+### -i
+
+使用中のポートを全て取得する。
+
+```bash
+$ lsof -i
+```
+
+<br>
+
 ### -i、-P
 
 使用中のポートをプロセス別に取得する。
