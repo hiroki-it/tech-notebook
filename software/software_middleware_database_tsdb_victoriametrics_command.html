@@ -4002,6 +4002,63 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02-vmctl-prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. vmctl-prod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. vmctl-prod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm-native
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apiv1export" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiv1import" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23583,6 +23640,63 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02-vmctl-prod" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. vmctl-prod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. vmctl-prod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      vm-native
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apiv1export" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiv1import" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23754,6 +23868,34 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="02-vmctl-prod">02. vmctl-prod<a class="headerlink" href="#02-vmctl-prod" title="Permanent link">&para;</a></h2>
+<h3 id="vm-native">vm-native<a class="headerlink" href="#vm-native" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vm-native-filter-time-start<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vm-native-src-addr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vm-native-dst-addr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;<span class="w"> </span>data.json
+</code></pre></div>
+<p><br></p>
+<h2 id="03-api">03. API<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
+<h3 id="apiv1export">/api/v1/export<a class="headerlink" href="#apiv1export" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;match[]=vm_http_request_errors_total&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>filename.json
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/#how-to-export-time-series">https://docs.victoriametrics.com/#how-to-export-time-series</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="apiv1import">/api/v1/import<a class="headerlink" href="#apiv1import" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/import<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>--data-binary<span class="w"> </span><span class="s2">&quot;@filename.json&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/#how-to-export-time-series">https://docs.victoriametrics.com/#how-to-export-time-series</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -23774,7 +23916,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-28</span>
   </span>
 
     
