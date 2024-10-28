@@ -4054,6 +4054,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#apiv1query" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiv1write" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/write
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23692,6 +23710,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#apiv1query" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiv1write" class="md-nav__link">
+    <span class="md-ellipsis">
+      /api/v1/write
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23870,16 +23906,26 @@
 <p><br></p>
 <h2 id="02-vmctl-prod">02. vmctl-prod<a class="headerlink" href="#02-vmctl-prod" title="Permanent link">&para;</a></h2>
 <h3 id="vm-native">vm-native<a class="headerlink" href="#vm-native" title="Permanent link">&para;</a></h3>
+<p>指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>vm-native-filter-time-start<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>vm-native-src-addr<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>vm-native-dst-addr<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&gt;<span class="w"> </span>data.json
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/vmctl/">https://docs.victoriametrics.com/vmctl/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03-api">03. API<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
 <h3 id="apiv1export">/api/v1/export<a class="headerlink" href="#apiv1export" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;match[]=vm_http_request_errors_total&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>filename.json
+<p>エンドポイントからデータを取得し、データをエクスポートする。</p>
+<p>JSON、CSV、バイナリ、Prometheusの形式を選べる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;match[]=vm_http_request_errors_total&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;<span class="w"> </span>filename.json
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23888,11 +23934,41 @@
 </blockquote>
 <p><br></p>
 <h3 id="apiv1import">/api/v1/import<a class="headerlink" href="#apiv1import" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/import<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>--data-binary<span class="w"> </span><span class="s2">&quot;@filename.json&quot;</span>
+<p>エンドポイントにデータを送信し、データをインポートする。</p>
+<p>JSON、CSV、バイナリ、Prometheusの形式を選べる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data-binary<span class="w"> </span><span class="s2">&quot;@filename.json&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.victoriametrics.com/#how-to-export-time-series">https://docs.victoriametrics.com/#how-to-export-time-series</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="apiv1query">/api/v1/query<a class="headerlink" href="#apiv1query" title="Permanent link">&para;</a></h3>
+<p>読み出しエンドポイントであり、ストレージに永続化されているメトリクスを取得できる。</p>
+<p>PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 読み出しエンドポイントにリクエストを送信する。</span>
+$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>GET<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/query<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;query=vm_http_request_errors_total&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/url-examples.html#apiv1query">https://docs.victoriametrics.com/url-examples.html#apiv1query</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="apiv1write">/api/v1/write<a class="headerlink" href="#apiv1write" title="Permanent link">&para;</a></h3>
+<p>書き込みエンドポイントであり、ストレージにメトリクスを永続化できる。</p>
+<p>PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 書き込みエンドポイントにリクエストを送信する。</span>
+$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/write
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/#high-availability">https://docs.victoriametrics.com/#high-availability</a></li>
 </ul>
 </blockquote>
 <p><br></p>
