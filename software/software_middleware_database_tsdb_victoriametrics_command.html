@@ -3997,6 +3997,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-tlscertfile-tlskeyfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      -tlsCertFile (-tlsKeyFileと一緒に使用する)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23653,6 +23662,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-tlscertfile-tlskeyfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      -tlsCertFile (-tlsKeyFileと一緒に使用する)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23903,6 +23921,13 @@
 <li><a href="https://docs.victoriametrics.com/#storage">https://docs.victoriametrics.com/#storage</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="-tlscertfile-tlskeyfile">-tlsCertFile (-tlsKeyFileと一緒に使用する)<a class="headerlink" href="#-tlscertfile-tlskeyfile" title="Permanent link">&para;</a></h3>
+<p>SSL証明書のパスを設定する。</p>
+<p>ペアになる秘密鍵を<code>-tlsKeyFile</code>オプションで指定する必要がある。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-tlsCertFile<span class="o">=</span>/etc/victoriametrics/server.crt<span class="w"> </span>-tlsKeyFile<span class="o">=</span>/etc/victoriametrics/server.key
+</code></pre></div>
 <p><br></p>
 <h2 id="02-vmctl-prod">02. vmctl-prod<a class="headerlink" href="#02-vmctl-prod" title="Permanent link">&para;</a></h2>
 <h3 id="vm-native">vm-native<a class="headerlink" href="#vm-native" title="Permanent link">&para;</a></h3>
