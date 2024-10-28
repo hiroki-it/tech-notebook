@@ -226,6 +226,8 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 ### vm-native
 
+指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。
+
 ```bash
 $ vmctl-prod vm-native \
     vm-native-filter-time-start \
@@ -234,11 +236,17 @@ $ vmctl-prod vm-native \
     > data.json
 ```
 
+> - https://docs.victoriametrics.com/vmctl/
+
 <br>
 
 ## 03. API
 
 ### /api/v1/export
+
+エンドポイントからデータを取得し、データをエクスポートする。
+
+JSON、CSV、バイナリ、Prometheusの形式を選べる。
 
 ```bash
 $ curl http://<VictoriaMetricsのURL>:8428/api/v1/export -d 'match[]=vm_http_request_errors_total' > filename.json
@@ -249,6 +257,10 @@ $ curl http://<VictoriaMetricsのURL>:8428/api/v1/export -d 'match[]=vm_http_req
 <br>
 
 ### /api/v1/import
+
+エンドポイントにデータを送信し、データをインポートする。
+
+JSON、CSV、バイナリ、Prometheusの形式を選べる。
 
 ```bash
 $ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/import -H 'Content-Type: application/json' --data-binary "@filename.json"
