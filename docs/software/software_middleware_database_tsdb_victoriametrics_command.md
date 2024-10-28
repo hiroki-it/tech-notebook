@@ -222,6 +222,20 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 <br>
 
+### -tlsCertFile (-tlsKeyFileと一緒に使用する)
+
+SSL証明書のパスを設定する。
+
+ペアになる秘密鍵を`-tlsKeyFile`オプションで指定する必要がある。
+
+**＊例＊**
+
+```bash
+$ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile=/etc/victoriametrics/server.key
+```
+
+<br>
+
 ## 02. vmctl-prod
 
 ### vm-native
