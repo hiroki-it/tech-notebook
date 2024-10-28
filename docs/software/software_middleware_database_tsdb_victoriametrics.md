@@ -115,34 +115,6 @@ HTTPSプロトコルの`8224`番ポートでインバウンド通信を待ち受
 
 このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
-#### ▼ 読み出しエンドポイント
-
-読み出しエンドポイントから、ストレージに永続化されているメトリクスを取得できる。
-
-PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
-
-```bash
-# 読み出しエンドポイントにリクエストを送信する。
-$ curl \
-    -X GET http://<VictoriaMetricsのIPアドレス>:8428/api/v1/query \
-    -d 'query=vm_http_request_errors_total'
-```
-
-> - https://docs.victoriametrics.com/url-examples.html#apiv1query
-
-#### ▼ 書き込みエンドポイント
-
-書き込みエンドポイントで、ストレージにメトリクスを永続化できる。
-
-PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
-
-```bash
-# 書き込みエンドポイントにリクエストを送信する。
-$ curl -X POST http://<VictoriaMetricsのIPアドレス>:8428/api/v1/write
-```
-
-> - https://docs.victoriametrics.com/#high-availability
-
 <br>
 
 ### vmselect

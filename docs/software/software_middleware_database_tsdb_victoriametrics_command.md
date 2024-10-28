@@ -249,7 +249,9 @@ $ vmctl-prod vm-native \
 JSON、CSV、バイナリ、Prometheusの形式を選べる。
 
 ```bash
-$ curl http://<VictoriaMetricsのURL>:8428/api/v1/export -d 'match[]=vm_http_request_errors_total' > filename.json
+$ curl http://<VictoriaMetricsのURL>:8428/api/v1/export \
+    -d 'match[]=vm_http_request_errors_total' \
+    > filename.json
 ```
 
 > - https://docs.victoriametrics.com/#how-to-export-time-series
@@ -263,9 +265,43 @@ $ curl http://<VictoriaMetricsのURL>:8428/api/v1/export -d 'match[]=vm_http_req
 JSON、CSV、バイナリ、Prometheusの形式を選べる。
 
 ```bash
-$ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/import -H 'Content-Type: application/json' --data-binary "@filename.json"
+$ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/import \
+    -H 'Content-Type: application/json' \
+    --data-binary "@filename.json"
 ```
 
 > - https://docs.victoriametrics.com/#how-to-export-time-series
+
+<br>
+
+### /api/v1/query
+
+読み出しエンドポイントであり、ストレージに永続化されているメトリクスを取得できる。
+
+PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。
+
+```bash
+# 読み出しエンドポイントにリクエストを送信する。
+$ curl \
+    -X GET http://<VictoriaMetricsのURL>:8428/api/v1/query \
+    -d 'query=vm_http_request_errors_total'
+```
+
+> - https://docs.victoriametrics.com/url-examples.html#apiv1query
+
+<br>
+
+### /api/v1/write
+
+書き込みエンドポイントであり、ストレージにメトリクスを永続化できる。
+
+PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。
+
+```bash
+# 書き込みエンドポイントにリクエストを送信する。
+$ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/write
+```
+
+> - https://docs.victoriametrics.com/#high-availability
 
 <br>
