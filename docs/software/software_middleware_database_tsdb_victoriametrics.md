@@ -205,7 +205,8 @@ VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動す
 │   ├── flock.lock
 │   └── small/ # キャッシュとして保管される。時々、bigディレクトリにマージされる。
 │
-├── flock.lock/
+├── cache/
+├── flock.lock
 ├── indexdb/ # 全文検索処理の高速化のためのインデックス
 ├── metadata/
 ├── snapshots/

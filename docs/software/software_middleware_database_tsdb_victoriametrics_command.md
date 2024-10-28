@@ -221,3 +221,39 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 > - https://docs.victoriametrics.com/#storage
 
 <br>
+
+## 02. vmctl-prod
+
+### vm-native
+
+```bash
+$ vmctl-prod vm-native \
+    vm-native-filter-time-start \
+    vm-native-src-addr \
+    vm-native-dst-addr \
+    > data.json
+```
+
+<br>
+
+## 03. API
+
+### /api/v1/export
+
+```bash
+$ curl http://<VictoriaMetricsのURL>:8428/api/v1/export -d 'match[]=vm_http_request_errors_total' > filename.json
+```
+
+> - https://docs.victoriametrics.com/#how-to-export-time-series
+
+<br>
+
+### /api/v1/import
+
+```bash
+$ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/import -H 'Content-Type: application/json' --data-binary "@filename.json"
+```
+
+> - https://docs.victoriametrics.com/#how-to-export-time-series
+
+<br>
