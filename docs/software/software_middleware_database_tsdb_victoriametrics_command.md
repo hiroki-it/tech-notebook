@@ -186,7 +186,7 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBDataBlocks=0
 
 転置インデックスのインデックスブロックの上限キャッシュサイズを設定する。
 
-デフォルトでは、キャッシュを作成しない。
+デフォルトでは、キャッシュを作成しない
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBIndexBlocks=0

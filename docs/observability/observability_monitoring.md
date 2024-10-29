@@ -177,6 +177,11 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 特に、クリティカルユーザージャーニーの一連の操作を監視すると良い。
 
+**＊技術ツール例＊**
+
+- Datadogブラウザテスト
+- Grafana Cloud Synthetic
+
 > - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
 > - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
 > - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
