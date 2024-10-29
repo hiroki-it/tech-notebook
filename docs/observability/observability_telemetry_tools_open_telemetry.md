@@ -42,7 +42,7 @@ otelクライアントパッケージは、APIパッケージ、SDKパッケー�
 
 アプリケーションをインスツルメント化する。
 
-otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやOpenTelemetry Collectorにこれを渡す。
+otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやプロキシ (例：OpenTelemetry Collector、Grafana Alloy)にこれを渡す。
 
 もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。
 

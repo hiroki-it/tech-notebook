@@ -25,7 +25,7 @@ otelクライアントパッケージからのテレメトリーデータを、R
 
 テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用した方が良い。
 
-もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがOpenTelemetry Collectorにテレメトリーデータを送信する責務を持つ。
+もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがプロキシ (例：OpenTelemetry Collector) にテレメトリーデータを送信する責務を持つ。
 
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
