@@ -250,8 +250,35 @@ $ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile
 $ vmctl-prod vm-native \
     --vm-native-src-addr=http://<移行元のVictoriaMetricsのURL>:8428/api/v1/export \
     --vm-native-dst-addr=http://<移行先のVictoriaMetricsのURL>:8428 \
+    --vm-native-filter-time-start='2022-11-20T00:00:00Z'
+```
+
+> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
+
+#### ▼ vm-native-filter-time-end
+
+エクスポートする時の終了期間を設定する。
+
+```bash
+$ vmctl-prod vm-native \
+    --vm-native-src-addr=http://<移行元のVictoriaMetricsのURL>:8428/api/v1/export \
+    --vm-native-dst-addr=http://<移行先のVictoriaMetricsのURL>:8428 \
     --vm-native-filter-time-start='2022-11-20T00:00:00Z' \
-    > data.json
+    --vm-native-filter-time-end='2022-11-31T00:00:00Z'
+```
+
+> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
+
+#### ▼ vm-native-filter-match
+
+メトリクスから指定したラベルを除去し、エクスポートする。
+
+```bash
+$ vmctl-prod vm-native \
+    --vm-native-src-addr=http://<移行元のVictoriaMetricsのURL>:8428/api/v1/export \
+    --vm-native-dst-addr=http://<移行先のVictoriaMetricsのURL>:8428 \
+    --vm-native-filter-time-start='2022-11-20T00:00:00Z' \
+    --vm-native-filter-match='{__name__!~"vm_.*"}'
 ```
 
 > - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
