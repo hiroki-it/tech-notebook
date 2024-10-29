@@ -364,6 +364,7 @@ IPアドレスを指定して送信できない宛先のこと。
 ランダムな障害を意図的にインジェクションし、サービスメッシュの動作を検証する。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+> - https://istio.io/latest/docs/examples/microservices-istio/production-testing/
 
 #### ▼ テストの種類
 

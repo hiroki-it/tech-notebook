@@ -240,17 +240,21 @@ $ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile
 
 ### vm-native
 
+#### ▼ vm-nativeとは
+
 指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。
+
+`vm-native-filter-time-end`オプションを指定しなければ、`vm-native-filter-time-start`オプションの値以降のデータをエクスポートする。
 
 ```bash
 $ vmctl-prod vm-native \
-    vm-native-filter-time-start \
-    vm-native-src-addr \
-    vm-native-dst-addr \
+    --vm-native-src-addr=http://<移行元のVictoriaMetricsのURL>:8428/api/v1/export \
+    --vm-native-dst-addr=http://<移行先のVictoriaMetricsのURL>:8428 \
+    --vm-native-filter-time-start='2022-11-20T00:00:00Z' \
     > data.json
 ```
 
-> - https://docs.victoriametrics.com/vmctl/
+> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
 
 <br>
 
