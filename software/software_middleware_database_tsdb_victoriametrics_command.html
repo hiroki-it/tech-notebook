@@ -4028,6 +4028,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="vm-native">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-native_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-nativeとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -23693,6 +23708,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="vm-native">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-native_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-nativeとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -23931,16 +23961,18 @@
 <p><br></p>
 <h2 id="02-vmctl-prod">02. vmctl-prod<a class="headerlink" href="#02-vmctl-prod" title="Permanent link">&para;</a></h2>
 <h3 id="vm-native">vm-native<a class="headerlink" href="#vm-native" title="Permanent link">&para;</a></h3>
+<h4 id="vm-native_1">▼ vm-nativeとは<a class="headerlink" href="#vm-native_1" title="Permanent link">&para;</a></h4>
 <p>指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。</p>
+<p><code>vm-native-filter-time-end</code>オプションを指定しなければ、<code>vm-native-filter-time-start</code>オプションの値以降のデータをエクスポートする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>vm-native-filter-time-start<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>vm-native-src-addr<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>vm-native-dst-addr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-src-addr<span class="o">=</span>http://&lt;移行元のVictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-dst-addr<span class="o">=</span>http://&lt;移行先のVictoriaMetricsのURL&gt;:8428<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-filter-time-start<span class="o">=</span><span class="s1">&#39;2022-11-20T00:00:00Z&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&gt;<span class="w"> </span>data.json
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.victoriametrics.com/vmctl/">https://docs.victoriametrics.com/vmctl/</a></li>
+<li><a href="https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics">https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics</a></li>
 </ul>
 </blockquote>
 <p><br></p>
