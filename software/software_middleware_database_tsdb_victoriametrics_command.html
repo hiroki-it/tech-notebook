@@ -4040,6 +4040,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vm-native-filter-time-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-native-filter-time-end
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm-native-filter-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-native-filter-match
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23720,6 +23738,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vm-native-filter-time-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-native-filter-time-end
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm-native-filter-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm-native-filter-match
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -23967,8 +24003,33 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--vm-native-src-addr<span class="o">=</span>http://&lt;移行元のVictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--vm-native-dst-addr<span class="o">=</span>http://&lt;移行先のVictoriaMetricsのURL&gt;:8428<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-filter-time-start<span class="o">=</span><span class="s1">&#39;2022-11-20T00:00:00Z&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics">https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics</a></li>
+</ul>
+</blockquote>
+<h4 id="vm-native-filter-time-end">▼ vm-native-filter-time-end<a class="headerlink" href="#vm-native-filter-time-end" title="Permanent link">&para;</a></h4>
+<p>エクスポートする時の終了期間を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-src-addr<span class="o">=</span>http://&lt;移行元のVictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-dst-addr<span class="o">=</span>http://&lt;移行先のVictoriaMetricsのURL&gt;:8428<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--vm-native-filter-time-start<span class="o">=</span><span class="s1">&#39;2022-11-20T00:00:00Z&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>&gt;<span class="w"> </span>data.json
+<span class="w">    </span>--vm-native-filter-time-end<span class="o">=</span><span class="s1">&#39;2022-11-31T00:00:00Z&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics">https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics</a></li>
+</ul>
+</blockquote>
+<h4 id="vm-native-filter-match">▼ vm-native-filter-match<a class="headerlink" href="#vm-native-filter-match" title="Permanent link">&para;</a></h4>
+<p>メトリクスから指定したラベルを除去し、エクスポートする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-src-addr<span class="o">=</span>http://&lt;移行元のVictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-dst-addr<span class="o">=</span>http://&lt;移行先のVictoriaMetricsのURL&gt;:8428<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-filter-time-start<span class="o">=</span><span class="s1">&#39;2022-11-20T00:00:00Z&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--vm-native-filter-match<span class="o">=</span><span class="s1">&#39;{__name__!~&quot;vm_.*&quot;}&#39;</span>
 </code></pre></div>
 <blockquote>
 <ul>
