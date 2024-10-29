@@ -30,7 +30,7 @@ description: ブラックボックステスト＠マイクロサービスアー�
 #### ▼ ツール
 
 - Jenkins
-- K6 (JavaScriptでシナリオ定義できる)
+- Grafana k6 (JavaScriptでシナリオ定義できる)
 - Gatling (Scalaでシナリオ定義できる)
 - Taurus (他のロードテストツールのラッパー)
 

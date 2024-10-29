@@ -209,7 +209,7 @@ SLA (顧客との合意) に基づいたSLOとは区別したい。
 #### ▼ ロードテストツール
 
 - Jenkins
-- K6 (JavaScriptでシナリオ定義できる)
+- Grafana k6 (JavaScriptでシナリオ定義できる)
 - Gatling (Scalaでシナリオ定義できる)
 - Taurus (他のロードテストツールのラッパー)
 
@@ -290,7 +290,7 @@ SLA (顧客との合意) に基づいたSLOとは区別したい。
 #### ▼ ストレステストツール
 
 - Jenkins
-- K6 (JavaScriptでシナリオ定義できる)
+- Grafana k6 (JavaScriptでシナリオ定義できる)
 - Gatling (Scalaでシナリオ定義できる)
 - Taurus (他のロードテストツールのラッパー)
 
