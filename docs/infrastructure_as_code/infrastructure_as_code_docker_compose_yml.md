@@ -272,7 +272,7 @@ ff02::2 ip6-allrouters
 
 ### `healthcheck`
 
-コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまで待機する。
+コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまでコンテナの起動完了を待機する。
 
 トラフィックが処理可能になったらコンテナのビルドを終了し、次のコンテナのビルドを始める。
 
@@ -282,7 +282,10 @@ ff02::2 ip6-allrouters
 
 ```yaml
 services:
-  app: ...
+  app:
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     container_name: foo-mysql
@@ -299,11 +302,14 @@ services:
           "root",
           "-p$MYSQL_ROOT_PASSWORD",
         ]
-      interval: 30s
+      # 頻度が高すぎるとMySQLの起動前にヘルスチェック処理が終わってしまうため、10秒くらいがちょうどいい
+      interval: 10s
       timeout: 10s
       retries: 5
 ```
 
+> - https://stackoverflow.com/a/41854997
+> - https://zenn.dev/sun_asterisk/articles/b4b17681d08018
 > - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
 
 <br>

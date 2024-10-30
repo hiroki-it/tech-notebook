@@ -719,7 +719,10 @@ Dockerfileの文法の誤りを検証する。
 
 ```yaml
 services:
-  app: ...
+  app:
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     container_name: foo-mysql
@@ -736,8 +739,9 @@ services:
           "root",
           "-p$MYSQL_ROOT_PASSWORD",
         ]
-      interval: 30s
-      timeout: 10s
+      # 頻度が高すぎるとMySQLの起動前にヘルスチェック処理が終わってしまうため、10秒くらいがちょうどいい
+      interval: 10s
+      timeout: 5s
       retries: 5
 ```
 
