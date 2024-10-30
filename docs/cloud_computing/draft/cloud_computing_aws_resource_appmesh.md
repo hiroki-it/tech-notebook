@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AppMesh＠AWS
-description: AppMesh＠AWSの知見を記録しています。
+title: 【IT技術の知見】App Mesh＠AWS
+description: App Mesh＠AWSの知見を記録しています。
 ---
 
-# AppMesh＠AWS
+# App Mesh＠AWS
 
 ## はじめに
 
@@ -13,7 +13,9 @@ description: AppMesh＠AWSの知見を記録しています。
 
 <br>
 
-## 01. AppMeshとは
+## 01. App Meshとは
+
+非推奨となり、AWS VPC Latticeへの移行が推奨である。
 
 クラウドサービスメッシュとして機能する。
 
@@ -25,11 +27,11 @@ VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成�
 
 ### 分散トレース
 
-AppMesh上のEnvoyはX-Rayデーモンにスパンを送信し、X-Rayで分散トレースを監視できるようにする。
+App Mesh上のEnvoyはX-Rayデーモンにスパンを送信し、X-Rayで分散トレースを監視できるようにする。
 
-一方で、Istio上のEnvoyはこの機能を使えず、代わりにOpenTelemetry Collectorにスパンを送信しないといけず、AppMeshはAWSとの親和性が高い。
+一方で、Istio上のEnvoyはこの機能を使えず、代わりにOpenTelemetry Collectorにスパンを送信しないといけず、App MeshはAWSとの親和性が高い。
 
-> - https://www.appmeshworkshop.com/x-ray/
+> - https://www.App Meshworkshop.com/x-ray/
 > - https://nathanpeck.com/improving-observability-with-aws-app-mesh-amazon-ecs/
 
 <br>

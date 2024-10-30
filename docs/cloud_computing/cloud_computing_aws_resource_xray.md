@@ -21,7 +21,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 計装したアプリからX-Rayデーモン (EC2、ECS) またはOpenTelemetry Collector (EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。
 
-サービスメッシュツール (例：AppMesh、Istio) によって、X-RayデーモンまたはOpenTelemetry Collectorのいずれに送信すれば良いのかが異なる。
+サービスメッシュツール (例：AWS VPC Lattice、Istio) によって、X-RayデーモンまたはOpenTelemetry Collectorのいずれに送信すれば良いのかが異なる。
 
 <br>
 

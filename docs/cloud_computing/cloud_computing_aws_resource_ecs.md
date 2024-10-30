@@ -56,7 +56,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 | Taskスケーリング                       | HorizontalPodAutoscaler、VerticalPodAutoscaler |
 | キャパシティプロバイダー + AutoScaling | CusterAutoscaler、Karpenter                    |
 | PodDisruptionBudget                    | Minimum/Maximum Healthy Percent                |
-| AppMesh、ECS Service Connect           | Istio                                          |
+| AWS VPC Lattice、ECS Service Connect   | Istio                                          |
 
 <br>
 
