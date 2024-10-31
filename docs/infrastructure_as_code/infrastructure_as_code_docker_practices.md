@@ -719,11 +719,13 @@ Dockerfileの文法の誤りを検証する。
 
 ```yaml
 services:
+  # アプリコンテナ
   app:
     depends_on:
       db:
         condition: service_healthy
 
+  # DBコンテナ
   db:
     container_name: foo-mysql
     image: mysql:5.7

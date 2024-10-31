@@ -3564,7 +3564,7 @@ metadata:
 spec:
   containers:
     - name: foo-db
-      image: mysql:1.0.0
+      image: mysql:8.0
       ports:
         - containerPort: 3306
       volumeMounts:

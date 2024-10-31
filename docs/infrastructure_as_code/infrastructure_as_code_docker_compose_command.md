@@ -155,11 +155,21 @@ $ docker compose stop <サービス名>
 
 #### ▼ downとは
 
-指定したリソースを削除する。
+コンテナを削除する。
+
+オプションで、指定したリソースを削除する。
+
+#### ▼ --volumes
+
+コンテナを削除し、ボリュームを削除する。
+
+```bash
+$ docker compose down --volumes
+```
 
 #### ▼ --rmi --volumes --remove-orphans
 
-全てのリソース (イメージ、コンテナ、ボリューム、ネットワーク) を削除する。
+コンテナを削除し、全てのリソース (イメージ、コンテナ、ボリューム、ネットワーク) を削除する。
 
 ```bash
 $ docker compose down --rmi all --volumes --remove-orphans
