@@ -382,6 +382,28 @@ $ yarn install --check-files
 
 > - https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
 
+#### ▼ --production
+
+`package.json`ファイルの`devDependencies`キーのパッケージをインストールしない。
+
+デフォルトで`false`である。
+
+`NODE_ENV`変数に`production`を設定しても有効化できる。
+
+```bash
+$ yarn install --production
+```
+
+> - https://miyahara.hikaru.dev/posts/20200414/
+
+#### ▼ --verbose
+
+詳細な処理ログを出力する。
+
+```bash
+$ yarn install --verbose
+```
+
 <br>
 
 ### list
