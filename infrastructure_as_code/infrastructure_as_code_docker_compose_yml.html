@@ -15256,6 +15256,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    <span class="md-ellipsis">
+      include
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#logging" class="md-nav__link">
     <span class="md-ellipsis">
       logging
@@ -23870,6 +23879,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    <span class="md-ellipsis">
+      include
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#logging" class="md-nav__link">
     <span class="md-ellipsis">
       logging
@@ -24213,7 +24231,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-laravel</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="depends_on"><code>depends_on</code><a class="headerlink" href="#depends_on" title="Permanent link">&para;</a></h3>
@@ -24369,8 +24387,25 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-laravel:&lt;バージョンタグ&gt;</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:&lt;バージョンタグ&gt;</span>
 </code></pre></div>
+<p><br></p>
+<h3 id="include"><code>include</code><a class="headerlink" href="#include" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-docker-compose.yaml</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:&lt;バージョンタグ&gt;</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># 読み込んだdocker-compose内のサービス</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/compose/how-tos/multiple-compose-files/include/">https://docs.docker.com/compose/how-tos/multiple-compose-files/include/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="logging"><code>logging</code><a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
 <h4 id="fluentd">▼ <code>fluentd</code><a class="headerlink" href="#fluentd" title="Permanent link">&para;</a></h4>
@@ -24586,7 +24621,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 出力元の値は、.envファイルに定義しなければならない。</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APP_ENV}</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APP_ENV}-foo-laravel</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${APP_ENV}-foo</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-networks">03. networks<a class="headerlink" href="#03-networks" title="Permanent link">&para;</a></h2>
@@ -24785,7 +24820,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-01</span>
   </span>
 
     
