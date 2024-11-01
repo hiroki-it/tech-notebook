@@ -3,7 +3,7 @@ title: 【IT技術の知見】TSDB
 description: TSDBの知見を記録しています。
 ---
 
-# VictoriaMetrics＠TSDB
+# TSDB
 
 ## はじめに
 

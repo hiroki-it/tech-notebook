@@ -153,7 +153,7 @@ services:
 ```yaml
 services:
   web:
-    container_name: foo-laravel
+    container_name: foo
 ```
 
 <br>
@@ -360,8 +360,26 @@ ff02::2 ip6-allrouters
 ```yaml
 services:
   app:
-    image: foo-laravel:<バージョンタグ>
+    image: foo:<バージョンタグ>
 ```
+
+<br>
+
+### `include`
+
+```yaml
+include:
+  - bar-docker-compose.yaml
+
+services:
+  app:
+    image: foo:<バージョンタグ>
+    depends_on:
+      # 読み込んだdocker-compose内のサービス
+      - bar
+```
+
+> - https://docs.docker.com/compose/how-tos/multiple-compose-files/include/
 
 <br>
 
@@ -648,7 +666,7 @@ services:
     build:
       # 出力元の値は、.envファイルに定義しなければならない。
       target: ${APP_ENV}
-    image: ${APP_ENV}-foo-laravel
+    image: ${APP_ENV}-foo
 ```
 
 <br>

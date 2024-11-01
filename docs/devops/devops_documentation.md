@@ -37,7 +37,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 |                            | テスト領域               | ブラックボックスのシナリオ定義 | テストツールによる (例：Grafana k6ならJavaScript)                          |
 | アプリ                     | アーキテクチャ           |                                | マイクロサービスアーキテクチャ、各マイクロサービスはクリーンアーキテクチャ |
 |                            | API                      |                                | RPC-API、RESTful-API                                                       |
-| CI/CD                      | CIツール                 |                                | CircleCI                                                                   |
+| CI/CD                      | CIツール                 |                                | GitHub Actions                                                             |
 |                            | CDツール                 |                                | ArgoCD                                                                     |
 | ミドルウェア               | Web系                    |                                | Nginx                                                                      |
 |                            | アプリ系                 |                                | FastCGI                                                                    |
