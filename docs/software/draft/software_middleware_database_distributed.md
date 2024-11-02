@@ -15,7 +15,9 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 ## 分散DBとは
 
-複数のDBを組み合わせ、単一のように扱うDBのこと。
+永続データを複数に分割して管理し、これらを組み合わせて単一のDBのように扱う。
+
+> - https://www.mongodb.com/resources/basics/databases/distributed-database
 
 <br>
 
@@ -36,11 +38,15 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 <br>
 
-### クラウド
+### マネージド
 
 #### ▼ RDB
 
+注意点として、AWS Aurora MySQLは分散DBではない。
+
 - YugabyteDB Managed
+
+> - https://www.quora.com/Is-Amazon-RDS-a-non-distributed-database-service
 
 #### ▼ NoSQL DB
 
