@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Remix＠React系フレームワークの知見を記録しています。">
+        <meta name="description" content="Typescriptの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_js_framework_remix.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_js_typescript.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Remix＠React系フレームワーク - 俺の技術ノート</title>
+        <title>【IT技術の知見】Typescript - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#remixreact" class="md-skip">
+        <a href="#typescript" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Remix＠React系フレームワーク
+              【IT技術の知見】Typescript
             
           </span>
         </div>
@@ -23283,9 +23283,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-remix" class="md-nav__link">
+  <a href="#01-typescript" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Remixとは
+      01. Typescriptとは
     </span>
   </a>
   
@@ -23294,69 +23294,45 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. 初期化
+      02. 設定
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 初期化">
+    <nav class="md-nav" aria-label="02. 設定">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#loader" class="md-nav__link">
+  <a href="#tsconfigjson" class="md-nav__link">
     <span class="md-ellipsis">
-      loader
+      tsconfig.json
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. ルーティング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. ルーティング">
+    <nav class="md-nav" aria-label="tsconfig.json">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#url" class="md-nav__link">
+  <a href="#exclude" class="md-nav__link">
     <span class="md-ellipsis">
-      URLとのマッピング
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="URLとのマッピング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 仕組み
+      ▼ exclude
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_indextsx" class="md-nav__link">
+  <a href="#include" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &lt;ルート以降のパス&gt;._index.tsx
+      ▼ include
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tsx" class="md-nav__link">
+  <a href="#compileroptions" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ &lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx
+      ▼ compilerOptions
     </span>
   </a>
   
@@ -23390,7 +23366,7 @@
   
 
 
-<h1 id="remixreact">Remix＠React系フレームワーク<a class="headerlink" href="#remixreact" title="Permanent link">&para;</a></h1>
+<h1 id="typescript">Typescript<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23399,73 +23375,61 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-remix">01. Remixとは<a class="headerlink" href="#01-remix" title="Permanent link">&para;</a></h2>
-<p>Reactパッケージを使用したフレームワークである。</p>
-<p><br></p>
-<h2 id="02">02. 初期化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
-<p>ページに必要なデータを読み込む。</p>
-<p><code>useLoaderData</code>関数でコンポーネントに渡せる。</p>
-<div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
-import {useLoaderData} from &quot;@remix-run/react&quot;;
-
-export const loader = async () =&gt; {
-  return json({
-    posts: [
-      {
-        slug: &quot;my-first-post&quot;,
-        title: &quot;My First Post&quot;,
-      },
-      {
-        slug: &quot;90s-mixtape&quot;,
-        title: &quot;A Mixtape I Made Just For You&quot;,
-      },
-    ],
-  });
-};
-
-export default function Posts() {
-  const {posts} = useLoaderData&lt;typeof loader&gt;();
-  return (
-    &lt;main&gt;
-      &lt;h1&gt;Posts&lt;/h1&gt;
-    &lt;/main&gt;
-  );
-}
-</code></pre></div>
+<h2 id="01-typescript">01. Typescriptとは<a class="headerlink" href="#01-typescript" title="Permanent link">&para;</a></h2>
+<p>静的型付けのフロントエンド言語である。</p>
+<p><code>tsconfig.json</code>ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。</p>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/link/comments/8945abe32ae53a">https://zenn.dev/link/comments/8945abe32ae53a</a></li>
+<li><a href="https://ugo.tokyo/ts-config/#outline__1">https://ugo.tokyo/ts-config/#outline__1</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. ルーティング<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="url">URLとのマッピング<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
-<h4 id="_2">▼ 仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>ドット区切りファイル名またはディレクトリ名がURLになる。</p>
-<h4 id="_indextsx">▼ <code>&lt;ルート以降のパス&gt;._index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
-<p>ルート以降のパスを設定する。</p>
-<div class="highlight"><pre><span></span><code>// &lt;ルート以降のパス&gt;._index.tsx
-export default function Foo() {
-  // 返却するHTML要素
-  return (
-    &lt;main&gt;
-      &lt;h1&gt;Foo&lt;/h1&gt;
-    &lt;/main&gt;
-  );
-}
+<h2 id="02">02. 設定<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="tsconfigjson">tsconfig.json<a class="headerlink" href="#tsconfigjson" title="Permanent link">&para;</a></h3>
+<h4 id="exclude">▼ exclude<a class="headerlink" href="#exclude" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;exclude&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;ファイル名&gt;&quot;</span><span class="p p-Indicator">]}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/link/comments/fabfb7fd3aee65">https://zenn.dev/link/comments/fabfb7fd3aee65</a></li>
+<li><a href="https://qiita.com/ryokkkke/items/390647a7c26933940470#exclude">https://qiita.com/ryokkkke/items/390647a7c26933940470#exclude</a></li>
 </ul>
 </blockquote>
-<h4 id="tsx">▼ <code>&lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx</code><a class="headerlink" href="#tsx" title="Permanent link">&para;</a></h4>
-<p>動的にURLを決定する。</p>
-<p>URLに規則性があるようなページに適する。</p>
+<p><br></p>
+<h4 id="include">▼ include<a class="headerlink" href="#include" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;include&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;ファイル名&gt;&quot;</span><span class="p p-Indicator">]}</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/link/comments/ddd4650a1941e3">https://zenn.dev/link/comments/ddd4650a1941e3</a></li>
+<li><a href="https://qiita.com/ryokkkke/items/390647a7c26933940470#include">https://qiita.com/ryokkkke/items/390647a7c26933940470#include</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h4 id="compileroptions">▼ compilerOptions<a class="headerlink" href="#compileroptions" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;compilerOptions&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;lib&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;DOM&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;DOM.Iterable&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ES2019&quot;</span><span class="w"> </span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;types&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;vitest/globals&quot;</span><span class="w"> </span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;isolatedModules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;esModuleInterop&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;jsx&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;react-jsx&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;module&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CommonJS&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;moduleResolution&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;node&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;resolveJsonModule&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;target&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ES2019&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;strict&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;allowJs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;forceConsistentCasingInFileNames&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;baseUrl&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;paths&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">&quot;~/*&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;./app/*&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;skipLibCheck&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;noEmit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions">https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions</a></li>
 </ul>
 </blockquote>
 <p><br></p>
