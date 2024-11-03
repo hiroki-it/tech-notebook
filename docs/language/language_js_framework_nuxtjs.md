@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Nuxt.js
-description: Nuxt.jsの知見を記録しています。
+title: 【IT技術の知見】Nuxt.js＠フレームワーク
+description: Nuxt.js＠フレームワークの知見を記録しています。
 ---
 
-# Nuxt.js
+# Nuxt.js＠フレームワーク
 
 ## はじめに
 
@@ -13,7 +13,13 @@ description: Nuxt.jsの知見を記録しています。
 
 <br>
 
-## 01. Nuxt.js用yarnコマンド
+## 01. Nuxt.jsとは
+
+Vue.jsフレームワークを使用したフレームワークである。
+
+<br>
+
+## 02. Nuxt.js用yarnコマンド
 
 ### serverモード (SSRモード)
 
@@ -163,7 +169,7 @@ $ rm -rf node_modules/.cache/hard-source/
 
 <br>
 
-## 02. `nuxt.config.js`ファイル
+## 03. `nuxt.config.js`ファイル
 
 ### `nuxt.config.js`ファイルとは
 
@@ -231,7 +237,7 @@ const nuxtConfig: Configuration = {
 
 <br>
 
-## 02-02. プロパティ
+## 03-02. プロパティ
 
 ### build
 
@@ -391,7 +397,7 @@ const nuxtConfig: Configuration = {
 
 <br>
 
-## 03. ディレクトリ
+## 04. ディレクトリ
 
 ### `dist`ディレクトリ：`distribution`
 

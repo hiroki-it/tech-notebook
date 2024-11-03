@@ -13,7 +13,13 @@ description: Remix＠React系フレームワークの知見を記録していま
 
 <br>
 
-## 初期化
+## 01. Remixとは
+
+Reactパッケージを使用したフレームワークである。
+
+<br>
+
+## 02. 初期化
 
 ### loader
 
@@ -55,7 +61,7 @@ const { posts } = useLoaderData<typeof loader>();
 
 <br>
 
-## ルーティング
+## 03. ルーティング
 
 ### URLとのマッピング
 

@@ -12,3 +12,9 @@ description: Next.js＠React系フレームワークの知見を記録してい�
 > - https://hiroki-it.github.io/tech-notebook/
 
 <br>
+
+## 01. Next.jsとは
+
+Reactパッケージを使用したフレームワークである。
+
+<br>
