@@ -23,7 +23,7 @@ description: Typescriptの知見を記録しています。
 
 <br>
 
-## 02. 設定
+## 02. セットアップ
 
 ### tsconfig.json
 

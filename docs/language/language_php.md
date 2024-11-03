@@ -13,7 +13,13 @@ description: PHPの知見を記録しています。
 
 <br>
 
-## 01. セットアップ
+## 01. PHPとは
+
+記入中...
+
+<br>
+
+## 02. セットアップ
 
 ### インストール
 
@@ -83,7 +89,7 @@ COPY ../software /var/www/foo/
 
 <br>
 
-## 02. 設定ファイルの種類 (※ Dockerの場合)
+## 03. 設定ファイルの種類 (※ Dockerの場合)
 
 ### `php.ini`ファイル
 
@@ -250,7 +256,7 @@ opcache.preload_user = www-data
 
 <br>
 
-## 03. 拡張機能
+## 04. 拡張機能
 
 ### OPcache
 
