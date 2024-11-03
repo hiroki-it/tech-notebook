@@ -67,18 +67,34 @@ description: 組織論＠開発手法の知見を記録しています。
 
 ## 02. エンジニアのキャリアパス
 
+### キャリアパスの種類
+
 ITエンジニアには、様々なキャリアパスがある。
 
-駆け出しのITエンジニアから始まって、例えば以下のパスがある (他にもたくさん) 。
+メンバーのITエンジニアから始まって、例えば以下のパスがある (他にもたくさん) 。
 
-- ITスペシャリスト
-- フルスタックエンジニア
-- ITアーキテクト
-- プロジェクトリーダー (プロジェクトマネージャー)
-- ITコンサルタント
+![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.png)
 
-![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.jpg)
-
+> - https://www.nogawanogawa.work/entry/management_career
 > - https://www.netvisionacademy.com/column/910/
+
+<br>
+
+### 現場エンジニアの種類
+
+| 仕事             | メンバー | メンター | リード | プロジェクトマネージャ |
+| ---------------- | -------- | -------- | ------ | ---------------------- |
+| 社内外交渉       |          |          |        | ✅                     |
+| タスク管理       |          |          | ✅     | ✅                     |
+| プロジェクト管理 |          |          |        | ✅                     |
+| 見積もり         |          |          |        | ✅                     |
+| 契約             |          |          |        | ✅                     |
+| 要件定義         |          |          | ✅     | ✅                     |
+| UIデザイン       | ✅       | ✅       | ✅     | ✅                     |
+| システム設計     | ✅       | ✅       | ✅     | ✅                     |
+| 実装             | ✅       | ✅       | ✅     |                        |
+| テスト           | ✅       | ✅       | ✅     |                        |
+| リリース         | ✅       | ✅       | ✅     |                        |
+| 運用保守         | ✅       | ✅       | ✅     |                        |
 
 <br>

@@ -31,10 +31,10 @@ description: プロジェクト管理＠開発手法の知見を記録してい�
 
 図とは若干用語の表記を変えている。
 
-1. 交渉 (ステークホルダーや開発メンバーとの合意形成)
+1. 社内外交渉 (社内外ステークホルダーや開発メンバーとの合意形成)
 2. タスク管理 (プロジェクト全体像の可視化、大粒度でのタスクの洗い出しと割り当て、メンバー調達、進捗管理、振り返り)
 3. プロジェクト計画 (プロジェクト全体のマイルストーン策定、MTGの設置)
-4. 見積もり (大粒度でのタスクの工数)
+4. 工数/費用の見積もり (大粒度でのタスクの工数)
 5. 契約
 
 ![project-management-skills_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
