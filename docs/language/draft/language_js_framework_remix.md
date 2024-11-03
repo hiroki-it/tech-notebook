@@ -27,9 +27,9 @@ Reactパッケージを使用したフレームワークである。
 
 `useLoaderData`関数でコンポーネントに渡せる。
 
-```javascript
-import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+```tsx
+import {json} from "@remix-run/node";
+import {useLoaderData} from "@remix-run/react";
 
 export const loader = async () => {
   return json({
@@ -47,8 +47,7 @@ export const loader = async () => {
 };
 
 export default function Posts() {
-
-const { posts } = useLoaderData<typeof loader>();
+  const {posts} = useLoaderData<typeof loader>();
   return (
     <main>
       <h1>Posts</h1>
@@ -73,7 +72,7 @@ const { posts } = useLoaderData<typeof loader>();
 
 ルート以降のパスを設定する。
 
-```javascript
+```tsx
 // <ルート以降のパス>._index.tsx
 export default function Foo() {
   // 返却するHTML要素
