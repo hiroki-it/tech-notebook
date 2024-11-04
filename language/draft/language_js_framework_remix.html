@@ -23308,6 +23308,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loader_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ loaderとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useloaderdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ useLoaderData
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -23372,6 +23396,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04-remix" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. remixコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. remixコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      dev
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23404,8 +23461,35 @@
 <p><br></p>
 <h2 id="02">02. 初期化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
-<p>ページに必要なデータを読み込む。</p>
-<p><code>useLoaderData</code>関数でコンポーネントに渡せる。</p>
+<h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
+<p>サーバーサイドレンダリング時に使用できる。</p>
+<p>DBにクエリを送信し、データを取得できる。</p>
+<div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
+import {useLoaderData} from &quot;@remix-run/react&quot;;
+
+export const loader = async () =&gt; {
+  return json({
+    posts: [
+      {
+        slug: &quot;my-first-post&quot;,
+        title: &quot;My First Post&quot;,
+      },
+      {
+        slug: &quot;90s-mixtape&quot;,
+        title: &quot;A Mixtape I Made Just For You&quot;,
+      },
+    ],
+  });
+};
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/ak/articles/cef68c1b67a314#loader">https://zenn.dev/ak/articles/cef68c1b67a314#loader</a></li>
+<li><a href="https://zenn.dev/link/comments/8945abe32ae53a">https://zenn.dev/link/comments/8945abe32ae53a</a></li>
+</ul>
+</blockquote>
+<h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
+<p><code>loader</code>関数で取得したデータを表示できる。</p>
 <div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
 import {useLoaderData} from &quot;@remix-run/react&quot;;
 
@@ -23435,6 +23519,7 @@ export default function Posts() {
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/ak/articles/cef68c1b67a314#loader">https://zenn.dev/ak/articles/cef68c1b67a314#loader</a></li>
 <li><a href="https://zenn.dev/link/comments/8945abe32ae53a">https://zenn.dev/link/comments/8945abe32ae53a</a></li>
 </ul>
 </blockquote>
@@ -23469,6 +23554,25 @@ export default function Foo() {
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="04-remix">04. remixコマンド<a class="headerlink" href="#04-remix" title="Permanent link">&para;</a></h2>
+<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>remix<span class="w"> </span>vite:build
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild">https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>remix<span class="w"> </span>vite:dev
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev">https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -23489,7 +23593,7 @@ export default function Foo() {
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-04</span>
   </span>
 
     
