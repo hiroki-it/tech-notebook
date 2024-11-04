@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Next.js＠React系フレームワーク
-description: Next.js＠React系フレームワークの知見を記録しています。
+title: 【IT技術の知見】Next.js＠フレームワーク
+description: Next.js＠フレームワークの知見を記録しています。
 ---
 
-# Next.js＠React系フレームワーク
+# Next.js＠フレームワーク
 
 ## はじめに
 

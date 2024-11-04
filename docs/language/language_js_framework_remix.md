@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Remix＠React系フレームワーク
-description: Remix＠React系フレームワークの知見を記録しています。
+title: 【IT技術の知見】Remix＠フレームワーク
+description: Remix＠フレームワークの知見を記録しています。
 ---
 
-# Remix＠React系フレームワーク
+# Remix＠フレームワーク
 
 ## はじめに
 
