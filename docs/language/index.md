@@ -77,11 +77,14 @@
   > * ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_js_logic_authentication.html)
 
 * #### <u>フレームワーク</u>
+  > * ##### [︎Nuxt.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_nuxtjs.html)
   > * ##### <u>︎Vue.js</u>
   > > * ##### [︎Vue.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html)
   > > * ##### [︎vue-router](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuerouter.html)
   > > * ##### [︎Vuex](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs_vuex.html)
-  > * ##### [︎Nuxt.js](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_nuxtjs.html)
+  > * ##### <u>︎Remix</u>
+  > > * ##### [︎Remix](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_remix.html)
+  > > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_js_framework_remix_command.html)
 
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_js_package_management.html)
