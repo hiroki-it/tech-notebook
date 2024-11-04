@@ -8177,11 +8177,20 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. 初期化
+      02. ディレクトリ構成
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 初期化">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 初期化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 初期化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8223,13 +8232,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ルーティング
+      04. ルーティング
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ルーティング">
+    <nav class="md-nav" aria-label="04. ルーティング">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8280,13 +8289,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. コンポーネント
+      05. コンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. コンポーネント">
+    <nav class="md-nav" aria-label="05. コンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23608,11 +23617,20 @@
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. 初期化
+      02. ディレクトリ構成
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 初期化">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 初期化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 初期化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23654,13 +23672,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ルーティング
+      04. ルーティング
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ルーティング">
+    <nav class="md-nav" aria-label="04. ルーティング">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23711,13 +23729,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
+  <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
-      04. コンポーネント
+      05. コンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. コンポーネント">
+    <nav class="md-nav" aria-label="05. コンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23782,7 +23800,26 @@
 <h2 id="01-remix">01. Remixとは<a class="headerlink" href="#01-remix" title="Permanent link">&para;</a></h2>
 <p>Reactパッケージを使用したフレームワークである。</p>
 <p><br></p>
-<h2 id="02">02. 初期化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. ディレクトリ構成<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="l l-Scalar l-Scalar-Plain">├── app/</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── components/</span><span class="w"> </span><span class="c1"># ユーザー定義のRemixコンポーネント</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── models/</span><span class="w"> </span><span class="c1"># モデルのCRUD処理</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── routes/</span><span class="w"> </span><span class="c1"># ルーティングとレンダリングの処理</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── utils/</span><span class="w"> </span><span class="c1"># 汎用的な関数</span>
+<span class="l l-Scalar l-Scalar-Plain">│  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── entry.client.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│  ├── entry.server.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│  └── root.tsx</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── prisma/</span><span class="w"> </span><span class="c1"># モデルの定義</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. 初期化<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="loader">loader<a class="headerlink" href="#loader" title="Permanent link">&para;</a></h3>
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
 <p>サーバーサイドレンダリング時に使用できる。</p>
@@ -23849,7 +23886,7 @@ export default function Posts() {
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. ルーティング<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. ルーティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="url">URLとのマッピング<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>ドット区切りファイル名またはディレクトリ名がURLになる。</p>
@@ -23897,7 +23934,7 @@ export default function Post() {
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. コンポーネント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. コンポーネント<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p><code>form</code>タグをレンダリングする。
 。</p>
