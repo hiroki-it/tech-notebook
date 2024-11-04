@@ -23397,28 +23397,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-remix" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. remixコマンド
+      04. コンポーネント
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. remixコマンド">
+    <nav class="md-nav" aria-label="04. コンポーネント">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
+  <a href="#form" class="md-nav__link">
     <span class="md-ellipsis">
-      build
+      Form
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#dev" class="md-nav__link">
+  <a href="#meta" class="md-nav__link">
     <span class="md-ellipsis">
-      dev
+      Meta
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outlet
     </span>
   </a>
   
@@ -23464,6 +23473,7 @@
 <h4 id="loader_1">▼ loaderとは<a class="headerlink" href="#loader_1" title="Permanent link">&para;</a></h4>
 <p>サーバーサイドレンダリング時に使用できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
 import {useLoaderData} from &quot;@remix-run/react&quot;;
 
@@ -23489,7 +23499,8 @@ export const loader = async () =&gt; {
 </ul>
 </blockquote>
 <h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
-<p><code>loader</code>関数で取得したデータを表示できる。</p>
+<p><code>loader</code>関数で取得したデータを出力できる。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
 import {useLoaderData} from &quot;@remix-run/react&quot;;
 
@@ -23530,6 +23541,7 @@ export default function Posts() {
 <p>ドット区切りファイル名またはディレクトリ名がURLになる。</p>
 <h4 id="_indextsx">▼ <code>&lt;ルート以降のパス&gt;._index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルート以降のパスを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>// &lt;ルート以降のパス&gt;._index.tsx
 export default function Foo() {
   // 返却するHTML要素
@@ -23548,28 +23560,88 @@ export default function Foo() {
 <h4 id="tsx">▼ <code>&lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx</code><a class="headerlink" href="#tsx" title="Permanent link">&para;</a></h4>
 <p>動的にURLを決定する。</p>
 <p>URLに規則性があるようなページに適する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code>// posts.$postId.tsxファイル
+export default function Post() {
+  return (
+    &lt;div&gt;
+      &lt;h1 className=&quot;font-bold text-3xl&quot;&gt;投稿詳細&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre></div>
+<p>以下のURLでページをレンダリングできる。</p>
+<ul>
+<li>/posts/1</li>
+<li>/posts/2</li>
+<li>/posts/3</li>
+</ul>
 <blockquote>
 <ul>
+<li><a href="https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments">https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments</a></li>
 <li><a href="https://zenn.dev/link/comments/ddd4650a1941e3">https://zenn.dev/link/comments/ddd4650a1941e3</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-remix">04. remixコマンド<a class="headerlink" href="#04-remix" title="Permanent link">&para;</a></h2>
-<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>remix<span class="w"> </span>vite:build
+<h2 id="04">04. コンポーネント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
+<p><code>form</code>タグをレンダリングする。
+。</p>
+<div class="highlight"><pre><span></span><code>import {Form} from &quot;@remix-run/react&quot;;
+
+function NewEvent() {
+  return (
+    &lt;Form action=&quot;/events&quot; method=&quot;post&quot;&gt;
+      &lt;input name=&quot;title&quot; type=&quot;text&quot; /&gt;
+      &lt;input name=&quot;description&quot; type=&quot;text&quot; /&gt;
+    &lt;/Form&gt;
+  );
+}
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild">https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild</a></li>
+<li><a href="https://remix.run/docs/en/main/components/form">https://remix.run/docs/en/main/components/form</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>remix<span class="w"> </span>vite:dev
+<h3 id="meta">Meta<a class="headerlink" href="#meta" title="Permanent link">&para;</a></h3>
+<p>Webページの<code>meta</code>タグ (Webサイト名、説明など) をレンダリングする。</p>
+<div class="highlight"><pre><span></span><code>import {Meta} from &quot;@remix-run/react&quot;;
+
+export default function Root() {
+  return (
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;Meta /&gt;
+      &lt;/head&gt;
+      &lt;body&gt;&lt;/body&gt;
+    &lt;/html&gt;
+  );
+}
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev">https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev</a></li>
+<li><a href="https://remix.run/docs/en/main/components/meta">https://remix.run/docs/en/main/components/meta</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="outlet">Outlet<a class="headerlink" href="#outlet" title="Permanent link">&para;</a></h3>
+<p>親ページ内に子ページをレンダリングする。</p>
+<div class="highlight"><pre><span></span><code>import {Outlet} from &quot;@remix-run/react&quot;;
+
+export default function SomeParent() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Parent Content&lt;/h1&gt;
+
+      &lt;Outlet /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://remix.run/docs/en/main/components/outlet#outlet">https://remix.run/docs/en/main/components/outlet#outlet</a></li>
 </ul>
 </blockquote>
 <p><br></p>
