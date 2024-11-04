@@ -29,6 +29,8 @@ Reactパッケージを使用したフレームワークである。
 
 DBにクエリを送信し、データを取得できる。
 
+**＊実装例＊**
+
 ```tsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
@@ -54,7 +56,9 @@ export const loader = async () => {
 
 #### ▼ useLoaderData
 
-`loader`関数で取得したデータを表示できる。
+`loader`関数で取得したデータを出力できる。
+
+**＊実装例＊**
 
 ```tsx
 import {json} from "@remix-run/node";
@@ -102,6 +106,8 @@ export default function Posts() {
 
 ルート以降のパスを設定する。
 
+**＊実装例＊**
+
 ```tsx
 // <ルート以降のパス>._index.tsx
 export default function Foo() {
@@ -122,28 +128,95 @@ export default function Foo() {
 
 URLに規則性があるようなページに適する。
 
+**＊実装例＊**
+
+```tsx
+// posts.$postId.tsxファイル
+export default function Post() {
+  return (
+    <div>
+      <h1 className="font-bold text-3xl">投稿詳細</h1>
+    </div>
+  );
+}
+```
+
+以下のURLでページをレンダリングできる。
+
+- /posts/1
+- /posts/2
+- /posts/3
+
+> - https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments
 > - https://zenn.dev/link/comments/ddd4650a1941e3
 
 <br>
 
-## 04. remixコマンド
+## 04. コンポーネント
 
-### build
+### Form
 
-```bash
-$ remix vite:build
+`form`タグをレンダリングする。
+。
+
+```tsx
+import {Form} from "@remix-run/react";
+
+function NewEvent() {
+  return (
+    <Form action="/events" method="post">
+      <input name="title" type="text" />
+      <input name="description" type="text" />
+    </Form>
+  );
+}
 ```
 
-> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild
+> - https://remix.run/docs/en/main/components/form
 
 <br>
 
-### dev
+### Meta
 
-```bash
-$ remix vite:dev
+Webページの`meta`タグ (Webサイト名、説明など) をレンダリングする。
+
+```tsx
+import {Meta} from "@remix-run/react";
+
+export default function Root() {
+  return (
+    <html>
+      <head>
+        <Meta />
+      </head>
+      <body></body>
+    </html>
+  );
+}
 ```
 
-> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev
+> - https://remix.run/docs/en/main/components/meta
+
+<br>
+
+### Outlet
+
+親ページ内に子ページをレンダリングする。
+
+```tsx
+import {Outlet} from "@remix-run/react";
+
+export default function SomeParent() {
+  return (
+    <div>
+      <h1>Parent Content</h1>
+
+      <Outlet />
+    </div>
+  );
+}
+```
+
+> - https://remix.run/docs/en/main/components/outlet#outlet
 
 <br>
