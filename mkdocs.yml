@@ -364,12 +364,12 @@ nav:
           - ■ フレームワーク:
               - Nuxt.js: language/language_js_framework_nuxtjs.md
               - ■ Vue.js:
-                  - ■ Vue.js: language/language_js_framework_vuejs.md
-                  - ■ vue-router: language/language_js_framework_vuejs_vuerouter.md
-                  - ■ Vuex: language/language_js_framework_vuejs_vuex.md
+                  - Vue.js: language/language_js_framework_vuejs.md
+                  - vue-router: language/language_js_framework_vuejs_vuerouter.md
+                  - Vuex: language/language_js_framework_vuejs_vuex.md
               - ■ Remix:
-                  - ■ Remix: language/language_js_framework_remix.md
-                  - ■ コマンド: language/language_js_framework_remix_command.md
+                  - Remix: language/language_js_framework_remix.md
+                  - コマンド: language/language_js_framework_remix_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_js_package_management.md
               - SQL: language/language_js_package_sql.md
