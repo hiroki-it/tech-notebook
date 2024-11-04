@@ -19,7 +19,30 @@ Reactパッケージを使用したフレームワークである。
 
 <br>
 
-## 02. 初期化
+## 02. ディレクトリ構成
+
+```yaml
+.
+├── app/
+│  ├── components/ # ユーザー定義のRemixコンポーネント
+│  │
+│  ├── models/ # モデルのCRUD処理
+│  │
+│  ├── routes/ # ルーティングとレンダリングの処理
+│  │
+│  ├── utils/ # 汎用的な関数
+│  │
+│  ├── entry.client.tsx
+│  ├── entry.server.tsx
+│  └── root.tsx
+│
+├── prisma/ # モデルの定義
+...
+```
+
+<br>
+
+## 03. 初期化
 
 ### loader
 
@@ -94,7 +117,7 @@ export default function Posts() {
 
 <br>
 
-## 03. ルーティング
+## 04. ルーティング
 
 ### URLとのマッピング
 
@@ -152,7 +175,7 @@ export default function Post() {
 
 <br>
 
-## 04. コンポーネント
+## 05. コンポーネント
 
 ### Form
 
