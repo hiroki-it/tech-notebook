@@ -23,9 +23,38 @@ Reactパッケージを使用したフレームワークである。
 
 ### loader
 
-ページに必要なデータを読み込む。
+#### ▼ loaderとは
 
-`useLoaderData`関数でコンポーネントに渡せる。
+サーバーサイドレンダリング時に使用できる。
+
+DBにクエリを送信し、データを取得できる。
+
+```tsx
+import {json} from "@remix-run/node";
+import {useLoaderData} from "@remix-run/react";
+
+export const loader = async () => {
+  return json({
+    posts: [
+      {
+        slug: "my-first-post",
+        title: "My First Post",
+      },
+      {
+        slug: "90s-mixtape",
+        title: "A Mixtape I Made Just For You",
+      },
+    ],
+  });
+};
+```
+
+> - https://zenn.dev/ak/articles/cef68c1b67a314#loader
+> - https://zenn.dev/link/comments/8945abe32ae53a
+
+#### ▼ useLoaderData
+
+`loader`関数で取得したデータを表示できる。
 
 ```tsx
 import {json} from "@remix-run/node";
@@ -56,6 +85,7 @@ export default function Posts() {
 }
 ```
 
+> - https://zenn.dev/ak/articles/cef68c1b67a314#loader
 > - https://zenn.dev/link/comments/8945abe32ae53a
 
 <br>
@@ -93,5 +123,27 @@ export default function Foo() {
 URLに規則性があるようなページに適する。
 
 > - https://zenn.dev/link/comments/ddd4650a1941e3
+
+<br>
+
+## 04. remixコマンド
+
+### build
+
+```bash
+$ remix vite:build
+```
+
+> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitebuild
+
+<br>
+
+### dev
+
+```bash
+$ remix vite:dev
+```
+
+> - https://remix-docs-ja.techtalk.jp/other-api/dev#remix-vitedev
 
 <br>

@@ -17,7 +17,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 SQLを抽象化するAPIをアプリケーションに提供する。
 
-SQLの種類が異なっていても、共通のロジックでクエリを実行できる。
+SQLの種類が異なっていても、共通のロジックでクエリを送信できる。
 
 ![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php_sql_package.png)
 

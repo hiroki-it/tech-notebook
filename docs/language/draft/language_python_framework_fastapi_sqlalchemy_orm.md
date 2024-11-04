@@ -50,7 +50,6 @@ def get_db():
         yield session_local
     finally:
         session_local.close()
-
 ```
 
 > - https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-sqlalchemy-parts
@@ -106,6 +105,7 @@ class FooController():
      # 作成トランザクションを実行します。
      # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
      def createFoo(self):
+
          foo = Foo(first_name="hiroki", last_name="hasegawa")
 
          # CREATE処理を実行する (セッションにクラスを追加する)
@@ -118,7 +118,6 @@ class FooController():
          self.db.refresh(foo)
 
          return JSONResponse(jsonable_encoder(foo))
-
 ```
 
 > - https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
@@ -130,3 +129,5 @@ Dependsメソッドについて
 > DB接続部分にDIを利用することにより、ビジネスロジックとDBが密結合になることを防ぎます。
 
 また、DIによってこの `db` インスタンスの中身を外部からoverrideすることが可能になるため、例えばテストの時に `get_db`と異なるテスト用の接続先に置換するといったことが、プロダクションコードに触れることなく可能になります。
+
+<br>

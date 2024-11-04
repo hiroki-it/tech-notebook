@@ -19,6 +19,8 @@ description: Typescriptの知見を記録しています。
 
 `tsconfig.json`ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。
 
+拡張子として、`ts`と`tsx` (Typescript内にJSXを実装できる) を使用できる。
+
 > - https://ugo.tokyo/ts-config/#outline__1
 
 <br>

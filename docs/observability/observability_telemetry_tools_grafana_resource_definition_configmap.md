@@ -130,7 +130,7 @@ data:
 
 CloudWatchの場合、`cloudwatch`タイプを指定する。
 
-CloudWatch-APIからメトリクスのデータポイントを収集するために、自前のクエリを実行する必要がある。
+CloudWatch-APIからメトリクスのデータポイントを収集するために、自前のクエリを送信する必要がある。
 
 ```yaml
 apiVersion: v1

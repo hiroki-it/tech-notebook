@@ -48,3 +48,5 @@ class Foo:
     def foo():
         return self.__foo
 ```
+
+<br>

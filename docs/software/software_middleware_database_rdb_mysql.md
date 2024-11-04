@@ -43,7 +43,7 @@ description: MySQL＠RDBの知見を記録しています。
 
 MySQLは、TCPスリーウェイハンドシェイクでTCPコネクションを確立し、MySQLプロトコルのクエリを受信する。
 
-つまり、アプリケーションはDBへの接続時にTCPスリーウェイハンドシェイクを実行し、MySQLにクエリを実行する時はMySQLプロコトルを使用することになる。
+つまり、アプリケーションはDBへの接続時にTCPスリーウェイハンドシェイクを実行し、MySQLにクエリを送信する時はMySQLプロコトルを使用することになる。
 
 > - https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078
 > - http://www.cybergarage.org/memo/rdbms_query_protocols/
