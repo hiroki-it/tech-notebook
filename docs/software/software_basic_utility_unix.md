@@ -2250,6 +2250,23 @@ $ strace -p <プロセスID>
 
 <br>
 
+## sysctl
+
+### sysctlとは
+
+`/proc/sys`ディレクトリ配下のカーネルに関するパラメータを設定する。
+
+| パラメーター | 説明                           |
+| ------------ | ------------------------------ |
+| `net`系      | ネットワークのパラメーター     |
+| `fs`系       | ファイルシステムのパラメーター |
+| `kernel`系   | カーネルのパラメーター         |
+
+> - https://linuc.org/study/knowledge/527/
+> - https://qiita.com/For_Whom_The_Alarm_Tolls/items/e1b7bc6b630f74f78f63#sysctl
+
+<br>
+
 ## tail
 
 ### tailとは

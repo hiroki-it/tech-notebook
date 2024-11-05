@@ -71,6 +71,8 @@ const CsrPage = () => {
 export default CsrPage;
 ```
 
+> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6
+
 #### ▼ SSRモード
 
 以下の時にSSRモードになる。
@@ -110,11 +112,13 @@ const SsrPage = async () => {
 export default SsrPage;
 ```
 
+> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-1
+
 #### ▼ SSGモード
 
 以下の時にSSGモードになる。
 
-- `fetch`関数の第二引数に、`{ cache: "force-cache" }`を指定している
+- `fetch`関数の第二引数に、`{ cache: "force-cache" }`を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
 
 ```tsx
@@ -146,6 +150,8 @@ const SsgPage = async () => {
 
 export default SsgPage;
 ```
+
+> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-2
 
 #### ▼ ISRモード
 
@@ -187,5 +193,7 @@ const IsrPage = async () => {
 
 export default IsrPage;
 ```
+
+> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-3
 
 <br>
