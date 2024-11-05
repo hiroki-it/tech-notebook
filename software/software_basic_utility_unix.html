@@ -29180,11 +29180,11 @@ qux
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
 
 NAME<span class="w">          </span>MAJ:MIN<span class="w"> </span>RM<span class="w">   </span>SIZE<span class="w">  </span>RO<span class="w">  </span>TYPE<span class="w">  </span>MOUNTPOINT
-xvda<span class="w">          </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">    </span>16G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">             </span><span class="c1"># ストレージ</span>
+xvda<span class="w">          </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">    </span>16G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">             </span><span class="c1"># ストレージ (AWS EBSボリュームのルートボリューム)</span>
 └─xvda1<span class="w">       </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">     </span>8G<span class="w">   </span><span class="m">0</span><span class="w">  </span>part<span class="w">  </span>/<span class="w">          </span><span class="c1"># パーティション</span>
 <span class="w">  </span>├─root<span class="w">      </span><span class="m">253</span>:0<span class="w">    </span><span class="m">0</span><span class="w">     </span>5G<span class="w">   </span><span class="m">0</span><span class="w">   </span>lvm<span class="w">  </span>/<span class="w">          </span><span class="c1"># 論理ボリューム</span>
 <span class="w">  </span>└─swap<span class="w">      </span><span class="m">253</span>:1<span class="w">    </span><span class="m">0</span><span class="w">     </span>3G<span class="w">   </span><span class="m">0</span><span class="w">   </span>lvm<span class="w">  </span><span class="o">[</span>SWAP<span class="o">]</span>
-nvme1n1<span class="w">       </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>200G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">  </span>/var/lib<span class="w">   </span><span class="c1"># ストレージ</span>
+nvme1n1<span class="w">       </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>200G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">  </span>/var/lib<span class="w">   </span><span class="c1"># ストレージ (AWS EBSボリュームの追加ボリューム)</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="lsoflist-open-file">lsof：List open file<a class="headerlink" href="#lsoflist-open-file" title="Permanent link">&para;</a></h2>
