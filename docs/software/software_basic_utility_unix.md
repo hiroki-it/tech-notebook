@@ -1441,11 +1441,11 @@ $ ls -l -h
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ストレージ
+xvda          202:0    0    16G   0  disk             # ストレージ (AWS EBSボリュームのルートボリューム)
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
   ├─root      253:0    0     5G   0   lvm  /          # 論理ボリューム
   └─swap      253:1    0     3G   0   lvm  [SWAP]
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
 ```
 
 <br>

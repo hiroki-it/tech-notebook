@@ -397,9 +397,9 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 $ lsblk
 
 NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
-xvda      202:0    0     8G    0   disk              # ストレージ (EBSボリューム)
+xvda      202:0    0     8G    0   disk              # ストレージ (EBSボリュームのルートボリューム)
 └─xvda1   202:1    0     8G    0   part   /          # パーティション
-nvme1n1   259:1    0   200G    0   disk   /var/lib
+nvme1n1   259:1    0   200G    0   disk   /var/lib   # ストレージ (EBSボリュームの追加ボリューム)
 ...
 ```
 
@@ -426,9 +426,9 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ストレージ (EBSボリューム)
+xvda          202:0    0    16G   0  disk             # ストレージ (EBSボリュームのルートボリューム)
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ (EBSボリュームの追加ボリューム)
 ...
 ```
 
@@ -578,7 +578,23 @@ AutoScalingのスケールイン時に、削除されたEC2のEBSボリューム
 
 <br>
 
-### EBSボリュームのマルチアタッチ
+### EBSボリュームのアタッチ
+
+#### ▼ マウント先
+
+EBSボリュームのアタッチ先のデバイスパスと、OS上での実際のデバイスパスが異なる。
+
+例えば、`/dev/xvdb`をデバイスパスとしても、OS上では`/dev/nvme1n1`になる。
+
+```bash
+$ df -hT
+
+/dev/nvme1n1   xfs       100G  4.3G  96G   1% /var/lib
+```
+
+> - https://qiita.com/motojouya/items/31346b968b41a10c4dd6#3-%E5%88%9D%E6%9C%9F%E5%8C%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90
+
+#### ▼ マルチアタッチ
 
 ボリュームタイプが`io1`または`io2`のEBSボリュームは、複数のEC2に紐づけられる。
 

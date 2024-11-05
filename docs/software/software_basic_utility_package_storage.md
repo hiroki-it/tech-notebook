@@ -65,9 +65,9 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 $ lsblk
 
 NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ストレージ
+xvda          202:0    0    16G   0  disk             # ストレージ (AWS EBSボリュームのルートボリューム)
 └─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ
+nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
 ```
 
 また、`df`コマンドでパーティションを確認する。
