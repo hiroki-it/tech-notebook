@@ -205,8 +205,9 @@ DATADOG_VERSION=<バージョンタグ>
 import { Configuration } from '@nuxt/types'
 import baseConfig from './nuxt.config'
 
-// .env.datadogファイルの読み出し
+// .env.datadogファイルの読み込む
 dotenv.config({ path: resolve(process.cwd(), '.env.datadog') })
+
 const {
   DATADOG_CLIENT_TOKEN,
   DATADOG_ENV,

@@ -210,7 +210,7 @@ $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 $ gcloud components install
 ```
 
-別途、コンポーネントを読みこむ必要がある。
+別途、コンポーネントを読み込む必要がある。
 
 ```bash
 $ brew info google-cloud-sdk

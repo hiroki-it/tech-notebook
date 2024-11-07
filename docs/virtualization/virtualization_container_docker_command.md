@@ -113,7 +113,7 @@ Dockerfileの`COPY`コマンドを使用してコンテナ内に配置してい�
 $ docker cp ./docker/www/nginx.conf <コンテナID>:/etc/nginx/nginx.conf
 
 # コンテナに接続後に、nginxの設定ファイルを再読み出し。
-$ docker exec -it <コンテナ名> bin/bash # もしくはbin/sh
+$ docker exec -it <起動中コンテナ名> bin/bash # もしくはbin/sh
 [root@<コンテナID>:~] $ nginx -s reload
 [root@<コンテナID>:~] $ exit
 

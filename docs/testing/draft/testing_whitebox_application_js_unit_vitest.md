@@ -21,7 +21,37 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ## 02. セットアップ
 
-```javascript
+### plugin
+
+```typescript
+import {defineConfig} from "vitest/config";
+
+export default defineConfig({
+  plugins: [],
+});
+```
+
+<br>
+
+### test
+
+#### ▼ env
+
+```typescript
+import {defineConfig} from "vitest/config";
+import * as dotenv from "dotenv";
+
+export default defineConfig({
+  test: {
+    // .env.testファイルを読み込む
+    env: dotenv.config({path: ".env.test"}).parsed,
+  },
+});
+```
+
+#### ▼ exclude
+
+```typescript
 import {defineConfig} from "vitest/config";
 
 export default defineConfig({
@@ -32,5 +62,43 @@ export default defineConfig({
 ```
 
 > - https://vitest.dev/config/
+
+#### ▼ globals
+
+```typescript
+import {defineConfig} from "vitest/config";
+
+export default defineConfig({
+  test: {
+    globals: true,
+  },
+});
+```
+
+#### ▼ include
+
+```typescript
+import {defineConfig} from "vitest/config";
+
+export default defineConfig({
+  test: {
+    include: ["./src/**/*.spec.ts"],
+    globals: true,
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+```
+
+#### ▼ setupFiles
+
+```typescript
+import {defineConfig} from "vitest/config";
+
+export default defineConfig({
+  test: {
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+```
 
 <br>

@@ -78,3 +78,44 @@ description: Typescriptの知見を記録しています。
 > - https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions
 
 <br>
+
+## 環境変数
+
+### OS
+
+- `export`
+- コンテナの環境変数として
+
+### dotenv
+
+```typescript
+import dotenv from "dotenv";
+
+// .envファイルを読み込む
+dotenv.config();
+
+// なんらかの実装
+```
+
+> - https://www.basedash.com/blog/environment-variables-in-typescript
+> - https://medium.com/@sushantkadam15/using-environment-variables-in-typescript-with-dotenv-dc0c35939059
+
+### 型指定
+
+```typescript
+interface Env {
+  DATABASE_NAME: string;
+  DATABASE_PORT?: number;
+}
+
+const myEnv: Env = {
+  DATABASE_NAME: process.env.DATABASE_NAME || "",
+  DATABASE_PORT: process.env.DATABASE_PORT
+    ? parseInt(process.env.DATABASE_PORT)
+    : undefined,
+};
+```
+
+> - https://www.basedash.com/blog/environment-variables-in-typescript
+
+<br>
