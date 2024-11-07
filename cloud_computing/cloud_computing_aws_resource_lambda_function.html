@@ -24973,7 +24973,7 @@
 <h3 id="aws-api-gateway-aws-lambda-s3">AWS API Gateway ➡︎ AWS Lambda ➡︎ S3<a class="headerlink" href="#aws-api-gateway-aws-lambda-s3" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。</p>
-<p>AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>AWSAWS LambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。</p>
+<p>AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">);</span>
