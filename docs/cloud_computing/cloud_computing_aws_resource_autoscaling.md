@@ -15,7 +15,7 @@ description: AutoScaling＠AWSリソースの知見を記録しています。
 
 ## 01. オートスケーリングとは
 
-ALBを使用して、起動テンプレートを基にしたEC2の自動水平スケーリングを実行する。
+ALBを使用して、起動テンプレートを基にしたAWS EC2の自動水平スケーリングを実行する。
 
 注意点として、オートスケーリングに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
 
@@ -33,15 +33,15 @@ ALBを使用して、起動テンプレートを基にしたEC2の自動水平�
 
 #### ▼ 設定項目と説明
 
-| 項目                 | 説明                                                                                               | 補足                                                                                  |
-| -------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| スケーリンググループ | スケーリングのグループ構成を定義する。各グループで最大最小必要数を設定できる。                     |                                                                                       |
-| 起動テンプレート     | スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプなど) を設定する。 |                                                                                       |
-| ネットワーク         | いずれのAZのサブネットでインスタンスを作成するかを設定する。                                       | 選択したAZの個数よりも少ない個数のEC2を作成する場合、作成先のAZをランダムに選択する。 |
-| ロードバランシング   | オートスケーリングに紐づけるALBを設定する。                                                        |                                                                                       |
-| ヘルスチェック       | ヘルスチェックの実行方法を設定する。                                                               |                                                                                       |
-| スケーリングポリシー | スケーリングの方法を設定する。                                                                     |                                                                                       |
-| アクティビティ通知   | スケーリング時のイベントをSNSに通知するように設定する。                                            |                                                                                       |
+| 項目                 | 説明                                                                                               | 補足                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| スケーリンググループ | スケーリングのグループ構成を定義する。各グループで最大最小必要数を設定できる。                     |                                                                                           |
+| 起動テンプレート     | スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプなど) を設定する。 |                                                                                           |
+| ネットワーク         | いずれのAZのサブネットでインスタンスを作成するかを設定する。                                       | 選択したAZの個数よりも少ない個数のAWS EC2を作成する場合、作成先のAZをランダムに選択する。 |
+| ロードバランシング   | オートスケーリングに紐づけるALBを設定する。                                                        |                                                                                           |
+| ヘルスチェック       | ヘルスチェックの実行方法を設定する。                                                               |                                                                                           |
+| スケーリングポリシー | スケーリングの方法を設定する。                                                                     |                                                                                           |
+| アクティビティ通知   | スケーリング時のイベントをSNSに通知するように設定する。                                            |                                                                                           |
 
 <br>
 
@@ -51,7 +51,7 @@ ALBを使用して、起動テンプレートを基にしたEC2の自動水平�
 
 ```terraform
 # オートスケーリンググループ
-resource "aws_オートスケーリング_group" "foo" {
+resource "aws_autoscaling_group" "foo" {
   name                      = "foo-group"
   max_size                  = 5
   min_size                  = 2
@@ -83,21 +83,21 @@ resource "aws_オートスケーリング_group" "foo" {
   tag {
     key                 = "Name"
     value               = "foo-instance"
-    # オートスケーリングで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したAWS EC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Service"
     value               = "foo"
-    # オートスケーリングで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したAWS EC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Env"
     value               = "prd"
-    # オートスケーリングで起動したEC2にタグを伝搬する
+    # オートスケーリングで起動したAWS EC2にタグを伝搬する
     propagate_at_launch = true
   }
 }
@@ -113,7 +113,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_group
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
 
 #### ▼ 起動テンプレート
 
@@ -193,19 +193,19 @@ resource "aws_launch_template" "foo" {
 
 ```terraform
 # アクティビティ通知
-resource "aws_オートスケーリング_notification" "foo" {
+resource "aws_autoscaling_notification" "foo" {
 
   group_names = [
-    aws_オートスケーリング_group.bar.name,
-    aws_オートスケーリング_group.baz.name,
+    aws_autoscaling_group.bar.name,
+    aws_autoscaling_group.baz.name,
   ]
 
   # 通知したいイベントを設定する
   notifications = [
-    "オートスケーリング:EC2_INSTANCE_LAUNCH",
-    "オートスケーリング:EC2_INSTANCE_TERMINATE",
-    "オートスケーリング:EC2_INSTANCE_LAUNCH_ERROR",
-    "オートスケーリング:EC2_INSTANCE_TERMINATE_ERROR",
+    "autoscaling:EC2_INSTANCE_LAUNCH",
+    "autoscaling:EC2_INSTANCE_TERMINATE",
+    "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
+    "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
   topic_arn = aws_sns_topic.foo.arn
@@ -213,12 +213,12 @@ resource "aws_オートスケーリング_notification" "foo" {
 
 
 # オートスケーリンググループ
-resource "aws_オートスケーリング_group" "bar" {
+resource "aws_autoscaling_group" "bar" {
   ...
 }
 
 
-resource "aws_オートスケーリング_group" "baz" {
+resource "aws_autoscaling_group" "baz" {
   ...
 }
 
@@ -229,7 +229,7 @@ resource "aws_sns_topic" "foo" {
 
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/オートスケーリング_notification
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
 
 <br>
 
@@ -257,15 +257,15 @@ AWSとしては、ターゲット追跡スケーリングの使用を推奨し�
 
 CPU平均使用率に段階的な閾値を設定する。
 
-- `40`%の時にEC2が`1`個スケールアウト
-- `70`%の時にEC2を`2`個スケールアウト
-- `90`%の時にEC2を`3`個スケールアウト
+- `40`%の時にAWS EC2が`1`個スケールアウト
+- `70`%の時にAWS EC2を`2`個スケールアウト
+- `90`%の時にAWS EC2を`3`個スケールアウト
 
 #### ▼ AWS ECSの場合
 
 記入中...
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-オートスケーリング-stepscaling.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 
 <br>
 
@@ -320,7 +320,7 @@ CPU平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間       | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。                          |                                                                                                                                                                                                                                       |
 | スケールインの無効化               |                                                                                                           |                                                                                                                                                                                                                                       |
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-オートスケーリング-targettracking.html
+> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
 
 <br>
 
@@ -333,7 +333,7 @@ CPU平均使用率に段階的な閾値を設定する。
 負荷に合わせて動的にスケーリングするのではなく、一定の間隔で規則的にスケーリングする。
 
 > - https://blog.takuros.net/entry/2020/08/11/082712
-> - https://docs.aws.amazon.com/オートスケーリング/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
 
 <br>
 
@@ -345,9 +345,9 @@ CPU平均使用率に段階的な閾値を設定する。
 
 <br>
 
-### EC2ヘルスチェック
+### AWS EC2ヘルスチェック
 
-EC2が自身をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
+AWS EC2が自身をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。
 
 `running`が正常である。
 
@@ -359,7 +359,7 @@ EC2が自身をヘルスチェックし、異常なEC2があれば、必要に�
 
 ### ロードバランサー
 
-ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応じてEC2を作成し直す。
+ALBがAWS EC2をヘルスチェックし、異常なAWS EC2があれば、必要に応じてAWS EC2を作成し直す。
 
 `Healthy`が正常である。
 
@@ -371,7 +371,7 @@ ALBがEC2をヘルスチェックし、異常なEC2があれば、必要に応�
 
 ### EBS
 
-EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてEC2を作成し直す。
+EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてAWS EC2を作成し直す。
 
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html
 

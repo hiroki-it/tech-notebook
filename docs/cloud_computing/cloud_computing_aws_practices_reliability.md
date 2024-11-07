@@ -29,9 +29,9 @@ description: 信頼性＠AWSの知見を記録しています。
 
 マルチAZを採用する。
 
-それぞれのAZにEC2/ECSを冗長化する。
+それぞれのAZにAWS EC2/ECSを冗長化する。
 
-特定のAZで障害が発生した場合、ALBを起点にして、インバウンド通信の向き先を正常なAZのEC2/ECSに切り替える。
+特定のAZで障害が発生した場合、ALBを起点にして、インバウンド通信の向き先を正常なAZのAWS EC2/ECSに切り替える。
 
 #### ▼ NAT Gateway
 
@@ -43,13 +43,13 @@ NAT GatewayをAZで冗長化し、特定のAZで障害が起こっても、他�
 
 Auto Scaling Groupを採用する。
 
-EC2で障害が発生した場合、ALBを起点にして、正常なEC2に切り替える。
+AWS EC2で障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
 
 #### ▼ Managed Node Group
 
 Managed Node Groupを採用する。
 
-EKS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なEC2に切り替える。
+EKS AWS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
 
 #### ▼ Aurora
 
@@ -63,15 +63,15 @@ Auroraでフェイルオーバーを採用する。
 
 #### ▼ Managed Node Group
 
-EKS EC2 Nodeのスケールアップには、Cluster Autoscaler、Managed Node Group、を採用する。
+EKS AWS EC2 Nodeのスケールアップには、Cluster Autoscaler、Managed Node Group、を採用する。
 
-Cluster AutoscalerとManaged Node Group、では、PodによるEC2 Nodeの負荷に応じてEC2 Nodeをスケーリングする。
+Cluster AutoscalerとManaged Node Group、では、PodによるAWS EC2 Nodeの負荷に応じてAWS EC2 Nodeをスケーリングする。
 
 #### ▼ Auto Scaling Group
 
-EC2のスケールアップには、Auto Scaling Group、を採用する。
+AWS EC2のスケールアップには、Auto Scaling Group、を採用する。
 
-Auto Scaling Groupでは、EC2のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。
+Auto Scaling Groupでは、AWS EC2のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。
 
 <br>
 
