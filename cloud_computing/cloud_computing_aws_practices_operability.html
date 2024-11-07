@@ -14050,9 +14050,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECS
+      ▼ AWS ECS
     </span>
   </a>
   
@@ -23790,9 +23790,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECS
+      ▼ AWS ECS
     </span>
   </a>
   
@@ -24093,9 +24093,9 @@
 <li><a href="https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html">https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html</a></li>
 </ul>
 </blockquote>
-<h4 id="ecs">▼ ECS<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
-<p>名前空間をECSクラスターまたはECSサービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
-<p>ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。</p>
+<h4 id="aws-ecs">▼ AWS ECS<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
+<p>名前空間をAWS ECSクラスターまたはAWS ECSサービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>ClusterNameディメンションとServiceNameディメンションを使用して、AWS ECSクラスターとAWS ECSサービスに関するメトリクスを区別できる。</p>
 <table>
 <thead>
 <tr>
@@ -24110,23 +24110,23 @@
 <tr>
 <td><code>CPUUtilization</code></td>
 <td>%</td>
-<td>ECSクラスターまたはサービスで使用されているCPU使用率をデータポイントとする。</td>
+<td>AWS ECSクラスターまたはサービスで使用されているCPU使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>MemoryUtilization</code></td>
 <td>%</td>
-<td>ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
+<td>AWS ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
 <td></td>
 </tr>
 <tr>
 <td><code>RunningTaskCount</code></td>
 <td>カウント</td>
-<td>稼働中のECSタスク数をデータポイントとする。</td>
+<td>稼働中のAWS ECSタスク数をデータポイントとする。</td>
 <td></td>
-<td>ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
+<td>AWS ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
 </tr>
 </tbody>
 </table>

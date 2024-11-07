@@ -24251,11 +24251,11 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『<code>&lt;コンテナ名&gt;-firelens-&lt;ECSタスクID&gt;</code>』というタグ名で処理されている。</p>
+<p>コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『<code>&lt;コンテナ名&gt;-firelens-&lt;AWS ECSタスクID&gt;</code>』というタグ名で処理されている。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 本来、改行はないが、わかりやすいように改行している。</span>
-<span class="c1"># &lt;コンテナ名&gt;-firelens-&lt;ECSタスクID&gt;</span>
+<span class="c1"># &lt;コンテナ名&gt;-firelens-&lt;AWS ECSタスクID&gt;</span>
 <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">foo-firelens-*****</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="err">*****</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -24292,7 +24292,7 @@
 <p><br></p>
 <h3 id="_3">ログルーティング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ サイドカーコンテナとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ECS Fargateのサイドカーコンテナとして配置する必要がある。</p>
+<p>AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。</p>
 <p>Fargateからログを送信すると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。</p>
 <p>作成のための実装例については、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -24312,7 +24312,7 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ecr">▼ AWS ECRパブリックギャラリーを使用する場合<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h4>
-<p>AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。</p>
+<p>AWS AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。</p>
 <p>デフォルトで内蔵されている<code>conf</code>ファイルの設定をそのまま使用する場合は、こちらを採用する。</p>
 <blockquote>
 <ul>
@@ -24321,7 +24321,7 @@
 </blockquote>
 <h4 id="aws-ecr_1">▼ プライベートAWS ECRリポジトリを使用する場合<a class="headerlink" href="#aws-ecr_1" title="Permanent link">&para;</a></h4>
 <p>あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートAWS ECRリポジトリにコンテナイメージをプッシュしておく。</p>
-<p>ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。</p>
+<p>AWS ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。</p>
 <p>デフォルトで内蔵されている<code>conf</code>ファイルの設定を上書きしたい場合は、こちらを採用する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">amazon/aws-for-fluent-bit:latest</span>
 </code></pre></div>
@@ -24335,7 +24335,7 @@
 <p><br></p>
 <h3 id="_6">コンテナ定義<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="container_definitionjson">▼ <code>container_definition.json</code>ファイル<a class="headerlink" href="#container_definitionjson" title="Permanent link">&para;</a></h4>
-<p>ECSタスクのコンテナ定義にて、アプリコンテナと<code>log_router</code>コンテナを設定する。</p>
+<p>AWS ECSタスクのコンテナ定義にて、アプリコンテナと<code>log_router</code>コンテナを設定する。</p>
 <p>log_routerという名前以外を設定できないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
@@ -24369,7 +24369,7 @@
 <span class="w">            </span><span class="s">&quot;config-file-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;file&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="c1"># 設定上書きのため読み出し</span>
 <span class="w">            </span><span class="s">&quot;config-file-value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/fluent-bit/etc/fluent-bit_custom.conf&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="c1"># ECSの情報をFireLensコンテナに送信するか否か</span>
+<span class="w">            </span><span class="c1"># AWS ECSの情報をFireLensコンテナに送信するか否か</span>
 <span class="w">            </span><span class="s">&quot;enable-ecs-log-metadata&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -24589,8 +24589,8 @@
 <h4 id="parserconf">▼ <code>parser.conf</code>ファイルとは<a class="headerlink" href="#parserconf" title="Permanent link">&para;</a></h4>
 <p>FireLensコンテナで処理中のログのキーの値を修正したい場合、<code>parser.conf</code>ファイルでPARSERセクションを設定する必要がある。</p>
 <h4 id="parser">▼ PARSERセクション<a class="headerlink" href="#parser" title="Permanent link">&para;</a></h4>
-<p>AWS ECSが送信したログ</p>
-<p>AWS ECSのプラットフォームバージョンが<code>v1.3.0</code>の時、メタデータのDockerNameは『<code>/ecs-&lt;ECSタスク定義名&gt;-&lt;リビジョン番号&gt;-&lt;コンテナ名&gt;-&lt;通し番号&gt;</code>』になる (例：<code>/ecs-foo-task-definition-1-bar-123456789</code>) 。</p>
+<p>AWS AWS ECSが送信したログ</p>
+<p>AWS AWS ECSのプラットフォームバージョンが<code>v1.3.0</code>の時、メタデータのDockerNameは『<code>/ecs-&lt;AWS ECSタスク定義名&gt;-&lt;リビジョン番号&gt;-&lt;コンテナ名&gt;-&lt;通し番号&gt;</code>』になる (例：<code>/ecs-foo-task-definition-1-bar-123456789</code>) 。</p>
 <p>これを<code>v1.4.0</code>にアップグレードすればコンテナ名になるが、すぐにアップグレードに対応できないこともある。</p>
 <p>その場合はPARSERセクションにて、正規表現の名前付きキャプチャを使用してコンテナ名を抽出すると、以降のセクションで処理しやすくなる。</p>
 <blockquote>
@@ -24659,7 +24659,7 @@
 <h4 id="stream_processorconf">▼ <code>stream_processor.conf</code>ファイルとは<a class="headerlink" href="#stream_processorconf" title="Permanent link">&para;</a></h4>
 <p>ログの作成元のコンテナごとに異なる処理を設定したい場合、<code>stream_processor.conf</code>ファイルでSTREAM_TASKセクションを定義する必要がある。</p>
 <h4 id="stream_task">▼ STREAM_TASKセクション<a class="headerlink" href="#stream_task" title="Permanent link">&para;</a></h4>
-<p>FireLensコンテナで処理中のログのタグ名は『<code>&lt;コンテナ名&gt;-firelens-&lt;ECSタスクID&gt;</code>』になっている。</p>
+<p>FireLensコンテナで処理中のログのタグ名は『<code>&lt;コンテナ名&gt;-firelens-&lt;AWS ECSタスクID&gt;</code>』になっている。</p>
 <p>そのため、Stream Processorでログを抽出するためには、クエリで『<code>FROM TAG:'*-firelens-*'</code>』を指定する必要がある。</p>
 <p>補足として、STREAM_TASKでタグ付けされたログは、INPUTから再び処理し直される。</p>
 <p>＊実装例＊</p>

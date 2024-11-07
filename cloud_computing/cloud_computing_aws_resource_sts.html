@@ -13933,9 +13933,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#eksid" class="md-nav__link">
+  <a href="#aws-eksid" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EKSをIDプロバイダーとする場合
+      ▼ AWS EKSをIDプロバイダーとする場合
     </span>
   </a>
   
@@ -24018,9 +24018,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#eksid" class="md-nav__link">
+  <a href="#aws-eksid" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EKSをIDプロバイダーとする場合
+      ▼ AWS EKSをIDプロバイダーとする場合
     </span>
   </a>
   
@@ -24415,10 +24415,10 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<h4 id="eksid">▼ EKSをIDプロバイダーとする場合<a class="headerlink" href="#eksid" title="Permanent link">&para;</a></h4>
-<p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png" /></p>
-<p>EKSをIDプロバイダーとして使用するように、<code>Federated</code>キーでEKS Clusterの識別子を設定する。</p>
-<p>これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。</p>
+<h4 id="aws-eksid">▼ AWS EKSをIDプロバイダーとする場合<a class="headerlink" href="#aws-eksid" title="Permanent link">&para;</a></h4>
+<p><img alt="AWS EKS_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png" /></p>
+<p>AWS EKSをIDプロバイダーとして使用するように、<code>Federated</code>キーでAWS EKS Clusterの識別子を設定する。</p>
+<p>これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。</p>
 <p>また、<code>Condition</code>キーで特定のServiceAccountを指定できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -24429,14 +24429,14 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;AWS</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
 <span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;&lt;EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">&quot;system:serviceaccount:&lt;Namespace名&gt;:&lt;ServiceAccount名&gt;&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
@@ -24450,7 +24450,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;IAMロールのARN&gt;</span>
+<span class="w">    </span><span class="nt">AWS EKS.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;IAMロールのARN&gt;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;信頼されたエンティティで指定したユーザー名内のServiceAccount名&gt;</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;信頼されたエンティティで指定したユーザー名内のNamespace名&gt;</span>
 </code></pre></div>
@@ -24609,7 +24609,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     

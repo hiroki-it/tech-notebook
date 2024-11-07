@@ -14375,32 +14375,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-02-waf" class="md-nav__link">
+  <a href="#04-02-aws-waf" class="md-nav__link">
     <span class="md-ellipsis">
-      04-02. WAF
+      04-02. AWS WAF
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. WAF">
+    <nav class="md-nav" aria-label="04-02. AWS WAF">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#waf" class="md-nav__link">
+  <a href="#aws-waf" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFによる防御
+      AWS WAFによる防御
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_1" class="md-nav__link">
+  <a href="#aws-waf_1" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFルールによる防御
+      AWS WAFルールによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="WAFルールによる防御">
+    <nav class="md-nav" aria-label="AWS WAFルールによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14454,13 +14454,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_2" class="md-nav__link">
+  <a href="#aws-waf_2" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFマネージドルールによる防御
+      AWS WAFマネージドルールによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="WAFマネージドルールによる防御">
+    <nav class="md-nav" aria-label="AWS WAFマネージドルールによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24475,32 +24475,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-02-waf" class="md-nav__link">
+  <a href="#04-02-aws-waf" class="md-nav__link">
     <span class="md-ellipsis">
-      04-02. WAF
+      04-02. AWS WAF
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. WAF">
+    <nav class="md-nav" aria-label="04-02. AWS WAF">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#waf" class="md-nav__link">
+  <a href="#aws-waf" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFによる防御
+      AWS WAFによる防御
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_1" class="md-nav__link">
+  <a href="#aws-waf_1" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFルールによる防御
+      AWS WAFルールによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="WAFルールによる防御">
+    <nav class="md-nav" aria-label="AWS WAFルールによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24554,13 +24554,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#waf_2" class="md-nav__link">
+  <a href="#aws-waf_2" class="md-nav__link">
     <span class="md-ellipsis">
-      WAFマネージドルールによる防御
+      AWS WAFマネージドルールによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="WAFマネージドルールによる防御">
+    <nav class="md-nav" aria-label="AWS WAFマネージドルールによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24833,7 +24833,7 @@
 <td>AWS VPCエンドポイント当たり、IPアドレス<code>1</code>個</td>
 </tr>
 <tr>
-<td>ECS、EKS</td>
+<td>AWS ECS、AWS EKS</td>
 <td>Elastic Network Interface 数と同じ個数</td>
 </tr>
 <tr>
@@ -25001,7 +25001,7 @@
 <h2 id="03-02">03-02. セキュリティグループ<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">セキュリティグループによる防御<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p><code>L3</code>の攻撃をセキュリティグループで防御する。</p>
-<p>例えば、EKSのNodeグループごとに異なるセキュリティグループを紐づけている。</p>
+<p>例えば、AWS EKSのNodeグループごとに異なるセキュリティグループを紐づけている。</p>
 <p>ネットワークに公開するNodeグループのセキュリティグループでは、特定の送信元IPアドレスからのアクセスのみを許可する。</p>
 <p>公開しないNodeグループでは、他のNodeグループのEC2からのみアクセスを許可する。</p>
 <p>これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる</p>
@@ -25125,7 +25125,7 @@
 </table>
 <h4 id="alb">▼ ALBの場合<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
 <p>CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。</p>
-<p>代わりに、CloudFrontにWAFを紐付け、ALBの前でIPアドレスを制限する。</p>
+<p>代わりに、CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。</p>
 <p>CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。</p>
 <table>
 <thead>
@@ -25162,7 +25162,7 @@
 <p>そのため、NLBのルーティング先 (EC2など) でファイアーウォールを設定する必要がある。</p>
 <h4 id="aws-vpc_2">▼ AWS VPCエンドポイント<a class="headerlink" href="#aws-vpc_2" title="Permanent link">&para;</a></h4>
 <p>AWS VPC内からAWS VPC外への通信は、AWS VPCエンドポイントで安全に通信する。</p>
-<p>例えば、EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。</p>
+<p>例えば、AWS EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。</p>
 <p>AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。</p>
 <p><br></p>
 <h3 id="_11">セキュリティグループ (アウトバウンド) による防御<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -25200,7 +25200,7 @@
 <p><br></p>
 <h2 id="04-l7">04. <code>L7</code>の防御<a class="headerlink" href="#04-l7" title="Permanent link">&para;</a></h2>
 <h3 id="l7"><code>L7</code>の防御方法<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>の攻撃をWAFやCertificate Managerで防御する。</p>
+<p><code>L7</code>の攻撃をAWS WAFやCertificate Managerで防御する。</p>
 <p>代わりに、アプリケーションの実装で防御しても良い。</p>
 <blockquote>
 <ul>
@@ -25208,8 +25208,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-02-waf">04-02. WAF<a class="headerlink" href="#04-02-waf" title="Permanent link">&para;</a></h2>
-<h3 id="waf">WAFによる防御<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
+<h2 id="04-02-aws-waf">04-02. AWS WAF<a class="headerlink" href="#04-02-aws-waf" title="Permanent link">&para;</a></h2>
+<h3 id="aws-waf">AWS WAFによる防御<a class="headerlink" href="#aws-waf" title="Permanent link">&para;</a></h3>
 <p><code>L7</code>の攻撃を防御する。</p>
 <blockquote>
 <ul>
@@ -25217,7 +25217,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="waf_1">WAFルールによる防御<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
+<h3 id="aws-waf_1">AWS WAFルールによる防御<a class="headerlink" href="#aws-waf_1" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ユーザーエージェント拒否<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>悪意のあるユーザーエージェントを拒否する。</p>
@@ -25481,7 +25481,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="waf_2">WAFマネージドルールによる防御<a class="headerlink" href="#waf_2" title="Permanent link">&para;</a></h3>
+<h3 id="aws-waf_2">AWS WAFマネージドルールによる防御<a class="headerlink" href="#aws-waf_2" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ マネージドルールの動作確認の必要性<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>マネージドルールを導入する時は、事前にルールのカウントを使用することが推奨である。</p>
 <p>カウントで検知されたリクエストのほとんどが悪意のないものであれば、設定したマネージドルールの使用をやめる必要がある。</p>
@@ -25499,7 +25499,7 @@
 <h2 id="04-03-certificate-manager">04-03. Certificate Manager<a class="headerlink" href="#04-03-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="certificate-manager">Certificate Managerによる防御<a class="headerlink" href="#certificate-manager" title="Permanent link">&para;</a></h3>
 <p>アプリケーションデータの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
-<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKSなど) に紐づけられる。</p>
+<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
 <p>安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
 <blockquote>
 <ul>

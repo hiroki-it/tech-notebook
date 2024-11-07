@@ -24816,7 +24816,7 @@
 <h2 id="01-x-ray">01. X-Rayとは<a class="headerlink" href="#01-x-ray" title="Permanent link">&para;</a></h2>
 <h3 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>分散トレースの監視バックエンドとして機能する。</p>
-<p>計装したアプリからX-Rayデーモン (EC2、ECS) またはOpenTelemetry Collector (EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。</p>
+<p>計装したアプリからX-Rayデーモン (EC2、AWS ECS) またはOpenTelemetry Collector (AWS EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。</p>
 <p>サービスメッシュツール (例：AWS VPC Lattice、Istio) によって、X-RayデーモンまたはOpenTelemetry Collectorのいずれに送信すれば良いのかが異なる。</p>
 <p><br></p>
 <h3 id="_3">計装パッケージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -24826,7 +24826,7 @@
 </ul>
 <p><br></p>
 <h3 id="x-ray">X-Rayデーモン<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
-<p>EC2であればデーモンプロセスとして、ECSであればサイドカーとして稼働させる。</p>
+<p>EC2であればデーモンプロセスとして、AWS ECSであればサイドカーとして稼働させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/">https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/</a></li>
@@ -24834,7 +24834,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="opentelemetry-collector">OpenTelemetry Collector<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h3>
-<p>EKSでDamonSetとして稼働させる。</p>
+<p>AWS EKSでDamonSetとして稼働させる。</p>
 <p>執筆時点 (2024/02/28) ではサイドカーはサポートしていない。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -25033,7 +25033,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <span class="w">  </span><span class="s">&quot;end_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.478293361449E9</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;service&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="s">&quot;user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="c1"># アプリケーションを実行しているAWSリソースの種類 (例：EC2、ECS、Elastic Beanstalk)</span>
+<span class="w">  </span><span class="c1"># アプリケーションを実行しているAWSリソースの種類 (例：EC2、AWS ECS、Elastic Beanstalk)</span>
 <span class="w">  </span><span class="s">&quot;origin&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="s">&quot;parent_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="s">&quot;http&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">...</span><span class="p p-Indicator">},</span>
@@ -25470,17 +25470,17 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <tbody>
 <tr>
 <td><code>k8s.cluster.name</code></td>
-<td><code>eks.cluster_name</code></td>
+<td><code>AWS EKS.cluster_name</code></td>
 <td><code>foo-cluster</code></td>
 </tr>
 <tr>
 <td><code>k8s.pod.name</code></td>
-<td><code>eks.pod</code></td>
+<td><code>AWS EKS.pod</code></td>
 <td><code>foo-pod</code></td>
 </tr>
 <tr>
 <td><code>k8s.pod.uid</code></td>
-<td><code>eks.container_id</code></td>
+<td><code>AWS EKS.container_id</code></td>
 <td><code>foo-container</code></td>
 </tr>
 <tr>

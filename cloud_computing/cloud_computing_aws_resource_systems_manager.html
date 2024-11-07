@@ -23966,7 +23966,7 @@ EC2、RDS
 <p><br></p>
 <h3 id="_7">変数の暗号化と復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。</p>
-<p>パラメーターストア上で変数は暗号化されており、EC2 (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。</p>
+<p>パラメーターストア上で変数は暗号化されており、EC2 (AWS ECSやAWS EKSのコンテナのホストを含む) で参照する時に復号化される。</p>
 <p>セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。</p>
 <p>たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなど様々な要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。</p>
 <p><img alt="parameter-store_kms" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png" /></p>
@@ -23983,7 +23983,7 @@ EC2、RDS
 <p><br></p>
 <h2 id="04">04. セッションマネージャー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">セッションマネージャーとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>EC2 (ECSやEKSのコンテナのホストを含む) に通信できるようにする。</p>
+<p>EC2 (AWS ECSやAWS EKSのコンテナのホストを含む) に通信できるようにする。</p>
 <p>SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにリクエストを送信できる。</p>
 <p>接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。</p>
 <blockquote>
@@ -24005,7 +24005,7 @@ EC2、RDS
 <p>同時AWSセッションの上限数は2つまでである。</p>
 <p>以下のようなエラーが出た時は、セッション途中のユーザーが他ににいるか、過去のセッションを完了できていない可能性がある。</p>
 <p>セッションマネージャーで既存のセッションを完了できる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ECS Execの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWS ECS Execの場合</span>
 An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span><span class="o">(</span>ClientException<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>calling<span class="w"> </span>the<span class="w"> </span>ExecuteCommand<span class="w"> </span>operation:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>new<span class="w"> </span>execute<span class="w"> </span>sessions<span class="w"> </span>because<span class="w"> </span>the<span class="w"> </span>maximum<span class="w"> </span>session<span class="w"> </span>limit<span class="w"> </span>of<span class="w"> </span><span class="m">2</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>reached.
 </code></pre></div>
 <p><br></p>

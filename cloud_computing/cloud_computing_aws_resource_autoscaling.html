@@ -13099,9 +13099,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -13132,9 +13132,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs_1" class="md-nav__link">
+  <a href="#aws-ecs_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -23952,9 +23952,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -23985,9 +23985,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecs_1" class="md-nav__link">
+  <a href="#aws-ecs_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -24368,7 +24368,7 @@
 <li><code>70</code>%の時にEC2を<code>2</code>個スケールアウト</li>
 <li><code>90</code>%の時にEC2を<code>3</code>個スケールアウト</li>
 </ul>
-<h4 id="ecs">▼ ECSの場合<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ecs">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <blockquote>
 <ul>
@@ -24382,16 +24382,16 @@
 <p>ステップスケーリングとは異なり、スケーリングの実行条件となる閾値期間を設定できない。</p>
 <p><strong>＊例＊</strong></p>
 <ul>
-<li>ECSサービスのECSタスク数</li>
+<li>AWS ECSサービスのAWS ECSタスク数</li>
 <li>DBクラスターのAuroraのリードレプリカ数</li>
 <li>Lambdaのスクリプト同時実行数</li>
 </ul>
-<h4 id="ecs_1">▼ ECSの場合<a class="headerlink" href="#ecs_1" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ecs_1">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs_1" title="Permanent link">&para;</a></h4>
 <p>ターゲット値の設定に応じて、自動的にスケールアウトやスケールインが起こるシナリオ例を示す。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>最小ECSタスク数を<code>2</code>、必要ECSタスク数を<code>4</code>、最大数を<code>6</code>、CPU平均使用率を<code>40</code>%に設定する例を考える。</p>
+<p>最小AWS ECSタスク数を<code>2</code>、必要AWS ECSタスク数を<code>4</code>、最大数を<code>6</code>、CPU平均使用率を<code>40</code>%に設定する例を考える。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -24403,7 +24403,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>ECSタスク数が<code>6</code>個にスケールアウトし、CPU使用率<code>40</code>%に維持される。</p>
+<p>AWS ECSタスク数が<code>6</code>個にスケールアウトし、CPU使用率<code>40</code>%に維持される。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -24411,7 +24411,7 @@
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>ECSタスク数が<code>2</code>個にスケールインし、CPU使用率<code>40</code>%に維持される。</p>
+<p>AWS ECSタスク数が<code>2</code>個にスケールインし、CPU使用率<code>40</code>%に維持される。</p>
 </dd>
 </dl>
 <table>
@@ -24425,23 +24425,23 @@
 <tbody>
 <tr>
 <td>ターゲット追跡スケーリングポリシー</td>
-<td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、ECSタスク数のスケーリングが実行される。</td>
+<td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、AWS ECSタスク数のスケーリングが実行される。</td>
 <td></td>
 </tr>
 <tr>
-<td>ECSサービスメトリクス</td>
+<td>AWS ECSサービスメトリクス</td>
 <td>監視対象のメトリクスを設定する。</td>
-<td>『平均CPU』、『平均メモリ』、『ECSタスク当たりのALBからのリクエスト数』を監視できる。SLIに対応するAWS CloudWatchメトリクスも参考にせよ。</td>
+<td>『平均CPU』、『平均メモリ』、『AWS ECSタスク当たりのALBからのリクエスト数』を監視できる。SLIに対応するAWS CloudWatchメトリクスも参考にせよ。</td>
 </tr>
 <tr>
 <td>ターゲット値</td>
-<td>ECSタスク数のスケーリングが実行される収束値を設定する。</td>
-<td>ターゲット値を超過している場合、ECSタスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の<code>90</code>%未満) の場合、ECSタスク数がスケールインされる。</td>
+<td>AWS ECSタスク数のスケーリングが実行される収束値を設定する。</td>
+<td>ターゲット値を超過している場合、AWS ECSタスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の<code>90</code>%未満) の場合、AWS ECSタスク数がスケールインされる。</td>
 </tr>
 <tr>
 <td>スケールアウトクールダウン期間</td>
 <td>スケールアウトを完了してから、次回のスケールアウトを発動できるまでの時間を設定する。</td>
-<td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、ECSの負荷が緩和されないため注意する。</td>
+<td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、AWS ECSの負荷が緩和されないため注意する。</td>
 </tr>
 <tr>
 <td>スケールインクールダウン期間</td>

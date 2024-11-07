@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="WAF＠AWSリソース">
+        <meta name="description" content="AWS WAF＠AWSリソース">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】WAF＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS WAF＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wafaws" class="md-skip">
+        <a href="#aws-wafaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】WAF＠AWSリソース
+              【IT技術の知見】AWS WAF＠AWSリソース
             
           </span>
         </div>
@@ -13829,9 +13829,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-wafweb-application-firewall" class="md-nav__link">
+  <a href="#01-aws-wafweb-application-firewall" class="md-nav__link">
     <span class="md-ellipsis">
-      01. WAFとは：Web Application Firewall
+      01. AWS WAFとは：Web Application Firewall
     </span>
   </a>
   
@@ -23683,9 +23683,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-wafweb-application-firewall" class="md-nav__link">
+  <a href="#01-aws-wafweb-application-firewall" class="md-nav__link">
     <span class="md-ellipsis">
-      01. WAFとは：Web Application Firewall
+      01. AWS WAFとは：Web Application Firewall
     </span>
   </a>
   
@@ -23844,7 +23844,7 @@
   
 
 
-<h1 id="wafaws">WAF＠AWSリソース<a class="headerlink" href="#wafaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-wafaws">AWS WAF＠AWSリソース<a class="headerlink" href="#aws-wafaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23853,7 +23853,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-wafweb-application-firewall">01. WAFとは：Web Application Firewall<a class="headerlink" href="#01-wafweb-application-firewall" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-wafweb-application-firewall">01. AWS WAFとは：Web Application Firewall<a class="headerlink" href="#01-aws-wafweb-application-firewall" title="Permanent link">&para;</a></h2>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃を防御する。</p>
 <table>
 <thead>
@@ -23881,15 +23881,15 @@
 </tr>
 <tr>
 <td>ゼロディ</td>
-<td>WAF</td>
+<td>AWS WAF</td>
 </tr>
 <tr>
 <td>インジェクション</td>
-<td>WAF</td>
+<td>AWS WAF</td>
 </tr>
 <tr>
 <td>XSS</td>
-<td>WAF</td>
+<td>AWS WAF</td>
 </tr>
 <tr>
 <td>データ漏洩</td>
@@ -23936,7 +23936,7 @@
 <tr>
 <td>Rule groups</td>
 <td>ルールの共通部品を管理する。</td>
-<td>各WAFに同じルールを設定する場合、ルールグループを使用する必要がある。ただし、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。</td>
+<td>各AWS WAFに同じルールを設定する場合、ルールグループを使用する必要がある。ただし、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。</td>
 </tr>
 </tbody>
 </table>
@@ -23953,7 +23953,7 @@
 <tbody>
 <tr>
 <td>Overview</td>
-<td>WAFによって許可/拒否されたリクエストのアクセスログを確認できる。</td>
+<td>AWS WAFによって許可/拒否されたリクエストのアクセスログを確認できる。</td>
 <td></td>
 </tr>
 <tr>
@@ -23963,7 +23963,7 @@
 </tr>
 <tr>
 <td>Associated AWS resources</td>
-<td>WAFを紐付けるAWSリソースを設定する。</td>
+<td>AWS WAFを紐付けるAWSリソースを設定する。</td>
 <td>CloudFront、ALBなどに紐付けできる。</td>
 </tr>
 <tr>
@@ -23977,7 +23977,7 @@
 <p>『全てのルール』または『個別のルール』におけるアクセス許可/拒否の履歴を確認できる。</p>
 <p>ALBやCloudFrontのアクセスログよりも解りやすく、様々なデバッグに役立つ。</p>
 <p>ただし、３時間分しか残らない。</p>
-<p>一例として、CloudFrontに紐付けしたWAFで取得できるログを以下に示す。</p>
+<p>一例として、CloudFrontに紐付けしたAWS WAFで取得できるログを以下に示す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo/</span>
 <span class="nn">---</span>
 <span class="c1"># ホスト</span>
@@ -24077,9 +24077,9 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ セキュリティグループとの関係<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>WAFを紐付けられるリソースにセキュリティグループも紐付けている場合、セキュリティグループのルールが先に検証される。</p>
-<p>例えば、WAFをALBに紐付け、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。</p>
-<p>両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはWAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。</p>
+<p>AWS WAFを紐付けられるリソースにセキュリティグループも紐付けている場合、セキュリティグループのルールが先に検証される。</p>
+<p>例えば、AWS WAFをALBに紐付け、かつALBのセキュリティグループにHTTPSプロトコルのルールを設定した場合、後者が先に検証される。</p>
+<p>両方にルールが定義されてると混乱を生むため、HTTPプロトコルやHTTPSプロトコルに関するルールはAWS WAFに定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/">https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/</a></li>
@@ -24088,7 +24088,7 @@
 <p><br></p>
 <h3 id="_8">ログ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ マネージドルールのログ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>WAFマネージドルールを採用している場合、マネージドルールが<code>ruleGroupList</code>キーに配列として格納されている。</p>
+<p>AWS WAFマネージドルールを採用している場合、マネージドルールが<code>ruleGroupList</code>キーに配列として格納されている。</p>
 <p>もし、Countアクションが実行されていれば、<code>excludedRules</code>キーにその旨とルールIDが格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;ruleGroupList&quot;</span><span class="p p-Indicator">:</span>
@@ -24157,7 +24157,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     

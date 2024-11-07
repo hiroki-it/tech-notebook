@@ -13210,9 +13210,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -13343,13 +13343,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-codedeploy-ecs" class="md-nav__link">
+  <a href="#04-03-codedeploy-aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      04-03. CodeDeploy (ECSの場合)
+      04-03. CodeDeploy (AWS ECSの場合)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. CodeDeploy (ECSの場合)">
+    <nav class="md-nav" aria-label="04-03. CodeDeploy (AWS ECSの場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23991,9 +23991,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
+  <a href="#aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECSの場合
+      ▼ AWS ECSの場合
     </span>
   </a>
   
@@ -24124,13 +24124,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-codedeploy-ecs" class="md-nav__link">
+  <a href="#04-03-codedeploy-aws-ecs" class="md-nav__link">
     <span class="md-ellipsis">
-      04-03. CodeDeploy (ECSの場合)
+      04-03. CodeDeploy (AWS ECSの場合)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. CodeDeploy (ECSの場合)">
+    <nav class="md-nav" aria-label="04-03. CodeDeploy (AWS ECSの場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24312,8 +24312,8 @@
 <p><br></p>
 <h2 id="02-codebuild">02. CodeBuild<a class="headerlink" href="#02-codebuild" title="Permanent link">&para;</a></h2>
 <h3 id="buildspecyml"><code>buildspec.yml</code>ファイル<a class="headerlink" href="#buildspecyml" title="Permanent link">&para;</a></h3>
-<h4 id="ecs">▼ ECSの場合<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
-<p>ECSのために、CodeBuildの設定を実行する。</p>
+<h4 id="aws-ecs">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
+<p>AWS ECSのために、CodeBuildの設定を実行する。</p>
 <p>ルートディレクトリの直下に配置しておく。</p>
 <blockquote>
 <ul>
@@ -24412,7 +24412,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-03-codedeploy-ecs">04-03. CodeDeploy (ECSの場合)<a class="headerlink" href="#04-03-codedeploy-ecs" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-codedeploy-aws-ecs">04-03. CodeDeploy (AWS ECSの場合)<a class="headerlink" href="#04-03-codedeploy-aws-ecs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">利用できるデプロイメント手法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>ローリングアップデート、ブルー/グリーンデプロイメント、を利用できる。</p>
 <blockquote>
@@ -24423,7 +24423,7 @@
 <p><br></p>
 <h3 id="_9">ローリングアップデート<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="imagedefinitionsjson">▼ <code>imagedefinitions.json</code>ファイル<a class="headerlink" href="#imagedefinitionsjson" title="Permanent link">&para;</a></h4>
-<p>新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。</p>
+<p>新しいリビジョン番号のAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。</p>
 <p>リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
@@ -24450,7 +24450,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ECSタスク定義の新しいリビジョンを作成。</p>
+<p>AWS ECSタスク定義の新しいリビジョンを作成。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -24458,7 +24458,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>CodeDeployによって、ECSタスク定義を基に、現環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
+<p>CodeDeployによって、AWS ECSタスク定義を基に、現環境 (Prodブルー) のAWS ECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
 <p>ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。</p>
 </dd>
 <dt><code>(5)</code></dt>
@@ -24485,15 +24485,15 @@
 </blockquote>
 <h4 id="appspecyml">▼ <code>appspec.yml</code>ファイル<a class="headerlink" href="#appspecyml" title="Permanent link">&para;</a></h4>
 <p>ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。</p>
-<p>ECSタスク定義名を<code>&lt;TASK_DEFINITION&gt;</code>とすると、<code>taskdef.json</code>ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。</p>
+<p>AWS ECSタスク定義名を<code>&lt;TASK_DEFINITION&gt;</code>とすると、<code>taskdef.json</code>ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 
 <span class="nt">Resources</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">TargetService</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 使用するAWSリソース</span>
-<span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::ECS::Service</span>
+<span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AWS ECS::Service</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># 使用するECSタスク定義</span>
+<span class="w">        </span><span class="c1"># 使用するAWS ECSタスク定義</span>
 <span class="w">        </span><span class="nt">TaskDefinition</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;TASK_DEFINITION&gt;&quot;</span>
 <span class="w">        </span><span class="c1"># 使用するロードバランサー</span>
 <span class="w">        </span><span class="nt">LoadBalancerInfo</span><span class="p">:</span>
@@ -24516,11 +24516,11 @@
 </ul>
 </blockquote>
 <h4 id="taskdefjson">▼ <code>taskdef.json</code>ファイル<a class="headerlink" href="#taskdefjson" title="Permanent link">&para;</a></h4>
-<p>デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。</p>
+<p>デプロイされるAWS ECSタスク定義を実装し、ルートディレクトリの直下に配置する。</p>
 <p>CodeDeployは、CodeBuildから渡された<code>imageDetail.json</code>ファイルを検知し、AWS ECRからコンテナイメージを取得する。</p>
 <p>この時、<code>taskdef.json</code>ファイルのコンテナイメージ名を<code>&lt;IMAGE1_NAME&gt;</code>としておくと、<code>imageDetail.json</code>ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;family&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ECSタスク定義名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;family&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">ECSタスク定義名&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;requiresCompatibilities&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FARGATE&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">  </span><span class="s">&quot;networkMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awsvpc&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;taskRoleArn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;タスクロールのARN&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -24537,7 +24537,7 @@
 <span class="w">            </span><span class="p p-Indicator">{</span>
 <span class="w">              </span><span class="c1"># コンテナポート</span>
 <span class="w">              </span><span class="s">&quot;containerPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="c1"># ECSのホストのポート</span>
+<span class="w">              </span><span class="c1"># AWS ECSのホストのポート</span>
 <span class="w">              </span><span class="s">&quot;hostPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;tcp&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
