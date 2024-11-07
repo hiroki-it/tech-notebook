@@ -189,13 +189,13 @@ const nuxtConfig: Configuration = {
 
 <br>
 
-### 環境変数
+### `process.env`への環境変数格納
 
-#### ▼ `.env`ファイルの読み出し
+#### ▼ `dotenv`パッケージの利用
 
 あらかじめ、dotenvモジュールをインストールしておく。
 
-`process.env`から`.env`ファイルの変数を参照する。
+`process.env`から`.env`ファイルの環境変数を参照する。
 
 定数に代入する場合は、まとめて代入すると良い。
 
@@ -220,20 +220,39 @@ HOME_PATH=/
 ```javascript
 import {Configuration} from "@nuxt/types";
 
+// envファイルから読み込んだ値を定数に格納する
 const {
-    API_URL,
-    API_URL_BROWSER,
-    OAUTH_CLIENT_ID,
-    OAUTH_CLIENT_SECRET,
-    HOME_PATH,
+  API_URL,
+  API_URL_BROWSER,
+  OAUTH_CLIENT_ID,
+  OAUTH_CLIENT_SECRET,
+  HOME_PATH,
 } = process.env;
 
-const nuxtConfig: Configuration = {
-    // プロパティ
-};
+console.log(API_URL);
 ```
 
 > - https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
+> - https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81
+
+#### ▼ 実行環境への出力
+
+実行環境に環境変数を出力する。
+
+```bash
+# 仮想サーバー
+$ export API_URL=https://example.com/api
+```
+
+```yaml
+# コンテナ
+services:
+  nuxt:
+    environment:
+      API_URL: https://example.com/api
+```
+
+> - https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81
 
 <br>
 
