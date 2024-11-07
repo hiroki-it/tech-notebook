@@ -19,7 +19,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 分散トレースの監視バックエンドとして機能する。
 
-計装したアプリからX-Rayデーモン (EC2、ECS) またはOpenTelemetry Collector (EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。
+計装したアプリからX-Rayデーモン (EC2、AWS ECS) またはOpenTelemetry Collector (AWS EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。
 
 サービスメッシュツール (例：AWS VPC Lattice、Istio) によって、X-RayデーモンまたはOpenTelemetry Collectorのいずれに送信すれば良いのかが異なる。
 
@@ -34,7 +34,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 ### X-Rayデーモン
 
-EC2であればデーモンプロセスとして、ECSであればサイドカーとして稼働させる。
+EC2であればデーモンプロセスとして、AWS ECSであればサイドカーとして稼働させる。
 
 > - https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/
 
@@ -42,7 +42,7 @@ EC2であればデーモンプロセスとして、ECSであればサイドカ�
 
 ### OpenTelemetry Collector
 
-EKSでDamonSetとして稼働させる。
+AWS EKSでDamonSetとして稼働させる。
 
 執筆時点 (2024/02/28) ではサイドカーはサポートしていない。
 
@@ -249,7 +249,7 @@ fields @log, @timestamp, @message
   "end_time": 1.478293361449E9,
   "service": {...},
   "user": {...},
-  # アプリケーションを実行しているAWSリソースの種類 (例：EC2、ECS、Elastic Beanstalk)
+  # アプリケーションを実行しているAWSリソースの種類 (例：EC2、AWS ECS、Elastic Beanstalk)
   "origin": {...},
   "parent_id": {...},
   "http": {...},
@@ -544,9 +544,9 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 | OpenTelemetry         | X-Ray                       | 値の例          |
 | --------------------- | --------------------------- | --------------- |
-| `k8s.cluster.name`    | `eks.cluster_name`          | `foo-cluster`   |
-| `k8s.pod.name`        | `eks.pod`                   | `foo-pod`       |
-| `k8s.pod.uid`         | `eks.container_id`          | `foo-container` |
+| `k8s.cluster.name`    | `AWS EKS.cluster_name`      | `foo-cluster`   |
+| `k8s.pod.name`        | `AWS EKS.pod`               | `foo-pod`       |
+| `k8s.pod.uid`         | `AWS EKS.container_id`      | `foo-container` |
 | `aws.log.group.arns`  | `cloudwatch_logs.arn`       |                 |
 | `aws.log.group.names` | `cloudwatch_logs.log_group` |                 |
 

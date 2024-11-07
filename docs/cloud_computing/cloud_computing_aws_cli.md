@@ -513,11 +513,11 @@ $ aws ecr get-login-password --region ap-northeast-1
 
 <br>
 
-### EKS
+### AWS EKS
 
 #### ▼ update-addon
 
-コンフリクトでEKSアドオンの設定を更新できない場合に、変更できるようにする。
+コンフリクトでAWS EKSアドオンの設定を更新できない場合に、変更できるようにする。
 
 ```bash
 $ aws eks update-addon --cluster-name foo-cluster \

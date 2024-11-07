@@ -29,11 +29,11 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 `(3)`
 
-: コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<ECSタスクID>`』というタグ名で処理されている。
+: コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。FireLensコンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<AWS ECSタスクID>`』というタグ名で処理されている。
 
 ```yaml
 # 本来、改行はないが、わかりやすいように改行している。
-# <コンテナ名>-firelens-<ECSタスクID>
+# <コンテナ名>-firelens-<AWS ECSタスクID>
 [0] foo-firelens-*****: [
     *****,
     {
@@ -71,7 +71,7 @@ FireLensコンテナを使用せずに、ユーザー定義のコンテナを作
 
 #### ▼ サイドカーコンテナとして
 
-ECS Fargateのサイドカーコンテナとして配置する必要がある。
+AWS ECS Fargateのサイドカーコンテナとして配置する必要がある。
 
 Fargateからログを送信すると、コンテナ内で稼働するFluentBitがこれを収集し、これを外部にルーティングする。
 
@@ -94,7 +94,7 @@ FluentBitが対応する宛先にログをルーティングできる。
 
 #### ▼ AWS ECRパブリックギャラリーを使用する場合
 
-AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。
+AWS AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。
 
 デフォルトで内蔵されている`conf`ファイルの設定をそのまま使用する場合は、こちらを採用する。
 
@@ -104,7 +104,7 @@ AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリ
 
 あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートAWS ECRリポジトリにコンテナイメージをプッシュしておく。
 
-ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。
+AWS ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。
 
 デフォルトで内蔵されている`conf`ファイルの設定を上書きしたい場合は、こちらを採用する。
 
@@ -122,7 +122,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ▼ `container_definition.json`ファイル
 
-ECSタスクのコンテナ定義にて、アプリコンテナと`log_router`コンテナを設定する。
+AWS ECSタスクのコンテナ定義にて、アプリコンテナと`log_router`コンテナを設定する。
 
 log_routerという名前以外を設定できないことに注意する。
 
@@ -159,7 +159,7 @@ log_routerという名前以外を設定できないことに注意する。
             "config-file-type": "file",
             # 設定上書きのため読み出し
             "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf",
-            # ECSの情報をFireLensコンテナに送信するか否か
+            # AWS ECSの情報をFireLensコンテナに送信するか否か
             "enable-ecs-log-metadata": "true",
           },
       },
@@ -386,9 +386,9 @@ FireLensコンテナで処理中のログのキーの値を修正したい場合
 
 #### ▼ PARSERセクション
 
-AWS ECSが送信したログ
+AWS AWS ECSが送信したログ
 
-AWS ECSのプラットフォームバージョンが`v1.3.0`の時、メタデータのDockerNameは『`/ecs-<ECSタスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>`』になる (例：`/ecs-foo-task-definition-1-bar-123456789`) 。
+AWS AWS ECSのプラットフォームバージョンが`v1.3.0`の時、メタデータのDockerNameは『`/ecs-<AWS ECSタスク定義名>-<リビジョン番号>-<コンテナ名>-<通し番号>`』になる (例：`/ecs-foo-task-definition-1-bar-123456789`) 。
 
 これを`v1.4.0`にアップグレードすればコンテナ名になるが、すぐにアップグレードに対応できないこともある。
 
@@ -475,7 +475,7 @@ FireLensコンテナで複数行のログを処理したい場合、`parsers_mul
 
 #### ▼ STREAM_TASKセクション
 
-FireLensコンテナで処理中のログのタグ名は『`<コンテナ名>-firelens-<ECSタスクID>`』になっている。
+FireLensコンテナで処理中のログのタグ名は『`<コンテナ名>-firelens-<AWS ECSタスクID>`』になっている。
 
 そのため、Stream Processorでログを抽出するためには、クエリで『`FROM TAG:'*-firelens-*'`』を指定する必要がある。
 

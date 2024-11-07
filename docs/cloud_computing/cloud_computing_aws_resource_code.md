@@ -43,9 +43,9 @@ CodeCommitは、他のコード管理サービスで代用できる。
 
 ### `buildspec.yml`ファイル
 
-#### ▼ ECSの場合
+#### ▼ AWS ECSの場合
 
-ECSのために、CodeBuildの設定を実行する。
+AWS ECSのために、CodeBuildの設定を実行する。
 
 ルートディレクトリの直下に配置しておく。
 
@@ -153,7 +153,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 <br>
 
-## 04-03. CodeDeploy (ECSの場合)
+## 04-03. CodeDeploy (AWS ECSの場合)
 
 ### 利用できるデプロイメント手法
 
@@ -167,7 +167,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 #### ▼ `imagedefinitions.json`ファイル
 
-新しいリビジョン番号のECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。
+新しいリビジョン番号のAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。
 
 リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
 
@@ -199,7 +199,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 `(2)`
 
-: ECSタスク定義の新しいリビジョンを作成。
+: AWS ECSタスク定義の新しいリビジョンを作成。
 
 `(3)`
 
@@ -207,7 +207,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 `(4)`
 
-: CodeDeployによって、ECSタスク定義を基に、現環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。
+: CodeDeployによって、AWS ECSタスク定義を基に、現環境 (Prodブルー) のAWS ECSタスクとは別に、新環境 (Testグリーン) が作成される。
 
      ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
 
@@ -233,7 +233,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。
 
-ECSタスク定義名を`<TASK_DEFINITION>`とすると、`taskdef.json`ファイルの値を元にして、新しいECSタスク定義が自動的に代入される。
+AWS ECSタスク定義名を`<TASK_DEFINITION>`とすると、`taskdef.json`ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。
 
 ```yaml
 version: 0.0
@@ -241,9 +241,9 @@ version: 0.0
 Resources:
   - TargetService:
       # 使用するAWSリソース
-      Type: AWS::ECS::Service
+      Type: AWS::AWS ECS::Service
       Properties:
-        # 使用するECSタスク定義
+        # 使用するAWS ECSタスク定義
         TaskDefinition: "<TASK_DEFINITION>"
         # 使用するロードバランサー
         LoadBalancerInfo:
@@ -265,7 +265,7 @@ Resources:
 
 #### ▼ `taskdef.json`ファイル
 
-デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。
+デプロイされるAWS ECSタスク定義を実装し、ルートディレクトリの直下に配置する。
 
 CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検知し、AWS ECRからコンテナイメージを取得する。
 
@@ -273,7 +273,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
 
 ```yaml
 {
-  "family": "<ECSタスク定義名>",
+  "family": "<AWS ECSタスク定義名>",
   "requiresCompatibilities": ["FARGATE"],
   "networkMode": "awsvpc",
   "taskRoleArn": "<タスクロールのARN>",
@@ -290,7 +290,7 @@ CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検�
             {
               # コンテナポート
               "containerPort": 80,
-              # ECSのホストのポート
+              # AWS ECSのホストのポート
               "hostPort": 80,
               "protocol": "tcp",
             },

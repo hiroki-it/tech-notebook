@@ -29,7 +29,7 @@ description: ツール＠AWSの知見を記録しています。
 
 ロードテストを実施できる。
 
-CloudFormationで作成でき、ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
+CloudFormationで作成でき、AWS ECS Fargateを使用して、ユーザーからのリクエストを擬似的に再現できる。
 
 > - https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 

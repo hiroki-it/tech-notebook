@@ -50,7 +50,7 @@ SPAの場合、サーバーレスのバックエンドを自動作成してく�
 | RESTful-API、GraphQL-API | AWS API Gateway、AppSync  | インフラストラクチャ層                   |
 | 認証                     | Cognito                   | インターフェース層                       |
 | 認可                     | Cognito                   | ユースケース層                           |
-| ビジネスロジック         | AWS AWS Lambda            | ドメイン層                               |
+| ビジネスロジック         | AWS Lambda                | ドメイン層                               |
 | 全文検索                 | Elastic Search            | ドメイン層                               |
 
 #### ▼ ストレージ
@@ -139,7 +139,7 @@ Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。
 
 SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静的ホスティングが実行される。
 
-SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS AWS LambdaやCogniteを作成する。
+SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS LambdaやCogniteを作成する。
 
 ```yaml
 version: 1

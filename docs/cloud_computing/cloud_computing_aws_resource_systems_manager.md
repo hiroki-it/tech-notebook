@@ -129,7 +129,7 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。
 
-パラメーターストア上で変数は暗号化されており、EC2 (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。
+パラメーターストア上で変数は暗号化されており、EC2 (AWS ECSやAWS EKSのコンテナのホストを含む) で参照する時に復号化される。
 
 セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
@@ -153,7 +153,7 @@ SMパラメーター名は、『`/<リソース名>/<変数名>`』とすると�
 
 ### セッションマネージャーとは
 
-EC2 (ECSやEKSのコンテナのホストを含む) に通信できるようにする。
+EC2 (AWS ECSやAWS EKSのコンテナのホストを含む) に通信できるようにする。
 
 SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにリクエストを送信できる。
 
@@ -181,7 +181,7 @@ TLS、Sigv4、KMSを使用して暗号化された接続のこと。
 セッションマネージャーで既存のセッションを完了できる。
 
 ```bash
-# ECS Execの場合
+# AWS ECS Execの場合
 An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
 ```
 

@@ -291,13 +291,13 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 }
 ```
 
-#### ▼ EKSをIDプロバイダーとする場合
+#### ▼ AWS EKSをIDプロバイダーとする場合
 
-![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![AWS EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png)
 
-EKSをIDプロバイダーとして使用するように、`Federated`キーでEKS Clusterの識別子を設定する。
+AWS EKSをIDプロバイダーとして使用するように、`Federated`キーでAWS EKS Clusterの識別子を設定する。
 
-これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 また、`Condition`キーで特定のServiceAccountを指定できるようにする。
 
@@ -311,14 +311,14 @@ EKSをIDプロバイダーとして使用するように、`Federated`キーでE
         "Effect": "Allow",
         "Principal":
           {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<EKS ClusterのOpenID ConnectプロバイダーURL>",
+            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<AWS EKS ClusterのOpenID ConnectプロバイダーURL>",
           },
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
             # 完全一致
             "StringEquals":
               {
-                "<EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
+                "<AWS EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
                   ["system:serviceaccount:<Namespace名>:<ServiceAccount名>"],
               },
           },
@@ -336,7 +336,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    eks.amazonaws.com/role-arn: <IAMロールのARN>
+    AWS EKS.amazonaws.com/role-arn: <IAMロールのARN>
   name: <信頼されたエンティティで指定したユーザー名内のServiceAccount名>
   namespace: <信頼されたエンティティで指定したユーザー名内のNamespace名>
 ```

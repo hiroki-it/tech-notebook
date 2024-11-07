@@ -122,7 +122,7 @@ AWS VPCのIPアドレスの最初から、パブリックサブネットとプ�
 | ALB                   | ALB当たり`8`個                               |
 | AutoScaling           | 自動水平スケーリング時のEC2最大数と同じ個数  |
 | AWS VPCエンドポイント | AWS VPCエンドポイント当たり、IPアドレス`1`個 |
-| ECS、EKS              | Elastic Network Interface 数と同じ個数       |
+| AWS ECS、AWS EKS      | Elastic Network Interface 数と同じ個数       |
 | Lambda                | Elastic Network Interface 数と同じ個数       |
 
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
@@ -215,7 +215,7 @@ AWS VPCのIPアドレスの最初から、パブリックサブネットとプ�
 
 `L3`の攻撃をセキュリティグループで防御する。
 
-例えば、EKSのNodeグループごとに異なるセキュリティグループを紐づけている。
+例えば、AWS EKSのNodeグループごとに異なるセキュリティグループを紐づけている。
 
 ネットワークに公開するNodeグループのセキュリティグループでは、特定の送信元IPアドレスからのアクセスのみを許可する。
 
@@ -270,7 +270,7 @@ EC2に割り振られる可能性のあるIPアドレスを許可するために
 
 CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。
 
-代わりに、CloudFrontにWAFを紐付け、ALBの前でIPアドレスを制限する。
+代わりに、CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。
 
 CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。
 
@@ -289,7 +289,7 @@ NLBはセキュリティグループをサポートしていない。
 
 AWS VPC内からAWS VPC外への通信は、AWS VPCエンドポイントで安全に通信する。
 
-例えば、EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。
+例えば、AWS EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。
 
 AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。
 
@@ -321,7 +321,7 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 ### `L7`の防御方法
 
-`L7`の攻撃をWAFやCertificate Managerで防御する。
+`L7`の攻撃をAWS WAFやCertificate Managerで防御する。
 
 代わりに、アプリケーションの実装で防御しても良い。
 
@@ -329,9 +329,9 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 <br>
 
-## 04-02. WAF
+## 04-02. AWS WAF
 
-### WAFによる防御
+### AWS WAFによる防御
 
 `L7`の攻撃を防御する。
 
@@ -339,7 +339,7 @@ AWSデータセンター間の通信で使用するTransit Gatewayであれば�
 
 <br>
 
-### WAFルールによる防御
+### AWS WAFルールによる防御
 
 #### ▼ ユーザーエージェント拒否
 
@@ -439,7 +439,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 <br>
 
-### WAFマネージドルールによる防御
+### AWS WAFマネージドルールによる防御
 
 #### ▼ マネージドルールの動作確認の必要性
 
@@ -468,7 +468,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 アプリケーションデータの暗号化のために、Certificate Manager (`L7`) を使用する。
 
-リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/ECS/EKSなど) に紐づけられる。
+リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/AWS ECS/AWS EKSなど) に紐づけられる。
 
 安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。
 
