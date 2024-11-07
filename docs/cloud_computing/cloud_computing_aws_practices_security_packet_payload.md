@@ -289,7 +289,7 @@ NLBはセキュリティグループをサポートしていない。
 
 AWS VPC内からAWS VPC外への通信は、AWS VPCエンドポイントで安全に通信する。
 
-例えば、AWS EKS AWS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。
+例えば、AWS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。
 
 AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。
 

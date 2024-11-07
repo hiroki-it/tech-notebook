@@ -834,14 +834,14 @@ AWS EKS Clusterを作成すると、ENIも作成する。
 
 データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはNAT Gatewayが必要になる。
 
-| AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                |
-| ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
-| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                               |
-| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                             |
-| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                    |
-| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
-| Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                     |
+| AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                    |
+| ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
+| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
+| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
+| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                      |
+| Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
 > - https://dev.classmethod.jp/articles/eks_basic/
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
@@ -893,14 +893,14 @@ AWS VPC外からNLBへの`443`番ポートに対するネットワークから�
 
 AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。
 
-| AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                |
-| ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
-| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                               |
-| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                             |
-| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                    |
-| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
-| Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                     |
+| AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                    |
+| ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
+| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
+| AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
+| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                      |
+| Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 
@@ -1006,9 +1006,9 @@ AWS EKSのテスト環境の請求料金を節約するために、昼間に通�
 
 #### ▼ 起動テンプレートとAutoScalingグループとの紐付け
 
-マネージドNodeグループは、あくまでEC2 Nodeのライフサイクルを管理するだけである。
+マネージドNodeグループは、あくまでAWS EC2 Nodeのライフサイクルを管理するだけである。
 
-どのようなEC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。
+どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。
 
 > - https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/
 > - https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2
@@ -1068,7 +1068,7 @@ Nodeグループ (マネージドNodeグループ、セルフマネージドNode
 
 <br>
 
-## 04-03. EC2 Node AMI
+## 04-03. AWS EC2 Node AMI
 
 ### EC2ワーカーNodeの最適化AMI
 
@@ -1193,7 +1193,7 @@ EC2ワーカーNodeのkubeletを設定する。
 
 #### ▼ ユーザーデータファイルとは
 
-EC2 Nodeの起動時に任意のコマンドを実行できるようにする。
+AWS EC2 Nodeの起動時に任意のコマンドを実行できるようにする。
 
 また、セルフマネージドNodeグループやマネージドNodeグループにて、EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (`bootstrap.sh`ファイル) を実行する必要がある。
 

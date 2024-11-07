@@ -45,11 +45,11 @@ Auto Scaling Groupを採用する。
 
 AWS EC2で障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
 
-#### ▼ Managed Node Group
+#### ▼ AWS EKS マネージドNodeグループ
 
-Managed Node Groupを採用する。
+AWS EKS マネージドNodeグループを採用する。
 
-EKS AWS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
+AWS EC2 Nodeで障害が発生した場合、ALBを起点にして、正常なAWS EC2に切り替える。
 
 #### ▼ Aurora
 
@@ -61,11 +61,11 @@ Auroraでフェイルオーバーを採用する。
 
 ### スケーリング
 
-#### ▼ Managed Node Group
+#### ▼ AWS EKS マネージドNodeグループ
 
-EKS AWS EC2 Nodeのスケールアップには、Cluster Autoscaler、Managed Node Group、を採用する。
+AWS EC2 Nodeのスケールアップには、Cluster Autoscaler、AWS EKS マネージドNodeグループ、を採用する。
 
-Cluster AutoscalerとManaged Node Group、では、PodによるAWS EC2 Nodeの負荷に応じてAWS EC2 Nodeをスケーリングする。
+Cluster AutoscalerとAWS EKS マネージドNodeグループ、では、PodによるAWS EC2 Nodeの負荷に応じてAWS EC2 Nodeをスケーリングする。
 
 #### ▼ Auto Scaling Group
 
