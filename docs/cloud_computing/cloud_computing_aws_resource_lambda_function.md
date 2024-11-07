@@ -661,7 +661,7 @@ const postMessageToSlack = (message) => {
 
 AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。
 
-AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`AWSAWS LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
+AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
 
 ```javascript
 "use strict";
