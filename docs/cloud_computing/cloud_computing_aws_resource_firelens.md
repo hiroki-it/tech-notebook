@@ -92,19 +92,19 @@ FluentBitが対応する宛先にログをルーティングできる。
 
 ### Dockerfile
 
-#### ▼ ECRパブリックギャラリーを使用する場合
+#### ▼ AWS ECRパブリックギャラリーを使用する場合
 
-AWS ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。
+AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。
 
 デフォルトで内蔵されている`conf`ファイルの設定をそのまま使用する場合は、こちらを採用する。
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
-#### ▼ プライベートECRリポジトリを使用する場合
+#### ▼ プライベートAWS ECRリポジトリを使用する場合
 
-あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。
+あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートAWS ECRリポジトリにコンテナイメージをプッシュしておく。
 
-ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。
+ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。
 
 デフォルトで内蔵されている`conf`ファイルの設定を上書きしたい場合は、こちらを採用する。
 
@@ -361,7 +361,7 @@ AWSから提供されているベースイメージには、AWSリソースに�
 
 補足として、datadogプラグインはFluentBit自体にインストール済みである。
 
-ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+AWS ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートAWS ECRリポジトリで再管理してから使用する場合がある。
 
 ```bash
 [root@<コンテナID>:/fluent-bit]$ ls -la

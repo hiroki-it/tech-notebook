@@ -235,7 +235,7 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
 もしNAT Gatewayを配置したとする。
 
@@ -328,7 +328,7 @@ ECSタスク内のECSコンテナエージェントが、他のAWSリソース�
 
 AWS管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付けられたロールを、タスクに紐付ける必要がある。
 
-このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
+このポリシーには、AWS ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
 
 ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。
 
@@ -509,7 +509,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | healthCheck<br>(interval)       | `--health-interval`                 | ヘルスチェックの間隔を設定する。                                                                                                                                                                                                                                             |                                                                                                                                                                                                         |
 | healthCheck<br>(retries)        | `--health-retries`                  | ヘルスチェックを成功と見なす回数を設定する。                                                                                                                                                                                                                                 |                                                                                                                                                                                                         |
 | hostName                        | `--hostname`                        | コンテナにホスト名を設定する。                                                                                                                                                                                                                                               |                                                                                                                                                                                                         |
-| image                           |                                     | ECRのURLを設定する。                                                                                                                                                                                                                                                         | 指定できるURLの記法は、Dockerfileの`FROM`処理と同じである。<br>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                           |
+| image                           |                                     | AWS ECRのURLを設定する。                                                                                                                                                                                                                                                     | 指定できるURLの記法は、Dockerfileの`FROM`処理と同じである。<br>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                           |
 | logConfiguration<br>(logDriver) | `--log-driver`                      | ログドライバーを指定することにより、ログの出力先を設定する。                                                                                                                                                                                                                 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | `--log-opt`                         | 各ログドライバーのオプションを設定する。                                                                                                                                                                                                                                     |                                                                                                                                                                                                         |
 | portMapping                     | `--publish`<br>`--expose`           | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。                                                                                                                                                                              | `containerPort`のみを設定し、`hostPort`は設定しなければ、EXPOSEとして定義できる。<br>https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                     |
@@ -695,12 +695,12 @@ CodeDeployを使用してデプロイする。
 | VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
 | ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                  |
-| ECR                       | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
+| AWS ECR                   | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
 | S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
 | Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
 NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 

@@ -497,7 +497,7 @@ $ aws deploy register-on-premises-instance \
 
 <br>
 
-### ECR
+### AWS ECR
 
 #### ▼ get-login-password
 

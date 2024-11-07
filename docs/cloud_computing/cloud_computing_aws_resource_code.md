@@ -67,9 +67,9 @@ phases:
       docker: 18
   preBuild:
     commands:
-      # ECRにログイン
+      # AWS ECRにログイン
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-      # ECRのURLをCodeBuildの環境変数から作成
+      # AWS ECRのURLをCodeBuildの環境変数から作成
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
       # バージョンタグはコミットのハッシュ値を使用
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -82,11 +82,11 @@ phases:
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   postBuild:
     commands:
-      # ECRにコンテナイメージをプッシュする。
+      # AWS ECRにコンテナイメージをプッシュする。
       # コミットハッシュ値のタグの前に、latestタグのコンテナイメージをプッシュしておく。
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      # ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json)
+      # AWS ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json)
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
 # デプロイ対象とするビルドのアーティファクト
@@ -195,7 +195,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 `(1)`
 
-: ECRのコンテナイメージを更新
+: AWS ECRのコンテナイメージを更新
 
 `(2)`
 
@@ -267,7 +267,7 @@ Resources:
 
 デプロイされるECSタスク定義を実装し、ルートディレクトリの直下に配置する。
 
-CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検知し、ECRからコンテナイメージを取得する。
+CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検知し、AWS ECRからコンテナイメージを取得する。
 
 この時、`taskdef.json`ファイルのコンテナイメージ名を`<IMAGE1_NAME>`としておくと、`imageDetail.json`ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
 

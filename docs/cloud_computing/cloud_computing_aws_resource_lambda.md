@@ -255,13 +255,13 @@ Lambdaを実行するためには、デプロイされた関数を使用する�
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
 
-#### ▼ ECRにおけるイメージ
+#### ▼ AWS ECRにおけるイメージ
 
 コンテナイメージの関数のみで有効である。
 
 ビルド後のコードをコンテナイメージしてアップロードする。
 
-ECRからアップロードできる。
+AWS ECRからアップロードできる。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images>
 
