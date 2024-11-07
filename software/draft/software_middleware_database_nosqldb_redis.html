@@ -23413,6 +23413,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. ユースケース
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ユースケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      セッション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      クエリキャッシュ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      DB排他制御 (分散ロック)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23458,6 +23500,73 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_4">セッション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="_5">クエリキャッシュ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="db">DB排他制御 (分散ロック)<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">redis</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
+
+<span class="c1"># ロックを定義する</span>
+<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;foo_lock&#39;</span><span class="p">)</span>  <span class="c1"># True</span>
+
+<span class="c1"># 確認する</span>
+<span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">)</span>  <span class="c1"># &#39;foo_lock&#39;</span>
+
+<span class="c1"># 同じキーで登録を試みると失敗する。この判定を排他制御のために使用する。</span>
+<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;foo_lock&#39;</span><span class="p">)</span>  <span class="c1"># False</span>
+
+<span class="c1"># アンロックする</span>
+<span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hharu/items/c8c2954290f920f8a2f6#%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF">https://qiita.com/hharu/items/c8c2954290f920f8a2f6#%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="nx">updateCache</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">contentID</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// ロックする</span>
+<span class="w">        </span><span class="c1">// ロックのクライアントで障害が起こってアンロックできなくなることを防ぐために、ロックの失効時間を設定しておく</span>
+<span class="w">        </span><span class="nx">nx</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">SetNX</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lock:&quot;</span><span class="o">+</span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">lockTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">nx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;failed to lock&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// 処理の最後にアンロックする</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Del</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lock:&quot;</span><span class="o">+</span><span class="nx">contentID</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}()</span>
+
+<span class="w">        </span><span class="c1">// なんらかの永続処理</span>
+<span class="w">        </span><span class="c1">// ...</span>
+
+<span class="w">        </span><span class="c1">// 処理結果のキャッシュを作成する</span>
+<span class="w">        </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/redis-distributed-locking">https://christina04.hatenablog.com/entry/redis-distributed-locking</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -23478,7 +23587,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     
