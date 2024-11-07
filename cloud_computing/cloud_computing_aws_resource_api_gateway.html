@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="API Gateway＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS API Gateway＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】API Gateway＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS API Gateway＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-gatewayaws" class="md-skip">
+        <a href="#aws-api-gatewayaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】API Gateway＠AWSリソース
+              【IT技術の知見】AWS API Gateway＠AWSリソース
             
           </span>
         </div>
@@ -12906,9 +12906,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-api-gateway" class="md-nav__link">
+  <a href="#01-aws-api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01. API Gatewayとは
+      01. AWS API Gatewayとは
     </span>
   </a>
   
@@ -13036,19 +13036,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
+  <a href="#aws-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      Lambdaプロキシ統合
+      AWS Lambdaプロキシ統合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lambdaプロキシ統合">
+    <nav class="md-nav" aria-label="AWS Lambdaプロキシ統合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lambda_1" class="md-nav__link">
+  <a href="#aws-lambda_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaプロキシ統合とは
+      ▼ AWS Lambdaプロキシ統合とは
     </span>
   </a>
   
@@ -23857,9 +23857,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-api-gateway" class="md-nav__link">
+  <a href="#01-aws-api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01. API Gatewayとは
+      01. AWS API Gatewayとは
     </span>
   </a>
   
@@ -23987,19 +23987,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
+  <a href="#aws-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      Lambdaプロキシ統合
+      AWS Lambdaプロキシ統合
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lambdaプロキシ統合">
+    <nav class="md-nav" aria-label="AWS Lambdaプロキシ統合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#lambda_1" class="md-nav__link">
+  <a href="#aws-lambda_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaプロキシ統合とは
+      ▼ AWS Lambdaプロキシ統合とは
     </span>
   </a>
   
@@ -24192,7 +24192,7 @@
   
 
 
-<h1 id="api-gatewayaws">API Gateway＠AWSリソース<a class="headerlink" href="#api-gatewayaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-api-gatewayaws">AWS API Gateway＠AWSリソース<a class="headerlink" href="#aws-api-gatewayaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24201,10 +24201,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-api-gateway">01. API Gatewayとは<a class="headerlink" href="#01-api-gateway" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-api-gateway">01. AWS API Gatewayとは<a class="headerlink" href="#01-aws-api-gateway" title="Permanent link">&para;</a></h2>
 <p>異なるクライアントからのリクエストを受信して差分を吸収し、適切なAPIに振り分けられる。</p>
 <p>内部的にはCloudFrontを使用しているらしい。</p>
-<p><img alt="API Gatewayの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png" /></p>
+<p><img alt="AWS API Gatewayの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/">https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/</a></li>
@@ -24214,7 +24214,7 @@
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>API Gatewayは、メソッドリクエスト、統合リクエスト、統合レスポンス、メソッドレスポンス、から構成される。</p>
+<p>AWS API Gatewayは、メソッドリクエスト、統合リクエスト、統合レスポンス、メソッドレスポンス、から構成される。</p>
 <table>
 <thead>
 <tr>
@@ -24227,16 +24227,16 @@
 <tr>
 <td>リソース</td>
 <td>エンドポイント、HTTPメソッド、ルーティング先などを設定する。</td>
-<td>作成したAWSリソースのパスが、API Gatewayのエンドポイントになる。</td>
+<td>作成したAWSリソースのパスが、AWS API Gatewayのエンドポイントになる。</td>
 </tr>
 <tr>
 <td>ステージ</td>
-<td>API Gatewayをデプロイする環境を定義する。</td>
+<td>AWS API Gatewayをデプロイする環境を定義する。</td>
 <td></td>
 </tr>
 <tr>
 <td>オーソライザー</td>
-<td>LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。</td>
+<td>AWS LambdaまたはCognitoによるオーソライザーを使用して、認可プロセスを定義する。</td>
 <td></td>
 </tr>
 <tr>
@@ -24251,7 +24251,7 @@
 </tr>
 <tr>
 <td>リソースポリシー</td>
-<td>ポリシーを使用して、API Gatewayにセキュリティを定義づける。</td>
+<td>ポリシーを使用して、AWS API Gatewayにセキュリティを定義づける。</td>
 <td></td>
 </tr>
 <tr>
@@ -24281,12 +24281,12 @@
 </tr>
 <tr>
 <td>クライアント証明書</td>
-<td>SSL証明書をAPI Gatewayに割り当てる。</td>
-<td>APIが、API Gatewayからルーティングされたリクエストであること識別できるようになる。</td>
+<td>SSL証明書をAWS API Gatewayに割り当てる。</td>
+<td>APIが、AWS API Gatewayからルーティングされたリクエストであること識別できるようになる。</td>
 </tr>
 <tr>
 <td>AWS CloudWatchログの設定</td>
-<td>API GatewayがAWS CloudWatchログにリクエストを送信できるよう、ロールを設定する。</td>
+<td>AWS API GatewayがAWS CloudWatchログにリクエストを送信できるよう、ロールを設定する。</td>
 <td><code>1</code>個のAWSアカウントにつき、<code>1</code>個のロールを設定すれば良い。</td>
 </tr>
 </tbody>
@@ -24342,7 +24342,7 @@
 <tbody>
 <tr>
 <td>認可</td>
-<td>定義したLambdaまたはCognitoによるオーソライザーを有効化するか否かを設定する。</td>
+<td>定義したAWS LambdaまたはCognitoによるオーソライザーを有効化するか否かを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -24394,22 +24394,22 @@
 </tr>
 <tr>
 <td>URLパスパラメーター</td>
-<td>メソッドリクエストからルーティングされたデータを、API Gatewayからルーティングするリクエストのパスパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
+<td>メソッドリクエストからルーティングされたデータを、AWS API Gatewayからルーティングするリクエストのパスパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
 <td></td>
 </tr>
 <tr>
 <td>URLクエリ文字列パラメーター</td>
-<td>メソッドリクエストからルーティングされたデータを、API Gatewayからルーティングするリクエストのクエリパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
+<td>メソッドリクエストからルーティングされたデータを、AWS API Gatewayからルーティングするリクエストのクエリパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
 <td></td>
 </tr>
 <tr>
 <td>HTTPヘッダー</td>
-<td>メソッドリクエストからルーティングされたデータを、API Gatewayからルーティングするリクエストのヘッダーに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
+<td>メソッドリクエストからルーティングされたデータを、AWS API Gatewayからルーティングするリクエストのヘッダーに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
 <td>値はシングルクオートで囲う必要がある。</td>
 </tr>
 <tr>
 <td>マッピングテンプレート</td>
-<td>メソッドリクエストからルーティングされたデータを、API Gatewayからルーティングするリクエストのメッセージボディに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
+<td>メソッドリクエストからルーティングされたデータを、AWS API Gatewayからルーティングするリクエストのメッセージボディに紐付ける。代わりに、紐付けずに新しいデータをルーティングしても良い。</td>
 <td></td>
 </tr>
 </tbody>
@@ -24459,7 +24459,7 @@
 <p><br></p>
 <h3 id="_8">プライベート統合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ プライベート統合とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>API GatewayとAWS VPCリンクの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。</p>
+<p>AWS API GatewayとAWS VPCリンクの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。</p>
 <p>また、AWS VPCリンクの設定によって、AWS VPCエンドポイントサービスを作成する。</p>
 <table>
 <thead>
@@ -24502,11 +24502,11 @@
 </blockquote>
 <h4 id="_10">▼ メソッドリクエストと統合リクエストのマッピング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><br></p>
-<h3 id="lambda">Lambdaプロキシ統合<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
-<h4 id="lambda_1">▼ Lambdaプロキシ統合とは<a class="headerlink" href="#lambda_1" title="Permanent link">&para;</a></h4>
-<p>API GatewayとLambdaの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。</p>
-<p>プロキシ統合を使用すると、Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。</p>
-<p>プロキシ統合を使用しない場合、LambdaとAPI Gatewayの間のマッピングを手動で実行する必要がある。</p>
+<h3 id="aws-lambda">AWS Lambdaプロキシ統合<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h3>
+<h4 id="aws-lambda_1">▼ AWS Lambdaプロキシ統合とは<a class="headerlink" href="#aws-lambda_1" title="Permanent link">&para;</a></h4>
+<p>AWS API GatewayとAWS Lambdaの間で、リクエスト/レスポンスのJSON型データを自動的にマッピングする機能のこと。</p>
+<p>プロキシ統合を使用すると、AWS Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される。</p>
+<p>プロキシ統合を使用しない場合、AWS LambdaとAWS API Gatewayの間のマッピングを手動で実行する必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -24517,23 +24517,23 @@
 <tbody>
 <tr>
 <td>統合タイプ</td>
-<td>Lambda関数を選択する。</td>
+<td>AWS Lambda関数を選択する。</td>
 </tr>
 <tr>
-<td>Lambdaプロキシ統合の使用</td>
-<td>Lambdaとのプロキシ統合を有効化するか否かを設定する。</td>
+<td>AWS Lambdaプロキシ統合の使用</td>
+<td>AWS Lambdaとのプロキシ統合を有効化するか否かを設定する。</td>
 </tr>
 <tr>
-<td>Lambdaリージョン</td>
-<td>実行したLambda関数のリージョンを設定する。</td>
+<td>AWS Lambdaリージョン</td>
+<td>実行したAWS Lambda関数のリージョンを設定する。</td>
 </tr>
 <tr>
-<td>Lambda関数</td>
-<td>実行したLambda関数の名前を設定する。</td>
+<td>AWS Lambda関数</td>
+<td>実行したAWS Lambda関数の名前を設定する。</td>
 </tr>
 <tr>
 <td>実行ロール</td>
-<td>実行したいLambda関数への認可スコープが紐付けられたロールのARNを設定する。ただし、Lambda側にAPI Gatewayへの認可スコープを紐付けしても良い。</td>
+<td>実行したいAWS Lambda関数への認可スコープが紐付けられたロールのARNを設定する。ただし、AWS Lambda側にAWS API Gatewayへの認可スコープを紐付けしても良い。</td>
 </tr>
 <tr>
 <td>認証情報のキャッシュ</td>
@@ -24551,7 +24551,7 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ リクエスト時のマッピング<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>API Gateway側でプロキシ統合を有効化すると、API Gatewayを経由したクライアントからのリクエストは、ハンドラ関数のeventオブジェクトのJSON型データにマッピングされる。</p>
+<p>AWS API Gateway側でプロキシ統合を有効化すると、AWS API Gatewayを経由したクライアントからのリクエストは、ハンドラ関数のeventオブジェクトのJSON型データにマッピングされる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Resource</span><span class="nv"> </span><span class="s">path&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Path</span><span class="nv"> </span><span class="s">parameter&quot;</span><span class="p p-Indicator">,</span>
@@ -24606,19 +24606,19 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_12">▼ レスポンス時のマッピング<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>API Gatewayは、Lambdaからのレスポンスを、以下のJSON型データにマッピングする。</p>
-<p>これ以外の構造のJSON型データを送信すると、API Gatewayで『<code>Internal Server Error</code>』のエラーが起こる。</p>
+<p>AWS API Gatewayは、AWS Lambdaからのレスポンスを、以下のJSON型データにマッピングする。</p>
+<p>これ以外の構造のJSON型データを送信すると、AWS API Gatewayで『<code>Internal Server Error</code>』のエラーが起こる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;isBase64Encoded&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;statusCode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">httpStatusCode</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;headers&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;headerName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;headerValue&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="s">&quot;multiValueHeaders&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;headerName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;headerValue&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;headerValue2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;body&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;body&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>API Gatewayは上記のJSON型データを受信した後、<code>body</code>のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;Hello Lambda&quot;</span>
+<p>AWS API Gatewayは上記のJSON型データを受信した後、<code>body</code>のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;Hello AWS Lambda&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_13">ステージ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -24651,7 +24651,7 @@
 </table>
 <h4 id="_15">▼ ステージ変数<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>デプロイされるステージ固有の環境変数を設定できる。</p>
-<p>Lambda関数名、エンドポイントURL、パラメーターマッピング、マッピングテンプレートで値を出力できる。</p>
+<p>AWS Lambda関数名、エンドポイントURL、パラメーターマッピング、マッピングテンプレートで値を出力できる。</p>
 <p>以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -24662,7 +24662,7 @@
 <p><br></p>
 <h3 id="_16">デプロイメント<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 通常のデプロイメント<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>API Gatewayの通常のデプロイメントの仕組みは隠蔽されている。</p>
+<p>AWS API Gatewayの通常のデプロイメントの仕組みは隠蔽されている。</p>
 <p>ダウンタイム無しで、新しいステージをデプロイできる。</p>
 <blockquote>
 <ul>
@@ -24705,7 +24705,7 @@
 <p><br></p>
 <h3 id="_19">ログの種類<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 実行ログ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatchログにAPI Gatewayの実行ログを送信するか否かを設定できる。</p>
+<p>AWS CloudWatchログにAWS API Gatewayの実行ログを送信するか否かを設定できる。</p>
 <p>リクエスト/レスポンスの構造もログに出力するようにした方が良い。</p>
 <blockquote>
 <ul>
@@ -24713,7 +24713,7 @@
 </ul>
 </blockquote>
 <h4 id="_21">▼ カスタムアクセスログ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>AWS CloudWatchログにAPI Gatewayのアクセスログを送信するか否かを設定できる。</p>
+<p>AWS CloudWatchログにAWS API Gatewayのアクセスログを送信するか否かを設定できる。</p>
 <p>アクセスログを構造化ログとして出力できる。</p>
 <blockquote>
 <ul>
@@ -24722,8 +24722,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_22">分散トレースの収集<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>X-Rayを使用して、API Gatewayを開始点とした分散トレースを収集する。</p>
-<p>まず、API GatewayでトーレスIDを作成する。</p>
+<p>X-Rayを使用して、AWS API Gatewayを開始点とした分散トレースを収集する。</p>
+<p>まず、AWS API GatewayでトーレスIDを作成する。</p>
 <p>その後、各AWSリソースでスパンを取得し、スパンを紐付けることより、分散トレースを表現できる。</p>
 <p>補足としてX-Rayでは、親スパンをセグメント、子スパンをサブセグメントと呼ぶ。</p>
 <blockquote>
@@ -24744,15 +24744,15 @@
 <tbody>
 <tr>
 <td>リージョン</td>
-<td>API Gatewayのエンドポイントに対するリクエストを、リージョン内の物理サーバーで受け付ける。</td>
+<td>AWS API Gatewayのエンドポイントに対するリクエストを、リージョン内の物理サーバーで受け付ける。</td>
 </tr>
 <tr>
 <td>プライベート</td>
-<td>API Gatewayのエンドポイントに対するリクエストを、AWS VPC内からのみ受け付ける。</td>
+<td>AWS API Gatewayのエンドポイントに対するリクエストを、AWS VPC内からのみ受け付ける。</td>
 </tr>
 <tr>
 <td>エッジ最適化</td>
-<td>API Gatewayのエンドポイントに対するリクエストを、CloudFrontのエッジサーバーで受け付ける。</td>
+<td>AWS API Gatewayのエンドポイントに対するリクエストを、CloudFrontのエッジサーバーで受け付ける。</td>
 </tr>
 </tbody>
 </table>

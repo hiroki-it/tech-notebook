@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="API Gatewayへのymlインポート＠AWSの知見を記録しています。">
+        <meta name="description" content="AWS API Gatewayへのymlインポート＠AWSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】API Gatewayへのymlインポート＠AWS - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS API Gatewayへのymlインポート＠AWS - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-gatewayymlaws" class="md-skip">
+        <a href="#aws-api-gatewayymlaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】API Gatewayへのymlインポート＠AWS
+              【IT技術の知見】AWS API Gatewayへのymlインポート＠AWS
             
           </span>
         </div>
@@ -12927,13 +12927,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-api-gateway" class="md-nav__link">
+  <a href="#01-aws-api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01. API Gateway拡張機能
+      01. AWS API Gateway拡張機能
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. API Gateway拡張機能">
+    <nav class="md-nav" aria-label="01. AWS API Gateway拡張機能">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23755,13 +23755,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-api-gateway" class="md-nav__link">
+  <a href="#01-aws-api-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01. API Gateway拡張機能
+      01. AWS API Gateway拡張機能
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. API Gateway拡張機能">
+    <nav class="md-nav" aria-label="01. AWS API Gateway拡張機能">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23988,7 +23988,7 @@
   
 
 
-<h1 id="api-gatewayymlaws">API Gatewayへのymlインポート＠AWS<a class="headerlink" href="#api-gatewayymlaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-api-gatewayymlaws">AWS API Gatewayへのymlインポート＠AWS<a class="headerlink" href="#aws-api-gatewayymlaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23997,9 +23997,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-api-gateway">01. API Gateway拡張機能<a class="headerlink" href="#01-api-gateway" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-api-gateway">01. AWS API Gateway拡張機能<a class="headerlink" href="#01-aws-api-gateway" title="Permanent link">&para;</a></h2>
 <h4 id="_2">▼ 必要なキー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>API Gatewayのインポートに当たり、OpenAPIの<code>yaml</code>ファイルにキーを新たに実装する必要がある。</p>
+<p>AWS API Gatewayのインポートに当たり、OpenAPIの<code>yaml</code>ファイルにキーを新たに実装する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html</a></li>
@@ -24166,7 +24166,7 @@
 <ul>
 <li>OpenAPI仕様のバージョン2.0と3.0をサポートしている。</li>
 <li><code>x-amazon-apigateway-integration</code>キーを各HTTPメソッドに定義する。</li>
-<li>API Gatewayが<code>security</code>キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。</li>
+<li>AWS API Gatewayが<code>security</code>キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。</li>
 <li>リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『<code>x-api-key</code>』以外は設定できない。ただし、統合リクエストで転送する時に付与するヘッダー名は『<code>X-API-Key</code>』と設定できる。</li>
 <li>統合リクエストでバックエンドに転送するAPIキーは、シングルクオートで囲う必要がある。</li>
 <li>APIキーの作成は手動で行う必要がある。</li>
@@ -24996,7 +24996,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_9">モック統合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。</p>
+<p>AWS API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1</span>
 <span class="nn">---</span>
 <span class="nt">X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>

@@ -25078,7 +25078,7 @@
 <p>AWS VPCエンドポイントとは異なる能力なので注意する。</p>
 <p>Interface型のAWS VPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるAWS VPC間』の双方向通信を可能にする。</p>
 <p>エンドポイントのサービス名は、『<code>com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****</code>』になる。</p>
-<p>API GatewayのAWS VPCリンクは、AWS VPCエンドポイントサービスに相当する。</p>
+<p>AWS API GatewayのAWS VPCリンクは、AWS VPCエンドポイントサービスに相当する。</p>
 <p><img alt="vpc-endpoint-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-endpoint-service.png" /></p>
 <p><br></p>
 <h3 id="transit-gateway">Transit Gateway<a class="headerlink" href="#transit-gateway" title="Permanent link">&para;</a></h3>
@@ -25143,7 +25143,7 @@
 <td style="text-align: center;">制限なし</td>
 <td style="text-align: center;">NLBで<code>L4</code>ルーティングできるAWSリソースのみ</td>
 <td style="text-align: center;">制限なし</td>
-<td style="text-align: center;">ALBで<code>L7</code>ルーティングできるAWSリソースのみ<br>(例：EC2、IPアドレス、Lambda、KubernetesのPodなど)</td>
+<td style="text-align: center;">ALBで<code>L7</code>ルーティングできるAWSリソースのみ<br>(例：EC2、IPアドレス、AWS Lambda、KubernetesのPodなど)</td>
 </tr>
 <tr>
 <td>CIDRブロックがAWS VPC間で被ることによる通信の可否</td>

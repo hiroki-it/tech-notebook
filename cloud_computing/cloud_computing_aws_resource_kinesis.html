@@ -23799,7 +23799,7 @@
 <h2 id="02-kinesis-data-firehose-kinesis-delivery-stream">02. Kinesis Data Firehose (Kinesis Delivery Stream)<a class="headerlink" href="#02-kinesis-data-firehose-kinesis-delivery-stream" title="Permanent link">&para;</a></h2>
 <h3 id="kinesis-data-firehose">Kinesis Data Firehoseとは<a class="headerlink" href="#kinesis-data-firehose" title="Permanent link">&para;</a></h3>
 <p>リアルタイムなストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスやAWSリソースに転送する。</p>
-<p>転送時にLambda関数を使用することにより、収集したデータを加工できる。</p>
+<p>転送時にAWS Lambda関数を使用することにより、収集したデータを加工できる。</p>
 <p>より非マネージにストリーミングしたい場合は、ストリーミングツール (例：Apache Kafka) を使用する。</p>
 <p>Kinesisを使用せずに、リアルタイムなストリーミングデータを直接的に送信しても良いが、通信頻度が瞬間的に増加することなく定常的に送信できる。</p>
 <blockquote>
@@ -23825,7 +23825,7 @@
 <tr>
 <td>DNSレコードの変換</td>
 <td>バッファーに蓄えられたログを、指定された形式で転送する前に、テキストの内容を変換する。</td>
-<td>Lambdaを使用する。<br>- <a href="https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html">https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html</a></td>
+<td>AWS Lambdaを使用する。<br>- <a href="https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html">https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html</a></td>
 </tr>
 <tr>
 <td>転送先</td>
@@ -23835,7 +23835,7 @@
 <tr>
 <td>ディレクトリ名</td>
 <td>S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで<code>YYYY/MM/dd/HH</code>形式でディレクトリが作成され、執筆時点 (2021/11/09) では、UTCのみ設定できる。</td>
-<td>もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>- <a href="https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549">https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549</a></td>
+<td>もしJSTにしたい場合はAWS Lambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>- <a href="https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549">https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549</a></td>
 </tr>
 <tr>
 <td>バッファー</td>

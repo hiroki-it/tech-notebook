@@ -13201,9 +13201,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
+  <a href="#aws-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaインサイト
+      ▼ AWS Lambdaインサイト
     </span>
   </a>
   
@@ -24255,9 +24255,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
+  <a href="#aws-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Lambdaインサイト
+      ▼ AWS Lambdaインサイト
     </span>
   </a>
   
@@ -24869,8 +24869,8 @@
 <p>また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。</p>
 <p>ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。</p>
 <p>Containerインサイトのメトリクスは、『<code>ContainerInsights</code>』という名前空間で一括でクエリでき、『<code>ClusterName</code>』などのディメンションでデータポイントをフィルタリングできる。</p>
-<h4 id="lambda">▼ Lambdaインサイト<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h4>
-<p>Lambdaの性能に関するメトリクスのデータポイントを収集する。</p>
+<h4 id="aws-lambda">▼ AWS Lambdaインサイト<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h4>
+<p>AWS Lambdaの性能に関するメトリクスのデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_9">埋め込みメトリクスフォーマット<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>AWS CloudWatchログ上で構造化ログのログイベントを自動的に集計し、AWS CloudWatchメトリクス上でカスタムメトリクスを生成してくれる。</p>
@@ -25073,7 +25073,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <p><br></p>
 <h2 id="02-02-cloudwatch">02-02. cloudwatchエージェント<a class="headerlink" href="#02-02-cloudwatch" title="Permanent link">&para;</a></h2>
 <h3 id="cloudwatch">cloudwatchエージェントとは<a class="headerlink" href="#cloudwatch" title="Permanent link">&para;</a></h3>
-<p>インスタンス系AWSリソース (EC2、ECS、EKS、Lambda) 内で稼働するデーモンのこと。</p>
+<p>インスタンス系AWSリソース (EC2、ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。</p>
 <p>インスタンス内のメトリクスのデータポイントやログを収集し、AWS CloudWatchに送信する。</p>
 <p>多くの場合、インスタンス系リソースは基本的なメトリクスのデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
 <p>cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。</p>
