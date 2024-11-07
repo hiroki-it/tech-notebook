@@ -12965,18 +12965,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セットアップ (VPCリンク&amp;プロキシ統合)
+      ▼ セットアップ (AWS VPCリンク&amp;プロキシ統合)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_1" class="md-nav__link">
+  <a href="#aws-vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セットアップ (VPCリンク&amp;非プロキシ統合の場合)
+      ▼ セットアップ (AWS VPCリンク&amp;非プロキシ統合の場合)
     </span>
   </a>
   
@@ -13111,18 +13111,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_2" class="md-nav__link">
+  <a href="#aws-vpc_2" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCリンク＆プロキシ統合
+      AWS VPCリンク＆プロキシ統合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_3" class="md-nav__link">
+  <a href="#aws-vpc_3" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCリンク＆非プロキシ統合
+      AWS VPCリンク＆非プロキシ統合
     </span>
   </a>
   
@@ -23793,18 +23793,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セットアップ (VPCリンク&amp;プロキシ統合)
+      ▼ セットアップ (AWS VPCリンク&amp;プロキシ統合)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_1" class="md-nav__link">
+  <a href="#aws-vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ セットアップ (VPCリンク&amp;非プロキシ統合の場合)
+      ▼ セットアップ (AWS VPCリンク&amp;非プロキシ統合の場合)
     </span>
   </a>
   
@@ -23939,18 +23939,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_2" class="md-nav__link">
+  <a href="#aws-vpc_2" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCリンク＆プロキシ統合
+      AWS VPCリンク＆プロキシ統合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_3" class="md-nav__link">
+  <a href="#aws-vpc_3" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCリンク＆非プロキシ統合
+      AWS VPCリンク＆非プロキシ統合
     </span>
   </a>
   
@@ -24027,7 +24027,7 @@
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html</a></li>
 </ul>
 </blockquote>
-<h4 id="vpc">▼ セットアップ (VPCリンク&amp;プロキシ統合)<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h4>
+<h4 id="aws-vpc">▼ セットアップ (AWS VPCリンク&amp;プロキシ統合)<a class="headerlink" href="#aws-vpc" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">get</span><span class="p">:</span>
@@ -24045,15 +24045,15 @@
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">          </span><span class="c1"># パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId</span>
 <span class="w">          </span><span class="c1"># 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId</span>
-<span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span><span class="w"> </span><span class="c1"># VPCリンクを使用</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span><span class="w"> </span><span class="c1"># VPCリンクのID</span>
+<span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span><span class="w"> </span><span class="c1"># AWS VPCリンクを使用</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span><span class="w"> </span><span class="c1"># AWS VPCリンクのID</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_match</span><span class="w"> </span><span class="c1"># プロキシ統合の場合は設定の変更不可で固定</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span><span class="w"> </span><span class="c1"># プロキシ統合を使用</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span><span class="w"> </span><span class="c1"># プロキシ統合の場合は設定の変更不可で固定</span>
 <span class="w">          </span><span class="nt">default</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 </code></pre></div>
-<h4 id="vpc_1">▼ セットアップ (VPCリンク&amp;非プロキシ統合の場合)<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
+<h4 id="aws-vpc_1">▼ セットアップ (AWS VPCリンク&amp;非プロキシ統合の場合)<a class="headerlink" href="#aws-vpc_1" title="Permanent link">&para;</a></h4>
 <p>パススルー条件やresponseキー以下の統合レスポンスを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
@@ -24067,7 +24067,7 @@
 <span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span><span class="w"> </span><span class="c1"># 統合リクエストのマッピングテンプレートのパススルー条件を選択</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"> </span><span class="c1"># 非プロキシ統合</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span><span class="w"> </span><span class="c1"># 統合レスポンスを設定</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
@@ -24182,7 +24182,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="vpc_2">VPCリンク＆プロキシ統合<a class="headerlink" href="#vpc_2" title="Permanent link">&para;</a></h3>
+<h3 id="aws-vpc_2">AWS VPCリンク＆プロキシ統合<a class="headerlink" href="#aws-vpc_2" title="Permanent link">&para;</a></h3>
 <p><strong>実装例</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 
@@ -24276,7 +24276,7 @@
 <span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_match</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
@@ -24339,7 +24339,7 @@
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_match</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
@@ -24419,7 +24419,7 @@
 <span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_match</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
@@ -24495,7 +24495,7 @@
 <span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_match</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
@@ -24574,7 +24574,7 @@
 <span class="w">      </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="vpc_3">VPCリンク＆非プロキシ統合<a class="headerlink" href="#vpc_3" title="Permanent link">&para;</a></h3>
+<h3 id="aws-vpc_3">AWS VPCリンク＆非プロキシ統合<a class="headerlink" href="#aws-vpc_3" title="Permanent link">&para;</a></h3>
 <p><strong>実装例</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 
@@ -24669,7 +24669,7 @@
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
@@ -24740,7 +24740,7 @@
 <span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
@@ -24827,7 +24827,7 @@
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
@@ -24911,7 +24911,7 @@
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
-<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;VPCリンクID&gt;</span>
+<span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
@@ -25420,7 +25420,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     

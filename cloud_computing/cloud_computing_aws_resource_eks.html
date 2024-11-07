@@ -13729,27 +13729,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpcaws" class="md-nav__link">
+  <a href="#aws-vpcaws" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC外の他のAWSリソースへのリクエスト
+      ▼ AWS VPC外の他のAWSリソースへのリクエスト
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC外のコントロールプレーンへのリクエスト
+      ▼ AWS VPC外のコントロールプレーンへのリクエスト
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpcaws_1" class="md-nav__link">
+  <a href="#aws-vpcaws_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC内の他のAWSリソースへのリクエスト
+      ▼ AWS VPC内の他のAWSリソースへのリクエスト
     </span>
   </a>
   
@@ -25212,27 +25212,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpcaws" class="md-nav__link">
+  <a href="#aws-vpcaws" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC外の他のAWSリソースへのリクエスト
+      ▼ AWS VPC外の他のAWSリソースへのリクエスト
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC外のコントロールプレーンへのリクエスト
+      ▼ AWS VPC外のコントロールプレーンへのリクエスト
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpcaws_1" class="md-nav__link">
+  <a href="#aws-vpcaws_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC内の他のAWSリソースへのリクエスト
+      ▼ AWS VPC内の他のAWSリソースへのリクエスト
     </span>
   </a>
   
@@ -25999,7 +25999,7 @@
 <h3 id="_2">コントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ コントロールプレーンとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>コンテナオーケストレーションを実行する環境を提供する。</p>
-<p>データプレーンのVPC外に存在している。</p>
+<p>データプレーンのAWS VPC外に存在している。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/</a></li>
@@ -26052,7 +26052,7 @@
 <td></td>
 </tr>
 <tr>
-<td>VPC、サブネット</td>
+<td>AWS VPC、サブネット</td>
 <td>ENIを配置するサブネットを設定する。</td>
 <td>複数のAZにまたがっている必要がある。</td>
 </tr>
@@ -26126,7 +26126,7 @@
 <span class="c1">  # ワーカーNodeのセキュリティグループを作成するか否か</span>
 <span class="w">  </span><span class="na">worker_create_security_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
-<span class="c1">  # VPCのID</span>
+<span class="c1">  # AWS VPCのID</span>
 <span class="w">  </span><span class="na">vpc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-*****&quot;</span>
 
 <span class="c1">  # サブネットのID</span>
@@ -26235,7 +26235,7 @@
 </table>
 <p><br></p>
 <h3 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーンNodeは、ユーザーの管理外のVPCに所属している。</p>
+<p>コントロールプレーンNodeは、ユーザーの管理外のAWS VPCに所属している。</p>
 <p><br></p>
 <h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="aws-auth-configmap-kubernetes-rbac">▼ aws-auth (ConfigMap) を経由したKubernetes RBACとの連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h4>
@@ -26411,7 +26411,7 @@
 </blockquote>
 <h4 id="_10">▼ パブリックアクセス/プライベートアクセス<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>kube-apiserverのインターネットへの公開範囲を設定できる。</p>
-<p>プライベートアクセスの場合、VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。</p>
+<p>プライベートアクセスの場合、AWS VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/">https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/</a></li>
@@ -26805,7 +26805,7 @@
 <p><br></p>
 <h2 id="03-04">03-04. データプレーン内外へのリクエスト<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_15">パブリックサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
+<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
 <p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
@@ -26839,9 +26839,9 @@
 <span class="w">  </span><span class="nt">SQS_QUEUE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-queue.fifo</span>
 <span class="w">  </span><span class="nt">SQS_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
-<h4 id="vpcaws">▼ VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。</p>
-<p>この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。</p>
+<h4 id="aws-vpcaws">▼ AWS VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws" title="Permanent link">&para;</a></h4>
+<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
+<p>この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
 <p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
 <div class="highlight"><pre><span></span><code>Pod provisioning timed out (will retry) for pod
@@ -26851,14 +26851,14 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html">https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html</a></li>
 </ul>
 </blockquote>
-<h4 id="vpc">▼ VPC外のコントロールプレーンへのリクエスト<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h4>
+<h4 id="aws-vpc">▼ AWS VPC外のコントロールプレーンへのリクエスト<a class="headerlink" href="#aws-vpc" title="Permanent link">&para;</a></h4>
 <p>EKS Clusterを作成すると、ENIも作成する。</p>
-<p>これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。</p>
-<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型VPCエンドポイントまたはNAT Gatewayが必要になる。</p>
+<p>これにより、データプレーンがAWS VPC外のコントロールプレーンと通信できるようになる。</p>
+<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはNAT Gatewayが必要になる。</p>
 <table>
 <thead>
 <tr>
-<th>VPCエンドポイントの接続先</th>
+<th>AWS VPCエンドポイントの接続先</th>
 <th>タイプ</th>
 <th>プライベートDNS名</th>
 <th>説明</th>
@@ -26869,7 +26869,7 @@
 <td>EKSコントロールプレーン</td>
 <td>(たぶん) Interface</td>
 <td>マネージド</td>
-<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。</td>
+<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>CloudWatchログ</td>
@@ -26909,15 +26909,15 @@
 <li><a href="https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/">https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/</a></li>
 </ul>
 </blockquote>
-<h4 id="vpcaws_1">▼ VPC内の他のAWSリソースへのリクエスト<a class="headerlink" href="#vpcaws_1" title="Permanent link">&para;</a></h4>
-<p>VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。</p>
+<h4 id="aws-vpcaws_1">▼ AWS VPC内の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws_1" title="Permanent link">&para;</a></h4>
+<p>AWS VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。</p>
 <p><br></p>
 <h2 id="03-05">03-05. コントロールプレーン内外へのリクエスト<a class="headerlink" href="#03-05" title="Permanent link">&para;</a></h2>
 <h3 id="node_4">コントロールプレーンとワーカーNodeのネットワーク<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーンはVPC外にあり、ワーカーNodeはVPC内にある。</p>
+<p>コントロールプレーンはAWS VPC外にあり、ワーカーNodeはAWS VPC内にある。</p>
 <p><code>kubectl</code>コマンドやワーカーNodeからのリクエストのエンドポイントとしてNLBが配置されている。</p>
 <p>このNLBを経由して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
-<p>VPC外からNLBへの<code>443</code>番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
+<p>AWS VPC外からNLBへの<code>443</code>番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
 <p><img alt="eks_control-plane_worker_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png" /></p>
 <blockquote>
 <ul>
@@ -26939,14 +26939,14 @@
 <p>プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。</p>
 <ul>
 <li>NAT Gatewayを経由して、NAT Gatewayを経由して、パブリック制限を通過する</li>
-<li>ENI (Interface型のVPCエンドポイント) を経由して、プライベート制限を通過する</li>
+<li>ENI (Interface型のAWS VPCエンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
-<p>VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
+<p>AWS VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
-<th>VPCエンドポイントの接続先</th>
+<th>AWS VPCエンドポイントの接続先</th>
 <th>タイプ</th>
 <th>プライベートDNS名</th>
 <th>説明</th>
@@ -26957,7 +26957,7 @@
 <td>EKSコントロールプレーン</td>
 <td>(たぶん) Interface</td>
 <td>マネージド</td>
-<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるVPCにリクエストを送信するため。</td>
+<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>CloudWatchログ</td>
@@ -26997,8 +26997,8 @@
 </ul>
 </blockquote>
 <h4 id="_21">▼ プライベートのみの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>プライベートのみを許可する場合、このNLBは閉じられ、VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
-<p>プライベートサブネット内にワーカーNodeがある場合、VPCエンドポイントを経由して、kube-apiserverにリクエストを送信することになる。</p>
+<p>プライベートのみを許可する場合、このNLBは閉じられ、AWS VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、AWS VPCエンドポイントを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <p>この状態で、<code>kubectl</code>コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。</p>
 <table>
 <thead>
@@ -27013,11 +27013,11 @@
 <td>セッションマネージャー</td>
 </tr>
 <tr>
-<td>VPC内の踏み台EC2</td>
+<td>AWS VPC内の踏み台EC2</td>
 <td>セッションマネージャー、SSH</td>
 </tr>
 <tr>
-<td>VPC内のCloud9</td>
+<td>AWS VPC内のCloud9</td>
 <td>セッションマネージャー、SSH</td>
 </tr>
 </tbody>
@@ -27878,7 +27878,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     

@@ -14046,19 +14046,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCによる防御
+      AWS VPCによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VPCによる防御">
+    <nav class="md-nav" aria-label="AWS VPCによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vpccidr" class="md-nav__link">
+  <a href="#aws-vpccidr" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC全体のCIDRブロック
+      ▼ AWS VPC全体のCIDRブロック
     </span>
   </a>
   
@@ -14140,9 +14140,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_1" class="md-nav__link">
+  <a href="#aws-vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
+      ▼ プライベートサブネットのリクエストをAWS VPC内に閉じる場合
     </span>
   </a>
   
@@ -14284,9 +14284,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_2" class="md-nav__link">
+  <a href="#aws-vpc_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPCエンドポイント
+      ▼ AWS VPCエンドポイント
     </span>
   </a>
   
@@ -24146,19 +24146,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc" class="md-nav__link">
+  <a href="#aws-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      VPCによる防御
+      AWS VPCによる防御
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="VPCによる防御">
+    <nav class="md-nav" aria-label="AWS VPCによる防御">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vpccidr" class="md-nav__link">
+  <a href="#aws-vpccidr" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPC全体のCIDRブロック
+      ▼ AWS VPC全体のCIDRブロック
     </span>
   </a>
   
@@ -24240,9 +24240,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_1" class="md-nav__link">
+  <a href="#aws-vpc_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートサブネットのリクエストをVPC内に閉じる場合
+      ▼ プライベートサブネットのリクエストをAWS VPC内に閉じる場合
     </span>
   </a>
   
@@ -24384,9 +24384,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#vpc_2" class="md-nav__link">
+  <a href="#aws-vpc_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ VPCエンドポイント
+      ▼ AWS VPCエンドポイント
     </span>
   </a>
   
@@ -24716,7 +24716,7 @@
 <tr>
 <td>データリンク層</td>
 <td><code>L2</code></td>
-<td>VPC、サブネット</td>
+<td>AWS VPC、サブネット</td>
 </tr>
 <tr>
 <td>物理層</td>
@@ -24734,7 +24734,7 @@
 <p><br></p>
 <h2 id="02-l2">02. <code>L2</code>の防御<a class="headerlink" href="#02-l2" title="Permanent link">&para;</a></h2>
 <h3 id="l2"><code>L2</code>の防御方法<a class="headerlink" href="#l2" title="Permanent link">&para;</a></h3>
-<p><code>L2</code>の攻撃をVPCやプライベートサブネットで防御する。</p>
+<p><code>L2</code>の攻撃をAWS VPCやプライベートサブネットで防御する。</p>
 <p>例えば、システムのコンポーネントごとに異なるプライベートサブネット (アプリ、DB、外部オンプレシステムへのプロキシ) を設ける。</p>
 <p>これにより、いずれかのコンポーネントに侵入されても、他コンポーネントへの侵入を最小限に防げる。</p>
 <p>なお、パブリックサブネットにはEC2は置かない。</p>
@@ -24745,9 +24745,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="cidr">推奨されるCIDRブロック<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
-<p><code>1</code>個のVPC内には複数のサブネットが入る。</p>
+<p><code>1</code>個のAWS VPC内には複数のサブネットが入る。</p>
 <p>そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。</p>
-<p>また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、VPC内でIPアドレスが枯渇しないようにする。</p>
+<p>また、AWS VPCが持つCIDRブロックから、AWS VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、AWS VPC内でIPアドレスが枯渇しないようにする。</p>
 <p>RFC1918では、以下のCIDRブロックが推奨である。</p>
 <table>
 <thead>
@@ -24782,14 +24782,14 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="vpc">VPCによる防御<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h3>
-<h4 id="vpccidr">▼ VPC全体のCIDRブロック<a class="headerlink" href="#vpccidr" title="Permanent link">&para;</a></h4>
+<h3 id="aws-vpc">AWS VPCによる防御<a class="headerlink" href="#aws-vpc" title="Permanent link">&para;</a></h3>
+<h4 id="aws-vpccidr">▼ AWS VPC全体のCIDRブロック<a class="headerlink" href="#aws-vpccidr" title="Permanent link">&para;</a></h4>
 <p>あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。</p>
 <p>この時、CIDRブロックと、これの開始IPアドレスと終了IPアドレスをメモしておくと良い。</p>
 <p>各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。</p>
 <p>拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。</p>
 <p>例えば、以前に開発したアプリケーションが<code>10.200.47.0</code>までを使用していた場合、<code>10.200.48.0</code>から使用を始める。</p>
-<p>また、VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>*.*.*.*/28</code>) であり、実際は<code>512</code>個 (<code>*.*.*.*/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
+<p>また、AWS VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>*.*.*.*/28</code>) であり、実際は<code>512</code>個 (<code>*.*.*.*/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting</a></li>
@@ -24805,12 +24805,12 @@
 </ul>
 </blockquote>
 <h4 id="cidr_1">▼ 各サブネットのCIDRブロック<a class="headerlink" href="#cidr_1" title="Permanent link">&para;</a></h4>
-<p>VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。</p>
-<p>この時、VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。</p>
-<p>例えば、VPCの最初のIPアドレスを<code>10.0.0.0</code>とした場合は、1つ目のパブリックサブネットのサブネットマスクは、<code>10.0.0.0</code>から始める。</p>
-<p>パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。</p>
-<p>例えば、VPCのサブネットマスクを<code>/16</code>としている場合は、各サブネットのサブネットマスクは<code>/24</code>とする。</p>
-<p>一方で、VPCを<code>/23</code>としている場合は、各サブネットは<code>/27</code>とする。</p>
+<p>AWS VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。</p>
+<p>この時、AWS VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。</p>
+<p>例えば、AWS VPCの最初のIPアドレスを<code>10.0.0.0</code>とした場合は、1つ目のパブリックサブネットのサブネットマスクは、<code>10.0.0.0</code>から始める。</p>
+<p>パブリックサブネットとプライベートサブネットを冗長化する場合は、AWS VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。</p>
+<p>例えば、AWS VPCのサブネットマスクを<code>/16</code>としている場合は、各サブネットのサブネットマスクは<code>/24</code>とする。</p>
+<p>一方で、AWS VPCを<code>/23</code>としている場合は、各サブネットは<code>/27</code>とする。</p>
 <p>また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、代わりに、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。</p>
 <table>
 <thead>
@@ -24829,8 +24829,8 @@
 <td>自動水平スケーリング時のEC2最大数と同じ個数</td>
 </tr>
 <tr>
-<td>VPCエンドポイント</td>
-<td>VPCエンドポイント当たり、IPアドレス<code>1</code>個</td>
+<td>AWS VPCエンドポイント</td>
+<td>AWS VPCエンドポイント当たり、IPアドレス<code>1</code>個</td>
 </tr>
 <tr>
 <td>ECS、EKS</td>
@@ -24869,7 +24869,7 @@
 <tr>
 <td>protectedサブネット</td>
 <td>プライベート</td>
-<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのリクエストのみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じAWS VPC内からのリクエストのみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
 <td>EC2、Fargate</td>
 </tr>
 <tr>
@@ -24929,7 +24929,7 @@
 <p><img alt="route-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png" /></p>
 <h4 id="_7">▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>上の図中で、サブネット<code>3</code>にはルートテーブル<code>2</code>が紐付けられている。</p>
-<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (AWS VPC内の他サブネット) を宛先に選択する。</p>
 <p>一方で、<code>0.0.0.0/0</code> (local以外の全IPアドレス) の範囲内にあれば、リクエストと見なし、Internet Gatewayを宛先に選択する。</p>
 <table>
 <thead>
@@ -24940,7 +24940,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (AWS VPCのCIDRブロック)</td>
 <td style="text-align: center;">local</td>
 </tr>
 <tr>
@@ -24949,9 +24949,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="vpc_1">▼ プライベートサブネットのリクエストをVPC内に閉じる場合<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
+<h4 id="aws-vpc_1">▼ プライベートサブネットのリクエストをAWS VPC内に閉じる場合<a class="headerlink" href="#aws-vpc_1" title="Permanent link">&para;</a></h4>
 <p>上の図中で、サブネット<code>2</code>にはルートテーブル1が紐付けられている。</p>
-<p>サブネット<code>2</code>内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>サブネット<code>2</code>内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、リクエストと見なし、local (AWS VPC内の他サブネット) を宛先に選択する。</p>
 <p>一方で、範囲外にあれば通信を破棄する。</p>
 <table>
 <thead>
@@ -24962,7 +24962,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (AWS VPCのCIDRブロック)</td>
 <td style="text-align: center;">local</td>
 </tr>
 </tbody>
@@ -25160,10 +25160,10 @@
 <h4 id="nlb">▼ NLBの場合<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
 <p>NLBはセキュリティグループをサポートしていない。</p>
 <p>そのため、NLBのルーティング先 (EC2など) でファイアーウォールを設定する必要がある。</p>
-<h4 id="vpc_2">▼ VPCエンドポイント<a class="headerlink" href="#vpc_2" title="Permanent link">&para;</a></h4>
-<p>VPC内からVPC外への通信は、VPCエンドポイントで安全に通信する。</p>
-<p>例えば、EKS EC2 NodeからVPC外AWSリソースへの通信では、VPCエンドポイントを使用する。</p>
-<p>VPCエンドポイントのセキュリティグループでは、VPCのCIDRからのアウトバウンド通信のみを許可するとよい。</p>
+<h4 id="aws-vpc_2">▼ AWS VPCエンドポイント<a class="headerlink" href="#aws-vpc_2" title="Permanent link">&para;</a></h4>
+<p>AWS VPC内からAWS VPC外への通信は、AWS VPCエンドポイントで安全に通信する。</p>
+<p>例えば、EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。</p>
+<p>AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。</p>
 <p><br></p>
 <h3 id="_11">セキュリティグループ (アウトバウンド) による防御<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="alb_1">▼ ALBの場合<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
@@ -25537,7 +25537,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     
