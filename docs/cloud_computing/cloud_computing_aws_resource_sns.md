@@ -56,7 +56,7 @@ AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能�
 | サブスクリプション       | サブスクリプションを登録する。                                                                                                                                    |
 | アクセスポリシー         | トピックへの認可スコープを設定する。                                                                                                                              |
 | 配信再試行ポリシー       | サブスクリプションのHTTP/HTTPSエンドポイントが失敗した時の再試行方法を設定する。<br>- https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html |
-| 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchログに転送するように設定する。                                                                                        |
+| 配信ステータスのログ記録 | サブスクリプションへの発信のログをAWS CloudWatchログに転送するように設定する。                                                                                    |
 | 暗号化                   |                                                                                                                                                                   |
 
 <br>
@@ -83,7 +83,7 @@ Lambdaに送信する。
 
 Webhook用のエンドポイントに送信する。
 
-- Chatbotのドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
+- AWS Chatbotのドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
 - incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)
 
 #### ▼ `json`形式のメール

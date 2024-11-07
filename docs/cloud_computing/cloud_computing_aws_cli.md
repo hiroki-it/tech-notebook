@@ -427,7 +427,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-### CloudWatch
+### AWS CloudWatch
 
 #### ▼ describe-alarms
 
@@ -441,7 +441,7 @@ $ aws cloudwatch describe-alarms --alarm-names <アラーム名>
 
 **＊例＊**
 
-CloudWatchアラームの状態を変更する。
+AWS CloudWatchアラームの状態を変更する。
 
 アラームをテストできる。
 

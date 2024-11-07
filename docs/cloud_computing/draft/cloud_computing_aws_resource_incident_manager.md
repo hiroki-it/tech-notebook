@@ -19,13 +19,13 @@ description: Incident Management＠AWSの知見を記録しています。
 
 Incident Managerをインシデント管理ツールとして使用する。
 
-CloudWatchアラームのアラートを、Incident Managerにインシデントとして通知する。
+AWS CloudWatchアラームのアラートを、Incident Managerにインシデントとして通知する。
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
 `(1)`
 
-: エラーイベントの送信元 (例：手動、CloudWatchアラーム、EventBridgeなど) からIncident Managerに、エラーイベントを通知する。
+: エラーイベントの送信元 (例：手動、AWS CloudWatchアラーム、EventBridgeなど) からIncident Managerに、エラーイベントを通知する。
 
 `(2)`
 
