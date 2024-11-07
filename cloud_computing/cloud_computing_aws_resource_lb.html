@@ -24088,7 +24088,7 @@
 <td>ALB：Application Load Balancer</td>
 <td><code>L7</code> (アプリケーション層)</td>
 <td>HTTP、HTTPS、gRPC</td>
-<td>IPアドレス、EC2インスタンス、Lambda</td>
+<td>IPアドレス、AWS EC2インスタンス、Lambda</td>
 <td>URL、HTTPヘッダー</td>
 <td>ポート番号フィールド</td>
 <td>可</td>
@@ -24097,7 +24097,7 @@
 <td>NLB：Network Load Balancer</td>
 <td><code>L4</code> (トランスポート層)</td>
 <td>TCP、UDP、TLS</td>
-<td>IPアドレス、EC2インスタンス、ALB</td>
+<td>IPアドレス、AWS EC2インスタンス、ALB</td>
 <td>不可</td>
 <td>IPアドレスフィールド、ポート番号フィールド</td>
 <td>不可</td>
@@ -24106,7 +24106,7 @@
 <td>GLB：Gateway Load Balancer</td>
 <td><code>L3</code> (ネットワーク層) 、<code>L4</code></td>
 <td>IP</td>
-<td>IPアドレス、EC2インスタンス</td>
+<td>IPアドレス、AWS EC2インスタンス</td>
 <td>不可</td>
 <td>IPアドレスフィールド、ポート番号フィールド</td>
 <td>不可</td>
@@ -24134,7 +24134,7 @@
 <h2 id="02-albapplication-load-balancing">02. ALB：Application Load Balancing<a class="headerlink" href="#02-albapplication-load-balancing" title="Permanent link">&para;</a></h2>
 <h3 id="alb">ALBとは<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h3>
 <p>クラウドリバースプロキシサーバー、かつクラウド<code>L7</code>ロードバランサーとして働く。</p>
-<p>EC2へのリクエストをバランスよく分配することによって、サーバーへの負荷を緩和する。</p>
+<p>AWS EC2へのリクエストをバランスよく分配することによって、サーバーへの負荷を緩和する。</p>
 <p><img alt="aws_alb" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png" /></p>
 <blockquote>
 <ul>
@@ -24196,8 +24196,8 @@
 </thead>
 <tbody>
 <tr>
-<td>EC2インスタンス</td>
-<td>ターゲットはEC2である必要がある。</td>
+<td>AWS EC2インスタンス</td>
+<td>ターゲットはAWS EC2である必要がある。</td>
 </tr>
 <tr>
 <td>IPアドレス</td>
@@ -24248,7 +24248,7 @@
 </blockquote>
 <h4 id="ip">▼ 割り当てられるIPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
 <p>ALBに割り当てられるIPアドレスには、AWS VPCのものが適用される。</p>
-<p>そのため、EC2のセキュリティグループでは、AWS VPCのCIDRブロックを許可するように設定する必要がある。</p>
+<p>そのため、AWS EC2のセキュリティグループでは、AWS VPCのCIDRブロックを許可するように設定する必要がある。</p>
 <h4 id="_6">▼ オートスケーリング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>単一障害点にならないように、負荷が高まるとALBインスタンスが増えるように自動スケールアウトする仕組みを持つ。</p>
 <h4 id="500">▼ <code>500</code>系ステータスの原因<a class="headerlink" href="#500" title="Permanent link">&para;</a></h4>

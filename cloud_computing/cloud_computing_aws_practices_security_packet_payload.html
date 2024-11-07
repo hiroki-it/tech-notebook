@@ -14221,18 +14221,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
+  <a href="#aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションEC2の場合
+      ▼ アプリケーションAWS EC2の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ec2_1" class="md-nav__link">
+  <a href="#aws-ec2_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 踏み台EC2の場合
+      ▼ 踏み台AWS EC2の場合
     </span>
   </a>
   
@@ -24321,18 +24321,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
+  <a href="#aws-ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリケーションEC2の場合
+      ▼ アプリケーションAWS EC2の場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ec2_1" class="md-nav__link">
+  <a href="#aws-ec2_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 踏み台EC2の場合
+      ▼ 踏み台AWS EC2の場合
     </span>
   </a>
   
@@ -24691,7 +24691,7 @@
 <tr>
 <td>アプリケーション層</td>
 <td><code>L7</code></td>
-<td>ALB、EC2、RDS、Route53、S3</td>
+<td>ALB、AWS EC2、RDS、Route53、S3</td>
 </tr>
 <tr>
 <td>プレゼンテーション層</td>
@@ -24737,7 +24737,7 @@
 <p><code>L2</code>の攻撃をAWS VPCやプライベートサブネットで防御する。</p>
 <p>例えば、システムのコンポーネントごとに異なるプライベートサブネット (アプリ、DB、外部オンプレシステムへのプロキシ) を設ける。</p>
 <p>これにより、いずれかのコンポーネントに侵入されても、他コンポーネントへの侵入を最小限に防げる。</p>
-<p>なお、パブリックサブネットにはEC2は置かない。</p>
+<p>なお、パブリックサブネットにはAWS EC2は置かない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html">https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html</a></li>
@@ -24826,7 +24826,7 @@
 </tr>
 <tr>
 <td>AutoScaling</td>
-<td>自動水平スケーリング時のEC2最大数と同じ個数</td>
+<td>自動水平スケーリング時のAWS EC2最大数と同じ個数</td>
 </tr>
 <tr>
 <td>AWS VPCエンドポイント</td>
@@ -24870,7 +24870,7 @@
 <td>protectedサブネット</td>
 <td>プライベート</td>
 <td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じAWS VPC内からのリクエストのみを待ち受ける。また、publicサブネットのNAT Gatewayを介してリクエストを送信する。</td>
-<td>EC2、Fargate</td>
+<td>AWS EC2、Fargate</td>
 </tr>
 <tr>
 <td>privateサブネット</td>
@@ -24909,7 +24909,7 @@
 <td>applicationサブネット</td>
 <td>プライベート</td>
 <td>内部ネットワークとして動作する。appサーバー、リバースプロキシサーバー、を配置する。</td>
-<td>EC2、Fargate</td>
+<td>AWS EC2、Fargate</td>
 </tr>
 <tr>
 <td>datastoreサブネット</td>
@@ -25003,11 +25003,11 @@
 <p><code>L3</code>の攻撃をセキュリティグループで防御する。</p>
 <p>例えば、AWS EKSのNodeグループごとに異なるセキュリティグループを紐づけている。</p>
 <p>ネットワークに公開するNodeグループのセキュリティグループでは、特定の送信元IPアドレスからのアクセスのみを許可する。</p>
-<p>公開しないNodeグループでは、他のNodeグループのEC2からのみアクセスを許可する。</p>
+<p>公開しないNodeグループでは、他のNodeグループのAWS EC2からのみアクセスを許可する。</p>
 <p>これらにより、インターネットからは信頼できるクライアントからのアクセスのみを受信し、Nodeグループ間でも最小限のアクセスのみに制限できる</p>
 <p>なお、ACLでも<code>L3</code>を防御できるが、ネットワークが複雑になることを防ぐためにACLでは通信制限は採用しなくてもよい。</p>
 <h3 id="_10">セキュリティグループ (インバウンド) による防御<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="ec2">▼ アプリケーションEC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ec2">▼ アプリケーションAWS EC2の場合<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h4>
 <p>ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
@@ -25031,12 +25031,12 @@
 <td>HTTPS</td>
 <td>TCP</td>
 <td><code>443</code></td>
-<td>踏み台EC2のセキュリティグループID</td>
-<td>SSH access from bastion EC2</td>
+<td>踏み台AWS EC2のセキュリティグループID</td>
+<td>SSH access from bastion AWS EC2</td>
 </tr>
 </tbody>
 </table>
-<h4 id="ec2_1">▼ 踏み台EC2の場合<a class="headerlink" href="#ec2_1" title="Permanent link">&para;</a></h4>
+<h4 id="aws-ec2_1">▼ 踏み台AWS EC2の場合<a class="headerlink" href="#aws-ec2_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -25058,7 +25058,7 @@
 </tbody>
 </table>
 <h4 id="efs">▼ EFSの場合<a class="headerlink" href="#efs" title="Permanent link">&para;</a></h4>
-<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25074,13 +25074,13 @@
 <td>NFS</td>
 <td>TCP</td>
 <td><code>2049</code></td>
-<td>EC2のセキュリティグループID</td>
-<td>NFS access from app EC2</td>
+<td>AWS EC2のセキュリティグループID</td>
+<td>NFS access from app AWS EC2</td>
 </tr>
 </tbody>
 </table>
 <h4 id="rds">▼ RDSの場合<a class="headerlink" href="#rds" title="Permanent link">&para;</a></h4>
-<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25096,13 +25096,13 @@
 <td>MYSQL/Aurora</td>
 <td>TCP</td>
 <td><code>3306</code></td>
-<td>EC2のセキュリティグループID</td>
-<td>MYSQL access from app EC2</td>
+<td>AWS EC2のセキュリティグループID</td>
+<td>MYSQL access from app AWS EC2</td>
 </tr>
 </tbody>
 </table>
 <h4 id="redis">▼ Redisの場合<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
-<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25118,8 +25118,8 @@
 <td>カスタムTCP</td>
 <td>TCP</td>
 <td><code>6379</code></td>
-<td>EC2のセキュリティグループID</td>
-<td>TCP access from app EC2</td>
+<td>AWS EC2のセキュリティグループID</td>
+<td>TCP access from app AWS EC2</td>
 </tr>
 </tbody>
 </table>
@@ -25159,15 +25159,15 @@
 </table>
 <h4 id="nlb">▼ NLBの場合<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
 <p>NLBはセキュリティグループをサポートしていない。</p>
-<p>そのため、NLBのルーティング先 (EC2など) でファイアーウォールを設定する必要がある。</p>
+<p>そのため、NLBのルーティング先 (AWS EC2など) でファイアーウォールを設定する必要がある。</p>
 <h4 id="aws-vpc_2">▼ AWS VPCエンドポイント<a class="headerlink" href="#aws-vpc_2" title="Permanent link">&para;</a></h4>
 <p>AWS VPC内からAWS VPC外への通信は、AWS VPCエンドポイントで安全に通信する。</p>
-<p>例えば、AWS EKS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。</p>
+<p>例えば、AWS EKS AWS EC2 NodeからAWS VPC外AWSリソースへの通信では、AWS VPCエンドポイントを使用する。</p>
 <p>AWS VPCエンドポイントのセキュリティグループでは、AWS VPCのCIDRからのアウトバウンド通信のみを許可するとよい。</p>
 <p><br></p>
 <h3 id="_11">セキュリティグループ (アウトバウンド) による防御<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="alb_1">▼ ALBの場合<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
-<p>ALBからEC2にリクエストをルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。</p>
+<p>ALBからAWS EC2にリクエストをルーティングする場合、特定のAWS EC2のみへのルーティングを許可するために、アウトバウンドのルールでAWS EC2のセキュリティグループIDを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -25183,7 +25183,7 @@
 <td>HTTPS</td>
 <td>TCP</td>
 <td><code>443</code></td>
-<td>宛先のEC2のセキュリティグループID</td>
+<td>宛先のAWS EC2のセキュリティグループID</td>
 <td>Full access</td>
 </tr>
 </tbody>
@@ -25499,7 +25499,7 @@
 <h2 id="04-03-certificate-manager">04-03. Certificate Manager<a class="headerlink" href="#04-03-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="certificate-manager">Certificate Managerによる防御<a class="headerlink" href="#certificate-manager" title="Permanent link">&para;</a></h3>
 <p>アプリケーションデータの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
-<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
+<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
 <p>安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
 <blockquote>
 <ul>
@@ -25509,7 +25509,7 @@
 <p><br></p>
 <h2 id="04-04-systems-manager">04-04. Systems Manager<a class="headerlink" href="#04-04-systems-manager" title="Permanent link">&para;</a></h2>
 <h3 id="systems-manager">Systems Managerによる防御<a class="headerlink" href="#systems-manager" title="Permanent link">&para;</a></h3>
-<p>開発者がEC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。</p>
+<p>開発者がAWS EC2へリモート接続する方法として、Systems Managerのセッションマネージャーを採用する。</p>
 <p>SSH公開鍵認証を採用しないことにより、SSH公開鍵を管理する負荷や漏洩のリスクを低減する。</p>
 <blockquote>
 <ul>
