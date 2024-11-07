@@ -69,6 +69,13 @@
 
 <br>
 
+### <u>NoSQL DB系</u>
+
+* ##### [NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)
+* ##### [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html)
+
+<br>
+
 ### 時系列データベース系
 
 * #### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
