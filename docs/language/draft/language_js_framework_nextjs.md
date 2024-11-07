@@ -197,3 +197,41 @@ export default IsrPage;
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-3
 
 <br>
+
+### .envファイル
+
+#### ▼ .env
+
+全ての`yarn`コマンドで自動的に読み込まれる。
+
+#### ▼ .env.local
+
+全ての`yarn`コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ .env.development
+
+`yarn dev`コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ .env.development.local
+
+`yarn dev`コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ .env.production
+
+`yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ .env.production.local
+
+`yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+<br>

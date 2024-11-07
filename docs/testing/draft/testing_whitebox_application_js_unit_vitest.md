@@ -22,6 +22,8 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 ## 02. セットアップ
 
 ```javascript
+import {defineConfig} from "vitest/config";
+
 export default defineConfig({
   test: {
     exclude: [],
