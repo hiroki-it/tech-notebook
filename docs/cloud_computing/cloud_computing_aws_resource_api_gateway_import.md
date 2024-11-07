@@ -41,7 +41,7 @@ API Gatewayのインポートに当たり、OpenAPIの`yaml`ファイルにキ�
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
-#### ▼ セットアップ (VPCリンク&プロキシ統合)
+#### ▼ セットアップ (AWS VPCリンク&プロキシ統合)
 
 ```yaml
 paths:
@@ -61,8 +61,8 @@ paths:
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
           # パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId
           # 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId
-        connectionType: VPC_LINK # VPCリンクを使用
-        connectionId: <VPCリンクID> # VPCリンクのID
+        connectionType: VPC_LINK # AWS VPCリンクを使用
+        connectionId: <AWS VPCリンクID> # AWS VPCリンクのID
         passthroughBehavior: when_no_match # プロキシ統合の場合は設定の変更不可で固定
         type: http_proxy # プロキシ統合を使用
         responses: # プロキシ統合の場合は設定の変更不可で固定
@@ -70,7 +70,7 @@ paths:
             statusCode: 200
 ```
 
-#### ▼ セットアップ (VPCリンク&非プロキシ統合の場合)
+#### ▼ セットアップ (AWS VPCリンク&非プロキシ統合の場合)
 
 パススルー条件やresponseキー以下の統合レスポンスを設定できる。
 
@@ -87,7 +87,7 @@ paths:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates # 統合リクエストのマッピングテンプレートのパススルー条件を選択
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http # 非プロキシ統合
         responses: # 統合レスポンスを設定
           200:
@@ -228,7 +228,7 @@ Swagger EditorでAPIの仕様書の`html`ファイルを確認できる。
 
 <br>
 
-### VPCリンク＆プロキシ統合
+### AWS VPCリンク＆プロキシ統合
 
 **実装例**
 
@@ -325,7 +325,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -388,7 +388,7 @@ paths:
         requestParameters:
           integration.request.header.X-API-Key: "'*****'"
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -468,7 +468,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -544,7 +544,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -625,7 +625,7 @@ components:
 
 <br>
 
-### VPCリンク＆非プロキシ統合
+### AWS VPCリンク＆非プロキシ統合
 
 **実装例**
 
@@ -723,7 +723,7 @@ paths:
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http
         responses:
           200:
@@ -794,7 +794,7 @@ paths:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http
         responses:
           200:
@@ -881,7 +881,7 @@ paths:
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http
         responses:
           200:
@@ -965,7 +965,7 @@ paths:
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <VPCリンクID>
+        connectionId: <AWS VPCリンクID>
         type: http
         responses:
           200:

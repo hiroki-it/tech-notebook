@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VPC＠AWSリソース
-description: VPC＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS VPC＠AWSリソース
+description: AWS VPC＠AWSリソースの知見を記録しています。
 ---
 
-# VPC＠AWSリソース
+# AWS VPC＠AWSリソース
 
 ## はじめに
 
@@ -13,23 +13,24 @@ description: VPC＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. VPCとは：Virtual Private Cloud
+## 01. AWS VPCとは：Virtual Private Cloud
 
 クラウドプライベートネットワークとして働く。
 
-プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に作成できる。
+プライベートIPアドレスが割り当てられた、AWS VPCと呼ばれるプライベートネットワーク (`L3`) を仮想的に作成できる。
 
 異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。
 
-VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
+EKSの場合、AWS VPC (`L3`) 上にAWS VPC CNIを配置することにより、クラスターネットワークを作成できる。
 
-![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCが提供できるネットワークの範囲.png)
+![AWS VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCが提供できるネットワークの範囲.png)
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+> - https://d1.awsstatic.com/webinars/jp/pdf/services/20180515_AWS-BlackBelt_Networking-for-RFP.pdf#page=51
 
 <br>
 
-### VPC内のIPアドレス
+### AWS VPC内のIPアドレス
 
 #### ▼ IPアドレスの種類
 
@@ -44,7 +45,7 @@ VPCのパケット通信の仕組みについては、以下のリンクを参�
 
 #### ▼ DNS名の割り当て
 
-VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。
+AWS VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。
 
 `enableDnsHostnames`オプションと`enableDnsSupport`オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。
 
@@ -60,9 +61,9 @@ VPC内で作成されたインスタンスにはパブリックIPアドレスが
 
 <br>
 
-## 02. VPCサブネット
+## 02. AWS VPCサブネット
 
-### VPCサブネットとは
+### AWS VPCサブネットとは
 
 クラウドプライベートネットワークにおけるセグメントとして働く。
 
@@ -142,7 +143,7 @@ LAN内の内部ネットワークに相当する。
 
 #### ▼ メインルートテーブル
 
-VPCの作成時に自動的に作成される。
+AWS VPCの作成時に自動的に作成される。
 
 どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する。
 
@@ -152,23 +153,23 @@ VPCの作成時に自動的に作成される。
 
 <br>
 
-## 05. VPCエンドポイント
+## 05. AWS VPCエンドポイント
 
-### VPCエンドポイントとは
+### AWS VPCエンドポイントとは
 
-VPCのプライベートサブネット内のリソースが、VPC外 (例：VPC外AWSリソース、他のVPC、AWSマーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。
+AWS VPCのプライベートサブネット内のリソースが、AWS VPC外 (例：AWS VPC外AWSリソース、他のAWS VPC、AWSマーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。
 
 Gateway型とInterface型がある。
 
-VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとNAT Gatewayを使用する必要がある。
+AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとNAT Gatewayを使用する必要がある。
 
-![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png)
+![AWS VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCエンドポイント.png)
 
 <br>
 
-### VPCエンドポイントとNAT Gatewayの料金比較
+### AWS VPCエンドポイントとNAT Gatewayの料金比較
 
-NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、VPC外AWSリソースとの通信がより安全になる。
+NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。
 
 <br>
 
@@ -180,7 +181,7 @@ NAT Gatewayの代わりに、VPCエンドポイントを使用すると、料金
 
 実体はプライベートIPアドレスを持つENIであり、ENIがAWSリソースからリクエストを受信する。
 
-もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、VPCの`enableDnsHostnames`オプションと`enableDnsSupport`オプションを有効化する必要がある。
+もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、AWS VPCの`enableDnsHostnames`オプションと`enableDnsSupport`オプションを有効化する必要がある。
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
 > - https://zenn.dev/momota/articles/b571b763575120
@@ -193,7 +194,7 @@ S3、DynamoDB以外の全てのリソース
 
 ルートテーブルにおける定義に従う。
 
-実体はVPCエンドポイントであり、VPCエンドポイントがAWSリソースからリクエストを受信する。
+実体はAWS VPCエンドポイントであり、AWS VPCエンドポイントがAWSリソースからリクエストを受信する。
 
 **＊リソース例＊**
 
@@ -208,23 +209,23 @@ S3、DynamoDBのみ
 
 ### Internet Gatewayとは
 
-NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (VPC外のIPアドレス) とプライベートIPアドレス (VPC内のIPアドレス) を相互変換する。
+NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (AWS VPC外のIPアドレス) とプライベートIPアドレス (AWS VPC内のIPアドレス) を相互変換する。
 
 `1`個のパブリックIPに対して、`1`個のプライベートIPを紐付けられる。
 
-つまり、VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。
+つまり、AWS VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。
 
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
-> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+> - https://docs.aws.amazon.com/vpc/latest/userguide/AWS VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 <br>
 
 ### DNAT処理
 
-Internet GatewayのDNAT処理では、VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
+Internet GatewayのDNAT処理では、AWS VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
 
 NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT GatewayのElastic IPアドレスに変換する。
 
@@ -236,7 +237,7 @@ NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT 
 
 ### SNAT処理
 
-Internet GatewayのSNAT処理では、VPC内からリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
+Internet GatewayのSNAT処理では、AWS VPC内からリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
@@ -250,7 +251,7 @@ Internet GatewayのSNAT処理では、VPC内からリクエストを受信し、
 
 ### NAT Gatewayとは
 
-SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (VPC内のIPアドレス) に変換する。
+SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (AWS VPC内のIPアドレス) に変換する。
 
 また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。
 
@@ -258,7 +259,7 @@ SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受�
 
 この時のパブリックIPは、Elastic IPである。
 
-つまり、VPC内の複数のインスタンスからのリクエストを、`1`個のパブリックIPアドレスで送信する。
+つまり、AWS VPC内の複数のインスタンスからのリクエストを、`1`個のパブリックIPアドレスで送信する。
 
 そのため、送信元はこのパブリックIPアドレスになる。
 
@@ -295,46 +296,46 @@ NAT GatewayのSNAT処理では、プライベートサブネットからリク�
 
 <br>
 
-## 07. VPC間、VPC-オンプレミス間の通信
+## 07. AWS VPC間、AWS VPC-オンプレミス間の通信
 
-### VPCピアリング接続
+### AWS VPCピアリング接続
 
-異なるVPCのネットワークを接続する。
+異なるAWS VPCのネットワークを接続する。
 
-![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続.png)
+![AWS VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続.png)
 
-#### ▼ VPCピアリング接続とは
+#### ▼ AWS VPCピアリング接続とは
 
-『一対一』の関係で、『異なるVPC間』の双方向通信を可能にする。
+『一対一』の関係で、『異なるAWS VPC間』の双方向通信を可能にする。
 
-#### ▼ VPCピアリング接続の可否
+#### ▼ AWS VPCピアリング接続の可否
 
-VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、VPC ピアリング接続はできない。
+AWS VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、AWS VPC ピアリング接続はできない。
 
-| アカウント  | VPCのあるリージョン | VPC内のCIDRブロック   | 接続の可否 |
-| ----------- | ------------------- | --------------------- | ---------- |
-| 同じ/異なる | 同じ/異なる         | 全て異なる            | ⭕️         |
-|             |                     | 同じものが1つでもある | ✕          |
+| アカウント  | AWS VPCのあるリージョン | AWS VPC内のCIDRブロック | 接続の可否 |
+| ----------- | ----------------------- | ----------------------- | ---------- |
+| 同じ/異なる | 同じ/異なる             | 全て異なる              | ⭕️         |
+|             |                         | 同じものが1つでもある   | ✕          |
 
-![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png)
+![AWS VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-1.png)
 
 たとえ、IPv6が異なっていても、同様である。
 
-![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-2.png)
+![AWS VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-2.png)
 
 <br>
 
-### VPCエンドポイントサービス
+### AWS VPCエンドポイントサービス
 
-#### ▼ VPCエンドポイントサービスとは
+#### ▼ AWS VPCエンドポイントサービスとは
 
-VPCエンドポイントとは異なる能力なので注意する。
+AWS VPCエンドポイントとは異なる能力なので注意する。
 
-Interface型のVPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。
+Interface型のAWS VPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるAWS VPC間』の双方向通信を可能にする。
 
 エンドポイントのサービス名は、『`com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****`』になる。
 
-API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
+API GatewayのAWS VPCリンクは、AWS VPCエンドポイントサービスに相当する。
 
 ![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-endpoint-service.png)
 
@@ -344,11 +345,11 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 #### ▼ Transit Gatewayとは
 
-『多対多』の関係で、『異なるVPC間』や『VPCとDirect Connect間』の双方向通信を可能にする。
+『多対多』の関係で、『異なるAWS VPC間』や『AWS VPCとDirect Connect間』の双方向通信を可能にする。
 
 クラウドルーターとして働く。
 
-Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、VPCとオンプレミスを接続することもできる。
+Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、AWS VPCとオンプレミスを接続することもできる。
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 
@@ -363,9 +364,9 @@ AWS間の通信の場合、アプリケーションデータを自動的に暗�
 
 <br>
 
-### VPC Lattice
+### AWS VPC Lattice
 
-異なるVPCのネットワークをVPC Latticeサービスネットワークを経由して接続する。
+異なるAWS VPCのネットワークをAWS VPC Latticeサービスネットワークを経由して接続する。
 
 ![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 
@@ -377,22 +378,22 @@ AWS間の通信の場合、アプリケーションデータを自動的に暗�
 
 ### 各サービスの比較
 
-| 能力                                          | VPCピアリング接続 |         VPCエンドポイントサービス          |      Transit gateway       |                                           VPC Lattice                                            |
-| --------------------------------------------- | :---------------: | :----------------------------------------: | :------------------------: | :----------------------------------------------------------------------------------------------: |
-| 通信できるVPC数                               |      一対一       |              一対一<br>一対多              | 一対一<br>一対多<br>多対多 |                                    一対一<br>一対多<br>多対多                                    |
-| 通信できるIPアドレスの種類                    |    IPv4、IPv6     |                    IPv4                    |         IPv4、IPv6         |                                            IPv4、IPv6                                            |
-| 通信できるリソース                            |     制限なし      | NLBで`L4`ルーティングできるAWSリソースのみ |          制限なし          | ALBで`L7`ルーティングできるAWSリソースのみ<br>(例：EC2、IPアドレス、Lambda、KubernetesのPodなど) |
-| CIDRブロックがVPC間で被ることによる通信の可否 |        ×︎         |                     ⭕                     |             ×︎             |                                                ⭕                                                |
-| クロスアカウント                              |        ⭕         |                     ⭕                     |             ⭕             |                                                ⭕                                                |
-| クロスリージョン                              |        ⭕         |                     ×︎                     |             ⭕             |                                                ⭕                                                |
-| VPC間                                         |        ⭕         |                     ⭕                     |             ⭕             |                                                ⭕                                                |
-| VPC-オンプレミス間                            |        ×︎         |                     ×︎                     |             ⭕             |                                                ×︎                                                |
+| 能力                                              | AWS VPCピアリング接続 |       AWS VPCエンドポイントサービス        |      Transit gateway       |                                         AWS VPC Lattice                                          |
+| ------------------------------------------------- | :-------------------: | :----------------------------------------: | :------------------------: | :----------------------------------------------------------------------------------------------: |
+| 通信できるAWS VPC数                               |        一対一         |              一対一<br>一対多              | 一対一<br>一対多<br>多対多 |                                    一対一<br>一対多<br>多対多                                    |
+| 通信できるIPアドレスの種類                        |      IPv4、IPv6       |                    IPv4                    |         IPv4、IPv6         |                                            IPv4、IPv6                                            |
+| 通信できるリソース                                |       制限なし        | NLBで`L4`ルーティングできるAWSリソースのみ |          制限なし          | ALBで`L7`ルーティングできるAWSリソースのみ<br>(例：EC2、IPアドレス、Lambda、KubernetesのPodなど) |
+| CIDRブロックがAWS VPC間で被ることによる通信の可否 |          ×︎           |                     ⭕                     |             ×︎             |                                                ⭕                                                |
+| クロスアカウント                                  |          ⭕           |                     ⭕                     |             ⭕             |                                                ⭕                                                |
+| クロスリージョン                                  |          ⭕           |                     ×︎                     |             ⭕             |                                                ⭕                                                |
+| AWS VPC間                                         |          ⭕           |                     ⭕                     |             ⭕             |                                                ⭕                                                |
+| AWS VPC-オンプレミス間                            |          ×︎           |                     ×︎                     |             ⭕             |                                                ×︎                                                |
 
 <br>
 
-## 08. VPCフローログ
+## 08. AWS VPCフローログ
 
-VPC内のENIを通過するパケットをキャプチャできる。
+AWS VPC内のENIを通過するパケットをキャプチャできる。
 
 ```bash
 version account-id       interface-id  srcaddr           dstaddr         srcport         dstport        protocol   packets    bytes     start            end               action log-status
@@ -437,7 +438,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+> - https://docs.aws.amazon.com/vpc/latest/userguide/AWS VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 

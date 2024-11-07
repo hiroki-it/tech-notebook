@@ -662,13 +662,13 @@ Systems Managerを使用してEC2に接続する場合、EC2自体にsystems-man
 
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
 
-#### ▼ VPCエンドポイントの作成
+#### ▼ AWS VPCエンドポイントの作成
 
-| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                          | 説明                                                               |
-| ------------------------- | --------- | ------------------------------------------ | ------------------------------------------------------------------ |
-| EC2                       | Interface | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからEC2にコマンドを送信するため。                    |
-| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
+| AWS VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                          | 説明                                                               |
+| ----------------------------- | --------- | ------------------------------------------ | ------------------------------------------------------------------ |
+| EC2                           | Interface | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからEC2にコマンドを送信するため。                    |
+| Systems Manager               | Interface | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager               | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
@@ -762,17 +762,17 @@ ENIにセキュリティグループが紐付けられる。
 
 このENIを他のAWSリソースに紐付けることにより、ENIを経由して、セキュリティグループを紐付けられる。
 
-#### ▼ VPCエンドポイント
+#### ▼ AWS VPCエンドポイント
 
-Interface型のVPCエンドポイントとして動作する。
+Interface型のAWS VPCエンドポイントとして動作する。
 
 <br>
 
-### VPCトラフィックミラーリング
+### AWS VPCトラフィックミラーリング
 
-ENIを経由して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。
+ENIを経由して、同じAWS VPC内のインスタンスなどに、パケットのコピーを送信する。
 
-VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
+AWS VPCエンドポイントを経由すれば異なるAWS VPCに送信することもできる。
 
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
 
