@@ -83,9 +83,9 @@ ECS、EKSのアカウント設定でContainerインサイトを有効化する�
 
 Containerインサイトのメトリクスは、『`ContainerInsights`』という名前空間で一括でクエリでき、『`ClusterName`』などのディメンションでデータポイントをフィルタリングできる。
 
-#### ▼ Lambdaインサイト
+#### ▼ AWS Lambdaインサイト
 
-Lambdaの性能に関するメトリクスのデータポイントを収集する。
+AWS Lambdaの性能に関するメトリクスのデータポイントを収集する。
 
 <br>
 
@@ -321,7 +321,7 @@ fields @timestamp, @message, @logStream
 
 ### cloudwatchエージェントとは
 
-インスタンス系AWSリソース (EC2、ECS、EKS、Lambda) 内で稼働するデーモンのこと。
+インスタンス系AWSリソース (EC2、ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。
 
 インスタンス内のメトリクスのデータポイントやログを収集し、AWS CloudWatchに送信する。
 

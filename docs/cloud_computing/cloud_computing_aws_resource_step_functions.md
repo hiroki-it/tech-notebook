@@ -27,16 +27,16 @@ AWSサービスを組み合わせて、ワークフローエンジンを作成�
 
 > - https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
-#### ▼ Lambda
+#### ▼ AWS Lambda
 
 **＊実装例＊**
 
 ```yaml
 {
-  "StartAt": "Call Lambda",
+  "StartAt": "Call AWS Lambda",
   "States":
     {
-      "Call Lambda":
+      "Call AWS Lambda":
         {
           "Type": "Task",
           "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
@@ -47,7 +47,7 @@ AWSサービスを組み合わせて、ワークフローエンジンを作成�
           "Retry":
             [{"ErrorEquals": ["<再試行の対象とするエラー>"], "MaxAttempts": 0}],
           "End": "true",
-          "Comment": "The state that call Lambda",
+          "Comment": "The state that call AWS Lambda",
         },
     },
 }
@@ -55,7 +55,7 @@ AWSサービスを組み合わせて、ワークフローエンジンを作成�
 
 <br>
 
-### API Gatewayとの連携
+### AWS API Gatewayとの連携
 
 #### ▼ 注意が必要な項目
 
@@ -83,7 +83,7 @@ AWSサービスを組み合わせて、ワークフローエンジンを作成�
 
 #### ▼ レスポンス構造
 
-以下がレスポンスされれば、API GatewayがStep Functionsをコールできたことになる。
+以下がレスポンスされれば、AWS API GatewayがStep Functionsをコールできたことになる。
 
 ```yaml
 {

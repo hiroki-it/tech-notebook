@@ -21,7 +21,7 @@ description: EventBridge＠AWSリソースの知見を記録しています。
 
 AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
 
-また、イベントの書き換えロジックがLambdaで実装するほど複雑でない場合に、Lambdaの代わりにも使用できる。
+また、イベントの書き換えロジックがAWS Lambdaで実装するほど複雑でない場合に、AWS Lambdaの代わりにも使用できる。
 
 > - https://fourtheorem.com/what-can-you-do-with-eventbridge/
 > - https://docs.aws.amazon.com/decision-guides/latest/sns-or-sqs-or-eventbridge/sns-or-sqs-or-eventbridge.html
@@ -80,7 +80,7 @@ Amplifyの指定したIDのアプリケーションが、`Amplify Deployment Sta
 
 cron式またはrate式を使用して、スケジュールを定義する。
 
-これとLambdaを組み合わせることにより、ジョブを実行できる。
+これとAWS Lambdaを組み合わせることにより、ジョブを実行できる。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html
 
@@ -98,26 +98,26 @@ AWSリソースで発生したイベントを受信し、他のAWSリソース�
 
 EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。
 
-そこで、デバッグ時はEventBridgeのターゲットにLambdaを設定し、イベント構造をログから確認する。
+そこで、デバッグ時はEventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。
 
 **＊実装例＊**
 
-あらかじめ、イベントの内容を出力する関数をLambdaに作成しておく。
+あらかじめ、イベントの内容を出力する関数をAWS Lambdaに作成しておく。
 
 ```javascript
-// Lambdaにデバッグ用の関数を用意する
+// AWS Lambdaにデバッグ用の関数を用意する
 exports.handler = async (event) => {
   console.log(JSON.stringify({event}, null, 2));
 };
 ```
 
-対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからLambdaに送信するように設定する。
+対象のAWSリソースで任意のイベントが発生した時に、EventBridgeからAWS Lambdaに送信するように設定する。
 
 ```yaml
 {"source": "aws.amplify"}
 ```
 
-AWSリソースで意図的にイベントを起こし、Lambdaのロググループから内容を確認する。
+AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググループから内容を確認する。
 
 `detail`キーにイベントが割り当てられている。
 

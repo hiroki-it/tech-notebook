@@ -393,7 +393,7 @@ The document tree is shown below.
 
 オリジンからカスタムエラーページをレスポンスするパスパターンを定義する。
 
-Lamnda@Edgeを使用したCloudFrontの場合は、Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
+Lamnda@Edgeを使用したCloudFrontの場合は、AWS Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
 

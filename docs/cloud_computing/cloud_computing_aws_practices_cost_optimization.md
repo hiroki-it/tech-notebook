@@ -183,7 +183,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 <br>
 
-### Lambda
+### AWS Lambda
 
 #### ▼ 実行時間
 

@@ -592,7 +592,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 <br>
 
-## 06. Lambdaの場合
+## 06. AWS Lambdaの場合
 
 ### 初期化
 

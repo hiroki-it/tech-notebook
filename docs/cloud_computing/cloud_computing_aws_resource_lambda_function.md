@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Lambda関数＠Lambda
-description: Lambda関数＠Lambdaの知見を記録しています。
+title: 【IT技術の知見】AWS Lambda関数＠AWS Lambda
+description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 ---
 
-# Lambda関数＠Lambda
+# AWS Lambda関数＠AWS Lambda
 
 ## はじめに
 
@@ -23,15 +23,15 @@ description: Lambda関数＠Lambdaの知見を記録しています。
 
 <br>
 
-### Lambdaハンドラ関数
+### AWS Lambdaハンドラ関数
 
 #### ▼ 非同期ハンドラ関数 (Async handlers)
 
-Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。
+AWS Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。
 
 ハンドラ関数の初期名は`handler`メソッドであるが別名でも良い。
 
-`return`または`throw`を使用して、Lambdaのコール元にレスポンスを返信する。
+`return`または`throw`を使用して、AWS Lambdaのコール元にレスポンスを返信する。
 
 レスポンスとして、Promiseオブジェクトを送信もできる。
 
@@ -77,13 +77,13 @@ exports.handler = async (event) => {
 
 #### ▼ 同期ハンドラ関数 (Non-async handlers)
 
-Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。
+AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。
 
 このオブジェクトにはメソッドとプロパティを持つ。
 
 ハンドラ関数の初期名は`handler`であるが別名でも良い。
 
-`callback`メソッドを使用して、Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。
+`callback`メソッドを使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
 
@@ -135,15 +135,15 @@ exports.handler = (event, context, callback) => {
 
 #### ▼ 予約された引数の説明
 
-| 引数                | 説明                                                                                                                   | 補足                                                                                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                         | Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                         | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                 |
-| callback関数        | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、Lambdaのコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                   |
+| 引数                | 説明                                                                                                                       | 補足                                                                                                                                                                     |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                             | AWS Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | AWS Lambdaに関するデータ (名前、バージョンなど) を取得できるメソッドとプロパティが代入されている。                         | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                     |
+| callback関数        | 代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、AWS Lambdaのコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                       |
 
 #### ▼ テストとデバッグ
 
-Lambdaで関数を作成すると、AWS CloudWatchログのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。Lambdaの関数内で発生したエラーや`console.log`メソッドのログはここに出力されるため、都度確認すること。
+AWS Lambdaで関数を作成すると、AWS CloudWatchログのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや`console.log`メソッドのログはここに出力されるため、都度確認すること。
 
 #### ▼ ベストプラクティス
 
@@ -157,7 +157,7 @@ Lambdaで関数を作成すると、AWS CloudWatchログのロググループに
 
 #### ▼ aws-lambda-goとは
 
-Goを使用して、Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
+Goを使用して、AWS Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
 
@@ -167,7 +167,7 @@ Lamda関数を実行するための関数。
 
 `Start`関数に渡すパラメーターには、必ず1つでも`error`インターフェースの実装が含まれている必要がある。
 
-もし含まれていない場合は、Lambdaで内部エラーが起こる。
+もし含まれていない場合は、AWS Lambdaで内部エラーが起こる。
 
 ```go
 package main
@@ -188,7 +188,7 @@ func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
 }
 
 func main() {
-	// Lambda関数を実行します。
+	// AWS Lambda関数を実行します。
 	lambda.Start(HandleRequest)
 }
 ```
@@ -223,7 +223,7 @@ import (
 )
 
 /**
- * Lambdaハンドラー関数
+ * AWS Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.SNSEvent) (string, error) {
 
@@ -248,7 +248,7 @@ import (
 )
 
 /**
- * Lambdaハンドラー関数
+ * AWS Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.CloudWatchEvent) (string, error) {
 
@@ -259,7 +259,7 @@ func main() {
 }
 ```
 
-#### ▼ API Gatewayイベントの場合
+#### ▼ AWS API Gatewayイベントの場合
 
 ```go
 package main
@@ -273,7 +273,7 @@ import (
 )
 
 /**
- * Lambdaハンドラー関数
+ * AWS Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
@@ -294,7 +294,7 @@ func main() {
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
-文字列を返却すると、Lambdaはその文字列をそのまま返信する。
+文字列を返却すると、AWS Lambdaはその文字列をそのまま返信する。
 
 また、JSONをレスポンスもできる。
 
@@ -302,7 +302,7 @@ func main() {
 
 #### ▼ 異常系
 
-Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。
+AWS Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 
@@ -346,13 +346,13 @@ func main() {
 
 #### ▼ レポートログ
 
-| 機能名          |                                          |
-| --------------- | ---------------------------------------- |
-| RequestId       | リクエストID                             |
-| Duration        | イベントの処理時間                       |
-| Billed Duration | Lambdaの課金対象の時間                   |
-| Memory Size     | Lambdaのメモリサイズ                     |
-| Max Memory Used | Lambdaが実際に使用するメモリの最大サイズ |
+| 機能名          |                                              |
+| --------------- | -------------------------------------------- |
+| RequestId       | リクエストID                                 |
+| Duration        | イベントの処理時間                           |
+| Billed Duration | AWS Lambdaの課金対象の時間                   |
+| Memory Size     | AWS Lambdaのメモリサイズ                     |
+| Max Memory Used | AWS Lambdaが実際に使用するメモリの最大サイズ |
 
 #### ▼ ログの出力方法
 
@@ -366,7 +366,7 @@ AWS CloudWatchログにてこれを確認する。
 
 ## 02-02. 関数例
 
-### Amplify ➡︎ EventBridge ➡︎ Lambda ➡︎ Slack-API
+### Amplify ➡︎ EventBridge ➡︎ AWS Lambda ➡︎ Slack-API
 
 > - https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -433,11 +433,11 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### Amplify ➡︎ EventBridge ➡︎ Lambda ➡︎ Slack-API
+### Amplify ➡︎ EventBridge ➡︎ AWS Lambda ➡︎ Slack-API
 
 **＊実装例＊**
 
-AmplifyのイベントをEventBridgeでキャッチし、これをLambdaに転送する。Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AmplifyのイベントをEventBridgeでキャッチし、これをAWS Lambdaに転送する。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 ```javascript
 "use strict";
@@ -655,13 +655,13 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### API Gateway ➡︎ Lambda ➡︎ S3
+### AWS API Gateway ➡︎ AWS Lambda ➡︎ S3
 
 **＊実装例＊**
 
-API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。
+AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをS3に保管する。
 
-LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`AWSLambdaExecute`』が紐付けられたロールをLambdaに紐付けしておく必要がある。
+AWS LambdaがS3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`AWSAWS LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
 
 ```javascript
 "use strict";
@@ -671,7 +671,7 @@ const aws = require("aws-sdk");
 const s3 = new aws.S3();
 
 exports.handler = (event, context, callback) => {
-  // API Gatewayとのプロキシ統合を意識したJSON構造にする。
+  // AWS API Gatewayとのプロキシ統合を意識したJSON構造にする。
   // レスポンスの初期値
   const response = {
     statusCode: null,
@@ -714,7 +714,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### CloudFront ➡︎ Lambda@Edge ➡︎ S3
+### CloudFront ➡︎ AWS Lambda@Edge ➡︎ S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 

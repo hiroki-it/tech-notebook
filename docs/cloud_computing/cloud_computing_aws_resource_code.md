@@ -143,7 +143,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 <br>
 
-## 04-02. CodeDeploy (Lambdaの場合)
+## 04-02. CodeDeploy (AWS Lambdaの場合)
 
 ### 利用できるデプロイメント手法
 

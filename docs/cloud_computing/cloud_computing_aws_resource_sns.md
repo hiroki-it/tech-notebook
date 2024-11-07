@@ -71,9 +71,9 @@ Kinesis Data Firehoseに送信する。
 
 SQSに送信する。
 
-#### ▼ Lambda
+#### ▼ AWS Lambda
 
-Lambdaに送信する。
+AWS Lambdaに送信する。
 
 #### ▼ Eメール
 

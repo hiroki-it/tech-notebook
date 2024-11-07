@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】API Gatewayへのymlインポート＠AWS
-description: API Gatewayへのymlインポート＠AWSの知見を記録しています。
+title: 【IT技術の知見】AWS API Gatewayへのymlインポート＠AWS
+description: AWS API Gatewayへのymlインポート＠AWSの知見を記録しています。
 ---
 
-# API Gatewayへのymlインポート＠AWS
+# AWS API Gatewayへのymlインポート＠AWS
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: API Gatewayへのymlインポート＠AWSの知見を記録して�
 
 <br>
 
-## 01. API Gateway拡張機能
+## 01. AWS API Gateway拡張機能
 
 #### ▼ 必要なキー
 
-API Gatewayのインポートに当たり、OpenAPIの`yaml`ファイルにキーを新たに実装する必要がある。
+AWS API Gatewayのインポートに当たり、OpenAPIの`yaml`ファイルにキーを新たに実装する必要がある。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
@@ -212,7 +212,7 @@ Swagger EditorでAPIの仕様書の`html`ファイルを確認できる。
 
 - OpenAPI仕様のバージョン2.0と3.0をサポートしている。
 - `x-amazon-apigateway-integration`キーを各HTTPメソッドに定義する。
-- API Gatewayが`security`キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
+- AWS API Gatewayが`security`キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
 - リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストで転送する時に付与するヘッダー名は『`X-API-Key`』と設定できる。
 - 統合リクエストでバックエンドに転送するAPIキーは、シングルクオートで囲う必要がある。
 - APIキーの作成は手動で行う必要がある。
@@ -1053,7 +1053,7 @@ components:
 
 ### モック統合
 
-API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。
+AWS API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。
 
 ```yaml
 GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
