@@ -622,7 +622,6 @@ map auto_home            0         0         0   100%       0          0  100%  
 /dev/disk1s1     976490576  44424136 671194960     7%  553759 4881899121    0%   /System/Volumes/Update/mnt1
 /dev/disk2s1        610224    421128    189096    70%     360 4294966919    0%   /Volumes/Kindle
 /dev/disk3s1        188336    149544     38792    80%     735 4294966544    0%   /Volumes/Amazon Chime
-
 ```
 
 <br>

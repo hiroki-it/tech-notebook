@@ -608,8 +608,16 @@ $ df -hT
 
 EBSボリュームのコピーのこと。
 
+スナップショットは内部的に増分バックアップになっており、前回のスナップショットの増分を次回のスナップショットに追加する。
+
+そのため、スナップショットの頻度が高ければ増分が少なくなり、スナップショットの作成時間が短くなる。
+
+EC2をコピーする場合、EBSボリュームのスナップショットを作成した上で、これを新しいEC2にアタッチする必要がある。
+
 ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
 
+> - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work
+> - https://repost.aws/ja/knowledge-center/ebs-snapshot-ec2-ami-creation-slow
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 #### ▼ セットアップ

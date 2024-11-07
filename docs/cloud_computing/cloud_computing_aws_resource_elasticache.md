@@ -15,9 +15,12 @@ description: ElastiCache＠AWSリソースの知見を記録しています。
 
 ## 01. ElastiCacheとは
 
-アプリケーションの代わりに、セッション、クエリキャッシュ、を管理する。
+アプリケーションの代わりに、セッション、クエリキャッシュ、DB排他制御 (分散ロック) などを管理する。
 
 RedisとMemcachedがある。
+
+> - https://qiita.com/hharu/items/c8c2954290f920f8a2f6
+> - https://christina04.hatenablog.com/entry/redis-distributed-locking
 
 <br>
 
