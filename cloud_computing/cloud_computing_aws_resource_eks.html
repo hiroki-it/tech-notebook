@@ -14042,13 +14042,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-ec2-node-ami" class="md-nav__link">
+  <a href="#04-03-aws-ec2-node-ami" class="md-nav__link">
     <span class="md-ellipsis">
-      04-03. EC2 Node AMI
+      04-03. AWS EC2 Node AMI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. EC2 Node AMI">
+    <nav class="md-nav" aria-label="04-03. AWS EC2 Node AMI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25525,13 +25525,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-ec2-node-ami" class="md-nav__link">
+  <a href="#04-03-aws-ec2-node-ami" class="md-nav__link">
     <span class="md-ellipsis">
-      04-03. EC2 Node AMI
+      04-03. AWS EC2 Node AMI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. EC2 Node AMI">
+    <nav class="md-nav" aria-label="04-03. AWS EC2 Node AMI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26869,7 +26869,7 @@
 <td>AWS EKSコントロールプレーン</td>
 <td>(たぶん) Interface</td>
 <td>マネージド</td>
-<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
+<td>プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>CloudWatchログ</td>
@@ -26957,7 +26957,7 @@
 <td>AWS EKSコントロールプレーン</td>
 <td>(たぶん) Interface</td>
 <td>マネージド</td>
-<td>プライベートサブネット内のEC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
+<td>プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>CloudWatchログ</td>
@@ -27116,8 +27116,8 @@
 </ul>
 </blockquote>
 <h4 id="autoscaling">▼ 起動テンプレートとAutoScalingグループとの紐付け<a class="headerlink" href="#autoscaling" title="Permanent link">&para;</a></h4>
-<p>マネージドNodeグループは、あくまでEC2 Nodeのライフサイクルを管理するだけである。</p>
-<p>どのようなEC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。</p>
+<p>マネージドNodeグループは、あくまでAWS EC2 Nodeのライフサイクルを管理するだけである。</p>
+<p>どのようなAWS EC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/">https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/</a></li>
@@ -27204,7 +27204,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-03-ec2-node-ami">04-03. EC2 Node AMI<a class="headerlink" href="#04-03-ec2-node-ami" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-aws-ec2-node-ami">04-03. AWS EC2 Node AMI<a class="headerlink" href="#04-03-aws-ec2-node-ami" title="Permanent link">&para;</a></h2>
 <h3 id="ec2nodeami">EC2ワーカーNodeの最適化AMI<a class="headerlink" href="#ec2nodeami" title="Permanent link">&para;</a></h3>
 <h4 id="ec2nodeami_1">▼ EC2ワーカーNodeの最適化AMIとは<a class="headerlink" href="#ec2nodeami_1" title="Permanent link">&para;</a></h4>
 <p>任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
@@ -27305,7 +27305,7 @@
 <p><br></p>
 <h3 id="_27">ユーザーデータファイル<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="_28">▼ ユーザーデータファイルとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
+<p>AWS EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
 <p>また、セルフマネージドNodeグループやマネージドNodeグループにて、EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (<code>bootstrap.sh</code>ファイル) を実行する必要がある。</p>
 <p>一方で、マネージドNodeグループにて、起動テンプレートを使用せずにEC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。</p>
 <blockquote>
