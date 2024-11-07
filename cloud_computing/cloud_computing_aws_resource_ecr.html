@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ECR＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS ECR＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】ECR＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS ECR＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ecraws" class="md-skip">
+        <a href="#aws-ecraws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】ECR＠AWSリソース
+              【IT技術の知見】AWS ECR＠AWSリソース
             
           </span>
         </div>
@@ -13208,19 +13208,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-ecr" class="md-nav__link">
+  <a href="#01-aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ECR
+      01. AWS ECR
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ECR">
+    <nav class="md-nav" aria-label="01. AWS ECR">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
+  <a href="#aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      ECRとは
+      AWS ECRとは
     </span>
   </a>
   
@@ -23692,19 +23692,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-ecr" class="md-nav__link">
+  <a href="#01-aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      01. ECR
+      01. AWS ECR
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. ECR">
+    <nav class="md-nav" aria-label="01. AWS ECR">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
+  <a href="#aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      ECRとは
+      AWS ECRとは
     </span>
   </a>
   
@@ -23862,7 +23862,7 @@
   
 
 
-<h1 id="ecraws">ECR＠AWSリソース<a class="headerlink" href="#ecraws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-ecraws">AWS ECR＠AWSリソース<a class="headerlink" href="#aws-ecraws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23871,8 +23871,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-ecr">01. ECR<a class="headerlink" href="#01-ecr" title="Permanent link">&para;</a></h2>
-<h3 id="ecr">ECRとは<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h3>
+<h2 id="01-aws-ecr">01. AWS ECR<a class="headerlink" href="#01-aws-ecr" title="Permanent link">&para;</a></h2>
+<h3 id="aws-ecr">AWS ECRとは<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h3>
 <p>コンテナイメージやhelmチャートを管理できる。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -23890,7 +23890,7 @@
 <tr>
 <td>可視性</td>
 <td>イメージリポジトリをパブリックあるいはプライベートにするかを設定する。</td>
-<td>様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>・<a href="https://gallery.ecr.aws/">https://gallery.ecr.aws/</a></td>
+<td>様々なベンダーがパブリックリポジトリでAWS ECRイメージを提供している。<br>・<a href="https://gallery.ecr.aws/">https://gallery.ecr.aws/</a></td>
 </tr>
 <tr>
 <td>タグのイミュータビリティ</td>
@@ -23915,7 +23915,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ECRにログインする。</p>
+<p>AWS ECRにログインする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
@@ -23935,7 +23935,7 @@ $<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </spa
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ECRにコンテナイメージをプッシュする。</p>
+<p>AWS ECRにコンテナイメージをプッシュする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># docker push &lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest</span>
@@ -23956,7 +23956,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <p><br></p>
 <h3 id="_6">ライフサイクル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ライフサイクルポリシー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ECRのコンテナイメージの有効期間を定義できる。</p>
+<p>AWS ECRのコンテナイメージの有効期間を定義できる。</p>
 <table>
 <thead>
 <tr>
@@ -24023,7 +24023,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
   </span>
 
     

@@ -26805,7 +26805,7 @@
 <p><br></p>
 <h2 id="03-04">03-04. データプレーン内外へのリクエスト<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_15">パブリックサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
+<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
 <p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
@@ -26840,7 +26840,7 @@
 <span class="w">  </span><span class="nt">SQS_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
 <h4 id="aws-vpcaws">▼ AWS VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws" title="Permanent link">&para;</a></h4>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
+<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
 <p>この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
 <p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
@@ -26878,7 +26878,7 @@
 <td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
 </tr>
 <tr>
-<td>ECR</td>
+<td>AWS ECR</td>
 <td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
 <td>イメージのGETリクエストを送信するため。</td>
@@ -26942,7 +26942,7 @@
 <li>ENI (Interface型のAWS VPCエンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
-<p>AWS VPC外のAWSリソース (例：EKSコントロールプレーン、ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。</p>
+<p>AWS VPC外のAWSリソース (例：EKSコントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -26966,7 +26966,7 @@
 <td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
 </tr>
 <tr>
-<td>ECR</td>
+<td>AWS ECR</td>
 <td>Interface</td>
 <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
 <td>イメージのGETリクエストを送信するため。</td>
@@ -27046,7 +27046,7 @@
 <h3 id="_22">セットアップ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="iam">▼ IAMポリシー<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h4>
 <p>EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、EC2ワーカーNodeに<code>AmazonEKSWorkerNodePolicy</code>を付与する必要がある。</p>
-<p>EC2ワーカーNode内のPodがECRからコンテナイメージをプルできるように、EC2ワーカーNodeに<code>AmazonEC2ContainerRegistryReadOnly</code>を付与する必要がある。</p>
+<p>EC2ワーカーNode内のPodがAWS ECRからコンテナイメージをプルできるように、EC2ワーカーNodeに<code>AmazonEC2ContainerRegistryReadOnly</code>を付与する必要がある。</p>
 <p>これにより、PodのコンテナごとにAWSの認証情報をマウントする必要がなくなる。</p>
 <p><code>aws-node</code>のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに<code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
 <blockquote>
@@ -27689,8 +27689,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>FargateワーカーNodeにECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。</p>
-<p>これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがECRからコンテナイメージをプルできる様になる。</p>
+<p>FargateワーカーNodeにAWS ECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。</p>
+<p>これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAWS ECRからコンテナイメージをプルできる様になる。</p>
 <p>一方で、Pod内のコンテナには認可スコープが付与されない。</p>
 <p>そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとIAMロールの紐付けが必要である。</p>
 </dd>
@@ -27756,7 +27756,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <tr>
 <td>Pod実行ロール</td>
 <td>kubeletがAWSリソースにリクエストを送信できるように、Podにロールを設定する。</td>
-<td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code>を設定する必要がある。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
+<td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、AWS ECRへの認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code>を設定する必要がある。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
 </tr>
 <tr>
 <td>サブネット</td>

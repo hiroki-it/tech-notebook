@@ -13420,18 +13420,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
+  <a href="#aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECRパブリックギャラリーを使用する場合
+      ▼ AWS ECRパブリックギャラリーを使用する場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecr_1" class="md-nav__link">
+  <a href="#aws-ecr_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートECRリポジトリを使用する場合
+      ▼ プライベートAWS ECRリポジトリを使用する場合
     </span>
   </a>
   
@@ -23961,18 +23961,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
+  <a href="#aws-ecr" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ECRパブリックギャラリーを使用する場合
+      ▼ AWS ECRパブリックギャラリーを使用する場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ecr_1" class="md-nav__link">
+  <a href="#aws-ecr_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ プライベートECRリポジトリを使用する場合
+      ▼ プライベートAWS ECRリポジトリを使用する場合
     </span>
   </a>
   
@@ -24311,17 +24311,17 @@
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
-<h4 id="ecr">▼ ECRパブリックギャラリーを使用する場合<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h4>
-<p>AWS ECSタスクのコンテナ定義にて、ECRパブリックギャラリーのURLを指定し、ECRイメージのプルする。</p>
+<h4 id="aws-ecr">▼ AWS ECRパブリックギャラリーを使用する場合<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h4>
+<p>AWS ECSタスクのコンテナ定義にて、AWS ECRパブリックギャラリーのURLを指定し、AWS ECRイメージのプルする。</p>
 <p>デフォルトで内蔵されている<code>conf</code>ファイルの設定をそのまま使用する場合は、こちらを採用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr</a></li>
 </ul>
 </blockquote>
-<h4 id="ecr_1">▼ プライベートECRリポジトリを使用する場合<a class="headerlink" href="#ecr_1" title="Permanent link">&para;</a></h4>
-<p>あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにコンテナイメージをプッシュしておく。</p>
-<p>ECSタスクのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルする。</p>
+<h4 id="aws-ecr_1">▼ プライベートAWS ECRリポジトリを使用する場合<a class="headerlink" href="#aws-ecr_1" title="Permanent link">&para;</a></h4>
+<p>あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートAWS ECRリポジトリにコンテナイメージをプッシュしておく。</p>
+<p>ECSタスクのコンテナ定義にて、プライベートAWS ECRリポジトリのURLを指定し、AWS ECRイメージのプルする。</p>
 <p>デフォルトで内蔵されている<code>conf</code>ファイルの設定を上書きしたい場合は、こちらを採用する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">amazon/aws-for-fluent-bit:latest</span>
 </code></pre></div>
@@ -24569,7 +24569,7 @@
 </code></pre></div>
 <p>AWSから提供されているベースイメージには、AWSリソースにログをルーティングするためのOUTPUTプラグインがすでに含まれている。</p>
 <p>補足として、datadogプラグインはFluentBit自体にインストール済みである。</p>
-<p>ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。</p>
+<p>AWS ECRパブリックギャラリーからプルしたコンテナイメージをそのまま使用する場合と、プライベートAWS ECRリポジトリで再管理してから使用する場合がある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>root@&lt;コンテナID&gt;:/fluent-bit<span class="o">]</span>$<span class="w"> </span>ls<span class="w"> </span>-la
 
 -rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">26624256</span><span class="w"> </span>Sep<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">18</span>:04<span class="w"> </span>cloudwatch.so<span class="w"> </span><span class="c1"># 執筆時点 (2023/05/29) でcloudwatch_logsプラグインという名前に変わった模様</span>
