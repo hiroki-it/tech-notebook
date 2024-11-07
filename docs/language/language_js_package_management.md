@@ -246,10 +246,18 @@ $ npm install --force
 
 デフォルトで有効化されている。
 
-パッケージのインストール時に、依存するパッケージとして、`dependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージのインストール時に、`dependencies`キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ npm install --save
+```
+
+#### ▼ --save--dev
+
+パッケージのインストール時に、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+
+```bash
+$ npm install --save--dev
 ```
 
 <br>
@@ -348,6 +356,8 @@ Composerの`composer.lock`ファイルに相当する。
 
 ### add
 
+#### ▼ addとは
+
 指定したパッケージのバージョンを、`package.json`ファイルを無視してインストールする。
 
 ```bash
@@ -358,6 +368,14 @@ $ yarn add <パッケージ名>@<バージョンタグ>
 
 ```bash
 $ yarn remove foo && yarn add foo@<バージョンタグ>
+```
+
+#### ▼ --dev
+
+パッケージのインストール時に、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+
+```bash
+$ yarn add <パッケージ名>@<バージョンタグ> --dev
 ```
 
 <br>
