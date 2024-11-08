@@ -31,11 +31,11 @@ Karpenterは、karpenterコントローラーから構成される。
 
 karpenterコントローラーは、Karpenterのcustom-controllerとして、カスタムリソースを作成/変更する。
 
-また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
+また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、AWS EC2フリート) をコールし、AWSリソース (例：起動テンプレート、AWS EC2) をプロビジョニングする。
 
-この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にEC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
+この時、AWS Load Balancerコントローラーも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
 
-なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
+なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Nodeの作成後に削除するようになっている。
 
 ![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
@@ -76,9 +76,9 @@ Karpenterは、Nodeで特定のイベントを検知すると、これが実際�
 
 ### termination-controller
 
-EC2ワーカーNodeの削除命令を検知し、EC2ワーカーNodeのGraceful Shutdownから削除までを行う。
+AWS EC2ワーカーNodeの削除命令を検知し、AWS EC2ワーカーNodeのGraceful Shutdownから削除までを行う。
 
-EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。
+AWS EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。
 
 そのため、`kubelet-config.json`ファイル (KubeletConfiguration)の`--shutdown-grace-period`オプションを使用する必要がある。
 
@@ -92,9 +92,9 @@ EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施�
 
 ### スケーリングの仕組み
 
-Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeをスケールアウト/スケールアップする。
+Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、AWS EC2 Nodeをスケールアウト/スケールアップする。
 
-また反対に、EC2 Nodeをスケールイン/スケールダウンする。
+また反対に、AWS EC2 Nodeをスケールイン/スケールダウンする。
 
 Karpenterはバージョニングされてない独立した起動テンプレートを作成する。
 
@@ -112,7 +112,7 @@ Karpenterはバージョニングされてない独立した起動テンプレ�
 2023-11-30T08:28:57.121Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
 2023-11-30T08:28:57.297Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
 
-# EC2 Node作成
+# AWS EC2 Node作成
 2023-11-30T08:28:59.211Z	INFO	controller.nodeclaim.lifecycle	launched nodeclaim	{...}
 2023-11-30T08:29:14.009Z	DEBUG	controller.disruption	discovered subnets	{...}
 2023-11-30T08:29:33.910Z	DEBUG	controller.nodeclaim.lifecycle	registered nodeclaim	{...}
@@ -161,12 +161,12 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 
 #### ▼ コスト
 
-より低コストになるようにEC2 Nodeを統合する。
+より低コストになるようにAWS EC2 Nodeを統合する。
 
 以下のような条件の場合に、統合を発動する。
 
-- EC2 NodeにPodがおらず、これを削除できる
-- Podが特定のEC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。
+- AWS EC2 NodeにPodがおらず、これを削除できる
+- Podが特定のAWS EC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。
 - 現在のインスタンスタイプより低いインスタンスタイプにしても、問題なくPodを動かせる。
 
 反対に、以下のような条件の場合には統合しない。
@@ -221,7 +221,7 @@ Karpenter外から削除操作 (例：`kubectl delete`コマンド) があった
 
 #### ▼ 起動テンプレート
 
-Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。
+Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、AWS EC2フリートAPIからAWS EC2 Nodeを作成する。
 
 執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。
 
@@ -230,7 +230,7 @@ Karpenterのkarpenterコントローラーは、起動テンプレートを作�
 > - https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547
 
-#### ▼ EC2フリート
+#### ▼ AWS EC2フリート
 
 > - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 
@@ -238,7 +238,7 @@ Karpenterのkarpenterコントローラーは、起動テンプレートを作�
 
 Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。
 
-マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートAPIを動的にコールする。
+マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のAWS EC2のAWS EC2フリートAPIを動的にコールする。
 
 ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
 
@@ -267,7 +267,7 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 そのため、クラウドプロバイダーのオートスケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能がオートスケーリングに関するAPIに依存する。
 
-一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
+一方でKarpenterは、AWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
 
 そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。
 
@@ -378,8 +378,8 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
-# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のタグのみを持つEC2を指定できるようにする
-# EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく
+# karpenterコントローラーが操作できるAWS EC2 Nodeを最小限にするために、特定のタグのみを持つAWS EC2を指定できるようにする
+# EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがAWS EC2を操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
@@ -410,12 +410,12 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
       "ec2:TerminateInstances",
       "ec2:DeleteLaunchTemplate"
     ]
-    # 特定のタグを持つEC2しか指定できない
+    # 特定のタグを持つAWS EC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
+      # KarpenterのEC2NodeClassで挿入したAWS EC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
-      # 起動テンプレートからEC2 Nodeを作成する
+      # 起動テンプレートからAWS EC2 Nodeを作成する
       values = [
         "${module.eks.cluster_name}-karpenter"
       ]
@@ -431,17 +431,17 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     actions = [
       "ec2:RunInstances"
     ]
-    # 特定のタグを持つEC2しか指定できない
+    # 特定のタグを持つAWS EC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
+      # KarpenterのEC2NodeClassで挿入したAWS EC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         "${module.eks.cluster_name}-karpenter"
       ]
     }
     effect = "Allow"
-    # 起動テンプレートからEC2 Nodeを作成する
+    # 起動テンプレートからAWS EC2 Nodeを作成する
     resources = [
       "arn:aws:ec2:*:<アカウントID>:launch-template/*"
     ]
@@ -555,7 +555,7 @@ module "eks_iam_karpenter_controller" {
     "karpenter:karpenter"
   ]
 
-  # 特定のタグを持つEC2しか指定できない
+  # 特定のタグを持つAWS EC2しか指定できない
   irsa_tag_key = "karpenter.sh/discovery"
 
   irsa_tag_values = [

@@ -17,7 +17,7 @@ description: CloudTrail＠AWSリソースの知見を記録しています。
 
 IAMユーザーによる操作や、ロールの紐付けの履歴 (証跡) を記録し、ログファイルとしてS3に転送する。
 
-CloudWatchと連携もできる。
+AWS CloudWatchと連携もできる。
 
 ![CloudTrailとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudTrailとは.jpeg)
 

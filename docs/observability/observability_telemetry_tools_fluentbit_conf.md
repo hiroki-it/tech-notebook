@@ -888,7 +888,7 @@ Outputs
   flowcounter             FlowCounter
   gelf                    GELF Output
   websocket               Websocket
-  cloudwatch_logs         Send logs to Amazon CloudWatch
+  cloudwatch_logs         Send logs to Amazon AWS CloudWatch
   kinesis_firehose        Send logs to Amazon Kinesis Firehose
   kinesis_streams         Send logs to Amazon Kinesis Streams
   prometheus_exporter     Prometheus Exporter
@@ -927,7 +927,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 #### ▼ cloudwatch_logプラグインとは
 
-ログをCloudWatchログにルーティングする。
+ログをAWS CloudWatchログにルーティングする。
 
 元々、『cloudwatchプラグイン』という名前だった。
 
@@ -945,7 +945,7 @@ cloudwatch_logsプラグインがプリインストールされているベー�
 
 ```bash
 # ---------------------------------------------
-# CloudWatchログへのルーティング
+# AWS CloudWatchログへのルーティング
 # ---------------------------------------------
 [OUTPUT]
     # プラグイン名
@@ -973,11 +973,11 @@ cloudwatch_logsプラグインがプリインストールされているベー�
     role_arn          arn:aws:iam::<AWSアカウントID>:role/prd-foo-flunetbit-role
 ```
 
-CloudWatchログに送信されるデータはJSON型である。
+AWS CloudWatchログに送信されるデータはJSON型である。
 
 `log`キーにログが割り当てられている。
 
-特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。
+特定のキーの値のみをAWS CloudWatchログに送信する場合、log_keyオプションでキー名を設定する。
 
 例えば、`log`キーのみを送信する場合、『`log`』と設定する。
 

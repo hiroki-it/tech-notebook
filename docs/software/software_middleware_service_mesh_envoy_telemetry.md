@@ -81,11 +81,11 @@ Cluster外からのリクエスト/Pod間通信時のレスポンスの補足メ
 
 ### 監視バックエンドへの送信
 
-#### ▼ CloudWatchログの場合
+#### ▼ AWS CloudWatchログの場合
 
-直接的にCloudWatchログに送信できない。
+直接的にAWS CloudWatchログに送信できない。
 
-そのため、Envoyのログを一度標準出力に出力し、これをログ収集ツール (例：FluentBit) でCloudWatchログに転送する。
+そのため、Envoyのログを一度標準出力に出力し、これをログ収集ツール (例：FluentBit) でAWS CloudWatchログに転送する。
 
 <br>
 

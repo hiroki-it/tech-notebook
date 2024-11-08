@@ -469,6 +469,6 @@ spec:
 
 全てのPrometheusメトリクスにサポートしているわけでない。
 
-> - https://docs.aws.amazon.com/AmazonAWS CloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html
 
 <br>
