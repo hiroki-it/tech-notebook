@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudFront＠AWSリソース
-description: CloudFront＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS CloudFront＠AWSリソース
+description: AWS CloudFront＠AWSリソースの知見を記録しています。
 ---
 
-# CloudFront＠AWSリソース
+# AWS CloudFront＠AWSリソース
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: CloudFront＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. CloudFrontとは
+## 01. AWS CloudFrontとは
 
 CDN (グローバルなキャッシュサーバー) かつクラウドリバースプロキシサーバーとして働く。
 
-リバースプロキシでもあるため、CloudFrontの後段にアプリケーションをおけば、アプリケーションをそのまま公開できる。
+リバースプロキシでもあるため、AWS CloudFrontの後段にアプリケーションをおけば、アプリケーションをそのまま公開できる。
 
 VPCの外側 (パブリックネットワーク) に配置されている。
 
@@ -25,7 +25,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 
 また、静的コンテンツに対するリクエストをキャッシュし、その上でS3へ振り分ける。
 
-次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを実行する。
+次回以降の静的コンテンツのリンクエストは、AWS CloudFrontがレンスポンスを実行する。
 
 ![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudFrontによるリクエストの振り分け.png)
 
@@ -41,54 +41,54 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | ------------------------ | ------------------------------------------------------------------ | ---- |
 | General                  |                                                                    |      |
 | Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する。                        |      |
-| Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。     |      |
+| Behavior                 | オリジンにリクエストが行われた時のAWS CloudFrontの挙動を設定する。 |      |
 | ErrorPage                | 指定したオリジンから、指定したファイルを含むレスポンスを返信する。 |      |
 | Restriction              |                                                                    |      |
-| Invalidation             | CloudFrontに保管されているキャッシュを削除できる。                 |      |
+| Invalidation             | AWS CloudFrontに保管されているキャッシュを削除できる。             |      |
 
 > - https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
 
 #### ▼ General
 
-| 設定項目            | 説明                                                                                                                                  | 補足                                                                                                                                                                                                                                                    |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Price Class         | 使用するエッジロケーションを設定する。                                                                                                | Asiaが含まれているものを選択。                                                                                                                                                                                                                          |
-| AWS WAF             | CloudFrontに紐付けるAWS WAFを設定する。                                                                                               |                                                                                                                                                                                                                                                         |
-| CNAME               | CloudFrontのデフォルトドメイン名 (`<発行されたランダム文字列>.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                   | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                           |
-| SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                           | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                     |
-| Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソースなどを含む。<br>・- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
-| Default Root Object | オリジンのドキュメントルートを設定する。                                                                                              | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。   |
-| Standard Logging    | CloudFrontのアクセスログをS3に作成するか否かを設定する。                                                                              |                                                                                                                                                                                                                                                         |
+| 設定項目            | 説明                                                                                                                                      | 補足                                                                                                                                                                                                                                                     |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Price Class         | 使用するエッジロケーションを設定する。                                                                                                    | Asiaが含まれているものを選択。                                                                                                                                                                                                                           |
+| AWS WAF             | AWS CloudFrontに紐付けるAWS WAFを設定する。                                                                                               |                                                                                                                                                                                                                                                          |
+| CNAME               | AWS CloudFrontのデフォルトドメイン名 (`<発行されたランダム文字列>.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                   | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                            |
+| SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                               | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                      |
+| Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、AWS CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソースなどを含む。<br>・- https://docs.aws.amazon.com/Amazon CloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
+| Default Root Object | オリジンのドキュメントルートを設定する。                                                                                                  | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。    |
+| Standard Logging    | AWS CloudFrontのアクセスログをS3に作成するか否かを設定する。                                                                              |                                                                                                                                                                                                                                                          |
 
 #### ▼ Origin and Origin Groups
 
 | 設定項目               | 説明                                                                                                                                                   | 補足                                                                                                                                                                                                 |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Origin Domain Name     | CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。                                                       | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であっても良い。                                                                                           |
+| Origin Domain Name     | AWS CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。                                                   | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であっても良い。                                                                                           |
 | Origin Path            | オリジンのルートディレクトリを設定する。                                                                                                               | ・何も設定しないと、デフォルトは『`/`』のなる。Behaviorでは、『`/`』の後にパスが追加される。<br>・『`/var/www/foo`』を設定すると、Behaviorで設定したパスが『`/var/www/foo/foo`』のように追加される。 |
-| Origin Access Identity | リクエストのルーティング先となるAWSリソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。 | CloudFrontがS3に対して読み出しを実行するために必要。                                                                                                                                                 |
+| Origin Access Identity | リクエストのルーティング先となるAWSリソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。 | AWS CloudFrontがS3に対して読み出しを実行するために必要。                                                                                                                                             |
 | Origin Protocol Policy | リクエストのルーティング先となるAWSリソースに対して、HTTPとHTTPSのいずれのプロトコルでルーティングするかを設定する。                                   | ・ALBで必要。ALBのリスナーのプロトコルに合わせて設定する。<br>・`HTTP Only`：HTTPプロトコルでルーティング<br>・`HTTPS Only`：HTTPSプロトコルでルーティング<br>・`Match Viewer`：両方でルーティング   |
 | HTTPポート             | ルーティング時に指定するオリジンのHTTPのポート番号                                                                                                     |                                                                                                                                                                                                      |
 | HTTPSポート            | ルーティング時に指定するオリジンのHTTPSのポート番号                                                                                                    |                                                                                                                                                                                                      |
 
 #### ▼ Behavior
 
-| 設定項目                       | 説明                                                                           | 補足                                                                                                                                                                                                                                                                                                                |
-| ------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Precedence                     | 処理の優先順位。                                                               | 最初に作成したBehaviorが『`Default (*)`』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。                                                                                                                                                                                                 |
-| Path pattern                   | Behaviorを実行するパスを設定する。                                             |                                                                                                                                                                                                                                                                                                                     |
-| Origin and Origin Group        | Behaviorを実行するオリジンを設定する。                                         |                                                                                                                                                                                                                                                                                                                     |
-| Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・`HTTP and HTTPS`：両方受信し、そのままルーティング<br>・`Redirect HTTP to HTTPS`：両方受信し、HTTPSプロトコルでルーティング<br>・`HTTPS Only`：HTTPSのみ受信し、HTTPSプロトコルでルーティング                                                                                                                     |
-| Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                 |
-| Object Caching                 | CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。               | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                  |
-| TTL                            | CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。                     | ・Min、Max、Default、の全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
-| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                         |
-| Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                    |
-| Compress Objects Automatically | レスポンス時に`gzip`ファイルとして圧縮するか否かを設定                         | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                             |
+| 設定項目                       | 説明                                                                           | 補足                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Precedence                     | 処理の優先順位。                                                               | 最初に作成したBehaviorが『`Default (*)`』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。                                                                                                                                                                                                     |
+| Path pattern                   | Behaviorを実行するパスを設定する。                                             |                                                                                                                                                                                                                                                                                                                         |
+| Origin and Origin Group        | Behaviorを実行するオリジンを設定する。                                         |                                                                                                                                                                                                                                                                                                                         |
+| Viewer Protocol Policy         | HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定 | ・`HTTP and HTTPS`：両方受信し、そのままルーティング<br>・`Redirect HTTP to HTTPS`：両方受信し、HTTPSプロトコルでルーティング<br>・`HTTPS Only`：HTTPSのみ受信し、HTTPSプロトコルでルーティング                                                                                                                         |
+| Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定   | ・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。                                                                                                                                                                     |
+| Object Caching                 | AWS CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。           | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。                                                                                                                                      |
+| TTL                            | AWS CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。                 | ・Min、Max、Default、の全てを`0`秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、AWS CloudFrontのTTL秒の設定、`Cache-Control`ヘッダー、`Expires`ヘッダー値の組み合わせによって決まる。 |
+| Whitelist Header               | Headers を参考にせよ。                                                         | ・`Accept-*****`：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ `AWS CloudFront-Is-*****-Viewer`：デバイスタイプのboolean値が格納されている。<br>- https://docs.aws.amazon.com/Amazon CloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist                        |
+| Restrict Viewer Access         | リクエストの送信元を制限するか否かを設定できる。                               | セキュリティグループで制御できるため、ここでは設定しなくて良い。                                                                                                                                                                                                                                                        |
+| Compress Objects Automatically | レスポンス時に`gzip`ファイルとして圧縮するか否かを設定                         | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。                                                 |
 
 #### ▼ オリジンに対するリクエストの構造
 
-CloudFrontからオリジンに送信されるリクエストの構造例を以下に示す。
+AWS CloudFrontからオリジンに送信されるリクエストの構造例を以下に示す。
 
 ```yaml
 GET /foo/
@@ -98,11 +98,11 @@ Host: foo.example.com
 User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
 Authorization: Bearer <Bearerトークン>
 X-Amz-Cf-Id: *****
-Via: 2.0 <発行されたランダム文字列>.cloudfront.net (CloudFront)
+Via: 2.0 <発行されたランダム文字列>.cloudfront.net (AWS CloudFront)
 # 各Cookieの値 (二回目のリクエスト時に設定される)
 Cookie: sessionid=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
 # 送信元IPアドレス
-# ※プロキシ (ALBやCloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される
+# ※プロキシ (ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 Accept-Language: ja,en;q=0.9
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
@@ -125,9 +125,9 @@ CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 ```
 
-#### ▼ CloudFrontとオリジン間のHTTPSプロトコル
+#### ▼ AWS CloudFrontとオリジン間のHTTPSプロトコル
 
-CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。
+AWS CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。
 
 割り当てたとしても、以下の条件を満たさないとHTTPSプロトコルを使用することはできない。
 
@@ -149,21 +149,21 @@ CLoudFrontからオリジンに`Host`ヘッダーをルーティングしない�
 
 <br>
 
-## 03. CloudFrontの仕組み
+## 03. AWS CloudFrontの仕組み
 
 ### Point Of Presence
 
-CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
+AWS CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
 
 > - https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
 
 <br>
 
-### CloudFront DNS
+### AWS CloudFront DNS
 
-CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーのIPアドレスを返却する。
+AWS CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーのIPアドレスを返却する。
 
-CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
+AWS CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
 
 ![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
@@ -183,7 +183,7 @@ CloudFrontのドメインは、AWS Route53のDNSレコードとして登録す�
 
 #### ▼ 全エッジサーバーのIPアドレス
 
-CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。
+AWS CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。
 
 以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。
 
@@ -198,7 +198,7 @@ $ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
 
 #### ▼ 使用中サーバーのIPアドレス
 
-CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。
+AWS CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。
 
 以下のコマンドで、エッジロケーションにある使用中サーバーのIPアドレスを確認できる。
 
@@ -218,11 +218,11 @@ $ nslookup <発行されたランダム文字列>.cloudfront.net
 
 また、キャッシュ作成の有無にも関係している。
 
-CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。
+AWS CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。
 
 キャッシュ判定時のパターンを減らし、ヒット率を向上させるために、全ての項目で『None (全拒否) 』を選択した方が良い。
 
-最終的に、対象のファイルがCloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『`X-Cache:`』が『`Hit from cloudfront`』または『`Miss from cloudfront`』のどちらで判断できる。
+最終的に、対象のファイルがAWS CloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『`X-Cache:`』が『`Hit from cloudfront`』または『`Miss from cloudfront`』のどちらで判断できる。
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
@@ -245,9 +245,9 @@ Cookieとクエリストリングと比べて、同じ設定でもキャッシ�
 
 Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。
 
-リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保管されたキャッシュがヒットしない。
+リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、AWS CloudFrontに保管されたキャッシュがヒットしない。
 
-CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。
+AWS CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。
 
 例えば、GoogleAnalyticsのキー名 (`_ga`) の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。
 
@@ -307,7 +307,7 @@ GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるも�
 
 #### ▼ ヒット率の向上について
 
-CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。
+AWS CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。
 
 キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
@@ -316,7 +316,7 @@ CloudFrontは、クエリストリングによってオリジンからレスポ�
 
 #### ▼ クエリストリングの順番を固定する
 
-リクエスト時のクエリストリングの順番が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。
+リクエスト時のクエリストリングの順番が異なる場合、AWS CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。
 
 そのため、クエリストリングの順番を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
 
@@ -330,7 +330,7 @@ GET https://example.com?barId=2&fooId=1
 
 #### ▼ クエリストリングの大文字小文字表記を固定する
 
-リクエスト時のクエリストリングの大文字小文字表記が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。
+リクエスト時のクエリストリングの大文字小文字表記が異なる場合、AWS CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。
 
 そのため、クエリストリングの大文字小文字表記を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
 
@@ -346,7 +346,7 @@ GET https://example.com?FooId=1&BarId=2
 
 S3には、署名付きURLを発行する機能がある。
 
-CloudFrontの仕様では、署名付きURLに含まれる`Expires`、`Key-Pair-Id`、`Policy`、`Signature`といったクエリストリングを削除したうえで、オリジンにリクエストをルーティングする。
+AWS CloudFrontの仕様では、署名付きURLに含まれる`Expires`、`Key-Pair-Id`、`Policy`、`Signature`といったクエリストリングを削除したうえで、オリジンにリクエストをルーティングする。
 
 これらのパラメーターは、キャッシュヒットの判定要素として使用できない。
 
@@ -360,7 +360,7 @@ TTL秒によるキャッシュの自動削除を待たずに、手動でキャ�
 
 全てのファイルのキャッシュを削除したい場合は『`/*`』、特定のファイルのキャッシュを削除したい場合は『`/<ファイルへのパス>`』、を設定する。
 
-CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまう。
+AWS CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまう。
 
 そのため、作業後には必ずキャッシュを削除する。
 
@@ -370,9 +370,9 @@ CloudFrontに関するエラーページが表示された場合、不具合を�
 
 ### カスタムエラーページとは
 
-オリジンに該当のファイルが存在しない場合、オリジンはCloudFrontに以下の`403`ステータスを含むレスポンスを返信する。
+オリジンに該当のファイルが存在しない場合、オリジンはAWS CloudFrontに以下の`403`ステータスを含むレスポンスを返信する。
 
-カスタムエラーページを設定しない場合、CloudFrontはこの`403`ステータスをそのままレスポンスしてしまう。
+カスタムエラーページを設定しない場合、AWS CloudFrontはこの`403`ステータスをそのままレスポンスしてしまう。
 
 そのため、オリジンに配置したカスタムエラーページを`404`ステータスでレスポンスするように設定する。
 
@@ -393,7 +393,7 @@ The document tree is shown below.
 
 オリジンからカスタムエラーページをレスポンスするパスパターンを定義する。
 
-Lamnda@Edgeを使用したCloudFrontの場合は、AWS Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
+Lamnda@Edgeを使用したAWS CloudFrontの場合は、AWS Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。
 
 > - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
 

@@ -268,16 +268,16 @@ AWS EC2に割り振られる可能性のあるIPアドレスを許可するた�
 
 #### ▼ ALBの場合
 
-CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。
+AWS CloudFrontと連携する場合、AWS CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。
 
-代わりに、CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。
+代わりに、AWS CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。
 
-CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。
+AWS CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。
 
-| タイプ | プロトコル | ポート | ソース      | 説明                         |     |
-| ------ | ---------- | ------ | ----------- | ---------------------------- | --- |
-| HTTP   | TCP        | `80`   | `0.0.0.0/0` | HTTP access from CloudFront  |     |
-| HTTPS  | TCP        | `443`  | `0.0.0.0/0` | HTTPS access from CloudFront |     |
+| タイプ | プロトコル | ポート | ソース      | 説明                             |     |
+| ------ | ---------- | ------ | ----------- | -------------------------------- | --- |
+| HTTP   | TCP        | `80`   | `0.0.0.0/0` | HTTP access from AWS CloudFront  |     |
+| HTTPS  | TCP        | `443`  | `0.0.0.0/0` | HTTPS access from AWS CloudFront |     |
 
 #### ▼ NLBの場合
 
@@ -468,7 +468,7 @@ ALBのIPアドレスは定期的に変化するため、任意のIPアドレス�
 
 アプリケーションデータの暗号化のために、Certificate Manager (`L7`) を使用する。
 
-リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。
+リクエストを受信するAWSリソース (例：ALB、Aurora RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。
 
 安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。
 
