@@ -637,7 +637,7 @@ AWS EC2をコピーする場合、AWS EBSボリュームのスナップショッ
 
 クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。
 
-その後、Route53、ALBを経由せず、そのままAWS EC2へ向かう。
+その後、AWS Route53、ALBを経由せず、そのままAWS EC2へ向かう。
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 

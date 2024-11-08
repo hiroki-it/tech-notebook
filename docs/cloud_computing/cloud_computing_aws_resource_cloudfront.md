@@ -54,7 +54,7 @@ VPCの外側 (パブリックネットワーク) に配置されている。
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Price Class         | 使用するエッジロケーションを設定する。                                                                                                    | Asiaが含まれているものを選択。                                                                                                                                                                                                                           |
 | AWS WAF             | AWS CloudFrontに紐付けるAWS WAFを設定する。                                                                                               |                                                                                                                                                                                                                                                          |
-| CNAME               | AWS CloudFrontのデフォルトドメイン名 (`<発行されたランダム文字列>.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                   | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                            |
+| CNAME               | AWS CloudFrontのデフォルトドメイン名 (`<発行されたランダム文字列>.cloudfront.net.`) に紐付けるDNSレコード名を設定する。                   | ・AWS Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。                                                                                                                                                                        |
 | SSL Certificate     | HTTPSプロトコルでオリジンにルーティングする場合に設定する。                                                                               | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。                                                                                                      |
 | Security Policy     | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、AWS CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソースなどを含む。<br>・- https://docs.aws.amazon.com/Amazon CloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
 | Default Root Object | オリジンのドキュメントルートを設定する。                                                                                                  | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『`/`』でリクエストした時に、オリジンのルートディレクトリ配下にある`index,html`ファイルがドキュメントルートになる。    |
@@ -163,7 +163,7 @@ AWS CloudFrontは世界中に配置される『Point Of Presence (エッジロ�
 
 AWS CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーのIPアドレスを返却する。
 
-AWS CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
+AWS CloudFrontのドメインは、AWS AWS Route53のDNSレコードとして登録する。
 
 ![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
