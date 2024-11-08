@@ -291,7 +291,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ awslogs
 
-標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
+標準出力/標準エラー出力に出力されたログをAWS CloudWatch-APIに送信する。
 
 ```yaml
 {

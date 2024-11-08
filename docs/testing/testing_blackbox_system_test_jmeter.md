@@ -129,7 +129,7 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 `(8)`
 
-: 各種のCloudWatchメトリクスにて、テスト時間帯に着目し、プロットから、数値を読み取る。
+: 各種のAWS CloudWatchメトリクスにて、テスト時間帯に着目し、プロットから、数値を読み取る。
 
 <br>
 

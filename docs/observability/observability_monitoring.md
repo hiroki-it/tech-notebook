@@ -239,7 +239,7 @@ Amazonの自社調査では、ローディング時間が100ms短くなるごと
 
 > - https://github.com/statsd/statsd/wiki
 
-CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
+AWS CloudWatchでは、StatsDからのメトリクスの送信をサポートしている。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
 > - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538

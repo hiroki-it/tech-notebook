@@ -19,13 +19,13 @@ description: PagerDuty＠インシデント管理ツールの知見を記録し�
 
 PagerDutyをインシデント管理ツールとして使用する。
 
-CloudWatchアラームに通知されたエラーイベントの内から、特に重要なものをPagerDutyでインシデントとして対処する。
+AWS CloudWatchアラームに通知されたエラーイベントの内から、特に重要なものをPagerDutyでインシデントとして対処する。
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
 `(1)`
 
-: CloudWatchアラームからPagerDutyのServiceに、インシデントを通知する。
+: AWS CloudWatchアラームからPagerDutyのServiceに、インシデントを通知する。
 
 `(2)`
 
