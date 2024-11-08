@@ -14248,9 +14248,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rds" class="md-nav__link">
+  <a href="#aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ RDSの場合
+      ▼ AWS RDSの場合
     </span>
   </a>
   
@@ -24348,9 +24348,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rds" class="md-nav__link">
+  <a href="#aws-rds" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ RDSの場合
+      ▼ AWS RDSの場合
     </span>
   </a>
   
@@ -24691,7 +24691,7 @@
 <tr>
 <td>アプリケーション層</td>
 <td><code>L7</code></td>
-<td>ALB、AWS EC2、RDS、AWS Route53、S3</td>
+<td>ALB、AWS EC2、AWS RDS、AWS Route53、S3</td>
 </tr>
 <tr>
 <td>プレゼンテーション層</td>
@@ -24876,7 +24876,7 @@
 <td>privateサブネット</td>
 <td>プライベート</td>
 <td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのリクエストのみを待ち受ける。また、リクエストを送信しない。</td>
-<td>RDS、Redis</td>
+<td>AWS RDS、Redis</td>
 </tr>
 </tbody>
 </table>
@@ -24915,7 +24915,7 @@
 <td>datastoreサブネット</td>
 <td>プライベート</td>
 <td>内部ネットワークとして動作する。dbサーバーを配置する。</td>
-<td>RDS、Redis</td>
+<td>AWS RDS、Redis</td>
 </tr>
 </tbody>
 </table>
@@ -25079,7 +25079,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="rds">▼ RDSの場合<a class="headerlink" href="#rds" title="Permanent link">&para;</a></h4>
+<h4 id="aws-rds">▼ AWS RDSの場合<a class="headerlink" href="#aws-rds" title="Permanent link">&para;</a></h4>
 <p>AWS EC2に割り振られる可能性のあるIPアドレスを許可するために、AWS EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
@@ -25499,7 +25499,7 @@
 <h2 id="04-03-certificate-manager">04-03. Certificate Manager<a class="headerlink" href="#04-03-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="certificate-manager">Certificate Managerによる防御<a class="headerlink" href="#certificate-manager" title="Permanent link">&para;</a></h3>
 <p>アプリケーションデータの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
-<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
+<p>リクエストを受信するAWSリソース (例：ALB、Aurora AWS RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
 <p>安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
 <blockquote>
 <ul>
