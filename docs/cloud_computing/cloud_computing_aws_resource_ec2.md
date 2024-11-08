@@ -656,7 +656,7 @@ AWS EC2をコピーする場合、EBSボリュームのスナップショット�
 
 #### ▼ systems-managerエージェント
 
-Systems Managerを使用してAWS EC2に接続する場合、AWS EC2自体にsystems-managerエージェントをインストールしておく必要がある。
+AWS Systems Managerを使用してAWS EC2に接続する場合、AWS EC2自体にsystems-managerエージェントをインストールしておく必要がある。
 
 カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
 
@@ -664,11 +664,11 @@ Systems Managerを使用してAWS EC2に接続する場合、AWS EC2自体にsys
 
 #### ▼ AWS VPCエンドポイントの作成
 
-| AWS VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                          | 説明                                                               |
-| ----------------------------- | --------- | ------------------------------------------ | ------------------------------------------------------------------ |
-| AWS EC2                       | Interface | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからAWS EC2にコマンドを送信するため。                |
-| Systems Manager               | Interface | `ssm.ap-northeast-1.amazonaws.com`         | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager               | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                    |
+| AWS VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                          | 説明                                                                   |
+| ----------------------------- | --------- | ------------------------------------------ | ---------------------------------------------------------------------- |
+| AWS EC2                       | Interface | `ec2messages.ap-northeast-1.amazonaws.com` | ローカルマシンからAWS EC2にコマンドを送信するため。                    |
+| AWS Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`         | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| Secrets Manager               | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`  | Secrets Managerを使用するため。                                        |
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
@@ -748,9 +748,9 @@ ENIにElastic IPアドレスが紐付けられる。
 
 記入中...
 
-#### ▼ NAT Gateway
+#### ▼ AWS NAT Gateway
 
-ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。
+ENIに紐付けられたパブリックIPアドレスを、AWS NAT Gatewayに割り当てる。
 
 #### ▼ RDS
 

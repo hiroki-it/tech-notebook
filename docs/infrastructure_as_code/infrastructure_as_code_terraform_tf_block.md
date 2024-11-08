@@ -607,13 +607,13 @@ resource "aws_lb_target_group" "this" {
 }
 ```
 
-#### ▼ Internet Gateway vs. EC2、Elastic IP、NAT Gateway
+#### ▼ Internet Gateway vs. EC2、Elastic IP、AWS NAT Gateway
 
-例として、NAT Gatewayを示す。
+例として、AWS NAT Gatewayを示す。
 
-NAT Gateway、Internet Gateway、の`resource`ブロックを適切な順番で作成できない。
+AWS NAT Gateway、Internet Gateway、の`resource`ブロックを適切な順番で作成できない。
 
-そのため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。
+そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。
 
 ```terraform
 # ---------------------------------------------
@@ -658,7 +658,7 @@ resource "aws_eip" "nat_gateway" {
 
 ```terraform
 # ---------------------------------------------
-# Resource NAT Gateway
+# Resource AWS NAT Gateway
 # ---------------------------------------------
 resource "aws_nat_gateway" "this" {
   for_each = var.vpc_availability_zones
@@ -950,7 +950,7 @@ resource "aws_subnet" "public" {
 
 **＊実装例＊**
 
-パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くNAT Gatewayの設定が冗長化されたAZで共通の場合、`for_each`引数で作成する。
+パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くAWS NAT Gatewayの設定が冗長化されたAZで共通の場合、`for_each`引数で作成する。
 
 ```terraform
 # ---------------------------------------------
@@ -1009,7 +1009,7 @@ resource "aws_route_table" "private_app" {
 }
 
 # ---------------------------------------------
-# Resrouce NAT Gateway
+# Resrouce AWS NAT Gateway
 # ---------------------------------------------
 resource "aws_nat_gateway" "this" {
   for_each = var.vpc_availability_zones
@@ -1592,7 +1592,7 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
         {
           # アプリケーションの環境変数名
           "name": "DB_HOST",
-          # Systems Managerのパラメーター名
+          # AWS Systems Managerのパラメーター名
           "valueFrom": "/prd-foo/DB_HOST",
         },
         {"name": "DB_DATABASE", "valueFrom": "/prd-foo/DB_DATABASE"},

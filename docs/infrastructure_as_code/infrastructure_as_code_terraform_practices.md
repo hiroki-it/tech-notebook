@@ -151,7 +151,7 @@ repository/
     │   ├── stg/ # ステージング環境
     │   └── prd/ # 本番環境
     │
-    ├── ssm/ # Systems Manager
+    ├── ssm/ # AWS Systems Manager
     │   ├── tes/
     │   ├── stg/
     │   └── prd/
@@ -881,7 +881,7 @@ crash.*.log
 
 `(2)`
 
-: 実際の値をSecrets ManagerやAWS RDSのコンソール画面から設定する。
+: 実際の値をAWS Secrets ManagerやAWS RDSのコンソール画面から設定する。
 
 `(3)`
 
@@ -893,7 +893,7 @@ crash.*.log
 # AWS RDSの場合
 resource "aws_rds_cluster" "this" {
 
-  # 実際の値はSecrets Managerから参照する。
+  # 実際の値はAWS Secrets Managerから参照する。
   master_username = var.rds_db_master_username_ssm_parameter_value
   master_password = var.rds_db_master_password_ssm_parameter_value
 

@@ -221,7 +221,7 @@ aws-repository/
     │   ├── stg/ # ステージング環境
     │   └── prd/ # 本番環境
     │
-    ├── ssm/ # Systems Manager
+    ├── ssm/ # AWS Systems Manager
     │   ├── tes/
     │   ├── stg/
     │   └── prd/
@@ -244,7 +244,7 @@ aws-remote-repository/
 │   ├── stg/ # ステージング環境
 │   └── prd/ # 本番環境
 │
-├── ssm/ # Systems Manager
+├── ssm/ # AWS Systems Manager
 │   ├── tes/
 │   ├── stg/
 │   └── prd/

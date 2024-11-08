@@ -81,7 +81,7 @@ LAN内の内部ネットワークに相当する。
 
 サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。
 
-ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。
+ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにAWS NAT Gatewayを設定する必要がある。
 
 ![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png)
 
@@ -161,15 +161,15 @@ AWS VPCのプライベートサブネット内のリソースが、AWS VPC外 (�
 
 Gateway型とInterface型がある。
 
-AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとNAT Gatewayを使用する必要がある。
+AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとAWS NAT Gatewayを使用する必要がある。
 
 ![AWS VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCエンドポイント.png)
 
 <br>
 
-### AWS VPCエンドポイントとNAT Gatewayの料金比較
+### AWS VPCエンドポイントとAWS NAT Gatewayの料金比較
 
-NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。
+AWS NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。
 
 <br>
 
@@ -227,7 +227,7 @@ NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (AWS VPC外
 
 Internet GatewayのDNAT処理では、AWS VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
 
-NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT GatewayのElastic IPアドレスに変換する。
+AWS NAT Gatewayからのリクエストであれば、送信元IPアドレスをAWS NAT GatewayのElastic IPアドレスに変換する。
 
 一方で、宛先IPアドレスや宛先ポート番号は変換しない。
 
@@ -247,9 +247,9 @@ Internet GatewayのSNAT処理では、AWS VPC内からリクエストを受信�
 
 <br>
 
-## 06-02. NAT Gateway
+## 06-02. AWS NAT Gateway
 
-### NAT Gatewayとは
+### AWS NAT Gatewayとは
 
 SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (AWS VPC内のIPアドレス) に変換する。
 
@@ -273,7 +273,7 @@ SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受�
 
 ### SNAT処理
 
-NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
+AWS NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。
 
 また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。
 

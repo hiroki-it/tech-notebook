@@ -1802,7 +1802,7 @@ NLBのアクセスログを送信するバケット内には、自動的に『`/
 
 <br>
 
-## Systems Manager
+## AWS Systems Manager
 
 ### まとめ
 

@@ -51,19 +51,19 @@ AWS EKSのコントロールプレーンは、開発者や他のAWSリソース�
 
 #### ▼ 設定項目と説明
 
-| 設定項目                         | 説明                                                                                   | 補足                                                                                                                                                                                                                                                                                                                  |
-| -------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 名前                             | クラスターの名前を設定する。                                                           |                                                                                                                                                                                                                                                                                                                       |
-| Kubernetesバージョン             | AWS EKS上で稼働するKubernetesのバージョンを設定する。                                  | AWS EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
-| クラスターサービスロール         | AWS EKS Clusterのサービスリンクロールを設定する。                                      | ・https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                                                                                                              |
-| シークレット                     | Secretに保管するデータをKMSの暗号化キーで暗号化するか否かを設定する。                  |                                                                                                                                                                                                                                                                                                                       |
-| AWS VPC、サブネット              | ENIを配置するサブネットを設定する。                                                    | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                                                                                                  |
-| クラスターセキュリティグループ   | AWS EKS Clusterのセキュリティグループを設定する。                                      | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって`eks-cluster-sg-<AWS EKS Cluster名>`というセキュリティグループも自動設定される。<br>https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。          |                                                                                                                                                                                                                                                                                                                       |
-| CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                      |                                                                                                                                                                                                                                                                                                                       |
-| クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                             |                                                                                                                                                                                                                                                                                                                       |
-| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                        | 執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、AWS VPC CNI、を使用できる。                                                                                                                                                                                                                                  |
-| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                         |
+| 設定項目                         | 説明                                                                                       | 補足                                                                                                                                                                                                                                                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 名前                             | クラスターの名前を設定する。                                                               |                                                                                                                                                                                                                                                                                                                       |
+| Kubernetesバージョン             | AWS EKS上で稼働するKubernetesのバージョンを設定する。                                      | AWS EKSが対応できるKubernetesのバージョンは以下を参考にせよ。<br>https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html                                                                                                                                                                              |
+| クラスターサービスロール         | AWS EKS Clusterのサービスリンクロールを設定する。                                          | ・https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html                                                                                                                                                                                                                                              |
+| シークレット                     | Secretに保管するデータをKMSの暗号化キーで暗号化するか否かを設定する。                      |                                                                                                                                                                                                                                                                                                                       |
+| AWS VPC、サブネット              | ENIを配置するサブネットを設定する。                                                        | 複数のAZにまたがっている必要がある。                                                                                                                                                                                                                                                                                  |
+| クラスターセキュリティグループ   | AWS EKS Clusterのセキュリティグループを設定する。                                          | インバウンドとアウトバウンドの両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって`eks-cluster-sg-<AWS EKS Cluster名>`というセキュリティグループも自動設定される。<br>https://yuutookun.hatenablog.com/entry/fargate_for_eks |
+| クラスターIPアドレスファミリー   | PodとServiceに割り当てるClusterIPのIPアドレスタイプ (IPv4、IPv6) を設定する。              |                                                                                                                                                                                                                                                                                                                       |
+| CIDRブロック                     | ClusterIP Serviceに割り当てるIPアドレスのCIDRブロックを設定する。                          |                                                                                                                                                                                                                                                                                                                       |
+| クラスターエンドポイントアクセス | kube-apiserverのリクエスト制限を設定する。                                                 |                                                                                                                                                                                                                                                                                                                       |
+| ネットワークアドオン             | ネットワークに関するAWS EKSアドオンを設定する。                                            | 執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、AWS VPC CNI、を使用できる。                                                                                                                                                                                                                                  |
+| コントロールプレーンのログ       | コントロールプレーンコンポーネントのログをAWS CloudWatchログに出力するかどうかを設定する。 | 執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。                                                                         |
 
 <br>
 
@@ -89,7 +89,7 @@ module "eks" {
   # AWS EKS Clusterのkube-apiserverにリクエストを送信できるCIDR
   cluster_endpoint_public_access_cidrs = ["*.*.*.*/32", "*.*.*.*/32", "*.*.*.*/32"]
 
-  # CloudWatchログに送信するログの種類
+  # AWS CloudWatchログに送信するログの種類
   cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler",]
 
   # ログの保管期間
@@ -761,7 +761,7 @@ AWS EKSデータプレーンはプライベートサブネットで稼働させ�
 
 この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、AWS EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。
 
-そのために、パブリックサブネットにNAT Gatewayを置く。
+そのために、パブリックサブネットにAWS NAT Gatewayを置く。
 
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
@@ -771,7 +771,7 @@ AWS EKSデータプレーンはプライベートサブネットで稼働させ�
 
 ### パブリックサブネット内のデータプレーンからのリクエスト
 
-Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
+Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
 
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
@@ -812,9 +812,9 @@ data:
 
 #### ▼ AWS VPC外の他のAWSリソースへのリクエスト
 
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
 
-この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
+この時、Podのリクエストの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
 
@@ -832,15 +832,15 @@ AWS EKS Clusterを作成すると、ENIも作成する。
 
 これにより、データプレーンがAWS VPC外のコントロールプレーンと通信できるようになる。
 
-データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはNAT Gatewayが必要になる。
+データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはAWS NAT Gatewayが必要になる。
 
 | AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                    |
 | ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
-| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
+| AWS CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
 | AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
 | S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
-| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                      |
+| AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
 | Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
 > - https://dev.classmethod.jp/articles/eks_basic/
@@ -876,7 +876,7 @@ AWS VPC外からNLBへの`443`番ポートに対するネットワークから�
 
 基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。
 
-プライベートサブネット内にワーカーNodeがある場合、NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。
+プライベートサブネット内にワーカーNodeがある場合、AWS NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 
@@ -886,20 +886,20 @@ AWS VPC外からNLBへの`443`番ポートに対するネットワークから�
 
 プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。
 
-- NAT Gatewayを経由して、NAT Gatewayを経由して、パブリック制限を通過する
+- AWS NAT Gatewayを経由して、AWS NAT Gatewayを経由して、パブリック制限を通過する
 - ENI (Interface型のAWS VPCエンドポイント) を経由して、プライベート制限を通過する
 
 ![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
 
-AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。
+AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。
 
 | AWS VPCエンドポイントの接続先 | タイプ             | プライベートDNS名                                                                  | 説明                                                                                                    |
 | ----------------------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
-| CloudWatchログ                | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
+| AWS CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
 | AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
 | S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
-| Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                      |
+| AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
 | Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
@@ -1559,7 +1559,7 @@ metadata:
 
 : `aws-observability`内で`aws-logging`という名前のConfigMapを作成する。
 
-     これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。
+     これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからAWS CloudWatchログにログを送信できるようになる。
 
      名前は、必ず`aws-logging`とする。
 

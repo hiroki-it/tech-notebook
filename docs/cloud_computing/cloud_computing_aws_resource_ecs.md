@@ -52,7 +52,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 | ECSタスク                              | Pod                                            |
 | ELB                                    | Ingress + Service                              |
 | ECSタスクの環境変数                    | ConfigMap                                      |
-| Secrets Manager                        | Secret                                         |
+| AWS Secrets Manager                    | Secret                                         |
 | Taskスケーリング                       | HorizontalPodAutoscaler、VerticalPodAutoscaler |
 | キャパシティプロバイダー + AutoScaling | CusterAutoscaler、Karpenter                    |
 | PodDisruptionBudget                    | Minimum/Maximum Healthy Percent                |
@@ -225,21 +225,21 @@ Fargateの場合、同じタスクに属するコンテナ間は、localhostイ�
 
 #### ▼ プライベートサブネット内へのデータプレーンの配置
 
-プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、NAT GatewayやVPCエンドポイントが必要になる。
+プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、AWS NAT GatewayやVPCエンドポイントが必要になる。
 
 パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。
 
 #### ▼ パブリックネットワークに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、NAT Gatewayを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、AWS NAT Gatewayを配置する必要がある。
 
 #### ▼ VPC外のAWSリソースに対する通信
 
-データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
+データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。
 
-もしNAT Gatewayを配置したとする。
+もしAWS NAT Gatewayを配置したとする。
 
-この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。
+この場合、VPCエンドポイントよりもAWS NAT Gatewayの方が高く、AWSリソースに対する通信でもAWS NAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png)
 
@@ -283,7 +283,7 @@ Fargateの場合、不要である。
 
 ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。
 
-アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
+アプリケーションにS3やAWS Systems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
 
@@ -292,7 +292,7 @@ ECSタスク内のコンテナのアプリケーションが、他のAWSリソ�
 
 **＊実装例＊**
 
-アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。
+アプリケーションからAWS CloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。
 
 ```yaml
 {
@@ -328,7 +328,7 @@ ECSタスク内のECSコンテナエージェントが、他のAWSリソース�
 
 AWS管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付けられたロールを、タスクに紐付ける必要がある。
 
-このポリシーには、AWS ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。
+このポリシーには、AWS ECRへの認可スコープの他、AWS CloudWatchログにログを作成するための認可スコープが設定されている。
 
 ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。
 
@@ -392,10 +392,10 @@ datadogエージェントがECSクラスターやコンテナにリクエスト�
 
 | 設定項目                  | 説明                                                                                   | 補足                                                                                                                                                                                                                           |
 | ------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `awslogs-group`           | ログ宛先のCloudWatchログのロググループを設定する。                                     |                                                                                                                                                                                                                                |
+| `awslogs-group`           | ログ宛先のAWS CloudWatchログのロググループを設定する。                                 |                                                                                                                                                                                                                                |
 | `awslogs-datetime-format` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えてJSONでは『`\`』を『`\\`』にエスケープしなければならない。例えば『`\\[%Y-%m-%d %H:%M:%S\\]`』となる。<br>https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| `awslogs-region`          | ログ宛先のCloudWatchログのリージョンを設定する。                                       |                                                                                                                                                                                                                                |
-| `awslogs-stream-prefix`   | ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。                 | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                       |
+| `awslogs-region`          | ログ宛先のAWS CloudWatchログのリージョンを設定する。                                   |                                                                                                                                                                                                                                |
+| `awslogs-stream-prefix`   | ログ宛先のAWS CloudWatchログのログストリームのプレフィックス名を設定する。             | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                       |
 
 > - https://docs.docker.com/config/containers/logging/awslogs/
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
@@ -547,9 +547,9 @@ Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化�
 
 リクエストの先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。
 
-そこで、Fargateのリクエストが、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。
+そこで、Fargateのリクエストが、Elastic IPアドレスを持つAWS NAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。
 
-これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
+これによって、AWS NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。
 
 ![NatGatewayを経由したFargateから外部サービスへのリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを経由したFargateから外部サービスへのリクエスト.png)
 
@@ -692,21 +692,21 @@ CodeDeployを使用してデプロイする。
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                               |
-| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| CloudWatchログ            | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                  |
-| AWS ECR                   | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                            |
-| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                   |
-| Systems Manager           | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
-| Secrets Manager           | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
+| VPCエンドポイントの接続先 | タイプ    | プライベートDNS名                                                                  | 説明                                                                   |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| AWS CloudWatchログ        | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | ECSコンテナのログをPOSTリクエストを送信するため。                      |
+| AWS ECR                   | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                |
+| S3                        | Gateway   | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                       |
+| AWS Systems Manager       | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
+| AWS Secrets Manager       | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | AWS Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
-NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
+AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
 
-そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。
+そのため、AWS NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。
 
-注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。
+注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくAWS NAT Gatewayも作成する必要がある。
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
 > - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
@@ -722,7 +722,7 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。
 
-Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
+AWS Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
 
 ただし、FargateとしてのEC2には、systems-managerエージェントがプリインストールされているため、これは不要である。
 

@@ -33,11 +33,11 @@ description: 信頼性＠AWSの知見を記録しています。
 
 特定のAZで障害が発生した場合、ALBを起点にして、インバウンド通信の向き先を正常なAZのAWS EC2/ECSに切り替える。
 
-#### ▼ NAT Gateway
+#### ▼ AWS NAT Gateway
 
-NAT Gatewayを冗長化する。
+AWS NAT Gatewayを冗長化する。
 
-NAT GatewayをAZで冗長化し、特定のAZで障害が起こっても、他のAZのアウトバウンド通信に影響しないようにする。
+AWS NAT GatewayをAZで冗長化し、特定のAZで障害が起こっても、他のAZのアウトバウンド通信に影響しないようにする。
 
 #### ▼ Auto Scaling Group
 

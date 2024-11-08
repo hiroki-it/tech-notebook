@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Secrets Manager＠AWSリソース
-description: Secrets Manager＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Secrets Manager＠AWSリソース
+description: AWS Secrets Manager＠AWSリソースの知見を記録しています。
 ---
 
-# Secrets Manager＠AWSリソース
+# AWS Secrets Manager＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Secrets Manager＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. Secrets Managerとは
+## 01. AWS Secrets Managerとは
 
 変数やファイルをキーバリュー型で永続化する。
 

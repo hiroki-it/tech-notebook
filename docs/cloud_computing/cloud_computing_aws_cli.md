@@ -672,7 +672,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-### Secrets Manager
+### AWS Secrets Manager
 
 #### ▼ get-secret-value
 
@@ -689,7 +689,7 @@ $ aws secretsmanager get-secret-value \
 "..."
 ```
 
-もしSecrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
+もしAWS Secrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
 
 そのため、`--output`オプションで`text`使用してダブルクオーテーションを削除する必要がある。
 
@@ -735,11 +735,11 @@ $ aws sts get-caller-identity --profile foo
 
 <br>
 
-### Systems Manager (新SSM)
+### AWS Systems Manager (新SSM)
 
 #### ▼ create-activation
 
-サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をSystems Managerで管理するために、IDとコードを発行する。
+サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をAWS Systems Managerで管理するために、IDとコードを発行する。
 
 ```bash
 $ aws ssm create-activation \
