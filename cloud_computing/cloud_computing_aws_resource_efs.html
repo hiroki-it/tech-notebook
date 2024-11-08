@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="EFS＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS EFS＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】EFS＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS EFS＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#efsaws" class="md-skip">
+        <a href="#aws-efsaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】EFS＠AWSリソース
+              【IT技術の知見】AWS EFS＠AWSリソース
             
           </span>
         </div>
@@ -13250,9 +13250,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-efselastic-file-system" class="md-nav__link">
+  <a href="#01-aws-efselastic-file-system" class="md-nav__link">
     <span class="md-ellipsis">
-      01. EFS：Elastic File Systemとは
+      01. AWS EFS：Elastic File Systemとは
     </span>
   </a>
   
@@ -23638,9 +23638,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-efselastic-file-system" class="md-nav__link">
+  <a href="#01-aws-efselastic-file-system" class="md-nav__link">
     <span class="md-ellipsis">
-      01. EFS：Elastic File Systemとは
+      01. AWS EFS：Elastic File Systemとは
     </span>
   </a>
   
@@ -23754,7 +23754,7 @@
   
 
 
-<h1 id="efsaws">EFS＠AWSリソース<a class="headerlink" href="#efsaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-efsaws">AWS EFS＠AWSリソース<a class="headerlink" href="#aws-efsaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23763,11 +23763,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-efselastic-file-system">01. EFS：Elastic File Systemとは<a class="headerlink" href="#01-efselastic-file-system" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-efselastic-file-system">01. AWS EFS：Elastic File Systemとは<a class="headerlink" href="#01-aws-efselastic-file-system" title="Permanent link">&para;</a></h2>
 <p>マウントターゲットと接続された片方のEC2から、ファイルを読み出し、これをもう一方に出力する。</p>
 <p>ファイルの実体はいずれかのEC2に存在しているため、接続を切断している間、片方のEC2内のファイルは無くなる。</p>
 <p>再接続すると、切断直前のファイルが再び表示されようになる。</p>
-<p><img alt="EFSのファイル共有機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EFSのファイル共有機能.png" /></p>
+<p><img alt="AWS EFSのファイル共有機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EFSのファイル共有機能.png" /></p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -23787,7 +23787,7 @@
 </tr>
 <tr>
 <td>スループットモード</td>
-<td>EFSのスループット性能を設定する。</td>
+<td>AWS EFSのスループット性能を設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -23797,7 +23797,7 @@
 </tr>
 <tr>
 <td>ファイルシステムポリシー</td>
-<td>他のAWSリソースがEFSを利用する時のポリシーを設定する。</td>
+<td>他のAWSリソースがAWS EFSを利用する時のポリシーを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -23844,7 +23844,7 @@
 <p><br></p>
 <h2 id="_5">マウントポイント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">登録<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p><code>mount</code>コマンドを使用して、EFSに対してマウントポイントを登録する。</p>
+<p><code>mount</code>コマンドを使用して、AWS EFSに対してマウントポイントを登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># mount -t efs -o tls &lt;ファイルシステムID&gt;:&lt;マウント元ディレクトリ&gt; &lt;マウントポイント&gt;</span>
 $<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>efs<span class="w"> </span>-o<span class="w"> </span>tls<span class="w"> </span>fs-*****:/<span class="w"> </span>/var/www/foo
 </code></pre></div>
@@ -23856,7 +23856,7 @@ $<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>
 <p><br></p>
 <h3 id="_7">解除<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><code>unmount</code>コマンドを使用して、マウントポイントを解除する。</p>
-<p><code>df</code>コマンドで、EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、<code>unmount</code>コマンドを実行する。</p>
+<p><code>df</code>コマンドで、AWS EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、<code>unmount</code>コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df
 Filesystem<span class="w">                                  </span>1K-blocks<span class="w"> </span>Used<span class="w"> </span>Available<span class="w"> </span>Use%<span class="w"> </span>Mounted<span class="w"> </span>on
 fs-*****.efs.ap-northeast-1.amazonaws.com:/<span class="w"> </span>xxx<span class="w">       </span>xxx<span class="w">  </span>xxx<span class="w">       </span><span class="m">1</span>%<span class="w">   </span>/var/www/foo
@@ -23889,7 +23889,7 @@ $<span class="w"> </span>umount<span class="w"> </span>/var/www/foo
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     

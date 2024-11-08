@@ -26468,7 +26468,7 @@
 <td>・<a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></td>
 </tr>
 <tr>
-<td>EBS、EFS</td>
+<td>EBS、AWS EFS</td>
 <td>PersistentVolume</td>
 <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/storage.html">https://docs.aws.amazon.com/eks/latest/userguide/storage.html</a></td>
 </tr>
@@ -26515,7 +26515,7 @@
 </ul>
 </blockquote>
 <h4 id="node_3">▼ ワーカーNode間のファイル共有<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
-<p>EFSを使用して、ワーカーNode間でファイルを共有する。</p>
+<p>AWS EFSを使用して、ワーカーNode間でファイルを共有する。</p>
 <p>PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合 (例：PrometheusのローカルストレージをPod間で共有したい) に役立つ。</p>
 <p>ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにする必要があり、PodのファイルはワーカーNodeの外で管理する必要がある。</p>
 <blockquote>
