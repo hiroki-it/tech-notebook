@@ -25805,7 +25805,7 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># AWS Systems Manager</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
@@ -26389,7 +26389,7 @@ crash.*.log
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>実際の値をSecrets ManagerやAWS RDSのコンソール画面から設定する。</p>
+<p>実際の値をAWS Secrets ManagerやAWS RDSのコンソール画面から設定する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -26400,7 +26400,7 @@ crash.*.log
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS RDSの場合</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">  # 実際の値はSecrets Managerから参照する。</span>
+<span class="c1">  # 実際の値はAWS Secrets Managerから参照する。</span>
 <span class="w">  </span><span class="na">master_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.rds_db_master_username_ssm_parameter_value</span>
 <span class="w">  </span><span class="na">master_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.rds_db_master_password_ssm_parameter_value</span>
 

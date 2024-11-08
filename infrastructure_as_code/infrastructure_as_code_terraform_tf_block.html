@@ -16162,9 +16162,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#internet-gateway-vs-ec2elastic-ipnat-gateway" class="md-nav__link">
+  <a href="#internet-gateway-vs-ec2elastic-ipaws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Internet Gateway vs. EC2、Elastic IP、NAT Gateway
+      ▼ Internet Gateway vs. EC2、Elastic IP、AWS NAT Gateway
     </span>
   </a>
   
@@ -24606,9 +24606,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#internet-gateway-vs-ec2elastic-ipnat-gateway" class="md-nav__link">
+  <a href="#internet-gateway-vs-ec2elastic-ipaws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Internet Gateway vs. EC2、Elastic IP、NAT Gateway
+      ▼ Internet Gateway vs. EC2、Elastic IP、AWS NAT Gateway
     </span>
   </a>
   
@@ -25442,10 +25442,10 @@
 <span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_lb.this</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="internet-gateway-vs-ec2elastic-ipnat-gateway">▼ Internet Gateway vs. EC2、Elastic IP、NAT Gateway<a class="headerlink" href="#internet-gateway-vs-ec2elastic-ipnat-gateway" title="Permanent link">&para;</a></h4>
-<p>例として、NAT Gatewayを示す。</p>
-<p>NAT Gateway、Internet Gateway、の<code>resource</code>ブロックを適切な順番で作成できない。</p>
-<p>そのため、Internet Gatewayの作成後に、NAT Gatewayを作成するように定義する必要がある。</p>
+<h4 id="internet-gateway-vs-ec2elastic-ipaws-nat-gateway">▼ Internet Gateway vs. EC2、Elastic IP、AWS NAT Gateway<a class="headerlink" href="#internet-gateway-vs-ec2elastic-ipaws-nat-gateway" title="Permanent link">&para;</a></h4>
+<p>例として、AWS NAT Gatewayを示す。</p>
+<p>AWS NAT Gateway、Internet Gateway、の<code>resource</code>ブロックを適切な順番で作成できない。</p>
+<p>そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Resource EC2</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -25484,7 +25484,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resource NAT Gateway</span>
+<span class="c1"># Resource AWS NAT Gateway</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_nat_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span>
@@ -25726,7 +25726,7 @@
 <p><code>for_each</code>引数で作成された<code>resource</code>ブロックは<code>terraform apply</code>コマンド実行中にmap構造として扱われ、<code>resource</code>ブロック名の下層にキー名で<code>resource</code>ブロックが並ぶ構造になっている。</p>
 <p>これを参照するために、『<code>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[each.key].&lt;attribute&gt;</code>』とする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くNAT Gatewayの設定が冗長化されたAZで共通の場合、<code>for_each</code>引数で作成する。</p>
+<p>パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くAWS NAT Gatewayの設定が冗長化されたAZで共通の場合、<code>for_each</code>引数で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -25781,7 +25781,7 @@
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
-<span class="c1"># Resrouce NAT Gateway</span>
+<span class="c1"># Resrouce AWS NAT Gateway</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_nat_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span>
@@ -26269,7 +26269,7 @@
 <span class="w">        </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="c1"># アプリケーションの環境変数名</span>
 <span class="w">          </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_HOST&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="c1"># Systems Managerのパラメーター名</span>
+<span class="w">          </span><span class="c1"># AWS Systems Managerのパラメーター名</span>
 <span class="w">          </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/prd-foo/DB_HOST&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_DATABASE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/prd-foo/DB_DATABASE&quot;</span><span class="p p-Indicator">},</span>
@@ -26317,7 +26317,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     

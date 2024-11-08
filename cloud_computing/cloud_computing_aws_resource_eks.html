@@ -26083,7 +26083,7 @@
 </tr>
 <tr>
 <td>コントロールプレーンのログ</td>
-<td>コントロールプレーンコンポーネントのログをCloudWatchログに出力するかどうかを設定する。</td>
+<td>コントロールプレーンコンポーネントのログをAWS CloudWatchログに出力するかどうかを設定する。</td>
 <td>執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) 、のログを出力できる。</td>
 </tr>
 </tbody>
@@ -26108,7 +26108,7 @@
 <span class="c1">  # AWS EKS Clusterのkube-apiserverにリクエストを送信できるCIDR</span>
 <span class="w">  </span><span class="na">cluster_endpoint_public_access_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;</span><span class="p">]</span>
 
-<span class="c1">  # CloudWatchログに送信するログの種類</span>
+<span class="c1">  # AWS CloudWatchログに送信するログの種類</span>
 <span class="w">  </span><span class="na">cluster_enabled_log_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;api&quot;, &quot;audit&quot;, &quot;authenticator&quot;, &quot;controllerManager&quot;, &quot;scheduler&quot;</span><span class="p">,]</span>
 
 <span class="c1">  # ログの保管期間</span>
@@ -26796,7 +26796,7 @@
 <h2 id="03-03">03-03. サブネット内外へのリクエスト<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
 <p>AWS EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBから通信を受信すると良い。</p>
 <p>この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、AWS EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。</p>
-<p>そのために、パブリックサブネットにNAT Gatewayを置く。</p>
+<p>そのために、パブリックサブネットにAWS NAT Gatewayを置く。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/">https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/</a></li>
@@ -26805,7 +26805,7 @@
 <p><br></p>
 <h2 id="03-04">03-04. データプレーン内外へのリクエスト<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_15">パブリックサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
+<p>Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
 <p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code>に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
@@ -26840,8 +26840,8 @@
 <span class="w">  </span><span class="nt">SQS_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
 <h4 id="aws-vpcaws">▼ AWS VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws" title="Permanent link">&para;</a></h4>
-<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
-<p>この時、Podのリクエストの送信元IPアドレスは、NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
+<p>Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
+<p>この時、Podのリクエストの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
 <p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
 <div class="highlight"><pre><span></span><code>Pod provisioning timed out (will retry) for pod
@@ -26854,7 +26854,7 @@
 <h4 id="aws-vpc">▼ AWS VPC外のコントロールプレーンへのリクエスト<a class="headerlink" href="#aws-vpc" title="Permanent link">&para;</a></h4>
 <p>AWS EKS Clusterを作成すると、ENIも作成する。</p>
 <p>これにより、データプレーンがAWS VPC外のコントロールプレーンと通信できるようになる。</p>
-<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはNAT Gatewayが必要になる。</p>
+<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型AWS VPCエンドポイントまたはAWS NAT Gatewayが必要になる。</p>
 <table>
 <thead>
 <tr>
@@ -26872,7 +26872,7 @@
 <td>プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
-<td>CloudWatchログ</td>
+<td>AWS CloudWatchログ</td>
 <td>Interface</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
@@ -26890,10 +26890,10 @@
 <td>イメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
-<td>Systems Manager</td>
+<td>AWS Systems Manager</td>
 <td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+<td>AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>Secrets Manager</td>
@@ -26928,7 +26928,7 @@
 <h3 id="_18">クラスターエンドポイントのリクエスト制限<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パブリックのみの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。</p>
-<p>プライベートサブネット内にワーカーNodeがある場合、NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、AWS NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access">https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access</a></li>
@@ -26938,11 +26938,11 @@
 <p>パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。</p>
 <p>プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。</p>
 <ul>
-<li>NAT Gatewayを経由して、NAT Gatewayを経由して、パブリック制限を通過する</li>
+<li>AWS NAT Gatewayを経由して、AWS NAT Gatewayを経由して、パブリック制限を通過する</li>
 <li>ENI (Interface型のAWS VPCエンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
-<p>AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。</p>
+<p>AWS VPC外のAWSリソース (例：AWS EKSコントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のAWS VPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -26960,7 +26960,7 @@
 <td>プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。</td>
 </tr>
 <tr>
-<td>CloudWatchログ</td>
+<td>AWS CloudWatchログ</td>
 <td>Interface</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>Pod内のコンテナのログをPOSTリクエストを送信するため。</td>
@@ -26978,10 +26978,10 @@
 <td>イメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
-<td>Systems Manager</td>
+<td>AWS Systems Manager</td>
 <td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+<td>AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
 <td>Secrets Manager</td>
@@ -27660,7 +27660,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <dt><code>(2)</code></dt>
 <dd>
 <p><code>aws-observability</code>内で<code>aws-logging</code>という名前のConfigMapを作成する。</p>
-<p>これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからCloudWatchログにログを送信できるようになる。</p>
+<p>これより、ログ転送コンテナとしてFluentBitコンテナが作成され、PodからAWS CloudWatchログにログを送信できるようになる。</p>
 <p>名前は、必ず<code>aws-logging</code>とする。</p>
 </dd>
 </dl>

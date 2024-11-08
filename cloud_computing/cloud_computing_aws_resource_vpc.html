@@ -14031,9 +14031,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-vpcnat-gateway" class="md-nav__link">
+  <a href="#aws-vpcaws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS VPCエンドポイントとNAT Gatewayの料金比較
+      AWS VPCエンドポイントとAWS NAT Gatewayの料金比較
     </span>
   </a>
   
@@ -14120,19 +14120,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-02-nat-gateway" class="md-nav__link">
+  <a href="#06-02-aws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      06-02. NAT Gateway
+      06-02. AWS NAT Gateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06-02. NAT Gateway">
+    <nav class="md-nav" aria-label="06-02. AWS NAT Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nat-gateway" class="md-nav__link">
+  <a href="#aws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      NAT Gatewayとは
+      AWS NAT Gatewayとは
     </span>
   </a>
   
@@ -24344,9 +24344,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws-vpcnat-gateway" class="md-nav__link">
+  <a href="#aws-vpcaws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS VPCエンドポイントとNAT Gatewayの料金比較
+      AWS VPCエンドポイントとAWS NAT Gatewayの料金比較
     </span>
   </a>
   
@@ -24433,19 +24433,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-02-nat-gateway" class="md-nav__link">
+  <a href="#06-02-aws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      06-02. NAT Gateway
+      06-02. AWS NAT Gateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06-02. NAT Gateway">
+    <nav class="md-nav" aria-label="06-02. AWS NAT Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nat-gateway" class="md-nav__link">
+  <a href="#aws-nat-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      NAT Gatewayとは
+      AWS NAT Gatewayとは
     </span>
   </a>
   
@@ -24823,7 +24823,7 @@
 <h4 id="_5">▼ プライベートサブネットとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>LAN内の内部ネットワークに相当する。</p>
 <p>サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。</p>
-<p>ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにNAT Gatewayを設定する必要がある。</p>
+<p>ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにAWS NAT Gatewayを設定する必要がある。</p>
 <p><img alt="public-subnet_private-subnet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png" /></p>
 <p><br></p>
 <h2 id="03-network-aclnetwork-access-control-list">03. Network ACL：Network Access Control List<a class="headerlink" href="#03-network-aclnetwork-access-control-list" title="Permanent link">&para;</a></h2>
@@ -24934,11 +24934,11 @@
 <h3 id="aws-vpc_1">AWS VPCエンドポイントとは<a class="headerlink" href="#aws-vpc_1" title="Permanent link">&para;</a></h3>
 <p>AWS VPCのプライベートサブネット内のリソースが、AWS VPC外 (例：AWS VPC外AWSリソース、他のAWS VPC、AWSマーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。</p>
 <p>Gateway型とInterface型がある。</p>
-<p>AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとNAT Gatewayを使用する必要がある。</p>
+<p>AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとAWS NAT Gatewayを使用する必要がある。</p>
 <p><img alt="AWS VPCエンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCエンドポイント.png" /></p>
 <p><br></p>
-<h3 id="aws-vpcnat-gateway">AWS VPCエンドポイントとNAT Gatewayの料金比較<a class="headerlink" href="#aws-vpcnat-gateway" title="Permanent link">&para;</a></h3>
-<p>NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。</p>
+<h3 id="aws-vpcaws-nat-gateway">AWS VPCエンドポイントとAWS NAT Gatewayの料金比較<a class="headerlink" href="#aws-vpcaws-nat-gateway" title="Permanent link">&para;</a></h3>
+<p>AWS NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。</p>
 <p><br></p>
 <h3 id="_10">エンドポイントタイプ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="interface">▼ Interface型<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h4>
@@ -24981,7 +24981,7 @@
 <p><br></p>
 <h3 id="dnat">DNAT処理<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h3>
 <p>Internet GatewayのDNAT処理では、AWS VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
-<p>NAT Gatewayからのリクエストであれば、送信元IPアドレスをNAT GatewayのElastic IPアドレスに変換する。</p>
+<p>AWS NAT Gatewayからのリクエストであれば、送信元IPアドレスをAWS NAT GatewayのElastic IPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <blockquote>
 <ul>
@@ -24999,8 +24999,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06-02-nat-gateway">06-02. NAT Gateway<a class="headerlink" href="#06-02-nat-gateway" title="Permanent link">&para;</a></h2>
-<h3 id="nat-gateway">NAT Gatewayとは<a class="headerlink" href="#nat-gateway" title="Permanent link">&para;</a></h3>
+<h2 id="06-02-aws-nat-gateway">06-02. AWS NAT Gateway<a class="headerlink" href="#06-02-aws-nat-gateway" title="Permanent link">&para;</a></h2>
+<h3 id="aws-nat-gateway">AWS NAT Gatewayとは<a class="headerlink" href="#aws-nat-gateway" title="Permanent link">&para;</a></h3>
 <p>SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (AWS VPC内のIPアドレス) に変換する。</p>
 <p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
 <p><code>1</code>個のパブリックIPに対して、複数のプライベートIPを紐付けられる。</p>
@@ -25017,7 +25017,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="snat_1">SNAT処理<a class="headerlink" href="#snat_1" title="Permanent link">&para;</a></h3>
-<p>NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
+<p>AWS NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
 <p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
 <p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
@@ -25245,7 +25245,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     

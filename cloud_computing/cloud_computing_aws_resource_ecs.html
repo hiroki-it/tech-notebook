@@ -24971,7 +24971,7 @@
 <td>ConfigMap</td>
 </tr>
 <tr>
-<td>Secrets Manager</td>
+<td>AWS Secrets Manager</td>
 <td>Secret</td>
 </tr>
 <tr>
@@ -25159,14 +25159,14 @@
 <p><br></p>
 <h3 id="_7">プライベートサブネット内から外の通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ プライベートサブネット内へのデータプレーンの配置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、NAT GatewayやVPCエンドポイントが必要になる。</p>
+<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、AWS NAT GatewayやVPCエンドポイントが必要になる。</p>
 <p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。</p>
 <h4 id="_9">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、NAT Gatewayを配置する必要がある。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、AWS NAT Gatewayを配置する必要がある。</p>
 <h4 id="vpcaws">▼ VPC外のAWSリソースに対する通信<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
-<p>もしNAT Gatewayを配置したとする。</p>
-<p>この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
+<p>もしAWS NAT Gatewayを配置したとする。</p>
+<p>この場合、VPCエンドポイントよりもAWS NAT Gatewayの方が高く、AWSリソースに対する通信でもAWS NAT Gatewayを通過するため、高額料金を請求されてしまう。</p>
 <p><img alt="ecs_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -25205,7 +25205,7 @@
 </blockquote>
 <h4 id="_13">▼ タスクロール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。</p>
-<p>アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
+<p>アプリケーションにS3やAWS Systems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
 <p><img alt="ecs_task-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png" /></p>
 <blockquote>
 <ul>
@@ -25214,7 +25214,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。</p>
+<p>アプリケーションからAWS CloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -25239,7 +25239,7 @@
 <p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
 <p>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにリクエストを送信するために必要なロールのこと。</p>
 <p>AWS管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
-<p>このポリシーには、AWS ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
+<p>このポリシーには、AWS ECRへの認可スコープの他、AWS CloudWatchログにログを作成するための認可スコープが設定されている。</p>
 <p>ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -25302,7 +25302,7 @@
 <tbody>
 <tr>
 <td><code>awslogs-group</code></td>
-<td>ログ宛先のCloudWatchログのロググループを設定する。</td>
+<td>ログ宛先のAWS CloudWatchログのロググループを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -25312,12 +25312,12 @@
 </tr>
 <tr>
 <td><code>awslogs-region</code></td>
-<td>ログ宛先のCloudWatchログのリージョンを設定する。</td>
+<td>ログ宛先のAWS CloudWatchログのリージョンを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td><code>awslogs-stream-prefix</code></td>
-<td>ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。</td>
+<td>ログ宛先のAWS CloudWatchログのログストリームのプレフィックス名を設定する。</td>
 <td>ログストリームには、『<code>&lt;プレフィックス名&gt;/&lt;コンテナ名&gt;/&lt;タスクID&gt;</code>』の形式で送信される。</td>
 </tr>
 </tbody>
@@ -25708,8 +25708,8 @@
 <h4 id="fargateip">▼ FargateのIPアドレス<a class="headerlink" href="#fargateip" title="Permanent link">&para;</a></h4>
 <p>Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。</p>
 <p>リクエストの先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。</p>
-<p>そこで、Fargateのリクエストが、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。</p>
-<p>これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。</p>
+<p>そこで、Fargateのリクエストが、Elastic IPアドレスを持つAWS NAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。</p>
+<p>これによって、AWS NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。</p>
 <p><img alt="NatGatewayを経由したFargateから外部サービスへのリクエスト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを経由したFargateから外部サービスへのリクエスト.png" /></p>
 <blockquote>
 <ul>
@@ -25845,7 +25845,7 @@
 </thead>
 <tbody>
 <tr>
-<td>CloudWatchログ</td>
+<td>AWS CloudWatchログ</td>
 <td>Interface</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>ECSコンテナのログをPOSTリクエストを送信するため。</td>
@@ -25863,23 +25863,23 @@
 <td>イメージのレイヤーをPOSTリクエストを送信するため</td>
 </tr>
 <tr>
-<td>Systems Manager</td>
+<td>AWS Systems Manager</td>
 <td>Interface</td>
 <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+<td>AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
 </tr>
 <tr>
-<td>Secrets Manager</td>
+<td>AWS Secrets Manager</td>
 <td>Interface</td>
 <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
-<td>Secrets Managerを使用するため。</td>
+<td>AWS Secrets Managerを使用するため。</td>
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、Systems Manager、CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
-<p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。</p>
-<p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
-<p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
+<p>AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。</p>
+<p>そのため、AWS NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
+<p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくAWS NAT Gatewayも作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec">https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec</a></li>
@@ -25892,7 +25892,7 @@
 <h4 id="ecs-exec">▼ セッションマネージャーを使用したECS Exec<a class="headerlink" href="#ecs-exec" title="Permanent link">&para;</a></h4>
 <p><img alt="fargate_ecs-exec" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png" /></p>
 <p>セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。</p>
-<p>Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。</p>
+<p>AWS Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。</p>
 <p>ただし、FargateとしてのEC2には、systems-managerエージェントがプリインストールされているため、これは不要である。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -26020,7 +26020,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     

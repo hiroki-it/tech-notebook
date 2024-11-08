@@ -13430,13 +13430,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#secrets-manager" class="md-nav__link">
+  <a href="#aws-secrets-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Secrets Manager
+      AWS Secrets Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Secrets Manager">
+    <nav class="md-nav" aria-label="AWS Secrets Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -13487,13 +13487,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#systems-manager-ssm" class="md-nav__link">
+  <a href="#aws-systems-manager-ssm" class="md-nav__link">
     <span class="md-ellipsis">
-      Systems Manager (新SSM)
+      AWS Systems Manager (新SSM)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Systems Manager (新SSM)">
+    <nav class="md-nav" aria-label="AWS Systems Manager (新SSM)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25256,13 +25256,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#secrets-manager" class="md-nav__link">
+  <a href="#aws-secrets-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Secrets Manager
+      AWS Secrets Manager
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Secrets Manager">
+    <nav class="md-nav" aria-label="AWS Secrets Manager">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25313,13 +25313,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#systems-manager-ssm" class="md-nav__link">
+  <a href="#aws-systems-manager-ssm" class="md-nav__link">
     <span class="md-ellipsis">
-      Systems Manager (新SSM)
+      AWS Systems Manager (新SSM)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Systems Manager (新SSM)">
+    <nav class="md-nav" aria-label="AWS Systems Manager (新SSM)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25918,7 +25918,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="secrets-manager">Secrets Manager<a class="headerlink" href="#secrets-manager" title="Permanent link">&para;</a></h3>
+<h3 id="aws-secrets-manager">AWS Secrets Manager<a class="headerlink" href="#aws-secrets-manager" title="Permanent link">&para;</a></h3>
 <h4 id="get-secret-value">▼ get-secret-value<a class="headerlink" href="#get-secret-value" title="Permanent link">&para;</a></h4>
 <p>特定のSecretに格納されている文字列を取得する。</p>
 <p>注意点として、出力した文字列はダブルクオーテーションで囲われている。</p>
@@ -25929,7 +25929,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <span class="c1"># ダブルクオーテーションで囲われている</span>
 <span class="s2">&quot;...&quot;</span>
 </code></pre></div>
-<p>もしSecrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
+<p>もしAWS Secrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
 <p>そのため、<code>--output</code>オプションで<code>text</code>使用してダブルクオーテーションを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--secret-id<span class="o">=</span>&lt;シークレット名&gt;<span class="w"> </span><span class="se">\</span>
@@ -25965,9 +25965,9 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--profile<span class="w"> </span>foo
 </code></pre></div>
 <p><br></p>
-<h3 id="systems-manager-ssm">Systems Manager (新SSM)<a class="headerlink" href="#systems-manager-ssm" title="Permanent link">&para;</a></h3>
+<h3 id="aws-systems-manager-ssm">AWS Systems Manager (新SSM)<a class="headerlink" href="#aws-systems-manager-ssm" title="Permanent link">&para;</a></h3>
 <h4 id="create-activation">▼ create-activation<a class="headerlink" href="#create-activation" title="Permanent link">&para;</a></h4>
-<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をSystems Managerで管理するために、IDとコードを発行する。</p>
+<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をAWS Systems Managerで管理するために、IDとコードを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>create-activation<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--default-instance-name<span class="w"> </span>foo-vm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--iam-role<span class="w"> </span>foo-vm-role<span class="w"> </span><span class="se">\</span>
@@ -26129,7 +26129,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     
