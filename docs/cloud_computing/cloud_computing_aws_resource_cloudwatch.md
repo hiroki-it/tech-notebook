@@ -384,7 +384,7 @@ $ yum install collectd -y
 | Linux   | `/opt/aws/amazon-cloudwatch-agent/etc`          |
 | Windows | `$Env:ProgramData\Amazon\AmazonCloudWatchAgent` |
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AWS CloudWatch-Agent-Configuration-File-Details.html
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
 
 <br>
 
@@ -454,7 +454,7 @@ cloudwatchエージェント全体を設定する。
 
 実装しなかった場合、デフォルト値が適用される。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AWS CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Agentsection
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Agentsection
 
 ```yaml
 {
@@ -531,7 +531,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 }
 ```
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AWS CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Metricssection
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Metricssection
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-AWS CloudWatch-agent.html
 
 #### ▼ `logs`セクション
@@ -569,7 +569,7 @@ AWSリソースが標準で収集しないカスタムメトリクスのデー�
 }
 ```
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AWS CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Logssection
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Logssection
 
 <br>
 

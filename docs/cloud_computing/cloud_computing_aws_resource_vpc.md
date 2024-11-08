@@ -163,7 +163,7 @@ Gateway型とInterface型がある。
 
 AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとAWS NAT Gatewayを使用する必要がある。
 
-![AWS VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCエンドポイント.png)
+![AWS VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png)
 
 <br>
 
@@ -218,7 +218,7 @@ NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (AWS VPC外
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
-> - https://docs.aws.amazon.com/vpc/latest/userguide/AWS VPC_Internet_Gateway.html
+> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
 <br>
@@ -302,7 +302,7 @@ AWS NAT GatewayのSNAT処理では、プライベートサブネットからリ�
 
 異なるAWS VPCのネットワークを接続する。
 
-![AWS VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続.png)
+![AWS VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続.png)
 
 #### ▼ AWS VPCピアリング接続とは
 
@@ -317,11 +317,11 @@ AWS VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同
 | 同じ/異なる | 同じ/異なる             | 全て異なる              | ⭕️         |
 |             |                         | 同じものが1つでもある   | ✕          |
 
-![AWS VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-1.png)
+![AWS VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png)
 
 たとえ、IPv6が異なっていても、同様である。
 
-![AWS VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-2.png)
+![AWS VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-2.png)
 
 <br>
 
@@ -438,7 +438,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 リソースのIPアドレスが動的に変化する場合、有効な方法である。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/AWS VPC_SecurityGroups.html#DefaultSecurityGroup
+> - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
 
 #### ▼ 自己参照
 
