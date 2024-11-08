@@ -429,7 +429,7 @@ kube-apiserverの監査ログから非推奨apiVersionを検出する。
 | AWS ALB                                  | Ingress                     | IngressはAWS ALBに置き換える必要がある。AWS Load Balancerコントローラーを作成すると、AWS ALBは自動的に作成される。<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
 | AWS Load Balancerコントローラー          | Ingressコントローラー       | AWS ALBを自動的に作成する。<br>・https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on                                                                                                                                                                        |
 | AWS API Gateway + NLB                    |                             | ・https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                         |
-| EBS、EFS                                 | PersistentVolume            | ・https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                              |
+| EBS、AWS EFS                             | PersistentVolume            | ・https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                              |
 | Secrets Manager                          | Secret                      | ・https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                       |
 | IAMユーザー                              | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                        |
 | IAMロール                                | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                        |
@@ -462,7 +462,7 @@ KubernetesのClusterに相当する。
 
 #### ▼ ワーカーNode間のファイル共有
 
-EFSを使用して、ワーカーNode間でファイルを共有する。
+AWS EFSを使用して、ワーカーNode間でファイルを共有する。
 
 PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合 (例：PrometheusのローカルストレージをPod間で共有したい) に役立つ。
 

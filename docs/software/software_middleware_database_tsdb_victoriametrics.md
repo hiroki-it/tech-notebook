@@ -271,7 +271,7 @@ vmstorageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日)
 = 28380 (MB/10日)
 ```
 
-VictoriaMetricsを、もしAWS EC2上で稼働させる場合、EBSボリュームサイズもvmstorageのサイズ以上にする必要がある。
+VictoriaMetricsを、もしAWS EC2上で稼働させる場合、AWS EBSボリュームサイズもvmstorageのサイズ以上にする必要がある。
 
 <br>
 

@@ -369,9 +369,9 @@ ALBがAWS EC2をヘルスチェックし、異常なAWS EC2があれば、必要
 
 <br>
 
-### EBS
+### AWS EBS
 
-EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてAWS EC2を作成し直す。
+AWS EBSが自身をヘルスチェックし、異常がボリュームがあれば、必要に応じてAWS EC2を作成し直す。
 
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html
 
