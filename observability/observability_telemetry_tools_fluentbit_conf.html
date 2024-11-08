@@ -26176,7 +26176,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <span class="w">  </span>flowcounter<span class="w">             </span>FlowCounter
 <span class="w">  </span>gelf<span class="w">                    </span>GELF<span class="w"> </span>Output
 <span class="w">  </span>websocket<span class="w">               </span>Websocket
-<span class="w">  </span>cloudwatch_logs<span class="w">         </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>CloudWatch
+<span class="w">  </span>cloudwatch_logs<span class="w">         </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>AWS<span class="w"> </span>CloudWatch
 <span class="w">  </span>kinesis_firehose<span class="w">        </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>Kinesis<span class="w"> </span>Firehose
 <span class="w">  </span>kinesis_streams<span class="w">         </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>Kinesis<span class="w"> </span>Streams
 <span class="w">  </span>prometheus_exporter<span class="w">     </span>Prometheus<span class="w"> </span>Exporter
@@ -26211,7 +26211,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="cloudwatch_log-cloudwatch">cloudwatch_logプラグイン (新cloudwatchプラグイン)<a class="headerlink" href="#cloudwatch_log-cloudwatch" title="Permanent link">&para;</a></h3>
 <h4 id="cloudwatch_log">▼ cloudwatch_logプラグインとは<a class="headerlink" href="#cloudwatch_log" title="Permanent link">&para;</a></h4>
-<p>ログをCloudWatchログにルーティングする。</p>
+<p>ログをAWS CloudWatchログにルーティングする。</p>
 <p>元々、『cloudwatchプラグイン』という名前だった。</p>
 <blockquote>
 <ul>
@@ -26232,7 +26232,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># CloudWatchログへのルーティング</span>
+<span class="c1"># AWS CloudWatchログへのルーティング</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="o">[</span>OUTPUT<span class="o">]</span>
 <span class="w">    </span><span class="c1"># プラグイン名</span>
@@ -26259,9 +26259,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <span class="w">    </span><span class="c1"># ログを特定のAWSアカウントで中央集中的に管理する場合に、IAMロールを設定する。</span>
 <span class="w">    </span>role_arn<span class="w">          </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/prd-foo-flunetbit-role
 </code></pre></div>
-<p>CloudWatchログに送信されるデータはJSON型である。</p>
+<p>AWS CloudWatchログに送信されるデータはJSON型である。</p>
 <p><code>log</code>キーにログが割り当てられている。</p>
-<p>特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。</p>
+<p>特定のキーの値のみをAWS CloudWatchログに送信する場合、log_keyオプションでキー名を設定する。</p>
 <p>例えば、<code>log</code>キーのみを送信する場合、『<code>log</code>』と設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;container_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
@@ -26423,7 +26423,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     
