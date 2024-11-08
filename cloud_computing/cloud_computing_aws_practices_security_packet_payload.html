@@ -25124,9 +25124,9 @@
 </tbody>
 </table>
 <h4 id="alb">▼ ALBの場合<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。</p>
-<p>代わりに、CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。</p>
-<p>CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。</p>
+<p>AWS CloudFrontと連携する場合、AWS CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。</p>
+<p>代わりに、AWS CloudFrontにAWS WAFを紐付け、ALBの前でIPアドレスを制限する。</p>
+<p>AWS CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。</p>
 <table>
 <thead>
 <tr>
@@ -25144,7 +25144,7 @@
 <td>TCP</td>
 <td><code>80</code></td>
 <td><code>0.0.0.0/0</code></td>
-<td>HTTP access from CloudFront</td>
+<td>HTTP access from AWS CloudFront</td>
 <td></td>
 </tr>
 <tr>
@@ -25152,7 +25152,7 @@
 <td>TCP</td>
 <td><code>443</code></td>
 <td><code>0.0.0.0/0</code></td>
-<td>HTTPS access from CloudFront</td>
+<td>HTTPS access from AWS CloudFront</td>
 <td></td>
 </tr>
 </tbody>
@@ -25499,7 +25499,7 @@
 <h2 id="04-03-certificate-manager">04-03. Certificate Manager<a class="headerlink" href="#04-03-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="certificate-manager">Certificate Managerによる防御<a class="headerlink" href="#certificate-manager" title="Permanent link">&para;</a></h3>
 <p>アプリケーションデータの暗号化のために、Certificate Manager (<code>L7</code>) を使用する。</p>
-<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
+<p>リクエストを受信するAWSリソース (例：ALB、Aurora RDS、AWS CloudFront、AWS EC2/AWS ECS/AWS EKSなど) に紐づけられる。</p>
 <p>安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
 <blockquote>
 <ul>

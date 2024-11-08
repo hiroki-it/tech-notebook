@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="CloudFront＠AWSリソースの知見を記録しています。">
+        <meta name="description" content="AWS CloudFront＠AWSリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】CloudFront＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS CloudFront＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloudfrontaws" class="md-skip">
+        <a href="#aws-cloudfrontaws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】CloudFront＠AWSリソース
+              【IT技術の知見】AWS CloudFront＠AWSリソース
             
           </span>
         </div>
@@ -13061,9 +13061,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-cloudfront" class="md-nav__link">
+  <a href="#01-aws-cloudfront" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CloudFrontとは
+      01. AWS CloudFrontとは
     </span>
   </a>
   
@@ -13135,9 +13135,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfronthttps" class="md-nav__link">
+  <a href="#aws-cloudfronthttps" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CloudFrontとオリジン間のHTTPSプロトコル
+      ▼ AWS CloudFrontとオリジン間のHTTPSプロトコル
     </span>
   </a>
   
@@ -13187,13 +13187,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-cloudfront" class="md-nav__link">
+  <a href="#03-aws-cloudfront" class="md-nav__link">
     <span class="md-ellipsis">
-      03. CloudFrontの仕組み
+      03. AWS CloudFrontの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. CloudFrontの仕組み">
+    <nav class="md-nav" aria-label="03. AWS CloudFrontの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -13206,9 +13206,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfront-dns" class="md-nav__link">
+  <a href="#aws-cloudfront-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      CloudFront DNS
+      AWS CloudFront DNS
     </span>
   </a>
   
@@ -23956,9 +23956,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-cloudfront" class="md-nav__link">
+  <a href="#01-aws-cloudfront" class="md-nav__link">
     <span class="md-ellipsis">
-      01. CloudFrontとは
+      01. AWS CloudFrontとは
     </span>
   </a>
   
@@ -24030,9 +24030,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfronthttps" class="md-nav__link">
+  <a href="#aws-cloudfronthttps" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ CloudFrontとオリジン間のHTTPSプロトコル
+      ▼ AWS CloudFrontとオリジン間のHTTPSプロトコル
     </span>
   </a>
   
@@ -24082,13 +24082,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-cloudfront" class="md-nav__link">
+  <a href="#03-aws-cloudfront" class="md-nav__link">
     <span class="md-ellipsis">
-      03. CloudFrontの仕組み
+      03. AWS CloudFrontの仕組み
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. CloudFrontの仕組み">
+    <nav class="md-nav" aria-label="03. AWS CloudFrontの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24101,9 +24101,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudfront-dns" class="md-nav__link">
+  <a href="#aws-cloudfront-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      CloudFront DNS
+      AWS CloudFront DNS
     </span>
   </a>
   
@@ -24390,7 +24390,7 @@
   
 
 
-<h1 id="cloudfrontaws">CloudFront＠AWSリソース<a class="headerlink" href="#cloudfrontaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-cloudfrontaws">AWS CloudFront＠AWSリソース<a class="headerlink" href="#aws-cloudfrontaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -24399,13 +24399,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-cloudfront">01. CloudFrontとは<a class="headerlink" href="#01-cloudfront" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-cloudfront">01. AWS CloudFrontとは<a class="headerlink" href="#01-aws-cloudfront" title="Permanent link">&para;</a></h2>
 <p>CDN (グローバルなキャッシュサーバー) かつクラウドリバースプロキシサーバーとして働く。</p>
-<p>リバースプロキシでもあるため、CloudFrontの後段にアプリケーションをおけば、アプリケーションをそのまま公開できる。</p>
+<p>リバースプロキシでもあるため、AWS CloudFrontの後段にアプリケーションをおけば、アプリケーションをそのまま公開できる。</p>
 <p>VPCの外側 (パブリックネットワーク) に配置されている。</p>
 <p>オリジンサーバー (コンテンツ提供元) をS3とした場合、動的コンテンツに対するリクエストをEC2に振り分ける。</p>
 <p>また、静的コンテンツに対するリクエストをキャッシュし、その上でS3へ振り分ける。</p>
-<p>次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを実行する。</p>
+<p>次回以降の静的コンテンツのリンクエストは、AWS CloudFrontがレンスポンスを実行する。</p>
 <p><img alt="AWSのクラウドデザイン一例" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudFrontによるリクエストの振り分け.png" /></p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -24432,7 +24432,7 @@
 </tr>
 <tr>
 <td>Behavior</td>
-<td>オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。</td>
+<td>オリジンにリクエストが行われた時のAWS CloudFrontの挙動を設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -24447,7 +24447,7 @@
 </tr>
 <tr>
 <td>Invalidation</td>
-<td>CloudFrontに保管されているキャッシュを削除できる。</td>
+<td>AWS CloudFrontに保管されているキャッシュを削除できる。</td>
 <td></td>
 </tr>
 </tbody>
@@ -24474,12 +24474,12 @@
 </tr>
 <tr>
 <td>AWS WAF</td>
-<td>CloudFrontに紐付けるAWS WAFを設定する。</td>
+<td>AWS CloudFrontに紐付けるAWS WAFを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td>CNAME</td>
-<td>CloudFrontのデフォルトドメイン名 (<code>&lt;発行されたランダム文字列&gt;.cloudfront.net.</code>) に紐付けるDNSレコード名を設定する。</td>
+<td>AWS CloudFrontのデフォルトドメイン名 (<code>&lt;発行されたランダム文字列&gt;.cloudfront.net.</code>) に紐付けるDNSレコード名を設定する。</td>
 <td>・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。</td>
 </tr>
 <tr>
@@ -24489,8 +24489,8 @@
 </tr>
 <tr>
 <td>Security Policy</td>
-<td>リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。</td>
-<td>・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソースなどを含む。<br>・- <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html</a></td>
+<td>リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、AWS CloudFrontが受信できるこれらのバージョンを設定する。</td>
+<td>・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソースなどを含む。<br>・- <a href="https://docs.aws.amazon.com/Amazon">https://docs.aws.amazon.com/Amazon</a> CloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html</td>
 </tr>
 <tr>
 <td>Default Root Object</td>
@@ -24499,7 +24499,7 @@
 </tr>
 <tr>
 <td>Standard Logging</td>
-<td>CloudFrontのアクセスログをS3に作成するか否かを設定する。</td>
+<td>AWS CloudFrontのアクセスログをS3に作成するか否かを設定する。</td>
 <td></td>
 </tr>
 </tbody>
@@ -24516,7 +24516,7 @@
 <tbody>
 <tr>
 <td>Origin Domain Name</td>
-<td>CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。</td>
+<td>AWS CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。</td>
 <td>・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であっても良い。</td>
 </tr>
 <tr>
@@ -24527,7 +24527,7 @@
 <tr>
 <td>Origin Access Identity</td>
 <td>リクエストのルーティング先となるAWSリソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。</td>
-<td>CloudFrontがS3に対して読み出しを実行するために必要。</td>
+<td>AWS CloudFrontがS3に対して読み出しを実行するために必要。</td>
 </tr>
 <tr>
 <td>Origin Protocol Policy</td>
@@ -24583,18 +24583,18 @@
 </tr>
 <tr>
 <td>Object Caching</td>
-<td>CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。</td>
+<td>AWS CloudFrontにコンテンツのキャッシュを保管しておく秒数を設定する。</td>
 <td>・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。</td>
 </tr>
 <tr>
 <td>TTL</td>
-<td>CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。</td>
-<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
+<td>AWS CloudFrontにキャッシュを保管しておく秒数を詳細に設定する。</td>
+<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、AWS CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
 </tr>
 <tr>
 <td>Whitelist Header</td>
 <td>Headers を参考にせよ。</td>
-<td>・<code>Accept-*****</code>：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ <code>CloudFront-Is-*****-Viewer</code>：デバイスタイプのboolean値が格納されている。<br>- <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist</a></td>
+<td>・<code>Accept-*****</code>：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ <code>AWS CloudFront-Is-*****-Viewer</code>：デバイスタイプのboolean値が格納されている。<br>- <a href="https://docs.aws.amazon.com/Amazon">https://docs.aws.amazon.com/Amazon</a> CloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist</td>
 </tr>
 <tr>
 <td>Restrict Viewer Access</td>
@@ -24609,7 +24609,7 @@
 </tbody>
 </table>
 <h4 id="_2">▼ オリジンに対するリクエストの構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>CloudFrontからオリジンに送信されるリクエストの構造例を以下に示す。</p>
+<p>AWS CloudFrontからオリジンに送信されるリクエストの構造例を以下に示す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo/</span>
 <span class="nn">---</span>
 <span class="c1"># リクエストされたドメイン名</span>
@@ -24617,11 +24617,11 @@
 <span class="nt">User-Agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span>
 <span class="nt">Authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;Bearerトークン&gt;</span>
 <span class="nt">X-Amz-Cf-Id</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
-<span class="nt">Via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0 &lt;発行されたランダム文字列&gt;.cloudfront.net (CloudFront)</span>
+<span class="nt">Via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0 &lt;発行されたランダム文字列&gt;.cloudfront.net (AWS CloudFront)</span>
 <span class="c1"># 各Cookieの値 (二回目のリクエスト時に設定される)</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;; _gid=&lt;GoogleAnalytics値&gt;</span>
 <span class="c1"># 送信元IPアドレス</span>
-<span class="c1"># ※プロキシ (ALBやCloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される</span>
+<span class="c1"># ※プロキシ (ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される</span>
 <span class="nt">X-Forwarded-For</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;</span>
 <span class="nt">Accept-Language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja,en;q=0.9</span>
 <span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span>
@@ -24643,8 +24643,8 @@
 <span class="c1"># リクエストのプロトコル</span>
 <span class="nt">CloudFront-Forwarded-Proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
 </code></pre></div>
-<h4 id="cloudfronthttps">▼ CloudFrontとオリジン間のHTTPSプロトコル<a class="headerlink" href="#cloudfronthttps" title="Permanent link">&para;</a></h4>
-<p>CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。</p>
+<h4 id="aws-cloudfronthttps">▼ AWS CloudFrontとオリジン間のHTTPSプロトコル<a class="headerlink" href="#aws-cloudfronthttps" title="Permanent link">&para;</a></h4>
+<p>AWS CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。</p>
 <p>割り当てたとしても、以下の条件を満たさないとHTTPSプロトコルを使用することはできない。</p>
 <p>CLoudFrontからオリジンに<code>Host</code>ヘッダーをルーティングしない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。</p>
 <p>一方で、<code>Host</code>ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、<code>Host</code>ヘッダー値と一致するドメイン名が含まれている必要がある。</p>
@@ -24655,18 +24655,18 @@
 <h4 id="popular-objects">▼ Popular objects<a class="headerlink" href="#popular-objects" title="Permanent link">&para;</a></h4>
 <p>リクエストに関連する様々なデータを、オブジェクト別に集計したものを確認できる。</p>
 <p><br></p>
-<h2 id="03-cloudfront">03. CloudFrontの仕組み<a class="headerlink" href="#03-cloudfront" title="Permanent link">&para;</a></h2>
+<h2 id="03-aws-cloudfront">03. AWS CloudFrontの仕組み<a class="headerlink" href="#03-aws-cloudfront" title="Permanent link">&para;</a></h2>
 <h3 id="point-of-presence">Point Of Presence<a class="headerlink" href="#point-of-presence" title="Permanent link">&para;</a></h3>
-<p>CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。</p>
+<p>AWS CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&amp;whats-new-cloudfront.sort-order=desc">https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&amp;whats-new-cloudfront.sort-order=desc</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cloudfront-dns">CloudFront DNS<a class="headerlink" href="#cloudfront-dns" title="Permanent link">&para;</a></h3>
-<p>CloudFrontのドメイン (<code>&lt;発行されたランダム文字列&gt;.cloudfront.net</code>) の正引きに応じて、エッジサーバーのIPアドレスを返却する。</p>
-<p>CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。</p>
+<h3 id="aws-cloudfront-dns">AWS CloudFront DNS<a class="headerlink" href="#aws-cloudfront-dns" title="Permanent link">&para;</a></h3>
+<p>AWS CloudFrontのドメイン (<code>&lt;発行されたランダム文字列&gt;.cloudfront.net</code>) の正引きに応じて、エッジサーバーのIPアドレスを返却する。</p>
+<p>AWS CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。</p>
 <p><img alt="cloudfront_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -24685,7 +24685,7 @@
 </ul>
 </blockquote>
 <h4 id="ip">▼ 全エッジサーバーのIPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。</p>
+<p>AWS CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。</p>
 <p>以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://ip-ranges.amazonaws.com/ip-ranges.json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">&quot;.prefixes[]| select(.service==&quot;</span>CLOUDFRONT<span class="s2">&quot;) | .ip_prefix&quot;</span>
@@ -24697,7 +24697,7 @@
 </ul>
 </blockquote>
 <h4 id="ip_1">▼ 使用中サーバーのIPアドレス<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
-<p>CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。</p>
+<p>AWS CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。</p>
 <p>以下のコマンドで、エッジロケーションにある使用中サーバーのIPアドレスを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nslookup<span class="w"> </span>&lt;発行されたランダム文字列&gt;.cloudfront.net
 </code></pre></div>
@@ -24707,9 +24707,9 @@
 <h4 id="_6">▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>オリジンにルーティングする必要があるリクエストを、各種パラメーターのAll (全許可) /一部許可/None (全拒否) で設定できる。</p>
 <p>また、キャッシュ作成の有無にも関係している。</p>
-<p>CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。</p>
+<p>AWS CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。</p>
 <p>キャッシュ判定時のパターンを減らし、ヒット率を向上させるために、全ての項目で『None (全拒否) 』を選択した方が良い。</p>
-<p>最終的に、対象のファイルがCloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『<code>X-Cache:</code>』が『<code>Hit from cloudfront</code>』または『<code>Miss from cloudfront</code>』のどちらで判断できる。</p>
+<p>最終的に、対象のファイルがAWS CloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『<code>X-Cache:</code>』が『<code>Hit from cloudfront</code>』または『<code>Miss from cloudfront</code>』のどちらで判断できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html</a></li>
@@ -24752,8 +24752,8 @@
 </blockquote>
 <h4 id="cookie">▼ Cookieに基づくキャッシュ作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
 <p>Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。</p>
-<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保管されたキャッシュがヒットしない。</p>
-<p>CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。</p>
+<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、AWS CloudFrontに保管されたキャッシュがヒットしない。</p>
+<p>AWS CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。</p>
 <p>例えば、GoogleAnalyticsのキー名 (<code>_ga</code>) の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。</p>
 <p>そのため、ユーザーを一意に判定することが難しくなってしまう。</p>
 <p>GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので、オリジンにとっても基本的に不要である。</p>
@@ -24845,7 +24845,7 @@
 <p><br></p>
 <h3 id="_12">クエリストリングキャッシュのヒット率向上<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ヒット率の向上について<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。</p>
+<p>AWS CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。</p>
 <p>キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。</p>
 <blockquote>
 <ul>
@@ -24854,14 +24854,14 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ クエリストリングの順番を固定する<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>リクエスト時のクエリストリングの順番が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
+<p>リクエスト時のクエリストリングの順番が異なる場合、AWS CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
 <p>そのため、クエリストリングの順番を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?fooId=1&amp;barId=2</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?barId=2&amp;fooId=1</span>
 </code></pre></div>
 <h4 id="_15">▼ クエリストリングの大文字小文字表記を固定する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>リクエスト時のクエリストリングの大文字小文字表記が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
+<p>リクエスト時のクエリストリングの大文字小文字表記が異なる場合、AWS CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
 <p>そのため、クエリストリングの大文字小文字表記を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?fooId=1&amp;barId=2</span>
 </code></pre></div>
@@ -24869,20 +24869,20 @@
 </code></pre></div>
 <h4 id="url">▼ 署名付きURLと同じクエリストリングを使用しない<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
 <p>S3には、署名付きURLを発行する機能がある。</p>
-<p>CloudFrontの仕様では、署名付きURLに含まれる<code>Expires</code>、<code>Key-Pair-Id</code>、<code>Policy</code>、<code>Signature</code>といったクエリストリングを削除したうえで、オリジンにリクエストをルーティングする。</p>
+<p>AWS CloudFrontの仕様では、署名付きURLに含まれる<code>Expires</code>、<code>Key-Pair-Id</code>、<code>Policy</code>、<code>Signature</code>といったクエリストリングを削除したうえで、オリジンにリクエストをルーティングする。</p>
 <p>これらのパラメーターは、キャッシュヒットの判定要素として使用できない。</p>
 <p>そのため、URLの設計時にこれらを使用しないようにする。</p>
 <p><br></p>
 <h3 id="invalidation">Invalidation (キャッシュの削除)<a class="headerlink" href="#invalidation" title="Permanent link">&para;</a></h3>
 <p>TTL秒によるキャッシュの自動削除を待たずに、手動でキャッシュを削除できる。</p>
 <p>全てのファイルのキャッシュを削除したい場合は『<code>/*</code>』、特定のファイルのキャッシュを削除したい場合は『<code>/&lt;ファイルへのパス&gt;</code>』、を設定する。</p>
-<p>CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまう。</p>
+<p>AWS CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまう。</p>
 <p>そのため、作業後には必ずキャッシュを削除する。</p>
 <p><br></p>
 <h2 id="05">05. カスタムエラーページ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_16">カスタムエラーページとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>オリジンに該当のファイルが存在しない場合、オリジンはCloudFrontに以下の<code>403</code>ステータスを含むレスポンスを返信する。</p>
-<p>カスタムエラーページを設定しない場合、CloudFrontはこの<code>403</code>ステータスをそのままレスポンスしてしまう。</p>
+<p>オリジンに該当のファイルが存在しない場合、オリジンはAWS CloudFrontに以下の<code>403</code>ステータスを含むレスポンスを返信する。</p>
+<p>カスタムエラーページを設定しない場合、AWS CloudFrontはこの<code>403</code>ステータスをそのままレスポンスしてしまう。</p>
 <p>そのため、オリジンに配置したカスタムエラーページを<code>404</code>ステータスでレスポンスするように設定する。</p>
 <div class="highlight"><pre><span></span><code>This XML file does not appear to have any style information associated with it.
 The document tree is shown below.
@@ -24896,7 +24896,7 @@ The document tree is shown below.
 <p><br></p>
 <h3 id="_17">設定方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>オリジンからカスタムエラーページをレスポンスするパスパターンを定義する。</p>
-<p>Lamnda@Edgeを使用したCloudFrontの場合は、AWS Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。</p>
+<p>Lamnda@Edgeを使用したAWS CloudFrontの場合は、AWS Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html</a></li>
@@ -24923,7 +24923,7 @@ The document tree is shown below.
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     
