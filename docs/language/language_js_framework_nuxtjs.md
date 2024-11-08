@@ -326,7 +326,7 @@ export function foo() {
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
 
-すなわち、全モード (SSG/SPA/SSRモード) が対応している。
+すなわち、全モード (SSG/CSR/SSRモード) が対応している。
 
 環境変数は、`pages`、`store`、`components`、`plugin`ディレクトリで使用できる。
 
