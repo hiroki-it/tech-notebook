@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】RDS＠AWSリソース
-description: RDS＠AWSリソース
+title: 【IT技術の知見】AWS RDS＠AWSリソース
+description: AWS RDS＠AWSリソース
 ---
 
-# RDS＠AWSリソース
+# AWS RDS＠AWSリソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: RDS＠AWSリソース
 
 <br>
 
-## 01. RDS：Relational Database Service
+## 01. AWS RDS：Relational Database Service
 
-### RDSとは
+### AWS RDSとは
 
 <br>
 
@@ -37,12 +37,12 @@ description: RDS＠AWSリソース
 
 #### ▼ DBMSに対応するRDB
 
-| DBMS       | RDB | 互換性           |
-| ---------- | --- | ---------------- |
-| Aurora     | RDS | MySQL/PostgreSQL |
-| MariaDB    | RDS | MariaDB          |
-| MySQL      | RDS | MySQL            |
-| PostgreSQL | RDS | PostgreSQL       |
+| DBMS       | RDB     | 互換性           |
+| ---------- | ------- | ---------------- |
+| Aurora     | AWS RDS | MySQL/PostgreSQL |
+| MariaDB    | AWS RDS | MariaDB          |
+| MySQL      | AWS RDS | MySQL            |
+| PostgreSQL | AWS RDS | PostgreSQL       |
 
 #### ▼ 機能の違い
 
@@ -58,7 +58,7 @@ RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害�
 
 #### ▼ OSの隠蔽とは
 
-RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。
+AWS RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。
 
 そのためdbサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。
 
@@ -211,9 +211,9 @@ $ aws rds modify-db-instance \
 
 <br>
 
-## 02. RDS (Aurora)
+## 02. AWS RDS (Aurora)
 
-### RDS (Aurora) とは
+### AWS RDS (Aurora) とは
 
 <br>
 
@@ -228,7 +228,7 @@ $ aws rds modify-db-instance \
 | 設定項目                | 説明                                                                                                                         | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | レプリケーション        | 単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。 | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、DBクラスターをクローンできないなどのデメリットもある。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| DBクラスター識別子      | DBクラスター名を設定する。                                                                                                   | インスタンス名は、最初に設定できず、RDSの作成後に設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| DBクラスター識別子      | DBクラスター名を設定する。                                                                                                   | インスタンス名は、最初に設定できず、AWS RDSの作成後に設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | VPCとサブネットグループ | DBクラスターを配置するVPCとサブネットを設定する。                                                                            | DBが配置されるサブネットはプライベートサブネットにする、これには、data storeサブネットと名付ける。アプリケーション以外は、踏み台サーバー経由でしかDBにリクエストできないようにする。<br>![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | パラメーターグループ    | グローバルパラメーターを設定する。                                                                                           | デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、全てのインスタンスに同じパラメーターループを設定する必要があるなため、クラスターパラメーターを使用すれば良い。各パラメーターに適用タイプ (dynamic/static) があり、dynamicタイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定すると良い。<br>・`time_zone=Asia/Tokyo`<br>・`character_set_client=utf8mb4`<br>・`character_set_connection=utf8mb4`<br>・`character_set_database=utf8mb4`<br>・`character_set_results=utf8mb4`<br>・`character_set_server=utf8mb4`<br>・`server_audit_logging=1` (監査ログをAWS CloudWatchに送信するか否か) <br>・`server_audit_logs_upload=1`<br>・`general_log=1` (通常クエリログをAWS CloudWatchに送信するか否か) <br>・`slow_query_log=1` (スロークエリログをAWS CloudWatchに送信するか否か) <br>・`long_query_time=3` (スロークエリと見なす最短秒数) |
 | DB認証                  | DBに接続するための認証方法を設定する。                                                                                       | 各DBインスタンスに異なるDB認証を設定できるが、全てのDBインスタンスに同じ認証方法を設定すべきなため、DBクラスターでこれを設定すれば良い。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -241,8 +241,8 @@ $ aws rds modify-db-instance \
 | 認証機関                | DBクラスターに紐づけるSSL証明書を署名するルート認証局を設定する。                                                            | アプリケーションがDBクラスターにHTTPSで通信する場合に必要である。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 削除保護                | DBクラスターの削除を防ぐ。                                                                                                   | DBクラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、DBクラスターの削除保護になっていてもDBインスタンスは削除できる。DBインスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS RDS/
+> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithAWS RDS.SSL.html
 
 #### ▼ DBインスタンス
 
@@ -257,7 +257,7 @@ $ aws rds modify-db-instance \
 | 最初のDB名                             | DBインスタンスに自動的に作成されるDB名を設定                                               |                                                                                                                                                            |
 | マイナーバージョンの自動アップグレード | DBインスタンスのDBエンジンのバージョンを自動的に更新するかを設定する。                     | 開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。   |
 
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/RDS/
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/AWS RDS/
 
 <br>
 
@@ -437,7 +437,7 @@ Auroraをエンジンバージョンに選択した場合に使用できる。
 
 特定の条件下のみで、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。
 
-ゼロダウンタイムパッチ適用が発動した場合、RDSのイベントが記録される。
+ゼロダウンタイムパッチ適用が発動した場合、AWS RDSのイベントが記録される。
 
 ただし、この機能に頼り切らない方が良い。
 
@@ -501,15 +501,15 @@ Auroraでは、設定値 (例：OS、エンジンバージョン、MySQL) のア
 
 #### ▼ ダウンタイムの計測例
 
-アプリケーションにリクエストを送信する方法と、RDSにクエリを直接的に送信する方法がある。
+アプリケーションにリクエストを送信する方法と、AWS RDSにクエリを直接的に送信する方法がある。
 
-レスポンスとRDSイベントログから、ダウンタイムを計測する。
+レスポンスとAWS RDSイベントログから、ダウンタイムを計測する。
 
 **＊実装例＊**
 
 Aurora MySQLのアップグレードに伴うダウンタイムを計測する。
 
-踏み台サーバーを経由してRDSに接続し、現在時刻を取得するSQLを送信する。
+踏み台サーバーを経由してAWS RDSに接続し、現在時刻を取得するSQLを送信する。
 
 この時、`for`文や`watch`コマンドを使用する。
 
@@ -604,7 +604,7 @@ NOW()
 2021-04-21 06:23:17
 ```
 
-アップグレード時のプライマリーインスタンスのRDSイベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。
+アップグレード時のプライマリーインスタンスのAWS RDSイベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。
 
 ![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_primary-instance.png)
 
@@ -712,7 +712,7 @@ DBインスタンスに応じたエンドポイントが用意されている。
 
 リードレプリカの手動追加もしくはAutoScalingによって、Auroraに関するメトリクス (例：平均CPU使用率、平均DB接続数など) がターゲット値を維持できるように、リードレプリカの自動水平スケーリング (リードレプリカ数の増減) を実行する。
 
-注意点として、RDS (非Aurora) スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
+注意点として、AWS RDS (非Aurora) スケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Auroraのスケーリングとは仕様が異なっている。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Integrating.AutoScaling.html
 > - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
@@ -732,7 +732,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する。
 
 スロークエリを検出し、そのSQLで対象としているカラムにユニークキーやインデックスを設定する。
 
-スロークエリを検出する方法として、RDSの`long_query_time`パラメーターに基づいた検出や、`EXPLAIN`句による予想実行時間の比較などがある。
+スロークエリを検出する方法として、AWS RDSの`long_query_time`パラメーターに基づいた検出や、`EXPLAIN`句による予想実行時間の比較などがある。
 
 <br>
 
@@ -775,7 +775,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 03. RDS (非Aurora)
+## 03. AWS RDS (非Aurora)
 
 ### ダウンタイム
 
@@ -800,7 +800,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 ### フェイルオーバー
 
-#### ▼ RDSのフェイルオーバーとは
+#### ▼ AWS RDSのフェイルオーバーとは
 
 スタンバイレプリカがプライマリーインスタンスに昇格する。
 
@@ -822,7 +822,7 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
 
-(3) 非AuroraのRDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
+(3) 非AuroraのAWS RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
 
@@ -840,9 +840,9 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 <br>
 
-## 04. RDSプロキシ
+## 04. AWS RDSプロキシ
 
-### RDSプロキシとは
+### AWS RDSプロキシとは
 
 クラウドDBプロキシとして働く。
 
@@ -850,15 +850,15 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を使用し�
 
 ### コネクションプールの管理
 
-アプリからRDSにクエリが送信された時、コネクションを新しく作成せずに、コネクションプール内の非アクティブなコネクションを再利用し、RDSに転送する。
+アプリからAWS RDSにクエリが送信された時、コネクションを新しく作成せずに、コネクションプール内の非アクティブなコネクションを再利用し、AWS RDSに転送する。
 
-アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリはRDSの同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。
+アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリはAWS RDSの同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。
 
 そのため、接続数が多くなりやすいアプリ (例：AWS Lambda、マルチスレッド) を使用していると、アプリが無制限にコネクションを新しく作成することになる。
 
-その結果、アプリのコネクションがRDSの同時接続の上限数を超えて接続してしまい、RDSがエラーを返却してしまう。
+その結果、アプリのコネクションがAWS RDSの同時接続の上限数を超えて接続してしまい、AWS RDSがエラーを返却してしまう。
 
-RDSプロキシは、RDSの同時接続の上限数を考慮しつつ、コネクションプールから非アクティブなコネクションを再利用するため、アプリがRDSの同時接続の上限数を超えて接続することがない。
+AWS RDSプロキシは、AWS RDSの同時接続の上限数を考慮しつつ、コネクションプールから非アクティブなコネクションを再利用するため、アプリがAWS RDSの同時接続の上限数を超えて接続することがない。
 
 ![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png)
 

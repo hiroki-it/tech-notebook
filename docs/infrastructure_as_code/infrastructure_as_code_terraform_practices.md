@@ -127,7 +127,7 @@ repository/
     │   │   └── functions/
     │   │       └── foo_function/ # スクリプトのディレクトリ
     │   │
-    │   └── rds/        # RDS
+    │   └── rds/        # AWS RDS
     │
     └── waf/ # WAF
         ├── alb/         # ALB
@@ -1152,13 +1152,13 @@ ALB
 EC2
 ⬇︎⬆︎
 ⬇︎⬆︎
-RDS
+AWS RDS
 ```
 
 といった構成のインフラがあった時に、AWSリソース単体の細かい設定値まではテストせずに、以下の観点で結合テストを実施する。
 
 - AWSリソース間の疎通がうまくいくか
-- ALBにリクエストを飛ばしてRDSが期待値を返却するか
+- ALBにリクエストを飛ばしてAWS RDSが期待値を返却するか
 
 ```yaml
 リクエストを送信
@@ -1170,7 +1170,7 @@ ALB
 EC2
 ⬇︎⬆︎
 ⬇︎⬆︎
-RDS
+AWS RDS
 ```
 
 > - https://www.infracloud.io/blogs/testing-iac-terratest/
@@ -1279,7 +1279,7 @@ DBインスタンスの設定変更でダウンタイムが発生する場合、
 
 ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。
 
-RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
+AWS RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 

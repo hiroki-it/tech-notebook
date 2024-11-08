@@ -163,7 +163,7 @@ AWS CloudFrontは世界中に配置される『Point Of Presence (エッジロ�
 
 AWS CloudFrontのドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーのIPアドレスを返却する。
 
-AWS CloudFrontのドメインは、AWS AWS Route53のDNSレコードとして登録する。
+AWS CloudFrontのドメインは、AWS Route53のDNSレコードとして登録する。
 
 ![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 

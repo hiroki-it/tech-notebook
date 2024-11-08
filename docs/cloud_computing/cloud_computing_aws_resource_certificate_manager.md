@@ -151,7 +151,7 @@ CloudFrontは謎...
 
 ## 05-02. SSL証明書の配置場所パターン
 
-### EC2/AWS ECS/AWS EKSのダウンストリーム
+### AWS EC2/AWS ECS/AWS EKSのダウンストリーム
 
 #### ▼ SSL/TLS終端
 
@@ -170,16 +170,16 @@ AWSの使用上、ACMのSSL証明書を配置できないAWSリソースに対�
 
 #### ▼ AWS Route53 ➡︎ ALB、NLB、の場合
 
-ALBでSSL/TLS終端とする場合、EC2/AWS ECS/AWS EKSにSSL証明書は不要である。
+ALBでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにSSL証明書は不要である。
 
-EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、EC2/AWS ECS/AWS EKSにAWS以外で作成したSSL証明書を配置する。
+AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(AWS Route53には必ず配置)                                             | SSL/TLS終端<br>(HTTPSの最終地点) |
-| --------------------------------------------------------------------------------- | -------------------------------- |
-| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/AWS ECS/AWS EKS                      | ALB                              |
-| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | EC2/AWS ECS/AWS EKS              |
-| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)           | Lightsail                        |
-| AWS Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | EC2/AWS ECS/AWS EKS              |
+| パターン<br>(AWS Route53には必ず配置)                                                 | SSL/TLS終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------------------------------- | -------------------------------- |
+| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ AWS EC2/AWS ECS/AWS EKS                      | ALB                              |
+| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | AWS EC2/AWS ECS/AWS EKS          |
+| AWS Route53 ➡︎ ALB (ACMのSSL証明書) ➡︎ Lightsail (AWS以外のSSL証明書)               | Lightsail                        |
+| AWS Route53 ➡︎ NLB (ACMのSSL証明書) ➡︎ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | AWS EC2/AWS ECS/AWS EKS          |
 
 > - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
 
@@ -204,34 +204,34 @@ CloudFrontからALBにHTTPSリクエストを送信する場合、それぞれ�
 
 CloudFrontに送信されたHTTPSリクエストをALBにルーティングするために、両方に紐付ける証明書で承認するドメインは、一致させる必要がある。
 
-| パターン<br>(AWS Route53には必ず配置)                                                       | SSL/TLS終端<br>(HTTPSの最終地点) |
-| ------------------------------------------------------------------------------------------- | -------------------------------- |
-| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ EC2/AWS ECS/AWS EKS | ALB                              |
-| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ EC2/AWS ECS/AWS EKS                         | CloudFront                       |
-| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                                          | CloudFront                       |
+| パターン<br>(AWS Route53には必ず配置)                                                           | SSL/TLS終端<br>(HTTPSの最終地点) |
+| ----------------------------------------------------------------------------------------------- | -------------------------------- |
+| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ ALB(ACMのSSL証明書) ➡︎ AWS EC2/AWS ECS/AWS EKS | ALB                              |
+| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ AWS EC2/AWS ECS/AWS EKS                         | CloudFront                       |
+| AWS Route53 ➡︎ CloudFront (ACMのSSL証明書) ➡︎ S3                                              | CloudFront                       |
 
-#### ▼ AWS Route53 ➡︎ EC2/AWS ECS/AWS EKS、Lightsail、の場合
+#### ▼ AWS Route53 ➡︎ AWS EC2/AWS ECS/AWS EKS、Lightsail、の場合
 
-AWS Route53でSSL/TLS終端とする場合、EC2/AWS ECS/AWS EKSにSSL証明書は不要である。
+AWS Route53でSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにSSL証明書は不要である。
 
-EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、EC2/AWS ECS/AWS EKSにAWS以外で作成したSSL証明書を配置する。
+AWS EC2/AWS ECS/AWS EKSでSSL/TLS終端とする場合、AWS EC2/AWS ECS/AWS EKSにAWS以外で作成したSSL証明書を配置する。
 
-| パターン<br>(AWS Route53には必ず配置)                    | SSL/TLS終端<br>(HTTPSの最終地点) |
-| -------------------------------------------------------- | -------------------------------- |
-|                                                          |
-| AWS Route53 ➡︎ EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | EC2/AWS ECS/AWS EKS              |
-| AWS Route53 ➡︎ Lightsail (ACMのSSL証明書)               | Lightsail                        |
-| AWS Route53 ➡︎ Lightsail (ACMのSSL証明書)               | Lightsail                        |
+| パターン<br>(AWS Route53には必ず配置)                        | SSL/TLS終端<br>(HTTPSの最終地点) |
+| ------------------------------------------------------------ | -------------------------------- |
+|                                                              |
+| AWS Route53 ➡︎ AWS EC2/AWS ECS/AWS EKS (AWS以外のSSL証明書) | AWS EC2/AWS ECS/AWS EKS          |
+| AWS Route53 ➡︎ Lightsail (ACMのSSL証明書)                   | Lightsail                        |
+| AWS Route53 ➡︎ Lightsail (ACMのSSL証明書)                   | Lightsail                        |
 
 <br>
 
-### EC2/AWS ECS/AWS EKSの後段
+### AWS EC2/AWS ECS/AWS EKSの後段
 
-#### ▼ Aurora
+#### ▼ AWS Aurora
 
-Aurora RDSにSSL証明書を紐づける。
+AWS Aurora RDSにSSL証明書を紐づける。
 
-EC2/AWS ECS/AWS EKSからAurora RDSへのアプリケーションデータを暗号化できる。
+AWS EC2/AWS ECS/AWS EKSからAWS Aurora RDSへのアプリケーションデータを暗号化できる。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 
