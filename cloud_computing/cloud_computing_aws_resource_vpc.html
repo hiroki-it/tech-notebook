@@ -24935,7 +24935,7 @@
 <p>AWS VPCのプライベートサブネット内のリソースが、AWS VPC外 (例：AWS VPC外AWSリソース、他のAWS VPC、AWSマーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。</p>
 <p>Gateway型とInterface型がある。</p>
 <p>AWS VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとAWS NAT Gatewayを使用する必要がある。</p>
-<p><img alt="AWS VPCエンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCエンドポイント.png" /></p>
+<p><img alt="AWS VPCエンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCエンドポイント.png" /></p>
 <p><br></p>
 <h3 id="aws-vpcaws-nat-gateway">AWS VPCエンドポイントとAWS NAT Gatewayの料金比較<a class="headerlink" href="#aws-vpcaws-nat-gateway" title="Permanent link">&para;</a></h3>
 <p>AWS NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。</p>
@@ -24974,7 +24974,7 @@
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/">https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/</a></li>
-<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/AWS">https://docs.aws.amazon.com/vpc/latest/userguide/AWS</a> VPC_Internet_Gateway.html</li>
+<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html</a></li>
 <li><a href="https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/">https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/</a></li>
 </ul>
 </blockquote>
@@ -25040,7 +25040,7 @@
 <h2 id="07-aws-vpcaws-vpc-">07. AWS VPC間、AWS VPC-オンプレミス間の通信<a class="headerlink" href="#07-aws-vpcaws-vpc-" title="Permanent link">&para;</a></h2>
 <h3 id="aws-vpc_2">AWS VPCピアリング接続<a class="headerlink" href="#aws-vpc_2" title="Permanent link">&para;</a></h3>
 <p>異なるAWS VPCのネットワークを接続する。</p>
-<p><img alt="AWS VPCピアリング接続" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続.png" /></p>
+<p><img alt="AWS VPCピアリング接続" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続.png" /></p>
 <h4 id="aws-vpc_3">▼ AWS VPCピアリング接続とは<a class="headerlink" href="#aws-vpc_3" title="Permanent link">&para;</a></h4>
 <p>『一対一』の関係で、『異なるAWS VPC間』の双方向通信を可能にする。</p>
 <h4 id="aws-vpc_4">▼ AWS VPCピアリング接続の可否<a class="headerlink" href="#aws-vpc_4" title="Permanent link">&para;</a></h4>
@@ -25069,9 +25069,9 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="AWS VPCピアリング接続不可の場合-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-1.png" /></p>
+<p><img alt="AWS VPCピアリング接続不可の場合-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-1.png" /></p>
 <p>たとえ、IPv6が異なっていても、同様である。</p>
-<p><img alt="AWS VPCピアリング接続不可の場合-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AWS VPCピアリング接続不可の場合-2.png" /></p>
+<p><img alt="AWS VPCピアリング接続不可の場合-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCピアリング接続不可の場合-2.png" /></p>
 <p><br></p>
 <h3 id="aws-vpc_5">AWS VPCエンドポイントサービス<a class="headerlink" href="#aws-vpc_5" title="Permanent link">&para;</a></h3>
 <h4 id="aws-vpc_6">▼ AWS VPCエンドポイントサービスとは<a class="headerlink" href="#aws-vpc_6" title="Permanent link">&para;</a></h4>
@@ -25214,7 +25214,7 @@
 <p>リソースのIPアドレスが動的に変化する場合、有効な方法である。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/AWS">https://docs.aws.amazon.com/vpc/latest/userguide/AWS</a> VPC_SecurityGroups.html#DefaultSecurityGroup</li>
+<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup</a></li>
 </ul>
 </blockquote>
 <h4 id="_14">▼ 自己参照<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Route53＠AWSリソース">
+        <meta name="description" content="AWS Route53＠AWSリソース">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Route53＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS Route53＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#route53aws" class="md-skip">
+        <a href="#aws-route53aws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -125,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Route53＠AWSリソース
+              【IT技術の知見】AWS Route53＠AWSリソース
             
           </span>
         </div>
@@ -13619,9 +13619,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-route53" class="md-nav__link">
+  <a href="#01-aws-route53" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Route53とは
+      01. AWS Route53とは
     </span>
   </a>
   
@@ -13787,9 +13787,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-route53-dns" class="md-nav__link">
+  <a href="#03-aws-route53-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      03 Route53 + DNSサーバーによる名前解決の仕組み
+      03 AWS Route53 + DNSサーバーによる名前解決の仕組み
     </span>
   </a>
   
@@ -23716,9 +23716,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-route53" class="md-nav__link">
+  <a href="#01-aws-route53" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Route53とは
+      01. AWS Route53とは
     </span>
   </a>
   
@@ -23884,9 +23884,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-route53-dns" class="md-nav__link">
+  <a href="#03-aws-route53-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      03 Route53 + DNSサーバーによる名前解決の仕組み
+      03 AWS Route53 + DNSサーバーによる名前解決の仕組み
     </span>
   </a>
   
@@ -23910,7 +23910,7 @@
   
 
 
-<h1 id="route53aws">Route53＠AWSリソース<a class="headerlink" href="#route53aws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-route53aws">AWS Route53＠AWSリソース<a class="headerlink" href="#aws-route53aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -23919,7 +23919,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-route53">01. Route53とは<a class="headerlink" href="#01-route53" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-route53">01. AWS Route53とは<a class="headerlink" href="#01-aws-route53" title="Permanent link">&para;</a></h2>
 <p>クラウドDNSサーバーとして働く。</p>
 <p>リクエストされたドメイン名とEC2のグローバルIPアドレスをマッピングしている。</p>
 <p>名前の由来は、名前解決時に<code>53</code>番ポートを使用するためである。</p>
@@ -24052,14 +24052,14 @@
 </table>
 <h4 id="aws">▼ AWS以外でドメインを購入した場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
 <p>ドメイン名の名前解決は、ドメインを購入したドメインレジストラで行われる。</p>
-<p>そのため、AWS以外 (例：お名前ドットコム) でドメインを購入した場合、Route53のNSレコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。</p>
-<p>これにより、ドメインレジストラに対してIPアドレスの問い合わせがあった場合は、Route53のNSレコード値がDNSサーバーにレスポンスされるようになる。</p>
-<p>DNSサーバーがRoute53に問い合わせると、Route53はDNSサーバーとして動作し、アプリケーションのIPアドレスをレスポンスする。</p>
-<p>一方で逆も然りで、AWS以外のシステムのドメインをRoute53で購入した場合、そのシステムのNSレコードをRoute53に登録することになる。</p>
+<p>そのため、AWS以外 (例：お名前ドットコム) でドメインを購入した場合、AWS Route53のNSレコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。</p>
+<p>これにより、ドメインレジストラに対してIPアドレスの問い合わせがあった場合は、AWS Route53のNSレコード値がDNSサーバーにレスポンスされるようになる。</p>
+<p>DNSサーバーがAWS Route53に問い合わせると、AWS Route53はDNSサーバーとして動作し、アプリケーションのIPアドレスをレスポンスする。</p>
+<p>一方で逆も然りで、AWS以外のシステムのドメインをAWS Route53で購入した場合、そのシステムのNSレコードをAWS Route53に登録することになる。</p>
 <h4 id="dns_3">▼ DNSキャッシュ<a class="headerlink" href="#dns_3" title="Permanent link">&para;</a></h4>
 <p>ルートサーバーは世界に13機しか存在しておらず、現実的には、世界中の名前解決の全てのリクエストを処理できない。</p>
 <p>そこで、IPアドレスとドメイン名の関係をキャッシュするプロキシサーバー (キャッシュDNSサーバー) が使用されている。</p>
-<p>基本的には、プロキシサーバーとDNSサーバーは区別されるが、Route53はプロキシサーバーとDNSサーバーの能力を両立している。</p>
+<p>基本的には、プロキシサーバーとDNSサーバーは区別されるが、AWS Route53はプロキシサーバーとDNSサーバーの能力を両立している。</p>
 <p><br></p>
 <h3 id="_3">リゾルバー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リゾルバーとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -24121,8 +24121,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-route53-dns">03 Route53 + DNSサーバーによる名前解決の仕組み<a class="headerlink" href="#03-route53-dns" title="Permanent link">&para;</a></h2>
-<p><img alt="Route53を含む名前解決の仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png" /></p>
+<h2 id="03-aws-route53-dns">03 AWS Route53 + DNSサーバーによる名前解決の仕組み<a class="headerlink" href="#03-aws-route53-dns" title="Permanent link">&para;</a></h2>
+<p><img alt="AWS Route53を含む名前解決の仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -24134,14 +24134,14 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Route53は、IPアドレスのキャッシュを検索する。キャッシュが無ければ、Route53はIPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。</p>
+<p>AWS Route53は、IPアドレスのキャッシュを検索する。キャッシュが無ければ、AWS Route53はIPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。</p>
 </dd>
 </dl>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">ドメイン名</th>
-<th style="text-align: center;">Route53による変換</th>
+<th style="text-align: center;">AWS Route53による変換</th>
 <th style="text-align: center;">IPアドレス</th>
 </tr>
 </thead>
@@ -24188,7 +24188,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-08</span>
   </span>
 
     

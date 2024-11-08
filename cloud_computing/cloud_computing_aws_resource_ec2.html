@@ -25979,7 +25979,7 @@
 <tr>
 <td>暗号化</td>
 <td>AWS EC2とAWS EBSボリューム間のI/O処理を暗号化するか否かを設定する。</td>
-<td>・<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AWS">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AWS</a> EBSEncryption.html</td>
+<td>・<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html</a></td>
 </tr>
 </tbody>
 </table>
@@ -26318,7 +26318,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="ssh">キーペアを使用したSSH公開鍵認証<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
 <p>キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つAWS EC2にSSH公開鍵認証でリクエストできる。</p>
 <p>クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。</p>
-<p>その後、Route53、ALBを経由せず、そのままAWS EC2へ向かう。</p>
+<p>その後、AWS Route53、ALBを経由せず、そのままAWS EC2へ向かう。</p>
 <p><img alt="ssh-port-forward" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png" /></p>
 <p><br></p>
 <h3 id="_26">セッションマネージャーを使用したログインシェル<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>

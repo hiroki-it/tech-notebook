@@ -23957,7 +23957,7 @@
 <p>SSGの場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件が全て整う。</p>
 <p>CSRの場合、サーバーレスのバックエンドを自動作成してくれ、フロントエンドをデプロイしさえすれば、要件が全て整う。</p>
 <p>これのAWSリソースはCloudFormationによって作成されるが、Amplify経由でしか設定を変更できず、各AWSリリースのコンソール画面を見ても、非表示になっている。</p>
-<p>ただし、Route53の設定は表示されており、Amplifyが追加したDNSレコードをユーザーが編集できるようになっている。</p>
+<p>ただし、AWS Route53の設定は表示されており、Amplifyが追加したDNSレコードをユーザーが編集できるようになっている。</p>
 <table>
 <thead>
 <tr>
@@ -24139,7 +24139,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 <p>バージョン管理リポジトリのルートに<code>amplify.yml</code>ファイルを配置する。</p>
 <p>Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。</p>
 <p><code>package.json</code>ファイルで使用される<code>next</code>コマンドに応じて、SSGまたはSSRのいずれかのインフラが作成され、デプロイされる。</p>
-<p>SSGの場合、裏側ではS3、CloudFront、Route53などが作成され、静的ホスティングが実行される。</p>
+<p>SSGの場合、裏側ではS3、CloudFront、AWS Route53などが作成され、静的ホスティングが実行される。</p>
 <p>SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS LambdaやCogniteを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 
