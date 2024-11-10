@@ -18,7 +18,7 @@
         <link rel="prev" href="observability_telemetry_tools_prometheus_resource_definition.html">
       
       
-        <link rel="next" href="observability_telemetry_tools_prometheus_metrics.html">
+        <link rel="next" href="observability_telemetry_tools_prometheus_exporter_blackbox_exporter.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -22723,6 +22723,56 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_5_8_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_21_5_8_4" id="__nav_21_5_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Exporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_5_8_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_5_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Exporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -22896,13 +22946,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-blackbox-exporter" class="md-nav__link">
+  <a href="#02-mysql-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      02. Blackbox exporter
+      02. MySQL Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Blackbox exporter">
+    <nav class="md-nav" aria-label="02. MySQL Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22930,163 +22980,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#module" class="md-nav__link">
-    <span class="md-ellipsis">
-      module
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="module">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ http
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tcp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icmp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ icmp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ grpc
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http-probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      http probe
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="http probe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GETリクエストの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POSTリクエストの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-kube-state-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. kube-state-metrics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. kube-state-metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      マニフェストの種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストの種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deployment_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Deployment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       メトリクスの一覧
     </span>
@@ -23096,18 +22990,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ よく使用するメトリクス
     </span>
   </a>
   
@@ -23124,17 +23009,107 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-mysql-exporter" class="md-nav__link">
+  <a href="#03-postgresql-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      04. MySQL exporter
+      03. PostgreSQL Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. MySQL exporter">
+    <nav class="md-nav" aria-label="03. PostgreSQL Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql" class="md-nav__link">
+    <span class="md-ellipsis">
+      PromQLを使用したメトリクス分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PostgreSQLのプロセスのステータス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PostgreSQLの連続稼働時間
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DBインスタンス間のデータ同期の遅延
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 残骸タプルサイズ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-process-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Process Exporter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Process Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -23142,6 +23117,15 @@
   
     <nav class="md-nav" aria-label="セットアップ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ バイナリとして
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
@@ -23187,330 +23171,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-node-exporter" class="md-nav__link">
+  <a href="#05-redis-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      05. Node exporter
+      05. Redis Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. Node exporter">
+    <nav class="md-nav" aria-label="05. Redis Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      セットアップ
+      メトリクスの一覧
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セットアップ">
+    <nav class="md-nav" aria-label="メトリクスの一覧">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バイナリとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#promql" class="md-nav__link">
-    <span class="md-ellipsis">
-      PromQLを使用したメトリクス分析
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CPU使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メモリ使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスク使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iocpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスクのI/OによるCPU使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスクのI/Oレスポンスタイム
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ パケットの受信サイズ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-postgresql-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. PostgreSQL exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. PostgreSQL exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#promql_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      PromQLを使用したメトリクス分析
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PostgreSQLのプロセスのステータス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgresql_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PostgreSQLの連続稼働時間
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンス間のデータ同期の遅延
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 残骸タプルサイズ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-process-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. Process exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. Process exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バイナリとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07-redis-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      07. Redis exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="07. Redis exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 確認方法
     </span>
@@ -23531,6 +23212,77 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_blackbox_exporter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blackbox Exporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_kube_state_metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-state-metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_node_exporter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Exporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -24406,13 +24158,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-blackbox-exporter" class="md-nav__link">
+  <a href="#02-mysql-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      02. Blackbox exporter
+      02. MySQL Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Blackbox exporter">
+    <nav class="md-nav" aria-label="02. MySQL Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24440,163 +24192,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#module" class="md-nav__link">
-    <span class="md-ellipsis">
-      module
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="module">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ http
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tcp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ tcp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ dns
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icmp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ icmp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ grpc
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http-probe" class="md-nav__link">
-    <span class="md-ellipsis">
-      http probe
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="http probe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ GETリクエストの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ POSTリクエストの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-kube-state-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. kube-state-metrics
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. kube-state-metrics">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      マニフェストの種類
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストの種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deployment_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Deployment
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       メトリクスの一覧
     </span>
@@ -24606,18 +24202,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ よく使用するメトリクス
     </span>
   </a>
   
@@ -24634,17 +24221,107 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-mysql-exporter" class="md-nav__link">
+  <a href="#03-postgresql-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      04. MySQL exporter
+      03. PostgreSQL Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. MySQL exporter">
+    <nav class="md-nav" aria-label="03. PostgreSQL Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql" class="md-nav__link">
+    <span class="md-ellipsis">
+      PromQLを使用したメトリクス分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PostgreSQLのプロセスのステータス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ PostgreSQLの連続稼働時間
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ DBインスタンス間のデータ同期の遅延
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 残骸タプルサイズ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-process-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Process Exporter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Process Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       セットアップ
     </span>
@@ -24652,6 +24329,15 @@
   
     <nav class="md-nav" aria-label="セットアップ">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ バイナリとして
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
@@ -24697,330 +24383,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-node-exporter" class="md-nav__link">
+  <a href="#05-redis-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      05. Node exporter
+      05. Redis Exporter
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. Node exporter">
+    <nav class="md-nav" aria-label="05. Redis Exporter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      セットアップ
+      メトリクスの一覧
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セットアップ">
+    <nav class="md-nav" aria-label="メトリクスの一覧">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バイナリとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#promql" class="md-nav__link">
-    <span class="md-ellipsis">
-      PromQLを使用したメトリクス分析
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ CPU使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ メモリ使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスク使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iocpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスクのI/OによるCPU使用率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#io" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ ディスクのI/Oレスポンスタイム
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ パケットの受信サイズ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-postgresql-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. PostgreSQL exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. PostgreSQL exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#promql_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      PromQLを使用したメトリクス分析
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PostgreSQLのプロセスのステータス
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#postgresql_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ PostgreSQLの連続稼働時間
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ DBインスタンス間のデータ同期の遅延
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 残骸タプルサイズ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-process-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      06. Process exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. Process exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バイナリとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ チャートとして
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 確認方法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07-redis-exporter" class="md-nav__link">
-    <span class="md-ellipsis">
-      07. Redis exporter
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="07. Redis exporter">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    <span class="md-ellipsis">
-      メトリクスの一覧
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メトリクスの一覧">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 確認方法
     </span>
@@ -25132,14 +24515,14 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/node_exporter">Node exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/prometheus/node_exporter">Node Exporter</a></td>
 <td>Nodeに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9100</code></td>
 <td><code>/metrics</code></td>
 <td><code>node_*</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/ncabatoff/process-exporter">Process exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/ncabatoff/process-exporter">Process Exporter</a></td>
 <td>Nodeの非コンテナのプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は<code>config.yaml</code>ファイルで設定できる。 <br>・<a href="https://qiita.com/kkentaro/items/c01b8cf332da893791bb">https://qiita.com/kkentaro/items/c01b8cf332da893791bb</a></td>
 <td><code>9256</code></td>
 <td>同上</td>
@@ -25167,14 +24550,14 @@
 <td><code>kube_*</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox Exporter</a></td>
 <td>指定したプロトコルで外形監視を実施する。外形監視のため、リクエストは一度Cluster外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータスなど) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
 <td><code>9115</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus-community/elasticsearch_exporter">Elasticsearch exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/prometheus-community/elasticsearch_exporter">Elasticsearch Exporter</a></td>
 <td>ElasticSearchに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9114</code></td>
 <td>同上</td>
@@ -25195,42 +24578,42 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/hnlq715/nginx-vts-exporter">Nginx Vts exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/hnlq715/nginx-vts-exporter">Nginx Vts Exporter</a></td>
 <td>Nginxに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9113</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/Lusitaniae/apache_exporter">Apache exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/Lusitaniae/apache_exporter">Apache Exporter</a></td>
 <td>Apacheに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9117</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/mysqld_exporter">Mysqld exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/prometheus/mysqld_exporter">Mysqld Exporter</a></td>
 <td>MySQL/MariaDBに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9104</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus-community/postgres_exporter">Postgres exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/prometheus-community/postgres_exporter">Postgres Exporter</a></td>
 <td>PostgreSQLに関するメトリクスのデータポイントを収集する。<br>・<a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage">https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage</a></td>
 <td><code>9187</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/iamseth/oracledb_exporter">Oracledb exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/iamseth/oracledb_exporter">Oracledb Exporter</a></td>
 <td>Oracleに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9121</code></td>
 <td>同上</td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="https://github.com/oliver006/redis_exporter">Redis exporter</a></td>
+<td style="text-align: left;"><a href="https://github.com/oliver006/redis_exporter">Redis Exporter</a></td>
 <td>Redisに関するメトリクスのデータポイントを収集する。</td>
 <td><code>9121</code></td>
 <td>同上</td>
@@ -25278,351 +24661,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-blackbox-exporter">02. Blackbox exporter<a class="headerlink" href="#02-blackbox-exporter" title="Permanent link">&para;</a></h2>
+<h2 id="02-mysql-exporter">02. MySQL Exporter<a class="headerlink" href="#02-mysql-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ チャートとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
-
-$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
-
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
-
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus-blackbox-exporter<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="module">module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
-<h4 id="http">▼ http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>外形監視でHTTPリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="tcp">▼ tcp<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>外形監視でTCPスリーウェイハンドシェイクを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
-<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="dns">▼ dns<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
-<p>外形監視でHTTPリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span>
-<span class="w">    </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="icmp">▼ icmp<a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h4>
-<p>外形監視でICMPリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icmp</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h4 id="grpc">▼ grpc<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<p>外形監視でgRPCによるHTTPリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="http-probe">http probe<a class="headerlink" href="#http-probe" title="Permanent link">&para;</a></h3>
-<h4 id="get">▼ GETリクエストの場合<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
-<p>外形監視でGETリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># GETの場合 (HTTPS)</span>
-<span class="w">  </span><span class="nt">https_2xx_get</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
-<span class="w">    </span><span class="c1"># http probe</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
-<span class="w">      </span><span class="nt">valid_http_versions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/2.0</span>
-<span class="w">      </span><span class="c1"># 優先するIPアドレスの種類</span>
-<span class="w">      </span><span class="nt">preferred_ip_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip4</span>
-<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">follow_redirects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">icmp</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">recursion_desired</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-
-<span class="w">  </span><span class="c1"># GETの場合 (HTTPS)</span>
-<span class="w">  </span><span class="nt">http_2xx_get</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
-<span class="w">    </span><span class="c1"># http probe</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
-<span class="w">      </span><span class="nt">valid_http_versions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1</span>
-<span class="w">      </span><span class="c1"># 優先するIPアドレスの種類</span>
-<span class="w">      </span><span class="nt">preferred_ip_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip4</span>
-<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">tls_config</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># SSL証明書を任意にする</span>
-<span class="w">        </span><span class="nt">insecure_skip_verify</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe">https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe</a></li>
-<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/example.yml">https://github.com/prometheus/blackbox_exporter/blob/master/example.yml</a></li>
-</ul>
-</blockquote>
-<h4 id="post">▼ POSTリクエストの場合<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
-<p>外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># POSTの場合</span>
-<span class="w">  </span><span class="nt">http_2xx_post</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
-<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
-<span class="w">    </span><span class="c1"># http probe</span>
-<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
-<span class="w">      </span><span class="nt">valid_status_codes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
-<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
-<span class="w">      </span><span class="c1"># リクエストヘッダー</span>
-<span class="w">      </span><span class="nt">headers</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># データ形式</span>
-<span class="w">        </span><span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span>
-<span class="w">        </span><span class="c1"># 入力フォームへのデータ送信に必要</span>
-<span class="w">        </span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/x-www-form-urlencode</span>
-<span class="w">      </span><span class="c1"># メッセージボディ</span>
-<span class="w">      </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{}&quot;</span>
-<span class="w">      </span><span class="nt">follow_redirects</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">icmp</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">recursion_desired</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe">https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe</a></li>
-<li><a href="https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter">https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter</a></li>
-<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/example.yml">https://github.com/prometheus/blackbox_exporter/blob/master/example.yml</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-kube-state-metrics">03. kube-state-metrics<a class="headerlink" href="#03-kube-state-metrics" title="Permanent link">&para;</a></h2>
-<h3 id="_9">セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ チャートとして<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
-
-$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
-
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
-
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-state-metrics<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_11">マニフェストの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="deployment_1">▼ Deployment<a class="headerlink" href="#deployment_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
-<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
-<span class="w">        </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
-<span class="w">        </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
-<span class="w">        </span><span class="nt">seccompProfile</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--port=8080</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments</span>
-<span class="w">            </span><span class="c1"># 必要なKubernetesリソースのラベルをメトリクスに付与する。</span>
-<span class="w">            </span><span class="c1"># kube_node_labels、kube_deployment_labels、kube_pod_labels、で取得できる</span>
-<span class="w">            </span><span class="c1"># 例えば、クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-labels-allowlist=nodes=[*],deployments=[*],pods=[*]</span>
-<span class="w">            </span><span class="c1"># 必要なKubernetesリソースのアノテーションをメトリクスに付与する。</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-annotations-allowlist=nodes=[*],deployments=[*],pods=[*]</span>
-<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.9.2</span>
-<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
-<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthz</span>
-<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
-<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">drop</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm">https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm</a></li>
-<li><a href="https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options">https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options</a></li>
-<li><a href="https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751">https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_12">メトリクスの一覧<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 確認方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>Node exporterの場合は、Nodeの『<code>127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
-
-...
-
-kube_node_info
-kube_pod_info
-kube_service_info
-
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics">https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics</a></li>
-<li><a href="https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/">https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/</a></li>
-</ul>
-</blockquote>
-<h4 id="_14">▼ よく使用するメトリクス<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>メトリクスの種類</th>
-<th>説明</th>
-<th>PromQL例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>kube_node_status_condition</code></td>
-<td>記入中...</td>
-<td>Nodeの現在のライフサイクルフェーズを表す。</td>
-<td><code>kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}</code></td>
-</tr>
-<tr>
-<td><code>kube_pod_status_phase</code></td>
-<td>記入中...</td>
-<td>Podの現在ライフサイクルフェーズを表す。</td>
-<td><code>kube_pod_status_phase{job="kube-state-metrics",phase="Succeeded"}</code></td>
-</tr>
-<tr>
-<td><code>kube_pod_container_status_terminated</code></td>
-<td>Count</td>
-<td><code>Terminated</code>フェーズになったコンテナ数を表す。</td>
-<td><code>kube_pod_container_status_terminated{job="kube-state-metrics"}</code></td>
-</tr>
-<tr>
-<td><code>kube_pod_container_resource_limits</code></td>
-<td>Count</td>
-<td>Podのハードウェアリソースの<code>.spec.containers[*].resources.limits</code>キーを表す。設定していなければ<code>null</code>になる。</td>
-<td><code>kube_pod_container_resource_limits{job="kube-state-metrics"}</code></td>
-</tr>
-<tr>
-<td><code>kube_deployment_spec_replicas</code></td>
-<td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数を表す。</td>
-<td><code>kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_deployment_status_replicas</code></td>
-<td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
-<td><code>kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_deployment_status_replicas_available</code></td>
-<td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
-<td><code>kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_deployment_status_replicas_unavailable</code></td>
-<td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
-<td><code>kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_daemonset_status_desired_number_scheduled</code></td>
-<td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数を表す。</td>
-<td><code>kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_daemonset_status_current_number_scheduled</code></td>
-<td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
-<td><code>kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_daemonset_status_number_available</code></td>
-<td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
-<td><code>kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-<tr>
-<td><code>kube_daemonset_status_number_unavailable</code></td>
-<td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
-<td><code>kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes/kube-state-metrics/tree/main/docs">https://github.com/kubernetes/kube-state-metrics/tree/main/docs</a></li>
-<li><a href="https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1">https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-mysql-exporter">04. MySQL exporter<a class="headerlink" href="#04-mysql-exporter" title="Permanent link">&para;</a></h2>
-<h3 id="_15">セットアップ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ チャートとして<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
@@ -25638,9 +24679,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_17">メトリクスの一覧<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ 確認方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL exporterの場合は、Nodeの『<code>127.0.0.1:9104/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<h3 id="_9">メトリクスの一覧<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 確認方法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>PostgreSQL Exporterの場合は、Nodeの『<code>127.0.0.1:9104/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9104/metrics
 
@@ -25657,150 +24698,10 @@ postgres_exporter_build_info<span class="o">{</span><span class="nv">branch</spa
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-node-exporter">05. Node exporter<a class="headerlink" href="#05-node-exporter" title="Permanent link">&para;</a></h2>
-<h3 id="_19">セットアップ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="_20">▼ バイナリとして<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>バイナリファイルをインストールする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。</span>
-<span class="c1"># tmpディレクトリ配下にダウンロードする。</span>
-$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz<span class="w"> </span>-o<span class="w"> </span>/tmp/node_exporter-1.0.0.linux-amd64.tar.gz
-$<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>/tmp/node_exporter-1.0.0.linux-amd64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
-
-<span class="c1"># バイナリファイルだけを移動する。</span>
-$<span class="w"> </span>mv<span class="w"> </span>/tmp/node_exporter/node_exporter-1.0.0.linux-amd64<span class="w"> </span>/usr/local/bin/node_exporter
-</code></pre></div>
-<p>バイナリに直接的にパラメーターを渡せる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/usr/local/bin/node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s2">&quot;:9100&quot;</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88">https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
-</ul>
-</blockquote>
-<h4 id="_21">▼ チャートとして<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
-
-$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
-
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
-
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus-node-exporter<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter</a></li>
-</ul>
-</blockquote>
-<p>複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
-
-$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
-
-$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
-
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-prometheus-stack<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_22">メトリクスの一覧<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<h4 id="_23">▼ 確認方法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>Node exporterの場合は、Nodeの『<code>127.0.0.1:9100/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
-$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9100/metrics
-
-...
-
-node_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">&quot;HEAD&quot;</span>,goversion<span class="o">=</span><span class="s2">&quot;go1.15.8&quot;</span>,revision<span class="o">=</span><span class="s2">&quot;4e837d4da79cc59ee3ed1471ba9a0d9547e95540&quot;</span>,version<span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
-
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics">https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics</a></li>
-<li><a href="https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt">https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="promql">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql" title="Permanent link">&para;</a></h3>
-<h4 id="cpu">▼ CPU使用率<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
-<p>NodeのCPU使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>node_cpu_seconds_total<span class="o">[</span>1m<span class="o">])</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87">https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87</a></li>
-</ul>
-</blockquote>
-<h4 id="_24">▼ メモリ使用率<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>Nodeのメモリ使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code>node_memory_MemTotal_bytes<span class="w"> </span>-<span class="w"> </span>node_memory_MemAvailable_bytes
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87">https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87</a></li>
-</ul>
-</blockquote>
-<h4 id="_25">▼ ディスク使用率<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>Nodeのディスク使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
-</code></pre></div>
-<p><code>mountpoint</code>ディメンションを使用して、マウントポイント別のディスク使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
-</code></pre></div>
-<p><code>job</code>ディメンションを使用して、収集対象別にのディスク使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F">https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F</a></li>
-</ul>
-</blockquote>
-<h4 id="iocpu">▼ ディスクのI/OによるCPU使用率<a class="headerlink" href="#iocpu" title="Permanent link">&para;</a></h4>
-<p>ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。</p>
-<p><code>iostat</code>コマンドの<code>%util</code>指標と同じである。</p>
-<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>node_disk_io_time_seconds_total<span class="o">[</span>1m<span class="o">])</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc">https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc</a></li>
-<li><a href="https://christina04.hatenablog.com/entry/prometheus-node-monitoring">https://christina04.hatenablog.com/entry/prometheus-node-monitoring</a></li>
-<li><a href="https://www.qoosky.io/techs/42affa2c4b">https://www.qoosky.io/techs/42affa2c4b</a></li>
-</ul>
-</blockquote>
-<h4 id="io">▼ ディスクのI/Oレスポンスタイム<a class="headerlink" href="#io" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 読み出しレスポンスタイム</span>
-rate<span class="o">(</span>node_disk_read_time_seconds_total<span class="o">[</span>1m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_disk_reads_completed_total<span class="o">[</span>1m<span class="o">])</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 書き込みレスポンスタイム</span>
-rate<span class="o">(</span>node_disk_write_time_seconds_total<span class="o">[</span>1m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_disk_writes_completed_total<span class="o">[</span>1m<span class="o">])</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://christina04.hatenablog.com/entry/prometheus-node-monitoring">https://christina04.hatenablog.com/entry/prometheus-node-monitoring</a></li>
-</ul>
-</blockquote>
-<h4 id="_26">▼ パケットの受信サイズ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>Nodeのパケットの受信サイズを取得する。</p>
-<div class="highlight"><pre><span></span><code>node_network_receive_packets_total
-</code></pre></div>
-<p>これを使用して、DDOS攻撃のアラートを作成することもできる。</p>
-<div class="highlight"><pre><span></span><code><span class="o">(</span>rate<span class="o">(</span>node_network_receive_packets_total<span class="o">[</span>5m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_network_receive_packets_total<span class="o">[</span>5m<span class="o">]</span><span class="w"> </span>offset<span class="w"> </span>5m<span class="o">))</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">10</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus">https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="06-postgresql-exporter">06. PostgreSQL exporter<a class="headerlink" href="#06-postgresql-exporter" title="Permanent link">&para;</a></h2>
-<h3 id="_27">メトリクスの一覧<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<h4 id="_28">▼ 確認方法<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL exporterの場合は、Nodeの『<code>127.0.0.1:9187/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<h2 id="03-postgresql-exporter">03. PostgreSQL Exporter<a class="headerlink" href="#03-postgresql-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_11">メトリクスの一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 確認方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>PostgreSQL Exporterの場合は、Nodeの『<code>127.0.0.1:9187/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9187/metrics
 
@@ -25817,7 +24718,7 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="promql_1">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql_1" title="Permanent link">&para;</a></h3>
+<h3 id="promql">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql" title="Permanent link">&para;</a></h3>
 <h4 id="postgresql">▼ PostgreSQLのプロセスのステータス<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
 <p>PostgreSQLのプロセスのステータスを表す。</p>
 <p><code>pg_up</code>は、PostgreSQLのプロセスのステータスを表す。</p>
@@ -25850,7 +24751,7 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 <li><a href="https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html">https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html</a></li>
 </ul>
 </blockquote>
-<h4 id="_29">▼ 残骸タプルサイズ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<h4 id="_13">▼ 残骸タプルサイズ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>DBにたまっている残骸タプルのデータサイズを表す。</p>
 <div class="highlight"><pre><span></span><code>pg_stat_user_tables_n_dead_tup<span class="o">{</span><span class="nv">datname</span><span class="o">=</span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="o">}</span>
 </code></pre></div>
@@ -25860,9 +24761,9 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06-process-exporter">06. Process exporter<a class="headerlink" href="#06-process-exporter" title="Permanent link">&para;</a></h2>
-<h3 id="_30">セットアップ<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<h4 id="_31">▼ バイナリとして<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<h2 id="04-process-exporter">04. Process Exporter<a class="headerlink" href="#04-process-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_14">セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ バイナリとして<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>バイナリファイルをインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。</span>
 <span class="c1"># tmpディレクトリ配下にダウンロードする。</span>
@@ -25870,17 +24771,17 @@ $<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>h
 
 $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>/tmp/process-exporter-0.7.10.linux-amd64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
 </code></pre></div>
-<h4 id="_32">▼ チャートとして<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2023/03/26) 時点で、Process exporterのチャートはない。</p>
+<h4 id="_16">▼ チャートとして<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2023/03/26) 時点で、Process Exporterのチャートはない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/ncabatoff/process-exporter">https://github.com/ncabatoff/process-exporter</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_33">メトリクスの一覧<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<h4 id="_34">▼ 確認方法<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p>Process exporterの場合は、Nodeの『<code>127.0.0.1:9256/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<h3 id="_17">メトリクスの一覧<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ 確認方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>Process Exporterの場合は、Nodeの『<code>127.0.0.1:9256/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9256/metrics
 
@@ -25896,10 +24797,10 @@ process_exporter_build_info<span class="o">{</span><span class="nv">build_date</
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="07-redis-exporter">07. Redis exporter<a class="headerlink" href="#07-redis-exporter" title="Permanent link">&para;</a></h2>
-<h3 id="_35">メトリクスの一覧<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<h4 id="_36">▼ 確認方法<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>Redis exporterの場合は、Nodeの『<code>127.0.0.1:9121/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<h2 id="05-redis-exporter">05. Redis Exporter<a class="headerlink" href="#05-redis-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_19">メトリクスの一覧<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ 確認方法<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>Redis Exporterの場合は、Nodeの『<code>127.0.0.1:9121/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9121/metrics
 
@@ -25936,7 +24837,7 @@ redis_exporter_build_info<span class="o">{</span><span class="nv">build_date</sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-10</span>
   </span>
 
     

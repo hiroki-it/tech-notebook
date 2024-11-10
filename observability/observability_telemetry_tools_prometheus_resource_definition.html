@@ -23534,6 +23534,56 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_21_5_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_21_5_8_4" id="__nav_21_5_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Exporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_21_5_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21_5_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Exporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="observability_telemetry_tools_prometheus_exporter.html" class="md-nav__link">
         
@@ -23544,6 +23594,77 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_blackbox_exporter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blackbox Exporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_kube_state_metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-state-metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_tools_prometheus_exporter_node_exporter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Exporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -25092,7 +25213,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus-operator">▼ 非チャートとして (prometheus-operator)<a class="headerlink" href="#prometheus-operator" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/prometheus-operator.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bundle.yaml
@@ -25103,7 +25224,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="kube-prometheus">▼ 非チャートとして (kube-prometheus)<a class="headerlink" href="#kube-prometheus" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/kube-prometheus.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests/setup
@@ -25143,7 +25264,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="prometheus_1">▼ チャートとして (prometheus)<a class="headerlink" href="#prometheus_1" title="Permanent link">&para;</a></h4>
 <p>チャートとしてPrometheusをインストールし、リソースを作成する。</p>
-<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporterなど) のKubernetesリソースも合わせて作成する。</p>
+<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node Exporterなど) のKubernetesリソースも合わせて作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -26151,7 +26272,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-10</span>
   </span>
 
     
