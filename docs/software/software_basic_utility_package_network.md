@@ -530,7 +530,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 
 ### -I
 
-ICMPプロトコルを使用して、パケットを送信する。
+ICMPプロトコルを使用して、Ping (ICMPエコーリクエスト) を送信する。
 
 TCPプロトコルの一種である。
 

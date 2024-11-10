@@ -13,7 +13,30 @@ description: Blackbox Exporter＠Prometheus
 
 <br>
 
-## 01. セットアップ
+## 01. Blackbox Exporterの仕組み
+
+### アーキテクチャ
+
+Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP、HTTPS、DNS、ICMP、SSH、SMTP) でヘルスチェックを実施する。
+
+また、Prometheusにメトリクスを公開する。
+
+![blackbox_exporter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_architecture.png)
+
+> - https://medium.com/cloud-native-daily/blackbox-exporter-to-probe-or-not-to-probe-57a7a495534b
+> - https://medium.com/@squadcast/prometheus-blackbox-exporter-a-guide-for-monitoring-external-systems-a8fff19a8bd0
+
+<br>
+
+### Prometheusによるメトリクス収集
+
+![blackbox_exporter_prometheus_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
+
+> - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
+
+<br>
+
+## 02. セットアップ
 
 ### チャートとして
 
@@ -33,7 +56,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus
 
 <br>
 
-## 02. マニフェスト
+## 03. マニフェスト
 
 ### ConfigMap
 
@@ -41,8 +64,8 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: blackbox-exporter-config
-  namespace: monitoring
+  name: blackbox-exporter
+  namespace: prometheus
   labels:
     k8s-app: blackbox-exporter
 data:
@@ -66,40 +89,43 @@ data:
 
 ### Deployment配下のPod
 
+外部システムに対してヘルスチェックを実施する。
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: cluster-autoscaler
-  namespace: kube-system
+  name: blackbox-exporter
+  namespace: prometheus
+  labels:
+    k8s-app: blackbox-exporter
 spec:
   restartPolicy: Always
   containers:
-      - name: blackbox-exporter
-        image: "prom/blackbox-exporter"
-        imagePullPolicy: IfNotPresent
-        securityContext:
-          readOnlyRootFilesystem: true
-          runAsNonRoot: true
-          runAsUser: 1000
-        args:
-          - "--config.file=/config/blackbox.yaml"
-        resources:
-          {}
-        ports:
-          - containerPort: 9115
-            name: http
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: http
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: http
-        volumeMounts:
-          - mountPath: /config
-            name: config
+    - name: blackbox-exporter
+      image: "prom/blackbox-exporter"
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+      args:
+        - "--config.file=/config/blackbox.yaml"
+      resources: {}
+      ports:
+        - containerPort: 9115
+          name: http
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: http
+      readinessProbe:
+        httpGet:
+          path: /health
+          port: http
+      volumeMounts:
+        - mountPath: /config
+          name: config
         - name: configmap-reload
           image: "jimmidyson/configmap-reload:v0.2.2"
           imagePullPolicy: "IfNotPresent"
@@ -109,8 +135,7 @@ spec:
           args:
             - --volume-dir=/etc/config
             - --webhook-url=http://localhost:9115/-/reload
-          resources:
-            {}
+          resources: {}
           volumeMounts:
             - mountPath: /etc/config
               name: config
@@ -118,7 +143,7 @@ spec:
   volumes:
     - name: config
       configMap:
-        name: blackbox-exporter-config
+        name: blackbox-exporter
 ```
 
 > - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
@@ -127,12 +152,14 @@ spec:
 
 ### Service
 
+PrometheusがBlack ExporterのPodからメトリクスを収集するためService。
+
 ```yaml
 kind: Service
 apiVersion: v1
 metadata:
   name: blackbox-exporter
-  namespace: monitoring
+  namespace: prometheus
   labels:
     k8s-app: blackbox-exporter
 spec:
@@ -188,7 +215,7 @@ modules:
 
 #### ▼ icmp
 
-外形監視でICMPリクエストを送信する。
+外形監視でPing (ICMPエコーリクエスト) を送信する。
 
 ```yaml
 modules:
