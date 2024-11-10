@@ -847,7 +847,7 @@ nav:
               - ■ Exporter:
                     - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
                     - Blackbox Exporter: observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.md
-                    - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporte_kube_state_metrics.md
+                    - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.md
                     - Node Exporter: observability/observability_telemetry_tools_prometheus_exporter_node_exporter.md
               - ■ メトリクス:
                   - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
