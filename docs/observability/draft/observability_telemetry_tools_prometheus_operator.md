@@ -17,7 +17,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 ### アーキテクチャ
 
-PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node exporter、kube-state-metrics) 、Grafana、といったコンポーネントから構成されている。
+PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node Exporter、kube-state-metrics) 、Grafana、といったコンポーネントから構成されている。
 
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 

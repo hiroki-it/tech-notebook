@@ -162,11 +162,11 @@ scrape_configs:
           - 127.0.0.1:9090'
         labels:
           cluster: prd
-  # Node exporterの稼働するサーバーを監視する。
+  # Node Exporterの稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
-          - <Node exporterの稼働するサーバーのIPアドレス>:9100
+          - <Node Exporterの稼働するサーバーのIPアドレス>:9100
         labels:
           cluster: prd
 ```

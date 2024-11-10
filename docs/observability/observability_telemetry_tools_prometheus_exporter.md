@@ -61,27 +61,27 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 
 | Exporter名                                                        | 説明                                                                                                                                                                                          | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名     |
 | :---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ---------------- |
-| [Node exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                            | `9100`             | `/metrics`             | `node_*`         |
-| [Process exporter](https://github.com/ncabatoff/process-exporter) | Nodeの非コンテナのプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>・https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
+| [Node Exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスのデータポイントを収集する。                                                                                                                                            | `9100`             | `/metrics`             | `node_*`         |
+| [Process Exporter](https://github.com/ncabatoff/process-exporter) | Nodeの非コンテナのプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>・https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
 
 #### ▼ Deploymentパターン
 
 | Exporter名                                                                               | 説明                                                                                                                                                                                                                                                                                                                                                                         | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
 | :--------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
 | [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)                   | Kubernetesのソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、metrics-serverはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>・https://tech-blog.abeja.asia/entry/2016/12/20/202631 <br>・https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/                                                | `8080`             | 同上                   | `kube_*`     |
-| [Blackbox exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。外形監視のため、リクエストは一度Cluster外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータスなど) を収集できる。<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5 | `9115`             | 同上                   |              |
-| [Elasticsearch exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                                                  | `9114`             | 同上                   |              |
+| [Blackbox Exporter](https://github.com/prometheus/blackbox_exporter)                     | 指定したプロトコルで外形監視を実施する。外形監視のため、リクエストは一度Cluster外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータスなど) を収集できる。<br>・https://handon.hatenablog.jp/entry/2019/01/29/005935 <br>・https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5 | `9115`             | 同上                   |              |
+| [Elasticsearch Exporter](https://github.com/prometheus-community/elasticsearch_exporter) | ElasticSearchに関するメトリクスのデータポイントを収集する。                                                                                                                                                                                                                                                                                                                  | `9114`             | 同上                   |              |
 
 #### ▼ Pod内サイドカーパターン
 
 | Exporter名                                                                     | 説明                                                                                                                                        | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名 |
 | :----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ------------ |
-| [Nginx Vts exporter](https://github.com/hnlq715/nginx-vts-exporter)            | Nginxに関するメトリクスのデータポイントを収集する。                                                                                         | `9113`             | 同上                   |              |
-| [Apache exporter](https://github.com/Lusitaniae/apache_exporter)               | Apacheに関するメトリクスのデータポイントを収集する。                                                                                        | `9117`             | 同上                   |              |
-| [Mysqld exporter](https://github.com/prometheus/mysqld_exporter)               | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                 | `9104`             | 同上                   |              |
-| [Postgres exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>・https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
-| [Oracledb exporter](https://github.com/iamseth/oracledb_exporter)              | Oracleに関するメトリクスのデータポイントを収集する。                                                                                        | `9121`             | 同上                   |              |
-| [Redis exporter](https://github.com/oliver006/redis_exporter)                  | Redisに関するメトリクスのデータポイントを収集する。                                                                                         | `9121`             | 同上                   |              |
+| [Nginx Vts Exporter](https://github.com/hnlq715/nginx-vts-exporter)            | Nginxに関するメトリクスのデータポイントを収集する。                                                                                         | `9113`             | 同上                   |              |
+| [Apache Exporter](https://github.com/Lusitaniae/apache_exporter)               | Apacheに関するメトリクスのデータポイントを収集する。                                                                                        | `9117`             | 同上                   |              |
+| [Mysqld Exporter](https://github.com/prometheus/mysqld_exporter)               | MySQL/MariaDBに関するメトリクスのデータポイントを収集する。                                                                                 | `9104`             | 同上                   |              |
+| [Postgres Exporter](https://github.com/prometheus-community/postgres_exporter) | PostgreSQLに関するメトリクスのデータポイントを収集する。<br>・https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage | `9187`             | 同上                   |              |
+| [Oracledb Exporter](https://github.com/iamseth/oracledb_exporter)              | Oracleに関するメトリクスのデータポイントを収集する。                                                                                        | `9121`             | 同上                   |              |
+| [Redis Exporter](https://github.com/oliver006/redis_exporter)                  | Redisに関するメトリクスのデータポイントを収集する。                                                                                         | `9121`             | 同上                   |              |
 
 ### ▼ 埋め込み型パターン
 
@@ -113,317 +113,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 <br>
 
-## 02. Blackbox exporter
-
-### セットアップ
-
-#### ▼ チャートとして
-
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
-
-```bash
-$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
-
-$ helm repo update
-
-$ kubectl create namespace prometheus
-
-$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
-```
-
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
-
-<br>
-
-### module
-
-#### ▼ http
-
-外形監視でHTTPリクエストを送信する。
-
-```yaml
-modules:
-  <好きな名前>:
-    prober: http
-    http: ...
-```
-
-#### ▼ tcp
-
-外形監視でTCPスリーウェイハンドシェイクを実行する。
-
-```yaml
-modules:
-  <好きな名前>:
-    prober: tcp
-    tcp: ...
-```
-
-#### ▼ dns
-
-外形監視でHTTPリクエストを送信する。
-
-```yaml
-modules:
-  <好きな名前>:
-    prober: dns
-    dns: ...
-```
-
-#### ▼ icmp
-
-外形監視でICMPリクエストを送信する。
-
-```yaml
-modules:
-  <好きな名前>:
-    prober: icmp
-    http: ...
-```
-
-#### ▼ grpc
-
-外形監視でgRPCによるHTTPリクエストを送信する。
-
-```yaml
-modules:
-  <好きな名前>:
-    prober: grpc
-    http: ...
-```
-
-<br>
-
-### http probe
-
-#### ▼ GETリクエストの場合
-
-外形監視でGETリクエストを送信する。
-
-```yaml
-modules:
-  # GETの場合 (HTTPS)
-  https_2xx_get:
-    # HTTPプロトコルを使用する
-    prober: http
-    timeout: 5s
-    # http probe
-    http:
-      # レスポンスの期待ステータスコード
-      valid_http_versions:
-        - HTTP/1.1
-        - HTTP/2.0
-      # 優先するIPアドレスの種類
-      preferred_ip_protocol: ip4
-      # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: "true"
-      follow_redirects: "true"
-    tcp:
-      ip_protocol_fallback: "true"
-    icmp:
-      ip_protocol_fallback: "true"
-    dns:
-      ip_protocol_fallback: "true"
-      recursion_desired: "true"
-
-  # GETの場合 (HTTPS)
-  http_2xx_get:
-    # HTTPプロトコルを使用する
-    prober: http
-    timeout: 5s
-    # http probe
-    http:
-      # レスポンスの期待ステータスコード
-      valid_http_versions:
-        - HTTP/1.1
-      # 優先するIPアドレスの種類
-      preferred_ip_protocol: ip4
-      # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: "true"
-      tls_config:
-        # SSL証明書を任意にする
-        insecure_skip_verify: "true"
-```
-
-> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
-> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
-
-#### ▼ POSTリクエストの場合
-
-外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。
-
-```yaml
-modules:
-  # POSTの場合
-  http_2xx_post:
-    # HTTPプロトコルを使用する
-    prober: http
-    timeout: 30s
-    # http probe
-    http:
-      # レスポンスの期待ステータスコード
-      valid_status_codes:
-        - 200
-      # IPV6が使えない場合に、IPv4に切り替える
-      ip_protocol_fallback: "true"
-      method: POST
-      # リクエストヘッダー
-      headers:
-        # データ形式
-        Accept: application/json
-        # 入力フォームへのデータ送信に必要
-        Content-Type: application/x-www-form-urlencode
-      # メッセージボディ
-      body: "{}"
-      follow_redirects: "true"
-    tcp:
-      ip_protocol_fallback: "true"
-    icmp:
-      ip_protocol_fallback: "true"
-    dns:
-      ip_protocol_fallback: "true"
-      recursion_desired: "true"
-```
-
-> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
-> - https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter
-> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
-
-<br>
-
-## 03. kube-state-metrics
-
-### セットアップ
-
-#### ▼ チャートとして
-
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
-
-```bash
-$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
-
-$ helm repo update
-
-$ kubectl create namespace prometheus
-
-$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
-```
-
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
-
-<br>
-
-### マニフェストの種類
-
-#### ▼ Deployment
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kube-state-metrics
-  namespace: prometheus
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: kube-state-metrics
-  replicas: 1
-  template:
-    spec:
-      hostNetwork: "false"
-      serviceAccountName: kube-state-metrics
-      securityContext:
-        fsGroup: 65534
-        runAsGroup: 65534
-        runAsNonRoot: "true"
-        runAsUser: 65534
-        seccompProfile:
-          type: RuntimeDefault
-      containers:
-        - name: kube-state-metrics
-          args:
-            - --port=8080
-            - --resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments
-            # 必要なKubernetesリソースのラベルをメトリクスに付与する。
-            # kube_node_labels、kube_deployment_labels、kube_pod_labels、で取得できる
-            # 例えば、クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。
-            - --metric-labels-allowlist=nodes=[*],deployments=[*],pods=[*]
-            # 必要なKubernetesリソースのアノテーションをメトリクスに付与する。
-            - --metric-annotations-allowlist=nodes=[*],deployments=[*],pods=[*]
-          imagePullPolicy: IfNotPresent
-          image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.9.2
-          ports:
-            - containerPort: 8080
-              name: "http"
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-            initialDelaySeconds: 5
-            timeoutSeconds: 5
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 5
-            timeoutSeconds: 5
-          securityContext:
-            allowPrivilegeEscalation: "false"
-            capabilities:
-              drop:
-                - ALL
-```
-
-> - https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm
-> - https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options
-> - https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751
-
-<br>
-
-### メトリクスの一覧
-
-#### ▼ 確認方法
-
-Node exporterの場合は、Nodeの『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
-
-```bash
-$ curl http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
-
-...
-
-kube_node_info
-kube_pod_info
-kube_service_info
-
-...
-```
-
-> - https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics
-> - https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/
-
-#### ▼ よく使用するメトリクス
-
-| メトリクス                                       | メトリクスの種類 | 説明                                                                                                          | PromQL例                                                                                                               |
-| ------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `kube_node_status_condition`                     | 記入中...        | Nodeの現在のライフサイクルフェーズを表す。                                                                    | `kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}`                                 |
-| `kube_pod_status_phase`                          | 記入中...        | Podの現在ライフサイクルフェーズを表す。                                                                       | `kube_pod_status_phase{job="kube-state-metrics",phase="Succeeded"}`                                                    |
-| `kube_pod_container_status_terminated`           | Count            | `Terminated`フェーズになったコンテナ数を表す。                                                                | `kube_pod_container_status_terminated{job="kube-state-metrics"}`                                                       |
-| `kube_pod_container_resource_limits`             | Count            | Podのハードウェアリソースの`.spec.containers[*].resources.limits`キーを表す。設定していなければ`null`になる。 | `kube_pod_container_resource_limits{job="kube-state-metrics"}`                                                         |
-| `kube_deployment_spec_replicas`                  | Count            | Deploymentで指定しているPodのレプリカ数を表す。                                                               | `kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                  |
-| `kube_deployment_status_replicas`                | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。                                | `kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                |
-| `kube_deployment_status_replicas_available`      | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。                                    | `kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`      |
-| `kube_deployment_status_replicas_unavailable`    | Count            | Deploymentで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。                                  | `kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`    |
-| `kube_daemonset_status_desired_number_scheduled` | Count            | DaemonSetで指定しているPodのレプリカ数を表す。                                                                | `kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
-| `kube_daemonset_status_current_number_scheduled` | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。                                 | `kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
-| `kube_daemonset_status_number_available`         | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。                                     | `kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`         |
-| `kube_daemonset_status_number_unavailable`       | Count            | DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。                                   | `kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`       |
-
-> - https://github.com/kubernetes/kube-state-metrics/tree/main/docs
-> - https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1
-
-<br>
-
-## 04. MySQL exporter
+## 02. MySQL Exporter
 
 ### セットアップ
 
@@ -449,7 +139,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus
 
 #### ▼ 確認方法
 
-PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9104/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+PostgreSQL Exporterの場合は、Nodeの『`127.0.0.1:9104/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -467,183 +157,13 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 
 <br>
 
-## 05. Node exporter
-
-### セットアップ
-
-#### ▼ バイナリとして
-
-バイナリファイルをインストールする。
-
-```bash
-# GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
-# tmpディレクトリ配下にダウンロードする。
-$ curl -L https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz -o /tmp/node_exporter-1.0.0.linux-amd64.tar.gz
-$ tar -xvf /tmp/node_exporter-1.0.0.linux-amd64.tar.gz -C /tmp
-
-# バイナリファイルだけを移動する。
-$ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_exporter
-```
-
-バイナリに直接的にパラメーターを渡せる。
-
-```bash
-$ /usr/local/bin/node_exporter --web.listen-address=":9100"
-```
-
-> - https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
-
-#### ▼ チャートとして
-
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
-
-```bash
-$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
-
-$ helm repo update
-
-$ kubectl create namespace prometheus
-
-$ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
-```
-
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
-
-複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。
-
-```bash
-$ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
-
-$ helm repo update
-
-$ kubectl create namespace prometheus
-
-$ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
-```
-
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-
-<br>
+## 03. PostgreSQL Exporter
 
 ### メトリクスの一覧
 
 #### ▼ 確認方法
 
-Node exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
-
-```bash
-# Node内でコールする。
-$ curl http://127.0.0.1:9100/metrics
-
-...
-
-node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da79cc59ee3ed1471ba9a0d9547e95540",version="1.1.1"} 1
-
-...
-```
-
-> - https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
-> - https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt
-
-<br>
-
-### PromQLを使用したメトリクス分析
-
-#### ▼ CPU使用率
-
-NodeのCPU使用率を取得する。
-
-```bash
-rate(node_cpu_seconds_total[1m])
-```
-
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
-
-#### ▼ メモリ使用率
-
-Nodeのメモリ使用率を取得する。
-
-```bash
-node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
-```
-
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
-
-#### ▼ ディスク使用率
-
-Nodeのディスク使用率を取得する。
-
-```bash
-100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
-```
-
-`mountpoint`ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
-
-```bash
-100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
-```
-
-`job`ディメンションを使用して、収集対象別にのディスク使用率を取得する。
-
-```bash
-100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
-```
-
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
-
-#### ▼ ディスクのI/OによるCPU使用率
-
-ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。
-
-`iostat`コマンドの`%util`指標と同じである。
-
-```bash
-rate(node_disk_io_time_seconds_total[1m])
-```
-
-> - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
-> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
-> - https://www.qoosky.io/techs/42affa2c4b
-
-#### ▼ ディスクのI/Oレスポンスタイム
-
-```bash
-# 読み出しレスポンスタイム
-rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m])
-```
-
-```bash
-# 書き込みレスポンスタイム
-rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
-```
-
-> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
-
-#### ▼ パケットの受信サイズ
-
-Nodeのパケットの受信サイズを取得する。
-
-```bash
-node_network_receive_packets_total
-```
-
-これを使用して、DDOS攻撃のアラートを作成することもできる。
-
-```bash
-(rate(node_network_receive_packets_total[5m]) / rate(node_network_receive_packets_total[5m] offset 5m)) > 10
-```
-
-> - https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus
-
-<br>
-
-## 06. PostgreSQL exporter
-
-### メトリクスの一覧
-
-#### ▼ 確認方法
-
-PostgreSQL exporterの場合は、Nodeの『`127.0.0.1:9187/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+PostgreSQL Exporterの場合は、Nodeの『`127.0.0.1:9187/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -713,7 +233,7 @@ pg_stat_user_tables_n_dead_tup{datname="<DB名>"}
 
 <br>
 
-## 06. Process exporter
+## 04. Process Exporter
 
 ### セットアップ
 
@@ -731,7 +251,7 @@ $ tar -xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 
 #### ▼ チャートとして
 
-執筆時点 (2023/03/26) 時点で、Process exporterのチャートはない。
+執筆時点 (2023/03/26) 時点で、Process Exporterのチャートはない。
 
 > - https://github.com/ncabatoff/process-exporter
 
@@ -741,7 +261,7 @@ $ tar -xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 
 #### ▼ 確認方法
 
-Process exporterの場合は、Nodeの『`127.0.0.1:9256/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+Process Exporterの場合は、Nodeの『`127.0.0.1:9256/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -758,13 +278,13 @@ process_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c8
 
 <br>
 
-## 07. Redis exporter
+## 05. Redis Exporter
 
 ### メトリクスの一覧
 
 #### ▼ 確認方法
 
-Redis exporterの場合は、Nodeの『`127.0.0.1:9121/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
+Redis Exporterの場合は、Nodeの『`127.0.0.1:9121/metrics`』をコールすると、PromQLで使用できるメトリクスを取得できる。
 
 ```bash
 # Node内でコールする。

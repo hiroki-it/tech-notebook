@@ -3466,7 +3466,7 @@ spec:
 
 Podが、自身の稼働するNodeのネットワークにリクエストを送信できるかどうかを設定する。
 
-ユーザーが使用するうユースケースは少なく、例えばNode exporterのPodで使用される。
+ユーザーが使用するうユースケースは少なく、例えばNode ExporterのPodで使用される。
 
 ```yaml
 apiVersion: v1

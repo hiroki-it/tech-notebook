@@ -66,7 +66,6 @@ data:
 
 ### Deployment配下のPod
 
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -123,7 +122,6 @@ spec:
 ```
 
 > - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
-
 
 <br>
 

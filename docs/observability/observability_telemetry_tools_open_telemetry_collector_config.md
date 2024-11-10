@@ -204,7 +204,7 @@ OpenTelemetry Collectorは、設定した監視バックエンドにテレメト
 
 X-Rayにスパンを送信する。
 
-ただし、OpenTelemetryにはAWS X-Ray exporterが含まれていない。
+ただし、OpenTelemetryにはAWS X-Ray Exporterが含まれていない。
 
 そのため、AWS製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替えておく必要がある。
 

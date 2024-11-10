@@ -80,7 +80,11 @@
   > * ##### [︎Prometheus](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus.html)
   > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_conf.html)
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_resource_definition.html)
-  > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter.html)
+  > * ##### <u>Exporter</u>
+  > > * ##### [Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter.html)
+  > > * ##### [Blackbox Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.html)
+  > > * ##### [kube-state-metrics](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_kube_state_metrics.html)
+  > > * ##### [Node Exporter](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_exporter_node_exporter.html)
   > * ##### <u>メトリクス</u>
   > > * ##### [メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics.html)
   > > * ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_tools_prometheus_metrics_promql.html)

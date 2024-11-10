@@ -13,7 +13,6 @@ description: kube-state-metrics＠Prometheus
 
 <br>
 
-
 ## 01. セットアップ
 
 ### チャートとして
