@@ -844,7 +844,11 @@ nav:
               - Prometheus: observability/observability_telemetry_tools_prometheus.md
               - 設定ファイル: observability/observability_telemetry_tools_prometheus_conf.md
               - リソース定義: observability/observability_telemetry_tools_prometheus_resource_definition.md
-              - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
+              - ■ Exporter:
+                    - Exporter: observability/observability_telemetry_tools_prometheus_exporter.md
+                    - Blackbox Exporter: observability/observability_telemetry_tools_prometheus_exporter_blackbox_exporter.md
+                    - kube-state-metrics: observability/observability_telemetry_tools_prometheus_exporte_kube_state_metrics.md
+                    - Node Exporter: observability/observability_telemetry_tools_prometheus_exporter_node_exporter.md
               - ■ メトリクス:
                   - メトリクス: observability/observability_telemetry_tools_prometheus_metrics.md
                   - PromQL: observability/observability_telemetry_tools_prometheus_metrics_promql.md
