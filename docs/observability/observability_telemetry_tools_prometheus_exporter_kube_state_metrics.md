@@ -13,7 +13,15 @@ description: kube-state-metrics＠Prometheus
 
 <br>
 
-## 01. セットアップ
+## 01. kube-state-metricsの仕組み
+
+記入中
+
+...
+
+<br>
+
+## 02. セットアップ
 
 ### チャートとして
 
@@ -33,7 +41,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-state
 
 <br>
 
-## 02. マニフェスト
+## 03. マニフェスト
 
 ### マニフェストの種類
 

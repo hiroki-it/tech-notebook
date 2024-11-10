@@ -13,7 +13,15 @@ description: Node Exporter＠Prometheus
 
 <br>
 
-## 01. セットアップ
+## 01. Node Exporterの仕組み
+
+記入中
+
+...
+
+<br>
+
+## 02. セットアップ
 
 ### バイナリとして
 
@@ -71,7 +79,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 <br>
 
-## 02. メトリクスの一覧
+## 03. メトリクスの一覧
 
 ### 確認方法
 
@@ -93,7 +101,7 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 
 <br>
 
-## 03. PromQLを使用したメトリクス分析
+## 04. PromQLを使用したメトリクス分析
 
 ### CPU使用率
 

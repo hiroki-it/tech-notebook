@@ -110,6 +110,7 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
       args:
+        # 設定ファイルを読み込む
         - "--config.file=/config/blackbox.yaml"
       resources: {}
       ports:
@@ -126,20 +127,6 @@ spec:
       volumeMounts:
         - mountPath: /config
           name: config
-        - name: configmap-reload
-          image: "jimmidyson/configmap-reload:v0.2.2"
-          imagePullPolicy: "IfNotPresent"
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 65534
-          args:
-            - --volume-dir=/etc/config
-            - --webhook-url=http://localhost:9115/-/reload
-          resources: {}
-          volumeMounts:
-            - mountPath: /etc/config
-              name: config
-              readOnly: true
   volumes:
     - name: config
       configMap:
@@ -152,7 +139,7 @@ spec:
 
 ### Service
 
-PrometheusがBlack ExporterのPodからメトリクスを収集するためService。
+PrometheusがBlack ExporterのPodからメトリクスを収集するためServiceである。
 
 ```yaml
 kind: Service
