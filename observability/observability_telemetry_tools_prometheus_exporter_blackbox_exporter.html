@@ -24215,7 +24215,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
-<p>PrometheusがBlack ExporterのPodからメトリクスを収集するためServiceである。</p>
+<p>Prometheusは、ServiceMonitorを介して、Blackbox ExporterのPodからメトリクスを収集する。</p>
+<p>この時にPodの前段にServiceを配置する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">metadata</span><span class="p">:</span>
