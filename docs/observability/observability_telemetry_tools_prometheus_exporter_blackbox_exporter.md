@@ -139,7 +139,9 @@ spec:
 
 ### Service
 
-PrometheusがBlack ExporterのPodからメトリクスを収集するためServiceである。
+Prometheusは、ServiceMonitorを介して、Blackbox ExporterのPodからメトリクスを収集する。
+
+この時にPodの前段にServiceを配置する必要がある。
 
 ```yaml
 kind: Service

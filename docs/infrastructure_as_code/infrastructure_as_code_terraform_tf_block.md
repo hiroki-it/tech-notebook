@@ -1621,3 +1621,14 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
 ```
 
 <br>
+
+## 08. 関数
+
+### jsonencode
+
+Terraformのデータ型をJSON文字列型に変換する。
+
+> - https://developer.hashicorp.com/terraform/language/functions/jsonencode
+> - https://qiita.com/kanga/items/1ae96b7da2a7d76b070e#%E3%81%AA%E3%82%93%E3%81%A7%E5%8B%95%E3%81%8F%E3%81%8B
+
+<br>
