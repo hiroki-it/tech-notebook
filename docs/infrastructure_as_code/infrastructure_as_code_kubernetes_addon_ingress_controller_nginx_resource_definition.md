@@ -25,7 +25,7 @@ Ingressで`nginx`のIngressClassを指定する必要がある。
 
 ### `nginx.ingress.kubernetes.io/affinity`キー
 
-Podへのルーティング時にセッションを維持するかどうかを設定する。
+Podへのルーティング時にセッションを維持する (スティッキーセッション) かどうかを設定する。
 
 同じセッション内であれば、特定のクライアントからのリクエストをService配下の同じPodにルーティングし続けられる。
 
