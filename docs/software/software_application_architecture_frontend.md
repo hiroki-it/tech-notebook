@@ -26,9 +26,19 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 <br>
 
-## 02. Ajaxによるアプリケーション
+## 02. SST：Server Side Templating
+
+記入中...
+
+> - https://qiita.com/kimizuy/items/d33420330479f8c85449
+
+<br>
+
+## 03. Ajaxによるアプリケーション
 
 1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を作成する。
+
+Ajaxの仕組みで作成したアプリはSPAである (CSRとはSPA内部の仕組みが異なる) 。
 
 Ajaxの仕組みで作成したアプリはSPAである。
 
@@ -53,16 +63,17 @@ CSRでは、ページ全体の静的ファイルをリクエストするのは�
 
 > - https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 > - https://zenn.dev/bitarts/articles/37260ddb28ae5d
+> - https://qiita.com/kimizuy/items/d33420330479f8c85449
 
 <br>
 
-## 03. CSR：Client Side Rendering
+## 04. CSR：Client Side Rendering
 
 ### CSRとは
 
 ブラウザ側で静的ファイルを作成する。
 
-CSRの仕組みで作成したアプリはSPAである。
+CSRの仕組みで作成したアプリはSPAである (AjaxとはSPA内部の仕組みが異なる) 。
 
 最初に取得するhtmlファイルはほぼ空で、ブラウザ上でjavascriptファイルを実行し、htmlファイルを全てを作成する。
 
@@ -120,7 +131,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 04. SSR：Server Side Rendering
+## 05. SSR：Server Side Rendering
 
 ### 広義のSSRとは
 
@@ -162,7 +173,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 05. SSG：Static Site Generation
+## 06. SSG：Static Site Generation
 
 ### SSGとは
 
@@ -180,7 +191,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 06. ISR：Incremental Static Regeneration
+## 07. ISR：Incremental Static Regeneration
 
 ### ISRとは
 
@@ -196,7 +207,7 @@ SSGとは異なり、事前にビルドせず、静的ファイル (例：`html`
 
 <br>
 
-## 07. Atomic Design
+## 08. Atomic Design
 
 ### Atmic Designとは
 
@@ -220,7 +231,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 08. クリーンアーキテクチャ風
+## 09. クリーンアーキテクチャ風
 
 - Viewレイヤー
 - State Managementレイヤー
@@ -230,7 +241,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 09. マイクロフロントエンド
+## 10. マイクロフロントエンド
 
 ### UI部品合成とは
 
