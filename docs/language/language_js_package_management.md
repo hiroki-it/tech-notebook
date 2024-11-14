@@ -404,6 +404,18 @@ $ yarn audit --level critical
 
 <br>
 
+### build
+
+本番環境用アプリをビルドする。
+
+`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next build`コマンド) を実行している。
+
+```bash
+$ yarn build
+```
+
+<br>
+
 ### install
 
 #### ▼ installとは
@@ -411,7 +423,7 @@ $ yarn audit --level critical
 指定したバージョンのパッケージを、`package.json`ファイルの範囲内でインストールする。
 
 ```bash
-$ yarn add <パッケージ名>@<バージョンタグ>
+$ yarn install <パッケージ名>@<バージョンタグ>
 ```
 
 #### ▼ --check-files
@@ -448,6 +460,28 @@ $ yarn install --verbose
 
 <br>
 
+### dev
+
+開発環境用アプリを起動する。
+
+`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next dev`コマンド) を実行している。
+
+<br>
+
+### lint
+
+静的解析を実行する。
+
+`package.json`ファイルに定義があり、実際には`eslint`コマンドを実行している。
+
+```bash
+$ yarn lint
+```
+
+> - https://zenn.dev/yhay81/articles/def73cf8a02864#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95
+
+<br>
+
 ### list
 
 指定したパッケージのバージョンを取得する。
@@ -464,6 +498,18 @@ $ yarn list --depth=0 | grep <パッケージ名>
 
 ```bash
 $ yarn remove <パッケージ名>
+```
+
+<br>
+
+### start
+
+ビルド済みの本番環境用アプリを起動する。
+
+`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next start`コマンド) を実行している。
+
+```bash
+$ yarn build
 ```
 
 <br>

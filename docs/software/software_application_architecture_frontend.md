@@ -13,7 +13,20 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 <br>
 
-## 01. Ajaxによるアプリケーション
+## 01. アーキテクチャの歴史
+
+1. SST
+2. Ajax
+3. CSR
+4. SSR
+5. SSG
+6. ISR
+
+> - https://qiita.com/kimizuy/items/d33420330479f8c85449
+
+<br>
+
+## 02. Ajaxによるアプリケーション
 
 1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を作成する。
 
@@ -43,7 +56,7 @@ CSRでは、ページ全体の静的ファイルをリクエストするのは�
 
 <br>
 
-## 02. CSR：Client Side Rendering
+## 03. CSR：Client Side Rendering
 
 ### CSRとは
 
@@ -107,7 +120,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 02. SSR：Server Side Rendering
+## 04. SSR：Server Side Rendering
 
 ### 広義のSSRとは
 
@@ -149,7 +162,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 03. SSG：Static Site Generation
+## 05. SSG：Static Site Generation
 
 ### SSGとは
 
@@ -167,7 +180,7 @@ CSRは、Googleのクローラーがページを認識しにくく、Webペー�
 
 <br>
 
-## 04. ISR：Incremental Static Regeneration
+## 06. ISR：Incremental Static Regeneration
 
 ### ISRとは
 
@@ -183,7 +196,7 @@ SSGとは異なり、事前にビルドせず、静的ファイル (例：`html`
 
 <br>
 
-## 05. Atomic Design
+## 07. Atomic Design
 
 ### Atmic Designとは
 
@@ -207,7 +220,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 06. クリーンアーキテクチャ風
+## 08. クリーンアーキテクチャ風
 
 - Viewレイヤー
 - State Managementレイヤー
@@ -217,7 +230,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 <br>
 
-## 07. マイクロフロントエンド
+## 09. マイクロフロントエンド
 
 ### UI部品合成とは
 
