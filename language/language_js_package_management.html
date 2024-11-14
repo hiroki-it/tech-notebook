@@ -8837,6 +8837,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install_2" class="md-nav__link">
     <span class="md-ellipsis">
       install
@@ -8888,6 +8897,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lint" class="md-nav__link">
+    <span class="md-ellipsis">
+      lint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list" class="md-nav__link">
     <span class="md-ellipsis">
       list
@@ -8900,6 +8927,15 @@
   <a href="#remove" class="md-nav__link">
     <span class="md-ellipsis">
       remove
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    <span class="md-ellipsis">
+      start
     </span>
   </a>
   
@@ -24744,6 +24780,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      build
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install_2" class="md-nav__link">
     <span class="md-ellipsis">
       install
@@ -24795,6 +24840,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lint" class="md-nav__link">
+    <span class="md-ellipsis">
+      lint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list" class="md-nav__link">
     <span class="md-ellipsis">
       list
@@ -24807,6 +24870,15 @@
   <a href="#remove" class="md-nav__link">
     <span class="md-ellipsis">
       remove
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" class="md-nav__link">
+    <span class="md-ellipsis">
+      start
     </span>
   </a>
   
@@ -25200,10 +25272,16 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<p>本番環境用アプリをビルドする。</p>
+<p><code>package.json</code>ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら<code>next build</code>コマンド) を実行している。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
+</code></pre></div>
+<p><br></p>
 <h3 id="install_2">install<a class="headerlink" href="#install_2" title="Permanent link">&para;</a></h3>
 <h4 id="install_3">▼ installとは<a class="headerlink" href="#install_3" title="Permanent link">&para;</a></h4>
 <p>指定したバージョンのパッケージを、<code>package.json</code>ファイルの範囲内でインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>add<span class="w"> </span>&lt;パッケージ名&gt;@&lt;バージョンタグ&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>install<span class="w"> </span>&lt;パッケージ名&gt;@&lt;バージョンタグ&gt;
 </code></pre></div>
 <h4 id="-check-files">▼ --check-files<a class="headerlink" href="#-check-files" title="Permanent link">&para;</a></h4>
 <p>必要なパッケージが<code>node_modules</code>ディレクトリ内にインストールされているかを確認しつつ、不足があれば<code>install</code>コマンドを実行する。</p>
@@ -25230,6 +25308,21 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>install<span class="w"> </span>--verbose
 </code></pre></div>
 <p><br></p>
+<h3 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h3>
+<p>開発環境用アプリを起動する。</p>
+<p><code>package.json</code>ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら<code>next dev</code>コマンド) を実行している。</p>
+<p><br></p>
+<h3 id="lint">lint<a class="headerlink" href="#lint" title="Permanent link">&para;</a></h3>
+<p>静的解析を実行する。</p>
+<p><code>package.json</code>ファイルに定義があり、実際には<code>eslint</code>コマンドを実行している。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>lint
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/yhay81/articles/def73cf8a02864#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95">https://zenn.dev/yhay81/articles/def73cf8a02864#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <p>指定したパッケージのバージョンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>list<span class="w"> </span>--depth<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;パッケージ名&gt;
@@ -25238,6 +25331,12 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <h3 id="remove">remove<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h3>
 <p>指定したパッケージをアンインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>remove<span class="w"> </span>&lt;パッケージ名&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="start">start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h3>
+<p>ビルド済みの本番環境用アプリを起動する。</p>
+<p><code>package.json</code>ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら<code>next start</code>コマンド) を実行している。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
 </code></pre></div>
 <p><br></p>
 <h3 id="upgrade">upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h3>
