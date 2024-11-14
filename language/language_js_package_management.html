@@ -8804,6 +8804,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      audit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="audit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ auditとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ level
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install_2" class="md-nav__link">
     <span class="md-ellipsis">
       install
@@ -24678,6 +24711,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      audit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="audit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ auditとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ level
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install_2" class="md-nav__link">
     <span class="md-ellipsis">
       install
@@ -25114,6 +25180,26 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>add<span class="w"> </span>&lt;パッケージ名&gt;@&lt;バージョンタグ&gt;<span class="w"> </span>--dev
 </code></pre></div>
 <p><br></p>
+<h3 id="audit">audit<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h3>
+<h4 id="audit_1">▼ auditとは<a class="headerlink" href="#audit_1" title="Permanent link">&para;</a></h4>
+<p>脆弱性のあるパッケージを検出する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>audit
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA">https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA</a></li>
+</ul>
+</blockquote>
+<h4 id="level">▼ level<a class="headerlink" href="#level" title="Permanent link">&para;</a></h4>
+<p>検出する重要度を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>audit<span class="w"> </span>--level<span class="w"> </span>critical
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA">https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="install_2">install<a class="headerlink" href="#install_2" title="Permanent link">&para;</a></h3>
 <h4 id="install_3">▼ installとは<a class="headerlink" href="#install_3" title="Permanent link">&para;</a></h4>
 <p>指定したバージョンのパッケージを、<code>package.json</code>ファイルの範囲内でインストールする。</p>
@@ -25232,7 +25318,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-14</span>
   </span>
 
     
