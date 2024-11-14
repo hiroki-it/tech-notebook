@@ -677,6 +677,11 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 DockerHub以外のイメージレジストリを使って、レートリミットを回避してもよい。
 
+`crane`コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
+
+> - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
+> - https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md
+
 <br>
 
 ### 静的解析を実施する

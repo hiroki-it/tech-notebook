@@ -421,6 +421,25 @@ CIパイプライン上でコンテナイメージをビルドしていると、
 
 > - https://www.docker.com/increase-rate-limits/
 
+#### ▼ crane
+
+`crane`コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
+
+```bash
+# AWS ECRにログインする
+$ crane auth login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+
+# DockerHubからAWS ECRにコンテナイメージをコピーする例
+$ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:<バージョン>
+```
+
+> - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
+> - https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md
+
+#### ▼ krane
+
+`crane auth`コマンドを簡略化したコマンド
+
 <br>
 
 ### CPUアーキテクチャの指定
