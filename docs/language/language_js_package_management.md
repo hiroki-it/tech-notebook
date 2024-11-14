@@ -380,6 +380,30 @@ $ yarn add <パッケージ名>@<バージョンタグ> --dev
 
 <br>
 
+### audit
+
+#### ▼ auditとは
+
+脆弱性のあるパッケージを検出する。
+
+```bash
+$ yarn audit
+```
+
+> - https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA
+
+#### ▼ level
+
+検出する重要度を設定する。
+
+```bash
+$ yarn audit --level critical
+```
+
+> - https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA
+
+<br>
+
 ### install
 
 #### ▼ installとは
