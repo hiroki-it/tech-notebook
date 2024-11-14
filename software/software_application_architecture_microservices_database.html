@@ -1851,11 +1851,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
+      実装パターン (リクエスト/レスポンスパターン、パブリッシャー/サブスクライバーパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)">
+    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシャー/サブスクライバーパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2112,11 +2112,11 @@
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      実装パターン (パブリッシュ/サブスクライブパターン)
+      実装パターン (パブリッシャー/サブスクライバーパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装パターン (パブリッシュ/サブスクライブパターン)">
+    <nav class="md-nav" aria-label="実装パターン (パブリッシャー/サブスクライバーパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24749,11 +24749,11 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)
+      実装パターン (リクエスト/レスポンスパターン、パブリッシャー/サブスクライバーパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)">
+    <nav class="md-nav" aria-label="実装パターン (リクエスト/レスポンスパターン、パブリッシャー/サブスクライバーパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25010,11 +25010,11 @@
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
-      実装パターン (パブリッシュ/サブスクライブパターン)
+      実装パターン (パブリッシャー/サブスクライバーパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="実装パターン (パブリッシュ/サブスクライブパターン)">
+    <nav class="md-nav" aria-label="実装パターン (パブリッシャー/サブスクライバーパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25366,7 +25366,7 @@
 <h2 id="04-02-saga">04-02. オーケストレーションベースのSagaパターン<a class="headerlink" href="#04-02-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_1">オーケストレーションベースのSagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h3>
 <p>一連のローカルトランザクションの実行をまとめて制御する責務を持ったSagaオーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。</p>
-<p>各マイクロサービス間の通信方式は、リクエスト/レスポンスパターンまたはパブリッシュ/サブスクライブパターンのどちらでもよい。</p>
+<p>各マイクロサービス間の通信方式は、リクエスト/レスポンスパターンまたはパブリッシャー/サブスクライバーパターンのどちらでもよい。</p>
 <p><img alt="orchestration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png" /></p>
 <blockquote>
 <ul>
@@ -25377,7 +25377,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">実装パターン (リクエスト/レスポンスパターン、パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_14">実装パターン (リクエスト/レスポンスパターン、パブリッシャー/サブスクライバーパターン)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 自前で実装する場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>Sagaオーケストレーターは、ローカルトランザクションの進捗度 (Sagaログ) をDBに都度記録する。</p>
 <p>Sagaログから、いずれのローカルトランザクションを実行し終えたかを判断できる。</p>
@@ -26056,7 +26056,7 @@
 <h2 id="04-03-choreography-saga">04-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#04-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_5">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_5" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
-<p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。</p>
+<p>各マイクロサービス間の通信方式は、パブリッシャー/サブスクライバーパターンにする必要がある。</p>
 <p>そのために、マイクロサービス間にメッセージキューやメッセージブローカーを置く。</p>
 <p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
 <blockquote>
@@ -26068,7 +26068,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_24">実装パターン (パブリッシュ/サブスクライブパターン)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_24">実装パターン (パブリッシャー/サブスクライバーパターン)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ 自前で実装する場合<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリポジトリを参考にせよ。</p>
@@ -26087,10 +26087,10 @@
 </ul>
 </blockquote>
 <h4 id="_26">▼ クラウドプロバイダーのマネージドサービスを使用する場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービス間の通信方式は、パブリッシュ/サブスクライブパターンにする必要がある。</p>
+<p>各マイクロサービス間の通信方式は、パブリッシャー/サブスクライバーパターンにする必要がある。</p>
 <ul>
-<li>AWS Lambda、マイクロサービス間のパブリッシュ/サブスクライブAWSリソース (例：AWS EventBridge、AWS SQS、AWS SNS）</li>
-<li>Google Cloud Function、マイクロサービス間のパブリッシュ/サブスクライブGoogle Cloudリソース (例：Google Eventarc）</li>
+<li>AWS Lambda、マイクロサービス間のパブリッシャー/サブスクライバーAWSリソース (例：AWS EventBridge、AWS SQS、AWS SNS）</li>
+<li>Google Cloud Function、マイクロサービス間のパブリッシャー/サブスクライバーGoogle Cloudリソース (例：Google Eventarc）</li>
 </ul>
 <blockquote>
 <ul>
@@ -26174,7 +26174,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-14</span>
   </span>
 
     
