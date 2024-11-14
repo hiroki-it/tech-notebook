@@ -17,11 +17,11 @@ description: SQS＠AWSリソースの知見を記録しています。
 
 クラウドメッセージキューとして働く。
 
-送受信が一対一のプロデューサー/コンシューマーパターンであり、プルベースの通信方式である。
+送受信の関係が一対一のプロデューサー/コンシューマーパターンであり、プルベースの通信方式である。
 
 AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。
 
-パブリッシュ/サブスクライブシステム (例：AWS SNS、AWS EventBridge) とは異なりメッセージをキューイングできるが、メッセージをルーティングできない。
+パブリッシャー/サブスクライバーシステム (例：AWS SNS、AWS EventBridge) とは異なりメッセージをキューイングできるが、メッセージをルーティングできない。
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 > - https://tech.asoview.co.jp/entry/2022/04/06/102637

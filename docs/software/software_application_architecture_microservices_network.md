@@ -65,9 +65,9 @@ Sagaオーケストレーターの後続マイクロサービスの間にメッ�
 
 <br>
 
-### パブリッシュ/サブスクライブパターン
+### パブリッシャー/サブスクライバーパターン
 
-#### ▼ パブリッシュ/サブスクライブパターンとは
+#### ▼ パブリッシャー/サブスクライバーパターンとは
 
 ![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png)
 
