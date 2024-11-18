@@ -1,9 +1,9 @@
 ---
 title: 【IT技術の知見】OpenStack＠クラウドコンピューティング
-description: OpenStack＠AWSの知見を記録しています。
+description: OpenStack＠クラウドコンピューティングの知見を記録しています。
 ---
 
-# OpenStack＠AWS
+# OpenStack＠クラウドコンピューティング
 
 ## はじめに
 
@@ -15,9 +15,10 @@ description: OpenStack＠AWSの知見を記録しています。
 
 ## 01. OpenStackとは
 
-プライベートクラウドを構築するためのコンポーネントを提供する。
+IaaSのプライベートクラウドを構築するためのコンポーネントを提供する。
 
 > - https://www.openupitengineer.co.jp/column/it-technology/4579
+> - https://qr.ae/p238u7
 
 <br>
 
@@ -97,9 +98,10 @@ Web環境を提供するためのインターフェース機能である。
 
 ### Heat (Orchestration)
 
-構築用のテキストファイルにクラウドシステムを記述する機能である。
+OpenStackのIaCである。
 
 > - https://www.openupitengineer.co.jp/column/it-technology/4579
+> - https://qiita.com/kounan13/items/57adfbf3a5f209afa586#%E4%BB%A3%E8%A1%A8%E4%BE%8B%EF%BC%93aws%E3%82%84openstack%E7%94%A8%E3%81%AE%E3%83%84%E3%83%BC%E3%83%AB
 
 <br>
 
