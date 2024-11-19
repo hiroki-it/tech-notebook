@@ -21,7 +21,7 @@ description: コントロールプレーンコンポーネント＠Kubernetesの
 
 コントロールプレーンコンポーネントは、Cluster内のワーカーNode自体と、ワーカーNode内のPodを管理する。
 
-これは、コントロールプレーンNode上でデーモンとして直接的に常駐させる場合と、DeploymentやDaemonSetで複製されたPod内でコンテナとして常駐させる場合がある。
+これは、コントロールプレーンNode上でデーモンとして直接的に常駐させる場合と、DeploymentやDaemonSetでコピーされたPod内でコンテナとして常駐させる場合がある。
 
 > - https://kubernetes.io/docs/concepts/overview/components/#control-plane-components
 > - https://cstoku.dev/posts/2018/k8sdojo-24/

@@ -1039,9 +1039,9 @@ steps:
         echo "This is "${FOO}""
 ```
 
-#### ▼ `.env`ファイルの安全な複製方法
+#### ▼ `.env`ファイルの安全なコピー方法
 
-アプリケーションの`.env`ファイルをCircleCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全に複製できる。
+アプリケーションの`.env`ファイルをCircleCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全にコピーできる。
 
 ```bash
 $ cat .env | base64
@@ -1059,8 +1059,8 @@ jobs:
       - checkout
       - run:
           name: Make env file
+          # base64方式のエンコード値をデコードし、.envファイルをコピーする
           command: |
-            # base64方式のエンコード値をデコードし、.envファイルを複製
             echo ${ENV_FILE} | base64 -d > .env
       - run:
           name: Install node module

@@ -109,7 +109,7 @@ Dockerのベストプラクティスに則り、タグ名に`latest`を使用し
 
 特に、DockerHubはレートリミットがあるため、DockerHub上のリポジトリをプライベートリポジトリで管理しておく方が良い。
 
-この時、プルスルーキャッシュリポジトリは複製をプライベートリポジトリに自動的にプルしてくれる。
+この時、プルスルーキャッシュリポジトリはコピーをプライベートリポジトリに自動的にプルしてくれる。
 
 > - https://dev.classmethod.jp/articles/ecr-pull-through-cache-repositories/
 

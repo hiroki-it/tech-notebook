@@ -1400,7 +1400,7 @@ $ kubectl replace --force -f foo.yaml
 
 #### ▼ rolloutとは
 
-Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
+Deployment、DaemonSet、StatefulSet、でコピーされたPodを操作する。
 
 > - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
 > - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
