@@ -223,6 +223,26 @@ AWS EC2のライフサイクルにはフェーズがある。
 
 <br>
 
+### AWS EC2のコピー
+
+元のAWS EC2のAMIとAWS EBSボリュームのスナップショットから、AWS EC2を完全にコピーできる。
+
+<br>
+
+### AWS EC2への接続
+
+#### ▼ キーペアを使用したSSH公開鍵認証
+
+キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つAWS EC2にSSH公開鍵認証でリクエストできる。
+
+クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。
+
+その後、AWS Route53、ALBを経由せず、そのままAWS EC2へ向かう。
+
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
+
+<br>
+
 ### キーペア
 
 #### ▼ フィンガープリント値
@@ -612,8 +632,6 @@ AWS EBSボリュームのコピーのこと。
 
 そのため、スナップショットの頻度が高ければ増分が少なくなり、スナップショットの作成時間が短くなる。
 
-AWS EC2をコピーする場合、AWS EBSボリュームのスナップショットを作成した上で、これを新しいAWS EC2にアタッチする必要がある。
-
 ソフトウェアとAWS EBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
 
 > - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work
@@ -626,20 +644,6 @@ AWS EC2をコピーする場合、AWS EBSボリュームのスナップショッ
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | リソースタイプ              | 単一のボリュームのスナップショット、複数のボリュームを含むスナップショット、のいずれを作成するか、を設定する。 |
 | ボリュームID/インスタンスID | スナップショットの元になるボリューム/AWS EC2を設定する。                                                       |
-
-<br>
-
-## 04. AWS EC2への接続
-
-### キーペアを使用したSSH公開鍵認証
-
-キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つAWS EC2にSSH公開鍵認証でリクエストできる。
-
-クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。
-
-その後、AWS Route53、ALBを経由せず、そのままAWS EC2へ向かう。
-
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 
 <br>
 
@@ -674,7 +678,7 @@ AWS Systems Managerを使用してAWS EC2に接続する場合、AWS EC2自体�
 
 <br>
 
-## 05. ENI：Elastic Network Interface
+## 04. ENI：Elastic Network Interface
 
 ### ENIとは
 
@@ -781,7 +785,7 @@ AWS VPCエンドポイントを経由すれば異なるAWS VPCに送信するこ
 
 <br>
 
-## 05-02. セカンダリーIPアドレス割り当て
+## 04-02. セカンダリーIPアドレス割り当て
 
 ### セカンダリーIPアドレス割り当てとは
 
@@ -799,7 +803,7 @@ AWS VPCエンドポイントを経由すれば異なるAWS VPCに送信するこ
 
 <br>
 
-## 05-03. IPv4 Prefix delegation
+## 04-03. IPv4 Prefix delegation
 
 ### IPv4 Prefix delegationとは
 
