@@ -281,9 +281,9 @@ nav:
       - ■ メッセージング系:
           - メッセージング: software/software_middleware_messaging.md
           - ■ ブローカー系:
-              - RabbitMQ: software/software_middleware_messaging_broker_rabbitmq.md
+              - RabbitMQ: software/software_middleware_messaging_message_broker_rabbitmq.md
           - ■ ストリーマー系:
-              - Kafka: software/software_middleware_messaging_streamer_kafka.md
+              - Kafka: software/software_middleware_messaging_message_streamer_kafka.md
   - 🐧 OS:
       - software/basic/index.md
       - ■ Linuxカーネル:
