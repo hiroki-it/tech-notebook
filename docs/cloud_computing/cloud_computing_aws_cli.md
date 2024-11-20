@@ -849,7 +849,7 @@ $ aws ec2 revoke-security-group-ingress \
 
 AWSにSSOでログインする。
 
-認証フェーズを外部 (Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。
 
 追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
 
