@@ -25,5 +25,5 @@ PyYAML==6.0.2
 pyyaml_env_tag==0.1
 six==1.16.0
 smmap==5.0.1
-watchdog==5.0.3
+watchdog==6.0.0
 zipp==3.21.0
