@@ -27,6 +27,24 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
 
+#### ▼ extraPortMappings
+
+NodeとPod内のコンテナのポートをマッピングする。
+
+```yaml
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+```
+
 #### ▼ kubeadmConfigPatches
 
 `kubeadm init`コマンドの実行時に、コントロールプレーンにオプションを設定する。
