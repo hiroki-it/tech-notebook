@@ -116,3 +116,13 @@ $ kind export logs
 > - https://kind.sigs.k8s.io/docs/user/quick-start/#exporting-cluster-logs
 
 <br>
+
+### load
+
+Kind Cluster内にコンテナイメージをプルする。
+
+```bash
+$ kind load docker-image -name dev nginx:latest
+```
+
+<br>
