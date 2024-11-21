@@ -43,11 +43,12 @@ Knativeのイベントメッシュは、イベントブローカー、イベン�
 
 イベントブローカーは、送信元マイクロサービスのメッセージキューやメッセージブローカーのクライアントSDKとして機能する。
 
-一方で、イベントトリガーは宛先マイクロサービスのクライアントSDKとして機能する。
+イベントトリガーは宛先マイクロサービスに送信するイベントをフィルタリングする。
 
 ![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
 
 > - https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
+> - https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>
 
