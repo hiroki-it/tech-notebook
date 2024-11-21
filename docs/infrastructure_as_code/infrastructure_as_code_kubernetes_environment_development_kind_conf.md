@@ -17,7 +17,7 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 ### `kind-config.yaml`ファイルとは
 
-`kind`コマンドのパラメーターを設定する。
+`kind`コマンドのオプションを設定する。
 
 <br>
 
@@ -26,6 +26,25 @@ description: 設定ファイル＠Kindの知見を記録しています。
 #### ▼ nodes
 
 Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
+
+#### ▼ kubeadmConfigPatches
+
+`kubeadm init`コマンドの実行時に、コントロールプレーンにオプションを設定する。
+
+```yaml
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+```
+
+> - https://kind.sigs.k8s.io/docs/user/configuration/#kubeadm-config-patches
 
 #### ▼ role
 

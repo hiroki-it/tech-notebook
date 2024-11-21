@@ -56,7 +56,7 @@ StackSetsを使用すると、複数のリージョンのみでなく、複数�
 
 ### パラメーター
 
-スタックに代入するパラメーターを設定する。
+スタックに代入するオプションを設定する。
 
 インフラの作成時にコンソール画面上で入力フォームが現れる。
 
@@ -66,7 +66,7 @@ StackSetsを使用すると、複数のリージョンのみでなく、複数�
 AWSTemplateFormatVersion: 2010-09-09
 Description: WAF IPSet
 
-# パラメーターを設定する。
+# オプションを設定する。
 Parameters:
   AllowAddresses:
     Description: IP list allowed to access

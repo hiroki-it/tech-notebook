@@ -1453,7 +1453,7 @@ spec:
 
 #### ▼ parametersとは
 
-外部Ingressに応じたパラメーターを設定する。
+外部Ingressに応じたオプションを設定する。
 
 代わりに、IngressClassParamsを使用しても良い。
 

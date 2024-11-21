@@ -457,7 +457,7 @@ $ modprobe br_netfilter
 
 `(3)`
 
-: `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルパラメーターを設定する。
+: `/etc/sysctl.d/99-kubernetes-cri.conf`ファイルに、カーネルオプションを設定する。
 
 ```bash
 net.bridge.bridge-nf-call-iptables=1
