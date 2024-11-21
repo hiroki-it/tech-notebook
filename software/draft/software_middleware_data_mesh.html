@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Knative＠パブリッシュ/サブスクライブパターンの知見を記録しています。">
+        <meta name="description" content="データメッシュ＠データメッシュ系ミドルウェアの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_communication_style_publish_subscribe_knative.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_data_mesh.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】Knative＠パブリッシュ/サブスクライブパターン - 俺の技術ノート</title>
+        <title>【IT技術の知見】データメッシュ＠データメッシュ系ミドルウェア - 俺の技術ノート</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#knative" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Knative＠パブリッシュ/サブスクライブパターン
+              【IT技術の知見】データメッシュ＠データメッシュ系ミドルウェア
             
           </span>
         </div>
@@ -23614,7 +23614,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       はじめに
     </span>
@@ -23623,68 +23623,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-knative" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Knativeとは
+      01. データメッシュ
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-knative" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. Knativeの仕組み
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Knativeの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      アーキテクチャ
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      イベントメッシュ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. イベント駆動関数テンプレート
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. イベント駆動関数テンプレート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    <span class="md-ellipsis">
-      Goの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -23706,8 +23649,8 @@
   
 
 
-<h1 id="knative">Knative＠パブリッシュ/サブスクライブパターン<a class="headerlink" href="#knative" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">データメッシュ＠データメッシュ系ミドルウェア<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -23715,60 +23658,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-knative">01. Knativeとは<a class="headerlink" href="#01-knative" title="Permanent link">&para;</a></h2>
-<p>Knativeを使用しない場合、イベント駆動関数の公開に必要なKubernetesリソース (例：Deployment、Service、Podなど) をユーザーが作成し、関数を公開する。</p>
-<p>一方で、Knativeであれば、イベント駆動関数の公開に必要なKubernetesリソースをフレームワークとして作成し、簡単にPodを公開できる。</p>
+<h2 id="01">01. データメッシュ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>データレイクのように中央集権的にデータを管理するのではなく、データを分散的に管理する。</p>
+<p>また、汎用的な実装を横断的に提供する。</p>
 <blockquote>
 <ul>
-<li><a href="https://logmi.jp/tech/articles/321365">https://logmi.jp/tech/articles/321365</a></li>
-<li><a href="https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f">https://qiita.com/takanorig/items/3a3a0b43b5be5b4a124f</a></li>
-</ul>
-</blockquote>
-<p>.png<br></p>
-<h2 id="02-knative">02. Knativeの仕組み<a class="headerlink" href="#02-knative" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Knativeは、Service、Route、Configuration、Revision、から構成される。</p>
-<p><img alt="knative_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://opensource.com/article/21/11/knative-serving-serverless">https://opensource.com/article/21/11/knative-serving-serverless</a></li>
-<li><a href="https://www.syntio.net/en/labs-musings/knative-overview/">https://www.syntio.net/en/labs-musings/knative-overview/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_3">イベントメッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Knativeのイベントメッシュは、イベントブローカー、イベントトリガー、からなる。</p>
-<p>イベントブローカーは、送信元マイクロサービスのメッセージキューやメッセージブローカーのクライアントSDKとして機能する。</p>
-<p>イベントトリガーは宛先マイクロサービスに送信するイベントをフィルタリングする。</p>
-<p><img alt="knative_architecture_event-mesh" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/">https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/</a></li>
-<li><a href="https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. イベント駆動関数テンプレート<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">Handle</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">w</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="o">...</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/knative/func/blob/main/docs/function-templates/golang.md">https://github.com/knative/func/blob/main/docs/function-templates/golang.md</a></li>
+<li><a href="https://www.montecarlodata.com/blog-data-mesh-vs-data-lake-whats-the-difference/">https://www.montecarlodata.com/blog-data-mesh-vs-data-lake-whats-the-difference/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
