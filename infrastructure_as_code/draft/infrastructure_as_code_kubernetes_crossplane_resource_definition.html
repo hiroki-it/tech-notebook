@@ -23623,19 +23623,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-provider" class="md-nav__link">
+  <a href="#01-provider" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS Provider
+      01. Provider
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. AWS Provider">
+    <nav class="md-nav" aria-label="01. Provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWSの場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWSの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#package" class="md-nav__link">
     <span class="md-ellipsis">
-      package
+      ▼ package
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. AWSリソース
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. AWSリソース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3
     </span>
   </a>
   
@@ -23673,19 +23712,112 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-provider">01. AWS Provider<a class="headerlink" href="#01-aws-provider" title="Permanent link">&para;</a></h2>
-<h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
+<h2 id="01-provider">01. Provider<a class="headerlink" href="#01-provider" title="Permanent link">&para;</a></h2>
+<h3 id="aws">AWSの場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h4 id="package">▼ package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pkg.crossplane.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provider</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provider-aws-s3</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0</span>
+<span class="w">  </span><span class="c1"># AWS S3</span>
+<span class="w">  </span><span class="c1"># @see https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0</span>
+<span class="w">  </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xpkg.upbound.io/upbound/provider-aws-s3:v1.13.0</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pkg.crossplane.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provider</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provider-aws-rds</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># AWS RDS</span>
+<span class="w">  </span><span class="c1"># @see https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0</span>
+<span class="w">  </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xpkg.upbound.io/upbound/provider-aws-rds:v1.17.0</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pkg.crossplane.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provider</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">provider-aws-elasticache</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># AWS Elasticache</span>
+<span class="w">  </span><span class="c1"># @see https://marketplace.upbound.io/providers/upbound/provider-aws-elasticache/v1.17.0</span>
+<span class="w">  </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xpkg.upbound.io/upbound/provider-aws-elasticache:v1.17.0</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider">https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider</a></li>
-<li><a href="https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0">https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0</a></li>
+<li><a href="https://marketplace.upbound.io/providers?query=aws">https://marketplace.upbound.io/providers?query=aws</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-aws">02. AWSリソース<a class="headerlink" href="#02-aws" title="Permanent link">&para;</a></h2>
+<h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3.aws.crossplane.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bucket</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">crossplane.io/external-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crossplane-example-bucket</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-bucket</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">forProvider</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">accelerateConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enabled</span>
+<span class="w">    </span><span class="nt">acl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private</span>
+<span class="w">    </span><span class="nt">corsConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">corsRules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">allowedHeaders</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">          </span><span class="nt">allowedMethods</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
+<span class="w">          </span><span class="nt">allowedOrigins</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">          </span><span class="nt">exposeHeaders</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-amz-server-side-encryption</span>
+<span class="w">    </span><span class="nt">lifecycleConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">expiration</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="w">          </span><span class="nt">filter</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ola/</span>
+<span class="w">          </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enabled</span>
+<span class="w">    </span><span class="nt">locationConstraint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east-1</span>
+<span class="w">    </span><span class="nt">objectLockEnabledForBucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">publicAccessBlockConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">blockPublicPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">replicationConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">roleRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">somerole</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deleteMarkerReplication</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Disabled</span>
+<span class="w">          </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">bucketRef</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repl-dest</span>
+<span class="w">            </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STANDARD</span>
+<span class="w">          </span><span class="nt">filter</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rule-1</span>
+<span class="w">          </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">          </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enabled</span>
+<span class="w">    </span><span class="nt">serverSideEncryptionConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyServerSideEncryptionByDefault</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">sseAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AES256</span>
+<span class="w">    </span><span class="nt">tagging</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tagSet</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key1</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">val1</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secondKey</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">val2</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key3</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">val3</span>
+<span class="w">    </span><span class="nt">versioningConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Enabled</span>
+<span class="w">  </span><span class="nt">providerConfigRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.39.0/resources/s3.aws.crossplane.io/Bucket/v1beta1">https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.39.0/resources/s3.aws.crossplane.io/Bucket/v1beta1</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -23709,7 +23841,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-21</span>
   </span>
 
     
