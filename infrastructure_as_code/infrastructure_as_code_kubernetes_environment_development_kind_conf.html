@@ -17206,6 +17206,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#extraportmappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ extraPortMappings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubeadmconfigpatches" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ kubeadmConfigPatches
@@ -23796,6 +23805,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#extraportmappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ extraPortMappings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubeadmconfigpatches" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ kubeadmConfigPatches
@@ -23866,6 +23884,20 @@
 <h3 id="nodes">nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h3>
 <h4 id="nodes_1">▼ nodes<a class="headerlink" href="#nodes_1" title="Permanent link">&para;</a></h4>
 <p>Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。</p>
+<h4 id="extraportmappings">▼ extraPortMappings<a class="headerlink" href="#extraportmappings" title="Permanent link">&para;</a></h4>
+<p>NodeとPod内のコンテナのポートをマッピングする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="nt">nodes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">control-plane</span>
+<span class="w">    </span><span class="nt">extraPortMappings</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">        </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">        </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</code></pre></div>
 <h4 id="kubeadmconfigpatches">▼ kubeadmConfigPatches<a class="headerlink" href="#kubeadmconfigpatches" title="Permanent link">&para;</a></h4>
 <p><code>kubeadm init</code>コマンドの実行時に、コントロールプレーンにオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
