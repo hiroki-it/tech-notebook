@@ -16,6 +16,7 @@
 
 * #### <u>Kind</u>
   > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.html)
+  > * ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_conf.html)
 
 * #### <u>K3D</u>
   > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.html)
