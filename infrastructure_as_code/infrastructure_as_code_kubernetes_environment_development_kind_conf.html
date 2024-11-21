@@ -17206,6 +17206,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubeadmconfigpatches" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubeadmConfigPatches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#role" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ role
@@ -23787,6 +23796,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubeadmconfigpatches" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ kubeadmConfigPatches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#role" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ role
@@ -23843,11 +23861,29 @@
 <p><br></p>
 <h2 id="kind-configyaml"><code>kind-config.yaml</code><a class="headerlink" href="#kind-configyaml" title="Permanent link">&para;</a></h2>
 <h3 id="kind-configyaml_1"><code>kind-config.yaml</code>ファイルとは<a class="headerlink" href="#kind-configyaml_1" title="Permanent link">&para;</a></h3>
-<p><code>kind</code>コマンドのパラメーターを設定する。</p>
+<p><code>kind</code>コマンドのオプションを設定する。</p>
 <p><br></p>
 <h3 id="nodes">nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h3>
 <h4 id="nodes_1">▼ nodes<a class="headerlink" href="#nodes_1" title="Permanent link">&para;</a></h4>
 <p>Kind ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。</p>
+<h4 id="kubeadmconfigpatches">▼ kubeadmConfigPatches<a class="headerlink" href="#kubeadmconfigpatches" title="Permanent link">&para;</a></h4>
+<p><code>kubeadm init</code>コマンドの実行時に、コントロールプレーンにオプションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="nt">nodes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">control-plane</span>
+<span class="w">    </span><span class="nt">kubeadmConfigPatches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">kind: InitConfiguration</span>
+<span class="w">        </span><span class="no">nodeRegistration:</span>
+<span class="w">          </span><span class="no">kubeletExtraArgs:</span>
+<span class="w">            </span><span class="no">node-labels: &quot;ingress-ready=true&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kind.sigs.k8s.io/docs/user/configuration/#kubeadm-config-patches">https://kind.sigs.k8s.io/docs/user/configuration/#kubeadm-config-patches</a></li>
+</ul>
+</blockquote>
 <h4 id="role">▼ role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h4>
 <p>Nodeの役割を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind.x-k8s.io/v1alpha4</span>
