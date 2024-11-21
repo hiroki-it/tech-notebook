@@ -59,7 +59,49 @@ spec:
 
 ## 02. AWSリソース
 
-### S3
+### AWS RDS
+
+#### ▼ カスタムリソース一覧
+
+> - https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0
+
+#### ▼ Cluster
+
+```yaml
+apiVersion: rds.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: rds/v1beta1/clusterendpoint
+  labels:
+    testing.upbound.io/example-name: default-ce
+  name: example-ce
+spec:
+  forProvider:
+    engine: aurora-postgresql
+    masterPasswordSecretRef:
+      key: password
+      name: sample-cluster-password
+      namespace: upbound-system
+    masterUsername: cpadmin
+    region: us-west-1
+    skipFinalSnapshot: true
+  writeConnectionSecretToRef:
+    name: sample-rds-cluster-secret
+    namespace: upbound-system
+```
+
+> - https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0/resources/rds.aws.upbound.io/Cluster/v1beta1
+
+<br>
+
+### AWS S3
+
+#### ▼ カスタムリソース一覧
+
+> - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0
+
+#### ▼ S3バケット
 
 ```yaml
 apiVersion: s3.aws.crossplane.io/v1beta1
