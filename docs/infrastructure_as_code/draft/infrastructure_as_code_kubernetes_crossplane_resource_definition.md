@@ -53,7 +53,25 @@ spec:
 ```
 
 > - https://docs.crossplane.io/latest/getting-started/provider-aws/#install-the-aws-provider
-> - https://marketplace.upbound.io/providers?query=aws
+
+<br>
+
+### Helmの場合
+
+#### ▼ package
+
+Helm Releaseを管理する。
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-helm
+spec:
+  package: xpkg.upbound.io/upbound/provider-helm:v0.20.0
+```
+
+> - https://marketplace.upbound.io/providers/upbound/provider-helm/v0.20.0
 
 <br>
 
