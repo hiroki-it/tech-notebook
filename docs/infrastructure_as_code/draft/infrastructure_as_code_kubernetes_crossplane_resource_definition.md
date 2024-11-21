@@ -68,10 +68,9 @@ kind: Provider
 metadata:
   name: provider-helm
 spec:
+  # @see https://marketplace.upbound.io/providers/upbound/provider-helm/v0.20.0
   package: xpkg.upbound.io/upbound/provider-helm:v0.20.0
 ```
-
-> - https://marketplace.upbound.io/providers/upbound/provider-helm/v0.20.0
 
 <br>
 
