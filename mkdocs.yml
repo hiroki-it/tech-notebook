@@ -667,6 +667,7 @@ nav:
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_minikube_command.md
           - ■ Kind:
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_command.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_kind_conf.md
           - ■ K3D:
               - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_command.md
               - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_environment_development_k3d_conf.md
