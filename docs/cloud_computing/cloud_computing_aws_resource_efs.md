@@ -78,7 +78,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 
 ### 登録
 
-`mount`コマンドを使用して、AWS EFSに対してマウントポイントを登録する。
+`mount`コマンドを使用して、AWS EFSにマウントする。
 
 ```bash
 # mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
@@ -91,7 +91,7 @@ $ mount -t efs -o tls fs-*****:/ /var/www/foo
 
 ### 解除
 
-`unmount`コマンドを使用して、マウントポイントを解除する。
+`unmount`コマンドを使用して、AWS EFSからアンマウントする。
 
 `df`コマンドで、AWS EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount`コマンドを実行する。
 

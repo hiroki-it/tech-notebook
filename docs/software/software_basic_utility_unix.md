@@ -1006,6 +1006,25 @@ Swap:             0           0           0
 
 <br>
 
+## fuser
+
+デバイスを使用しているプロセスIDを取得する。
+
+`unmount`コマンドの実行時に、デバイスが使用中でアンマウントできない場合に使用する。
+
+```bash
+$ fuser -muv <デバイスファイル名>
+
+             USER    PID  ACCESS  COMMAND
+/var/lib:    root  kernel  mount   (root)/var/lib
+              foo            2342   F....                (foo)foo
+             root           4239   F....   (root)ssm-session-wor
+```
+
+> - https://memo.morelents.com/umount-busy/
+
+<br>
+
 ## grep
 
 ### grepとは
