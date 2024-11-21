@@ -17,7 +17,7 @@ description: Crossplaneの知見を記録しています。
 
 既存のKubernetesリソースのAPIを拡張する。
 
-また、Kubernetesの外部プロバイダー (例：AWS、Google Cloud、Azureなど) のリソースをKubernetesリソースとして管理できるようにする。
+また、Kubernetesの外部プロバイダー (例：AWS、Google Cloud、Azureなど) のリソースをKubernetesリソースとして定義できるようにする。
 
 > - https://docs.crossplane.io/latest/concepts/
 
