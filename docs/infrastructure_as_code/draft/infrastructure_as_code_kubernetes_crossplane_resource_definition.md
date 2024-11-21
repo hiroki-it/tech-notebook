@@ -25,6 +25,7 @@ kind: Provider
 metadata:
   name: provider-aws-s3
 spec:
+  # AWS S3
   # @see https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0
   package: xpkg.upbound.io/upbound/provider-aws-s3:v1.13.0
 ```
@@ -35,6 +36,7 @@ kind: Provider
 metadata:
   name: provider-aws-rds
 spec:
+  # AWS RDS
   # @see https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0
   package: xpkg.upbound.io/upbound/provider-aws-rds:v1.17.0
 ```
@@ -45,6 +47,7 @@ kind: Provider
 metadata:
   name: provider-aws-elasticache
 spec:
+  # AWS Elasticache
   # @see https://marketplace.upbound.io/providers/upbound/provider-aws-elasticache/v1.17.0
   package: xpkg.upbound.io/upbound/provider-aws-elasticache:v1.17.0
 ```
