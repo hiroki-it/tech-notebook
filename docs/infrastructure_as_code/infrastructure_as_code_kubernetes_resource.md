@@ -1642,7 +1642,7 @@ StorageClassを使用する場合は、PersistentVolumeClaimではなくStorageC
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-kube-apiserverが、リクエストの送信元を認証可能にする。
+kube-apiserverが、クライアント側を認証可能にする。
 
 kube-apiserverが、Kubernetesリソース (特にPod) を認証可能にする。
 
@@ -1685,7 +1685,7 @@ ServiceAccountのユーザー名は、`system:serviceaccount:＜Namespace名＞:
 
 ![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
 
-kube-apiserverが、リクエストの送信元を認証可能にする。
+kube-apiserverが、クライアント側を認証可能にする。
 
 kube-apiserverが、クライアントを認証可能にする。別途、RoleBindingやClusterRoleBindingを使用して、クライアントに認可スコープを設定する必要がある。
 

@@ -619,7 +619,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 #### ▼ Inject
 
-リクエストの送信元で、トレースコンテキストをCarrierに注入する。
+クライアント側で、トレースコンテキストをCarrierに注入する。
 
 ```go
 package middleware

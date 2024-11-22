@@ -288,11 +288,15 @@ SSL証明書の内容
 
 #### ▼ クライアント証明書
 
-クライアント側に配置する証明書である。
+リクエストの送信元に配置する証明書である。
 
-必須ではないが、SSL証明書のみを使用する場合よりも安全性が高くなる。
+クライアント証明書を持つ送信元のみがTLSで対象に通信できるようにする。
 
 ペアになる秘密鍵もクライアント側に配置することになるため、クライアント側にはクライアント証明書と秘密鍵の両方を配置することになる。
+
+![client-certificate.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png)
+
+> - https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html
 
 <br>
 

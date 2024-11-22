@@ -203,7 +203,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_client-side" style="zoom:60%;">
 
-サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務は、リクエストの送信元マイクロサービスにある。
+サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
 `(1)`
 
@@ -232,7 +232,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_server-side" style="zoom:60%;">
 
-サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務が、リクエストの送信元から切り離されている。
+サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務が、クライアント側から切り離されている。
 
 `(1)`
 
@@ -267,7 +267,7 @@ Node上にエージェントを配置し、これを経由してマイクロサ�
 
 #### ▼ Self registrationとは
 
-サービスレジストリ (例：etcd) に自身を登録し、宛先を問い合わせ、宛先にルーティングする責務は、リクエストの送信元マイクロサービスにある。
+サービスレジストリ (例：etcd) に自身を登録し、宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
 > - https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/
 > - https://www.codeprimers.com/service-discovery-in-microservice-architecture/

@@ -773,7 +773,7 @@ AWS EKSデータプレーンはプライベートサブネットで稼働させ�
 
 Podをパブリックサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。
 
-この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS VPC CNIはSNAT処理を実行し、Podのリクエストの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたAWS VPC CNIはSNAT処理を実行し、クライアント側Podの送信元IPアドレスをAWS EC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
 > - https://note.com/tyrwzl/n/n715a8ef3c28a
 > - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
@@ -814,7 +814,7 @@ data:
 
 Podをプライベートサブネットに配置した場合に、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、S3、AWS Systems Manager、AWS CloudWatchログ、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
 
-この時、Podのリクエストの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
+この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
 

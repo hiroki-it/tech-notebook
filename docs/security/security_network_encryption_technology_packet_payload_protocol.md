@@ -273,7 +273,7 @@ VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイ
 
 SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。
 
-このクライアント証明書をVPNのクライアント側に設定する必要がある。
+このクライアント証明書をVPNのクライアント側 (例：開発PC、仮想環境など) に設定する必要がある。
 
 ![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 

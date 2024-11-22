@@ -30,7 +30,7 @@ OpenPolicyAgentは、OpenPolicyエージェント、`rego`ファイル、DB、�
 
 OpenPolicyエージェントは、`rego`ファイルのロジックに基づいて、boolean値を返却する。
 
-返却されたboolean値を使用して、リクエストの送信元 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
+返却されたboolean値を使用して、クライアント側 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 

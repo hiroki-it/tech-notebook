@@ -385,7 +385,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
-	// リクエストの送信元マイクロサービスがわかるようにする。
+	// クライアント側マイクロサービスがわかるようにする。
 	req.Header.Set("User-Agent", "foo-service/1.0.0")
 
 	client := &http.Client{}
@@ -476,7 +476,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
-	// リクエストの送信元マイクロサービスがわかるようにする。
+	// クライアント側マイクロサービスがわかるようにする。
 	req.Header.Set("User-Agent", "bar-service/1.0.0")
 
 	client := &http.Client{}
