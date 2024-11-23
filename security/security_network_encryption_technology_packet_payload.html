@@ -25131,7 +25131,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 <dd>
 <p>自己署名のSSL証明書を作成する。</p>
 <p>認証局はサーバー自身なため、サーバーの秘密鍵 (<code>.key</code>ファイル) と証明書署名要求 (<code>.csr</code>ファイル) による署名で、SSL証明書 (<code>.crt</code>ファイル) を作成する。</p>
-<p>この時、あらかじめルート認証局を別に作成しておき、<code>signkey</code>オプションの代わりに<code>CA</code>オプションや<code>CAkey</code>オプションを使用して、ルート認証局が証明書で署名する方法もある。</p>
+<p>この時、あらかじめルート認証局を別に作成しておき、<code>signkey</code>オプションの代わりに<code>CA</code>オプションと<code>CAkey</code>オプションを使用して、ルート認証局が証明書で署名する方法もある。</p>
 <p>有効期限は<code>10</code>年 (<code>3650</code>日) とする。</p>
 </dd>
 </dl>
@@ -25323,8 +25323,9 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 <dd>
 <p>自己署名のクライアント証明書を作成する。</p>
 <p>認証局はクライアント自身なため、クライアントの秘密鍵 (<code>.key</code>ファイル) と証明書署名要求 (<code>.csr</code>ファイル) による署名で、クライアント証明書 (<code>.crt</code>ファイル) を作成する。</p>
-<p>この時、あらかじめルート認証局を別に作成しておき、<code>signkey</code>オプションの代わりに<code>CA</code>オプションや<code>CAkey</code>オプションを使用して、ルート認証局が証明書で署名する方法もある。</p>
+<p>この時、あらかじめルート認証局を別に作成しておき、<code>signkey</code>オプションの代わりに<code>CA</code>オプションと<code>CAkey</code>オプションを使用して、ルート認証局が証明書で署名する方法もある。</p>
 <p>有効期限は<code>10</code>年 (<code>3650</code>日) とする。</p>
+<p>未来の俺に託すが、クライアント証明書の作成時に<code>signkey</code>オプションを使用している例が見つからず、基本的には<code>CA</code>オプションと<code>CAkey</code>オプションを使った方法になるっぽい。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span><span class="se">\</span>
