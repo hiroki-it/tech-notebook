@@ -12229,13 +12229,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-03-ssl" class="md-nav__link">
+  <a href="#03-03-ca" class="md-nav__link">
     <span class="md-ellipsis">
-      03-03. SSL証明書の配置
+      03-03. CA証明書の配置
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-03. SSL証明書の配置">
+    <nav class="md-nav" aria-label="03-03. CA証明書の配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ca-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      自己署名CA証明書 (オレオレCA証明書) の作成
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-04. SSL証明書の配置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. SSL証明書の配置">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -12319,13 +12343,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-04" class="md-nav__link">
+  <a href="#03-05" class="md-nav__link">
     <span class="md-ellipsis">
-      03-04. クライアント証明書の配置
+      03-05. クライアント証明書の配置
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-04. クライアント証明書の配置">
+    <nav class="md-nav" aria-label="03-05. クライアント証明書の配置">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24439,13 +24463,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-03-ssl" class="md-nav__link">
+  <a href="#03-03-ca" class="md-nav__link">
     <span class="md-ellipsis">
-      03-03. SSL証明書の配置
+      03-03. CA証明書の配置
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-03. SSL証明書の配置">
+    <nav class="md-nav" aria-label="03-03. CA証明書の配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ca-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      自己署名CA証明書 (オレオレCA証明書) の作成
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-04. SSL証明書の配置
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. SSL証明書の配置">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24529,13 +24577,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-04" class="md-nav__link">
+  <a href="#03-05" class="md-nav__link">
     <span class="md-ellipsis">
-      03-04. クライアント証明書の配置
+      03-05. クライアント証明書の配置
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03-04. クライアント証明書の配置">
+    <nav class="md-nav" aria-label="03-05. クライアント証明書の配置">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24939,7 +24987,26 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-03-ssl">03-03. SSL証明書の配置<a class="headerlink" href="#03-03-ssl" title="Permanent link">&para;</a></h2>
+<h2 id="03-03-ca">03-03. CA証明書の配置<a class="headerlink" href="#03-03-ca" title="Permanent link">&para;</a></h2>
+<h3 id="ca-ca">自己署名CA証明書 (オレオレCA証明書) の作成<a class="headerlink" href="#ca-ca" title="Permanent link">&para;</a></h3>
+<p>サーバーやクライアント自身が自己署名する方法があるが、別に自己署名したルート認証局を作成する方法もある。</p>
+<p>自己署名したオレオレのルート認証局で署名して、オレオレのSSL証明書やクライアント証明書を作成することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-req<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-sha256<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-signkey<span class="w"> </span>ca.key<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-in<span class="w"> </span>ca.csr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-out<span class="w"> </span>ca.crt
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/paseri2022/items/a250ccf415819996163b#%E3%83%AB%E3%83%BC%E3%83%88%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">https://qiita.com/paseri2022/items/a250ccf415819996163b#%E3%83%AB%E3%83%BC%E3%83%88%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B</a></li>
+<li><a href="https://ken-ohwada.hatenadiary.org/entry/2021/02/27/122111">https://ken-ohwada.hatenadiary.org/entry/2021/02/27/122111</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-04-ssl">03-04. SSL証明書の配置<a class="headerlink" href="#03-04-ssl" title="Permanent link">&para;</a></h2>
 <h3 id="ssl_1">SSL証明書と秘密鍵の配置場所<a class="headerlink" href="#ssl_1" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ ミドルウェアの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>ミドルウェアごとに、デフォルトのディレクトリが異なる。</p>
@@ -25178,7 +25245,7 @@ $<span class="w"> </span>keytool<span class="w"> </span>-import<span class="w"> 
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-04">03-04. クライアント証明書の配置<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
+<h2 id="03-05">03-05. クライアント証明書の配置<a class="headerlink" href="#03-05" title="Permanent link">&para;</a></h2>
 <h3 id="ssl_3">SSL証明書と秘密鍵の配置場所<a class="headerlink" href="#ssl_3" title="Permanent link">&para;</a></h3>
 <p>記入中</p>
 <p><br></p>
