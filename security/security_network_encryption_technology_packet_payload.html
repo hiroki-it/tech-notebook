@@ -24996,8 +24996,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_22">▼ 作成手順<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドで、秘密鍵 (後にSSL証明書とペアになる) 、証明書署名要求、SSL証明書、を作成できる。</p>
-<p>クライアント証明書と作成手順は同じである。</p>
+<p>以下のコマンドをサーバー側で実施し、秘密鍵 (後にSSL証明書とペアになる) 、証明書署名要求、SSL証明書、を作成する。</p>
 <p>この時の認証局は『自分』である。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -25214,8 +25213,7 @@ $<span class="w"> </span>keytool<span class="w"> </span>-import<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="_26">▼ 作成手順<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドで、秘密鍵 (後にクライアント証明書とペアになる) 、証明書署名要求、クライアント証明書、を作成できる。</p>
-<p>SSL証明書と作成手順は同じである。</p>
+<p>以下のコマンドをクライアント側で実施し、秘密鍵 (後にクライアント証明書とペアになる) 、証明書署名要求、クライアント証明書、を作成できる。</p>
 <p>この時の認証局は『自分』である。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -25269,14 +25267,18 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>クライアント証明書 (<code>.crt</code>ファイル) 、クライアント証明書とペアになる秘密鍵 (<code>.key</code>ファイル) 、を該当の箇所に設定する。</p>
-<p>例えば、Nginxの設定ファイルなら、以下の通りとなる。</p>
+<p>秘密鍵 (<code>.key</code>ファイル) とクライアント証明書 (<code>.crt</code>ファイル) のpkcs12形式ペア (<code>.p12</code>ファイル) をエクスポートする。</p>
+<p>これをクライアントのマシン (例：ブラウザ、サーバーなど) に登録する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-inkey<span class="w"> </span>client.key<span class="w"> </span>-in<span class="w"> </span>client.crt<span class="w"> </span>-out<span class="w"> </span>client.p12
 </code></pre></div>
 <dl>
 <dt><code>(6)</code></dt>
+<dd>
+<p>クライアント証明書 (<code>.crt</code>ファイル) 、クライアント証明書とペアになる秘密鍵 (<code>.key</code>ファイル) 、を該当の箇所に設定する。</p>
+</dd>
+<dt><code>(7)</code></dt>
 <dd>
 <p>クライアント証明書の開始日と失効日が新しくなっている。</p>
 </dd>
@@ -25285,8 +25287,10 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9">https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9</a></li>
 <li><a href="https://vpslife.server-memo.net/create_client_cert/">https://vpslife.server-memo.net/create_client_cert/</a></li>
 <li><a href="https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8">https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8</a></li>
+<li><a href="https://vpslife.server-memo.net/import_client_chrome_edge/">https://vpslife.server-memo.net/import_client_chrome_edge/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
