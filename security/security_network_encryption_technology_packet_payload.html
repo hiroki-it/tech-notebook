@@ -24997,7 +24997,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="_22">▼ 作成手順<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>以下のコマンドをサーバー側で実施し、秘密鍵 (後にSSL証明書とペアになる) 、証明書署名要求、SSL証明書、を作成する。</p>
-<p>この時の認証局は『自分』である。</p>
+<p>この時のルート認証局は『自分』である。</p>
+<p>この時、あらかじめルート認証局を別に作成しておき、自分は中間認証局として、<code>CA</code>オプションや<code>CAkey</code>オプションを使用してCA証明書で署名する方法もある。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -25158,6 +25159,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
 <li><a href="https://www.karakaram.com/creating-self-signed-certificate/">https://www.karakaram.com/creating-self-signed-certificate/</a></li>
 <li><a href="https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd">https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd</a></li>
 <li><a href="https://weblabo.oscasierra.net/openssl-gencert-1/">https://weblabo.oscasierra.net/openssl-gencert-1/</a></li>
+<li><a href="https://gist.github.com/x-yuri/8178c9aa2dcf8acbe4ccc2a07313b22d">https://gist.github.com/x-yuri/8178c9aa2dcf8acbe4ccc2a07313b22d</a></li>
 </ul>
 </blockquote>
 <h4 id="_23">▼ 一括管理<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
@@ -25214,7 +25216,8 @@ $<span class="w"> </span>keytool<span class="w"> </span>-import<span class="w"> 
 </blockquote>
 <h4 id="_26">▼ 作成手順<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>以下のコマンドをクライアント側で実施し、秘密鍵 (後にクライアント証明書とペアになる) 、証明書署名要求、クライアント証明書、を作成できる。</p>
-<p>この時の認証局は『自分』である。</p>
+<p>この時のルート認証局は『自分』である。</p>
+<p>この時、あらかじめルート認証局を別に作成しておき、自分は中間認証局として、<code>CA</code>オプションや<code>CAkey</code>オプションを使用してCA証明書で署名する方法もある。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
