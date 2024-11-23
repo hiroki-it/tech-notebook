@@ -117,7 +117,7 @@ export default function Posts() {
 
 <br>
 
-## 04. ルーティング
+## 04. ルートモジュール
 
 ### URLとのマッピング
 
@@ -180,7 +180,6 @@ export default function Post() {
 ### Form
 
 `form`タグをレンダリングする。
-。
 
 ```tsx
 import {Form} from "@remix-run/react";

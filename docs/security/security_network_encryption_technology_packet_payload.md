@@ -207,9 +207,7 @@ description: アプリケーションデータの暗号化技術＠ネットワ�
 
 ## 03-02. 証明書
 
-### 証明書の種類
-
-#### ▼ CA証明書 (ルート証明書、トラストアンカー)
+### CA証明書 (ルート証明書、トラストアンカー)
 
 『ルート証明書』『トラストアンカー』ともいう。
 
@@ -233,7 +231,9 @@ $ yum install -y ca-certificates
 > - https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate
 > - https://www.nic.ad.jp/ja/newsletter/No69/0800.html
 
-#### ▼ 中間CA証明書
+<br>
+
+### 中間CA証明書
 
 中間認証局がルート認証局に自身を証明するために発行する証明書のこと。
 
@@ -243,13 +243,17 @@ $ yum install -y ca-certificates
 
 > - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
 
-#### ▼ リーフ証明書
+<br>
+
+### リーフ証明書
 
 記入中...
 
 > - https://itkq.jp/blog/2020/06/20/x509-chain/
 
-#### ▼ SSL証明書
+<br>
+
+### SSL証明書
 
 デジタル証明書をSSLに使用する場合、特にSSL証明書という。
 
@@ -278,7 +282,9 @@ SSL証明書の内容
 > - https://portal.kitcloud.net/documents/1356
 > - https://diary.bis5.net/2013/12/10/450.html
 
-#### ▼ 証明書バンドル
+<br>
+
+### 証明書バンドル
 
 認証局によってSSL証明書の発行方法は異なり、単体あるいはセットで発行する場合がある。
 
@@ -286,11 +292,13 @@ SSL証明書の内容
 
 > - https://www.ssldragon.com/blog/what-is-a-ca-bundle-and-where-to-find-it/
 
-#### ▼ クライアント証明書
+<br>
+
+### クライアント証明書
 
 リクエストの送信元に配置する証明書である。
 
-クライアント証明書を持つ送信元のみがTLSで対象に通信できるようにする。
+SSL証明書をサーバー側に配置した上で、クライアント証明書を持つクライアントのみがHTTPSリクエストでサーバー側に通信できるようにする。
 
 ペアになる秘密鍵もクライアント側に配置することになるため、クライアント側にはクライアント証明書と秘密鍵の両方を配置することになる。
 
@@ -299,6 +307,8 @@ SSL証明書の内容
 > - https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html
 
 <br>
+
+## 03-03. SSL証明書の配置
 
 ### SSL証明書と秘密鍵の配置場所
 
@@ -322,7 +332,7 @@ OSごとに、デフォルトのディレクトリが異なる。
 
 <br>
 
-### 自己署名SSL証明書 (オレオレ証明書) の作成
+### 自己署名SSL証明書 (オレオレSSL証明書) の作成
 
 #### ▼ SSL証明書の作成に必要なもの
 
@@ -339,6 +349,8 @@ OSごとに、デフォルトのディレクトリが異なる。
 #### ▼ 作成手順
 
 以下のコマンドで、秘密鍵 (後にSSL証明書とペアになる) 、証明書署名要求、SSL証明書、を作成できる。
+
+クライアント証明書と作成手順は同じである。
 
 この時の認証局は『自分』である。
 
@@ -406,7 +418,9 @@ Email Address []:
 
 `(4)`
 
-: ルート認証局を『自分』として、秘密鍵と証明書署名要求による署名で、SSL証明書 (`.crt`ファイル) を作成する。
+: 自己署名のSSL証明書を作成する。
+
+     ルート認証局を『自分』として、秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、SSL証明書 (`.crt`ファイル) を作成する。
 
      有効期限は`10`年 (`3650`日) とする。
 
@@ -447,7 +461,7 @@ server {
 
 `(6)`
 
-: SSL証明書の開始日と失効日が新しくなっており、HTTPSプロと凍ることがわかる。
+: SSL証明書の開始日と失効日が新しくなっている。
 
 ```bash
 $ curl https://foo.example.com -v
@@ -520,6 +534,109 @@ $ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公�
 
 > - https://superuser.com/questions/1535116/generating-privatepublic-keypair-for-ssh-difference-between-ssh-keygen-and-ope
 > - https://security.stackexchange.com/a/98290
+
+<br>
+
+## 03-04. クライアント証明書の配置
+
+### SSL証明書と秘密鍵の配置場所
+
+記入中
+
+<br>
+
+### 自己署名クライアント証明書 (オレオレクライアント証明書) の作成
+
+#### ▼ クライアント証明書の作成に必要なもの
+
+| ファイル           | 説明                                                                         | 拡張子                                |
+| ------------------ | ---------------------------------------------------------------------------- | ------------------------------------- |
+| 秘密鍵             | クライアント証明書とペアになる秘密鍵として動作する。                         | `pem`、`.key`、`.txt`                 |
+| 証明書署名要求     | 秘密鍵から作成され、公開鍵であるクライアント証明書を作成するために使用する。 | `.csr`、`.txt`                        |
+| クライアント証明書 | 秘密鍵とペアになる公開鍵として動作する。                                     | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
+
+> - https://vpslife.server-memo.net/create_client_cert/
+
+#### ▼ 作成手順
+
+以下のコマンドで、秘密鍵 (後にクライアント証明書とペアになる) 、証明書署名要求、クライアント証明書、を作成できる。
+
+SSL証明書と作成手順は同じである。
+
+この時の認証局は『自分』である。
+
+`(1)`
+
+: クライアント証明書の有効期限が切れてしまい、リクエストを拒否されてしまったとする。
+
+```bash
+$ curl https://foo.example.com -v
+```
+
+`(2)`
+
+: 秘密鍵 (`.key`ファイル) を作成する。
+
+```bash
+$ openssl genrsa 2048 -keyout client.key
+```
+
+`(3)`
+
+: 秘密鍵 (`.key`ファイル) から、証明書署名要求 (`.csr`ファイル) を作成する。
+
+     対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
+
+```bash
+$ openssl req -new -key client.key -out client.csr
+
+Country Name (2 letter code) []:
+State or Province Name (full name) []:
+Locality Name (eg, city) []:
+Organization Name (eg, company) []:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
+Email Address []:
+```
+
+`(4)`
+
+: 自己署名のクライアント証明書を作成する。
+
+     ルート認証局を『自分』として、秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、クライアント証明書 (`.crt`ファイル) を作成する。
+
+     有効期限は`10`年 (`3650`日) とする。
+
+```bash
+$ openssl x509 \
+    -days 3650 \
+    -req \
+    -sha256 \
+    -signkey client.key \
+    -in client.csr \
+    -out client.crt
+```
+
+`(5)`
+
+: クライアント証明書 (`.crt`ファイル) 、クライアント証明書とペアになる秘密鍵 (`.key`ファイル) 、を該当の箇所に設定する。
+
+     例えば、Nginxの設定ファイルなら、以下の通りとなる。
+
+```nginx
+
+```
+
+`(6)`
+
+: クライアント証明書の開始日と失効日が新しくなっている。
+
+```bash
+$ curl https://foo.example.com -v
+```
+
+> - https://vpslife.server-memo.net/create_client_cert/
+> - https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8
 
 <br>
 
