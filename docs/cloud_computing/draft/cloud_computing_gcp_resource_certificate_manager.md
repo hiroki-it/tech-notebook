@@ -17,6 +17,16 @@ description: Certificate Manager＠Google Cloudリソースの知見を記録し
 
 ### セットアップ
 
+#### ▼ SSL証明書
+
+#### ▼ クライアント証明書
+
+AWS Certificate Managerでクライアント証明書を発行する場合、AWSが署名する認証局 (プライベート認証局) を作成する必要がある。
+
+オレオレのクライアント証明書と同じ手順が必要になる。
+
+> - https://qiita.com/unitia0323/items/76882184c7359854ade8
+
 <br>
 
 ### SSL証明書の設置場所

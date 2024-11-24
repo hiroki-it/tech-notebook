@@ -666,6 +666,7 @@ $ openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12
 $ curl https://foo.example.com -v
 ```
 
+> - https://www.konekuri.com/87/
 > - https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9
 > - https://vpslife.server-memo.net/create_client_cert/
 > - https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8
