@@ -99,11 +99,15 @@ flowchart LR
   フルスタックエンジニア --> フルスタックエンジニアの基点(( ))
   フルスタックエンジニアの基点 --> SRE
   フルスタックエンジニアの基点 --> プロダクトマネージャー
+  フルスタックエンジニアの基点 --> ピープルマネージャー
   フルスタックエンジニアの基点 --> CTO
   フルスタックエンジニアの基点 --> VPoE
 ```
 
 > - https://www.youtube.com/watch?v=ljFZqeXYLXo
+> - https://qiita.com/darquro/items/d9efb7b5b789c152905f#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AE%E4%BB%95%E4%BA%8B
+> - https://qiita.com/hirokidaichi/items/95678bb1cef32629c317#%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88
+> - https://scrapbox.io/ohbarye/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%B9%E3%82%AD%E3%83%AB
 
 <br>
 

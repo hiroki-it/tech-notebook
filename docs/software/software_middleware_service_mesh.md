@@ -25,6 +25,12 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 > - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
 
+#### ▼ 方法
+
+Kubernetes上のPodは、Serviceの完全修飾ドメイン名のURL (`http://foo-service.default.svc.cluster.local`) を指定すると、そのServiceの配下にあるPodとHTTPで通信できる。
+
+Pod間をHTTPSで通信したい場合、Cert Managerなどを使用して、PodにSSL証明書やクライアント証明書をマウントする必要がある。
+
 <br>
 
 ### メッシュ
