@@ -68,6 +68,16 @@ $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
 
 <br>
 
+### -loggerOutput
+
+ログの出力先を設定する。
+
+```bash
+$ victoria-metrics-prod -loggerOutput=stderr
+```
+
+<br>
+
 ### -insert.maxQueueDuration
 
 DBへの書き込みの同時実行時に、キューで待機する最大時間を設定する。
@@ -352,6 +362,22 @@ $ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/write
 <br>
 
 ### /metrics
+
+#### ▼ flag
+
+VictoriaMetricsの設定ファイルの値を表す。
+
+```yaml
+flag{name="<設定項目>", value="<現在の値>", is_set="<ユーザー定義の有無 (true/false) >"}
+```
+
+#### ▼ vm_app_version
+
+VictoriaMetricsのバージョンを表す。
+
+```yaml
+vm_app_version{version="victoria-metrics-<バージョンの詳細値>", short_version="<バージョンの概略値>"}
+```
 
 #### ▼ vm_data_size_bytes
 
