@@ -13364,13 +13364,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#s3" class="md-nav__link">
+  <a href="#aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      S3
+      AWS S3
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="S3">
+    <nav class="md-nav" aria-label="AWS S3">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25334,13 +25334,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#s3" class="md-nav__link">
+  <a href="#aws-s3" class="md-nav__link">
     <span class="md-ellipsis">
-      S3
+      AWS S3
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="S3">
+    <nav class="md-nav" aria-label="AWS S3">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25852,16 +25852,16 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="-filter">▼ --filter<a class="headerlink" href="#-filter" title="Permanent link">&para;</a></h4>
-<p>SES、Cost Explorerなど</p>
+<p>AWS SES、AWS Cost Explorerなど</p>
 <h4 id="-filters">▼ --filters<a class="headerlink" href="#-filters" title="Permanent link">&para;</a></h4>
-<p>EC2、AutoScaling、RDSなど</p>
+<p>AWS EC2、AWS AutoScaling、AWS RDSなど</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span>
 </code></pre></div>
 <h4 id="filter">▼ filterの文字を含む独自のオプション<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
-<p>DynamoDBなど</p>
+<p>AWS DynamoDBなど</p>
 <h4 id="-include">▼ --include<a class="headerlink" href="#-include" title="Permanent link">&para;</a></h4>
-<p>ACMなど</p>
+<p>AWS ACMなど</p>
 <p><br></p>
 <h3 id="_6">コマンド実行側のフィルタリング系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ コマンド実行側のフィルタリング系とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -25989,7 +25989,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <span class="w">    </span>--tag-filters<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>&lt;タグ名&gt;,Values<span class="o">=</span>&lt;タグ値&gt;
 </code></pre></div>
 <p><br></p>
-<h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<h3 id="aws-s3">AWS S3<a class="headerlink" href="#aws-s3" title="Permanent link">&para;</a></h3>
 <h4 id="ls">▼ ls<a class="headerlink" href="#ls" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>指定したバケット内のファイル名を取得する。</p>
@@ -26273,7 +26273,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-25</span>
   </span>
 
     
