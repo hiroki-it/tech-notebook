@@ -365,6 +365,22 @@ vm_data_size_bytes{type="indexdb/inmemory"}
 vm_data_size_bytes{type="indexdb/file"}
 ```
 
+#### ▼ vm_free_disk_space_bytes
+
+VictoriaMetricsのデータの空きサイズを表す。
+
+```yaml
+vm_free_disk_space_bytes{path="/var/lib/victoria-metrics/data"}
+```
+
+#### ▼ vm_fs_read_bytes_total
+
+VictoriaMetricsの読み出しのデータサイズを表す。
+
+```yaml
+vm_fs_read_bytes_total
+```
+
 #### ▼ vm_http_request_errors_total
 
 VictoriaMetricsが処理したリクエストのエラー数を表す。
