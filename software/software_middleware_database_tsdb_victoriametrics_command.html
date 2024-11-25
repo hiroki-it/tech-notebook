@@ -4006,6 +4006,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-loggeroutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      -loggerOutput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-insertmaxqueueduration" class="md-nav__link">
     <span class="md-ellipsis">
       -insert.maxQueueDuration
@@ -4221,6 +4230,24 @@
   
     <nav class="md-nav" aria-label="/metrics">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ flag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm_app_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm_app_version
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#vm_data_size_bytes" class="md-nav__link">
@@ -24020,6 +24047,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-loggeroutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      -loggerOutput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-insertmaxqueueduration" class="md-nav__link">
     <span class="md-ellipsis">
       -insert.maxQueueDuration
@@ -24237,6 +24273,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ flag
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vm_app_version" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ vm_app_version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#vm_data_size_bytes" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ vm_data_size_bytes
@@ -24344,6 +24398,11 @@
 <p>インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-httpListenAddr<span class="o">=</span><span class="m">0</span>.0.0.0:8248
+</code></pre></div>
+<p><br></p>
+<h3 id="-loggeroutput">-loggerOutput<a class="headerlink" href="#-loggeroutput" title="Permanent link">&para;</a></h3>
+<p>ログの出力先を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-loggerOutput<span class="o">=</span>stderr
 </code></pre></div>
 <p><br></p>
 <h3 id="-insertmaxqueueduration">-insert.maxQueueDuration<a class="headerlink" href="#-insertmaxqueueduration" title="Permanent link">&para;</a></h3>
@@ -24556,6 +24615,14 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 </blockquote>
 <p><br></p>
 <h3 id="metrics">/metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<h4 id="flag">▼ flag<a class="headerlink" href="#flag" title="Permanent link">&para;</a></h4>
+<p>VictoriaMetricsの設定ファイルの値を表す。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">flag{name=&quot;&lt;設定項目&gt;&quot;, value=&quot;&lt;現在の値&gt;&quot;, is_set=&quot;&lt;ユーザー定義の有無 (true/false) &gt;&quot;}</span>
+</code></pre></div>
+<h4 id="vm_app_version">▼ vm_app_version<a class="headerlink" href="#vm_app_version" title="Permanent link">&para;</a></h4>
+<p>VictoriaMetricsのバージョンを表す。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_app_version{version=&quot;victoria-metrics-&lt;バージョンの詳細値&gt;&quot;, short_version=&quot;&lt;バージョンの概略値&gt;&quot;}</span>
+</code></pre></div>
 <h4 id="vm_data_size_bytes">▼ vm_data_size_bytes<a class="headerlink" href="#vm_data_size_bytes" title="Permanent link">&para;</a></h4>
 <p>VictoriaMetricsの保管するデータサイズを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_data_size_bytes{type=&quot;storage/inmemory&quot;}</span>
