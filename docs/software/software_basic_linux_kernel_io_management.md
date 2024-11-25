@@ -113,6 +113,16 @@ $ echo "text" | tee stdout.log
 
 > - https://glorificatio.org/archives/2903
 
+#### ▼ ファイルのみに出力
+
+パイプラインと`&`で`tee`コマンドを繋ぐと、標準出力とファイルの両方に出力できる。
+
+```bash
+$ echo "text" |& tee stdout.log
+```
+
+> - https://atsum.in/linux/tee-stderr/
+
 <br>
 
 ### stderr (標準エラー出力)

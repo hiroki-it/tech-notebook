@@ -640,7 +640,7 @@ $ systemctl stop nginx.service
 
 #### ▼ journalctlとは
 
-systemで管理する全てのユニットのログを取得する。
+systemで管理する全てのユニットの標準出力と標準エラー出力のログを取得する。
 
 `grep`コマンドで特定のエラーログレベルに絞る必要がある。
 
@@ -649,10 +649,11 @@ $ journalctl | grep error
 ```
 
 > - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
+> - https://unix.stackexchange.com/a/57243
 
 #### ▼ -u
 
-特定のユニットのみのログを取得する。
+特定のユニットの標準出力と標準エラー出力のログを取得する。
 
 ```bash
 $ journalctl -u foo.service | grep error
