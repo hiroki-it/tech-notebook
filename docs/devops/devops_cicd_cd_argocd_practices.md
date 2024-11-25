@@ -1091,6 +1091,6 @@ Cluster
 
 - `policy.csv`ファイルでArgoCD上の認可スコープを定義し、 `403` (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。
 - Cluster側でArgoCDの送信元IPアドレス (AWSならNAT Gateway) を許可し、特定のArgoCD以外を `403` (認可エラー) にする。
-- EKSクラスターのARNを登録しない場合は、`404`にする。 (これは、ArgoCDが`cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured`を返却してくれる)
+- AWS EKS ClusterのARNを登録しない場合は、`404`にする。 (これは、ArgoCDが`cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured`を返却してくれる)
 
 <br>

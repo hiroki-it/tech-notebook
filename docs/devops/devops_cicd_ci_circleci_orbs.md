@@ -232,14 +232,14 @@ jobs:
 
 #### ▼ deploy-update-service (ローリングアップデート使用時)
 
-ECRイメージを使用して、新しいリビジョン番号のECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
+ECRイメージを使用して、新しいリビジョン番号のAWS ECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
-| 設定値                         | 説明                                                                                          |                                                                                                                                                                                                                                 |
-| ------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                        | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                      |
-| `verify-revision-is-deployed`  | ローリングアップデートのECSタスクがECSタスク定義の必要数に合致したかを継続的に監視する。      | 例えば、ECSタスクが『`Running`フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はECSタスクの必要数に合致しないため、検知できる。 |
-| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval`と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                          |
-| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts`と掛け合わせて、そう実行時間を定義できる。       |                                                                                                                                                                                                                                 |
+| 設定値                         | 説明                                                                                             |                                                                                                                                                                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                           | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                                  |
+| `verify-revision-is-deployed`  | ローリングアップデートのAWS ECSタスクがAWS ECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、AWS ECSタスクが『`Running`フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAWS ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAWS ECSタスクの必要数に合致しないため、検知できる。 |
+| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval`と掛け合わせて、そう実行時間を定義できる。    | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                      |
+| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts`と掛け合わせて、そう実行時間を定義できる。          |                                                                                                                                                                                                                                             |
 
 オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と`poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
@@ -257,15 +257,15 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # AWS ECSタスク定義名を指定
+    # AWS AWS ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # AWS ECSクラスター名を指定
+    # AWS AWS ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # AWS ECSタスク定義に基づくECSタスク数の監視
+    # AWS AWS ECSタスク定義に基づくAWS ECSタスク数の監視
     verify-revision-is-deployed: "true"
     # 監視の試行回数
     max-poll-attempts: 30
@@ -296,7 +296,7 @@ workflows:
 
 #### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)
 
-AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのECSタスク定義を指定し、ECSサービスを更新する。
+AWS AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。
 
 ローリングアップデートと同様にして、`verify-revision-is-deployed`オプションを使用できる。
 
@@ -326,7 +326,7 @@ jobs:
     codedeploy-load-balanced-container-port: 80
     # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # AWS ECSサービス更新後のECSタスク監視
+    # AWS ECSサービス更新後のAWS ECSタスク監視
     verify-revision-is-deployed: "true"
 
 workflows:

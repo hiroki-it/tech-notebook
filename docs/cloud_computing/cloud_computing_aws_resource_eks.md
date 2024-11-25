@@ -839,9 +839,9 @@ AWS EKS Clusterを作成すると、ENIも作成する。
 | AWS EKSコントロールプレーン   | (たぶん) Interface | マネージド                                                                         | プライベートサブネット内のAWS EC2 NodeからコントロールプレーンのあるAWS VPCにリクエストを送信するため。 |
 | AWS CloudWatchログ            | Interface          | `logs.ap-northeast-1.amazonaws.com`                                                | Pod内のコンテナのログをPOSTリクエストを送信するため。                                                   |
 | AWS ECR                       | Interface          | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージのGETリクエストを送信するため。                                                                 |
-| S3                            | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
+| AWS S3                        | Gateway            | なし                                                                               | イメージのレイヤーをPOSTリクエストを送信するため                                                        |
 | AWS Systems Manager           | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems ManagerのパラメーターストアにGETリクエストを送信するため。                                  |
-| Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
+| AWS Secrets Manager           | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                                                         |
 
 > - https://dev.classmethod.jp/articles/eks_basic/
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/

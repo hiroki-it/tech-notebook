@@ -21,15 +21,15 @@ OSI層とAWSリソースの対応関係を以下に示す。
 
 AWSリソースごとにセキュリティを考慮する。
 
-| OSI層                | OSI層の番号 | 対応するAWSリソース                                |
-| -------------------- | ----------- | -------------------------------------------------- |
-| アプリケーション層   | `L7`        | ALB、AWS EC2、AWS RDS、AWS Route53、S3             |
-| プレゼンテーション層 | `L6`        | 同上                                               |
-| セッション層         | `L5`        | 同上                                               |
-| トランスポート層     | `L4`        | セキュリティグループ、NLB                          |
-| ネットワーク層       | `L3`        | Internet Gateway、AWS NAT Gateway、Transit Gateway |
-| データリンク層       | `L2`        | AWS VPC、サブネット                                |
-| 物理層               | `L1`        | 仮想化のため、意識しなくても良い。                 |
+| OSI層                | OSI層の番号 | 対応するAWSリソース                                        |
+| -------------------- | ----------- | ---------------------------------------------------------- |
+| アプリケーション層   | `L7`        | ALB、AWS EC2、AWS RDS、AWS Route53、AWS S3                 |
+| プレゼンテーション層 | `L6`        | 同上                                                       |
+| セッション層         | `L5`        | 同上                                                       |
+| トランスポート層     | `L4`        | セキュリティグループ、AWS NLB                              |
+| ネットワーク層       | `L3`        | AWS Internet Gateway、AWS NAT Gateway、AWS Transit Gateway |
+| データリンク層       | `L2`        | AWS VPC、サブネット                                        |
+| 物理層               | `L1`        | 仮想化のため、意識しなくても良い。                         |
 
 > - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
 > - https://aws.amazon.com/jp/elasticloadbalancing/features/

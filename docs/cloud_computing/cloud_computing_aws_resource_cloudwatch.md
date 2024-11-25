@@ -73,13 +73,13 @@ RDS (Aurora、非Aurora) の性能に関するメトリクスのデータポイ�
 
 #### ▼ Containerインサイト
 
-コンテナに関するAWSリソース (例：ECSクラスター、ECSサービス、ECSタスク、ECSコンテナ、EKS Cluster) の性能に関するメトリクスのデータポイントを収集する。
+コンテナに関するAWSリソース (例：AWS ECSクラスター、AWS ECSサービス、AWS ECSタスク、AWS ECSコンテナ、EKS Cluster) の性能に関するメトリクスのデータポイントを収集する。
 
 作成したメトリクスを特定の集約 (例：個別のコンテナ) で扱えるになる。
 
 また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。
 
-ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
+AWS ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
 
 Containerインサイトのメトリクスは、『`ContainerInsights`』という名前空間で一括でクエリでき、『`ClusterName`』などのディメンションでデータポイントをフィルタリングできる。
 
@@ -321,7 +321,7 @@ fields @timestamp, @message, @logStream
 
 ### cloudwatchエージェントとは
 
-インスタンス系AWSリソース (EC2、ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。
+インスタンス系AWSリソース (EC2、AWS ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。
 
 インスタンス内のメトリクスのデータポイントやログを収集し、AWS CloudWatchに送信する。
 

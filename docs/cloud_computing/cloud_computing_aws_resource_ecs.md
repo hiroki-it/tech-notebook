@@ -281,9 +281,9 @@ Fargateの場合、不要である。
 
 #### ▼ タスクロール
 
-ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。
+AWS ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。
 
-アプリケーションにS3やAWS Systems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
+アプリケーションにAWS S3やAWS Systems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
 

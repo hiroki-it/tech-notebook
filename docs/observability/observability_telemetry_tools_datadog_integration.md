@@ -132,7 +132,7 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 ### 料金
 
-EC2、ECS、Lambdaで料金が発生し、それ以外のAWSリソースは無料である。
+AWS EC2、AWS ECS、Lambdaで料金が発生し、それ以外のAWSリソースは無料である。
 
 > - https://docs.datadoghq.com/account_management/billing/aws/
 

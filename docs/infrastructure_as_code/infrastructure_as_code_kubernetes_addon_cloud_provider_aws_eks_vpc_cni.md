@@ -31,7 +31,7 @@ AWS VPC CNIがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタ�
 
 ### アーキテクチャ
 
-AWS EKSクラスター内に`L3`を提供する。
+AWS EKS Cluster内に`L3`を提供する。
 
 AWS VPC CNIは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
 

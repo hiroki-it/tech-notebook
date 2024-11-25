@@ -358,11 +358,11 @@ AWSリソースごとに専用のオプションがある。
 
 #### ▼ --filter
 
-SES、Cost Explorerなど
+AWS SES、AWS Cost Explorerなど
 
 #### ▼ --filters
 
-EC2、AutoScaling、RDSなど
+AWS EC2、AWS AutoScaling、AWS RDSなど
 
 ```bash
 # 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。
@@ -371,11 +371,11 @@ $ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
 
 #### ▼ filterの文字を含む独自のオプション
 
-DynamoDBなど
+AWS DynamoDBなど
 
 #### ▼ --include
 
-ACMなど
+AWS ACMなど
 
 <br>
 
@@ -565,7 +565,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 <br>
 
-### S3
+### AWS S3
 
 #### ▼ ls
 
