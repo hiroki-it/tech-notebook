@@ -195,7 +195,7 @@ $ du -hs /var/lib/victoriametrics/data
 
 #### ▼ バックグラウンドマージ
 
-VictoriaMetricsは、容量節約のためにデータのブロックを定期的にバックグラウンドでマージし、大きなブロックにする。
+VictoriaMetricsは、容量節約のためにデータブロックを定期的にバックグラウンドでマージし、大きなブロックにする。
 
 > - https://docs.victoriametrics.com/#storage
 

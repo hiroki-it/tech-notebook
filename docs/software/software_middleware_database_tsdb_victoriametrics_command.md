@@ -350,3 +350,72 @@ $ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/write
 > - https://docs.victoriametrics.com/#high-availability
 
 <br>
+
+### /metrics
+
+#### ▼ vm_data_size_bytes
+
+VictoriaMetricsの保管するデータサイズを表す。
+
+```yaml
+vm_data_size_bytes{type="storage/inmemory"}
+vm_data_size_bytes{type="storage/small"}
+vm_data_size_bytes{type="storage/big"}
+vm_data_size_bytes{type="indexdb/inmemory"}
+vm_data_size_bytes{type="indexdb/file"}
+```
+
+#### ▼ vm_http_request_errors_total
+
+VictoriaMetricsが処理したリクエストのエラー数を表す。
+
+```yaml
+vm_http_request_errors_total{path="*", reason="unsupported"}
+vm_http_request_errors_total{path="*", reason="wrong_auth_key"}
+vm_http_request_errors_total{path="*", reason="wrong_basic_auth"}
+vm_http_request_errors_total{path="/api/v1/admin/tsdb/delete_series"}
+vm_http_request_errors_total{path="/api/v1/export"}
+vm_http_request_errors_total{path="/api/v1/export/csv"}
+vm_http_request_errors_total{path="/api/v1/export/native"}
+vm_http_request_errors_total{path="/api/v1/import", protocol="vmimport"}
+vm_http_request_errors_total{path="/api/v1/import/csv", protocol="csvimport"}
+vm_http_request_errors_total{path="/api/v1/import/native", protocol="nativeimport"}
+vm_http_request_errors_total{path="/api/v1/import/prometheus", protocol="prometheusimport"}
+vm_http_request_errors_total{path="/api/v1/label/{}/values"}
+vm_http_request_errors_total{path="/api/v1/labels"}
+vm_http_request_errors_total{path="/api/v1/query"}
+vm_http_request_errors_total{path="/api/v1/query_range"}
+vm_http_request_errors_total{path="/api/v1/series"}
+vm_http_request_errors_total{path="/api/v1/series/count"}
+vm_http_request_errors_total{path="/api/v1/status/top_queries"}
+vm_http_request_errors_total{path="/api/v1/status/tsdb"}
+vm_http_request_errors_total{path="/api/v1/write", protocol="promremotewrite"}
+vm_http_request_errors_total{path="/datadog/api/beta/sketches", protocol="datadog"}
+vm_http_request_errors_total{path="/datadog/api/v1/series", protocol="datadog"}
+vm_http_request_errors_total{path="/datadog/api/v2/series", protocol="datadog"}
+vm_http_request_errors_total{path="/federate"}
+vm_http_request_errors_total{path="/functions"}
+vm_http_request_errors_total{path="/functions/<func_name>"}
+vm_http_request_errors_total{path="/influx/write", protocol="influx"}
+vm_http_request_errors_total{path="/metrics/expand"}
+vm_http_request_errors_total{path="/metrics/find"}
+vm_http_request_errors_total{path="/metrics/index.json"}
+vm_http_request_errors_total{path="/newrelic/infra/v2/metrics/events/bulk", protocol="newrelic"}
+vm_http_request_errors_total{path="/opentelemetry/v1/metrics", protocol="opentelemetry"}
+vm_http_request_errors_total{path="/render"}
+vm_http_request_errors_total{path="/snapshot/create"}
+vm_http_request_errors_total{path="/snapshot/delete"}
+vm_http_request_errors_total{path="/snapshot/delete_all"}
+vm_http_request_errors_total{path="/snapshot/list"}
+vm_http_request_errors_total{path="/tags"}
+vm_http_request_errors_total{path="/tags/<tag_name>"}
+vm_http_request_errors_total{path="/tags/autoComplete/tags"}
+vm_http_request_errors_total{path="/tags/autoComplete/values"}
+vm_http_request_errors_total{path="/tags/delSeries"}
+vm_http_request_errors_total{path="/tags/findSeries"}
+vm_http_request_errors_total{path="/tags/tagMultiSeries"}
+vm_http_request_errors_total{path="/tags/tagSeries"}
+vm_http_request_errors_total{path="/target_response"}
+```
+
+<br>
