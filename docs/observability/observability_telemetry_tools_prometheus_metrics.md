@@ -115,6 +115,20 @@ prometheus_tsdb_compaction_chunk_samples_sum
 
 ## 02-02. 外部から収集したデータポイント
 
+### AWS EKSから収集したデータポイント
+
+AWS EKSで利用できるAPI名を表す。
+
+```bash
+aggregator_unavailable_apiservice{job="apiserver", name="<API名>"}
+
+aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaws.com"}
+```
+
+> - https://docs.aws.amazon.com/grafana/latest/userguide/solution-eks.html#solution-eks-metrics
+
+<br>
+
 ### kubeletから収集したデータポイント
 
 #### ▼ container_cpu_usage_seconds_total

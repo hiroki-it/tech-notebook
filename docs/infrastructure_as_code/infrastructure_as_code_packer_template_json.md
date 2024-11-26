@@ -87,7 +87,7 @@ build_ami:
     - when: manual
 ```
 
-> - https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html
+> - https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html
 
 <br>
 

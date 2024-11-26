@@ -223,12 +223,6 @@ AWS EC2のライフサイクルにはフェーズがある。
 
 <br>
 
-### AWS EC2のコピー
-
-元のAWS EC2のAMI (OSやミドルウェアを含む) とAWS EBSボリューム (データを含む) のスナップショットから、AWS EC2を完全にコピーできる。
-
-<br>
-
 ### AWS EC2への接続
 
 #### ▼ キーペアを使用したSSH公開鍵認証
@@ -267,8 +261,11 @@ $ openssl pkcs8 \
 
 AWS EC2のマシンイメージであり、AWS EC2上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とAWS EBSボリュームの両方が内蔵されたコピーのこと。
 
+AWS EC2の完全なコピーを作成できる。
+
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
+> - https://qiita.com/Jerid/items/c8c7b09797fc5f9f182e#ami%E3%81%A8snapshot%E3%81%AE%E9%81%95%E3%81%84
 
 <br>
 
@@ -636,7 +633,7 @@ $ df -hT
 $ umount -d /dev/nvme1n1
 ```
 
-代わりに、AWS EC2を停止した上でボリュームをデタッチすると簡単である。
+代わりに、AWS EC2を停止した上でボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。
 
 > - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume
 > - https://pentan.info/server/linux/umount_busy.html

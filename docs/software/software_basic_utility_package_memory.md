@@ -645,7 +645,7 @@ systemで管理する全てのユニットの標準出力と標準エラー出�
 `grep`コマンドで特定のエラーログレベルに絞る必要がある。
 
 ```bash
-$ journalctl | grep error
+$ journalctl | grep -i error
 ```
 
 > - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
@@ -656,7 +656,15 @@ $ journalctl | grep error
 特定のユニットの標準出力と標準エラー出力のログを取得する。
 
 ```bash
-$ journalctl -u foo.service | grep error
+$ journalctl -u foo.service | grep -i error
+```
+
+#### ▼ -f
+
+`tail`コマンドのようにログを出力し続ける。
+
+```bash
+$ journalctl -f -u foo.service | grep -i error
 ```
 
 <br>
