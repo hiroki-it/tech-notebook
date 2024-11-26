@@ -23143,6 +23143,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#aws-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS EKSから収集したデータポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubelet" class="md-nav__link">
     <span class="md-ellipsis">
       kubeletから収集したデータポイント
@@ -24089,6 +24098,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#aws-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS EKSから収集したデータポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubelet" class="md-nav__link">
     <span class="md-ellipsis">
       kubeletから収集したデータポイント
@@ -24310,6 +24328,18 @@ http_request_duration_seconds
 </blockquote>
 <p><br></p>
 <h2 id="02-02">02-02. 外部から収集したデータポイント<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="aws-eks">AWS EKSから収集したデータポイント<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h3>
+<p>AWS EKSで利用できるAPI名を表す。</p>
+<div class="highlight"><pre><span></span><code>aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;apiserver&quot;</span>,<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;&lt;API名&gt;&quot;</span><span class="o">}</span>
+
+aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;apiserver&quot;</span>,<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;v1.metrics.eks.amazonaws.com&quot;</span><span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/grafana/latest/userguide/solution-eks.html#solution-eks-metrics">https://docs.aws.amazon.com/grafana/latest/userguide/solution-eks.html#solution-eks-metrics</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="kubelet">kubeletから収集したデータポイント<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <h4 id="container_cpu_usage_seconds_total">▼ container_cpu_usage_seconds_total<a class="headerlink" href="#container_cpu_usage_seconds_total" title="Permanent link">&para;</a></h4>
 <p>CPUの使用時間を表す。</p>
@@ -24355,7 +24385,7 @@ http_request_duration_seconds
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-26</span>
   </span>
 
     
