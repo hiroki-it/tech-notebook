@@ -23632,17 +23632,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      セットアップ
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セットアップ">
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       レンダリング手法
     </span>
@@ -23692,6 +23692,30 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. 環境変数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 環境変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      言語の実行環境
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#env" class="md-nav__link">
     <span class="md-ellipsis">
@@ -23703,9 +23727,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#env_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env
+      ▼ .envファイル
     </span>
   </a>
   
@@ -23714,7 +23747,7 @@
           <li class="md-nav__item">
   <a href="#envlocal" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env.local
+      ▼ .env.localファイル
     </span>
   </a>
   
@@ -23723,7 +23756,7 @@
           <li class="md-nav__item">
   <a href="#envdevelopment" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env.development
+      ▼ .env.developmentファイル
     </span>
   </a>
   
@@ -23732,7 +23765,7 @@
           <li class="md-nav__item">
   <a href="#envdevelopmentlocal" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env.development.local
+      ▼ .env.development.localファイル
     </span>
   </a>
   
@@ -23741,7 +23774,7 @@
           <li class="md-nav__item">
   <a href="#envproduction" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env.production
+      ▼ .env.productionファイル
     </span>
   </a>
   
@@ -23750,7 +23783,7 @@
           <li class="md-nav__item">
   <a href="#envproductionlocal" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ .env.production.local
+      ▼ .env.production.localファイル
     </span>
   </a>
   
@@ -23796,8 +23829,8 @@
 <h2 id="01-nextjs">01. Next.jsとは<a class="headerlink" href="#01-nextjs" title="Permanent link">&para;</a></h2>
 <p>Reactパッケージを使用したフレームワークである。</p>
 <p><br></p>
-<h2 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">レンダリング手法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">レンダリング手法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="csr">▼ CSRモード<a class="headerlink" href="#csr" title="Permanent link">&para;</a></h4>
 <p>以下の時にCSRモードになり、SPAをレンダリングする。</p>
 <ul>
@@ -23972,38 +24005,48 @@ export default IsrPage;
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="env">.envファイル<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
-<h4 id="env_1">▼ .env<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
+<h2 id="03">03. 環境変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_3">言語の実行環境<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>export</code>コマンドで出力する</li>
+<li>コンテナの環境変数として出力する</li>
+</ul>
+<p><br></p>
+<h3 id="env"><code>.env</code>ファイル<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>.env</code>ファイルを自動的に読み込み、また名前に応じて処理が変わる。</p>
+<p>dotenvパッケージは不要である。</p>
+<h4 id="env_1">▼ <code>.env</code>ファイル<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
 <p>全ての<code>yarn</code>コマンドで自動的に読み込まれる。</p>
-<h4 id="envlocal">▼ .env.local<a class="headerlink" href="#envlocal" title="Permanent link">&para;</a></h4>
+<h4 id="envlocal">▼ <code>.env.local</code>ファイル<a class="headerlink" href="#envlocal" title="Permanent link">&para;</a></h4>
 <p>全ての<code>yarn</code>コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envdevelopment">▼ .env.development<a class="headerlink" href="#envdevelopment" title="Permanent link">&para;</a></h4>
+<h4 id="envdevelopment">▼ <code>.env.development</code>ファイル<a class="headerlink" href="#envdevelopment" title="Permanent link">&para;</a></h4>
 <p><code>yarn dev</code>コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envdevelopmentlocal">▼ .env.development.local<a class="headerlink" href="#envdevelopmentlocal" title="Permanent link">&para;</a></h4>
+<h4 id="envdevelopmentlocal">▼ <code>.env.development.local</code>ファイル<a class="headerlink" href="#envdevelopmentlocal" title="Permanent link">&para;</a></h4>
 <p><code>yarn dev</code>コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envproduction">▼ .env.production<a class="headerlink" href="#envproduction" title="Permanent link">&para;</a></h4>
+<h4 id="envproduction">▼ <code>.env.production</code>ファイル<a class="headerlink" href="#envproduction" title="Permanent link">&para;</a></h4>
 <p><code>yarn start</code>コマンドと<code>next build</code>コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E">https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E</a></li>
 </ul>
 </blockquote>
-<h4 id="envproductionlocal">▼ .env.production.local<a class="headerlink" href="#envproductionlocal" title="Permanent link">&para;</a></h4>
+<h4 id="envproductionlocal">▼ <code>.env.production.local</code>ファイル<a class="headerlink" href="#envproductionlocal" title="Permanent link">&para;</a></h4>
 <p><code>yarn start</code>コマンドと<code>next build</code>コマンドで自動的に読み込まれる。</p>
 <blockquote>
 <ul>
@@ -24031,7 +24074,7 @@ export default IsrPage;
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-26</span>
   </span>
 
     

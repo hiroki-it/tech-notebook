@@ -24617,7 +24617,7 @@
 <p>vmstorageは、保管期間を過ぎたメトリクスファイル (主に、<code>data</code>ディレクトリ、<code>indexdb</code>ディレクトリ、の配下など) を削除する。</p>
 <p>ただし実際には、期間を過ぎたメトリクスファイルを翌日にすぐ削除するわけではなく、月初のバックグラウンドマージ中にまとめて削除する。</p>
 <p>VictoriaMetricsの起動時に、<code>victoria-metrics-prod</code>コマンドの<code>-retentionPeriod</code>オプションで指定できる。</p>
-<p>例えば、<code>retentionPeriod</code>を90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。</p>
+<p>例えば、<code>-retentionPeriod</code>オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。</p>
 <p>日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。</p>
 <blockquote>
 <ul>
