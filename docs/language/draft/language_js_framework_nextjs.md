@@ -19,7 +19,7 @@ Reactパッケージを使用したフレームワークである。
 
 <br>
 
-## セットアップ
+## 02. セットアップ
 
 ### レンダリング手法
 
@@ -198,37 +198,52 @@ export default IsrPage;
 
 <br>
 
-### .envファイル
+## 03. 環境変数
 
-#### ▼ .env
+### 言語の実行環境
+
+- `export`コマンドで出力する
+- コンテナの環境変数として出力する
+
+<br>
+
+### `.env`ファイル
+
+#### ▼ 仕組み
+
+`.env`ファイルを自動的に読み込み、また名前に応じて処理が変わる。
+
+dotenvパッケージは不要である。
+
+#### ▼ `.env`ファイル
 
 全ての`yarn`コマンドで自動的に読み込まれる。
 
-#### ▼ .env.local
+#### ▼ `.env.local`ファイル
 
 全ての`yarn`コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ .env.development
+#### ▼ `.env.development`ファイル
 
 `yarn dev`コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ .env.development.local
+#### ▼ `.env.development.local`ファイル
 
 `yarn dev`コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ .env.production
+#### ▼ `.env.production`ファイル
 
 `yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ .env.production.local
+#### ▼ `.env.production.local`ファイル
 
 `yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
 

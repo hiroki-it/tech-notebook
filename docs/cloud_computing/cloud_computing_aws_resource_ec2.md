@@ -259,9 +259,11 @@ $ openssl pkcs8 \
 
 ### AMIとは
 
-AWS EC2のマシンイメージであり、AWS EC2上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とAWS EBSボリュームの両方が内蔵されたコピーのこと。
+AWS EC2のマシンイメージであり、AWS EC2の完全なコピーを作成できる。
 
-AWS EC2の完全なコピーを作成できる。
+AWS EC2上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とAWS EBSボリュームの両方が内蔵されたコピーのこと。
+
+AMIを入れ替える場合、コンテナイメージと同様にAWS EC2を作成し直す必要がある。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html

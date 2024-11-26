@@ -236,7 +236,7 @@ vmstorageは、保管期間を過ぎたメトリクスファイル (主に、`da
 
 VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
 
-例えば、`retentionPeriod`を90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。
+例えば、`-retentionPeriod`オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。
 
 日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。
 

@@ -81,12 +81,14 @@ description: Typescriptの知見を記録しています。
 
 ## 環境変数
 
-### OS
+### 出力
 
-- `export`
-- コンテナの環境変数として
+#### ▼ 言語の実行環境
 
-### dotenv
+- `export`コマンドで出力する
+- コンテナの環境変数として出力する
+
+#### ▼ dotenvパッケージ
 
 ```typescript
 import dotenv from "dotenv";
@@ -100,7 +102,9 @@ dotenv.config();
 > - https://www.basedash.com/blog/environment-variables-in-typescript
 > - https://medium.com/@sushantkadam15/using-environment-variables-in-typescript-with-dotenv-dc0c35939059
 
-### 型指定
+<br>
+
+### 型の定義
 
 ```typescript
 interface Env {
