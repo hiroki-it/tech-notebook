@@ -47,7 +47,17 @@ $ sudo lsof -i -P | grep LISTEN
 
 <br>
 
-## 02. メールデータのプロトコル
+## 02. 名前解決のプロトコル
+
+### DNS
+
+記入中...
+
+> - https://www.quora.com/If-DNS-is-a-layer-7-service-How-does-layer-3-find-out-the-IP-address
+
+<br>
+
+## 03. メールデータのプロトコル
 
 ### メールデータの送受信
 
