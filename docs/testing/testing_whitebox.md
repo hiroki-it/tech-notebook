@@ -382,8 +382,9 @@ AとBは、『1』または『0』になり得るとする。
 - Autify
 - Cypress
 - Mabl
-- Selenium
+- Playwright
 - Puppeteer
+- Selenium
 - TestCafe
 
 > - https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F
