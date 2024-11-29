@@ -5211,11 +5211,11 @@
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-      仮想サーバー内コンテナのデータプレーン内管理
+      仮想サーバー上のコンテナのデータプレーン内管理
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="仮想サーバー内コンテナのデータプレーン内管理">
+    <nav class="md-nav" aria-label="仮想サーバー上のコンテナのデータプレーン内管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5238,6 +5238,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウド上のコンテナのデータプレーン管理
+    </span>
+  </a>
   
 </li>
         
@@ -25399,11 +25408,11 @@
           <li class="md-nav__item">
   <a href="#_44" class="md-nav__link">
     <span class="md-ellipsis">
-      仮想サーバー内コンテナのデータプレーン内管理
+      仮想サーバー上のコンテナのデータプレーン内管理
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="仮想サーバー内コンテナのデータプレーン内管理">
+    <nav class="md-nav" aria-label="仮想サーバー上のコンテナのデータプレーン内管理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25426,6 +25435,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウド上のコンテナのデータプレーン管理
+    </span>
+  </a>
   
 </li>
         
@@ -26369,22 +26387,40 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_44">仮想サーバー内コンテナのデータプレーン内管理<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<h3 id="_44">仮想サーバー上のコンテナのデータプレーン内管理<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <h4 id="_45">▼ 同じプライベートネットワーク内の場合<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
-<p>仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合に、この仮想サーバーに<code>istio-proxy</code>コンテナをインジェクションする。</p>
-<p>これにより、データプレーン内で仮想サーバーを管理できるようになる。</p>
+<p>仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合に、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側ではWorkloadGroupの作成、仮想サーバー側ではistioデーモンプロセスの実行が必要である。</p>
 <p>この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_vm_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/vm-architecture/">https://istio.io/latest/docs/ops/deployment/vm-architecture/</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine">https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine</a></li>
 </ul>
 </blockquote>
 <h4 id="_46">▼ 異なるプライベートネットワーク内の場合<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
-<p>仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に所属している場合に、この仮想サーバーに<code>istio-proxy</code>コンテナをインジェクションする。</p>
-<p>これにより、データプレーン内で管理できるようになる。</p>
+<p>仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に所属している場合に、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側ではWorkloadGroupの作成、仮想サーバー側ではistioデーモンプロセスの実行が必要である。</p>
 <p>この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_vm_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/deployment/vm-architecture/">https://istio.io/latest/docs/ops/deployment/vm-architecture/</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine">https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_47">クラウド上のコンテナのデータプレーン管理<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
+<p>クラウド上のコンテナ (例：AWS ECS) がコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合に、クラウド上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側では〇〇 (AWS ECSを認識するためのリソースが必要だがわからず...) の作成、クラウド上のコンテナのホストマシンではztunnelデーモンあるいはztunnelコンテナの実行が必要である。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/">https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/</a></li>
+<li><a href="https://github.com/solo-io/ecs-demo/blob/main/tf/ecs_eks_cluster.tf#L126-L151">https://github.com/solo-io/ecs-demo/blob/main/tf/ecs_eks_cluster.tf#L126-L151</a></li>
+<li><a href="https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration">https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
@@ -26406,7 +26442,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-29</span>
   </span>
 
     
