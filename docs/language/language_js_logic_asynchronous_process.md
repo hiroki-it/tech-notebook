@@ -218,8 +218,6 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 #### ▼ コンストラクタを使用する場合
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
-
 **＊実装例＊**
 
 ```javascript
@@ -259,6 +257,8 @@ rejectFunc.catch((err) => {
 });
 ```
 
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+
 <br>
 
 ## 02-02. async/await宣言
@@ -274,8 +274,6 @@ Promiseオブジェクトを明示的に使用する場合、Promiseオブジェ
 Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。
 
 また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。
-
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 **＊実装例＊**
 
@@ -325,6 +323,8 @@ const asyncFunc = async () => {
   });
 };
 ```
+
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 <br>
 
@@ -390,8 +390,6 @@ const asyncFunc = async () => {
 
 Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
-
 **＊実装例＊**
 
 ```javascript
@@ -422,6 +420,8 @@ const asyncFunc = async () => {
   return response;
 };
 ```
+
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 <br>
 

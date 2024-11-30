@@ -2502,6 +2502,30 @@ $ unlink <シンボリックリンク名>
 
 <br>
 
+## useradd
+
+### useraddとは
+
+ユーザーを作成する。
+
+```bash
+$ useradd foo
+```
+
+<br>
+
+### -m
+
+ユーザーのホームディレクトリを作成する。
+
+```bash
+$ useradd -m foo
+```
+
+> - https://eng-entrance.com/linux-user-add
+
+<br>
+
 ## wc
 
 ### -l
