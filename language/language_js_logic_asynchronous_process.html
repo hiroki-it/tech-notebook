@@ -24549,11 +24549,6 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p><br></p>
 <h3 id="thencatchfinally"><code>then</code>メソッド、<code>catch</code>メソッド、<code>finally</code>メソッド<a class="headerlink" href="#thencatchfinally" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ コンストラクタを使用する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resolveFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;resolve!!&quot;</span><span class="p">);</span>
@@ -24586,6 +24581,11 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// reject!!</span>
 <span class="p">});</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-02-asyncawait">02-02. async/await宣言<a class="headerlink" href="#02-02-asyncawait" title="Permanent link">&para;</a></h2>
 <h3 id="async">async宣言<a class="headerlink" href="#async" title="Permanent link">&para;</a></h3>
@@ -24594,11 +24594,6 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p>一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。</p>
 <p>Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。</p>
 <p>また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>以下の全ては、同じ処理を定義している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -24635,6 +24630,11 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="await">await宣言とは<a class="headerlink" href="#await" title="Permanent link">&para;</a></h3>
 <h4 id="await_1">▼ await宣言<a class="headerlink" href="#await_1" title="Permanent link">&para;</a></h4>
@@ -24683,11 +24683,6 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <h3 id="_8">エラーハンドリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="try-catch">▼ try-catch<a class="headerlink" href="#try-catch" title="Permanent link">&para;</a></h4>
 <p>Promiseオブジェクトの<code>then</code>メソッド、<code>catch</code>メソッド、<code>finally</code>メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">axios</span>
@@ -24714,6 +24709,11 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_9">スリープ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="settimeout">▼ setTimeout<a class="headerlink" href="#settimeout" title="Permanent link">&para;</a></h4>
@@ -24834,7 +24834,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-30</span>
   </span>
 
     
