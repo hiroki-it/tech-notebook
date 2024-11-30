@@ -250,6 +250,7 @@ nav:
               - Istio: software/software_middleware_service_mesh_istio.md
               - コントロールプレーン: software/software_middleware_service_mesh_istio_control_plane.md
               - データプレーン: software/software_middleware_service_mesh_istio_data_plane.md
+              - Istioを採用しない場合との比較: software/software_middleware_service_mesh_istio_non.md
               - コマンド: software/software_middleware_service_mesh_istio_command.md
               - プラクティス集: software/software_middleware_service_mesh_istio_practices.md
               - IstioOperator: software/software_middleware_service_mesh_istio_operator_resource_definition.md
