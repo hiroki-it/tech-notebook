@@ -67,12 +67,15 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 ### Istio + Kubernetes + Envoy
 
-KubernetesとIstio上のPodは、VirtualServiceの完全修飾ドメイン名のURL (`http://foo-virtual-service.default.svc.cluster.local`) を指定すると、そのVirtualServiceの配下にあるPodとHTTPで通信できる。
+KubernetesとIstio上のPodは、Serviceの完全修飾ドメイン名のURL (`http://foo-service.default.svc.cluster.local`) を指定すると、そのServiceの配下にあるPodとHTTPで通信できる。
+
+指定するURLはKubernetesのみの場合と同じであるが、実際はServiceを経由しておらず、Pod間で直接的に通信している。
 
 Pod間 (フロントエンドとマイクロサービス間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLSを有効化する必要がある。
 
-> - https://www.reddit.com/r/devops/comments/1dzs6fy/comment/lchvfqy/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+> - https://github.com/istio/istio/issues/10864#issue-397801391
 > - https://discuss.istio.io/t/pod-to-pod-communication/8939/5
+> - https://stackoverflow.com/a/71502783/12771072
 
 <br>
 
