@@ -23995,12 +23995,14 @@
 <p><br></p>
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-kubernetes-envoy">Istio + Kubernetes + Envoy<a class="headerlink" href="#istio-kubernetes-envoy" title="Permanent link">&para;</a></h3>
-<p>KubernetesとIstio上のPodは、VirtualServiceの完全修飾ドメイン名のURL (<code>http://foo-virtual-service.default.svc.cluster.local</code>) を指定すると、そのVirtualServiceの配下にあるPodとHTTPで通信できる。</p>
+<p>KubernetesとIstio上のPodは、Serviceの完全修飾ドメイン名のURL (<code>http://foo-service.default.svc.cluster.local</code>) を指定すると、そのServiceの配下にあるPodとHTTPで通信できる。</p>
+<p>指定するURLはKubernetesのみの場合と同じであるが、実際はServiceを経由しておらず、Pod間で直接的に通信している。</p>
 <p>Pod間 (フロントエンドとマイクロサービス間、マイクロサービス間) をHTTPSで通信したい場合、Istioの相互TLSを有効化する必要がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.reddit.com/r/devops/comments/1dzs6fy/comment/lchvfqy/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/devops/comments/1dzs6fy/comment/lchvfqy/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
+<li><a href="https://github.com/istio/istio/issues/10864#issue-397801391">https://github.com/istio/istio/issues/10864#issue-397801391</a></li>
 <li><a href="https://discuss.istio.io/t/pod-to-pod-communication/8939/5">https://discuss.istio.io/t/pod-to-pod-communication/8939/5</a></li>
+<li><a href="https://stackoverflow.com/a/71502783/12771072">https://stackoverflow.com/a/71502783/12771072</a></li>
 </ul>
 </blockquote>
 <p><br></p>
