@@ -103,6 +103,7 @@
   > * ##### [︎Istio](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html)
   > * ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_control_plane.html)
   > * ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_data_plane.html)
+  > * ##### [Istioを採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
   > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html)
   > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html)
   > * ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)
@@ -113,6 +114,8 @@
   > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
   > > * ##### [Secret系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
 
+
+Istioを採用しない場合との比較
 <br>
 
 ### DNS系
