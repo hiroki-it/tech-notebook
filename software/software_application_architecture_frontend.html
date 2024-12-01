@@ -24746,6 +24746,8 @@
 <h4 id="_6">▼ 状態管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でレンダリングするHTMLが動的に変わり続ける。</p>
 <p>これは、同じページでは特定のHTMLしかレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。</p>
+<p>CSRは、DOMの現在の状態をDOMから参照するのではなく、相当する状態を状態オブジェクトとして管理する。</p>
+<p>そして、状態オブジェクトをその都度変更した上で、実際のDOMにこれを動的に適用し続ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// APIからデータを取ってくる</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">getTodoList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;遊ぶ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;買い物&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;宿題&quot;</span><span class="p">];</span>
@@ -24771,6 +24773,7 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/gagaga/articles/state-management">https://zenn.dev/gagaga/articles/state-management</a></li>
+<li><a href="https://qiita.com/shohta-noda/items/a6c1b5264cb2fee7fc6d#%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86">https://qiita.com/shohta-noda/items/a6c1b5264cb2fee7fc6d#%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86</a></li>
 </ul>
 </blockquote>
 <p><br></p>
