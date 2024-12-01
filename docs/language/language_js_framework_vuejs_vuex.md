@@ -15,7 +15,7 @@ description: Vuex＠Vue.jsの知見を記録しています。
 
 ## 01. Vuexとは
 
-Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相当する機能を提供し、グローバルで参照できる。
+Vue.jsでパッケージの1つで、状態管理を実施する。
 
 異なるコンポーネントで共通したデータを扱いたくとも、双方向データバインディングでは、親子コンポーネント間でしか、データを受け渡しできない。
 
@@ -24,6 +24,8 @@ Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相
 ※Vuexからなるモデルはどうあるべきか、について記入中...
 
 ![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueコンポーネントツリーとVuexの関係.png)
+
+> - https://zenn.dev/gagaga/articles/state-management
 
 <br>
 

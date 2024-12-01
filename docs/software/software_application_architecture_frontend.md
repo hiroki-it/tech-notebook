@@ -117,11 +117,39 @@ View層とModel層の間にViewModel層を配置し、View層とViewModel層の�
 
 Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。
 
-詳しくは、以下のリンクを参考にせよ。
-
 ![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html
+#### ▼ 状態管理
+
+CSRでは、ブラウザ上の操作による現在のデータに応じて、同じページ内でレンダリングするHTMLが動的に変わり続ける。
+
+これは、同じページでは特定のHTMLしかレンダリングできない他の方法 (SSR、SSG、ISRなど) とは異なる。
+
+```jsx
+// APIからデータを取ってくる
+const getTodoList = async () => {
+  return ["遊ぶ", "買い物", "宿題"];
+};
+
+// カスタムフック
+const useTodoList = () => {
+  const [state, setState] = React.useState<string[] | null>(null);
+  React.useEffect(() => {
+    getTodoList().then(todoList => {
+      setState(todoList);
+    });
+  }, []);
+  return state;
+};
+
+function App() {
+  const state = useTodoList();
+  // データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数
+  return <ul>{state ? state.map(e => <li>{e}</li>) : "Loding"}</ul>;
+}
+```
+
+> - https://zenn.dev/gagaga/articles/state-management
 
 <br>
 
