@@ -24471,7 +24471,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h3 id="typeamazon-ebs">typeがamazon-ebsの場合<a class="headerlink" href="#typeamazon-ebs" title="Permanent link">&para;</a></h3>
 <h4 id="ami_name">▼ ami_name<a class="headerlink" href="#ami_name" title="Permanent link">&para;</a></h4>
-<p>AMIの名前を設定する。</p>
+<p>AWS AMIの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;builders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;amazon-ebs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;ami_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;bar-ami&quot;</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
 <h4 id="ami_users">▼ ami_users<a class="headerlink" href="#ami_users" title="Permanent link">&para;</a></h4>
@@ -24500,21 +24500,21 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">              </span><span class="c1"># ルートボリューム</span>
 <span class="w">              </span><span class="s">&quot;device_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/dev/xvda&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="s">&quot;volume_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;gp2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="c1"># AMIの作成後に、元となったEC2のボリュームを削除する</span>
+<span class="w">              </span><span class="c1"># AWS AMIの作成後に、元となったEC2のボリュームを削除する</span>
 <span class="w">              </span><span class="s">&quot;delete_on_termination&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="s">&quot;volume_size&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;300&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">]}]}</span>
 </code></pre></div>
 <h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
-<p>AMIを作成するリージョンを設定する。</p>
+<p>AWS AMIを作成するリージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;builders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;amazon-ebs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
 <h4 id="snapshot_users">▼ snapshot_users<a class="headerlink" href="#snapshot_users" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;builders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;amazon-ebs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;snapshot_users&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;&quot;</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
 <h4 id="source_ami">▼ source_ami<a class="headerlink" href="#source_ami" title="Permanent link">&para;</a></h4>
-<p>AMIの基とするAMI (例：Amazon Linux 2 AMI) を設定する。</p>
+<p>AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;builders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;amazon-ebs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;source_ami&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ami-0b7546e839d7ace12&quot;</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
 <blockquote>
@@ -24588,7 +24588,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-02</span>
   </span>
 
     

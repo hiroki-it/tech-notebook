@@ -27375,9 +27375,9 @@
 <h3 id="aws-ec2nodeami">AWS EC2ワーカーNodeの最適化AMI<a class="headerlink" href="#aws-ec2nodeami" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ec2nodeami_1">▼ AWS EC2ワーカーNodeの最適化AMIとは<a class="headerlink" href="#aws-ec2nodeami_1" title="Permanent link">&para;</a></h4>
 <p>任意のAWS EC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
-<p>このAMIには、AWS EC2がAWS EKSと連携するために必要なソフトウェアがプリインストールされており、AWS EC2ワーカーNodeをセットアップする手間が省ける。</p>
-<p>必ずしも、全てのAWS EC2ワーカーNodeを同じAMIで構築する必要はない。</p>
-<p>AWS EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のAWS EC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはAWS EKS最適化高速AMIのAWS EC2ワーカーNode上で動かす) といった方法でもよい。</p>
+<p>このAWS AMIには、AWS EC2がAWS EKSと連携するために必要なソフトウェアがプリインストールされており、AWS EC2ワーカーNodeをセットアップする手間が省ける。</p>
+<p>必ずしも、全てのAWS EC2ワーカーNodeを同じAWS AMIで構築する必要はない。</p>
+<p>AWS EC2ワーカーNodeを種類ごとに異なるAWS AMIで作成し、特定のアプリを含むPodは特定のAWS EC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはAWS EKS最適化高速AMIのAWS EC2ワーカーNode上で動かす) といった方法でもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html</a></li>
@@ -27386,9 +27386,9 @@
 <h4 id="aws-eks-amazon-linux">▼ AWS EKS 最適化 Amazon Linux<a class="headerlink" href="#aws-eks-amazon-linux" title="Permanent link">&para;</a></h4>
 <p>AWS EKSのための標準的なAWS EC2を作成できる。最も推奨である。</p>
 <p><code>aws ssm get-parameter</code>コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。</p>
-<p>注意点として、AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
-<p>そのため、パッチバージョンがアップグレードされる度に、AMIのIDは変わる。</p>
-<p>AMIのIDを固定するためには、AMIをダウンロードして自前で管理する必要がある。</p>
+<p>注意点として、AWS AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
+<p>そのため、パッチバージョンがアップグレードされる度に、AWS AMIのIDは変わる。</p>
+<p>AWS AMIのIDを固定するためには、AWS AMIをダウンロードして自前で管理する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/&lt;バージョン&gt;/amazon-linux-2/recommended/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
@@ -27423,7 +27423,7 @@
 <p><br></p>
 <h3 id="aws-ec2nodeami_2">AWS EC2ワーカーNodeのカスタムAMI<a class="headerlink" href="#aws-ec2nodeami_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ec2nodeami_3">▼ AWS EC2ワーカーNodeのカスタムAMIとは<a class="headerlink" href="#aws-ec2nodeami_3" title="Permanent link">&para;</a></h4>
-<p>AWS EC2ワーカーNodeの最適化AMIではないAMIのこと。</p>
+<p>AWS EC2ワーカーNodeの最適化AMIではないAWS AMIのこと。</p>
 <p><br></p>
 <h3 id="kubelet-configjson-kubeletconfiguration"><code>kubelet-config.json</code>ファイル (KubeletConfiguration)<a class="headerlink" href="#kubelet-configjson-kubeletconfiguration" title="Permanent link">&para;</a></h3>
 <p>AWS EC2ワーカーNodeのkubeletを設定する。</p>
@@ -27473,7 +27473,7 @@
 <h3 id="_27">ユーザーデータファイル<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="_28">▼ ユーザーデータファイルとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>AWS EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
-<p>また、セルフマネージドNodeグループやマネージドNodeグループにて、AWS EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (<code>bootstrap.sh</code>ファイル) を実行する必要がある。</p>
+<p>また、セルフマネージドNodeグループやマネージドNodeグループにて、AWS EC2ワーカーNodeのAWS AMIにカスタムAMIを使用したり、任意のAWS AMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (<code>bootstrap.sh</code>ファイル) を実行する必要がある。</p>
 <p>一方で、マネージドNodeグループにて、起動テンプレートを使用せずにAWS EC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。</p>
 <blockquote>
 <ul>
@@ -27954,7 +27954,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <h2 id="06">06. アップグレード<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_34">アップグレードとは<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <p>AWS EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。</p>
-<p>AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。</p>
+<p>AWSはIaaSのため、AWS AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。</p>
 <p>執筆時点 (2022/01/28) では、AWSのAPIを経由して<code>updateConfig</code>値を設定すれば、アップグレード時のサージ数を設定できる。</p>
 <blockquote>
 <ul>
@@ -27974,7 +27974,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>旧ワーカーNodeを残して、新しいAMIを使用したワーカーNodeを作成する。</p>
+<p>旧ワーカーNodeを残して、新しいAWS AMIを使用したワーカーNodeを作成する。</p>
 <p>旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。</p>
 <p>旧ワーカーNodeを残せるのは、あらかじめAWS EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。</p>
 </dd>
@@ -28012,7 +28012,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <dt><code>(2)</code></dt>
 <dd>
 <p>ワーカーNodeをアップグレードする。</p>
-<p>コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAMIを使用して、ワーカーNodeを再作成する。</p>
+<p>コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -28045,7 +28045,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-02</span>
   </span>
 
     
