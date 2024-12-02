@@ -132,24 +132,30 @@ CSRは、DOMの現在の状態をDOMから参照するのではなく、相当�
 ```jsx
 // APIからデータを取ってくる
 const getTodoList = async () => {
-  return ["遊ぶ", "買い物", "宿題"];
+
+    return ["遊ぶ", "買い物", "宿題"];
 };
 
 // カスタムフック
 const useTodoList = () => {
-  const [state, setState] = React.useState<string[] | null>(null);
-  React.useEffect(() => {
-    getTodoList().then(todoList => {
-      setState(todoList);
-    });
-  }, []);
-  return state;
+
+    const [state, setState] = React.useState < string[] | null > (null);
+
+    React.useEffect(() => {
+        getTodoList().then(todoList => {
+            setState(todoList);
+        });
+    }, []);
+
+    return state;
 };
 
 function App() {
-  const state = useTodoList();
-  // データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数
-  return <ul>{state ? state.map(e => <li>{e}</li>) : "Loding"}</ul>;
+
+    const state = useTodoList();
+
+    // データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数
+    return <ul>{state ? state.map(e => <li>{e}</li>) : "Loding"}</ul>;
 }
 ```
 

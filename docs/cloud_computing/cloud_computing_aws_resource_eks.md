@@ -1076,11 +1076,11 @@ Nodeグループ (マネージドNodeグループ、セルフマネージドNode
 
 任意のAWS EC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
 
-このAMIには、AWS EC2がAWS EKSと連携するために必要なソフトウェアがプリインストールされており、AWS EC2ワーカーNodeをセットアップする手間が省ける。
+このAWS AMIには、AWS EC2がAWS EKSと連携するために必要なソフトウェアがプリインストールされており、AWS EC2ワーカーNodeをセットアップする手間が省ける。
 
-必ずしも、全てのAWS EC2ワーカーNodeを同じAMIで構築する必要はない。
+必ずしも、全てのAWS EC2ワーカーNodeを同じAWS AMIで構築する必要はない。
 
-AWS EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のAWS EC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはAWS EKS最適化高速AMIのAWS EC2ワーカーNode上で動かす) といった方法でもよい。
+AWS EC2ワーカーNodeを種類ごとに異なるAWS AMIで作成し、特定のアプリを含むPodは特定のAWS EC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはAWS EKS最適化高速AMIのAWS EC2ワーカーNode上で動かす) といった方法でもよい。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
 
@@ -1090,11 +1090,11 @@ AWS EKSのための標準的なAWS EC2を作成できる。最も推奨である
 
 `aws ssm get-parameter`コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。
 
-注意点として、AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。
+注意点として、AWS AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。
 
-そのため、パッチバージョンがアップグレードされる度に、AMIのIDは変わる。
+そのため、パッチバージョンがアップグレードされる度に、AWS AMIのIDは変わる。
 
-AMIのIDを固定するためには、AMIをダウンロードして自前で管理する必要がある。
+AWS AMIのIDを固定するためには、AWS AMIをダウンロードして自前で管理する必要がある。
 
 ```bash
 $ aws ssm get-parameter \
@@ -1138,7 +1138,7 @@ $ aws ssm get-parameter \
 
 #### ▼ AWS EC2ワーカーNodeのカスタムAMIとは
 
-AWS EC2ワーカーNodeの最適化AMIではないAMIのこと。
+AWS EC2ワーカーNodeの最適化AMIではないAWS AMIのこと。
 
 <br>
 
@@ -1195,7 +1195,7 @@ AWS EC2ワーカーNodeのkubeletを設定する。
 
 AWS EC2 Nodeの起動時に任意のコマンドを実行できるようにする。
 
-また、セルフマネージドNodeグループやマネージドNodeグループにて、AWS EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (`bootstrap.sh`ファイル) を実行する必要がある。
+また、セルフマネージドNodeグループやマネージドNodeグループにて、AWS EC2ワーカーNodeのAWS AMIにカスタムAMIを使用したり、任意のAWS AMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (`bootstrap.sh`ファイル) を実行する必要がある。
 
 一方で、マネージドNodeグループにて、起動テンプレートを使用せずにAWS EC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。
 
@@ -1671,7 +1671,7 @@ Fargateを設定する。
 
 AWS EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。
 
-AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。
+AWSはIaaSのため、AWS AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。
 
 執筆時点 (2022/01/28) では、AWSのAPIを経由して`updateConfig`値を設定すれば、アップグレード時のサージ数を設定できる。
 
@@ -1694,7 +1694,7 @@ AWS EKS Clusterのアップグレード時、以下の仕組みでデータプ�
 
 `(2)`
 
-: 旧ワーカーNodeを残して、新しいAMIを使用したワーカーNodeを作成する。
+: 旧ワーカーNodeを残して、新しいAWS AMIを使用したワーカーNodeを作成する。
 
      旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。
 
@@ -1732,7 +1732,7 @@ AWS EKS Clusterはおおよそ以下の方法でアップグレードする。
 
 : ワーカーNodeをアップグレードする。
 
-     コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAMIを使用して、ワーカーNodeを再作成する。
+     コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。
 
 `(3)`
 

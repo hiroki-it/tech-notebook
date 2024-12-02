@@ -33,25 +33,25 @@ description: AWS EC2＠AWSリソースの知見を記録しています。
 
 #### ▼ 設定項目と説明
 
-| 設定項目                  | 説明                                                                         | 補足                                                                                                                                                                                                                                                                           |
-| ------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AMI：Amazonマシンイメージ | AMIを選択する。                                                              |                                                                                                                                                                                                                                                                                |
-| インスタンスタイプ        |                                                                              |                                                                                                                                                                                                                                                                                |
-| AWS EC2の数               |                                                                              |                                                                                                                                                                                                                                                                                |
-| ネットワーク              |                                                                              |                                                                                                                                                                                                                                                                                |
-| サブネット                | AWS EC2を配置するサブネットを設定する。                                      |                                                                                                                                                                                                                                                                                |
-| 自動割り当てIPアドレス    | AWS EC2へのパブリックIPアドレスの割り当てを有効化する。                      | AWS EC2作成後に有効にできない。                                                                                                                                                                                                                                                |
-| キャパシティの予約        |                                                                              |                                                                                                                                                                                                                                                                                |
-| ドメイン結合ディレクトリ  |                                                                              |                                                                                                                                                                                                                                                                                |
-| IAMロール                 | AWS EC2に付与するIAMロールを設定する。                                       |                                                                                                                                                                                                                                                                                |
-| シャットダウン動作        |                                                                              |                                                                                                                                                                                                                                                                                |
-| 終了保護                  | AWS EC2の削除を防ぐ。                                                        | 必ず有効化すること。                                                                                                                                                                                                                                                           |
-| モニタリング              |                                                                              |                                                                                                                                                                                                                                                                                |
-| テナンシー                |                                                                              |                                                                                                                                                                                                                                                                                |
-| Elastic Inference         |                                                                              |                                                                                                                                                                                                                                                                                |
-| クレジット仕様            |                                                                              |                                                                                                                                                                                                                                                                                |
-| ストレージ                | AWS EC2のストレージを設定する。                                              |                                                                                                                                                                                                                                                                                |
-| キーペア                  | SSH公開鍵認証のため、AWS EC2の秘密鍵とペアになる公開鍵をインストールできる。 | ・セッションマネージャーを使用してAWS EC2に接続する場合は、キーペアの作成は不要である。<br>・キーペアは、AWS EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。 |
+| 設定項目                      | 説明                                                                         | 補足                                                                                                                                                                                                                                                                           |
+| ----------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AWS AMI：Amazonマシンイメージ | AWS AMIを選択する。                                                          |                                                                                                                                                                                                                                                                                |
+| インスタンスタイプ            |                                                                              |                                                                                                                                                                                                                                                                                |
+| AWS EC2の数                   |                                                                              |                                                                                                                                                                                                                                                                                |
+| ネットワーク                  |                                                                              |                                                                                                                                                                                                                                                                                |
+| サブネット                    | AWS EC2を配置するサブネットを設定する。                                      |                                                                                                                                                                                                                                                                                |
+| 自動割り当てIPアドレス        | AWS EC2へのパブリックIPアドレスの割り当てを有効化する。                      | AWS EC2作成後に有効にできない。                                                                                                                                                                                                                                                |
+| キャパシティの予約            |                                                                              |                                                                                                                                                                                                                                                                                |
+| ドメイン結合ディレクトリ      |                                                                              |                                                                                                                                                                                                                                                                                |
+| IAMロール                     | AWS EC2に付与するIAMロールを設定する。                                       |                                                                                                                                                                                                                                                                                |
+| シャットダウン動作            |                                                                              |                                                                                                                                                                                                                                                                                |
+| 終了保護                      | AWS EC2の削除を防ぐ。                                                        | 必ず有効化すること。                                                                                                                                                                                                                                                           |
+| モニタリング                  |                                                                              |                                                                                                                                                                                                                                                                                |
+| テナンシー                    |                                                                              |                                                                                                                                                                                                                                                                                |
+| Elastic Inference             |                                                                              |                                                                                                                                                                                                                                                                                |
+| クレジット仕様                |                                                                              |                                                                                                                                                                                                                                                                                |
+| ストレージ                    | AWS EC2のストレージを設定する。                                              |                                                                                                                                                                                                                                                                                |
+| キーペア                      | SSH公開鍵認証のため、AWS EC2の秘密鍵とペアになる公開鍵をインストールできる。 | ・セッションマネージャーを使用してAWS EC2に接続する場合は、キーペアの作成は不要である。<br>・キーペアは、AWS EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。 |
 
 <br>
 
@@ -87,9 +87,9 @@ AWS EC2を冗長化している場合は、ユーザーに影響を与えずに�
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24
 
-AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。
+AWS AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。
 
-例えば、CentOS 6系のAMIでは、`t3.small`を選択できない。
+例えば、CentOS 6系のAWS AMIでは、`t3.small`を選択できない。
 
 > - https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
@@ -255,15 +255,15 @@ $ openssl pkcs8 \
 
 <br>
 
-## 02. AWS EC2 based on AMI：Amazon Machine Image
+## 02. AWS EC2 based on AWS AMI：Amazon Machine Image
 
-### AMIとは
+### AWS AMIとは
 
 AWS EC2のマシンイメージであり、AWS EC2の完全なコピーを作成できる。
 
 AWS EC2上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とAWS EBSボリュームの両方が内蔵されたコピーのこと。
 
-AMIを入れ替える場合、コンテナイメージと同様にAWS EC2を作成し直す必要がある。
+AWS AMIを入れ替える場合、コンテナイメージと同様にAWS EC2を作成し直す必要がある。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
@@ -271,23 +271,23 @@ AMIを入れ替える場合、コンテナイメージと同様にAWS EC2を作�
 
 <br>
 
-### AMIタイプ
+### AWS AMIタイプ
 
 #### ▼ AWS EBS-backed AMI
 
-AWS EBSボリュームを持つAWS EC2を作成するAMIのこと。
+AWS EBSボリュームを持つAWS EC2を作成するAWS AMIのこと。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 #### ▼ instance store-backed AMI
 
-インスタンスストアボリュームを持つAWS EC2を作成するAMIのこと。
+インスタンスストアボリュームを持つAWS EC2を作成するAWS AMIのこと。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 <br>
 
-### AMIの共有
+### AWS AMIの共有
 
 | 共有先                          | 説明 |
 | ------------------------------- | ---- |
@@ -299,11 +299,11 @@ AWS EBSボリュームを持つAWS EC2を作成するAMIのこと。
 
 <br>
 
-### AMI OS
+### AWS AMI OS
 
-#### ▼ AMI OSとは
+#### ▼ AWS AMI OSとは
 
-Linuxディストリビューション別にAMI OSを配布している。
+Linuxディストリビューション別にAWS AMI OSを配布している。
 
 > - https://aws.amazon.com/jp/mp/linux/
 
@@ -315,7 +315,7 @@ AWS EC2を作成するために最適化されたLinuxのこと。
 
 #### ▼ CentOS
 
-ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
+ベンダー公式あるいは非公式が提供しているAWS AMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
 
 > - https://wiki.centos.org/Cloud/AWS
 
@@ -400,7 +400,7 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 `(1)`
 
-: 任意で、バックアップのために拡張対象のAWS EC2のAMIを作成しておく。
+: 任意で、バックアップのために拡張対象のAWS EC2のAWS AMIを作成しておく。
 
 `(2)`
 
@@ -652,7 +652,7 @@ AWS EBSボリュームのコピーのこと。
 
 そのため、スナップショットの頻度が高ければ増分が少なくなり、スナップショットの作成時間が短くなる。
 
-ソフトウェアとAWS EBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
+ソフトウェアとAWS EBSボリュームのコピーの両方が内蔵されたAWS AMIとは区別すること。
 
 > - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work
 > - https://repost.aws/ja/knowledge-center/ebs-snapshot-ec2-ami-creation-slow
@@ -682,7 +682,7 @@ AWS EBSボリュームのコピーのこと。
 
 AWS Systems Managerを使用してAWS EC2に接続する場合、AWS EC2自体にsystems-managerエージェントをインストールしておく必要がある。
 
-カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。
+カスタムAMIであれば自身でインストールし、最適化されたAWS AMIであれば事前にインストールされている。
 
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
 

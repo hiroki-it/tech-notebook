@@ -103,7 +103,7 @@ build_ami:
 
 #### ▼ ami_name
 
-AMIの名前を設定する。
+AWS AMIの名前を設定する。
 
 ```yaml
 {"builders": [{"type": "amazon-ebs", "ami_name": "bar-ami"}]}
@@ -157,7 +157,7 @@ EC2に紐付けるルートデバイスボリュームを設定する。
               # ルートボリューム
               "device_name": "/dev/xvda",
               "volume_type": "gp2",
-              # AMIの作成後に、元となったEC2のボリュームを削除する
+              # AWS AMIの作成後に、元となったEC2のボリュームを削除する
               "delete_on_termination": "true",
               "volume_size": "300",
             },
@@ -166,7 +166,7 @@ EC2に紐付けるルートデバイスボリュームを設定する。
 
 #### ▼ region
 
-AMIを作成するリージョンを設定する。
+AWS AMIを作成するリージョンを設定する。
 
 ```yaml
 {"builders": [{"type": "amazon-ebs", "region": "ap-northeast-1"}]}
@@ -180,7 +180,7 @@ AMIを作成するリージョンを設定する。
 
 #### ▼ source_ami
 
-AMIの基とするAMI (例：Amazon Linux 2 AMI) を設定する。
+AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。
 
 ```yaml
 {"builders": [{"type": "amazon-ebs", "source_ami": "ami-0b7546e839d7ace12"}]}

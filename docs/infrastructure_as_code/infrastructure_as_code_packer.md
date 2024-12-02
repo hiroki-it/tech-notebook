@@ -17,7 +17,9 @@ description: Packer＠IaCの知見を記録しています。
 
 ### アーキテクチャ
 
-記入中...
+`template.json`ファイルに基づいて、仮想サーバーとこれのマシンイメージを作成する。
+
+仮想サーバーは、マシンイメージの作成後に削除する。
 
 <br>
 
@@ -25,19 +27,19 @@ description: Packer＠IaCの知見を記録しています。
 
 #### ▼ AWSの場合
 
-プロビジョナーを使用してEC2をプロビジョニングし、そのEC2からAMIを作成する。
+プロビジョナーを使用してAWS EC2をプロビジョニングし、そのAWS EC2からAWS AMIを作成する。
 
-AMIの作成後、EC2を削除する。
+AWS AMIの作成後、AWS EC2を削除する。
 
-例えば、PackerでプロビジョナーとしてAnsibleを指定してAMIを作成しつつ、TerraformでAMIからEC2を作成したとする。
+例えば、PackerでプロビジョナーとしてAnsibleを指定してAWS AMIを作成しつつ、TerraformでAWS AMIからAWS EC2を作成したとする。
 
 これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
 
-注意点として、起動中のEC2からAMIを作成するわけではなく、設定値が同じ新しいEC2からAMIを作成する。
+注意点として、起動中のAWS EC2からAWS AMIを作成するわけではなく、設定値が同じ新しいAWS EC2からAWS AMIを作成する。
 
-また、AMIに内蔵されているAWS EBSボリュームも、既存のEC2のものではなく、新品のものである。
+また、AWS AMIに内蔵されているAWS EBSボリュームも、既存のAWS EC2のものではなく、新品のものである。
 
-既存のEC2のバックアップツールとしては使用できない。
+既存のAWS EC2のバックアップツールとしては使用できない。
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
 
