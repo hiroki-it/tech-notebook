@@ -24925,6 +24925,13 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <p><br></p>
 <h3 id="_9">リトライ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="async-retry">▼ async-retry<a class="headerlink" href="#async-retry" title="Permanent link">&para;</a></h4>
+<p><code>await</code>宣言した<code>retry</code>関数に非同期処理を渡す。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">retry</span><span class="p">(</span>
+<span class="w">  </span><span class="c1">// 非同期処理</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">values</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Packages</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">retry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;async-retry&quot;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">fetch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;node-fetch&quot;</span><span class="p">);</span>
