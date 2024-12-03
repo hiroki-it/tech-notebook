@@ -276,9 +276,7 @@ rejectFunc.catch((err) => {
 
 <br>
 
-### スリープ
-
-#### ▼ setTimeout
+### setTimeout
 
 指定した秒数だけ処理を待機する。
 
@@ -429,9 +427,9 @@ const asyncFunc = async () => {
 
 <br>
 
-### エラーハンドリング
+### try-catch
 
-#### ▼ try-catch
+#### ▼ try-catchとは
 
 Promiseオブジェクトの`then`メソッド、`catch`メソッド、`finally`メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
 
