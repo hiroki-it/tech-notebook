@@ -379,8 +379,8 @@ nav:
               - SQL: language/language_js_package_sql.md
           - ■ ブラウザ:
               - ブラウザレンダリング: language/language_js_browser_rendering.md
-          - ■ TypeScript:
-              - TypeScript: language/language_js_typescript.md
+      - ■ TypeScript:
+          - TypeScript: language/language_typescript.md
       - ■ Go:
           - Go: language/language_go.md
           - コマンド: language/language_go_command.md
