@@ -6628,6 +6628,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#is-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ is-failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list-units" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ list-units
@@ -25037,6 +25046,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#is-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ is-failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list-units" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ list-units
@@ -25669,6 +25687,19 @@ $<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"
 $<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>crond.service
 $<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd.service
 </code></pre></div>
+<h4 id="is-failed">▼ is-failed<a class="headerlink" href="#is-failed" title="Permanent link">&para;</a></h4>
+<p>プロセスが正常に実行されているかどうかを確認する。</p>
+<p>正常の場合は<code>active</code>、異常の場合は<code>failed</code>になる。</p>
+<p>これは、<code>systemctl status</code>コマンドのActive行でも確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>is-failed<span class="w"> </span>&lt;ユニット名&gt;
+
+active
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units-ja#">https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units-ja#</a></li>
+</ul>
+</blockquote>
 <h4 id="list-units">▼ list-units<a class="headerlink" href="#list-units" title="Permanent link">&para;</a></h4>
 <p>デーモン化されたプロセスの稼働状態を一覧を取得する。</p>
 <p><code>grep</code>と組み合わせて、起動中 (<code>active</code>) 、停止中 (<code>inactive</code>) 、起動失敗 (<code>failed</code>) のデーモンのみを取得すると良い。</p>
@@ -25899,7 +25930,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
   </span>
 
     

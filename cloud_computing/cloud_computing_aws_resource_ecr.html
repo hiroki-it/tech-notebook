@@ -13372,6 +13372,15 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
+      パーミッション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
       プルスルーキャッシュリポジトリ
     </span>
   </a>
@@ -24000,6 +24009,15 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
+      パーミッション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
       プルスルーキャッシュリポジトリ
     </span>
   </a>
@@ -24161,7 +24179,32 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_10">プルスルーキャッシュリポジトリ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_10">パーミッション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>AWS ECRへのアクセスの認可スコープを設定する。</p>
+<p>AWS IAMポリシーよりも強い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 中央集権的にコンテナイメージを提供するAWS ECR</span>
+<span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AllowAccessFromMultipleAccount&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="c1"># AWS ECRにアクセスできる他のAWSアカウント</span>
+<span class="w">            </span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;arn:aws:iam::*****:root&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="c1"># 操作の認可スコープ</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;ecr:BatchCheckLayerAvailability&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:BatchGetImage&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:GetDownloadUrlForLayer&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:ListImages&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:StartLifecyclePolicyPreview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">]}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_11">プルスルーキャッシュリポジトリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>特に、DockerHubはレートリミットがあるため、DockerHub上のリポジトリをプライベートリポジトリで管理しておく方が良い。</p>
 <p>この時、プルスルーキャッシュリポジトリはコピーをプライベートリポジトリに自動的にプルしてくれる。</p>
 <blockquote>
@@ -24190,7 +24233,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
   </span>
 
     
