@@ -470,11 +470,13 @@ const asyncFunc = async () => {
 
 <br>
 
-### リトライ
+### async-retry
 
-#### ▼ async-retry
+#### ▼ async-retryとは
 
-`await`宣言した`retry`関数に非同期処理を渡す。
+`async`による非同期処理をリトライする。
+
+`await`宣言した関数を`retry`関数に渡す。
 
 ```typescript
 const response = await retry(
@@ -643,8 +645,34 @@ $.ajax({
 
 ## 04. axios
 
-### リトライ
+### axios-retry
 
-#### ▼ axios-retry
+#### ▼ axios-retryとは
+
+axiosパッケージによる非同期処理をリトライする。
+
+```java
+
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+
+// axiosオブジェクトをあらかじめ渡しておく
+axiosRetry(axios, {
+  retries: 1,
+  retryCondition: () => true,
+  retryDelay: function(retryCount, error) {
+    return 2;
+  }
+})
+
+// axiosでリクエストを非同期処理する
+const response = await axios.get('http://example.com/rea')
+
+console.log(response);
+```
+
+> - https://blog.symdon.info/posts/1638831647/
+> - https://qiita.com/fyuneru0830/items/3410b37cd6a004223092
+> - https://github.com/softonic/axios-retry?tab=readme-ov-file#options
 
 <br>
