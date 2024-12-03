@@ -61,6 +61,8 @@ description: TypeScriptの知見を記録しています。
   "jsx": "react-jsx",
   "module": "CommonJS",
   "moduleResolution": "node",
+  # any型を禁止にする
+  "noImplicitAny": true,
   "resolveJsonModule": true,
   "target": "ES2019",
   "strict": true,

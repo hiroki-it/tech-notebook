@@ -95,7 +95,7 @@
 
 <br>
 
-### Typescript
+### TypeScript
 
 * #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
 
