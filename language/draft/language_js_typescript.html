@@ -23771,11 +23771,11 @@
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      04. 型
+      04. 型定義
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. 型">
+    <nav class="md-nav" aria-label="04. 型定義">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23939,6 +23939,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. 型推論
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 型推論">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      暗黙的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      明示的
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -24066,7 +24099,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. 型<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. 型定義<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_5">プリミティブ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 変数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="p">;</span>
@@ -24219,6 +24252,29 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void">https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05">05. 型推論<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_19">暗黙的<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数nameは文字列として推論されます</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数ageは数値として推論されます</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">isProgrammer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数isProgrammerはブール値として推論されます</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://recursionist.io/learn/languages/typescript/introduction/type-inference">https://recursionist.io/learn/languages/typescript/introduction/type-inference</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_20">明示的<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">isProgrammer</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://recursionist.io/learn/languages/typescript/introduction/type-inference">https://recursionist.io/learn/languages/typescript/introduction/type-inference</a></li>
 </ul>
 </blockquote>
 <p><br></p>
