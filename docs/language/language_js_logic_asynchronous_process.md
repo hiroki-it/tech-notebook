@@ -45,15 +45,31 @@ asyncMethod();
 
 <br>
 
+## 02. ネイティブなJavaScript
+
 ### Promiseオブジェクト
 
 #### ▼ Promiseオブジェクトとは
 
 JavaScriptで、非同期処理の成否を管理し、後続する処理を定義できるオブジェクトのこと。
 
+Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。
+
 Promiseオブジェクトの実装の仕様は取り決められており、以下のリンクを参考にせよ。
 
+```javascript
+const asyncFunc = () => {
+  return new Promise(
+    // 非同期処理を持つ関数を渡す
+    (resolve, reject) => {
+      // 関数内の非同期処理の成否が管理される
+    },
+  );
+};
+```
+
 > - https://promisesaplus.com/
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 #### ▼ Promiseオブジェクトの種類
 
@@ -68,27 +84,6 @@ Promiseオブジェクトの実装の仕様は取り決められており、以�
 | 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
 > - https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
-
-<br>
-
-## 02. ネイティブなJavaScript
-
-### Promiseオブジェクト
-
-Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。
-
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
-
-```javascript
-const asyncFunc = () => {
-  return new Promise(
-    // 非同期処理を持つ関数を渡す
-    (resolve, reject) => {
-      // 関数内の非同期処理の成否が管理される
-    },
-  );
-};
-```
 
 <br>
 
@@ -281,7 +276,22 @@ rejectFunc.catch((err) => {
 
 <br>
 
-## 02-02. async/await宣言
+### スリープ
+
+#### ▼ setTimeout
+
+指定した秒数だけ処理を待機する。
+
+```javascript
+// 5秒待機する。
+await new Promise((resolve) => {
+  setTimeout(resolve, 5000);
+});
+```
+
+<br>
+
+## 02-02. async/await
 
 ### async宣言
 
@@ -460,21 +470,6 @@ const asyncFunc = async () => {
 
 <br>
 
-### スリープ
-
-#### ▼ setTimeout
-
-指定した秒数だけ処理を待機する。
-
-```javascript
-// 5秒待機する。
-await new Promise((resolve) => {
-  setTimeout(resolve, 5000);
-});
-```
-
-<br>
-
 ### リトライ
 
 #### ▼ async-retry
@@ -643,5 +638,13 @@ $.ajax({
     (data) => {},
   );
 ```
+
+<br>
+
+## 04. axios
+
+### リトライ
+
+#### ▼ axios-retry
 
 <br>

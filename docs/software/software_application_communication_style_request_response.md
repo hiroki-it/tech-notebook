@@ -175,6 +175,12 @@ Axiosパッケージである。
 
 > - https://github.com/axios/axios#request-method-aliases
 
+#### ▼ asyncオブジェクト
+
+JavaScriptのビルトイン関数である。
+
+> - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
 <br>
 
 ## 02-02. Ajaxの実装

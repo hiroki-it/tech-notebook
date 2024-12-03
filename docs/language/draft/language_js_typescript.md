@@ -124,7 +124,7 @@ const myEnv: Env = {
 
 <br>
 
-## 04. 型
+## 04. 型定義
 
 ### プリミティブ
 
@@ -312,5 +312,31 @@ const logger = (): void => {
 ```
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void
+
+<br>
+
+## 05. 型推論
+
+### 暗黙的
+
+```typescript
+let name = "John"; // 変数nameは文字列として推論されます
+let age = 30; // 変数ageは数値として推論されます
+let isProgrammer = true; // 変数isProgrammerはブール値として推論されます
+```
+
+> - https://recursionist.io/learn/languages/typescript/introduction/type-inference
+
+<br>
+
+### 明示的
+
+```typescript
+let name: string = "John";
+let age: number = 30;
+let isProgrammer: boolean = true;
+```
+
+> - https://recursionist.io/learn/languages/typescript/introduction/type-inference
 
 <br>
