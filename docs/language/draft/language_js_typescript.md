@@ -224,9 +224,21 @@ numArray.push("a");
 #### ▼ 変数
 
 ```typescript
-// Array<string>
+// string[] と同じ
 const str: Array<string> = ["a", "b", "c"];
 ```
+
+```typescript
+// (string|number)[] と同じ
+const strOrNum: Array<string | number> = ["a", "b", 1, 2];
+```
+
+```typescript
+// string{} と同じ
+const str: Map<string> = {a: "a", b: "b", c: "c"};
+```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
 #### ▼ 戻り値
 
@@ -239,6 +251,27 @@ async function asyncFn(): Promise<string> {
 
 console.log(await asyncFn());
 ```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE-promise-%E3%81%AE%E6%88%BB%E3%82%8A%E5%80%A4
+
+#### ▼ 型変数
+
+ここでは、引数と戻り値の型を変数として定義している。
+
+変数に任意の型を代入すると、それに合わせた引数と戻り値の型の関数を定義できる。
+
+```typescript
+const addKeys = <T, U>(key1: T, key2: U): Array<T | U> => {
+  return [key1, key2];
+};
+
+addKeys<string, string>("a", "b");
+addKeys<number, number>(1, 2);
+addKeys<boolean, boolean>(true, false);
+addKeys<string, number>("a", 1);
+```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
 <br>
 

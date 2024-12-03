@@ -43,8 +43,8 @@ const CsrPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const fetchData = async () => {
-    const res = await fetch("https://dummyjson.com/products");
-    const data = await res.json();
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
 
     setProducts(data.products);
   };
@@ -89,10 +89,10 @@ type Product = {
 };
 
 const SsrPage = async () => {
-  const res = await fetch("https://dummyjson.com/products", {
+  const response = await fetch("https://dummyjson.com/products", {
     cache: "no-store",
   });
-  const data = await res.json();
+  const data = await response.json();
 
   return (
     <>
@@ -130,8 +130,8 @@ type Product = {
 };
 
 const SsgPage = async () => {
-  const res = await fetch("https://dummyjson.com/products");
-  const data = await res.json();
+  const response = await fetch("https://dummyjson.com/products");
+  const data = await response.json();
 
   return (
     <>
@@ -169,12 +169,12 @@ type Product = {
 };
 
 const IsrPage = async () => {
-  const res = await fetch("https://dummyjson.com/products", {
+  const response = await fetch("https://dummyjson.com/products", {
     next: {
       revalidate: 30,
     },
   });
-  const data = await res.json();
+  const data = await response.json();
 
   return (
     <>

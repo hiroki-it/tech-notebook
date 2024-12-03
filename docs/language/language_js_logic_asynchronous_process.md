@@ -339,7 +339,7 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
   axios.get("/some/path").then((res) => {
-    console.log(res.data); // "some data"
+    console.log(response.data); // "some data"
   });
 };
 ```
@@ -366,16 +366,16 @@ Promiseオブジェクトの`then`メソッドに相当するが、`then`メソ�
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
   axios.get("/some/path").then((res) => {
-    console.log(res.data); // "some data"
+    console.log(response.data); // "some data"
   });
 };
 
 // awaitを使用した場合
 const asyncFunc = async () => {
   // 非同期処理の結果がthenメソッドに渡される。
-  const res = await axios.get("/some/path");
+  const response = await axios.get("/some/path");
 
-  console.log(res.data); // "some data"
+  console.log(response.data); // "some data"
 };
 ```
 
@@ -446,7 +446,7 @@ const asyncFunc = async () => {
   let res;
 
   try {
-    res = await axios.get("/some/path1");
+    response = await axios.get("/some/path1");
     console.info(res);
   } catch (error) {
     console.error(error);
@@ -482,7 +482,7 @@ await new Promise((resolve) => {
 `await`宣言した`retry`関数に非同期処理を渡す。
 
 ```typescript
-const res = await retry(
+const response = await retry(
   // 非同期処理
   async (values) => {},
 );
@@ -495,18 +495,18 @@ const res = await retry(
 const retry = require("async-retry");
 const fetch = require("node-fetch");
 
-const res = await retry(
+const response = await retry(
   // 対象の関数
   async (bail, num) => {
-    const res = await fetch("https://google.com");
+    const response = await fetch("https://google.com");
 
-    if (403 === res.status) {
+    if (403 === response.status) {
       // 403のときはリトライしない
       bail(new Error("Unauthorized"));
       return;
     }
 
-    return await res.text();
+    return await response.text();
   },
   // オプション
   {
