@@ -53,6 +53,8 @@ JavaScriptで、非同期処理の成否を管理し、後続する処理を定�
 
 Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。
 
+実装量を減らして同じことを実装する場合、`async`宣言を使用する。
+
 Promiseオブジェクトの実装の仕様は取り決められており、以下のリンクを参考にせよ。
 
 ```javascript
@@ -293,9 +295,9 @@ await new Promise((resolve) => {
 
 #### ▼ async宣言とは
 
-Promiseオブジェクトを明示的に使用する場合、Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある。
+async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。
 
-一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。
+Promiseオブジェクトを明示的に使用する場合、Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要があるため、Promiseオブジェクトの使用が楽になる。
 
 Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。
 
@@ -509,11 +511,64 @@ console.log(res);
 
 <br>
 
-## 03. JQuery Promise
+## 03. axiosパッケージ
+
+### axios
+
+Javascript Promiseを使用したHTTPクライアントパッケージである。
+
+**＊実装例＊**
+
+非道処理としてGETでリクエストを送信している。
+
+```javascript
+// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
+const asyncFunc = async () => {
+  axios.get("/some/path").then((res) => {
+    console.log(response.data); // "some data"
+  });
+};
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+
+### axios-retry
+
+#### ▼ axios-retryとは
+
+axiosパッケージによる非同期処理をリトライする。
+
+```java
+
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+
+// axiosオブジェクトをあらかじめ渡しておく
+axiosRetry(axios, {
+  retries: 1,
+  retryCondition: () => true,
+  retryDelay: function(retryCount, error) {
+    return 2;
+  }
+})
+
+// axiosでリクエストを非同期処理する
+const response = await axios.get('http://example.com/rea')
+
+console.log(response);
+```
+
+> - https://blog.symdon.info/posts/1638831647/
+> - https://qiita.com/fyuneru0830/items/3410b37cd6a004223092
+> - https://github.com/softonic/axios-retry?tab=readme-ov-file#options
+
+<br>
+
+## 04. JQuery Promise
 
 ### JQuery Promiseとは
 
-JQueryパッケージの提供するPromiseオブジェクトである。
+JQueryパッケージの提供する独自のPromiseオブジェクトである。
 
 > - https://qiita.com/fakefurcoronet/items/cb2d2eba1a2e39f6643d
 
@@ -627,58 +682,5 @@ $.ajax({
     (data) => {},
   );
 ```
-
-<br>
-
-## 04. axiosパッケージ
-
-### axios
-
-Promiseオブジェクトを使用して非同期処理を
-
-**＊実装例＊**
-
-非道処理としてGETでリクエストを送信している。
-
-```javascript
-// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
-const asyncFunc = async () => {
-  axios.get("/some/path").then((res) => {
-    console.log(response.data); // "some data"
-  });
-};
-```
-
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
-
-### axios-retry
-
-#### ▼ axios-retryとは
-
-axiosパッケージによる非同期処理をリトライする。
-
-```java
-
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
-
-// axiosオブジェクトをあらかじめ渡しておく
-axiosRetry(axios, {
-  retries: 1,
-  retryCondition: () => true,
-  retryDelay: function(retryCount, error) {
-    return 2;
-  }
-})
-
-// axiosでリクエストを非同期処理する
-const response = await axios.get('http://example.com/rea')
-
-console.log(response);
-```
-
-> - https://blog.symdon.info/posts/1638831647/
-> - https://qiita.com/fyuneru0830/items/3410b37cd6a004223092
-> - https://github.com/softonic/axios-retry?tab=readme-ov-file#options
 
 <br>
