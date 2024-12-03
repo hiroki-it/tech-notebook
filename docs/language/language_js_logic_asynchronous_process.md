@@ -45,11 +45,9 @@ asyncMethod();
 
 <br>
 
-## 02. ネイティブなJavaScript
+## 02. JavaScript Promise
 
-### Promiseオブジェクト
-
-#### ▼ Promiseオブジェクトとは
+### JavaScript Promiseとは
 
 JavaScriptで、非同期処理の成否を管理し、後続する処理を定義できるオブジェクトのこと。
 
@@ -71,7 +69,7 @@ const asyncFunc = () => {
 > - https://promisesaplus.com/
 > - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-#### ▼ Promiseオブジェクトの種類
+### Promiseオブジェクトの種類
 
 ネイティブなJavaScriptのPromiseオブジェクト、JQueryのPromiseオブジェクト、がある。
 
@@ -337,23 +335,6 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-また、axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを使用しても良い。
-
-**＊実装例＊**
-
-非道処理としてGETでリクエストを送信している。
-
-```javascript
-// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
-const asyncFunc = async () => {
-  axios.get("/some/path").then((res) => {
-    console.log(response.data); // "some data"
-  });
-};
-```
-
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
-
 <br>
 
 ### await宣言
@@ -528,13 +509,19 @@ console.log(res);
 
 <br>
 
-## 03. JQuery
+## 03. JQuery Promise
 
-### Promiseオブジェクト
+### JQuery Promiseとは
 
-#### ▼ `done`メソッド、`fail`メソッド、`always`メソッド
+JQueryパッケージの提供するPromiseオブジェクトである。
 
-Promiseオブジェクトが持つメソッド。
+> - https://qiita.com/fakefurcoronet/items/cb2d2eba1a2e39f6643d
+
+<br>
+
+### `done`メソッド、`fail`メソッド、`always`メソッド
+
+JQuery Promiseオブジェクトが持つメソッド。
 
 `ajax`メソッドによってレスポンスを受信した後、その結果を`done`、`fail`、`always`の`3`個に分類し、これに応じたコールバック処理を実行する。
 
@@ -601,9 +588,11 @@ $.ajax({
   });
 ```
 
-#### ▼ `then`メソッド
+<br>
 
-Promiseオブジェクトが持つメソッド。
+### `then`メソッド
+
+JQuery Promiseオブジェクトが持つメソッド。
 
 `ajax`メソッドによってレスポンスを受信した後、その結果を`then`メソッドの引数の順番で分類し、これに応じたコールバック処理を実行する。
 
@@ -641,7 +630,26 @@ $.ajax({
 
 <br>
 
-## 04. axios
+## 04. axiosパッケージ
+
+### axios
+
+Promiseオブジェクトを使用して非同期処理を
+
+**＊実装例＊**
+
+非道処理としてGETでリクエストを送信している。
+
+```javascript
+// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
+const asyncFunc = async () => {
+  axios.get("/some/path").then((res) => {
+    console.log(response.data); // "some data"
+  });
+};
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 ### axios-retry
 
