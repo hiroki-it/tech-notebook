@@ -109,11 +109,11 @@ const asyncFunc = (param, callback) => {
   }, 0);
 };
 
-const test = 1;
+const testParam = 1;
 
 // asyFuncメソッドの第一引数が、第二引数で設定したコールバック関数に渡される。
 // 渡されたコールバック関数は、getDataメソッドとgetErrorメソッドの後に実行されるため、errやdataを受け取れる
-asyncFunc(test, (err, data) => {
+asyncFunc(testParam, (err, data) => {
   if (err) {
     throw err;
   }

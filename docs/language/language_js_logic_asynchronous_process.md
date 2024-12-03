@@ -479,6 +479,17 @@ await new Promise((resolve) => {
 
 #### ▼ async-retry
 
+`await`宣言した`retry`関数に非同期処理を渡す。
+
+```typescript
+const res = await retry(
+  // 非同期処理
+  async (values) => {},
+);
+```
+
+**＊実装例＊**
+
 ```typescript
 // Packages
 const retry = require("async-retry");
