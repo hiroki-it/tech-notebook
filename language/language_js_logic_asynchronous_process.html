@@ -8292,19 +8292,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#async-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      リトライ
+      async-retry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リトライ">
+    <nav class="md-nav" aria-label="async-retry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#async-retry" class="md-nav__link">
+  <a href="#async-retry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ async-retry
+      ▼ async-retryとは
     </span>
   </a>
   
@@ -8379,19 +8379,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#axios-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      リトライ
+      axios-retry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リトライ">
+    <nav class="md-nav" aria-label="axios-retry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#axios-retry" class="md-nav__link">
+  <a href="#axios-retry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ axios-retry
+      ▼ axios-retryとは
     </span>
   </a>
   
@@ -24442,19 +24442,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#async-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      リトライ
+      async-retry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リトライ">
+    <nav class="md-nav" aria-label="async-retry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#async-retry" class="md-nav__link">
+  <a href="#async-retry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ async-retry
+      ▼ async-retryとは
     </span>
   </a>
   
@@ -24529,19 +24529,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#axios-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      リトライ
+      axios-retry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リトライ">
+    <nav class="md-nav" aria-label="axios-retry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#axios-retry" class="md-nav__link">
+  <a href="#axios-retry_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ axios-retry
+      ▼ axios-retryとは
     </span>
   </a>
   
@@ -24977,9 +24977,10 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">リトライ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="async-retry">▼ async-retry<a class="headerlink" href="#async-retry" title="Permanent link">&para;</a></h4>
-<p><code>await</code>宣言した<code>retry</code>関数に非同期処理を渡す。</p>
+<h3 id="async-retry">async-retry<a class="headerlink" href="#async-retry" title="Permanent link">&para;</a></h3>
+<h4 id="async-retry_1">▼ async-retryとは<a class="headerlink" href="#async-retry_1" title="Permanent link">&para;</a></h4>
+<p><code>async</code>による非同期処理をリトライする。</p>
+<p><code>await</code>宣言した関数を<code>retry</code>関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">retry</span><span class="p">(</span>
 <span class="w">  </span><span class="c1">// 非同期処理</span>
 <span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">values</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
@@ -25120,8 +25121,33 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 </code></pre></div>
 <p><br></p>
 <h2 id="04-axios">04. axios<a class="headerlink" href="#04-axios" title="Permanent link">&para;</a></h2>
-<h3 id="_10">リトライ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="axios-retry">▼ axios-retry<a class="headerlink" href="#axios-retry" title="Permanent link">&para;</a></h4>
+<h3 id="axios-retry">axios-retry<a class="headerlink" href="#axios-retry" title="Permanent link">&para;</a></h3>
+<h4 id="axios-retry_1">▼ axios-retryとは<a class="headerlink" href="#axios-retry_1" title="Permanent link">&para;</a></h4>
+<p>axiosパッケージによる非同期処理をリトライする。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">axios</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">axios</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">axiosRetry</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">axios</span><span class="o">-</span><span class="n">retry</span><span class="err">&#39;</span><span class="p">;</span>
+
+<span class="c1">// axiosオブジェクトをあらかじめ渡しておく</span>
+<span class="n">axiosRetry</span><span class="p">(</span><span class="n">axios</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">retries</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="n">retryCondition</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="n">retryDelay</span><span class="p">:</span><span class="w"> </span><span class="n">function</span><span class="p">(</span><span class="n">retryCount</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">})</span>
+
+<span class="c1">// axiosでリクエストを非同期処理する</span>
+<span class="kd">const</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">axios</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="err">&#39;</span><span class="n">http</span><span class="p">:</span><span class="c1">//example.com/rea&#39;)</span>
+
+<span class="n">console</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.symdon.info/posts/1638831647/">https://blog.symdon.info/posts/1638831647/</a></li>
+<li><a href="https://qiita.com/fyuneru0830/items/3410b37cd6a004223092">https://qiita.com/fyuneru0830/items/3410b37cd6a004223092</a></li>
+<li><a href="https://github.com/softonic/axios-retry?tab=readme-ov-file#options">https://github.com/softonic/axios-retry?tab=readme-ov-file#options</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
 
