@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ユーティリティパッケージ@Typescript
-description: ユーティリティパッケージ@Typescriptの知見を記録しています。
+title: 【IT技術の知見】ユーティリティパッケージ@TypeScript
+description: ユーティリティパッケージ@TypeScriptの知見を記録しています。
 ---
 
-# ユーティリティパッケージ@Typescript
+# ユーティリティパッケージ@TypeScript
 
 ## はじめに
 

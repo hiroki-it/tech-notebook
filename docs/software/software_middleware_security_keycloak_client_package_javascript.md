@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Javascript＠Keycloakクライアント
-description: Javascript＠Keycloakクライアントの知見を記録しています。
+title: 【IT技術の知見】JavaScript＠Keycloakクライアント
+description: JavaScript＠Keycloakクライアントの知見を記録しています。
 ---
 
-# Javascript＠Keycloakクライアント
+# JavaScript＠Keycloakクライアント
 
 ## はじめに
 
@@ -28,7 +28,7 @@ description: Javascript＠Keycloakクライアントの知見を記録してい�
 ```javascript
 import Keycloak from "keycloak-js";
 
-// Javascriptパッケージを初期化する
+// JavaScriptパッケージを初期化する
 const keycloak = new Keycloak({
   url: "http://<Keycloakのドメイン名>",
   realm: "<realm名>",

@@ -515,7 +515,7 @@ console.log(res);
 
 ### axios
 
-Javascript Promiseを使用したHTTPクライアントパッケージである。
+JavaScript Promiseを使用したHTTPクライアントパッケージである。
 
 **＊実装例＊**
 

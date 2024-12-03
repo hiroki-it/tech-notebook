@@ -93,6 +93,9 @@
 * #### <u>ブラウザ</u>
   > * ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_js_browser_rendering.html)
 
+* #### <u>TypeScript</u>
+  > * ##### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_js_typescript.html)
+
 <br>
 
 ### Go

@@ -442,7 +442,7 @@ JavaScriptエンジンは、レンダリングエンジンから`html`ファイ�
 
 JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。
 
-![JavascriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
+![JavaScriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
 
 #### ▼ 機械語翻訳
 

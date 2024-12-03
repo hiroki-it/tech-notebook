@@ -538,9 +538,9 @@ func main() {
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
 > - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
 
-#### ▼ 実装例 (Typescriptの配列)
+#### ▼ 実装例 (TypeScriptの配列)
 
-この例では、AzureのDurable Functionにて、Typescriptの配列で補償トランザクションの仕組みを実装している。
+この例では、AzureのDurable Functionにて、TypeScriptの配列で補償トランザクションの仕組みを実装している。
 
 スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。
 

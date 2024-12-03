@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Typescript
-description: Typescriptの知見を記録しています。
+title: 【IT技術の知見】TypeScript
+description: TypeScriptの知見を記録しています。
 ---
 
-# Typescript
+# TypeScript
 
 ## はじめに
 
@@ -13,13 +13,13 @@ description: Typescriptの知見を記録しています。
 
 <br>
 
-## 01. Typescriptとは
+## 01. TypeScriptとは
 
 静的型付けのフロントエンド言語である。
 
 `tsconfig.json`ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。
 
-拡張子として、`ts`と`tsx` (Typescript内にJSXを実装できる) を使用できる。
+拡張子として、`ts`と`tsx` (TypeScript内にJSXを実装できる) を使用できる。
 
 > - https://ugo.tokyo/ts-config/#outline__1
 

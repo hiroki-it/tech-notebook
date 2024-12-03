@@ -413,7 +413,7 @@ setcookie(
     <パス>,
     <ドメイン>,
     <HTTPS接続のみ>,
-    <Javascript無効>
+    <JavaScript無効>
     )
 ```
 

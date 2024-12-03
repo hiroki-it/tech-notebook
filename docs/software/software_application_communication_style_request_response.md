@@ -162,22 +162,18 @@ JavaScriptのビルトイン関数である。
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
 
-#### ▼ JQueryオブジェクト
+#### ▼ JQuery Promise
 
-JQueryパッケージである。
+JQueryパッケージの提供する非同期処理化のためのオブジェクトである。
 
 > - https://api.jquery.com/category/ajax/shorthand-methods/
 > - https://api.jquery.com/jquery.ajax
 
-#### ▼ axiosオブジェクト
+#### ▼ JavaScript Promise
 
-Axiosパッケージである。
+JavaScriptの提供する非同期処理化のためのビルトインオブジェクトである。
 
-> - https://github.com/axios/axios#request-method-aliases
-
-#### ▼ asyncオブジェクト
-
-JavaScriptのビルトイン関数である。
+JavaScript Promiseを実装しやすくする。
 
 > - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 

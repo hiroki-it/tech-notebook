@@ -15,7 +15,7 @@ description: Playwright＠E2Eテストの知見を記録しています。
 
 ## 01. セットアップ
 
-### Javascriptの場合
+### JavaScriptの場合
 
 ```bash
 # npm を使う場合
@@ -53,9 +53,9 @@ $ pip install pytest-playwright
 
 ## 03. シナリオ
 
-### Javascriptの場合
+### JavaScriptの場合
 
-実際のユーザーを模した一連の操作をJavascriptのコードで表現する。
+実際のユーザーを模した一連の操作をJavaScriptのコードで表現する。
 
 ```javascript
 import {test, expect} from "@playwright/test";

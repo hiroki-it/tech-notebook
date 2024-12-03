@@ -23,7 +23,7 @@ description: ユーティリティパッケージ＠Node.jsの知見を記録し
 
 ## ts-node
 
-Node.jsの実行環境上で、TypescriptをJavascriptにコンパイルせずにそのまま実行する。
+Node.jsの実行環境上で、TypeScriptをJavaScriptにコンパイルせずにそのまま実行する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 

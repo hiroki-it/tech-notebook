@@ -139,7 +139,7 @@ Istioを採用しない場合との比較
 * #### <u>Keycloak</u>
   > * ##### [Keycloak](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak.html)
   > * ##### <u>クライアント</u>
-  > > * ##### [Javascript](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html)
+  > > * ##### [JavaScript](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html)
 
 * #### <u>OAuth2 Proxy</u>
   > * ##### [OAuth2 Proxy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html)
