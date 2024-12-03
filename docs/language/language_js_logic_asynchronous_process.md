@@ -214,7 +214,13 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 <br>
 
-### `then`メソッド、`catch`メソッド、`finally`メソッド
+### `then`メソッド
+
+#### ▼ `then`メソッドとは
+
+Promiseオブジェクトの`resolve`関数の結果を引数に受け取り、コールバック関数を実行する。
+
+> - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
 
 #### ▼ コンストラクタを使用する場合
 
@@ -245,6 +251,18 @@ resolveFunc.then((value) => {
 });
 ```
 
+<br>
+
+### `catch`メソッド
+
+#### ▼ `catch`メソッドとは
+
+Promiseオブジェクトの`reject`関数の結果を引数に受け取り、コールバック関数を実行する。
+
+> - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
+
+#### ▼ コンストラクタを使用する場合
+
 ```javascript
 const rejectFunc = new Promise((resolve, reject) => {
   reject(new Error("reject!!"));
@@ -258,6 +276,14 @@ rejectFunc.catch((err) => {
 ```
 
 > - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+
+<br>
+
+### `finally`メソッド
+
+#### ▼ `finally`メソッドとは
+
+記入中...
 
 <br>
 
@@ -338,6 +364,8 @@ Promiseオブジェクトの`then`メソッドに相当するが、`then`メソ�
 
 時間のかかる非同期処理でこれを宣言すると、予期せず処理が流れてしまうことを防げる。
 
+また、await宣言により、コールバック地獄のコードが分かりやすくなる。
+
 **＊実装例＊**
 
 ```javascript
@@ -357,7 +385,7 @@ const asyncFunc = async () => {
 };
 ```
 
-await宣言により、コールバック地獄のコードが分かりやすくなる。
+**＊実装例＊**
 
 ```javascript
 // Promiseオブジェクトのthenメソッドを使用した場合
