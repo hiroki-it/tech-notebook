@@ -105,6 +105,37 @@ Dockerのベストプラクティスに則り、タグ名に`latest`を使用し
 
 <br>
 
+### パーミッション
+
+AWS ECRへのアクセスの認可スコープを設定する。
+
+AWS IAMポリシーよりも強い。
+
+```yaml
+# 中央集権的にコンテナイメージを提供するAWS ECR
+{"Version": "2008-10-17", "Statement": [
+      {
+        "Sid": "AllowAccessFromMultipleAccount",
+        "Effect": "Allow",
+        "Principal": {
+            # AWS ECRにアクセスできる他のAWSアカウント
+            "AWS": ["arn:aws:iam::*****:root"],
+          },
+        # 操作の認可スコープ
+        "Action":
+          [
+            "ecr:BatchCheckLayerAvailability",
+            "ecr:BatchGetImage",
+            "ecr:GetDownloadUrlForLayer",
+            "ecr:ListImages",
+            "ecr:StartLifecyclePolicyPreview",
+          ],
+      },
+    ]}
+```
+
+<br>
+
 ### プルスルーキャッシュリポジトリ
 
 特に、DockerHubはレートリミットがあるため、DockerHub上のリポジトリをプライベートリポジトリで管理しておく方が良い。

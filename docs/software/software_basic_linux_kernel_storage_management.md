@@ -581,7 +581,7 @@ $ echo '
   -mask 255.255.255.0
   -alldirs
   -maproot=root:wheel
-  ' >> /etc/exports"
+  ' >> /etc/exports
 
 # 検証
 $ nfsd checkexports

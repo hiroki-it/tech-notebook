@@ -490,6 +490,22 @@ $ systemctl enable crond.service
 $ systemctl enable httpd.service
 ```
 
+#### ▼ is-failed
+
+プロセスが正常に実行されているかどうかを確認する。
+
+正常の場合は`active`、異常の場合は`failed`になる。
+
+これは、`systemctl status`コマンドのActive行でも確認できる。
+
+```bash
+$ systemctl is-failed <ユニット名>
+
+active
+```
+
+> - https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units-ja#
+
 #### ▼ list-units
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。
