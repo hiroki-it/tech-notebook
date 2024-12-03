@@ -126,7 +126,9 @@ const myEnv: Env = {
 
 ## 04. 型
 
-### プリミティブ
+### 変数
+
+#### ▼ プリミティブ
 
 ```typescript
 let str: string = "hello";
@@ -172,9 +174,7 @@ sym = "";
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
 
-<br>
-
-### オブジェクト
+#### ▼ オブジェクト
 
 ```typescript
 const object: {name: string; age: number} = {name: "taro", age: 20};
@@ -190,5 +190,59 @@ object.gender = "male";
 ```
 
 > - https://zenn.dev/akkie1030/articles/9f2304544245b2#object-%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ 配列
+
+```typescript
+const strArray: string[] = ["a", "b", "c"];
+
+// Argument of type 'number' is not assignable to parameter of type 'string'.
+strArray.push(0);
+```
+
+```typescript
+const numArray: number[] = [1, 2, 3];
+
+// Argument of type 'string' is not assignable to parameter of type 'number'.
+numArray.push("a");
+```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%85%8D%E5%88%97%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+<br>
+
+### 関数
+
+#### ▼ 引数型
+
+```typescript
+const sum = (x: number, y: number) => {
+  return x + y;
+};
+
+console.log(sum(1, 2));
+console.log(sum(1, "2")); // Argument of type 'string' is not assignable to parameter of type 'number'.
+console.log(sum(1)); // Expected 2 arguments, but got 1.
+```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%96%A2%E6%95%B0%E3%81%AE%E5%BC%95%E6%95%B0%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+
+#### ▼ 戻り型
+
+```typescript
+const sum = (x: number, y: number): number => {
+  return x + y;
+};
+```
+
+```typescript
+// 戻り値がないという型
+const logger = (): void => {
+  console.log("log");
+};
+```
+
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%96%A2%E6%95%B0%E3%81%AE%E5%BC%95%E6%95%B0%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void
 
 <br>
