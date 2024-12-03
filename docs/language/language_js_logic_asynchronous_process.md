@@ -14,13 +14,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 ## 01. 非同期処理
 
-### 非同期処理
-
-#### ▼ 非同期処理とは
-
-> - https://hiroki-it.github.io/tech-notebook/language/language_process_mode.html
-
-#### ▼ 非同期処理化
+### 非同期処理化
 
 処理の実行を部分的に遅らせると、後続する処理が先に実行される。
 
@@ -354,11 +348,11 @@ const asyncFunc = async () => {
 
 <br>
 
-### await宣言とは
+### await宣言
 
-#### ▼ await宣言
+#### ▼ await宣言とは
 
-以降の全処理を`then`メソッドに渡す。
+非同期処理の結果を`then`メソッドに渡す。
 
 Promiseオブジェクトの`then`メソッドに相当するが、`then`メソッドのようにメソッドチェーンする必要はなくなるため、可読性が高い。
 
@@ -378,7 +372,7 @@ const asyncFunc = async () => {
 
 // awaitを使用した場合
 const asyncFunc = async () => {
-  // 以降の全処理がthenメソッドに渡される。
+  // 非同期処理の結果がthenメソッドに渡される。
   const res = await axios.get("/some/path");
 
   console.log(res.data); // "some data"
@@ -410,6 +404,19 @@ const asyncFunc = async () => {
 };
 ```
 
+#### ▼ そもそも非同期にしなければawait宣言は不要なのでは？
+
+関数を非同期処理化しなければ、`await`宣言がそもそも不要なのではという疑問がある。
+
+例えば、通信処理を非同期処理化し、後続の通信処理結果によらない他の処理 (例：UIの更新) を実行しておく。
+
+一方で、ファイル操作であれば、後続の処理は先行の処理結果が必要になるため、同期処理が適している。
+
+ただ、使用するパッケージの仕様が非同期処理になっている場合 (例：Node.jsは非同期処理の関数が多い) 、`await`宣言を使用せざるを得ない。
+
+> - https://blog.honjala.net/entry/2018/08/08/022027
+> - https://zenn.dev/h_tatsuru/articles/28149eac34d55c#%F0%9F%90%B2%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%A8%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE%E6%A9%9F%E8%83%BD%E4%BE%8B
+
 <br>
 
 ### エラーハンドリング
@@ -436,16 +443,16 @@ const asyncFunc = async () => {
 ```javascript
 const asyncFunc = async () => {
   // 初期化
-  let response;
+  let res;
 
   try {
-    response = await axios.get("/some/path1");
-    console.info(response);
+    res = await axios.get("/some/path1");
+    console.info(res);
   } catch (error) {
     console.error(error);
   }
 
-  return response;
+  return res;
 };
 ```
 
@@ -465,6 +472,53 @@ await new Promise((resolve) => {
   setTimeout(resolve, 5000);
 });
 ```
+
+<br>
+
+### リトライ
+
+#### ▼ async-retry
+
+```typescript
+// Packages
+const retry = require("async-retry");
+const fetch = require("node-fetch");
+
+const res = await retry(
+  // 対象の関数
+  async (bail, num) => {
+    const res = await fetch("https://google.com");
+
+    if (403 === res.status) {
+      // 403のときはリトライしない
+      bail(new Error("Unauthorized"));
+      return;
+    }
+
+    return await res.text();
+  },
+  // オプション
+  {
+    // 最大リトライ回数
+    retries: 10,
+    // 指数関数的バックオフのfactor
+    factor: 2,
+    // 初回の待ち時間
+    minTimeout: 1000,
+    // 最大の待ち時間
+    maxTimeout: Infinity,
+    // ランダム化時の係数(1~2)
+    randomize: true,
+    // リトライ時に呼ばれる関数
+    onRetry: (err, num) => console.log(err, num),
+  },
+);
+
+console.log(res);
+```
+
+> - https://www.memory-lovers.blog/entry/2022/06/16/100000
+> - https://zenn.dev/ak2ie/articles/af0f1d31a185c0
 
 <br>
 
