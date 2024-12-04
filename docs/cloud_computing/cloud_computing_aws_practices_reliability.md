@@ -63,13 +63,13 @@ Auroraでフェイルオーバーを採用する。
 
 #### ▼ AWS EKS マネージドNodeグループ
 
-AWS EC2 Nodeのスケールアップには、Cluster Autoscaler、AWS EKS マネージドNodeグループ、を採用する。
+AWS EC2 Nodeのスケールアップには、Cluster Autoscaler、AWS EKS マネージドNodeグループを採用する。
 
 Cluster AutoscalerとAWS EKS マネージドNodeグループ、では、PodによるAWS EC2 Nodeの負荷に応じてAWS EC2 Nodeをスケーリングする。
 
 #### ▼ Auto Scaling Group
 
-AWS EC2のスケールアップには、Auto Scaling Group、を採用する。
+AWS EC2のスケールアップには、Auto Scaling Groupを採用する。
 
 Auto Scaling Groupでは、AWS EC2のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。
 

@@ -95,7 +95,7 @@ CNIによって、`L2`または`L3`を提供する。
 
 #### ▼ 同一Node上のPod間通信
 
-Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、を使用して、同じNode上のPod間でパケットを送受信する。
+Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) を使用して、同じNode上のPod間でパケットを送受信する。
 
 ![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
 

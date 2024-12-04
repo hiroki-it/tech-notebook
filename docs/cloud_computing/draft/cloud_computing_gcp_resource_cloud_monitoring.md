@@ -35,7 +35,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 #### ▼ アラートとは
 
-ポリシー (例：閾値、メトリクス再集計など) 、通知チャンネル、を作成できる。
+ポリシー (例：閾値、メトリクス再集計など) 、通知チャンネルを作成できる。
 
 > - https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja
 > - https://cloud.google.com/monitoring/support/notification-options?hl=ja

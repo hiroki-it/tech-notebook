@@ -239,7 +239,7 @@ Operatorを、開発、テスト、リリース、ために必要なツールを
 
 #### ▼ Operator Lifecycle Manager
 
-Operatorの、作成、削除、を管理する。
+Operatorの、作成、削除を管理する。
 
 #### ▼ Operator Metering
 

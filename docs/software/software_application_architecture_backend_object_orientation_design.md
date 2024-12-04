@@ -87,7 +87,7 @@ Dependency (依存) が使用される。
 
 #### ▼ multiplicity (多重度) とは
 
-クラス間がデータとして保持する関係性にある時に、保持される側クラスが何個のクラスに保持されるか、また反対に保持する側クラスが保持される側クラスを何個保持するか、を表す。
+クラス間がデータとして保持する関係性にある時に、保持される側クラスが何個のクラスに保持されるか、また反対に保持する側クラスが保持される側クラスを何個保持するかを表す。
 
 このように`2`個の見方があることが混乱するので注意する。
 
@@ -188,8 +188,8 @@ DBテーブルのカラム間の関係性を基に、DBの構造を表す。
 | 同期メッセージ                      | 既存のライフラインを同期的にコールすることを表す。                                                                                 |                                                                                                                                                                                                                                      |
 | 非同期メッセージ                    | 既存のライフラインを非同期的にコールすることを表す。                                                                               |                                                                                                                                                                                                                                      |
 | 生成メッセージ                      | ライフラインを新しく作成することを表す。                                                                                           |                                                                                                                                                                                                                                      |
-| 自己メッセージ                      | ライフラインが、自分自身の内部処理をコールして処理を繰り返すこと、を表す。                                                         | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
-| 再帰的メッセージ                    | ライフラインが、自分自身全体をコールして処理を繰り返すこと、を表す。                                                               | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
+| 自己メッセージ                      | ライフラインが、自分自身の内部処理をコールして処理を繰り返すことを表す。                                                           | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
+| 再帰的メッセージ                    | ライフラインが、自分自身全体をコールして処理を繰り返すことを表す。                                                                 | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                |
 | 入れ子実行仕様                      | 再帰的メッセージによってコールされた別の実行仕様を表す。                                                                           |                                                                                                                                                                                                                                      |
 | 返却メッセージ                      | コールの結果を他のライフラインに返却することを表す。                                                                               |                                                                                                                                                                                                                                      |
 | 複合フラグメント (結合フラグメント) | 条件分岐、繰り返しなどによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を`alt` (`alternative`) 、繰り返しの場合は`loop`とする。<br>・https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |

@@ -341,7 +341,7 @@ Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Loa
 
 なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるため、Egressのアウトバウンド通信は全て許可しておく。
 
-多くのIngressコントローラーでは、制限のルールをIngressの`.metadata.annotations`キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) 、を選べる。
+多くのIngressコントローラーでは、制限のルールをIngressの`.metadata.annotations`キーに直接設定するか、Ingressから切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。
 
 管理しやすいように、Ingressから切り離して設定すると良い。
 
@@ -807,7 +807,7 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 # コンテナ
 
-## startupProbe、readinessProbe、livenessProbe、を設定する
+## startupProbe、readinessProbe、livenessProbeを設定する
 
 kubeletは、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぐ。
 
@@ -1098,7 +1098,7 @@ istio-initコンテナとかまさにその例
 > - [https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/
 > - [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
 
-### ■ runAsNonRoot、runAsUser / runAsGroup、を使用して、非rootユーザーでコンテナを実行する
+### ■ runAsNonRoot、runAsUser / runAsGroupを使用して、非rootユーザーでコンテナを実行する
 
 コンテナはホスト (Node) と各namespaceを分離しており、Capabilityを制限した上で実行する。
 

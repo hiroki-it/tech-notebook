@@ -29,7 +29,7 @@ $ func create -l <言語> <関数名>
 
 ### deploy
 
-イベント駆動関数、関数の公開に必要なKubernetesリソース、をデプロイする。
+イベント駆動関数、関数の公開に必要なKubernetesリソースをデプロイする。
 
 ```bash
 $ func deploy --registry <コンテナレジストリ名>

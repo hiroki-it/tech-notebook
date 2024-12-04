@@ -283,7 +283,7 @@ CloudFrontに統合されたAWS Lambdaを、特別にAWS Lambda@Edgeという。
 
 ![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png)
 
-CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンス、をトリガーとする。
+CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。
 
 エッジロケーションのCloudFrontに、AWS Lambdaのレプリカを作成する。
 

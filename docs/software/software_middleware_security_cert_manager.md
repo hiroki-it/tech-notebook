@@ -17,7 +17,7 @@ description: Cert Manager＠セキュリティ系ミドルウェアの知見を�
 
 ### アーキテクチャ
 
-Cert Managerは、を作成し、Secretに保管する。
+Cert Managerはを作成し、Secretに保管する。
 
 このSecret上で、クライアント / SSL証明書と、これのペアとなる秘密鍵を管理する。
 

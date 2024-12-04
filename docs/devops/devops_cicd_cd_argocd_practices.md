@@ -852,7 +852,7 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 
 #### ▼ 性能ヒートマップ
 
-縦軸でReconciliationの秒数、横軸で色でReconciliationの処理数、を表現する。
+縦軸でReconciliationの秒数、横軸で色でReconciliationの処理数を表現する。
 
 グラフの上部にたくさんの処理が分布するほど、Reconciliationの性能が低いことがわかる。
 

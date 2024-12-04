@@ -30,7 +30,7 @@ Anthosは、Anthos GKE Cluster、Anthos Service Mesh、Anthos Config Management�
 
 #### ▼ Anthos GKE Clusterとは
 
-GKE Cluster (コントロールプレーンNode、ワーカーNode、を含む) から構成される。
+GKE Cluster (コントロールプレーンNode、ワーカーNodeを含む) から構成される。
 
 #### ▼ アタッチCluster
 

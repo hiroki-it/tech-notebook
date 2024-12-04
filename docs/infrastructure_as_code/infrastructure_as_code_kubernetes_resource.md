@@ -829,7 +829,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
 
-`L4`ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を経由してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IPを経由してPodにルーティングする。
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。
 
@@ -1730,7 +1730,7 @@ ClusterスコープなKubernetesリソースやカスタムリソース (Namespa
 
 #### ▼ RBAC：Role-based access control
 
-Role、ClusterRole、を使用して認可スコープを制御する仕組みのこと。
+Role、ClusterRoleを使用して認可スコープを制御する仕組みのこと。
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 

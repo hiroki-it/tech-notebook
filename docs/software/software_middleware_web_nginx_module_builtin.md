@@ -537,7 +537,7 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 注意点としては、このままでは宛先がスケーリングした時にIPアドレスを動的に取得できない。
 
-そのため、`resolver`ディレクティブ、`upstream`ディレクティブ、UNIXドメインソケット、を使用する必要がある。(ちょっと複雑すぎる...)
+そのため、`resolver`ディレクティブ、`upstream`ディレクティブ、UNIXドメインソケットを使用する必要がある。(ちょっと複雑すぎる...)
 
 **＊実装例＊**
 

@@ -25,7 +25,7 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 $ dnf install -y mysql
 ```
 
-`mysql`コマンド、MySQLのRDBMS、をインストールしたい場合はこちら。
+`mysql`コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql-server
@@ -39,7 +39,7 @@ $ dnf install -y mysql-server
 $ yum install -y mysql
 ```
 
-`mysql`コマンド、MySQLのRDBMS、をインストールしたい場合はこちら。
+`mysql`コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
 
 ```bash
 $ yum install -y mysql mysql-server

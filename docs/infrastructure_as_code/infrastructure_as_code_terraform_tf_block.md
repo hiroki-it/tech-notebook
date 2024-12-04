@@ -332,7 +332,7 @@ resource "foo" "this" {
 
 例として、VPCのサブネットを示す。
 
-ここでは、パブリックサブネット、applicationサブネット、datastoreサブネット、を`count`引数で作成したとする。
+ここでは、パブリックサブネット、applicationサブネット、datastoreサブネットを`count`引数で作成したとする。
 
 ```terraform
 # ---------------------------------------------

@@ -310,7 +310,7 @@ go-repository/
 ├── test/
 │   └── test.go
 │
-└── web/ # 画像、CSS、を配置する。
+└── web/ # 画像、CSSを配置する。
     ├── static
     └── template
 ```

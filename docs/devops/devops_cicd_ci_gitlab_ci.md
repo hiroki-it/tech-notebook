@@ -903,7 +903,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+  # foo1、foo2、foo3を出力する異なるJobを並列実行する
   script:
     - echo ${ENV}
 ```
@@ -928,7 +928,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+  # foo1、foo2、foo3を出力する異なるJobを並列実行する
   script:
     - echo ${ENV}
 
@@ -955,7 +955,7 @@ stages:
 foo_job:
   stage: build
   parallel:
-    # foo1、foo2、foo3、を出力する異なるJobを並列実行する
+    # foo1、foo2、foo3を出力する異なるJobを並列実行する
     matrix:
       - ENV:
           - foo1
