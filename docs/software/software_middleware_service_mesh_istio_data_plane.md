@@ -15,9 +15,9 @@ description: データプレーン＠Istioの知見を記録しています。
 
 ## 01. データプレーンとは
 
-### サイドカー型の場合
+### サイドカーパターンの場合
 
-サイドカー型のデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
+サイドカーパターンのデータプレーンは、istio-iptables、 `istio-init`コンテナ、`istio-proxy`コンテナ、といったコンポーネントから構成される。
 
 > - https://www.tigera.io/blog/running-istio-on-kubernetes-in-production-part-i/
 
