@@ -4385,17 +4385,17 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      サイドカー型
+      サイドカーパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="サイドカー型">
+    <nav class="md-nav" aria-label="サイドカーパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#istio_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Istioのサイドカー型とは
+      ▼ Istioのサイドカーパターンとは
     </span>
   </a>
   
@@ -4404,7 +4404,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サイドカー型の仕組み
+      ▼ サイドカーパターンの仕組み
     </span>
   </a>
   
@@ -4418,11 +4418,11 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アンビエントメッシュ (サイドカーレス型)
+      アンビエントメッシュ (サイドカーレスパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アンビエントメッシュ (サイドカーレス型)">
+    <nav class="md-nav" aria-label="アンビエントメッシュ (サイドカーレスパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24621,17 +24621,17 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      サイドカー型
+      サイドカーパターン
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="サイドカー型">
+    <nav class="md-nav" aria-label="サイドカーパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#istio_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Istioのサイドカー型とは
+      ▼ Istioのサイドカーパターンとは
     </span>
   </a>
   
@@ -24640,7 +24640,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ サイドカー型の仕組み
+      ▼ サイドカーパターンの仕組み
     </span>
   </a>
   
@@ -24654,11 +24654,11 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      アンビエントメッシュ (サイドカーレス型)
+      アンビエントメッシュ (サイドカーレスパターン)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="アンビエントメッシュ (サイドカーレス型)">
+    <nav class="md-nav" aria-label="アンビエントメッシュ (サイドカーレスパターン)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -25464,9 +25464,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-istio">01. Istioの仕組み<a class="headerlink" href="#01-istio" title="Permanent link">&para;</a></h2>
-<h3 id="_2">サイドカー型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="istio_1">▼ Istioのサイドカー型とは<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h4>
-<p>サイドカー型は、サイドカープロキシ型のサービスメッシュを実装したものである。</p>
+<h3 id="_2">サイドカーパターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="istio_1">▼ Istioのサイドカーパターンとは<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h4>
+<p>サイドカーパターンは、サイドカープロキシ型のサービスメッシュを実装したものである。</p>
 <p>各PodにサイドカーとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
 <blockquote>
 <ul>
@@ -25475,9 +25475,9 @@
 <li><a href="https://zenn.dev/riita10069/articles/service-mesh">https://zenn.dev/riita10069/articles/service-mesh</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ サイドカー型の仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ サイドカーパターンの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_sidecar-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png" /></p>
-<p>サイドカー型は、データプレーン、Isiodコントロールプレーン、といったコンポーネントから構成される。</p>
+<p>サイドカーパターンは、データプレーン、Isiodコントロールプレーン、といったコンポーネントから構成される。</p>
 <p>サイドカープロキシを使用して、サービスメッシュを実装する。</p>
 <p>サイドカーは、<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) と<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPSなど) を処理できる。</p>
 <blockquote>
@@ -25488,9 +25488,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">アンビエントメッシュ (サイドカーレス型)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">アンビエントメッシュ (サイドカーレスパターン)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ アンビエントメッシュとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>アンビエントメッシュは、サイドカーレス型のサービスメッシュを実装したものである。</p>
+<p>アンビエントメッシュは、サイドカーレスパターンのサービスメッシュを実装したものである。</p>
 <p>各Node上にエージェントとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
 <blockquote>
 <ul>
@@ -25503,9 +25503,9 @@
 <p>アンビエントメッシュは、データプレーン、コントロールプレーンNode、といったコンポーネントから構成される。Node内の単一プロキシを使用して、サービスメッシュを実装する。</p>
 <p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
 <p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。</p>
-<p>サイドカー型を将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
+<p>サイドカーパターンを将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
 <p>ztunnelのPodを経由した段階でHTTPSプロトコルになる。</p>
-<p>ハードウェアリソースの消費量の少ない<code>L4</code>プロトコルと、消費量の多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカー型と比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
+<p>ハードウェアリソースの消費量の少ない<code>L4</code>プロトコルと、消費量の多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカーパターンと比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
 <p>サービスメッシュ内へのリクエストの経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
@@ -25623,7 +25623,7 @@
 <thead>
 <tr>
 <th>項目</th>
-<th style="text-align: center;">サイドカー型</th>
+<th style="text-align: center;">サイドカーパターン</th>
 <th style="text-align: center;">アンビエントメッシュ</th>
 </tr>
 </thead>
@@ -26315,7 +26315,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-04</span>
   </span>
 
     
