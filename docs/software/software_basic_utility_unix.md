@@ -185,7 +185,7 @@ $ chown foo:foo bar.txt
 ディレクトリと、ディレクトリ内のファイルの所有権を再帰的に変更する。
 
 ```bash
-$ chown foo:foo ./bar -R
+$ chown -R foo:foo ./bar
 ```
 
 <br>

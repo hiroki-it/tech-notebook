@@ -149,7 +149,7 @@ FROM alpine:3.12
 # 実行ユーザーを作成し、必要最低限の認可スコープを付与する。
 RUN adduser -D foouser \
   `# ディレクトリに作成した実行ユーザーを設定する。` \
-  && chown -R foouser /app-data
+  && chown -R foouser /app-data/
 
 # コンテナのプロセスの実行ユーザーを指定する。
 USER foouser

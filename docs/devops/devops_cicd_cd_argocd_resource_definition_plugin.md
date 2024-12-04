@@ -627,7 +627,7 @@ spec:
           wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
           tar -xvf helm-secrets.tar.gz
           cp -R helm-secrets /helm-working-dir/plugins/
-          chown -R 999 /helm-working-dir/plugins/
+          chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
         # Podの共有Volumeにhelmプラグインを配置する。
@@ -827,7 +827,7 @@ spec:
           wget -q https://github.com/jkroepke/helm-secrets/releases/download/<バージョン>/helm-secrets.tar.gz
           tar -xvf helm-secrets.tar.gz
           cp -R helm-secrets /helm-working-dir/plugins/
-          chown -R 999 /helm-working-dir/plugins/
+          chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
         # Podの共有Volumeにhelmプラグインを配置する。
