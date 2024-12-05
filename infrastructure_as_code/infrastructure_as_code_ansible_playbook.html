@@ -25843,7 +25843,7 @@
 <p><br></p>
 <h3 id="become">become<a class="headerlink" href="#become" title="Permanent link">&para;</a></h3>
 <h4 id="become_1">▼ becomeとは<a class="headerlink" href="#become_1" title="Permanent link">&para;</a></h4>
-<p>プレイをroot権限で実行するか否かを設定する。</p>
+<p>プレイをroot権限 (sudo権限) で実行するか否かを設定する。</p>
 <p>root以外であれば、<code>become_user</code>キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">  </span><span class="nt">become_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-user</span>
@@ -25868,12 +25868,6 @@
 <h4 id="ansiblebuiltinapt_1">▼ ansible.builtin.aptとは<a class="headerlink" href="#ansiblebuiltinapt_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをaptリポジトリからインストールする。</p>
 <p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html</a></li>
-<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
@@ -25881,6 +25875,12 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
 <span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html</a></li>
+<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ansiblebuiltindnf">ansible.builtin.dnf<a class="headerlink" href="#ansiblebuiltindnf" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltindnf_1">▼ ansible.builtin.dnfとは<a class="headerlink" href="#ansiblebuiltindnf_1" title="Permanent link">&para;</a></h4>
@@ -26199,6 +26199,7 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vars</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_env.FOO</span>
 </code></pre></div>
+<p><br></p>
 <h3 id="environment">environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h3>
 <h4 id="environment_1">▼ environmentとは<a class="headerlink" href="#environment_1" title="Permanent link">&para;</a></h4>
 <p>task内で出力できる環境変数を設定する。</p>
