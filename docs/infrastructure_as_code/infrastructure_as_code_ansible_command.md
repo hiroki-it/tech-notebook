@@ -13,7 +13,25 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 <br>
 
-## 01. ansible-playbookコマンド
+## 01. ansibleコマンド
+
+### ansible-playbookコマンドとの違い
+
+単一のタスクを実行できる。
+
+> - https://stackoverflow.com/a/64723156/12771072
+
+<br>
+
+## 02. ansible-playbookコマンド
+
+### ansibleコマンドとの違い
+
+複数のタスクを含むPlaybookを実行できる。
+
+> - https://stackoverflow.com/a/64723156/12771072
+
+<br>
 
 ### --ask-vault-pass (ask-vault-password)
 
@@ -93,7 +111,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 
 <br>
 
-## 02. ansible-vaultコマンド
+## 03. ansible-vaultコマンド
 
 ### decrypt
 
@@ -131,7 +149,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 <br>
 
-## 03. ansible-inventoryコマンド
+## 04. ansible-inventoryコマンド
 
 ### --list
 

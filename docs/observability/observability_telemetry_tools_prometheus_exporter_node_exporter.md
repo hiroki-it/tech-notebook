@@ -79,7 +79,19 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 <br>
 
-## 03. メトリクスの一覧
+## 03. 設定
+
+### --web.listen-address
+
+待ち受けるポート番号を設定する。
+
+```bash
+$ node_exporter --web.listen-address=':9100'
+```
+
+<br>
+
+## 04. メトリクスの一覧
 
 ### 確認方法
 
@@ -101,7 +113,7 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 
 <br>
 
-## 04. PromQLを使用したメトリクス分析
+## 05. PromQLを使用したメトリクス分析
 
 ### CPU使用率
 

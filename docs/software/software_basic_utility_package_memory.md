@@ -542,7 +542,7 @@ dev-mqueue.mount                  loaded active mounted POSIX Message Queue File
 
 デーモン化されたプロセスのUnitの一覧と、OS起動時にデーモンが自動起動するようになっているか否かを取得する。
 
-`STATE`で自動起動するかを確認できる。
+`STATE` (`enable`、`disable`、`static`) で自動起動するかを確認できる。
 
 ```bash
 $ systemctl list-unit-files --type=<ユニットの拡張子>
@@ -554,7 +554,7 @@ $ systemctl list-unit-files --type=service
 UNIT FILE                   STATE
 crond.service               enabled  # enable：自動起動する
 supervisord.service         disabled # disable：自動起動しない
-systemd-reboot.service      static   # enable：他サービス依存
+systemd-reboot.service      static   # static：他サービス依存
 
 
 $ systemctl list-unit-files --type=service | grep foo.service
