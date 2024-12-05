@@ -560,27 +560,36 @@ sequenceDiagram
 
     API Gateway ->> ワークフローハンドラー: 同期リクエスト
 
+    フロントエンド -) API Gateway: 非同期リクエスト<br>(ポーリング)
+
+    API Gateway -) Sagaステータスチェッカー: 非同期リクエスト<br>(ポーリング)
+
     ワークフローハンドラー ->> Temporalサーバー: 同期リクエスト<br>(ワークフロー実行)
+
+    Sagaステータスチェッカー -) Temporalサーバー: 非同期リクエスト<br>(ポーリング)
+
+    TemporalワーカーA ->> TemporalワーカーA: ワークフロー & アクティビティ登録
+
+    TemporalワーカーA -) Temporalサーバー: タスク取得<br>(ポーリング)
+
+    TemporalワーカーA -) Temporalサーバー: タスク結果送信
+
+    TemporalワーカーB ->> TemporalワーカーB: ワークフロー & アクティビティ登録
+
+    TemporalワーカーB -) Temporalサーバー: タスク取得<br>(ポーリング)
+
+    TemporalワーカーB -) Temporalサーバー: タスク結果送信
 
     ワークフローハンドラー -->> API Gateway: レスポンス
 
     API Gateway -->> フロントエンド: レスポンス
-
-    フロントエンド -) API Gateway: 非同期リクエスト<br>(ポーリング処理)
-
-    API Gateway -) Sagaステータスチェッカー: 非同期リクエスト<br>(ポーリング処理)
-
-
-    TemporalワーカーA ->> Temporalサーバー: アクティビティ登録
-
-    Temporalサーバー -) TemporalワーカーA: タスク取得
-
-    TemporalワーカーB ->> Temporalサーバー: アクティビティ登録
-
-    Temporalサーバー -) TemporalワーカーB: アクタスク取得
 ```
 
 > - https://temporal.io/blog/workflow-engine-principles
+> - https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#application-worker
+> - https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#workflow-starter
+> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
+> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
 
 <br>
 

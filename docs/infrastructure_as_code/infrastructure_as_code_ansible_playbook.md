@@ -489,7 +489,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 #### ▼ becomeとは
 
-プレイをroot権限で実行するか否かを設定する。
+プレイをroot権限 (sudo権限) で実行するか否かを設定する。
 
 root以外であれば、`become_user`キーを設定する。
 
@@ -530,9 +530,6 @@ root以外であれば、`become_user`キーを設定する。
 
 任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
 
-> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
-> - https://qiita.com/tkit/items/7ad3e93070e97033f604
-
 **＊実装例＊**
 
 ```yaml
@@ -542,6 +539,9 @@ root以外であれば、`become_user`キーを設定する。
     name: nginx=1.0.0
     state: present
 ```
+
+> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+> - https://qiita.com/tkit/items/7ad3e93070e97033f604
 
 <br>
 
@@ -927,6 +927,8 @@ SELinuxを無効化する。
 - vars:
     FOO: ansible_env.FOO
 ```
+
+<br>
 
 ### environment
 

@@ -273,11 +273,18 @@ VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイ
 
 SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。
 
-このクライアント証明書をVPNのクライアント側 (例：開発PC、仮想環境など) に設定する必要がある。
+このクライアント証明書をVPNのクライアント側 (例：開発PC) に設定する必要がある。
+
+また、もしクライアント側で仮想環境を作成したい場合、仮想環境がクライアント証明書が信頼できるように、設定する必要がある。
+
+**＊設定例＊**
+
+Dockerであればプロキシ設定を実施するか、Dockerfileにルート証明書を組み込む必要がある。
 
 ![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection
+> - https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker
 
 <br>
