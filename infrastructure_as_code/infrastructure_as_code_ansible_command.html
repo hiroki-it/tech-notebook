@@ -15097,13 +15097,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-ansible-playbook" class="md-nav__link">
+  <a href="#02-ansible-community" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ansible-playbookコマンド
+      02. ansible-communityコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ansible-playbookコマンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ansible-playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ansible-playbookコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ansible-playbookコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -15172,13 +15181,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-ansible-vault" class="md-nav__link">
+  <a href="#04-ansible-vault" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ansible-vaultコマンド
+      04. ansible-vaultコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ansible-vaultコマンド">
+    <nav class="md-nav" aria-label="04. ansible-vaultコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -15205,13 +15214,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-ansible-inventory" class="md-nav__link">
+  <a href="#05-ansible-inventory" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ansible-inventoryコマンド
+      05. ansible-inventoryコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ansible-inventoryコマンド">
+    <nav class="md-nav" aria-label="05. ansible-inventoryコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23985,13 +23994,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-ansible-playbook" class="md-nav__link">
+  <a href="#02-ansible-community" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ansible-playbookコマンド
+      02. ansible-communityコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ansible-playbookコマンド">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ansible-playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ansible-playbookコマンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ansible-playbookコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24060,13 +24078,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-ansible-vault" class="md-nav__link">
+  <a href="#04-ansible-vault" class="md-nav__link">
     <span class="md-ellipsis">
-      03. ansible-vaultコマンド
+      04. ansible-vaultコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. ansible-vaultコマンド">
+    <nav class="md-nav" aria-label="04. ansible-vaultコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24093,13 +24111,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-ansible-inventory" class="md-nav__link">
+  <a href="#05-ansible-inventory" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ansible-inventoryコマンド
+      05. ansible-inventoryコマンド
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ansible-inventoryコマンド">
+    <nav class="md-nav" aria-label="05. ansible-inventoryコマンド">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24176,7 +24194,18 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-ansible-playbook">02. ansible-playbookコマンド<a class="headerlink" href="#02-ansible-playbook" title="Permanent link">&para;</a></h2>
+<h2 id="02-ansible-community">02. ansible-communityコマンド<a class="headerlink" href="#02-ansible-community" title="Permanent link">&para;</a></h2>
+<p>Ansibleのバージョンを確認する。</p>
+<p><code>ansible version</code>コマンドではなく、こちらの使用する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-community<span class="w"> </span>--version
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#confirming-your-installation">https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#confirming-your-installation</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-ansible-playbook">03. ansible-playbookコマンド<a class="headerlink" href="#03-ansible-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="ansible_1">ansibleコマンドとの違い<a class="headerlink" href="#ansible_1" title="Permanent link">&para;</a></h3>
 <p>複数のタスクを含むPlaybookを実行できる。</p>
 <blockquote>
@@ -24236,7 +24265,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-playbook<span class="w"> </span>-u<span class="w"> </span>foo-user<span class="w"> </span>&lt;playbookファイル&gt;<span class="w"> </span>-i<span class="w"> </span>&lt;inventoryファイル/ディレクトリ&gt;
 </code></pre></div>
 <p><br></p>
-<h2 id="03-ansible-vault">03. ansible-vaultコマンド<a class="headerlink" href="#03-ansible-vault" title="Permanent link">&para;</a></h2>
+<h2 id="04-ansible-vault">04. ansible-vaultコマンド<a class="headerlink" href="#04-ansible-vault" title="Permanent link">&para;</a></h2>
 <h3 id="decrypt">decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h3>
 <p>指定した暗号化済みファイルを復号化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-vault<span class="w"> </span>decrypt<span class="w"> </span>parameters.yml
@@ -24267,7 +24296,7 @@ Encryption<span class="w"> </span>successful
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-ansible-inventory">04. ansible-inventoryコマンド<a class="headerlink" href="#04-ansible-inventory" title="Permanent link">&para;</a></h2>
+<h2 id="05-ansible-inventory">05. ansible-inventoryコマンド<a class="headerlink" href="#05-ansible-inventory" title="Permanent link">&para;</a></h2>
 <h3 id="-list">--list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h3>
 <h4 id="-list_1">▼ --listとは<a class="headerlink" href="#-list_1" title="Permanent link">&para;</a></h4>
 <p><code>inventory</code>ファイルを指定し、<code>json</code>形式に変換する。</p>

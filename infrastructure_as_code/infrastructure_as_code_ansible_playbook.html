@@ -15488,6 +15488,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ バージョン指定
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -24988,6 +24997,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ バージョン指定
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -25905,6 +25923,27 @@
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 </code></pre></div>
+<h4 id="_2">▼ バージョン指定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
+<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># バージョンを指定する</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># epelリポジトリをインストールします。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install epel-release</span>
+<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ansiblebuiltinlineinfile">ansible.builtin.lineinfile<a class="headerlink" href="#ansiblebuiltinlineinfile" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinlineinfile_1">▼ ansible.builtin.lineinfileとは<a class="headerlink" href="#ansiblebuiltinlineinfile_1" title="Permanent link">&para;</a></h4>
@@ -26140,32 +26179,7 @@
 <h3 id="ansiblebuiltinyum">ansible.builtin.yum<a class="headerlink" href="#ansiblebuiltinyum" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinyum_1">▼ ansible.builtin.yumとは<a class="headerlink" href="#ansiblebuiltinyum_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードで、パッケージをyumリポジトリからインストールする。</p>
-<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html</a></li>
-<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
-</ul>
-</blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
-<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># バージョンを指定する</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
-<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># epelリポジトリをインストールします。</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install epel-release</span>
-<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span>
-<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state</a></li>
-</ul>
-</blockquote>
+<p>代わりに<code>ansible.builtin.dnf</code>モジュールを使うと良い。</p>
 <p><br></p>
 <h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
 <h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
@@ -26296,7 +26310,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-05</span>
   </span>
 
     
