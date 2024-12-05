@@ -149,14 +149,21 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 : CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d`ディレクトリ配下に配置される。
 
 ```bash
+# 全てのバージョン
+# @see https://dl.fedoraproject.org/pub/epel/
+
 # CentOS7系の場合
+# 非推奨のため、アーカイブ (https://archives.fedoraproject.org/pub/archive/epel/) に移動している
 $ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 # CentOS8系の場合
 $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
+# CentOS9系の場合
+$ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+
 # こちらでもよい
-$ yum install -y epel-release でもよい
+$ yum install -y epel-release
 ```
 
 `(2)`

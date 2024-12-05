@@ -255,6 +255,51 @@ $ openssl pkcs8 \
 
 <br>
 
+### ユーザーデータファイル
+
+#### ▼ ユーザーデータファイルとは
+
+AWS EC2の起動時に任意のコマンドを実行できるようにする。
+
+#### ▼ 実行タイミング
+
+ユーザーデータの実行タイミングは、`cloud-config.service`ファイルで設定している。
+
+ネットワークがオンラインになった後に実行する。
+
+つまり、AWS EC2のプロセスに関する設定 (systemdなど) の後に、ユーザーデータを実行する。
+
+```ini
+# /usr/lib/systemd/system/cloud-config.serviceファイル
+
+[Unit]
+Description=Apply the settings specified in cloud-config
+
+# ネットワークがオンラインになった後に実行する
+After=network-online.target cloud-config.target
+
+Wants=network-online.target cloud-config.target
+ConditionPathExists=!/etc/cloud/cloud-init.disabled
+ConditionKernelCommandLine=!cloud-init=disabled
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cloud-init modules --mode=config
+RemainAfterExit=yes
+TimeoutSec=0
+
+# Output needs to appear in instance console output
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
+```
+
+> - https://qiita.com/yamada-hakase/items/657fead978491e8db92f#2-2-cloud-configservice%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B
+> - https://oji-cloud.net/2022/06/30/post-7063/#3_sreake_motouchi_times
+
+<br>
+
 ## 02. AWS EC2 based on AWS AMI：Amazon Machine Image
 
 ### AWS AMIとは

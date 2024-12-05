@@ -592,6 +592,31 @@ root以外であれば、`become_user`キーを設定する。
     daemon_reload: yes
 ```
 
+#### ▼ バージョン指定
+
+任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
+
+**＊実装例＊**
+
+```yaml
+# nginxをインストールします。
+- name: Install Nginx
+  ansible.builtin.yum:
+    # バージョンを指定する
+    name: nginx=1.0.0
+    state: present
+```
+
+```yaml
+# epelリポジトリをインストールします。
+- name: Install epel-release
+  ansible.builtin.yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
+```
+
+> - https://qiita.com/tkit/items/7ad3e93070e97033f604
+
 <br>
 
 ### ansible.builtin.lineinfile
@@ -873,31 +898,7 @@ SELinuxを無効化する。
 
 管理対象ノードで、パッケージをyumリポジトリからインストールする。
 
-任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
-
-> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
-> - https://qiita.com/tkit/items/7ad3e93070e97033f604
-
-**＊実装例＊**
-
-```yaml
-# nginxをインストールします。
-- name: Install Nginx
-  ansible.builtin.yum:
-    # バージョンを指定する
-    name: nginx=1.0.0
-    state: present
-```
-
-```yaml
-# epelリポジトリをインストールします。
-- name: Install epel-release
-  ansible.builtin.yum:
-    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    state: present
-```
-
-> - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html#parameter-state
+代わりに`ansible.builtin.dnf`モジュールを使うと良い。
 
 <br>
 

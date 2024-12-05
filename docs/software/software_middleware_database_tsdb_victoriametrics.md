@@ -313,7 +313,8 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、AWS EBSボリュ
 : ユニットファイルを作成する。
 
 ```ini
-# victoriametrics.service
+# victoriametrics.serviceファイル
+
 [Unit]
 Description=High-performance, cost-effective and scalable time series database, long-term remote storage for Prometheus
 After=network.target

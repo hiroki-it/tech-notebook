@@ -711,6 +711,7 @@ OnFailure=notify-email@%i.service
 
 ```ini
 # notify-email@.serviceファイル
+
 [Unit]
 Description=Sent email
 

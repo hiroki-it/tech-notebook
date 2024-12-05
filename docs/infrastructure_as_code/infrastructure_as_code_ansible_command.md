@@ -23,7 +23,21 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 <br>
 
-## 02. ansible-playbookコマンド
+## 02. ansible-communityコマンド
+
+Ansibleのバージョンを確認する。
+
+`ansible version`コマンドではなく、こちらの使用する。
+
+```bash
+$ ansible-community --version
+```
+
+> - https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#confirming-your-installation
+
+<br>
+
+## 03. ansible-playbookコマンド
 
 ### ansibleコマンドとの違い
 
@@ -111,7 +125,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 
 <br>
 
-## 03. ansible-vaultコマンド
+## 04. ansible-vaultコマンド
 
 ### decrypt
 
@@ -149,7 +163,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 <br>
 
-## 04. ansible-inventoryコマンド
+## 05. ansible-inventoryコマンド
 
 ### --list
 
