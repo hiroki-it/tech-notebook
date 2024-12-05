@@ -23057,11 +23057,35 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. メトリクスの一覧
+      03. 設定
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. メトリクスの一覧">
+    <nav class="md-nav" aria-label="03. 設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-weblisten-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      --web.listen-address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. メトリクスの一覧">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23079,13 +23103,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-promql" class="md-nav__link">
+  <a href="#05-promql" class="md-nav__link">
     <span class="md-ellipsis">
-      04. PromQLを使用したメトリクス分析
+      05. PromQLを使用したメトリクス分析
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. PromQLを使用したメトリクス分析">
+    <nav class="md-nav" aria-label="05. PromQLを使用したメトリクス分析">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23960,11 +23984,35 @@
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      03. メトリクスの一覧
+      03. 設定
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. メトリクスの一覧">
+    <nav class="md-nav" aria-label="03. 設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-weblisten-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      --web.listen-address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. メトリクスの一覧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. メトリクスの一覧">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -23982,13 +24030,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-promql" class="md-nav__link">
+  <a href="#05-promql" class="md-nav__link">
     <span class="md-ellipsis">
-      04. PromQLを使用したメトリクス分析
+      05. PromQLを使用したメトリクス分析
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. PromQLを使用したメトリクス分析">
+    <nav class="md-nav" aria-label="05. PromQLを使用したメトリクス分析">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24131,7 +24179,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. メトリクスの一覧<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. 設定<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="-weblisten-address">--web.listen-address<a class="headerlink" href="#-weblisten-address" title="Permanent link">&para;</a></h3>
+<p>待ち受けるポート番号を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s1">&#39;:9100&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. メトリクスの一覧<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_4">確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>Node Exporterの場合は、Nodeの『<code>127.0.0.1:9100/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
@@ -24150,7 +24204,7 @@ node_exporter_build_info<span class="o">{</span><span class="nv">branch</span><s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-promql">04. PromQLを使用したメトリクス分析<a class="headerlink" href="#04-promql" title="Permanent link">&para;</a></h2>
+<h2 id="05-promql">05. PromQLを使用したメトリクス分析<a class="headerlink" href="#05-promql" title="Permanent link">&para;</a></h2>
 <h3 id="cpu">CPU使用率<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <p>NodeのCPU使用率を取得する。</p>
 <div class="highlight"><pre><span></span><code>rate<span class="o">(</span>node_cpu_seconds_total<span class="o">[</span>1m<span class="o">])</span>
@@ -24246,7 +24300,7 @@ rate<span class="o">(</span>node_disk_write_time_seconds_total<span class="o">[<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-05</span>
   </span>
 
     
