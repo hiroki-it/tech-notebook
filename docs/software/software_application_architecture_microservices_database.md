@@ -287,19 +287,17 @@ AWS StepFunctionsのステートも設計例として、参考になる。
 
 <br>
 
-### Sagaオーケストレーターのクライアント
+### Sagaオーケストレーターのステータスチェッカー
 
-#### ▼ Sagaオーケストレーターのクライアントとは
+#### ▼ Sagaオーケストレーターのステータスチェッカーとは
 
 オーケストレーションベースのSagaパターンにて、Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaオーケストレーターの処理結果を知る必要がある。
 
-#### ▼ ステータスチェッカー
+#### ▼ ポーリングパターンの場合
 
 ポーリングパターンの場合、Sagaステータスチェッカーを採用する。
 
-Sagaステータスチェッカーは、SagaオーケストレーターのDBからSagaログを取得する。
-
-Sagaオーケストレーターにリクエストを送信するクライアントは、Sagaステータスチェッカーをポーリングし、処理結果を取得する。
+Sagaステータスチェッカーは、トランザクションIDを使用してワークフローの処理結果をDBから取得する。
 
 ![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
