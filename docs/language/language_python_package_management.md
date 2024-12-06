@@ -47,6 +47,30 @@ timeout = 60
 
 ## 01-02. pipコマンド
 
+### cache
+
+#### ▼ purge
+
+全てパッケージのキャッシュを削除する。
+
+```bash
+$ pip3 cache purge
+```
+
+> - https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88
+
+#### ▼ remove
+
+指定したパッケージのキャッシュを削除する。
+
+```bash
+$ pip3 cache remove <パッケージ名>
+```
+
+> - https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88
+
+<br>
+
 ### check
 
 #### ▼ checkとは
@@ -233,16 +257,24 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 #### ▼ uninstallとは
 
-指定したパッケージをインストールする。
+指定したパッケージをアンインストールする。
+
+キャッシュが残っているので、`pip3 cache remove`コマンドで指定したパッケージのキャッシュも削除しておく。
 
 ```bash
 $ pip3 uninstall -y <パッケージ名>
+
+$ pip3 cache remove <パッケージ名>
 ```
 
 `uninstall.txt`ファイルを元にパッケージをアンインストールもできる。
 
+キャッシュが残っているので、`pip3 cache purge`コマンドでキャッシュも全て削除しておく。
+
 ```bash
 $ pip3 uninstall -y -r uninstall.txt
+
+$ pip3 cache purge
 ```
 
 > - https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html

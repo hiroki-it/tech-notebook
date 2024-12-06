@@ -531,7 +531,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 		return
 	}
 
@@ -580,7 +580,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 		return
 	}
 
@@ -1229,7 +1229,7 @@ func main() {
 	insect, err := NewInsect("カブトムシ")
 
 	if err != nil {
-		fmt.Println(err)
+		log.Printf("Failed to do: %v", err)
 		return
 	}
 
@@ -1298,7 +1298,7 @@ func main() {
 	insect, err := NewInsect("カブトムシ")
 
 	if err != nil {
-		fmt.Println(err)
+		log.Printf("Failed to do: %v", err)
 		return
 	}
 

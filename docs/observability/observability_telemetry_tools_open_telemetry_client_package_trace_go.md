@@ -48,7 +48,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 	)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	return sdktrace.New(
@@ -81,7 +81,9 @@ func main() {
 
     // 事後処理
 	defer func() {
-        _ = tracerProvider.Shutdown(ctx)
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
+		_ = tracerProvider.Shutdown(ctx)
 		log.Print("Info: Trace provider shutdown successfully")
     }()
 
@@ -121,6 +123,8 @@ func main() {
 func parentFunction(ctx context.Context) {
 
     // Tracerを作成する
+    // Tracer名はパッケージ名が推奨である
+    // @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
     var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, parentSpan := tracer.Start(
@@ -144,6 +148,8 @@ TracerProviderの作成時だけでなく、スパンの作成のタイミング
 func parentFunction(ctx context.Context) {
 
     // Tracerを作成する
+    // Tracer名はパッケージ名が推奨である
+    // @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
     var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, parentSpan := tracer.Start(
@@ -311,6 +317,8 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 		// タイムアウト時間経過後に処理を中断する
         defer cancel()
 
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
         if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 			return
@@ -367,6 +375,8 @@ func httpRequest(ctx context.Context) error {
 	var span trace.Span
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// 現在の処理からトレースコンテキストを取得する。
@@ -416,13 +426,13 @@ func main() {
 	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	defer cleanUp()
 
 	if err := httpRequest(ctx); err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 }
 ```
@@ -459,6 +469,8 @@ func httpRequest(ctx context.Context) error {
 	var span trace.Span
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
@@ -506,13 +518,13 @@ func main() {
 	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	defer cleanUp()
 
 	if err := httpRequest(ctx); err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 }
 ```
@@ -656,6 +668,8 @@ import (
 func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
@@ -679,7 +693,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 	logger, err := zap.NewProduction()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	defer logger.Sync()
@@ -715,7 +729,7 @@ func StartMainServer() {
     shutdown, err := NewTracerProvider()
 
     if err != nil {
-	  	log.Print(err)
+	  	log.Printf("Failed to do: %v", err)
     }
 
     // 事後処理
@@ -784,6 +798,8 @@ import (
 func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
@@ -807,7 +823,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 	logger, err := zap.NewProduction()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	defer logger.Sync()
@@ -837,7 +853,7 @@ func createUser(ginCtx *gin.Context) {
 	if err := ginCtx.BindJSON(&json); err != nil {
 		ginCtx.JSON(
             http.StatusBadRequest,
-            gin.H{"error": err.Error()},
+            gin.H{"error": fmt.Sprintf("Failed to do: %v", err.Error())},
         )
 		return
 	}
@@ -861,7 +877,7 @@ func createUser(ginCtx *gin.Context) {
 		}
 
 		if err := user.CreateUser(c); err != nil {
-			log.Println(err)
+			log.Printf("Failed to do: %v", err)
 		}
 
 		ginCtx.JSON(
@@ -1024,7 +1040,7 @@ func main() {
 	shutdown, err := NewTracerProvider()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	// 事後処理
@@ -1047,6 +1063,8 @@ func main() {
 func parent(ctx *gin.Context) {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
@@ -1106,7 +1124,7 @@ func main() {
 	shutdown, err := NewTracerProvider()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	// 事後処理
@@ -1129,6 +1147,8 @@ func main() {
 func child(ctx *gin.Context) {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	// Carrierにトレースコンテキストを注入する。
@@ -1223,6 +1243,8 @@ func NewTracerProvider() (func(), error) {
 	log.Print("Info: Tracer provider initialize successfully")
 
 	return func() {
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 		err := tracerProvider.Shutdown(context.Background())
 		if err != nil {
 			log.Printf("error shutting down trace provider: %v", err)
@@ -1271,7 +1293,7 @@ func main() {
 	shutdown, err := InitTracerProvider()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	defer shutdown()
@@ -1295,7 +1317,7 @@ func main() {
 	err = http.ListenAndServe(":7777", nil)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 }
 ```
@@ -1325,7 +1347,7 @@ func main() {
 	shutdown, err := InitTracerProvider()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	defer shutdown()
@@ -1349,7 +1371,7 @@ func main() {
 	err = http.ListenAndServe(":7777", nil)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 }
 ```
@@ -1539,11 +1561,13 @@ func main() {
 	tracerProvider, err := config.NewTracerProvider()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	// 事後処理
 	defer func() {
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 		if err := tracerProvider.Shutdown(context.Background()); err != nil {
 			log.Printf("Failed to shutdown tracer provider: %v", err)
 		}

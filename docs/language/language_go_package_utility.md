@@ -366,7 +366,7 @@ func main() {
 	...
 
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to do: %v", err)
 	}
 }
 
@@ -913,9 +913,9 @@ func fooHandler(ctx context.Context) {
 	)
 
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		http.Error(w, fmt.Sprintf("Failed to do: %v", err.Error()), 500)
 		// エラーをスパンに設定する
-		span.RecordError(err.Error())
+		span.RecordError(fmt.Sprintf("Failed to do: %v", err.Error()))
 		return
 	}
 
@@ -965,7 +965,7 @@ func fooHandler(ctx context.Context) {
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		// ステータスとエラーをスパンに設定する
-		span.SetStatus(codes.Error, err.Error())
+		span.SetStatus(codes.Error, fmt.Sprintf("Failed to do: %v", err.Error()))
 		return
 	}
 
@@ -1287,12 +1287,12 @@ func NewDb()  {
 	db, err := gorm.Open(mysql.Open("<DBのURL>"), &gorm.Config{})
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	// ミドルウェアを設定する
 	if err := db.Use(otelgorm.NewPlugin()); err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	...
@@ -2018,13 +2018,13 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 			switch err.Field() {
 			// フィールドごとにmapでバリデーションメッセージを構成する
 			case "foo":
-				errorMessages["foo"] = v.stringValidation(err)
-				errorMessages["foo"] = v.requiredValidation(err)
+				errorMessages["foo"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
+				errorMessages["foo"] = v.requiredValidation(fmt.Sprintf("Failed to do: %v", err))
 			case "bar":
-				errorMessages["bar"] = v.stringValidation(err)
+				errorMessages["bar"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
 			case "baz":
-				errorMessages["baz"] = v.stringValidation(err)
-				errorMessages["baz"] = v.requiredValidation(err)
+				errorMessages["baz"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
+				errorMessages["baz"] = v.requiredValidation(fmt.Sprintf("Failed to do: %v", err))
 			}
 		}
 	}
@@ -2062,7 +2062,7 @@ func main() {
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 		return
 	}
 
@@ -2133,7 +2133,7 @@ func main() {
 		zap.String("bar", "BAR"),
 	)
 
-	logger.Info("Failed to fetch URL")
+	logger.Info("Do successfully")
 
 	...
 
@@ -2159,7 +2159,7 @@ func main() {
 		"foo", "BAR",
 	)
 
-	logger.Info("Failed to fetch URL")
+	logger.Info("Do successfully")
 
 	...
 
@@ -2198,14 +2198,14 @@ func main() {
 
 	sugar.Infow(
 		// ログメッセージ
-		"This is my first Log with Zap",
+		"Do successfully",
 		// 構造化データ
 		zap.Int("int num", 3),
 		zap.Time("Time", time.Now()),
 		zap.String("String", "Hello, Zap"),
 	)
 
-	sugar.Infof("Failed to fetch URL: %s", url)
+	sugar.Infof("Do successfully")
 }
 ```
 
@@ -2237,7 +2237,7 @@ func main() {
 		zap.String("bar", "BAR"),
 	)
 
-	sugar.Infof("Failed to fetch URL: %s", url)
+	sugar.Infof("Do successfully")
 }
 ```
 
@@ -2263,7 +2263,7 @@ func main() {
 		"bar", "BAZ",
 	)
 
-	sugar.Infof("Failed to fetch URL: %s", url)
+	sugar.Infof("Do successfully")
 }
 ```
 

@@ -285,7 +285,7 @@ func main() {
 	req, err := http.NewRequest("GET", "http://localhost:8080/example", nil)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	req = req.WithContext(ctx)
@@ -305,7 +305,7 @@ func main() {
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	fmt.Println("Response:", string(body))
@@ -712,7 +712,7 @@ func main() {
 	byteJson, err := json.Marshal(objects)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	var buf bytes.Buffer
@@ -1316,7 +1316,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 }
 ```
@@ -1373,7 +1373,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 }
 ```
@@ -1401,7 +1401,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	fmt.Println(response.Body)
@@ -1452,7 +1452,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	fmt.Println(response.Body)
@@ -1515,7 +1515,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil || response.StatusCode != 200 {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	// レスポンスのボディを取得する。
@@ -1631,7 +1631,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 	byteJson, err := json.Marshal(user)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 
 	// JSONをレスポンスとして返信する。
@@ -1649,7 +1649,7 @@ func main() {
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {
-		log.Print(err)
+		log.Printf("Failed to do: %v", err)
 	}
 }
 ```

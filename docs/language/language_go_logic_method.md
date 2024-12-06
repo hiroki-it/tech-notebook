@@ -98,7 +98,7 @@ func main() {
 	...
 
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Failed to do: %v", err))
 	}
 
 	...
@@ -978,7 +978,7 @@ func main() {
 	// Goroutineでサーバーを起動する
 	go func() {
 		if err := srv.ListenAndServe(); err != nil {
-			log.Print(err)
+			log.Printf("Failed to do: %v", err)
 		}
 	}()
 
@@ -1385,30 +1385,24 @@ const (
 )
 
 var (
-	Foo string
-	Bar string
-	Baz string
+	foo string
+	bar string
+	baz float64
+	qux bool
 )
 
 func init() {
+	getEnvs()
+}
+
+
+func getEnvs() {
 
 	// 環境変数名を指定して値を取得する
-	foo := getStringEnv(FooEnvKey, "foo")
-	bar := getStringEnv(BarEnvKey, "bar")
-	baz := getFloatEnv(BazEnvKey, 1.0)
-}
-
-// ゲッター
-func GetFoo() string {
-    return foo
-}
-
-func GetBar() string {
-	return bar
-}
-
-func GetBaz() string {
-	return baz
+	foo = getStringEnv(FooEnvKey, "foo")
+	bar = getStringEnv(BarEnvKey, "bar")
+	baz = getFloatEnv(BazEnvKey, 1.0)
+	qux = getBoolEnv(QuxEnvKey, false)
 }
 
 // 環境変数をstring型で取得する
@@ -1427,10 +1421,25 @@ func getStringEnv(key string, fallback string) string {
 
 // 環境変数をfloat64型で取得する
 func getFloatEnv(key string, fallback float64) float64 {
-	value, err := strconv.ParseFloat(getStringEnv(key, "1.0"), 64)
+
+	value, err := strconv.ParseFloat(getStringEnv(strconv.FormatFloat(fallback, 'f', -1, 64)), 64)
+
 	if err != nil {
 		return fallback
 	}
+
+	return value
+}
+
+// 環境変数をbool型で取得する
+func getBoolEnv(key string, fallback bool) bool {
+
+	value, err := strconv.ParseBool(getStringEnv(key, strconv.FormatBool(fallback)))
+
+	if err != nil {
+		return fallback
+	}
+
 	return value
 }
 ```

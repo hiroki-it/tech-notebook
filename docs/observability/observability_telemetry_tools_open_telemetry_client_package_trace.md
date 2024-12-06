@@ -72,6 +72,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
+        // @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
 			return
@@ -154,6 +155,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
+        // @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
 			return
@@ -503,6 +505,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -540,6 +544,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -577,6 +583,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -614,6 +622,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -651,6 +661,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -688,6 +700,8 @@ func main()  {
 func foo()  {
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	ctx, span := tracer.Start(
@@ -811,6 +825,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		defer cancel()
 
 		// Span Processor内の処理中スパンをExporterに送信する
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush
 		if err := tracerProvider.ForceFlush(ctx); err != nil {
 			log.Printf("Failed to force flush trace provider %v", err)
 			return
@@ -895,7 +910,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
-		// Graceful Shutdown処理を実行する
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 		if err := tracerProvider.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown tracer provider %v", err)
 			return
@@ -1034,7 +1050,8 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		// タイムアウトの場合に処理を中断する
 		defer cancel()
 
-		// Graceful Shutdown処理を実行する
+		// TracerProviderを安全にシャットダウンする
+		// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
 		if err := exporter.Shutdown(ctx); err != nil {
 			log.Printf("Failed to shutdown exporter: %v", err)
 			return

@@ -123,7 +123,7 @@ func TestUser_UserName(t *testing.T) {
     got, err := u.UserName(testUser.ID)
 
     if err != nil {
-        t.Error(err)
+        t.Errorf("Failed to do: %v", err)
     }
 }
 ```
@@ -199,7 +199,7 @@ func TestUser_UserName(t *testing.T) {
 	got, err := u.UserName(testUser.ID)
 
 	if err != nil {
-		t.Error(err)
+		t.Errorf("Failed to do: %v", err)
 	}
 }
 ```
@@ -443,7 +443,7 @@ func TestUser_UserName(t *testing.T) {
 	got, err := u.UserName(testUser.ID)
 
 	if err != nil {
-		t.Error(err)
+		t.Errorf("Failed to do: %v", err)
 	}
 }
 ```
@@ -552,7 +552,7 @@ func TestUser_UserName(t *testing.T) {
 	got, err := u.UserName(testUser.ID)
 
 	if err != nil {
-		t.Error(err)
+		t.Errorf("Failed to do: %v", err)
 	}
 }
 ```

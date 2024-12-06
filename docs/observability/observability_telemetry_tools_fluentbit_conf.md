@@ -950,9 +950,9 @@ cloudwatch_logsプラグインがプリインストールされているベー�
 [OUTPUT]
     # プラグイン名
     Name              cloudwatch_logs
-    # ルーティング先のログのタグ
+    # ログのうちで、宛先にルーティングするログのタグ
     Match             laravel
-    # アウトプットJSONのうち、宛先にルーティングするキー名
+    # ログのうちで、宛先にルーティングするキー名
     log_key           log
     region            ap-northeast-1
     # 予約変数あり。
@@ -1015,7 +1015,7 @@ AWS CloudWatchログに送信されるデータはJSON型である。
 [OUTPUT]
     # プラグイン名
     Name              datadog
-    # ルーティング先のログのタグ
+    # ログのうちで、宛先にルーティングするログのタグ
     Match             laravel
     # ルーティング先ホスト
     Host              http-intake.logs.datadoghq.com

@@ -182,11 +182,11 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 そのため、ここではOR条件を使用していない。
 
-> - https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
-
-```yaml
+```bash
 "ERROR:" -MethodNotAllowedHttpException
 ```
+
+> - https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
 
 <br>
 

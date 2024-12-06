@@ -296,6 +296,8 @@ import (
 func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 
     // Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
 	var tracer = otel.Tracer("計装パッケージ名")
 
 	log.Print("Info: Trace provider is initializing ...")
@@ -363,6 +365,8 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 	log.Print("Info: Tracer provider initialize successfully")
 
 	// Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
     var tracer = otel.Tracer("計装パッケージ名")
 
 	// 子スパンを作成する。
@@ -408,7 +412,9 @@ import (
 
 func main() {
 
-	// Tracerを作成する
+    // Tracerを作成する
+	// Tracer名はパッケージ名が推奨である
+	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
     var tracer = otel.Tracer("計装パッケージ名")
 
 	// パッケージをセットアップする。
