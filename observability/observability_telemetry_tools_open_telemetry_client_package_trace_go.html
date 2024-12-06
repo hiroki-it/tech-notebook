@@ -24783,13 +24783,13 @@
 <span class="w">        </span><span class="c1">// TracerProviderを安全にシャットダウンする</span>
 <span class="w">        </span><span class="c1">// @see https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown</span>
 <span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagator</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">()</span>
 
@@ -24804,7 +24804,7 @@
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Info: Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
@@ -24946,7 +24946,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">shutdownTimeout</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider is initializing ...&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Trace provider is initializing ...&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Exporter (スパンの宛先) として、標準出力を設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
@@ -24956,7 +24956,7 @@
 <span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
 <span class="w">    </span><span class="nx">resourceWithAttributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
@@ -24993,7 +24993,7 @@
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Info: Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、処理をする。</span>
 <span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -25014,10 +25014,10 @@
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -25278,7 +25278,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
@@ -25307,9 +25307,9 @@
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Info: Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -25632,7 +25632,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;gRPC exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
@@ -25661,9 +25661,9 @@
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Info: Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -25887,7 +25887,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Cloud Trace exporter initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Cloud Trace exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
@@ -25902,7 +25902,7 @@
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// TracerProviderを安全にシャットダウンする</span>
@@ -25911,7 +25911,7 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;error shutting down trace provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
@@ -26068,7 +26068,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Stdout exporter initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
@@ -26096,9 +26096,9 @@
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Info: Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Tracer provider initialize successfully&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -26224,7 +26224,7 @@
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">());</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider shutdown successfully&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Trace provider shutdown successfully&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>

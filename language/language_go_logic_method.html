@@ -28290,11 +28290,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_51">▼ より良いエラーメッセージ<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
-<p>エラーメッセージは、何をどう実行することに失敗したのか (<code>Failed to do something</code>) を記載し、その後にプログラム上のエラー (<code>err</code>変数) を出力する。</p>
+<p>エラーメッセージは、何をどう実行することに失敗したのか (<code>Failed to do something</code>) と、その後にプログラム上のエラー (<code>err</code>変数) を出力する。</p>
+<p>一方で、成功の場合は何をどう実行することに成功したのか (<code>Do something successfully</code>) を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span>
 <span class="p">}</span>
+
+<span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Do something successfully&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="error">errorインターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
