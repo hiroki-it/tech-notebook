@@ -107,6 +107,7 @@ markdown_extensions:
   - pymdownx.details
   # 定義リスト
   - def_list
+  - mdx_truly_sane_lists
 
 # 外部プラグイン
 plugins:
