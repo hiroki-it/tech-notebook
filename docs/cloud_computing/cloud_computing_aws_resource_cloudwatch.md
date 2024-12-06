@@ -304,7 +304,7 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
+`like`を使用して、小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -314,6 +314,29 @@ fields @timestamp, @message, @logStream
 ```
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
+
+**＊例＊**
+
+JSONがネストになっている場合、`filter`では`.` (ドット) でつなぐ。
+
+```sql
+fields @timestamp, @message, @logStream
+| filter kubernetes.container_name like /(foo-app)/
+| filter log like /(?i)(Error)/
+| sort @timestamp desc
+| limit 100
+```
+
+`like`の代わりに書き方として、`=~`で正規表現を使用できる。
+
+```sql
+fields @timestamp, @message, @logStream
+| filter kubernetes.container_name=~"foo-app"
+| sort @timestamp desc
+| limit 100
+```
+
+> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs
 
 <br>
 

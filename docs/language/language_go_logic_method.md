@@ -2250,10 +2250,12 @@ if err != nil {
 
 ```go
 if err != nil {
+	// 失敗
 	log.Printf("Failed to do something: %v", err)
 	return
 }
 
+// 成功
 log.Print("Do something successfully")
 ```
 
