@@ -296,7 +296,7 @@ func main() {
 
 	if err != nil {
 		// context deadline exceeded エラーになる
-		fmt.Println("Request error:", err)
+		fmt.Printf("Failed to do something: %v", err)
 		return
 	}
 

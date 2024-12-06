@@ -2244,13 +2244,17 @@ if err != nil {
 
 #### ▼ より良いエラーメッセージ
 
-エラーメッセージは、何をどう実行することに失敗したのか (`Failed to do something`) を記載し、その後にプログラム上のエラー (`err`変数) を出力する。
+エラーメッセージは、何をどう実行することに失敗したのか (`Failed to do something`) と、その後にプログラム上のエラー (`err`変数) を出力する。
+
+一方で、成功の場合は何をどう実行することに成功したのか (`Do something successfully`) を出力する。
 
 ```go
 if err != nil {
 	log.Printf("Failed to do something: %v", err)
 	return
 }
+
+log.Print("Do something successfully")
 ```
 
 <br>

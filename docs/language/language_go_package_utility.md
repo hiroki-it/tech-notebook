@@ -770,7 +770,7 @@ func main()  {
 	sort.Strings(propagatorList)
 
 	// ログにpropagator名を出力しておく
-	log.Printf("Info: Propagator %v initialize successfully", propagatorList)
+	log.Printf("Propagator %v initialize successfully", propagatorList)
 
 	...
 }
