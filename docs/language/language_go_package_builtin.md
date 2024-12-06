@@ -285,7 +285,7 @@ func main() {
 	req, err := http.NewRequest("GET", "http://localhost:8080/example", nil)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	req = req.WithContext(ctx)
@@ -305,7 +305,7 @@ func main() {
 	body, err := ioutil.ReadAll(resp.Body)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	fmt.Println("Response:", string(body))
@@ -512,7 +512,7 @@ func main() {
 	byteJson, err := json.Marshal(person)
 
 	if err != nil {
-		log.Printf("ERROR: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// エンコード結果を出力
@@ -620,7 +620,7 @@ func main() {
 	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
-		log.Printf("ERROR: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	log.Printf("%v", person) // main.Person{Name:"Hiroki"} (変数が書き換えられた)
@@ -712,7 +712,7 @@ func main() {
 	byteJson, err := json.Marshal(objects)
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	var buf bytes.Buffer
@@ -1105,7 +1105,7 @@ log.Print("〇〇 succeeded")
 
 ```go
 if err != nil {
-	log.Printf("ERROR: %v", err)
+	log.Printf("Failed to do something: %v", err)
 }
 ```
 
@@ -1124,7 +1124,7 @@ if err != nil {
 ```go
 if err != nil {
 	// 内部でos.Exit(1)を実行する。
-	log.Fatalf("ERROR: %v", err)
+	log.Fatalf("Failed to do something: %v", err)
 }
 ```
 
@@ -1149,7 +1149,7 @@ if err != nil {
 ```go
 if err != nil {
     // panic関数を実行する。
-    log.Panicf("ERROR: %v", err)
+    log.Panicf("Failed to do something: %v", err)
 }
 ```
 
@@ -1316,7 +1316,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/admin", requireAdminCookie(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 }
 ```
@@ -1373,7 +1373,7 @@ func main() {
 	// Handler処理前にミドルウェア処理を実行する
 	mux.Handle("/foo", RecoverHttpMiddleware(http.HandlerFunc(fooHandler)))
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 }
 ```
@@ -1401,7 +1401,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	fmt.Println(response.Body)
@@ -1452,7 +1452,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	fmt.Println(response.Body)
@@ -1515,7 +1515,7 @@ func main() {
 	defer response.Body.Close()
 
 	if err != nil || response.StatusCode != 200 {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// レスポンスのボディを取得する。
@@ -1631,7 +1631,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 	byteJson, err := json.Marshal(user)
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// JSONをレスポンスとして返信する。
@@ -1649,7 +1649,7 @@ func main() {
 	err := http.ListenAndServe(":8080", mux)
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 }
 ```
@@ -1674,7 +1674,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		log.Printf("ERROR: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	log.Printf("%v", file)

@@ -98,7 +98,7 @@ func main() {
 	...
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	...
@@ -978,7 +978,7 @@ func main() {
 	// Goroutineでサーバーを起動する
 	go func() {
 		if err := srv.ListenAndServe(); err != nil {
-			log.Printf("Failed to do: %v", err)
+			log.Printf("Failed to do something: %v", err)
 		}
 	}()
 
@@ -2242,6 +2242,17 @@ if err != nil {
 }
 ```
 
+#### ▼ より良いエラーメッセージ
+
+エラーメッセージは、何をどう実行することに失敗したのか (`Failed to do something`) を記載し、その後にプログラム上のエラー (`err`変数) を出力する。
+
+```go
+if err != nil {
+	log.Printf("Failed to do something: %v", err)
+	return
+}
+```
+
 <br>
 
 ### errorインターフェース
@@ -2279,7 +2290,7 @@ func main() {
 
 	if err != nil {
 		// エラーの内容を出力する。
-		log.Printf("ERROR: %v", err)
+		log.Printf("Failed to do something: %v", err)
 		return
 	}
 
@@ -2317,7 +2328,7 @@ func main() {
 	if err != nil {
 		// 自前エラーメッセージを設定する。
 		myErr := NewError()
-		log.Printf("ERROR: %v", myErr)
+		log.Printf("Failed to do something: %v", myErr)
 		return
 	}
 
@@ -2352,7 +2363,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		fmt.Errorf("ERROR: %v", err)
+		fmt.Errorf("Failed to do something: %v", err)
 		return
 	}
 
@@ -2383,7 +2394,7 @@ type Error struct {
 }
 
 func (error *Error) Error() string {
-	return fmt.Sprintf("ERROR: %v", error.Message)
+	return fmt.Sprintf("Failed to do something: %v", error.Message)
 }
 
 func main() {
@@ -2438,7 +2449,7 @@ func main() {
 		// errorインターフェースが返却された行数が付与される。
 		errWithStack := NewErrorWithTrace()
 		// %+v\n を使用する。
-		log.Printf("ERROR: %+v\n", errWithStack)
+		log.Printf("Failed to do something: %+v\n", errWithStack)
 		return
 	}
 
@@ -2463,9 +2474,9 @@ func main() {
 
 	if err != nil {
 		// errorインターフェースが返却された行数が付与される。
-		errWithStack := xerrors.Errorf("ERROR: %w", err)
+		errWithStack := xerrors.Errorf("Failed to do something: %w", err)
 		// %+v\n を使用する。
-		log.Printf("ERROR: %+v\n", errWithStack)
+		log.Printf("Failed to do something: %+v\n", errWithStack)
 		return
 	}
 

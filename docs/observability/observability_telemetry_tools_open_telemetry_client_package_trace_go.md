@@ -48,7 +48,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 	)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	return sdktrace.New(
@@ -426,13 +426,13 @@ func main() {
 	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	defer cleanUp()
 
 	if err := httpRequest(ctx); err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 }
 ```
@@ -518,13 +518,13 @@ func main() {
 	cleanUp, err := trace.InitTracerProvider(5 * time.Second)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	defer cleanUp()
 
 	if err := httpRequest(ctx); err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 }
 ```
@@ -693,7 +693,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 	logger, err := zap.NewProduction()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	defer logger.Sync()
@@ -729,7 +729,7 @@ func StartMainServer() {
     shutdown, err := NewTracerProvider()
 
     if err != nil {
-	  	log.Printf("Failed to do: %v", err)
+	  	log.Printf("Failed to do something: %v", err)
     }
 
     // 事後処理
@@ -823,7 +823,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 	logger, err := zap.NewProduction()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	defer logger.Sync()
@@ -853,7 +853,7 @@ func createUser(ginCtx *gin.Context) {
 	if err := ginCtx.BindJSON(&json); err != nil {
 		ginCtx.JSON(
             http.StatusBadRequest,
-            gin.H{"error": fmt.Sprintf("Failed to do: %v", err.Error())},
+            gin.H{"error": fmt.Sprintf("Failed to do something: %v", err.Error())},
         )
 		return
 	}
@@ -877,7 +877,7 @@ func createUser(ginCtx *gin.Context) {
 		}
 
 		if err := user.CreateUser(c); err != nil {
-			log.Printf("Failed to do: %v", err)
+			log.Printf("Failed to do something: %v", err)
 		}
 
 		ginCtx.JSON(
@@ -1040,7 +1040,7 @@ func main() {
 	shutdown, err := NewTracerProvider()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// 事後処理
@@ -1124,7 +1124,7 @@ func main() {
 	shutdown, err := NewTracerProvider()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// 事後処理
@@ -1293,7 +1293,7 @@ func main() {
 	shutdown, err := InitTracerProvider()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	defer shutdown()
@@ -1317,7 +1317,7 @@ func main() {
 	err = http.ListenAndServe(":7777", nil)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 }
 ```
@@ -1347,7 +1347,7 @@ func main() {
 	shutdown, err := InitTracerProvider()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	defer shutdown()
@@ -1371,7 +1371,7 @@ func main() {
 	err = http.ListenAndServe(":7777", nil)
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 }
 ```
@@ -1561,7 +1561,7 @@ func main() {
 	tracerProvider, err := config.NewTracerProvider()
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 	}
 
 	// 事後処理

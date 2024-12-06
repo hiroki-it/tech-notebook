@@ -366,7 +366,7 @@ func main() {
 	...
 
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Fatalf("Failed to do: %v", err)
+		log.Fatalf("Failed to do something: %v", err)
 	}
 }
 
@@ -913,9 +913,9 @@ func fooHandler(ctx context.Context) {
 	)
 
 	if err != nil {
-		http.Error(w, fmt.Sprintf("Failed to do: %v", err.Error()), 500)
+		http.Error(w, fmt.Sprintf("Failed to do something: %v", err.Error()), 500)
 		// エラーをスパンに設定する
-		span.RecordError(fmt.Sprintf("Failed to do: %v", err.Error()))
+		span.RecordError(fmt.Sprintf("Failed to do something: %v", err.Error()))
 		return
 	}
 
@@ -965,7 +965,7 @@ func fooHandler(ctx context.Context) {
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		// ステータスとエラーをスパンに設定する
-		span.SetStatus(codes.Error, fmt.Sprintf("Failed to do: %v", err.Error()))
+		span.SetStatus(codes.Error, fmt.Sprintf("Failed to do something: %v", err.Error()))
 		return
 	}
 
@@ -1287,12 +1287,12 @@ func NewDb()  {
 	db, err := gorm.Open(mysql.Open("<DBのURL>"), &gorm.Config{})
 
 	if err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	// ミドルウェアを設定する
 	if err := db.Use(otelgorm.NewPlugin()); err != nil {
-		panic(fmt.Sprintf("Failed to do: %v", err))
+		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
 	...
@@ -2018,13 +2018,13 @@ func (v *FoobarbazValidator) Validate() map[string]string {
 			switch err.Field() {
 			// フィールドごとにmapでバリデーションメッセージを構成する
 			case "foo":
-				errorMessages["foo"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
-				errorMessages["foo"] = v.requiredValidation(fmt.Sprintf("Failed to do: %v", err))
+				errorMessages["foo"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
+				errorMessages["foo"] = v.requiredValidation(fmt.Sprintf("Failed to do something: %v", err))
 			case "bar":
-				errorMessages["bar"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
+				errorMessages["bar"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
 			case "baz":
-				errorMessages["baz"] = v.stringValidation(fmt.Sprintf("Failed to do: %v", err))
-				errorMessages["baz"] = v.requiredValidation(fmt.Sprintf("Failed to do: %v", err))
+				errorMessages["baz"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
+				errorMessages["baz"] = v.requiredValidation(fmt.Sprintf("Failed to do something: %v", err))
 			}
 		}
 	}
@@ -2062,7 +2062,7 @@ func main() {
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
 
 	if err != nil {
-		log.Printf("Failed to do: %v", err)
+		log.Printf("Failed to do something: %v", err)
 		return
 	}
 

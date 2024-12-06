@@ -349,7 +349,7 @@ func ConvertId() gin.HandlerFunc {
 		id, err := strconv.Atoi(ginCtx.Param("id"))
 
 		if err != nil {
-			_ = ginCtx.Error(fmt.Sprintf("Failed to do: %v", err))
+			_ = ginCtx.Error(fmt.Sprintf("Failed to do something: %v", err))
 			return
 		}
 
