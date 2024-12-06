@@ -25401,7 +25401,7 @@
 <li>SREerの作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。</li>
 <li>
 <p>NOCのような場所は、作業に集中できる環境ではない。</p>
-</li>
+<ul>
 <li>
 <blockquote>
 <ul>
@@ -25409,9 +25409,11 @@
 </ul>
 </blockquote>
 </li>
-<li>
-<p>ヒーローパターンはアンチパターン。</p>
+</ul>
 </li>
+</ul>
+<ul>
+<li>ヒーローパターンはアンチパターン。<ul>
 <li>ヒーローパターンでは作業が属人化するため、チームが育たず、またドキュンメントが残らずに本人がいなくなってしまうことがある。</li>
 <li>
 <blockquote>
@@ -25421,14 +25423,20 @@
 </blockquote>
 </li>
 </ul>
+</li>
+</ul>
 <p><img alt="noc_ntt-docomo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpeg" /></p>
 <h4 id="_5">▼ 解決策<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>作業時間の最適化</li>
+<li>作業時間の最適化<ul>
 <li>SREerは、勤務時間の半分以上を、システム運用ではなく開発に割り当てる。</li>
-<li>作業場所の最適化</li>
+</ul>
+</li>
+<li>作業場所の最適化<ul>
 <li>NOCのように、24時間365日、システムのすぐそばでオンコール担当者がこれの面倒を見るのではなく、リモートでどこからでもすぐに対応可能にする。</li>
 <li>オンコール担当者がメトリクスの時系列データの共有リンクをインシデントに関心がある人に共有すれば、共通の視点でインシデントを見ることができる。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="2">2. 画面を見つめる人間<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
@@ -25441,13 +25449,17 @@
 <p>インシデントの解決作業のせいで、それ以外の業務に集中できない。</p>
 <h4 id="_8">▼ 解決策<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <ul>
-<li>アラート通知前の自動解決</li>
+<li>アラート通知前の自動解決<ul>
 <li>エラーイベントのアラートが作成された時、すぐにオンコール担当者に通知するのでなく、システムに自動的に解決する。<ul>
 <li>KubernetesのlivenessProbe機能やNode停止時のPodの移動は、この自動的解決の<code>1</code>個である。</li>
 </ul>
 </li>
-<li>通知後の自動タスク化</li>
+</ul>
+</li>
+<li>通知後の自動タスク化<ul>
 <li>解決できなかったエラーイベントをインシデントか否か判断してタスク化する作業も自動化する。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="3">3. 群衆によるインシデント対応<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
@@ -25471,13 +25483,17 @@
 <p>ヒューマンエラーが根本原因だったとしても、人間には様々な状況が背景にあり、不正確な原因しか突き止められない。</p>
 <h4 id="_14">▼ 解決策<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <ul>
-<li>インシデントの発生時には解決に注力する</li>
+<li>インシデントの発生時には解決に注力する<ul>
 <li>インシデントが発生した時に、ヒューマンエラーを原因と見なし、原因になった犯人を突き止めようとしない。</li>
 <li>犯人を突き止めて、インシデントを解決した気にならないようにする。</li>
 <li>あくまで、インシデントそのものを解決することだけに専念する。</li>
-<li>事後評価ではインシデントの原因が<code>1</code>個だと考えない</li>
+</ul>
+</li>
+<li>事後評価ではインシデントの原因が<code>1</code>個だと考えない<ul>
 <li>インシデントの事後評価では、ヒューマンエラー、ソフトウェア、ハードウェア、といった特定の何か<code>1</code>個が根本の原因と判断しない。</li>
 <li>あらゆる側面から、複雑に絡み合う複数の原因や、寄与要因 (潜在的な原因) を突き止める。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="5">5. ページャーの引き渡し<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
@@ -25544,10 +25560,14 @@
 </ul>
 <h4 id="_29">▼ 解決策<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <ul>
-<li>最小限の関門ステップ</li>
+<li>最小限の関門ステップ<ul>
 <li>関門ステップを設けるとしても、特定の状況下 (例：機能ではなくプロダクト全体のリリース) で、プロダクトの内容には無関係なステップ (例：キャパシティプランニングなど) のみにする。</li>
-<li>エラーバジェットの導入</li>
+</ul>
+</li>
+<li>エラーバジェットの導入<ul>
 <li>エラーバジェットを導入し、優先順位決めや承認のスピードを上げる。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="10">10. 設計の難所<a class="headerlink" href="#10" title="Permanent link">&para;</a></h3>
@@ -25582,11 +25602,15 @@
 <p>機能変更からリリースまでに必要以上に時間がかかると、ユーザーからの評価が遅くなる。</p>
 <h4 id="_38">▼ 解決策<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <ul>
-<li>テストの自動化</li>
+<li>テストの自動化<ul>
 <li>あらゆるエラーイベントを予防するために、機能変更のリリース前にテストを実施することは重要であるが、リリースまでに必要以上に時間がかからないようにする。そのために、テストを自動化して時間を短縮する。</li>
-<li>ユーザーからの評価を素早く得る</li>
+</ul>
+</li>
+<li>ユーザーからの評価を素早く得る<ul>
 <li>ユーザーからの評価を素早く得られるTesting in productionを含むデプロイ手法 (例：ダークローンチ、カナリアリリース) を採用する。</li>
-<li>ロールフォワード、ロールバックの自動化</li>
+</ul>
+</li>
+<li>ロールフォワード、ロールバックの自動化<ul>
 <li>リリース前の予防を完璧にしない代わりに、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。<ul>
 <li>Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。</li>
 <li>
@@ -25595,6 +25619,8 @@
 <li><a href="https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25">https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25</a></li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -25608,12 +25634,18 @@
 <p>障害は発生するものであり、MTTFを最適化することは現実的ではない。</p>
 <h4 id="_41">▼ 解決策<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <ul>
-<li>障害の範囲の縮小</li>
+<li>障害の範囲の縮小<ul>
 <li>障害範囲 (あるいはblast-radius) が最小限になるようにする。</li>
-<li>復旧力の向上</li>
+</ul>
+</li>
+<li>復旧力の向上<ul>
 <li>人間による修復は時間がかかるため、人間ができるだけ介入せずに修復可能にする。</li>
-<li>復旧力の維持</li>
+</ul>
+</li>
+<li>復旧力の維持<ul>
 <li>Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を定期的に実行することにより、システムがデグレーションしないようにし、復旧力を維持する。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="14">14. 依存性地獄<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
@@ -25662,10 +25694,14 @@
 <p>自社がパートナーの問題に無関心になることによって、チーム間の無関心で起こる問題と同じようなことが起こる。</p>
 <h4 id="_53">▼ 解決策<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
 <ul>
-<li>共通認識からなるSLIとSLOの設定</li>
+<li>共通認識からなるSLIとSLOの設定<ul>
 <li>自社とパートナーの間でSLIを共有し、自社とパートナーのシステムを合わせたSLOを設定する。</li>
-<li>インシデントを共通管理</li>
+</ul>
+</li>
+<li>インシデントを共通管理<ul>
 <li>自社とパートナーの間でインシデントを共通管理する。インシデントを協働的に解決できるように、対処の権限をお互いに与える。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h3 id="18">18. 運用チームの修復<a class="headerlink" href="#18" title="Permanent link">&para;</a></h3>

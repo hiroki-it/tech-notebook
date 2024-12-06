@@ -23955,26 +23955,34 @@
 <p>そのためKubernetesクラスターのアップグレードでは、どのようなルールやフローで実施するのかをルール化して実施することでアップグレードの安全性を高められる。</p>
 <p>例えば下記のようなルールを盛り込んだアップグレードルールを作成する。</p>
 <ul>
-<li>クラスターアップグレードにあたっての準備</li>
+<li>クラスターアップグレードにあたっての準備<ul>
 <li>クラスターアップグレード前に<a href="https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG">KubernetesのCHANGELOG</a>を確認し、(おおまかにでも)変更内容について確認する</li>
 <li>クラスターアップグレード前に廃止されるAPIグループのバージョンを確認することで、変更が必要な既存のmanifestsを確認する</li>
 <li>予め検証環境で本番環境と(限りなく)同じ設定のクラスターのアップグレード~動作確認を行い、問題無くアップグレード可能かを検証する</li>
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する</li>
-<li>クラスターバージョンのアップグレード戦略</li>
+</ul>
+</li>
+<li>クラスターバージョンのアップグレード戦略<ul>
 <li>Kubernetesの「<strong><a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">Version Skew Policy</a></strong>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
 <li>パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する</li>
 <li>マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する</li>
 <li>約4ヶ月毎のマイナーバージョンのリリース毎にマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
 <li>ローリングアップグレードやB/G方式などクラスターバージョンのアップグレード方法を決める</li>
-<li>アップグレード手順</li>
+</ul>
+</li>
+<li>アップグレード手順<ul>
 <li>アップグレードの手順や動作確認方法、必要に応じてアップグレード完了後の旧クラスターの削除方法などをドキュメント化する</li>
 <li>また、アップグレードに失敗した際の切り戻し手順のドキュメント化を実行する</li>
 <li>アップグレード後の動作確認ではPodだけでなくWorkloadのコンディションとステータスを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorなどが正常に動作しているかを確認する</li>
-<li>クラスター側の設定</li>
+</ul>
+</li>
+<li>クラスター側の設定<ul>
 <li>コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を実行する<ul>
 <li>コントロールプレーンがマネージドなGKEやEKSなどでは考慮不要</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -24033,11 +24041,15 @@
 <p>kube-apiserverに対して、誰でもアクセスできてしまうことは危険である。</p>
 <p>そのため、必要最低限の開発者のみがリクエストできるように、インバウンド通信を制限する。</p>
 <ul>
-<li>ファイアウォール</li>
+<li>ファイアウォール<ul>
 <li>kube-apiserverにリクエストを送信できるIPアドレスを制限する。</li>
 <li>特定のサーバー (踏み台サーバー、リモートデスクトップのゲートウェイなど) からしか、kube-apiserverにリクエストできないようにする。</li>
-<li>認証</li>
+</ul>
+</li>
+<li>認証<ul>
 <li>必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h2 id="_10">ハードウェアをサイジングする<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
@@ -24241,10 +24253,12 @@
 <h2 id="oscpu_1">適切なOS、CPUアーキテクチャを選ぶ<a class="headerlink" href="#oscpu_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>OSは適切なの、くらいな表現になる</li>
-<li>CPUアーキテクチャ</li>
+<li>CPUアーキテクチャ<ul>
 <li>armが安いからarm使用する</li>
 <li>マルチプラットフォームビルドを避けれるなら避けたいのでamdを使用するなど</li>
 <li>ベースイメージにarm製が少ないから理由がなければamd使用する</li>
+</ul>
+</li>
 </ul>
 <p><br></p>
 <h1 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h1>
@@ -25491,11 +25505,15 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <p>監視したいログを決める。</p>
 <p>むやみやたらにログを収集すると、保管が大変なため、必要最低限のログにする。</p>
 <ul>
-<li>コントロールプレーンNode</li>
+<li>コントロールプレーンNode<ul>
 <li>Podのアクセスログ/実行ログ</li>
-<li>ワーカーNode</li>
+</ul>
+</li>
+<li>ワーカーNode<ul>
 <li>アプリPodのアクセスログ/実行ログ</li>
 <li>インフラPodのアクセスログ/実行ログ</li>
+</ul>
+</li>
 </ul>
 <h3 id="_52">■ メトリクス選ぶ<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
 <p>監視したいメトリクスを決める。</p>
