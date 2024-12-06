@@ -25301,7 +25301,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。</p>
+<p><code>like</code>を使用して、小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Warning</span><span class="o">|</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
 <span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
@@ -25310,6 +25310,25 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>JSONがネストになっている場合、<code>filter</code>では<code>.</code> (ドット) でつなぐ。</p>
+<div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">kubernetes</span><span class="p">.</span><span class="n">container_name</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="n">foo</span><span class="o">-</span><span class="n">app</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<p><code>like</code>の代わりに書き方として、<code>=~</code>で正規表現を使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">kubernetes</span><span class="p">.</span><span class="n">container_name</span><span class="o">=~</span><span class="ss">&quot;foo-app&quot;</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs</a></li>
 </ul>
 </blockquote>
 <p><br></p>
