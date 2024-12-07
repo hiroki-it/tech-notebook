@@ -24188,23 +24188,23 @@
 <p>サーバーサイドレンダリング時に使用できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
-import {useLoaderData} from &quot;@remix-run/react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
-export const loader = async () =&gt; {
-  return json({
-    posts: [
-      {
-        slug: &quot;my-first-post&quot;,
-        title: &quot;My First Post&quot;,
-      },
-      {
-        slug: &quot;90s-mixtape&quot;,
-        title: &quot;A Mixtape I Made Just For You&quot;,
-      },
-    ],
-  });
-};
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-first-post&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My First Post&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;90s-mixtape&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A Mixtape I Made Just For You&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24215,32 +24215,32 @@ export const loader = async () =&gt; {
 <h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
 <p><code>loader</code>関数で取得したデータを出力できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>import {json} from &quot;@remix-run/node&quot;;
-import {useLoaderData} from &quot;@remix-run/react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
-export const loader = async () =&gt; {
-  return json({
-    posts: [
-      {
-        slug: &quot;my-first-post&quot;,
-        title: &quot;My First Post&quot;,
-      },
-      {
-        slug: &quot;90s-mixtape&quot;,
-        title: &quot;A Mixtape I Made Just For You&quot;,
-      },
-    ],
-  });
-};
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">posts</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-first-post&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;My First Post&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">slug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;90s-mixtape&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A Mixtape I Made Just For You&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
 
-export default function Posts() {
-  const {posts} = useLoaderData&lt;typeof loader&gt;();
-  return (
-    &lt;main&gt;
-      &lt;h1&gt;Posts&lt;/h1&gt;
-    &lt;/main&gt;
-  );
-}
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Posts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Posts</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24256,15 +24256,15 @@ export default function Posts() {
 <h4 id="_indextsx">▼ <code>&lt;ルート以降のパス&gt;._index.tsx</code><a class="headerlink" href="#_indextsx" title="Permanent link">&para;</a></h4>
 <p>ルート以降のパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>// &lt;ルート以降のパス&gt;._index.tsx
-export default function Foo() {
-  // 返却するHTML要素
-  return (
-    &lt;main&gt;
-      &lt;h1&gt;Foo&lt;/h1&gt;
-    &lt;/main&gt;
-  );
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// &lt;ルート以降のパス&gt;._index.tsx</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 返却するHTML要素</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Foo</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24275,14 +24275,14 @@ export default function Foo() {
 <p>動的にURLを決定する。</p>
 <p>URLに規則性があるようなページに適する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>// posts.$postId.tsxファイル
-export default function Post() {
-  return (
-    &lt;div&gt;
-      &lt;h1 className=&quot;font-bold text-3xl&quot;&gt;投稿詳細&lt;/h1&gt;
-    &lt;/div&gt;
-  );
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// posts.$postId.tsxファイル</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Post</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;font-bold text-3xl&quot;</span><span class="p">&gt;</span><span class="nx">投稿詳細</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>以下のURLでページをレンダリングできる。</p>
 <ul>
@@ -24300,16 +24300,16 @@ export default function Post() {
 <h2 id="05">05. コンポーネント<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="form">Form<a class="headerlink" href="#form" title="Permanent link">&para;</a></h3>
 <p><code>form</code>タグをレンダリングする。</p>
-<div class="highlight"><pre><span></span><code>import {Form} from &quot;@remix-run/react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Form</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
-function NewEvent() {
-  return (
-    &lt;Form action=&quot;/events&quot; method=&quot;post&quot;&gt;
-      &lt;input name=&quot;title&quot; type=&quot;text&quot; /&gt;
-      &lt;input name=&quot;description&quot; type=&quot;text&quot; /&gt;
-    &lt;/Form&gt;
-  );
-}
+<span class="kd">function</span><span class="w"> </span><span class="nx">NewEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">Form</span><span class="w"> </span><span class="na">action</span><span class="o">=</span><span class="s">&quot;/events&quot;</span><span class="w"> </span><span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">Form</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24319,18 +24319,18 @@ function NewEvent() {
 <p><br></p>
 <h3 id="meta">Meta<a class="headerlink" href="#meta" title="Permanent link">&para;</a></h3>
 <p>Webページの<code>meta</code>タグ (Webサイト名、説明など) をレンダリングする。</p>
-<div class="highlight"><pre><span></span><code>import {Meta} from &quot;@remix-run/react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Meta</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
-export default function Root() {
-  return (
-    &lt;html&gt;
-      &lt;head&gt;
-        &lt;Meta /&gt;
-      &lt;/head&gt;
-      &lt;body&gt;&lt;/body&gt;
-    &lt;/html&gt;
-  );
-}
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Root</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Meta</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24340,17 +24340,17 @@ export default function Root() {
 <p><br></p>
 <h3 id="outlet">Outlet<a class="headerlink" href="#outlet" title="Permanent link">&para;</a></h3>
 <p>親ページ内に子ページをレンダリングする。</p>
-<div class="highlight"><pre><span></span><code>import {Outlet} from &quot;@remix-run/react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Outlet</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
-export default function SomeParent() {
-  return (
-    &lt;div&gt;
-      &lt;h1&gt;Parent Content&lt;/h1&gt;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">SomeParent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Parent</span><span class="w"> </span><span class="nx">Content</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-      &lt;Outlet /&gt;
-    &lt;/div&gt;
-  );
-}
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Outlet</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24378,7 +24378,7 @@ export default function SomeParent() {
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     

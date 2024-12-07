@@ -25281,7 +25281,7 @@ public
 <p><br></p>
 <h3 id="cors_1">CORSへの対処<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h3>
 <p>リクエストの<code>Origin</code>ヘッダーとレスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーの値を同じにする必要がある。</p>
-<p>リクエストの<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』になる。</p>
+<p>リクエストの<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
 <p>レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーは、リクエストの<code>Origin</code>ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <dl>
@@ -25300,7 +25300,7 @@ public
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">  </span><span class="c1">// Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』になる</span>
+<span class="w">  </span><span class="c1">// Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</span>
 <span class="w">  </span><span class="nx">baseURL</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://foo.co.jp&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// Cookieヘッダーを設定する</span>
 <span class="w">  </span><span class="nx">withCredentials</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>

@@ -23753,6 +23753,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      01. エントリーポイント
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       02. エクスポート
@@ -23815,6 +23824,25 @@
 <h2 id="01-reactjs">01. React.jsとは<a class="headerlink" href="#01-reactjs" title="Permanent link">&para;</a></h2>
 <p>パッケージ群である。</p>
 <p><br></p>
+<h2 id="01">01. エントリーポイント<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>エントリーポイント (<code>main</code>ファイル) で<code>createRoot</code>関数を実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">StrictMode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">createRoot</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;./index.css&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./App.tsx&#39;</span>
+
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">App</span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
+<span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/client/createRoot">https://react.dev/reference/react-dom/client/createRoot</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02">02. エクスポート<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">デフォルトエクスポート<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -23826,37 +23854,37 @@
 <p><br></p>
 <h3 id="_3">名前付きエクスポート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>名前付きエクスポートの場合、インポート側は定義した名前以外でインポートできない。</p>
-<div class="highlight"><pre><span></span><code>// App.tsxファイル
+<div class="highlight"><pre><span></span><code><span class="c1">// App.tsxファイル</span>
 
-const Hello = () =&gt; {
-  return (
-    &lt;p&gt;
-      Hello, &lt;b&gt;React!&lt;/b&gt;
-    &lt;/p&gt;
-  );
-};
+<span class="kd">const</span><span class="w"> </span><span class="nx">Hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="nx">React</span><span class="o">!</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 
-// 名前付きエクスポート
-export const App = () =&gt; {
-  return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;Hello /&gt;
-    &lt;/div&gt;
-  );
-};
+<span class="c1">// 名前付きエクスポート</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;App&quot;</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">Hello</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>import {StrictMode} from &quot;react&quot;;
-import {createRoot} from &quot;react-dom/client&quot;;
-import &quot;./index.css&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">StrictMode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">createRoot</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-dom/client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s2">&quot;./index.css&quot;</span><span class="p">;</span>
 
-// App.tsxファイルから名前付きエクポート (App) をインポートする
-import {App} from &quot;./App.tsx&quot;;
+<span class="c1">// App.tsxファイルから名前付きエクポート (App) をインポートする</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./App.tsx&quot;</span><span class="p">;</span>
 
-createRoot(document.getElementById(&quot;root&quot;)!).render(
-  &lt;StrictMode&gt;
-    &lt;App /&gt;
-  &lt;/StrictMode&gt;,
-);
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">  </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">App</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">  </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
+<span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23884,7 +23912,7 @@ createRoot(document.getElementById(&quot;root&quot;)!).render(
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     

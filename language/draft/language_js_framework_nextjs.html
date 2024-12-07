@@ -23957,45 +23957,45 @@
 <ul>
 <li>ファイルの先頭に<code>"use client"</code>を指定している。</li>
 </ul>
-<div class="highlight"><pre><span></span><code>&quot;use client&quot;;
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;use client&quot;</span><span class="p">;</span>
 
-import React, {useEffect, useState} from &quot;react&quot;;
+<span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
-type Product = {
-  id: string;
-  title: string;
-};
+<span class="nx">type</span><span class="w"> </span><span class="nx">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="p">};</span>
 
-const CsrPage = () =&gt; {
-  const [products, setProducts] = useState&lt;Product[]&gt;([]);
+<span class="kd">const</span><span class="w"> </span><span class="nx">CsrPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">products</span><span class="p">,</span><span class="w"> </span><span class="nx">setProducts</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">&lt;</span><span class="nt">Product</span><span class="err">[]</span><span class="p">&gt;([]);</span>
 
-  const fetchData = async () =&gt; {
-    const response = await fetch(&quot;https://dummyjson.com/products&quot;);
-    const data = await response.json();
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/products&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-    setProducts(data.products);
-  };
+<span class="w">    </span><span class="nx">setProducts</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">products</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
 
-  useEffect(() =&gt; {
-    fetchData();
-  }, []);
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetchData</span><span class="p">();</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
 
-  return (
-    &lt;&gt;
-      &lt;h3&gt;Built with CSR&lt;/h3&gt;
-      &lt;br /&gt;
-      &lt;ul&gt;
-        {products.map((product) =&gt; (
-          &lt;li key={product.id}&gt;
-            {product.id}: {product.title}
-          &lt;/li&gt;
-        ))}
-      &lt;/ul&gt;
-    &lt;/&gt;
-  );
-};
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span><span class="nx">Built</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">CSR</span><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">br</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">          </span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">))}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 
-export default CsrPage;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">CsrPage</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24008,35 +24008,35 @@ export default CsrPage;
 <li><code>fetch</code>関数の第二引数に、<code>{ cache: "no-store" }</code>を指定している</li>
 <li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
 </ul>
-<div class="highlight"><pre><span></span><code>import React from &quot;react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
-type Product = {
-  id: string;
-  title: string;
-};
+<span class="nx">type</span><span class="w"> </span><span class="nx">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="p">};</span>
 
-const SsrPage = async () =&gt; {
-  const response = await fetch(&quot;https://dummyjson.com/products&quot;, {
-    cache: &quot;no-store&quot;,
-  });
-  const data = await response.json();
+<span class="kd">const</span><span class="w"> </span><span class="nx">SsrPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/products&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;no-store&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-  return (
-    &lt;&gt;
-      &lt;h3&gt;Built with SSR&lt;/h3&gt;
-      &lt;br /&gt;
-      &lt;ul&gt;
-        {data.products.map((product: Product) =&gt; (
-          &lt;li key={product.id}&gt;
-            {product.id}: {product.title}
-          &lt;/li&gt;
-        ))}
-      &lt;/ul&gt;
-    &lt;/&gt;
-  );
-};
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span><span class="nx">Built</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">SSR</span><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">br</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">product</span><span class="o">:</span><span class="w"> </span><span class="nx">Product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">          </span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">))}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 
-export default SsrPage;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SsrPage</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24049,33 +24049,33 @@ export default SsrPage;
 <li><code>fetch</code>関数の第二引数に、<code>{ cache: "force-cache" }</code>を指定しているか、または何も指定していない</li>
 <li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
 </ul>
-<div class="highlight"><pre><span></span><code>import React from &quot;react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
-type Product = {
-  id: string;
-  title: string;
-};
+<span class="nx">type</span><span class="w"> </span><span class="nx">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="p">};</span>
 
-const SsgPage = async () =&gt; {
-  const response = await fetch(&quot;https://dummyjson.com/products&quot;);
-  const data = await response.json();
+<span class="kd">const</span><span class="w"> </span><span class="nx">SsgPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/products&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-  return (
-    &lt;&gt;
-      &lt;h3&gt;Built with SSG&lt;/h3&gt;
-      &lt;br /&gt;
-      &lt;ul&gt;
-        {data.products.map((product: Product) =&gt; (
-          &lt;li key={product.id}&gt;
-            {product.id}: {product.title}
-          &lt;/li&gt;
-        ))}
-      &lt;/ul&gt;
-    &lt;/&gt;
-  );
-};
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span><span class="nx">Built</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">SSG</span><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">br</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">product</span><span class="o">:</span><span class="w"> </span><span class="nx">Product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">          </span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">))}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 
-export default SsgPage;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">SsgPage</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24088,37 +24088,37 @@ export default SsgPage;
 <li><code>fetch</code>関数の第二引数に、<code>{ next: { revalidate: &lt;任意の値&gt; } }</code>を指定している</li>
 <li><code>useEffect</code>、<code>useState</code>、<code>onClick</code>などのブラウザ依存の機能を使用していない</li>
 </ul>
-<div class="highlight"><pre><span></span><code>import React from &quot;react&quot;;
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
 
-type Product = {
-  id: string;
-  title: string;
-};
+<span class="nx">type</span><span class="w"> </span><span class="nx">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">;</span>
+<span class="p">};</span>
 
-const IsrPage = async () =&gt; {
-  const response = await fetch(&quot;https://dummyjson.com/products&quot;, {
-    next: {
-      revalidate: 30,
-    },
-  });
-  const data = await response.json();
+<span class="kd">const</span><span class="w"> </span><span class="nx">IsrPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/products&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">revalidate</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 
-  return (
-    &lt;&gt;
-      &lt;h3&gt;Built with ISR&lt;/h3&gt;
-      &lt;br /&gt;
-      &lt;ul&gt;
-        {data.products.map((product: Product) =&gt; (
-          &lt;li key={product.id}&gt;
-            {product.id}: {product.title}
-          &lt;/li&gt;
-        ))}
-      &lt;/ul&gt;
-    &lt;/&gt;
-  );
-};
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span><span class="nx">Built</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">ISR</span><span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">br</span><span class="w"> </span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">product</span><span class="o">:</span><span class="w"> </span><span class="nx">Product</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}&gt;</span>
+<span class="w">            </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">          </span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">))}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
 
-export default IsrPage;
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">IsrPage</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -24195,7 +24195,7 @@ export default IsrPage;
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     
