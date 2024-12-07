@@ -234,7 +234,7 @@ $ npm install <パッケージ名>
 
 #### ▼ --force
 
-パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止する場合がある。
+パッケージをインストールし、ディレクトリの実行権限不足でインストールが停止する場合がある。
 
 これを無視してインストールを実行する。
 
@@ -242,19 +242,34 @@ $ npm install <パッケージ名>
 $ npm install --force
 ```
 
-#### ▼ --save
+#### ▼ --global
 
-デフォルトで有効化されている。
+パッケージをシステムの`node_modules`ディレクトリにインストールする。
 
-パッケージのインストール時に、`dependencies`キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ npm install --save
 ```
 
+> - https://docs.npmjs.com/cli/v8/commands/npm-install#global
+
+
+#### ▼ --save
+
+デフォルトで有効化されている。
+
+パッケージを各プロジェクトの`node_modules`ディレクトリにインストールし、`dependencies`キーにパッケージ名とバージョンを書き込む。
+
+
+```bash
+$ npm install --save
+```
+
+> - https://docs.npmjs.com/cli/v8/commands/npm-install#global
+
 #### ▼ --save--dev
 
-パッケージのインストール時に、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージをインストールし、`devDependencies`キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ npm install --save--dev
@@ -372,7 +387,7 @@ $ yarn remove foo && yarn add foo@<バージョンタグ>
 
 #### ▼ --dev
 
-パッケージのインストール時に、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージをインストールし、`devDependencies`キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ yarn add <パッケージ名>@<バージョンタグ> --dev

@@ -43,6 +43,12 @@ $ asdf plugin add <プラグイン名> <URL>
 $ asdf install
 ```
 
+4. NodeでYarnをインストールする
+
+```bash
+$ npm install -g yarn
+```
+
 <br>
 
 ## 整形
