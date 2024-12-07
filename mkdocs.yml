@@ -377,8 +377,8 @@ nav:
                   - コマンド: language/language_js_framework_remix_command.md
           - ■ パッケージ:
               - パッケージ管理: language/language_js_package_management.md
-              - SQL: language/language_js_package_sql.md
-              - ユーティリティ: language/language_js_package_utility.md
+              - SQLパッケージ: language/language_js_package_sql.md
+              - ユーティリティパッケージ: language/language_js_package_utility.md
           - ■ ブラウザ:
               - ブラウザレンダリング: language/language_js_browser_rendering.md
       - ■ TypeScript:
