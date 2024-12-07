@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ユーティリティパッケージ@TypeScript
-description: ユーティリティパッケージ@TypeScriptの知見を記録しています。
+title: 【IT技術の知見】ユーティリティパッケージ＠JavaScript
+description: ユーティリティパッケージ＠JavaScriptの知見を記録しています。
 ---
 
-# ユーティリティパッケージ@TypeScript
+# ユーティリティパッケージ＠JavaScript
 
 ## はじめに
 
@@ -27,9 +27,9 @@ HTTPリクエストを送信する。
 
 **＊実装例＊**
 
-非同期処理としてGETでリクエストを送信している。
+非同期処理としてGETでリクエストを送信する。
 
-```typescript
+```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
   axios.get("/some/path").then((res) => {
@@ -45,7 +45,7 @@ const asyncFunc = async () => {
 
 ### デフォルト設定
 
-```typescript
+```javascript
 import axios from "axios";
 
 axios.defaults.baseURL = "https://api.example.com";
@@ -53,13 +53,15 @@ axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
 axios.defaults.headers.post["Content-Type"] = "application/json";
 ```
 
+> - https://axios-http.com/docs/config_defaults
+
 <br>
 
 ### リクエスト設定
 
 #### ▼ data
 
-```typescript
+```javascript
 import axios from "axios";
 
 const asyncFunc = async () => {
@@ -80,7 +82,7 @@ const asyncFunc = async () => {
 
 #### ▼ headers
 
-```typescript
+```javascript
 import axios from "axios";
 
 const asyncFunc = async () => {
@@ -101,7 +103,9 @@ const asyncFunc = async () => {
 
 #### ▼ withCredential
 
-```typescript
+`Cookie`ヘッダーをリクエストに設定する。
+
+```javascript
 import axios from "axios";
 
 const asyncFunc = async () => {
@@ -120,6 +124,7 @@ const asyncFunc = async () => {
 ```
 
 > - https://axios-http.com/docs/req_config
+> - https://apidog.com/jp/blog/axios-send-cookie/#axios%E3%81%A7cookie%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F
 
 <br>
 
@@ -127,7 +132,7 @@ const asyncFunc = async () => {
 
 #### ▼ レスポンスの出力
 
-```typescript
+```javascript
 import axios from "axios";
 
 axios.get("/user/12345").then(function (response) {
@@ -207,7 +212,7 @@ axios.get("/user/12345").then(function (response) {
 
 axiosパッケージによる非同期処理をリトライする。
 
-```typescript
+```javascript
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
