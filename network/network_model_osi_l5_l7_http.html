@@ -11635,6 +11635,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#origin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Origin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cache-control" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Cache-Control
@@ -11767,7 +11776,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#origin" class="md-nav__link">
+  <a href="#origin_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Origin
     </span>
@@ -24721,6 +24730,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#origin" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Origin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cache-control" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Cache-Control
@@ -24853,7 +24871,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#origin" class="md-nav__link">
+  <a href="#origin_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Origin
     </span>
@@ -25433,6 +25451,18 @@
 <span class="nn">---</span>
 <span class="nt">Upgrade-Insecure-Requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
+<h4 id="origin">▼ Origin<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># リクエストライン</span>
+<span class="l l-Scalar l-Scalar-Plain">GET https://example.com/bar-form.php?text1=a&amp;text2=b</span>
+<span class="nn">---</span>
+<span class="c1"># オリジン (デフォルトではプロトコル + ドメイン + ポート番号)</span>
+<span class="nt">Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples</a></li>
+</ul>
+</blockquote>
 <h4 id="cache-control">▼ Cache-Control<a class="headerlink" href="#cache-control" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエストライン</span>
 <span class="l l-Scalar l-Scalar-Plain">GET https://example.com/bar-form.php?text1=a&amp;text2=b</span>
@@ -25538,11 +25568,11 @@
 <span class="c1"># ボディ (SSLによって暗号化される)</span>
 <span class="l l-Scalar l-Scalar-Plain">text=a&amp;text2=b</span>
 </code></pre></div>
-<h4 id="origin">▼ Origin<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
+<h4 id="origin_1">▼ Origin<a class="headerlink" href="#origin_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエストライン</span>
 <span class="l l-Scalar l-Scalar-Plain">POST https://example.com/bar-form.php</span>
 <span class="nn">---</span>
-<span class="c1"># オリジン (プロトコル + ドメイン + ポート番号)</span>
+<span class="c1"># オリジン (デフォルトではプロトコル + ドメイン + ポート番号)</span>
 <span class="nt">Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
 <span class="nn">---</span>
 <span class="c1"># ボディ (SSLによって暗号化される)</span>
@@ -25550,7 +25580,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Origin">https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Origin</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples</a></li>
 </ul>
 </blockquote>
 <h4 id="upgrade-insecure-requests_1">▼ Upgrade-Insecure-Requests<a class="headerlink" href="#upgrade-insecure-requests_1" title="Permanent link">&para;</a></h4>

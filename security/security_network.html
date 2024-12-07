@@ -25281,6 +25281,8 @@ public
 <p><br></p>
 <h3 id="cors_1">CORSへの対処<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h3>
 <p>リクエストの<code>Origin</code>ヘッダーとレスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーの値を同じにする必要がある。</p>
+<p>リクエストの<code>Origin</code>ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』になる。</p>
+<p>レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーは、リクエストの<code>Origin</code>ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -25298,6 +25300,7 @@ public
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』になる</span>
 <span class="w">  </span><span class="nx">baseURL</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://foo.co.jp&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// Cookieヘッダーを設定する</span>
 <span class="w">  </span><span class="nx">withCredentials</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
@@ -25322,9 +25325,9 @@ public
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>次に、レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーに、許可された送信元オリジンを割り当てて返信する。</p>
+<p>必須の設定として、レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーに、許可された送信元オリジンやワイルドカード (<code>*</code>) を割り当てて返信する。</p>
 <p><code>Cookie</code>ヘッダーを持つリクエストを許可する場合、同じくレスポンスの<code>Access-Control-Allow-Credentials</code>ヘッダーに<code>true</code>を割り当てる。</p>
-<p>その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。</p>
+<p>その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。</p>
 <p>例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、<code>405</code>ステータスでエラーレスポンスが返信される。</p>
 </dd>
 </dl>
