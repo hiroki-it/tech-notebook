@@ -23740,19 +23740,115 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#axios-retry" class="md-nav__link">
+  <a href="#axios-api" class="md-nav__link">
     <span class="md-ellipsis">
-      axios-retry
+      axios api
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="axios-retry">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      リクエスト設定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リクエスト設定">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#axios-retry_1" class="md-nav__link">
+  <a href="#data" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ axios-retryとは
+      ▼ data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ headers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withcredential" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ withCredential
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      レスポンスのJSON構造
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="レスポンスのJSON構造">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statustext" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ statusText
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#headers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ headers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ request
     </span>
   </a>
   
@@ -23769,19 +23865,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nodeamon" class="md-nav__link">
+  <a href="#01-02-axios-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      Nodeamon
+      01-02. axios-retry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Nodeamon">
+    <nav class="md-nav" aria-label="01-02. axios-retry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nodeamon_1" class="md-nav__link">
+  <a href="#axios-retry" class="md-nav__link">
     <span class="md-ellipsis">
-      Nodeamonとは
+      axios-retryとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-nodeamon" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Nodeamon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Nodeamon">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#02-nodeamon_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Nodeamonとは
     </span>
   </a>
   
@@ -23822,39 +23942,161 @@
 <h2 id="01-axios">01. axios<a class="headerlink" href="#01-axios" title="Permanent link">&para;</a></h2>
 <h3 id="axios">axiosとは<a class="headerlink" href="#axios" title="Permanent link">&para;</a></h3>
 <p>JavaScript Promiseを使用したHTTPクライアントパッケージである。</p>
+<p><br></p>
+<h3 id="axios-api">axios api<a class="headerlink" href="#axios-api" title="Permanent link">&para;</a></h3>
+<p>HTTPリクエストを送信する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>非道処理としてGETでリクエストを送信している。</p>
+<p>非同期処理としてGETでリクエストを送信している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">    </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_2">リクエスト設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="data">▼ data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">axios</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></li>
+<li><a href="https://axios-http.com/docs/req_config">https://axios-http.com/docs/req_config</a></li>
 </ul>
 </blockquote>
-<h3 id="axios-retry">axios-retry<a class="headerlink" href="#axios-retry" title="Permanent link">&para;</a></h3>
-<h4 id="axios-retry_1">▼ axios-retryとは<a class="headerlink" href="#axios-retry_1" title="Permanent link">&para;</a></h4>
+<h4 id="headers">▼ headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">axios</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/req_config">https://axios-http.com/docs/req_config</a></li>
+</ul>
+</blockquote>
+<h4 id="withcredential">▼ withCredential<a class="headerlink" href="#withcredential" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">axios</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">withCredentials</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/req_config">https://axios-http.com/docs/req_config</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="json">レスポンスのJSON構造<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<h4 id="data_1">▼ data<a class="headerlink" href="#data_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<h4 id="status">▼ status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<h4 id="statustext">▼ statusText<a class="headerlink" href="#statustext" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;statusText&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<h4 id="headers_1">▼ headers<a class="headerlink" href="#headers_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<h4 id="config">▼ config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<h4 id="request">▼ request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://axios-http.com/docs/res_schema">https://axios-http.com/docs/res_schema</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02-axios-retry">01-02. axios-retry<a class="headerlink" href="#01-02-axios-retry" title="Permanent link">&para;</a></h2>
+<h3 id="axios-retry">axios-retryとは<a class="headerlink" href="#axios-retry" title="Permanent link">&para;</a></h3>
 <p>axiosパッケージによる非同期処理をリトライする。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">axios</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">axios</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">axiosRetry</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="err">&#39;</span><span class="n">axios</span><span class="o">-</span><span class="n">retry</span><span class="err">&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">axiosRetry</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios-retry&quot;</span><span class="p">;</span>
 
 <span class="c1">// axiosオブジェクトをあらかじめ渡しておく</span>
-<span class="n">axiosRetry</span><span class="p">(</span><span class="n">axios</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">retries</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="n">retryCondition</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="n">retryDelay</span><span class="p">:</span><span class="w"> </span><span class="n">function</span><span class="p">(</span><span class="n">retryCount</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">})</span>
+<span class="nx">axiosRetry</span><span class="p">(</span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">retries</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">retryCondition</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">retryDelay</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">retryCount</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
 
 <span class="c1">// axiosでリクエストを非同期処理する</span>
-<span class="kd">const</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">axios</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="err">&#39;</span><span class="n">http</span><span class="p">:</span><span class="c1">//example.com/rea&#39;)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;http://example.com/rea&quot;</span><span class="p">);</span>
 
-<span class="n">console</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -23864,8 +24106,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="nodeamon">Nodeamon<a class="headerlink" href="#nodeamon" title="Permanent link">&para;</a></h2>
-<h3 id="nodeamon_1">Nodeamonとは<a class="headerlink" href="#nodeamon_1" title="Permanent link">&para;</a></h3>
+<h2 id="02-nodeamon">02. Nodeamon<a class="headerlink" href="#02-nodeamon" title="Permanent link">&para;</a></h2>
+<h3 id="02-nodeamon_1">02. Nodeamonとは<a class="headerlink" href="#02-nodeamon_1" title="Permanent link">&para;</a></h3>
 <p>Goのソースコードに変更があれば、ホットリロードし、コンパイルし直す。</p>
 <blockquote>
 <ul>
@@ -23893,7 +24135,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     
