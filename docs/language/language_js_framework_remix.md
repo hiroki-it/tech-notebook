@@ -54,7 +54,7 @@ DBにクエリを送信し、データを取得できる。
 
 **＊実装例＊**
 
-```tsx
+```jsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
@@ -83,7 +83,7 @@ export const loader = async () => {
 
 **＊実装例＊**
 
-```tsx
+```jsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
@@ -131,7 +131,7 @@ export default function Posts() {
 
 **＊実装例＊**
 
-```tsx
+```jsx
 // <ルート以降のパス>._index.tsx
 export default function Foo() {
   // 返却するHTML要素
@@ -153,7 +153,7 @@ URLに規則性があるようなページに適する。
 
 **＊実装例＊**
 
-```tsx
+```jsx
 // posts.$postId.tsxファイル
 export default function Post() {
   return (
@@ -181,7 +181,7 @@ export default function Post() {
 
 `form`タグをレンダリングする。
 
-```tsx
+```jsx
 import {Form} from "@remix-run/react";
 
 function NewEvent() {
@@ -202,7 +202,7 @@ function NewEvent() {
 
 Webページの`meta`タグ (Webサイト名、説明など) をレンダリングする。
 
-```tsx
+```jsx
 import {Meta} from "@remix-run/react";
 
 export default function Root() {
@@ -225,7 +225,7 @@ export default function Root() {
 
 親ページ内に子ページをレンダリングする。
 
-```tsx
+```jsx
 import {Outlet} from "@remix-run/react";
 
 export default function SomeParent() {

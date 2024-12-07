@@ -29,7 +29,7 @@ Reactパッケージを使用したフレームワークである。
 
 - ファイルの先頭に`"use client"`を指定している。
 
-```tsx
+```jsx
 "use client";
 
 import React, {useEffect, useState} from "react";
@@ -80,7 +80,7 @@ export default CsrPage;
 - `fetch`関数の第二引数に、`{ cache: "no-store" }`を指定している
 - `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
 
-```tsx
+```jsx
 import React from "react";
 
 type Product = {
@@ -121,7 +121,7 @@ export default SsrPage;
 - `fetch`関数の第二引数に、`{ cache: "force-cache" }`を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
 
-```tsx
+```jsx
 import React from "react";
 
 type Product = {
@@ -160,7 +160,7 @@ export default SsgPage;
 - `fetch`関数の第二引数に、`{ next: { revalidate: <任意の値> } }`を指定している
 - `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
 
-```tsx
+```jsx
 import React from "react";
 
 type Product = {

@@ -370,7 +370,7 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 リクエストの`Origin`ヘッダーとレスポンスの`Access-Control-Allow-Origin`ヘッダーの値を同じにする必要がある。
 
-リクエストの`Origin`ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』になる。
+リクエストの`Origin`ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
 
 レスポンスの`Access-Control-Allow-Origin`ヘッダーは、リクエストの`Origin`ヘッダーと同じ値あるいはワイルドカード (`*`) とする。
 
@@ -395,7 +395,7 @@ Origin: https://example.com
 import axios from "axios";
 
 const instance = axios.create({
-  // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』になる
+  // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
   baseURL: "https://foo.co.jp",
   // Cookieヘッダーを設定する
   withCredentials: "true",

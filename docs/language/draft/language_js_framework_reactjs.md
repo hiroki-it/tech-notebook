@@ -19,6 +19,27 @@ description: React.js＠フレームワークの知見を記録しています�
 
 <br>
 
+## 01. エントリーポイント
+
+エントリーポイント (`main`ファイル) で`createRoot`関数を実行する。
+
+```jsx
+import {StrictMode} from 'react'
+import {createRoot} from 'react-dom/client'
+import './index.css'
+import {App} from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+        <App/>
+    </StrictMode>,
+)
+```
+
+> - https://react.dev/reference/react-dom/client/createRoot
+
+<br>
+
 ## 02. エクスポート
 
 ### デフォルトエクスポート
@@ -33,7 +54,7 @@ description: React.js＠フレームワークの知見を記録しています�
 
 名前付きエクスポートの場合、インポート側は定義した名前以外でインポートできない。
 
-```tsx
+```jsx
 // App.tsxファイル
 
 const Hello = () => {
@@ -54,7 +75,7 @@ export const App = () => {
 };
 ```
 
-```tsx
+```jsx
 import {StrictMode} from "react";
 import {createRoot} from "react-dom/client";
 import "./index.css";
