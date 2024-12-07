@@ -23753,26 +23753,74 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. エントリーポイント
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
-      02. エクスポート
+      02. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. エクスポート">
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      レンダリング手法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="レンダリング手法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ CSRモード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SSRモード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssg" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ SSGモード
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. エクスポート
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. エクスポート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       デフォルトエクスポート
     </span>
@@ -23781,7 +23829,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       名前付きエクスポート
     </span>
@@ -23824,7 +23872,9 @@
 <h2 id="01-reactjs">01. React.jsとは<a class="headerlink" href="#01-reactjs" title="Permanent link">&para;</a></h2>
 <p>パッケージ群である。</p>
 <p><br></p>
-<h2 id="01">01. エントリーポイント<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">レンダリング手法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="csr">▼ CSRモード<a class="headerlink" href="#csr" title="Permanent link">&para;</a></h4>
 <p>エントリーポイント (<code>main</code>ファイル) で<code>createRoot</code>関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">StrictMode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">createRoot</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span>
@@ -23839,12 +23889,27 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://react.dev/reference/react-dom/client">https://react.dev/reference/react-dom/client</a></li>
 <li><a href="https://react.dev/reference/react-dom/client/createRoot">https://react.dev/reference/react-dom/client/createRoot</a></li>
 </ul>
 </blockquote>
+<h4 id="ssr">▼ SSRモード<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/server">https://react.dev/reference/react-dom/server</a></li>
+</ul>
+</blockquote>
+<h4 id="ssg">▼ SSGモード<a class="headerlink" href="#ssg" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/static">https://react.dev/reference/react-dom/static</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="02">02. エクスポート<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_2">デフォルトエクスポート<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. エクスポート<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_3">デフォルトエクスポート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <blockquote>
 <ul>
@@ -23852,7 +23917,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">名前付きエクスポート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">名前付きエクスポート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>名前付きエクスポートの場合、インポート側は定義した名前以外でインポートできない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// App.tsxファイル</span>
 
