@@ -88,7 +88,8 @@
 
 * #### <u>パッケージ</u>
   > * ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_js_package_management.html)
-  > * ##### [SQL](https://hiroki-it.github.io/tech-notebook/language/language_js_package_sql.html)
+  > * ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_js_package_sql.html)
+  > * ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_js_package_utility.html)
 
 * #### <u>ブラウザ</u>
   > * ##### [︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook/language/language_js_browser_rendering.html)

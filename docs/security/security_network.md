@@ -378,8 +378,6 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
      JavaScriptのパッケージによってオプション名が異なるため注意する。
 
-> - https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
-
 ```yaml
 GET https://example.com/bar
 ---
@@ -407,6 +405,8 @@ return new Promise((resolve, reject) => {
 });
 ```
 
+> - https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
+
 `(2)`
 
 : 次に、レスポンスの`Access-Control-Allow-Origin`ヘッダーに、許可された送信元オリジンを割り当てて返信する。
@@ -416,9 +416,6 @@ return new Promise((resolve, reject) => {
      その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。
 
      例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
-
-> - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
-> - https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
 
 ```yaml
 200 OK
@@ -442,6 +439,9 @@ Access-Control-Allow-Headers: Content-Type
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: *
 ```
+
+> - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials
+> - https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
 
 <br>
 
