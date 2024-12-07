@@ -294,6 +294,18 @@ $ asdf plugin add <プラグイン名>
 
 <br>
 
+### reshim
+
+asdfでインストールしたツールを使用して、他のパッケージをインストールする場合に、これをasdfに認識させる。
+
+```bash
+$ asdf reshim
+```
+
+> - https://blog.framinal.life/entry/2021/07/30/205745
+
+<br>
+
 ### install
 
 ```bash

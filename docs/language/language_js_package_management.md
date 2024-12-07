@@ -246,20 +246,17 @@ $ npm install --force
 
 パッケージをシステムの`node_modules`ディレクトリにインストールする。
 
-
 ```bash
 $ npm install --save
 ```
 
 > - https://docs.npmjs.com/cli/v8/commands/npm-install#global
 
-
 #### ▼ --save
 
 デフォルトで有効化されている。
 
 パッケージを各プロジェクトの`node_modules`ディレクトリにインストールし、`dependencies`キーにパッケージ名とバージョンを書き込む。
-
 
 ```bash
 $ npm install --save

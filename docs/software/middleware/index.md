@@ -114,8 +114,6 @@
   > > * ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
   > > * ##### [Secret系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
 
-
-Istioを採用しない場合との比較
 <br>
 
 ### DNS系
