@@ -19,43 +19,175 @@ description: ユーティリティパッケージ@TypeScriptの知見を記録�
 
 JavaScript Promiseを使用したHTTPクライアントパッケージである。
 
+<br>
+
+### axios api
+
+HTTPリクエストを送信する。
+
 **＊実装例＊**
 
-非道処理としてGETでリクエストを送信している。
+非同期処理としてGETでリクエストを送信している。
 
 ```javascript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
   axios.get("/some/path").then((res) => {
-    console.log(response.data); // "some data"
+    // "some data"
+    console.log(response.data);
   });
 };
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+<br>
 
-### axios-retry
+### リクエスト設定
 
-#### ▼ axios-retryとは
+#### ▼ data
+
+```javascript
+const asyncFunc = async () => {
+  axios
+    .get("/some/path", {
+      data: {
+        id: "1",
+      },
+    })
+    .then((res) => {
+      // "some data"
+      console.log(response.data);
+    });
+};
+```
+
+> - https://axios-http.com/docs/req_config
+
+#### ▼ headers
+
+```javascript
+const asyncFunc = async () => {
+  axios
+    .get("/some/path", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      // "some data"
+      console.log(response.data);
+    });
+};
+```
+
+> - https://axios-http.com/docs/req_config
+
+#### ▼ withCredential
+
+```javascript
+const asyncFunc = async () => {
+  axios
+    .get("/some/path", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    })
+    .then((res) => {
+      // "some data"
+      console.log(response.data);
+    });
+};
+```
+
+> - https://axios-http.com/docs/req_config
+
+<br>
+
+### レスポンスのJSON構造
+
+#### ▼ data
+
+```json
+{
+  "data": {}
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+#### ▼ status
+
+```json
+{
+  "status": 200
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+#### ▼ statusText
+
+```json
+{
+  "statusText": "OK"
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+#### ▼ headers
+
+```json
+{
+  "headers": {}
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+#### ▼ config
+
+```json
+{
+  "config": {}
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+#### ▼ request
+
+```json
+{
+  "request": {}
+}
+```
+
+> - https://axios-http.com/docs/res_schema
+
+<br>
+
+## 01-02. axios-retry
+
+### axios-retryとは
 
 axiosパッケージによる非同期処理をリトライする。
 
-```java
-
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+```javascript
+import axios from "axios";
+import axiosRetry from "axios-retry";
 
 // axiosオブジェクトをあらかじめ渡しておく
 axiosRetry(axios, {
   retries: 1,
   retryCondition: () => true,
-  retryDelay: function(retryCount, error) {
+  retryDelay: function (retryCount, error) {
     return 2;
-  }
-})
+  },
+});
 
 // axiosでリクエストを非同期処理する
-const response = await axios.get('http://example.com/rea')
+const response = await axios.get("http://example.com/rea");
 
 console.log(response);
 ```
@@ -66,9 +198,9 @@ console.log(response);
 
 <br>
 
-## Nodeamon
+## 02. Nodeamon
 
-### Nodeamonとは
+### 02. Nodeamonとは
 
 Goのソースコードに変更があれば、ホットリロードし、コンパイルし直す。
 

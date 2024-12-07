@@ -337,6 +337,8 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
+> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+
 <br>
 
 ### await宣言
