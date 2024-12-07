@@ -24677,14 +24677,14 @@
 <li><a href="https://noumenon-th.net/programming/2020/01/30/laravel-crud/">https://noumenon-th.net/programming/2020/01/30/laravel-crud/</a></li>
 </ul>
 </blockquote>
-<p>POST送信とPUT送信の重要な違いについてまとめる。</p>
-<p>データを作成するユースケースの時はPOST送信、または更新する時はPUT送信を使用する。</p>
+<p>POSTリクエストとPUT送信の重要な違いについてまとめる。</p>
+<p>データを作成するユースケースの時はPOSTリクエスト、または更新する時はPUT送信を使用する。</p>
 <p>ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>POST送信</th>
+<th>POSTリクエスト</th>
 <th>PUT送信</th>
 </tr>
 </thead>
@@ -24825,7 +24825,7 @@
 </code></pre></div>
 <h4 id="http_2">▼ 異なるHTTPメソッドの間でルールを統一すること<a class="headerlink" href="#http_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
-<p>GET送信とPOST送信の間で、IDパラメーターのHTTPメソッドが統一されていない。</p>
+<p>GETリクエストとPOSTリクエストの間で、IDパラメーターのHTTPメソッドが統一されていない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/?id=12345</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users/12345/messages</span>
@@ -24851,7 +24851,7 @@
 <th>ルート</th>
 <th>パスパラメーター</th>
 <th>？</th>
-<th>クエリパラメーター (GET送信時のみ)</th>
+<th>クエリパラメーター (GETリクエスト時のみ)</th>
 </tr>
 </thead>
 <tbody>
@@ -25050,7 +25050,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-08</span>
   </span>
 
     
