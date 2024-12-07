@@ -63,15 +63,15 @@ JavaScriptのフレームワーク。
 
 ## 02. リクエスト
 
-### リクエストの構造
+### GETリクエストの場合
 
-#### ▼ GET送信の場合
+#### ▼ GETリクエストとは
 
 クエリパラメーターに送信するデータを記述する。
 
 リクエストは、以下の要素に分類できる。
 
-以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストの構造を説明する。
+#### ▼ Host
 
 ```yaml
 # リクエストライン
@@ -79,28 +79,112 @@ GET https://example.com/bar-form.php?text1=a&text2=b
 ---
 # リクエストされたドメイン名
 Host: example.com
+```
+
+#### ▼ RemoteAddr
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # 送信元IPアドレス
 RemoteAddr: *.*.*.*
+```
+
+#### ▼ Connection
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 Connection: keep-alive
+```
+
+#### ▼ Upgrade-Insecure-Requests
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 Upgrade-Insecure-Requests: 1
+```
+
+#### ▼ Cache-Control
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # クライアントサイドキャッシュの最大有効期限 (リクエストヘッダーとレスポンスヘッダーの両方で定義可能)
 Cache-Control: max-age=31536000
+```
+
+#### ▼ User-Agent
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # ブラウザのバージョン情報等
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
+```
+
+#### ▼ Accept
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # レスポンス返信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
+```
+
+#### ▼ Accept-Encondig
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # レスポンスで返信してほしいエンコーディング形式
 Accept-Encondig: gzip, deflate, br
+```
+
+#### ▼ Accept-Language
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # レスポンスで返信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
+```
+
+#### ▼ Referer
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # 遷移元のページ
 Referer: https://foo.co.jp/
+```
+
+#### ▼ X-Forwarded-For
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
 # 送信元IPアドレス
 # ※ リバースプロキシサーバー (ALBやCloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ```
 
-#### ▼ POST送信の場合
+<br>
+
+### POSTリクエストの場合
+
+#### ▼ POSTリクエストとは
 
 クエリパラメーターを、URLに記述せず、メッセージボディに記述してリクエストを送信する方法。
 
@@ -110,7 +194,7 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 
 また、SSLによって暗号化されるため、傍受できない。
 
-リクエストは、以下の要素に分類できる。
+#### ▼ Host
 
 ```yaml
 # リクエストライン
@@ -118,29 +202,185 @@ POST https://example.com/bar-form.php
 ---
 # リクエストされたドメイン名
 Host: example.com
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ RemoteAddr
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # 送信元IPアドレス
 RemoteAddr: *.*.*.*
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Connection
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 Connection: keep-alive
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Content-Length
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 Content-Length: 15
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Cache-Control
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # クライアントサイドキャッシュの最大有効期限 (リクエストヘッダーとレスポンスヘッダーの両方で定義可能)
 Cache-Control: no-store
-# オリジン (プロトコル+ドメイン+ポート番号)
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Origin
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
+# オリジン (プロトコル + ドメイン + ポート番号)
 Origin: https://example.com
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+> - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Origin
+
+#### ▼ Upgrade-Insecure-Requests
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 Upgrade-Insecure-Requests: 1
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Content-Type
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # リクエストで送信するMIMEタイプ
 Content-Type: application/x-www-firm-urlencoded
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ User-Agent
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # ブラウザのバージョン情報等
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ap
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Accept
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # レスポンス返信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Accept-Encondig
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # レスポンスで返信してほしいエンコーディング形式
 Accept-Encondig: gzip, deflate, br
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Accept-Language
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # レスポンスで返信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Referer
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # 遷移元のページ
 Referer: https://foo.co.jp/
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ Cookie
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # 各Cookieの値 (二回目のリクエスト時に設定される)
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
+---
+# ボディ (SSLによって暗号化される)
+text=a&text2=b
+```
+
+#### ▼ X-Forwarded-For
+
+```yaml
+# リクエストライン
+POST https://example.com/bar-form.php
+---
 # 送信元IPアドレス
 # ※ リバースプロキシサーバー (ALBやCloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
@@ -149,9 +389,9 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 text=a&text2=b
 ```
 
-#### ▼ 例外として、ボディを持つGET送信の場合
+#### ▼ 例外として、ボディを持つGETリクエストの場合
 
-GET送信ではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
+GETリクエストではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
 
 > - https://github.com/postmanlabs/postman-app-support/issues/131
 
@@ -315,7 +555,7 @@ POST/PUT送信で、ボディパラメーターのデータ形式を表す識別
 
 リクエストヘッダー/レスポンスヘッダーの`Content-Type`ヘッダーに割り当てると、オブジェクトデータのデータ型を定義できる。
 
-GET送信には不要である。
+GETリクエストには不要である。
 
 > - https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
@@ -324,7 +564,7 @@ GET送信には不要である。
 | application        | octet-stream          | 任意のMIME type (指定なし) を示す。 |
 |                    | javascript            | jsファイル                          |
 |                    | json                  | jsonファイル                        |
-|                    | x-www-form-urlencoded | POST送信のデータ                    |
+|                    | x-www-form-urlencoded | POSTリクエストのデータ              |
 |                    | zip                   | `.zip`ファイル                      |
 | text               | html                  | `html`ファイル                      |
 |                    | css                   | `.css`ファイル                      |

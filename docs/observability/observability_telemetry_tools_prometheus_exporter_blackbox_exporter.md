@@ -234,7 +234,7 @@ modules:
 
 ```yaml
 modules:
-  # GETの場合 (HTTPS)
+  # GETリクエストの場合 (HTTPS)
   https_2xx_get:
     # HTTPプロトコルを使用する
     prober: http
@@ -258,7 +258,7 @@ modules:
       ip_protocol_fallback: "true"
       recursion_desired: "true"
 
-  # GETの場合 (HTTPS)
+  # GETリクエストの場合 (HTTPS)
   http_2xx_get:
     # HTTPプロトコルを使用する
     prober: http
@@ -286,7 +286,7 @@ modules:
 
 ```yaml
 modules:
-  # POSTの場合
+  # POSTリクエストの場合
   http_2xx_post:
     # HTTPプロトコルを使用する
     prober: http

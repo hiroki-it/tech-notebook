@@ -183,7 +183,7 @@ JavaScript Promiseを実装しやすくする。
 
 ### xhrオブジェクトの場合
 
-#### ▼ GET送信
+#### ▼ GETリクエスト
 
 **＊実装例＊**
 
@@ -210,7 +210,7 @@ xhr.send();
 
 > - https://blog.capilano-fw.com/?p=6920#Ajax
 
-#### ▼ POST送信
+#### ▼ POSTリクエスト
 
 **＊実装例＊**
 
@@ -260,7 +260,7 @@ xhr.send(queryString);
 
 ### JQueryオブジェクトの場合
 
-#### ▼ GET送信
+#### ▼ GETリクエスト
 
 **＊実装例＊**
 
@@ -270,7 +270,7 @@ const url = "https://example.com/";
 $.get(url);
 ```
 
-#### ▼ POST送信
+#### ▼ POSTリクエスト
 
 **＊実装例＊**
 
@@ -333,7 +333,7 @@ $.ajax({
 
 ### Axiosオブジェクトの場合
 
-#### ▼ GET送信
+#### ▼ GETリクエスト
 
 **＊実装例＊**
 
@@ -374,7 +374,7 @@ async function pollBackend() {
 pollBackend();
 ```
 
-#### ▼ POST送信
+#### ▼ POSTリクエスト
 
 **＊実装例＊**
 

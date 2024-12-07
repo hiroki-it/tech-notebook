@@ -84,7 +84,7 @@ ci: circleci
 
 ### notifier
 
-リポジトリに通知をPOST送信できるように、認証情報を設定する。
+リポジトリに通知をPOSTリクエストできるように、認証情報を設定する。
 
 ```yaml
 # https://github.com/mercari/tfnotify

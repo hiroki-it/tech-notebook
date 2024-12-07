@@ -195,7 +195,7 @@ class Foo
 
 ### リクエスト
 
-#### ▼ GET送信
+#### ▼ GETリクエスト
 
 **＊実装例＊**
 
@@ -206,7 +206,7 @@ use GuzzleHttp\Client;
 
 $client = new Client();
 
-// GET送信
+// GETリクエスト
 $response = $client->request(
     "GET",
     "https://example.com",
@@ -220,7 +220,7 @@ $response = $client->request(
 
 > - https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
-#### ▼ POST送信
+#### ▼ POSTリクエスト
 
 ```php
 <?php
@@ -233,7 +233,7 @@ $json = json_encode([
     "message" => "Hello World!"
 ]);
 
-// POST送信
+// POSTリクエスト
 $response = $client->request(
     "POST",
     "https://example.com",
@@ -271,7 +271,7 @@ $json = json_encode([
     "message" => "Hello World!"
 ]);
 
-// POST送信
+// POSTリクエスト
 $response = $client->request(
     "POST",
     "https://example.com",
