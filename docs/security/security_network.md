@@ -370,6 +370,10 @@ DBのSQLクエリのパラメーターとなる入力では、『シングルク
 
 リクエストの`Origin`ヘッダーとレスポンスの`Access-Control-Allow-Origin`ヘッダーの値を同じにする必要がある。
 
+リクエストの`Origin`ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』になる。
+
+レスポンスの`Access-Control-Allow-Origin`ヘッダーは、リクエストの`Origin`ヘッダーと同じ値あるいはワイルドカード (`*`) とする。
+
 **＊実装例＊**
 
 `(1)`
@@ -391,6 +395,7 @@ Origin: https://example.com
 import axios from "axios";
 
 const instance = axios.create({
+  // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』になる
   baseURL: "https://foo.co.jp",
   // Cookieヘッダーを設定する
   withCredentials: "true",
@@ -412,11 +417,11 @@ return new Promise((resolve, reject) => {
 
 `(2)`
 
-: 次に、レスポンスの`Access-Control-Allow-Origin`ヘッダーに、許可された送信元オリジンを割り当てて返信する。
+: 必須の設定として、レスポンスの`Access-Control-Allow-Origin`ヘッダーに、許可された送信元オリジンやワイルドカード (`*`) を割り当てて返信する。
 
      `Cookie`ヘッダーを持つリクエストを許可する場合、同じくレスポンスの`Access-Control-Allow-Credentials`ヘッダーに`true`を割り当てる。
 
-     その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。
+     その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。
 
      例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
 

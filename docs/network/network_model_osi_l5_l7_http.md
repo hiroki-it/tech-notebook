@@ -109,6 +109,18 @@ GET https://example.com/bar-form.php?text1=a&text2=b
 Upgrade-Insecure-Requests: 1
 ```
 
+#### ▼ Origin
+
+```yaml
+# リクエストライン
+GET https://example.com/bar-form.php?text1=a&text2=b
+---
+# オリジン (デフォルトではプロトコル + ドメイン + ポート番号)
+Origin: https://example.com
+```
+
+> - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples
+
 #### ▼ Cache-Control
 
 ```yaml
@@ -263,14 +275,14 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# オリジン (プロトコル + ドメイン + ポート番号)
+# オリジン (デフォルトではプロトコル + ドメイン + ポート番号)
 Origin: https://example.com
 ---
 # ボディ (SSLによって暗号化される)
 text=a&text2=b
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Origin
+> - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin#examples
 
 #### ▼ Upgrade-Insecure-Requests
 
