@@ -29,7 +29,7 @@ HTTPリクエストを送信する。
 
 非同期処理としてGETでリクエストを送信している。
 
-```javascript
+```typescript
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。
 const asyncFunc = async () => {
   axios.get("/some/path").then((res) => {
@@ -39,13 +39,29 @@ const asyncFunc = async () => {
 };
 ```
 
+> - https://axios-http.com/docs/api_intro
+
+<br>
+
+### デフォルト設定
+
+```typescript
+import axios from "axios";
+
+axios.defaults.baseURL = "https://api.example.com";
+axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+axios.defaults.headers.post["Content-Type"] = "application/json";
+```
+
 <br>
 
 ### リクエスト設定
 
 #### ▼ data
 
-```javascript
+```typescript
+import axios from "axios";
+
 const asyncFunc = async () => {
   axios
     .get("/some/path", {
@@ -64,7 +80,9 @@ const asyncFunc = async () => {
 
 #### ▼ headers
 
-```javascript
+```typescript
+import axios from "axios";
+
 const asyncFunc = async () => {
   axios
     .get("/some/path", {
@@ -83,7 +101,9 @@ const asyncFunc = async () => {
 
 #### ▼ withCredential
 
-```javascript
+```typescript
+import axios from "axios";
+
 const asyncFunc = async () => {
   axios
     .get("/some/path", {
@@ -104,6 +124,20 @@ const asyncFunc = async () => {
 <br>
 
 ### レスポンスのJSON構造
+
+#### ▼ レスポンスの出力
+
+```typescript
+import axios from "axios";
+
+axios.get("/user/12345").then(function (response) {
+  console.log(response.data);
+  console.log(response.status);
+  console.log(response.statusText);
+  console.log(response.headers);
+  console.log(response.config);
+});
+```
 
 #### ▼ data
 
@@ -173,7 +207,7 @@ const asyncFunc = async () => {
 
 axiosパッケージによる非同期処理をリトライする。
 
-```javascript
+```typescript
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
