@@ -19,7 +19,11 @@ description: React.js＠フレームワークの知見を記録しています�
 
 <br>
 
-## 01. エントリーポイント
+## 02. セットアップ
+
+### レンダリング手法
+
+#### ▼ CSRモード
 
 エントリーポイント (`main`ファイル) で`createRoot`関数を実行する。
 
@@ -36,11 +40,24 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
+> - https://react.dev/reference/react-dom/client
 > - https://react.dev/reference/react-dom/client/createRoot
+
+#### ▼ SSRモード
+
+記入中...
+
+> - https://react.dev/reference/react-dom/server
+
+#### ▼ SSGモード
+
+記入中...
+
+> - https://react.dev/reference/react-dom/static
 
 <br>
 
-## 02. エクスポート
+## 03. エクスポート
 
 ### デフォルトエクスポート
 
