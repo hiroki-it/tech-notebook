@@ -8635,6 +8635,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --global
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-save" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ --save
@@ -24674,6 +24683,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ --global
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-save" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ --save
@@ -25286,17 +25304,31 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;パッケージ名&gt;
 </code></pre></div>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
-<p>パッケージのインストール時に、ディレクトリの実行権限不足でインストールが停止する場合がある。</p>
+<p>パッケージをインストールし、ディレクトリの実行権限不足でインストールが停止する場合がある。</p>
 <p>これを無視してインストールを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--force
 </code></pre></div>
-<h4 id="-save">▼ --save<a class="headerlink" href="#-save" title="Permanent link">&para;</a></h4>
-<p>デフォルトで有効化されている。</p>
-<p>パッケージのインストール時に、<code>dependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
+<h4 id="-global">▼ --global<a class="headerlink" href="#-global" title="Permanent link">&para;</a></h4>
+<p>パッケージをシステムの<code>node_modules</code>ディレクトリにインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.npmjs.com/cli/v8/commands/npm-install#global">https://docs.npmjs.com/cli/v8/commands/npm-install#global</a></li>
+</ul>
+</blockquote>
+<h4 id="-save">▼ --save<a class="headerlink" href="#-save" title="Permanent link">&para;</a></h4>
+<p>デフォルトで有効化されている。</p>
+<p>パッケージを各プロジェクトの<code>node_modules</code>ディレクトリにインストールし、<code>dependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.npmjs.com/cli/v8/commands/npm-install#global">https://docs.npmjs.com/cli/v8/commands/npm-install#global</a></li>
+</ul>
+</blockquote>
 <h4 id="-save-dev">▼ --save--dev<a class="headerlink" href="#-save-dev" title="Permanent link">&para;</a></h4>
-<p>パッケージのインストール時に、<code>devDependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
+<p>パッケージをインストールし、<code>devDependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save--dev
 </code></pre></div>
 <p><br></p>
@@ -25369,7 +25401,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>remove<span class="w"> </span>foo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>yarn<span class="w"> </span>add<span class="w"> </span>foo@&lt;バージョンタグ&gt;
 </code></pre></div>
 <h4 id="-dev">▼ --dev<a class="headerlink" href="#-dev" title="Permanent link">&para;</a></h4>
-<p>パッケージのインストール時に、<code>devDependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
+<p>パッケージをインストールし、<code>devDependencies</code>キーにパッケージ名とバージョンを書き込む。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>add<span class="w"> </span>&lt;パッケージ名&gt;@&lt;バージョンタグ&gt;<span class="w"> </span>--dev
 </code></pre></div>
 <p><br></p>
@@ -25538,7 +25570,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-07</span>
   </span>
 
     
