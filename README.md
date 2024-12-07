@@ -53,7 +53,7 @@ $ npm install -g yarn
 
 ## 整形
 
-1. インストールする。
+1. yarnでパッケージをインストールする。
 
 ```bash
 $ yarn
