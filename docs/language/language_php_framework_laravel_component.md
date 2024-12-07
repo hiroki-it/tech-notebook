@@ -4299,7 +4299,9 @@ Bladeを使用しない場合、セッション開始時のレスポンスの`Se
 
 #### ▼ HTTPクライアントツール側の対応
 
-PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保管するようなスクリプトを設定しておくと良い。
+PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない。
+
+そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保管するようなスクリプトを設定しておくと良い。。
 
 ```javascript
 if (pm.request.method == "GET") {
@@ -4315,11 +4317,11 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
   const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
 
   if (!xsrfTokenHeader) {
-    console.log("トークンがありません");
+    console.log("CSRFトークンがありません");
     return false;
   }
 
-  // laravelによってエンコードされたトークンをデコードする。
+  // laravelによってエンコードされたCSRFトークンをデコードする。
   const xsrfToken = decodeURIComponent(xsrfTokenHeader["value"]);
   // 環境変数を挿入するために、該当する実行環境名をCollection全体に適用しておく必要がある。
   pm.environment.set("XSRF_TOKEN", xsrfToken);

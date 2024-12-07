@@ -114,7 +114,8 @@ const asyncFunc = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      withCredentials: true,
+      // CSRFトークンのためのヘッダーを設定する
+      xsrfCookieName: "XSRF-TOKEN",
     })
     .then((res) => {
       // "some data"
@@ -125,6 +126,27 @@ const asyncFunc = async () => {
 
 > - https://axios-http.com/docs/req_config
 > - https://apidog.com/jp/blog/axios-send-cookie/#axios%E3%81%A7cookie%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F
+
+#### ▼ xsrfCookieName
+
+```javascript
+import axios from "axios";
+
+const asyncFunc = async () => {
+  axios
+    .get("/some/path", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      // "some data"
+      console.log(response.data);
+    });
+};
+```
+
+> - https://axios-http.com/docs/req_config
 
 <br>
 

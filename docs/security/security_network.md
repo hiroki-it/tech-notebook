@@ -388,13 +388,14 @@ Origin: https://example.com
 ```javascript
 import axios from "axios";
 
-const client = axios.create({
+const instance = axios.create({
   baseURL: "https://foo.co.jp",
-  withCredentials: "true", // オプションの有効化
+  // Cookieヘッダーを設定する
+  withCredentials: "true",
 });
 
 return new Promise((resolve, reject) => {
-  client
+  instance
     .get("/bar")
     .then((data) => {
       resolve(data);
