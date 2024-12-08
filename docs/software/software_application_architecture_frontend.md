@@ -157,7 +157,11 @@ function App() {
     const state = useTodoList();
 
     // データがまだ取得できていないならローディング、取得できているならHTMLをレンダリングする関数
-    return <ul>{state ? state.map(e => <li>{e}</li>) : "Loding"}</ul>;
+    return (
+        <ul>
+          {state ? state.map(e => <li>{e}</li>) : "Loding"}
+        </ul>
+    );
 }
 ```
 
