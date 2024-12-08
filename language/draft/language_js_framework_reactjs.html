@@ -23842,6 +23842,102 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. コンポーネント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. コンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラスコンポーネント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="クラスコンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラスコンポーネントとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数コンポーネント
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="関数コンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 関数コンポーネントとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ async宣言不可
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      05. フック
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. フック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useeffect" class="md-nav__link">
+    <span class="md-ellipsis">
+      useEffect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -23883,7 +23979,7 @@
 
 <span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)</span><span class="o">!</span><span class="p">).</span><span class="nx">render</span><span class="p">(</span>
 <span class="w">    </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="p">&lt;</span><span class="nt">App</span><span class="p">/&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">App</span><span class="p">/&gt;</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -23954,6 +24050,109 @@
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/cocomina/articles/recommended-export">https://zenn.dev/cocomina/articles/recommended-export</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. コンポーネント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_5">クラスコンポーネント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ クラスコンポーネントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>他ファイルで使用できる汎用的なクラスを定義する。</p>
+<p>クラスコンポーネントより関数コンポーネントがより推奨である。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">Component</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88">https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88</a></li>
+<li><a href="https://zenn.dev/swata_dev/articles/7f8ef4333057d7">https://zenn.dev/swata_dev/articles/7f8ef4333057d7</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">関数コンポーネント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ 関数コンポーネントとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>他ファイルで使用できる汎用的な関数を定義する。</p>
+<p>クラスコンポーネントより関数コンポーネントがより推奨である。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88">https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88</a></li>
+<li><a href="https://zenn.dev/swata_dev/articles/7f8ef4333057d7">https://zenn.dev/swata_dev/articles/7f8ef4333057d7</a></li>
+</ul>
+</blockquote>
+<h4 id="async">▼ <code>async</code>宣言不可<a class="headerlink" href="#async" title="Permanent link">&para;</a></h4>
+<p>Reactでは、関数コンポーネントで<code>async</code>宣言は使用できない仕様になっている。</p>
+<p>非同期関数を<code>useEffect</code>関数に渡したうえで、これをコンポーネントにする必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/78877882/12771072">https://stackoverflow.com/a/78877882/12771072</a></li>
+<li><a href="https://stackoverflow.com/a/75689915/12771072">https://stackoverflow.com/a/75689915/12771072</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05">05. フック<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="useeffect">useEffect<a class="headerlink" href="#useeffect" title="Permanent link">&para;</a></h3>
+<p>コンポーネントで非同期処理を使用できるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">useEffect</span><span class="p">(</span>
+<span class="w">  </span><span class="c1">// 実行したい非同期関数を定義する</span>
+<span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 事後処理を定義する</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="c1">// useEffectを再度実行したい場合に、その条件を定義する</span>
+<span class="w">  </span><span class="c1">// 省略すると、1回だけ実行する</span>
+<span class="w">  </span><span class="p">[],</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">setState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// stateに設定する</span>
+<span class="w">      </span><span class="nx">setState</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// 非同期処理を実行する</span>
+<span class="w">    </span><span class="nx">fetchData</span><span class="p">();</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
+
+<span class="w">  </span><span class="c1">// stateを出力する</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">pre</span><span class="p">&gt;{</span><span class="nx">state</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}&lt;/</span><span class="nt">pre</span><span class="p">&gt;;</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249">https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249</a></li>
+<li><a href="https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
 </ul>
 </blockquote>
 <p><br></p>
